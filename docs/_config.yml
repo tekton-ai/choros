@@ -1,0 +1,6 @@
+# Skip Jekyll and pass HTML through unchanged.
+# Only index.html gets served; SDLC / plans stay browseable but out of the
+# top nav.
+exclude:
+  - sdlc/
+  - plans/
