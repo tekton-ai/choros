@@ -54,9 +54,9 @@ _Prerequisite: `spec.md` in this folder is `status: accepted`._
 | Every `package.json` in the workspace | Name field `@superset/<pkg>` → `@choros/<pkg>`. Root `@superset/repo` → `@choros/repo`. Script filters `--filter=@superset/…` → `--filter=@choros/…`. `homepage` field → `https://tekton-ai.github.io/choros`. |
 | Every `tsconfig*.json` with `paths` / `references` referencing `@superset/*` | Path swap. |
 | `bunfig.toml` | Comment mentions `@superset/desktop`; update to `@choros/desktop`. |
-| `opencode.json` | See "Decision required" below. |
+| `opencode.json` | **Do NOT rename** the `superset` MCP entry. It points at the upstream public MCP service (`api.superset.sh`), which any MCP-capable agent can consume. Confirmed used by `.mastracode/mcp.json` in this same repo. Add a JSON-comment-adjacent note (README or an inline `_comment` field if the schema allows) explaining that the name refers to the upstream service, not this fork. Similarly leave the `neon` / `linear` / `sentry` / `posthog` / `maestro` / `expo-mcp` entries — none is fork-branded. |
 
-**Decision required (author call, plan-time):** `opencode.json` currently declares an MCP endpoint named `superset` at `https://api.superset.sh/api/v2/agent/mcp`. This is the **upstream** Superset API. Options: (a) leave as-is — the fork still talks to upstream, name it `superset` because that's what upstream calls it; (b) remove the entry — fork doesn't integrate with upstream MCP. Recommendation: (a), and add a comment in the file noting the name refers to the upstream service, not this fork.
+**Decision resolved (2026-09-01):** author confirmed `opencode.json` `superset` MCP entry stays. The endpoint is a public OAuth-gated service exposed by upstream Superset; other agents in this repo (Mastra Code) already consume it, so the fork keeps benefiting from upstream tooling without owning any of its infrastructure.
 
 ### Category B — Root-level documentation and manifests
 
