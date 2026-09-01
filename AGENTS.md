@@ -170,3 +170,81 @@ Three traps worth knowing before you touch catalogs:
   you find a new one.
 - `docs/cloud-sandbox-considerations.md`: what cloud sandboxes still owe before they leave the
   team — billing, credential blast radius, untested behaviour.
+
+
+## AI-Native SDLC
+
+This project uses the AI-Native SDLC workflow for substantial changes (features, refactors, incident diagnosis). The workflow rules, phase-by-phase guidance, and templates live in the `ai-native-sdlc` skill — install it once (see the skill's README) and it activates automatically. This section tells you what the workflow looks like **inside this project**.
+
+### 1. What to read
+
+- **Workflow rules and phase-by-phase guidance** — the `ai-native-sdlc` skill (`SKILL.md` + `references/*.md`). The skill is loaded per session; do not duplicate its content into this project.
+- **Templates for the artifacts you produce** — read them directly from the skill's `assets/*.template.md`. **Do not copy templates into this project.**
+- **The previous stage's artifact for gate check**:
+  - Before drafting `spec.md`: read `docs/sdlc/<slug>/intent.md`, verify frontmatter `status: accepted`.
+  - Before drafting `plan.md`: read `docs/sdlc/<slug>/spec.md`, same gate.
+  - Before implementing code: read `docs/sdlc/<slug>/plan.md`, same gate.
+
+### 2. What to generate
+
+Every change lives in its own folder under `docs/sdlc/<slug>/`:
+
+- `docs/sdlc/<slug>/intent.md` — why we're doing it, who it's for
+- `docs/sdlc/<slug>/spec.md` — what "done" looks like, policy constraints
+- `docs/sdlc/<slug>/plan.md` — how the code changes, in what order, how we'll prove it
+
+Slug convention:
+- **Feature work:** `kebab-case` matching the git branch (e.g. `checkout-refund-flow`)
+- **Incident work:** `incident-<YYYY-MM-DD>-<short-desc>` (e.g. `incident-2026-09-01-refund-500s`)
+
+### 3. Generation strategy (gates and commits)
+
+- **Frontmatter `status:` is the gate.** Every artifact is written with `status: draft`. Only the human owner flips it to `status: accepted`. **Never advance to the next stage without acceptance.**
+- **One commit per artifact transition** — legibility in `git log`:
+  ```
+  sdlc(<slug>): add intent.md
+  sdlc(<slug>): accept intent.md   # frontmatter draft → accepted
+  sdlc(<slug>): add spec.md
+  sdlc(<slug>): accept spec.md
+  sdlc(<slug>): add plan.md
+  sdlc(<slug>): accept plan.md
+  ```
+- **Audit trail:** `git log --follow docs/sdlc/<slug>/` reconstructs the full decision chain.
+- **Implementation PR description links back to `docs/sdlc/<slug>/plan.md`.** If implementation reveals the plan was wrong, edit `plan.md`, get re-approval, then continue. Silent deviation breaks the audit trail.
+
+### 4. Format (frontmatter schema)
+
+All artifacts share a YAML frontmatter block:
+
+```yaml
+---
+artifact: intent | spec | plan
+feature: <slug>
+author: <name-or-handle>
+status: draft | accepted
+created: <YYYY-MM-DD>
+intent: ./intent.md    # spec and plan only
+spec: ./spec.md        # plan only
+---
+```
+
+Full section structure per artifact type — read the skill's templates:
+- `<skill>/assets/intent.template.md`
+- `<skill>/assets/spec.template.md`
+- `<skill>/assets/plan.template.md`
+
+(`<skill>` = the skill directory. Typical locations: `~/.claude/skills/ai-native-sdlc/` for Claude Code, `~/.codex/skills/ai-native-sdlc/` for Codex, or the equivalent for your agent.)
+
+### When to skip
+
+Skip the full three-artifact chain for: typo fixes, dependency bumps, docs edits with no policy implication, reverts. **Emergency hotfixes still need a retrospective `intent.md` + `spec.md` within one business day** — the audit trail must reflect reality.
+
+### Approval matrix
+
+| Artifact | Writes | Reviews | Escalation |
+|---|---|---|---|
+| `intent.md` | Initiator + agent | Product owner | — |
+| `spec.md` | Agent (loading org skills) | Product owner + policy owners for flagged concerns | Tech lead for high-risk |
+| `plan.md` | Agent in plan mode + engineer | Engineer | Tech lead / architect for high-risk |
+
+High-risk = touches auth, payments, PII, migrations, external contracts, compliance surface, or anything the team has previously written a post-mortem about.
