@@ -149,7 +149,7 @@ export class LocalLinkDetector {
 			}
 		}
 
-		// SUPERSET ADDITION (not in VSCode's shared fallback matchers):
+		// CHOROS ADDITION (not in VSCode's shared fallback matchers):
 		// Last resort — treat the whole trimmed line as a path candidate.
 		// Safe because we validate via stat (false positives are filtered out).
 		// Matches VSCode's `/^ *(?<link>(?<path>.+))/` whole-line fallback in

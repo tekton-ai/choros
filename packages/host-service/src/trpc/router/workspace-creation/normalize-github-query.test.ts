@@ -415,7 +415,7 @@ describe("normalizeGitHubQuery — issue URLs", () => {
 
 		test("case-insensitive owner/repo", () => {
 			const result = normalizeGitHubQuery(
-				"https://github.com/Choros-SH/SUPERSET/issues/55",
+				"https://github.com/Choros-SH/CHOROS/issues/55",
 				repo,
 				"issue",
 			);
