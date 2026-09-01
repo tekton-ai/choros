@@ -1,9 +1,9 @@
 import { COMPANY } from "@choros/shared/constants";
 
-// Public half of the Ed25519 key Superset-operated agents sign outbound HTTP
+// Public half of the Ed25519 key Choros-operated agents sign outbound HTTP
 // requests with (Web Bot Auth, RFC 9421). Published at
 // /.well-known/http-message-signatures-directory and as the verification
-// method of did:web:superset.sh. Rotate by replacing the key and bumping kid.
+// method of did:web:choros.sh. Rotate by replacing the key and bumping kid.
 export const AGENT_SIGNING_KEY = {
 	kty: "OKP",
 	crv: "Ed25519",

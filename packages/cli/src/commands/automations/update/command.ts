@@ -11,7 +11,7 @@ export default command({
 		timezone: string().desc("New IANA timezone"),
 		dtstart: string().desc("New ISO 8601 start anchor"),
 		agent: string().desc(
-			"New host agent instance id or presetId (e.g. claude, codex, superset).",
+			"New host agent instance id or presetId (e.g. claude, codex, choros).",
 		),
 		host: string().desc("New target host id"),
 		project: string().desc("New v2 project id"),
@@ -61,7 +61,7 @@ export default command({
 			if (!organizationId) {
 				throw new CLIError(
 					"No active organization",
-					"Run: superset auth login",
+					"Run: choros auth login",
 				);
 			}
 			target = await resolveAutomationTarget({

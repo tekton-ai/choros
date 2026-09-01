@@ -1,12 +1,12 @@
 import type { Theme } from "../types";
 
 /**
- * Light theme - based on the original Superset light mode colors
+ * Light theme - based on the original Choros light mode colors
  */
 export const lightTheme: Theme = {
 	id: "light",
 	name: "Light",
-	author: "Superset",
+	author: "Choros",
 	type: "light",
 	isBuiltIn: true,
 

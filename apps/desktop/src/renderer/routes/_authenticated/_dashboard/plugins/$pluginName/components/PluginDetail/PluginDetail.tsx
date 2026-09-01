@@ -119,7 +119,7 @@ export function PluginDetail({ plugin }: { plugin: PluginCatalogEntry }) {
 				<p className="mt-3 text-xs text-muted-foreground">
 					{!isPluginEnabled ? (
 						<Trans id="dashboard.plugins.detail.statusDisabled">
-							Disabled — kept installed, but Superset writes nothing into your
+							Disabled — kept installed, but Choros writes nothing into your
 							agent configs.
 						</Trans>
 					) : record ? (
@@ -165,7 +165,7 @@ export function PluginDetail({ plugin }: { plugin: PluginCatalogEntry }) {
 					</div>
 					<p className="text-xs text-muted-foreground">
 						<Trans id="dashboard.plugins.detail.detectedHint">
-							You added these yourself — Superset never touches them, and never
+							You added these yourself — Choros never touches them, and never
 							writes duplicates of servers you already have.
 						</Trans>
 					</p>

@@ -353,10 +353,10 @@ export const SETTINGS: SettingDefinition[] = [
 export const EXCLUDED_SETTINGS_COLUMNS: Record<string, string> = {
 	lastActiveWorkspaceId: "internal navigation state, not a preference",
 	activeOrganizationId: "internal session state, managed by sign-in",
-	terminalPresets: "structured JSON; use the app UI or superset agents",
+	terminalPresets: "structured JSON; use the app UI or choros agents",
 	terminalPresetsInitialized: "internal seeding flag",
-	agentPresetOverrides: "structured JSON; use superset agents",
-	agentCustomDefinitions: "structured JSON; use superset agents",
+	agentPresetOverrides: "structured JSON; use choros agents",
+	agentCustomDefinitions: "structured JSON; use choros agents",
 	agentPresetPermissionsMigratedAt: "internal migration marker",
 	disabledAgentHooks: "agent-id list; use the app UI",
 	disabledSkills: "skill-name list; use the app's Plugins page",
@@ -372,7 +372,7 @@ export function getSettingDefinition(key: string): SettingDefinition {
 	if (!def) {
 		throw new CLIError(
 			`Unknown setting: ${key}`,
-			"Run: superset settings list",
+			"Run: choros settings list",
 		);
 	}
 	return def;

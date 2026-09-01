@@ -5,14 +5,14 @@ package = JSON.parse(File.read(File.join(__dir__, '..', 'package.json')))
 Pod::Spec.new do |s|
   s.name           = 'Composer'
   s.version        = package['version']
-  s.summary        = 'Native composer for Superset'
+  s.summary        = 'Native composer for Choros'
   s.description    = 'Full-screen SwiftUI composer overlay that tracks the keyboard'
   s.license        = 'MIT'
-  s.author         = 'Superset'
-  s.homepage       = 'https://superset.sh'
+  s.author         = 'Choros'
+  s.homepage       = 'https://choros.sh'
   s.platforms      = { :ios => '26.0' }
   s.swift_version  = '5.9'
-  s.source         = { git: 'https://github.com/nicksupersetsh/superset.git' }
+  s.source         = { git: 'https://github.com/nickchorossh/choros.git' }
   s.static_framework = true
 
   s.dependency 'ExpoModulesCore'

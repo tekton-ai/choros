@@ -1,5 +1,5 @@
 import type { APIPromise } from "../core/api-promise";
-import { SupersetError } from "../core/error";
+import { ChorosError } from "../core/error";
 import { APIResource } from "../core/resource";
 import type { RequestOptions } from "../internal/request-options";
 
@@ -29,13 +29,13 @@ export interface HostWorkspaceRow {
  * machine. Their records are host-owned: every operation targets one host
  * (`hostId`, see `hosts.list()`) — there is no org-wide search.
  *
- * Mirrors the CLI's `superset workspaces …` commands.
+ * Mirrors the CLI's `choros workspaces …` commands.
  */
 export class Workspaces extends APIResource {
 	/**
 	 * List workspaces on a host.
 	 *
-	 * Mirrors `superset workspaces list --host <id>`.
+	 * Mirrors `choros workspaces list --host <id>`.
 	 */
 	async list(params: WorkspaceListParams): Promise<WorkspaceListResponse> {
 		this._requireOrgId();
@@ -91,7 +91,7 @@ export class Workspaces extends APIResource {
 	 * Create a project-less "session" workspace on a host — a managed scratch
 	 * folder (its own git repo) with no project, branch, or PR semantics.
 	 *
-	 * Mirrors `superset workspaces create` without `--project`.
+	 * Mirrors `choros workspaces create` without `--project`.
 	 */
 	createSession(
 		params: WorkspaceCreateSessionParams,
@@ -115,7 +115,7 @@ export class Workspaces extends APIResource {
 	 * orchestration and aren't safe to set directly. Pass `taskId: null` to
 	 * unlink the workspace from its current task.
 	 *
-	 * Mirrors `superset workspaces update --host <id>`.
+	 * Mirrors `choros workspaces update --host <id>`.
 	 */
 	async update(
 		id: string,
@@ -133,7 +133,7 @@ export class Workspaces extends APIResource {
 	/**
 	 * Delete a workspace by id on its host.
 	 *
-	 * Mirrors `superset workspaces delete --host <id>`.
+	 * Mirrors `choros workspaces delete --host <id>`.
 	 */
 	async delete(
 		id: string,
@@ -149,8 +149,8 @@ export class Workspaces extends APIResource {
 
 	private _requireOrgId(): string {
 		if (!this._client.organizationId) {
-			throw new SupersetError(
-				"organizationId is required. Set SUPERSET_ORGANIZATION_ID, or pass `organizationId` to the Superset constructor.",
+			throw new ChorosError(
+				"organizationId is required. Set SUPERSET_ORGANIZATION_ID, or pass `organizationId` to the Choros constructor.",
 			);
 		}
 		return this._client.organizationId;
@@ -195,7 +195,7 @@ export interface WorkspaceCreateParams {
 	pr?: number;
 	/** Branch to fork from when `branch` does not exist. Ignored with `pr`. */
 	baseBranch?: string;
-	/** Optional Superset task id to link to the new workspace. */
+	/** Optional Choros task id to link to the new workspace. */
 	taskId?: string;
 	/** Spawn one or more agents in the workspace immediately after creation. */
 	agents?: WorkspaceAgentLaunch[];

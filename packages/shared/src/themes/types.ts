@@ -1,5 +1,5 @@
 /**
- * Theme type definitions for the Superset desktop app
+ * Theme type definitions for the Choros desktop app
  *
  * Themes control UI colors, terminal colors, and editor/diff colors.
  */

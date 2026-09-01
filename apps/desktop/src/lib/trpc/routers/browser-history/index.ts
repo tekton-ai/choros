@@ -18,7 +18,7 @@ import { publicProcedure, router } from "../..";
 const IMPORT_CHUNK_SIZE = 200;
 
 /** The partition the in-app browser pane (and app renderer) use. */
-const BROWSER_PARTITION = "persist:superset";
+const BROWSER_PARTITION = "persist:choros";
 
 export const createBrowserHistoryRouter = () => {
 	return router({
@@ -194,7 +194,7 @@ export const createBrowserHistoryRouter = () => {
 		 * Imports logins (cookies) from one Chromium profile into the in-app
 		 * browser's session, so sites the user is signed into carry over. macOS
 		 * only (needs the browser's Keychain key); returns 0 elsewhere or when the
-		 * key is denied. Superset's own hosts are never imported.
+		 * key is denied. Choros's own hosts are never imported.
 		 */
 		importCookiesFromSource: publicProcedure
 			.input(z.object({ sourceId: z.string() }))

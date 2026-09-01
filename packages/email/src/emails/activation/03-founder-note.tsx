@@ -18,11 +18,11 @@ export function ActivationNudge2({
 	return (
 		<Html>
 			<Head />
-			<Preview>quick question from a Superset founder</Preview>
+			<Preview>quick question from a Choros founder</Preview>
 			<Body style={{ margin: 0, backgroundColor: "#FFFFFF" }}>
 				<Text style={paragraph}>Hi {userName},</Text>
 				<Text style={paragraph}>
-					I&apos;m Kiet, one of the founders of Superset. I saw you signed up
+					I&apos;m Kiet, one of the founders of Choros. I saw you signed up
 					last week but it doesn&apos;t look like you&apos;ve gotten a workspace
 					running yet.
 				</Text>

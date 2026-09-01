@@ -22,7 +22,7 @@ export function WindowTitle() {
 
 	useEffect(() => {
 		// Org name alone: the macOS Window menu lists these titles under the
-		// Superset menu bar, so a "— Superset" suffix on every entry is noise.
+		// Choros menu bar, so a "— Choros" suffix on every entry is noise.
 		document.title = activeOrganization?.name ?? productName;
 	}, [activeOrganization?.name]);
 

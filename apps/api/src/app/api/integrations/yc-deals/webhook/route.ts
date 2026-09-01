@@ -161,10 +161,10 @@ async function sendCode(email: string, payload: Payload): Promise<Outcome> {
 	});
 
 	const { error } = await resend.emails.send({
-		from: "Superset <noreply@superset.sh>",
-		replyTo: "kiet@superset.sh",
+		from: "Choros <noreply@choros.sh>",
+		replyTo: "kiet@choros.sh",
 		to: email,
-		subject: "Your Superset YC deal code",
+		subject: "Your Choros YC deal code",
 		react: YcDealCodeEmail({
 			firstName: payload.first_name,
 			code: promotionCode.code,
@@ -206,7 +206,7 @@ async function resolveOutcome(payload: Payload): Promise<Outcome> {
 			}
 			if (eligible.length === 0) {
 				throw new RejectRedemption(
-					"Looks like your org is already on a paid plan. Email kiet@superset.sh and we'll apply the 6 free months.",
+					"Looks like your org is already on a paid plan. Email kiet@choros.sh and we'll apply the 6 free months.",
 					409,
 				);
 			}

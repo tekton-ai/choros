@@ -67,7 +67,7 @@ export function PaymentFailedEmail({
 			<Text className="text-[13px] leading-5 text-muted m-0">
 				Need help?{" "}
 				<Link
-					href="mailto:support@superset.sh"
+					href="mailto:support@choros.sh"
 					className="text-muted underline"
 				>
 					Contact our support team

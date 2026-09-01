@@ -15,8 +15,8 @@ export type BuiltinAgentId = (typeof BUILTIN_AGENT_IDS)[number];
 export type AgentDefinitionId = BuiltinAgentId | `custom:${string}`;
 
 /**
- * Agents Superset can identify via lifecycle hooks but cannot launch —
- * they run in an external app whose hooks land on a Superset terminal.
+ * Agents Choros can identify via lifecycle hooks but cannot launch —
+ * they run in an external app whose hooks land on a Choros terminal.
  */
 export const EXTERNAL_AGENT_IDS = ["cursor-composer"] as const;
 

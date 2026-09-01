@@ -8,7 +8,7 @@ export default command({
 	options: {
 		workspace: string().required().desc("Workspace ID"),
 		host: string().desc("Host the workspace lives on (default: this machine)"),
-		pane: string().required().desc("Pane ID (from `superset browser list`)"),
+		pane: string().required().desc("Pane ID (from `choros browser list`)"),
 		from: string().desc(
 			"Source browser to import from, e.g. 'Comet', 'Chrome' (matches the browser name)",
 		),
@@ -26,7 +26,7 @@ export default command({
 		if (sources.length === 0) {
 			throw new CLIError(
 				"No Chromium browsers found to import from",
-				"Superset can import from Chrome, Edge, Brave, Arc, Dia, or Comet.",
+				"Choros can import from Chrome, Edge, Brave, Arc, Dia, or Comet.",
 			);
 		}
 

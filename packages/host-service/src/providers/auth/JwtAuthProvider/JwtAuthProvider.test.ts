@@ -11,10 +11,10 @@ import { ConfigFileSessionTokenSource } from "../ConfigFileSessionTokenSource";
 import { JwtApiAuthProvider } from "./JwtAuthProvider";
 
 const originalFetch = globalThis.fetch;
-const API_URL = "https://api.superset.test";
+const API_URL = "https://api.choros.test";
 const ORGANIZATION_ID = "00000000-0000-0000-0000-000000000001";
 
-type SupersetTestConfig = {
+type ChorosTestConfig = {
 	auth?: {
 		accessToken: string;
 		refreshToken?: string;
@@ -29,18 +29,18 @@ type TestConfigFile = {
 	configPath: string;
 };
 
-function createConfigFile(config: SupersetTestConfig): TestConfigFile {
+function createConfigFile(config: ChorosTestConfig): TestConfigFile {
 	const dir = mkdtempSync(join(tmpdir(), "host-auth-config-"));
 	const configPath = join(dir, "config.json");
 	writeFileSync(configPath, JSON.stringify(config, null, 2));
 	return { dir, configPath };
 }
 
-function readConfig(configPath: string): SupersetTestConfig {
-	return JSON.parse(readFileSync(configPath, "utf-8")) as SupersetTestConfig;
+function readConfig(configPath: string): ChorosTestConfig {
+	return JSON.parse(readFileSync(configPath, "utf-8")) as ChorosTestConfig;
 }
 
-function writeConfig(configPath: string, config: SupersetTestConfig): void {
+function writeConfig(configPath: string, config: ChorosTestConfig): void {
 	writeFileSync(configPath, JSON.stringify(config, null, 2));
 }
 
@@ -162,7 +162,7 @@ describe("JwtApiAuthProvider with config-backed host auth", () => {
 					}
 
 					expect(authorization).toBe("Bearer refreshed.jwt.token");
-					return { id: "user-1", email: "test@superset.local" };
+					return { id: "user-1", email: "test@choros.local" };
 				}),
 			}),
 		});
@@ -268,7 +268,7 @@ describe("JwtApiAuthProvider with config-backed host auth", () => {
 		try {
 			authProvider.invalidateCache();
 			await expect(authProvider.getHeaders()).rejects.toThrow(
-				/superset auth login/,
+				/choros auth login/,
 			);
 			expect(fetchMock).not.toHaveBeenCalled();
 		} finally {
@@ -290,7 +290,7 @@ describe("JwtApiAuthProvider with config-backed host auth", () => {
 					JSON.stringify({
 						access_token: "access-secret",
 						refresh_token: "refresh-secret",
-						redirect: "https://app.superset.test/callback?code=code-secret",
+						redirect: "https://app.choros.test/callback?code=code-secret",
 						cookie: "session=session-secret",
 					}),
 					{ status: 400 },
@@ -308,7 +308,7 @@ describe("JwtApiAuthProvider with config-backed host auth", () => {
 			}
 
 			const message = thrown instanceof Error ? thrown.message : String(thrown);
-			expect(message).toContain("superset auth login");
+			expect(message).toContain("choros auth login");
 			expect(message).not.toContain("access-secret");
 			expect(message).not.toContain("refresh-secret");
 			expect(message).not.toContain("session-secret");

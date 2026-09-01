@@ -117,7 +117,7 @@ export function BrowserSettings({ visibleItems }: BrowserSettingsProps) {
 							<p className="text-xs text-muted-foreground">
 								<Trans id="settings.browser.importHint">
 									Copy browsing history and logins from Chrome, Brave, Arc, or
-									another Chromium browser into Superset.
+									another Chromium browser into Choros.
 								</Trans>
 							</p>
 						</div>

@@ -11,7 +11,7 @@ const MAX_LISTED_SCREENSHOTS = 200;
 const THUMBNAIL_WIDTH = 200;
 
 function screenshotsDir(): string {
-	const dir = join(app.getPath("pictures"), "Superset Screenshots");
+	const dir = join(app.getPath("pictures"), "Choros Screenshots");
 	mkdirSync(dir, { recursive: true });
 	return dir;
 }

@@ -72,7 +72,7 @@ export function UpdateRequiredPage({
 						<p className="max-w-md text-muted-foreground">
 							{message || (
 								<Trans id="components.updateRequiredPage.defaultMessage">
-									A new version of Superset is required to continue. Please
+									A new version of Choros is required to continue. Please
 									update to the latest version.
 								</Trans>
 							)}

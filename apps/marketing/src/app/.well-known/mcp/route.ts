@@ -6,9 +6,9 @@ export function GET() {
 		{
 			servers: [
 				{
-					name: "superset",
+					name: "choros",
 					description:
-						"Superset MCP server: orchestrate parallel coding agents, workspaces, automations, and tasks.",
+						"Choros MCP server: orchestrate parallel coding agents, workspaces, automations, and tasks.",
 					url: MCP_SERVER_URL,
 					transport: "streamable-http",
 					serverCard: `${COMPANY.MARKETING_URL}/.well-known/mcp/server-card.json`,
@@ -19,9 +19,9 @@ export function GET() {
 					documentation: `${COMPANY.DOCS_URL}/mcp-server`,
 				},
 				{
-					name: "superset-docs",
+					name: "choros-docs",
 					description:
-						"Superset documentation over MCP: search and read docs pages.",
+						"Choros documentation over MCP: search and read docs pages.",
 					url: `${COMPANY.DOCS_URL}/mcp`,
 					transport: "streamable-http",
 					authentication: { type: "none" },

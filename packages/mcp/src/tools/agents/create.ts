@@ -22,7 +22,7 @@ export function register(server: McpServer): void {
 				.string()
 				.min(1)
 				.describe(
-					"Agent preset id (e.g. `claude`, `codex`, `superset`) or HostAgentConfig instance UUID.",
+					"Agent preset id (e.g. `claude`, `codex`, `choros`) or HostAgentConfig instance UUID.",
 				),
 			prompt: z
 				.string()
@@ -35,7 +35,7 @@ export function register(server: McpServer): void {
 				.min(1)
 				.optional()
 				.describe(
-					"The agent CLI's own session id to restore instead of starting fresh (e.g. `claude --resume <id>`). NOT the `sessionId` this tool returns — that is a Superset terminal id. Use the id the agent reported (e.g. from the agent's own session list). Fails for agents without an id-based resume.",
+					"The agent CLI's own session id to restore instead of starting fresh (e.g. `claude --resume <id>`). NOT the `sessionId` this tool returns — that is a Choros terminal id. Use the id the agent reported (e.g. from the agent's own session list). Fails for agents without an id-based resume.",
 				),
 			attachmentIds: z
 				.array(z.string().uuid())

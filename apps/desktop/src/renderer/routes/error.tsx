@@ -51,7 +51,7 @@ export function ErrorPage({ error, info }: ErrorComponentProps) {
 						</h1>
 						<p className="text-sm text-muted-foreground">
 							<Trans id="app.errorPage.description">
-								Superset hit an unexpected error. Reload to try again.
+								Choros hit an unexpected error. Reload to try again.
 							</Trans>
 						</p>
 					</div>

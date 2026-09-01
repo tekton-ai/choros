@@ -102,7 +102,7 @@ export const FEATURES: Feature[] = [
 		description: msg({
 			id: "marketing.features.cliSdk.description",
 			message:
-				"Everything is scriptable. Spawn workspaces and agents from the CLI, wire Superset into CI with the SDK, or let your agent drive it over MCP.",
+				"Everything is scriptable. Spawn workspaces and agents from the CLI, wire Choros into CI with the SDK, or let your agent drive it over MCP.",
 		}),
 	},
 	{

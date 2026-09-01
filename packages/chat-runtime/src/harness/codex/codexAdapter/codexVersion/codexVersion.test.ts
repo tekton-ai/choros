@@ -9,7 +9,7 @@ import {
 } from "./codexVersion";
 
 const REAL_USER_AGENT =
-	"superset-chat-runtime/0.143.0 (Mac OS 26.5.0; arm64) kitty/0.42.0 (superset-chat-runtime; 0.0.1)";
+	"choros-chat-runtime/0.143.0 (Mac OS 26.5.0; arm64) kitty/0.42.0 (choros-chat-runtime; 0.0.1)";
 
 describe("codex version gate", () => {
 	test("reads the codex version out of the app-server user agent", () => {
@@ -38,7 +38,7 @@ describe("codex version gate", () => {
 						handlers?.onLine(
 							JSON.stringify({
 								id: frame.id,
-								result: { userAgent: "superset-chat-runtime/0.100.0 (Linux)" },
+								result: { userAgent: "choros-chat-runtime/0.100.0 (Linux)" },
 							}),
 						);
 					},

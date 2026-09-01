@@ -60,8 +60,8 @@ const IS_AUTO_UPDATE_PLATFORM = PLATFORM.IS_MAC || PLATFORM.IS_LINUX;
 // - Stable: fetches from /releases/latest/download/ (latest non-prerelease)
 // - Canary: fetches from /releases/download/desktop-canary/ (rolling canary tag)
 const UPDATE_FEED_URL = IS_PRERELEASE
-	? "https://github.com/superset-sh/superset/releases/download/desktop-canary"
-	: "https://github.com/superset-sh/superset/releases/latest/download";
+	? "https://github.com/superset-sh/choros/releases/download/desktop-canary"
+	: "https://github.com/superset-sh/choros/releases/latest/download";
 
 export type { AutoUpdateStatusEvent } from "shared/auto-update";
 
@@ -356,7 +356,7 @@ export function setupAutoUpdater(): void {
 	// Squirrel.Mac install failures happen in ShipIt out-of-process and never
 	// reach the lib's `error` event, so route both the lib's internal logger
 	// and our own handler narration through electron-log. Both halves of the
-	// state machine end up interleaved in ~/Library/Logs/Superset/main.log —
+	// state machine end up interleaved in ~/Library/Logs/Choros/main.log —
 	// always use `log.{info,warn,error}` here, not `console.*`.
 	log.transports.file.level = "info";
 	autoUpdater.logger = log;

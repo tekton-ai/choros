@@ -1,4 +1,4 @@
-# Superset CLI Current-State Reference
+# Choros CLI Current-State Reference
 
 This document records the CLI surface implemented in `packages/cli` as of
 2026-05-12. Public user-facing docs live in
@@ -22,27 +22,27 @@ find packages/cli/src/commands -type f -name 'command.ts' | sort
 For rendered help, build or use the bundled binary and run:
 
 ```bash
-superset --help
-superset <group> --help
-superset <group> <command> --help
+choros --help
+choros <group> --help
+choros <group> <command> --help
 ```
 
 ## Top-Level Commands
 
 ```text
-superset agents
-superset auth
-superset automations
-superset hosts
-superset organization
-superset projects
-superset start
-superset status
-superset stop
-superset tasks
-superset terminals
-superset update
-superset workspaces
+choros agents
+choros auth
+choros automations
+choros hosts
+choros organization
+choros projects
+choros start
+choros status
+choros stop
+choros tasks
+choros terminals
+choros update
+choros workspaces
 ```
 
 Aliases:
@@ -136,7 +136,7 @@ CI
 ## Runtime State
 
 CLI runtime state is under `SUPERSET_HOME_DIR`, defaulting to
-`~/.superset`.
+`~/.choros`.
 
 | Path | Purpose |
 | --- | --- |
@@ -147,8 +147,8 @@ CLI runtime state is under `SUPERSET_HOME_DIR`, defaulting to
 ## Desktop Shim And Standalone Install
 
 The desktop app installs an app-managed shim at
-`<SUPERSET_HOME_DIR>/bin/superset` (`~/.superset/bin/superset` by default)
-when the app starts. Superset desktop terminals prepend that directory to
+`<SUPERSET_HOME_DIR>/bin/choros` (`~/.superset/bin/choros` by default)
+when the app starts. Choros desktop terminals prepend that directory to
 `PATH`, so the bundled CLI is available in app-launched terminals without a
 standalone install.
 
@@ -161,14 +161,14 @@ workspace's organization. The CLI prefers that invocation-scoped value over
 the active organization stored in `config.json`, which keeps workspace and
 host routing aligned without changing the user's global CLI selection.
 
-The desktop bundle contains only the `superset` executable, not the standalone
-`superset-host` runtime and its Node/native dependencies. `superset start`
+The desktop bundle contains only the `choros` executable, not the standalone
+`choros-host` runtime and its Node/native dependencies. `choros start`
 discovers Desktop's already-running service through the shared manifest; use
 the standalone CLI distribution when a new headless host service must be
 launched.
 
 The standalone install script is separate from runtime state. It installs
-the CLI and host binary under `SUPERSET_HOME` (default `~/superset`) and
+the CLI and host binary under `SUPERSET_HOME` (default `~/choros`) and
 adds `<SUPERSET_HOME>/bin` to the user's shell `PATH`. These locations do
 not overwrite each other; whichever `bin` directory appears first in `PATH`
 wins for a normal shell.
@@ -186,7 +186,7 @@ scripts for:
 
 The desktop app has its own bundling script,
 `apps/desktop/scripts/build-bundled-cli.ts`, which compiles the CLI into
-`apps/desktop/dist/resources/bin/superset` for the Electron package target.
+`apps/desktop/dist/resources/bin/choros` for the Electron package target.
 
 ## Current Notes And Gaps
 

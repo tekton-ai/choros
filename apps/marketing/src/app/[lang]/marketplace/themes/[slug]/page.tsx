@@ -37,8 +37,8 @@ export async function generateMetadata({
 	}
 
 	const kind = theme.type === "dark" ? "Dark" : "Light";
-	const title = `${theme.name}: ${kind} Theme for Superset`;
-	const description = `${theme.description} Download the ${theme.name} ${kind.toLowerCase()} theme for Superset, the local-first AI coding workspace.`;
+	const title = `${theme.name}: ${kind} Theme for Choros`;
+	const description = `${theme.description} Download the ${theme.name} ${kind.toLowerCase()} theme for Choros, the local-first AI coding workspace.`;
 	const url = localeUrl(lang, `/marketplace/themes/${theme.slug}`);
 
 	return {
@@ -46,8 +46,8 @@ export async function generateMetadata({
 		description,
 		keywords: [
 			`${theme.name} theme`,
-			`${theme.name} superset theme`,
-			`superset ${theme.type} theme`,
+			`${theme.name} choros theme`,
+			`choros ${theme.type} theme`,
 			...theme.tags,
 		],
 		alternates: localizedAlternates(lang, `/marketplace/themes/${theme.slug}`),
@@ -214,14 +214,14 @@ export default async function ThemeDetailPage({ params }: PageProps) {
 	const creativeWork = {
 		"@context": "https://schema.org",
 		"@type": "CreativeWork",
-		name: `${theme.name} Theme for Superset`,
+		name: `${theme.name} Theme for Choros`,
 		description: theme.description,
 		url,
 		genre: `${kind} color theme`,
 		author: { "@type": "Person", name: theme.author },
 		keywords: theme.tags.join(", "),
 		isAccessibleForFree: true,
-		license: "https://github.com/superset-sh/superset",
+		license: "https://github.com/superset-sh/choros",
 	};
 
 	return (
@@ -375,7 +375,7 @@ export default async function ThemeDetailPage({ params }: PageProps) {
 				<section className="mt-12">
 					<h2 className="text-lg font-semibold text-foreground">
 						<Trans id="marketing.marketplace.theme.installTitle">
-							How to install {name} in Superset
+							How to install {name} in Choros
 						</Trans>
 					</h2>
 					<ol className="mt-4 list-decimal space-y-2 pl-5 text-sm text-muted-foreground">
@@ -386,7 +386,7 @@ export default async function ThemeDetailPage({ params }: PageProps) {
 						</li>
 						<li>
 							<Trans id="marketing.marketplace.theme.installStep.openSettings">
-								In the Superset desktop app, open{" "}
+								In the Choros desktop app, open{" "}
 								<span className="text-foreground">
 									Settings → Appearance → Theme
 								</span>

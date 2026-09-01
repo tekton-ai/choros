@@ -5,7 +5,7 @@ import { app, session } from "electron";
 import { env } from "main/env.main";
 import { getChromiumUserDataDirs } from "../browser/chromium-profiles";
 
-const APP_PARTITION = "persist:superset";
+const APP_PARTITION = "persist:choros";
 const REACT_DEVTOOLS_EXTENSION_ID = "fmkadmapgofadopljbjfkapdkoienihi";
 
 function safeReadDir(pathname: string): string[] {

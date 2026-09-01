@@ -1,4 +1,4 @@
-app = "superset-discord-triage"
+app = "choros-discord-triage"
 primary_region = "sjc"
 kill_signal = "SIGINT"
 kill_timeout = "10s"
@@ -10,11 +10,11 @@ kill_timeout = "10s"
   PORT = "8080"
   # 1456374121494478869 = #bugs (forum), 1466502145825050759 = #feature-request (text)
   DISCORD_CHANNEL_IDS = "1456374121494478869,1466502145825050759"
-  DISCORD_BOT_NAME = "Superset"
-  DISCORD_BOT_AVATAR_URL = "https://superset.sh/apple-touch-icon.png"
+  DISCORD_BOT_NAME = "Choros"
+  DISCORD_BOT_AVATAR_URL = "https://choros.sh/apple-touch-icon.png"
   LINEAR_FILING_ENABLED = "true"
   PLAIN_BRIDGE_ENABLED = "true"
-  BRIDGE_EMAIL_DOMAIN = "discord.superset.sh"
+  BRIDGE_EMAIL_DOMAIN = "discord.choros.sh"
   BRIDGE_DB_PATH = "/data/bridge.sqlite"
 
 # SQLite map of Discord threads <-> email conversations; survives deploys.

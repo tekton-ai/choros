@@ -14,7 +14,7 @@ import {
 import type { TerminalDescriptor } from "../shared/types";
 
 /**
- * Adopt a worktree that already exists on disk into a Superset workspace
+ * Adopt a worktree that already exists on disk into a Choros workspace
  * row. Currently the only caller is the v1→v2 migration, which passes
  * an explicit `worktreePath`. Branch-name-only callers (the v2 picker,
  * MCP, agent spawn) go through `workspaces.create`, which handles

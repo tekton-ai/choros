@@ -10,7 +10,7 @@ in the iOS app. Read `docs/cloud-sandbox-mismatches.md` first.
   from the sandbox, PR badge, agent status; provisioning rows spin with no
   menu; failed rows still listed; rename → `cloudWorkspace.rename`, delete →
   `cloudWorkspace.delete` (`useDestroyWorkspace`); gated by the
-  `cloud-workspaces` flag and the API's `@superset.sh` check.
+  `cloud-workspaces` flag and the API's `@choros.sh` check.
 - **Create** — `DevicePicker` "Cloud" sentinel → project (local host's project
   list; ids are cloud `v2Projects` ids) → branch (GitHub remote branches via
   the local host's `gh`, `workspaceCreation.searchRemoteBranches`) → optional
@@ -102,7 +102,7 @@ screens, rename/delete routed to the cloud router, flag + API gate.
 ## PR A — verified on the simulator (2026-08-17)
 
 Against this worktree's local API (8401) and two live Blaxel sandboxes, signed
-in as an internal test account (`claude-mobile@superset.sh`, branch DB only):
+in as an internal test account (`claude-mobile@choros.sh`, branch DB only):
 
 - Cloud section on Home with the sandbox rows; a session mark on the one with
   a live terminal (terminal fan-out over sandbox targets works).
@@ -126,7 +126,7 @@ token step here (that is what produced the failed row).
 
 ## PR B + image rebuild (2026-08-19)
 
-- Sandbox image `superset-hostsvc` rebuilt from main and deployed. Verified
+- Sandbox image `choros-hostsvc` rebuilt from main and deployed. Verified
   end to end with a throwaway sandbox: `settings.agentConfigs.list` (which
   lazily seeds the builtin agents — anything calling `agents.run` cold must
   call it first) then `agents.run` with Claude boots the TUI under root with

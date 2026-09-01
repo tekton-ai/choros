@@ -5,7 +5,7 @@ import { createJSONStorage, persist } from "zustand/middleware";
 const MOMENT_DEDUPE_MS = 60 * 60 * 1000;
 
 /**
- * Tally of moments Superset did something for the user (a merged pull
+ * Tally of moments Choros did something for the user (a merged pull
  * request, a session an agent finished for them) plus when we last asked
  * for an App Store rating. Moments closer than an hour apart count once, so
  * an agent stopping several times while the user watches is one moment.

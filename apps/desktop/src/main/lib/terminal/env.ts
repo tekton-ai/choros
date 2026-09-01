@@ -382,7 +382,7 @@ function hasAllowedPrefix(key: string, isWindows: boolean): boolean {
 
 /**
  * Build a safe environment by only including allowlisted variables.
- * This prevents Superset app secrets and build-time config from leaking to terminals.
+ * This prevents Choros app secrets and build-time config from leaking to terminals.
  *
  * Threat model: Prevent app secrets (DATABASE_URL, API keys from .env) from leaking.
  * User shell config vars (proxy, tool paths) are intentionally allowed so terminals

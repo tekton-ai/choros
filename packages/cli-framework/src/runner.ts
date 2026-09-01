@@ -139,7 +139,7 @@ function processGlobals(
  * passthrough tokens (global flags + everything after the first unknown
  * flag, which belongs to the leaf command's parser). Without this,
  * `routeCommand` would stop at the first `-` token and a leading global
- * flag like `superset --json auth check` would short-circuit to root help.
+ * flag like `choros --json auth check` would short-circuit to root help.
  */
 function splitArgsForRouting(
 	args: string[],
@@ -291,7 +291,7 @@ async function execute(
 
 	// `--version` / `-v` print the CLI's version when no command resolved.
 	// Once a command is in play, the flag is the command's to consume —
-	// e.g. `superset update --version 0.1.2`.
+	// e.g. `choros update --version 0.1.2`.
 	if (
 		commandPath.length === 0 &&
 		(args.includes("--version") || args.includes("-v"))
@@ -416,7 +416,7 @@ async function execute(
 /**
  * console.log queues pipe writes asynchronously; when the process exits while
  * the reader is slow, Bun drops the still-queued tail, truncating output
- * beyond ~64KB (seen with `superset tasks list --json | jq` and `$(...)`
+ * beyond ~64KB (seen with `choros tasks list --json | jq` and `$(...)`
  * capture). Awaiting the write callback keeps the process alive until the
  * whole payload reaches the pipe.
  */

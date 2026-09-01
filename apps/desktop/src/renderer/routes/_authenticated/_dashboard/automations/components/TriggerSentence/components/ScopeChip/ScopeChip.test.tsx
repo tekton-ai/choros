@@ -175,7 +175,7 @@ describe("ScopeChip rows", () => {
 	// offering to add it a second time.
 	test("match on the hint as well as the label", async () => {
 		const { ui } = await open({
-			options: [{ id: "10", label: "superset", hint: "superset-sh" }],
+			options: [{ id: "10", label: "choros", hint: "superset-sh" }],
 			allowCustom: { placeholder: "Search..." },
 		});
 		expect(ui.getByText("superset-sh")).toBeDefined();

@@ -62,7 +62,7 @@ export function WorkspaceHostUnreachableState({
 					</h1>
 					<p className="select-text cursor-text text-[13px] leading-relaxed text-muted-foreground">
 						<Trans id="workspace.states.hostUnreachableBody">
-							This workspace lives on a device Superset can't reach right now.
+							This workspace lives on a device Choros can't reach right now.
 							Terminals, files, and agents stay put — they come back as soon as
 							the connection does.
 						</Trans>

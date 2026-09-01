@@ -57,7 +57,7 @@ function StarNagToastContent({ toastId }: { toastId: string | number }) {
 			</div>
 			<p className="mt-1 text-xs text-muted-foreground">
 				<Trans id="components.starNagToast.body">
-					If you're enjoying Superset so far, a GitHub star helps other
+					If you're enjoying Choros so far, a GitHub star helps other
 					developers discover it.
 				</Trans>
 			</p>

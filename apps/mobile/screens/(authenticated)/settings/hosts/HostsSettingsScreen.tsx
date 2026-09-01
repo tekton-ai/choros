@@ -48,7 +48,7 @@ export function HostsSettingsScreen() {
 						style={{ color: theme.mutedForeground }}
 					>
 						<Trans id="mobile.hostsSettings.emptyDescription">
-							In the Superset desktop app, open Settings → Remote Access and
+							In the Choros desktop app, open Settings → Remote Access and
 							turn on “Allow remote access to this device via relay”.
 						</Trans>
 					</Text>

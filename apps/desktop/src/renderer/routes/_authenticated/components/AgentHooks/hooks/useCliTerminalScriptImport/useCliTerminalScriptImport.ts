@@ -5,7 +5,7 @@ import { getNextTabOrder } from "renderer/routes/_authenticated/providers/Collec
 import { useCollections } from "../../../../providers/CollectionsProvider";
 
 /**
- * One-shot import of terminal scripts authored by `superset scripts add`. The
+ * One-shot import of terminal scripts authored by `choros scripts add`. The
  * CLI can only write the legacy local.db store, so it leaves rows flagged for
  * this organization; we copy them into the v2 collection and then clear the
  * flags so a script deleted in v2 is never re-imported. A script whose insert

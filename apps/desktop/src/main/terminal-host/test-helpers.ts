@@ -9,7 +9,7 @@ export function supportsLocalSocketBinding(): boolean {
 	}
 
 	const probeDir = mkdtempSync(
-		join(realpathSync(tmpdir()), "superset-socket-probe-"),
+		join(realpathSync(tmpdir()), "choros-socket-probe-"),
 	);
 	const probeSocketPath = join(probeDir, "probe.sock");
 

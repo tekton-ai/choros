@@ -24,7 +24,7 @@ function writeAppState(state: Record<string, unknown>) {
 
 beforeEach(() => {
 	previousHome = process.env.SUPERSET_HOME_DIR;
-	homeDir = mkdtempSync(join(tmpdir(), "superset-cli-appstate-"));
+	homeDir = mkdtempSync(join(tmpdir(), "choros-cli-appstate-"));
 	process.env.SUPERSET_HOME_DIR = homeDir;
 });
 

@@ -102,7 +102,7 @@ export default command({
 		if (!workspaceRef && !options.page) {
 			throw new CLIError(
 				"No workspace to publish into",
-				"Run this inside a Superset workspace, pass --workspace <name|id>, or pass --page <id> to add a version to an existing page",
+				"Run this inside a Choros workspace, pass --workspace <name|id>, or pass --page <id> to add a version to an existing page",
 			);
 		}
 		const workspaceId = workspaceRef

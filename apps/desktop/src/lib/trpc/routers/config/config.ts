@@ -340,17 +340,17 @@ async function detectSetupDefaults(
 }
 
 function getConfigPath(mainRepoPath: string): string {
-	return join(mainRepoPath, ".superset", "config.json");
+	return join(mainRepoPath, ".choros", "config.json");
 }
 
 function ensureConfigExists(mainRepoPath: string): string {
 	const configPath = getConfigPath(mainRepoPath);
-	const supersetDir = join(mainRepoPath, ".superset");
+	const chorosDir = join(mainRepoPath, ".choros");
 
 	if (!existsSync(configPath)) {
-		// Create .superset directory if it doesn't exist
-		if (!existsSync(supersetDir)) {
-			mkdirSync(supersetDir, { recursive: true });
+		// Create .choros directory if it doesn't exist
+		if (!existsSync(chorosDir)) {
+			mkdirSync(chorosDir, { recursive: true });
 		}
 		// Create config.json with template
 		writeFileSync(configPath, CONFIG_TEMPLATE, "utf-8");

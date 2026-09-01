@@ -6,14 +6,14 @@ This doc is intended for an external architecture review. It provides enough con
 
 ## What we’re trying to build (big picture)
 
-Superset Desktop is an Electron app that provides:
+Choros Desktop is an Electron app that provides:
 
 - A multi-pane terminal UI inside workspaces (think “IDE terminal panes”).
 - Git worktree-based workspaces (multiple isolated working copies).
 - “Changes” UX (diff/status/staging) tied to those workspaces.
 - Agent/CLI integrations that surface lifecycle/status in the UI (e.g. completion events, indicators).
 
-Today, terminals can run locally and (optionally) persist via a background “terminal host” daemon. In the future, we want to support executing terminals in the cloud / on a remote runner while keeping the same “Superset UX primitives” (worktrees, changes/diff, agent status, etc.).
+Today, terminals can run locally and (optionally) persist via a background “terminal host” daemon. In the future, we want to support executing terminals in the cloud / on a remote runner while keeping the same “Choros UX primitives” (worktrees, changes/diff, agent status, etc.).
 
 ## Why we’re asking for review now
 

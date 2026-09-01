@@ -13,12 +13,12 @@ export async function generateMetadata(): Promise<Metadata> {
 	const lang = await initServerI18n();
 	const title = i18n._({
 		id: "marketing.meta.compare.title",
-		message: "Compare Superset | AI Coding Comparisons and Guides",
+		message: "Compare Choros | AI Coding Comparisons and Guides",
 	});
 	const description = i18n._({
 		id: "marketing.meta.compare.description",
 		message:
-			"Compare Superset with Cursor, Claude Code, Codex, Windsurf, Devin, GitHub Copilot, and more. Browse side-by-side comparisons, roundups, and workflow guides.",
+			"Compare Choros with Cursor, Claude Code, Codex, Windsurf, Devin, GitHub Copilot, and more. Browse side-by-side comparisons, roundups, and workflow guides.",
 	});
 	return {
 		title,
@@ -28,14 +28,14 @@ export async function generateMetadata(): Promise<Metadata> {
 			languages: localizedAlternates(lang, "/compare").languages,
 		},
 		openGraph: {
-			title: `${title} | Superset`,
+			title: `${title} | Choros`,
 			description: description,
 			url: localeUrl(lang, "/compare"),
 			images: ["/opengraph-image"],
 		},
 		twitter: {
 			card: "summary_large_image",
-			title: `${title} | Superset`,
+			title: `${title} | Choros`,
 			description: description,
 			images: ["/opengraph-image"],
 		},
@@ -74,12 +74,12 @@ export default async function ComparePage() {
 					</span>
 					<h1 className="text-3xl md:text-4xl font-medium tracking-tight text-foreground mt-4">
 						<Trans id="marketing.compare.title">
-							Superset vs the Alternatives
+							Choros vs the Alternatives
 						</Trans>
 					</h1>
 					<p className="text-muted-foreground mt-3 max-w-lg">
 						<Trans id="marketing.compare.subtitle">
-							See how Superset compares to other AI coding tools, from AI
+							See how Choros compares to other AI coding tools, from AI
 							editors to coding agents to cloud-based AI engineers.
 						</Trans>
 					</p>

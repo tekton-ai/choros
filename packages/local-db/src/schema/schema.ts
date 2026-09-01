@@ -84,9 +84,9 @@ export const worktrees = sqliteTable(
 			.$defaultFn(() => Date.now()),
 		gitStatus: text("git_status", { mode: "json" }).$type<GitStatus>(),
 		githubStatus: text("github_status", { mode: "json" }).$type<GitHubStatus>(),
-		// Track whether this worktree was created by Superset or imported from external source
+		// Track whether this worktree was created by Choros or imported from external source
 		// Used to prevent accidental deletion of user-created worktrees
-		createdBySuperset: integer("created_by_superset", { mode: "boolean" })
+		createdByChoros: integer("created_by_choros", { mode: "boolean" })
 			.notNull()
 			.default(true),
 	},

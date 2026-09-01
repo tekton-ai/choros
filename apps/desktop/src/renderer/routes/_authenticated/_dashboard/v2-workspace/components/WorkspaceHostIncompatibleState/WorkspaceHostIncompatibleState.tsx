@@ -41,8 +41,8 @@ export function WorkspaceHostIncompatibleState({
 					</h1>
 					<p className="select-text cursor-text text-[13px] leading-relaxed text-muted-foreground">
 						<Trans id="workspace.states.hostIncompatibleBody">
-							This workspace's host is on an older version of Superset than this
-							client supports. Update the Superset app on that device to
+							This workspace's host is on an older version of Choros than this
+							client supports. Update the Choros app on that device to
 							reconnect.
 						</Trans>
 					</p>

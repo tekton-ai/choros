@@ -10,10 +10,10 @@ import {
 } from "node:fs/promises";
 import { dirname, join } from "node:path";
 
-const CLIENT_ID = "superset-cli";
-const LOGIN_AGAIN_MESSAGE = "Session expired. Run: superset auth login";
+const CLIENT_ID = "choros-cli";
+const LOGIN_AGAIN_MESSAGE = "Session expired. Run: choros auth login";
 
-type SupersetAuthConfig = {
+type ChorosAuthConfig = {
 	auth?: {
 		accessToken: string;
 		refreshToken?: string;
@@ -35,7 +35,7 @@ export type ConfigFileSessionTokenSourceOptions = {
 	apiUrl: string;
 };
 
-async function readConfig(configPath: string): Promise<SupersetAuthConfig> {
+async function readConfig(configPath: string): Promise<ChorosAuthConfig> {
 	try {
 		const fileStat = await stat(configPath);
 		if ((fileStat.mode & 0o077) !== 0) {
@@ -49,12 +49,12 @@ async function readConfig(configPath: string): Promise<SupersetAuthConfig> {
 	}
 
 	const raw = await readFile(configPath, "utf-8");
-	return JSON.parse(raw) as SupersetAuthConfig;
+	return JSON.parse(raw) as ChorosAuthConfig;
 }
 
 async function writeConfig(
 	configPath: string,
-	config: SupersetAuthConfig,
+	config: ChorosAuthConfig,
 ): Promise<void> {
 	const configDir = dirname(configPath);
 	await mkdir(configDir, { recursive: true, mode: 0o700 });
@@ -79,8 +79,8 @@ function loginAgainError(): Error {
 }
 
 function authMatches(
-	left: NonNullable<SupersetAuthConfig["auth"]>,
-	right: NonNullable<SupersetAuthConfig["auth"]>,
+	left: NonNullable<ChorosAuthConfig["auth"]>,
+	right: NonNullable<ChorosAuthConfig["auth"]>,
 ): boolean {
 	return (
 		left.accessToken === right.accessToken &&
@@ -125,7 +125,7 @@ export class ConfigFileSessionTokenSource {
 	}
 
 	private async refreshAccessToken(
-		auth: NonNullable<SupersetAuthConfig["auth"]>,
+		auth: NonNullable<ChorosAuthConfig["auth"]>,
 	): Promise<string> {
 		if (!auth.refreshToken) throw loginAgainError();
 

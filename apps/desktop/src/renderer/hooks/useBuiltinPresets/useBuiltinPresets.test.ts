@@ -30,11 +30,11 @@ describe("BUILTIN_CLI_PRESET", () => {
 		// No agentId: resolvePresetLaunchCommands must fall back to `commands`,
 		// and preset-icon resolution must not bind it to a host agent config.
 		expect(BUILTIN_CLI_PRESET.agentId).toBeUndefined();
-		expect(BUILTIN_CLI_PRESET.commands).toEqual(["superset --help"]);
+		expect(BUILTIN_CLI_PRESET.commands).toEqual(["choros --help"]);
 		expect(BUILTIN_CLI_PRESET.executionMode).toBe("new-tab");
 	});
 
 	it("uses a slug id outside the UUID namespace of user rows", () => {
-		expect(BUILTIN_CLI_PRESET.id).toBe("superset-cli");
+		expect(BUILTIN_CLI_PRESET.id).toBe("choros-cli");
 	});
 });

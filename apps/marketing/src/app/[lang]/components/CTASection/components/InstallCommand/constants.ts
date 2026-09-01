@@ -9,7 +9,7 @@ export interface InstallTab {
 export const DEFAULT_INSTALL_TAB: InstallTab = {
 	id: "brew",
 	label: "brew",
-	command: "brew install superset-sh/tap/superset",
+	command: "brew install superset-sh/tap/choros",
 	shell: true,
 };
 
@@ -18,13 +18,13 @@ export const INSTALL_TABS: InstallTab[] = [
 	{
 		id: "curl",
 		label: "curl",
-		command: "curl -fsSL https://superset.sh/cli/install.sh | sh",
+		command: "curl -fsSL https://choros.sh/cli/install.sh | sh",
 		shell: true,
 	},
 	{
 		id: "agent",
 		label: "agent",
-		command: "Install the Superset CLI: https://superset.sh/llms.txt",
+		command: "Install the Choros CLI: https://choros.sh/llms.txt",
 		shell: false,
 	},
 ];

@@ -61,7 +61,7 @@ export function AutomationsEmptyState({
 					</Trans>
 				</h2>
 				{/* Opens an agent session that asks what to automate and creates it
-				    via the superset:automate skill / CLI. Swaps to the inline NL
+				    via the choros:automate skill / CLI. Swaps to the inline NL
 				    chat input in Phase 2. */}
 				<button
 					type="button"

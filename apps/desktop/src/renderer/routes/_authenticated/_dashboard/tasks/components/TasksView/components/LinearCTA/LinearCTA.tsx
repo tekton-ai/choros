@@ -23,7 +23,7 @@ export function LinearCTA() {
 					<p className="text-sm text-muted-foreground">
 						<Trans id="dashboard.tasks.linearCta.description">
 							Connect your Linear workspace to sync issues and manage tasks
-							directly from Superset.
+							directly from Choros.
 						</Trans>
 					</p>
 				</div>

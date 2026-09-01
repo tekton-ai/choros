@@ -1,13 +1,13 @@
 # Blog outline: the orchestrator is now an agent
 
-Draft outline for a post on the `superset-orchestration` skill (PR #6088,
+Draft outline for a post on the `choros-orchestration` skill (PR #6088,
 registry: superset-sh/skills). Companion to the 2026-08-02 changelog. This file
 is `.md` so the blog loader ignores it; the real post ships as `.mdx`.
 
 Suggested frontmatter:
 
 - title: "The Orchestrator Is Now an Agent"
-- description: "Our new orchestration skill lets Claude Code or Codex coordinate a fleet of Superset agents: a workspace per worker, follow-ups over real terminals, structured results back."
+- description: "Our new orchestration skill lets Claude Code or Codex coordinate a fleet of Choros agents: a workspace per worker, follow-ups over real terminals, structured results back."
 - category: Product
 - relatedSlugs: agent-orchestration-not-another-agent, parallel-coding-agents-guide, roadmap-to-100-agents
 
@@ -15,24 +15,24 @@ Suggested frontmatter:
 
 - Callback to the February post ("You Don't Need Another AI Coding Agent: You
   Need an Orchestrator"): agents got good, the workflow around them didn't.
-- Superset solved the running-in-parallel half. The remaining half: a human
+- Choros solved the running-in-parallel half. The remaining half: a human
   still assigns tasks, checks panes, relays context between agents.
 - Thesis: the coordinator should be an agent too. Now it is.
 
 ## 2. What shipped
 
-- The `superset-orchestration` skill. One install, any agent that reads skills
+- The `choros-orchestration` skill. One install, any agent that reads skills
   becomes a coordinator: `npx skills add superset-sh/skills` (Claude Code can
-  also use the plugin: `/plugin marketplace add superset-sh/superset`).
-- Coordinator: Claude Code, Codex, others. Workers: any mix of agents Superset
+  also use the plugin: `/plugin marketplace add superset-sh/choros`).
+- Coordinator: Claude Code, Codex, others. Workers: any mix of agents Choros
   runs (Claude Code, Codex, Gemini, Grok, Kimi...).
 - Asset: 5-10s recording of a coordinator prompt fanning out to 3 workers,
   sidebar filling with workspaces + agent chips.
 
 ## 3. How it works: a protocol over the CLI
 
-- Superset is the transport, the coordinator owns the plan. No new daemon, no
-  framework: the skill drives `superset` CLI commands.
+- Choros is the transport, the coordinator owns the plan. No new daemon, no
+  framework: the skill drives `choros` CLI commands.
 - One isolated worktree workspace per worker (`agents create`), so workers
   can't step on each other.
 - Follow-ups and supervision over real terminals: `terminals list/read/send/close`.
@@ -61,18 +61,18 @@ Suggested frontmatter:
 
 - Workers behave exactly as they do when you run them by hand: same TUIs, same
   config, no special build, no vendor lock-in.
-- Everything is visible in Superset: panes adopt automatically, so you can
+- Everything is visible in Choros: panes adopt automatically, so you can
   watch any worker and take over mid-run. The human stays one click away.
 
 ## 7. Try it
 
 - Install commands, link to the skill in superset-sh/skills, the changelog
-  entry, and docs.superset.sh.
+  entry, and docs.choros.sh.
 - Prompt starters: three copy-pasteable coordinator prompts.
 
 ## 8. What's next
 
 - Native orchestration primitives in the product (the current skill is a
   protocol convention; dependency tracking and fleet views can move into
-  Superset itself).
+  Choros itself).
 - Invite feedback from people running big fleets.

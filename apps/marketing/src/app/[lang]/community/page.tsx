@@ -18,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
 		description: i18n._({
 			id: "marketing.meta.community.description",
 			message:
-				"Join the Superset community to get help, share ideas, and stay up to date with the latest news and updates.",
+				"Join the Choros community to get help, share ideas, and stay up to date with the latest news and updates.",
 		}),
 		alternates: localizedAlternates(lang, "/community"),
 	};
@@ -135,7 +135,7 @@ export default async function CommunityPage() {
 					</h1>
 					<p className="mt-4 sm:mt-6 text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
 						<Trans id="marketing.community.subtitle">
-							Join the <span className="font-semibold italic">Superset</span>{" "}
+							Join the <span className="font-semibold italic">Choros</span>{" "}
 							community to get help, share ideas, and stay up to date with the
 							latest news and updates.
 						</Trans>

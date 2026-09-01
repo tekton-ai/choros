@@ -31,7 +31,7 @@ export default command({
 	run: async ({ options }) => {
 		const organizationId = resolveOrganizationId(readConfig());
 		if (!organizationId) {
-			throw new CLIError("No active organization", "Run: superset auth login");
+			throw new CLIError("No active organization", "Run: choros auth login");
 		}
 		const invalidProjectId = options.project?.find(
 			(projectId) => !UUID_PATTERN.test(projectId),
@@ -39,7 +39,7 @@ export default command({
 		if (invalidProjectId) {
 			throw new CLIError(
 				`Invalid project UUID: ${invalidProjectId}`,
-				"Pass the project UUID shown by `superset projects list`.",
+				"Pass the project UUID shown by `choros projects list`.",
 			);
 		}
 

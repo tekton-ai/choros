@@ -145,10 +145,10 @@ export const supportRouter = createTRPCRouter({
 
 			try {
 				const { error } = await resend.emails.send({
-					from: "Superset <noreply@superset.sh>",
+					from: "Choros <noreply@choros.sh>",
 					to: SUPPORT_EMAIL,
 					replyTo: user.email,
-					subject: "Superset V1 to V2 migration issue",
+					subject: "Choros V1 to V2 migration issue",
 					text: [
 						`User: ${userLabel}`,
 						`User ID: ${user.id}`,
@@ -267,7 +267,7 @@ export const supportRouter = createTRPCRouter({
 				// Resend reports API failures via the resolved `error` field, not by
 				// throwing — without this check a rejected email would "succeed".
 				const { error } = await resend.emails.send({
-					from: "Superset <noreply@superset.sh>",
+					from: "Choros <noreply@choros.sh>",
 					to: SUPPORT_EMAIL,
 					// CC the reporter so they keep a copy and stay on the thread.
 					cc: user.email,

@@ -5,12 +5,12 @@ import {
 } from "shared/browser-design-mode";
 
 const HIDE_OVERLAY_SCRIPT = `(function(){
-  var d = window.__supersetDesignMode;
+  var d = window.__chorosDesignMode;
   if (d && d.host) d.host.style.display = 'none';
 })()`;
 
 const RESTORE_OVERLAY_SCRIPT = `(function(){
-  var d = window.__supersetDesignMode;
+  var d = window.__chorosDesignMode;
   if (d && d.host) d.host.style.display = '';
 })()`;
 

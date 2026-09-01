@@ -28,20 +28,20 @@ export async function GET(request: Request): Promise<Response> {
 	const origin = getRequestOrigin(request);
 
 	const card = {
-		name: "superset",
-		title: "Superset",
-		icon: "https://superset.sh/apple-touch-icon.png",
+		name: "choros",
+		title: "Choros",
+		icon: "https://choros.sh/apple-touch-icon.png",
 		description:
-			"Superset MCP server: create Git-worktree workspaces, launch coding-agent sessions, schedule automations, open terminals, and manage tasks on behalf of a Superset user.",
+			"Choros MCP server: create Git-worktree workspaces, launch coding-agent sessions, schedule automations, open terminals, and manage tasks on behalf of a Choros user.",
 		version: "0.1.0",
 		serverUrl: `${origin}/mcp`,
 		transport: "streamable-http",
-		documentationUrl: "https://docs.superset.sh/mcp-server",
+		documentationUrl: "https://docs.choros.sh/mcp-server",
 		authentication: {
 			type: "oauth2",
 			resourceMetadataUrl: `${origin}/.well-known/oauth-protected-resource`,
 			description:
-				"OAuth 2.1 authorization code + PKCE with RFC 7591 dynamic client registration, or a user-issued Superset API key as a Bearer token. Walkthrough: https://superset.sh/auth.md",
+				"OAuth 2.1 authorization code + PKCE with RFC 7591 dynamic client registration, or a user-issued Choros API key as a Bearer token. Walkthrough: https://choros.sh/auth.md",
 		},
 		tools: await listTools(),
 	};

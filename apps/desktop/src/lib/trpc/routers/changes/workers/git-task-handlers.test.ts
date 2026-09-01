@@ -7,7 +7,7 @@ import { executeGitTask, MAX_COMMIT_LIST_COUNT } from "./git-task-handlers";
 
 const TEST_DIR = join(
 	realpathSync(tmpdir()),
-	`superset-test-git-tasks-${process.pid}`,
+	`choros-test-git-tasks-${process.pid}`,
 );
 
 function run(repoPath: string, command: string): string {

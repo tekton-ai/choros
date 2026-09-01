@@ -102,7 +102,7 @@ describe("stripTerminalRuntimeEnv", () => {
 		NODE_OPTIONS: "--max-old-space-size=4096",
 		NODE_PATH: "/some/path",
 		// Dev-runner and Electron runtime vars
-		npm_package_name: "superset",
+		npm_package_name: "choros",
 		npm_config_registry: "https://registry.npmjs.org",
 		npm_lifecycle_event: "dev",
 		ELECTRON_ENABLE_LOGGING: "1",
@@ -118,13 +118,13 @@ describe("stripTerminalRuntimeEnv", () => {
 		SUPERSET_WORKSPACE_NAME: "my-ws",
 		// Auth refresh tokens inherited from parent (CLI/desktop) env
 		OAUTH_REFRESH_TOKEN: "oauth-refresh-secret",
-		SUPERSET_REFRESH_TOKEN: "superset-refresh-secret",
+		SUPERSET_REFRESH_TOKEN: "choros-refresh-secret",
 		// Keys that SHOULD survive
 		HOME: "/Users/test",
 		PATH: "/usr/bin:/usr/local/bin",
 		SHELL: "/bin/zsh",
 		EDITOR: "vim",
-		SUPERSET_HOME_DIR: "/Users/test/.superset",
+		SUPERSET_HOME_DIR: "/Users/test/.choros",
 		SUPERSET_AGENT_HOOK_PORT: "51741",
 		SUPERSET_AGENT_HOOK_VERSION: "2",
 	};
@@ -224,9 +224,9 @@ describe("stripTerminalRuntimeEnv", () => {
 		expect(result.EDITOR).toBe("vim");
 	});
 
-	test("explicit Superset support keys are kept", () => {
+	test("explicit Choros support keys are kept", () => {
 		const result = stripTerminalRuntimeEnv(secretsEnv);
-		expect(result.SUPERSET_HOME_DIR).toBe("/Users/test/.superset");
+		expect(result.SUPERSET_HOME_DIR).toBe("/Users/test/.choros");
 		expect(result.SUPERSET_AGENT_HOOK_PORT).toBe("51741");
 		expect(result.SUPERSET_AGENT_HOOK_VERSION).toBe("2");
 	});
@@ -252,7 +252,7 @@ describe("stripTerminalRuntimeEnv", () => {
 // ── Shell launch behavior ────────────────────────────────────────────
 
 describe("getShellLaunchArgs", () => {
-	const supersetHomeDir = "/tmp/test-superset";
+	const supersetHomeDir = "/tmp/test-choros";
 
 	test("zsh launches as login shell", () => {
 		expect(getShellLaunchArgs({ shell: "/bin/zsh", supersetHomeDir })).toEqual([
@@ -272,7 +272,7 @@ describe("getShellLaunchArgs", () => {
 		});
 		expect(args[0]).toBe("-l");
 		expect(args[1]).toBe("--init-command");
-		expect(args[2]).toContain("_superset_bin");
+		expect(args[2]).toContain("_choros_bin");
 		expect(args[2]).toContain("133;A");
 	});
 
@@ -368,7 +368,7 @@ describe("shellLaunchExpectsReadyMarker", () => {
 		expect(
 			shellLaunchExpectsReadyMarker({
 				shell: "/usr/bin/fish",
-				supersetHomeDir: "/tmp/missing-superset-home",
+				supersetHomeDir: "/tmp/missing-choros-home",
 			}),
 		).toBe(true);
 	});
@@ -379,7 +379,7 @@ describe("getShellBootstrapEnv", () => {
 		const result = getShellBootstrapEnv({
 			shell: "/bin/zsh",
 			baseEnv: { HOME: "/Users/test" },
-			supersetHomeDir: "/tmp/nonexistent-superset-dir",
+			supersetHomeDir: "/tmp/nonexistent-choros-dir",
 		});
 		expect(result).toEqual({});
 	});
@@ -484,17 +484,17 @@ describe("buildV2TerminalEnv", () => {
 			HOME: "/Users/test",
 			PATH: "/usr/bin",
 			SHELL: "/bin/zsh",
-			SUPERSET_HOME_DIR: "/Users/test/.superset",
+			SUPERSET_HOME_DIR: "/Users/test/.choros",
 		},
 		shell: "/bin/zsh",
-		supersetHomeDir: "/Users/test/.superset",
+		supersetHomeDir: "/Users/test/.choros",
 		organizationId: "org-1",
 		cwd: "/tmp/workspace",
 		terminalId: "term-1",
 		workspaceId: "ws-1",
 		workspacePath: "/tmp/workspace",
 		rootPath: "/tmp/repo",
-		supersetEnv: "production" as const,
+		chorosEnv: "production" as const,
 		agentHookPort: "51741",
 		agentHookVersion: "2",
 	};
@@ -530,14 +530,14 @@ describe("buildV2TerminalEnv", () => {
 		expect(env.SHELL).toBe("/opt/homebrew/bin/fish");
 	});
 
-	test("allows empty root path and alternate Superset env without breaking the contract", () => {
+	test("allows empty root path and alternate Choros env without breaking the contract", () => {
 		const env = buildV2TerminalEnv({ ...baseParams, rootPath: "" });
 		expect(env.SUPERSET_ROOT_PATH).toBe("");
 
 		const devEnv = buildV2TerminalEnv({
 			...baseParams,
 			rootPath: "",
-			supersetEnv: "development",
+			chorosEnv: "development",
 		});
 		expect(devEnv.SUPERSET_ENV).toBe("development");
 		expect(devEnv.SUPERSET_ROOT_PATH).toBe("");
@@ -617,18 +617,18 @@ describe("v2 env contract boundary", () => {
 				ORGANIZATION_ID: "org-abc",
 				NODE_ENV: "production",
 				VITE_SECRET: "vite-key",
-				npm_package_name: "superset",
+				npm_package_name: "choros",
 				ELECTRON_IS_DEV: "1",
 			},
 			shell: "/bin/zsh",
-			supersetHomeDir: "/Users/test/.superset",
+			supersetHomeDir: "/Users/test/.choros",
 			organizationId: "org-abc",
 			cwd: "/tmp/ws",
 			terminalId: "t-1",
 			workspaceId: "w-1",
 			workspacePath: "/tmp/ws",
 			rootPath: "",
-			supersetEnv: "production",
+			chorosEnv: "production",
 			agentHookPort: "51741",
 			agentHookVersion: "2",
 		});

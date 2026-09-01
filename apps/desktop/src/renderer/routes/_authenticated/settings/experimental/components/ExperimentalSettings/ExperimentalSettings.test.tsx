@@ -68,14 +68,14 @@ function renderSettings(orgId: string, userCreatedAt: Date) {
 describe("ExperimentalSettings v1/v2 switch", () => {
 	test("v1 user without a migration marker sees the toggle and the v1 import", () => {
 		const markup = renderSettings("org-v1", V1_ERA_CREATED_AT);
-		expect(markup).toContain("Try Superset v2");
+		expect(markup).toContain("Try Choros v2");
 		expect(markup).toContain("Import from v1");
 	});
 
 	test("migrated (flip-locked) machine hides the dead toggle", () => {
 		markV1MigrationComplete("org-flipped");
 		const markup = renderSettings("org-flipped", V1_ERA_CREATED_AT);
-		expect(markup).not.toContain("Try Superset v2");
+		expect(markup).not.toContain("Try Choros v2");
 	});
 
 	test("migrated machine keeps Import from v1 as the recovery path", () => {
@@ -86,7 +86,7 @@ describe("ExperimentalSettings v1/v2 switch", () => {
 
 	test("v2-only signup without a marker still sees the toggle (opt-out remains real)", () => {
 		const markup = renderSettings("org-v2only", V2_ONLY_CREATED_AT);
-		expect(markup).toContain("Try Superset v2");
+		expect(markup).toContain("Try Choros v2");
 		expect(markup).not.toContain("Import from v1");
 	});
 });

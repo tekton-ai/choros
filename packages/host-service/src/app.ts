@@ -171,7 +171,7 @@ export function createApp(options: CreateAppOptions): CreateAppResult {
 				"Content-Type",
 				"Authorization",
 				"trpc-accept",
-				"x-superset-client-machine-id",
+				"x-choros-client-machine-id",
 			],
 		}),
 	);
@@ -351,7 +351,7 @@ export function createApp(options: CreateAppOptions): CreateAppResult {
 					organizationId: config.organizationId,
 					isAuthenticated,
 					clientMachineId:
-						c.req.header("x-superset-client-machine-id") ?? undefined,
+						c.req.header("x-choros-client-machine-id") ?? undefined,
 					browserBridge: config.browserBridge,
 				} as Record<string, unknown>;
 			},

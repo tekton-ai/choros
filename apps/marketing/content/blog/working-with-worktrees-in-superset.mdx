@@ -1,6 +1,6 @@
 ---
-title: "Working with Git Worktrees in Superset"
-description: "How Superset uses Git worktrees to run multiple AI coding agents in parallel without conflicts. A practical guide to the workflow that lets you 10x your throughput."
+title: "Working with Git Worktrees in Choros"
+description: "How Choros uses Git worktrees to run multiple AI coding agents in parallel without conflicts. A practical guide to the workflow that lets you 10x your throughput."
 author: kiet
 date: 2026-02-18
 category: Engineering
@@ -11,7 +11,7 @@ relatedSlugs:
 
 Running one AI coding agent is useful. Running ten at once is a different game entirely. But running ten agents in the same working directory is a disaster: they step on each other's files, create merge conflicts mid-edit, and leave your codebase in an unpredictable state.
 
-Superset solves this with Git worktrees. Every agent gets its own branch and its own copy of the working directory, all backed by the same Git object store. No duplication, no conflicts, no chaos. This post walks through how it works in practice.
+Choros solves this with Git worktrees. Every agent gets its own branch and its own copy of the working directory, all backed by the same Git object store. No duplication, no conflicts, no chaos. This post walks through how it works in practice.
 
 ---
 
@@ -35,13 +35,13 @@ This means creating a new worktree is fast (seconds, not minutes) and cheap (meg
 
 ---
 
-## The Superset Workflow
+## The Choros Workflow
 
-Here's what happens when you create a new task in Superset:
+Here's what happens when you create a new task in Choros:
 
 ### 1. Create a Task
 
-You describe what you want done: "add input validation to the signup form" or "refactor the payment service to use the new API." Superset creates a new Git worktree and checks out a fresh branch.
+You describe what you want done: "add input validation to the signup form" or "refactor the payment service to use the new API." Choros creates a new Git worktree and checks out a fresh branch.
 
 ```
 ~/my-project/                          # Your main working tree
@@ -64,7 +64,7 @@ Meanwhile, your main working directory is untouched. You can keep coding, run yo
 
 ### 3. Review the Diff
 
-When the agent finishes, Superset shows you a diff of everything it changed. The built-in diff viewer highlights additions, deletions, and modifications across all files. You can also open the worktree in your editor (VS Code, Cursor, JetBrains, Xcode) to inspect changes in full context.
+When the agent finishes, Choros shows you a diff of everything it changed. The built-in diff viewer highlights additions, deletions, and modifications across all files. You can also open the worktree in your editor (VS Code, Cursor, JetBrains, Xcode) to inspect changes in full context.
 
 ### 4. Merge or Iterate
 
@@ -76,7 +76,7 @@ If the changes look good, merge the branch. If not, give the agent feedback and 
 
 The real power of worktrees shows up when you're running multiple agents simultaneously. Here's a typical session:
 
-![Claude streaming a billing migration in one Superset workspace while other agents run in parallel workspaces](/images/readme/agents-working.gif)
+![Claude streaming a billing migration in one Choros workspace while other agents run in parallel workspaces](/images/readme/agents-working.gif)
 
 ```
 Task 1: "Write unit tests for the auth module"
@@ -98,11 +98,11 @@ Task 4: "Fix the race condition in the websocket handler"
 
 Each task has its own worktree and branch. Agent 1 can't accidentally break Agent 2's work. When Agent 3 finishes, you review its diff while the others keep working. No waiting, no conflicts, no context switching between stashes.
 
-### How Superset Manages Concurrency
+### How Choros Manages Concurrency
 
-Superset's persistent daemon manages all agent sessions via Unix domain sockets. This architecture means:
+Choros's persistent daemon manages all agent sessions via Unix domain sockets. This architecture means:
 
-- **Sessions survive crashes**: close and reopen Superset, your agents are still running
+- **Sessions survive crashes**: close and reopen Choros, your agents are still running
 - **Priority-based scheduling**: the focused pane gets full resources, background tabs hydrate gradually
 - **No interference**: each agent's terminal session is completely independent
 
@@ -116,7 +116,7 @@ Begin with 2-3 parallel agents to get comfortable with the review workflow. As y
 
 ### Choose the Right Agent for Each Task
 
-Different agents have different strengths. Superset is agent-agnostic. Use whatever works best for the job:
+Different agents have different strengths. Choros is agent-agnostic. Use whatever works best for the job:
 
 - **Claude Code**: strong at complex refactors, architectural changes, and multi-file edits
 - **Codex**: fast for well-scoped tasks with clear specifications
@@ -129,11 +129,11 @@ Give each task a clear, specific description. "Fix bugs" is too vague. "Fix the 
 
 ### Review Diffs, Not Code
 
-When an agent finishes, don't re-read the entire file. Focus on the diff. Superset's built-in diff viewer shows exactly what changed. If a change touches files you didn't expect, that's worth investigating. If it's scoped to what you asked for, a quick review is usually sufficient.
+When an agent finishes, don't re-read the entire file. Focus on the diff. Choros's built-in diff viewer shows exactly what changed. If a change touches files you didn't expect, that's worth investigating. If it's scoped to what you asked for, a quick review is usually sufficient.
 
 ### Clean Up Finished Worktrees
 
-After merging, remove the worktree. Superset handles this automatically when you close a completed task, but it's good practice to keep your worktree list clean. Old worktrees don't affect performance, but they clutter the list.
+After merging, remove the worktree. Choros handles this automatically when you close a completed task, but it's good practice to keep your worktree list clean. Old worktrees don't affect performance, but they clutter the list.
 
 ---
 
@@ -156,16 +156,16 @@ Worktrees win on every axis that matters for coding agents: they're fast to crea
 
 Worktrees isolate files and branches, but they share the runtime environment. If two agents both need to run `npm install` with conflicting dependencies, they'll still conflict at the system level. For full environment isolation, you'd layer containers on top of worktrees, but for the vast majority of coding tasks, worktree-level isolation is sufficient and dramatically simpler.
 
-The other limitation is the one-branch rule: Git doesn't allow the same branch to be checked out in multiple worktrees simultaneously. This is actually a feature: it prevents the exact class of bugs that parallel work creates. Superset enforces unique branches per task by default.
+The other limitation is the one-branch rule: Git doesn't allow the same branch to be checked out in multiple worktrees simultaneously. This is actually a feature: it prevents the exact class of bugs that parallel work creates. Choros enforces unique branches per task by default.
 
 ---
 
 ## Getting Started
 
-If you're already using a CLI coding agent, adding Superset takes about two minutes:
+If you're already using a CLI coding agent, adding Choros takes about two minutes:
 
-1. **Download Superset** from [superset.sh](https://superset.sh)
-2. **Open your project**: Superset detects your git repository automatically
+1. **Download Choros** from [choros.sh](https://choros.sh)
+2. **Open your project**: Choros detects your git repository automatically
 3. **Create a task**: describe what you want done, pick your agent
 4. **Watch it work**: the agent runs in its own worktree while you keep coding
 

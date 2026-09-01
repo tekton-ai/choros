@@ -117,7 +117,7 @@ describe("listGitWorktrees", () => {
 	let git: SimpleGit;
 
 	beforeEach(async () => {
-		root = mkdtempSync(join(tmpdir(), "superset-list-worktrees-"));
+		root = mkdtempSync(join(tmpdir(), "choros-list-worktrees-"));
 		repo = join(root, "repo");
 		mkdirSync(repo);
 		git = await initRepo(repo);

@@ -64,7 +64,7 @@ async function initSentry() {
 		sendDefaultPii: true,
 		integrations: [
 			Sentry.thirdPartyErrorFilterIntegration({
-				filterKeys: ["superset-marketing"],
+				filterKeys: ["choros-marketing"],
 				behaviour: "drop-error-if-exclusively-contains-third-party-frames",
 			}),
 		],

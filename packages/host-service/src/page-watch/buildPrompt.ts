@@ -51,10 +51,10 @@ export function buildWatchPrompt({
 	});
 
 	lines.push(
-		`If you do not already have the source, run: superset pages pull ${slug} > page.html`,
+		`If you do not already have the source, run: choros pages pull ${slug} > page.html`,
 		"Fix the source, republish it, then reply on each thread you addressed:",
-		'  superset pages comments reply --threadId <id> "…"',
-		"  superset pages comments resolve --threadId <id>",
+		'  choros pages comments reply --threadId <id> "…"',
+		"  choros pages comments resolve --threadId <id>",
 		"Not every comment needs an answer. Leave anything that does not ask for one, and do not resolve what you did not fix.",
 	);
 

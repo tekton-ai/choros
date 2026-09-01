@@ -1,16 +1,16 @@
 #!/bin/sh
-# Superset CLI installer
+# Choros CLI installer
 #
 # Usage:
-#   curl -fsSL https://superset.sh/cli/install.sh | sh
+#   curl -fsSL https://choros.sh/cli/install.sh | sh
 #
-# Installs the Superset CLI and host-service to ~/superset/.
-# Adds ~/superset/bin to PATH via your shell profile.
+# Installs the Choros CLI and host-service to ~/choros/.
+# Adds ~/choros/bin to PATH via your shell profile.
 
 set -eu
 
-REPO="superset-sh/superset"
-INSTALL_DIR="${SUPERSET_HOME:-$HOME/superset}"
+REPO="superset-sh/choros"
+INSTALL_DIR="${SUPERSET_HOME:-$HOME/choros}"
 TAG="${SUPERSET_VERSION:-latest}"
 
 BOLD='\033[1m'
@@ -50,7 +50,7 @@ detect_target() {
 
 download_tarball() {
     target="$1"
-    tarball="superset-${target}.tar.gz"
+    tarball="choros-${target}.tar.gz"
 
     if [ "$TAG" = "latest" ]; then
         url="https://github.com/${REPO}/releases/download/cli-latest/${tarball}"
@@ -59,7 +59,7 @@ download_tarball() {
     fi
 
     info "Downloading $url"
-    tmp="$(mktemp -t superset-install.XXXXXX)"
+    tmp="$(mktemp -t choros-install.XXXXXX)"
     if ! curl -fsSL -o "$tmp" "$url"; then
         rm -f "$tmp"
         error "Failed to download $url"
@@ -121,13 +121,13 @@ update_path() {
     info "Adding $bin_dir to PATH in $profile"
     mkdir -p "$(dirname "$profile")"
     {
-        printf "\n# Superset CLI\n"
+        printf "\n# Choros CLI\n"
         printf "%s\n" "$export_line"
     } >> "$profile"
 }
 
 main() {
-    printf "${BOLD}Installing Superset CLI${RESET}\n\n"
+    printf "${BOLD}Installing Choros CLI${RESET}\n\n"
 
     target="$(detect_target)"
     info "Platform: $target"
@@ -137,7 +137,7 @@ main() {
 
     # Verify binaries exist and are executable. Tarball already ships them
     # with +x, so this is a sanity check, not a chmod fallback.
-    for bin in superset superset-host; do
+    for bin in choros choros-host; do
         path="$INSTALL_DIR/bin/$bin"
         if [ ! -f "$path" ] || [ ! -x "$path" ]; then
             error "Expected executable file not found: $path"
@@ -148,7 +148,7 @@ main() {
 
     printf "\n${GREEN}${BOLD}Installed!${RESET}\n"
     printf "Run ${BOLD}exec \$SHELL${RESET} (or open a new terminal) to load the updated PATH.\n"
-    printf "Then run ${BOLD}superset auth login${RESET} to get started.\n"
+    printf "Then run ${BOLD}choros auth login${RESET} to get started.\n"
 }
 
 main "$@"

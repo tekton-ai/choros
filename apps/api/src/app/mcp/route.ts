@@ -126,7 +126,7 @@ function unauthorizedResponse(req: Request, message: string): Response {
 		{
 			status: 401,
 			headers: {
-				"WWW-Authenticate": `Bearer realm="superset", resource_metadata="${getOAuthProtectedResourceMetadataUrl(req)}"`,
+				"WWW-Authenticate": `Bearer realm="choros", resource_metadata="${getOAuthProtectedResourceMetadataUrl(req)}"`,
 				"Content-Type": "application/json",
 			},
 		},
@@ -140,24 +140,24 @@ function describeServer(req: Request): Response {
 	const origin = getRequestOrigin(req);
 	return Response.json(
 		{
-			name: "superset",
-			title: "Superset",
+			name: "choros",
+			title: "Choros",
 			version: MCP_SERVER_VERSION,
 			description:
-				"Superset MCP server (Model Context Protocol over Streamable HTTP). Create Git-worktree workspaces, launch coding-agent sessions, open terminals, schedule automations, and manage tasks on behalf of a Superset user.",
+				"Choros MCP server (Model Context Protocol over Streamable HTTP). Create Git-worktree workspaces, launch coding-agent sessions, open terminals, schedule automations, and manage tasks on behalf of a Choros user.",
 			transport: "streamable-http",
 			url: `${origin}/mcp`,
 			usage:
-				"POST JSON-RPC 2.0 messages to this URL with `Accept: application/json, text/event-stream` and a Bearer token (OAuth 2.1 access token or Superset API key). Start with `initialize`, then `tools/list`.",
+				"POST JSON-RPC 2.0 messages to this URL with `Accept: application/json, text/event-stream` and a Bearer token (OAuth 2.1 access token or Choros API key). Start with `initialize`, then `tools/list`.",
 			serverCard: `${origin}/.well-known/mcp/server-card.json`,
 			openapi: `${origin}/openapi.json`,
-			documentation: "https://docs.superset.sh/mcp-server",
+			documentation: "https://docs.choros.sh/mcp-server",
 			authentication: {
 				type: "oauth2",
 				resourceMetadataUrl: getOAuthProtectedResourceMetadataUrl(req),
-				walkthrough: "https://superset.sh/auth.md",
+				walkthrough: "https://choros.sh/auth.md",
 			},
-			install: "https://superset.sh/mcp-install",
+			install: "https://choros.sh/mcp-install",
 		},
 		{
 			headers: {
@@ -212,7 +212,7 @@ async function handle(req: Request): Promise<Response> {
 					duration_ms: event.durationMs,
 					success: event.success,
 					error_message: event.errorMessage,
-					mcp_server: "superset-v2",
+					mcp_server: "choros-v2",
 					mcp_server_version: MCP_SERVER_VERSION,
 				},
 				groups: { organization: event.organizationId },

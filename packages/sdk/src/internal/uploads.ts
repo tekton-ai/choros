@@ -1,4 +1,4 @@
-import type { Superset } from "../client";
+import type { Choros } from "../client";
 import type { Fetch, FilePropertyBag } from "./builtin-types";
 import type { RequestOptions } from "./request-options";
 import { ReadableStreamFrom } from "./shims";
@@ -79,7 +79,7 @@ export const isAsyncIterable = (value: any): value is AsyncIterable<any> =>
  */
 export const maybeMultipartFormRequestOptions = async (
 	opts: RequestOptions,
-	fetch: Superset | Fetch,
+	fetch: Choros | Fetch,
 ): Promise<RequestOptions> => {
 	if (!hasUploadableValue(opts.body)) return opts;
 
@@ -92,7 +92,7 @@ type MultipartFormRequestOptions = Omit<RequestOptions, "body"> & {
 
 export const multipartFormRequestOptions = async (
 	opts: MultipartFormRequestOptions,
-	fetch: Superset | Fetch,
+	fetch: Choros | Fetch,
 ): Promise<RequestOptions> => {
 	return { ...opts, body: await createForm(opts.body, fetch) };
 };
@@ -108,7 +108,7 @@ const supportsFormDataMap = /* @__PURE__ */ new WeakMap<
  * This function detects if the fetch function provided supports the global FormData object to avoid
  * confusing error messages later on.
  */
-function supportsFormData(fetchObject: Superset | Fetch): Promise<boolean> {
+function supportsFormData(fetchObject: Choros | Fetch): Promise<boolean> {
 	const fetch: Fetch =
 		typeof fetchObject === "function"
 			? fetchObject
@@ -138,7 +138,7 @@ function supportsFormData(fetchObject: Superset | Fetch): Promise<boolean> {
 
 export const createForm = async <T = Record<string, unknown>>(
 	body: T | undefined,
-	fetch: Superset | Fetch,
+	fetch: Choros | Fetch,
 ): Promise<FormData> => {
 	if (!(await supportsFormData(fetch))) {
 		throw new TypeError(

@@ -72,7 +72,7 @@ describe("remove functions refuse protected dirs before touching the disk", () =
 // unlink those, never delete through them.
 describe("removeClaudeProfile with shared-config links", () => {
 	it("leaves the default account's linked dirs intact", async () => {
-		const root = mkdtempSync(join(tmpdir(), "superset-profile-remove-"));
+		const root = mkdtempSync(join(tmpdir(), "choros-profile-remove-"));
 		try {
 			const sharedSkills = join(root, "default-skills");
 			mkdirSync(join(sharedSkills, "redesign"), { recursive: true });

@@ -4,14 +4,14 @@ import { refreshAccessToken } from "./auth";
 import {
 	readConfig,
 	resolveOrganizationId,
-	type SupersetConfig,
+	type ChorosConfig,
 	writeConfig,
 } from "./config";
 
 export type AuthSource = "override" | "config" | "oauth";
 
 export type ResolvedAuth = {
-	config: SupersetConfig;
+	config: ChorosConfig;
 	api: ApiClient;
 	bearer: string;
 	authSource: AuthSource;
@@ -41,7 +41,7 @@ export async function resolveAuth(
 		const auth = config.auth;
 		if (auth.expiresAt - REFRESH_LEEWAY_MS < Date.now()) {
 			if (!auth.refreshToken) {
-				throw new CLIError("Session expired", "Run: superset auth login");
+				throw new CLIError("Session expired", "Run: choros auth login");
 			}
 			try {
 				const refreshed = await refreshAccessToken(auth.refreshToken);
@@ -56,7 +56,7 @@ export async function resolveAuth(
 				writeConfig(config);
 				bearer = refreshed.accessToken;
 			} catch {
-				throw new CLIError("Session expired", "Run: superset auth login");
+				throw new CLIError("Session expired", "Run: choros auth login");
 			}
 		} else {
 			bearer = auth.accessToken;
@@ -65,12 +65,12 @@ export async function resolveAuth(
 	} else {
 		throw new CLIError(
 			"Not logged in",
-			"Run: superset auth login (or set SUPERSET_API_KEY)",
+			"Run: choros auth login (or set SUPERSET_API_KEY)",
 		);
 	}
 
 	const organizationId = resolveOrganizationId(config);
-	const resolvedConfig: SupersetConfig = { ...config, organizationId };
+	const resolvedConfig: ChorosConfig = { ...config, organizationId };
 
 	const api = createApiClient({ bearer, organizationId });
 	return { config: resolvedConfig, api, bearer, authSource };

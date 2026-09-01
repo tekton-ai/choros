@@ -293,15 +293,15 @@ describe("healV2UserPreferences hiddenBuiltinPresetIds pruning", () => {
 	it("drops ids that are not known built-in presets", () => {
 		const healed = healV2UserPreferences({
 			id: "preferences",
-			hiddenBuiltinPresetIds: ["superset-cli", "retired-preset"],
+			hiddenBuiltinPresetIds: ["choros-cli", "retired-preset"],
 		});
-		expect(healed.hiddenBuiltinPresetIds).toEqual(["superset-cli"]);
+		expect(healed.hiddenBuiltinPresetIds).toEqual(["choros-cli"]);
 	});
 
 	it("defaults a malformed value to an empty array", () => {
 		const healed = healV2UserPreferences({
 			id: "preferences",
-			hiddenBuiltinPresetIds: "superset-cli",
+			hiddenBuiltinPresetIds: "choros-cli",
 		});
 		expect(healed.hiddenBuiltinPresetIds).toEqual([]);
 	});

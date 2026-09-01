@@ -351,7 +351,7 @@ export function ThemeSection() {
 			name: "My Custom Theme",
 			type: baseTheme.type,
 			author: "You",
-			description: "Custom Superset theme",
+			description: "Custom Choros theme",
 			ui: baseTheme.ui,
 			terminal: getTerminalColors(baseTheme),
 		};
@@ -362,7 +362,7 @@ export function ThemeSection() {
 		const url = URL.createObjectURL(blob);
 		const link = document.createElement("a");
 		link.href = url;
-		link.download = "superset-theme-base.json";
+		link.download = "choros-theme-base.json";
 		link.click();
 		URL.revokeObjectURL(url);
 	};

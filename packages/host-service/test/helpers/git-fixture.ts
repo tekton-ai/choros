@@ -25,7 +25,7 @@ export async function createGitFixture(): Promise<GitFixture> {
 	const git = simpleGit(repoPath);
 
 	await git.init(["--initial-branch=main"]);
-	await git.addConfig("user.email", "test@superset.local");
+	await git.addConfig("user.email", "test@choros.local");
 	await git.addConfig("user.name", "Test Runner");
 	await git.addConfig("commit.gpgsign", "false");
 

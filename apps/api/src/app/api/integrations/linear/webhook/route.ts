@@ -142,7 +142,7 @@ async function processForConnection(
 	outcome: "processed" | "skipped" | "failed";
 	error?: string;
 }> {
-	// One webhookEvents row per (Linear event × Superset connection) so each
+	// One webhookEvents row per (Linear event × Choros connection) so each
 	// tenant's processing status is independently retryable. Linear's delivery
 	// id is stable across its retries; without the header, the timestamp alone
 	// collides for bulk edits landing in the same millisecond.

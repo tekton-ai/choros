@@ -23,7 +23,7 @@ const [HOME, PORT, DB_PATH] = [
 	process.argv[4],
 ];
 if (!HOME || !PORT || !DB_PATH) throw new Error("usage: <home> <port> <db>");
-const SS_HOME = path.join(HOME, ".superset");
+const SS_HOME = path.join(HOME, ".choros");
 const HOOK_URL = `http://127.0.0.1:${PORT}/trpc/notifications.hook`;
 const db = new Database(DB_PATH);
 const AGENTS = [
@@ -114,7 +114,7 @@ function runScript(
 	};
 }
 
-/** Pull the registered Superset command out of a nested-hooks JSON file. */
+/** Pull the registered Choros command out of a nested-hooks JSON file. */
 function commandFromJson(file: string, eventKey: string): string {
 	const root = JSON.parse(fs.readFileSync(file, "utf-8"));
 	const container = root.hooks ?? root;
@@ -245,7 +245,7 @@ const cmdKimi = commandFromToml(path.join(HOME, ".kimi-code/config.toml"));
 sh(cmdKimi, { agent: "kimi", stdin: claudeStyle("s-kimi") });
 assertBinding("kimi", "~/.kimi-code/config.toml command", "Stop", "s-kimi");
 
-const grokFile = path.join(HOME, ".grok/hooks/superset-notify.json");
+const grokFile = path.join(HOME, ".grok/hooks/choros-notify.json");
 const grokRoot = JSON.parse(fs.readFileSync(grokFile, "utf-8"));
 const grokEventKey = Object.keys(grokRoot.hooks ?? grokRoot)[0];
 if (!grokEventKey) throw new Error(`no events in ${grokFile}`);
@@ -256,7 +256,7 @@ sh(cmdGrok, {
 });
 assertBinding(
 	"grok",
-	"~/.grok/hooks/superset-notify.json (camelCase)",
+	"~/.grok/hooks/choros-notify.json (camelCase)",
 	"Stop",
 	"s-grok",
 );
@@ -364,7 +364,7 @@ await withAgentEnv(
 	{ SUPERSET_AGENT_ID: "opencode", SUPERSET_DEBUG: "1" },
 	async () => {
 		const mod = await import(
-			path.join(SS_HOME, "hooks", "opencode", "plugin", "superset-notify.js")
+			path.join(SS_HOME, "hooks", "opencode", "plugin", "choros-notify.js")
 		);
 		const $ = (_strings: TemplateStringsArray, ...vals: unknown[]) => {
 			Bun.spawnSync(["bash", String(vals[0]), String(vals[1])], {
@@ -379,7 +379,7 @@ await withAgentEnv(
 				list: async () => ({ data: [{ id: "s-oc", parentID: undefined }] }),
 			},
 		};
-		const hooks = await mod.SupersetNotifyPlugin({ $, client });
+		const hooks = await mod.ChorosNotifyPlugin({ $, client });
 		if (typeof hooks.event !== "function")
 			throw new Error(
 				`opencode plugin returned no event handler: ${Object.keys(hooks)}`,
@@ -408,7 +408,7 @@ await assertBindingEventually(
 // amp: default export registers amp.on handlers; notify spawns detached.
 await withAgentEnv("amp", {}, async () => {
 	const mod = await import(
-		path.join(HOME, ".config", "amp", "plugins", "superset-lifecycle.ts")
+		path.join(HOME, ".config", "amp", "plugins", "choros-lifecycle.ts")
 	);
 	const handlers = new Map<string, (e?: unknown) => unknown>();
 	mod.default({
@@ -430,7 +430,7 @@ await assertBindingEventually(
 // pi: default export registers pi.on handlers gated on ctx.hasUI.
 await withAgentEnv("pi", {}, async () => {
 	const mod = await import(
-		path.join(HOME, ".pi", "agent", "extensions", "superset-hooks.ts")
+		path.join(HOME, ".pi", "agent", "extensions", "choros-hooks.ts")
 	);
 	const handlers = new Map<string, (e: unknown, ctx: unknown) => unknown>();
 	mod.default({

@@ -7,15 +7,15 @@ description: Turn the agent you're already talking to into a coordinator of othe
 	the fan-out is mechanical: many similar slices, clear acceptance criteria, and results a coordinator can verify against tests. For work you want to review step by step, use the manual recipes above.
 </Callout>
 
-The `superset:orchestrate` skill lets one agent coordinate many. Ask the agent you're already talking to for parallel work, and it runs the whole job through the Superset CLI: an isolated workspace per worker, an agent launched in each, follow-ups sent over their terminals, results collected at the end.
+The `choros:orchestrate` skill lets one agent coordinate many. Ask the agent you're already talking to for parallel work, and it runs the whole job through the Choros CLI: an isolated workspace per worker, an agent launched in each, follow-ups sent over their terminals, results collected at the end.
 
 ![Agents working in parallel workspaces](/images/agents-race.png)
 
-The coordinator can be Claude Code or Codex; the workers can be any mix of agents Superset runs.
+The coordinator can be Claude Code or Codex; the workers can be any mix of agents Choros runs.
 
 ## Install
 
-The desktop app [ships this skill automatically](/skills), so if you use Superset, your agents already have it. For standalone agents:
+The desktop app [ships this skill automatically](/skills), so if you use Choros, your agents already have it. For standalone agents:
 
 ```bash
 npx skills add superset-sh/skills
@@ -24,7 +24,7 @@ npx skills add superset-sh/skills
 Claude Code users can also install via the plugin marketplace:
 
 ```text
-/plugin marketplace add superset-sh/superset
+/plugin marketplace add superset-sh/choros
 ```
 
 ## What to Ask For
@@ -35,12 +35,12 @@ Claude Code users can also install via the plugin marketplace:
 
 ## How It Works
 
-Under the hood the coordinator uses the [Superset CLI](/cli/getting-started):
+Under the hood the coordinator uses the [Choros CLI](/cli/getting-started):
 
-- `superset workspaces create` for an isolated branch per worker
-- `superset agents create` to launch a worker with a bounded prompt
-- `superset terminals read` / `send` to monitor progress and deliver follow-ups or dependency results
+- `choros workspaces create` for an isolated branch per worker
+- `choros agents create` to launch a worker with a bounded prompt
+- `choros terminals read` / `send` to monitor progress and deliver follow-ups or dependency results
 
 Workers finish by reporting a structured completion or blocked message, which the coordinator verifies before integrating. You review the results the same way as always: one branch and PR per worker.
 
-Related: [Automations](/automations) for scheduled dispatch, and the [MCP server](/mcp-server) for agents that drive Superset over MCP instead of the CLI.
+Related: [Automations](/automations) for scheduled dispatch, and the [MCP server](/mcp-server) for agents that drive Choros over MCP instead of the CLI.

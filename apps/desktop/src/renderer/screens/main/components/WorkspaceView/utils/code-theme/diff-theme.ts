@@ -18,7 +18,7 @@ function hashString(value: string): string {
 
 function createDiffThemeName(theme: Theme): DiffsThemeNames {
 	const signature = hashString(JSON.stringify(getEditorTheme(theme)));
-	return `superset-diff-${theme.id}-${signature}` as DiffsThemeNames;
+	return `choros-diff-${theme.id}-${signature}` as DiffsThemeNames;
 }
 
 function createShikiTheme(theme: Theme) {

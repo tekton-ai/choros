@@ -1,4 +1,4 @@
-import { SupersetError } from "../core/error";
+import { ChorosError } from "../core/error";
 import { APIResource } from "../core/resource";
 import type { RequestOptions } from "../internal/request-options";
 
@@ -8,7 +8,7 @@ import type { RequestOptions } from "../internal/request-options";
  * (`list`) and the launch action (`create`) are routed to a specific host
  * through the relay tunnel.
  *
- * Mirrors the CLI's `superset agents …` commands.
+ * Mirrors the CLI's `choros agents …` commands.
  */
 export class Agents extends APIResource {
 	/**
@@ -17,7 +17,7 @@ export class Agents extends APIResource {
 	 * label/command/args/env. First call on a fresh host seeds bundled
 	 * defaults.
 	 *
-	 * Mirrors `superset agents list --host <id>`.
+	 * Mirrors `choros agents list --host <id>`.
 	 */
 	list(params: AgentListParams, options?: RequestOptions) {
 		this._requireOrgId();
@@ -34,7 +34,7 @@ export class Agents extends APIResource {
 	 * host: starts the named preset (or HostAgentConfig instance) in a fresh
 	 * terminal session there.
 	 *
-	 * Mirrors `superset agents create --host <id>`.
+	 * Mirrors `choros agents create --host <id>`.
 	 */
 	async create(params: AgentCreateParams): Promise<AgentCreateResult> {
 		this._requireOrgId();
@@ -54,8 +54,8 @@ export class Agents extends APIResource {
 
 	private _requireOrgId(): string {
 		if (!this._client.organizationId) {
-			throw new SupersetError(
-				"organizationId is required. Set SUPERSET_ORGANIZATION_ID, or pass `organizationId` to the Superset constructor.",
+			throw new ChorosError(
+				"organizationId is required. Set SUPERSET_ORGANIZATION_ID, or pass `organizationId` to the Choros constructor.",
 			);
 		}
 		return this._client.organizationId;

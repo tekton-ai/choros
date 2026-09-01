@@ -1,4 +1,4 @@
-Set up [Superset workspace setup & teardown scripts](https://docs.superset.sh/setup-teardown-scripts) for this project.
+Set up [Choros workspace setup & teardown scripts](https://docs.choros.sh/setup-teardown-scripts) for this project.
 
 ## Goal
 

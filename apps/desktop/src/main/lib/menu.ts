@@ -275,7 +275,7 @@ export function createApplicationMenu() {
 				{
 					label: i18n._({
 						id: "main.menu.app.quitCompletely",
-						message: "Quit Superset Completely",
+						message: "Quit Choros Completely",
 					}),
 					click: () => {
 						void confirmAndQuitCompletely();

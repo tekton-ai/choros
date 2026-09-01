@@ -459,7 +459,7 @@ async function runDestroyPhases(
 	if (local && project) {
 		worktreeRemoved = !existsSync(local.worktreePath);
 		if (!worktreeRemoved && isMissingDirectory(project.repoPath)) {
-			// The project repo was moved or deleted outside Superset: there is
+			// The project repo was moved or deleted outside Choros: there is
 			// no repository to run `git worktree remove` in, and the worktree's
 			// gitdir pointer is already dead, so no retry can ever succeed.
 			// Only a genuine ENOENT takes this branch — a repo this process

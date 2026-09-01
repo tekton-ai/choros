@@ -87,7 +87,7 @@ export function SubmitPromptDialog({
 					</DialogTitle>
 					<DialogDescription>
 						<Trans id="dashboard.topBar.submitPromptDialog.description">
-							Prompt a coding agent to build what you want to see in Superset.
+							Prompt a coding agent to build what you want to see in Choros.
 							If we like your prompt, we'll run it and merge the result.
 						</Trans>
 					</DialogDescription>

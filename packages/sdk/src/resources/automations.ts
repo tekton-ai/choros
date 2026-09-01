@@ -7,7 +7,7 @@ export class Automations extends APIResource {
 	 * List automations in the active organization. Returned rows omit the
 	 * `prompt` body — fetch one prompt with `getPrompt(id)`.
 	 *
-	 * Mirrors `superset automations list`.
+	 * Mirrors `choros automations list`.
 	 */
 	list(
 		params?: AutomationListParams,
@@ -24,7 +24,7 @@ export class Automations extends APIResource {
 	 * Retrieve a single automation by id. The `prompt` body is omitted —
 	 * fetch it separately with `getPrompt(id)`.
 	 *
-	 * Mirrors `superset automations get`.
+	 * Mirrors `choros automations get`.
 	 */
 	retrieve(
 		id: string,
@@ -40,7 +40,7 @@ export class Automations extends APIResource {
 	/**
 	 * Create a recurring automation.
 	 *
-	 * Mirrors `superset automations create`.
+	 * Mirrors `choros automations create`.
 	 */
 	create(
 		body: AutomationCreateParams,
@@ -56,7 +56,7 @@ export class Automations extends APIResource {
 	/**
 	 * Update an automation. All fields except `id` are optional patches.
 	 *
-	 * Mirrors `superset automations update`.
+	 * Mirrors `choros automations update`.
 	 */
 	update(
 		body: AutomationUpdateParams,
@@ -72,7 +72,7 @@ export class Automations extends APIResource {
 	/**
 	 * Delete an automation by id.
 	 *
-	 * Mirrors `superset automations delete`.
+	 * Mirrors `choros automations delete`.
 	 */
 	delete(id: string, options?: RequestOptions): APIPromise<void> {
 		return this._client
@@ -83,7 +83,7 @@ export class Automations extends APIResource {
 	/**
 	 * Trigger an automation to run immediately, off-schedule.
 	 *
-	 * Mirrors `superset automations run`.
+	 * Mirrors `choros automations run`.
 	 */
 	run(id: string, options?: RequestOptions): APIPromise<AutomationRunDispatched> {
 		return this._client.mutation<AutomationRunDispatched>(
@@ -96,7 +96,7 @@ export class Automations extends APIResource {
 	/**
 	 * Pause an automation (stops future scheduled runs).
 	 *
-	 * Mirrors `superset automations pause`.
+	 * Mirrors `choros automations pause`.
 	 */
 	pause(id: string, options?: RequestOptions): APIPromise<Automation> {
 		return this._client.mutation<Automation>(
@@ -109,7 +109,7 @@ export class Automations extends APIResource {
 	/**
 	 * Resume a previously-paused automation.
 	 *
-	 * Mirrors `superset automations resume`.
+	 * Mirrors `choros automations resume`.
 	 */
 	resume(id: string, options?: RequestOptions): APIPromise<Automation> {
 		return this._client.mutation<Automation>(
@@ -122,7 +122,7 @@ export class Automations extends APIResource {
 	/**
 	 * Run history for a single automation.
 	 *
-	 * Mirrors `superset automations logs`.
+	 * Mirrors `choros automations logs`.
 	 */
 	logs(
 		automationId: string,
@@ -140,7 +140,7 @@ export class Automations extends APIResource {
 	 * Get the prompt body (markdown) for an automation. `retrieve` and
 	 * `list` omit it because it can be large.
 	 *
-	 * Mirrors `superset automations prompt get`.
+	 * Mirrors `choros automations prompt get`.
 	 */
 	getPrompt(
 		id: string,
@@ -157,7 +157,7 @@ export class Automations extends APIResource {
 	 * Replace the prompt body for an automation. The new prompt fully
 	 * overwrites the old one.
 	 *
-	 * Mirrors `superset automations prompt set`.
+	 * Mirrors `choros automations prompt set`.
 	 */
 	setPrompt(
 		id: string,

@@ -17,16 +17,16 @@ export async function confirmAndQuitCompletely(): Promise<void> {
 			cancelId: 1,
 			title: i18n._({
 				id: "main.quitCompletely.title",
-				message: "Quit Superset Completely",
+				message: "Quit Choros Completely",
 			}),
 			message: i18n._({
 				id: "main.quitCompletely.message",
-				message: "Quit Superset and stop all background services?",
+				message: "Quit Choros and stop all background services?",
 			}),
 			detail: i18n._({
 				id: "main.quitCompletely.detail",
 				message:
-					"All open terminal sessions will be killed and any running host-services will be stopped. Use “Close Superset” instead if you want services to keep running for the next launch.",
+					"All open terminal sessions will be killed and any running host-services will be stopped. Use “Close Choros” instead if you want services to keep running for the next launch.",
 			}),
 		});
 		if (response === 0) {

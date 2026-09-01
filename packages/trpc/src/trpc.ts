@@ -16,7 +16,7 @@ export interface ApiClientInfo {
 	version: string;
 }
 
-export const CLIENT_VERSION_HEADER = "x-superset-client";
+export const CLIENT_VERSION_HEADER = "x-choros-client";
 
 const CLIENT_HEADER_PATTERN =
 	/^(desktop|mobile|cli)\/(\d+\.\d+\.\d+(?:-[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?(?:\+[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?)$/;
@@ -39,7 +39,7 @@ export function parseClientHeader(headers: Headers): ApiClientInfo | null {
  * Derived from the transport, never from the request body, so it is safe to
  * attribute a write to an agent on the strength of it.
  *
- * Deliberately NOT set for the CLI. `superset` authenticates with the user's
+ * Deliberately NOT set for the CLI. `choros` authenticates with the user's
  * own OAuth bearer or API key, identically whether a human typed the command
  * or an agent running in a pane did — the server cannot tell those apart. A
  * CLI agent self-reports instead (see `agentSessionId` on the page-comment

@@ -86,7 +86,7 @@ export async function openBridgeThread(opts: {
 			author: opts.author,
 			url: opts.url,
 			linked,
-			intro: `New report from the Superset Discord #${opts.thread.parent?.name ?? "support"} channel.`,
+			intro: `New report from the Choros Discord #${opts.thread.parent?.name ?? "support"} channel.`,
 		}),
 		attachments: attached,
 	});

@@ -133,7 +133,7 @@ describe("DaemonSupervisor.ensure (real spawn)", () => {
 		const orgId = "org-stale";
 		const socketPath = path.join(
 			os.tmpdir(),
-			`superset-ptyd-${crypto
+			`choros-ptyd-${crypto
 				.createHash("sha256")
 				.update(orgId)
 				.digest("hex")
@@ -390,7 +390,7 @@ describe("DaemonSupervisor.update (Phase 2 fd-handoff)", () => {
 		const orgId = "org-auto-update";
 		const socketPath = path.join(
 			os.tmpdir(),
-			`superset-ptyd-${crypto
+			`choros-ptyd-${crypto
 				.createHash("sha256")
 				.update(orgId)
 				.digest("hex")
@@ -482,7 +482,7 @@ describe("DaemonSupervisor.update (Phase 2 fd-handoff)", () => {
 		const orgId = "org-update-version";
 		const socketPath = path.join(
 			os.tmpdir(),
-			`superset-ptyd-${crypto
+			`choros-ptyd-${crypto
 				.createHash("sha256")
 				.update(orgId)
 				.digest("hex")
@@ -571,7 +571,7 @@ describe("DaemonSupervisor.update (Phase 2 fd-handoff)", () => {
 		const orgId = "org-empty-handoff";
 		const socketPath = path.join(
 			os.tmpdir(),
-			`superset-ptyd-${crypto
+			`choros-ptyd-${crypto
 				.createHash("sha256")
 				.update(orgId)
 				.digest("hex")
@@ -660,7 +660,7 @@ describe("DaemonSupervisor.update (Phase 2 fd-handoff)", () => {
 		const orgId = "org-autoupdate-live-defer";
 		const socketPath = path.join(
 			os.tmpdir(),
-			`superset-ptyd-${crypto
+			`choros-ptyd-${crypto
 				.createHash("sha256")
 				.update(orgId)
 				.digest("hex")
@@ -803,7 +803,7 @@ describe("trustd-degraded daemon heal", () => {
 	function socketPathFor(orgId: string): string {
 		const socketPath = path.join(
 			os.tmpdir(),
-			`superset-ptyd-${crypto
+			`choros-ptyd-${crypto
 				.createHash("sha256")
 				.update(orgId)
 				.digest("hex")

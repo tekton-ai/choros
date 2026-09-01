@@ -16,7 +16,7 @@ export function register(server: McpServer): void {
 		name: "pages_publish",
 		annotations: { destructiveHint: false },
 		description:
-			"Publish an HTML document as a page and return its public URL. ALWAYS read the `superset:page` skill before calling this, whenever that skill is available to you — pages are served from their own origin under a strict content policy, and a document that ignores it looks correct locally and breaks silently once published: no network from script (fetch, XHR, and WebSockets are blocked — bake data into the document as a literal), no `eval` or `new Function` (several chart libraries rely on them and render nothing), and no external scripts or stylesheets (inline all CSS and JS). Images, video, and audio may load from remote hosts, though data: URIs keep the page whole offline. Storage (localStorage, cookies) works and is scoped to the page. A page is ONE self-contained file: pass the document itself in `html`, not a file path. Every call creates a new version; pass `pageId` to add a version to an existing page instead of creating a new one. Every page belongs to a workspace: pass `workspaceId` (from `$SUPERSET_WORKSPACE_ID`, or `superset workspaces list`) plus an `entryPath` naming where the page lives in it.",
+			"Publish an HTML document as a page and return its public URL. ALWAYS read the `choros:page` skill before calling this, whenever that skill is available to you — pages are served from their own origin under a strict content policy, and a document that ignores it looks correct locally and breaks silently once published: no network from script (fetch, XHR, and WebSockets are blocked — bake data into the document as a literal), no `eval` or `new Function` (several chart libraries rely on them and render nothing), and no external scripts or stylesheets (inline all CSS and JS). Images, video, and audio may load from remote hosts, though data: URIs keep the page whole offline. Storage (localStorage, cookies) works and is scoped to the page. A page is ONE self-contained file: pass the document itself in `html`, not a file path. Every call creates a new version; pass `pageId` to add a version to an existing page instead of creating a new one. Every page belongs to a workspace: pass `workspaceId` (from `$SUPERSET_WORKSPACE_ID`, or `choros workspaces list`) plus an `entryPath` naming where the page lives in it.",
 		inputSchema: z
 			.object({
 				html: z
@@ -44,7 +44,7 @@ export function register(server: McpServer): void {
 					"`org` (the default) lets anyone in the organization open it; `just_me` keeps it private to the publisher.",
 				),
 				workspaceId: pageFields.workspaceId.describe(
-					"The workspace this page belongs to. Required: a page that names no workspace is listed by nothing and cannot be versioned later. Get it from the `SUPERSET_WORKSPACE_ID` environment variable, or by running `superset workspaces list`.",
+					"The workspace this page belongs to. Required: a page that names no workspace is listed by nothing and cannot be versioned later. Get it from the `SUPERSET_WORKSPACE_ID` environment variable, or by running `choros workspaces list`.",
 				),
 				entryPath: optionalish(pageFields.entryPath).describe(
 					"Where this page lives in the workspace, as a path relative to the workspace root, e.g. `reports/q3-pipeline.html`. Together with `workspaceId` it is the key a later publish reuses to add a version rather than minting a second page, so reuse the same value when updating. Required unless `pageId` is given.",

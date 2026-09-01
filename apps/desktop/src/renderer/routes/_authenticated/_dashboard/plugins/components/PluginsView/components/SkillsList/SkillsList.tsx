@@ -12,7 +12,7 @@ interface ManagedSkill {
 }
 
 /**
- * These skills ship inside the managed Superset plugin and are provisioned
+ * These skills ship inside the managed Choros plugin and are provisioned
  * into every agent CLI automatically (packages/agent-setup) unless disabled
  * from the preview dialog. Installable skill plugins come later.
  */
@@ -24,7 +24,7 @@ export function SkillsList() {
 		<div className="flex flex-col gap-4">
 			<p className="text-sm text-muted-foreground">
 				<Trans id="dashboard.plugins.skillsList.intro">
-					Skills ship with the Superset plugin and are kept up to date
+					Skills ship with the Choros plugin and are kept up to date
 					automatically in every agent you use. Click one to preview it.
 				</Trans>
 			</p>

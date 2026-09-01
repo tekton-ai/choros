@@ -33,7 +33,7 @@ export interface TerminalFontSettings {
 }
 
 export const TERMINAL_FONT_FAMILY_CSS_VARIABLE =
-	"--superset-terminal-font-family";
+	"--choros-terminal-font-family";
 
 export function applyTerminalFontFamilyCssVariable(
 	element: HTMLElement,

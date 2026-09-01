@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import type { Superset } from "../client";
+import type { Choros } from "../client";
 import type { FinalRequestOptions } from "./request-options";
 import { formatRequestDetails, loggerFor } from "./utils/log";
 
@@ -14,7 +14,7 @@ export type APIResponseProps = {
 };
 
 export async function defaultParseResponse<T>(
-	client: Superset,
+	client: Choros,
 	props: APIResponseProps,
 ): Promise<T> {
 	const { response, requestLogID, retryOfRequestLogID, startTime } = props;

@@ -15,7 +15,7 @@ describe("formatError", () => {
 				"NOT_FOUND",
 				"Host abc123 is not registered in this organization",
 			),
-			"superset",
+			"choros",
 		);
 		expect(result.message).toBe(
 			"Host abc123 is not registered in this organization",
@@ -23,22 +23,22 @@ describe("formatError", () => {
 	});
 
 	it("falls back to generic text when NOT_FOUND has no message", () => {
-		const result = formatError(trpcError("NOT_FOUND", ""), "superset");
+		const result = formatError(trpcError("NOT_FOUND", ""), "choros");
 		expect(result.message).toBe("Not found");
 	});
 
 	it("maps UNAUTHORIZED to a login hint", () => {
-		const result = formatError(trpcError("UNAUTHORIZED", "nope"), "superset");
+		const result = formatError(trpcError("UNAUTHORIZED", "nope"), "choros");
 		expect(result.message).toBe("Session expired");
-		expect(result.hint).toBe("Run: superset auth login");
+		expect(result.hint).toBe("Run: choros auth login");
 	});
 
 	it("passes CLIError message and suggestion through", () => {
 		const result = formatError(
-			new CLIError("This machine isn't registered", "Run: superset start"),
-			"superset",
+			new CLIError("This machine isn't registered", "Run: choros start"),
+			"choros",
 		);
 		expect(result.message).toBe("This machine isn't registered");
-		expect(result.hint).toBe("Run: superset start");
+		expect(result.hint).toBe("Run: choros start");
 	});
 });

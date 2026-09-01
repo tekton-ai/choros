@@ -31,7 +31,7 @@ const MULTI_QUESTIONS = [
 		options: [
 			{ label: "Desktop", description: "apps/desktop chat pane" },
 			{ label: "Mobile", description: "apps/mobile Expo app" },
-			{ label: "Web", description: "app.superset.sh" },
+			{ label: "Web", description: "app.choros.sh" },
 		],
 	},
 	{

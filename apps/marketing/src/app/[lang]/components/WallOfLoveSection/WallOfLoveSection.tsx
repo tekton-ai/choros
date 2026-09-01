@@ -101,7 +101,7 @@ export function WallOfLoveSection() {
 				<div className="max-w-2xl mb-12 sm:mb-16">
 					<h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight leading-[1.1] text-foreground">
 						<Trans id="marketing.wallOfLove.heading">
-							What builders say about Superset
+							What builders say about Choros
 						</Trans>
 					</h2>
 				</div>

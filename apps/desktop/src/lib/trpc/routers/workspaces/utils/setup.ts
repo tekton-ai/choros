@@ -11,19 +11,19 @@ import {
 import type { LocalSetupConfig, SetupConfig } from "shared/types";
 
 /**
- * Worktrees don't include gitignored files, so copy .superset from main repo
+ * Worktrees don't include gitignored files, so copy .choros from main repo
  * if it's missing — ensures setup scripts like "./.superset/setup.sh" work.
  */
-export function copySupersetConfigToWorktree(
+export function copyChorosConfigToWorktree(
 	mainRepoPath: string,
 	worktreePath: string,
 ): void {
-	const mainSupersetDir = join(mainRepoPath, PROJECT_SUPERSET_DIR_NAME);
-	const worktreeSupersetDir = join(worktreePath, PROJECT_SUPERSET_DIR_NAME);
+	const mainChorosDir = join(mainRepoPath, PROJECT_SUPERSET_DIR_NAME);
+	const worktreeChorosDir = join(worktreePath, PROJECT_SUPERSET_DIR_NAME);
 
-	if (existsSync(mainSupersetDir) && !existsSync(worktreeSupersetDir)) {
+	if (existsSync(mainChorosDir) && !existsSync(worktreeChorosDir)) {
 		try {
-			cpSync(mainSupersetDir, worktreeSupersetDir, { recursive: true });
+			cpSync(mainChorosDir, worktreeChorosDir, { recursive: true });
 		} catch (error) {
 			console.error(
 				`Failed to copy ${PROJECT_SUPERSET_DIR_NAME} to worktree: ${error instanceof Error ? error.message : String(error)}`,

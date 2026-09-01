@@ -51,7 +51,7 @@ export function MainPanel({ activeDemo }: MainPanelProps) {
 								</div>
 								<div>Opus 4.5 · Claude Max</div>
 								<div className="text-muted-foreground/65">
-									~/.superset/worktrees/superset/cloud-ws
+									~/.superset/worktrees/choros/cloud-ws
 								</div>
 							</div>
 						</div>
@@ -74,7 +74,7 @@ export function MainPanel({ activeDemo }: MainPanelProps) {
 							<div>
 								<span className="text-muted-foreground/55">❯</span>
 								<span className="ml-1 text-foreground">1.</span>
-								<span className="ml-1 text-brand-light">superset-mcp</span>
+								<span className="ml-1 text-brand-light">choros-mcp</span>
 								<span className="ml-2 text-emerald-400/85">✓ connected</span>
 							</div>
 
@@ -161,7 +161,7 @@ export function MainPanel({ activeDemo }: MainPanelProps) {
 					<div className="mb-5 text-foreground">
 						<span className="text-muted-foreground/55">❯</span>{" "}
 						<TokenChip>
-							<span className="text-brand-light">superset automations</span>
+							<span className="text-brand-light">choros automations</span>
 						</TokenChip>
 					</div>
 					<div className="grid max-w-[380px] grid-cols-[1fr_auto_auto] gap-x-8 gap-y-2">
@@ -217,7 +217,7 @@ export function MainPanel({ activeDemo }: MainPanelProps) {
 					<div className="mb-3 text-foreground">
 						<span className="text-muted-foreground/55">❯</span>{" "}
 						<TokenChip>
-							<span className="text-brand-light">superset connect gpu-box</span>
+							<span className="text-brand-light">choros connect gpu-box</span>
 						</TokenChip>
 					</div>
 					<div className="space-y-1.5 text-muted-foreground">

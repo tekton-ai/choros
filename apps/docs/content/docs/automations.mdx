@@ -80,22 +80,22 @@ On the **Mine** tab, **Retry all** appears in the header when any of your automa
 ## CLI
 
 ```bash
-superset automations list
-superset automations create --name "Nightly audit" --rrule "FREQ=DAILY;BYHOUR=3;BYMINUTE=0" --project <projectId> --prompt-file prompt.md --agent claude
+choros automations list
+choros automations create --name "Nightly audit" --rrule "FREQ=DAILY;BYHOUR=3;BYMINUTE=0" --project <projectId> --prompt-file prompt.md --agent claude
 
 # Omit --project and --workspace for session mode (a session workspace per run)
-superset automations create --name "Scratch triage" --rrule "FREQ=DAILY;BYHOUR=8;BYMINUTE=0" --prompt "…"
+choros automations create --name "Scratch triage" --rrule "FREQ=DAILY;BYHOUR=8;BYMINUTE=0" --prompt "…"
 
 # Each run's workspace carries the automation's tags and groups into the matching
 # sidebar folders. Default tag: "automation" — runs collect in an "automation"
 # folder per project. --tag (repeatable) files them elsewhere; clearing the tags
 # in the editor opts out of grouping.
-superset automations create --name "Nightly audit" --rrule "FREQ=DAILY;BYHOUR=3;BYMINUTE=0" --project <projectId> --prompt "…" --tag audits
+choros automations create --name "Nightly audit" --rrule "FREQ=DAILY;BYHOUR=3;BYMINUTE=0" --project <projectId> --prompt "…" --tag audits
 
-superset automations update <id> --session   # switch an existing automation to session mode
-superset automations get <id>
-superset automations run <id>
-superset automations pause <id>
-superset automations resume <id>
-superset automations delete <id>
+choros automations update <id> --session   # switch an existing automation to session mode
+choros automations get <id>
+choros automations run <id>
+choros automations pause <id>
+choros automations resume <id>
+choros automations delete <id>
 ```

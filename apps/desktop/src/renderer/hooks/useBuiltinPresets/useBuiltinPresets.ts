@@ -7,7 +7,7 @@ import type { KNOWN_BUILTIN_PRESET_IDS } from "renderer/routes/_authenticated/pr
 // heal prunes hidden ids against that list, so an id missing from it would
 // have its hidden state silently dropped.
 export const BUILTIN_CLI_PRESET_ID =
-	"superset-cli" satisfies (typeof KNOWN_BUILTIN_PRESET_IDS)[number];
+	"choros-cli" satisfies (typeof KNOWN_BUILTIN_PRESET_IDS)[number];
 
 // Synthetic app-shipped preset merged into the preset bar at read time — never
 // inserted into the v2TerminalPresets collection, so it can't trip the
@@ -16,11 +16,11 @@ export const BUILTIN_CLI_PRESET_ID =
 // namespaces can't collide.
 export const BUILTIN_CLI_PRESET: V2TerminalPresetRow = {
 	id: BUILTIN_CLI_PRESET_ID,
-	name: "Superset CLI",
+	name: "Choros CLI",
 	description:
-		"Script workspaces, agents, and automations from any terminal — agents in Superset terminals can use it too.",
+		"Script workspaces, agents, and automations from any terminal — agents in Choros terminals can use it too.",
 	cwd: "",
-	commands: ["superset --help"],
+	commands: ["choros --help"],
 	projectIds: null,
 	executionMode: "new-tab",
 	tabOrder: Number.MAX_SAFE_INTEGER,

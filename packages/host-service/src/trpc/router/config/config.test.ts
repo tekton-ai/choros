@@ -64,7 +64,7 @@ describe("configRouter", () => {
 
 		it("returns raw content when config.json exists", async () => {
 			const caller = createCaller(sandbox.repoPath);
-			const dir = join(sandbox.repoPath, ".superset");
+			const dir = join(sandbox.repoPath, ".choros");
 			mkdirSync(dir, { recursive: true });
 			writeFileSync(
 				join(dir, "config.json"),
@@ -96,7 +96,7 @@ describe("configRouter", () => {
 				teardown: [],
 			});
 
-			const configPath = join(sandbox.repoPath, ".superset", "config.json");
+			const configPath = join(sandbox.repoPath, ".choros", "config.json");
 			expect(existsSync(configPath)).toBe(true);
 			const parsed = JSON.parse(readFileSync(configPath, "utf-8"));
 			expect(parsed).toEqual({ setup: ["bun install"], teardown: [] });
@@ -104,7 +104,7 @@ describe("configRouter", () => {
 
 		it("preserves the existing run array on subsequent saves", async () => {
 			const caller = createCaller(sandbox.repoPath);
-			const dir = join(sandbox.repoPath, ".superset");
+			const dir = join(sandbox.repoPath, ".choros");
 			mkdirSync(dir, { recursive: true });
 			writeFileSync(
 				join(dir, "config.json"),
@@ -134,7 +134,7 @@ describe("configRouter", () => {
 
 		it("updates run when provided and preserves setup/teardown when omitted", async () => {
 			const caller = createCaller(sandbox.repoPath);
-			const dir = join(sandbox.repoPath, ".superset");
+			const dir = join(sandbox.repoPath, ".choros");
 			mkdirSync(dir, { recursive: true });
 			writeFileSync(
 				join(dir, "config.json"),
@@ -163,7 +163,7 @@ describe("configRouter", () => {
 
 		it("preserves unrelated top-level keys (forward compatibility)", async () => {
 			const caller = createCaller(sandbox.repoPath);
-			const dir = join(sandbox.repoPath, ".superset");
+			const dir = join(sandbox.repoPath, ".choros");
 			mkdirSync(dir, { recursive: true });
 			writeFileSync(
 				join(dir, "config.json"),
@@ -192,7 +192,7 @@ describe("configRouter", () => {
 			// Documents the current behavior: a corrupt file is silently replaced.
 			// Surfaced in the smoke-test list as a known-but-accepted edge case.
 			const caller = createCaller(sandbox.repoPath);
-			const dir = join(sandbox.repoPath, ".superset");
+			const dir = join(sandbox.repoPath, ".choros");
 			mkdirSync(dir, { recursive: true });
 			writeFileSync(join(dir, "config.json"), "{not valid json,,,", "utf-8");
 
@@ -245,7 +245,7 @@ describe("configRouter", () => {
 			// Different from "all-empty arrays": here there's no setup key at all.
 			// Card should still hide because teardown counts as configured.
 			const caller = createCaller(sandbox.repoPath);
-			const dir = join(sandbox.repoPath, ".superset");
+			const dir = join(sandbox.repoPath, ".choros");
 			mkdirSync(dir, { recursive: true });
 			writeFileSync(
 				join(dir, "config.json"),
@@ -260,7 +260,7 @@ describe("configRouter", () => {
 
 		it("returns false when only the run key is set", async () => {
 			const caller = createCaller(sandbox.repoPath);
-			const dir = join(sandbox.repoPath, ".superset");
+			const dir = join(sandbox.repoPath, ".choros");
 			mkdirSync(dir, { recursive: true });
 			writeFileSync(
 				join(dir, "config.json"),
@@ -302,7 +302,7 @@ describe("configRouter", () => {
 
 		it("preserves cwd from resolved config", async () => {
 			const caller = createCaller(sandbox.repoPath);
-			const dir = join(sandbox.repoPath, ".superset");
+			const dir = join(sandbox.repoPath, ".choros");
 			mkdirSync(dir, { recursive: true });
 			writeFileSync(
 				join(dir, "config.json"),

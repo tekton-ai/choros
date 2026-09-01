@@ -19,8 +19,8 @@ export interface FrameRect {
 	height: number;
 }
 
-export const HOST_CHANNEL = "superset-comments/host";
-export const FRAME_CHANNEL = "superset-comments/frame";
+export const HOST_CHANNEL = "choros-comments/host";
+export const FRAME_CHANNEL = "choros-comments/frame";
 
 export type HostMessageBody =
 	| { type: "set-mode"; enabled: boolean }

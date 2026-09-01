@@ -17,10 +17,10 @@ import {
 import { BUILTIN_TERMINAL_AGENT_TYPES } from "./builtin-terminal-agents";
 
 describe("AGENT_MODEL_SUPPORT", () => {
-	it("only references builtin presets (or the superset chat agent)", () => {
+	it("only references builtin presets (or the choros chat agent)", () => {
 		const validIds = new Set<string>([
 			...BUILTIN_TERMINAL_AGENT_TYPES,
-			"superset",
+			"choros",
 			"omp",
 		]);
 		for (const entry of AGENT_MODEL_SUPPORT) {
@@ -28,9 +28,9 @@ describe("AGENT_MODEL_SUPPORT", () => {
 		}
 	});
 
-	it("has a model flag, a model env, or (superset) neither", () => {
+	it("has a model flag, a model env, or (choros) neither", () => {
 		for (const entry of AGENT_MODEL_SUPPORT) {
-			if (entry.presetId === "superset") {
+			if (entry.presetId === "choros") {
 				expect(entry.modelFlag).toBeNull();
 			} else if (entry.modelEnv) {
 				// env-based presets (Vibe) carry the model via an env var, no flag
@@ -94,9 +94,9 @@ describe("buildAgentModelArgs", () => {
 		expect(buildAgentModelArgs("codex", "sonnet")).toEqual([]);
 	});
 
-	it("returns [] for superset (model travels via chat metadata)", () => {
+	it("returns [] for choros (model travels via chat metadata)", () => {
 		expect(
-			buildAgentModelArgs("superset", "anthropic/claude-opus-4-8"),
+			buildAgentModelArgs("choros", "anthropic/claude-opus-4-8"),
 		).toEqual([]);
 	});
 
@@ -291,7 +291,7 @@ describe("getAgentEffortSupport", () => {
 
 	it("returns undefined for presets without effort support", () => {
 		expect(getAgentEffortSupport("gemini")).toBeUndefined();
-		expect(getAgentEffortSupport("superset")).toBeUndefined();
+		expect(getAgentEffortSupport("choros")).toBeUndefined();
 	});
 });
 

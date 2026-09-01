@@ -1,13 +1,13 @@
 import { beforeEach, describe, expect, test } from "bun:test";
 import {
 	createLocalSettingsDb,
-	withTempSupersetHome,
+	withTempChorosHome,
 } from "../../../lib/settings/test-helpers";
 import { default as getCommand } from "../get/command";
 import { default as resetCommand } from "../reset/command";
 import { default as setCommand } from "../set/command";
 
-const home = withTempSupersetHome("superset-cli-settings-cmd-");
+const home = withTempChorosHome("choros-cli-settings-cmd-");
 
 function invoke(
 	cmd: typeof setCommand | typeof getCommand | typeof resetCommand,

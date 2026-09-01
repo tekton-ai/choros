@@ -18,7 +18,7 @@ export const apiTrpcClient = createTRPCProxyClient<AppRouter>({
 				return {
 					...(token ? { Authorization: `Bearer ${token}` } : {}),
 					...(window.App?.appVersion
-						? { "x-superset-client": `desktop/${window.App.appVersion}` }
+						? { "x-choros-client": `desktop/${window.App.appVersion}` }
 						: {}),
 				};
 			},

@@ -289,13 +289,13 @@ describe("env", () => {
 
 			it("should include shell wrapper control vars", () => {
 				const env = {
-					ZDOTDIR: "/Users/test/.superset-dev/zsh",
-					BASH_ENV: "/Users/test/.superset-dev/bash/rcfile",
+					ZDOTDIR: "/Users/test/.choros-dev/zsh",
+					BASH_ENV: "/Users/test/.choros-dev/bash/rcfile",
 					PATH: "/usr/bin",
 				};
 				const result = buildSafeEnv(env);
-				expect(result.ZDOTDIR).toBe("/Users/test/.superset-dev/zsh");
-				expect(result.BASH_ENV).toBe("/Users/test/.superset-dev/bash/rcfile");
+				expect(result.ZDOTDIR).toBe("/Users/test/.choros-dev/zsh");
+				expect(result.BASH_ENV).toBe("/Users/test/.choros-dev/bash/rcfile");
 			});
 
 			it("should include proxy vars (both cases)", () => {
@@ -536,14 +536,14 @@ describe("env", () => {
 				expect(result.PATHEXT).toBe(".COM;.EXE;.BAT;.CMD");
 			});
 
-			it("should include Superset_* prefix vars case-insensitively on Windows", () => {
+			it("should include Choros_* prefix vars case-insensitively on Windows", () => {
 				const env = {
-					Superset_Pane_Id: "pane-1",
+					Choros_Pane_Id: "pane-1",
 					SUPERSET_TAB_ID: "tab-1",
 					PATH: "/usr/bin",
 				};
 				const result = buildSafeEnv(env, { platform: "win32" });
-				expect(result.Superset_Pane_Id).toBe("pane-1");
+				expect(result.Choros_Pane_Id).toBe("pane-1");
 				expect(result.SUPERSET_TAB_ID).toBe("tab-1");
 			});
 
@@ -668,7 +668,7 @@ describe("env", () => {
 				expect(result.COLORTERM).toBe("truecolor");
 			});
 
-			it("should set Superset-specific env vars", () => {
+			it("should set Choros-specific env vars", () => {
 				const result = buildTerminalEnv(baseParams);
 
 				expect(result.SUPERSET_PANE_ID).toBe("pane-1");
@@ -709,9 +709,9 @@ describe("env", () => {
 			});
 
 			it("should preserve SUPERSET_HOME_DIR for app-launched hooks", () => {
-				process.env.SUPERSET_HOME_DIR = "/tmp/superset-home";
+				process.env.SUPERSET_HOME_DIR = "/tmp/choros-home";
 				const result = buildTerminalEnv(baseParams);
-				expect(result.SUPERSET_HOME_DIR).toBe("/tmp/superset-home");
+				expect(result.SUPERSET_HOME_DIR).toBe("/tmp/choros-home");
 			});
 		});
 

@@ -1,6 +1,6 @@
 ---
 title: "How to Run Multiple Claude Code Agents in Parallel"
-description: "Learn the safest way to run multiple Claude Code sessions at once. Compare terminal tabs, tmux, manual Git worktrees, and Superset's orchestration workflow."
+description: "Learn the safest way to run multiple Claude Code sessions at once. Compare terminal tabs, tmux, manual Git worktrees, and Choros's orchestration workflow."
 date: 2026-03-20
 lastUpdated: 2026-03-20
 type: "tutorial"
@@ -56,13 +56,13 @@ Then you `cd` into each directory and launch Claude Code there.
 
 This is safe and effective. It is also repetitive. You still have to create branches, name directories, track which session maps to which task, and review each diff manually in your editor or Git UI.
 
-### 3. Superset + Claude Code
+### 3. Choros + Claude Code
 
 This is the same worktree-based approach, but automated.
 
-Superset creates an isolated worktree per task, launches Claude Code inside it, keeps the sessions organized, and gives you one place to review the resulting diffs. Claude Code still does the coding. Superset handles the orchestration.
+Choros creates an isolated worktree per task, launches Claude Code inside it, keeps the sessions organized, and gives you one place to review the resulting diffs. Claude Code still does the coding. Choros handles the orchestration.
 
-That is the key distinction: Claude Code is the agent; Superset is the workflow layer that lets you run many Claude Code sessions safely.
+That is the key distinction: Claude Code is the agent; Choros is the workflow layer that lets you run many Claude Code sessions safely.
 
 ## Quick Comparison
 
@@ -71,7 +71,7 @@ That is the key distinction: Claude Code is the agent; Superset is the workflow 
 | Terminal tabs | Yes | No | Manual | Low setup, high risk |
 | tmux | Yes | No | Manual | Good for power users, still no isolation |
 | Manual Git worktrees + Claude Code | Yes | Yes | Git-native, but manual | Safe, but repetitive |
-| Superset + Claude Code | Yes | Yes | Built-in diff review per task | Lowest overhead once installed |
+| Choros + Claude Code | Yes | Yes | Built-in diff review per task | Lowest overhead once installed |
 
 ## Recommended Workflow
 
@@ -96,7 +96,7 @@ Parallelism works best when each agent can finish a reviewable unit of work on i
 
 This is the non-negotiable part.
 
-If you are doing it manually, use `git worktree add` for every task before launching Claude Code. If you are using Superset, create one task per job and let Superset provision the worktree and branch automatically.
+If you are doing it manually, use `git worktree add` for every task before launching Claude Code. If you are using Choros, create one task per job and let Choros provision the worktree and branch automatically.
 
 ### 3. Keep prompts narrow
 
@@ -121,20 +121,20 @@ The right loop is:
 
 This is why worktrees matter so much: every agent output stays isolated until you decide what lands.
 
-## Why Superset Fits This Workflow
+## Why Choros Fits This Workflow
 
-![Claude streaming a billing migration in one Superset workspace while other Claude Code agents run in parallel workspaces](/images/readme/agents-working.gif)
+![Claude streaming a billing migration in one Choros workspace while other Claude Code agents run in parallel workspaces](/images/readme/agents-working.gif)
 
-Superset is useful here because it removes the boring parts of manual parallelism:
+Choros is useful here because it removes the boring parts of manual parallelism:
 
 - separate worktree per task
 - separate branch per task
 - persistent terminal sessions
 - one interface for reviewing outputs
 
-If you already like Claude Code, Superset is not a replacement. It is the layer that makes multiple Claude Code sessions manageable.
+If you already like Claude Code, Choros is not a replacement. It is the layer that makes multiple Claude Code sessions manageable.
 
-For a product comparison, see [Superset vs Claude Code](/compare/superset-vs-claude-code).
+For a product comparison, see [Choros vs Claude Code](/compare/choros-vs-claude-code).
 
 ## When Manual Worktrees Are Enough
 
@@ -144,17 +144,17 @@ You do not need another tool if:
 - you are comfortable living in Git and tmux all day
 - you prefer assembling your own workflow from terminal tools
 
-Manual worktrees are still the correct primitive. Superset just packages that primitive into a faster operating model.
+Manual worktrees are still the correct primitive. Choros just packages that primitive into a faster operating model.
 
 ## Verdict
 
-If you want to run multiple Claude Code agents in parallel, the decision is not really "Claude Code or Superset."
+If you want to run multiple Claude Code agents in parallel, the decision is not really "Claude Code or Choros."
 
 The real choice is:
 
 - Claude Code alone, one task at a time
 - Claude Code plus manual worktrees, with more setup overhead
-- Claude Code plus Superset, with the same isolation model but less operational friction
+- Claude Code plus Choros, with the same isolation model but less operational friction
 
 For most teams and solo developers, worktree-based orchestration is the difference between "parallel in theory" and "parallel every day."
 
@@ -172,6 +172,6 @@ If you care about safety, yes. Separate worktrees keep each session on its own b
 
 tmux is enough to manage panes and sessions. It is not enough to isolate file changes by itself. You still need a Git workflow, usually worktrees, underneath it.
 
-### Is Superset only for Claude Code?
+### Is Choros only for Claude Code?
 
-No. Superset can orchestrate Claude Code, Codex, OpenCode, Aider, and other CLI agents. Claude Code is just one of the strongest fits for the workflow.
+No. Choros can orchestrate Claude Code, Codex, OpenCode, Aider, and other CLI agents. Claude Code is just one of the strongest fits for the workflow.

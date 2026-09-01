@@ -183,9 +183,9 @@ describe("formatAssembledCommand", () => {
 			leaf({ options: { title: option({ name: "title", isRequired: true }) } }),
 		);
 		expect(
-			formatAssembledCommand("superset", ["tasks", "create"], fields, [
+			formatAssembledCommand("choros", ["tasks", "create"], fields, [
 				"fix flaky tests",
 			]),
-		).toBe('superset tasks create --title "fix flaky tests"');
+		).toBe('choros tasks create --title "fix flaky tests"');
 	});
 });

@@ -7,13 +7,13 @@ function unauthorized(request: Request): Response {
 			error: {
 				code: "UNAUTHORIZED",
 				message: "Authentication required.",
-				hint: `Authenticate via OAuth 2.1 (see https://superset.sh/auth.md) or a Superset API key, then use the MCP server at ${origin}/mcp. API surface: ${origin}/openapi.json`,
+				hint: `Authenticate via OAuth 2.1 (see https://choros.sh/auth.md) or a Choros API key, then use the MCP server at ${origin}/mcp. API surface: ${origin}/openapi.json`,
 			},
 		},
 		{
 			status: 401,
 			headers: {
-				"WWW-Authenticate": `Bearer realm="superset", resource_metadata="${origin}/.well-known/oauth-protected-resource"`,
+				"WWW-Authenticate": `Bearer realm="choros", resource_metadata="${origin}/.well-known/oauth-protected-resource"`,
 			},
 		},
 	);

@@ -159,7 +159,7 @@ export function ConsentForm({
 				<p className="text-muted-foreground text-sm">
 					<Trans id="web.consent.subtitle">
 						<span className="font-medium text-foreground">{displayName}</span>{" "}
-						is requesting access to your Superset account
+						is requesting access to your Choros account
 					</Trans>
 				</p>
 			</div>
@@ -287,7 +287,7 @@ export function ConsentForm({
 function getClientDisplayName(clientId: string): string {
 	const knownClients: Record<string, string> = {
 		"claude-code": "Claude Code",
-		"superset-desktop": "Superset Desktop",
+		"choros-desktop": "Choros Desktop",
 	};
 	if (knownClients[clientId]) {
 		return knownClients[clientId];

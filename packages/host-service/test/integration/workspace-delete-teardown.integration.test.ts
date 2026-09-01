@@ -85,7 +85,7 @@ describe("workspace delete teardown integration", () => {
 		// worktrees); the marker lands outside the worktree since step 2b
 		// deletes the worktree directory.
 		const markerPath = join(tmp, "teardown-ran");
-		const scriptDir = join(scenario.repo.repoPath, ".superset");
+		const scriptDir = join(scenario.repo.repoPath, ".choros");
 		mkdirSync(scriptDir, { recursive: true });
 		writeFileSync(
 			join(scriptDir, "teardown.sh"),

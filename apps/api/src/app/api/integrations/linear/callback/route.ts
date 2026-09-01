@@ -58,7 +58,7 @@ export async function GET(request: Request) {
 	}
 
 	// The person who connected is the one Linear account we know for certain
-	// belongs to a Superset user, so link it. Linear user ids are scoped to
+	// belongs to a Choros user, so link it. Linear user ids are scoped to
 	// the Linear workspace.
 	await upsertIdentity({
 		userId,

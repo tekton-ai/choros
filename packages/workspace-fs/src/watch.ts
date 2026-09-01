@@ -55,7 +55,7 @@ const OVERFLOW_BACKOFF_RESET_MS = 120_000;
 // a sub-second window after subscribe() resolves (observed on a busy Electron
 // main loop) — writes in that window are missed forever. Recovery writes a
 // probe file and only announces the resumed root once its event arrives.
-const PROBE_PREFIX = ".superset-watcher-probe-";
+const PROBE_PREFIX = ".choros-watcher-probe-";
 const PROBE_TIMEOUT_MS = 4_000;
 
 // Backslash-escape every character picomatch (parcel's glob engine) treats as
@@ -554,7 +554,7 @@ export class FsWatcherManager {
 			...this.ignore,
 			...(generation === 1
 				? []
-				: [`**/.superset-watch-generation-${generation}/**`]),
+				: [`**/.choros-watch-generation-${generation}/**`]),
 			...prunedDirIgnores,
 		];
 

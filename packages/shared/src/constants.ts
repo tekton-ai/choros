@@ -4,7 +4,7 @@ import type { TriggerConfigInput } from "./automation-triggers";
 export const AUTH_PROVIDERS = ["github", "google"] as const;
 export type AuthProvider = (typeof AUTH_PROVIDERS)[number];
 
-export const ORGANIZATION_HEADER = "x-superset-organization-id";
+export const ORGANIZATION_HEADER = "x-choros-organization-id";
 
 // Deep link protocol schemes (used for desktop OAuth callbacks)
 export const PROTOCOL_SCHEMES = {
@@ -21,7 +21,7 @@ const MARKETING_URL =
 	process.env.NEXT_PUBLIC_MARKETING_URL || `https://${ROOT_DOMAIN}`;
 
 export const COMPANY = {
-	NAME: "Superset",
+	NAME: "Choros",
 	DOMAIN: ROOT_DOMAIN,
 	EMAIL_DOMAIN: `@${ROOT_DOMAIN}`,
 	GITHUB_URL: "https://github.com/tekton-ai/choros",
@@ -30,7 +30,7 @@ export const COMPANY = {
 	TERMS_URL: `${MARKETING_URL}/terms`,
 	PRIVACY_URL: `${MARKETING_URL}/privacy`,
 	CHANGELOG_URL: `${MARKETING_URL}/changelog`,
-	X_URL: "https://x.com/superset_sh",
+	X_URL: "https://x.com/choros_sh",
 	LINKEDIN_URL: "https://www.linkedin.com/company/superset-sh",
 	YOUTUBE_URL: "https://www.youtube.com/@superset-sh",
 	MAIL_TO: `mailto:support@${ROOT_DOMAIN}`,
@@ -43,14 +43,14 @@ export const COMPANY = {
 	TRUST_URL: `https://trust.${ROOT_DOMAIN}`,
 	JOIN_US_URL: `${MARKETING_URL}/join-us`,
 	/** The formal YC listing; product surfaces link here. `JOIN_US_URL` is our own marketing page. */
-	CAREERS_URL: "https://www.ycombinator.com/companies/superset/jobs",
+	CAREERS_URL: "https://www.ycombinator.com/companies/choros/jobs",
 } as const;
 
 export const OPEN_ROLES = [
 	{
 		title: "Founding Engineer",
 		location: "San Francisco, CA",
-		url: "https://www.ycombinator.com/companies/superset/jobs/Nd9luiP-founding-engineer",
+		url: "https://www.ycombinator.com/companies/choros/jobs/Nd9luiP-founding-engineer",
 	},
 ] as const;
 
@@ -135,7 +135,7 @@ export const FEATURE_FLAGS = {
 	 * it to reach users who cross the threshold later.
 	 */
 	HIRING_BANNER: "hiring-banner",
-	/** Shows the "Star Superset on GitHub" sidebar card once a user crosses the workspace-count threshold. Lets us kill the nag instantly without a release if it reads as annoying. */
+	/** Shows the "Star Choros on GitHub" sidebar card once a user crosses the workspace-count threshold. Lets us kill the nag instantly without a release if it reads as annoying. */
 	STAR_NAG_CARD: "star-nag-card",
 	/**
 	 * Which trigger providers the Add Trigger menu offers. Payload is a JSON
@@ -201,13 +201,13 @@ export const FEATURE_FLAGS = {
 	CHAT_V3: "chat-v3",
 	/**
 	 * Shows the cloud-workspace option in the create picker. The API gates
-	 * these to @superset.sh accounts independently, so the flag controls
+	 * these to @choros.sh accounts independently, so the flag controls
 	 * visibility rather than access.
 	 */
 	CLOUD_WORKSPACES: "cloud-workspaces",
 	/**
 	 * Shows the Plugins page in the v2 dashboard sidebar. Audience is a
-	 * release condition on the flag (email contains @superset.sh, plus an
+	 * release condition on the flag (email contains @choros.sh, plus an
 	 * override for the local dev account, which is not on that domain) so
 	 * widening the rollout never needs a release. Everything the page does is
 	 * desktop-local; the flag controls visibility, not capability.

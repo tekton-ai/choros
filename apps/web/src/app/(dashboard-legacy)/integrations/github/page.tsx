@@ -39,7 +39,7 @@ const CALLBACK_MESSAGES = {
 	already_connected: i18n._({
 		id: "web.integrations.github.callback.alreadyConnected",
 		message:
-			"This GitHub installation is already connected to another Superset organization. Disconnect it there, or uninstall the Superset GitHub App, then try again.",
+			"This GitHub installation is already connected to another Choros organization. Disconnect it there, or uninstall the Choros GitHub App, then try again.",
 	}),
 	unauthorized: i18n._({
 		id: "web.integrations.callback.unauthorized",
@@ -155,7 +155,7 @@ export default async function GitHubIntegrationPage() {
 						{i18n._({
 							id: "web.integrations.github.connectionDescription",
 							message:
-								"Install the Superset GitHub App to connect your repositories.",
+								"Install the Choros GitHub App to connect your repositories.",
 						})}
 					</CardDescription>
 				</CardHeader>

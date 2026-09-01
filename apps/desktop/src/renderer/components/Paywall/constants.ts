@@ -38,7 +38,7 @@ export const PRO_FEATURES: ProFeature[] = [
 		description: msg({
 			id: "components.paywall.remoteAccess.description",
 			message:
-				"Reach this Mac from anywhere via the Superset relay, or spin up cloud workspaces. Connect from any client.",
+				"Reach this Mac from anywhere via the Choros relay, or spin up cloud workspaces. Connect from any client.",
 		}),
 		icon: HiOutlineSignal,
 		iconColor: "text-pink-500",
@@ -68,7 +68,7 @@ export const PRO_FEATURES: ProFeature[] = [
 		description: msg({
 			id: "components.paywall.tasks.description",
 			message:
-				"Track and manage tasks synced from Linear. Stay on top of your work without leaving Superset.",
+				"Track and manage tasks synced from Linear. Stay on top of your work without leaving Choros.",
 		}),
 		icon: HiOutlineClipboardDocumentList,
 		iconColor: "text-emerald-500",

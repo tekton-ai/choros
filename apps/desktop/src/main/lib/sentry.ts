@@ -21,7 +21,7 @@ export function initSentry(): void {
 			ipcMode: IPCMode.Classic,
 			getSessions: () => [
 				session.defaultSession,
-				session.fromPartition("persist:superset"),
+				session.fromPartition("persist:choros"),
 			],
 		});
 

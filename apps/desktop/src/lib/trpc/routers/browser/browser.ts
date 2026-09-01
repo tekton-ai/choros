@@ -310,7 +310,7 @@ export const createBrowserRouter = () => {
 				}),
 			)
 			.mutation(async ({ input }) => {
-				const ses = session.fromPartition("persist:superset");
+				const ses = session.fromPartition("persist:choros");
 				switch (input.type) {
 					case "cookies":
 						await ses.clearStorageData({ storages: ["cookies"] });
@@ -352,7 +352,7 @@ export const createBrowserRouter = () => {
 		// (imported "logins" are cookies, not stored passwords).
 		getCookieDomains: publicProcedure.query(async () => {
 			const cookies = await session
-				.fromPartition("persist:superset")
+				.fromPartition("persist:choros")
 				.cookies.get({});
 			const domains = new Map<string, number>();
 			for (const cookie of cookies) {
@@ -368,7 +368,7 @@ export const createBrowserRouter = () => {
 		clearCookiesForDomain: publicProcedure
 			.input(z.object({ domain: z.string() }))
 			.mutation(async ({ input }) => {
-				const ses = session.fromPartition("persist:superset");
+				const ses = session.fromPartition("persist:choros");
 				const cookies = await ses.cookies.get({ domain: input.domain });
 				await Promise.all(
 					cookies.map((cookie) => {

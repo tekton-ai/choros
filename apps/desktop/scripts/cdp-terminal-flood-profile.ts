@@ -520,7 +520,7 @@ async function runPhase({
 
 	for (let index = 0; index < options.samples; index++) {
 		const iterationStartedAt = performance.now();
-		const marker = `__superset_${label}_${index}_${randomUUID().slice(0, 8)}__`;
+		const marker = `__choros_${label}_${index}_${randomUUID().slice(0, 8)}__`;
 		const markerPromise = probe.waitForText(marker);
 		const echoStartedAt = performance.now();
 		probe.sendInput(`printf '${marker}\\n'\n`);

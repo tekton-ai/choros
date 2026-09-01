@@ -10,7 +10,7 @@ Pair with `V2_LAUNCH_CONTEXT.md` for architectural background and
 2. Ensure your active org has V2 cloud enabled (or you're testing a V2
    project).
 3. Settings → Agents: confirm **Claude** is enabled. For chat-agent
-   tests, enable **Superset Chat**.
+   tests, enable **Choros Chat**.
 4. (Optional) Open devtools console and filter by `[v2-launch]` to trace
    dispatch. `collections` is exposed globally for pending-row inspection:
    ```js
@@ -42,9 +42,9 @@ Pair with `V2_LAUNCH_CONTEXT.md` for architectural background and
       drops, drop an image between two text chunks. Image ref sits inline,
       not appended at the end.
 
-## B. Happy-path — chat agent (Superset Chat)
+## B. Happy-path — chat agent (Choros Chat)
 
-Disable Claude (or set Superset Chat as preferred via order in settings).
+Disable Claude (or set Choros Chat as preferred via order in settings).
 
 - [ ] **B1. Prompt only** — chat pane opens; first user message = prompt;
       agent response streams.

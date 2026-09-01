@@ -1,6 +1,6 @@
 ---
 title: Agent Status & Notifications
-description: How Superset knows what your agents are doing, and how it tells you
+description: How Choros knows what your agents are doing, and how it tells you
 ---
 
 Running many agents only works if you can tell who needs you.
@@ -18,9 +18,9 @@ If a workspace shows as running after you've stopped its agent (for example afte
 
 ## How Status Is Detected
 
-Superset installs lifecycle hooks and command wrappers into each agent's config (the entries in `~/.superset/bin` and files like `superset-hooks`). Those hooks report when an agent starts, finishes, or is waiting for input. That's why status only works for agents launched through Superset, and why removing the hooks disables status and notifications.
+Choros installs lifecycle hooks and command wrappers into each agent's config (the entries in `~/.superset/bin` and files like `choros-hooks`). Those hooks report when an agent starts, finishes, or is waiting for input. That's why status only works for agents launched through Choros, and why removing the hooks disables status and notifications.
 
-The hooks no-op outside Superset terminals (they check for a Superset-supplied env var). To remove them from an agent's config entirely, turn off the agent's **Superset hooks** toggle in **Settings → Agents**.
+The hooks no-op outside Choros terminals (they check for a Choros-supplied env var). To remove them from an agent's config entirely, turn off the agent's **Choros hooks** toggle in **Settings → Agents**.
 
 ## Notifications
 
@@ -34,6 +34,6 @@ The macOS dock icon shows a badge for workspaces with unread activity or that ne
 
 ![Dock icon showing an attention badge](/images/dock-badge.png)
 
-macOS only shows dock badges when Superset has notification permission. If you don't see badges, check **System Settings → Notifications → Superset**.
+macOS only shows dock badges when Choros has notification permission. If you don't see badges, check **System Settings → Notifications → Choros**.
 
 The intended rhythm: fan work out, leave the app in the background, and come back on notification or dock badge rather than watching terminals.

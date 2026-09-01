@@ -15,7 +15,7 @@ describe("extractWorkspaceIdFromUrl", () => {
 	it("extracts workspace ID when file path contains /workspace/", () => {
 		// This is the key case - file path has /workspace/ but we should extract from hash
 		const url =
-			"file:///Users/foo/workspace/superset/dist/index.html#/workspace/def456";
+			"file:///Users/foo/workspace/choros/dist/index.html#/workspace/def456";
 		expect(extractWorkspaceIdFromUrl(url)).toBe("def456");
 	});
 

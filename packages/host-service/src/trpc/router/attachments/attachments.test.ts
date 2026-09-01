@@ -14,7 +14,7 @@ import {
 let tempBase: string;
 
 beforeEach(() => {
-	tempBase = mkdtempSync(join(tmpdir(), "superset-attachments-test-"));
+	tempBase = mkdtempSync(join(tmpdir(), "choros-attachments-test-"));
 	process.env.HOST_MANIFEST_DIR = tempBase;
 });
 
@@ -212,7 +212,7 @@ describe("getAttachmentsRoot", () => {
 		try {
 			const root = getAttachmentsRoot();
 			expect(root).toBe(
-				join(homedir(), ".superset", "host", "standalone", "attachments"),
+				join(homedir(), ".choros", "host", "standalone", "attachments"),
 			);
 		} finally {
 			if (original === undefined) delete process.env.HOST_MANIFEST_DIR;
@@ -226,7 +226,7 @@ describe("getAttachmentsRoot", () => {
 		try {
 			const root = getAttachmentsRoot();
 			expect(root).toBe(
-				join(homedir(), ".superset", "host", "standalone", "attachments"),
+				join(homedir(), ".choros", "host", "standalone", "attachments"),
 			);
 		} finally {
 			if (original === undefined) delete process.env.HOST_MANIFEST_DIR;

@@ -9,13 +9,13 @@ export const PLATFORM = {
 
 const workspace = getWorkspaceName();
 export const SUPERSET_DIR_NAME = workspace
-	? `.superset-${workspace}`
-	: ".superset";
+	? `.choros-${workspace}`
+	: ".choros";
 export const PROTOCOL_SCHEME = workspace
-	? `superset-${workspace}`
+	? `choros-${workspace}`
 	: PROTOCOL_SCHEMES.PROD;
-// Project-level directory name (always .superset, not conditional)
-export const PROJECT_SUPERSET_DIR_NAME = ".superset";
+// Project-level directory name (always .choros, not conditional)
+export const PROJECT_SUPERSET_DIR_NAME = ".choros";
 export const WORKTREES_DIR_NAME = "worktrees";
 export const PROJECTS_DIR_NAME = "projects";
 export const CONFIG_FILE_NAME = "config.json";

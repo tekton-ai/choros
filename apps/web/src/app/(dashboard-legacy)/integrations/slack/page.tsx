@@ -49,7 +49,7 @@ const CALLBACK_MESSAGES = {
 		withoutParam: i18n._({
 			id: "web.integrations.slack.callback.workspaceLinked",
 			message:
-				"This Slack workspace is already connected by another Superset organization.",
+				"This Slack workspace is already connected by another Choros organization.",
 		}),
 	},
 };

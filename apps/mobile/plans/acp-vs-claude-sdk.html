@@ -593,7 +593,7 @@ await runtime.acpSessions.create({ sessionId, workspaceId })
 { "jsonrpc": "2.0", "id": 1, "method": "initialize",
   "params": {
     "protocolVersion": 1,
-    "clientInfo": { "name": "superset-host", "version": "1" },
+    "clientInfo": { "name": "choros-host", "version": "1" },
     "clientCapabilities": {
       "fs": { "readTextFile": false, "writeTextFile": false },
       "terminal": false,
@@ -1046,7 +1046,7 @@ fold(bufferedEnvelopes)               // live rows on top
       (request, then state snapshot), the answer RPC resolves the parked promise back into the agent. Divergence <b>D3</b> is
       what rides the wire and who constructs the decision.<br><span class="prov">observed in the current real-adapter lane:
       Claude can emit two Bash tool uses in parallel, but claude-agent-acp 0.56.0 exposes their permission callbacks to the
-      client one at a time. Superset supports a true multi-request stack; the deterministic ACP adapter pins that case.</span></p>
+      client one at a time. Choros supports a true multi-request stack; the deterministic ACP adapter pins that case.</span></p>
 
       <div class="hop acp-only diff">
         <div class="ar dirL ac-acp" style="--l:0;--r:3"><span class="no"></span><span class="al"><span>tool_call frame <span class="who">— UI-ready at birth</span></span></span><i class="ln"></i></div>
@@ -2434,9 +2434,9 @@ ToolCallItem { id: "toolu_9", name: "Bash", status: "completed",   // 43–46
       agents either flatten (tasks → checklist), go opaque (workflows), or vanish (subagent prose, goals).</p>
     </div>
     <div class="v-card v-sdk">
-      <h4>What a rich Superset UI would need</h4>
+      <h4>What a rich Choros UI would need</h4>
       <p>Either <b>agent-specific <code>_meta</code> contracts</b> (we already parse <code>claudeCode.parentToolUseId</code>;
-      we'd add <code>codex.goal</code>, and re-do it per agent) or a <b>Superset-owned normalized layer</b> above the adapters —
+      we'd add <code>codex.goal</code>, and re-do it per agent) or a <b>Choros-owned normalized layer</b> above the adapters —
       native SDK/app-server in, one internal schema out. The waterfall above is the inventory of what that layer must preserve.</p>
     </div>
   </div>

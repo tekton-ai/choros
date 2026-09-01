@@ -229,7 +229,7 @@ export type AgentRunResult = {
  * delegates to the underlying agent's own default.
  *
  * Without this the launch builder silently drops an id outside the curated
- * list, so a stale or mistyped model reads as "Superset ignored my choice":
+ * list, so a stale or mistyped model reads as "Choros ignored my choice":
  * the agent starts on its own default with no flag, no warning, and a
  * success exit code.
  */

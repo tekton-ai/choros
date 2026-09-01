@@ -84,7 +84,7 @@ describe("DesignModeController", () => {
 		const controller = new DesignModeController();
 		const { guest, resolveClick } = makeGuest();
 		const resultPromise = controller.awaitSelection("pane-1", "op-1", guest);
-		resolveClick({ __supersetDesignCancelled: true });
+		resolveClick({ __chorosDesignCancelled: true });
 		const result = await resultPromise;
 		expect(result).toEqual({ opId: "op-1", kind: "cancelled", reason: "user" });
 	});
@@ -125,7 +125,7 @@ describe("DesignModeController", () => {
 			reason: "navigation",
 		});
 		// The guest promise is still pending; settle it so nothing leaks.
-		resolveClick({ __supersetDesignCancelled: true });
+		resolveClick({ __chorosDesignCancelled: true });
 	});
 
 	test("a new op replaces the old one without tearing down the overlay", async () => {
@@ -155,7 +155,7 @@ describe("DesignModeController", () => {
 		second.resolveClick(validRawPayload());
 		const secondResult = await secondPromise;
 		expect(secondResult.kind).toBe("selected");
-		first.resolveClick({ __supersetDesignCancelled: true });
+		first.resolveClick({ __chorosDesignCancelled: true });
 	});
 
 	test("guest destruction cancels with reason destroyed", async () => {
@@ -169,6 +169,6 @@ describe("DesignModeController", () => {
 			kind: "cancelled",
 			reason: "destroyed",
 		});
-		resolveClick({ __supersetDesignCancelled: true });
+		resolveClick({ __chorosDesignCancelled: true });
 	});
 });

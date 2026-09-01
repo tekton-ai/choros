@@ -74,7 +74,7 @@ const persister = createAsyncStoragePersister({
 			await del(key);
 		},
 	},
-	key: "superset-rq-cache",
+	key: "choros-rq-cache",
 });
 
 // Whitelist of queryKey prefixes worth persisting — anything else (auth

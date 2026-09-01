@@ -130,7 +130,7 @@ async function servePage(c: Context<AppContext>): Promise<Response> {
 		// so sibling pages never share a renderer process while the PSL entry
 		// propagates.
 		"Origin-Agent-Cluster": "?1",
-		"Superset-Storage-Key": entry.key,
+		"Choros-Storage-Key": entry.key,
 		"Content-Security-Policy": pageContentSecurityPolicy(
 			c.env.FRAME_ANCESTORS.split(/\s+/).filter(Boolean),
 		),
@@ -172,7 +172,7 @@ async function serveThumbnail(c: Context<AppContext>): Promise<Response> {
 	return new Response(object.body, {
 		headers: {
 			"Content-Type": "image/jpeg",
-			"Superset-Storage-Key": key,
+			"Choros-Storage-Key": key,
 			"X-Content-Type-Options": "nosniff",
 			"Cache-Control":
 				remaining === null ? IMMUTABLE : `private, max-age=${remaining}`,
@@ -261,7 +261,7 @@ async function serveFile(c: Context<AppContext>): Promise<Response> {
 		"Content-Disposition": contentDisposition(policy.disposition, filename),
 		"Content-Security-Policy": FILE_CONTENT_SECURITY_POLICY,
 		...(policy.varyOnFetchDest ? { Vary: "Sec-Fetch-Dest" } : {}),
-		"Superset-Storage-Key": key,
+		"Choros-Storage-Key": key,
 		"X-Content-Type-Options": "nosniff",
 		"Referrer-Policy": "no-referrer",
 		"X-Robots-Tag": "noindex, nofollow",
@@ -343,7 +343,7 @@ async function serveAsset(c: Context<AppContext>): Promise<Response> {
 		"Content-Type": isHtml
 			? "text/html; charset=utf-8"
 			: (policy?.contentType ?? asset.contentType),
-		"Superset-Storage-Key": asset.key,
+		"Choros-Storage-Key": asset.key,
 		"X-Content-Type-Options": "nosniff",
 		"Referrer-Policy": "no-referrer",
 		"X-Robots-Tag": "noindex, nofollow",

@@ -1,7 +1,7 @@
 /**
  * Streaming parsers for the agents' own transcript files — the same
  * source ccusage and T3 Code read, so usage is complete even for turns not
- * driven through Superset.
+ * driven through Choros.
  *
  * Correctness rules learned from prior art (see
  * plans/20260815-token-spend-twitter-feedback.md):

@@ -108,13 +108,13 @@ export async function processAssistantMessage({
 		await slack.chat.postMessage({
 			channel: event.channel,
 			thread_ts: event.thread_ts ?? event.ts,
-			text: "The Superset Slack integration requires a Pro plan.",
+			text: "The Choros Slack integration requires a Pro plan.",
 			blocks: [
 				{
 					type: "section",
 					text: {
 						type: "mrkdwn",
-						text: "The Superset Slack integration requires a Pro plan.",
+						text: "The Choros Slack integration requires a Pro plan.",
 					},
 				},
 				{
@@ -123,7 +123,7 @@ export async function processAssistantMessage({
 						{
 							type: "button",
 							text: { type: "plain_text", text: "Upgrade to Pro", emoji: true },
-							url: "https://app.superset.sh/settings/billing",
+							url: "https://app.choros.sh/settings/billing",
 							style: "primary",
 						},
 					],
@@ -151,13 +151,13 @@ export async function processAssistantMessage({
 		await slack.chat.postMessage({
 			channel: event.channel,
 			thread_ts: event.thread_ts ?? event.ts,
-			text: "To use Superset, you need to link your Slack account first.",
+			text: "To use Choros, you need to link your Slack account first.",
 			blocks: [
 				{
 					type: "section",
 					text: {
 						type: "mrkdwn",
-						text: "To use Superset, you need to link your Slack account first.",
+						text: "To use Choros, you need to link your Slack account first.",
 					},
 				},
 				{

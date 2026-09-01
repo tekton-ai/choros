@@ -12,13 +12,13 @@ config({
 
 export default ({ config }: ConfigContext) => ({
 	...config,
-	name: "Superset",
-	slug: "superset",
+	name: "Choros",
+	slug: "choros",
 	version: "1.0.0",
 	orientation: "portrait",
 	icon: "./assets/icon.png",
 	userInterfaceStyle: "dark",
-	scheme: "superset",
+	scheme: "choros",
 	splash: {
 		image: "./assets/splash-icon.png",
 		resizeMode: "contain" as const,
@@ -26,7 +26,7 @@ export default ({ config }: ConfigContext) => ({
 	},
 	ios: {
 		supportsTablet: false,
-		bundleIdentifier: "sh.superset.mobile",
+		bundleIdentifier: "sh.choros.mobile",
 		usesAppleSignIn: true,
 		infoPlist: {
 			ITSAppUsesNonExemptEncryption: false,
@@ -35,7 +35,7 @@ export default ({ config }: ConfigContext) => ({
 			// went with `GlassComposer`. Without it `SFSpeechRecognizer`'s
 			// authorization request terminates the app.
 			NSSpeechRecognitionUsageDescription:
-				"Superset uses speech recognition to turn your voice into text.",
+				"Choros uses speech recognition to turn your voice into text.",
 		},
 	},
 	android: {
@@ -43,7 +43,7 @@ export default ({ config }: ConfigContext) => ({
 			foregroundImage: "./assets/adaptive-icon.png",
 			backgroundColor: "#ffffff",
 		},
-		package: "sh.superset.mobile",
+		package: "sh.choros.mobile",
 		predictiveBackGestureEnabled: false,
 	},
 	web: {
@@ -66,11 +66,11 @@ export default ({ config }: ConfigContext) => ({
 			"expo-image-picker",
 			{
 				photosPermission:
-					"Superset needs access to your photo library so you can attach images to chat messages.",
+					"Choros needs access to your photo library so you can attach images to chat messages.",
 				cameraPermission:
-					"Superset uses the camera so you can attach photos to chat messages.",
+					"Choros uses the camera so you can attach photos to chat messages.",
 				microphonePermission:
-					"Superset uses the microphone so you can dictate chat messages.",
+					"Choros uses the microphone so you can dictate chat messages.",
 			},
 		],
 		"expo-document-picker",

@@ -106,7 +106,7 @@ collections in the task view (live-query from cloud). Options:
 - `apiTrpcClient.tasks.get.query({ id })` if such a procedure exists.
 - Read from the existing `collections.tasks` live-query data (already
   in renderer memory from the task view).
-- Host-service proxies the Superset API.
+- Host-service proxies the Choros API.
 
 Need to inspect the task view's data source to find the right shape.
 The pending row already has `{ id, slug, title }` from the picker;

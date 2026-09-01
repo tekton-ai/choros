@@ -32,7 +32,7 @@ describe("drag-pane-store", () => {
 	});
 
 	describe("isResizing state", () => {
-		// Regression: https://github.com/superset-sh/superset/issues/2035
+		// Regression: https://github.com/superset-sh/choros/issues/2035
 
 		it("starts as false", () => {
 			expect(useDragPaneStore.getState().isResizing).toBe(false);

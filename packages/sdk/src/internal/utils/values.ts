@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { SupersetError } from "../../core/error";
+import { ChorosError } from "../../core/error";
 
 // https://url.spec.whatwg.org/#url-scheme-string
 const startsWithSchemeRegexp = /^[a-z][a-z0-9+.-]*:/i;
@@ -46,7 +46,7 @@ export function isObj(obj: unknown): obj is Record<string, unknown> {
 
 export const ensurePresent = <T>(value: T | null | undefined): T => {
 	if (value == null) {
-		throw new SupersetError(
+		throw new ChorosError(
 			`Expected a value to be given but received ${value} instead.`,
 		);
 	}
@@ -56,10 +56,10 @@ export const ensurePresent = <T>(value: T | null | undefined): T => {
 
 export const validatePositiveInteger = (name: string, n: unknown): number => {
 	if (typeof n !== "number" || !Number.isInteger(n)) {
-		throw new SupersetError(`${name} must be an integer`);
+		throw new ChorosError(`${name} must be an integer`);
 	}
 	if (n < 0) {
-		throw new SupersetError(`${name} must be a positive integer`);
+		throw new ChorosError(`${name} must be a positive integer`);
 	}
 	return n;
 };
@@ -68,7 +68,7 @@ export const coerceInteger = (value: unknown): number => {
 	if (typeof value === "number") return Math.round(value);
 	if (typeof value === "string") return parseInt(value, 10);
 
-	throw new SupersetError(
+	throw new ChorosError(
 		`Could not coerce ${value} (type: ${typeof value}) into a number`,
 	);
 };
@@ -77,7 +77,7 @@ export const coerceFloat = (value: unknown): number => {
 	if (typeof value === "number") return value;
 	if (typeof value === "string") return parseFloat(value);
 
-	throw new SupersetError(
+	throw new ChorosError(
 		`Could not coerce ${value} (type: ${typeof value}) into a number`,
 	);
 };

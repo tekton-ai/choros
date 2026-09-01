@@ -254,7 +254,7 @@ function validateEventBusRepoPath(options: Options): void {
 		);
 	if (!ignoredSegment) return;
 	throw new Error(
-		`--flow event-bus repo path must not live under ${ignoredSegment}; workspace-fs ignores that directory. Use a path like /tmp/superset-git-status-large-repo.`,
+		`--flow event-bus repo path must not live under ${ignoredSegment}; workspace-fs ignores that directory. Use a path like /tmp/choros-git-status-large-repo.`,
 	);
 }
 

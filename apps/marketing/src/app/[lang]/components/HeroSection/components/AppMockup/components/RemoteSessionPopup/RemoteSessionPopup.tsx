@@ -48,7 +48,7 @@ export function RemoteSessionPopup({ activeDemo }: RemoteSessionPopupProps) {
 				</div>
 				<div className="pt-2 text-foreground">
 					<span className="text-muted-foreground/55">❯</span>{" "}
-					<span className="text-brand-light">superset status</span>
+					<span className="text-brand-light">choros status</span>
 				</div>
 				<div className="text-muted-foreground">3 workspaces running</div>
 				<div className="flex items-center gap-2 text-muted-foreground">

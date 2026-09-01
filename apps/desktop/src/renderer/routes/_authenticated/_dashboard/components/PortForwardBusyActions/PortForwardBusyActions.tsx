@@ -12,7 +12,7 @@ const BUTTON_CLASS =
 
 /**
  * A remote port whose local port number is taken. The user picks: stop the
- * local process (only when Superset started it) or forward to another port.
+ * local process (only when Choros started it) or forward to another port.
  * Nothing here runs on its own — a silent remap would break apps that talk to
  * each other by port number.
  */

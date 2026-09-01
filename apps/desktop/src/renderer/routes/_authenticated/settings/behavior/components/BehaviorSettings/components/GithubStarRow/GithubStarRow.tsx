@@ -35,7 +35,7 @@ export function GithubStarRow({ searchQuery }: GithubStarRowProps) {
 					<HighlightText
 						text={t({
 							id: "settings.behavior.githubStar.label",
-							message: "Star Superset on GitHub",
+							message: "Star Choros on GitHub",
 						})}
 						query={searchQuery}
 					/>

@@ -2,8 +2,8 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 import { getLLMText, source } from "@/lib/source";
 
-export const DOCS_BASE_URL = "https://docs.superset.sh";
-export const DOCS_MCP_NAME = "superset-docs";
+export const DOCS_BASE_URL = "https://docs.choros.sh";
+export const DOCS_MCP_NAME = "choros-docs";
 export const DOCS_MCP_VERSION = "1.1.0";
 
 function pageDescription(page: ReturnType<typeof source.getPages>[number]) {
@@ -12,7 +12,7 @@ function pageDescription(page: ReturnType<typeof source.getPages>[number]) {
 
 function buildIndex(): string {
 	return [
-		"# Superset documentation index",
+		"# Choros documentation index",
 		"",
 		...source.getPages().map((page) => {
 			const description = pageDescription(page);
@@ -26,16 +26,16 @@ export function createDocsMcpServer(): McpServer {
 		{ name: DOCS_MCP_NAME, version: DOCS_MCP_VERSION },
 		{
 			instructions:
-				"Read-only access to the Superset documentation (docs.superset.sh). Superset runs parallel AI coding agents in isolated Git worktrees. Call docs_search to find pages by keyword, then docs_read to fetch a page as markdown; every page is also exposed as a resource whose URI is its canonical URL. No authentication required; nothing here mutates state. To act on a Superset account (workspaces, agents, tasks), use the product MCP server at https://api.superset.sh/mcp instead.",
+				"Read-only access to the Choros documentation (docs.choros.sh). Choros runs parallel AI coding agents in isolated Git worktrees. Call docs_search to find pages by keyword, then docs_read to fetch a page as markdown; every page is also exposed as a resource whose URI is its canonical URL. No authentication required; nothing here mutates state. To act on a Choros account (workspaces, agents, tasks), use the product MCP server at https://api.choros.sh/mcp instead.",
 		},
 	);
 
 	server.registerTool(
 		"docs_search",
 		{
-			title: "Search Superset docs",
+			title: "Search Choros docs",
 			description:
-				"Search the Superset documentation by keyword. Returns matching pages with path, title, and description. Use docs_read to fetch a page's full content.",
+				"Search the Choros documentation by keyword. Returns matching pages with path, title, and description. Use docs_read to fetch a page's full content.",
 			annotations: { readOnlyHint: true },
 			inputSchema: {
 				query: z
@@ -82,9 +82,9 @@ export function createDocsMcpServer(): McpServer {
 	server.registerTool(
 		"docs_read",
 		{
-			title: "Read a Superset docs page",
+			title: "Read a Choros docs page",
 			description:
-				"Read one Superset documentation page as markdown. Pass the path from docs_search (e.g. /mcp-server, /cli/getting-started).",
+				"Read one Choros documentation page as markdown. Pass the path from docs_search (e.g. /mcp-server, /cli/getting-started).",
 			annotations: { readOnlyHint: true },
 			inputSchema: {
 				path: z.string().describe("Page path, e.g. /automations"),
@@ -122,7 +122,7 @@ export function createDocsMcpServer(): McpServer {
 		"docs-index",
 		`${DOCS_BASE_URL}/llms.txt`,
 		{
-			title: "Superset documentation index",
+			title: "Choros documentation index",
 			description: "Every documentation page with its title and description.",
 			mimeType: "text/markdown",
 		},

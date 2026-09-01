@@ -40,8 +40,8 @@ export function V2FlipWelcome() {
 
 	return (
 		<FlipNoticeCard
-			title="Welcome to the new Superset"
-			body="Same Superset, upgraded. Everything came with you: projects and workspaces in the sidebar, and fresh terminals in each workspace's old folders."
+			title="Welcome to the new Choros"
+			body="Same Choros, upgraded. Everything came with you: projects and workspaces in the sidebar, and fresh terminals in each workspace's old folders."
 			ctaLabel="Got it"
 			onDismiss={dismiss}
 		/>

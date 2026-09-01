@@ -11,7 +11,7 @@ const PROMPT_COOLDOWN_MS = 90 * 24 * 60 * 60 * 1000;
 const SETTLE_MS = 1500;
 
 /**
- * Asks for an App Store rating only right after Superset did something for
+ * Asks for an App Store rating only right after Choros did something for
  * the user: they merged a pull request from their phone (qualifies at once)
  * or opened a session an agent finished for them (qualifies on the third
  * distinct one). The only UI is Apple's own sheet, which may decline to show,

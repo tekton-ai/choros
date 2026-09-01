@@ -34,7 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
 		openGraph: {
 			title: i18n._({
 				id: "marketing.meta.joinUs.ogTitle",
-				message: "Join us at Superset",
+				message: "Join us at Choros",
 			}),
 			description,
 			url: localeUrl(lang, "/join-us"),
@@ -44,7 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
 			card: "summary_large_image",
 			title: i18n._({
 				id: "marketing.meta.joinUs.ogTitle",
-				message: "Join us at Superset",
+				message: "Join us at Choros",
 			}),
 			description,
 			images: ["/opengraph-image"],
@@ -68,7 +68,7 @@ export default async function JoinUsPage() {
 					<div>
 						<p className="text-xl md:text-2xl text-foreground leading-snug m-0">
 							<Trans id="marketing.joinUs.lede">
-								Superset is building self-improving software. It starts with
+								Choros is building self-improving software. It starts with
 								giving engineers the best tools that adapt to their needs over
 								time.
 							</Trans>
@@ -80,18 +80,18 @@ export default async function JoinUsPage() {
 						>
 							<p>
 								<Trans id="marketing.joinUs.bodyScale">
-									Today, tens of thousands of engineers run Superset as their
+									Today, tens of thousands of engineers run Choros as their
 									primary IDE, at companies like Wix, DoorDash, and Netflix.
 									Soon, teams will run 100s of agents in parallel - software
 									factories that autonomously manufacture and ship code. We're
-									making Superset the place where teams run and manage those
+									making Choros the place where teams run and manage those
 									factories, starting with our own.
 								</Trans>
 							</p>
 
 							<p>
 								<Trans id="marketing.joinUs.bodyTeam">
-									Superset is built in Superset, so we're our own #1 users - you
+									Choros is built in Choros, so we're our own #1 users - you
 									get paid to make your own life easier. We're building a flat
 									and talent-dense team, and we're looking for people who have
 									crazy ideas and are crazy enough to ship them. If you've ever
@@ -136,10 +136,10 @@ export default async function JoinUsPage() {
 						{`// the embed renders hCaptcha without a theme option, so force dark by patching render() as the hcaptcha script assigns its global
 						{
 							const darken = (h) => {
-								if (!h?.render || h.__supersetDark) return h;
+								if (!h?.render || h.__chorosDark) return h;
 								const orig = h.render.bind(h);
 								h.render = (el, cfg) => orig(el, { theme: "dark", ...cfg });
-								h.__supersetDark = true;
+								h.__chorosDark = true;
 								return h;
 							};
 							let hc = darken(window.hcaptcha);
@@ -152,9 +152,9 @@ export default async function JoinUsPage() {
 						customElements.whenDefined("waas-job-board").then(() => {
 							// !important: Lit's adoptedStyleSheets are ordered after tree styles, so plain rules lose
 							const inject = (root, css) => {
-								if (!root || root.getElementById("superset-overrides")) return;
+								if (!root || root.getElementById("choros-overrides")) return;
 								const style = document.createElement("style");
-								style.id = "superset-overrides";
+								style.id = "choros-overrides";
 								style.textContent = css;
 								root.append(style);
 							};
@@ -196,9 +196,9 @@ export default async function JoinUsPage() {
 							}
 						});`}
 					</Script>
-					<waas-job-board company="superset" />
+					<waas-job-board company="choros" />
 					<noscript>
-						<a href="https://www.ycombinator.com/companies/superset/jobs">
+						<a href="https://www.ycombinator.com/companies/choros/jobs">
 							<Trans id="marketing.joinUs.noscriptLink">
 								View open roles on Y Combinator
 							</Trans>

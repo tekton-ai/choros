@@ -5,7 +5,7 @@ import { join } from "node:path";
 import { PROJECTS_DIR_NAME, SUPERSET_DIR_NAME } from "shared/constants";
 import { loadSetupConfig, mergeConfigs } from "./setup";
 
-const TEST_DIR = join(tmpdir(), `superset-test-setup-${process.pid}`);
+const TEST_DIR = join(tmpdir(), `choros-test-setup-${process.pid}`);
 const MAIN_REPO = join(TEST_DIR, "main-repo");
 const WORKTREE = join(TEST_DIR, "worktree");
 const PROJECT_ID = "test-project-id";
@@ -18,7 +18,7 @@ const USER_CONFIG_DIR = join(
 
 describe("loadSetupConfig", () => {
 	beforeEach(() => {
-		mkdirSync(join(MAIN_REPO, ".superset"), { recursive: true });
+		mkdirSync(join(MAIN_REPO, ".choros"), { recursive: true });
 	});
 
 	afterEach(() => {
@@ -43,7 +43,7 @@ describe("loadSetupConfig", () => {
 		};
 
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify(setupConfig),
 		);
 
@@ -53,7 +53,7 @@ describe("loadSetupConfig", () => {
 
 	test("returns null for invalid JSON", () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			"{ invalid json",
 		);
 
@@ -63,7 +63,7 @@ describe("loadSetupConfig", () => {
 
 	test("validates setup field must be an array", () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({ setup: "not-an-array" }),
 		);
 
@@ -76,13 +76,13 @@ describe("loadSetupConfig", () => {
 		const worktreeConfig = { setup: ["scripts/setup-worktree.sh"] };
 
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify(mainConfig),
 		);
 
-		mkdirSync(join(WORKTREE, ".superset"), { recursive: true });
+		mkdirSync(join(WORKTREE, ".choros"), { recursive: true });
 		writeFileSync(
-			join(WORKTREE, ".superset", "config.json"),
+			join(WORKTREE, ".choros", "config.json"),
 			JSON.stringify(worktreeConfig),
 		);
 
@@ -95,16 +95,16 @@ describe("loadSetupConfig", () => {
 
 	test("worktree config inherits missing keys from main repo config", () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({
 				setup: ["./.superset/setup.sh"],
 				run: ["bun dev"],
 			}),
 		);
 
-		mkdirSync(join(WORKTREE, ".superset"), { recursive: true });
+		mkdirSync(join(WORKTREE, ".choros"), { recursive: true });
 		writeFileSync(
-			join(WORKTREE, ".superset", "config.json"),
+			join(WORKTREE, ".choros", "config.json"),
 			JSON.stringify({
 				setup: ["scripts/setup-worktree.sh"],
 			}),
@@ -124,7 +124,7 @@ describe("loadSetupConfig", () => {
 		const mainConfig = { setup: ["npm install"] };
 
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify(mainConfig),
 		);
 
@@ -142,7 +142,7 @@ describe("loadSetupConfig", () => {
 		const userConfig = { setup: ["custom-setup.sh"] };
 
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify(mainConfig),
 		);
 
@@ -161,7 +161,7 @@ describe("loadSetupConfig", () => {
 
 	test("user override inherits missing keys from lower-priority config", () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({
 				setup: ["npm install"],
 				run: ["bun dev"],
@@ -190,9 +190,9 @@ describe("loadSetupConfig", () => {
 		const worktreeConfig = { setup: ["worktree-setup.sh"] };
 		const userConfig = { setup: ["user-override-setup.sh"] };
 
-		mkdirSync(join(WORKTREE, ".superset"), { recursive: true });
+		mkdirSync(join(WORKTREE, ".choros"), { recursive: true });
 		writeFileSync(
-			join(WORKTREE, ".superset", "config.json"),
+			join(WORKTREE, ".choros", "config.json"),
 			JSON.stringify(worktreeConfig),
 		);
 
@@ -214,7 +214,7 @@ describe("loadSetupConfig", () => {
 		const mainConfig = { setup: ["npm install"] };
 
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify(mainConfig),
 		);
 
@@ -229,7 +229,7 @@ describe("loadSetupConfig", () => {
 		const mainConfig = { setup: ["npm install"] };
 
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify(mainConfig),
 		);
 
@@ -244,7 +244,7 @@ describe("loadSetupConfig", () => {
 		const userConfig = { setup: [], teardown: [] };
 
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify(mainConfig),
 		);
 
@@ -266,7 +266,7 @@ describe("loadSetupConfig", () => {
 		const mainConfig = { setup: ["npm install"] };
 
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify(mainConfig),
 		);
 
@@ -283,7 +283,7 @@ describe("loadSetupConfig", () => {
 
 describe("config.local.json", () => {
 	beforeEach(() => {
-		mkdirSync(join(MAIN_REPO, ".superset"), { recursive: true });
+		mkdirSync(join(MAIN_REPO, ".choros"), { recursive: true });
 	});
 
 	afterEach(() => {
@@ -297,14 +297,14 @@ describe("config.local.json", () => {
 
 	test("local config with before/after merges with base setup", () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({
 				setup: ["team-setup.sh"],
 				teardown: ["team-teardown.sh"],
 			}),
 		);
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.local.json"),
+			join(MAIN_REPO, ".choros", "config.local.json"),
 			JSON.stringify({
 				setup: { before: ["pre.sh"], after: ["post.sh"] },
 			}),
@@ -319,11 +319,11 @@ describe("config.local.json", () => {
 
 	test("local config with array overrides base setup entirely", () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({ setup: ["team-setup.sh"] }),
 		);
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.local.json"),
+			join(MAIN_REPO, ".choros", "config.local.json"),
 			JSON.stringify({ setup: ["my-setup.sh"] }),
 		);
 
@@ -333,14 +333,14 @@ describe("config.local.json", () => {
 
 	test("local config only affects specified keys (passthrough)", () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({
 				setup: ["team-setup.sh"],
 				teardown: ["team-teardown.sh"],
 			}),
 		);
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.local.json"),
+			join(MAIN_REPO, ".choros", "config.local.json"),
 			JSON.stringify({ setup: { after: ["extra.sh"] } }),
 		);
 
@@ -353,11 +353,11 @@ describe("config.local.json", () => {
 
 	test("local config with only before prepends", () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({ setup: ["team-setup.sh"] }),
 		);
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.local.json"),
+			join(MAIN_REPO, ".choros", "config.local.json"),
 			JSON.stringify({ setup: { before: ["my-pre.sh"] } }),
 		);
 
@@ -367,11 +367,11 @@ describe("config.local.json", () => {
 
 	test("local config with only after appends", () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({ setup: ["team-setup.sh"] }),
 		);
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.local.json"),
+			join(MAIN_REPO, ".choros", "config.local.json"),
 			JSON.stringify({ setup: { after: ["my-post.sh"] } }),
 		);
 
@@ -381,14 +381,14 @@ describe("config.local.json", () => {
 
 	test("local config can mix override and merge across keys", () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({
 				setup: ["team-setup.sh"],
 				teardown: ["team-teardown.sh"],
 			}),
 		);
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.local.json"),
+			join(MAIN_REPO, ".choros", "config.local.json"),
 			JSON.stringify({
 				setup: { after: ["extra.sh"] },
 				teardown: ["my-teardown.sh"],
@@ -404,17 +404,17 @@ describe("config.local.json", () => {
 
 	test("worktree local config takes priority over main repo local config", () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({ setup: ["team-setup.sh"] }),
 		);
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.local.json"),
+			join(MAIN_REPO, ".choros", "config.local.json"),
 			JSON.stringify({ setup: { after: ["main-extra.sh"] } }),
 		);
 
-		mkdirSync(join(WORKTREE, ".superset"), { recursive: true });
+		mkdirSync(join(WORKTREE, ".choros"), { recursive: true });
 		writeFileSync(
-			join(WORKTREE, ".superset", "config.local.json"),
+			join(WORKTREE, ".choros", "config.local.json"),
 			JSON.stringify({ setup: { after: ["worktree-extra.sh"] } }),
 		);
 
@@ -429,15 +429,15 @@ describe("config.local.json", () => {
 
 	test("falls back to main repo local config when worktree has none", () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({ setup: ["team-setup.sh"] }),
 		);
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.local.json"),
+			join(MAIN_REPO, ".choros", "config.local.json"),
 			JSON.stringify({ setup: { after: ["main-extra.sh"] } }),
 		);
 
-		mkdirSync(join(WORKTREE, ".superset"), { recursive: true });
+		mkdirSync(join(WORKTREE, ".choros"), { recursive: true });
 		// No config.local.json in worktree
 
 		const config = loadSetupConfig({
@@ -451,11 +451,11 @@ describe("config.local.json", () => {
 
 	test("invalid local config is ignored (base config used as-is)", () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({ setup: ["team-setup.sh"] }),
 		);
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.local.json"),
+			join(MAIN_REPO, ".choros", "config.local.json"),
 			"{ invalid json",
 		);
 
@@ -465,11 +465,11 @@ describe("config.local.json", () => {
 
 	test("local config with invalid before field is ignored", () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({ setup: ["team-setup.sh"] }),
 		);
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.local.json"),
+			join(MAIN_REPO, ".choros", "config.local.json"),
 			JSON.stringify({ setup: { before: "not-an-array" } }),
 		);
 
@@ -479,11 +479,11 @@ describe("config.local.json", () => {
 
 	test("local config with falsy non-array before/after is rejected", () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({ setup: ["team-setup.sh"] }),
 		);
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.local.json"),
+			join(MAIN_REPO, ".choros", "config.local.json"),
 			JSON.stringify({ setup: { before: false } }),
 		);
 
@@ -493,7 +493,7 @@ describe("config.local.json", () => {
 
 	test("no local config means base config is returned unchanged", () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({ setup: ["team-setup.sh"] }),
 		);
 
@@ -503,11 +503,11 @@ describe("config.local.json", () => {
 
 	test("local config merges with base that has no setup key", () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({ teardown: ["team-teardown.sh"] }),
 		);
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.local.json"),
+			join(MAIN_REPO, ".choros", "config.local.json"),
 			JSON.stringify({ setup: { before: ["my-setup.sh"] } }),
 		);
 
@@ -520,11 +520,11 @@ describe("config.local.json", () => {
 
 	test("empty local config object does not alter base", () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({ setup: ["team-setup.sh"] }),
 		);
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.local.json"),
+			join(MAIN_REPO, ".choros", "config.local.json"),
 			JSON.stringify({}),
 		);
 
@@ -613,7 +613,7 @@ describe("mergeConfigs", () => {
 
 describe("run config", () => {
 	beforeEach(() => {
-		mkdirSync(join(MAIN_REPO, ".superset"), { recursive: true });
+		mkdirSync(join(MAIN_REPO, ".choros"), { recursive: true });
 	});
 
 	afterEach(() => {
@@ -624,7 +624,7 @@ describe("run config", () => {
 
 	test("loads run commands from config", () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({
 				setup: ["bun install"],
 				run: ["bun run dev"],
@@ -637,7 +637,7 @@ describe("run config", () => {
 
 	test("returns config without run when run is not set", () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({ setup: ["bun install"] }),
 		);
 
@@ -647,7 +647,7 @@ describe("run config", () => {
 
 	test("validates run field must be an array", () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({ run: "not-an-array" }),
 		);
 
@@ -657,7 +657,7 @@ describe("run config", () => {
 
 	test("validates cwd field must be non-empty", () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({ cwd: "   ", run: ["bun dev"] }),
 		);
 
@@ -667,7 +667,7 @@ describe("run config", () => {
 
 	test("normalizes configured cwd", () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({ cwd: " packages/web ", run: ["bun dev"] }),
 		);
 
@@ -677,11 +677,11 @@ describe("run config", () => {
 
 	test("local config can override run commands", () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({ run: ["npm run dev"] }),
 		);
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.local.json"),
+			join(MAIN_REPO, ".choros", "config.local.json"),
 			JSON.stringify({ run: ["bun run dev"] }),
 		);
 
@@ -691,11 +691,11 @@ describe("run config", () => {
 
 	test("local config can merge run commands with before/after", () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({ run: ["npm run dev"] }),
 		);
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.local.json"),
+			join(MAIN_REPO, ".choros", "config.local.json"),
 			JSON.stringify({ run: { before: ["export DEBUG=1"] } }),
 		);
 

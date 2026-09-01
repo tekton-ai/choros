@@ -54,7 +54,7 @@ export function RemoteWorkspacesDemo() {
 					transition={{ duration: 0.3, delay: 0.4 }}
 				>
 					<span className="text-muted-foreground/55">❯</span>{" "}
-					<span className="text-brand-light">superset status</span>
+					<span className="text-brand-light">choros status</span>
 				</m.div>
 				<m.div
 					className="text-muted-foreground"

@@ -1,4 +1,4 @@
-import { SupersetError } from "../core/error";
+import { ChorosError } from "../core/error";
 import { APIResource } from "../core/resource";
 
 /**
@@ -82,8 +82,8 @@ export class Terminals extends APIResource {
 
 	private _requireOrgId(): string {
 		if (!this._client.organizationId) {
-			throw new SupersetError(
-				"organizationId is required. Set SUPERSET_ORGANIZATION_ID, or pass `organizationId` to the Superset constructor.",
+			throw new ChorosError(
+				"organizationId is required. Set SUPERSET_ORGANIZATION_ID, or pass `organizationId` to the Choros constructor.",
 			);
 		}
 		return this._client.organizationId;

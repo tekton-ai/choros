@@ -43,7 +43,7 @@ export default async function McpPage() {
 					</span>
 					<h1 className="text-3xl md:text-4xl font-medium tracking-tight text-foreground mt-4">
 						<Trans id="marketing.mcpInstall.hero.title">
-							Install Superset MCP in your client
+							Install Choros MCP in your client
 						</Trans>
 					</h1>
 					<p className="text-muted-foreground mt-3 max-w-lg">

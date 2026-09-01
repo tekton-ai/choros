@@ -1,4 +1,4 @@
-export const RUNTIME_SCRIPT_PATH = "/_superset/runtime.js";
+export const RUNTIME_SCRIPT_PATH = "/_choros/runtime.js";
 
 /**
  * The origin's one edit to a published document: a same-origin script tag

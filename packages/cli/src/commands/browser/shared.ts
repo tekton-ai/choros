@@ -9,7 +9,7 @@ import {
 
 /**
  * Resolve a host-service client (and its WS endpoint) for a workspace's host.
- * Shared by every `superset browser` leaf.
+ * Shared by every `choros browser` leaf.
  */
 export async function resolveBrowserTarget(
 	ctx: CliContext,
@@ -17,7 +17,7 @@ export async function resolveBrowserTarget(
 ): Promise<{ client: HostServiceClient; hostId: string; ws: HostWsEndpoint }> {
 	const organizationId = ctx.config.organizationId;
 	if (!organizationId) {
-		throw new CLIError("No active organization", "Run: superset auth login");
+		throw new CLIError("No active organization", "Run: choros auth login");
 	}
 	const hostId = options.host ?? getHostId();
 	const target = await resolveHostTarget({

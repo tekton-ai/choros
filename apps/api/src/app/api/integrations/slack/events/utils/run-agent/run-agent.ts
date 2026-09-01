@@ -6,7 +6,7 @@ import { DEFAULT_SLACK_MODEL } from "../../../constants";
 import type { AgentAction } from "../slack-blocks";
 import type { SlackImageAsset } from "../slack-image-assets";
 import {
-	createSupersetMcpClient,
+	createChorosMcpClient,
 	mcpToolToAnthropicTool,
 	parseToolName,
 } from "./mcp-clients";
@@ -387,11 +387,11 @@ async function handleGetChannelHistory({
 	return JSON.stringify({ messages });
 }
 
-const SYSTEM_PROMPT = `You are a helpful assistant in Slack for Superset, a platform for managing tasks and running coding agents in workspaces.
+const SYSTEM_PROMPT = `You are a helpful assistant in Slack for Choros, a platform for managing tasks and running coding agents in workspaces.
 
 You can:
-- Create, update, search, and manage tasks using superset_* tools
-- Spawn workspaces and launch coding agents to do the work using superset_* tools
+- Create, update, search, and manage tasks using choros_* tools
+- Spawn workspaces and launch coding agents to do the work using choros_* tools
 - Read recent channel messages using slack_get_channel_history
 - Search the web for current information using web_search
 - Help users understand conversations and create actionable items from discussions
@@ -508,39 +508,39 @@ export async function runSlackAgent(
 	const anthropic = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
 	const actions: AgentAction[] = [];
 
-	let supersetMcp: Client | null = null;
-	let cleanupSuperset: (() => Promise<void>) | null = null;
+	let chorosMcp: Client | null = null;
+	let cleanupChoros: (() => Promise<void>) | null = null;
 
 	try {
-		const [threadContext, supersetMcpResult] = await Promise.all([
+		const [threadContext, chorosMcpResult] = await Promise.all([
 			fetchThreadContext({
 				token: params.slackToken,
 				channelId: params.channelId,
 				threadTs: params.threadTs,
 			}),
-			createSupersetMcpClient({
+			createChorosMcpClient({
 				organizationId: params.organizationId,
 				userId: params.userId,
 			}),
 		]);
 
-		supersetMcp = supersetMcpResult.client;
-		cleanupSuperset = supersetMcpResult.cleanup;
+		chorosMcp = chorosMcpResult.client;
+		cleanupChoros = chorosMcpResult.cleanup;
 
-		const [supersetToolsResult, agentContext] = await Promise.all([
-			supersetMcp.listTools(),
+		const [chorosToolsResult, agentContext] = await Promise.all([
+			chorosMcp.listTools(),
 			fetchAgentContext({
-				mcpClient: supersetMcp,
+				mcpClient: chorosMcp,
 				userId: params.userId,
 			}),
 		]);
 
-		const supersetTools = supersetToolsResult.tools
+		const chorosTools = chorosToolsResult.tools
 			.filter((t) => !DENIED_SUPERSET_TOOLS.has(t.name))
-			.map((t) => mcpToolToAnthropicTool(t, "superset"));
+			.map((t) => mcpToolToAnthropicTool(t, "choros"));
 
 		const tools: Anthropic.Messages.ToolUnion[] = [
-			...supersetTools,
+			...chorosTools,
 			SLACK_GET_CHANNEL_HISTORY_TOOL,
 			{
 				type: "web_search_20250305" as const,
@@ -640,7 +640,7 @@ ${agentContext}`;
 					} else {
 						const { prefix, toolName } = parseToolName(toolUse.name);
 
-						if (prefix !== "superset" || !supersetMcp) {
+						if (prefix !== "choros" || !chorosMcp) {
 							toolResults.push({
 								type: "tool_result",
 								tool_use_id: toolUse.id,
@@ -652,7 +652,7 @@ ${agentContext}`;
 							continue;
 						}
 
-						const result = await supersetMcp.callTool({
+						const result = await chorosMcp.callTool({
 							name: toolName,
 							arguments: toolUse.input as Record<string, unknown>,
 						});
@@ -717,9 +717,9 @@ ${agentContext}`;
 			actions,
 		};
 	} finally {
-		if (cleanupSuperset) {
+		if (cleanupChoros) {
 			try {
-				await cleanupSuperset();
+				await cleanupChoros();
 			} catch {}
 		}
 	}

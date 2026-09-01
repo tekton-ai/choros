@@ -58,13 +58,13 @@ export async function resolveHostTarget(
 		if (!manifest) {
 			throw new CLIError(
 				"Host service for this machine isn't running",
-				"Run: superset start",
+				"Run: choros start",
 			);
 		}
 		if (!isProcessAlive(manifest.pid)) {
 			throw new CLIError(
 				"Host service manifest is stale (recorded PID is dead)",
-				"Run: superset start",
+				"Run: choros start",
 			);
 		}
 		return {
@@ -77,7 +77,7 @@ export async function resolveHostTarget(
 						transformer: SuperJSON,
 						headers: {
 							Authorization: `Bearer ${manifest.authToken}`,
-							"x-superset-client-machine-id": localHostId,
+							"x-choros-client-machine-id": localHostId,
 						},
 					}),
 				],
@@ -101,7 +101,7 @@ export async function resolveHostTarget(
 					transformer: SuperJSON,
 					headers: {
 						Authorization: `Bearer ${options.userJwt}`,
-						"x-superset-client-machine-id": localHostId,
+						"x-choros-client-machine-id": localHostId,
 					},
 				}),
 			],

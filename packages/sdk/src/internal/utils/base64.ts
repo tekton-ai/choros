@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { SupersetError } from "../../core/error";
+import { ChorosError } from "../../core/error";
 import { encodeUTF8 } from "./bytes";
 
 export const toBase64 = (
@@ -20,7 +20,7 @@ export const toBase64 = (
 		return btoa(String.fromCharCode.apply(null, data as any));
 	}
 
-	throw new SupersetError(
+	throw new ChorosError(
 		"Cannot generate base64 string; Expected `Buffer` or `btoa` to be defined",
 	);
 };
@@ -40,7 +40,7 @@ export const fromBase64 = (str: string): Uint8Array => {
 		return buf;
 	}
 
-	throw new SupersetError(
+	throw new ChorosError(
 		"Cannot decode base64 string; Expected `Buffer` or `atob` to be defined",
 	);
 };

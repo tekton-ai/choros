@@ -39,7 +39,7 @@ export function __setAccountShellForTesting(
 }
 
 /**
- * Resolve the shell Superset should launch for user terminals.
+ * Resolve the shell Choros should launch for user terminals.
  *
  * Desktop-launched helper processes can inherit a generic SHELL such as
  * /bin/bash even when the user's configured login shell is fish. Prefer the

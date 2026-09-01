@@ -159,7 +159,7 @@ export function DashboardSidebarHeader({
 	const isPagesOpen = !!matchRoute({ to: "/pages", fuzzy: true });
 	// `?? false`: the hook returns undefined until PostHog flags resolve.
 	// Dev builds bypass the flag — the local dev account isn't in the
-	// @superset.sh release condition.
+	// @choros.sh release condition.
 	const isPluginsEnabled =
 		(useFeatureFlagEnabled(FEATURE_FLAGS.PLUGINS) ?? false) ||
 		env.NODE_ENV === "development";

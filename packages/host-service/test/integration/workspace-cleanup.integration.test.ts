@@ -182,7 +182,7 @@ describe("workspaceCleanup.destroy integration", () => {
 			SHELL: "/bin/bash",
 		});
 
-		const scriptDir = join(scenario.worktreePath, ".superset");
+		const scriptDir = join(scenario.worktreePath, ".choros");
 		mkdirSync(scriptDir, { recursive: true });
 		writeFileSync(
 			join(scriptDir, "teardown.sh"),
@@ -374,7 +374,7 @@ describe("workspaceCleanup.destroy integration", () => {
 	});
 
 	test("missing project repo: worktree inside the managed root is deleted directly", async () => {
-		// The project repo was moved or deleted outside Superset. There is no
+		// The project repo was moved or deleted outside Choros. There is no
 		// repository to run `git worktree remove` in, so the saga must delete
 		// the (dangling) worktree folder itself and still complete — every
 		// retry used to 500 on "Failed to open project repo" (HOST-SERVICE-3A).

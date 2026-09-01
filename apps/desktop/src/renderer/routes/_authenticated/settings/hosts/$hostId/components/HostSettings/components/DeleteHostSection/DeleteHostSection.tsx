@@ -108,7 +108,7 @@ export function DeleteHostSection({
 						className="mt-0.5 text-xs text-muted-foreground"
 					>
 						<Trans id="settings.hosts.deleteHost.localHint">
-							Stop Superset here to delete from another device.
+							Stop Choros here to delete from another device.
 						</Trans>
 					</p>
 				) : null}

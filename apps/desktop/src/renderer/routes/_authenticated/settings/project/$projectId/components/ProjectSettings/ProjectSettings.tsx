@@ -500,7 +500,7 @@ export function ProjectSettings({
 														{importableExternalWorktrees.length === 1
 															? ""
 															: "s"}{" "}
-														into Superset as workspaces. Each worktree on disk
+														into Choros as workspaces. Each worktree on disk
 														will be tracked and appear in your sidebar. No files
 														will be modified.
 													</AlertDialogDescription>

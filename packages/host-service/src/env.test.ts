@@ -12,12 +12,12 @@ const originalEnv = {
 };
 
 process.env.AUTH_TOKEN = "access-token";
-process.env.HOST_DB_PATH = "/tmp/superset-host.db";
-process.env.HOST_MIGRATIONS_FOLDER = "/tmp/superset-migrations";
+process.env.HOST_DB_PATH = "/tmp/choros-host.db";
+process.env.HOST_MIGRATIONS_FOLDER = "/tmp/choros-migrations";
 process.env.HOST_SERVICE_SECRET = "host-secret";
 process.env.ORGANIZATION_ID = "00000000-0000-4000-8000-000000000001";
 process.env.PORT = "4879";
-process.env.SUPERSET_API_URL = "https://api.superset.test";
+process.env.SUPERSET_API_URL = "https://api.choros.test";
 delete process.env.SUPERSET_AUTH_CONFIG_PATH;
 
 const { env } = await import("./env");

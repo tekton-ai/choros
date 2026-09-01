@@ -4,7 +4,7 @@ import { useAccessibleV2Workspaces } from "renderer/routes/_authenticated/_dashb
 import { useDashboardSidebarState } from "renderer/routes/_authenticated/hooks/useDashboardSidebarState";
 import { useCollections } from "renderer/routes/_authenticated/providers/CollectionsProvider";
 
-const SEED_FLAG_KEY = "superset:dev:v2-sidebar-seeded";
+const SEED_FLAG_KEY = "choros:dev:v2-sidebar-seeded";
 
 /**
  * Auto-pins accessible v2 workspaces in dev so a fresh worktree's sidebar

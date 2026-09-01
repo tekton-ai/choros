@@ -10,7 +10,7 @@ export function Footer() {
 				<p className="text-sm text-muted-foreground">
 					{i18n._({
 						id: "web.footer.copyright",
-						message: "© {year} Superset",
+						message: "© {year} Choros",
 						values: { year: currentYear },
 					})}
 				</p>

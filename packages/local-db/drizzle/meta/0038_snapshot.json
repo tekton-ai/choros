@@ -1339,8 +1339,8 @@
           "notNull": false,
           "autoincrement": false
         },
-        "created_by_superset": {
-          "name": "created_by_superset",
+        "created_by_choros": {
+          "name": "created_by_choros",
           "type": "integer",
           "primaryKey": false,
           "notNull": true,

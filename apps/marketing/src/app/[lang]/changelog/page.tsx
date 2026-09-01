@@ -18,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
 	});
 	const description = i18n._({
 		id: "marketing.meta.changelog.description",
-		message: "The latest updates, improvements, and new features in Superset.",
+		message: "The latest updates, improvements, and new features in Choros.",
 	});
 	return {
 		title,
@@ -31,14 +31,14 @@ export async function generateMetadata(): Promise<Metadata> {
 			languages: localizedAlternates(lang, "/changelog").languages,
 		},
 		openGraph: {
-			title: `${title} | Superset`,
+			title: `${title} | Choros`,
 			description: description,
 			url: localeUrl(lang, "/changelog"),
 			images: ["/opengraph-image"],
 		},
 		twitter: {
 			card: "summary_large_image",
-			title: `${title} | Superset`,
+			title: `${title} | Choros`,
 			description: description,
 			images: ["/opengraph-image"],
 		},
@@ -76,10 +76,10 @@ export default async function ChangelogPage() {
 					</h1>
 					<p className="text-muted-foreground mt-3 max-w-lg">
 						<Trans id="marketing.changelog.subtitle">
-							The latest updates, improvements, and new features in Superset.
+							The latest updates, improvements, and new features in Choros.
 							Updated weekly. For detailed release notes, see{" "}
 							<a
-								href="https://github.com/superset-sh/superset/releases"
+								href="https://github.com/superset-sh/choros/releases"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="inline-flex items-center gap-1 hover:text-foreground transition-colors"

@@ -70,7 +70,7 @@ Teams that run this at scale add two more layers: [orchestration](/agent-orchest
 
 ## How many agents is realistic?
 
-You do not need dozens of agents for the workflow to pay off; at three concurrent tasks, isolation and a decent dashboard already earn their keep. Past a few dozen, new things break: machine resources, review bandwidth, and task decomposition itself become the constraints. We wrote up what changes at the high end in [The Roadmap to 100 Agents](/blog/roadmap-to-100-agents), based on running Superset's own development this way.
+You do not need dozens of agents for the workflow to pay off; at three concurrent tasks, isolation and a decent dashboard already earn their keep. Past a few dozen, new things break: machine resources, review bandwidth, and task decomposition itself become the constraints. We wrote up what changes at the high end in [The Roadmap to 100 Agents](/blog/roadmap-to-100-agents), based on running Choros's own development this way.
 
 The honest answer for most teams: the ceiling that matters is not how many agents your tooling can run, it is how many independent, well-scoped tasks you can produce and review.
 
@@ -80,15 +80,15 @@ Three kinds of tools support parallel coding agents today, and they compose rath
 
 **The agents themselves.** Claude Code, Codex, OpenCode, Gemini CLI, Copilot CLI, and friends. They do the coding. Most are single-session by design; parallelism is something you build around them.
 
-**Editors with parallel modes.** [Cursor](/compare/superset-vs-cursor) runs multiple agents in local worktrees, and [Zed's Parallel Agents](/compare/superset-vs-zed) manages agent threads in a sidebar with optional worktree isolation. Strong choices when you want parallelism inside the editor you already type in.
+**Editors with parallel modes.** [Cursor](/compare/choros-vs-cursor) runs multiple agents in local worktrees, and [Zed's Parallel Agents](/compare/choros-vs-zed) manages agent threads in a sidebar with optional worktree isolation. Strong choices when you want parallelism inside the editor you already type in.
 
-**Dedicated orchestration workspaces.** Tools built around the fleet rather than the file: [Superset](/), [Conductor](/compare/superset-vs-conductor), [Parallel Code](/compare/superset-vs-parallel-code), and [others](/compare). Worktree-per-task by default, every session visible in one place, diffs reviewed centrally. Reach for this layer once you are running parallel agents most days, not once a month.
+**Dedicated orchestration workspaces.** Tools built around the fleet rather than the file: [Choros](/), [Conductor](/compare/choros-vs-conductor), [Parallel Code](/compare/choros-vs-parallel-code), and [others](/compare). Worktree-per-task by default, every session visible in one place, diffs reviewed centrally. Reach for this layer once you are running parallel agents most days, not once a month.
 
 For a full comparison across all three layers, see [Best AI Coding Tools and Agents](/compare/best-ai-coding-agents-2026).
 
-## Where Superset fits
+## Where Choros fits
 
-Superset is a workspace built specifically for this workflow: every task gets an isolated worktree with a persistent terminal, any CLI agent works, and monitoring, diff review, port handling, automations, and an MCP server for programmatic control sit on top. If the problems in this guide are the ones you are hitting, that is exactly what it exists for. [Download it](/download) or read [how it compares](/compare) to everything else in the space.
+Choros is a workspace built specifically for this workflow: every task gets an isolated worktree with a persistent terminal, any CLI agent works, and monitoring, diff review, port handling, automations, and an MCP server for programmatic control sit on top. If the problems in this guide are the ones you are hitting, that is exactly what it exists for. [Download it](/download) or read [how it compares](/compare) to everything else in the space.
 
 ## Frequently Asked Questions
 
@@ -98,7 +98,7 @@ Running more than one AI coding agent at the same time, each on its own task, ty
 
 ### Do I need special tooling to run agents in parallel?
 
-Not to start. Two terminal tabs and two Git worktrees are enough to try it. Tooling becomes worth it when you hit the predictable problems: losing track of sessions, reviewing many diffs, sessions dying on sleep, and worktree cleanup. That is the point of orchestration workspaces like Superset.
+Not to start. Two terminal tabs and two Git worktrees are enough to try it. Tooling becomes worth it when you hit the predictable problems: losing track of sessions, reviewing many diffs, sessions dying on sleep, and worktree cleanup. That is the point of orchestration workspaces like Choros.
 
 ### How do parallel agents avoid conflicts?
 
@@ -106,7 +106,7 @@ Isolation. Each agent works in its own Git worktree on its own branch, so edits 
 
 ### How many coding agents can I run at once?
 
-Tooling-wise, dozens to hundreds locally; Superset is built to handle 100+ workspaces, and [The Roadmap to 100 Agents](/blog/roadmap-to-100-agents) shows what that takes in practice. The real limit is how many independent tasks you can define and how much review you can absorb. Start with a few concurrent agents and scale as your decomposition and review habits improve.
+Tooling-wise, dozens to hundreds locally; Choros is built to handle 100+ workspaces, and [The Roadmap to 100 Agents](/blog/roadmap-to-100-agents) shows what that takes in practice. The real limit is how many independent tasks you can define and how much review you can absorb. Start with a few concurrent agents and scale as your decomposition and review habits improve.
 
 ### Which coding agents work in parallel setups?
 

@@ -7,9 +7,9 @@ export function GET(request: Request): Response {
 		{
 			servers: [
 				{
-					name: "superset",
+					name: "choros",
 					description:
-						"Superset MCP server — orchestrate parallel coding agents, workspaces, automations, and tasks.",
+						"Choros MCP server — orchestrate parallel coding agents, workspaces, automations, and tasks.",
 					url: `${origin}/mcp`,
 					transport: "streamable-http",
 					serverCard: `${origin}/.well-known/mcp/server-card.json`,
@@ -17,13 +17,13 @@ export function GET(request: Request): Response {
 						type: "oauth2",
 						resourceMetadataUrl: `${origin}/.well-known/oauth-protected-resource`,
 					},
-					documentation: "https://docs.superset.sh/mcp-server",
+					documentation: "https://docs.choros.sh/mcp-server",
 				},
 				{
-					name: "superset-docs",
+					name: "choros-docs",
 					description:
-						"Superset documentation over MCP — search and read docs pages.",
-					url: "https://docs.superset.sh/mcp",
+						"Choros documentation over MCP — search and read docs pages.",
+					url: "https://docs.choros.sh/mcp",
 					transport: "streamable-http",
 					authentication: { type: "none" },
 				},

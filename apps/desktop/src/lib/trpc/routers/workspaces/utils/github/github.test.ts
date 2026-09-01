@@ -50,16 +50,16 @@ describe("getPullRequestRepoArgs", () => {
 		expect(
 			getPullRequestRepoArgs({
 				isFork: true,
-				upstreamUrl: "git@github.com:superset-sh/superset.git",
+				upstreamUrl: "git@github.com:superset-sh/choros.git",
 			}),
-		).toEqual(["--repo", "superset-sh/superset"]);
+		).toEqual(["--repo", "superset-sh/choros"]);
 	});
 
 	test("returns no repo args for non-forks", () => {
 		expect(
 			getPullRequestRepoArgs({
 				isFork: false,
-				upstreamUrl: "https://github.com/superset-sh/superset",
+				upstreamUrl: "https://github.com/superset-sh/choros",
 			}),
 		).toEqual([]);
 	});
@@ -78,7 +78,7 @@ describe("shouldRefreshCachedRepoContext", () => {
 	test("returns false when no cached repo context exists", () => {
 		expect(
 			shouldRefreshCachedRepoContext({
-				originUrl: "https://github.com/superset-sh/superset",
+				originUrl: "https://github.com/superset-sh/choros",
 				cachedRepoContext: null,
 			}),
 		).toBe(false);
@@ -87,10 +87,10 @@ describe("shouldRefreshCachedRepoContext", () => {
 	test("returns false when the cached repo still matches origin", () => {
 		expect(
 			shouldRefreshCachedRepoContext({
-				originUrl: "https://github.com/superset-sh/superset",
+				originUrl: "https://github.com/superset-sh/choros",
 				cachedRepoContext: {
-					repoUrl: "https://github.com/superset-sh/superset",
-					upstreamUrl: "https://github.com/superset-sh/superset",
+					repoUrl: "https://github.com/superset-sh/choros",
+					upstreamUrl: "https://github.com/superset-sh/choros",
 					isFork: false,
 				},
 			}),
@@ -102,8 +102,8 @@ describe("shouldRefreshCachedRepoContext", () => {
 			shouldRefreshCachedRepoContext({
 				originUrl: null,
 				cachedRepoContext: {
-					repoUrl: "https://github.com/superset-sh/superset",
-					upstreamUrl: "https://github.com/superset-sh/superset",
+					repoUrl: "https://github.com/superset-sh/choros",
+					upstreamUrl: "https://github.com/superset-sh/choros",
 					isFork: false,
 				},
 			}),
@@ -113,10 +113,10 @@ describe("shouldRefreshCachedRepoContext", () => {
 	test("treats SSH and HTTPS forms of the same repo as equal", () => {
 		expect(
 			shouldRefreshCachedRepoContext({
-				originUrl: "git@github.com:Superset-Sh/superset.git",
+				originUrl: "git@github.com:Choros-Sh/choros.git",
 				cachedRepoContext: {
-					repoUrl: "https://github.com/superset-sh/superset",
-					upstreamUrl: "https://github.com/superset-sh/superset",
+					repoUrl: "https://github.com/superset-sh/choros",
+					upstreamUrl: "https://github.com/superset-sh/choros",
 					isFork: false,
 				},
 			}),
@@ -126,10 +126,10 @@ describe("shouldRefreshCachedRepoContext", () => {
 	test("returns true when origin no longer matches the cached repo", () => {
 		expect(
 			shouldRefreshCachedRepoContext({
-				originUrl: "https://github.com/Kitenite/superset",
+				originUrl: "https://github.com/Kitenite/choros",
 				cachedRepoContext: {
-					repoUrl: "https://github.com/superset-sh/superset",
-					upstreamUrl: "https://github.com/superset-sh/superset",
+					repoUrl: "https://github.com/superset-sh/choros",
+					upstreamUrl: "https://github.com/superset-sh/choros",
 					isFork: false,
 				},
 			}),
@@ -153,7 +153,7 @@ describe("parseReviewThreadCommentsResponse", () => {
 								},
 								body: "Please rename this helper.",
 								createdAt: "2026-03-21T04:19:41Z",
-								url: "https://github.com/superset-sh/superset/pull/2681#discussion_r42",
+								url: "https://github.com/superset-sh/choros/pull/2681#discussion_r42",
 								path: "apps/desktop/src/file.ts",
 								line: 19,
 							},
@@ -172,7 +172,7 @@ describe("parseReviewThreadCommentsResponse", () => {
 				avatarUrl: "https://avatars.githubusercontent.com/u/1?v=4",
 				body: "Please rename this helper.",
 				createdAt: new Date("2026-03-21T04:19:41Z").getTime(),
-				url: "https://github.com/superset-sh/superset/pull/2681#discussion_r42",
+				url: "https://github.com/superset-sh/choros/pull/2681#discussion_r42",
 				kind: "review",
 				path: "apps/desktop/src/file.ts",
 				line: 19,
@@ -195,7 +195,7 @@ describe("parseReviewThreadCommentsResponse", () => {
 								},
 								body: "Please rename this helper.",
 								createdAt: "2026-03-21T04:19:41Z",
-								url: "https://github.com/superset-sh/superset/pull/2681#discussion_r42",
+								url: "https://github.com/superset-sh/choros/pull/2681#discussion_r42",
 								path: "apps/desktop/src/file.ts",
 								line: 19,
 							},
@@ -213,7 +213,7 @@ describe("parseReviewThreadCommentsResponse", () => {
 				authorLogin: "octocat",
 				body: "Please rename this helper.",
 				createdAt: new Date("2026-03-21T04:19:41Z").getTime(),
-				url: "https://github.com/superset-sh/superset/pull/2681#discussion_r42",
+				url: "https://github.com/superset-sh/choros/pull/2681#discussion_r42",
 				kind: "review",
 				path: "apps/desktop/src/file.ts",
 				line: 19,
@@ -236,7 +236,7 @@ describe("parseReviewThreadCommentsResponse", () => {
 								},
 								body: "Please rename this helper.",
 								createdAt: "2026-03-21T04:19:41Z",
-								url: "https://github.com/superset-sh/superset/pull/2681#discussion_r42",
+								url: "https://github.com/superset-sh/choros/pull/2681#discussion_r42",
 								path: "apps/desktop/src/file.ts",
 								originalLine: 19,
 							},
@@ -254,7 +254,7 @@ describe("parseReviewThreadCommentsResponse", () => {
 				authorLogin: "octocat",
 				body: "Please rename this helper.",
 				createdAt: new Date("2026-03-21T04:19:41Z").getTime(),
-				url: "https://github.com/superset-sh/superset/pull/2681#discussion_r42",
+				url: "https://github.com/superset-sh/choros/pull/2681#discussion_r42",
 				kind: "review",
 				path: "apps/desktop/src/file.ts",
 				line: 19,
@@ -293,7 +293,7 @@ describe("parseConversationCommentsResponse", () => {
 					body: "Looks good overall.",
 					created_at: "2026-03-21T04:08:13Z",
 					html_url:
-						"https://github.com/superset-sh/superset/pull/2681#issuecomment-7",
+						"https://github.com/superset-sh/choros/pull/2681#issuecomment-7",
 				},
 			]),
 		).toEqual([
@@ -303,7 +303,7 @@ describe("parseConversationCommentsResponse", () => {
 				avatarUrl: "https://avatars.githubusercontent.com/u/2?v=4",
 				body: "Looks good overall.",
 				createdAt: new Date("2026-03-21T04:08:13Z").getTime(),
-				url: "https://github.com/superset-sh/superset/pull/2681#issuecomment-7",
+				url: "https://github.com/superset-sh/choros/pull/2681#issuecomment-7",
 				kind: "conversation",
 				isResolved: false,
 			},

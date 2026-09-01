@@ -14,7 +14,7 @@ import { addBranchWorktree } from "./workspaces";
 
 const TEST_DIR = join(
 	realpathSync(tmpdir()),
-	`superset-hs-worktree-tolerance-${process.pid}`,
+	`choros-hs-worktree-tolerance-${process.pid}`,
 );
 
 function createTestRepo(name: string): string {

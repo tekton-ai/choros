@@ -12,12 +12,12 @@ export const ENTERPRISE_FAQ_ITEMS: EnterpriseFAQItem[] = [
 		id: "whatIsEnterprise",
 		question: msg({
 			id: "marketing.enterprise.faq.whatIsEnterprise.question",
-			message: "What is Superset Enterprise?",
+			message: "What is Choros Enterprise?",
 		}),
 		answer: msg({
 			id: "marketing.enterprise.faq.whatIsEnterprise.answer",
 			message:
-				"Superset Enterprise is Superset for teams. Reach out to learn more about what's included and how it can work for your organization.",
+				"Choros Enterprise is Choros for teams. Reach out to learn more about what's included and how it can work for your organization.",
 		}),
 	},
 	{
@@ -53,7 +53,7 @@ export const ENTERPRISE_FAQ_ITEMS: EnterpriseFAQItem[] = [
 		answer: msg({
 			id: "marketing.enterprise.faq.dataSecurity.answer",
 			message:
-				"Superset runs locally on your developers' machines. We don't store your code or AI conversations, and Superset has completed a SOC 2 Type II audit with an independent auditor. Request the report and review our security documentation at trust.superset.sh.",
+				"Choros runs locally on your developers' machines. We don't store your code or AI conversations, and Choros has completed a SOC 2 Type II audit with an independent auditor. Request the report and review our security documentation at trust.choros.sh.",
 		}),
 	},
 ];

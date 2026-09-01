@@ -98,7 +98,7 @@ describe("materializePrBranch", () => {
 			createdBranch: true,
 			sourceKind: "synthetic-pr-ref",
 			startPoint: EXPECTED_HEAD_OID,
-			trackingRemote: "superset-pr-456",
+			trackingRemote: "choros-pr-456",
 			trackingMergeRef: "refs/heads/feature/x",
 		});
 		expect(raw).toHaveBeenNthCalledWith(1, [
@@ -118,18 +118,18 @@ describe("materializePrBranch", () => {
 		expect(raw).toHaveBeenNthCalledWith(6, [
 			"remote",
 			"add",
-			"superset-pr-456",
+			"choros-pr-456",
 			"https://github.com/alice/fork.git",
 		]);
 		expect(raw).toHaveBeenNthCalledWith(7, [
 			"update-ref",
-			"refs/remotes/superset-pr-456/feature/x",
+			"refs/remotes/choros-pr-456/feature/x",
 			EXPECTED_HEAD_OID,
 		]);
 		expect(raw).toHaveBeenNthCalledWith(8, [
 			"config",
 			"branch.alice/feature/x.remote",
-			"superset-pr-456",
+			"choros-pr-456",
 		]);
 		expect(raw).toHaveBeenNthCalledWith(9, [
 			"config",
@@ -139,12 +139,12 @@ describe("materializePrBranch", () => {
 		expect(raw).toHaveBeenNthCalledWith(10, [
 			"config",
 			"branch.alice/feature/x.pushRemote",
-			"superset-pr-456",
+			"choros-pr-456",
 		]);
 		expect(raw).toHaveBeenNthCalledWith(11, [
 			"config",
 			"--replace-all",
-			"remote.superset-pr-456.push",
+			"remote.choros-pr-456.push",
 			"HEAD:refs/heads/feature/x",
 		]);
 	});
@@ -199,7 +199,7 @@ describe("materializePrBranch", () => {
 			createdBranch: false,
 			sourceKind: "synthetic-pr-ref",
 			startPoint: EXPECTED_HEAD_OID,
-			trackingRemote: "superset-pr-456",
+			trackingRemote: "choros-pr-456",
 			trackingMergeRef: "refs/heads/feature/x",
 		});
 		expect(raw).not.toHaveBeenCalledWith([
@@ -212,12 +212,12 @@ describe("materializePrBranch", () => {
 		expect(raw).toHaveBeenCalledWith([
 			"config",
 			"branch.alice/feature/x.pushRemote",
-			"superset-pr-456",
+			"choros-pr-456",
 		]);
 		expect(raw).toHaveBeenCalledWith([
 			"config",
 			"--replace-all",
-			"remote.superset-pr-456.push",
+			"remote.choros-pr-456.push",
 			"HEAD:refs/heads/feature/x",
 		]);
 	});

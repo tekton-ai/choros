@@ -55,7 +55,7 @@ export function AppResourceSection({
 				<div className="flex items-center gap-1.5 min-w-0 mr-2">
 					<span className="text-[12px] font-medium text-foreground truncate min-w-0">
 						<Trans id="dashboard.topBar.appResources.appName">
-							Superset App
+							Choros App
 						</Trans>
 					</span>
 					<UsageSeverityBadge severity={appSeverity} />

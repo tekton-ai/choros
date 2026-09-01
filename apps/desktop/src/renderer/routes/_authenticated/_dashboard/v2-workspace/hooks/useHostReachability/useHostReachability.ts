@@ -41,7 +41,7 @@ function describeFailure(
 		return i18n._({
 			id: "workspace.hostReachability.localStopped",
 			message:
-				"The local host service stopped answering. Retry first; if that doesn't take, restart it from the Superset tray menu > Host Service > Restart.",
+				"The local host service stopped answering. Retry first; if that doesn't take, restart it from the Choros tray menu > Host Service > Restart.",
 		});
 	}
 	const probe = status.probe;
@@ -57,7 +57,7 @@ function describeFailure(
 		return i18n._({
 			id: "workspace.hostReachability.deviceNotConnected",
 			message:
-				"That device isn't connected to the relay. Check it's awake, online, and running Superset — it reconnects on its own once it is.",
+				"That device isn't connected to the relay. Check it's awake, online, and running Choros — it reconnects on its own once it is.",
 		});
 	}
 	if (probe.status === 401 || probe.status === 403) {
@@ -79,19 +79,19 @@ function describeFailure(
 			? i18n._({
 					id: "workspace.hostReachability.onlineButFailedRegion",
 					message:
-						"That device is online (region {region}) but the connection couldn't be established — usually relay routing rather than the device itself. Retry, and if it persists restart Superset on that device.",
+						"That device is online (region {region}) but the connection couldn't be established — usually relay routing rather than the device itself. Retry, and if it persists restart Choros on that device.",
 					values: { region: probe.region },
 				})
 			: i18n._({
 					id: "workspace.hostReachability.onlineButFailed",
 					message:
-						"That device is online but the connection couldn't be established — usually relay routing rather than the device itself. Retry, and if it persists restart Superset on that device.",
+						"That device is online but the connection couldn't be established — usually relay routing rather than the device itself. Retry, and if it persists restart Choros on that device.",
 				});
 	}
 	return i18n._({
 		id: "workspace.hostReachability.connectionFailed",
 		message:
-			"The connection failed (relay status {status}). Retry, and if it persists restart Superset on that device.",
+			"The connection failed (relay status {status}). Retry, and if it persists restart Choros on that device.",
 		values: { status: probe.status },
 	});
 }

@@ -4,7 +4,7 @@
  *
  * The desktop app is local-first (v2): it registers its host under a local-db
  * organization (e.g. a1b2c3d4-…), which has nothing to do with the org your
- * `superset auth login` lands in. So a plain `bun run --cwd packages/cli dev`
+ * `choros auth login` lands in. So a plain `bun run --cwd packages/cli dev`
  * authenticates as the wrong org and can't find the dev host. This wrapper
  * reads the live host manifest under `<worktree>/superset-dev-data/host/*` and
  * points the CLI at it:

@@ -116,7 +116,7 @@ export function PermissionsSettings({
 				</h2>
 				<p className="text-sm text-muted-foreground mt-1">
 					<Trans id="settings.permissions.subtitle">
-						Grant the OS permissions Superset needs.
+						Grant the OS permissions Choros needs.
 					</Trans>
 				</p>
 			</div>

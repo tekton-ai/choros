@@ -39,7 +39,7 @@ exit. On next host-service start, `tryAdopt` reads the manifest, checks
 the PID is alive and the socket is reachable, and reuses the running
 daemon. PTY sessions therefore survive host-service restarts.
 
-The socket path lives in `os.tmpdir()/superset-ptyd-<sha256(orgId).slice(0,12)>.sock`
+The socket path lives in `os.tmpdir()/choros-ptyd-<sha256(orgId).slice(0,12)>.sock`
 — short enough to fit Darwin's 104-byte `sun_path` limit. Owner-only
 file mode (0600) is the auth boundary.
 

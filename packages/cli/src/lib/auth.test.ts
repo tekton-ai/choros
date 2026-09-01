@@ -17,7 +17,7 @@ describe("refreshAccessToken", () => {
 						error: "invalid_grant",
 						access_token: "access-secret",
 						refresh_token: "refresh-secret",
-						redirect: "https://app.superset.test/callback?code=code-secret",
+						redirect: "https://app.choros.test/callback?code=code-secret",
 						cookie: "session=session-secret",
 					}),
 					{ status: 400 },
@@ -35,7 +35,7 @@ describe("refreshAccessToken", () => {
 		const error = thrown as CLIError;
 		const visibleText = `${error.message} ${error.suggestion ?? ""}`;
 		expect(visibleText).toContain("Token refresh failed: 400");
-		expect(visibleText).toContain("superset auth login");
+		expect(visibleText).toContain("choros auth login");
 		expect(visibleText).not.toContain("access-secret");
 		expect(visibleText).not.toContain("refresh-secret");
 		expect(visibleText).not.toContain("session-secret");

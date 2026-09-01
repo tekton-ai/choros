@@ -33,7 +33,7 @@ export function accessDenialMessage(reason: AccessDenial): string {
 		case "not_in_org":
 			return "not a member of this org";
 		case "not_registered":
-			return "host not registered to this account - run `superset start` on it with this org";
+			return "host not registered to this account - run `choros start` on it with this org";
 		case "invalid_host":
 			return "invalid host id";
 		default:

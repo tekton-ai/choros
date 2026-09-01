@@ -110,7 +110,7 @@ The final fetch moved twice during the earlier diagnostic investigation, so thos
 | API / renderer | `7501` / `7505` |
 | Dedicated CDP | `127.0.0.1:9520`, page target `B7F0EF0681A3DEB0B26AAF6766F63636`, renderer PID `14230` |
 | Visible route | `#/workspace/24e05c49-eee3-425c-a887-e5cf80527438`, rendered workspace-picker surface |
-| Data boundary | `/private/tmp/superset-git-status-large-repo` plus eight `/private/tmp/superset-git-status-large-repo-worktrees/workspace-{0..7}` worktrees; no production database, migration, repository, or credential was used |
+| Data boundary | `/private/tmp/choros-git-status-large-repo` plus eight `/private/tmp/choros-git-status-large-repo-worktrees/workspace-{0..7}` worktrees; no production database, migration, repository, or credential was used |
 
 Each worktree contained 20,000 tracked files and the harness's 600-file dirty mix (360 modified, 150 untracked, 90 deleted). The host event-bus run applied 400 paced tracked-file mutations per worktree at 5 ms intervals. The renderer run lasted 60.050 s and performed 120 churn ticks: every 500 ms it appended to 200 tracked files in every worktree (1,600 writes/tick, 192,000 writes total) while issuing all eight status requests every 2 s. A 20 s no-churn phase used the same status cadence as the baseline.
 

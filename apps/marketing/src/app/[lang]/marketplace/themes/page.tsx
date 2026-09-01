@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
 		description: i18n._({
 			id: "marketing.meta.marketplace.themes.description",
 			message:
-				"Browse Superset theme files shared by the community, including GitHub Dark Colorblind, Catppuccin, Ember, and One Dark Pro.",
+				"Browse Choros theme files shared by the community, including GitHub Dark Colorblind, Catppuccin, Ember, and One Dark Pro.",
 		}),
 		alternates: localizedAlternates(lang, "/marketplace/themes"),
 	};

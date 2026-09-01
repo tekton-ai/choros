@@ -10,8 +10,8 @@ import type { ApiClient } from "../api-client";
 const originalFetch = globalThis.fetch;
 const originalSupersetHomeDir = process.env.SUPERSET_HOME_DIR;
 const originalHostBin = process.env.SUPERSET_HOST_BIN;
-const tempHome = mkdtempSync(join(tmpdir(), "superset-cli-spawn-"));
-const hostBin = join(tempHome, "superset-host");
+const tempHome = mkdtempSync(join(tmpdir(), "choros-cli-spawn-"));
+const hostBin = join(tempHome, "choros-host");
 
 process.env.SUPERSET_HOME_DIR = tempHome;
 process.env.SUPERSET_HOST_BIN = hostBin;
@@ -79,7 +79,7 @@ afterAll(() => {
 });
 
 describe("spawnHostService", () => {
-	test("reports missing superset-host with an override hint", async () => {
+	test("reports missing choros-host with an override hint", async () => {
 		process.env.SUPERSET_HOST_BIN = join(tempHome, "missing-host");
 		try {
 			await expect(
@@ -90,7 +90,7 @@ describe("spawnHostService", () => {
 					port: 54879,
 					daemon: true,
 				}),
-			).rejects.toThrow(/superset-host binary not found .* SUPERSET_HOST_BIN/);
+			).rejects.toThrow(/choros-host binary not found .* SUPERSET_HOST_BIN/);
 		} finally {
 			process.env.SUPERSET_HOST_BIN = hostBin;
 		}
@@ -108,7 +108,7 @@ describe("spawnHostService", () => {
 					port: 54879,
 					daemon: true,
 				}),
-			).rejects.toThrow(/bundled with the Superset desktop app/);
+			).rejects.toThrow(/bundled with the Choros desktop app/);
 		} finally {
 			process.env.SUPERSET_HOST_BIN = hostBin;
 			delete process.env.SUPERSET_CLI_CHANNEL;

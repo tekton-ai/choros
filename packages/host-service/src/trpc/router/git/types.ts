@@ -23,7 +23,7 @@ export type PatchStatus =
 export type DiffSide = "LEFT" | "RIGHT";
 
 /**
- * GitHub GraphQL: PullRequestState, plus the Superset-derived "queued" state
+ * GitHub GraphQL: PullRequestState, plus the Choros-derived "queued" state
  * for PRs sitting in a repo's merge queue (not a GitHub PullRequestState value).
  */
 export type PullRequestState = "open" | "closed" | "merged" | "queued";

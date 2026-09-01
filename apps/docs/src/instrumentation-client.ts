@@ -39,7 +39,7 @@ Sentry.init({
 	sendDefaultPii: true,
 	integrations: [
 		Sentry.thirdPartyErrorFilterIntegration({
-			filterKeys: ["superset-docs"],
+			filterKeys: ["choros-docs"],
 			behaviour: "drop-error-if-exclusively-contains-third-party-frames",
 		}),
 	],

@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import type { Superset } from "../client";
+import type { Choros } from "../client";
 import { type APIResponseProps, defaultParseResponse } from "../internal/parse";
 import type { PromiseOrValue } from "../internal/types";
 
@@ -10,13 +10,13 @@ import type { PromiseOrValue } from "../internal/types";
  */
 export class APIPromise<T> extends Promise<T> {
 	private parsedPromise: Promise<T> | undefined;
-	#client: Superset;
+	#client: Choros;
 
 	constructor(
-		client: Superset,
+		client: Choros,
 		private responsePromise: Promise<APIResponseProps>,
 		private parseResponse: (
-			client: Superset,
+			client: Choros,
 			props: APIResponseProps,
 		) => PromiseOrValue<T> = defaultParseResponse,
 	) {

@@ -59,7 +59,7 @@ export function maxVersion(versions: string[]): string {
 /** Next interim CLI hotfix: a plain patch above the current CLI. Between desktop
  * releases the CLI leads desktop by patches (desktop 1.14.1 → cli 1.14.2, 1.14.3);
  * the next desktop release catches up. PLAIN — no prerelease suffix — because a
- * suffix would (a) sort BELOW the release so `superset update` won't deliver it
+ * suffix would (a) sort BELOW the release so `choros update` won't deliver it
  * and (b) fail the host-service min-version floor (semver.satisfies excludes
  * prereleases). See plans/20260709-unified-version-bumping.md. */
 export function nextCliHotfix(current: string): string {

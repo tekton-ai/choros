@@ -1,4 +1,4 @@
-export function parseSupersetPageUrl(
+export function parseChorosPageUrl(
 	url: string,
 	webUrl: string,
 ): string | null {

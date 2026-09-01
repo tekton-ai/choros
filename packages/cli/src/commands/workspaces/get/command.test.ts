@@ -17,7 +17,7 @@ const WORKSPACE = {
 	id: "b502bf30-8693-4815-be65-795035e0ce5f",
 	organizationId: "org-1",
 	projectId: "proj-1",
-	projectName: "Superset",
+	projectName: "Choros",
 	hostId: "host-1",
 	name: "ludicrous-candytuft",
 	branch: "setup",
@@ -72,7 +72,7 @@ describe("workspaces get", () => {
 			message: string;
 		};
 		expect(result.data.name).toBe("ludicrous-candytuft");
-		expect(result.data.projectName).toBe("Superset");
+		expect(result.data.projectName).toBe("Choros");
 		expect(result.data.hostName).toBe("Town-Hall");
 		expect(result.data.worktreePath).toBe(WORKSPACE.worktreePath);
 		expect(result.message).toContain("name");

@@ -6,7 +6,7 @@ import { OgStat } from "./components/OgStat";
 import { OG_BG, OG_BRAND, OG_DIM } from "./constants";
 import { getInterBold } from "./utils/getInterBold";
 
-export const alt = "Superset leaderboard profile";
+export const alt = "Choros leaderboard profile";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

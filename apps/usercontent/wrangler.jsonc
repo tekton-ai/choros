@@ -1,6 +1,6 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "superset-usercontent",
+	"name": "choros-usercontent",
 	"main": "src/index.ts",
 	"workers_dev": false,
 	// One origin per page under `frame.`; files get their own first-level host
@@ -8,35 +8,35 @@
 	// Advanced Certificate Manager for the second-level wildcard certificate.
 	"routes": [
 		{
-			"pattern": "*.frame.supersetusercontent.com/*",
-			"zone_name": "supersetusercontent.com"
+			"pattern": "*.frame.chorosusercontent.com/*",
+			"zone_name": "chorosusercontent.com"
 		},
 		{
-			"pattern": "frame.supersetusercontent.com/*",
-			"zone_name": "supersetusercontent.com"
+			"pattern": "frame.chorosusercontent.com/*",
+			"zone_name": "chorosusercontent.com"
 		},
 		{
-			"pattern": "media.supersetusercontent.com/*",
-			"zone_name": "supersetusercontent.com"
+			"pattern": "media.chorosusercontent.com/*",
+			"zone_name": "chorosusercontent.com"
 		},
 		{
-			"pattern": "supersetusercontent.com/*",
-			"zone_name": "supersetusercontent.com"
+			"pattern": "chorosusercontent.com/*",
+			"zone_name": "chorosusercontent.com"
 		}
 	],
 	"compatibility_date": "2026-07-01",
 	"compatibility_flags": ["nodejs_als"],
 	"vars": {
-		"USERCONTENT_URL": "https://frame.supersetusercontent.com",
-		"MEDIA_URL": "https://media.supersetusercontent.com",
-		"APP_URL": "https://app.superset.sh",
+		"USERCONTENT_URL": "https://frame.chorosusercontent.com",
+		"MEDIA_URL": "https://media.chorosusercontent.com",
+		"APP_URL": "https://app.choros.sh",
 		// Who may frame a page. `file:` is the packaged desktop renderer; a
 		// frame still needs a valid ticket, so this admits embedding, not reading.
-		"FRAME_ANCESTORS": "https://app.superset.sh file:"
+		"FRAME_ANCESTORS": "https://app.choros.sh file:"
 	},
 	// The public bucket (avatars, logos, icons) is served by the CDN under its
 	// own domain and never passes through here.
-	"r2_buckets": [{ "binding": "PRIVATE", "bucket_name": "superset-private" }],
+	"r2_buckets": [{ "binding": "PRIVATE", "bucket_name": "choros-private" }],
 	"observability": { "enabled": true },
 	"dev": { "port": 8787 },
 	"env": {
@@ -51,7 +51,7 @@
 			"workers_dev": true,
 			"routes": [],
 			"r2_buckets": [
-				{ "binding": "PRIVATE", "bucket_name": "superset-private-dev" }
+				{ "binding": "PRIVATE", "bucket_name": "choros-private-dev" }
 			]
 		}
 	}

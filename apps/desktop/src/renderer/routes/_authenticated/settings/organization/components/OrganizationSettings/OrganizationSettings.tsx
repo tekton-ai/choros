@@ -479,7 +479,7 @@ export function OrganizationSettings({
 										})}
 										hint={t({
 											id: "settings.organization.idHint",
-											message: "Use this when calling the Superset API.",
+											message: "Use this when calling the Choros API.",
 										})}
 										htmlFor="org-id"
 									>

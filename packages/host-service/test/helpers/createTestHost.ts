@@ -84,7 +84,7 @@ export async function createTestHost(
 
 	// Isolate the daemon namespace for the lifetime of this host: any code
 	// path that resolves manifests or sockets (reaper, adoption, dispose)
-	// must land in this temp home, never `~/.superset` — a test host that
+	// must land in this temp home, never `~/.choros` — a test host that
 	// reads real manifests can reap or kill daemons belonging to running
 	// desktop instances. The manifest layer throws in test runs without
 	// this. Restored (not deleted) on dispose so nested harnesses keep

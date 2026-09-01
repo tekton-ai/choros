@@ -113,7 +113,7 @@ export function AutomationBody({
 	const hostUrl = useHostUrl(hostId);
 	const { agents: hostAgents, isFetched: hostAgentsFetched } =
 		useV2AgentChoices(hostUrl);
-	// Only warn once the host's terminal configs have loaded — the Superset
+	// Only warn once the host's terminal configs have loaded — the Choros
 	// chat entry is flag-gated, so list length alone can't tell "not loaded
 	// yet / host unreachable" apart from "agent missing".
 	const agentMissing =

@@ -30,7 +30,7 @@ export function AiStatusSection() {
 				})}
 				importPath="@choros/ui/ai-elements/loader"
 				description={i18n._({
-					id: "web.design.aiStatusSection.alsoSupersetUiAiElements",
+					id: "web.design.aiStatusSection.alsoChorosUiAiElements",
 					message: "Also: @choros/ui/ai-elements/braille-spinner",
 				})}
 			>

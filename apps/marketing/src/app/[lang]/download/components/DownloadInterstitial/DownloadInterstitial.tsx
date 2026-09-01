@@ -91,12 +91,12 @@ export function DownloadInterstitial({
 					<div className="max-w-2xl">
 						<h1 className={HEADING_CLASS}>
 							<Trans id="marketing.download.mobileTitle">
-								Get Superset on your Mac
+								Get Choros on your Mac
 							</Trans>
 						</h1>
 						<p className="mt-3 text-muted-foreground sm:text-lg">
 							<Trans id="marketing.download.mobileBody">
-								Superset is a desktop app. Enter your email and we&apos;ll send
+								Choros is a desktop app. Enter your email and we&apos;ll send
 								you a download link to open on your Mac.
 							</Trans>
 						</p>
@@ -108,7 +108,7 @@ export function DownloadInterstitial({
 					<div className="max-w-2xl">
 						<h1 className={HEADING_CLASS}>
 							<Trans id="marketing.download.waitlistTitle">
-								Superset isn't on Windows yet
+								Choros isn't on Windows yet
 							</Trans>
 						</h1>
 						<p className="mt-3 text-muted-foreground sm:text-lg">
@@ -125,7 +125,7 @@ export function DownloadInterstitial({
 					<div className="max-w-2xl">
 						<h1 className={HEADING_CLASS}>
 							<Trans id="marketing.download.autoTitle">
-								You're about to get Superset
+								You're about to get Choros
 							</Trans>
 						</h1>
 						<p className="mt-3 text-muted-foreground sm:text-lg">

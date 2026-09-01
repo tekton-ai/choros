@@ -36,17 +36,17 @@ function getModelContext(): ModelContext | undefined {
 
 const INSTALL_COMMANDS: Record<string, string> = {
 	macos: `Download the desktop app from ${COMPANY.MARKETING_URL}/download`,
-	cli: "brew install superset-sh/tap/superset (or: curl -fsSL https://superset.sh/cli/install.sh | sh)",
-	mcp: `claude mcp add --transport http superset ${MCP_SERVER_URL}`,
+	cli: "brew install superset-sh/tap/choros (or: curl -fsSL https://choros.sh/cli/install.sh | sh)",
+	mcp: `claude mcp add --transport http choros ${MCP_SERVER_URL}`,
 };
 
 function buildTools(): ModelContextTool[] {
 	const baseUrl = COMPANY.MARKETING_URL;
 	return [
 		{
-			name: "superset_product_facts",
+			name: "choros_product_facts",
 			description:
-				"What Superset is, what it costs, which platforms and coding agents it supports, and where the docs and API live.",
+				"What Choros is, what it costs, which platforms and coding agents it supports, and where the docs and API live.",
 			inputSchema: { type: "object", properties: {} },
 			annotations: { readOnlyHint: true },
 			execute: () => ({
@@ -60,9 +60,9 @@ function buildTools(): ModelContextTool[] {
 			}),
 		},
 		{
-			name: "superset_install_command",
+			name: "choros_install_command",
 			description:
-				"The install command for a Superset surface: the macOS desktop app, the CLI, or the MCP server in an MCP client.",
+				"The install command for a Choros surface: the macOS desktop app, the CLI, or the MCP server in an MCP client.",
 			inputSchema: {
 				type: "object",
 				properties: {
@@ -81,9 +81,9 @@ function buildTools(): ModelContextTool[] {
 			},
 		},
 		{
-			name: "superset_open_page",
+			name: "choros_open_page",
 			description:
-				"Navigate this tab to a Superset page: pricing, docs, download, blog, changelog, compare, or mcp-install.",
+				"Navigate this tab to a Choros page: pricing, docs, download, blog, changelog, compare, or mcp-install.",
 			inputSchema: {
 				type: "object",
 				properties: {

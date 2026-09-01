@@ -38,7 +38,7 @@ const isLocalApi = /^https?:\/\/(localhost|127\.0\.0\.1)/.test(
  * into it, so exposure is limited to us until it has run for a while.
  */
 function assertInternal(email: string): void {
-	if (!email.toLowerCase().endsWith("@superset.sh")) {
+	if (!email.toLowerCase().endsWith("@choros.sh")) {
 		throw userError({
 			code: "FORBIDDEN",
 			message: "Cloud workspaces are not available yet",

@@ -48,7 +48,7 @@ import { useV2AgentChoices } from "renderer/hooks/useV2AgentChoices";
 import { track } from "renderer/lib/analytics";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { showHostServiceUnavailableToast } from "renderer/lib/host-service-unavailable";
-import { SupersetIcon } from "renderer/routes/_authenticated/onboarding/providers/components/SupersetIcon";
+import { ChorosIcon } from "renderer/routes/_authenticated/onboarding/providers/components/ChorosIcon";
 import { useHostWorkspaces } from "renderer/routes/_authenticated/providers/HostWorkspacesProvider";
 import { useLocalHostService } from "renderer/routes/_authenticated/providers/LocalHostServiceProvider";
 import { newWorkspaceAttachmentPaths } from "renderer/stores/new-workspace-attachments";
@@ -733,7 +733,7 @@ export function NewWorkspaceScreen({
 				</PromptHistoryCommand>
 			</div>
 			<div className="flex flex-1 flex-col items-center justify-center gap-8">
-				<SupersetIcon className="h-10 w-auto text-muted-foreground/70" />
+				<ChorosIcon className="h-10 w-auto text-muted-foreground/70" />
 				<h1 className="text-center text-3xl font-medium text-foreground/90">
 					<Trans id="dashboard.newWorkspaceModal.newWorkspaceScreen.heading">
 						What should we build next?

@@ -4,7 +4,7 @@ import { WebFetchTool } from "@/components/ai-elements/web-fetch-tool";
 
 const FETCHED_CONTENT = `# Workspaces
 
-Superset workspaces are isolated git worktrees. Each workspace gets:
+Choros workspaces are isolated git worktrees. Each workspace gets:
 
 - Its own branch, checked out from the repo default branch
 - An isolated working directory under ~/.superset/worktrees
@@ -12,7 +12,7 @@ Superset workspaces are isolated git worktrees. Each workspace gets:
 
 ## Creating a workspace
 
-Run \`superset workspace create --task "Fix the relay memory leak"\`
+Run \`choros workspace create --task "Fix the relay memory leak"\`
 or use the desktop app's New Workspace flow.`;
 
 const LONG_CONTENT = Array.from(
@@ -24,7 +24,7 @@ const meta = {
 	title: "ai-elements/WebFetchTool",
 	component: WebFetchTool,
 	args: {
-		url: "https://superset.sh/docs/workspaces",
+		url: "https://choros.sh/docs/workspaces",
 		state: "output-available",
 	},
 } satisfies Meta<typeof WebFetchTool>;
@@ -60,7 +60,7 @@ export const Fetching: Story = {
 export const NotFound: Story = {
 	args: {
 		statusCode: 404,
-		url: "https://superset.sh/docs/does-not-exist",
+		url: "https://choros.sh/docs/does-not-exist",
 	},
 	render: (args) => (
 		<View className="w-full">
@@ -72,7 +72,7 @@ export const NotFound: Story = {
 export const Failed: Story = {
 	args: {
 		state: "output-error",
-		url: "https://internal.superset.sh/metrics",
+		url: "https://internal.choros.sh/metrics",
 	},
 	render: (args) => (
 		<View className="w-full">

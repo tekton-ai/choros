@@ -65,7 +65,7 @@ export function AppearanceSettings({ visibleItems }: AppearanceSettingsProps) {
 				</h2>
 				<p className="text-sm text-muted-foreground mt-1">
 					<Trans id="settings.appearance.subtitle">
-						Customize how Superset looks on your device
+						Customize how Choros looks on your device
 					</Trans>
 				</p>
 			</div>

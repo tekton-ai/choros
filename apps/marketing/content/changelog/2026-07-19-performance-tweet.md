@@ -4,7 +4,7 @@ date: 2026-07-19
 type: tweet
 ---
 
-We spent the week making Superset lighter and smoother @superset_sh 🛳️
+We spent the week making Choros lighter and smoother @choros_sh 🛳️
 
 Real before/after numbers, measured on the actual code:
 
@@ -17,4 +17,4 @@ Real before/after numbers, measured on the actual code:
 3. Quieter in the background 🔋
 15x fewer background scans from port detection. Less CPU, better battery.
 
-Full changelog: https://superset.sh/changelog/2026-07-19-performance-memory-and-load
+Full changelog: https://choros.sh/changelog/2026-07-19-performance-memory-and-load

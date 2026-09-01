@@ -141,7 +141,7 @@ async function intake(report: Report) {
 	const lines: string[] = [];
 	if (bridged) {
 		lines.push(
-			"Your report reached the Superset support team. Replies show up right here in this thread, and you can add details by posting below.",
+			"Your report reached the Choros support team. Replies show up right here in this thread, and you can add details by posting below.",
 		);
 	}
 	if (issue) {

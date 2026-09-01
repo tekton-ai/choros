@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Deploy the relay to the staging Fly app (superset-relay-staging). Mirrors
+# Deploy the relay to the staging Fly app (choros-relay-staging). Mirrors
 # deploy.sh but targets fly.staging.toml + the staging app, so we can iterate
 # on multi-region without risking prod. Edit REGIONS to grow the fleet.
 set -euo pipefail
 
-APP=superset-relay-staging
+APP=choros-relay-staging
 REGIONS=(sjc iad fra)
 COUNT=${#REGIONS[@]}
 REGION_LIST=$(IFS=, ; echo "${REGIONS[*]}")

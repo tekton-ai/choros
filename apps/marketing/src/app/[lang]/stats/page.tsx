@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
 	const description = i18n._({
 		id: "marketing.meta.stats.description",
 		message:
-			"Aggregate agent usage across every developer on the Superset leaderboard — tokens, cost, cache behaviour and which models people actually reach for.",
+			"Aggregate agent usage across every developer on the Choros leaderboard — tokens, cost, cache behaviour and which models people actually reach for.",
 	});
 	return {
 		title,

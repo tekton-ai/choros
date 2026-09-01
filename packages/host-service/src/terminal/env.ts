@@ -13,7 +13,7 @@ export type {
 export {
 	getShellBootstrapEnv,
 	getShellLaunchArgs,
-	getSupersetShellPaths,
+	getChorosShellPaths,
 	resolveLaunchShell,
 	shellLaunchExpectsReadyMarker,
 } from "./shell-launch.ts";
@@ -186,7 +186,7 @@ interface BuildV2TerminalEnvParams {
 	workspaceId: string;
 	workspacePath: string;
 	rootPath: string;
-	supersetEnv: "development" | "production";
+	chorosEnv: "development" | "production";
 	agentHookPort: string;
 	agentHookVersion: string;
 	/**
@@ -216,7 +216,7 @@ export function buildV2TerminalEnv(
 		workspaceId,
 		workspacePath,
 		rootPath,
-		supersetEnv,
+		chorosEnv,
 		agentHookPort,
 		agentHookVersion,
 		hostAgentHookUrl,
@@ -259,7 +259,7 @@ export function buildV2TerminalEnv(
 	env.SUPERSET_WORKSPACE_ID = workspaceId;
 	env.SUPERSET_WORKSPACE_PATH = workspacePath;
 	env.SUPERSET_ROOT_PATH = rootPath;
-	env.SUPERSET_ENV = supersetEnv;
+	env.SUPERSET_ENV = chorosEnv;
 	env.SUPERSET_AGENT_HOOK_PORT = agentHookPort;
 	env.SUPERSET_AGENT_HOOK_VERSION = agentHookVersion;
 	// v2 — agent posts to host-service so the renderer can play the sound

@@ -16,13 +16,13 @@ import { listExternalWorktrees } from "../utils/git";
  *
  * These tests verify that:
  * 1. External worktrees are automatically detected and imported
- * 2. The createdBySuperset flag is correctly set
+ * 2. The createdByChoros flag is correctly set
  * 3. External worktrees are not deleted from disk when workspace is removed
  */
 
 const TEST_DIR = join(
 	realpathSync(tmpdir()),
-	`superset-test-external-wt-${process.pid}`,
+	`choros-test-external-wt-${process.pid}`,
 );
 
 function createTestRepo(name: string): string {
@@ -93,7 +93,7 @@ describe("External worktree detection and import", () => {
 	});
 
 	test("external worktree can be created and detected", () => {
-		// Create external worktree manually (simulates user creating it outside Superset)
+		// Create external worktree manually (simulates user creating it outside Choros)
 		createExternalWorktree(
 			mainRepoPath,
 			"feature-external",
@@ -153,7 +153,7 @@ describe("External worktree detection and import", () => {
 
 		// This test verifies that external worktrees are NOT deleted
 		// In the actual implementation, the delete procedure will check
-		// the createdBySuperset flag and skip disk deletion for external worktrees
+		// the createdByChoros flag and skip disk deletion for external worktrees
 
 		// Verify data still exists (would be deleted if we didn't have protection)
 		expect(existsSync(join(externalWorktreePath, "important-data.txt"))).toBe(

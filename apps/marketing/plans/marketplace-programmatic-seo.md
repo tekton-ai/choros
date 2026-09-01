@@ -11,14 +11,14 @@
 
 ## Proposal
 1. **Route:** add `apps/marketing/src/app/marketplace/themes/[slug]/page.tsx` (SSG via `generateStaticParams()` over `themeListings`).
-2. **Content per page** (enough to avoid thin-content): live palette preview (UI + terminal swatches from the existing data), short description, author/credit, tags, "how to install in Superset" steps, and a link to the raw `.json`.
+2. **Content per page** (enough to avoid thin-content): live palette preview (UI + terminal swatches from the existing data), short description, author/credit, tags, "how to install in Choros" steps, and a link to the raw `.json`.
 3. **Metadata:** self-canonical `${MARKETING_URL}/marketplace/themes/<slug>`, unique title/description per theme, OG image (reuse a templated OG route).
 4. **Structured data:** `CreativeWork`/`SoftwareApplication` JSON-LD + breadcrumb.
 5. **Sitemap:** map `themeListings` into `sitemap.ts` (mirrors how blog/changelog/compare are already generated).
 6. **Interlink:** list page cards link to detail pages; detail pages cross-link related themes (same `type`/tags).
 
 ## SEO impact
-- ~28 net-new indexable pages immediately, targeting long-tail like "<theme> theme for Superset", "<theme> terminal colors", "<theme> for AI coding".
+- ~28 net-new indexable pages immediately, targeting long-tail like "<theme> theme for Choros", "<theme> terminal colors", "<theme> for AI coding".
 - Converts the crawled `*.json` noise into real HTML pages with a canonical, so the JSON stays a download and the page is what ranks.
 - Compounds: every new submitted theme becomes a page automatically.
 

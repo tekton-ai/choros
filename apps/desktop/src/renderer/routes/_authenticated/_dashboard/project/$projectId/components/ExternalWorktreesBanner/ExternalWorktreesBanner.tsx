@@ -131,8 +131,8 @@ export function ExternalWorktreesBanner({ projectId }: { projectId: string }) {
 								<Plural
 									id="dashboard.project.worktreesBanner.importDialogDescription"
 									value={importableWorktrees.length}
-									one="This will import # existing worktree into Superset as workspaces. Each worktree on disk will be tracked and appear in your sidebar. No files will be modified."
-									other="This will import # existing worktrees into Superset as workspaces. Each worktree on disk will be tracked and appear in your sidebar. No files will be modified."
+									one="This will import # existing worktree into Choros as workspaces. Each worktree on disk will be tracked and appear in your sidebar. No files will be modified."
+									other="This will import # existing worktrees into Choros as workspaces. Each worktree on disk will be tracked and appear in your sidebar. No files will be modified."
 								/>
 							</AlertDialogDescription>
 						</AlertDialogHeader>

@@ -56,7 +56,7 @@ import { TerminalHost } from "./terminal-host";
 const DAEMON_VERSION = "1.0.0";
 
 // SUPERSET_DIR_NAME is imported from shared/constants for multi-worktree support
-// This allows workspace-specific home directories (e.g., ~/.superset-my-feature)
+// This allows workspace-specific home directories (e.g., ~/.choros-my-feature)
 const SUPERSET_HOME_DIR = join(homedir(), SUPERSET_DIR_NAME);
 
 // Socket and token paths
@@ -685,7 +685,7 @@ function isSocketLive(): Promise<boolean> {
 }
 
 async function startServer(): Promise<void> {
-	// Ensure superset directory exists with proper permissions
+	// Ensure choros directory exists with proper permissions
 	if (!existsSync(SUPERSET_HOME_DIR)) {
 		mkdirSync(SUPERSET_HOME_DIR, { recursive: true, mode: 0o700 });
 		log("info", `Created directory: ${SUPERSET_HOME_DIR}`);

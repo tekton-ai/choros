@@ -55,7 +55,7 @@ const SECURITY_FEATURES: {
 		description: msg({
 			id: "marketing.security.yourAccounts.description",
 			message:
-				"Use your existing agent subscriptions and API keys. Superset never proxies model calls or locks your workflow to one provider.",
+				"Use your existing agent subscriptions and API keys. Choros never proxies model calls or locks your workflow to one provider.",
 		}),
 	},
 ];

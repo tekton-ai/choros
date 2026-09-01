@@ -25,8 +25,8 @@ The repository fixture used by the review was created with:
 
 ```bash
 bun packages/host-service/scripts/git-status-large-repo-profile.ts \
-  --repo /private/tmp/superset-renderer-ui-large-repo \
-  --out /tmp/superset-renderer-ui-setup-latest-main \
+  --repo /private/tmp/choros-renderer-ui-large-repo \
+  --out /tmp/choros-renderer-ui-setup-latest-main \
   --files 20000 --dirty 600 --events 1 --event-interval-ms 0 \
   --concurrency 4 --workspaces 8 --git-delay-ms 0 \
   --mode limited --flow event-bus --recreate

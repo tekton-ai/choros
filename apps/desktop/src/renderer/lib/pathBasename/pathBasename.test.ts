@@ -4,7 +4,7 @@ import { getBaseName } from "./pathBasename";
 describe("getBaseName", () => {
 	describe("posix paths", () => {
 		it("returns the final segment of a standard absolute path", () => {
-			expect(getBaseName("/Users/alice/projects/superset")).toBe("superset");
+			expect(getBaseName("/Users/alice/projects/choros")).toBe("choros");
 		});
 
 		it("returns the final segment when the path has a file extension", () => {
@@ -12,19 +12,19 @@ describe("getBaseName", () => {
 		});
 
 		it("returns the last non-empty segment for a trailing slash", () => {
-			expect(getBaseName("/Users/alice/projects/superset/")).toBe("superset");
+			expect(getBaseName("/Users/alice/projects/choros/")).toBe("choros");
 		});
 
 		it("collapses multiple trailing slashes", () => {
-			expect(getBaseName("/Users/alice/projects/superset///")).toBe("superset");
+			expect(getBaseName("/Users/alice/projects/choros///")).toBe("choros");
 		});
 
 		it("returns the single segment when path has no separators", () => {
-			expect(getBaseName("superset")).toBe("superset");
+			expect(getBaseName("choros")).toBe("choros");
 		});
 
 		it("returns the segment for a single-segment absolute path", () => {
-			expect(getBaseName("/superset")).toBe("superset");
+			expect(getBaseName("/choros")).toBe("choros");
 		});
 
 		it("preserves dots in folder names", () => {
@@ -50,26 +50,26 @@ describe("getBaseName", () => {
 		});
 
 		it("handles consecutive internal slashes", () => {
-			expect(getBaseName("/Users//alice///projects/superset")).toBe("superset");
+			expect(getBaseName("/Users//alice///projects/choros")).toBe("choros");
 		});
 	});
 
 	describe("windows paths", () => {
 		it("returns the final segment of a backslash path", () => {
-			expect(getBaseName("C:\\Users\\alice\\projects\\superset")).toBe(
-				"superset",
+			expect(getBaseName("C:\\Users\\alice\\projects\\choros")).toBe(
+				"choros",
 			);
 		});
 
 		it("handles a trailing backslash", () => {
-			expect(getBaseName("C:\\Users\\alice\\projects\\superset\\")).toBe(
-				"superset",
+			expect(getBaseName("C:\\Users\\alice\\projects\\choros\\")).toBe(
+				"choros",
 			);
 		});
 
 		it("handles mixed forward and back slashes", () => {
-			expect(getBaseName("C:\\Users\\alice/projects\\superset")).toBe(
-				"superset",
+			expect(getBaseName("C:\\Users\\alice/projects\\choros")).toBe(
+				"choros",
 			);
 		});
 
@@ -78,7 +78,7 @@ describe("getBaseName", () => {
 		});
 
 		it("handles consecutive trailing backslashes", () => {
-			expect(getBaseName("C:\\Users\\alice\\superset\\\\\\")).toBe("superset");
+			expect(getBaseName("C:\\Users\\alice\\choros\\\\\\")).toBe("choros");
 		});
 	});
 
@@ -104,11 +104,11 @@ describe("getBaseName", () => {
 		});
 
 		it("preserves a relative path final segment", () => {
-			expect(getBaseName("projects/superset")).toBe("superset");
+			expect(getBaseName("projects/choros")).toBe("choros");
 		});
 
 		it("preserves a dot-relative path final segment", () => {
-			expect(getBaseName("./projects/superset")).toBe("superset");
+			expect(getBaseName("./projects/choros")).toBe("choros");
 		});
 
 		it("returns '..' for a parent-directory-only input", () => {

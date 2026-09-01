@@ -214,7 +214,7 @@ function AuthenticatedLayout() {
 								Still restoring your session
 							</h2>
 							<p className="text-sm text-muted-foreground">
-								Superset can't confirm your sign-in with the server.
+								Choros can't confirm your sign-in with the server.
 							</p>
 						</div>
 						<div className="flex gap-2">

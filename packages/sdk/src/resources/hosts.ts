@@ -1,5 +1,5 @@
 import type { APIPromise } from "../core/api-promise";
-import { SupersetError } from "../core/error";
+import { ChorosError } from "../core/error";
 import { APIResource } from "../core/resource";
 import type { RequestOptions } from "../internal/request-options";
 
@@ -8,7 +8,7 @@ export class Hosts extends APIResource {
 	 * List hosts (developer machines registered in the organization) the
 	 * caller has access to.
 	 *
-	 * Mirrors `superset hosts list`.
+	 * Mirrors `choros hosts list`.
 	 */
 	list(options?: RequestOptions): APIPromise<HostListResponse> {
 		return this._client.query<HostListResponse>(
@@ -20,8 +20,8 @@ export class Hosts extends APIResource {
 
 	private _requireOrgId(): string {
 		if (!this._client.organizationId) {
-			throw new SupersetError(
-				"organizationId is required. Set SUPERSET_ORGANIZATION_ID, or pass `organizationId` to the Superset constructor.",
+			throw new ChorosError(
+				"organizationId is required. Set SUPERSET_ORGANIZATION_ID, or pass `organizationId` to the Choros constructor.",
 			);
 		}
 		return this._client.organizationId;

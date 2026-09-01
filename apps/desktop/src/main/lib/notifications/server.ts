@@ -188,7 +188,7 @@ app.get("/auth/callback", async (req, res) => {
 	// Return HTML since the browser navigated here directly (not fetch).
 	res.setHeader("Content-Type", "text/html");
 	return res.send(`<!DOCTYPE html>
-<html><head><title>Superset</title></head>
+<html><head><title>Choros</title></head>
 <body style="font-family:system-ui,sans-serif;display:flex;justify-content:center;align-items:center;height:100vh;margin:0;background:#0a0a0a;color:#fafafa;">
 <div style="text-align:center">
 <h2 style="margin-bottom:8px">Signed in successfully</h2>
@@ -197,7 +197,7 @@ app.get("/auth/callback", async (req, res) => {
 </body></html>`);
 });
 
-// External settings change (e.g. `superset settings ...` CLI). Reads no
+// External settings change (e.g. `choros settings ...` CLI). Reads no
 // request data — it only re-reads local files and tells the renderer to
 // refresh, so an unauthenticated localhost nudge is safe.
 app.post("/settings-changed", (_req, res) => {

@@ -10,7 +10,7 @@ let previousHome: string | undefined;
 
 beforeEach(() => {
 	previousHome = process.env.SUPERSET_HOME_DIR;
-	homeDir = mkdtempSync(join(tmpdir(), "superset-cli-values-"));
+	homeDir = mkdtempSync(join(tmpdir(), "choros-cli-values-"));
 	process.env.SUPERSET_HOME_DIR = homeDir;
 });
 

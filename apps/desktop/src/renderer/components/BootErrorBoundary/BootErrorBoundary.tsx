@@ -53,7 +53,7 @@ export class BootErrorBoundary extends Component<
 					<h1 style={{ fontSize: "18px", marginBottom: "8px" }}>
 						{i18n._({
 							id: "components.bootError.title",
-							message: "Superset failed to start",
+							message: "Choros failed to start",
 						})}
 					</h1>
 					<p style={{ fontSize: "14px", opacity: 0.8 }}>

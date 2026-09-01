@@ -46,7 +46,7 @@ describe("getGitStatusSnapshot (integration)", () => {
 	let invocations: string[][];
 
 	beforeEach(async () => {
-		repo = mkdtempSync(join(tmpdir(), "superset-git-status-"));
+		repo = mkdtempSync(join(tmpdir(), "choros-git-status-"));
 		git = await initRepo(repo);
 		await writeFile(join(repo, "README.md"), "hello\n");
 		await git.raw(["add", "--", "README.md"]);

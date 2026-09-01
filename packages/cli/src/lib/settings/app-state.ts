@@ -43,8 +43,8 @@ function readAppState(): AppState {
 	const path = getAppStatePath();
 	if (!existsSync(path)) {
 		throw new CLIError(
-			`Superset app state not found at ${path}`,
-			"Launch the Superset desktop app once on this machine first.",
+			`Choros app state not found at ${path}`,
+			"Launch the Choros desktop app once on this machine first.",
 		);
 	}
 	let parsed: unknown;
@@ -52,12 +52,12 @@ function readAppState(): AppState {
 		parsed = JSON.parse(readFileSync(path, "utf-8"));
 	} catch {
 		throw new CLIError(
-			`Superset app state at ${path} is not valid JSON`,
+			`Choros app state at ${path} is not valid JSON`,
 			"The desktop app rewrites it on next launch; retry after opening the app.",
 		);
 	}
 	if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) {
-		throw new CLIError(`Superset app state at ${path} is not a JSON object`);
+		throw new CLIError(`Choros app state at ${path} is not a JSON object`);
 	}
 	return parsed as AppState;
 }
@@ -212,7 +212,7 @@ export function exportTheme(id: string): Theme {
 	if (!theme) {
 		throw new CLIError(
 			`Unknown theme: ${id}`,
-			"Run: superset settings theme list",
+			"Run: choros settings theme list",
 		);
 	}
 	// exports are starters for custom themes — don't let them claim isBuiltIn

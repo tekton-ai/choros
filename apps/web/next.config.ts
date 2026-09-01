@@ -24,19 +24,19 @@ const apiOrigin = process.env.NEXT_PUBLIC_API_URL
 const relayWsOrigin = process.env.RELAY_URL
 	? new URL(process.env.RELAY_URL).origin.replace(/^http/, "ws")
 	: isProduction
-		? "wss://relay.superset.sh"
+		? "wss://relay.choros.sh"
 		: null;
 const relayHttpOrigin = process.env.RELAY_URL
 	? new URL(process.env.RELAY_URL).origin
 	: isProduction
-		? "https://relay.superset.sh"
+		? "https://relay.choros.sh"
 		: null;
 // Failover relay origin. Env-driven so it flips with the domain at cutover;
-// prod default stays superset.sh until RELAY_BACKUP_URL is set (e.g. boid.so).
+// prod default stays choros.sh until RELAY_BACKUP_URL is set (e.g. boid.so).
 const relayBackupHttpOrigin = process.env.RELAY_BACKUP_URL
 	? new URL(process.env.RELAY_BACKUP_URL).origin
 	: isProduction
-		? "https://relay-backup.superset.sh"
+		? "https://relay-backup.choros.sh"
 		: null;
 const relayBackupWsOrigin = relayBackupHttpOrigin
 	? relayBackupHttpOrigin.replace(/^http/, "ws")
@@ -47,7 +47,7 @@ const relayBackupWsOrigin = relayBackupHttpOrigin
 const usercontentUrl = new URL(
 	process.env.USERCONTENT_URL ||
 		(isProduction
-			? "https://frame.supersetusercontent.com"
+			? "https://frame.chorosusercontent.com"
 			: "http://frame.usercontent.localhost:8787"),
 );
 const usercontentFrameSource = `${usercontentUrl.protocol}//*.${usercontentUrl.host}`;
@@ -65,9 +65,9 @@ const contentSecurityPolicy = [
 		// The Durable Objects relay a user can be routed to via
 		// relay-url-override; the runtime relay comes from that flag while
 		// this header is built at compile time, so it must be listed
-		// explicitly. Removable once relay2 answers on relay.superset.sh.
-		"https://superset-relay2.avi-6ac.workers.dev",
-		"wss://superset-relay2.avi-6ac.workers.dev",
+		// explicitly. Removable once relay2 answers on relay.choros.sh.
+		"https://choros-relay2.avi-6ac.workers.dev",
+		"wss://choros-relay2.avi-6ac.workers.dev",
 		"https://*.ingest.sentry.io",
 		"https://*.sentry.io",
 		"https://us.i.posthog.com",
@@ -178,7 +178,7 @@ const config: NextConfig = {
 export default withSentryConfig(config, {
 	org: "superset-sh",
 	project: "web",
-	applicationKey: "superset-web",
+	applicationKey: "choros-web",
 	silent: !process.env.CI,
 	authToken: process.env.SENTRY_AUTH_TOKEN,
 	widenClientFileUpload: true,

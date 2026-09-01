@@ -36,7 +36,7 @@ export function ExperimentalSettings({
 }: ExperimentalSettingsProps) {
 	const { t } = useLingui();
 	const searchQuery = useSettingsSearchQuery();
-	const showSupersetV2 = isItemVisible(
+	const showChorosV2 = isItemVisible(
 		SETTING_ITEM_ID.EXPERIMENTAL_SUPERSET_V2,
 		visibleItems,
 	);
@@ -84,14 +84,14 @@ export function ExperimentalSettings({
 			</div>
 
 			<div className="space-y-6">
-				{showSupersetV2 && !isV1FlipLocked && (
+				{showChorosV2 && !isV1FlipLocked && (
 					<div className="flex items-center justify-between gap-6">
 						<div className="min-w-0 flex-1 space-y-0.5">
-							<Label htmlFor="superset-v2" className="text-sm font-medium">
+							<Label htmlFor="choros-v2" className="text-sm font-medium">
 								<HighlightText
 									text={t({
 										id: "settings.experimental.v2Label",
-										message: "Try Superset v2",
+										message: "Try Choros v2",
 									})}
 									query={searchQuery}
 								/>
@@ -107,7 +107,7 @@ export function ExperimentalSettings({
 							</p>
 						</div>
 						<Switch
-							id="superset-v2"
+							id="choros-v2"
 							checked={isV2CloudEnabled}
 							onCheckedChange={(enabled) => {
 								track("surface_toggled", {

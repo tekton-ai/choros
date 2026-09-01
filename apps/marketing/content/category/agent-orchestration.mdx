@@ -42,7 +42,7 @@ Each unit of work gets its own working directory and branch, almost always a [Gi
 
 ### Persistent sessions
 
-Agent sessions need to survive the app restarting, the terminal closing, and the machine sleeping. Without persistence, orchestration degrades into re-prompting. In Superset this is a terminal daemon that owns the sessions; the app is just a view onto them.
+Agent sessions need to survive the app restarting, the terminal closing, and the machine sleeping. Without persistence, orchestration degrades into re-prompting. In Choros this is a terminal daemon that owns the sessions; the app is just a view onto them.
 
 ### Status and monitoring
 
@@ -62,9 +62,9 @@ Recurring prompts on a schedule: nightly dependency bumps, morning triage of new
 
 ### Programmatic control
 
-An API for the whole loop, so scripts and other agents can create workspaces, launch agents with a prompt, read terminals, and collect results. The emerging standard here is [MCP](https://docs.superset.sh/mcp-server) (Model Context Protocol): expose orchestration as tools, and any MCP-capable agent can drive it. This is how agent-managing-agents setups work in practice, and Superset ships an MCP server, a [CLI](https://docs.superset.sh/cli/getting-started), and a [TypeScript SDK](https://docs.superset.sh/sdk/getting-started) for exactly this.
+An API for the whole loop, so scripts and other agents can create workspaces, launch agents with a prompt, read terminals, and collect results. The emerging standard here is [MCP](https://docs.choros.sh/mcp-server) (Model Context Protocol): expose orchestration as tools, and any MCP-capable agent can drive it. This is how agent-managing-agents setups work in practice, and Choros ships an MCP server, a [CLI](https://docs.choros.sh/cli/getting-started), and a [TypeScript SDK](https://docs.choros.sh/sdk/getting-started) for exactly this.
 
-![The superset CLI menu: agents, automations, hosts, projects, tasks, terminals, and workspaces, all scriptable from any shell](/changelog/2026-08-09-cli-browser.png)
+![The choros CLI menu: agents, automations, hosts, projects, tasks, terminals, and workspaces, all scriptable from any shell](/changelog/2026-08-09-cli-browser.png)
 
 ## Common patterns
 
@@ -82,9 +82,9 @@ An API for the whole loop, so scripts and other agents can create workspaces, la
 
 Tools in this category split on one design question: who decomposes the work?
 
-**Coordinator-led** tools put an AI in charge of planning. [Augment Intent](/compare/superset-vs-augment-intent), for example, has a coordinator agent draft a spec, fan tasks out to implementor agents, and run a verifier over the result. You approve at checkpoints. This buys hands-off breadth on well-scoped features and costs you control over decomposition.
+**Coordinator-led** tools put an AI in charge of planning. [Augment Intent](/compare/choros-vs-augment-intent), for example, has a coordinator agent draft a spec, fan tasks out to implementor agents, and run a verifier over the result. You approve at checkpoints. This buys hands-off breadth on well-scoped features and costs you control over decomposition.
 
-**Developer-led** tools keep decomposition with you and make dispatch, isolation, monitoring, and review as fast as possible. Superset, [Conductor](/compare/superset-vs-conductor), and [Zed's Parallel Agents](/compare/superset-vs-zed) are in this school. It matches how senior engineers already split work, and it degrades gracefully: when a task is fuzzy, you scope it, not a planning agent.
+**Developer-led** tools keep decomposition with you and make dispatch, isolation, monitoring, and review as fast as possible. Choros, [Conductor](/compare/choros-vs-conductor), and [Zed's Parallel Agents](/compare/choros-vs-zed) are in this school. It matches how senior engineers already split work, and it degrades gracefully: when a task is fuzzy, you scope it, not a planning agent.
 
 Neither is strictly better. Coordinator-led shines on PR-sized features with clear requirements. Developer-led wins when task boundaries need judgment: legacy code, fuzzy specs, work that touches shared modules.
 
@@ -110,11 +110,11 @@ Frameworks like LangChain or agent SDKs are for building agents and wiring them 
 
 ### Can one AI agent manage other coding agents?
 
-Yes. Expose orchestration as MCP tools and any MCP-capable agent can create workspaces, launch agents with prompts, watch their terminals, and collect diffs. Superset ships an MCP server for this, so a chat agent or a CI job can run a fleet without a human in the dispatch loop.
+Yes. Expose orchestration as MCP tools and any MCP-capable agent can create workspaces, launch agents with prompts, watch their terminals, and collect diffs. Choros ships an MCP server for this, so a chat agent or a CI job can run a fleet without a human in the dispatch loop.
 
 ### How do scheduled agent runs work?
 
-You define a prompt, an agent, and a schedule; the orchestrator creates a fresh workspace at the appointed time, runs the agent, and leaves the result for review. Superset calls these automations. Typical uses: nightly dependency bumps, issue triage, recurring cleanup passes.
+You define a prompt, an agent, and a schedule; the orchestrator creates a fresh workspace at the appointed time, runs the agent, and leaves the result for review. Choros calls these automations. Typical uses: nightly dependency bumps, issue triage, recurring cleanup passes.
 
 ### What should I look for in an agent orchestration tool?
 

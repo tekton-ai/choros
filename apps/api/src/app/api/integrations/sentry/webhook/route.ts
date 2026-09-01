@@ -23,7 +23,7 @@ import {
  *
  * Every delivery is signed with the app's one client secret, an env var, so the
  * signature is verified before anything is looked up. The payload names no
- * Superset org, only the installation's uuid — and that uuid is what the
+ * Choros org, only the installation's uuid — and that uuid is what the
  * install callback stored on the connection, so it is the only way a delivery
  * finds the org it belongs to.
  */
@@ -81,7 +81,7 @@ export async function POST(request: Request) {
 			}
 		}
 		// installation.created is a no-op: the callback, which alone knows the
-		// Superset org, is what writes the connection.
+		// Choros org, is what writes the connection.
 		return Response.json({ success: true });
 	}
 	if (resource !== "issue" || !payload.action) {

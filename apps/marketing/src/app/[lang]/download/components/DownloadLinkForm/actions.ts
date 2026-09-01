@@ -71,9 +71,9 @@ export async function sendDownloadLink(
 		}
 
 		const { error } = await resend.emails.send({
-			from: "Superset <noreply@superset.sh>",
+			from: "Choros <noreply@choros.sh>",
 			to: sanitizedEmail,
-			subject: "Your Superset download link",
+			subject: "Your Choros download link",
 			react: DownloadLinkEmail({ recipientEmail: sanitizedEmail }),
 		});
 

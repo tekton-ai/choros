@@ -271,7 +271,7 @@ msgstr "Týdenní konverze zobrazení → stažení, návštěvníci z Macu; akt
 #. js-lingui-explicit-id
 #: ../../apps/admin/src/app/(dashboard)/page.tsx
 msgid "admin.insight.newSiteVisitors"
-msgstr "První zobrazení stránky na superset.sh vůbec, denně"
+msgstr "První zobrazení stránky na choros.sh vůbec, denně"
 
 #. js-lingui-explicit-id
 #: ../../apps/admin/src/app/(dashboard)/page.tsx
@@ -564,7 +564,7 @@ msgstr "Kopírovat podrobnosti o chybě"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/error.tsx
 msgid "app.errorPage.description"
-msgstr "V Superset došlo k neočekávané chybě. Zkuste to znovu načtením."
+msgstr "V Choros došlo k neočekávané chybě. Zkuste to znovu načtením."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/error.tsx
@@ -733,9 +733,9 @@ msgid "auth.signIn.lastUsed"
 msgstr "Naposledy použito"
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/sign-in/components/SupersetLogo/SupersetLogo.tsx
+#: ../../apps/desktop/src/renderer/routes/sign-in/components/ChorosLogo/ChorosLogo.tsx
 msgid "auth.signIn.logoTitle"
-msgstr "Superset"
+msgstr "Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/sign-in/page.tsx
@@ -755,7 +755,7 @@ msgstr "Přihlášením souhlasíte s <0>podmínkami služby</0> a <1>zásadami 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/sign-in/page.tsx
 msgid "auth.signIn.welcomeTitle"
-msgstr "Vítejte v Superset"
+msgstr "Vítejte v Choros"
 
 #. js-lingui-explicit-id
 #: ../chat-ui/src/components/PromptInput/components/ComposerBody/ComposerBody.tsx
@@ -1541,7 +1541,7 @@ msgstr "Načíst znovu"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/BootErrorBoundary/BootErrorBoundary.tsx
 msgid "components.bootError.title"
-msgstr "Superset se nepodařilo spustit"
+msgstr "Choros se nepodařilo spustit"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/MarkdownRenderer/components/TipTapMarkdownRenderer/components/BubbleMenuToolbar/BubbleMenuToolbar.tsx
@@ -1772,7 +1772,7 @@ msgstr "Patříte k našim nejaktivnějším uživatelům. Pojďte nám ho pomoc
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/SidebarCardSlot/cards/useHiringCard/useHiringCard.ts
 msgid "components.hiringCard.title"
-msgstr "Baví vás vývoj v Superset?"
+msgstr "Baví vás vývoj v Choros?"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/ImportHistoryDialog/ImportHistoryDialog.tsx
@@ -1792,7 +1792,7 @@ msgstr "Zkontrolovat znovu"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/ImportHistoryDialog/ImportHistoryDialog.tsx
 msgid "components.importHistoryDialog.description"
-msgstr "Zkopírujte historii prohlížení a přihlášení z jiného prohlížeče do Superset. Původní prohlížeč se nijak nezmění."
+msgstr "Zkopírujte historii prohlížení a přihlášení z jiného prohlížeče do Choros. Původní prohlížeč se nijak nezmění."
 
 #. js-lingui-explicit-id
 #. placeholder {0}: result.imported
@@ -1859,7 +1859,7 @@ msgstr " a "
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/ImportHistoryDialog/ImportHistoryDialog.tsx
 msgid "components.importHistoryDialog.needsFullDiskAccess"
-msgstr "Superset potřebuje Plný přístup k disku, aby mohl číst data jiného prohlížeče. Povolte ho v Nastavení systému a zkontrolujte to znovu."
+msgstr "Choros potřebuje Plný přístup k disku, aby mohl číst data jiného prohlížeče. Povolte ho v Nastavení systému a zkontrolujte to znovu."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/ImportHistoryDialog/ImportHistoryDialog.tsx
@@ -2034,7 +2034,7 @@ msgstr "Přidat popis..."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/MobileAppDemo/MobileAppDemo.tsx
 msgid "components.mobileAppDemo.agentName"
-msgstr "Superset Agent"
+msgstr "Choros Agent"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/MobileAppDemo/MobileAppDemo.tsx
@@ -2195,7 +2195,7 @@ msgstr "Mobilní aplikace"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/constants.ts
 msgid "components.paywall.remoteAccess.description"
-msgstr "Dosáhněte na tento Mac odkudkoli přes Superset relay nebo spusťte cloudové pracovní prostory. Připojte se z libovolného klienta."
+msgstr "Dosáhněte na tento Mac odkudkoli přes Choros relay nebo spusťte cloudové pracovní prostory. Připojte se z libovolného klienta."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/constants.ts
@@ -2215,7 +2215,7 @@ msgstr "Integrace se Slackem"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/constants.ts
 msgid "components.paywall.tasks.description"
-msgstr "Sledujte a spravujte úkoly synchronizované z Linearu. Mějte práci pod kontrolou bez opuštění Superset."
+msgstr "Sledujte a spravujte úkoly synchronizované z Linearu. Mějte práci pod kontrolou bez opuštění Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/constants.ts
@@ -2235,7 +2235,7 @@ msgstr "Týmová spolupráce"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/Paywall.tsx
 msgid "components.paywall.upgradeCta"
-msgstr "Pořídit Superset Pro"
+msgstr "Pořídit Choros Pro"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/UpdatesPill/components/PreUpdateConfirmPopover/PreUpdateConfirmPopover.tsx
@@ -2769,17 +2769,17 @@ msgstr "Náhled promptu"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/SidebarCardSlot/cards/useStarNagCard/useStarNagCard.tsx
 msgid "components.starNagCard.description"
-msgstr "Superset je open source. Pokud vám dnes pomohl, hvězda na GitHubu pomůže dalším vývojářům ho najít."
+msgstr "Choros je open source. Pokud vám dnes pomohl, hvězda na GitHubu pomůže dalším vývojářům ho najít."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/SidebarCardSlot/cards/useStarNagCard/useStarNagCard.tsx
 msgid "components.starNagCard.title"
-msgstr "Líbí se vám Superset?"
+msgstr "Líbí se vám Choros?"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/StarNagToast/StarNagToast.tsx
 msgid "components.starNagToast.body"
-msgstr "Pokud se vám Superset zatím líbí, hvězda na GitHubu pomůže dalším vývojářům ho objevit."
+msgstr "Pokud se vám Choros zatím líbí, hvězda na GitHubu pomůže dalším vývojářům ho objevit."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/StarNagToast/StarNagToast.tsx
@@ -2870,7 +2870,7 @@ msgstr "Kontroluji..."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/UpdateRequiredPage/UpdateRequiredPage.tsx
 msgid "components.updateRequiredPage.defaultMessage"
-msgstr "Pro pokračování je potřeba novější verze Superset. Aktualizujte prosím na nejnovější verzi."
+msgstr "Pro pokračování je potřeba novější verze Choros. Aktualizujte prosím na nejnovější verzi."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/UpdateRequiredPage/UpdateRequiredPage.tsx
@@ -3334,13 +3334,13 @@ msgstr "Nastavení hosta"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/HostOfflineRunDialog/HostOfflineRunDialog.tsx
 msgid "dashboard.automations.hostOfflineDialog.localBody"
-msgstr "Běh byl přeskočen, protože toto zařízení není připojené k Superset relay. Automatizace jdou přes relay, i když běží na tomto zařízení. Povolte přístup přes relay a spusťte ji znovu."
+msgstr "Běh byl přeskočen, protože toto zařízení není připojené k Choros relay. Automatizace jdou přes relay, i když běží na tomto zařízení. Povolte přístup přes relay a spusťte ji znovu."
 
 #. js-lingui-explicit-id
 #. placeholder {0}: remoteHost?.name ?? t({ id: "dashboard.automations.hostOfflineDialog.targetHostFallback", message: "the target host", })
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/HostOfflineRunDialog/HostOfflineRunDialog.tsx
 msgid "dashboard.automations.hostOfflineDialog.remoteBody"
-msgstr "Běh byl přeskočen, protože <0>{0}</0> není připojen k Superset relay. Zkontrolujte, že je na tom zařízení zapnutý přístup přes relay v Nastavení > Vzdálený přístup, a spusťte ji znovu."
+msgstr "Běh byl přeskočen, protože <0>{0}</0> není připojen k Choros relay. Zkontrolujte, že je na tom zařízení zapnutý přístup přes relay v Nastavení > Vzdálený přístup, a spusťte ji znovu."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/HostOfflineRunDialog/HostOfflineRunDialog.tsx
@@ -3355,7 +3355,7 @@ msgstr "Cílový host je offline"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/utils/hostOfflineError/hostOfflineError.ts
 msgid "dashboard.automations.hostOfflineHelp"
-msgstr "Host není připojený k Superset relay. Pokud jde o toto zařízení, zapněte „Povolit vzdálený přístup k tomuto zařízení přes relay“ v Nastavení > Vzdálený přístup a zkuste to znovu."
+msgstr "Host není připojený k Choros relay. Pokud jde o toto zařízení, zapněte „Povolit vzdálený přístup k tomuto zařízení přes relay“ v Nastavení > Vzdálený přístup a zkuste to znovu."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/page.tsx
@@ -3365,7 +3365,7 @@ msgstr "Dokumentace CLI"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/page.tsx
 msgid "dashboard.automations.page.cliHint"
-msgstr "Řekněte libovolnému agentovi, ať použije CLI <0>superset</0> k vytváření pracovních prostorů, spouštění úkolů nebo správě automatizací."
+msgstr "Řekněte libovolnému agentovi, ať použije CLI <0>choros</0> k vytváření pracovních prostorů, spouštění úkolů nebo správě automatizací."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/page.tsx
@@ -4201,13 +4201,13 @@ msgstr "Povolit přístup přes relay…"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/RelayOfflineNotice/RelayOfflineNotice.tsx
 msgid "dashboard.automations.relayOfflineNotice.localBody"
-msgstr "Toto zařízení není připojené k Superset relay, takže běhy automatizací budou přeskočeny."
+msgstr "Toto zařízení není připojené k Choros relay, takže běhy automatizací budou přeskočeny."
 
 #. js-lingui-explicit-id
 #. placeholder {0}: remoteHost.name
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/RelayOfflineNotice/RelayOfflineNotice.tsx
 msgid "dashboard.automations.relayOfflineNotice.remoteBody"
-msgstr "<0>{0}</0> není připojen k Superset relay, takže jeho běhy budou přeskočeny. Zkontrolujte jeho <1>nastavení hosta</1> a ujistěte se, že je na tom zařízení zapnutý přístup přes relay v Nastavení > Vzdálený přístup."
+msgstr "<0>{0}</0> není připojen k Choros relay, takže jeho běhy budou přeskočeny. Zkontrolujte jeho <1>nastavení hosta</1> a ujistěte se, že je na tom zařízení zapnutý přístup přes relay v Nastavení > Vzdálený přístup."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/AutomationRow/AutomationRow.tsx
@@ -5425,6 +5425,16 @@ msgstr "Vyřídit pár TODO"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
+msgid "dashboard.newWorkspaceModal.samplePrompts.explainChoros.description"
+msgstr "Poznejte postup, který k tomuto repozitáři sedí — paralelní pracovní prostory a nastavení agentů."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
+msgid "dashboard.newWorkspaceModal.samplePrompts.explainChoros.label"
+msgstr "Využít Choros naplno"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
 msgid "dashboard.newWorkspaceModal.samplePrompts.explainRepo.description"
 msgstr "Získejte prohlídku architektury: vstupní body, jak to spustit, co si přečíst první."
 
@@ -5432,16 +5442,6 @@ msgstr "Získejte prohlídku architektury: vstupní body, jak to spustit, co si 
 #: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
 msgid "dashboard.newWorkspaceModal.samplePrompts.explainRepo.label"
 msgstr "Vysvětlit mi, jak tento repozitář funguje"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
-msgid "dashboard.newWorkspaceModal.samplePrompts.explainSuperset.description"
-msgstr "Poznejte postup, který k tomuto repozitáři sedí — paralelní pracovní prostory a nastavení agentů."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
-msgid "dashboard.newWorkspaceModal.samplePrompts.explainSuperset.label"
-msgstr "Využít Superset naplno"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
@@ -5471,7 +5471,7 @@ msgstr "Napíše setup a teardown skripty, aby každý nový pracovní prostor r
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
 msgid "dashboard.newWorkspaceModal.samplePrompts.setUpProject.label"
-msgstr "Připravit tento projekt pro Superset"
+msgstr "Připravit tento projekt pro Choros"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: first.message
@@ -5721,7 +5721,7 @@ msgstr "Zjištěno ve vašich konfiguracích agentů"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/$pluginName/components/PluginDetail/PluginDetail.tsx
 msgid "dashboard.plugins.detail.detectedHint"
-msgstr "Tyto jste přidali sami — Superset na ně nesahá a nikdy nezapisuje duplikáty serverů, které už máte."
+msgstr "Tyto jste přidali sami — Choros na ně nesahá a nikdy nezapisuje duplikáty serverů, které už máte."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/$pluginName/components/PluginDetail/PluginDetail.tsx
@@ -5768,7 +5768,7 @@ msgstr "Skills"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/$pluginName/components/PluginDetail/PluginDetail.tsx
 msgid "dashboard.plugins.detail.statusDisabled"
-msgstr "Vypnuto — zůstává nainstalované, ale Superset nic nezapisuje do konfigurací vašich agentů."
+msgstr "Vypnuto — zůstává nainstalované, ale Choros nic nezapisuje do konfigurací vašich agentů."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/$pluginName/components/PluginDetail/PluginDetail.tsx
@@ -6047,7 +6047,7 @@ msgstr "Vypnuto"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/components/PluginsView/components/SkillsList/SkillsList.tsx
 msgid "dashboard.plugins.skillsList.intro"
-msgstr "Skills se dodávají s pluginem Superset a v každém agentovi, kterého používáte, se udržují automaticky aktuální. Kliknutím si je zobrazíte."
+msgstr "Skills se dodávají s pluginem Choros a v každém agentovi, kterého používáte, se udržují automaticky aktuální. Kliknutím si je zobrazíte."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/components/PluginsView/components/SkillsList/SkillsList.tsx
@@ -6296,7 +6296,7 @@ msgstr "Importovat vše"
 #. placeholder {0}: importableWorktrees.length
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/project/$projectId/components/ExternalWorktreesBanner/ExternalWorktreesBanner.tsx
 msgid "dashboard.project.worktreesBanner.importDialogDescription"
-msgstr "{0, plural, one {Tímto se do Superset naimportuje # existující worktree jako pracovní prostor. Každý worktree na disku bude sledován a objeví se v postranním panelu. Žádné soubory se nezmění.} few {Tímto se do Superset naimportují # existující worktree jako pracovní prostory. Každý worktree na disku bude sledován a objeví se v postranním panelu. Žádné soubory se nezmění.} many {Tímto se do Superset naimportuje # existujícího worktree jako pracovní prostory. Každý worktree na disku bude sledován a objeví se v postranním panelu. Žádné soubory se nezmění.} other {Tímto se do Superset naimportuje # existujících worktree jako pracovní prostory. Každý worktree na disku bude sledován a objeví se v postranním panelu. Žádné soubory se nezmění.}}"
+msgstr "{0, plural, one {Tímto se do Choros naimportuje # existující worktree jako pracovní prostor. Každý worktree na disku bude sledován a objeví se v postranním panelu. Žádné soubory se nezmění.} few {Tímto se do Choros naimportují # existující worktree jako pracovní prostory. Každý worktree na disku bude sledován a objeví se v postranním panelu. Žádné soubory se nezmění.} many {Tímto se do Choros naimportuje # existujícího worktree jako pracovní prostory. Každý worktree na disku bude sledován a objeví se v postranním panelu. Žádné soubory se nezmění.} other {Tímto se do Choros naimportuje # existujících worktree jako pracovní prostory. Každý worktree na disku bude sledován a objeví se v postranním panelu. Žádné soubory se nezmění.}}"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/project/$projectId/components/ExternalWorktreesBanner/ExternalWorktreesBanner.tsx
@@ -7385,7 +7385,7 @@ msgstr "{workspaceName}: host není dostupný"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarBulkDeleteDialog/hooks/useBulkWorkspaceDelete/useBulkWorkspaceDelete.ts
 msgid "dashboard.sidebar.bulkDelete.partialFailureDescription"
-msgstr "Načtěte Superset znovu, aby se seznam pracovních prostorů obnovil."
+msgstr "Načtěte Choros znovu, aby se seznam pracovních prostorů obnovil."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarBulkDeleteDialog/hooks/useBulkWorkspaceDelete/useBulkWorkspaceDelete.ts
@@ -7416,7 +7416,7 @@ msgstr "Necommitnuto · Neodesláno"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarBulkDeleteDialog/hooks/useBulkWorkspaceDelete/useBulkWorkspaceDelete.ts
 msgid "dashboard.sidebar.bulkDelete.unexpectedFailureDescription"
-msgstr "Zkuste to znovu. Pokud potíže přetrvávají, načtěte Superset znovu."
+msgstr "Zkuste to znovu. Pokud potíže přetrvávají, načtěte Choros znovu."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarBulkDeleteDialog/hooks/useBulkWorkspaceDelete/useBulkWorkspaceDelete.ts
@@ -8988,7 +8988,7 @@ msgstr "Připojit Linear"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/tasks/components/TasksView/components/LinearCTA/LinearCTA.tsx
 msgid "dashboard.tasks.linearCta.description"
-msgstr "Připojte svůj Linear workspace, ať se issues synchronizují a úkoly spravujete přímo ze Superset."
+msgstr "Připojte svůj Linear workspace, ať se issues synchronizují a úkoly spravujete přímo ze Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/tasks/components/TasksView/components/LinearCTA/LinearCTA.tsx
@@ -9713,7 +9713,7 @@ msgstr "Rozvržení úkolů"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/AppResourceSection/AppResourceSection.tsx
 msgid "dashboard.topBar.appResources.appName"
-msgstr "Aplikace Superset"
+msgstr "Aplikace Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/AppResourceSection/AppResourceSection.tsx
@@ -10050,7 +10050,7 @@ msgstr "CPU"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
 msgid "dashboard.topBar.resourceSummary.cpuTooltip"
-msgstr "Součet CPU využitého Supersetem a sledovanými stromy procesů terminálu. Přes 100 % znamená, že je vytíženo více jader. Dlouhodobě vysoké hodnoty obvykle způsobují sekání UI a rychlejší vybíjení baterie."
+msgstr "Součet CPU využitého Chorosem a sledovanými stromy procesů terminálu. Přes 100 % znamená, že je vytíženo více jader. Dlouhodobě vysoké hodnoty obvykle způsobují sekání UI a rychlejší vybíjení baterie."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
@@ -10060,7 +10060,7 @@ msgstr "Paměť"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
 msgid "dashboard.topBar.resourceSummary.memoryTooltip"
-msgstr "Rezidentní paměť využitá Supersetem a sledovanými stromy procesů terminálu. Pokud stále roste a neklesá, může nějaký proces pracovního prostoru držet paměť. Vysoké hodnoty zvyšují riziko swapování a mohou způsobit trhání."
+msgstr "Rezidentní paměť využitá Chorosem a sledovanými stromy procesů terminálu. Pokud stále roste a neklesá, může nějaký proces pracovního prostoru držet paměť. Vysoké hodnoty zvyšují riziko swapování a mohou způsobit trhání."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
@@ -10070,13 +10070,13 @@ msgstr "Podíl RAM"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
 msgid "dashboard.topBar.resourceSummary.ramShareTooltip"
-msgstr "Procento celkové systémové RAM využité jen sledovanými prostředky Superset (ne všemi aplikacemi). Vysoký podíl znamená, že se Superset zásadně podílí na tlaku na paměť; nízký podíl znamená, že tlak pochází nejspíš odjinud."
+msgstr "Procento celkové systémové RAM využité jen sledovanými prostředky Choros (ne všemi aplikacemi). Vysoký podíl znamená, že se Choros zásadně podílí na tlaku na paměť; nízký podíl znamená, že tlak pochází nejspíš odjinud."
 
 #. js-lingui-explicit-id
 #. placeholder {0}: formatPercent(trackedMemorySharePercent)
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
 msgid "dashboard.topBar.resourceSummary.systemRamShare"
-msgstr "Superset využívá {0} systémové RAM"
+msgstr "Choros využívá {0} systémové RAM"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
@@ -10131,7 +10131,7 @@ msgstr "Zastavit spouštěcí příkaz pracovního prostoru"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
 msgid "dashboard.topBar.submitPromptDialog.description"
-msgstr "Zadejte kódovacímu agentovi prompt na to, co chcete v Superset vidět. Pokud se nám prompt bude líbit, spustíme ho a výsledek sloučíme."
+msgstr "Zadejte kódovacímu agentovi prompt na to, co chcete v Choros vidět. Pokud se nám prompt bude líbit, spustíme ho a výsledek sloučíme."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
@@ -10876,7 +10876,7 @@ msgstr "Stáhnout"
 #. js-lingui-explicit-id
 #: ../../apps/docs/src/app/components/NavigationBar/NavigationBar.tsx
 msgid "docs.nav.githubRepo"
-msgstr "Zobrazit repozitář Superset na GitHubu"
+msgstr "Zobrazit repozitář Choros na GitHubu"
 
 #. js-lingui-explicit-id
 #: ../../apps/docs/src/app/components/NavigationBar/NavigationBar.tsx
@@ -11084,7 +11084,7 @@ msgstr "Nepodařilo se odebrat místní přihlášení"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/hooks/useSignOut/useSignOut.ts
 msgid "hooks.signOut.removeLocalSignInFailedDescription"
-msgstr "Superset vás po restartu možná znovu přihlásí. Zkuste se prosím odhlásit znovu."
+msgstr "Choros vás po restartu možná znovu přihlásí. Zkuste se prosím odhlásit znovu."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/host-service-unavailable.ts
@@ -11239,12 +11239,12 @@ msgstr "Zkuste to znovu za pár sekund."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/host-service-unavailable.ts
 msgid "hostServiceUnavailable.recovery.stopped"
-msgstr "Použijte nabídku Superset na liště > Host Service > Restart a zkuste to znovu."
+msgstr "Použijte nabídku Choros na liště > Host Service > Restart a zkuste to znovu."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/host-service-unavailable.ts
 msgid "hostServiceUnavailable.recovery.unknown"
-msgstr "Zkuste to znovu za pár sekund; pokud potíže přetrvávají, restartujte Superset."
+msgstr "Zkuste to znovu za pár sekund; pokud potíže přetrvávají, restartujte Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/host-service-unavailable.ts
@@ -11849,7 +11849,7 @@ msgstr "Přepnout panel pracovních prostorů"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/index.ts
 msgid "main.auth.failed.detail"
-msgstr "Superset nedokázal dokončit přihlášení. Zkuste to prosím znovu."
+msgstr "Choros nedokázal dokončit přihlášení. Zkuste to prosím znovu."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/index.ts
@@ -11930,17 +11930,17 @@ msgstr "Zrušit"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/host-service-coordinator.ts
 msgid "main.hostService.crashed.detail"
-msgstr "Její pracovní prostory a terminály nebudou dostupné, dokud se nerestartuje — použijte nabídku Superset na liště > Host Service > Restart."
+msgstr "Její pracovní prostory a terminály nebudou dostupné, dokud se nerestartuje — použijte nabídku Choros na liště > Host Service > Restart."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/host-service-coordinator.ts
 msgid "main.hostService.crashed.message"
-msgstr "Host service Superset se nečekaně zastavila ({cause}) a nešlo ji automaticky restartovat."
+msgstr "Host service Choros se nečekaně zastavila ({cause}) a nešlo ji automaticky restartovat."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/host-service-coordinator.ts
 msgid "main.hostService.crashed.messageForOrganization"
-msgstr "Host service Superset pro {organization} se nečekaně zastavila ({cause}) a nešlo ji automaticky restartovat."
+msgstr "Host service Choros pro {organization} se nečekaně zastavila ({cause}) a nešlo ji automaticky restartovat."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/host-service-coordinator.ts
@@ -11955,7 +11955,7 @@ msgstr "Zkontrolovat aktualizace..."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/menu.ts
 msgid "main.menu.app.quitCompletely"
-msgstr "Úplně ukončit Superset"
+msgstr "Úplně ukončit Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/menu.ts
@@ -12096,7 +12096,7 @@ msgstr "Opravdu chcete aplikaci ukončit?"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/index.ts
 msgid "main.quit.title"
-msgstr "Ukončit Superset"
+msgstr "Ukončit Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/quit-completely.ts
@@ -12106,17 +12106,17 @@ msgstr "Úplně ukončit"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/quit-completely.ts
 msgid "main.quitCompletely.detail"
-msgstr "Všechny otevřené relace terminálu budou ukončeny a všechny běžící host-services zastaveny. Pokud chcete, aby služby běžely dál do příštího spuštění, použijte místo toho „Zavřít Superset“."
+msgstr "Všechny otevřené relace terminálu budou ukončeny a všechny běžící host-services zastaveny. Pokud chcete, aby služby běžely dál do příštího spuštění, použijte místo toho „Zavřít Choros“."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/quit-completely.ts
 msgid "main.quitCompletely.message"
-msgstr "Ukončit Superset a zastavit všechny služby na pozadí?"
+msgstr "Ukončit Choros a zastavit všechny služby na pozadí?"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/quit-completely.ts
 msgid "main.quitCompletely.title"
-msgstr "Úplně ukončit Superset"
+msgstr "Úplně ukončit Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/auto-updater.ts
@@ -12196,7 +12196,7 @@ msgstr "Související články"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/blog/page.tsx
 msgid "marketing.blog.subtitle"
-msgstr "Postřehy týmu Superset o paralelních kódovacích agentech a produktivitě vývojářů."
+msgstr "Postřehy týmu Choros o paralelních kódovacích agentech a produktivitě vývojářů."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/blog/page.tsx
@@ -12211,7 +12211,7 @@ msgstr "Začít"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/CategoryArticle/CategoryArticle.tsx
 msgid "marketing.categoryArticle.cta.title"
-msgstr "Chcete Superset vyzkoušet?"
+msgstr "Chcete Choros vyzkoušet?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/CategoryArticle/CategoryArticle.tsx
@@ -12246,7 +12246,7 @@ msgstr "Changelog"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/changelog/page.tsx
 msgid "marketing.changelog.subtitle"
-msgstr "Nejnovější změny, vylepšení a nové funkce v Superset. Aktualizováno každý týden. Podrobné poznámky k vydání najdete v <0>GitHub Releases<1/></0>"
+msgstr "Nejnovější změny, vylepšení a nové funkce v Choros. Aktualizováno každý týden. Podrobné poznámky k vydání najdete v <0>GitHub Releases<1/></0>"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/changelog/page.tsx
@@ -12291,7 +12291,7 @@ msgstr "HVĚZDY"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/community/page.tsx
 msgid "marketing.community.subtitle"
-msgstr "Přidejte se do komunity <0>Superset</0>, získejte pomoc, sdílejte nápady a mějte přehled o novinkách."
+msgstr "Přidejte se do komunity <0>Choros</0>, získejte pomoc, sdílejte nápady a mějte přehled o novinkách."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/community/page.tsx
@@ -12311,7 +12311,7 @@ msgstr "Začít"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/[slug]/components/CompareLayout/CompareLayout.tsx
 msgid "marketing.compare.cta.title"
-msgstr "Chcete Superset vyzkoušet?"
+msgstr "Chcete Choros vyzkoušet?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/page.tsx
@@ -12346,12 +12346,12 @@ msgstr "Návody k workflow"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/page.tsx
 msgid "marketing.compare.subtitle"
-msgstr "Podívejte se, jak si Superset stojí vedle dalších AI nástrojů pro vývoj — od AI editorů přes kódovací agenty po cloudové AI inženýry."
+msgstr "Podívejte se, jak si Choros stojí vedle dalších AI nástrojů pro vývoj — od AI editorů přes kódovací agenty po cloudové AI inženýry."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/page.tsx
 msgid "marketing.compare.title"
-msgstr "Superset vs. alternativy"
+msgstr "Choros vs. alternativy"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/components/ContactForm/ContactForm.tsx
@@ -12406,17 +12406,17 @@ msgstr "Napište nám"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
 msgid "marketing.contact.otherWays.community"
-msgstr "Pro hlášení chyb a náměty na funkce je nejrychlejší cestou GitHub issue na <0>github.com/superset-sh/superset</0>. Naše komunita žije na <1>Discordu</1> a novinky zveřejňujeme na <2>X (@superset_sh)</2> a <3>LinkedInu</3>."
+msgstr "Pro hlášení chyb a náměty na funkce je nejrychlejší cestou GitHub issue na <0>github.com/superset-sh/choros</0>. Naše komunita žije na <1>Discordu</1> a novinky zveřejňujeme na <2>X (@choros_sh)</2> a <3>LinkedInu</3>."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
 msgid "marketing.contact.otherWays.email"
-msgstr "Superset staví tým se sídlem v San Franciscu v Kalifornii. S dotazy k produktu nebo účtu pište na <0>{supportEmail}</0> a ozveme se do jednoho pracovního dne. Partnerství, tisk, enterprise nebo cokoli pro zakladatelský tým směřujte na <1>{foundersEmail}</1>."
+msgstr "Choros staví tým se sídlem v San Franciscu v Kalifornii. S dotazy k produktu nebo účtu pište na <0>{supportEmail}</0> a ozveme se do jednoho pracovního dne. Partnerství, tisk, enterprise nebo cokoli pro zakladatelský tým směřujte na <1>{foundersEmail}</1>."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
 msgid "marketing.contact.otherWays.status"
-msgstr "Dostupnost služby zveřejňujeme na <0>status.superset.sh</0> a dokumentaci k bezpečnosti a compliance na <1>trust.superset.sh</1>."
+msgstr "Dostupnost služby zveřejňujeme na <0>status.choros.sh</0> a dokumentaci k bezpečnosti a compliance na <1>trust.choros.sh</1>."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
@@ -12456,7 +12456,7 @@ msgstr "Sjednoťte své agenty."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/CTASection/CTASection.tsx
 msgid "marketing.cta.installPrompt"
-msgstr "Nebo požádejte svého kódovacího agenta, ať nainstaluje Superset CLI."
+msgstr "Nebo požádejte svého kódovacího agenta, ať nainstaluje Choros CLI."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/CTASection/CTASection.tsx
@@ -12476,12 +12476,12 @@ msgstr "Stahování se spustí automaticky. Pokud ne, stáhněte si to zde."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadInterstitial/DownloadInterstitial.tsx
 msgid "marketing.download.autoTitle"
-msgstr "Za chvíli budete mít Superset"
+msgstr "Za chvíli budete mít Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/ReleaseList/ReleaseList.tsx
 msgid "marketing.download.availability"
-msgstr "Desktopová aplikace Superset je dostupná pro macOS a Linux."
+msgstr "Desktopová aplikace Choros je dostupná pro macOS a Linux."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadLinkForm/DownloadLinkForm.tsx
@@ -12567,12 +12567,12 @@ msgstr "Odkaz ke stažení jsme poslali na {submittedEmail}."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadInterstitial/DownloadInterstitial.tsx
 msgid "marketing.download.mobileBody"
-msgstr "Superset je desktopová aplikace. Zadejte e-mail a pošleme vám odkaz ke stažení, který otevřete na svém Macu."
+msgstr "Choros je desktopová aplikace. Zadejte e-mail a pošleme vám odkaz ke stažení, který otevřete na svém Macu."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadInterstitial/DownloadInterstitial.tsx
 msgid "marketing.download.mobileTitle"
-msgstr "Získejte Superset na svůj Mac"
+msgstr "Získejte Choros na svůj Mac"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadLinkForm/actions.ts
@@ -12657,17 +12657,17 @@ msgstr "Spouštějte své agenty z desktopu, libovolného terminálu nebo telefo
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadInterstitial/DownloadInterstitial.tsx
 msgid "marketing.download.waitlistBody"
-msgstr "Superset chystáme i pro Windows a Linux. Nechte nám e-mail a dáme vám vědět, jakmile bude hotovo."
+msgstr "Choros chystáme i pro Windows a Linux. Nechte nám e-mail a dáme vám vědět, jakmile bude hotovo."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadInterstitial/DownloadInterstitial.tsx
 msgid "marketing.download.waitlistTitle"
-msgstr "Superset je zatím jen pro Mac"
+msgstr "Choros je zatím jen pro Mac"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/components/EnterpriseFAQ/constants.ts
 msgid "marketing.enterprise.faq.dataSecurity.answer"
-msgstr "Superset běží lokálně na počítačích vašich vývojářů. Neukládáme váš kód ani konverzace s AI a Superset prošel auditem SOC 2 Type II u nezávislého auditora. Vyžádejte si zprávu a projděte si dokumentaci k bezpečnosti na trust.superset.sh."
+msgstr "Choros běží lokálně na počítačích vašich vývojářů. Neukládáme váš kód ani konverzace s AI a Choros prošel auditem SOC 2 Type II u nezávislého auditora. Vyžádejte si zprávu a projděte si dokumentaci k bezpečnosti na trust.choros.sh."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/components/EnterpriseFAQ/constants.ts
@@ -12707,12 +12707,12 @@ msgstr "Časté dotazy"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/components/EnterpriseFAQ/constants.ts
 msgid "marketing.enterprise.faq.whatIsEnterprise.answer"
-msgstr "Superset Enterprise je Superset pro týmy. Ozvěte se a řekneme vám, co obsahuje a jak může fungovat ve vaší organizaci."
+msgstr "Choros Enterprise je Choros pro týmy. Ozvěte se a řekneme vám, co obsahuje a jak může fungovat ve vaší organizaci."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/components/EnterpriseFAQ/constants.ts
 msgid "marketing.enterprise.faq.whatIsEnterprise.question"
-msgstr "Co je Superset Enterprise?"
+msgstr "Co je Choros Enterprise?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/components/EnterpriseContactForm/EnterpriseContactForm.tsx
@@ -12772,12 +12772,12 @@ msgstr "V souladu se SOC 2 Type II. Vyžádejte si naši zprávu."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/page.tsx
 msgid "marketing.enterprise.hero.subtitle"
-msgstr "Chcete Superset přinést do své organizace? Ozvěte se a společně najdeme nastavení, které vašemu týmu sedne."
+msgstr "Chcete Choros přinést do své organizace? Ozvěte se a společně najdeme nastavení, které vašemu týmu sedne."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/page.tsx
 msgid "marketing.enterprise.hero.title"
-msgstr "Superset pro váš tým"
+msgstr "Choros pro váš tým"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/components/AttentionChart/AttentionChart.tsx
@@ -12817,7 +12817,7 @@ msgstr "Za obzorem: F5 není tvrzení o blízké budoucnosti"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
 msgid "marketing.factory.cta.body"
-msgstr "Superset je pracovní stůl pro přechod z F3 na F4: paralelní agenti v izolovaných pracovních prostorech, flotily, které skutečně uhlídáte, a plocha pro revizi kódu, který jste nenapsali."
+msgstr "Choros je pracovní stůl pro přechod z F3 na F4: paralelní agenti v izolovaných pracovních prostorech, flotily, které skutečně uhlídáte, a plocha pro revizi kódu, který jste nenapsali."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
@@ -12827,7 +12827,7 @@ msgstr "Přečíst changelog"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
 msgid "marketing.factory.cta.download"
-msgstr "Stáhnout Superset"
+msgstr "Stáhnout Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
@@ -13489,7 +13489,7 @@ msgstr "Částečně"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.existingIde.answer"
-msgstr "Superset je navržený tak, aby fungoval s vaším stávajícím nástrojem. Nativně podporujeme hluboké odkazy do IDE, jako je Cursor, takže si pracovní prostory a soubory otevřete ve svém IDE."
+msgstr "Choros je navržený tak, aby fungoval s vaším stávajícím nástrojem. Nativně podporujeme hluboké odkazy do IDE, jako je Cursor, takže si pracovní prostory a soubory otevřete ve svém IDE."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
@@ -13499,12 +13499,12 @@ msgstr "Už používám IDE jako Cursor, je to pro mě?"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.freeToUse.answer"
-msgstr "Superset má bezplatný tarif. Zdrojový kód je na GitHubu pod licencí Elastic License 2.0 (ELv2), takže si ho můžete prohlédnout a za podmínek licence provozovat sami."
+msgstr "Choros má bezplatný tarif. Zdrojový kód je na GitHubu pod licencí Elastic License 2.0 (ELv2), takže si ho můžete prohlédnout a za podmínek licence provozovat sami."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.freeToUse.question"
-msgstr "Je Superset zdarma?"
+msgstr "Je Choros zdarma?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/FAQSection.tsx
@@ -13514,17 +13514,17 @@ msgstr "Často<0/>kladené otázky"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.openSource.answer"
-msgstr "Superset je source-available: kód je veřejně na GitHubu pod licencí Elastic License 2.0 (ELv2), která umožňuje si ho prohlédnout a za podmínek licence ho provozovat samostatně, ale nejde o open source schválený OSI. Superset nemá nic společného s Apache Superset, nástrojem pro business intelligence."
+msgstr "Choros je source-available: kód je veřejně na GitHubu pod licencí Elastic License 2.0 (ELv2), která umožňuje si ho prohlédnout a za podmínek licence ho provozovat samostatně, ale nejde o open source schválený OSI. Choros nemá nic společného s Apache Choros, nástrojem pro business intelligence."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.openSource.question"
-msgstr "Je Superset open source?"
+msgstr "Je Choros open source?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.ownApiKeys.answer"
-msgstr "Rozhodně. Superset nepřeposílá žádná API volání. Vlastní API klíče používáte přímo u poskytovatelů AI, které si zvolíte. Máte tak plnou kontrolu nad náklady i využitím."
+msgstr "Rozhodně. Choros nepřeposílá žádná API volání. Vlastní API klíče používáte přímo u poskytovatelů AI, které si zvolíte. Máte tak plnou kontrolu nad náklady i využitím."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
@@ -13549,17 +13549,17 @@ msgstr "Jak funguje systém paralelních agentů?"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.platforms.answer"
-msgstr "Desktopová aplikace běží na macOS, k tomu je experimentální AppImage pro Linux; Windows zatím nejsou dostupné. Kromě desktopové aplikace je tu CLI, TypeScript SDK a MCP server, takže Superset můžete řídit ze skriptů, terminálů i jiných agentů."
+msgstr "Desktopová aplikace běží na macOS, k tomu je experimentální AppImage pro Linux; Windows zatím nejsou dostupné. Kromě desktopové aplikace je tu CLI, TypeScript SDK a MCP server, takže Choros můžete řídit ze skriptů, terminálů i jiných agentů."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.platforms.question"
-msgstr "Na jakých platformách Superset běží?"
+msgstr "Na jakých platformách Choros běží?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.supportedAgents.answer"
-msgstr "Superset funguje s libovolným kódovacím agentem v CLI, včetně Claude Code, OpenCode, OpenAI Codex a dalších. Pro každý úkol si zvolte jiného agenta, aniž byste měnili pracovní prostor nebo způsob revize."
+msgstr "Choros funguje s libovolným kódovacím agentem v CLI, včetně Claude Code, OpenCode, OpenAI Codex a dalších. Pro každý úkol si zvolte jiného agenta, aniž byste měnili pracovní prostor nebo způsob revize."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
@@ -13569,27 +13569,27 @@ msgstr "Kteří AI kódovací agenti jsou podporovaní?"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.vsTerminal.answer"
-msgstr "Claude Code, Codex a OpenCode jsou agenti; Superset je místo, kde jich spustíte spoustu naráz. Každý úkol dostane vlastní izolovaný git worktree, takže deset agentů může pracovat na deseti větvích současně, zatímco vy z jednoho místa sledujete, revidujete a slučujete."
+msgstr "Claude Code, Codex a OpenCode jsou agenti; Choros je místo, kde jich spustíte spoustu naráz. Každý úkol dostane vlastní izolovaný git worktree, takže deset agentů může pracovat na deseti větvích současně, zatímco vy z jednoho místa sledujete, revidujete a slučujete."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.vsTerminal.link"
-msgstr "Podívejte se, jak si Superset stojí vedle jiných nástrojů"
+msgstr "Podívejte se, jak si Choros stojí vedle jiných nástrojů"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.vsTerminal.question"
-msgstr "Čím se Superset liší od prostého spuštění Claude Code v terminálu?"
+msgstr "Čím se Choros liší od prostého spuštění Claude Code v terminálu?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.wrapper.answer"
-msgstr "Ne. Vaši agenti zůstávají nezávislí; Superset je orchestrační vrstva kolem nich. Každý úkol dostane izolovaný git worktree, trvalé relace, revizi rozdílů a plánované běhy, aniž byste workflow uvázali k jednomu poskytovateli."
+msgstr "Ne. Vaši agenti zůstávají nezávislí; Choros je orchestrační vrstva kolem nich. Každý úkol dostane izolovaný git worktree, trvalé relace, revizi rozdílů a plánované běhy, aniž byste workflow uvázali k jednomu poskytovateli."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.wrapper.question"
-msgstr "Je Superset jen obal kolem Claude Code?"
+msgstr "Je Choros jen obal kolem Claude Code?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FeaturesSection/constants.ts
@@ -13699,7 +13699,7 @@ msgstr "Naplánujte opakovanou práci"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FeaturesSection/constants.ts
 msgid "marketing.features.cliSdk.description"
-msgstr "Všechno jde skriptovat. Vytvářejte pracovní prostory a agenty z CLI, zapojte Superset do CI přes SDK nebo ho nechte řídit svého agenta přes MCP."
+msgstr "Všechno jde skriptovat. Vytvářejte pracovní prostory a agenty z CLI, zapojte Choros do CI přes SDK nebo ho nechte řídit svého agenta přes MCP."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FeaturesSection/constants.ts
@@ -13889,7 +13889,7 @@ msgstr "Stav"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Footer/Footer.tsx
 msgid "marketing.footer.copyright"
-msgstr "© {year} Superset Inc."
+msgstr "© {year} Choros Inc."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Footer/Footer.tsx
@@ -14265,7 +14265,7 @@ msgstr "Zrevidujte výsledek."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/HowItWorksSection/constants.ts
 msgid "marketing.howItWorks.startWithWork.description"
-msgstr "Popište, co potřebujete. Superset pro úkol vytvoří izolovaný pracovní prostor a čistou větev."
+msgstr "Popište, co potřebujete. Choros pro úkol vytvoří izolovaný pracovní prostor a čistou větev."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/HowItWorksSection/constants.ts
@@ -14275,17 +14275,17 @@ msgstr "Začněte prací."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
 msgid "marketing.joinUs.bodyScale"
-msgstr "Dnes používají Superset jako hlavní IDE desítky tisíc inženýrů, ve firmách jako Wix, DoorDash nebo Netflix. Brzy budou týmy provozovat stovky agentů paralelně — softwarové továrny, které autonomně vyrábějí a dodávají kód. Ze Superset děláme místo, kde tyto továrny týmy provozují a spravují, počínaje tou naší."
+msgstr "Dnes používají Choros jako hlavní IDE desítky tisíc inženýrů, ve firmách jako Wix, DoorDash nebo Netflix. Brzy budou týmy provozovat stovky agentů paralelně — softwarové továrny, které autonomně vyrábějí a dodávají kód. Ze Choros děláme místo, kde tyto továrny týmy provozují a spravují, počínaje tou naší."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
 msgid "marketing.joinUs.bodyTeam"
-msgstr "Superset se staví v Superset, takže jsme jeho uživatelé číslo jedna — dostáváte zaplaceno za to, že si usnadňujete život. Stavíme plochý tým s vysokou koncentrací talentu a hledáme lidi, kteří mají bláznivé nápady a jsou dost blázniví na to je dotáhnout. Pokud jste vždycky chtěli stavět produkt, který sami rádi používáte, pojďte ho stavět s námi."
+msgstr "Choros se staví v Choros, takže jsme jeho uživatelé číslo jedna — dostáváte zaplaceno za to, že si usnadňujete život. Stavíme plochý tým s vysokou koncentrací talentu a hledáme lidi, kteří mají bláznivé nápady a jsou dost blázniví na to je dotáhnout. Pokud jste vždycky chtěli stavět produkt, který sami rádi používáte, pojďte ho stavět s námi."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
 msgid "marketing.joinUs.lede"
-msgstr "Superset staví software, který se sám zlepšuje. Začíná to tím, že dá inženýrům nejlepší nástroje, které se časem přizpůsobí jejich potřebám."
+msgstr "Choros staví software, který se sám zlepšuje. Začíná to tím, že dá inženýrům nejlepší nástroje, které se časem přizpůsobí jejich potřebám."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
@@ -14335,7 +14335,7 @@ msgstr "Tokeny"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/leaderboard/components/LeaderboardBoard/components/LeaderboardTable/LeaderboardTable.tsx
 msgid "marketing.leaderboard.empty.optIn"
-msgstr "Zapněte to v Superset v Nastavení → Účet."
+msgstr "Zapněte to v Choros v Nastavení → Účet."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/leaderboard/components/LeaderboardBoard/components/LeaderboardTable/LeaderboardTable.tsx
@@ -14610,12 +14610,12 @@ msgstr "Klikněte na <0>Importovat motiv</0> a vyberte stažený soubor."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/[slug]/page.tsx
 msgid "marketing.marketplace.theme.installStep.openSettings"
-msgstr "V desktopové aplikaci Superset otevřete <0>Nastavení → Vzhled → Motiv</0>."
+msgstr "V desktopové aplikaci Choros otevřete <0>Nastavení → Vzhled → Motiv</0>."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/[slug]/page.tsx
 msgid "marketing.marketplace.theme.installTitle"
-msgstr "Jak nainstalovat {name} do Superset"
+msgstr "Jak nainstalovat {name} do Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/[slug]/page.tsx
@@ -14670,7 +14670,7 @@ msgstr "Terminál"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/page.tsx
 msgid "marketing.marketplace.themes.description"
-msgstr "Sdílené JSON soubory motivů, které si můžete naimportovat do Superset."
+msgstr "Sdílené JSON soubory motivů, které si můžete naimportovat do Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/page.tsx
@@ -14870,7 +14870,7 @@ msgstr "Připojte Claude, Codex, Cursor nebo libovolného <0>MCP</0> klienta a n
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/mcp-install/page.tsx
 msgid "marketing.mcpInstall.hero.title"
-msgstr "Nainstalujte Superset MCP do svého klienta"
+msgstr "Nainstalujte Choros MCP do svého klienta"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/mcp-install/page.tsx
@@ -14880,7 +14880,7 @@ msgstr "Vyberte svého agenta pro instalaci na jeden řádek, nebo konfiguraci z
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/blog/page.tsx
 msgid "marketing.meta.blog.description"
-msgstr "Novinky, aktualizace a postřehy od týmu Superset o paralelních kódovacích agentech a produktivitě vývojářů."
+msgstr "Novinky, aktualizace a postřehy od týmu Choros o paralelních kódovacích agentech a produktivitě vývojářů."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/blog/page.tsx
@@ -14890,7 +14890,7 @@ msgstr "Blog"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/changelog/page.tsx
 msgid "marketing.meta.changelog.description"
-msgstr "Nejnovější aktualizace, vylepšení a nové funkce v Supersetu."
+msgstr "Nejnovější aktualizace, vylepšení a nové funkce v Chorosu."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/changelog/page.tsx
@@ -14900,7 +14900,7 @@ msgstr "Changelog"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/community/page.tsx
 msgid "marketing.meta.community.description"
-msgstr "Připojte se ke komunitě Superset, získejte pomoc, sdílejte nápady a zůstaňte v obraze s nejnovějšími novinkami a aktualizacemi."
+msgstr "Připojte se ke komunitě Choros, získejte pomoc, sdílejte nápady a zůstaňte v obraze s nejnovějšími novinkami a aktualizacemi."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/community/page.tsx
@@ -14910,12 +14910,12 @@ msgstr "Komunita"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/page.tsx
 msgid "marketing.meta.compare.description"
-msgstr "Porovnejte Superset s Cursor, Claude Code, Codex, Windsurf, Devin, GitHub Copilot a dalšími. Procházejte srovnání vedle sebe, přehledy a průvodce pracovními postupy."
+msgstr "Porovnejte Choros s Cursor, Claude Code, Codex, Windsurf, Devin, GitHub Copilot a dalšími. Procházejte srovnání vedle sebe, přehledy a průvodce pracovními postupy."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/page.tsx
 msgid "marketing.meta.compare.title"
-msgstr "Porovnat Superset | Srovnání a průvodci AI kódováním"
+msgstr "Porovnat Choros | Srovnání a průvodci AI kódováním"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
@@ -14930,12 +14930,12 @@ msgstr "Kontakt"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/page.tsx
 msgid "marketing.meta.download.description"
-msgstr "Vaše stahování Supersetu se spouští."
+msgstr "Vaše stahování Chorosu se spouští."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/page.tsx
 msgid "marketing.meta.download.title"
-msgstr "Stáhnout Superset"
+msgstr "Stáhnout Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/page.tsx
@@ -14955,7 +14955,7 @@ msgstr "Falzifikovatelné hodnoticí schéma pro samořídící softwarovou tov�
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
 msgid "marketing.meta.factory2026.ogTitle"
-msgstr "Factory 2026 | Superset"
+msgstr "Factory 2026 | Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
@@ -14970,7 +14970,7 @@ msgstr "Nabíráme inženýry v San Franciscu. Pomozte nám postavit první plat
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
 msgid "marketing.meta.joinUs.ogTitle"
-msgstr "Přidejte se k nám v Supersetu"
+msgstr "Přidejte se k nám v Chorosu"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
@@ -14990,7 +14990,7 @@ msgstr "Žebříček"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/agents/page.tsx
 msgid "marketing.meta.marketplace.agents.description"
-msgstr "Budoucí domov pro znovupoužitelné konfigurace agentů, prompty a průvodce nastavením pro Superset."
+msgstr "Budoucí domov pro znovupoužitelné konfigurace agentů, prompty a průvodce nastavením pro Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/agents/page.tsx
@@ -15000,12 +15000,12 @@ msgstr "Konfigurace agentů"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/page.tsx
 msgid "marketing.meta.marketplace.description"
-msgstr "Procházejte sdílené motivy a budoucí konfigurace agentů pro Superset."
+msgstr "Procházejte sdílené motivy a budoucí konfigurace agentů pro Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/page.tsx
 msgid "marketing.meta.marketplace.themes.description"
-msgstr "Procházejte soubory motivů pro Superset sdílené komunitou, včetně GitHub Dark Colorblind, Catppuccin, Ember a One Dark Pro."
+msgstr "Procházejte soubory motivů pro Choros sdílené komunitou, včetně GitHub Dark Colorblind, Catppuccin, Ember a One Dark Pro."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/page.tsx
@@ -15040,7 +15040,7 @@ msgstr "Ceník"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/page.tsx
 msgid "marketing.meta.roadmap.description"
-msgstr "Podívejte se, co právě stavíme, co přijde dál a kam Superset míří."
+msgstr "Podívejte se, co právě stavíme, co přijde dál a kam Choros míří."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/page.tsx
@@ -15060,7 +15060,7 @@ msgstr "Historie hvězd"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/stats/page.tsx
 msgid "marketing.meta.stats.description"
-msgstr "Souhrnné využití agentů napříč všemi vývojáři v žebříčku Superset — tokeny, náklady, chování cache a modely, po kterých lidé skutečně sahají."
+msgstr "Souhrnné využití agentů napříč všemi vývojáři v žebříčku Choros — tokeny, náklady, chování cache a modely, po kterých lidé skutečně sahají."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/stats/page.tsx
@@ -15070,12 +15070,12 @@ msgstr "Statistiky"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.meta.team.description"
-msgstr "Co je Superset, kdo ho staví a pro koho je. Sanfranciský tým tří bývalých YC CTO, který staví pracovní prostor pro paralelní kódovací agenty."
+msgstr "Co je Choros, kdo ho staví a pro koho je. Sanfranciský tým tří bývalých YC CTO, který staví pracovní prostor pro paralelní kódovací agenty."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.meta.team.ogDescription"
-msgstr "Poznejte tým za Supersetem, který staví paralelní kódovací agenty pro vývojáře."
+msgstr "Poznejte tým za Chorosem, který staví paralelní kódovací agenty pro vývojáře."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
@@ -15155,7 +15155,7 @@ msgstr "Changelog"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Header/constants.tsx
 msgid "marketing.nav.product.mcp.description"
-msgstr "Připojte k Superset libovolného AI agenta."
+msgstr "Připojte k Choros libovolného AI agenta."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Header/constants.tsx
@@ -15186,7 +15186,7 @@ msgstr "Produkt"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Header/constants.tsx
 msgid "marketing.nav.resources.about.description"
-msgstr "Lidé za Supersetem."
+msgstr "Lidé za Chorosem."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Header/constants.tsx
@@ -15477,7 +15477,7 @@ msgstr "Stáhnout aplikaci"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
 msgid "marketing.pricing.faq.agentSubscriptions.answer"
-msgstr "Ano. Superset je pracovní prostor, ve kterém vaši agenti běží, ne poskytovatel modelů. Přineste si Claude Code, Codex, OpenCode nebo libovolného CLI agenta a používejte své stávající účty či API klíče v každém tarifu."
+msgstr "Ano. Choros je pracovní prostor, ve kterém vaši agenti běží, ne poskytovatel modelů. Přineste si Claude Code, Codex, OpenCode nebo libovolného CLI agenta a používejte své stávající účty či API klíče v každém tarifu."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
@@ -15522,12 +15522,12 @@ msgstr "Jak funguje cena tarifu Pro?"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
 msgid "marketing.pricing.faq.soc2.answer"
-msgstr "Ano. Superset prošel auditem SOC 2 Type II u nezávislého auditora, který pokrývá naše bezpečnostní kontroly v provozu v čase. Vyžádejte si zprávu a projděte si dokumentaci k bezpečnosti na trust.superset.sh."
+msgstr "Ano. Choros prošel auditem SOC 2 Type II u nezávislého auditora, který pokrývá naše bezpečnostní kontroly v provozu v čase. Vyžádejte si zprávu a projděte si dokumentaci k bezpečnosti na trust.choros.sh."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
 msgid "marketing.pricing.faq.soc2.question"
-msgstr "Splňuje Superset SOC 2?"
+msgstr "Splňuje Choros SOC 2?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
@@ -15547,7 +15547,7 @@ msgstr "Časté dotazy"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
 msgid "marketing.pricing.faq.whereCodeRuns.answer"
-msgstr "Na vašem počítači. Repozitáře, worktree, výstup terminálu i relace agentů zůstávají ve výchozím stavu lokálně; cloudová synchronizace se týká jen metadat účtu a organizace. Superset nepřeposílá žádná API volání."
+msgstr "Na vašem počítači. Repozitáře, worktree, výstup terminálu i relace agentů zůstávají ve výchozím stavu lokálně; cloudová synchronizace se týká jen metadat účtu a organizace. Choros nepřeposílá žádná API volání."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
@@ -15987,7 +15987,7 @@ msgstr "Vylepšený prohlížeč rozdílů"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/data.ts
 msgid "marketing.roadmap.item.inAppPrMerge.description"
-msgstr "Slučujte pull requesty bez opuštění Superset, k tomu kolo oprav a vypilování chatu."
+msgstr "Slučujte pull requesty bez opuštění Choros, k tomu kolo oprav a vypilování chatu."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/data.ts
@@ -16017,7 +16017,7 @@ msgstr "Správce MCP"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/data.ts
 msgid "marketing.roadmap.item.nativePrReviews.description"
-msgstr "Revidujte pull requesty přímo v Superset: panel rozdílů, revize s pomocí agenta, práce s komentáři na místě."
+msgstr "Revidujte pull requesty přímo v Choros: panel rozdílů, revize s pomocí agenta, práce s komentáři na místě."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/data.ts
@@ -16257,7 +16257,7 @@ msgstr "Váš kód zůstává ve výchozím stavu lokálně a připojené služb
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/SecuritySection/SecuritySection.tsx
 msgid "marketing.security.yourAccounts.description"
-msgstr "Používejte svá stávající předplatná agentů a API klíče. Superset nikdy nepřeposílá volání modelů ani neváže vaše workflow na jednoho poskytovatele."
+msgstr "Používejte svá stávající předplatná agentů a API klíče. Choros nikdy nepřeposílá volání modelů ani neváže vaše workflow na jednoho poskytovatele."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/SecuritySection/SecuritySection.tsx
@@ -16508,7 +16508,7 @@ msgstr "Statistiky teď nejsou dostupné."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.eyebrow"
-msgstr "O Superset"
+msgstr "O Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
@@ -16523,12 +16523,12 @@ msgstr "Zakladatelé"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.foundersPhoto.alt"
-msgstr "Zakladatelé Superset na hackathonu, YC HQ San Francisco"
+msgstr "Zakladatelé Choros na hackathonu, YC HQ San Francisco"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.foundersPhoto.caption"
-msgstr "Zakladatelé na hackathonu, kde Superset vznikl <0>|</0> YC HQ, listopad 2025"
+msgstr "Zakladatelé na hackathonu, kde Choros vznikl <0>|</0> YC HQ, listopad 2025"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
@@ -16543,7 +16543,7 @@ msgstr "Nabíráme v San Franciscu"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.intro"
-msgstr "Superset staví software, který se sám zlepšuje. Začíná to tím, že dá inženýrům nejlepší nástroje, které se časem přizpůsobí jejich potřebám. Jsme tři bývalí CTO z YC a stavíme nástroj, který sami milujeme."
+msgstr "Choros staví software, který se sám zlepšuje. Začíná to tím, že dá inženýrům nejlepší nástroje, které se časem přizpůsobí jejich potřebám. Jsme tři bývalí CTO z YC a stavíme nástroj, který sami milujeme."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/[id]/page.tsx
@@ -16563,7 +16563,7 @@ msgstr "Další členové týmu"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.story.adoption"
-msgstr "Za pouhých pár měsíců používají Superset jako hlavní IDE <0>desítky tisíc inženýrů</0>, ve firmách jako Wix, DoorDash nebo Netflix."
+msgstr "Za pouhých pár měsíců používají Choros jako hlavní IDE <0>desítky tisíc inženýrů</0>, ve firmách jako Wix, DoorDash nebo Netflix."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
@@ -16578,7 +16578,7 @@ msgstr "Jak jsme se sem tedy dostali?"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.story.origin"
-msgstr "Superset vznikl jako projekt na hackathonu v listopadu 2025. Byla to jednoduchá desktopová aplikace na správu worktree."
+msgstr "Choros vznikl jako projekt na hackathonu v listopadu 2025. Byla to jednoduchá desktopová aplikace na správu worktree."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/TierBadge/TierBadge.tsx
@@ -16665,7 +16665,7 @@ msgstr "Zapsat se do pořadníku"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/WaitlistModal/WaitlistModal.tsx
 msgid "marketing.waitlist.modalDescription"
-msgstr "Dáme vám vědět, až bude Superset dostupný pro Windows a Linux."
+msgstr "Dáme vám vědět, až bude Choros dostupný pro Windows a Linux."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/WaitlistModal/WaitlistModal.tsx
@@ -16685,7 +16685,7 @@ msgstr "Jste na seznamu!"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/WallOfLoveSection/WallOfLoveSection.tsx
 msgid "marketing.wallOfLove.heading"
-msgstr "Co o Superset říkají tvůrci"
+msgstr "Co o Choros říkají tvůrci"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/WallOfLoveSection/WallOfLoveSection.tsx
@@ -17281,7 +17281,7 @@ msgstr "Přečíst průvodce nastavením"
 #. placeholder {0}: COMPANY.DOMAIN
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-connect-host/HomeConnectHostScreen.tsx
 msgid "mobile.connectHost.step1.body"
-msgstr "Stáhněte Superset na <0>{0}/download</0>."
+msgstr "Stáhněte Choros na <0>{0}/download</0>."
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-connect-host/HomeConnectHostScreen.tsx
@@ -17307,7 +17307,7 @@ msgstr "Povolte přístup přes relay"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-connect-host/HomeConnectHostScreen.tsx
 msgid "mobile.connectHost.subtitle"
-msgstr "Superset Mobile spouští agenty na počítačích, které připojíte."
+msgstr "Choros Mobile spouští agenty na počítačích, které připojíte."
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-connect-host/HomeConnectHostScreen.tsx
@@ -17707,7 +17707,7 @@ msgstr "Zatím žádná zařízení"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/hosts/HostsSettingsScreen.tsx
 msgid "mobile.hostsSettings.emptyDescription"
-msgstr "V desktopové aplikaci Superset otevřete Nastavení → Vzdálený přístup a zapněte „Povolit vzdálený přístup k tomuto zařízení přes relay“."
+msgstr "V desktopové aplikaci Choros otevřete Nastavení → Vzdálený přístup a zapněte „Povolit vzdálený přístup k tomuto zařízení přes relay“."
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/hosts/HostsSettingsScreen.tsx
@@ -17951,13 +17951,13 @@ msgstr "Závislosti"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-paywall/HomePaywallScreen.tsx
 msgid "mobile.paywall.description"
-msgstr "Tato organizace má tarif Free. Superset Mobile je dostupný pro organizace s tarifem Pro."
+msgstr "Tato organizace má tarif Free. Choros Mobile je dostupný pro organizace s tarifem Pro."
 
 #. js-lingui-explicit-id
 #. placeholder {0}: activeOrganization.name
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-paywall/HomePaywallScreen.tsx
 msgid "mobile.paywall.descriptionNamed"
-msgstr "{0} má tarif Free. Superset Mobile je dostupný pro organizace s tarifem Pro."
+msgstr "{0} má tarif Free. Choros Mobile je dostupný pro organizace s tarifem Pro."
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-paywall/HomePaywallScreen.tsx
@@ -17967,7 +17967,7 @@ msgstr "Obnovit"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-paywall/HomePaywallScreen.tsx
 msgid "mobile.paywall.title"
-msgstr "Superset Mobile je součástí tarifu Pro"
+msgstr "Choros Mobile je součástí tarifu Pro"
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/components/ai-elements/plan.tsx
@@ -18431,7 +18431,7 @@ msgstr "Smazat účet"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/SettingsScreen.tsx
 msgid "mobile.settings.deleteAccount.failedMessage"
-msgstr "Něco se pokazilo. Zkuste to znovu nebo napište na support@superset.sh."
+msgstr "Něco se pokazilo. Zkuste to znovu nebo napište na support@choros.sh."
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/SettingsScreen.tsx
@@ -18513,8 +18513,8 @@ msgstr "Organizace"
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/SettingsScreen.tsx
-msgid "mobile.settings.row.rateSuperset"
-msgstr "Ohodnotit Superset"
+msgid "mobile.settings.row.rateChoros"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/SettingsScreen.tsx
@@ -18594,7 +18594,7 @@ msgstr "Přihlaste se a můžete začít"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(auth)/sign-in/SignInScreen.tsx
 msgid "mobile.signIn.title"
-msgstr "Vítejte v Superset"
+msgstr "Vítejte v Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/components/ai-elements/sources.tsx
@@ -18835,7 +18835,7 @@ msgstr "Host tohoto pracovního prostoru je offline"
 #. placeholder {2}: hostCompatibility.minVersion
 #: ../../apps/mobile/screens/(authenticated)/workspace/[id]/WorkspaceScreen/WorkspaceScreen.tsx
 msgid "mobile.workspace.hostOutdated.body"
-msgstr "{0} běží na host service {1} — tato aplikace potřebuje {2} nebo novější. Aktualizujte na tom počítači Superset."
+msgstr "{0} běží na host service {1} — tato aplikace potřebuje {2} nebo novější. Aktualizujte na tom počítači Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/workspace/[id]/WorkspaceScreen/WorkspaceScreen.tsx
@@ -19542,7 +19542,7 @@ msgstr "Nepodařilo se nahrát avatar"
 #. js-lingui-explicit-id
 #: src/server-errors.ts
 msgid "serverError.user.theRecoveryPeriodHasEndedContact"
-msgstr "Lhůta pro obnovení skončila. Napište na support@superset.sh."
+msgstr "Lhůta pro obnovení skončila. Napište na support@choros.sh."
 
 #. js-lingui-explicit-id
 #: src/server-errors.ts
@@ -19757,7 +19757,7 @@ msgstr "Odhlásit se"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/AccountSettings.tsx
 msgid "settings.account.signOutHint"
-msgstr "Pro používání Superset na tomto zařízení se budete muset znovu přihlásit."
+msgstr "Pro používání Choros na tomto zařízení se budete muset znovu přihlásit."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/AccountSettings.tsx
@@ -19958,7 +19958,7 @@ msgstr "Smazat agenta"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/agents/components/V2AgentsSettings/components/AgentDetail/AgentDetail.tsx
 msgid "settings.agents.detail.hooksAriaLabel"
-msgstr "Superset hooky"
+msgstr "Choros hooky"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/agents/components/V2AgentsSettings/components/AgentDetail/AgentDetail.tsx
@@ -19968,12 +19968,12 @@ msgstr "Zobrazovat stav a posílat oznámení pro tohoto agenta."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/agents/components/V2AgentsSettings/components/AgentDetail/AgentDetail.tsx
 msgid "settings.agents.detail.hooksTitle"
-msgstr "Superset hooky"
+msgstr "Choros hooky"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/agents/components/V2AgentsSettings/components/AgentDetail/AgentDetail.tsx
 msgid "settings.agents.detail.hooksTooltip"
-msgstr "Zaregistruje lifecycle hooky do globální konfigurace tohoto agenta, aby Superset mohl zobrazovat stav a posílat oznámení. Vypnutím se záznamy Superset odeberou všude — stav a oznámení pro tohoto agenta přestanou fungovat, i uvnitř Superset."
+msgstr "Zaregistruje lifecycle hooky do globální konfigurace tohoto agenta, aby Choros mohl zobrazovat stav a posílat oznámení. Vypnutím se záznamy Choros odeberou všude — stav a oznámení pro tohoto agenta přestanou fungovat, i uvnitř Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/agents/components/V2AgentsSettings/components/AgentDetail/AgentDetail.tsx
@@ -20589,7 +20589,7 @@ msgstr "Tufte"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/appearance/components/AppearanceSettings/AppearanceSettings.tsx
 msgid "settings.appearance.subtitle"
-msgstr "Přizpůsobte si, jak Superset na vašem zařízení vypadá"
+msgstr "Přizpůsobte si, jak Choros na vašem zařízení vypadá"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/appearance/components/AppearanceSettings/components/ThemeSection/ThemeSection.tsx
@@ -20896,7 +20896,7 @@ msgstr "Podpořte projekt hvězdou na GitHubu"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/behavior/components/BehaviorSettings/components/GithubStarRow/GithubStarRow.tsx
 msgid "settings.behavior.githubStar.label"
-msgstr "Dát Superset hvězdu na GitHubu"
+msgstr "Dát Choros hvězdu na GitHubu"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/behavior/components/BehaviorSettings/components/GithubStarRow/GithubStarRow.tsx
@@ -21543,7 +21543,7 @@ msgstr "Importovat…"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/browser/components/BrowserSettings/BrowserSettings.tsx
 msgid "settings.browser.importHint"
-msgstr "Zkopírujte historii prohlížení a přihlášení z Chrome, Brave, Arc nebo jiného prohlížeče na Chromiu do Superset."
+msgstr "Zkopírujte historii prohlížení a přihlášení z Chrome, Brave, Arc nebo jiného prohlížeče na Chromiu do Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/browser/components/BrowserSettings/BrowserSettings.tsx
@@ -21932,7 +21932,7 @@ msgstr "Používat nové prostředí pracovních prostorů."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/ExperimentalSettings/ExperimentalSettings.tsx
 msgid "settings.experimental.v2Label"
-msgstr "Vyzkoušet Superset v2"
+msgstr "Vyzkoušet Choros v2"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/ExperimentalSettings/components/WaitForSetupBeforeAgentSetting/WaitForSetupBeforeAgentSetting.tsx
@@ -22163,7 +22163,7 @@ msgstr "Smazat hosta"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/hosts/$hostId/components/HostSettings/components/DeleteHostSection/DeleteHostSection.tsx
 msgid "settings.hosts.deleteHost.localHint"
-msgstr "Ukončete tady Superset, ať ho smažete z jiného zařízení."
+msgstr "Ukončete tady Choros, ať ho smažete z jiného zařízení."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/hosts/page.tsx
@@ -23052,8 +23052,8 @@ msgstr "Připojeno"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/models/components/ModelsSettings/utils.ts
-msgid "settings.models.status.connectedInSuperset"
-msgstr "Připojeno v Superset"
+msgid "settings.models.status.connectedInChoros"
+msgstr "Připojeno v Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/models/components/ModelsSettings/utils.ts
@@ -23190,7 +23190,7 @@ msgstr "Mažu organizaci..."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/organization/components/OrganizationSettings/OrganizationSettings.tsx
 msgid "settings.organization.idHint"
-msgstr "Použijte při volání Superset API."
+msgstr "Použijte při volání Choros API."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/organization/components/OrganizationSettings/OrganizationSettings.tsx
@@ -23425,7 +23425,7 @@ msgstr "Neznámá"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/permissions/components/PermissionsSettings/PermissionsSettings.tsx
 msgid "settings.permissions.subtitle"
-msgstr "Udělte systémová oprávnění, která Superset potřebuje."
+msgstr "Udělte systémová oprávnění, která Choros potřebuje."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/permissions/components/PermissionsSettings/PermissionsSettings.tsx
@@ -25987,6 +25987,11 @@ msgstr "Reset za {countdown} · {absolute}"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
+msgid "settings.usage.resources.chorosApp"
+msgstr "Aplikace Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.collapseProject"
 msgstr "Sbalit projekt"
 
@@ -26071,7 +26076,7 @@ msgstr "Renderer"
 #. placeholder {2}: formatMemory(freeMemory)
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.ramBarAriaLabel"
-msgstr "Systémová RAM: Superset {0}, ostatní aplikace {1}, volné {2}"
+msgstr "Systémová RAM: Choros {0}, ostatní aplikace {1}, volné {2}"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
@@ -26126,12 +26131,22 @@ msgstr "Pořadí v panelu"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.sparklineCpu"
-msgstr "CPU Superset · posledních 5 min"
+msgstr "CPU Choros · posledních 5 min"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.sparklineMemory"
-msgstr "Paměť Superset · posledních 5 min"
+msgstr "Paměť Choros · posledních 5 min"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
+msgid "settings.usage.resources.statChorosCpu"
+msgstr "CPU Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
+msgid "settings.usage.resources.statChorosMemory"
+msgstr "Paměť Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
@@ -26145,16 +26160,6 @@ msgstr "Zátěž (1 m)"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
-msgid "settings.usage.resources.statSupersetCpu"
-msgstr "CPU Superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
-msgid "settings.usage.resources.statSupersetMemory"
-msgstr "Paměť Superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.statSystemMemory"
 msgstr "Systémová paměť"
 
@@ -26162,11 +26167,6 @@ msgstr "Systémová paměť"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.statSystemRamShare"
 msgstr "Podíl systémové RAM"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
-msgid "settings.usage.resources.supersetApp"
-msgstr "Aplikace Superset"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/components/ResourceSparkline/ResourceSparkline.tsx
@@ -26661,7 +26661,7 @@ msgstr "Zkontrolovat aktualizace"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/tray/index.ts
 msgid "tray.closeApp"
-msgstr "Zavřít Superset"
+msgstr "Zavřít Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/tray/index.ts
@@ -26711,12 +26711,12 @@ msgstr "Žádné aktivní služby"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/tray/index.ts
 msgid "tray.openApp"
-msgstr "Otevřít Superset"
+msgstr "Otevřít Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/tray/index.ts
 msgid "tray.quitCompletely"
-msgstr "Úplně ukončit Superset"
+msgstr "Úplně ukončit Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/tray/index.ts
@@ -27667,7 +27667,7 @@ msgstr "Pro spouštění paralelních kódovacích agentů použijte desktopovou
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(agents)/agents/page.tsx
 msgid "web.agents.downloadTitle"
-msgstr "Stáhnout Superset"
+msgstr "Stáhnout Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(agents)/constants.ts
@@ -27777,7 +27777,7 @@ msgstr "Autorizace selhala"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/cli/auth/code/components/CliAuthCodeDisplay/CliAuthCodeDisplay.tsx
 msgid "web.cliAuth.codeHint"
-msgstr "Vložte to do Superset CLI:"
+msgstr "Vložte to do Choros CLI:"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/cli/auth/code/components/CliAuthCodeDisplay/CliAuthCodeDisplay.tsx
@@ -27903,7 +27903,7 @@ msgstr "Přihlášeni jako <0>{userName}</0>"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/oauth/consent/components/ConsentForm/ConsentForm.tsx
 msgid "web.consent.subtitle"
-msgstr "<0>{displayName}</0> žádá o přístup k vašemu účtu Superset"
+msgstr "<0>{displayName}</0> žádá o přístup k vašemu účtu Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/oauth/consent/components/ConsentForm/ConsentForm.tsx
@@ -27964,6 +27964,11 @@ msgstr "Tlačítko — varianty"
 #: ../../apps/web/src/app/design/components/ActionsSection/ActionsSection.tsx
 msgid "web.design.actionsSection.chooseApp"
 msgstr "Vyberte aplikaci"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/ActionsSection/ActionsSection.tsx
+msgid "web.design.actionsSection.chorosSh"
+msgstr "choros.sh"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/ActionsSection/ActionsSection.tsx
@@ -28102,11 +28107,6 @@ msgstr "Rozdělené tlačítko kopíruje OpenInButton z desktopu; spouštěč v�
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/ActionsSection/ActionsSection.tsx
-msgid "web.design.actionsSection.supersetSh"
-msgstr "superset.sh"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/ActionsSection/ActionsSection.tsx
 msgid "web.design.actionsSection.terminal"
 msgstr "Terminál"
 
@@ -28161,344 +28161,514 @@ msgid "web.design.actionsSection.xsSmDefaultLgIcon"
 msgstr "xs · sm · default · lg · icon-xs → icon-lg"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.55CallSitesPassShowarrow"
 msgstr "55 míst volání předává {code}"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.aiAgentActivity"
 msgstr "AI · Aktivita agenta"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.appsDesktopSrcRenderer"
 msgstr "apps/desktop/src/renderer"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.bakingTheChipStyleInto"
 msgstr "Zapékám styl čipu do tooltip.tsx"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.chainOfThought"
 msgstr "Řetězec úvah"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.comparedAgainstTheDefaultStyle"
 msgstr "Porovnáno s výchozím stylem"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.found12TooltipCallSites"
 msgstr "Nalezeno 12 volání tooltipu"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.grepped"
 msgstr "Prohledáno"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.hotkeytooltipTsx"
 msgstr "HotkeyTooltip.tsx"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.makeTheChipStyleThe"
 msgstr "Udělat ze stylu čipu výchozí TooltipContent"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.packagesUiSrcComponentsUi"
 msgstr "packages/ui/src/components/ui/kbd.tsx"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.paneheaderactionsTsx"
 msgstr "PaneHeaderActions.tsx"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.plan"
 msgstr "Tarif"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.planningTheTooltipRefactor"
 msgstr "Plánuji refaktor tooltipů"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.presetsbarTsx"
 msgstr "PresetsBar.tsx"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.read"
 msgstr "Přečteno"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.searchedForTooltipOverrides"
 msgstr "Hledány přepisy tooltipů"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.searchingForKbdUsages"
 msgstr "Hledám použití Kbd"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.standardizeTooltipStyling"
 msgstr "Sjednotit styl tooltipů"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.stripRedundantOverridesAtCall"
 msgstr "Odstranit nadbytečné přepisy v místech volání"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.structuredProgressChainOfThought"
 msgstr "Strukturovaný postup: řetězec úvah, úkoly, plány"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.task"
 msgstr "Úkol"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.threeStepsTouchesPackagesUi"
 msgstr "Tři kroky · dotýká se packages/ui a apps/desktop"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.verifyKbdStaysVisibleInside"
 msgstr "Ověřit, že Kbd zůstane v tooltipech viditelný"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.aiConversation"
 msgstr "AI · Konverzace"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
-msgid "web.design.aiChatSection.alsoSupersetUiAiElements"
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
+msgid "web.design.aiChatSection.alsoChorosUiAiElements"
 msgstr "Také: @choros/ui/ai-elements/message — drží se dole, jak obsah přitéká"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.canYouStandardizeTheTooltips"
 msgstr "Můžeš sjednotit tooltipy napříč aplikací?"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.chatSurfacesMessagesReasoningSuggestions"
 msgstr "Plochy chatu: zprávy, uvažování, návrhy"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.collapsibleThinkingBlockWithDuration"
 msgstr "Sbalitelný blok přemýšlení s údajem o trvání"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.conversationMessage"
 msgstr "Konverzace · Zpráva"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.doneTheBorderedChipStyle"
 msgstr "Hotovo — orámovaný styl čipu z lišty přednastavení je teď výchozí pro každý tooltip a zkopírované přepisy jsou pryč (čistě −90 řádků)."
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.niceOpenAPrWhen"
 msgstr "Super, až budeš mít hotovo, otevři PR."
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.reasoning"
 msgstr "Uvažování"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.suggestions"
 msgstr "Návrhy"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.45Files82172"
 msgstr "45 souborů · +82 −172"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.874kOf200kTokens"
 msgstr "V této relaci využito 87,4 tis. z 200 tis. tokenů."
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.aiContent"
 msgstr "AI · Obsah"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.artifact"
 msgstr "Artefakt"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.checkpoint"
 msgstr "Kontrolní bod"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.checkpointBeforeTooltipRefactor"
 msgstr "Kontrolní bod · před refaktorem tooltipů"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.classnameRoundedSmBorderBorder"
 msgstr "- className=\"rounded-sm border border-border bg-background …\""
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.codeBlock"
 msgstr "Blok kódu"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.context"
 msgstr "Kontext"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.download"
 msgstr "Stáhnout"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.inlineCitation"
 msgstr "Citace v textu"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.needLiveChatToolCall"
 msgstr "Potřebuje živý stav chatu/volání nástrojů (ToolUIPart, streamy) nebo app shell"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.notDemoedHere"
 msgstr "Tady se neukazuje"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.popperBasedPositioningPlacesAnd"
 msgstr "Umístění založené na Popperu automaticky umisťuje a otáčí prvky šipky."
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.radixPrimitives"
 msgstr "Radix Primitives"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.radixRotatesTheTooltipArrow"
 msgstr "Radix otáčí obal šipky tooltipu podle strany,"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.radixTooltipDocs"
 msgstr "Dokumentace Radix Tooltip"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.renderedOutputCodeSourcesCitations"
 msgstr "Vykreslený výstup: kód, zdroje, citace, kontext"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.shadcnUiTooltipRecipe"
 msgstr "recept na tooltip v shadcn/ui"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.shikiHighlightedWithOptionalLine"
 msgstr "Zvýrazněno Shiki, volitelně s čísly řádků"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.soABorderOnTwo"
 msgstr "takže okraj na dvou stranách otočeného čtverce vždy směřuje ven."
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.sources"
 msgstr "Zdroje"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.tailwindV4ThemeReference"
 msgstr "Reference motivu Tailwind v4"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.tokenBudgetIndicatorHoverThe"
 msgstr "Ukazatel rozpočtu tokenů — najeďte myší na procenta"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.tooltipRefactorDiff"
 msgstr "tooltip-refactor.diff"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.aiStatus"
 msgstr "AI · Stav"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
-msgid "web.design.aiStatusSection.alsoSupersetUiAiElements"
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
+msgid "web.design.aiStatusSection.alsoChorosUiAiElements"
 msgstr "Také: @choros/ui/ai-elements/braille-spinner"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.animatedTextForInFlight"
 msgstr "Animovaný text pro probíhající aktivitu agenta"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.doneIsshimmeringFalse"
 msgstr "Hotovo (isShimmering=false)"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.loaderBrailleSpinner"
 msgstr "Loader · Braillův spinner"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.loadingAndInFlightActivity"
 msgstr "Indikátory načítání a probíhající aktivity"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.runningBunTest"
 msgstr "Spouštím bun test…"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.shimmerShimmerLabel"
 msgstr "Shimmer · Shimmer Label"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.thinkingAboutTheApproach"
 msgstr "Přemýšlím o postupu"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.choros.descriptionLead"
+msgstr "Vše, co jsme postavili nad primitivy — originály Choros, sada"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.choros.descriptionTail"
+msgstr "pro UI agentů a sdílené komponenty aplikace. Kliknutím na libovolnou cestu importu ji zkopírujete."
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.choros.title"
+msgstr "Komponenty Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.aiAgentActivity"
+msgstr "AI · Aktivita agenta"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.aiContent"
+msgstr "AI · Obsah"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.aiConversation"
+msgstr "AI · Konverzace"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.aiStatus"
+msgstr "AI · Stav"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.originals"
+msgstr "Originály"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.sharedAppComponents"
+msgstr "Sdílené komponenty aplikace"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertCheckbox"
+msgstr "Příště se neptat"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertDescription"
+msgstr "Worktree obsahuje necommitnuté úpravy z relace agenta."
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertDiscard"
+msgstr "Zahodit"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertImperative"
+msgstr "Upozornění (imperativní)"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertKeepWorking"
+msgstr "Pokračovat v práci"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertOpensAPromiseFriendly"
+msgstr "alert() otevře dialog vracející promise přes připojený Alerter"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertTitle"
+msgstr "Zahodit změny?"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.animatedWebglGradientStripeGradient"
+msgstr "Animovaný WebGL gradient (stripe-gradient)"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.avatarAtom"
+msgstr "Avatar (atom)"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.chorosOriginals"
+msgstr "Originály Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.customComponentsBeyondTheShadcn"
+msgstr "Vlastní komponenty nad rámec sady shadcn"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.initialsFallbackViaGetinitialsSizes"
+msgstr "Záložní iniciály přes getInitials, velikosti xs → xl"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.meshGradient"
+msgstr "Mesh Gradient"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.mobileApp"
+msgstr "Mobilní aplikace"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.monitorAgentsFromYourPhone"
+msgstr "Sledujte agenty z telefonu."
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.needAppLevelWiringForm"
+msgstr "Vyžadují zapojení na úrovni aplikace (stav formuláře, data grafu, app shell)"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.referencedNotDemoed"
+msgstr "Odkazované, bez ukázky"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.sidebarCard"
+msgstr "Karta postranního panelu"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.themePreviewCard"
+msgstr "Karta náhledu motivu"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.themeSubtitle"
+msgstr "Výchozí motiv terminálu"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.toastDiscarded"
+msgstr "Zahozeno"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.toastDiscardedNoAsk"
+msgstr "Zahozeno — příště se nezeptáme"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.toastDismissed"
+msgstr "Zamítnuto"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.toastOpeningTestflight"
+msgstr "Otevírám TestFlight…"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.triggerAlert"
+msgstr "Spustit alert()"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/ComponentCard/ComponentCard.tsx
@@ -28567,8 +28737,13 @@ msgstr "Karusel"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
-msgid "web.design.dataSection.chooseWhenSupersetPingsYou"
-msgstr "Zvolte, kdy vás Superset upozorní."
+msgid "web.design.dataSection.chooseWhenChorosPingsYou"
+msgstr "Zvolte, kdy vás Choros upozorní."
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
+msgid "web.design.dataSection.choros"
+msgstr "Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
@@ -28607,8 +28782,8 @@ msgstr "Nečinné · větev odeslána"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
-msgid "web.design.dataSection.includesTheSupersetSpecificBox"
-msgstr "Obsahuje variantu box specifickou pro Superset"
+msgid "web.design.dataSection.includesTheChorosSpecificBox"
+msgstr "Obsahuje variantu box specifickou pro Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
@@ -28652,11 +28827,6 @@ msgstr "Stav"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
-msgid "web.design.dataSection.superset"
-msgstr "Superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
 msgid "web.design.dataSection.table"
 msgstr "Tabulka"
 
@@ -28682,7 +28852,7 @@ msgstr "Upozornění, toasty, průběh a stavy načítání"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/FeedbackSection/FeedbackSection.tsx
-msgid "web.design.feedbackSection.alsoSupersetUiSpinner"
+msgid "web.design.feedbackSection.alsoChorosUiSpinner"
 msgstr "Také: @choros/ui/spinner"
 
 #. js-lingui-explicit-id
@@ -28802,7 +28972,7 @@ msgstr "Přijmout podmínky"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
-msgid "web.design.inputsSection.alsoSupersetUiRadioGroup"
+msgid "web.design.inputsSection.alsoChorosUiRadioGroup"
 msgstr "Také: @choros/ui/radio-group, @choros/ui/switch"
 
 #. js-lingui-explicit-id
@@ -28834,6 +29004,11 @@ msgstr "Kalendář"
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
 msgid "web.design.inputsSection.checkboxRadioSwitch"
 msgstr "Zaškrtávátko · Přepínač · Vypínač"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
+msgid "web.design.inputsSection.choros"
+msgstr "choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
@@ -28947,11 +29122,6 @@ msgstr "Posuvník"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
-msgid "web.design.inputsSection.superset"
-msgstr "superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
 msgid "web.design.inputsSection.textarea"
 msgstr "Textové pole"
 
@@ -28962,7 +29132,7 @@ msgstr "Pracovní prostor"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
-msgid "web.design.layoutSection.alsoSupersetUiOverflowFade"
+msgid "web.design.layoutSection.alsoChorosUiOverflowFade"
 msgstr "Také: @choros/ui/overflow-fade-text"
 
 #. js-lingui-explicit-id
@@ -28979,6 +29149,11 @@ msgstr "Poměr stran"
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
 msgid "web.design.layoutSection.changelog"
 msgstr "Changelog"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
+msgid "web.design.layoutSection.chorosUi"
+msgstr "Choros UI"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
@@ -29034,11 +29209,6 @@ msgstr "Zdroj"
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
 msgid "web.design.layoutSection.structureScrollingAndOverflowHandling"
 msgstr "Struktura, posuv a práce s přetečením"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
-msgid "web.design.layoutSection.supersetUi"
-msgstr "Superset UI"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
@@ -29387,6 +29557,16 @@ msgstr "Zrušit"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
+msgid "web.design.overlaysSection.choros"
+msgstr "@choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
+msgid "web.design.overlaysSection.choros2"
+msgstr "Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
 msgid "web.design.overlaysSection.close"
 msgstr "Zavřít"
 
@@ -29532,16 +29712,6 @@ msgstr "Vysouvá se z okraje viewportu."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
-msgid "web.design.overlaysSection.superset"
-msgstr "@superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
-msgid "web.design.overlaysSection.superset2"
-msgstr "Superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
 msgid "web.design.overlaysSection.terminalFontSize"
 msgstr "Velikost písma terminálu"
 
@@ -29593,105 +29763,105 @@ msgstr ". Každá karta ukazuje kanonickou cestu importu — kliknutím ji zkop�
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/page.tsx
 msgid "web.design.primitives.title"
-msgstr "Design systém Superset"
+msgstr "Design systém Choros"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.agentPickerClaudeCodexCursor"
 msgstr "Výběr agenta (Claude, Codex, Cursor…) používaný ve všech tocích vytváření relace"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.canonicalMarkdownSurfaceForAgent"
 msgstr "Kanonická markdown plocha pro výstup agenta, komentáře a dokumentaci"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.ghostTriggerIconTruncatingLabel"
 msgstr "Ghost spouštěč: ikona + zkracovaný popisek + šipka nahoru-dolů (vzor ukázaný na stránce Primitives)"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.longHoverShortcutOnlyTooltip"
 msgstr "Tooltip jen se zkratkou při dlouhém najetí; jeho styl čipu je nyní výchozí pro TooltipContent"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.markdownAuthoringSurfaceWithPreview"
 msgstr "Plocha pro psaní markdownu s náhledem"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.modelPickerScopedToThe"
 msgstr "Výběr modelu omezený na vybraného agenta"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.paneLayoutRootRendersA"
 msgstr "Kořen rozvržení panelů: vykresluje strom panelů pracovního prostoru"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.rendersARegisteredHotkeyInside"
 msgstr "Vykresluje registrovanou klávesovou zkratku v položkách rozbalovací nabídky / panelu nabídek"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.sidebarPillShownWhenAn"
 msgstr "Štítek v postranním panelu, když je připravená aktualizace aplikace"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.splitButtonOpenWorktreeIn"
 msgstr "Rozdělené tlačítko: otevřít worktree ve výchozí aplikaci + rozbalovací výběr aplikace"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.standardActionStripForPane"
 msgstr "Standardní pruh akcí pro záhlaví panelů"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.terminalThemeColorPalettePreview"
 msgstr "Náhled barevné palety motivu terminálu"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.textInputWithEmojiPicker"
 msgstr "Textové pole s podporou výběru emoji"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.workspaceAccentColorPicker"
 msgstr "Výběr akcentní barvy pracovního prostoru"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.crossFeatureComponentsLivingOutside"
 msgstr "Komponenty napříč funkcemi mimo packages/ui — podívejte se sem, než budete stavět novou"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.desktopRenderer"
 msgstr "Desktopový renderer"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.electronTrpcCoupledSoReferenced"
 msgstr "Svázané s Electronem/tRPC, proto jen odkazované, ne vykreslené. Odznak = dnešní místa importu; vysoká čísla jsou kandidáti na přesun do packages/ui"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.paneSystem"
 msgstr "Systém panelů"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.reactLayerOfTheShared"
 msgstr "React vrstva sdíleného enginu rozvržení panelů/pracovních prostorů"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.sharedAppComponents"
 msgstr "Sdílené komponenty aplikace"
 
@@ -29699,176 +29869,6 @@ msgstr "Sdílené komponenty aplikace"
 #: ../../apps/web/src/app/design/components/ShowcaseNav/ShowcaseNav.tsx
 msgid "web.design.showcaseNav.sections"
 msgstr "Sekce"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.superset.descriptionLead"
-msgstr "Vše, co jsme postavili nad primitivy — originály Superset, sada"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.superset.descriptionTail"
-msgstr "pro UI agentů a sdílené komponenty aplikace. Kliknutím na libovolnou cestu importu ji zkopírujete."
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.superset.title"
-msgstr "Komponenty Superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.aiAgentActivity"
-msgstr "AI · Aktivita agenta"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.aiContent"
-msgstr "AI · Obsah"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.aiConversation"
-msgstr "AI · Konverzace"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.aiStatus"
-msgstr "AI · Stav"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.originals"
-msgstr "Originály"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.sharedAppComponents"
-msgstr "Sdílené komponenty aplikace"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertCheckbox"
-msgstr "Příště se neptat"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertDescription"
-msgstr "Worktree obsahuje necommitnuté úpravy z relace agenta."
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertDiscard"
-msgstr "Zahodit"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertImperative"
-msgstr "Upozornění (imperativní)"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertKeepWorking"
-msgstr "Pokračovat v práci"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertOpensAPromiseFriendly"
-msgstr "alert() otevře dialog vracející promise přes připojený Alerter"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertTitle"
-msgstr "Zahodit změny?"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.animatedWebglGradientStripeGradient"
-msgstr "Animovaný WebGL gradient (stripe-gradient)"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.avatarAtom"
-msgstr "Avatar (atom)"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.customComponentsBeyondTheShadcn"
-msgstr "Vlastní komponenty nad rámec sady shadcn"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.initialsFallbackViaGetinitialsSizes"
-msgstr "Záložní iniciály přes getInitials, velikosti xs → xl"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.meshGradient"
-msgstr "Mesh Gradient"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.mobileApp"
-msgstr "Mobilní aplikace"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.monitorAgentsFromYourPhone"
-msgstr "Sledujte agenty z telefonu."
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.needAppLevelWiringForm"
-msgstr "Vyžadují zapojení na úrovni aplikace (stav formuláře, data grafu, app shell)"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.referencedNotDemoed"
-msgstr "Odkazované, bez ukázky"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.sidebarCard"
-msgstr "Karta postranního panelu"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.supersetOriginals"
-msgstr "Originály Superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.themePreviewCard"
-msgstr "Karta náhledu motivu"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.themeSubtitle"
-msgstr "Výchozí motiv terminálu"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.toastDiscarded"
-msgstr "Zahozeno"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.toastDiscardedNoAsk"
-msgstr "Zahozeno — příště se nezeptáme"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.toastDismissed"
-msgstr "Zamítnuto"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.toastOpeningTestflight"
-msgstr "Otevírám TestFlight…"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.triggerAlert"
-msgstr "Spustit alert()"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/auth/desktop/success/page.tsx
@@ -29903,7 +29903,7 @@ msgstr "Navazující zprávy na webu už brzy"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/components/Footer/Footer.tsx
 msgid "web.footer.copyright"
-msgstr "© {year} Superset"
+msgstr "© {year} Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/components/Footer/Footer.tsx
@@ -30095,7 +30095,7 @@ msgstr "Připojte své GitHub repozitáře a synchronizujte pull requesty. Sledu
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/github/page.tsx
 msgid "web.integrations.github.callback.alreadyConnected"
-msgstr "Tato instalace GitHubu je už připojená k jiné organizaci Superset. Odpojte ji tam, nebo odinstalujte Superset GitHub App, a zkuste to znovu."
+msgstr "Tato instalace GitHubu je už připojená k jiné organizaci Choros. Odpojte ji tam, nebo odinstalujte Choros GitHub App, a zkuste to znovu."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/github/page.tsx
@@ -30130,7 +30130,7 @@ msgstr "GitHub je připojený, ale úvodní synchronizace se nespustila. Zkuste 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/github/page.tsx
 msgid "web.integrations.github.connectionDescription"
-msgstr "Nainstalujte Superset GitHub App a připojte své repozitáře."
+msgstr "Nainstalujte Choros GitHub App a připojte své repozitáře."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/github/components/ConnectionControls/ConnectionControls.tsx
@@ -30175,7 +30175,7 @@ msgstr "Je potřeba přístup ke Kalendáři i Gmailu. Až se objeví dotaz, pov
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/google/page.tsx
 msgid "web.integrations.google.callback.noRefreshToken"
-msgstr "Google neudělil trvalý přístup. Odeberte Superset z přístupu třetích stran ve svém účtu Google a zkuste to znovu."
+msgstr "Google neudělil trvalý přístup. Odeberte Choros z přístupu třetích stran ve svém účtu Google a zkuste to znovu."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/google/page.tsx
@@ -30215,7 +30215,7 @@ msgstr "Připojit Google znovu"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/linear/page.tsx
 msgid "web.integrations.linear.blurb"
-msgstr "Synchronizujte issues obousměrně s Linearem. Vytvářejte úkoly v Superset a nechte je objevit se v Linearu, nebo importujte stávající issues z Linearu."
+msgstr "Synchronizujte issues obousměrně s Linearem. Vytvářejte úkoly v Choros a nechte je objevit se v Linearu, nebo importujte stávající issues z Linearu."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/linear/page.tsx
@@ -30245,7 +30245,7 @@ msgstr "Výchozí tým pro nové úkoly"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/linear/page.tsx
 msgid "web.integrations.linear.defaultTeamHint"
-msgstr "Úkoly vytvořené v Superset se budou synchronizovat do tohoto týmu v Linearu."
+msgstr "Úkoly vytvořené v Choros se budou synchronizovat do tohoto týmu v Linearu."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/linear/components/ConnectionControls/ConnectionControls.tsx
@@ -30275,7 +30275,7 @@ msgstr "Nastavení"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/linear/page.tsx
 msgid "web.integrations.linear.settingsDescription"
-msgstr "Nastavte, jak se úkoly synchronizují mezi Superset a Linearem."
+msgstr "Nastavte, jak se úkoly synchronizují mezi Choros a Linearem."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/github/page.tsx
@@ -30376,7 +30376,7 @@ msgstr "Nepodařilo se připojit ke Slacku. Zkuste to prosím znovu."
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/slack/page.tsx
 msgid "web.integrations.slack.callback.workspaceLinked"
-msgstr "Tento Slack workspace už má připojený jiná organizace Superset."
+msgstr "Tento Slack workspace už má připojený jiná organizace Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/slack/page.tsx
@@ -30436,7 +30436,7 @@ msgstr "Připojeno, ale Microsoft Graph odmítl odběry oznámení."
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/microsoft-teams/page.tsx
 msgid "web.integrations.teams.callback.tenantLinked"
-msgstr "Tento tenant Microsoftu už má připojený jiná organizace Superset."
+msgstr "Tento tenant Microsoftu už má připojený jiná organizace Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/microsoft-teams/page.tsx
@@ -30535,8 +30535,8 @@ msgstr "Odkaz může být špatný, stránka mohla být smazána, nebo k ní nem
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/page/[slug]/not-found.tsx
-msgid "web.pageNotFound.goToSuperset"
-msgstr "Přejít do Superset"
+msgid "web.pageNotFound.goToChoros"
+msgstr "Přejít do Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/page/[slug]/not-found.tsx
@@ -30798,7 +30798,7 @@ msgstr "Nemáte účet? <0>Zaregistrujte se</0>"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(auth)/sign-in/[[...sign-in]]/page.tsx
 msgid "web.signIn.subtitle"
-msgstr "Přihlaste se a pokračujte do Superset"
+msgstr "Přihlaste se a pokračujte do Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(auth)/sign-in/[[...sign-in]]/page.tsx
@@ -30838,7 +30838,7 @@ msgstr "Už máte účet? <0>Přihlaste se</0>"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(auth)/sign-up/[[...sign-up]]/page.tsx
 msgid "web.signUp.subtitle"
-msgstr "Zaregistrujte se a začněte se Superset"
+msgstr "Zaregistrujte se a začněte se Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(auth)/sign-up/[[...sign-up]]/page.tsx
@@ -30858,7 +30858,7 @@ msgstr "Zaregistrovat se přes Google"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/slack/linked/page.tsx
 msgid "web.slackLinked.description"
-msgstr "Váš účet Slack byl propojen se Superset. Tuto kartu můžete zavřít a vrátit se do Slacku."
+msgstr "Váš účet Slack byl propojen se Choros. Tuto kartu můžete zavřít a vrátit se do Slacku."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/slack/linked/page.tsx
@@ -33446,17 +33446,17 @@ msgstr "Přejmenovat..."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
 msgid "workspace.hostReachability.connectionFailed"
-msgstr "Spojení selhalo (stav relay {status}). Zkuste to znovu, a pokud potíže přetrvávají, restartujte na tom zařízení Superset."
+msgstr "Spojení selhalo (stav relay {status}). Zkuste to znovu, a pokud potíže přetrvávají, restartujte na tom zařízení Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
 msgid "workspace.hostReachability.deviceNotConnected"
-msgstr "To zařízení není připojené k relay. Ověřte, že je vzhůru, online a běží na něm Superset — jakmile bude, připojí se samo."
+msgstr "To zařízení není připojené k relay. Ověřte, že je vzhůru, online a běží na něm Choros — jakmile bude, připojí se samo."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
 msgid "workspace.hostReachability.localStopped"
-msgstr "Místní host service přestala odpovídat. Nejdřív to zkuste znovu; pokud to nepomůže, restartujte ji v nabídce Superset v liště > Host Service > Restart."
+msgstr "Místní host service přestala odpovídat. Nejdřív to zkuste znovu; pokud to nepomůže, restartujte ji v nabídce Choros v liště > Host Service > Restart."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
@@ -33466,12 +33466,12 @@ msgstr "K tomuto hostu nemáte přístup. Pokud je to vaše zařízení, zapnět
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
 msgid "workspace.hostReachability.onlineButFailed"
-msgstr "To zařízení je online, ale spojení se nepodařilo navázat — obvykle jde o směrování relay, ne o zařízení samotné. Zkuste to znovu, a pokud potíže přetrvávají, restartujte na něm Superset."
+msgstr "To zařízení je online, ale spojení se nepodařilo navázat — obvykle jde o směrování relay, ne o zařízení samotné. Zkuste to znovu, a pokud potíže přetrvávají, restartujte na něm Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
 msgid "workspace.hostReachability.onlineButFailedRegion"
-msgstr "To zařízení je online (region {region}), ale spojení se nepodařilo navázat — obvykle jde o směrování relay, ne o zařízení samotné. Zkuste to znovu, a pokud potíže přetrvávají, restartujte na něm Superset."
+msgstr "To zařízení je online (region {region}), ale spojení se nepodařilo navázat — obvykle jde o směrování relay, ne o zařízení samotné. Zkuste to znovu, a pokud potíže přetrvávají, restartujte na něm Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
@@ -34329,7 +34329,7 @@ msgstr "Neznámý host"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/WorkspaceHostIncompatibleState/WorkspaceHostIncompatibleState.tsx
 msgid "workspace.states.hostIncompatibleBody"
-msgstr "Host tohoto pracovního prostoru má starší verzi Superset, než tento klient podporuje. Aktualizujte na tom zařízení aplikaci Superset a připojte se znovu."
+msgstr "Host tohoto pracovního prostoru má starší verzi Choros, než tento klient podporuje. Aktualizujte na tom zařízení aplikaci Choros a připojte se znovu."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/WorkspaceHostIncompatibleState/WorkspaceHostIncompatibleState.tsx
@@ -34354,7 +34354,7 @@ msgstr "Host potřebuje aktualizaci"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/WorkspaceHostUnreachableState/WorkspaceHostUnreachableState.tsx
 msgid "workspace.states.hostUnreachableBody"
-msgstr "Tento pracovní prostor je na zařízení, na které Superset právě nedosáhne. Terminály, soubory i agenti zůstávají, kde jsou — vrátí se, jakmile se obnoví spojení."
+msgstr "Tento pracovní prostor je na zařízení, na které Choros právě nedosáhne. Terminály, soubory i agenti zůstávají, kde jsou — vrátí se, jakmile se obnoví spojení."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/WorkspaceHostUnreachableState/WorkspaceHostUnreachableState.tsx
@@ -34409,7 +34409,7 @@ msgstr "Místní host service neběží, takže pracovní prostor nemá na tomto
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/providers/WorkspaceProvider/utils/localHostServiceDetail/localHostServiceDetail.ts
 msgid "workspace.states.localHostDetailUnknown"
-msgstr "Místní host service neodpovídá. Obvykle pomůže její restart; pokud se to opakuje, restartujte Superset."
+msgstr "Místní host service neodpovídá. Obvykle pomůže její restart; pokud se to opakuje, restartujte Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/providers/WorkspaceProvider/components/WorkspaceLocalHostPendingState/WorkspaceLocalHostPendingState.tsx
@@ -34430,7 +34430,7 @@ msgstr "Nepodařilo se restartovat host service"
 #. placeholder {0}: error.message
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/providers/WorkspaceProvider/components/WorkspaceLocalHostPendingState/WorkspaceLocalHostPendingState.tsx
 msgid "workspace.states.localHostPendingRestartFailedDescription"
-msgstr "{0} — zkuste nabídku Superset v liště > Host Service > Restart."
+msgstr "{0} — zkuste nabídku Choros v liště > Host Service > Restart."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/providers/WorkspaceProvider/components/WorkspaceLocalHostPendingState/WorkspaceLocalHostPendingState.tsx

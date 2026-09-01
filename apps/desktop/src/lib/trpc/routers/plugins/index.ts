@@ -28,7 +28,7 @@ export const createPluginsRouter = () => {
 
 		/**
 		 * MCP server names the user configured directly in their agent configs
-		 * (outside Superset). The catalog marks matching plugins "already set
+		 * (outside Choros). The catalog marks matching plugins "already set
 		 * up" instead of offering Install — we never manage those entries.
 		 */
 		listExternalServers: publicProcedure.query(() => {

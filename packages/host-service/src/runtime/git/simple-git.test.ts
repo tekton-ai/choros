@@ -57,7 +57,7 @@ describe("createUserSimpleGit", () => {
 	let workRoot: string;
 
 	beforeEach(() => {
-		workRoot = mkdtempSync(join(tmpdir(), "superset-host-simple-git-"));
+		workRoot = mkdtempSync(join(tmpdir(), "choros-host-simple-git-"));
 	});
 
 	afterEach(() => {

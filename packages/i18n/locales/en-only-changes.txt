@@ -6,3 +6,5 @@
 # the exact English text the exemption was granted for; a later edit to that
 # message re-triggers the check. `bun run --cwd packages/i18n check` prints the
 # line to paste when it fails.
+components.starNagCard.title d3dad7e9
+marketing.faq.vsTerminal.question aeff57f6

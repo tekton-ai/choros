@@ -2,7 +2,7 @@
 
 Where this package is headed: what we adopt from the MCP 2026-07-28 spec /
 SDK v2 line, and the target shape of the tool API. Current state: SDK 1.30.0,
-stateless Streamable HTTP at `https://api.superset.sh/mcp` (legacy alias
+stateless Streamable HTTP at `https://api.choros.sh/mcp` (legacy alias
 `/api/v2/agent/mcp`), 31 flat tools, tools-only capabilities.
 
 ## Spec / SDK adoption
@@ -60,7 +60,7 @@ stateless Streamable HTTP at `https://api.superset.sh/mcp` (legacy alias
 ## Target API layout
 
 Principles: one-sentence tool descriptions (orchestration protocol lives in
-server `instructions` + a `superset://guide` resource), `outputSchema` on
+server `instructions` + a `choros://guide` resource), `outputSchema` on
 every tool, uniform `limit`/`offset` pagination, structured error codes,
 opaque handles instead of ID ceremony (list tools return a `workspace`
 handle embedding `host:workspace`; hosts stay explicit — no cross-host

@@ -79,18 +79,18 @@ let workspaceId: string;
  * through .zshenv/.zprofile/.zshrc, marker hook registered last in .zlogin.
  */
 function writeZshWrappers(zshDir: string): void {
-	const SAVE = `_superset_saved_env="$(export -p 2>/dev/null | grep ' SUPERSET_')"`;
-	const RESTORE = `eval "$_superset_saved_env" 2>/dev/null || true`;
+	const SAVE = `_choros_saved_env="$(export -p 2>/dev/null | grep ' SUPERSET_')"`;
+	const RESTORE = `eval "$_choros_saved_env" 2>/dev/null || true`;
 	const quoted = `'${zshDir}'`;
 	fs.mkdirSync(zshDir, { recursive: true });
 	const sourceUser = (file: string, guard?: string) =>
 		[
 			SAVE,
-			`_superset_home="\${SUPERSET_ORIG_ZDOTDIR:-$HOME}"`,
-			`export ZDOTDIR="$_superset_home"`,
+			`_choros_home="\${SUPERSET_ORIG_ZDOTDIR:-$HOME}"`,
+			`export ZDOTDIR="$_choros_home"`,
 			guard
-				? `if [[ -o interactive ]]; then\n  [[ -f "$_superset_home/${file}" ]] && source "$_superset_home/${file}"\nfi`
-				: `[[ -f "$_superset_home/${file}" ]] && source "$_superset_home/${file}"`,
+				? `if [[ -o interactive ]]; then\n  [[ -f "$_choros_home/${file}" ]] && source "$_choros_home/${file}"\nfi`
+				: `[[ -f "$_choros_home/${file}" ]] && source "$_choros_home/${file}"`,
 			RESTORE,
 		].join("\n");
 	fs.writeFileSync(
@@ -108,11 +108,11 @@ function writeZshWrappers(zshDir: string): void {
 	fs.writeFileSync(
 		path.join(zshDir, ".zlogin"),
 		`${sourceUser(".zlogin", "interactive")}
-__superset_prompt_mark() {
+__choros_prompt_mark() {
   printf "\\033]777;superset-shell-ready\\007\\033]133;A\\007"
 }
-precmd_functions=(\${precmd_functions[@]} __superset_prompt_mark)
-export ZDOTDIR="$_superset_home"
+precmd_functions=(\${precmd_functions[@]} __choros_prompt_mark)
+export ZDOTDIR="$_choros_home"
 `,
 	);
 }

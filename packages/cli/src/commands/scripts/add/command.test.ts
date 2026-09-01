@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, mock, test } from "bun:test";
 import { readSettingsRow } from "../../../lib/settings";
 import {
 	createLocalSettingsDb,
-	withTempSupersetHome,
+	withTempChorosHome,
 } from "../../../lib/settings/test-helpers";
 
 let activeOrganizationId: string | undefined = "org-a";
@@ -20,7 +20,7 @@ mock.module("../../../lib/settings/notify", () => ({
 const { default: addScriptCommand } = await import("./command");
 const { default: scriptsMeta } = await import("../meta");
 
-const home = withTempSupersetHome("superset-cli-script-command-");
+const home = withTempChorosHome("choros-cli-script-command-");
 let previousOrgOverride: string | undefined;
 
 function invoke(overrides: Record<string, unknown> = {}) {

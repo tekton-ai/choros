@@ -14,7 +14,7 @@ import { selectExternalWorktreesForImport } from "./select-external-worktrees-fo
 
 const TEST_DIR = join(
 	realpathSync(tmpdir()),
-	`superset-test-select-import-${process.pid}`,
+	`choros-test-select-import-${process.pid}`,
 );
 
 function createTestRepo(name: string): string {

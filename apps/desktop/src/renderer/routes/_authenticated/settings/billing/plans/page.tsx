@@ -1,12 +1,12 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
-import { Badge } from "@superset/ui/badge";
-import { Button } from "@superset/ui/button";
-import { toast } from "@superset/ui/sonner";
-import { Switch } from "@superset/ui/switch";
-import { cn } from "@superset/ui/utils";
+import { i18n } from "@choros/i18n";
+import { Badge } from "@choros/ui/badge";
+import { Button } from "@choros/ui/button";
+import { toast } from "@choros/ui/sonner";
+import { Switch } from "@choros/ui/switch";
+import { cn } from "@choros/ui/utils";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { differenceInDays, format } from "date-fns";
 import { Fragment, useState } from "react";
@@ -443,7 +443,7 @@ function PlansPage() {
 
 		if (action === "contact") {
 			track("enterprise_trial_requested", { source: "billing_plans" });
-			openUrl.mutate("mailto:support@superset.sh");
+			openUrl.mutate("mailto:support@choros.sh");
 			return;
 		}
 
@@ -572,7 +572,7 @@ function PlansPage() {
 									track("billing_support_contacted", {
 										source: "billing_plans_inline",
 									});
-									openUrl.mutate("mailto:support@superset.sh");
+									openUrl.mutate("mailto:support@choros.sh");
 								}}
 								className="inline-flex items-center gap-1 text-primary hover:underline"
 							>

@@ -4,9 +4,9 @@ import {
 	updateSettingsAtomically,
 	writeSetting,
 } from "./local-settings";
-import { createLocalSettingsDb, withTempSupersetHome } from "./test-helpers";
+import { createLocalSettingsDb, withTempChorosHome } from "./test-helpers";
 
-const home = withTempSupersetHome("superset-cli-settings-");
+const home = withTempChorosHome("choros-cli-settings-");
 const createLocalDb = () => createLocalSettingsDb(home.dir);
 
 describe("local settings store", () => {

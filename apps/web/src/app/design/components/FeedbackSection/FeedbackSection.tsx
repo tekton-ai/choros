@@ -155,7 +155,7 @@ export function FeedbackSection() {
 				})}
 				importPath="@choros/ui/progress"
 				description={i18n._({
-					id: "web.design.feedbackSection.alsoSupersetUiSpinner",
+					id: "web.design.feedbackSection.alsoChorosUiSpinner",
 					message: "Also: @choros/ui/spinner",
 				})}
 			>

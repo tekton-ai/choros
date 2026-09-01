@@ -34,7 +34,7 @@ afterAll(async () => {
  */
 
 const REPOS = [
-	{ id: "10", label: "superset", hint: "superset-sh" },
+	{ id: "10", label: "choros", hint: "superset-sh" },
 	{ id: "20", label: "domains", hint: "superset-sh" },
 ];
 
@@ -130,7 +130,7 @@ describe("a GitHub row that was just added", () => {
 });
 
 /**
- *   ⌥ PR opened in [superset ▾] by [Anyone ▾]
+ *   ⌥ PR opened in [choros ▾] by [Anyone ▾]
  */
 describe("a GitHub row watching one repository", () => {
 	const chosen = () =>
@@ -140,7 +140,7 @@ describe("a GitHub row watching one repository", () => {
 
 	test("names the repository rather than counting it", async () => {
 		const { chip } = await row(chosen());
-		expect(chip("superset")).toBeDefined();
+		expect(chip("choros")).toBeDefined();
 	});
 
 	test("no longer asks for one", async () => {
@@ -279,7 +279,7 @@ describe("the wording of a GitHub row", () => {
 				repositories: { mode: "list", ids: ["10"] },
 			}),
 		);
-		expect(sentence).toBe("PR opened in superset by Anyone");
+		expect(sentence).toBe("PR opened in choros by Anyone");
 	});
 
 	// The comment events carry two different people — whoever wrote the
@@ -291,7 +291,7 @@ describe("the wording of a GitHub row", () => {
 			}),
 		);
 		expect(sentence).toBe(
-			"Any comment by Anyone on a PR by Anyone in superset",
+			"Any comment by Anyone on a PR by Anyone in choros",
 		);
 	});
 
@@ -301,7 +301,7 @@ describe("the wording of a GitHub row", () => {
 				repositories: { mode: "list", ids: ["10"] },
 			}),
 		);
-		expect(sentence).toBe("Push to Any branch in superset by Anyone");
+		expect(sentence).toBe("Push to Any branch in choros by Anyone");
 	});
 });
 
@@ -336,8 +336,8 @@ describe('a GitHub row that filters by "Me" with no account connected', () => {
  * last value returns them to "any" rather than leaving a list that matches
  * nothing:
  *
- *   ⌥ Label [Any label ▾] changed in [superset ▾] by [Anyone ▾]
- *   ⌥ Push to [Any branch ▾] in [superset ▾] by [Anyone ▾]
+ *   ⌥ Label [Any label ▾] changed in [choros ▾] by [Anyone ▾]
+ *   ⌥ Push to [Any branch ▾] in [choros ▾] by [Anyone ▾]
  */
 describe("a GitHub row's optional filters", () => {
 	const inRepo = (event: string, over: Record<string, unknown> = {}) =>
@@ -384,7 +384,7 @@ describe("a GitHub row's optional filters", () => {
 /**
  * The comment body filter, which carries the verb the sentence does not:
  *
- *   ⌥ [Matching "LGTM" ▾] by [Anyone ▾] on a PR by [Anyone ▾] in [superset ▾]
+ *   ⌥ [Matching "LGTM" ▾] by [Anyone ▾] on a PR by [Anyone ▾] in [choros ▾]
  */
 describe("a GitHub row filtering a comment body", () => {
 	test("starts matching any comment", async () => {

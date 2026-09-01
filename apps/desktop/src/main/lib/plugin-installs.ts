@@ -130,7 +130,7 @@ const SKILL_ICON_FILES = [
 
 /**
  * Data URIs of per-skill icons distributed inside the skill folders
- * (`skills/<name>/icon.svg|png`) — the Superset convention for skill authors
+ * (`skills/<name>/icon.svg|png`) — the Choros convention for skill authors
  * to ship artwork with their skill, mirroring how Codex plugins carry
  * `interface` icons. Skills without one fall back to a default glyph in the
  * renderer.

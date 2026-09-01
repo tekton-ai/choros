@@ -38,9 +38,9 @@ describe("workspaces.createSession + delete integration", () => {
 			savedEnv[key] = process.env[key];
 		}
 		process.env.GIT_AUTHOR_NAME = "Test Runner";
-		process.env.GIT_AUTHOR_EMAIL = "test@superset.sh";
+		process.env.GIT_AUTHOR_EMAIL = "test@choros.sh";
 		process.env.GIT_COMMITTER_NAME = "Test Runner";
-		process.env.GIT_COMMITTER_EMAIL = "test@superset.sh";
+		process.env.GIT_COMMITTER_EMAIL = "test@choros.sh";
 	});
 	afterAll(() => {
 		for (const [key, value] of Object.entries(savedEnv)) {
@@ -219,7 +219,7 @@ describe("workspaces.createSession + delete integration", () => {
 		// Identity inline via -c: Bun's execSync does not reliably see the
 		// beforeAll process.env mutations that the in-process host spawns do.
 		execSync(
-			'git add . && git -c user.name="Test Runner" -c user.email="test@superset.sh" commit -m work',
+			'git add . && git -c user.name="Test Runner" -c user.email="test@choros.sh" commit -m work',
 			{ cwd: row?.worktreePath },
 		);
 

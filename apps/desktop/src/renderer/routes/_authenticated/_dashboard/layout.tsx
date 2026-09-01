@@ -300,7 +300,7 @@ function DashboardLayout() {
 								) : (
 									// Contain content-route crashes to this pane: without a
 									// boundary they bubble to the root and unmount the whole
-									// app, which reads as Superset restarting itself
+									// app, which reads as Choros restarting itself
 									// (SUPER-1814). Resets on navigation.
 									<CatchBoundary
 										// Full href, not just pathname: a same-path search/hash

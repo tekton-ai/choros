@@ -5,7 +5,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
 /**
- * Regression test for https://github.com/anthropics/superset/issues/2641
+ * Regression test for https://github.com/anthropics/choros/issues/2641
  *
  * The "Run in Workspace" button disappeared because TasksView stopped passing
  * selectedTasks / onClearSelection to TasksTopBar, and TableContent stopped

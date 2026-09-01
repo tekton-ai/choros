@@ -51,7 +51,7 @@ export const navigationProvider: CommandProvider = {
 				icon: BookOpenIcon,
 				keywords: ["docs", "help"],
 				run: () => {
-					window.open("https://docs.superset.sh", "_blank", "noreferrer");
+					window.open("https://docs.choros.sh", "_blank", "noreferrer");
 				},
 			},
 		];

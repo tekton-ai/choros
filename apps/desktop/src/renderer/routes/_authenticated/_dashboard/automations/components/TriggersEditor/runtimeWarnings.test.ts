@@ -5,7 +5,7 @@ import { collectRuntimeWarnings } from "./runtimeWarnings";
  * Everything the editor says about the world beneath the rows:
  *
  *   ⚠ Microsoft Teams triggers require the Enterprise plan.
- *   ⚠ This trigger will not run for messages in #secret until @Superset is
+ *   ⚠ This trigger will not run for messages in #secret until @Choros is
  *     invited.
  *
  * A set of rows goes in, the lines under them come out. Kept pure so the
@@ -101,7 +101,7 @@ describe("a row that will run but stay silent", () => {
 				"pro",
 			),
 		).toEqual([
-			"This trigger will not run for messages in #secret until @Superset is invited.",
+			"This trigger will not run for messages in #secret until @Choros is invited.",
 		]);
 	});
 });
@@ -138,7 +138,7 @@ describe("several rows at once", () => {
 		);
 		expect(warnings).toEqual([
 			"Slack triggers require the Pro plan.",
-			"This trigger will not run for messages in #secret until @Superset is invited.",
+			"This trigger will not run for messages in #secret until @Choros is invited.",
 		]);
 	});
 });

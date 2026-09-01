@@ -77,7 +77,7 @@ const PR: PullRequest = {
 		"- [x] `bun run lint` and `bun run typecheck` pass",
 		"- [x] No runtime or build behaviour changes",
 	].join("\n"),
-	url: "https://github.com/superset-sh/superset/pull/6510",
+	url: "https://github.com/superset-sh/choros/pull/6510",
 	baseBranch: "main",
 	state: "open",
 	isDraft: false,
@@ -199,7 +199,7 @@ export const SCENARIOS = {
 		{
 			pullRequest: {
 				number: 6649,
-				title: "Fix Superset terminal CLI auth",
+				title: "Fix Choros terminal CLI auth",
 				additions: 290,
 				deletions: 20,
 				changedFiles: 11,

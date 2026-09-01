@@ -4,7 +4,7 @@
  * `host.ensure` is the only thing that makes this host visible server-side
  * (hosts list, automations, relay routing). When it fails the service keeps
  * serving locally and looks healthy, so the failure must be queryable —
- * health.check exposes this state and `superset status` reports it
+ * health.check exposes this state and `choros status` reports it
  * (issue #6415).
  */
 export type RegistrationState = {

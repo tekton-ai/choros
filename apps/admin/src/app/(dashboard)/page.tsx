@@ -208,7 +208,7 @@ export default function DashboardPage() {
 							insight="newSiteVisitors"
 							description={t({
 								id: "admin.insight.newSiteVisitors",
-								message: "First-ever pageview on superset.sh, daily",
+								message: "First-ever pageview on choros.sh, daily",
 							})}
 						/>
 						<TrendSeriesTile

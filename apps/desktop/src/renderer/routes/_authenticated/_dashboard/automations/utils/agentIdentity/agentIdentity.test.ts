@@ -22,10 +22,10 @@ const custom: AgentSelectAgent = {
 	label: "My Agent",
 	presetId: "custom",
 };
-const superset: AgentSelectAgent = {
-	id: "superset",
-	label: "Superset",
-	iconId: "superset",
+const choros: AgentSelectAgent = {
+	id: "choros",
+	label: "Choros",
+	iconId: "choros",
 };
 
 describe("matchAgentChoice", () => {
@@ -41,8 +41,8 @@ describe("matchAgentChoice", () => {
 		expect(matchAgentChoice([claude, claudeYolo], "claude")).toBe(claude);
 	});
 
-	it("matches the superset chat agent by its literal id", () => {
-		expect(matchAgentChoice([claude, superset], "superset")).toBe(superset);
+	it("matches the choros chat agent by its literal id", () => {
+		expect(matchAgentChoice([claude, choros], "choros")).toBe(choros);
 	});
 
 	it("returns undefined for a stale UUID from a re-seeded host", () => {
@@ -75,7 +75,7 @@ describe("portableAgentValue", () => {
 		expect(portableAgentValue([claude, custom], custom)).toBe(custom.id);
 	});
 
-	it("keeps the id for choices without a preset (superset chat)", () => {
-		expect(portableAgentValue([claude, superset], superset)).toBe("superset");
+	it("keeps the id for choices without a preset (choros chat)", () => {
+		expect(portableAgentValue([claude, choros], choros)).toBe("choros");
 	});
 });

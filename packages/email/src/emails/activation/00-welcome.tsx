@@ -5,7 +5,7 @@ import { env } from "../../lib/env";
 const utm = (content: string) =>
 	`?utm_source=email&utm_medium=lifecycle&utm_campaign=welcome&utm_content=${content}`;
 
-const DOWNLOAD = "https://superset.sh/download";
+const DOWNLOAD = "https://choros.sh/download";
 
 interface WelcomeEmailProps {
 	userName?: string;
@@ -21,7 +21,7 @@ export function WelcomeEmail({ userEmail }: WelcomeEmailProps = {}) {
 			recipientEmail={userEmail}
 		>
 			<Heading className="text-[22px] font-medium leading-8 text-foreground m-0 mb-3">
-				Welcome to Superset
+				Welcome to Choros
 			</Heading>
 			<Text className="text-[15px] leading-6 text-muted m-0 mb-6">
 				Run Claude Code, Codex, or any CLI agent in parallel, each in an
@@ -31,7 +31,7 @@ export function WelcomeEmail({ userEmail }: WelcomeEmailProps = {}) {
 			<a href={`${DOWNLOAD}${utm("hero-image")}`}>
 				<Img
 					src={`${assets}/welcome-hero.png`}
-					alt="Superset running coding agents across parallel workspaces"
+					alt="Choros running coding agents across parallel workspaces"
 					width="512"
 					className="w-full rounded-lg mb-6"
 				/>
@@ -50,7 +50,7 @@ export function WelcomeEmail({ userEmail }: WelcomeEmailProps = {}) {
 
 			<Section className="mb-8">
 				<Button href={`${DOWNLOAD}${utm("hero-cta")}`}>
-					Download Superset
+					Download Choros
 				</Button>
 			</Section>
 

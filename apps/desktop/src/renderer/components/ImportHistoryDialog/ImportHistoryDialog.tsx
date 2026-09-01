@@ -231,7 +231,7 @@ export function ImportHistoryDialog({
 					<DialogDescription>
 						<Trans id="components.importHistoryDialog.description">
 							Copy your browsing history and logins from another browser into
-							Superset. Your original browser isn't changed.
+							Choros. Your original browser isn't changed.
 						</Trans>
 					</DialogDescription>
 				</DialogHeader>
@@ -248,7 +248,7 @@ export function ImportHistoryDialog({
 					<div className="flex flex-col gap-3 py-2 text-sm">
 						<p className="text-muted-foreground">
 							<Trans id="components.importHistoryDialog.needsFullDiskAccess">
-								Superset needs Full Disk Access to read another browser's data.
+								Choros needs Full Disk Access to read another browser's data.
 								Grant it in System Settings, then check again.
 							</Trans>
 						</p>

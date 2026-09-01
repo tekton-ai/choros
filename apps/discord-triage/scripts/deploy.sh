@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-APP=superset-discord-triage
+APP=choros-discord-triage
 
 cd "$(git rev-parse --show-toplevel)"
 

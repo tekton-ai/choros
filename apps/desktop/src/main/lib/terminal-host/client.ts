@@ -1108,7 +1108,7 @@ export class TerminalHostClient extends EventEmitter {
 	 */
 	private acquireSpawnLock(): boolean {
 		try {
-			// Ensure superset home directory exists before any file operations
+			// Ensure choros home directory exists before any file operations
 			if (!existsSync(SUPERSET_HOME_DIR)) {
 				mkdirSync(SUPERSET_HOME_DIR, { recursive: true, mode: 0o700 });
 			}

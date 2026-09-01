@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
 		}),
 		description: i18n._({
 			id: "marketing.meta.marketplace.description",
-			message: "Browse shared themes and future agent configs for Superset.",
+			message: "Browse shared themes and future agent configs for Choros.",
 		}),
 		alternates: localizedAlternates(lang, "/marketplace"),
 	};
@@ -27,7 +27,7 @@ const marketplaceLinks = [
 		label: msg({ id: "marketing.marketplace.themes.label", message: "Themes" }),
 		description: msg({
 			id: "marketing.marketplace.themes.description",
-			message: "Shared theme JSON files you can import into Superset.",
+			message: "Shared theme JSON files you can import into Choros.",
 		}),
 	},
 	{

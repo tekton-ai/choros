@@ -22,7 +22,7 @@ export default async function CliAuthCodePage({
 				<a href={env.NEXT_PUBLIC_MARKETING_URL}>
 					<Image
 						src="/title.svg"
-						alt="Superset"
+						alt="Choros"
 						width={140}
 						height={24}
 						priority
@@ -50,7 +50,7 @@ export default async function CliAuthCodePage({
 							id: "web.cliAuth.missingCode",
 							message: "Missing authorization code. Re-run",
 						})}{" "}
-						<code>superset auth login</code>.
+						<code>choros auth login</code>.
 					</p>
 				)}
 			</main>

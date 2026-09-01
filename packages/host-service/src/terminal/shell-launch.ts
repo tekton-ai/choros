@@ -23,7 +23,7 @@ export function resolveLaunchShell(
 	return resolveConfiguredShell(baseEnv, options);
 }
 
-export function getSupersetShellPaths(supersetHomeDir: string): {
+export function getChorosShellPaths(supersetHomeDir: string): {
 	BIN_DIR: string;
 	ZSH_DIR: string;
 	BASH_DIR: string;
@@ -61,10 +61,10 @@ function buildFishInitCommand(binDir: string): string {
 		.replaceAll('"', '\\"')
 		.replaceAll("$", "\\$");
 	return [
-		`set -l _superset_bin "${escaped}"`,
-		`contains -- "$_superset_bin" $PATH`,
-		`or set -gx PATH "$_superset_bin" $PATH`,
-		`function _superset_prompt_mark --on-event fish_prompt`,
+		`set -l _choros_bin "${escaped}"`,
+		`contains -- "$_choros_bin" $PATH`,
+		`or set -gx PATH "$_choros_bin" $PATH`,
+		`function _choros_prompt_mark --on-event fish_prompt`,
 		`printf '\\033]133;A\\007'`,
 		`end`,
 	].join("; ");
@@ -85,7 +85,7 @@ export function getShellBootstrapEnv(
 ): Record<string, string> {
 	const { shell, baseEnv, supersetHomeDir } = params;
 	const shellName = getShellName(shell);
-	const paths = getSupersetShellPaths(supersetHomeDir);
+	const paths = getChorosShellPaths(supersetHomeDir);
 
 	if (shellName === "zsh") {
 		const zshrc = path.join(paths.ZSH_DIR, ".zshrc");
@@ -106,7 +106,7 @@ export interface ShellLaunchParams {
 }
 
 /**
- * Whether this exact launch configuration installs Superset's prompt marker.
+ * Whether this exact launch configuration installs Choros's prompt marker.
  *
  * Shell name alone is not enough: stale or missing wrapper files mean zsh and
  * bash never emit OSC 133;A. Callers use this capability check to decide
@@ -118,7 +118,7 @@ export function shellLaunchExpectsReadyMarker(
 ): boolean {
 	const { shell, supersetHomeDir } = params;
 	const shellName = getShellName(shell);
-	const paths = getSupersetShellPaths(supersetHomeDir);
+	const paths = getChorosShellPaths(supersetHomeDir);
 
 	if (shellName === "zsh") {
 		return (
@@ -139,7 +139,7 @@ export function shellLaunchExpectsReadyMarker(
 export function getShellLaunchArgs(params: ShellLaunchParams): string[] {
 	const { shell, supersetHomeDir } = params;
 	const shellName = getShellName(shell);
-	const paths = getSupersetShellPaths(supersetHomeDir);
+	const paths = getChorosShellPaths(supersetHomeDir);
 
 	if (shellName === "zsh") {
 		return ["-l"];

@@ -326,7 +326,7 @@ function sleep(ms) {
 
 async function main() {
 	const args = parseArgs(process.argv.slice(2));
-	const tmpDir = mkdtempSync(path.join(os.tmpdir(), "superset-pty-cleanup-"));
+	const tmpDir = mkdtempSync(path.join(os.tmpdir(), "choros-pty-cleanup-"));
 	const launchedSocketPath = path.join(tmpDir, "pty-daemon.sock");
 	const helperPidPath = path.join(tmpDir, "detached-helper.pid");
 	const sessionId = `cleanup-smoke-${process.pid}-${Date.now()}`;
@@ -507,7 +507,7 @@ async function findProductionDaemon(orgId) {
 
 function listProductionDaemonManifests() {
 	const home =
-		process.env.SUPERSET_HOME_DIR || path.join(os.homedir(), ".superset");
+		process.env.SUPERSET_HOME_DIR || path.join(os.homedir(), ".choros");
 	const hostDir = path.join(home, "host");
 	if (!existsSync(hostDir)) return [];
 

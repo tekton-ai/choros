@@ -13,7 +13,7 @@ import {
 import { organizations, users } from "./auth";
 
 /**
- * GitHub App installations linked to Superset organizations.
+ * GitHub App installations linked to Choros organizations.
  * One organization can have one GitHub installation.
  */
 export const githubInstallations = pgTable(
@@ -21,7 +21,7 @@ export const githubInstallations = pgTable(
 	{
 		id: uuid().primaryKey().defaultRandom(),
 
-		// Link to Superset organization
+		// Link to Choros organization
 		organizationId: uuid("organization_id")
 			.notNull()
 			.references(() => organizations.id, { onDelete: "cascade" }),

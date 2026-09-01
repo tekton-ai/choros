@@ -20,7 +20,7 @@ describe("buildDesignModeScript", () => {
 
 	test("awaitClick resolves the cancellation marker main classifies", () => {
 		expect(buildDesignModeScript("awaitClick")).toContain(
-			"__supersetDesignCancelled: true",
+			"__chorosDesignCancelled: true",
 		);
 	});
 });

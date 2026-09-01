@@ -735,7 +735,7 @@ export function WorkspaceScreen() {
 					<WorkspacePlaceholder
 						body={t({
 							id: "mobile.workspace.hostOutdated.body",
-							message: `${host?.name ?? t({ id: "mobile.workspace.thisHost", message: "This host" })} is running host service ${hostCompatibility.hostVersion} — this app needs ${hostCompatibility.minVersion} or newer. Update Superset on that machine.`,
+							message: `${host?.name ?? t({ id: "mobile.workspace.thisHost", message: "This host" })} is running host service ${hostCompatibility.hostVersion} — this app needs ${hostCompatibility.minVersion} or newer. Update Choros on that machine.`,
 						})}
 						icon={TriangleAlert}
 						onRefresh={onRefresh}

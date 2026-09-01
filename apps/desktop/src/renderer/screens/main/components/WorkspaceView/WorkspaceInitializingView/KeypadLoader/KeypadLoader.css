@@ -86,7 +86,7 @@
 	width: 96%;
 	translate: -50% 1%;
 	pointer-events: none;
-	/* Shift the purple base image toward Superset orange (#f97316, hue ~25°). */
+	/* Shift the purple base image toward Choros orange (#f97316, hue ~25°). */
 	filter: hue-rotate(118deg) saturate(1.15) brightness(0.92);
 	transition: filter 0.7s ease-out;
 }

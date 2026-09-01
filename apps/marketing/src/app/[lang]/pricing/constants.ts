@@ -578,12 +578,12 @@ export const PRICING_FAQ_ITEMS: PricingFAQItem[] = [
 		id: "soc2",
 		question: msg({
 			id: "marketing.pricing.faq.soc2.question",
-			message: "Is Superset SOC 2 compliant?",
+			message: "Is Choros SOC 2 compliant?",
 		}),
 		answer: msg({
 			id: "marketing.pricing.faq.soc2.answer",
 			message:
-				"Yes. Superset has completed a SOC 2 Type II audit with an independent auditor, covering our security controls in operation over time. Request the report and review our security documentation at trust.superset.sh.",
+				"Yes. Choros has completed a SOC 2 Type II audit with an independent auditor, covering our security controls in operation over time. Request the report and review our security documentation at trust.choros.sh.",
 		}),
 	},
 	{
@@ -595,7 +595,7 @@ export const PRICING_FAQ_ITEMS: PricingFAQItem[] = [
 		answer: msg({
 			id: "marketing.pricing.faq.whereCodeRuns.answer",
 			message:
-				"On your machine. Repos, worktrees, terminal output, and agent sessions stay local by default; cloud sync covers account and organization metadata only. Superset doesn't proxy any API calls.",
+				"On your machine. Repos, worktrees, terminal output, and agent sessions stay local by default; cloud sync covers account and organization metadata only. Choros doesn't proxy any API calls.",
 		}),
 	},
 	{
@@ -607,7 +607,7 @@ export const PRICING_FAQ_ITEMS: PricingFAQItem[] = [
 		answer: msg({
 			id: "marketing.pricing.faq.agentSubscriptions.answer",
 			message:
-				"Yes. Superset is the workspace your agents run in, not a model provider. Bring Claude Code, Codex, OpenCode, or any CLI agent, and use your existing accounts or API keys on every plan.",
+				"Yes. Choros is the workspace your agents run in, not a model provider. Bring Claude Code, Codex, OpenCode, or any CLI agent, and use your existing accounts or API keys on every plan.",
 		}),
 	},
 ];

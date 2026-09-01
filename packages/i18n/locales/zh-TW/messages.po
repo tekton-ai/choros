@@ -271,7 +271,7 @@ msgstr "每週頁面瀏覽 → 下載轉換率，Mac訪客；本週為虛線"
 #. js-lingui-explicit-id
 #: ../../apps/admin/src/app/(dashboard)/page.tsx
 msgid "admin.insight.newSiteVisitors"
-msgstr "每日首次存取superset.sh的頁面瀏覽數"
+msgstr "每日首次存取choros.sh的頁面瀏覽數"
 
 #. js-lingui-explicit-id
 #: ../../apps/admin/src/app/(dashboard)/page.tsx
@@ -564,7 +564,7 @@ msgstr "複製錯誤詳情"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/error.tsx
 msgid "app.errorPage.description"
-msgstr "Superset遇到意外錯誤。重新載入以重試。"
+msgstr "Choros遇到意外錯誤。重新載入以重試。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/error.tsx
@@ -733,9 +733,9 @@ msgid "auth.signIn.lastUsed"
 msgstr "上次使用"
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/sign-in/components/SupersetLogo/SupersetLogo.tsx
+#: ../../apps/desktop/src/renderer/routes/sign-in/components/ChorosLogo/ChorosLogo.tsx
 msgid "auth.signIn.logoTitle"
-msgstr "Superset"
+msgstr "Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/sign-in/page.tsx
@@ -755,7 +755,7 @@ msgstr "登入即表示你同意我們的<0>服務條款</0>和<1>隱私政策</
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/sign-in/page.tsx
 msgid "auth.signIn.welcomeTitle"
-msgstr "歡迎使用Superset"
+msgstr "歡迎使用Choros"
 
 #. js-lingui-explicit-id
 #: ../chat-ui/src/components/PromptInput/components/ComposerBody/ComposerBody.tsx
@@ -1541,7 +1541,7 @@ msgstr "重新載入"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/BootErrorBoundary/BootErrorBoundary.tsx
 msgid "components.bootError.title"
-msgstr "Superset啟動失敗"
+msgstr "Choros啟動失敗"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/MarkdownRenderer/components/TipTapMarkdownRenderer/components/BubbleMenuToolbar/BubbleMenuToolbar.tsx
@@ -1772,7 +1772,7 @@ msgstr "你是我們最活躍的使用者之一。來和我們一起打造它吧
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/SidebarCardSlot/cards/useHiringCard/useHiringCard.ts
 msgid "components.hiringCard.title"
-msgstr "喜歡用Superset開發嗎？"
+msgstr "喜歡用Choros開發嗎？"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/ImportHistoryDialog/ImportHistoryDialog.tsx
@@ -1792,7 +1792,7 @@ msgstr "重新檢查"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/ImportHistoryDialog/ImportHistoryDialog.tsx
 msgid "components.importHistoryDialog.description"
-msgstr "把其他瀏覽器的瀏覽歷史和登入資訊複製到Superset。原瀏覽器不會被修改。"
+msgstr "把其他瀏覽器的瀏覽歷史和登入資訊複製到Choros。原瀏覽器不會被修改。"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: result.imported
@@ -1859,7 +1859,7 @@ msgstr "和"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/ImportHistoryDialog/ImportHistoryDialog.tsx
 msgid "components.importHistoryDialog.needsFullDiskAccess"
-msgstr "Superset需要「完全磁碟存取權限」才能讀取其他瀏覽器的資料。請在系統設定中授予權限，然後重新檢查。"
+msgstr "Choros需要「完全磁碟存取權限」才能讀取其他瀏覽器的資料。請在系統設定中授予權限，然後重新檢查。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/ImportHistoryDialog/ImportHistoryDialog.tsx
@@ -2034,7 +2034,7 @@ msgstr "新增描述..."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/MobileAppDemo/MobileAppDemo.tsx
 msgid "components.mobileAppDemo.agentName"
-msgstr "Superset代理程式"
+msgstr "Choros代理程式"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/MobileAppDemo/MobileAppDemo.tsx
@@ -2195,7 +2195,7 @@ msgstr "行動應用程式"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/constants.ts
 msgid "components.paywall.remoteAccess.description"
-msgstr "通過Superset中繼從任何地方連上這臺Mac，或啟動雲端工作區。可從任意客戶端連線。"
+msgstr "通過Choros中繼從任何地方連上這臺Mac，或啟動雲端工作區。可從任意客戶端連線。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/constants.ts
@@ -2215,7 +2215,7 @@ msgstr "Slack整合"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/constants.ts
 msgid "components.paywall.tasks.description"
-msgstr "追蹤和管理從Linear同步的任務。不用離開Superset就能掌控工作。"
+msgstr "追蹤和管理從Linear同步的任務。不用離開Choros就能掌控工作。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/constants.ts
@@ -2235,7 +2235,7 @@ msgstr "團隊協作"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/Paywall.tsx
 msgid "components.paywall.upgradeCta"
-msgstr "獲取Superset Pro"
+msgstr "獲取Choros Pro"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/UpdatesPill/components/PreUpdateConfirmPopover/PreUpdateConfirmPopover.tsx
@@ -2769,7 +2769,7 @@ msgstr "提示詞預覽"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/SidebarCardSlot/cards/useStarNagCard/useStarNagCard.tsx
 msgid "components.starNagCard.description"
-msgstr "Superset是開源的。如果它今天幫到了你，一個GitHub星標能幫助更多開發者找到它。"
+msgstr "Choros是開源的。如果它今天幫到了你，一個GitHub星標能幫助更多開發者找到它。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/SidebarCardSlot/cards/useStarNagCard/useStarNagCard.tsx
@@ -2779,7 +2779,7 @@ msgstr "用得還順手嗎？"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/StarNagToast/StarNagToast.tsx
 msgid "components.starNagToast.body"
-msgstr "如果你覺得Superset還不錯，一個GitHub星標能幫助更多開發者發現它。"
+msgstr "如果你覺得Choros還不錯，一個GitHub星標能幫助更多開發者發現它。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/StarNagToast/StarNagToast.tsx
@@ -2870,7 +2870,7 @@ msgstr "正在檢查..."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/UpdateRequiredPage/UpdateRequiredPage.tsx
 msgid "components.updateRequiredPage.defaultMessage"
-msgstr "需要新版本的Superset才能繼續。請更新到最新版本。"
+msgstr "需要新版本的Choros才能繼續。請更新到最新版本。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/UpdateRequiredPage/UpdateRequiredPage.tsx
@@ -3334,13 +3334,13 @@ msgstr "主機設定"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/HostOfflineRunDialog/HostOfflineRunDialog.tsx
 msgid "dashboard.automations.hostOfflineDialog.localBody"
-msgstr "這次執行被跳過了，因為此裝置沒有連線到Superset中繼。即使自動化在本裝置上執行，也要經過中繼。請啟用中繼存取，然後重新執行。"
+msgstr "這次執行被跳過了，因為此裝置沒有連線到Choros中繼。即使自動化在本裝置上執行，也要經過中繼。請啟用中繼存取，然後重新執行。"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: remoteHost?.name ?? t({ id: "dashboard.automations.hostOfflineDialog.targetHostFallback", message: "the target host", })
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/HostOfflineRunDialog/HostOfflineRunDialog.tsx
 msgid "dashboard.automations.hostOfflineDialog.remoteBody"
-msgstr "這次執行被跳過了，因為<0>{0}</0>沒有連線到Superset中繼。請確認該裝置的「設定>遠端存取」中開啟了中繼存取，然後重新執行。"
+msgstr "這次執行被跳過了，因為<0>{0}</0>沒有連線到Choros中繼。請確認該裝置的「設定>遠端存取」中開啟了中繼存取，然後重新執行。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/HostOfflineRunDialog/HostOfflineRunDialog.tsx
@@ -3355,7 +3355,7 @@ msgstr "目標主機已離線"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/utils/hostOfflineError/hostOfflineError.ts
 msgid "dashboard.automations.hostOfflineHelp"
-msgstr "該主機沒有連線到Superset中繼。如果就是此裝置，請在「設定>遠端存取」中開啟「允許遠端存取通過中繼存取此裝置」，然後重試。"
+msgstr "該主機沒有連線到Choros中繼。如果就是此裝置，請在「設定>遠端存取」中開啟「允許遠端存取通過中繼存取此裝置」，然後重試。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/page.tsx
@@ -3365,7 +3365,7 @@ msgstr "CLI文件"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/page.tsx
 msgid "dashboard.automations.page.cliHint"
-msgstr "讓任意代理程式用<0>superset</0> CLI來建立工作區、執行任務或管理自動化。"
+msgstr "讓任意代理程式用<0>choros</0> CLI來建立工作區、執行任務或管理自動化。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/page.tsx
@@ -4201,13 +4201,13 @@ msgstr "啟用中繼存取…"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/RelayOfflineNotice/RelayOfflineNotice.tsx
 msgid "dashboard.automations.relayOfflineNotice.localBody"
-msgstr "此裝置沒有連線到Superset中繼，自動化的執行會被跳過。"
+msgstr "此裝置沒有連線到Choros中繼，自動化的執行會被跳過。"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: remoteHost.name
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/RelayOfflineNotice/RelayOfflineNotice.tsx
 msgid "dashboard.automations.relayOfflineNotice.remoteBody"
-msgstr "<0>{0}</0>沒有連線到Superset中繼，它的執行會被跳過。請檢查它的<1>主機設定</1>，並確認該裝置的「設定>遠端存取」中開啟了中繼存取。"
+msgstr "<0>{0}</0>沒有連線到Choros中繼，它的執行會被跳過。請檢查它的<1>主機設定</1>，並確認該裝置的「設定>遠端存取」中開啟了中繼存取。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/AutomationRow/AutomationRow.tsx
@@ -5425,6 +5425,16 @@ msgstr "清掉一些TODO"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
+msgid "dashboard.newWorkspaceModal.samplePrompts.explainChoros.description"
+msgstr "瞭解適合這個儲存庫的工作流：並行工作區和代理程式配置。"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
+msgid "dashboard.newWorkspaceModal.samplePrompts.explainChoros.label"
+msgstr "把Choros用得更好"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
 msgid "dashboard.newWorkspaceModal.samplePrompts.explainRepo.description"
 msgstr "來一次架構導覽：入口在哪、怎麼跑起來、先讀什麼。"
 
@@ -5432,16 +5442,6 @@ msgstr "來一次架構導覽：入口在哪、怎麼跑起來、先讀什麼。
 #: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
 msgid "dashboard.newWorkspaceModal.samplePrompts.explainRepo.label"
 msgstr "講講這個儲存庫是怎麼運作的"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
-msgid "dashboard.newWorkspaceModal.samplePrompts.explainSuperset.description"
-msgstr "瞭解適合這個儲存庫的工作流：並行工作區和代理程式配置。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
-msgid "dashboard.newWorkspaceModal.samplePrompts.explainSuperset.label"
-msgstr "把Superset用得更好"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
@@ -5471,7 +5471,7 @@ msgstr "寫好setup和teardown指令碼，讓每個新工作區一建立就能�
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
 msgid "dashboard.newWorkspaceModal.samplePrompts.setUpProject.label"
-msgstr "為Superset配置這個專案"
+msgstr "為Choros配置這個專案"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: first.message
@@ -5721,7 +5721,7 @@ msgstr "在你的代理程式配置中檢測到"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/$pluginName/components/PluginDetail/PluginDetail.tsx
 msgid "dashboard.plugins.detail.detectedHint"
-msgstr "這些是你自己新增的，Superset從不改動它們，也不會為你已有的伺服器寫入重複項。"
+msgstr "這些是你自己新增的，Choros從不改動它們，也不會為你已有的伺服器寫入重複項。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/$pluginName/components/PluginDetail/PluginDetail.tsx
@@ -5768,7 +5768,7 @@ msgstr "技能"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/$pluginName/components/PluginDetail/PluginDetail.tsx
 msgid "dashboard.plugins.detail.statusDisabled"
-msgstr "已停用，外掛仍保留安裝，但Superset不會向你的代理程式配置寫入任何內容。"
+msgstr "已停用，外掛仍保留安裝，但Choros不會向你的代理程式配置寫入任何內容。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/$pluginName/components/PluginDetail/PluginDetail.tsx
@@ -6047,7 +6047,7 @@ msgstr "已停用"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/components/PluginsView/components/SkillsList/SkillsList.tsx
 msgid "dashboard.plugins.skillsList.intro"
-msgstr "技能隨Superset外掛一起提供，並會在你使用的每個代理程式中自動保持最新。點選一個即可預覽。"
+msgstr "技能隨Choros外掛一起提供，並會在你使用的每個代理程式中自動保持最新。點選一個即可預覽。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/components/PluginsView/components/SkillsList/SkillsList.tsx
@@ -6296,7 +6296,7 @@ msgstr "全部匯入"
 #. placeholder {0}: importableWorktrees.length
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/project/$projectId/components/ExternalWorktreesBanner/ExternalWorktreesBanner.tsx
 msgid "dashboard.project.worktreesBanner.importDialogDescription"
-msgstr "{0, plural, one {這會把#個已有worktree作為工作區匯入Superset。磁碟上的每個worktree都會被追蹤並出現在側邊欄裡。不會修改任何檔案。} other {這會把#個已有worktree作為工作區匯入Superset。磁碟上的每個worktree都會被追蹤並出現在側邊欄裡。不會修改任何檔案。}}"
+msgstr "{0, plural, one {這會把#個已有worktree作為工作區匯入Choros。磁碟上的每個worktree都會被追蹤並出現在側邊欄裡。不會修改任何檔案。} other {這會把#個已有worktree作為工作區匯入Choros。磁碟上的每個worktree都會被追蹤並出現在側邊欄裡。不會修改任何檔案。}}"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/project/$projectId/components/ExternalWorktreesBanner/ExternalWorktreesBanner.tsx
@@ -7385,7 +7385,7 @@ msgstr "{workspaceName}：主機不可用"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarBulkDeleteDialog/hooks/useBulkWorkspaceDelete/useBulkWorkspaceDelete.ts
 msgid "dashboard.sidebar.bulkDelete.partialFailureDescription"
-msgstr "重新載入Superset以重新整理工作區列表。"
+msgstr "重新載入Choros以重新整理工作區列表。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarBulkDeleteDialog/hooks/useBulkWorkspaceDelete/useBulkWorkspaceDelete.ts
@@ -7416,7 +7416,7 @@ msgstr "未提交 · 未推送"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarBulkDeleteDialog/hooks/useBulkWorkspaceDelete/useBulkWorkspaceDelete.ts
 msgid "dashboard.sidebar.bulkDelete.unexpectedFailureDescription"
-msgstr "請重試。如果問題持續，請重新載入Superset。"
+msgstr "請重試。如果問題持續，請重新載入Choros。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarBulkDeleteDialog/hooks/useBulkWorkspaceDelete/useBulkWorkspaceDelete.ts
@@ -8988,7 +8988,7 @@ msgstr "連線Linear"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/tasks/components/TasksView/components/LinearCTA/LinearCTA.tsx
 msgid "dashboard.tasks.linearCta.description"
-msgstr "連線你的Linear工作區，同步問題並直接在Superset中管理任務。"
+msgstr "連線你的Linear工作區，同步問題並直接在Choros中管理任務。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/tasks/components/TasksView/components/LinearCTA/LinearCTA.tsx
@@ -9713,7 +9713,7 @@ msgstr "任務佈局"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/AppResourceSection/AppResourceSection.tsx
 msgid "dashboard.topBar.appResources.appName"
-msgstr "Superset應用程式"
+msgstr "Choros應用程式"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/AppResourceSection/AppResourceSection.tsx
@@ -10050,7 +10050,7 @@ msgstr "CPU"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
 msgid "dashboard.topBar.resourceSummary.cpuTooltip"
-msgstr "Superset與受監控的終端處理程序樹佔用的CPU總和。超過100%表示有多個CPU核心處於繁忙狀態。持續偏高通常會導致介面卡頓和耗電增加。"
+msgstr "Choros與受監控的終端處理程序樹佔用的CPU總和。超過100%表示有多個CPU核心處於繁忙狀態。持續偏高通常會導致介面卡頓和耗電增加。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
@@ -10060,7 +10060,7 @@ msgstr "記憶體"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
 msgid "dashboard.topBar.resourceSummary.memoryTooltip"
-msgstr "Superset與受監控的終端處理程序樹佔用的常駐記憶體。如果持續攀升且不回落，可能有工作區處理程序未釋放記憶體。數值過高會增加交換風險，並可能導致卡頓。"
+msgstr "Choros與受監控的終端處理程序樹佔用的常駐記憶體。如果持續攀升且不回落，可能有工作區處理程序未釋放記憶體。數值過高會增加交換風險，並可能導致卡頓。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
@@ -10070,13 +10070,13 @@ msgstr "RAM佔比"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
 msgid "dashboard.topBar.resourceSummary.ramShareTooltip"
-msgstr "僅受監控的Superset資源佔系統總RAM的百分比（不含其他應用程式）。佔比高說明Superset是系統記憶體壓力的主要來源；佔比低說明壓力可能來自別處。"
+msgstr "僅受監控的Choros資源佔系統總RAM的百分比（不含其他應用程式）。佔比高說明Choros是系統記憶體壓力的主要來源；佔比低說明壓力可能來自別處。"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: formatPercent(trackedMemorySharePercent)
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
 msgid "dashboard.topBar.resourceSummary.systemRamShare"
-msgstr "Superset佔用了系統RAM的{0}"
+msgstr "Choros佔用了系統RAM的{0}"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
@@ -10131,7 +10131,7 @@ msgstr "停止工作區執行命令"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
 msgid "dashboard.topBar.submitPromptDialog.description"
-msgstr "用提示詞讓編碼代理程式實現你想在Superset中看到的功能。如果我們喜歡你的提示詞，就會執行它併合併結果。"
+msgstr "用提示詞讓編碼代理程式實現你想在Choros中看到的功能。如果我們喜歡你的提示詞，就會執行它併合併結果。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
@@ -10876,7 +10876,7 @@ msgstr "下載"
 #. js-lingui-explicit-id
 #: ../../apps/docs/src/app/components/NavigationBar/NavigationBar.tsx
 msgid "docs.nav.githubRepo"
-msgstr "在GitHub上檢視Superset儲存庫"
+msgstr "在GitHub上檢視Choros儲存庫"
 
 #. js-lingui-explicit-id
 #: ../../apps/docs/src/app/components/NavigationBar/NavigationBar.tsx
@@ -11084,7 +11084,7 @@ msgstr "無法移除本地登入"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/hooks/useSignOut/useSignOut.ts
 msgid "hooks.signOut.removeLocalSignInFailedDescription"
-msgstr "重啟後Superset可能會重新登入。請再次嘗試登出。"
+msgstr "重啟後Choros可能會重新登入。請再次嘗試登出。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/host-service-unavailable.ts
@@ -11239,12 +11239,12 @@ msgstr "請在幾秒後重試。"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/host-service-unavailable.ts
 msgid "hostServiceUnavailable.recovery.stopped"
-msgstr "請使用Superset托盤選單 > 主機服務 > 重啟，然後重試。"
+msgstr "請使用Choros托盤選單 > 主機服務 > 重啟，然後重試。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/host-service-unavailable.ts
 msgid "hostServiceUnavailable.recovery.unknown"
-msgstr "請在幾秒後重試；若問題持續，請重啟Superset。"
+msgstr "請在幾秒後重試；若問題持續，請重啟Choros。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/host-service-unavailable.ts
@@ -11849,7 +11849,7 @@ msgstr "切換工作區側邊欄"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/index.ts
 msgid "main.auth.failed.detail"
-msgstr "Superset無法完成登入。請重試。"
+msgstr "Choros無法完成登入。請重試。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/index.ts
@@ -11930,17 +11930,17 @@ msgstr "取消"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/host-service-coordinator.ts
 msgid "main.hostService.crashed.detail"
-msgstr "在它重啟之前，其工作區和終端都不可用，請使用Superset托盤選單 > 主機服務 > 重啟。"
+msgstr "在它重啟之前，其工作區和終端都不可用，請使用Choros托盤選單 > 主機服務 > 重啟。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/host-service-coordinator.ts
 msgid "main.hostService.crashed.message"
-msgstr "Superset主機服務意外停止（{cause}），且無法自動重啟。"
+msgstr "Choros主機服務意外停止（{cause}），且無法自動重啟。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/host-service-coordinator.ts
 msgid "main.hostService.crashed.messageForOrganization"
-msgstr "{organization}的Superset主機服務意外停止（{cause}），且無法自動重啟。"
+msgstr "{organization}的Choros主機服務意外停止（{cause}），且無法自動重啟。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/host-service-coordinator.ts
@@ -11955,7 +11955,7 @@ msgstr "檢查更新..."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/menu.ts
 msgid "main.menu.app.quitCompletely"
-msgstr "完全退出Superset"
+msgstr "完全退出Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/menu.ts
@@ -12096,7 +12096,7 @@ msgstr "確定要退出嗎？"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/index.ts
 msgid "main.quit.title"
-msgstr "退出Superset"
+msgstr "退出Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/quit-completely.ts
@@ -12106,17 +12106,17 @@ msgstr "完全退出"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/quit-completely.ts
 msgid "main.quitCompletely.detail"
-msgstr "所有開啟的終端會話都會被結束，正在執行的主機服務也會停止。如果希望服務繼續執行以便下次啟動，請改用「關閉Superset」。"
+msgstr "所有開啟的終端會話都會被結束，正在執行的主機服務也會停止。如果希望服務繼續執行以便下次啟動，請改用「關閉Choros」。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/quit-completely.ts
 msgid "main.quitCompletely.message"
-msgstr "退出Superset並停止所有背景服務？"
+msgstr "退出Choros並停止所有背景服務？"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/quit-completely.ts
 msgid "main.quitCompletely.title"
-msgstr "完全退出Superset"
+msgstr "完全退出Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/auto-updater.ts
@@ -12196,7 +12196,7 @@ msgstr "相關文章"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/blog/page.tsx
 msgid "marketing.blog.subtitle"
-msgstr "來自Superset團隊的洞見，關於並行編碼代理程式與開發者效率。"
+msgstr "來自Choros團隊的洞見，關於並行編碼代理程式與開發者效率。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/blog/page.tsx
@@ -12211,7 +12211,7 @@ msgstr "開始使用"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/CategoryArticle/CategoryArticle.tsx
 msgid "marketing.categoryArticle.cta.title"
-msgstr "準備好試試Superset了嗎？"
+msgstr "準備好試試Choros了嗎？"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/CategoryArticle/CategoryArticle.tsx
@@ -12246,7 +12246,7 @@ msgstr "更新日誌"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/changelog/page.tsx
 msgid "marketing.changelog.subtitle"
-msgstr "Superset的最新更新、改進和新功能，每週更新。詳細的釋出說明見<0>GitHub Releases<1/></0>"
+msgstr "Choros的最新更新、改進和新功能，每週更新。詳細的釋出說明見<0>GitHub Releases<1/></0>"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/changelog/page.tsx
@@ -12291,7 +12291,7 @@ msgstr "星標"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/community/page.tsx
 msgid "marketing.community.subtitle"
-msgstr "加入<0>Superset</0>社群，獲取幫助、交流想法，並及時瞭解最新動態與更新。"
+msgstr "加入<0>Choros</0>社群，獲取幫助、交流想法，並及時瞭解最新動態與更新。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/community/page.tsx
@@ -12311,7 +12311,7 @@ msgstr "開始使用"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/[slug]/components/CompareLayout/CompareLayout.tsx
 msgid "marketing.compare.cta.title"
-msgstr "準備好試試Superset了嗎？"
+msgstr "準備好試試Choros了嗎？"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/page.tsx
@@ -12346,12 +12346,12 @@ msgstr "工作流教程"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/page.tsx
 msgid "marketing.compare.subtitle"
-msgstr "看看Superset與其他AI編碼工具的對比，涵蓋AI編輯器、編碼代理程式和雲端AI工程師。"
+msgstr "看看Choros與其他AI編碼工具的對比，涵蓋AI編輯器、編碼代理程式和雲端AI工程師。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/page.tsx
 msgid "marketing.compare.title"
-msgstr "Superset與同類方案對比"
+msgstr "Choros與同類方案對比"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/components/ContactForm/ContactForm.tsx
@@ -12401,22 +12401,22 @@ msgstr "問題、回饋、支援，或者別的什麼都行。寫給我們，我
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
 msgid "marketing.contact.hero.title"
-msgstr "聯絡Superset"
+msgstr "聯絡Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
 msgid "marketing.contact.otherWays.community"
-msgstr "報告bug和提需求，最快的方式是在<0>github.com/superset-sh/superset</0>提一個GitHub議題。我們的社群在<1>Discord</1>，更新會發布在<2>X（@superset_sh）</2>和<3>LinkedIn</3>。"
+msgstr "報告bug和提需求，最快的方式是在<0>github.com/superset-sh/choros</0>提一個GitHub議題。我們的社群在<1>Discord</1>，更新會發布在<2>X（@choros_sh）</2>和<3>LinkedIn</3>。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
 msgid "marketing.contact.otherWays.email"
-msgstr "Superset由一支位於加州舊金山的團隊打造。產品支援或帳戶問題，請發郵件至<0>{supportEmail}</0>，我們會在一個工作日內回覆。合作、媒體、企業版，或任何想直接找創始團隊的事，請寫信至<1>{foundersEmail}</1>。"
+msgstr "Choros由一支位於加州舊金山的團隊打造。產品支援或帳戶問題，請發郵件至<0>{supportEmail}</0>，我們會在一個工作日內回覆。合作、媒體、企業版，或任何想直接找創始團隊的事，請寫信至<1>{foundersEmail}</1>。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
 msgid "marketing.contact.otherWays.status"
-msgstr "服務可用性發布在<0>status.superset.sh</0>，安全與合規文件在<1>trust.superset.sh</1>。"
+msgstr "服務可用性發布在<0>status.choros.sh</0>，安全與合規文件在<1>trust.choros.sh</1>。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
@@ -12456,7 +12456,7 @@ msgstr "把你的代理程式聚到一起。"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/CTASection/CTASection.tsx
 msgid "marketing.cta.installPrompt"
-msgstr "或者讓你的編碼代理程式安裝Superset CLI。"
+msgstr "或者讓你的編碼代理程式安裝Choros CLI。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/CTASection/CTASection.tsx
@@ -12476,12 +12476,12 @@ msgstr "下載將自動開始。若未開始，請由此取得。"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadInterstitial/DownloadInterstitial.tsx
 msgid "marketing.download.autoTitle"
-msgstr "馬上就能用上Superset"
+msgstr "馬上就能用上Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/ReleaseList/ReleaseList.tsx
 msgid "marketing.download.availability"
-msgstr "Superset 桌面應用程式支援 macOS 與 Linux。"
+msgstr "Choros 桌面應用程式支援 macOS 與 Linux。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadLinkForm/DownloadLinkForm.tsx
@@ -12567,12 +12567,12 @@ msgstr "下載連結已傳送至{submittedEmail}。"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadInterstitial/DownloadInterstitial.tsx
 msgid "marketing.download.mobileBody"
-msgstr "Superset是桌面應用程式。留下電子郵件，我們會把下載連結發給你，在Mac上開啟即可。"
+msgstr "Choros是桌面應用程式。留下電子郵件，我們會把下載連結發給你，在Mac上開啟即可。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadInterstitial/DownloadInterstitial.tsx
 msgid "marketing.download.mobileTitle"
-msgstr "在Mac上獲取Superset"
+msgstr "在Mac上獲取Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadLinkForm/actions.ts
@@ -12657,17 +12657,17 @@ msgstr "在桌面、任何終端機或手機上執行你的 agent。"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadInterstitial/DownloadInterstitial.tsx
 msgid "marketing.download.waitlistBody"
-msgstr "我們正在把Superset帶到Windows和Linux。留下電子郵件，一上線就通知你。"
+msgstr "我們正在把Choros帶到Windows和Linux。留下電子郵件，一上線就通知你。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadInterstitial/DownloadInterstitial.tsx
 msgid "marketing.download.waitlistTitle"
-msgstr "Superset目前僅支援Mac"
+msgstr "Choros目前僅支援Mac"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/components/EnterpriseFAQ/constants.ts
 msgid "marketing.enterprise.faq.dataSecurity.answer"
-msgstr "Superset在你的開發者機器上本地執行。我們不儲存你的程式碼或AI對話，並且Superset已通過獨立審計機構的SOC 2 Type II審計。可在trust.superset.sh索取報告並查閱我們的安全文件。"
+msgstr "Choros在你的開發者機器上本地執行。我們不儲存你的程式碼或AI對話，並且Choros已通過獨立審計機構的SOC 2 Type II審計。可在trust.choros.sh索取報告並查閱我們的安全文件。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/components/EnterpriseFAQ/constants.ts
@@ -12707,12 +12707,12 @@ msgstr "常見問題"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/components/EnterpriseFAQ/constants.ts
 msgid "marketing.enterprise.faq.whatIsEnterprise.answer"
-msgstr "Superset Enterprise是面向團隊的Superset。聯絡我們，瞭解它包含什麼，以及如何適配你的組織。"
+msgstr "Choros Enterprise是面向團隊的Choros。聯絡我們，瞭解它包含什麼，以及如何適配你的組織。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/components/EnterpriseFAQ/constants.ts
 msgid "marketing.enterprise.faq.whatIsEnterprise.question"
-msgstr "什麼是Superset Enterprise？"
+msgstr "什麼是Choros Enterprise？"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/components/EnterpriseContactForm/EnterpriseContactForm.tsx
@@ -12772,12 +12772,12 @@ msgstr "已通過SOC 2 Type II合規。可索取報告。"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/page.tsx
 msgid "marketing.enterprise.hero.subtitle"
-msgstr "想把Superset引入你的組織？聯絡我們，一起為你的團隊找到合適的方案。"
+msgstr "想把Choros引入你的組織？聯絡我們，一起為你的團隊找到合適的方案。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/page.tsx
 msgid "marketing.enterprise.hero.title"
-msgstr "為你的團隊準備的Superset"
+msgstr "為你的團隊準備的Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/components/AttentionChart/AttentionChart.tsx
@@ -12817,7 +12817,7 @@ msgstr "再往後：F5不是近期的主張"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
 msgid "marketing.factory.cta.body"
-msgstr "Superset是F3到F4這段過渡期的工作臺：隔離工作區裡的並行代理程式、真正管得過來的代理程式叢集，以及一套用來審查非你所寫程式碼的介面。"
+msgstr "Choros是F3到F4這段過渡期的工作臺：隔離工作區裡的並行代理程式、真正管得過來的代理程式叢集，以及一套用來審查非你所寫程式碼的介面。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
@@ -12827,7 +12827,7 @@ msgstr "檢視更新日誌"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
 msgid "marketing.factory.cta.download"
-msgstr "下載Superset"
+msgstr "下載Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
@@ -13489,7 +13489,7 @@ msgstr "部分開啟"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.existingIde.answer"
-msgstr "Superset的設計就是配合你現有的工具。我們原生支援深度連結到Cursor這類IDE，你可以直接在自己的IDE裡開啟工作區和檔案。"
+msgstr "Choros的設計就是配合你現有的工具。我們原生支援深度連結到Cursor這類IDE，你可以直接在自己的IDE裡開啟工作區和檔案。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
@@ -13499,12 +13499,12 @@ msgstr "我已經在用Cursor這樣的IDE，這適合我嗎？"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.freeToUse.answer"
-msgstr "Superset有免費版。原始碼在GitHub上以Elastic License 2.0（ELv2）提供，你可以在許可條款範圍內查閱並自行部署。"
+msgstr "Choros有免費版。原始碼在GitHub上以Elastic License 2.0（ELv2）提供，你可以在許可條款範圍內查閱並自行部署。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.freeToUse.question"
-msgstr "Superset免費嗎？"
+msgstr "Choros免費嗎？"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/FAQSection.tsx
@@ -13514,17 +13514,17 @@ msgstr "常見<0/>問題"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.openSource.answer"
-msgstr "Superset是原始碼可見的：程式碼在GitHub上公開，採用Elastic License 2.0（ELv2），你可以在許可條款範圍內查閱並自行部署，但它不是OSI認可的開源許可。Superset與商業智慧工具Apache Superset沒有任何關係。"
+msgstr "Choros是原始碼可見的：程式碼在GitHub上公開，採用Elastic License 2.0（ELv2），你可以在許可條款範圍內查閱並自行部署，但它不是OSI認可的開源許可。Choros與商業智慧工具Apache Choros沒有任何關係。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.openSource.question"
-msgstr "Superset是開源的嗎？"
+msgstr "Choros是開源的嗎？"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.ownApiKeys.answer"
-msgstr "當然可以。Superset不代理任何API呼叫。你直接用自己的API金鑰對接所選的AI提供商，成本和用量完全由你掌控。"
+msgstr "當然可以。Choros不代理任何API呼叫。你直接用自己的API金鑰對接所選的AI提供商，成本和用量完全由你掌控。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
@@ -13549,17 +13549,17 @@ msgstr "並行代理程式系統是怎麼工作的？"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.platforms.answer"
-msgstr "桌面應用程式支援macOS，另有實驗性的Linux AppImage；Windows暫未提供。除了桌面應用程式，還有CLI、TypeScript SDK和MCP伺服器，你可以從指令碼、終端和其他代理程式來驅動Superset。"
+msgstr "桌面應用程式支援macOS，另有實驗性的Linux AppImage；Windows暫未提供。除了桌面應用程式，還有CLI、TypeScript SDK和MCP伺服器，你可以從指令碼、終端和其他代理程式來驅動Choros。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.platforms.question"
-msgstr "Superset支援哪些平臺？"
+msgstr "Choros支援哪些平臺？"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.supportedAgents.answer"
-msgstr "Superset支援任何基於CLI的編碼代理程式，包括Claude Code、OpenCode、OpenAI Codex等。每個任務都可以換用不同的代理程式，工作區和審查流程都不用變。"
+msgstr "Choros支援任何基於CLI的編碼代理程式，包括Claude Code、OpenCode、OpenAI Codex等。每個任務都可以換用不同的代理程式，工作區和審查流程都不用變。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
@@ -13569,27 +13569,27 @@ msgstr "支援哪些AI編碼代理程式？"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.vsTerminal.answer"
-msgstr "Claude Code、Codex和OpenCode是代理程式；Superset是你同時執行它們的地方。每個任務都有自己隔離的Git worktree，十個代理程式可以同時在十個分支上工作，而你在一處監控、審查併合併。"
+msgstr "Claude Code、Codex和OpenCode是代理程式；Choros是你同時執行它們的地方。每個任務都有自己隔離的Git worktree，十個代理程式可以同時在十個分支上工作，而你在一處監控、審查併合併。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.vsTerminal.link"
-msgstr "看看Superset與其他工具的對比"
+msgstr "看看Choros與其他工具的對比"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.vsTerminal.question"
-msgstr "Superset和直接在終端裡跑Claude Code有什麼不同？"
+msgstr "Choros和直接在終端裡跑Claude Code有什麼不同？"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.wrapper.answer"
-msgstr "不是。你的代理程式保持獨立，Superset是圍繞它們的編排層。每個任務都有隔離的Git worktree、持久會話、差異審查和定時執行，工作流不繫結任何一家提供商。"
+msgstr "不是。你的代理程式保持獨立，Choros是圍繞它們的編排層。每個任務都有隔離的Git worktree、持久會話、差異審查和定時執行，工作流不繫結任何一家提供商。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.wrapper.question"
-msgstr "Superset只是Claude Code的一層封裝嗎？"
+msgstr "Choros只是Claude Code的一層封裝嗎？"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FeaturesSection/constants.ts
@@ -13699,7 +13699,7 @@ msgstr "把重複的活兒排進日程"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FeaturesSection/constants.ts
 msgid "marketing.features.cliSdk.description"
-msgstr "一切都能指令碼化。用CLI建立工作區和代理程式，用SDK把Superset接進CI，或者讓你的代理程式通過MCP來驅動它。"
+msgstr "一切都能指令碼化。用CLI建立工作區和代理程式，用SDK把Choros接進CI，或者讓你的代理程式通過MCP來驅動它。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FeaturesSection/constants.ts
@@ -13889,7 +13889,7 @@ msgstr "服務狀態"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Footer/Footer.tsx
 msgid "marketing.footer.copyright"
-msgstr "© {year} Superset Inc."
+msgstr "© {year} Choros Inc."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Footer/Footer.tsx
@@ -14265,7 +14265,7 @@ msgstr "審查結果。"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/HowItWorksSection/constants.ts
 msgid "marketing.howItWorks.startWithWork.description"
-msgstr "描述你的需求。Superset會為該任務建立隔離的工作區和乾淨的分支。"
+msgstr "描述你的需求。Choros會為該任務建立隔離的工作區和乾淨的分支。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/HowItWorksSection/constants.ts
@@ -14275,17 +14275,17 @@ msgstr "從工作本身開始。"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
 msgid "marketing.joinUs.bodyScale"
-msgstr "如今，數萬名工程師把Superset當作主力IDE，他們來自Wix、DoorDash、Netflix這樣的公司。很快，團隊會並行執行成百上千個代理程式——自主製造並交付程式碼的軟體工廠。我們要讓Superset成為團隊執行和管理這些工廠的地方，從我們自己開始。"
+msgstr "如今，數萬名工程師把Choros當作主力IDE，他們來自Wix、DoorDash、Netflix這樣的公司。很快，團隊會並行執行成百上千個代理程式——自主製造並交付程式碼的軟體工廠。我們要讓Choros成為團隊執行和管理這些工廠的地方，從我們自己開始。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
 msgid "marketing.joinUs.bodyTeam"
-msgstr "Superset是用Superset自己造出來的，所以我們是自己的頭號使用者——你拿著工資讓自己的日子更好過。我們在打造一支扁平、人才密度高的團隊，想找那些有瘋狂想法、也瘋狂到真能把它做出來的人。如果你一直想做一個自己愛用的產品，來和我們一起做。"
+msgstr "Choros是用Choros自己造出來的，所以我們是自己的頭號使用者——你拿著工資讓自己的日子更好過。我們在打造一支扁平、人才密度高的團隊，想找那些有瘋狂想法、也瘋狂到真能把它做出來的人。如果你一直想做一個自己愛用的產品，來和我們一起做。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
 msgid "marketing.joinUs.lede"
-msgstr "Superset正在構建能自我改進的軟體。第一步，是給工程師最好的工具，並讓它隨需求一起演進。"
+msgstr "Choros正在構建能自我改進的軟體。第一步，是給工程師最好的工具，並讓它隨需求一起演進。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
@@ -14335,7 +14335,7 @@ msgstr "Token"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/leaderboard/components/LeaderboardBoard/components/LeaderboardTable/LeaderboardTable.tsx
 msgid "marketing.leaderboard.empty.optIn"
-msgstr "在Superset的「設定 → 帳戶」中選擇加入。"
+msgstr "在Choros的「設定 → 帳戶」中選擇加入。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/leaderboard/components/LeaderboardBoard/components/LeaderboardTable/LeaderboardTable.tsx
@@ -14610,12 +14610,12 @@ msgstr "點選<0>匯入主題</0>，選擇下載好的檔案。"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/[slug]/page.tsx
 msgid "marketing.marketplace.theme.installStep.openSettings"
-msgstr "在Superset桌面應用程式中開啟<0>設定 → 外觀 → 主題</0>。"
+msgstr "在Choros桌面應用程式中開啟<0>設定 → 外觀 → 主題</0>。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/[slug]/page.tsx
 msgid "marketing.marketplace.theme.installTitle"
-msgstr "如何在Superset中安裝{name}"
+msgstr "如何在Choros中安裝{name}"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/[slug]/page.tsx
@@ -14670,7 +14670,7 @@ msgstr "終端"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/page.tsx
 msgid "marketing.marketplace.themes.description"
-msgstr "可匯入Superset的共享主題JSON檔案。"
+msgstr "可匯入Choros的共享主題JSON檔案。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/page.tsx
@@ -14870,7 +14870,7 @@ msgstr "連線Claude、Codex、Cursor或任意<0>MCP</0>客戶端，讓你的代
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/mcp-install/page.tsx
 msgid "marketing.mcpInstall.hero.title"
-msgstr "在你的客戶端裡安裝Superset MCP"
+msgstr "在你的客戶端裡安裝Choros MCP"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/mcp-install/page.tsx
@@ -14880,7 +14880,7 @@ msgstr "選擇你的代理程式獲取一行安裝命令，或者手動複製配
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/blog/page.tsx
 msgid "marketing.meta.blog.description"
-msgstr "來自 Superset 團隊的新聞、更新與洞察，涵蓋平行編碼代理與開發者生產力。"
+msgstr "來自 Choros 團隊的新聞、更新與洞察，涵蓋平行編碼代理與開發者生產力。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/blog/page.tsx
@@ -14890,7 +14890,7 @@ msgstr "部落格"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/changelog/page.tsx
 msgid "marketing.meta.changelog.description"
-msgstr "Superset 的最新更新、改進與新功能。"
+msgstr "Choros 的最新更新、改進與新功能。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/changelog/page.tsx
@@ -14900,7 +14900,7 @@ msgstr "更新日誌"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/community/page.tsx
 msgid "marketing.meta.community.description"
-msgstr "加入 Superset 社群以獲得協助、分享想法，並掌握最新消息與更新。"
+msgstr "加入 Choros 社群以獲得協助、分享想法，並掌握最新消息與更新。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/community/page.tsx
@@ -14910,12 +14910,12 @@ msgstr "社群"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/page.tsx
 msgid "marketing.meta.compare.description"
-msgstr "將 Superset 與 Cursor、Claude Code、Codex、Windsurf、Devin、GitHub Copilot 等進行比較。瀏覽並列對照、彙整與工作流程指南。"
+msgstr "將 Choros 與 Cursor、Claude Code、Codex、Windsurf、Devin、GitHub Copilot 等進行比較。瀏覽並列對照、彙整與工作流程指南。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/page.tsx
 msgid "marketing.meta.compare.title"
-msgstr "比較 Superset | AI 編碼對照與指南"
+msgstr "比較 Choros | AI 編碼對照與指南"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
@@ -14930,12 +14930,12 @@ msgstr "聯絡我們"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/page.tsx
 msgid "marketing.meta.download.description"
-msgstr "您的 Superset 下載即將開始。"
+msgstr "您的 Choros 下載即將開始。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/page.tsx
 msgid "marketing.meta.download.title"
-msgstr "下載 Superset"
+msgstr "下載 Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/page.tsx
@@ -14955,7 +14955,7 @@ msgstr "一套可證偽的自動化軟體工廠評量標準：六個自主層級
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
 msgid "marketing.meta.factory2026.ogTitle"
-msgstr "Factory 2026 | Superset"
+msgstr "Factory 2026 | Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
@@ -14970,7 +14970,7 @@ msgstr "我們正在舊金山招募工程師。與我們一起打造第一個軟
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
 msgid "marketing.meta.joinUs.ogTitle"
-msgstr "加入 Superset"
+msgstr "加入 Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
@@ -14990,7 +14990,7 @@ msgstr "排行榜"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/agents/page.tsx
 msgid "marketing.meta.marketplace.agents.description"
-msgstr "未來可重複使用的 Superset 代理設定、提示詞與設定指南的集散地。"
+msgstr "未來可重複使用的 Choros 代理設定、提示詞與設定指南的集散地。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/agents/page.tsx
@@ -15000,12 +15000,12 @@ msgstr "代理設定"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/page.tsx
 msgid "marketing.meta.marketplace.description"
-msgstr "瀏覽 Superset 的共享佈景主題與未來的代理設定。"
+msgstr "瀏覽 Choros 的共享佈景主題與未來的代理設定。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/page.tsx
 msgid "marketing.meta.marketplace.themes.description"
-msgstr "瀏覽社群分享的 Superset 佈景主題檔案，包含 GitHub Dark Colorblind、Catppuccin、Ember 與 One Dark Pro。"
+msgstr "瀏覽社群分享的 Choros 佈景主題檔案，包含 GitHub Dark Colorblind、Catppuccin、Ember 與 One Dark Pro。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/page.tsx
@@ -15040,7 +15040,7 @@ msgstr "定價"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/page.tsx
 msgid "marketing.meta.roadmap.description"
-msgstr "瞭解我們正在打造什麼、接下來會推出什麼，以及 Superset 的發展方向。"
+msgstr "瞭解我們正在打造什麼、接下來會推出什麼，以及 Choros 的發展方向。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/page.tsx
@@ -15060,7 +15060,7 @@ msgstr "星標歷史"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/stats/page.tsx
 msgid "marketing.meta.stats.description"
-msgstr "Superset 排行榜上所有開發者的彙總代理使用量 — tokens、成本、快取行為，以及大家實際選用的模型。"
+msgstr "Choros 排行榜上所有開發者的彙總代理使用量 — tokens、成本、快取行為，以及大家實際選用的模型。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/stats/page.tsx
@@ -15070,12 +15070,12 @@ msgstr "統計"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.meta.team.description"
-msgstr "Superset 是什麼、由誰打造、為誰而做。一支由三位前 YC CTO 組成的舊金山團隊，正在打造平行編碼代理的工作區。"
+msgstr "Choros 是什麼、由誰打造、為誰而做。一支由三位前 YC CTO 組成的舊金山團隊，正在打造平行編碼代理的工作區。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.meta.team.ogDescription"
-msgstr "認識 Superset 背後的團隊，為開發者打造平行編碼代理。"
+msgstr "認識 Choros 背後的團隊，為開發者打造平行編碼代理。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
@@ -15155,7 +15155,7 @@ msgstr "更新日誌"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Header/constants.tsx
 msgid "marketing.nav.product.mcp.description"
-msgstr "把任意AI代理程式接入Superset。"
+msgstr "把任意AI代理程式接入Choros。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Header/constants.tsx
@@ -15186,7 +15186,7 @@ msgstr "產品"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Header/constants.tsx
 msgid "marketing.nav.resources.about.description"
-msgstr "Superset背後的團隊。"
+msgstr "Choros背後的團隊。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Header/constants.tsx
@@ -15477,7 +15477,7 @@ msgstr "下載應用"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
 msgid "marketing.pricing.faq.agentSubscriptions.answer"
-msgstr "需要。Superset是代理程式執行的工作區，不是模型提供商。帶上Claude Code、Codex、OpenCode或任意CLI代理程式，在任何方案下都可以使用你已有的帳號或API金鑰。"
+msgstr "需要。Choros是代理程式執行的工作區，不是模型提供商。帶上Claude Code、Codex、OpenCode或任意CLI代理程式，在任何方案下都可以使用你已有的帳號或API金鑰。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
@@ -15522,12 +15522,12 @@ msgstr "Pro的價格怎麼算？"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
 msgid "marketing.pricing.faq.soc2.answer"
-msgstr "是的。Superset已通過獨立審計機構的SOC 2 Type II審計，覆蓋我們的安全控制在一段時間內的實際執行情況。可在trust.superset.sh索取報告並查閱我們的安全文件。"
+msgstr "是的。Choros已通過獨立審計機構的SOC 2 Type II審計，覆蓋我們的安全控制在一段時間內的實際執行情況。可在trust.choros.sh索取報告並查閱我們的安全文件。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
 msgid "marketing.pricing.faq.soc2.question"
-msgstr "Superset符合SOC 2嗎？"
+msgstr "Choros符合SOC 2嗎？"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
@@ -15547,7 +15547,7 @@ msgstr "常見問題"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
 msgid "marketing.pricing.faq.whereCodeRuns.answer"
-msgstr "在你自己的機器上。儲存庫、worktree、終端輸出和代理程式會話預設都留在本地；雲端同步只涉及帳戶和組織的後設資料。Superset不代理任何API呼叫。"
+msgstr "在你自己的機器上。儲存庫、worktree、終端輸出和代理程式會話預設都留在本地；雲端同步只涉及帳戶和組織的後設資料。Choros不代理任何API呼叫。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
@@ -15987,7 +15987,7 @@ msgstr "更好的差異檢視器"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/data.ts
 msgid "marketing.roadmap.item.inAppPrMerge.description"
-msgstr "不離開Superset就能合併拉取請求，另有一輪聊天修復與打磨。"
+msgstr "不離開Choros就能合併拉取請求，另有一輪聊天修復與打磨。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/data.ts
@@ -16017,7 +16017,7 @@ msgstr "MCP管理器"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/data.ts
 msgid "marketing.roadmap.item.nativePrReviews.description"
-msgstr "在Superset裡審查拉取請求：差異面板、代理程式輔助審查、直接處理評論。"
+msgstr "在Choros裡審查拉取請求：差異面板、代理程式輔助審查、直接處理評論。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/data.ts
@@ -16257,7 +16257,7 @@ msgstr "你的程式碼預設留在本地，連線哪些服務由你明確決定
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/SecuritySection/SecuritySection.tsx
 msgid "marketing.security.yourAccounts.description"
-msgstr "使用你已有的代理程式訂閱和API金鑰。Superset從不代理模型呼叫，也不會把你的工作流鎖死在某一家提供商上。"
+msgstr "使用你已有的代理程式訂閱和API金鑰。Choros從不代理模型呼叫，也不會把你的工作流鎖死在某一家提供商上。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/SecuritySection/SecuritySection.tsx
@@ -16508,7 +16508,7 @@ msgstr "資料暫時不可用。"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.eyebrow"
-msgstr "關於Superset"
+msgstr "關於Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
@@ -16523,12 +16523,12 @@ msgstr "創始人"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.foundersPhoto.alt"
-msgstr "Superset創始人在駭客松現場，YC總部，舊金山"
+msgstr "Choros創始人在駭客松現場，YC總部，舊金山"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.foundersPhoto.caption"
-msgstr "創始人在Superset誕生的那場駭客松上 <0>|</0> YC總部，2025年11月"
+msgstr "創始人在Choros誕生的那場駭客松上 <0>|</0> YC總部，2025年11月"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
@@ -16543,7 +16543,7 @@ msgstr "我們在舊金山招聘"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.intro"
-msgstr "Superset正在構建能自我改進的軟體。第一步，是給工程師最好的工具，並讓它隨需求一起演進。我們是3位YC出身的前CTO，在做一個自己喜歡的工具。"
+msgstr "Choros正在構建能自我改進的軟體。第一步，是給工程師最好的工具，並讓它隨需求一起演進。我們是3位YC出身的前CTO，在做一個自己喜歡的工具。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/[id]/page.tsx
@@ -16563,7 +16563,7 @@ msgstr "其他團隊成員"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.story.adoption"
-msgstr "短短幾個月，<0>數萬名工程師</0>把Superset當作主力IDE，他們來自Wix、DoorDash、Netflix這樣的公司。"
+msgstr "短短幾個月，<0>數萬名工程師</0>把Choros當作主力IDE，他們來自Wix、DoorDash、Netflix這樣的公司。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
@@ -16578,7 +16578,7 @@ msgstr "那我們是怎麼走到這一步的？"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.story.origin"
-msgstr "Superset起初是2025年11月的一個駭客松專案，一個用來管理worktree的簡單桌面應用程式。"
+msgstr "Choros起初是2025年11月的一個駭客松專案，一個用來管理worktree的簡單桌面應用程式。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/TierBadge/TierBadge.tsx
@@ -16665,7 +16665,7 @@ msgstr "加入等待名單"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/WaitlistModal/WaitlistModal.tsx
 msgid "marketing.waitlist.modalDescription"
-msgstr "Superset支援Windows和Linux時通知我。"
+msgstr "Choros支援Windows和Linux時通知我。"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/WaitlistModal/WaitlistModal.tsx
@@ -16685,7 +16685,7 @@ msgstr "你已在名單上！"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/WallOfLoveSection/WallOfLoveSection.tsx
 msgid "marketing.wallOfLove.heading"
-msgstr "開發者怎麼評價Superset"
+msgstr "開發者怎麼評價Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/WallOfLoveSection/WallOfLoveSection.tsx
@@ -17281,7 +17281,7 @@ msgstr "閱讀設定指南"
 #. placeholder {0}: COMPANY.DOMAIN
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-connect-host/HomeConnectHostScreen.tsx
 msgid "mobile.connectHost.step1.body"
-msgstr "在<0>{0}/download</0>下載Superset。"
+msgstr "在<0>{0}/download</0>下載Choros。"
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-connect-host/HomeConnectHostScreen.tsx
@@ -17307,7 +17307,7 @@ msgstr "允許通過中繼存取"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-connect-host/HomeConnectHostScreen.tsx
 msgid "mobile.connectHost.subtitle"
-msgstr "Superset Mobile在你連線的電腦上執行代理程式。"
+msgstr "Choros Mobile在你連線的電腦上執行代理程式。"
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-connect-host/HomeConnectHostScreen.tsx
@@ -17707,7 +17707,7 @@ msgstr "還沒有裝置"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/hosts/HostsSettingsScreen.tsx
 msgid "mobile.hostsSettings.emptyDescription"
-msgstr "在Superset桌面應用程式中開啟「設定 → 遠端存取」，開啟「允許遠端工作區通過中繼存取此裝置」。"
+msgstr "在Choros桌面應用程式中開啟「設定 → 遠端存取」，開啟「允許遠端工作區通過中繼存取此裝置」。"
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/hosts/HostsSettingsScreen.tsx
@@ -17951,13 +17951,13 @@ msgstr "相依性"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-paywall/HomePaywallScreen.tsx
 msgid "mobile.paywall.description"
-msgstr "此組織使用的是免費版。Superset Mobile面向使用專業版的組織開放。"
+msgstr "此組織使用的是免費版。Choros Mobile面向使用專業版的組織開放。"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: activeOrganization.name
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-paywall/HomePaywallScreen.tsx
 msgid "mobile.paywall.descriptionNamed"
-msgstr "{0}使用的是免費版。Superset Mobile面向使用專業版的組織開放。"
+msgstr "{0}使用的是免費版。Choros Mobile面向使用專業版的組織開放。"
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-paywall/HomePaywallScreen.tsx
@@ -17967,7 +17967,7 @@ msgstr "重新整理"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-paywall/HomePaywallScreen.tsx
 msgid "mobile.paywall.title"
-msgstr "Superset Mobile屬於專業版"
+msgstr "Choros Mobile屬於專業版"
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/components/ai-elements/plan.tsx
@@ -18431,7 +18431,7 @@ msgstr "刪除帳戶"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/SettingsScreen.tsx
 msgid "mobile.settings.deleteAccount.failedMessage"
-msgstr "出了點問題。請重試，或聯絡support@superset.sh。"
+msgstr "出了點問題。請重試，或聯絡support@choros.sh。"
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/SettingsScreen.tsx
@@ -18513,8 +18513,8 @@ msgstr "組織"
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/SettingsScreen.tsx
-msgid "mobile.settings.row.rateSuperset"
-msgstr "為Superset評分"
+msgid "mobile.settings.row.rateChoros"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/SettingsScreen.tsx
@@ -18594,7 +18594,7 @@ msgstr "登入即可開始"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(auth)/sign-in/SignInScreen.tsx
 msgid "mobile.signIn.title"
-msgstr "歡迎使用Superset"
+msgstr "歡迎使用Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/components/ai-elements/sources.tsx
@@ -18835,7 +18835,7 @@ msgstr "此工作區的主機已離線"
 #. placeholder {2}: hostCompatibility.minVersion
 #: ../../apps/mobile/screens/(authenticated)/workspace/[id]/WorkspaceScreen/WorkspaceScreen.tsx
 msgid "mobile.workspace.hostOutdated.body"
-msgstr "{0}執行的主機服務是{1} — 此應用需要{2}或更新版本。請在那臺機器上更新Superset。"
+msgstr "{0}執行的主機服務是{1} — 此應用需要{2}或更新版本。請在那臺機器上更新Choros。"
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/workspace/[id]/WorkspaceScreen/WorkspaceScreen.tsx
@@ -19542,7 +19542,7 @@ msgstr "上傳頭像失敗"
 #. js-lingui-explicit-id
 #: src/server-errors.ts
 msgid "serverError.user.theRecoveryPeriodHasEndedContact"
-msgstr "恢復期已結束。請聯絡support@superset.sh。"
+msgstr "恢復期已結束。請聯絡support@choros.sh。"
 
 #. js-lingui-explicit-id
 #: src/server-errors.ts
@@ -19757,7 +19757,7 @@ msgstr "登出"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/AccountSettings.tsx
 msgid "settings.account.signOutHint"
-msgstr "你需要重新登入才能在此裝置上使用Superset。"
+msgstr "你需要重新登入才能在此裝置上使用Choros。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/AccountSettings.tsx
@@ -19958,7 +19958,7 @@ msgstr "刪除代理程式"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/agents/components/V2AgentsSettings/components/AgentDetail/AgentDetail.tsx
 msgid "settings.agents.detail.hooksAriaLabel"
-msgstr "Superset鉤子"
+msgstr "Choros鉤子"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/agents/components/V2AgentsSettings/components/AgentDetail/AgentDetail.tsx
@@ -19968,12 +19968,12 @@ msgstr "為此代理程式顯示狀態併發送通知。"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/agents/components/V2AgentsSettings/components/AgentDetail/AgentDetail.tsx
 msgid "settings.agents.detail.hooksTitle"
-msgstr "Superset鉤子"
+msgstr "Choros鉤子"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/agents/components/V2AgentsSettings/components/AgentDetail/AgentDetail.tsx
 msgid "settings.agents.detail.hooksTooltip"
-msgstr "在該代理程式的全域性配置中註冊生命週期鉤子，以便Superset顯示狀態併發送通知。關閉後會在所有位置移除Superset的條目，該代理程式的狀態和通知都會停止，包括在Superset內部。"
+msgstr "在該代理程式的全域性配置中註冊生命週期鉤子，以便Choros顯示狀態併發送通知。關閉後會在所有位置移除Choros的條目，該代理程式的狀態和通知都會停止，包括在Choros內部。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/agents/components/V2AgentsSettings/components/AgentDetail/AgentDetail.tsx
@@ -20589,7 +20589,7 @@ msgstr "Tufte"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/appearance/components/AppearanceSettings/AppearanceSettings.tsx
 msgid "settings.appearance.subtitle"
-msgstr "自訂Superset在你裝置上的外觀"
+msgstr "自訂Choros在你裝置上的外觀"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/appearance/components/AppearanceSettings/components/ThemeSection/ThemeSection.tsx
@@ -20896,7 +20896,7 @@ msgstr "在GitHub上點個star來支援這個專案"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/behavior/components/BehaviorSettings/components/GithubStarRow/GithubStarRow.tsx
 msgid "settings.behavior.githubStar.label"
-msgstr "在GitHub上為Superset加星"
+msgstr "在GitHub上為Choros加星"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/behavior/components/BehaviorSettings/components/GithubStarRow/GithubStarRow.tsx
@@ -21543,7 +21543,7 @@ msgstr "匯入…"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/browser/components/BrowserSettings/BrowserSettings.tsx
 msgid "settings.browser.importHint"
-msgstr "將Chrome、Brave、Arc或其他Chromium瀏覽器的瀏覽歷史和登入資訊複製到Superset。"
+msgstr "將Chrome、Brave、Arc或其他Chromium瀏覽器的瀏覽歷史和登入資訊複製到Choros。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/browser/components/BrowserSettings/BrowserSettings.tsx
@@ -21932,7 +21932,7 @@ msgstr "使用全新的工作區體驗。"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/ExperimentalSettings/ExperimentalSettings.tsx
 msgid "settings.experimental.v2Label"
-msgstr "試用Superset v2"
+msgstr "試用Choros v2"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/ExperimentalSettings/components/WaitForSetupBeforeAgentSetting/WaitForSetupBeforeAgentSetting.tsx
@@ -22163,7 +22163,7 @@ msgstr "刪除主機"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/hosts/$hostId/components/HostSettings/components/DeleteHostSection/DeleteHostSection.tsx
 msgid "settings.hosts.deleteHost.localHint"
-msgstr "在此停止Superset，然後從其他裝置刪除。"
+msgstr "在此停止Choros，然後從其他裝置刪除。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/hosts/page.tsx
@@ -23052,8 +23052,8 @@ msgstr "已連線"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/models/components/ModelsSettings/utils.ts
-msgid "settings.models.status.connectedInSuperset"
-msgstr "已在Superset中連線"
+msgid "settings.models.status.connectedInChoros"
+msgstr "已在Choros中連線"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/models/components/ModelsSettings/utils.ts
@@ -23190,7 +23190,7 @@ msgstr "正在刪除組織..."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/organization/components/OrganizationSettings/OrganizationSettings.tsx
 msgid "settings.organization.idHint"
-msgstr "呼叫Superset API時使用。"
+msgstr "呼叫Choros API時使用。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/organization/components/OrganizationSettings/OrganizationSettings.tsx
@@ -23425,7 +23425,7 @@ msgstr "未知"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/permissions/components/PermissionsSettings/PermissionsSettings.tsx
 msgid "settings.permissions.subtitle"
-msgstr "授予Superset所需的系統權限。"
+msgstr "授予Choros所需的系統權限。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/permissions/components/PermissionsSettings/PermissionsSettings.tsx
@@ -25987,6 +25987,11 @@ msgstr "{countdown}後重置 · {absolute}"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
+msgid "settings.usage.resources.chorosApp"
+msgstr "Choros應用程式"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.collapseProject"
 msgstr "摺疊專案"
 
@@ -26071,7 +26076,7 @@ msgstr "渲染處理程序"
 #. placeholder {2}: formatMemory(freeMemory)
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.ramBarAriaLabel"
-msgstr "系統RAM：Superset {0}，其他應用程式{1}，空閒{2}"
+msgstr "系統RAM：Choros {0}，其他應用程式{1}，空閒{2}"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
@@ -26126,12 +26131,22 @@ msgstr "側邊欄順序"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.sparklineCpu"
-msgstr "Superset CPU · 最近5分鐘"
+msgstr "Choros CPU · 最近5分鐘"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.sparklineMemory"
-msgstr "Superset記憶體 · 最近5分鐘"
+msgstr "Choros記憶體 · 最近5分鐘"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
+msgid "settings.usage.resources.statChorosCpu"
+msgstr "Choros CPU"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
+msgid "settings.usage.resources.statChorosMemory"
+msgstr "Choros記憶體"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
@@ -26145,16 +26160,6 @@ msgstr "負載（1分鐘）"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
-msgid "settings.usage.resources.statSupersetCpu"
-msgstr "Superset CPU"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
-msgid "settings.usage.resources.statSupersetMemory"
-msgstr "Superset記憶體"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.statSystemMemory"
 msgstr "系統記憶體"
 
@@ -26162,11 +26167,6 @@ msgstr "系統記憶體"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.statSystemRamShare"
 msgstr "系統RAM佔比"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
-msgid "settings.usage.resources.supersetApp"
-msgstr "Superset應用程式"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/components/ResourceSparkline/ResourceSparkline.tsx
@@ -26661,7 +26661,7 @@ msgstr "檢查更新"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/tray/index.ts
 msgid "tray.closeApp"
-msgstr "關閉Superset"
+msgstr "關閉Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/tray/index.ts
@@ -26711,12 +26711,12 @@ msgstr "沒有活動的服務"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/tray/index.ts
 msgid "tray.openApp"
-msgstr "開啟Superset"
+msgstr "開啟Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/tray/index.ts
 msgid "tray.quitCompletely"
-msgstr "完全退出Superset"
+msgstr "完全退出Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/tray/index.ts
@@ -27667,7 +27667,7 @@ msgstr "使用桌面應用程式開始並行執行編碼代理程式。"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(agents)/agents/page.tsx
 msgid "web.agents.downloadTitle"
-msgstr "下載Superset"
+msgstr "下載Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(agents)/constants.ts
@@ -27777,7 +27777,7 @@ msgstr "授權失敗"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/cli/auth/code/components/CliAuthCodeDisplay/CliAuthCodeDisplay.tsx
 msgid "web.cliAuth.codeHint"
-msgstr "把它貼上到Superset CLI："
+msgstr "把它貼上到Choros CLI："
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/cli/auth/code/components/CliAuthCodeDisplay/CliAuthCodeDisplay.tsx
@@ -27903,7 +27903,7 @@ msgstr "已登入為<0>{userName}</0>"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/oauth/consent/components/ConsentForm/ConsentForm.tsx
 msgid "web.consent.subtitle"
-msgstr "<0>{displayName}</0>請求存取你的Superset帳戶"
+msgstr "<0>{displayName}</0>請求存取你的Choros帳戶"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/oauth/consent/components/ConsentForm/ConsentForm.tsx
@@ -27964,6 +27964,11 @@ msgstr "Button — 變體"
 #: ../../apps/web/src/app/design/components/ActionsSection/ActionsSection.tsx
 msgid "web.design.actionsSection.chooseApp"
 msgstr "選擇應用"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/ActionsSection/ActionsSection.tsx
+msgid "web.design.actionsSection.chorosSh"
+msgstr "choros.sh"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/ActionsSection/ActionsSection.tsx
@@ -28102,11 +28107,6 @@ msgstr "分體按鈕對應桌面端的OpenInButton；選擇器觸發器對應Pic
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/ActionsSection/ActionsSection.tsx
-msgid "web.design.actionsSection.supersetSh"
-msgstr "superset.sh"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/ActionsSection/ActionsSection.tsx
 msgid "web.design.actionsSection.terminal"
 msgstr "終端"
 
@@ -28161,344 +28161,514 @@ msgid "web.design.actionsSection.xsSmDefaultLgIcon"
 msgstr "xs · sm · default · lg · icon-xs → icon-lg"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.55CallSitesPassShowarrow"
 msgstr "55 個呼叫位置傳入 {code}"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.aiAgentActivity"
 msgstr "AI · 代理程式活動"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.appsDesktopSrcRenderer"
 msgstr "apps/desktop/src/renderer"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.bakingTheChipStyleInto"
 msgstr "把chip樣式內建到tooltip.tsx"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.chainOfThought"
 msgstr "思維鏈"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.comparedAgainstTheDefaultStyle"
 msgstr "與預設樣式做了對比"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.found12TooltipCallSites"
 msgstr "找到12處tooltip呼叫"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.grepped"
 msgstr "已搜尋"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.hotkeytooltipTsx"
 msgstr "HotkeyTooltip.tsx"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.makeTheChipStyleThe"
 msgstr "把chip樣式設為TooltipContent的預設樣式"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.packagesUiSrcComponentsUi"
 msgstr "packages/ui/src/components/ui/kbd.tsx"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.paneheaderactionsTsx"
 msgstr "PaneHeaderActions.tsx"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.plan"
 msgstr "計劃"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.planningTheTooltipRefactor"
 msgstr "正在規劃tooltip重構"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.presetsbarTsx"
 msgstr "PresetsBar.tsx"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.read"
 msgstr "已讀取"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.searchedForTooltipOverrides"
 msgstr "搜尋了tooltip的樣式覆蓋"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.searchingForKbdUsages"
 msgstr "正在搜尋Kbd的使用處"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.standardizeTooltipStyling"
 msgstr "統一tooltip樣式"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.stripRedundantOverridesAtCall"
 msgstr "移除呼叫處多餘的樣式覆蓋"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.structuredProgressChainOfThought"
 msgstr "結構化進度：思維鏈、任務、計劃"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.task"
 msgstr "任務"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.threeStepsTouchesPackagesUi"
 msgstr "三個步驟 · 涉及packages/ui和apps/desktop"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.verifyKbdStaysVisibleInside"
 msgstr "確認Kbd在tooltip中仍然可見"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.aiConversation"
 msgstr "AI · 對話"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
-msgid "web.design.aiChatSection.alsoSupersetUiAiElements"
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
+msgid "web.design.aiChatSection.alsoChorosUiAiElements"
 msgstr "另有：@choros/ui/ai-elements/message——內容流式輸出時會固定在底部"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.canYouStandardizeTheTooltips"
 msgstr "能把整個應用的tooltip樣式統一一下嗎？"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.chatSurfacesMessagesReasoningSuggestions"
 msgstr "聊天介面：訊息、推理、建議"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.collapsibleThinkingBlockWithDuration"
 msgstr "可摺疊的思考塊，帶時長標籤"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.conversationMessage"
 msgstr "對話 · 訊息"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.doneTheBorderedChipStyle"
 msgstr "完成——預設欄使用的帶邊框chip樣式現在是所有tooltip的預設樣式，複製貼上出來的樣式覆蓋也都移除了（淨減90行）。"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.niceOpenAPrWhen"
 msgstr "不錯，準備好就開個PR。"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.reasoning"
 msgstr "推理"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.suggestions"
 msgstr "建議"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.45Files82172"
 msgstr "45 files · +82 −172"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.874kOf200kTokens"
 msgstr "本次會話已使用87.4K/200K個token。"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.aiContent"
 msgstr "AI · 內容"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.artifact"
 msgstr "Artifact"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.checkpoint"
 msgstr "檢查點"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.checkpointBeforeTooltipRefactor"
 msgstr "檢查點 · tooltip重構之前"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.classnameRoundedSmBorderBorder"
 msgstr "- className=\"rounded-sm border border-border bg-background …\""
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.codeBlock"
 msgstr "程式碼塊"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.context"
 msgstr "上下文"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.download"
 msgstr "下載"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.inlineCitation"
 msgstr "行內引用"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.needLiveChatToolCall"
 msgstr "需要即時的聊天或工具呼叫狀態（ToolUIPart、流），或者應用程式外殼"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.notDemoedHere"
 msgstr "此處未做演示"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.popperBasedPositioningPlacesAnd"
 msgstr "基於Popper的定位會自動擺放並旋轉箭頭元素。"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.radixPrimitives"
 msgstr "Radix Primitives"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.radixRotatesTheTooltipArrow"
 msgstr "Radix會按不同方向旋轉tooltip的箭頭容器，"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.radixTooltipDocs"
 msgstr "Radix Tooltip文件"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.renderedOutputCodeSourcesCitations"
 msgstr "渲染輸出：程式碼、來源、引用、上下文"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.shadcnUiTooltipRecipe"
 msgstr "shadcn/ui的tooltip方案"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.shikiHighlightedWithOptionalLine"
 msgstr "使用Shiki高亮，行號可選"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.soABorderOnTwo"
 msgstr "因此旋轉後方塊兩條邊上的邊框始終朝外。"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.sources"
 msgstr "來源"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.tailwindV4ThemeReference"
 msgstr "Tailwind v4主題參考"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.tokenBudgetIndicatorHoverThe"
 msgstr "token預算指示器——懸停檢視百分比"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.tooltipRefactorDiff"
 msgstr "tooltip-refactor.diff"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.aiStatus"
 msgstr "AI · 狀態"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
-msgid "web.design.aiStatusSection.alsoSupersetUiAiElements"
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
+msgid "web.design.aiStatusSection.alsoChorosUiAiElements"
 msgstr "另有：@choros/ui/ai-elements/braille-spinner"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.animatedTextForInFlight"
 msgstr "用於展示代理程式進行中活動的動態文字"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.doneIsshimmeringFalse"
 msgstr "完成（isShimmering=false）"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.loaderBrailleSpinner"
 msgstr "載入器 · 點字載入動畫"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.loadingAndInFlightActivity"
 msgstr "載入狀態與進行中活動的指示器"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.runningBunTest"
 msgstr "正在執行bun test…"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.shimmerShimmerLabel"
 msgstr "微光 · 微光標籤"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.thinkingAboutTheApproach"
 msgstr "正在思考實現方式"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.choros.descriptionLead"
+msgstr "我們在基礎元件之上構建的一切——Choros原創元件、面向代理程式介面的"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.choros.descriptionTail"
+msgstr "套件，以及共享應用元件。點選任意匯入路徑即可複製。"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.choros.title"
+msgstr "Choros元件"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.aiAgentActivity"
+msgstr "AI · 代理程式活動"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.aiContent"
+msgstr "AI · 內容"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.aiConversation"
+msgstr "AI · 對話"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.aiStatus"
+msgstr "AI · 狀態"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.originals"
+msgstr "原創元件"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.sharedAppComponents"
+msgstr "共享應用元件"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertCheckbox"
+msgstr "不再詢問"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertDescription"
+msgstr "worktree中有代理程式會話留下的未提交修改。"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertDiscard"
+msgstr "放棄"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertImperative"
+msgstr "警告（命令式呼叫）"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertKeepWorking"
+msgstr "繼續工作"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertOpensAPromiseFriendly"
+msgstr "alert()通過已掛載的Alerter開啟一個支援promise的對話方塊"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertTitle"
+msgstr "放棄更改？"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.animatedWebglGradientStripeGradient"
+msgstr "動態WebGL漸變（stripe-gradient）"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.avatarAtom"
+msgstr "頭像（原子元件）"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.chorosOriginals"
+msgstr "Choros原創元件"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.customComponentsBeyondTheShadcn"
+msgstr "shadcn元件集之外的自訂元件"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.initialsFallbackViaGetinitialsSizes"
+msgstr "通過getInitials生成首字母備用值，尺寸xs→xl"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.meshGradient"
+msgstr "網格漸變"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.mobileApp"
+msgstr "行動應用程式"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.monitorAgentsFromYourPhone"
+msgstr "在手機上監控代理程式。"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.needAppLevelWiringForm"
+msgstr "需要應用層的接線（表單狀態、圖表資料、應用程式外殼）"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.referencedNotDemoed"
+msgstr "僅作引用，未做演示"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.sidebarCard"
+msgstr "側邊欄卡片"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.themePreviewCard"
+msgstr "主題預覽卡片"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.themeSubtitle"
+msgstr "預設終端主題"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.toastDiscarded"
+msgstr "已放棄"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.toastDiscardedNoAsk"
+msgstr "已放棄——不再詢問"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.toastDismissed"
+msgstr "已忽略"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.toastOpeningTestflight"
+msgstr "正在開啟TestFlight…"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.triggerAlert"
+msgstr "觸發alert()"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/ComponentCard/ComponentCard.tsx
@@ -28567,8 +28737,13 @@ msgstr "輪播"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
-msgid "web.design.dataSection.chooseWhenSupersetPingsYou"
-msgstr "選擇Superset在什麼時候通知你。"
+msgid "web.design.dataSection.chooseWhenChorosPingsYou"
+msgstr "選擇Choros在什麼時候通知你。"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
+msgid "web.design.dataSection.choros"
+msgstr "Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
@@ -28607,8 +28782,8 @@ msgstr "空閒 · 分支已推送"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
-msgid "web.design.dataSection.includesTheSupersetSpecificBox"
-msgstr "包含Superset特有的box變體"
+msgid "web.design.dataSection.includesTheChorosSpecificBox"
+msgstr "包含Choros特有的box變體"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
@@ -28652,11 +28827,6 @@ msgstr "狀態"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
-msgid "web.design.dataSection.superset"
-msgstr "Superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
 msgid "web.design.dataSection.table"
 msgstr "表格"
 
@@ -28682,7 +28852,7 @@ msgstr "警告、toast、進度和載入狀態"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/FeedbackSection/FeedbackSection.tsx
-msgid "web.design.feedbackSection.alsoSupersetUiSpinner"
+msgid "web.design.feedbackSection.alsoChorosUiSpinner"
 msgstr "另有：@choros/ui/spinner"
 
 #. js-lingui-explicit-id
@@ -28802,7 +28972,7 @@ msgstr "接受條款"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
-msgid "web.design.inputsSection.alsoSupersetUiRadioGroup"
+msgid "web.design.inputsSection.alsoChorosUiRadioGroup"
 msgstr "另有：@choros/ui/radio-group、@choros/ui/switch"
 
 #. js-lingui-explicit-id
@@ -28834,6 +29004,11 @@ msgstr "日曆"
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
 msgid "web.design.inputsSection.checkboxRadioSwitch"
 msgstr "核取方塊 · 單選框 · 開關"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
+msgid "web.design.inputsSection.choros"
+msgstr "choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
@@ -28947,11 +29122,6 @@ msgstr "滑桿"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
-msgid "web.design.inputsSection.superset"
-msgstr "superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
 msgid "web.design.inputsSection.textarea"
 msgstr "多行文字框"
 
@@ -28962,7 +29132,7 @@ msgstr "工作區"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
-msgid "web.design.layoutSection.alsoSupersetUiOverflowFade"
+msgid "web.design.layoutSection.alsoChorosUiOverflowFade"
 msgstr "另有：@choros/ui/overflow-fade-text"
 
 #. js-lingui-explicit-id
@@ -28979,6 +29149,11 @@ msgstr "寬高比"
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
 msgid "web.design.layoutSection.changelog"
 msgstr "更新日誌"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
+msgid "web.design.layoutSection.chorosUi"
+msgstr "Choros UI"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
@@ -29034,11 +29209,6 @@ msgstr "原始碼"
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
 msgid "web.design.layoutSection.structureScrollingAndOverflowHandling"
 msgstr "結構、滾動與溢位處理"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
-msgid "web.design.layoutSection.supersetUi"
-msgstr "Superset UI"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
@@ -29387,6 +29557,16 @@ msgstr "取消"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
+msgid "web.design.overlaysSection.choros"
+msgstr "@choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
+msgid "web.design.overlaysSection.choros2"
+msgstr "Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
 msgid "web.design.overlaysSection.close"
 msgstr "關閉"
 
@@ -29532,16 +29712,6 @@ msgstr "從視口邊緣滑入。"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
-msgid "web.design.overlaysSection.superset"
-msgstr "@superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
-msgid "web.design.overlaysSection.superset2"
-msgstr "Superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
 msgid "web.design.overlaysSection.terminalFontSize"
 msgstr "終端字型大小"
 
@@ -29593,105 +29763,105 @@ msgstr "匯出的每一個元件。每張卡片都會顯示規範的匯入路徑
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/page.tsx
 msgid "web.design.primitives.title"
-msgstr "Superset設計系統"
+msgstr "Choros設計系統"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.agentPickerClaudeCodexCursor"
 msgstr "代理程式選擇器（Claude、Codex、Cursor…），所有建立會話的流程都在用"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.canonicalMarkdownSurfaceForAgent"
 msgstr "用於代理程式輸出、評論和文件的標準markdown渲染層"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.ghostTriggerIconTruncatingLabel"
 msgstr "幽靈觸發器：圖示+可截斷標籤+上下箭頭（該模式在Primitives頁面有演示）"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.longHoverShortcutOnlyTooltip"
 msgstr "長時間懸停才出現、只顯示快速鍵的tooltip；它的chip樣式現在是TooltipContent的預設樣式"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.markdownAuthoringSurfaceWithPreview"
 msgstr "帶預覽的markdown編輯介面"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.modelPickerScopedToThe"
 msgstr "限定在所選代理程式範圍內的模型選擇器"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.paneLayoutRootRendersA"
 msgstr "面板佈局根節點：渲染工作區的面板樹"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.rendersARegisteredHotkeyInside"
 msgstr "在下拉選單／選單欄項中渲染已註冊的快速鍵"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.sidebarPillShownWhenAn"
 msgstr "應用更新可安裝時顯示在側邊欄的膠囊提示"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.splitButtonOpenWorktreeIn"
 msgstr "分體按鈕：用預設應用開啟worktree+應用選擇下拉選單"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.standardActionStripForPane"
 msgstr "面板標題欄的標準操作條"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.terminalThemeColorPalettePreview"
 msgstr "終端主題配色預覽"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.textInputWithEmojiPicker"
 msgstr "支援emoji選擇器的文字輸入框"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.workspaceAccentColorPicker"
 msgstr "工作區強調色選擇器"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.crossFeatureComponentsLivingOutside"
 msgstr "位於packages/ui之外的跨功能元件——新建元件之前先來這裡看看"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.desktopRenderer"
 msgstr "桌面端渲染處理程序"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.electronTrpcCoupledSoReferenced"
 msgstr "與Electron/tRPC耦合，因此只做引用而不實際渲染。徽章=目前的匯入處數量；數量高的可以考慮提升到packages/ui"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.paneSystem"
 msgstr "面板系統"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.reactLayerOfTheShared"
 msgstr "共享面板/工作區佈局引擎的React層"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.sharedAppComponents"
 msgstr "共享應用元件"
 
@@ -29699,176 +29869,6 @@ msgstr "共享應用元件"
 #: ../../apps/web/src/app/design/components/ShowcaseNav/ShowcaseNav.tsx
 msgid "web.design.showcaseNav.sections"
 msgstr "分區"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.superset.descriptionLead"
-msgstr "我們在基礎元件之上構建的一切——Superset原創元件、面向代理程式介面的"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.superset.descriptionTail"
-msgstr "套件，以及共享應用元件。點選任意匯入路徑即可複製。"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.superset.title"
-msgstr "Superset元件"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.aiAgentActivity"
-msgstr "AI · 代理程式活動"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.aiContent"
-msgstr "AI · 內容"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.aiConversation"
-msgstr "AI · 對話"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.aiStatus"
-msgstr "AI · 狀態"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.originals"
-msgstr "原創元件"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.sharedAppComponents"
-msgstr "共享應用元件"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertCheckbox"
-msgstr "不再詢問"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertDescription"
-msgstr "worktree中有代理程式會話留下的未提交修改。"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertDiscard"
-msgstr "放棄"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertImperative"
-msgstr "警告（命令式呼叫）"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertKeepWorking"
-msgstr "繼續工作"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertOpensAPromiseFriendly"
-msgstr "alert()通過已掛載的Alerter開啟一個支援promise的對話方塊"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertTitle"
-msgstr "放棄更改？"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.animatedWebglGradientStripeGradient"
-msgstr "動態WebGL漸變（stripe-gradient）"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.avatarAtom"
-msgstr "頭像（原子元件）"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.customComponentsBeyondTheShadcn"
-msgstr "shadcn元件集之外的自訂元件"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.initialsFallbackViaGetinitialsSizes"
-msgstr "通過getInitials生成首字母備用值，尺寸xs→xl"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.meshGradient"
-msgstr "網格漸變"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.mobileApp"
-msgstr "行動應用程式"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.monitorAgentsFromYourPhone"
-msgstr "在手機上監控代理程式。"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.needAppLevelWiringForm"
-msgstr "需要應用層的接線（表單狀態、圖表資料、應用程式外殼）"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.referencedNotDemoed"
-msgstr "僅作引用，未做演示"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.sidebarCard"
-msgstr "側邊欄卡片"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.supersetOriginals"
-msgstr "Superset原創元件"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.themePreviewCard"
-msgstr "主題預覽卡片"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.themeSubtitle"
-msgstr "預設終端主題"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.toastDiscarded"
-msgstr "已放棄"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.toastDiscardedNoAsk"
-msgstr "已放棄——不再詢問"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.toastDismissed"
-msgstr "已忽略"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.toastOpeningTestflight"
-msgstr "正在開啟TestFlight…"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.triggerAlert"
-msgstr "觸發alert()"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/auth/desktop/success/page.tsx
@@ -29903,7 +29903,7 @@ msgstr "網頁端追問功能即將推出"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/components/Footer/Footer.tsx
 msgid "web.footer.copyright"
-msgstr "© {year} Superset"
+msgstr "© {year} Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/components/Footer/Footer.tsx
@@ -30095,7 +30095,7 @@ msgstr "連線你的GitHub儲存庫並同步拉取請求。追蹤整個團隊的
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/github/page.tsx
 msgid "web.integrations.github.callback.alreadyConnected"
-msgstr "這個GitHub安裝已連線到另一個Superset組織。請先在那裡斷開連線，或解除安裝Superset GitHub App，然後重試。"
+msgstr "這個GitHub安裝已連線到另一個Choros組織。請先在那裡斷開連線，或解除安裝Choros GitHub App，然後重試。"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/github/page.tsx
@@ -30130,7 +30130,7 @@ msgstr "GitHub已連線，但初始同步未能啟動。請嘗試重新連線。
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/github/page.tsx
 msgid "web.integrations.github.connectionDescription"
-msgstr "安裝Superset GitHub App以連線你的儲存庫。"
+msgstr "安裝Choros GitHub App以連線你的儲存庫。"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/github/components/ConnectionControls/ConnectionControls.tsx
@@ -30175,7 +30175,7 @@ msgstr "日曆和Gmail的存取權限都是必需的。請在詢問時全部允�
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/google/page.tsx
 msgid "web.integrations.google.callback.noRefreshToken"
-msgstr "Google沒有授予持久存取權限。請在你的Google帳戶的第三方存取中移除Superset，然後重試。"
+msgstr "Google沒有授予持久存取權限。請在你的Google帳戶的第三方存取中移除Choros，然後重試。"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/google/page.tsx
@@ -30215,7 +30215,7 @@ msgstr "重新連線Google"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/linear/page.tsx
 msgid "web.integrations.linear.blurb"
-msgstr "與Linear雙向同步議題。在Superset中建立任務並讓它們出現在Linear裡，也可以匯入已有的Linear議題。"
+msgstr "與Linear雙向同步議題。在Choros中建立任務並讓它們出現在Linear裡，也可以匯入已有的Linear議題。"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/linear/page.tsx
@@ -30245,7 +30245,7 @@ msgstr "新任務的預設團隊"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/linear/page.tsx
 msgid "web.integrations.linear.defaultTeamHint"
-msgstr "在Superset中建立的任務會同步到這個Linear團隊。"
+msgstr "在Choros中建立的任務會同步到這個Linear團隊。"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/linear/components/ConnectionControls/ConnectionControls.tsx
@@ -30275,7 +30275,7 @@ msgstr "設定"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/linear/page.tsx
 msgid "web.integrations.linear.settingsDescription"
-msgstr "配置任務在Superset和Linear之間的同步方式。"
+msgstr "配置任務在Choros和Linear之間的同步方式。"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/github/page.tsx
@@ -30376,7 +30376,7 @@ msgstr "連線Slack失敗。請重試。"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/slack/page.tsx
 msgid "web.integrations.slack.callback.workspaceLinked"
-msgstr "這個Slack工作區已被另一個Superset組織連線。"
+msgstr "這個Slack工作區已被另一個Choros組織連線。"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/slack/page.tsx
@@ -30436,7 +30436,7 @@ msgstr "已連線，但Microsoft Graph拒絕了通知訂閱。"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/microsoft-teams/page.tsx
 msgid "web.integrations.teams.callback.tenantLinked"
-msgstr "這個Microsoft租戶已被另一個Superset組織連線。"
+msgstr "這個Microsoft租戶已被另一個Choros組織連線。"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/microsoft-teams/page.tsx
@@ -30535,8 +30535,8 @@ msgstr "連結可能有誤、頁面可能已被刪除，或者你沒有存取權
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/page/[slug]/not-found.tsx
-msgid "web.pageNotFound.goToSuperset"
-msgstr "前往Superset"
+msgid "web.pageNotFound.goToChoros"
+msgstr "前往Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/page/[slug]/not-found.tsx
@@ -30798,7 +30798,7 @@ msgstr "還沒有帳戶？<0>註冊</0>"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(auth)/sign-in/[[...sign-in]]/page.tsx
 msgid "web.signIn.subtitle"
-msgstr "登入以繼續使用Superset"
+msgstr "登入以繼續使用Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(auth)/sign-in/[[...sign-in]]/page.tsx
@@ -30838,7 +30838,7 @@ msgstr "已有帳戶？<0>登入</0>"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(auth)/sign-up/[[...sign-up]]/page.tsx
 msgid "web.signUp.subtitle"
-msgstr "註冊以開始使用Superset"
+msgstr "註冊以開始使用Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(auth)/sign-up/[[...sign-up]]/page.tsx
@@ -30858,7 +30858,7 @@ msgstr "使用Google註冊"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/slack/linked/page.tsx
 msgid "web.slackLinked.description"
-msgstr "你的Slack帳戶已關聯到Superset。你可以關閉這個分頁並返回Slack。"
+msgstr "你的Slack帳戶已關聯到Choros。你可以關閉這個分頁並返回Slack。"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/slack/linked/page.tsx
@@ -33446,17 +33446,17 @@ msgstr "重新命名..."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
 msgid "workspace.hostReachability.connectionFailed"
-msgstr "連線失敗（中繼狀態{status}）。請重試；若持續如此，請在該裝置上重啟Superset。"
+msgstr "連線失敗（中繼狀態{status}）。請重試；若持續如此，請在該裝置上重啟Choros。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
 msgid "workspace.hostReachability.deviceNotConnected"
-msgstr "該裝置未連線到中繼。請檢查它是否已喚醒、聯網並正在執行Superset — 一旦就緒它會自行重新連線。"
+msgstr "該裝置未連線到中繼。請檢查它是否已喚醒、聯網並正在執行Choros — 一旦就緒它會自行重新連線。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
 msgid "workspace.hostReachability.localStopped"
-msgstr "本地主機服務已停止響應。請先重試；若無效，請從Superset托盤選單 > 主機服務 > 重啟中重啟它。"
+msgstr "本地主機服務已停止響應。請先重試；若無效，請從Choros托盤選單 > 主機服務 > 重啟中重啟它。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
@@ -33466,12 +33466,12 @@ msgstr "你沒有此主機的存取權限。如果這是你自己的裝置，請
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
 msgid "workspace.hostReachability.onlineButFailed"
-msgstr "該裝置線上，但無法建立連線 — 通常是中繼路由問題，而非裝置本身。請重試；若持續如此，請在該裝置上重啟Superset。"
+msgstr "該裝置線上，但無法建立連線 — 通常是中繼路由問題，而非裝置本身。請重試；若持續如此，請在該裝置上重啟Choros。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
 msgid "workspace.hostReachability.onlineButFailedRegion"
-msgstr "該裝置線上（區域{region}），但無法建立連線 — 通常是中繼路由問題，而非裝置本身。請重試；若持續如此，請在該裝置上重啟Superset。"
+msgstr "該裝置線上（區域{region}），但無法建立連線 — 通常是中繼路由問題，而非裝置本身。請重試；若持續如此，請在該裝置上重啟Choros。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
@@ -34329,7 +34329,7 @@ msgstr "未知主機"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/WorkspaceHostIncompatibleState/WorkspaceHostIncompatibleState.tsx
 msgid "workspace.states.hostIncompatibleBody"
-msgstr "此工作區所在主機的Superset版本低於此客戶端支援的版本。請在該裝置上更新Superset應用程式以重新連線。"
+msgstr "此工作區所在主機的Choros版本低於此客戶端支援的版本。請在該裝置上更新Choros應用程式以重新連線。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/WorkspaceHostIncompatibleState/WorkspaceHostIncompatibleState.tsx
@@ -34354,7 +34354,7 @@ msgstr "主機需要更新"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/WorkspaceHostUnreachableState/WorkspaceHostUnreachableState.tsx
 msgid "workspace.states.hostUnreachableBody"
-msgstr "此工作區位於Superset目前無法連線的裝置上。終端、檔案和代理程式都會保持原樣 — 連線一恢復它們就會回來。"
+msgstr "此工作區位於Choros目前無法連線的裝置上。終端、檔案和代理程式都會保持原樣 — 連線一恢復它們就會回來。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/WorkspaceHostUnreachableState/WorkspaceHostUnreachableState.tsx
@@ -34409,7 +34409,7 @@ msgstr "本地主機服務未執行，因此此裝置上沒有任何服務能提
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/providers/WorkspaceProvider/utils/localHostServiceDetail/localHostServiceDetail.ts
 msgid "workspace.states.localHostDetailUnknown"
-msgstr "本地主機服務沒有響應。重啟它通常能解決；如果反覆出現，請重啟Superset。"
+msgstr "本地主機服務沒有響應。重啟它通常能解決；如果反覆出現，請重啟Choros。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/providers/WorkspaceProvider/components/WorkspaceLocalHostPendingState/WorkspaceLocalHostPendingState.tsx
@@ -34430,7 +34430,7 @@ msgstr "無法重啟主機服務"
 #. placeholder {0}: error.message
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/providers/WorkspaceProvider/components/WorkspaceLocalHostPendingState/WorkspaceLocalHostPendingState.tsx
 msgid "workspace.states.localHostPendingRestartFailedDescription"
-msgstr "{0} — 請嘗試Superset托盤選單 > 主機服務 > 重啟。"
+msgstr "{0} — 請嘗試Choros托盤選單 > 主機服務 > 重啟。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/providers/WorkspaceProvider/components/WorkspaceLocalHostPendingState/WorkspaceLocalHostPendingState.tsx

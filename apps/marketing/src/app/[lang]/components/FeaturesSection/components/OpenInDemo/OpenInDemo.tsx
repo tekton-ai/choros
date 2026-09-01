@@ -60,7 +60,7 @@ export function OpenInDemo() {
 							<div className="size-2 rounded-full bg-[#28c840]/85" />
 						</div>
 						<span className="ml-2 rounded-sm bg-foreground/[0.07] px-2 py-0.5 font-mono text-[10px] text-muted-foreground/70">
-							superset
+							choros
 						</span>
 					</div>
 					<div className="flex items-center gap-1.5 text-muted-foreground/55">

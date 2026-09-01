@@ -8,14 +8,14 @@ import {
 
 export async function GET() {
 	const frontmatter = buildFrontmatter({
-		title: "Superset agent authentication",
+		title: "Choros agent authentication",
 		description:
-			"How an AI agent obtains and uses credentials for the Superset API: OAuth 2.1 with PKCE and dynamic client registration, or an API key.",
+			"How an AI agent obtains and uses credentials for the Choros API: OAuth 2.1 with PKCE and dynamic client registration, or an API key.",
 		canonical: `${COMPANY.MARKETING_URL}/auth.md`,
 	});
-	const content = `# Superset agent authentication
+	const content = `# Choros agent authentication
 
-How an AI agent obtains and uses credentials for the Superset API (${API_URL}). The flow is standard OAuth 2.1 with PKCE plus RFC 7591 dynamic client registration; no manual app setup is required. This document follows the auth.md convention (https://workos.com/auth-md).
+How an AI agent obtains and uses credentials for the Choros API (${API_URL}). The flow is standard OAuth 2.1 with PKCE plus RFC 7591 dynamic client registration; no manual app setup is required. This document follows the auth.md convention (https://workos.com/auth-md).
 
 ## 1. Discover
 
@@ -28,7 +28,7 @@ POST ${MCP_SERVER_URL}
 The response is \`401\` with a spec-shaped header:
 
 \`\`\`
-WWW-Authenticate: Bearer realm="superset", resource_metadata="${API_URL}/.well-known/oauth-protected-resource"
+WWW-Authenticate: Bearer realm="choros", resource_metadata="${API_URL}/.well-known/oauth-protected-resource"
 \`\`\`
 
 Fetch the protected resource metadata (RFC 9728), read \`authorization_servers\`, then fetch the authorization server metadata (RFC 8414) at \`${API_URL}/.well-known/oauth-authorization-server\`. Read the \`agent_auth\` block there for the registration and revocation URIs.
@@ -36,7 +36,7 @@ Fetch the protected resource metadata (RFC 9728), read \`authorization_servers\`
 ## 2. Pick a method
 
 - **OAuth 2.1 (recommended)**: authorization code + PKCE with dynamic client registration. The user approves your agent in a browser; you get a scoped, revocable access token and a refresh token.
-- **API key**: a user can create an API key in the Superset app and hand it to your agent. Send it as a Bearer token. Skip to "Use the credential".
+- **API key**: a user can create an API key in the Choros app and hand it to your agent. Send it as a Bearer token. Skip to "Use the credential".
 
 Identity assertions (\`identity_assertion\`, \`urn:ietf:params:oauth:token-type:id-jag\`) are not yet supported; registration is anonymous until the user claims it via the browser consent step below.
 
@@ -107,7 +107,7 @@ Content-Type: application/x-www-form-urlencoded
 token=<access_or_refresh_token>&client_id=...
 \`\`\`
 
-Users can also revoke your agent's access and API keys at any time from the Superset app; revoked tokens fail with \`401\` on the next request.
+Users can also revoke your agent's access and API keys at any time from the Choros app; revoked tokens fail with \`401\` on the next request.
 `;
 
 	return new Response([...frontmatter, content].join("\n"), {

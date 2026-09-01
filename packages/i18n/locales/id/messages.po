@@ -271,7 +271,7 @@ msgstr "Konversi mingguan tampilan halaman → unduhan, pengunjung Mac; minggu b
 #. js-lingui-explicit-id
 #: ../../apps/admin/src/app/(dashboard)/page.tsx
 msgid "admin.insight.newSiteVisitors"
-msgstr "Tampilan halaman pertama kali di superset.sh, harian"
+msgstr "Tampilan halaman pertama kali di choros.sh, harian"
 
 #. js-lingui-explicit-id
 #: ../../apps/admin/src/app/(dashboard)/page.tsx
@@ -564,7 +564,7 @@ msgstr "Salin detail kesalahan"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/error.tsx
 msgid "app.errorPage.description"
-msgstr "Superset mengalami kesalahan tak terduga. Muat ulang untuk mencoba lagi."
+msgstr "Choros mengalami kesalahan tak terduga. Muat ulang untuk mencoba lagi."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/error.tsx
@@ -733,9 +733,9 @@ msgid "auth.signIn.lastUsed"
 msgstr "Terakhir digunakan"
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/sign-in/components/SupersetLogo/SupersetLogo.tsx
+#: ../../apps/desktop/src/renderer/routes/sign-in/components/ChorosLogo/ChorosLogo.tsx
 msgid "auth.signIn.logoTitle"
-msgstr "Superset"
+msgstr "Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/sign-in/page.tsx
@@ -755,7 +755,7 @@ msgstr "Dengan masuk, Anda menyetujui <0>Ketentuan Layanan</0> dan <1>Kebijakan 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/sign-in/page.tsx
 msgid "auth.signIn.welcomeTitle"
-msgstr "Selamat datang di Superset"
+msgstr "Selamat datang di Choros"
 
 #. js-lingui-explicit-id
 #: ../chat-ui/src/components/PromptInput/components/ComposerBody/ComposerBody.tsx
@@ -1541,7 +1541,7 @@ msgstr "Muat ulang"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/BootErrorBoundary/BootErrorBoundary.tsx
 msgid "components.bootError.title"
-msgstr "Superset gagal dijalankan"
+msgstr "Choros gagal dijalankan"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/MarkdownRenderer/components/TipTapMarkdownRenderer/components/BubbleMenuToolbar/BubbleMenuToolbar.tsx
@@ -1772,7 +1772,7 @@ msgstr "Anda salah satu pengguna teraktif kami. Ayo bantu kami membangunnya."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/SidebarCardSlot/cards/useHiringCard/useHiringCard.ts
 msgid "components.hiringCard.title"
-msgstr "Suka membangun dengan Superset?"
+msgstr "Suka membangun dengan Choros?"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/ImportHistoryDialog/ImportHistoryDialog.tsx
@@ -1792,7 +1792,7 @@ msgstr "Periksa lagi"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/ImportHistoryDialog/ImportHistoryDialog.tsx
 msgid "components.importHistoryDialog.description"
-msgstr "Salin riwayat penjelajahan dan login Anda dari browser lain ke Superset. Browser asal Anda tidak diubah."
+msgstr "Salin riwayat penjelajahan dan login Anda dari browser lain ke Choros. Browser asal Anda tidak diubah."
 
 #. js-lingui-explicit-id
 #. placeholder {0}: result.imported
@@ -1859,7 +1859,7 @@ msgstr " dan "
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/ImportHistoryDialog/ImportHistoryDialog.tsx
 msgid "components.importHistoryDialog.needsFullDiskAccess"
-msgstr "Superset butuh Full Disk Access untuk membaca data browser lain. Berikan izinnya di System Settings, lalu periksa lagi."
+msgstr "Choros butuh Full Disk Access untuk membaca data browser lain. Berikan izinnya di System Settings, lalu periksa lagi."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/ImportHistoryDialog/ImportHistoryDialog.tsx
@@ -2034,7 +2034,7 @@ msgstr "Tambah deskripsi..."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/MobileAppDemo/MobileAppDemo.tsx
 msgid "components.mobileAppDemo.agentName"
-msgstr "Superset Agent"
+msgstr "Choros Agent"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/MobileAppDemo/MobileAppDemo.tsx
@@ -2195,7 +2195,7 @@ msgstr "Aplikasi Mobile"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/constants.ts
 msgid "components.paywall.remoteAccess.description"
-msgstr "Jangkau Mac ini dari mana saja lewat relay Superset, atau jalankan workspace cloud. Hubungkan dari klien mana pun."
+msgstr "Jangkau Mac ini dari mana saja lewat relay Choros, atau jalankan workspace cloud. Hubungkan dari klien mana pun."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/constants.ts
@@ -2215,7 +2215,7 @@ msgstr "Integrasi Slack"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/constants.ts
 msgid "components.paywall.tasks.description"
-msgstr "Lacak dan kelola tugas yang disinkronkan dari Linear. Kuasai pekerjaan Anda tanpa meninggalkan Superset."
+msgstr "Lacak dan kelola tugas yang disinkronkan dari Linear. Kuasai pekerjaan Anda tanpa meninggalkan Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/constants.ts
@@ -2235,7 +2235,7 @@ msgstr "Kolaborasi Tim"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/Paywall.tsx
 msgid "components.paywall.upgradeCta"
-msgstr "Dapatkan Superset Pro"
+msgstr "Dapatkan Choros Pro"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/UpdatesPill/components/PreUpdateConfirmPopover/PreUpdateConfirmPopover.tsx
@@ -2769,17 +2769,17 @@ msgstr "Pratinjau prompt"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/SidebarCardSlot/cards/useStarNagCard/useStarNagCard.tsx
 msgid "components.starNagCard.description"
-msgstr "Superset bersifat open source. Kalau hari ini membantu Anda, satu star GitHub membantu developer lain menemukannya."
+msgstr "Choros bersifat open source. Kalau hari ini membantu Anda, satu star GitHub membantu developer lain menemukannya."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/SidebarCardSlot/cards/useStarNagCard/useStarNagCard.tsx
 msgid "components.starNagCard.title"
-msgstr "Menikmati Superset?"
+msgstr "Menikmati Choros?"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/StarNagToast/StarNagToast.tsx
 msgid "components.starNagToast.body"
-msgstr "Kalau sejauh ini Anda menikmati Superset, satu star GitHub membantu developer lain menemukannya."
+msgstr "Kalau sejauh ini Anda menikmati Choros, satu star GitHub membantu developer lain menemukannya."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/StarNagToast/StarNagToast.tsx
@@ -2870,7 +2870,7 @@ msgstr "Memeriksa..."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/UpdateRequiredPage/UpdateRequiredPage.tsx
 msgid "components.updateRequiredPage.defaultMessage"
-msgstr "Versi baru Superset diperlukan untuk melanjutkan. Silakan perbarui ke versi terbaru."
+msgstr "Versi baru Choros diperlukan untuk melanjutkan. Silakan perbarui ke versi terbaru."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/UpdateRequiredPage/UpdateRequiredPage.tsx
@@ -3334,13 +3334,13 @@ msgstr "Pengaturan host"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/HostOfflineRunDialog/HostOfflineRunDialog.tsx
 msgid "dashboard.automations.hostOfflineDialog.localBody"
-msgstr "Run dilewati karena perangkat ini tidak terhubung ke relay Superset. Otomatisasi melewati relay bahkan saat berjalan di perangkat ini. Aktifkan akses relay, lalu jalankan lagi."
+msgstr "Run dilewati karena perangkat ini tidak terhubung ke relay Choros. Otomatisasi melewati relay bahkan saat berjalan di perangkat ini. Aktifkan akses relay, lalu jalankan lagi."
 
 #. js-lingui-explicit-id
 #. placeholder {0}: remoteHost?.name ?? t({ id: "dashboard.automations.hostOfflineDialog.targetHostFallback", message: "the target host", })
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/HostOfflineRunDialog/HostOfflineRunDialog.tsx
 msgid "dashboard.automations.hostOfflineDialog.remoteBody"
-msgstr "Run dilewati karena <0>{0}</0> tidak terhubung ke relay Superset. Pastikan akses relay aktif di Pengaturan > Akses Jarak Jauh pada perangkat itu, lalu jalankan lagi."
+msgstr "Run dilewati karena <0>{0}</0> tidak terhubung ke relay Choros. Pastikan akses relay aktif di Pengaturan > Akses Jarak Jauh pada perangkat itu, lalu jalankan lagi."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/HostOfflineRunDialog/HostOfflineRunDialog.tsx
@@ -3355,7 +3355,7 @@ msgstr "Host tujuan sedang offline"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/utils/hostOfflineError/hostOfflineError.ts
 msgid "dashboard.automations.hostOfflineHelp"
-msgstr "Host tidak terhubung ke relay Superset. Kalau ini perangkatnya, aktifkan \"Izinkan akses jarak jauh ke perangkat ini melalui relay\" di Pengaturan > Akses Jarak Jauh, lalu coba lagi."
+msgstr "Host tidak terhubung ke relay Choros. Kalau ini perangkatnya, aktifkan \"Izinkan akses jarak jauh ke perangkat ini melalui relay\" di Pengaturan > Akses Jarak Jauh, lalu coba lagi."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/page.tsx
@@ -3365,7 +3365,7 @@ msgstr "Dokumentasi CLI"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/page.tsx
 msgid "dashboard.automations.page.cliHint"
-msgstr "Minta agen mana pun memakai CLI <0>superset</0> untuk menjalankan workspace, run tugas, atau mengelola otomatisasi."
+msgstr "Minta agen mana pun memakai CLI <0>choros</0> untuk menjalankan workspace, run tugas, atau mengelola otomatisasi."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/page.tsx
@@ -4201,13 +4201,13 @@ msgstr "Aktifkan akses relay…"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/RelayOfflineNotice/RelayOfflineNotice.tsx
 msgid "dashboard.automations.relayOfflineNotice.localBody"
-msgstr "Perangkat ini tidak terhubung ke relay Superset, jadi run otomatisasi akan dilewati."
+msgstr "Perangkat ini tidak terhubung ke relay Choros, jadi run otomatisasi akan dilewati."
 
 #. js-lingui-explicit-id
 #. placeholder {0}: remoteHost.name
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/RelayOfflineNotice/RelayOfflineNotice.tsx
 msgid "dashboard.automations.relayOfflineNotice.remoteBody"
-msgstr "<0>{0}</0> tidak terhubung ke relay Superset, jadi run-nya akan dilewati. Periksa <1>pengaturan host</1>-nya, dan pastikan akses relay aktif di Pengaturan > Akses Jarak Jauh pada perangkat itu."
+msgstr "<0>{0}</0> tidak terhubung ke relay Choros, jadi run-nya akan dilewati. Periksa <1>pengaturan host</1>-nya, dan pastikan akses relay aktif di Pengaturan > Akses Jarak Jauh pada perangkat itu."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/AutomationRow/AutomationRow.tsx
@@ -5425,6 +5425,16 @@ msgstr "Beresin beberapa TODO"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
+msgid "dashboard.newWorkspaceModal.samplePrompts.explainChoros.description"
+msgstr "Pelajari alur kerja yang cocok untuk repo ini — workspace paralel dan penyiapan agen."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
+msgid "dashboard.newWorkspaceModal.samplePrompts.explainChoros.label"
+msgstr "Manfaatkan Choros lebih jauh"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
 msgid "dashboard.newWorkspaceModal.samplePrompts.explainRepo.description"
 msgstr "Dapatkan tur arsitektur: titik masuk, cara menjalankannya, apa yang dibaca duluan."
 
@@ -5432,16 +5442,6 @@ msgstr "Dapatkan tur arsitektur: titik masuk, cara menjalankannya, apa yang diba
 #: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
 msgid "dashboard.newWorkspaceModal.samplePrompts.explainRepo.label"
 msgstr "Jelaskan cara kerja repositori ini"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
-msgid "dashboard.newWorkspaceModal.samplePrompts.explainSuperset.description"
-msgstr "Pelajari alur kerja yang cocok untuk repo ini — workspace paralel dan penyiapan agen."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
-msgid "dashboard.newWorkspaceModal.samplePrompts.explainSuperset.label"
-msgstr "Manfaatkan Superset lebih jauh"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
@@ -5471,7 +5471,7 @@ msgstr "Tulis skrip setup dan teardown agar tiap workspace baru langsung siap ja
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
 msgid "dashboard.newWorkspaceModal.samplePrompts.setUpProject.label"
-msgstr "Siapkan proyek ini untuk Superset"
+msgstr "Siapkan proyek ini untuk Choros"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: first.message
@@ -5721,7 +5721,7 @@ msgstr "Terdeteksi di konfigurasi agen Anda"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/$pluginName/components/PluginDetail/PluginDetail.tsx
 msgid "dashboard.plugins.detail.detectedHint"
-msgstr "Anda menambahkannya sendiri — Superset tidak pernah mengutak-atiknya, dan tidak pernah menulis duplikat server yang sudah Anda punya."
+msgstr "Anda menambahkannya sendiri — Choros tidak pernah mengutak-atiknya, dan tidak pernah menulis duplikat server yang sudah Anda punya."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/$pluginName/components/PluginDetail/PluginDetail.tsx
@@ -5768,7 +5768,7 @@ msgstr "Skill"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/$pluginName/components/PluginDetail/PluginDetail.tsx
 msgid "dashboard.plugins.detail.statusDisabled"
-msgstr "Nonaktif — tetap terpasang, tapi Superset tidak menulis apa pun ke konfigurasi agen Anda."
+msgstr "Nonaktif — tetap terpasang, tapi Choros tidak menulis apa pun ke konfigurasi agen Anda."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/$pluginName/components/PluginDetail/PluginDetail.tsx
@@ -6047,7 +6047,7 @@ msgstr "Nonaktif"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/components/PluginsView/components/SkillsList/SkillsList.tsx
 msgid "dashboard.plugins.skillsList.intro"
-msgstr "Skill hadir bersama plugin Superset dan selalu diperbarui otomatis di setiap agen yang Anda pakai. Klik salah satu untuk melihat pratinjaunya."
+msgstr "Skill hadir bersama plugin Choros dan selalu diperbarui otomatis di setiap agen yang Anda pakai. Klik salah satu untuk melihat pratinjaunya."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/components/PluginsView/components/SkillsList/SkillsList.tsx
@@ -6296,7 +6296,7 @@ msgstr "Impor semua"
 #. placeholder {0}: importableWorktrees.length
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/project/$projectId/components/ExternalWorktreesBanner/ExternalWorktreesBanner.tsx
 msgid "dashboard.project.worktreesBanner.importDialogDescription"
-msgstr "{0, plural, one {Ini akan mengimpor # worktree yang ada ke Superset sebagai workspace. Tiap worktree di disk akan dilacak dan muncul di sidebar Anda. Tidak ada file yang diubah.} other {Ini akan mengimpor # worktree yang ada ke Superset sebagai workspace. Tiap worktree di disk akan dilacak dan muncul di sidebar Anda. Tidak ada file yang diubah.}}"
+msgstr "{0, plural, one {Ini akan mengimpor # worktree yang ada ke Choros sebagai workspace. Tiap worktree di disk akan dilacak dan muncul di sidebar Anda. Tidak ada file yang diubah.} other {Ini akan mengimpor # worktree yang ada ke Choros sebagai workspace. Tiap worktree di disk akan dilacak dan muncul di sidebar Anda. Tidak ada file yang diubah.}}"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/project/$projectId/components/ExternalWorktreesBanner/ExternalWorktreesBanner.tsx
@@ -7385,7 +7385,7 @@ msgstr "{workspaceName}: host tidak tersedia"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarBulkDeleteDialog/hooks/useBulkWorkspaceDelete/useBulkWorkspaceDelete.ts
 msgid "dashboard.sidebar.bulkDelete.partialFailureDescription"
-msgstr "Muat ulang Superset untuk menyegarkan daftar workspace."
+msgstr "Muat ulang Choros untuk menyegarkan daftar workspace."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarBulkDeleteDialog/hooks/useBulkWorkspaceDelete/useBulkWorkspaceDelete.ts
@@ -7416,7 +7416,7 @@ msgstr "Belum di-commit · Belum di-push"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarBulkDeleteDialog/hooks/useBulkWorkspaceDelete/useBulkWorkspaceDelete.ts
 msgid "dashboard.sidebar.bulkDelete.unexpectedFailureDescription"
-msgstr "Coba lagi. Kalau masih bermasalah, muat ulang Superset."
+msgstr "Coba lagi. Kalau masih bermasalah, muat ulang Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarBulkDeleteDialog/hooks/useBulkWorkspaceDelete/useBulkWorkspaceDelete.ts
@@ -8988,7 +8988,7 @@ msgstr "Hubungkan Linear"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/tasks/components/TasksView/components/LinearCTA/LinearCTA.tsx
 msgid "dashboard.tasks.linearCta.description"
-msgstr "Hubungkan workspace Linear Anda untuk menyinkronkan issue dan mengelola tugas langsung dari Superset."
+msgstr "Hubungkan workspace Linear Anda untuk menyinkronkan issue dan mengelola tugas langsung dari Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/tasks/components/TasksView/components/LinearCTA/LinearCTA.tsx
@@ -9713,7 +9713,7 @@ msgstr "Tata letak tugas"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/AppResourceSection/AppResourceSection.tsx
 msgid "dashboard.topBar.appResources.appName"
-msgstr "Aplikasi Superset"
+msgstr "Aplikasi Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/AppResourceSection/AppResourceSection.tsx
@@ -10050,7 +10050,7 @@ msgstr "CPU"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
 msgid "dashboard.topBar.resourceSummary.cpuTooltip"
-msgstr "Jumlah CPU yang dipakai Superset dan pohon proses terminal yang dipantau. Di atas 100% berarti beberapa inti CPU sedang sibuk. Nilai tinggi yang bertahan lama biasanya membuat UI terasa lambat dan baterai lebih boros."
+msgstr "Jumlah CPU yang dipakai Choros dan pohon proses terminal yang dipantau. Di atas 100% berarti beberapa inti CPU sedang sibuk. Nilai tinggi yang bertahan lama biasanya membuat UI terasa lambat dan baterai lebih boros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
@@ -10060,7 +10060,7 @@ msgstr "Memori"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
 msgid "dashboard.topBar.resourceSummary.memoryTooltip"
-msgstr "Memori residen yang dipakai Superset dan pohon proses terminal yang dipantau. Kalau angkanya terus naik tanpa turun, sebuah proses workspace mungkin menahan memori. Nilai tinggi menambah risiko swap dan bisa menyebabkan patah-patah."
+msgstr "Memori residen yang dipakai Choros dan pohon proses terminal yang dipantau. Kalau angkanya terus naik tanpa turun, sebuah proses workspace mungkin menahan memori. Nilai tinggi menambah risiko swap dan bisa menyebabkan patah-patah."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
@@ -10070,13 +10070,13 @@ msgstr "Porsi RAM"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
 msgid "dashboard.topBar.resourceSummary.ramShareTooltip"
-msgstr "Persentase total RAM sistem yang dipakai hanya oleh sumber daya Superset yang dipantau (bukan semua aplikasi). Porsi tinggi berarti Superset penyumbang utama tekanan memori sistem; porsi rendah berarti tekanannya kemungkinan dari tempat lain."
+msgstr "Persentase total RAM sistem yang dipakai hanya oleh sumber daya Choros yang dipantau (bukan semua aplikasi). Porsi tinggi berarti Choros penyumbang utama tekanan memori sistem; porsi rendah berarti tekanannya kemungkinan dari tempat lain."
 
 #. js-lingui-explicit-id
 #. placeholder {0}: formatPercent(trackedMemorySharePercent)
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
 msgid "dashboard.topBar.resourceSummary.systemRamShare"
-msgstr "Superset memakai {0} dari RAM sistem"
+msgstr "Choros memakai {0} dari RAM sistem"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
@@ -10131,7 +10131,7 @@ msgstr "Hentikan perintah run workspace"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
 msgid "dashboard.topBar.submitPromptDialog.description"
-msgstr "Beri prompt ke agen coding untuk membangun apa yang ingin Anda lihat di Superset. Kalau kami suka prompt Anda, kami akan menjalankannya dan me-merge hasilnya."
+msgstr "Beri prompt ke agen coding untuk membangun apa yang ingin Anda lihat di Choros. Kalau kami suka prompt Anda, kami akan menjalankannya dan me-merge hasilnya."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
@@ -10876,7 +10876,7 @@ msgstr "Unduh"
 #. js-lingui-explicit-id
 #: ../../apps/docs/src/app/components/NavigationBar/NavigationBar.tsx
 msgid "docs.nav.githubRepo"
-msgstr "Lihat repositori Superset di GitHub"
+msgstr "Lihat repositori Choros di GitHub"
 
 #. js-lingui-explicit-id
 #: ../../apps/docs/src/app/components/NavigationBar/NavigationBar.tsx
@@ -11084,7 +11084,7 @@ msgstr "Tidak bisa menghapus sesi masuk lokal"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/hooks/useSignOut/useSignOut.ts
 msgid "hooks.signOut.removeLocalSignInFailedDescription"
-msgstr "Superset mungkin memasukkan Anda lagi setelah mulai ulang. Silakan coba keluar sekali lagi."
+msgstr "Choros mungkin memasukkan Anda lagi setelah mulai ulang. Silakan coba keluar sekali lagi."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/host-service-unavailable.ts
@@ -11239,12 +11239,12 @@ msgstr "Coba lagi dalam beberapa detik."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/host-service-unavailable.ts
 msgid "hostServiceUnavailable.recovery.stopped"
-msgstr "Pakai menu tray Superset > Host Service > Restart, lalu coba lagi."
+msgstr "Pakai menu tray Choros > Host Service > Restart, lalu coba lagi."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/host-service-unavailable.ts
 msgid "hostServiceUnavailable.recovery.unknown"
-msgstr "Coba lagi dalam beberapa detik; kalau terus terjadi, mulai ulang Superset."
+msgstr "Coba lagi dalam beberapa detik; kalau terus terjadi, mulai ulang Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/host-service-unavailable.ts
@@ -11849,7 +11849,7 @@ msgstr "Alihkan Sidebar Workspace"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/index.ts
 msgid "main.auth.failed.detail"
-msgstr "Superset tidak bisa menyelesaikan proses masuk. Silakan coba lagi."
+msgstr "Choros tidak bisa menyelesaikan proses masuk. Silakan coba lagi."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/index.ts
@@ -11930,17 +11930,17 @@ msgstr "Batal"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/host-service-coordinator.ts
 msgid "main.hostService.crashed.detail"
-msgstr "Workspace dan terminalnya tidak tersedia sampai layanan ini dimulai ulang — pakai menu tray Superset > Host Service > Restart."
+msgstr "Workspace dan terminalnya tidak tersedia sampai layanan ini dimulai ulang — pakai menu tray Choros > Host Service > Restart."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/host-service-coordinator.ts
 msgid "main.hostService.crashed.message"
-msgstr "Layanan host Superset berhenti tak terduga ({cause}) dan tidak bisa dimulai ulang otomatis."
+msgstr "Layanan host Choros berhenti tak terduga ({cause}) dan tidak bisa dimulai ulang otomatis."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/host-service-coordinator.ts
 msgid "main.hostService.crashed.messageForOrganization"
-msgstr "Layanan host Superset untuk {organization} berhenti tak terduga ({cause}) dan tidak bisa dimulai ulang otomatis."
+msgstr "Layanan host Choros untuk {organization} berhenti tak terduga ({cause}) dan tidak bisa dimulai ulang otomatis."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/host-service-coordinator.ts
@@ -11955,7 +11955,7 @@ msgstr "Periksa Pembaruan..."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/menu.ts
 msgid "main.menu.app.quitCompletely"
-msgstr "Keluar dari Superset Sepenuhnya"
+msgstr "Keluar dari Choros Sepenuhnya"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/menu.ts
@@ -12096,7 +12096,7 @@ msgstr "Yakin ingin keluar?"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/index.ts
 msgid "main.quit.title"
-msgstr "Keluar dari Superset"
+msgstr "Keluar dari Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/quit-completely.ts
@@ -12106,17 +12106,17 @@ msgstr "Keluar Sepenuhnya"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/quit-completely.ts
 msgid "main.quitCompletely.detail"
-msgstr "Semua sesi terminal yang terbuka akan dimatikan dan host-service yang berjalan akan dihentikan. Pakai “Close Superset” kalau Anda ingin layanannya tetap berjalan untuk peluncuran berikutnya."
+msgstr "Semua sesi terminal yang terbuka akan dimatikan dan host-service yang berjalan akan dihentikan. Pakai “Close Choros” kalau Anda ingin layanannya tetap berjalan untuk peluncuran berikutnya."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/quit-completely.ts
 msgid "main.quitCompletely.message"
-msgstr "Keluar dari Superset dan hentikan semua layanan latar belakang?"
+msgstr "Keluar dari Choros dan hentikan semua layanan latar belakang?"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/quit-completely.ts
 msgid "main.quitCompletely.title"
-msgstr "Keluar dari Superset Sepenuhnya"
+msgstr "Keluar dari Choros Sepenuhnya"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/auto-updater.ts
@@ -12196,7 +12196,7 @@ msgstr "Tulisan Terkait"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/blog/page.tsx
 msgid "marketing.blog.subtitle"
-msgstr "Wawasan dari tim Superset tentang agen coding paralel dan produktivitas developer."
+msgstr "Wawasan dari tim Choros tentang agen coding paralel dan produktivitas developer."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/blog/page.tsx
@@ -12211,7 +12211,7 @@ msgstr "Mulai"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/CategoryArticle/CategoryArticle.tsx
 msgid "marketing.categoryArticle.cta.title"
-msgstr "Siap mencoba Superset?"
+msgstr "Siap mencoba Choros?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/CategoryArticle/CategoryArticle.tsx
@@ -12246,7 +12246,7 @@ msgstr "Changelog"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/changelog/page.tsx
 msgid "marketing.changelog.subtitle"
-msgstr "Pembaruan, peningkatan, dan fitur terbaru di Superset. Diperbarui tiap minggu. Untuk catatan rilis lengkap, lihat <0>GitHub Releases<1/></0>"
+msgstr "Pembaruan, peningkatan, dan fitur terbaru di Choros. Diperbarui tiap minggu. Untuk catatan rilis lengkap, lihat <0>GitHub Releases<1/></0>"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/changelog/page.tsx
@@ -12291,7 +12291,7 @@ msgstr "STAR"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/community/page.tsx
 msgid "marketing.community.subtitle"
-msgstr "Gabung komunitas <0>Superset</0> untuk mendapat bantuan, berbagi ide, dan mengikuti berita serta pembaruan terbaru."
+msgstr "Gabung komunitas <0>Choros</0> untuk mendapat bantuan, berbagi ide, dan mengikuti berita serta pembaruan terbaru."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/community/page.tsx
@@ -12311,7 +12311,7 @@ msgstr "Mulai"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/[slug]/components/CompareLayout/CompareLayout.tsx
 msgid "marketing.compare.cta.title"
-msgstr "Siap mencoba Superset?"
+msgstr "Siap mencoba Choros?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/page.tsx
@@ -12346,12 +12346,12 @@ msgstr "Tutorial Alur Kerja"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/page.tsx
 msgid "marketing.compare.subtitle"
-msgstr "Lihat bagaimana Superset dibandingkan dengan alat coding AI lain, dari editor AI, agen coding, sampai AI engineer berbasis cloud."
+msgstr "Lihat bagaimana Choros dibandingkan dengan alat coding AI lain, dari editor AI, agen coding, sampai AI engineer berbasis cloud."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/page.tsx
 msgid "marketing.compare.title"
-msgstr "Superset vs Alternatifnya"
+msgstr "Choros vs Alternatifnya"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/components/ContactForm/ContactForm.tsx
@@ -12401,22 +12401,22 @@ msgstr "Pertanyaan, masukan, dukungan, atau apa pun. Kirim pesan dan kami akan m
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
 msgid "marketing.contact.hero.title"
-msgstr "Bicara dengan Superset"
+msgstr "Bicara dengan Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
 msgid "marketing.contact.otherWays.community"
-msgstr "Untuk laporan bug dan permintaan fitur, jalur tercepat adalah issue GitHub di <0>github.com/superset-sh/superset</0>. Komunitas kami ada di <1>Discord</1>, dan kami memposting pembaruan di <2>X (@superset_sh)</2> dan <3>LinkedIn</3>."
+msgstr "Untuk laporan bug dan permintaan fitur, jalur tercepat adalah issue GitHub di <0>github.com/superset-sh/choros</0>. Komunitas kami ada di <1>Discord</1>, dan kami memposting pembaruan di <2>X (@choros_sh)</2> dan <3>LinkedIn</3>."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
 msgid "marketing.contact.otherWays.email"
-msgstr "Superset dibangun oleh tim yang berbasis di San Francisco, California. Untuk dukungan produk atau pertanyaan akun, kirim email ke <0>{supportEmail}</0> dan kami akan membalas dalam satu hari kerja. Untuk kemitraan, media, enterprise, atau apa pun untuk tim pendiri, tulis ke <1>{foundersEmail}</1>."
+msgstr "Choros dibangun oleh tim yang berbasis di San Francisco, California. Untuk dukungan produk atau pertanyaan akun, kirim email ke <0>{supportEmail}</0> dan kami akan membalas dalam satu hari kerja. Untuk kemitraan, media, enterprise, atau apa pun untuk tim pendiri, tulis ke <1>{foundersEmail}</1>."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
 msgid "marketing.contact.otherWays.status"
-msgstr "Ketersediaan layanan dipublikasikan di <0>status.superset.sh</0>, dan dokumentasi keamanan serta kepatuhan di <1>trust.superset.sh</1>."
+msgstr "Ketersediaan layanan dipublikasikan di <0>status.choros.sh</0>, dan dokumentasi keamanan serta kepatuhan di <1>trust.choros.sh</1>."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
@@ -12456,7 +12456,7 @@ msgstr "Satukan agen-agen Anda."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/CTASection/CTASection.tsx
 msgid "marketing.cta.installPrompt"
-msgstr "Atau minta agen coding Anda memasang CLI Superset."
+msgstr "Atau minta agen coding Anda memasang CLI Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/CTASection/CTASection.tsx
@@ -12476,12 +12476,12 @@ msgstr "Unduhan Anda dimulai otomatis. Jika tidak, ambil di sini."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadInterstitial/DownloadInterstitial.tsx
 msgid "marketing.download.autoTitle"
-msgstr "Anda akan segera mendapatkan Superset"
+msgstr "Anda akan segera mendapatkan Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/ReleaseList/ReleaseList.tsx
 msgid "marketing.download.availability"
-msgstr "Aplikasi desktop Superset tersedia untuk macOS dan Linux."
+msgstr "Aplikasi desktop Choros tersedia untuk macOS dan Linux."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadLinkForm/DownloadLinkForm.tsx
@@ -12567,12 +12567,12 @@ msgstr "Kami mengirim tautan unduhan ke {submittedEmail}."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadInterstitial/DownloadInterstitial.tsx
 msgid "marketing.download.mobileBody"
-msgstr "Superset adalah aplikasi desktop. Masukkan email Anda dan kami akan mengirim tautan unduhan untuk dibuka di Mac Anda."
+msgstr "Choros adalah aplikasi desktop. Masukkan email Anda dan kami akan mengirim tautan unduhan untuk dibuka di Mac Anda."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadInterstitial/DownloadInterstitial.tsx
 msgid "marketing.download.mobileTitle"
-msgstr "Dapatkan Superset di Mac Anda"
+msgstr "Dapatkan Choros di Mac Anda"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadLinkForm/actions.ts
@@ -12657,17 +12657,17 @@ msgstr "Jalankan agen Anda dari desktop, terminal mana pun, atau ponsel Anda."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadInterstitial/DownloadInterstitial.tsx
 msgid "marketing.download.waitlistBody"
-msgstr "Kami sedang membawa Superset ke Windows & Linux. Tinggalkan email Anda dan kami akan mengabari begitu siap."
+msgstr "Kami sedang membawa Choros ke Windows & Linux. Tinggalkan email Anda dan kami akan mengabari begitu siap."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadInterstitial/DownloadInterstitial.tsx
 msgid "marketing.download.waitlistTitle"
-msgstr "Superset baru tersedia untuk Mac"
+msgstr "Choros baru tersedia untuk Mac"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/components/EnterpriseFAQ/constants.ts
 msgid "marketing.enterprise.faq.dataSecurity.answer"
-msgstr "Superset berjalan lokal di mesin developer Anda. Kami tidak menyimpan kode atau percakapan AI Anda, dan Superset telah menyelesaikan audit SOC 2 Type II dengan auditor independen. Minta laporannya dan tinjau dokumentasi keamanan kami di trust.superset.sh."
+msgstr "Choros berjalan lokal di mesin developer Anda. Kami tidak menyimpan kode atau percakapan AI Anda, dan Choros telah menyelesaikan audit SOC 2 Type II dengan auditor independen. Minta laporannya dan tinjau dokumentasi keamanan kami di trust.choros.sh."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/components/EnterpriseFAQ/constants.ts
@@ -12707,12 +12707,12 @@ msgstr "Pertanyaan umum"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/components/EnterpriseFAQ/constants.ts
 msgid "marketing.enterprise.faq.whatIsEnterprise.answer"
-msgstr "Superset Enterprise adalah Superset untuk tim. Hubungi kami untuk tahu lebih banyak soal apa saja yang termasuk dan bagaimana cocoknya untuk organisasi Anda."
+msgstr "Choros Enterprise adalah Choros untuk tim. Hubungi kami untuk tahu lebih banyak soal apa saja yang termasuk dan bagaimana cocoknya untuk organisasi Anda."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/components/EnterpriseFAQ/constants.ts
 msgid "marketing.enterprise.faq.whatIsEnterprise.question"
-msgstr "Apa itu Superset Enterprise?"
+msgstr "Apa itu Choros Enterprise?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/components/EnterpriseContactForm/EnterpriseContactForm.tsx
@@ -12772,12 +12772,12 @@ msgstr "Patuh SOC 2 Type II. Minta laporan kami."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/page.tsx
 msgid "marketing.enterprise.hero.subtitle"
-msgstr "Tertarik membawa Superset ke organisasi Anda? Hubungi kami dan kami akan mencari penyiapan yang tepat untuk tim Anda."
+msgstr "Tertarik membawa Choros ke organisasi Anda? Hubungi kami dan kami akan mencari penyiapan yang tepat untuk tim Anda."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/page.tsx
 msgid "marketing.enterprise.hero.title"
-msgstr "Superset untuk tim Anda"
+msgstr "Choros untuk tim Anda"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/components/AttentionChart/AttentionChart.tsx
@@ -12817,7 +12817,7 @@ msgstr "Di luar itu: F5 bukan klaim jangka dekat"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
 msgid "marketing.factory.cta.body"
-msgstr "Superset adalah meja kerja untuk transisi F3 ke F4: agen paralel di workspace terisolasi, armada yang benar-benar bisa Anda awasi, dan permukaan review untuk kode yang tidak Anda tulis."
+msgstr "Choros adalah meja kerja untuk transisi F3 ke F4: agen paralel di workspace terisolasi, armada yang benar-benar bisa Anda awasi, dan permukaan review untuk kode yang tidak Anda tulis."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
@@ -12827,7 +12827,7 @@ msgstr "Baca changelog"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
 msgid "marketing.factory.cta.download"
-msgstr "Unduh Superset"
+msgstr "Unduh Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
@@ -13489,7 +13489,7 @@ msgstr "Sebagian"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.existingIde.answer"
-msgstr "Superset dirancang untuk bekerja dengan alat yang sudah Anda pakai; kami mendukung deep-link ke IDE seperti Cursor secara native sehingga Anda bisa membuka workspace dan file di IDE Anda."
+msgstr "Choros dirancang untuk bekerja dengan alat yang sudah Anda pakai; kami mendukung deep-link ke IDE seperti Cursor secara native sehingga Anda bisa membuka workspace dan file di IDE Anda."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
@@ -13499,12 +13499,12 @@ msgstr "Saya sudah pakai IDE seperti Cursor, apakah ini untuk saya?"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.freeToUse.answer"
-msgstr "Superset punya paket gratis. Kode sumbernya tersedia di GitHub dengan Elastic License 2.0 (ELv2), jadi Anda bisa memeriksanya dan meng-host sendiri sesuai ketentuan lisensinya."
+msgstr "Choros punya paket gratis. Kode sumbernya tersedia di GitHub dengan Elastic License 2.0 (ELv2), jadi Anda bisa memeriksanya dan meng-host sendiri sesuai ketentuan lisensinya."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.freeToUse.question"
-msgstr "Apakah Superset gratis dipakai?"
+msgstr "Apakah Choros gratis dipakai?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/FAQSection.tsx
@@ -13514,17 +13514,17 @@ msgstr "Pertanyaan<0/>yang sering diajukan"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.openSource.answer"
-msgstr "Superset bersifat source-available: kodenya publik di GitHub dengan Elastic License 2.0 (ELv2), yang memungkinkan Anda memeriksanya dan meng-host sendiri sesuai ketentuan lisensinya, tapi bukan open source yang disetujui OSI. Superset tidak berhubungan dengan Apache Superset, alat business intelligence itu."
+msgstr "Choros bersifat source-available: kodenya publik di GitHub dengan Elastic License 2.0 (ELv2), yang memungkinkan Anda memeriksanya dan meng-host sendiri sesuai ketentuan lisensinya, tapi bukan open source yang disetujui OSI. Choros tidak berhubungan dengan Apache Choros, alat business intelligence itu."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.openSource.question"
-msgstr "Apakah Superset open source?"
+msgstr "Apakah Choros open source?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.ownApiKeys.answer"
-msgstr "Tentu. Superset tidak mem-proxy panggilan API apa pun. Anda memakai kunci API Anda sendiri langsung dengan penyedia AI mana pun yang Anda pilih. Artinya Anda punya kendali penuh atas biaya dan penggunaan."
+msgstr "Tentu. Choros tidak mem-proxy panggilan API apa pun. Anda memakai kunci API Anda sendiri langsung dengan penyedia AI mana pun yang Anda pilih. Artinya Anda punya kendali penuh atas biaya dan penggunaan."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
@@ -13549,17 +13549,17 @@ msgstr "Bagaimana sistem agen paralelnya bekerja?"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.platforms.answer"
-msgstr "Aplikasi desktopnya berjalan di macOS, dengan AppImage Linux eksperimental; Windows belum tersedia. Selain aplikasi desktop ada CLI, SDK TypeScript, dan server MCP, jadi Anda bisa mengendalikan Superset dari skrip, terminal, dan agen lain."
+msgstr "Aplikasi desktopnya berjalan di macOS, dengan AppImage Linux eksperimental; Windows belum tersedia. Selain aplikasi desktop ada CLI, SDK TypeScript, dan server MCP, jadi Anda bisa mengendalikan Choros dari skrip, terminal, dan agen lain."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.platforms.question"
-msgstr "Superset berjalan di platform apa saja?"
+msgstr "Choros berjalan di platform apa saja?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.supportedAgents.answer"
-msgstr "Superset bekerja dengan agen coding berbasis CLI mana pun, termasuk Claude Code, OpenCode, OpenAI Codex, dan lainnya. Pilih agen berbeda untuk tiap tugas tanpa mengubah workspace atau alur review Anda."
+msgstr "Choros bekerja dengan agen coding berbasis CLI mana pun, termasuk Claude Code, OpenCode, OpenAI Codex, dan lainnya. Pilih agen berbeda untuk tiap tugas tanpa mengubah workspace atau alur review Anda."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
@@ -13569,27 +13569,27 @@ msgstr "Agen coding AI mana saja yang didukung?"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.vsTerminal.answer"
-msgstr "Claude Code, Codex, dan OpenCode adalah agennya; Superset adalah tempat Anda menjalankan banyak di antaranya sekaligus. Tiap tugas mendapat worktree Git terisolasi sendiri, jadi sepuluh agen bisa bekerja di sepuluh branch bersamaan sementara Anda memantau, mereview, dan me-merge dari satu tempat."
+msgstr "Claude Code, Codex, dan OpenCode adalah agennya; Choros adalah tempat Anda menjalankan banyak di antaranya sekaligus. Tiap tugas mendapat worktree Git terisolasi sendiri, jadi sepuluh agen bisa bekerja di sepuluh branch bersamaan sementara Anda memantau, mereview, dan me-merge dari satu tempat."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.vsTerminal.link"
-msgstr "Lihat perbandingan Superset dengan alat lain"
+msgstr "Lihat perbandingan Choros dengan alat lain"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.vsTerminal.question"
-msgstr "Apa bedanya Superset dengan sekadar menjalankan Claude Code di terminal?"
+msgstr "Apa bedanya Choros dengan sekadar menjalankan Claude Code di terminal?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.wrapper.answer"
-msgstr "Tidak. Agen Anda tetap independen; Superset adalah lapisan orkestrasi di sekitarnya. Tiap tugas mendapat worktree Git terisolasi, sesi yang persisten, review diff, dan run terjadwal tanpa mengikat alur kerja ke satu penyedia."
+msgstr "Tidak. Agen Anda tetap independen; Choros adalah lapisan orkestrasi di sekitarnya. Tiap tugas mendapat worktree Git terisolasi, sesi yang persisten, review diff, dan run terjadwal tanpa mengikat alur kerja ke satu penyedia."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.wrapper.question"
-msgstr "Apakah Superset cuma pembungkus Claude Code?"
+msgstr "Apakah Choros cuma pembungkus Claude Code?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FeaturesSection/constants.ts
@@ -13699,7 +13699,7 @@ msgstr "Jadwalkan pekerjaan yang berulang"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FeaturesSection/constants.ts
 msgid "marketing.features.cliSdk.description"
-msgstr "Semuanya bisa diskrip. Buat workspace dan agen dari CLI, sambungkan Superset ke CI dengan SDK, atau biarkan agen Anda mengendalikannya lewat MCP."
+msgstr "Semuanya bisa diskrip. Buat workspace dan agen dari CLI, sambungkan Choros ke CI dengan SDK, atau biarkan agen Anda mengendalikannya lewat MCP."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FeaturesSection/constants.ts
@@ -13889,7 +13889,7 @@ msgstr "Status"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Footer/Footer.tsx
 msgid "marketing.footer.copyright"
-msgstr "© {year} Superset Inc."
+msgstr "© {year} Choros Inc."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Footer/Footer.tsx
@@ -14265,7 +14265,7 @@ msgstr "Review hasilnya."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/HowItWorksSection/constants.ts
 msgid "marketing.howItWorks.startWithWork.description"
-msgstr "Jelaskan apa yang Anda butuhkan. Superset membuat workspace terisolasi dan branch bersih untuk tugas itu."
+msgstr "Jelaskan apa yang Anda butuhkan. Choros membuat workspace terisolasi dan branch bersih untuk tugas itu."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/HowItWorksSection/constants.ts
@@ -14275,17 +14275,17 @@ msgstr "Mulai dari pekerjaannya."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
 msgid "marketing.joinUs.bodyScale"
-msgstr "Hari ini, puluhan ribu engineer memakai Superset sebagai IDE utama mereka, di perusahaan seperti Wix, DoorDash, dan Netflix. Tak lama lagi, tim akan menjalankan ratusan agen secara paralel - pabrik perangkat lunak yang secara otonom memproduksi dan merilis kode. Kami menjadikan Superset tempat tim menjalankan dan mengelola pabrik-pabrik itu, dimulai dari pabrik kami sendiri."
+msgstr "Hari ini, puluhan ribu engineer memakai Choros sebagai IDE utama mereka, di perusahaan seperti Wix, DoorDash, dan Netflix. Tak lama lagi, tim akan menjalankan ratusan agen secara paralel - pabrik perangkat lunak yang secara otonom memproduksi dan merilis kode. Kami menjadikan Choros tempat tim menjalankan dan mengelola pabrik-pabrik itu, dimulai dari pabrik kami sendiri."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
 msgid "marketing.joinUs.bodyTeam"
-msgstr "Superset dibangun di dalam Superset, jadi kami pengguna nomor satu produk kami sendiri - Anda dibayar untuk membuat hidup Anda sendiri lebih mudah. Kami membangun tim yang datar dan padat talenta, dan kami mencari orang yang punya ide gila dan cukup gila untuk merilisnya. Kalau Anda pernah ingin membangun produk yang Anda sendiri senang memakainya, bangun bersama kami."
+msgstr "Choros dibangun di dalam Choros, jadi kami pengguna nomor satu produk kami sendiri - Anda dibayar untuk membuat hidup Anda sendiri lebih mudah. Kami membangun tim yang datar dan padat talenta, dan kami mencari orang yang punya ide gila dan cukup gila untuk merilisnya. Kalau Anda pernah ingin membangun produk yang Anda sendiri senang memakainya, bangun bersama kami."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
 msgid "marketing.joinUs.lede"
-msgstr "Superset sedang membangun perangkat lunak yang memperbaiki dirinya sendiri. Dimulai dengan memberi engineer alat terbaik yang menyesuaikan diri dengan kebutuhan mereka seiring waktu."
+msgstr "Choros sedang membangun perangkat lunak yang memperbaiki dirinya sendiri. Dimulai dengan memberi engineer alat terbaik yang menyesuaikan diri dengan kebutuhan mereka seiring waktu."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
@@ -14335,7 +14335,7 @@ msgstr "Token"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/leaderboard/components/LeaderboardBoard/components/LeaderboardTable/LeaderboardTable.tsx
 msgid "marketing.leaderboard.empty.optIn"
-msgstr "Ikut serta dari Superset di Pengaturan → Akun."
+msgstr "Ikut serta dari Choros di Pengaturan → Akun."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/leaderboard/components/LeaderboardBoard/components/LeaderboardTable/LeaderboardTable.tsx
@@ -14610,12 +14610,12 @@ msgstr "Klik <0>Import Theme</0> dan pilih file yang sudah diunduh."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/[slug]/page.tsx
 msgid "marketing.marketplace.theme.installStep.openSettings"
-msgstr "Di aplikasi desktop Superset, buka <0>Pengaturan → Tampilan → Tema</0>."
+msgstr "Di aplikasi desktop Choros, buka <0>Pengaturan → Tampilan → Tema</0>."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/[slug]/page.tsx
 msgid "marketing.marketplace.theme.installTitle"
-msgstr "Cara memasang {name} di Superset"
+msgstr "Cara memasang {name} di Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/[slug]/page.tsx
@@ -14670,7 +14670,7 @@ msgstr "Terminal"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/page.tsx
 msgid "marketing.marketplace.themes.description"
-msgstr "File JSON tema bersama yang bisa Anda impor ke Superset."
+msgstr "File JSON tema bersama yang bisa Anda impor ke Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/page.tsx
@@ -14870,7 +14870,7 @@ msgstr "Hubungkan Claude, Codex, Cursor, atau klien <0>MCP</0> apa pun dan biark
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/mcp-install/page.tsx
 msgid "marketing.mcpInstall.hero.title"
-msgstr "Pasang Superset MCP di klien Anda"
+msgstr "Pasang Choros MCP di klien Anda"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/mcp-install/page.tsx
@@ -14880,7 +14880,7 @@ msgstr "Pilih agen Anda untuk pemasangan satu baris, atau salin konfigurasinya s
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/blog/page.tsx
 msgid "marketing.meta.blog.description"
-msgstr "Berita, pembaruan, dan wawasan dari tim Superset tentang agen coding paralel dan produktivitas developer."
+msgstr "Berita, pembaruan, dan wawasan dari tim Choros tentang agen coding paralel dan produktivitas developer."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/blog/page.tsx
@@ -14890,7 +14890,7 @@ msgstr "Blog"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/changelog/page.tsx
 msgid "marketing.meta.changelog.description"
-msgstr "Pembaruan, peningkatan, dan fitur baru terkini di Superset."
+msgstr "Pembaruan, peningkatan, dan fitur baru terkini di Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/changelog/page.tsx
@@ -14900,7 +14900,7 @@ msgstr "Changelog"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/community/page.tsx
 msgid "marketing.meta.community.description"
-msgstr "Bergabunglah dengan komunitas Superset untuk mendapatkan bantuan, berbagi ide, dan mengikuti berita serta pembaruan terbaru."
+msgstr "Bergabunglah dengan komunitas Choros untuk mendapatkan bantuan, berbagi ide, dan mengikuti berita serta pembaruan terbaru."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/community/page.tsx
@@ -14910,12 +14910,12 @@ msgstr "Komunitas"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/page.tsx
 msgid "marketing.meta.compare.description"
-msgstr "Bandingkan Superset dengan Cursor, Claude Code, Codex, Windsurf, Devin, GitHub Copilot, dan lainnya. Jelajahi perbandingan berdampingan, rangkuman, dan panduan alur kerja."
+msgstr "Bandingkan Choros dengan Cursor, Claude Code, Codex, Windsurf, Devin, GitHub Copilot, dan lainnya. Jelajahi perbandingan berdampingan, rangkuman, dan panduan alur kerja."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/page.tsx
 msgid "marketing.meta.compare.title"
-msgstr "Bandingkan Superset | Perbandingan dan Panduan AI Coding"
+msgstr "Bandingkan Choros | Perbandingan dan Panduan AI Coding"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
@@ -14930,12 +14930,12 @@ msgstr "Kontak"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/page.tsx
 msgid "marketing.meta.download.description"
-msgstr "Unduhan Superset Anda sedang dimulai."
+msgstr "Unduhan Choros Anda sedang dimulai."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/page.tsx
 msgid "marketing.meta.download.title"
-msgstr "Unduh Superset"
+msgstr "Unduh Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/page.tsx
@@ -14955,7 +14955,7 @@ msgstr "Rubrik yang dapat difalsifikasi untuk pabrik perangkat lunak swakemudi: 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
 msgid "marketing.meta.factory2026.ogTitle"
-msgstr "Factory 2026 | Superset"
+msgstr "Factory 2026 | Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
@@ -14970,7 +14970,7 @@ msgstr "Kami merekrut engineer di San Francisco. Bantu kami membangun platform s
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
 msgid "marketing.meta.joinUs.ogTitle"
-msgstr "Bergabunglah dengan kami di Superset"
+msgstr "Bergabunglah dengan kami di Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
@@ -14990,7 +14990,7 @@ msgstr "Papan Peringkat"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/agents/page.tsx
 msgid "marketing.meta.marketplace.agents.description"
-msgstr "Rumah masa depan untuk konfigurasi agen Superset, prompt, dan panduan penyiapan yang dapat digunakan ulang."
+msgstr "Rumah masa depan untuk konfigurasi agen Choros, prompt, dan panduan penyiapan yang dapat digunakan ulang."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/agents/page.tsx
@@ -15000,12 +15000,12 @@ msgstr "Konfigurasi Agen"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/page.tsx
 msgid "marketing.meta.marketplace.description"
-msgstr "Jelajahi tema bersama dan konfigurasi agen mendatang untuk Superset."
+msgstr "Jelajahi tema bersama dan konfigurasi agen mendatang untuk Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/page.tsx
 msgid "marketing.meta.marketplace.themes.description"
-msgstr "Jelajahi berkas tema Superset yang dibagikan komunitas, termasuk GitHub Dark Colorblind, Catppuccin, Ember, dan One Dark Pro."
+msgstr "Jelajahi berkas tema Choros yang dibagikan komunitas, termasuk GitHub Dark Colorblind, Catppuccin, Ember, dan One Dark Pro."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/page.tsx
@@ -15040,7 +15040,7 @@ msgstr "Harga"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/page.tsx
 msgid "marketing.meta.roadmap.description"
-msgstr "Lihat apa yang sedang kami bangun, apa yang akan datang, dan ke mana arah Superset."
+msgstr "Lihat apa yang sedang kami bangun, apa yang akan datang, dan ke mana arah Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/page.tsx
@@ -15060,7 +15060,7 @@ msgstr "Riwayat Star"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/stats/page.tsx
 msgid "marketing.meta.stats.description"
-msgstr "Agregat penggunaan agen dari seluruh developer di papan peringkat Superset — token, biaya, perilaku cache, dan model yang benar-benar dipakai orang."
+msgstr "Agregat penggunaan agen dari seluruh developer di papan peringkat Choros — token, biaya, perilaku cache, dan model yang benar-benar dipakai orang."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/stats/page.tsx
@@ -15070,12 +15070,12 @@ msgstr "Statistik"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.meta.team.description"
-msgstr "Apa itu Superset, siapa yang membangunnya, dan untuk siapa. Tim San Francisco beranggotakan tiga mantan CTO YC yang membangun workspace untuk agen coding paralel."
+msgstr "Apa itu Choros, siapa yang membangunnya, dan untuk siapa. Tim San Francisco beranggotakan tiga mantan CTO YC yang membangun workspace untuk agen coding paralel."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.meta.team.ogDescription"
-msgstr "Kenali tim di balik Superset, yang membangun agen coding paralel untuk developer."
+msgstr "Kenali tim di balik Choros, yang membangun agen coding paralel untuk developer."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
@@ -15155,7 +15155,7 @@ msgstr "Changelog"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Header/constants.tsx
 msgid "marketing.nav.product.mcp.description"
-msgstr "Hubungkan agen AI mana pun ke Superset."
+msgstr "Hubungkan agen AI mana pun ke Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Header/constants.tsx
@@ -15186,7 +15186,7 @@ msgstr "Produk"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Header/constants.tsx
 msgid "marketing.nav.resources.about.description"
-msgstr "Orang-orang di balik Superset."
+msgstr "Orang-orang di balik Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Header/constants.tsx
@@ -15477,7 +15477,7 @@ msgstr "Unduh aplikasi"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
 msgid "marketing.pricing.faq.agentSubscriptions.answer"
-msgstr "Ya. Superset adalah workspace tempat agen Anda berjalan, bukan penyedia model. Bawa Claude Code, Codex, OpenCode, atau agen CLI apa pun, dan pakai akun atau kunci API Anda yang sudah ada di semua paket."
+msgstr "Ya. Choros adalah workspace tempat agen Anda berjalan, bukan penyedia model. Bawa Claude Code, Codex, OpenCode, atau agen CLI apa pun, dan pakai akun atau kunci API Anda yang sudah ada di semua paket."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
@@ -15522,12 +15522,12 @@ msgstr "Bagaimana skema harga Pro?"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
 msgid "marketing.pricing.faq.soc2.answer"
-msgstr "Ya. Superset telah menyelesaikan audit SOC 2 Type II dengan auditor independen, yang mencakup kontrol keamanan kami saat beroperasi dari waktu ke waktu. Minta laporannya dan tinjau dokumentasi keamanan kami di trust.superset.sh."
+msgstr "Ya. Choros telah menyelesaikan audit SOC 2 Type II dengan auditor independen, yang mencakup kontrol keamanan kami saat beroperasi dari waktu ke waktu. Minta laporannya dan tinjau dokumentasi keamanan kami di trust.choros.sh."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
 msgid "marketing.pricing.faq.soc2.question"
-msgstr "Apakah Superset patuh SOC 2?"
+msgstr "Apakah Choros patuh SOC 2?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
@@ -15547,7 +15547,7 @@ msgstr "Pertanyaan umum"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
 msgid "marketing.pricing.faq.whereCodeRuns.answer"
-msgstr "Di mesin Anda. Repo, worktree, output terminal, dan sesi agen tetap lokal secara bawaan; sinkronisasi cloud hanya mencakup metadata akun dan organisasi. Superset tidak mem-proxy panggilan API apa pun."
+msgstr "Di mesin Anda. Repo, worktree, output terminal, dan sesi agen tetap lokal secara bawaan; sinkronisasi cloud hanya mencakup metadata akun dan organisasi. Choros tidak mem-proxy panggilan API apa pun."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
@@ -15987,7 +15987,7 @@ msgstr "Penampil diff yang lebih baik"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/data.ts
 msgid "marketing.roadmap.item.inAppPrMerge.description"
-msgstr "Merge pull request tanpa meninggalkan Superset, plus sejumlah perbaikan dan pemolesan chat."
+msgstr "Merge pull request tanpa meninggalkan Choros, plus sejumlah perbaikan dan pemolesan chat."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/data.ts
@@ -16017,7 +16017,7 @@ msgstr "Manajer MCP"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/data.ts
 msgid "marketing.roadmap.item.nativePrReviews.description"
-msgstr "Review pull request di dalam Superset: panel diff, review dibantu agen, tindak lanjuti komentar langsung."
+msgstr "Review pull request di dalam Choros: panel diff, review dibantu agen, tindak lanjuti komentar langsung."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/data.ts
@@ -16257,7 +16257,7 @@ msgstr "Kode Anda tetap lokal secara bawaan, dengan kendali eksplisit atas layan
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/SecuritySection/SecuritySection.tsx
 msgid "marketing.security.yourAccounts.description"
-msgstr "Pakai langganan agen dan kunci API Anda yang sudah ada. Superset tidak pernah mem-proxy panggilan model atau mengunci alur kerja Anda ke satu penyedia."
+msgstr "Pakai langganan agen dan kunci API Anda yang sudah ada. Choros tidak pernah mem-proxy panggilan model atau mengunci alur kerja Anda ke satu penyedia."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/SecuritySection/SecuritySection.tsx
@@ -16508,7 +16508,7 @@ msgstr "Statistik tidak tersedia saat ini."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.eyebrow"
-msgstr "Tentang Superset"
+msgstr "Tentang Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
@@ -16523,12 +16523,12 @@ msgstr "Para pendiri"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.foundersPhoto.alt"
-msgstr "Para pendiri Superset di sebuah hackathon, kantor pusat YC San Francisco"
+msgstr "Para pendiri Choros di sebuah hackathon, kantor pusat YC San Francisco"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.foundersPhoto.caption"
-msgstr "Para pendiri di hackathon tempat Superset bermula <0>|</0> Kantor pusat YC, November 2025"
+msgstr "Para pendiri di hackathon tempat Choros bermula <0>|</0> Kantor pusat YC, November 2025"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
@@ -16543,7 +16543,7 @@ msgstr "Kami sedang merekrut di San Francisco"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.intro"
-msgstr "Superset sedang membangun perangkat lunak yang memperbaiki dirinya sendiri. Dimulai dengan memberi engineer alat terbaik yang menyesuaikan diri dengan kebutuhan mereka seiring waktu. Kami bertiga mantan CTO YC yang membangun alat yang kami cintai."
+msgstr "Choros sedang membangun perangkat lunak yang memperbaiki dirinya sendiri. Dimulai dengan memberi engineer alat terbaik yang menyesuaikan diri dengan kebutuhan mereka seiring waktu. Kami bertiga mantan CTO YC yang membangun alat yang kami cintai."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/[id]/page.tsx
@@ -16563,7 +16563,7 @@ msgstr "Anggota Tim Lainnya"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.story.adoption"
-msgstr "Hanya dalam beberapa bulan, <0>puluhan ribu engineer</0> memakai Superset sebagai IDE utama mereka, di perusahaan seperti Wix, DoorDash, dan Netflix."
+msgstr "Hanya dalam beberapa bulan, <0>puluhan ribu engineer</0> memakai Choros sebagai IDE utama mereka, di perusahaan seperti Wix, DoorDash, dan Netflix."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
@@ -16578,7 +16578,7 @@ msgstr "Jadi, bagaimana kami sampai di sini?"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.story.origin"
-msgstr "Superset bermula sebagai proyek hackathon pada November 2025. Waktu itu sekadar aplikasi desktop untuk mengelola worktree."
+msgstr "Choros bermula sebagai proyek hackathon pada November 2025. Waktu itu sekadar aplikasi desktop untuk mengelola worktree."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/TierBadge/TierBadge.tsx
@@ -16665,7 +16665,7 @@ msgstr "Gabung daftar tunggu"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/WaitlistModal/WaitlistModal.tsx
 msgid "marketing.waitlist.modalDescription"
-msgstr "Dapatkan pemberitahuan saat Superset tersedia di Windows & Linux."
+msgstr "Dapatkan pemberitahuan saat Choros tersedia di Windows & Linux."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/WaitlistModal/WaitlistModal.tsx
@@ -16685,7 +16685,7 @@ msgstr "Anda sudah terdaftar!"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/WallOfLoveSection/WallOfLoveSection.tsx
 msgid "marketing.wallOfLove.heading"
-msgstr "Apa kata builder tentang Superset"
+msgstr "Apa kata builder tentang Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/WallOfLoveSection/WallOfLoveSection.tsx
@@ -17281,7 +17281,7 @@ msgstr "Baca panduan penyiapan"
 #. placeholder {0}: COMPANY.DOMAIN
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-connect-host/HomeConnectHostScreen.tsx
 msgid "mobile.connectHost.step1.body"
-msgstr "Unduh Superset di <0>{0}/download</0>."
+msgstr "Unduh Choros di <0>{0}/download</0>."
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-connect-host/HomeConnectHostScreen.tsx
@@ -17307,7 +17307,7 @@ msgstr "Izinkan akses lewat relay"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-connect-host/HomeConnectHostScreen.tsx
 msgid "mobile.connectHost.subtitle"
-msgstr "Superset Mobile menjalankan agen di komputer yang Anda hubungkan."
+msgstr "Choros Mobile menjalankan agen di komputer yang Anda hubungkan."
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-connect-host/HomeConnectHostScreen.tsx
@@ -17707,7 +17707,7 @@ msgstr "Belum ada perangkat"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/hosts/HostsSettingsScreen.tsx
 msgid "mobile.hostsSettings.emptyDescription"
-msgstr "Di aplikasi desktop Superset, buka Pengaturan → Akses Jarak Jauh dan aktifkan “Izinkan akses jarak jauh ke perangkat ini melalui relay”."
+msgstr "Di aplikasi desktop Choros, buka Pengaturan → Akses Jarak Jauh dan aktifkan “Izinkan akses jarak jauh ke perangkat ini melalui relay”."
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/hosts/HostsSettingsScreen.tsx
@@ -17951,13 +17951,13 @@ msgstr "Dependensi"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-paywall/HomePaywallScreen.tsx
 msgid "mobile.paywall.description"
-msgstr "Organisasi ini memakai paket Gratis. Superset Mobile tersedia untuk organisasi dengan paket Pro."
+msgstr "Organisasi ini memakai paket Gratis. Choros Mobile tersedia untuk organisasi dengan paket Pro."
 
 #. js-lingui-explicit-id
 #. placeholder {0}: activeOrganization.name
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-paywall/HomePaywallScreen.tsx
 msgid "mobile.paywall.descriptionNamed"
-msgstr "{0} memakai paket Gratis. Superset Mobile tersedia untuk organisasi dengan paket Pro."
+msgstr "{0} memakai paket Gratis. Choros Mobile tersedia untuk organisasi dengan paket Pro."
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-paywall/HomePaywallScreen.tsx
@@ -17967,7 +17967,7 @@ msgstr "Segarkan"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-paywall/HomePaywallScreen.tsx
 msgid "mobile.paywall.title"
-msgstr "Superset Mobile termasuk dalam Pro"
+msgstr "Choros Mobile termasuk dalam Pro"
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/components/ai-elements/plan.tsx
@@ -18431,7 +18431,7 @@ msgstr "Hapus akun"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/SettingsScreen.tsx
 msgid "mobile.settings.deleteAccount.failedMessage"
-msgstr "Terjadi kesalahan. Coba lagi, atau hubungi support@superset.sh."
+msgstr "Terjadi kesalahan. Coba lagi, atau hubungi support@choros.sh."
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/SettingsScreen.tsx
@@ -18513,8 +18513,8 @@ msgstr "Organisasi"
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/SettingsScreen.tsx
-msgid "mobile.settings.row.rateSuperset"
-msgstr "Beri Nilai Superset"
+msgid "mobile.settings.row.rateChoros"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/SettingsScreen.tsx
@@ -18594,7 +18594,7 @@ msgstr "Masuk untuk memulai"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(auth)/sign-in/SignInScreen.tsx
 msgid "mobile.signIn.title"
-msgstr "Selamat datang di Superset"
+msgstr "Selamat datang di Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/components/ai-elements/sources.tsx
@@ -18835,7 +18835,7 @@ msgstr "Host workspace ini sedang offline"
 #. placeholder {2}: hostCompatibility.minVersion
 #: ../../apps/mobile/screens/(authenticated)/workspace/[id]/WorkspaceScreen/WorkspaceScreen.tsx
 msgid "mobile.workspace.hostOutdated.body"
-msgstr "{0} menjalankan layanan host {1} — aplikasi ini butuh {2} atau lebih baru. Perbarui Superset di mesin itu."
+msgstr "{0} menjalankan layanan host {1} — aplikasi ini butuh {2} atau lebih baru. Perbarui Choros di mesin itu."
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/workspace/[id]/WorkspaceScreen/WorkspaceScreen.tsx
@@ -19542,7 +19542,7 @@ msgstr "Gagal mengunggah avatar"
 #. js-lingui-explicit-id
 #: src/server-errors.ts
 msgid "serverError.user.theRecoveryPeriodHasEndedContact"
-msgstr "Masa pemulihan sudah berakhir. Hubungi support@superset.sh."
+msgstr "Masa pemulihan sudah berakhir. Hubungi support@choros.sh."
 
 #. js-lingui-explicit-id
 #: src/server-errors.ts
@@ -19757,7 +19757,7 @@ msgstr "Keluar"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/AccountSettings.tsx
 msgid "settings.account.signOutHint"
-msgstr "Anda perlu masuk lagi untuk memakai Superset di perangkat ini."
+msgstr "Anda perlu masuk lagi untuk memakai Choros di perangkat ini."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/AccountSettings.tsx
@@ -19958,7 +19958,7 @@ msgstr "Hapus agen"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/agents/components/V2AgentsSettings/components/AgentDetail/AgentDetail.tsx
 msgid "settings.agents.detail.hooksAriaLabel"
-msgstr "Hook Superset"
+msgstr "Hook Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/agents/components/V2AgentsSettings/components/AgentDetail/AgentDetail.tsx
@@ -19968,12 +19968,12 @@ msgstr "Tampilkan status dan kirim notifikasi untuk agen ini."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/agents/components/V2AgentsSettings/components/AgentDetail/AgentDetail.tsx
 msgid "settings.agents.detail.hooksTitle"
-msgstr "Hook Superset"
+msgstr "Hook Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/agents/components/V2AgentsSettings/components/AgentDetail/AgentDetail.tsx
 msgid "settings.agents.detail.hooksTooltip"
-msgstr "Mendaftarkan hook lifecycle di konfigurasi global agen ini agar Superset bisa menampilkan status dan mengirim notifikasi. Mematikannya menghapus entri Superset di mana-mana — status dan notifikasi berhenti untuk agen ini, termasuk di dalam Superset."
+msgstr "Mendaftarkan hook lifecycle di konfigurasi global agen ini agar Choros bisa menampilkan status dan mengirim notifikasi. Mematikannya menghapus entri Choros di mana-mana — status dan notifikasi berhenti untuk agen ini, termasuk di dalam Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/agents/components/V2AgentsSettings/components/AgentDetail/AgentDetail.tsx
@@ -20589,7 +20589,7 @@ msgstr "Tufte"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/appearance/components/AppearanceSettings/AppearanceSettings.tsx
 msgid "settings.appearance.subtitle"
-msgstr "Sesuaikan tampilan Superset di perangkat Anda"
+msgstr "Sesuaikan tampilan Choros di perangkat Anda"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/appearance/components/AppearanceSettings/components/ThemeSection/ThemeSection.tsx
@@ -20896,7 +20896,7 @@ msgstr "Dukung proyek ini dengan star GitHub"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/behavior/components/BehaviorSettings/components/GithubStarRow/GithubStarRow.tsx
 msgid "settings.behavior.githubStar.label"
-msgstr "Beri star Superset di GitHub"
+msgstr "Beri star Choros di GitHub"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/behavior/components/BehaviorSettings/components/GithubStarRow/GithubStarRow.tsx
@@ -21543,7 +21543,7 @@ msgstr "Impor…"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/browser/components/BrowserSettings/BrowserSettings.tsx
 msgid "settings.browser.importHint"
-msgstr "Salin riwayat penjelajahan dan login dari Chrome, Brave, Arc, atau browser Chromium lain ke Superset."
+msgstr "Salin riwayat penjelajahan dan login dari Chrome, Brave, Arc, atau browser Chromium lain ke Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/browser/components/BrowserSettings/BrowserSettings.tsx
@@ -21932,7 +21932,7 @@ msgstr "Pakai pengalaman workspace yang baru."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/ExperimentalSettings/ExperimentalSettings.tsx
 msgid "settings.experimental.v2Label"
-msgstr "Coba Superset v2"
+msgstr "Coba Choros v2"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/ExperimentalSettings/components/WaitForSetupBeforeAgentSetting/WaitForSetupBeforeAgentSetting.tsx
@@ -22163,7 +22163,7 @@ msgstr "Hapus host"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/hosts/$hostId/components/HostSettings/components/DeleteHostSection/DeleteHostSection.tsx
 msgid "settings.hosts.deleteHost.localHint"
-msgstr "Hentikan Superset di sini untuk menghapus dari perangkat lain."
+msgstr "Hentikan Choros di sini untuk menghapus dari perangkat lain."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/hosts/page.tsx
@@ -23052,8 +23052,8 @@ msgstr "Terhubung"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/models/components/ModelsSettings/utils.ts
-msgid "settings.models.status.connectedInSuperset"
-msgstr "Terhubung di Superset"
+msgid "settings.models.status.connectedInChoros"
+msgstr "Terhubung di Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/models/components/ModelsSettings/utils.ts
@@ -23190,7 +23190,7 @@ msgstr "Menghapus organisasi..."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/organization/components/OrganizationSettings/OrganizationSettings.tsx
 msgid "settings.organization.idHint"
-msgstr "Pakai ini saat memanggil API Superset."
+msgstr "Pakai ini saat memanggil API Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/organization/components/OrganizationSettings/OrganizationSettings.tsx
@@ -23425,7 +23425,7 @@ msgstr "Tidak diketahui"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/permissions/components/PermissionsSettings/PermissionsSettings.tsx
 msgid "settings.permissions.subtitle"
-msgstr "Berikan izin OS yang dibutuhkan Superset."
+msgstr "Berikan izin OS yang dibutuhkan Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/permissions/components/PermissionsSettings/PermissionsSettings.tsx
@@ -25987,6 +25987,11 @@ msgstr "Reset dalam {countdown} · {absolute}"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
+msgid "settings.usage.resources.chorosApp"
+msgstr "Aplikasi Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.collapseProject"
 msgstr "Ciutkan proyek"
 
@@ -26071,7 +26076,7 @@ msgstr "Renderer"
 #. placeholder {2}: formatMemory(freeMemory)
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.ramBarAriaLabel"
-msgstr "RAM sistem: Superset {0}, aplikasi lain {1}, bebas {2}"
+msgstr "RAM sistem: Choros {0}, aplikasi lain {1}, bebas {2}"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
@@ -26126,12 +26131,22 @@ msgstr "Urutan sidebar"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.sparklineCpu"
-msgstr "CPU Superset · 5 menit terakhir"
+msgstr "CPU Choros · 5 menit terakhir"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.sparklineMemory"
-msgstr "Memori Superset · 5 menit terakhir"
+msgstr "Memori Choros · 5 menit terakhir"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
+msgid "settings.usage.resources.statChorosCpu"
+msgstr "CPU Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
+msgid "settings.usage.resources.statChorosMemory"
+msgstr "Memori Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
@@ -26145,16 +26160,6 @@ msgstr "Beban (1 mnt)"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
-msgid "settings.usage.resources.statSupersetCpu"
-msgstr "CPU Superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
-msgid "settings.usage.resources.statSupersetMemory"
-msgstr "Memori Superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.statSystemMemory"
 msgstr "Memori sistem"
 
@@ -26162,11 +26167,6 @@ msgstr "Memori sistem"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.statSystemRamShare"
 msgstr "Porsi RAM sistem"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
-msgid "settings.usage.resources.supersetApp"
-msgstr "Aplikasi Superset"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/components/ResourceSparkline/ResourceSparkline.tsx
@@ -26661,7 +26661,7 @@ msgstr "Periksa Pembaruan"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/tray/index.ts
 msgid "tray.closeApp"
-msgstr "Tutup Superset"
+msgstr "Tutup Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/tray/index.ts
@@ -26711,12 +26711,12 @@ msgstr "Tidak ada layanan aktif"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/tray/index.ts
 msgid "tray.openApp"
-msgstr "Buka Superset"
+msgstr "Buka Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/tray/index.ts
 msgid "tray.quitCompletely"
-msgstr "Keluar dari Superset Sepenuhnya"
+msgstr "Keluar dari Choros Sepenuhnya"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/tray/index.ts
@@ -27667,7 +27667,7 @@ msgstr "Pakai aplikasi desktop untuk mulai menjalankan agen coding paralel."
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(agents)/agents/page.tsx
 msgid "web.agents.downloadTitle"
-msgstr "Unduh Superset"
+msgstr "Unduh Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(agents)/constants.ts
@@ -27777,7 +27777,7 @@ msgstr "Otorisasi gagal"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/cli/auth/code/components/CliAuthCodeDisplay/CliAuthCodeDisplay.tsx
 msgid "web.cliAuth.codeHint"
-msgstr "Tempel ini ke Superset CLI:"
+msgstr "Tempel ini ke Choros CLI:"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/cli/auth/code/components/CliAuthCodeDisplay/CliAuthCodeDisplay.tsx
@@ -27903,7 +27903,7 @@ msgstr "Masuk sebagai <0>{userName}</0>"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/oauth/consent/components/ConsentForm/ConsentForm.tsx
 msgid "web.consent.subtitle"
-msgstr "<0>{displayName}</0> meminta akses ke akun Superset Anda"
+msgstr "<0>{displayName}</0> meminta akses ke akun Choros Anda"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/oauth/consent/components/ConsentForm/ConsentForm.tsx
@@ -27964,6 +27964,11 @@ msgstr "Tombol — varian"
 #: ../../apps/web/src/app/design/components/ActionsSection/ActionsSection.tsx
 msgid "web.design.actionsSection.chooseApp"
 msgstr "Pilih aplikasi"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/ActionsSection/ActionsSection.tsx
+msgid "web.design.actionsSection.chorosSh"
+msgstr "choros.sh"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/ActionsSection/ActionsSection.tsx
@@ -28102,11 +28107,6 @@ msgstr "Split button mencerminkan OpenInButton di desktop; pemicu picker mencerm
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/ActionsSection/ActionsSection.tsx
-msgid "web.design.actionsSection.supersetSh"
-msgstr "superset.sh"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/ActionsSection/ActionsSection.tsx
 msgid "web.design.actionsSection.terminal"
 msgstr "Terminal"
 
@@ -28161,344 +28161,514 @@ msgid "web.design.actionsSection.xsSmDefaultLgIcon"
 msgstr "xs · sm · default · lg · icon-xs → icon-lg"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.55CallSitesPassShowarrow"
 msgstr "55 titik pemanggilan meneruskan {code}"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.aiAgentActivity"
 msgstr "AI · Aktivitas agen"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.appsDesktopSrcRenderer"
 msgstr "apps/desktop/src/renderer"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.bakingTheChipStyleInto"
 msgstr "Menanamkan gaya chip ke tooltip.tsx"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.chainOfThought"
 msgstr "Rantai Pemikiran"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.comparedAgainstTheDefaultStyle"
 msgstr "Dibandingkan dengan gaya bawaan"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.found12TooltipCallSites"
 msgstr "Menemukan 12 call site tooltip"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.grepped"
 msgstr "Di-grep"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.hotkeytooltipTsx"
 msgstr "HotkeyTooltip.tsx"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.makeTheChipStyleThe"
 msgstr "Jadikan gaya chip sebagai bawaan TooltipContent"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.packagesUiSrcComponentsUi"
 msgstr "packages/ui/src/components/ui/kbd.tsx"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.paneheaderactionsTsx"
 msgstr "PaneHeaderActions.tsx"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.plan"
 msgstr "Paket"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.planningTheTooltipRefactor"
 msgstr "Merencanakan refactor tooltip"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.presetsbarTsx"
 msgstr "PresetsBar.tsx"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.read"
 msgstr "Dibaca"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.searchedForTooltipOverrides"
 msgstr "Mencari penimpaan tooltip"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.searchingForKbdUsages"
 msgstr "Mencari penggunaan Kbd"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.standardizeTooltipStyling"
 msgstr "Seragamkan gaya tooltip"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.stripRedundantOverridesAtCall"
 msgstr "Buang penimpaan berlebih di call site"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.structuredProgressChainOfThought"
 msgstr "Progres terstruktur: rantai pemikiran, tugas, rencana"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.task"
 msgstr "Tugas"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.threeStepsTouchesPackagesUi"
 msgstr "Tiga langkah · menyentuh packages/ui dan apps/desktop"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.verifyKbdStaysVisibleInside"
 msgstr "Pastikan Kbd tetap terlihat di dalam tooltip"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.aiConversation"
 msgstr "AI · Percakapan"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
-msgid "web.design.aiChatSection.alsoSupersetUiAiElements"
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
+msgid "web.design.aiChatSection.alsoChorosUiAiElements"
 msgstr "Juga: @choros/ui/ai-elements/message — menempel di bawah saat konten mengalir"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.canYouStandardizeTheTooltips"
 msgstr "Bisakah kamu menyeragamkan tooltip di seluruh aplikasi?"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.chatSurfacesMessagesReasoningSuggestions"
 msgstr "Permukaan chat: pesan, penalaran, saran"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.collapsibleThinkingBlockWithDuration"
 msgstr "Blok berpikir yang bisa diciutkan dengan label durasi"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.conversationMessage"
 msgstr "Percakapan · Pesan"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.doneTheBorderedChipStyle"
 msgstr "Selesai — gaya chip bergaris yang dipakai presets bar kini menjadi bawaan untuk tiap tooltip, dan penimpaan salin-tempelnya sudah dihapus (bersih −90 baris)."
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.niceOpenAPrWhen"
 msgstr "Bagus, buka PR kalau sudah siap."
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.reasoning"
 msgstr "Penalaran"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.suggestions"
 msgstr "Saran"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.45Files82172"
 msgstr "45 file · +82 −172"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.874kOf200kTokens"
 msgstr "87,4 rb dari 200 rb token dipakai di sesi ini."
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.aiContent"
 msgstr "AI · Konten"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.artifact"
 msgstr "Artifact"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.checkpoint"
 msgstr "Checkpoint"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.checkpointBeforeTooltipRefactor"
 msgstr "Checkpoint · sebelum refactor tooltip"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.classnameRoundedSmBorderBorder"
 msgstr "- className=\"rounded-sm border border-border bg-background …\""
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.codeBlock"
 msgstr "Blok Kode"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.context"
 msgstr "Konteks"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.download"
 msgstr "Unduh"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.inlineCitation"
 msgstr "Kutipan Sebaris"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.needLiveChatToolCall"
 msgstr "Butuh status chat/tool-call langsung (ToolUIPart, stream) atau app shell"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.notDemoedHere"
 msgstr "Tidak didemokan di sini"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.popperBasedPositioningPlacesAnd"
 msgstr "Penempatan berbasis Popper memposisikan dan memutar elemen panah secara otomatis."
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.radixPrimitives"
 msgstr "Radix Primitives"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.radixRotatesTheTooltipArrow"
 msgstr "Radix memutar pembungkus panah tooltip per sisi,"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.radixTooltipDocs"
 msgstr "Dokumentasi Radix Tooltip"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.renderedOutputCodeSourcesCitations"
 msgstr "Output yang dirender: kode, sumber, kutipan, konteks"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.shadcnUiTooltipRecipe"
 msgstr "Resep tooltip shadcn/ui"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.shikiHighlightedWithOptionalLine"
 msgstr "Disorot Shiki, dengan nomor baris opsional"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.soABorderOnTwo"
 msgstr "jadi garis pada dua sisi persegi yang diputar selalu menghadap ke luar."
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.sources"
 msgstr "Sumber"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.tailwindV4ThemeReference"
 msgstr "Referensi tema Tailwind v4"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.tokenBudgetIndicatorHoverThe"
 msgstr "Indikator anggaran token — arahkan kursor ke persentasenya"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.tooltipRefactorDiff"
 msgstr "tooltip-refactor.diff"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.aiStatus"
 msgstr "AI · Status"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
-msgid "web.design.aiStatusSection.alsoSupersetUiAiElements"
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
+msgid "web.design.aiStatusSection.alsoChorosUiAiElements"
 msgstr "Juga: @choros/ui/ai-elements/braille-spinner"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.animatedTextForInFlight"
 msgstr "Teks beranimasi untuk aktivitas agen yang sedang berjalan"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.doneIsshimmeringFalse"
 msgstr "Selesai (isShimmering=false)"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.loaderBrailleSpinner"
 msgstr "Loader · Braille Spinner"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.loadingAndInFlightActivity"
 msgstr "Indikator pemuatan dan aktivitas yang sedang berjalan"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.runningBunTest"
 msgstr "Menjalankan bun test…"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.shimmerShimmerLabel"
 msgstr "Shimmer · Label Shimmer"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.thinkingAboutTheApproach"
 msgstr "Memikirkan pendekatannya"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.choros.descriptionLead"
+msgstr "Semua yang kami bangun di atas primitif — orisinal Choros, suite"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.choros.descriptionTail"
+msgstr "untuk UI agen, dan komponen aplikasi bersama. Klik path impor mana pun untuk menyalinnya."
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.choros.title"
+msgstr "Komponen Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.aiAgentActivity"
+msgstr "AI · Aktivitas agen"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.aiContent"
+msgstr "AI · Konten"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.aiConversation"
+msgstr "AI · Percakapan"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.aiStatus"
+msgstr "AI · Status"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.originals"
+msgstr "Orisinal"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.sharedAppComponents"
+msgstr "Komponen aplikasi bersama"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertCheckbox"
+msgstr "Jangan tanya lagi"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertDescription"
+msgstr "Worktree punya suntingan yang belum di-commit dari sesi agen."
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertDiscard"
+msgstr "Buang"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertImperative"
+msgstr "Alert (imperatif)"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertKeepWorking"
+msgstr "Lanjut bekerja"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertOpensAPromiseFriendly"
+msgstr "alert() membuka dialog ramah promise lewat Alerter yang terpasang"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertTitle"
+msgstr "Buang perubahan?"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.animatedWebglGradientStripeGradient"
+msgstr "Gradien WebGL beranimasi (stripe-gradient)"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.avatarAtom"
+msgstr "Avatar (atom)"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.chorosOriginals"
+msgstr "Orisinal Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.customComponentsBeyondTheShadcn"
+msgstr "Komponen kustom di luar set shadcn"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.initialsFallbackViaGetinitialsSizes"
+msgstr "Fallback inisial lewat getInitials, ukuran xs → xl"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.meshGradient"
+msgstr "Mesh Gradient"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.mobileApp"
+msgstr "Aplikasi mobile"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.monitorAgentsFromYourPhone"
+msgstr "Pantau agen dari ponsel Anda."
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.needAppLevelWiringForm"
+msgstr "Butuh perangkaian di level aplikasi (state form, data grafik, app shell)"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.referencedNotDemoed"
+msgstr "Dirujuk, tidak didemokan"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.sidebarCard"
+msgstr "Sidebar Card"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.themePreviewCard"
+msgstr "Theme Preview Card"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.themeSubtitle"
+msgstr "Tema terminal bawaan"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.toastDiscarded"
+msgstr "Dibuang"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.toastDiscardedNoAsk"
+msgstr "Dibuang — tidak akan ditanya lagi"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.toastDismissed"
+msgstr "Diabaikan"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.toastOpeningTestflight"
+msgstr "Membuka TestFlight…"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.triggerAlert"
+msgstr "Picu alert()"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/ComponentCard/ComponentCard.tsx
@@ -28567,8 +28737,13 @@ msgstr "Carousel"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
-msgid "web.design.dataSection.chooseWhenSupersetPingsYou"
-msgstr "Pilih kapan Superset memberi tahu Anda."
+msgid "web.design.dataSection.chooseWhenChorosPingsYou"
+msgstr "Pilih kapan Choros memberi tahu Anda."
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
+msgid "web.design.dataSection.choros"
+msgstr "Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
@@ -28607,8 +28782,8 @@ msgstr "Idle · branch sudah di-push"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
-msgid "web.design.dataSection.includesTheSupersetSpecificBox"
-msgstr "Termasuk varian box khusus Superset"
+msgid "web.design.dataSection.includesTheChorosSpecificBox"
+msgstr "Termasuk varian box khusus Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
@@ -28652,11 +28827,6 @@ msgstr "Status"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
-msgid "web.design.dataSection.superset"
-msgstr "Superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
 msgid "web.design.dataSection.table"
 msgstr "Tabel"
 
@@ -28682,7 +28852,7 @@ msgstr "Alert, toast, progres, dan status pemuatan"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/FeedbackSection/FeedbackSection.tsx
-msgid "web.design.feedbackSection.alsoSupersetUiSpinner"
+msgid "web.design.feedbackSection.alsoChorosUiSpinner"
 msgstr "Juga: @choros/ui/spinner"
 
 #. js-lingui-explicit-id
@@ -28802,7 +28972,7 @@ msgstr "Terima ketentuan"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
-msgid "web.design.inputsSection.alsoSupersetUiRadioGroup"
+msgid "web.design.inputsSection.alsoChorosUiRadioGroup"
 msgstr "Juga: @choros/ui/radio-group, @choros/ui/switch"
 
 #. js-lingui-explicit-id
@@ -28834,6 +29004,11 @@ msgstr "Kalender"
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
 msgid "web.design.inputsSection.checkboxRadioSwitch"
 msgstr "Checkbox · Radio · Switch"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
+msgid "web.design.inputsSection.choros"
+msgstr "choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
@@ -28947,11 +29122,6 @@ msgstr "Slider"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
-msgid "web.design.inputsSection.superset"
-msgstr "superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
 msgid "web.design.inputsSection.textarea"
 msgstr "Textarea"
 
@@ -28962,7 +29132,7 @@ msgstr "Workspace"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
-msgid "web.design.layoutSection.alsoSupersetUiOverflowFade"
+msgid "web.design.layoutSection.alsoChorosUiOverflowFade"
 msgstr "Juga: @choros/ui/overflow-fade-text"
 
 #. js-lingui-explicit-id
@@ -28979,6 +29149,11 @@ msgstr "Aspect Ratio"
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
 msgid "web.design.layoutSection.changelog"
 msgstr "Changelog"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
+msgid "web.design.layoutSection.chorosUi"
+msgstr "Choros UI"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
@@ -29034,11 +29209,6 @@ msgstr "Sumber"
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
 msgid "web.design.layoutSection.structureScrollingAndOverflowHandling"
 msgstr "Struktur, penggulungan, dan penanganan overflow"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
-msgid "web.design.layoutSection.supersetUi"
-msgstr "Superset UI"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
@@ -29387,6 +29557,16 @@ msgstr "Batal"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
+msgid "web.design.overlaysSection.choros"
+msgstr "@choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
+msgid "web.design.overlaysSection.choros2"
+msgstr "Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
 msgid "web.design.overlaysSection.close"
 msgstr "Tutup"
 
@@ -29532,16 +29712,6 @@ msgstr "Menggeser masuk dari tepi viewport."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
-msgid "web.design.overlaysSection.superset"
-msgstr "@superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
-msgid "web.design.overlaysSection.superset2"
-msgstr "Superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
 msgid "web.design.overlaysSection.terminalFontSize"
 msgstr "Ukuran font terminal"
 
@@ -29593,105 +29763,105 @@ msgstr ". Tiap kartu menampilkan path impor kanoniknya — klik untuk menyalin. 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/page.tsx
 msgid "web.design.primitives.title"
-msgstr "Design System Superset"
+msgstr "Design System Choros"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.agentPickerClaudeCodexCursor"
 msgstr "Pemilih agen (Claude, Codex, Cursor…) yang dipakai tiap alur pembuatan sesi"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.canonicalMarkdownSurfaceForAgent"
 msgstr "Permukaan markdown kanonik untuk output agen, komentar, dan dokumentasi"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.ghostTriggerIconTruncatingLabel"
 msgstr "Pemicu ghost: ikon + label terpotong + chevron atas-bawah (pola didemokan di halaman Primitives)"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.longHoverShortcutOnlyTooltip"
 msgstr "Tooltip khusus pintasan saat hover lama; gaya chip-nya kini menjadi bawaan TooltipContent"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.markdownAuthoringSurfaceWithPreview"
 msgstr "Permukaan penulisan markdown dengan pratinjau"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.modelPickerScopedToThe"
 msgstr "Pemilih model yang dibatasi pada agen yang dipilih"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.paneLayoutRootRendersA"
 msgstr "Root tata letak panel: merender pohon panel sebuah workspace"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.rendersARegisteredHotkeyInside"
 msgstr "Merender hotkey terdaftar di dalam item dropdown/menubar"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.sidebarPillShownWhenAn"
 msgstr "Pil sidebar yang muncul saat pembaruan aplikasi siap dipasang"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.splitButtonOpenWorktreeIn"
 msgstr "Split button: buka worktree di aplikasi bawaan + dropdown pemilih aplikasi"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.standardActionStripForPane"
 msgstr "Strip aksi standar untuk header panel"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.terminalThemeColorPalettePreview"
 msgstr "Pratinjau palet warna tema terminal"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.textInputWithEmojiPicker"
 msgstr "Input teks dengan dukungan pemilih emoji"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.workspaceAccentColorPicker"
 msgstr "Pemilih warna aksen workspace"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.crossFeatureComponentsLivingOutside"
 msgstr "Komponen lintas fitur yang berada di luar packages/ui — cek di sini sebelum membuat yang baru"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.desktopRenderer"
 msgstr "Renderer desktop"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.electronTrpcCoupledSoReferenced"
 msgstr "Terikat Electron/tRPC, jadi dirujuk alih-alih dirender. Badge = jumlah tempat impor saat ini; angka tinggi adalah kandidat untuk dipromosikan ke packages/ui"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.paneSystem"
 msgstr "Sistem panel"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.reactLayerOfTheShared"
 msgstr "Lapisan React dari mesin tata letak panel/workspace bersama"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.sharedAppComponents"
 msgstr "Komponen aplikasi bersama"
 
@@ -29699,176 +29869,6 @@ msgstr "Komponen aplikasi bersama"
 #: ../../apps/web/src/app/design/components/ShowcaseNav/ShowcaseNav.tsx
 msgid "web.design.showcaseNav.sections"
 msgstr "Bagian"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.superset.descriptionLead"
-msgstr "Semua yang kami bangun di atas primitif — orisinal Superset, suite"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.superset.descriptionTail"
-msgstr "untuk UI agen, dan komponen aplikasi bersama. Klik path impor mana pun untuk menyalinnya."
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.superset.title"
-msgstr "Komponen Superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.aiAgentActivity"
-msgstr "AI · Aktivitas agen"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.aiContent"
-msgstr "AI · Konten"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.aiConversation"
-msgstr "AI · Percakapan"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.aiStatus"
-msgstr "AI · Status"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.originals"
-msgstr "Orisinal"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.sharedAppComponents"
-msgstr "Komponen aplikasi bersama"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertCheckbox"
-msgstr "Jangan tanya lagi"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertDescription"
-msgstr "Worktree punya suntingan yang belum di-commit dari sesi agen."
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertDiscard"
-msgstr "Buang"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertImperative"
-msgstr "Alert (imperatif)"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertKeepWorking"
-msgstr "Lanjut bekerja"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertOpensAPromiseFriendly"
-msgstr "alert() membuka dialog ramah promise lewat Alerter yang terpasang"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertTitle"
-msgstr "Buang perubahan?"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.animatedWebglGradientStripeGradient"
-msgstr "Gradien WebGL beranimasi (stripe-gradient)"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.avatarAtom"
-msgstr "Avatar (atom)"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.customComponentsBeyondTheShadcn"
-msgstr "Komponen kustom di luar set shadcn"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.initialsFallbackViaGetinitialsSizes"
-msgstr "Fallback inisial lewat getInitials, ukuran xs → xl"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.meshGradient"
-msgstr "Mesh Gradient"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.mobileApp"
-msgstr "Aplikasi mobile"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.monitorAgentsFromYourPhone"
-msgstr "Pantau agen dari ponsel Anda."
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.needAppLevelWiringForm"
-msgstr "Butuh perangkaian di level aplikasi (state form, data grafik, app shell)"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.referencedNotDemoed"
-msgstr "Dirujuk, tidak didemokan"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.sidebarCard"
-msgstr "Sidebar Card"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.supersetOriginals"
-msgstr "Orisinal Superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.themePreviewCard"
-msgstr "Theme Preview Card"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.themeSubtitle"
-msgstr "Tema terminal bawaan"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.toastDiscarded"
-msgstr "Dibuang"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.toastDiscardedNoAsk"
-msgstr "Dibuang — tidak akan ditanya lagi"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.toastDismissed"
-msgstr "Diabaikan"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.toastOpeningTestflight"
-msgstr "Membuka TestFlight…"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.triggerAlert"
-msgstr "Picu alert()"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/auth/desktop/success/page.tsx
@@ -29903,7 +29903,7 @@ msgstr "Tindak lanjut di web segera hadir"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/components/Footer/Footer.tsx
 msgid "web.footer.copyright"
-msgstr "© {year} Superset"
+msgstr "© {year} Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/components/Footer/Footer.tsx
@@ -30095,7 +30095,7 @@ msgstr "Hubungkan repositori GitHub Anda dan sinkronkan pull request. Lacak stat
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/github/page.tsx
 msgid "web.integrations.github.callback.alreadyConnected"
-msgstr "Instalasi GitHub ini sudah terhubung ke organisasi Superset lain. Putuskan di sana, atau copot GitHub App Superset, lalu coba lagi."
+msgstr "Instalasi GitHub ini sudah terhubung ke organisasi Choros lain. Putuskan di sana, atau copot GitHub App Choros, lalu coba lagi."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/github/page.tsx
@@ -30130,7 +30130,7 @@ msgstr "GitHub terhubung, tapi sinkronisasi awal gagal dimulai. Silakan coba hub
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/github/page.tsx
 msgid "web.integrations.github.connectionDescription"
-msgstr "Pasang GitHub App Superset untuk menghubungkan repositori Anda."
+msgstr "Pasang GitHub App Choros untuk menghubungkan repositori Anda."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/github/components/ConnectionControls/ConnectionControls.tsx
@@ -30175,7 +30175,7 @@ msgstr "Akses Calendar dan Gmail keduanya diperlukan. Izinkan keduanya saat dimi
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/google/page.tsx
 msgid "web.integrations.google.callback.noRefreshToken"
-msgstr "Google tidak memberikan akses jangka panjang. Hapus Superset dari akses pihak ketiga di akun Google Anda lalu coba lagi."
+msgstr "Google tidak memberikan akses jangka panjang. Hapus Choros dari akses pihak ketiga di akun Google Anda lalu coba lagi."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/google/page.tsx
@@ -30215,7 +30215,7 @@ msgstr "Hubungkan ulang Google"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/linear/page.tsx
 msgid "web.integrations.linear.blurb"
-msgstr "Sinkronkan issue dua arah dengan Linear. Buat tugas di Superset dan tugas itu muncul di Linear, atau impor issue Linear yang sudah ada."
+msgstr "Sinkronkan issue dua arah dengan Linear. Buat tugas di Choros dan tugas itu muncul di Linear, atau impor issue Linear yang sudah ada."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/linear/page.tsx
@@ -30245,7 +30245,7 @@ msgstr "Tim bawaan untuk tugas baru"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/linear/page.tsx
 msgid "web.integrations.linear.defaultTeamHint"
-msgstr "Tugas yang dibuat di Superset akan disinkronkan ke tim Linear ini."
+msgstr "Tugas yang dibuat di Choros akan disinkronkan ke tim Linear ini."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/linear/components/ConnectionControls/ConnectionControls.tsx
@@ -30275,7 +30275,7 @@ msgstr "Pengaturan"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/linear/page.tsx
 msgid "web.integrations.linear.settingsDescription"
-msgstr "Atur cara tugas disinkronkan antara Superset dan Linear."
+msgstr "Atur cara tugas disinkronkan antara Choros dan Linear."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/github/page.tsx
@@ -30376,7 +30376,7 @@ msgstr "Gagal terhubung ke Slack. Silakan coba lagi."
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/slack/page.tsx
 msgid "web.integrations.slack.callback.workspaceLinked"
-msgstr "Workspace Slack ini sudah terhubung oleh organisasi Superset lain."
+msgstr "Workspace Slack ini sudah terhubung oleh organisasi Choros lain."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/slack/page.tsx
@@ -30436,7 +30436,7 @@ msgstr "Terhubung, tapi Microsoft Graph menolak langganan notifikasinya."
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/microsoft-teams/page.tsx
 msgid "web.integrations.teams.callback.tenantLinked"
-msgstr "Tenant Microsoft ini sudah terhubung oleh organisasi Superset lain."
+msgstr "Tenant Microsoft ini sudah terhubung oleh organisasi Choros lain."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/microsoft-teams/page.tsx
@@ -30535,8 +30535,8 @@ msgstr "Tautannya mungkin salah, halamannya mungkin sudah dihapus, atau Anda mun
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/page/[slug]/not-found.tsx
-msgid "web.pageNotFound.goToSuperset"
-msgstr "Ke Superset"
+msgid "web.pageNotFound.goToChoros"
+msgstr "Ke Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/page/[slug]/not-found.tsx
@@ -30798,7 +30798,7 @@ msgstr "Belum punya akun? <0>Daftar</0>"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(auth)/sign-in/[[...sign-in]]/page.tsx
 msgid "web.signIn.subtitle"
-msgstr "Masuk untuk melanjutkan ke Superset"
+msgstr "Masuk untuk melanjutkan ke Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(auth)/sign-in/[[...sign-in]]/page.tsx
@@ -30838,7 +30838,7 @@ msgstr "Sudah punya akun? <0>Masuk</0>"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(auth)/sign-up/[[...sign-up]]/page.tsx
 msgid "web.signUp.subtitle"
-msgstr "Daftar untuk mulai memakai Superset"
+msgstr "Daftar untuk mulai memakai Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(auth)/sign-up/[[...sign-up]]/page.tsx
@@ -30858,7 +30858,7 @@ msgstr "Daftar dengan Google"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/slack/linked/page.tsx
 msgid "web.slackLinked.description"
-msgstr "Akun Slack Anda sudah ditautkan ke Superset. Anda bisa menutup tab ini dan kembali ke Slack."
+msgstr "Akun Slack Anda sudah ditautkan ke Choros. Anda bisa menutup tab ini dan kembali ke Slack."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/slack/linked/page.tsx
@@ -33446,17 +33446,17 @@ msgstr "Ganti nama..."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
 msgid "workspace.hostReachability.connectionFailed"
-msgstr "Koneksinya gagal (status relay {status}). Coba lagi, dan kalau terus terjadi mulai ulang Superset di perangkat itu."
+msgstr "Koneksinya gagal (status relay {status}). Coba lagi, dan kalau terus terjadi mulai ulang Choros di perangkat itu."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
 msgid "workspace.hostReachability.deviceNotConnected"
-msgstr "Perangkat itu tidak terhubung ke relay. Pastikan perangkatnya menyala, online, dan menjalankan Superset — perangkat akan tersambung sendiri setelah itu."
+msgstr "Perangkat itu tidak terhubung ke relay. Pastikan perangkatnya menyala, online, dan menjalankan Choros — perangkat akan tersambung sendiri setelah itu."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
 msgid "workspace.hostReachability.localStopped"
-msgstr "Layanan host lokal berhenti merespons. Coba lagi dulu; kalau tidak berhasil, mulai ulang dari menu tray Superset > Host Service > Restart."
+msgstr "Layanan host lokal berhenti merespons. Coba lagi dulu; kalau tidak berhasil, mulai ulang dari menu tray Choros > Host Service > Restart."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
@@ -33466,12 +33466,12 @@ msgstr "Anda tidak punya akses ke host ini. Kalau ini perangkat Anda sendiri, ak
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
 msgid "workspace.hostReachability.onlineButFailed"
-msgstr "Perangkat itu online tapi koneksinya tidak bisa dibangun — biasanya soal perutean relay, bukan perangkatnya. Coba lagi, dan kalau terus terjadi mulai ulang Superset di perangkat itu."
+msgstr "Perangkat itu online tapi koneksinya tidak bisa dibangun — biasanya soal perutean relay, bukan perangkatnya. Coba lagi, dan kalau terus terjadi mulai ulang Choros di perangkat itu."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
 msgid "workspace.hostReachability.onlineButFailedRegion"
-msgstr "Perangkat itu online (region {region}) tapi koneksinya tidak bisa dibangun — biasanya soal perutean relay, bukan perangkatnya. Coba lagi, dan kalau terus terjadi mulai ulang Superset di perangkat itu."
+msgstr "Perangkat itu online (region {region}) tapi koneksinya tidak bisa dibangun — biasanya soal perutean relay, bukan perangkatnya. Coba lagi, dan kalau terus terjadi mulai ulang Choros di perangkat itu."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
@@ -34329,7 +34329,7 @@ msgstr "Host tidak diketahui"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/WorkspaceHostIncompatibleState/WorkspaceHostIncompatibleState.tsx
 msgid "workspace.states.hostIncompatibleBody"
-msgstr "Host workspace ini memakai versi Superset yang lebih lama daripada yang didukung klien ini. Perbarui aplikasi Superset di perangkat itu untuk tersambung lagi."
+msgstr "Host workspace ini memakai versi Choros yang lebih lama daripada yang didukung klien ini. Perbarui aplikasi Choros di perangkat itu untuk tersambung lagi."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/WorkspaceHostIncompatibleState/WorkspaceHostIncompatibleState.tsx
@@ -34354,7 +34354,7 @@ msgstr "Host perlu diperbarui"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/WorkspaceHostUnreachableState/WorkspaceHostUnreachableState.tsx
 msgid "workspace.states.hostUnreachableBody"
-msgstr "Workspace ini ada di perangkat yang tidak bisa dijangkau Superset saat ini. Terminal, file, dan agen tetap di tempatnya — semuanya kembali begitu koneksinya pulih."
+msgstr "Workspace ini ada di perangkat yang tidak bisa dijangkau Choros saat ini. Terminal, file, dan agen tetap di tempatnya — semuanya kembali begitu koneksinya pulih."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/WorkspaceHostUnreachableState/WorkspaceHostUnreachableState.tsx
@@ -34409,7 +34409,7 @@ msgstr "Layanan host lokal tidak berjalan, jadi tidak ada yang bisa melayani wor
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/providers/WorkspaceProvider/utils/localHostServiceDetail/localHostServiceDetail.ts
 msgid "workspace.states.localHostDetailUnknown"
-msgstr "Layanan host lokal tidak merespons. Memulainya ulang biasanya menyelesaikan ini; kalau terus terjadi, mulai ulang Superset."
+msgstr "Layanan host lokal tidak merespons. Memulainya ulang biasanya menyelesaikan ini; kalau terus terjadi, mulai ulang Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/providers/WorkspaceProvider/components/WorkspaceLocalHostPendingState/WorkspaceLocalHostPendingState.tsx
@@ -34430,7 +34430,7 @@ msgstr "Tidak bisa memulai ulang layanan host"
 #. placeholder {0}: error.message
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/providers/WorkspaceProvider/components/WorkspaceLocalHostPendingState/WorkspaceLocalHostPendingState.tsx
 msgid "workspace.states.localHostPendingRestartFailedDescription"
-msgstr "{0} — coba menu tray Superset > Host Service > Restart."
+msgstr "{0} — coba menu tray Choros > Host Service > Restart."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/providers/WorkspaceProvider/components/WorkspaceLocalHostPendingState/WorkspaceLocalHostPendingState.tsx

@@ -300,7 +300,7 @@ export const createSettingsRouter = () => {
 				}),
 			)
 			.mutation(({ input }) =>
-				// Immediate transaction: a concurrent `superset scripts add` must not
+				// Immediate transaction: a concurrent `choros scripts add` must not
 				// land between this read and write or its row would be dropped.
 				localDb.transaction(
 					() => {
@@ -1229,7 +1229,7 @@ export const createSettingsRouter = () => {
 		}),
 
 		/**
-		 * Toggles Superset's hook integration for one agent. Disabling removes
+		 * Toggles Choros's hook integration for one agent. Disabling removes
 		 * the managed entries from the agent's global config immediately;
 		 * startup re-applies the choice so it survives older app versions
 		 * re-adding them.

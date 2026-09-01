@@ -18,14 +18,14 @@ import { useDelayElapsed } from "renderer/hooks/useDelayElapsed";
 import { track } from "renderer/lib/analytics";
 import { setAuthToken } from "renderer/lib/auth-client";
 import { electronTrpc } from "renderer/lib/electron-trpc";
-import { SupersetLogo } from "./components/SupersetLogo";
+import { ChorosLogo } from "./components/ChorosLogo";
 import { useSessionRecovery } from "./hooks/useSessionRecovery";
 
 export const Route = createFileRoute("/sign-in/")({
 	component: SignInPage,
 });
 
-const LAST_USED_METHOD_KEY = "superset-last-auth-method";
+const LAST_USED_METHOD_KEY = "choros-last-auth-method";
 
 const workspaceRedirect = <Redirect to="/workspace" replace />;
 
@@ -160,12 +160,12 @@ function SignInPage() {
 			<div className="flex flex-1 items-center justify-center">
 				<div className="flex flex-col items-center w-full max-w-md px-8">
 					<div className="mb-8">
-						<SupersetLogo className="h-12 w-auto" />
+						<ChorosLogo className="h-12 w-auto" />
 					</div>
 
 					<div className="text-center mb-8">
 						<h1 className="text-xl font-semibold text-foreground mb-2">
-							<Trans id="auth.signIn.welcomeTitle">Welcome to Superset</Trans>
+							<Trans id="auth.signIn.welcomeTitle">Welcome to Choros</Trans>
 						</h1>
 						<p className="text-sm text-muted-foreground">
 							{hasLocalToken ? (

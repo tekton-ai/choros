@@ -1,12 +1,12 @@
 ---
-title: Introducing Superset
+title: Introducing Choros
 description: Run 10+ parallel coding agents on your machine. A new way to work with AI coding assistants.
 author: avi
 date: 2025-01-15
 category: Product
 ---
 
-We're excited to introduce Superset - a new way to work with AI coding agents.
+We're excited to introduce Choros - a new way to work with AI coding agents.
 
 ## The Problem
 
@@ -14,7 +14,7 @@ Modern AI coding assistants are powerful, but they have a fundamental limitation
 
 ## The Solution
 
-Superset lets you run **10+ parallel coding agents** on your machine. Here's what that means for your workflow:
+Choros lets you run **10+ parallel coding agents** on your machine. Here's what that means for your workflow:
 
 - **Spin up new tasks** while waiting for your current agent to finish
 - **Quickly switch between tasks** as they need your attention
@@ -22,17 +22,17 @@ Superset lets you run **10+ parallel coding agents** on your machine. Here's wha
 
 ## How It Works
 
-Superset uses isolated workspaces powered by git worktrees. Each task runs in its own environment, with its own terminal, its own files, and its own agent context.
+Choros uses isolated workspaces powered by git worktrees. Each task runs in its own environment, with its own terminal, its own files, and its own agent context.
 
-![Superset workspace interface](/blog/introducing-superset/workspace-interface.png)
+![Choros workspace interface](/blog/introducing-choros/workspace-interface.png)
 
 ```bash
 # Create a new workspace for a feature
-superset create --branch feature/auth
+choros create --branch feature/auth
 
 # Your agent works in isolation
 # Meanwhile, start another task...
-superset create --branch feature/dashboard
+choros create --branch feature/dashboard
 ```
 
 ## What's Next

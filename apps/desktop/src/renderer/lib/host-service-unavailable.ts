@@ -200,7 +200,7 @@ function getRecoveryText(status: HostServiceAvailabilityStatus): string {
 			return i18n._({
 				id: "hostServiceUnavailable.recovery.stopped",
 				message:
-					"Use the Superset tray menu > Host Service > Restart, then retry.",
+					"Use the Choros tray menu > Host Service > Restart, then retry.",
 			});
 		case "running":
 			return i18n._({
@@ -210,7 +210,7 @@ function getRecoveryText(status: HostServiceAvailabilityStatus): string {
 		case "unknown":
 			return i18n._({
 				id: "hostServiceUnavailable.recovery.unknown",
-				message: "Retry in a few seconds; if it persists, restart Superset.",
+				message: "Retry in a few seconds; if it persists, restart Choros.",
 			});
 	}
 }

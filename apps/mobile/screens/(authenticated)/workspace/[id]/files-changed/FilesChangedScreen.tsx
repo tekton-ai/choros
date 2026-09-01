@@ -634,7 +634,7 @@ export function FilesChangedScreen() {
 
 	const shareUrl =
 		pullRequest?.url ??
-		(workspaceId ? `https://app.superset.sh/workspaces/${workspaceId}` : null);
+		(workspaceId ? `https://app.choros.sh/workspaces/${workspaceId}` : null);
 
 	return (
 		<View className="bg-background flex-1">

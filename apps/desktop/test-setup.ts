@@ -17,7 +17,7 @@ import { z } from "zod";
 process.env.NODE_ENV = "test";
 process.env.SKIP_ENV_VALIDATION = "1";
 
-const testTmpDir = join(tmpdir(), "superset-test");
+const testTmpDir = join(tmpdir(), "choros-test");
 
 // =============================================================================
 // Browser Global Mocks (required for renderer code that touches DOM)

@@ -106,10 +106,10 @@ describe("codexAdapter through the journal", () => {
 		});
 		expect(items.find((item) => item.kind === "tool_call")).toMatchObject({
 			status: "completed",
-			title: "echo superset-probe",
+			title: "echo choros-probe",
 		});
 		expect(items.find((item) => item.kind === "agent_message")).toMatchObject({
-			text: "superset-probe",
+			text: "choros-probe",
 		});
 		expect(turns.map((turn) => turn.status)).toEqual(["completed"]);
 	});

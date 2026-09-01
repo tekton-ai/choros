@@ -1,13 +1,13 @@
 ---
-title: "Superset vs Claude Code App (2026): Orchestrator vs Multi-Surface Agent"
-description: "Compare Superset and the Claude Code app across desktop, web, and mobile. See how worktree-based agent orchestration differs from a single multi-surface coding agent."
+title: "Choros vs Claude Code App (2026): Orchestrator vs Multi-Surface Agent"
+description: "Compare Choros and the Claude Code app across desktop, web, and mobile. See how worktree-based agent orchestration differs from a single multi-surface coding agent."
 date: 2026-07-13
 lastUpdated: 2026-07-13
 type: "1v1"
 competitors:
   - claude-code-app
 keywords:
-  - superset vs claude code app
+  - choros vs claude code app
   - claude code app alternative
   - claude code app
   - claude code desktop
@@ -15,15 +15,15 @@ keywords:
   - run claude code in parallel
 ---
 
-Claude Code is Anthropic's coding agent, and the same engine now runs across six surfaces: a terminal CLI, a desktop app, VS Code, JetBrains, the web, and mobile. When people say "the Claude Code app," they usually mean the desktop app (a graphical interface over the local engine) or Claude Code on the web. Superset is not another Claude Code surface -- it is an orchestration workspace that runs Claude Code, and other agents, in parallel with Git worktree isolation. This page compares the two.
+Claude Code is Anthropic's coding agent, and the same engine now runs across six surfaces: a terminal CLI, a desktop app, VS Code, JetBrains, the web, and mobile. When people say "the Claude Code app," they usually mean the desktop app (a graphical interface over the local engine) or Claude Code on the web. Choros is not another Claude Code surface -- it is an orchestration workspace that runs Claude Code, and other agents, in parallel with Git worktree isolation. This page compares the two.
 
-For the general agent comparison, see [Superset vs Claude Code](/compare/superset-vs-claude-code).
+For the general agent comparison, see [Choros vs Claude Code](/compare/choros-vs-claude-code).
 
 ---
 
 ## At a Glance
 
-| | **Superset** | **Claude Code App** |
+| | **Choros** | **Claude Code App** |
 |---|---|---|
 | **Category** | Agent orchestration workspace | Anthropic's coding agent, multiple surfaces |
 | **Surfaces** | Desktop app, CLI, MCP server | CLI, desktop app, VS Code, JetBrains, web, mobile |
@@ -36,9 +36,9 @@ For the general agent comparison, see [Superset vs Claude Code](/compare/superse
 
 ---
 
-## What Is Superset?
+## What Is Choros?
 
-Superset is a local-first desktop workspace for AI coding agents. It launches Claude Code, Codex, OpenCode, Cursor Agent, Copilot, Gemini CLI, Mistral Vibe, and other agent workflows inside isolated Git worktrees with persistent terminal sessions. Around that core, it adds a built-in diff/file editor, chat panel, in-app browser for docs and dev servers, port management, and MCP tooling. It also runs across your own network devices through remote and cloud workspaces. You can review inside Superset or jump into VS Code, Cursor, Windsurf, JetBrains, or Xcode. Source-available under Elastic License 2.0 (ELv2).
+Choros is a local-first desktop workspace for AI coding agents. It launches Claude Code, Codex, OpenCode, Cursor Agent, Copilot, Gemini CLI, Mistral Vibe, and other agent workflows inside isolated Git worktrees with persistent terminal sessions. Around that core, it adds a built-in diff/file editor, chat panel, in-app browser for docs and dev servers, port management, and MCP tooling. It also runs across your own network devices through remote and cloud workspaces. You can review inside Choros or jump into VS Code, Cursor, Windsurf, JetBrains, or Xcode. Source-available under Elastic License 2.0 (ELv2).
 
 ## What Is the Claude Code App?
 
@@ -48,31 +48,31 @@ Claude Code is Anthropic's AI coding agent, running the same underlying engine a
 
 ### One Agent, Many Surfaces vs Many Agents, One Workspace
 
-The Claude Code app is about running one excellent agent wherever you work -- terminal, editor, desktop, web, or phone. Superset is about running many agents in one place. It can run Claude Code as one of several agents, each in its own worktree, alongside Codex, OpenCode, Cursor, Gemini, and custom terminal agents. If Claude Code is your only agent, its app coverage is broad; if you run several agents or want to compare them on the same task, Superset is built for that.
+The Claude Code app is about running one excellent agent wherever you work -- terminal, editor, desktop, web, or phone. Choros is about running many agents in one place. It can run Claude Code as one of several agents, each in its own worktree, alongside Codex, OpenCode, Cursor, Gemini, and custom terminal agents. If Claude Code is your only agent, its app coverage is broad; if you run several agents or want to compare them on the same task, Choros is built for that.
 
 ### Isolation Model
 
-The Claude Code desktop app supports parallel sessions, and the web surface runs in the cloud, but Claude Code does not natively give each parallel task its own Git worktree. Superset makes a worktree per task the default, so multiple agents can work on the same repository at once without sharing a working directory or stepping on each other's branch. If your reason for wanting parallelism is running several tasks on one repo safely, that isolation is the key difference.
+The Claude Code desktop app supports parallel sessions, and the web surface runs in the cloud, but Claude Code does not natively give each parallel task its own Git worktree. Choros makes a worktree per task the default, so multiple agents can work on the same repository at once without sharing a working directory or stepping on each other's branch. If your reason for wanting parallelism is running several tasks on one repo safely, that isolation is the key difference.
 
 ### Review and Orchestration in One Place
 
-Superset centralizes launching, isolating, reviewing, and merging across all your agents in a single workspace, with an in-app browser and one-click handoff to your editor. The Claude Code app gives you Claude's own desktop diff viewer and app preview per session. If you want a single orchestration and review layer that spans more than one agent, that is Superset's role.
+Choros centralizes launching, isolating, reviewing, and merging across all your agents in a single workspace, with an in-app browser and one-click handoff to your editor. The Claude Code app gives you Claude's own desktop diff viewer and app preview per session. If you want a single orchestration and review layer that spans more than one agent, that is Choros's role.
 
 ### They Work Together
 
-This is not strictly either/or. Many developers run Claude Code as their primary agent inside Superset, using the Claude Code app on its own for quick single-task work and Superset when several agents need isolated worktrees on the same repo. Superset wraps Claude Code rather than replacing it.
+This is not strictly either/or. Many developers run Claude Code as their primary agent inside Choros, using the Claude Code app on its own for quick single-task work and Choros when several agents need isolated worktrees on the same repo. Choros wraps Claude Code rather than replacing it.
 
 ---
 
 ## Pricing
 
-Superset offers a free tier and Pro at $20/seat/month, and you bring your own agent providers. Claude Code is available through Claude Pro and Max plans and via Anthropic's API. You pay Anthropic for Claude Code usage whether you run it directly or inside Superset.
+Choros offers a free tier and Pro at $20/seat/month, and you bring your own agent providers. Claude Code is available through Claude Pro and Max plans and via Anthropic's API. You pay Anthropic for Claude Code usage whether you run it directly or inside Choros.
 
 ---
 
 ## Which Should You Choose?
 
-**Choose Superset if you:**
+**Choose Choros if you:**
 
 - Want to run multiple agents, or Claude Code alongside others, in one workspace
 - Need automatic Git worktree isolation for parallel work on one repo
@@ -86,7 +86,7 @@ Superset offers a free tier and Pro at $20/seat/month, and you bring your own ag
 - Like starting a task on the web and monitoring it from your phone
 - Do not need multi-agent orchestration or per-task worktrees
 
-**Verdict:** The Claude Code app is excellent if Claude Code is your one agent and you want it everywhere. Superset is the better fit if you run several agents, want automatic worktree isolation for parallel work on the same repository, and want one workspace to orchestrate and review them all -- with Claude Code as a first-class agent inside it.
+**Verdict:** The Claude Code app is excellent if Claude Code is your one agent and you want it everywhere. Choros is the better fit if you run several agents, want automatic worktree isolation for parallel work on the same repository, and want one workspace to orchestrate and review them all -- with Claude Code as a first-class agent inside it.
 
 ---
 
@@ -94,16 +94,16 @@ Superset offers a free tier and Pro at $20/seat/month, and you bring your own ag
 
 ### What does "Claude Code app" mean?
 
-It is ambiguous. It usually refers to the Claude Code desktop app (a GUI over the local engine), but can also mean Claude Code on the web or the mobile apps. Superset is a separate workspace that can run Claude Code as one of many agents.
+It is ambiguous. It usually refers to the Claude Code desktop app (a GUI over the local engine), but can also mean Claude Code on the web or the mobile apps. Choros is a separate workspace that can run Claude Code as one of many agents.
 
 ### Does the Claude Code app use Git worktrees?
 
-Not natively. The desktop app supports parallel sessions and the web runs in the cloud, but Claude Code does not automatically give each task its own worktree. Superset does.
+Not natively. The desktop app supports parallel sessions and the web runs in the cloud, but Claude Code does not automatically give each task its own worktree. Choros does.
 
-### Can I use Claude Code inside Superset?
+### Can I use Claude Code inside Choros?
 
-Yes. Superset runs Claude Code as a first-class agent, each session in its own worktree, alongside other agents. You still pay Anthropic for Claude Code usage.
+Yes. Choros runs Claude Code as a first-class agent, each session in its own worktree, alongside other agents. You still pay Anthropic for Claude Code usage.
 
 ### Which should I use for running several tasks on one repo?
 
-If you want several agents working the same repository at once without collisions, Superset's worktree-per-task model is the safer answer. The Claude Code app is better for single-agent work across many surfaces.
+If you want several agents working the same repository at once without collisions, Choros's worktree-per-task model is the safer answer. The Claude Code app is better for single-agent work across many surfaces.

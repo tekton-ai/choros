@@ -64,7 +64,7 @@ function providerWithEnv(env: Record<string, string>): GitCredentialProvider {
 
 /** A PATH holding nothing but a `git` that translates its diagnostics. */
 function translatingGitPath(): string {
-	const dir = tempDir("superset-git-stub-");
+	const dir = tempDir("choros-git-stub-");
 	const stub = join(dir, "git");
 	writeFileSync(stub, GIT_TRANSLATING_STUB);
 	chmodSync(stub, 0o755);
@@ -98,7 +98,7 @@ function classify(error: unknown): TRPCError | null {
 
 describe("git message locale", () => {
 	test("pins the message locale over every locale variable the user set", async () => {
-		const repo = tempDir("superset-git-locale-");
+		const repo = tempDir("choros-git-locale-");
 
 		const env = await createGitEnvResolver(providerWithEnv(FRENCH_USER_ENV))(
 			repo,
@@ -110,7 +110,7 @@ describe("git message locale", () => {
 	});
 
 	test("a localized 'not a git repository' failure classifies as a non-500", async () => {
-		const notARepo = tempDir("superset-git-locale-");
+		const notARepo = tempDir("choros-git-locale-");
 		const provider = providerWithEnv({
 			...FRENCH_USER_ENV,
 			PATH: translatingGitPath(),
@@ -131,7 +131,7 @@ describe("git message locale", () => {
 		// The pre-pin env, kept as the reason this is fixed in the environment
 		// rather than by adding a French pattern: nothing in the classifier
 		// matches git's French wording, so the condition reports as a 500.
-		const notARepo = tempDir("superset-git-locale-");
+		const notARepo = tempDir("choros-git-locale-");
 		const unpinnedEnv = {
 			...FRENCH_USER_ENV,
 			PATH: translatingGitPath(),
@@ -149,7 +149,7 @@ describe("git message locale", () => {
 		// core.quotePath rather than by locale, and the snapshot reads them
 		// through `-z`, which disables quoting outright — so the pin must not
 		// disturb a worktree whose filenames are not ASCII.
-		const repo = tempDir("superset-git-locale-");
+		const repo = tempDir("choros-git-locale-");
 		const setup = createUserSimpleGit(repo);
 		await setup.init();
 		await setup.raw(["config", "user.email", "test@example.com"]);

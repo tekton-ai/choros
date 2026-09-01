@@ -203,7 +203,7 @@
 	}
 
 	.xterm {
-		font-family: var(--superset-terminal-font-family, ui-monospace, monospace);
+		font-family: var(--choros-terminal-font-family, ui-monospace, monospace);
 	}
 
 	.xterm .xterm-rows a {

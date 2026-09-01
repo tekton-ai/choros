@@ -106,7 +106,7 @@ describe("shareClaudeSessionState", () => {
 		).toBe("main");
 		expect(
 			readFileSync(
-				join(profile, "projects.superset-merge", "-repo", "s.jsonl"),
+				join(profile, "projects.choros-merge", "-repo", "s.jsonl"),
 				"utf-8",
 			),
 		).toBe("profile");
@@ -114,11 +114,11 @@ describe("shareClaudeSessionState", () => {
 
 	it("flushes a pending dir left by an interrupted merge", () => {
 		const { profile, main } = makeDirs();
-		mkdirSync(join(profile, "projects.superset-merge", "-repo"), {
+		mkdirSync(join(profile, "projects.choros-merge", "-repo"), {
 			recursive: true,
 		});
 		writeFileSync(
-			join(profile, "projects.superset-merge", "-repo", "s.jsonl"),
+			join(profile, "projects.choros-merge", "-repo", "s.jsonl"),
 			"leftover",
 		);
 		symlinkSync(join(main, "projects"), join(profile, "projects"));
@@ -127,7 +127,7 @@ describe("shareClaudeSessionState", () => {
 		expect(
 			readFileSync(join(main, "projects", "-repo", "s.jsonl"), "utf-8"),
 		).toBe("leftover");
-		expect(readdirSync(profile)).not.toContain("projects.superset-merge");
+		expect(readdirSync(profile)).not.toContain("projects.choros-merge");
 	});
 
 	it("separates records when main's history lacks a trailing newline", () => {

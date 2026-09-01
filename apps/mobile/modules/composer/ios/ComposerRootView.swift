@@ -640,7 +640,7 @@ struct ComposerRootView: View {
     .padding(.trailing, ComposerMetrics.textInset)
   }
 
-  /// Frame 4: `superset main ⌄` · `☁ Cloud ⌄`, above the editor. Absent on the
+  /// Frame 4: `choros main ⌄` · `☁ Cloud ⌄`, above the editor. Absent on the
   /// session surface (frame 13), which is simply an empty array.
   private var headerRow: some View {
     HStack(spacing: ComposerMetrics.chipSpacing) {

@@ -125,7 +125,7 @@ export default async function LinearIntegrationPage() {
 						{i18n._({
 							id: "web.integrations.linear.blurb",
 							message:
-								"Sync issues bidirectionally with Linear. Create tasks in Superset and have them appear in Linear, or import existing Linear issues.",
+								"Sync issues bidirectionally with Linear. Create tasks in Choros and have them appear in Linear, or import existing Linear issues.",
 						})}
 					</p>
 				</div>
@@ -169,7 +169,7 @@ export default async function LinearIntegrationPage() {
 							{i18n._({
 								id: "web.integrations.linear.settingsDescription",
 								message:
-									"Configure how tasks sync between Superset and Linear.",
+									"Configure how tasks sync between Choros and Linear.",
 							})}
 						</CardDescription>
 					</CardHeader>
@@ -186,7 +186,7 @@ export default async function LinearIntegrationPage() {
 								{i18n._({
 									id: "web.integrations.linear.defaultTeamHint",
 									message:
-										"Tasks created in Superset will be synced to this Linear team.",
+										"Tasks created in Choros will be synced to this Linear team.",
 								})}
 							</p>
 						</div>

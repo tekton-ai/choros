@@ -263,7 +263,7 @@ async function assertRealpathWithinRoot(
 function getPathLockDirectory(absolutePath: string): string {
 	return path.join(
 		os.tmpdir(),
-		"superset-workspace-fs-locks",
+		"choros-workspace-fs-locks",
 		createHash("sha256")
 			.update(normalizeAbsolutePath(absolutePath))
 			.digest("hex"),
@@ -340,7 +340,7 @@ async function writeAtomically({
 	content: string | Uint8Array;
 	encoding?: string;
 }): Promise<void> {
-	const tempPath = `${absolutePath}.superset-tmp-${randomUUID()}`;
+	const tempPath = `${absolutePath}.choros-tmp-${randomUUID()}`;
 	await assertParentWithinRoot(rootPath, tempPath);
 
 	let sourceMode: number | undefined;

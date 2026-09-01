@@ -3,7 +3,7 @@ import { userIdentities, users } from "@choros/db/schema";
 import { and, eq } from "drizzle-orm";
 
 /**
- * The Superset user behind a Slack user, and their Slack-specific settings.
+ * The Choros user behind a Slack user, and their Slack-specific settings.
  *
  * Replaces `users__slack_users`, which was one table per provider. A Slack user
  * id is only unique within a workspace, so the team id is the identity's scope

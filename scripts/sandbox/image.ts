@@ -1,7 +1,7 @@
 /**
  * Builds the Blaxel sandbox image that hosts host-service.
  *
- *   BL_API_KEY=... BL_WORKSPACE=superset bun run scripts/sandbox/image.ts
+ *   BL_API_KEY=... BL_WORKSPACE=choros bun run scripts/sandbox/image.ts
  *   bun run scripts/sandbox/image.ts --dry   # print the Dockerfile only
  *
  * Two constraints keep a compiler out of this image, and both must hold:
@@ -28,14 +28,14 @@ const HOST_SERVICE_PKG = join(
 
 /** Blaxel reserves 80, 443 and 8080; host-service's default is 4879. */
 const HOST_SERVICE_PORT = 4879;
-const IMAGE_NAME = process.env.SANDBOX_IMAGE_NAME ?? "superset-hostsvc";
+const IMAGE_NAME = process.env.SANDBOX_IMAGE_NAME ?? "choros-hostsvc";
 
 /**
  * Baked into the image so a workspace never clones. Public URL on purpose: the
  * build needs no credential, and the runtime supplies one per fetch.
  */
 const SANDBOX_REPO_URL =
-	process.env.SANDBOX_REPO_URL ?? "https://github.com/superset-sh/superset.git";
+	process.env.SANDBOX_REPO_URL ?? "https://github.com/superset-sh/choros.git";
 const SANDBOX_REPO_DEFAULT_BRANCH =
 	process.env.SANDBOX_REPO_DEFAULT_BRANCH ?? "main";
 

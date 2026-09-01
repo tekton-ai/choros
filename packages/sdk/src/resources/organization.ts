@@ -6,7 +6,7 @@ export class Members extends APIResource {
 	/**
 	 * List members of the active organization.
 	 *
-	 * Mirrors `superset organization members list`.
+	 * Mirrors `choros organization members list`.
 	 */
 	list(
 		query?: MemberListParams | null,

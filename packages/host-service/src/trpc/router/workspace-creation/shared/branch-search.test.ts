@@ -30,7 +30,7 @@ describe("worktree branch lookup", () => {
 	let git: SimpleGit;
 
 	beforeEach(async () => {
-		root = mkdtempSync(join(tmpdir(), "superset-worktree-branch-"));
+		root = mkdtempSync(join(tmpdir(), "choros-worktree-branch-"));
 		repo = join(root, "repo");
 		worktreePath = join(root, "worktree");
 		mkdirSync(repo);
@@ -85,7 +85,7 @@ describe("listWorktreeBranches vs raw git worktree list", () => {
 	let git: SimpleGit;
 
 	beforeEach(async () => {
-		root = mkdtempSync(join(tmpdir(), "superset-collect-worktrees-"));
+		root = mkdtempSync(join(tmpdir(), "choros-collect-worktrees-"));
 		repo = join(root, "repo");
 		managedRoot = join(root, "managed", "project-id");
 		foreignRoot = join(root, "elsewhere");

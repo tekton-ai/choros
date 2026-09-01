@@ -1,15 +1,15 @@
 const REPO_RAW = "https://raw.githubusercontent.com/superset-sh/skills/main";
 
 export const SKILL_NAMES = [
-	"superset-orchestrate",
-	"superset-setup",
-	"superset-automate",
-	"superset-standup",
-	"superset-doctor",
-	"superset-feedback",
-	"superset-10x",
-	"superset-contribute",
-	"superset-mcp",
+	"choros-orchestrate",
+	"choros-setup",
+	"choros-automate",
+	"choros-standup",
+	"choros-doctor",
+	"choros-feedback",
+	"choros-10x",
+	"choros-contribute",
+	"choros-mcp",
 ] as const;
 export type SkillName = (typeof SKILL_NAMES)[number];
 

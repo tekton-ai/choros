@@ -33,7 +33,7 @@ const POINTER_NAMES: Record<SwitchableAccountAgent, string> = {
  * stay free of the agent-setup surface — see account-provisioning.ts.
  */
 function supersetHomeDir(): string {
-	return process.env.SUPERSET_HOME_DIR?.trim() || join(homedir(), ".superset");
+	return process.env.SUPERSET_HOME_DIR?.trim() || join(homedir(), ".choros");
 }
 
 function defaultAccountPointerPath(agent: SwitchableAccountAgent): string {
@@ -121,7 +121,7 @@ function readDefaultAccountPointer(agent: SwitchableAccountAgent): {
 /**
  * Migrates legacy org-scoped selections into the host-wide pointer files.
  * Existing pointers are authoritative and are never overwritten at boot:
- * more than one org-specific host-service can share the same Superset home.
+ * more than one org-specific host-service can share the same Choros home.
  */
 export function syncDefaultAccountPointers(db: HostDb): void {
 	getDefaultAccountSelections(db);
@@ -229,7 +229,7 @@ export function resolveDefaultAccountEnv(
 		selections.claudeConfigDir &&
 		existsSync(selections.claudeConfigDir)
 	) {
-		// The SUPERSET_DEFAULT_* twin marks the value as Superset-injected, so
+		// The SUPERSET_DEFAULT_* twin marks the value as Choros-injected, so
 		// the agent wrapper can re-resolve a later switch without ever
 		// overriding a value the user exported by hand.
 		return {

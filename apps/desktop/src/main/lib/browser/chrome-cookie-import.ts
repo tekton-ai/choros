@@ -231,7 +231,7 @@ export async function readCookiesFromProfile(
 	const key = deriveCookieKey(safeStorageKey);
 
 	const tempDir = mkdtempSync(
-		path.join(os.tmpdir(), "superset-cookie-import-"),
+		path.join(os.tmpdir(), "choros-cookie-import-"),
 	);
 	const tempDb = path.join(tempDir, "Cookies");
 	try {
@@ -271,7 +271,7 @@ export interface CookieImportResult {
 }
 
 /**
- * Hosts we never import cookies for: importing Superset's own session cookies
+ * Hosts we never import cookies for: importing Choros's own session cookies
  * from the system browser could clobber the app's signed-in session.
  */
 function isProtectedCookieHost(host: string): boolean {
@@ -283,15 +283,15 @@ function isProtectedCookieHost(host: string): boolean {
 		bare.endsWith(".localhost") ||
 		bare === "127.0.0.1" ||
 		bare === "::1" ||
-		bare === "superset.sh" ||
-		bare.endsWith(".superset.sh")
+		bare === "choros.sh" ||
+		bare.endsWith(".choros.sh")
 	);
 }
 
 /**
  * Reads a Chromium profile's cookies and injects them into an Electron session
  * (a browser pane's jar), so the user's logins carry over. Skips cookies for
- * Superset's own hosts and any the session rejects.
+ * Choros's own hosts and any the session rejects.
  */
 export async function importCookiesIntoSession(
 	targetSession: Session,

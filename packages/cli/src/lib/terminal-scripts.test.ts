@@ -3,11 +3,11 @@ import { readSettingsRow } from "./settings";
 import { writeSettings } from "./settings/local-settings";
 import {
 	createLocalSettingsDb,
-	withTempSupersetHome,
+	withTempChorosHome,
 } from "./settings/test-helpers";
 import { createTerminalScript } from "./terminal-scripts";
 
-const home = withTempSupersetHome("superset-cli-scripts-");
+const home = withTempChorosHome("choros-cli-scripts-");
 
 beforeEach(() => {
 	createLocalSettingsDb(home.dir);

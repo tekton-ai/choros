@@ -1,0 +1,1 @@
+export { ChorosLogo } from "./ChorosLogo";

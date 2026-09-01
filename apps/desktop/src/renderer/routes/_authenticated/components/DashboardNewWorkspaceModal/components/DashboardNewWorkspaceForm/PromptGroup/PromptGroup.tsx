@@ -195,7 +195,7 @@ export function PromptGroup({
 		});
 
 	// ── Model picker (per agent preset) ──────────────────────────────
-	// `launchPresetId` carries executable-aware capability metadata; Superset
+	// `launchPresetId` carries executable-aware capability metadata; Choros
 	// chat has no host config and falls back to its icon id.
 	const selectedPresetId = useMemo(() => {
 		const agent = v2Agents.find((candidate) => candidate.id === selectedAgent);

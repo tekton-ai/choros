@@ -107,7 +107,7 @@ export async function probeTrustdHealthy(
 		// mkdtemp gives a fresh 0700 dir, so the cert path is unpredictable and
 		// can't be pre-seeded as a symlink (TOCTOU) or collide across runs.
 		certDir = await fs.mkdtemp(
-			path.join(deps.tmpDir ?? os.tmpdir(), "superset-trustd-"),
+			path.join(deps.tmpDir ?? os.tmpdir(), "choros-trustd-"),
 		);
 		const certPath = path.join(certDir, "probe.pem");
 		await fs.writeFile(certPath, cert, { mode: 0o600 });

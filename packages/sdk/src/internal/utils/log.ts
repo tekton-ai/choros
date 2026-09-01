@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import type { Superset } from "../../client";
+import type { Choros } from "../../client";
 import type { RequestOptions } from "../request-options";
 import { hasOwn } from "./values";
 
@@ -24,7 +24,7 @@ const levelNumbers = {
 export const parseLogLevel = (
 	maybeLevel: string | undefined,
 	sourceName: string,
-	client: Superset,
+	client: Choros,
 ): LogLevel | undefined => {
 	if (!maybeLevel) {
 		return undefined;
@@ -64,7 +64,7 @@ const noopLogger = {
 
 const cachedLoggers = /* @__PURE__ */ new WeakMap<Logger, [LogLevel, Logger]>();
 
-export function loggerFor(client: Superset): Logger {
+export function loggerFor(client: Choros): Logger {
 	const logger = client.logger;
 	const logLevel = client.logLevel ?? "off";
 	if (!logger) {

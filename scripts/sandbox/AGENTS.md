@@ -29,4 +29,4 @@ Two traps specific to the image:
 
 `docs/cloud-sandbox-considerations.md` is the companion list: what we still owe
 before a non-internal user can create a sandbox. Several entries there are only
-acceptable because of the `@superset.sh` gate — if you touch that gate, read it.
+acceptable because of the `@choros.sh` gate — if you touch that gate, read it.

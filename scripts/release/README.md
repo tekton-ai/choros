@@ -13,7 +13,7 @@ step). One entry point: **`bun run release`**. Design/rationale lives in
 - **CLI hotfixes lead by a patch.** Between desktop releases, a CLI-only fix bumps
   a plain patch above the current CLI (`1.14.1 → 1.14.2`), within desktop's minor
   line, until the next desktop release catches up.
-- **No prerelease suffixes.** A suffix sorts *below* the release (so `superset
+- **No prerelease suffixes.** A suffix sorts *below* the release (so `choros
   update` won't deliver it) and fails the host-service min-version floor
   (`semver.satisfies` excludes prereleases). Everything stays plain.
 - **pty-daemon** is on its own `0.x` track, bumped only with `--daemon`.

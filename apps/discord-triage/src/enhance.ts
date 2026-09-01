@@ -151,7 +151,7 @@ async function summarize(
 		{
 			type: "text",
 			text: [
-				`A user posted this report in the Superset Discord #${report.channelName} channel:`,
+				`A user posted this report in the Choros Discord #${report.channelName} channel:`,
 				"",
 				`Title: ${report.title}`,
 				`Report: ${report.content || "(no text — see attached files)"}`,
@@ -183,7 +183,7 @@ async function summarize(
 		// Adaptive thinking shares this budget; leave headroom so JSON never truncates.
 		max_tokens: 4096,
 		system:
-			"You groom raw Discord support reports into clear, well-scoped Linear tickets for the Superset desktop/web app team. Stay faithful to the report.",
+			"You groom raw Discord support reports into clear, well-scoped Linear tickets for the Choros desktop/web app team. Stay faithful to the report.",
 		messages: [{ role: "user", content }],
 		output_config: {
 			format: { type: "json_schema", schema: SUMMARY_SCHEMA },

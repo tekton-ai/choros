@@ -2,7 +2,7 @@
  * Exercises the Blaxel integration without the tRPC stack: provision, mint a
  * preview token, prove the URL rejects unauthenticated callers, tear down.
  *
- *   BLAXEL_API_KEY=... BLAXEL_WORKSPACE=superset bun run scripts/sandbox/smoke.ts
+ *   BLAXEL_API_KEY=... BLAXEL_WORKSPACE=choros bun run scripts/sandbox/smoke.ts
  *
  * Leaves nothing behind unless it throws; pass --keep to inspect the sandbox.
  */
@@ -13,7 +13,7 @@ import {
 } from "../../packages/trpc/src/lib/blaxel";
 
 const NAME = process.env.SMOKE_SANDBOX_NAME ?? "ws-smoke-test";
-const IMAGE = process.env.BLAXEL_SANDBOX_IMAGE ?? "superset-hostsvc";
+const IMAGE = process.env.BLAXEL_SANDBOX_IMAGE ?? "choros-hostsvc";
 const keep = process.argv.includes("--keep");
 
 const main = async () => {

@@ -1422,7 +1422,7 @@ describe("ptyDaemonSocketPath", () => {
 	const ORG = "org-socket-path";
 	const legacyPath = () => {
 		const shortId = createHash("sha256").update(ORG).digest("hex").slice(0, 12);
-		return path.join(os.tmpdir(), `superset-ptyd-${shortId}.sock`);
+		return path.join(os.tmpdir(), `choros-ptyd-${shortId}.sock`);
 	};
 
 	test("default production homes keep the legacy org-only path", () => {
@@ -1432,7 +1432,7 @@ describe("ptyDaemonSocketPath", () => {
 		expect(
 			ptyDaemonSocketPath(ORG, {
 				NODE_ENV: "production",
-				SUPERSET_HOME_DIR: path.join(os.homedir(), ".superset"),
+				SUPERSET_HOME_DIR: path.join(os.homedir(), ".choros"),
 			}),
 		).toBe(legacyPath());
 	});
@@ -1478,7 +1478,7 @@ describe("ptyDaemonSocketPath", () => {
 		expect(() =>
 			ptyDaemonSocketPath(ORG, {
 				NODE_ENV: "test",
-				SUPERSET_HOME_DIR: path.join(os.homedir(), ".superset"),
+				SUPERSET_HOME_DIR: path.join(os.homedir(), ".choros"),
 			}),
 		).toThrow(/isolated temp dir/);
 		expect(() =>
@@ -1521,7 +1521,7 @@ describe("ptyDaemonSocketPath", () => {
 		expect(
 			ptyDaemonSocketPath(ORG, {
 				NODE_ENV: "development",
-				SUPERSET_HOME_DIR: `${path.join(os.homedir(), ".superset")}/../.superset/`,
+				SUPERSET_HOME_DIR: `${path.join(os.homedir(), ".choros")}/../.superset/`,
 			}),
 		).toBe(legacyPath());
 	});

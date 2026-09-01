@@ -398,7 +398,7 @@ export async function detectUnstagedRenames(
 
 	let tempDir: string;
 	try {
-		tempDir = await mkdtemp(join(tmpdir(), "superset-renames-"));
+		tempDir = await mkdtemp(join(tmpdir(), "choros-renames-"));
 	} catch {
 		return [];
 	}

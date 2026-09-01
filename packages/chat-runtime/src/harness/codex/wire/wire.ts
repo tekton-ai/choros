@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const CODEX_CLIENT_NAME = "superset-chat-runtime";
+export const CODEX_CLIENT_NAME = "choros-chat-runtime";
 
 export const requestIdSchema = z.union([z.string(), z.number()]);
 export type CodexRequestId = z.infer<typeof requestIdSchema>;

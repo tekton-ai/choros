@@ -23,7 +23,7 @@ const STEPS = [
 	{
 		path: "/onboarding",
 		match: (p: string) => p === "/onboarding",
-		title: "Setup Superset",
+		title: "Setup Choros",
 		subtitle: "Connect your agents and tools to get started.",
 	},
 	{

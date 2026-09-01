@@ -1,11 +1,11 @@
 ---
 title: Linear Integration
-description: Open Linear issues as Superset workspaces with a custom script
+description: Open Linear issues as Choros workspaces with a custom script
 ---
 
 Linear's [custom coding tool](https://linear.app/docs/open-issues-with-custom-scripts)
 feature can hand an issue off to any local command. With a small wrapper script,
-**Work on issue → Custom script** creates a Superset workspace for the issue
+**Work on issue → Custom script** creates a Choros workspace for the issue
 (checked out on the issue's branch, with an agent already working on it) and
 opens it in the desktop app.
 
@@ -16,32 +16,32 @@ Linear doesn't use a URL scheme here. It runs a local executable defined in
 environment variables (`LINEAR_ISSUE_IDENTIFIER`, `LINEAR_ISSUE_BRANCH_NAME`,
 `LINEAR_PROMPT`, and others). The wrapper script chains two CLI calls:
 
-1. `superset workspaces create`: creates a local workspace on the issue's
+1. `choros workspaces create`: creates a local workspace on the issue's
    branch and launches an agent with the issue as its prompt.
-2. `superset workspaces open`: opens that workspace in the desktop app via its
+2. `choros workspaces open`: opens that workspace in the desktop app via its
    deep link.
 
 ## Prerequisites
 
-- The [Superset CLI](/cli/getting-started) installed and signed in
-  (`superset auth login`).
-- The Superset desktop app installed (the script opens workspaces in it).
+- The [Choros CLI](/cli/getting-started) installed and signed in
+  (`choros auth login`).
+- The Choros desktop app installed (the script opens workspaces in it).
 - A project that's set up locally. Find its ID with:
 
 ```bash
-superset projects list
+choros projects list
 ```
 
 Copy the `id` of the project you want issues to open against.
 
 ## 1. Create the wrapper script
 
-Save this as `~/.linear/open-in-superset.sh` and replace `PROJECT` with the ID
+Save this as `~/.linear/open-in-choros.sh` and replace `PROJECT` with the ID
 from above:
 
 ```bash
 #!/usr/bin/env bash
-# Linear custom script -> open the issue as a Superset workspace.
+# Linear custom script -> open the issue as a Choros workspace.
 set -euo pipefail
 
 PROJECT="<your-project-id>"
@@ -51,10 +51,10 @@ BRANCH="${LINEAR_ISSUE_BRANCH_NAME:-$NAME}"
 PROMPT="${LINEAR_PROMPT:-Work on Linear issue ${NAME}.}"
 
 # Make sure the local host service is running (idempotent).
-superset start --daemon >/dev/null 2>&1 || true
+choros start --daemon >/dev/null 2>&1 || true
 
 result="$(
-  superset workspaces create \
+  choros workspaces create \
     --local \
     --project "$PROJECT" \
     --name "$NAME" \
@@ -67,19 +67,19 @@ result="$(
 
 id="$(printf '%s' "$result" | jq -r '.workspace.id')"
 
-superset workspaces open "$id"
+choros workspaces open "$id"
 ```
 
 Make it executable:
 
 ```bash
-chmod +x ~/.linear/open-in-superset.sh
+chmod +x ~/.linear/open-in-choros.sh
 ```
 
 <Callout type="info">
-The script depends on `superset` being on your `PATH` and `jq` being installed.
-If `superset` isn't on your `PATH`, use its full path (the desktop app installs
-a shim at `~/.superset/bin/superset`).
+The script depends on `choros` being on your `PATH` and `jq` being installed.
+If `choros` isn't on your `PATH`, use its full path (the desktop app installs
+a shim at `~/.superset/bin/choros`).
 </Callout>
 
 The branch named by the issue won't exist yet. `workspaces create` forks it
@@ -89,7 +89,7 @@ issue) even when the project has a branch prefix configured. Re-running on
 the same issue reuses the existing workspace instead of creating a duplicate.
 
 <Callout type="info">
-With the Linear integration connected, Superset does this natively: linking
+With the Linear integration connected, Choros does this natively: linking
 an issue in the New Workspace flow (or opening a task in a workspace) uses
 Linear's branch name automatically and moves the issue to In Progress. The
 script above is for driving it from Linear's side.
@@ -102,7 +102,7 @@ Create `~/.linear/coding-tools.json`:
 ```json
 {
   "openIssue": {
-    "path": "/Users/you/.linear/open-in-superset.sh",
+    "path": "/Users/you/.linear/open-in-choros.sh",
     "env": [
       "LINEAR_ISSUE_IDENTIFIER",
       "LINEAR_ISSUE_BRANCH_NAME",
@@ -129,7 +129,7 @@ your version.
    passed to the script, so pick your repo. (The script above doesn't read it,
    but Linear requires one.)
 
-Linear runs the script, and the workspace opens in Superset with the agent
+Linear runs the script, and the workspace opens in Choros with the agent
 running on the issue.
 
 <Callout type="info">
@@ -144,7 +144,7 @@ In any macOS file dialog, press **⌘⇧.** to reveal hidden dot-folders, or
 - **A different agent.** Replace `claude` with any agent preset id (`codex`,
   `opencode`, …).
 - **Multiple repos.** The project ID is fixed in the script. To route different
-  Linear teams or projects to different Superset projects, branch on a
+  Linear teams or projects to different Choros projects, branch on a
   `LINEAR_*` variable (for example `LINEAR_PROJECT_NAME`) and set `PROJECT`
   accordingly. The `env` array in `coding-tools.json` is an allowlist: any
   `LINEAR_*` variable you read in the script must also be added there, or it

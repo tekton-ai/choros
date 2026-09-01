@@ -131,7 +131,7 @@ interface AddAccountDialogProps {
  * Two credential-free sign-in flows: adding another agent account as a
  * separate profile dir, or re-signing an existing login (a profile, or the
  * system default). Either way the user runs the agent's own login in a
- * terminal and we only watch local state for the result — Superset never
+ * terminal and we only watch local state for the result — Choros never
  * handles the credentials (see usage/default-account.ts).
  */
 export function AddAccountDialog({

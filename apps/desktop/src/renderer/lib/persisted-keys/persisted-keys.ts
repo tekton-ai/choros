@@ -18,9 +18,9 @@ export const DEAD_KEYS: DeadKey[] = [
 	// Workspace details moved into the workspace item (#5392)
 	{ key: "workspace-details-store", match: "exact" },
 	// Replaced by the v2 onboarding setup flow (#4080)
-	{ key: "superset-onboarding-v1", match: "exact" },
+	{ key: "choros-onboarding-v1", match: "exact" },
 	// Analytics funnel marker removed in #502-era simplification
-	{ key: "superset_auth_completed", match: "exact" },
+	{ key: "choros_auth_completed", match: "exact" },
 	// One-shot hotkey migration marker; migration removed (#3391)
 	{ key: "hotkey-overrides-migrated-v2", match: "exact" },
 	// Unattributed analytics remnants; no writer remains in repo or dependencies
@@ -35,7 +35,7 @@ export const DEAD_KEYS: DeadKey[] = [
 	{ key: "v1-migration-modal-shown-", match: "prefix" },
 	// Legacy chat composer preferences; the mastra chat panes were removed
 	{ key: "chat-preferences", match: "exact" },
-	// "Superset v2 is here" sidebar card; unmounted once v2 became the default
+	// "Choros v2 is here" sidebar card; unmounted once v2 became the default
 	{ key: "v2-available-banner-v1", match: "exact" },
 	// Bumped to v2 so updated clients republish a full 30-day leaderboard window
 	{ key: "leaderboard-auto-publish-v1", match: "exact" },

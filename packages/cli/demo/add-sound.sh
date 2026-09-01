@@ -2,10 +2,10 @@
 # Adds a soundtrack to the VHS-rendered demo: a lo-fi music bed (demo/music.mp3)
 # plus mechanical-keyboard clicks timed off the .tape script.
 #
-#   Input:  demo/superset-cli.mp4   (produced by `vhs demo/superset-cli.tape`)
+#   Input:  demo/choros-cli.mp4   (produced by `vhs demo/choros-cli.tape`)
 #           demo/music.mp3           (the music bed)
 #           demo/keyboard.mp3        (a continuous mechanical-keyboard recording)
-#   Output: demo/superset-cli-sound.mp4
+#   Output: demo/choros-cli-sound.mp4
 #
 # Credits: music — "Lofi Production" by Pulsebox (Pixabay, royalty-free);
 #          keyboard — "Mechanical Keyboard Typing HD" by VirtualZero (Pixabay).
@@ -14,15 +14,15 @@
 # If keyboard.mp3 is missing, the clicks fall back to a numpy synth.
 set -euo pipefail
 cd "$(dirname "$0")/.."          # -> packages/cli
-SRC=demo/superset-cli.mp4
-TAPE=demo/superset-cli.tape
+SRC=demo/choros-cli.mp4
+TAPE=demo/choros-cli.tape
 MUSIC=${1:-demo/music.mp3}
 KB=demo/keyboard.mp3
-OUT=demo/superset-cli-sound.mp4
+OUT=demo/choros-cli-sound.mp4
 TMP=$(mktemp -d -t demo-sound)
 CLICKS="$TMP/clicks.wav"
 
-[ -f "$SRC" ]   || { echo "missing $SRC — run: vhs demo/superset-cli.tape" >&2; exit 1; }
+[ -f "$SRC" ]   || { echo "missing $SRC — run: vhs demo/choros-cli.tape" >&2; exit 1; }
 [ -f "$MUSIC" ] || { echo "missing music bed: $MUSIC" >&2; exit 1; }
 DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$SRC")
 FADE_AT=$(awk "BEGIN{print $DUR-3}")

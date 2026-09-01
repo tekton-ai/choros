@@ -15,7 +15,7 @@ import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { env } from "@/env";
 
-const LAST_USED_METHOD_KEY = "superset-last-auth-method";
+const LAST_USED_METHOD_KEY = "choros-last-auth-method";
 
 type AuthMethod = "github" | "google" | "dev";
 
@@ -152,7 +152,7 @@ export default function SignInPage() {
 				</h1>
 				<p className="text-muted-foreground text-sm">
 					<Trans id="web.signIn.subtitle">
-						Sign in to continue to Superset
+						Sign in to continue to Choros
 					</Trans>
 				</p>
 			</div>

@@ -19,7 +19,7 @@ export default command({
 			: THEME_EFFECT;
 		return {
 			data: { imported: ids, issues },
-			message: `Imported ${ids.length} theme${ids.length === 1 ? "" : "s"}: ${ids.join(", ")}.${issueSuffix} Activate with: superset settings theme set <id>. ${effect}`,
+			message: `Imported ${ids.length} theme${ids.length === 1 ? "" : "s"}: ${ids.join(", ")}.${issueSuffix} Activate with: choros settings theme set <id>. ${effect}`,
 		};
 	},
 });

@@ -66,7 +66,7 @@ export function ReleaseList({ releases }: ReleaseListProps) {
 		<section id="all-downloads" className="border-border border-t pt-12">
 			<p className="max-w-2xl font-light text-foreground text-xl sm:text-2xl">
 				<Trans id="marketing.download.availability">
-					The Superset desktop app is available for macOS and Linux.
+					The Choros desktop app is available for macOS and Linux.
 				</Trans>
 			</p>
 

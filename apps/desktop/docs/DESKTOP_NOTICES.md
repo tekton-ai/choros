@@ -21,7 +21,7 @@ VALUES (
   'warning',
   'immediate',
   '1.99.0',
-  E'### Heads up: v2.0 has breaking changes\n\nCloud mirrors need re-linking once after you update. [Details](https://superset.sh/changelog)',
+  E'### Heads up: v2.0 has breaking changes\n\nCloud mirrors need re-linking once after you update. [Details](https://choros.sh/changelog)',
   'Update now',
   'install-update',
   true,
@@ -50,4 +50,4 @@ VALUES (
 
 ## Production
 
-Writing to the production `desktop_notices` table is a deliberate ops action — the root AGENTS.md database rules apply (never touch prod without explicit confirmation). Insert with `active = false`, verify the JSON at `https://api.superset.sh/api/desktop/version`, then flip `active`.
+Writing to the production `desktop_notices` table is a deliberate ops action — the root AGENTS.md database rules apply (never touch prod without explicit confirmation). Insert with `active = false`, verify the JSON at `https://api.choros.sh/api/desktop/version`, then flip `active`.

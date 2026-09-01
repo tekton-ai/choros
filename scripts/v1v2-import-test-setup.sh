@@ -9,7 +9,7 @@
 #   - superset-dev-data/host/<orgId>/host.db  (host.db fixtures)
 #   - ~/code/<repo>                       (on-disk fixture repos)
 #
-# v1 local DB project rows that already exist (superset, cal.com, onbook,
+# v1 local DB project rows that already exist (choros, cal.com, onbook,
 # onlook, mastra, chatbot) are NOT recreated — we just bump their tab_order
 # so they show up in the importer. New synthetic rows (v1v2-no-remote,
 # v1v2-ghost) are inserted with id prefix 22222222-bbbb-...
@@ -67,8 +67,8 @@ mkdir -p "$HOME/code/v1v2-no-remote"
   cd "$HOME/code/v1v2-no-remote"
   git init -q -b main
   echo "# v1v2-no-remote — local-only fixture" > README.md
-  git -c user.email=test@superset.sh -c user.name=Test add README.md
-  git -c user.email=test@superset.sh -c user.name=Test commit -q -m init
+  git -c user.email=test@choros.sh -c user.name=Test add README.md
+  git -c user.email=test@choros.sh -c user.name=Test commit -q -m init
 )
 
 echo "→ creating ~/code/v1v2-ghost (single-remote fixture)"
@@ -79,8 +79,8 @@ mkdir -p "$HOME/code/v1v2-ghost"
   git init -q -b main
   git remote add origin https://github.com/satya-fake-org/v1v2-ghost.git
   echo "# v1v2-ghost fixture" > README.md
-  git -c user.email=test@superset.sh -c user.name=Test add README.md
-  git -c user.email=test@superset.sh -c user.name=Test commit -q -m init
+  git -c user.email=test@choros.sh -c user.name=Test add README.md
+  git -c user.email=test@choros.sh -c user.name=Test commit -q -m init
 )
 
 echo "→ adding worktrees to ~/code/onbook-relocate-clone"
@@ -104,9 +104,9 @@ INSERT INTO public.v2_projects (id, organization_id, name, slug, repo_clone_url)
 ON CONFLICT (id) DO NOTHING;
 SQL
 
-# ---- 3. cloud v2 fixtures (Superset Org — where active session usually is) --
+# ---- 3. cloud v2 fixtures (Choros Org — where active session usually is) --
 
-echo "→ seeding v2 projects in Superset Org"
+echo "→ seeding v2 projects in Choros Org"
 psql "$PGURL" >/dev/null <<SQL
 INSERT INTO public.v2_projects (id, organization_id, name, slug, repo_clone_url) VALUES
   ('33333333-aaaa-4aaa-8aaa-000000000001', '$SUPERSET_ORG', 'cal.com (calcom)',      'v1v2-test-cal-com-calcom',     'https://github.com/calcom/cal.com'),
@@ -137,7 +137,7 @@ ON CONFLICT (id) DO UPDATE SET
   tab_order = excluded.tab_order;
 
 -- Worktrees under onbook for the workspace-tab tests
-INSERT INTO worktrees (id, project_id, path, branch, base_branch, created_at, created_by_superset)
+INSERT INTO worktrees (id, project_id, path, branch, base_branch, created_at, created_by_choros)
 VALUES
   ('44444444-cccc-4ccc-8ccc-000000000001', '$ONBOOK_V1_ID', '$HOME/code/onbook-relocate-clone/.worktrees/v1v2-test-clean',           'v1v2-test-clean',           'main', strftime('%s','now')*1000, 1),
   ('44444444-cccc-4ccc-8ccc-000000000002', '$ONBOOK_V1_ID', '/tmp/v1v2-stale-path-nowhere',                                          'v1v2-test-stale-fallback', 'main', strftime('%s','now')*1000, 1),
@@ -160,7 +160,7 @@ SQL
 
 # ---- 5. host.db row for relocate scenario -----------------------------------
 
-echo "→ inserting host.db relocate row (Superset org)"
+echo "→ inserting host.db relocate row (Choros org)"
 sqlite3 "$SUPERSET_HOST_DB" <<SQL
 INSERT INTO projects (id, repo_path, created_at, repo_provider, repo_owner, repo_name, repo_url, remote_name)
 VALUES (

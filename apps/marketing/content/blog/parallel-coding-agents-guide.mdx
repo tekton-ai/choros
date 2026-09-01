@@ -5,7 +5,7 @@ author: avi
 date: 2026-02-18
 category: Engineering
 relatedSlugs:
-  - working-with-worktrees-in-superset
+  - working-with-worktrees-in-choros
   - roadmap-to-100-agents
   - git-worktrees-history-deep-dive
 ---
@@ -98,7 +98,7 @@ Better, but still no unified view of all tasks, no session persistence, and no d
 
 ### Pattern 3: Dedicated Orchestrator
 
-Tools like [Superset](https://superset.sh) handle orchestration end-to-end:
+Tools like [Choros](https://choros.sh) handle orchestration end-to-end:
 
 1. **Task creation**: describe the task, pick an agent
 2. **Automatic isolation**: worktree and branch created automatically
@@ -205,7 +205,7 @@ If the agent doesn't run tests, you're reviewing blind. Either include "run test
 
 ## Getting Started
 
-1. **Pick an orchestrator**: [Superset](https://superset.sh) handles worktrees, sessions, and review
+1. **Pick an orchestrator**: [Choros](https://choros.sh) handles worktrees, sessions, and review
 2. **Pick your agents**: Start with Claude Code or Codex, expand later
 3. **Start with 2-3 tasks**: Parallelizable, non-overlapping tasks
 4. **Review quickly**: Focus on diffs, not full file reads

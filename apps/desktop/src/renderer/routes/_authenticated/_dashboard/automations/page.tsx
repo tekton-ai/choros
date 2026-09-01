@@ -88,10 +88,10 @@ type AutomationListItem = RouterOutputs["automation"]["list"][number];
 type AutomationSortField = "name" | "owner" | "schedule" | "status";
 
 // Seeds the "Create with AI" agent session. The skill is provisioned as
-// superset:automate; mentioning it by name loads it (it isn't in the chat
+// choros:automate; mentioning it by name loads it (it isn't in the chat
 // slash-command allowlist).
 const AUTOMATION_AGENT_PROMPT =
-	"Help me create a Superset automation. Use the superset:automate skill if it's available, otherwise the `superset` CLI (start with `superset automations --help`). Ask me what should run on a schedule, confirm the cadence, target project, and agent, then create the automation and trigger a first run so we can review the result together.";
+	"Help me create a Choros automation. Use the choros:automate skill if it's available, otherwise the `choros` CLI (start with `choros automations --help`). Ask me what should run on a schedule, confirm the cadence, target project, and agent, then create the automation and trigger a first run so we can review the result together.";
 
 const DEFAULT_TIMEZONE =
 	Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
@@ -1035,7 +1035,7 @@ function AutomationsPage() {
 								<Trans id="dashboard.automations.page.cliHint">
 									Tell any agent to use the{" "}
 									<code className="select-text cursor-text rounded bg-accent/60 px-1 py-0.5 font-mono text-[11px] text-foreground">
-										superset
+										choros
 									</code>{" "}
 									CLI to spin up workspaces, run tasks, or manage automations.
 								</Trans>{" "}

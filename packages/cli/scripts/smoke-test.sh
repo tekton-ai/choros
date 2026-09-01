@@ -19,8 +19,8 @@ DIST="$(cd "${1:?usage: smoke-test.sh <dist-dir> <target>}" && pwd)"
 TARGET="${2:?usage: smoke-test.sh <dist-dir> <target>}"
 echo "[smoke] dist=$DIST target=$TARGET"
 
-"$DIST/bin/superset" --version
-"$DIST/bin/superset" --help | head -5
+"$DIST/bin/choros" --version
+"$DIST/bin/choros" --help | head -5
 "$DIST/lib/node" --version
 test -f "$DIST/lib/host-service.js" || { echo "[smoke] missing host-service.js" >&2; exit 1; }
 test -f "$DIST/lib/pty-daemon.js" || { echo "[smoke] missing pty-daemon.js" >&2; exit 1; }
@@ -87,12 +87,12 @@ HSPORT="$("$DIST/lib/node" -e 'const s=require("net").createServer();s.listen(0,
 
 env ORGANIZATION_ID="$HSORG" \
 	AUTH_TOKEN="smoke-test-token" \
-	SUPERSET_API_URL="https://api.superset.sh" \
+	SUPERSET_API_URL="https://api.choros.sh" \
 	PORT="$HSPORT" HOST_SERVICE_PORT="$HSPORT" \
 	HOST_SERVICE_SECRET="smoke-test-secret" \
 	HOST_DB_PATH="$HSDIR/host.db" \
 	HOST_MIGRATIONS_FOLDER="$DIST/share/migrations" \
-		"$DIST/bin/superset-host" > "$HSDIR/host.log" 2>&1 &
+		"$DIST/bin/choros-host" > "$HSDIR/host.log" 2>&1 &
 HSPID=$!
 
 healthy=0

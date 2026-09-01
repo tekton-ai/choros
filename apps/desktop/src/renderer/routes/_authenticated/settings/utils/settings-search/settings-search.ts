@@ -68,7 +68,7 @@ export const SETTING_ITEM_ID = {
 	MODELS_ANTHROPIC: "models-anthropic",
 	MODELS_OPENAI: "models-openai",
 
-	EXPERIMENTAL_SUPERSET_V2: "experimental-superset-v2",
+	EXPERIMENTAL_SUPERSET_V2: "experimental-choros-v2",
 	EXPERIMENTAL_V1_MIGRATION: "experimental-v1-migration",
 	EXPERIMENTAL_INLINE_WORKSPACE_PORTS: "experimental-inline-workspace-ports",
 	EXPERIMENTAL_WORKSPACE_AGENTS: "experimental-workspace-agents",
@@ -862,7 +862,7 @@ export const SETTINGS_ITEMS: SettingsItem[] = [
 	{
 		id: SETTING_ITEM_ID.BEHAVIOR_STAR_GITHUB,
 		section: "behavior",
-		title: "Star Superset on GitHub",
+		title: "Star Choros on GitHub",
 		description: "Support the project with a GitHub star",
 		keywords: [
 			"star",
@@ -921,7 +921,7 @@ export const SETTINGS_ITEMS: SettingsItem[] = [
 			"visible",
 			"show",
 			"hide",
-			"superset chat",
+			"choros chat",
 			"claude",
 			"codex",
 			"pi",
@@ -973,7 +973,7 @@ export const SETTINGS_ITEMS: SettingsItem[] = [
 			"variables",
 			"prompt",
 			"task",
-			"superset chat",
+			"choros chat",
 			"launch",
 		],
 	},
@@ -1278,8 +1278,8 @@ export const SETTINGS_ITEMS: SettingsItem[] = [
 	{
 		id: SETTING_ITEM_ID.EXPERIMENTAL_SUPERSET_V2,
 		section: "experimental",
-		title: "Try Superset Version 2 (Early Access)",
-		description: "Switch between Superset V1 and the new V2 experience",
+		title: "Try Choros Version 2 (Early Access)",
+		description: "Switch between Choros V1 and the new V2 experience",
 		keywords: [
 			"experimental",
 			"experiments",
@@ -1530,7 +1530,7 @@ export const SETTINGS_ITEMS: SettingsItem[] = [
 		id: SETTING_ITEM_ID.PROJECT_IMPORT_WORKTREES,
 		section: "project",
 		title: "Import Worktrees",
-		description: "Import existing worktrees from disk into Superset",
+		description: "Import existing worktrees from disk into Choros",
 		keywords: [
 			"project",
 			"import",
@@ -1671,7 +1671,7 @@ export const SETTINGS_ITEMS: SettingsItem[] = [
 		section: "security",
 		title: "Allow remote access to this device via relay",
 		description:
-			"Controls whether other devices can reach your local host service through the Superset relay",
+			"Controls whether other devices can reach your local host service through the Choros relay",
 		keywords: [
 			"security",
 			"relay",

@@ -19,7 +19,7 @@ function githubAvatarUrl(email: string): string | null {
 }
 
 /**
- * Commit-author avatar: an org member's Superset avatar matched by email,
+ * Commit-author avatar: an org member's Choros avatar matched by email,
  * then by exact display name (git emails rarely match account emails), then
  * GitHub noreply-derived URLs, else an initial.
  */

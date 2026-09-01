@@ -278,7 +278,7 @@ export function OverlaysSection() {
 				<HoverCard>
 					<HoverCardTrigger asChild>
 						<Button variant="link">
-							<Trans id="web.design.overlaysSection.superset">@superset</Trans>
+							<Trans id="web.design.overlaysSection.choros">@choros</Trans>
 						</Button>
 					</HoverCardTrigger>
 					<HoverCardContent className="w-72">
@@ -286,8 +286,8 @@ export function OverlaysSection() {
 							<RocketIcon className="mt-1 size-4 shrink-0" />
 							<div className="space-y-1">
 								<p className="text-sm font-medium">
-									<Trans id="web.design.overlaysSection.superset2">
-										Superset
+									<Trans id="web.design.overlaysSection.choros2">
+										Choros
 									</Trans>
 								</p>
 								<p className="text-sm text-muted-foreground">

@@ -6,9 +6,9 @@ Reference: This plan follows conventions from AGENTS.md and the ExecPlan templat
 
 ## Purpose / Big Picture
 
-superset.sh is translated into 16 languages, but search engines cannot see any of it: the locale is negotiated per request from the Accept-Language header, crawlers send English or nothing, and every URL serves exactly one document. After this change, each marketing page exists at a crawlable URL per locale — `superset.sh/pricing` (English, unchanged) and `superset.sh/ja/pricing`, `superset.sh/de/pricing`, and so on — each with its own localized `<title>` and `<meta description>`, `hreflang` alternate links tying the set together, and a sitemap that lists all of them. A Japanese developer searching in Japanese can then land on a Japanese page, and each of the ~500 page×locale combinations carries its own SEO surface.
+choros.sh is translated into 16 languages, but search engines cannot see any of it: the locale is negotiated per request from the Accept-Language header, crawlers send English or nothing, and every URL serves exactly one document. After this change, each marketing page exists at a crawlable URL per locale — `choros.sh/pricing` (English, unchanged) and `choros.sh/ja/pricing`, `choros.sh/de/pricing`, and so on — each with its own localized `<title>` and `<meta description>`, `hreflang` alternate links tying the set together, and a sitemap that lists all of them. A Japanese developer searching in Japanese can then land on a Japanese page, and each of the ~500 page×locale combinations carries its own SEO surface.
 
-To see it working after implementation: `curl -s https://superset.sh/ja/pricing | grep -E '<title>|hreflang|lang='` shows a Japanese title, `lang="ja"`, and 17 alternate links; Google Search Console (outside this plan) begins indexing the `/ja/` tree.
+To see it working after implementation: `curl -s https://choros.sh/ja/pricing | grep -E '<title>|hreflang|lang='` shows a Japanese title, `lang="ja"`, and 17 alternate links; Google Search Console (outside this plan) begins indexing the `/ja/` tree.
 
 ## Assumptions
 
@@ -45,7 +45,7 @@ To see it working after implementation: `curl -s https://superset.sh/ja/pricing 
   Rationale: preserves every existing URL and inbound backlink — the SEO-safest scheme; `x-default` and `en` hreflang point at the bare URL. Redirecting `/pricing → /en/pricing` would put all accumulated link equity behind a redirect for no benefit.
   Date/Author: 2026-08-29 / Kiet + agent.
 - Decision 2: No automatic Accept-Language redirect from bare URLs to locale URLs.
-  Rationale: Google's guidance — locale auto-redirects hide content from crawlers (which send `en` or nothing) and break shared links. Discovery of localized pages is the job of hreflang, the sitemap, and the visible language switcher. The existing `superset_locale` cookie continues to drive the client-resolved apps (docs, web) and may later power a "view this page in 日本語?" suggestion banner, which is explicitly out of scope here.
+  Rationale: Google's guidance — locale auto-redirects hide content from crawlers (which send `en` or nothing) and break shared links. Discovery of localized pages is the job of hreflang, the sitemap, and the visible language switcher. The existing `choros_locale` cookie continues to drive the client-resolved apps (docs, web) and may later power a "view this page in 日本語?" suggestion banner, which is explicitly out of scope here.
   Date/Author: 2026-08-29 / agent, per Next.js and Google i18n guidance.
 - Decision 3: The locale reaches server code via the `[lang]` root param (`next/root-params`' `lang()` getter), replacing header/cookie sniffing in `apps/marketing/src/app/i18n-server.ts`. Header and cookie remain only as inputs to the switcher's initial suggestion.
   Rationale: this is the documented architecture (Lingui RSC tutorial, Next i18n guide): the locale becomes structural (part of the URL) instead of ambient, so every server component and utility reads one source of truth.
@@ -80,11 +80,11 @@ Note (2026-08-29): closeout added and plan moved to done/ on completion of the a
 
 ## Context and Orientation
 
-App affected: `apps/marketing` only (Next.js 16 App Router). Packages involved: `packages/i18n` (locale list `SUPPORTED_LOCALES` in `src/locales.ts`; the server seeding helper `@superset/i18n/server`; the `LanguageSwitcher` component in `src/react.tsx`). The docs and web apps are explicitly out of scope (client-resolved; see the docs-translation decision of 2026-08-29 — docs bodies stay English).
+App affected: `apps/marketing` only (Next.js 16 App Router). Packages involved: `packages/i18n` (locale list `SUPPORTED_LOCALES` in `src/locales.ts`; the server seeding helper `@choros/i18n/server`; the `LanguageSwitcher` component in `src/react.tsx`). The docs and web apps are explicitly out of scope (client-resolved; see the docs-translation decision of 2026-08-29 — docs bodies stay English).
 
 Terms: a "route entry" is a `page.tsx` or `not-found.tsx` under `apps/marketing/src/app/`; "RSC seeding" is the required per-entry call `await initServerI18n()` that activates the Lingui i18n instance for a server render (enforced by `packages/i18n/test/rsc-seeding.test.ts`); a "proxy" is Next 16's request-interception file (`apps/marketing/src/proxy.ts`, the successor of `middleware.ts`) that can rewrite an incoming URL to a different internal path before rendering; `hreflang` alternates are `<link rel="alternate" hreflang="ja" href=".../ja/pricing">` tags that tell search engines which URLs are translations of each other.
 
-Current state: every route entry calls `await initServerI18n()`, which resolves the locale from the `superset_locale` cookie, then the Accept-Language header (`apps/marketing/src/app/i18n-server.ts`). `<html lang>` comes from that resolution in `apps/marketing/src/app/layout.tsx`. Deploy smoke checks live in `scripts/smoke-routes.ts` (`--localized` fetches with `Accept-Language: ja` and asserts served `lang="ja"` + CJK content) wired in `.github/workflows/deploy-preview.yml`.
+Current state: every route entry calls `await initServerI18n()`, which resolves the locale from the `choros_locale` cookie, then the Accept-Language header (`apps/marketing/src/app/i18n-server.ts`). `<html lang>` comes from that resolution in `apps/marketing/src/app/layout.tsx`. Deploy smoke checks live in `scripts/smoke-routes.ts` (`--localized` fetches with `Accept-Language: ja` and asserts served `lang="ja"` + CJK content) wired in `.github/workflows/deploy-preview.yml`.
 
 ## Plan of Work
 
@@ -92,7 +92,7 @@ Current state: every route entry calls `await initServerI18n()`, which resolves 
 
 Move everything under `apps/marketing/src/app/` that is a page, layout, or page-scoped component directory into `apps/marketing/src/app/[lang]/`, EXCEPT: `api/` routes, `sitemap.ts`, `robots.ts`, `manifest`/icon files, opengraph-image routes that must keep their URLs, `i18n-server.ts`, `providers.tsx`, and `globals.css` (imports adjusted). Fix the `@/app/...` imports mechanically (`@/app/components/...` → the new location; prefer moving shared components to `apps/marketing/src/components/` to keep import paths bracket-free — decide file-by-file, biome check verifies).
 
-Create `apps/marketing/src/proxy.ts`: for a request whose first path segment is NOT a supported locale, rewrite to `/en{pathname}` (internal — the URL bar and crawlers still see the bare path). For a first segment that IS a supported locale, pass through. Exclude `_next`, `api`, static files by matcher. `SUPPORTED_LOCALES` imports from `@superset/i18n` — verify the proxy bundle accepts that import; if the edge bundle chokes on the package, inline the locale list with a comment pointing at the source of truth and a test asserting they match.
+Create `apps/marketing/src/proxy.ts`: for a request whose first path segment is NOT a supported locale, rewrite to `/en{pathname}` (internal — the URL bar and crawlers still see the bare path). For a first segment that IS a supported locale, pass through. Exclude `_next`, `api`, static files by matcher. `SUPPORTED_LOCALES` imports from `@choros/i18n` — verify the proxy bundle accepts that import; if the edge bundle chokes on the package, inline the locale list with a comment pointing at the source of truth and a test asserting they match.
 
 Rewrite `apps/marketing/src/app/i18n-server.ts`: `initServerI18n()` reads `const locale = await lang()` from `next/root-params`, validates with `isSupportedLocale` (invalid → `notFound()`), preloads and activates as today, returns the locale. Root layout moves to `app/[lang]/layout.tsx` and renders `<html lang={locale}>`. Add `generateStaticParams` returning all supported locales on the layout so Next knows the param space (pages remain dynamic because of the session nav; that is fine).
 
@@ -114,11 +114,11 @@ Acceptance: `curl -s localhost:6542/ja/pricing | grep -c 'hreflang'` = 18 (17 lo
 
 `scripts/smoke-routes.ts --localized` changes from header-based to URL-based for marketing: fetch `/ja${route}` and assert `lang="ja"` + CJK, and fetch the bare route asserting `lang="en"`. Keep the header-based mode behind the existing flag for apps without localized URLs.
 
-Acceptance: sitemap contains `https://superset.sh/ja/pricing`; clicking 日本語 in the footer navigates to `/ja/<current-path>`; the smoke matrix passes locally.
+Acceptance: sitemap contains `https://choros.sh/ja/pricing`; clicking 日本語 in the footer navigates to `/ja/<current-path>`; the smoke matrix passes locally.
 
 ### Milestone 4: verification and merge
 
-Full local matrix (all 17 locales × `/`, `/pricing`, one dynamic slug; 404 for bogus locale; soft-nav click-through under `/ja/`), `bun run typecheck`, `bun run lint`, `bun test`, `bun run --cwd packages/i18n check`. Ship as one PR (the tree move is not divisible without breaking main); gated merge per the standing rules (CI green → preview smoke → no major/critical review threads). After production deploy, verify `superset.sh/ja/pricing` live and submit the sitemap in Search Console (manual, Kiet).
+Full local matrix (all 17 locales × `/`, `/pricing`, one dynamic slug; 404 for bogus locale; soft-nav click-through under `/ja/`), `bun run typecheck`, `bun run lint`, `bun test`, `bun run --cwd packages/i18n check`. Ship as one PR (the tree move is not divisible without breaking main); gated merge per the standing rules (CI green → preview smoke → no major/critical review threads). After production deploy, verify `choros.sh/ja/pricing` live and submit the sitemap in Search Console (manual, Kiet).
 
 ## Concrete Steps
 

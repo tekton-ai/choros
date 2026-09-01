@@ -276,7 +276,7 @@ function workspacesProvider(priority: number): ComposerMentionProvider {
 					id: name,
 					label: name,
 					description: "Workspace",
-					icon: <PresetIcon name="superset" />,
+					icon: <PresetIcon name="choros" />,
 					select: (ctx) =>
 						ctx.insertChip({
 							label: name,

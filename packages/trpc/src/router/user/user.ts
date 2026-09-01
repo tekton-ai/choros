@@ -148,7 +148,7 @@ export const userRouter = {
 		if (Date.now() - user.deletionRequestedAt.getTime() > graceMs) {
 			throw userError({
 				code: "FORBIDDEN",
-				message: "The recovery period has ended. Contact support@superset.sh.",
+				message: "The recovery period has ended. Contact support@choros.sh.",
 				i18nKey: "serverError.user.theRecoveryPeriodHasEndedContact",
 			});
 		}

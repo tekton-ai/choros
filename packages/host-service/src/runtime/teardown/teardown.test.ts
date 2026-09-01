@@ -80,7 +80,7 @@ describe("resolveTeardownCommand", () => {
 		const root = mkdtempSync(join(tmpdir(), "host-service-teardown-resolve-"));
 		const repoPath = join(root, "repo");
 		const homeDir = join(root, "home");
-		mkdirSync(join(repoPath, ".superset"), { recursive: true });
+		mkdirSync(join(repoPath, ".choros"), { recursive: true });
 		mkdirSync(homeDir, { recursive: true });
 		return {
 			repoPath,
@@ -91,7 +91,7 @@ describe("resolveTeardownCommand", () => {
 
 	function writeConfig(repoPath: string, config: unknown): void {
 		writeFileSync(
-			join(repoPath, ".superset", "config.json"),
+			join(repoPath, ".choros", "config.json"),
 			JSON.stringify(config),
 		);
 	}
@@ -128,7 +128,7 @@ describe("resolveTeardownCommand", () => {
 		try {
 			writeConfig(sb.repoPath, { teardown: ["echo configured"] });
 			writeFileSync(
-				join(sb.repoPath, ".superset", "teardown.sh"),
+				join(sb.repoPath, ".choros", "teardown.sh"),
 				"#!/usr/bin/env bash\n",
 			);
 
@@ -154,7 +154,7 @@ describe("resolveTeardownCommand", () => {
 			// The main repo is the source, matching setup.sh resolution:
 			// gitignored scripts don't exist in worktrees.
 			writeConfig(sb.repoPath, { setup: ["bash setup.sh"] });
-			const scriptPath = join(sb.repoPath, ".superset", "teardown.sh");
+			const scriptPath = join(sb.repoPath, ".choros", "teardown.sh");
 			writeFileSync(scriptPath, "#!/usr/bin/env bash\n");
 
 			const resolved = resolveTeardownCommand({
@@ -174,12 +174,12 @@ describe("resolveTeardownCommand", () => {
 		const sb = makeSandbox();
 		try {
 			writeFileSync(
-				join(sb.repoPath, ".superset", "teardown.sh"),
+				join(sb.repoPath, ".choros", "teardown.sh"),
 				"#!/usr/bin/env bash\n",
 			);
 			const worktreePath = join(sb.repoPath, ".worktrees", "feature");
-			mkdirSync(join(worktreePath, ".superset"), { recursive: true });
-			const worktreeScript = join(worktreePath, ".superset", "teardown.sh");
+			mkdirSync(join(worktreePath, ".choros"), { recursive: true });
+			const worktreeScript = join(worktreePath, ".choros", "teardown.sh");
 			writeFileSync(worktreeScript, "#!/usr/bin/env bash\n");
 
 			const resolved = resolveTeardownCommand({

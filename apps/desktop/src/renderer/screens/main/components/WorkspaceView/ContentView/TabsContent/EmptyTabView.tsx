@@ -14,7 +14,7 @@ import { DeleteWorkspaceDialog } from "renderer/screens/main/components/Workspac
 import { useTabsStore } from "renderer/stores/tabs/store";
 import { useTabsWithPresets } from "renderer/stores/tabs/useTabsWithPresets";
 import { useTheme } from "renderer/stores/theme";
-import supersetEmptyStateWordmark from "./assets/superset-empty-state-wordmark.svg";
+import chorosEmptyStateWordmark from "./assets/choros-empty-state-wordmark.svg";
 import { EmptyTabActionButton } from "./components/EmptyTabActionButton";
 
 interface EmptyTabViewProps {
@@ -124,14 +124,14 @@ export function EmptyTabView({
 			<div className="w-full max-w-xl">
 				<div className="mb-7 flex items-center justify-center py-3">
 					<img
-						alt="Superset"
+						alt="Choros"
 						className={`h-8 w-auto select-none ${
 							activeTheme?.type === "dark"
 								? "opacity-85"
 								: "brightness-0 opacity-75"
 						}`}
 						draggable={false}
-						src={supersetEmptyStateWordmark}
+						src={chorosEmptyStateWordmark}
 					/>
 				</div>
 				<div className="mx-auto grid w-full max-w-md gap-0.5">

@@ -3,12 +3,12 @@ import { env } from "./env";
 import { store } from "./store";
 
 export const BRAND_COLOR = 0x5b5bd6;
-export const SUPPORT_NAME = "Superset Support";
+export const SUPPORT_NAME = "Choros Support";
 
 export function brandedEmbed(): EmbedBuilder {
 	return new EmbedBuilder()
 		.setColor(BRAND_COLOR)
-		.setFooter({ text: "Superset · superset.sh" });
+		.setFooter({ text: "Choros · choros.sh" });
 }
 
 // Username edits are rate limited to a couple per hour, so only touch the

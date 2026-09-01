@@ -1,6 +1,6 @@
 <div align="center">
 
-<img width="full" alt="Claude e OpenCode trabalhando em paralelo em áreas de trabalho do Superset com diffs ao vivo" src="../apps/marketing/public/images/readme-hero.gif" />
+<img width="full" alt="Claude e OpenCode trabalhando em paralelo em áreas de trabalho do Choros com diffs ao vivo" src="../apps/marketing/public/images/readme-hero.gif" />
 
 ### Execute mais de 100 agentes de código em paralelo
 
@@ -14,10 +14,10 @@
 
 *Esta é uma tradução do [README em inglês](../README.md), que é a versão canônica.*
 
-[![GitHub stars](https://img.shields.io/github/stars/superset-sh/superset?style=flat&logo=github)](https://github.com/superset-sh/superset/stargazers)
-[![GitHub release](https://img.shields.io/github/v/release/superset-sh/superset?style=flat&logo=github)](https://github.com/superset-sh/superset/releases)
+[![GitHub stars](https://img.shields.io/github/stars/superset-sh/choros?style=flat&logo=github)](https://github.com/superset-sh/choros/stargazers)
+[![GitHub release](https://img.shields.io/github/v/release/superset-sh/choros?style=flat&logo=github)](https://github.com/superset-sh/choros/releases)
 [![License](https://img.shields.io/badge/license-Elastic%20License%202.0-blue?style=flat)](../LICENSE.md)
-[![Twitter](https://img.shields.io/badge/@superset__sh-555?logo=x)](https://x.com/superset_sh)
+[![Twitter](https://img.shields.io/badge/@choros__sh-555?logo=x)](https://x.com/choros_sh)
 [![Discord](https://img.shields.io/badge/Discord-555?logo=discord)](https://discord.gg/cZeD9WYcV7)
 
 <br />
@@ -27,7 +27,7 @@ Passe seu tempo entregando, não esperando.
 
 <br />
 
-[**Baixar para macOS**](https://github.com/superset-sh/superset/releases/latest) &nbsp;&bull;&nbsp; [Documentação](https://docs.superset.sh) &nbsp;&bull;&nbsp; [Changelog](https://github.com/superset-sh/superset/releases) &nbsp;&bull;&nbsp; [Discord](https://discord.gg/cZeD9WYcV7)
+[**Baixar para macOS**](https://github.com/superset-sh/choros/releases/latest) &nbsp;&bull;&nbsp; [Documentação](https://docs.choros.sh) &nbsp;&bull;&nbsp; [Changelog](https://github.com/superset-sh/choros/releases) &nbsp;&bull;&nbsp; [Discord](https://discord.gg/cZeD9WYcV7)
 
 <br />
 
@@ -36,7 +36,7 @@ Passe seu tempo entregando, não esperando.
 
 ## Programe 10x mais rápido sem custo de troca de contexto
 
-O Superset executa agentes de código baseados em CLI em paralelo em worktrees git isolados, com terminal, revisão e fluxos de abrir no editor integrados.
+O Choros executa agentes de código baseados em CLI em paralelo em worktrees git isolados, com terminal, revisão e fluxos de abrir no editor integrados.
 
 - **Execute vários agentes ao mesmo tempo** sem a sobrecarga da troca de contexto
 - **Isole cada tarefa** em seu próprio worktree git para que os agentes não interfiram uns nos outros
@@ -57,11 +57,11 @@ Espere menos, entregue mais.
 
 Execute mais de 100 agentes de código de uma vez, cada um em seu próprio worktree git com sua própria branch, terminal e ambiente. Compare os resultados e faça merge do vencedor.
 
-[Docs →](https://docs.superset.sh/workspaces)
+[Docs →](https://docs.choros.sh/workspaces)
 
 </td>
 <td width="50%">
-  <a href="https://docs.superset.sh/workspaces"><img src="../apps/marketing/public/images/readme/agents-working.gif" alt="Claude transmitindo uma migração de cobrança enquanto outros agentes rodam em áreas de trabalho paralelas" width="100%" /></a>
+  <a href="https://docs.choros.sh/workspaces"><img src="../apps/marketing/public/images/readme/agents-working.gif" alt="Claude transmitindo uma migração de cobrança enquanto outros agentes rodam em áreas de trabalho paralelas" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -71,11 +71,11 @@ Execute mais de 100 agentes de código de uma vez, cada um em seu próprio workt
 
 Acompanhe cada agente pela barra lateral, com indicadores de atividade, sons de conclusão e badges no dock quando algum precisar da sua atenção.
 
-[Docs →](https://docs.superset.sh/agent-integration)
+[Docs →](https://docs.choros.sh/agent-integration)
 
 </td>
 <td width="50%">
-  <a href="https://docs.superset.sh/agent-integration"><img src="../apps/marketing/public/images/readme/agent-monitoring.gif" alt="Um agente terminando sua tarefa e o status na barra lateral mudando de trabalhando para concluído" width="100%" /></a>
+  <a href="https://docs.choros.sh/agent-integration"><img src="../apps/marketing/public/images/readme/agent-monitoring.gif" alt="Um agente terminando sua tarefa e o status na barra lateral mudando de trabalhando para concluído" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -85,11 +85,11 @@ Acompanhe cada agente pela barra lateral, com indicadores de atividade, sons de 
 
 Abas, divisões infinitas, presets e sessões persistentes que sobrevivem a reinicializações. Pressione ⌘I para um editor de prompt avançado com edição em várias linhas e menções de arquivos com @.
 
-[Docs →](https://docs.superset.sh/terminal-integration)
+[Docs →](https://docs.choros.sh/terminal-integration)
 
 </td>
 <td width="50%">
-  <a href="https://docs.superset.sh/terminal-integration"><img src="../apps/marketing/public/images/readme/terminal.gif" alt="Digitando uma mensagem de acompanhamento com uma menção de arquivo @ no editor de prompt avançado ao lado de um terminal dividido" width="100%" /></a>
+  <a href="https://docs.choros.sh/terminal-integration"><img src="../apps/marketing/public/images/readme/terminal.gif" alt="Digitando uma mensagem de acompanhamento com uma menção de arquivo @ no editor de prompt avançado ao lado de um terminal dividido" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -99,11 +99,11 @@ Abas, divisões infinitas, presets e sessões persistentes que sobrevivem a rein
 
 Inspecione, comente e edite as mudanças dos agentes sem sair do app, e depois faça commit e push quando estiver pronto.
 
-[Docs →](https://docs.superset.sh/diff-viewer)
+[Docs →](https://docs.choros.sh/diff-viewer)
 
 </td>
 <td width="50%">
-  <a href="https://docs.superset.sh/diff-viewer"><img src="../apps/marketing/public/images/readme/diff-viewer.png" alt="Revisando as mudanças de um agente no visualizador de diff" width="100%" /></a>
+  <a href="https://docs.choros.sh/diff-viewer"><img src="../apps/marketing/public/images/readme/diff-viewer.png" alt="Revisando as mudanças de um agente no visualizador de diff" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -113,11 +113,11 @@ Inspecione, comente e edite as mudanças dos agentes sem sair do app, e depois f
 
 Visualize servidores de dev em execução em um painel de navegador. As portas são detectadas por área de trabalho, então cada worktree tem sua própria prévia.
 
-[Docs →](https://docs.superset.sh/browser)
+[Docs →](https://docs.choros.sh/browser)
 
 </td>
 <td width="50%">
-  <a href="https://docs.superset.sh/browser"><img src="../apps/marketing/public/images/readme/browser-ports.png" alt="Navegador integrado exibindo a prévia de um servidor de dev com as portas detectadas" width="100%" /></a>
+  <a href="https://docs.choros.sh/browser"><img src="../apps/marketing/public/images/readme/browser-ports.png" alt="Navegador integrado exibindo a prévia de um servidor de dev com as portas detectadas" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -127,11 +127,11 @@ Visualize servidores de dev em execução em um painel de navegador. As portas s
 
 Execute sessões de agentes de forma agendada: faça triagem de issues durante a noite, redija o changelog semanal, mantenha as dependências em dia.
 
-[Docs →](https://docs.superset.sh/automations)
+[Docs →](https://docs.choros.sh/automations)
 
 </td>
 <td width="50%">
-  <a href="https://docs.superset.sh/automations"><img src="../apps/marketing/public/images/readme/automations.png" alt="Automações de agentes agendadas" width="100%" /></a>
+  <a href="https://docs.choros.sh/automations"><img src="../apps/marketing/public/images/readme/automations.png" alt="Automações de agentes agendadas" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -141,25 +141,25 @@ Execute sessões de agentes de forma agendada: faça triagem de issues durante a
 
 Conecte outra máquina e acesse as áreas de trabalho dela de qualquer lugar: pelo app desktop, pela CLI ou pelo celular. Acorde hosts offline com um comando personalizado.
 
-[Docs →](https://docs.superset.sh/remote-access)
+[Docs →](https://docs.choros.sh/remote-access)
 
 </td>
 <td width="50%">
-  <a href="https://docs.superset.sh/remote-access"><img src="../apps/docs/public/images/remote-workspaces-hosts-members.png" alt="Hosts e membros nas configurações da organização" width="100%" /></a>
+  <a href="https://docs.choros.sh/remote-access"><img src="../apps/docs/public/images/remote-workspaces-hosts-members.png" alt="Hosts e membros nas configurações da organização" width="100%" /></a>
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### CLI do Superset
+### CLI do Choros
 
-Automatize de qualquer shell: crie áreas de trabalho, inicie agentes, leia seus terminais e gerencie automações com um único binário. Se um agente consegue executar um comando, ele consegue controlar o Superset.
+Automatize de qualquer shell: crie áreas de trabalho, inicie agentes, leia seus terminais e gerencie automações com um único binário. Se um agente consegue executar um comando, ele consegue controlar o Choros.
 
-[Docs →](https://docs.superset.sh/cli/getting-started)
+[Docs →](https://docs.choros.sh/cli/getting-started)
 
 </td>
 <td width="50%">
-  <a href="https://docs.superset.sh/cli/getting-started"><img src="../apps/marketing/public/images/readme/cli-demo.gif" alt="Criando uma área de trabalho e iniciando um agente pela CLI do Superset" width="100%" /></a>
+  <a href="https://docs.choros.sh/cli/getting-started"><img src="../apps/marketing/public/images/readme/cli-demo.gif" alt="Criando uma área de trabalho e iniciando um agente pela CLI do Choros" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -169,31 +169,31 @@ Automatize de qualquer shell: crie áreas de trabalho, inicie agentes, leia seus
 
 Vá para qualquer área de trabalho, ação ou configuração a partir de uma única caixa de busca.
 
-[Docs →](https://docs.superset.sh/keyboard-shortcuts)
+[Docs →](https://docs.choros.sh/keyboard-shortcuts)
 
 </td>
 <td width="50%">
-  <a href="https://docs.superset.sh/keyboard-shortcuts"><img src="../apps/marketing/public/images/readme/command-palette.gif" alt="Digitando na paleta de comandos e filtrando ações de áreas de trabalho ao vivo" width="100%" /></a>
+  <a href="https://docs.choros.sh/keyboard-shortcuts"><img src="../apps/marketing/public/images/readme/command-palette.gif" alt="Digitando na paleta de comandos e filtrando ações de áreas de trabalho ao vivo" width="100%" /></a>
 </td>
 </tr>
 </table>
 
 **Também na caixa:**
 
-- **[Habilidades integradas](https://docs.superset.sh/skills)**: os agentes já vêm carregados com as habilidades `superset:*` (orquestrar agentes em paralelo, agendar automações, enviar feedback, diagnosticar problemas), provisionadas automaticamente na inicialização
-- **[Seletor de modelo e agentes personalizados](https://docs.superset.sh/agent-integration)**: escolha um modelo e o nível de raciocínio na inicialização, e adicione qualquer agente de terminal com seu próprio ícone
-- **[Scripts de configuração de área de trabalho](https://docs.superset.sh/setup-teardown-scripts)**: automatize a configuração do ambiente, a instalação de dependências e os servidores de dev por área de trabalho
-- **[Presets de terminal](https://docs.superset.sh/terminal-presets)**: salve layouts de agentes e shells e abra-os com uma única tecla
-- **[Slack e Linear](https://docs.superset.sh/use-with-linear)**: crie áreas de trabalho a partir de mensagens do Slack ou issues do Linear
-- **[Abrir na sua IDE](https://docs.superset.sh/use-with-ide)**: passagem em um clique para o Cursor, o VS Code ou qualquer editor
-- **[Temas personalizados](https://docs.superset.sh/custom-themes)**: crie, edite e importe arquivos de tema
-- **[Atalhos de teclado](https://docs.superset.sh/keyboard-shortcuts)**: toda ação pode ser remapeada em **Configurações → Atalhos de teclado** (⌘/)
-- **[Traga seus próprios provedores](https://docs.superset.sh/providers)**: conecte OpenRouter, Bedrock, Vertex ou Vercel AI Gateway
-- **E muito mais**: lançamos todo dia, então esta lista está perpetuamente atrasada. O [changelog](https://superset.sh/changelog) é a verdadeira lista de recursos.
+- **[Habilidades integradas](https://docs.choros.sh/skills)**: os agentes já vêm carregados com as habilidades `choros:*` (orquestrar agentes em paralelo, agendar automações, enviar feedback, diagnosticar problemas), provisionadas automaticamente na inicialização
+- **[Seletor de modelo e agentes personalizados](https://docs.choros.sh/agent-integration)**: escolha um modelo e o nível de raciocínio na inicialização, e adicione qualquer agente de terminal com seu próprio ícone
+- **[Scripts de configuração de área de trabalho](https://docs.choros.sh/setup-teardown-scripts)**: automatize a configuração do ambiente, a instalação de dependências e os servidores de dev por área de trabalho
+- **[Presets de terminal](https://docs.choros.sh/terminal-presets)**: salve layouts de agentes e shells e abra-os com uma única tecla
+- **[Slack e Linear](https://docs.choros.sh/use-with-linear)**: crie áreas de trabalho a partir de mensagens do Slack ou issues do Linear
+- **[Abrir na sua IDE](https://docs.choros.sh/use-with-ide)**: passagem em um clique para o Cursor, o VS Code ou qualquer editor
+- **[Temas personalizados](https://docs.choros.sh/custom-themes)**: crie, edite e importe arquivos de tema
+- **[Atalhos de teclado](https://docs.choros.sh/keyboard-shortcuts)**: toda ação pode ser remapeada em **Configurações → Atalhos de teclado** (⌘/)
+- **[Traga seus próprios provedores](https://docs.choros.sh/providers)**: conecte OpenRouter, Bedrock, Vertex ou Vercel AI Gateway
+- **E muito mais**: lançamos todo dia, então esta lista está perpetuamente atrasada. O [changelog](https://choros.sh/changelog) é a verdadeira lista de recursos.
 
 ## Agentes compatíveis
 
-O Superset funciona com qualquer agente de código baseado em CLI, incluindo:
+O Choros funciona com qualquer agente de código baseado em CLI, incluindo:
 
 | Agente | Status |
 |:------|:-------|
@@ -218,7 +218,7 @@ O Superset funciona com qualquer agente de código baseado em CLI, incluindo:
 | <picture><source media="(prefers-color-scheme: dark)" srcset="../packages/ui/src/assets/icons/preset-icons/polygraph-white.svg" /><img height="16" align="top" alt="Polygraph" src="../packages/ui/src/assets/icons/preset-icons/polygraph.svg" /></picture> &nbsp;[Polygraph](https://trypolygraph.com/) | Totalmente compatível |
 | Qualquer outro agente de CLI | Funciona sem configuração |
 
-Se roda em um terminal, roda no Superset
+Se roda em um terminal, roda no Choros
 
 Os agentes recebem mais do que um terminal:
 
@@ -234,17 +234,17 @@ Todas as superfícies conversam com as mesmas áreas de trabalho, então você p
 
 | Superfície | O que você ganha |
 |:--------|:-------------|
-| [**App desktop**](https://github.com/superset-sh/superset/releases/latest) | A IDE completa: terminais, visualizador de diff, navegador integrado, automações |
-| [**CLI**](https://docs.superset.sh/cli/getting-started) | Um único binário `superset` para gerenciar áreas de trabalho, agentes, terminais e hosts de qualquer shell |
-| [**SDK TypeScript**](https://docs.superset.sh/sdk/getting-started) | Controle o Superset programaticamente com [`@superset_sh/sdk`](https://www.npmjs.com/package/@superset_sh/sdk) a partir de Node, Bun ou Deno |
-| [**Servidor MCP**](https://docs.superset.sh/mcp) | Deixe o Claude Code, o Codex, o Cursor e outros agentes criarem e gerenciarem áreas de trabalho por conta própria |
+| [**App desktop**](https://github.com/superset-sh/choros/releases/latest) | A IDE completa: terminais, visualizador de diff, navegador integrado, automações |
+| [**CLI**](https://docs.choros.sh/cli/getting-started) | Um único binário `choros` para gerenciar áreas de trabalho, agentes, terminais e hosts de qualquer shell |
+| [**SDK TypeScript**](https://docs.choros.sh/sdk/getting-started) | Controle o Choros programaticamente com [`@choros_sh/sdk`](https://www.npmjs.com/package/@choros_sh/sdk) a partir de Node, Bun ou Deno |
+| [**Servidor MCP**](https://docs.choros.sh/mcp) | Deixe o Claude Code, o Codex, o Cursor e outros agentes criarem e gerenciarem áreas de trabalho por conta própria |
 
 A CLI vem junto com o app desktop, ou instale-a separadamente:
 
 ```bash
-curl -fsSL https://superset.sh/cli/install.sh | sh
+curl -fsSL https://choros.sh/cli/install.sh | sh
 # or
-brew install superset-sh/tap/superset
+brew install superset-sh/tap/choros
 ```
 
 Um app para iOS chega em breve para você acompanhar seus agentes pelo celular.
@@ -253,20 +253,20 @@ Um app para iOS chega em breve para você acompanhar seus agentes pelo celular.
 
 Baixe o app desktop:
 
-- **macOS**: [Apple Silicon (.dmg)](https://github.com/superset-sh/superset/releases/latest/download/Superset-arm64.dmg) · [Intel (.dmg)](https://github.com/superset-sh/superset/releases/latest/download/Superset-x64.dmg)
-- **Linux**: [AppImage x64](https://github.com/superset-sh/superset/releases/latest/download/Superset-x86_64.AppImage) (experimental; o macOS é o alvo principal)
+- **macOS**: [Apple Silicon (.dmg)](https://github.com/superset-sh/choros/releases/latest/download/Choros-arm64.dmg) · [Intel (.dmg)](https://github.com/superset-sh/choros/releases/latest/download/Choros-x64.dmg)
+- **Linux**: [AppImage x64](https://github.com/superset-sh/choros/releases/latest/download/Choros-x86_64.AppImage) (experimental; o macOS é o alvo principal)
 - **Windows**: ainda não disponível
-- [Todas as builds](https://github.com/superset-sh/superset/releases/latest)
+- [Todas as builds](https://github.com/superset-sh/choros/releases/latest)
 
-Tudo o que você precisa ter instalado é o [Git](https://git-scm.com/). O [gh](https://cli.github.com/) é opcional e desbloqueia os fluxos de PR; o Superset se oferece para instalá-lo para você.
+Tudo o que você precisa ter instalado é o [Git](https://git-scm.com/). O [gh](https://cli.github.com/) é opcional e desbloqueia os fluxos de PR; o Choros se oferece para instalá-lo para você.
 
 ## Desenvolvimento
 
-Quer mexer no Superset ou contribuir com uma PR? Clone o repositório, adicione-o ao
-app do Superset instalado e crie uma área de trabalho para a sua mudança:
+Quer mexer no Choros ou contribuir com uma PR? Clone o repositório, adicione-o ao
+app do Choros instalado e crie uma área de trabalho para a sua mudança:
 
 ```bash
-git clone https://github.com/superset-sh/superset.git
+git clone https://github.com/superset-sh/choros.git
 ```
 
 Depois execute a configuração de desenvolvimento no terminal dessa área de trabalho:
@@ -278,11 +278,11 @@ bun run dev
 
 Execute `setup.local.sh` uma vez em cada worktree novo. Ele configura a identidade
 do app e as portas específicas da área de trabalho para que o app desktop de desenvolvimento
-possa rodar ao lado do app do Superset instalado e de outros worktrees de desenvolvimento.
+possa rodar ao lado do app do Choros instalado e de outros worktrees de desenvolvimento.
 
 Não é preciso conta na Neon nem credenciais de terceiros. O `setup.local.sh` sobe
 uma stack local de Postgres + Electric via Docker e cria uma conta de dev. Entre
-com o botão **"Sign in as dev"** (ou `admin@local.test` / `supersetdev`).
+com o botão **"Sign in as dev"** (ou `admin@local.test` / `chorosdev`).
 
 Pré-requisitos: [Bun](https://bun.sh/) v1.3.14+ (fixado em `.bun-version`), `docker`, `jq` e `caddy`, que o `bun dev` executa como proxy HTTPS local (`brew install jq caddy && caddy trust`).
 
@@ -290,7 +290,7 @@ Veja [**DEVELOPMENT.md**](../DEVELOPMENT.md) para o guia completo: o que o scrip
 
 ## Configuração
 
-Configure os scripts de setup, teardown e run das áreas de trabalho em `.superset/config.json`. Veja a [documentação completa](https://docs.superset.sh/setup-teardown-scripts).
+Configure os scripts de setup, teardown e run das áreas de trabalho em `.superset/config.json`. Veja a [documentação completa](https://docs.choros.sh/setup-teardown-scripts).
 
 ```json
 {
@@ -300,7 +300,7 @@ Configure os scripts de setup, teardown e run das áreas de trabalho em `.supers
 }
 ```
 
-Os atalhos de teclado são personalizáveis em **Configurações → Atalhos de teclado** (⌘/); veja a [lista completa de atalhos](https://docs.superset.sh/keyboard-shortcuts).
+Os atalhos de teclado são personalizáveis em **Configurações → Atalhos de teclado** (⌘/); veja a [lista completa de atalhos](https://docs.choros.sh/keyboard-shortcuts).
 
 ## Stack de tecnologia
 
@@ -324,20 +324,20 @@ Os atalhos de teclado são personalizáveis em **Configurações → Atalhos de 
 
 ## Contribuindo
 
-Contribuições são bem-vindas! Veja [CONTRIBUTING.md](../CONTRIBUTING.md) para saber como se preparar e abrir uma PR. Bugs e pedidos de recursos vão nas [issues](https://github.com/superset-sh/superset/issues).
+Contribuições são bem-vindas! Veja [CONTRIBUTING.md](../CONTRIBUTING.md) para saber como se preparar e abrir uma PR. Bugs e pedidos de recursos vão nas [issues](https://github.com/superset-sh/choros/issues).
 
-<a href="https://github.com/superset-sh/superset/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=superset-sh/superset" />
+<a href="https://github.com/superset-sh/choros/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=superset-sh/choros" />
 </a>
 
 ## Comunidade
 
-Junte-se à comunidade do Superset para obter ajuda, compartilhar feedback e se conectar com outros usuários:
+Junte-se à comunidade do Choros para obter ajuda, compartilhar feedback e se conectar com outros usuários:
 
 - **[Discord](https://discord.gg/cZeD9WYcV7)**: converse com o time e a comunidade
-- **[Twitter](https://x.com/superset_sh)**: siga para novidades e anúncios
-- **[GitHub Issues](https://github.com/superset-sh/superset/issues)**: relate bugs e peça recursos
-- **[GitHub Discussions](https://github.com/superset-sh/superset/discussions)**: faça perguntas e compartilhe ideias
+- **[Twitter](https://x.com/choros_sh)**: siga para novidades e anúncios
+- **[GitHub Issues](https://github.com/superset-sh/choros/issues)**: relate bugs e peça recursos
+- **[GitHub Discussions](https://github.com/superset-sh/choros/discussions)**: faça perguntas e compartilhe ideias
 
 ### Time
 
@@ -349,4 +349,4 @@ Junte-se à comunidade do Superset para obter ajuda, compartilhar feedback e se 
 
 **O app desktop é grátis para sempre.** Executar agentes em paralelo na sua própria máquina nunca exigirá pagamento. Qualquer coisa que cobrarmos será um serviço opcional por cima.
 
-O app inteiro está neste repositório sob a [Elastic License 2.0](../LICENSE.md): use, faça fork, modifique, hospede você mesmo para o seu time. A única coisa fora de questão é reempacotar o próprio Superset como um serviço que você vende para terceiros.
+O app inteiro está neste repositório sob a [Elastic License 2.0](../LICENSE.md): use, faça fork, modifique, hospede você mesmo para o seu time. A única coisa fora de questão é reempacotar o próprio Choros como um serviço que você vende para terceiros.

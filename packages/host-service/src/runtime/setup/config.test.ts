@@ -30,7 +30,7 @@ function createSandbox(): Sandbox {
 }
 
 function writeRepoConfig(repoPath: string, content: string | object) {
-	const dir = join(repoPath, ".superset");
+	const dir = join(repoPath, ".choros");
 	mkdirSync(dir, { recursive: true });
 	writeFileSync(
 		join(dir, "config.json"),
@@ -40,7 +40,7 @@ function writeRepoConfig(repoPath: string, content: string | object) {
 }
 
 function writeRepoLocalConfig(repoPath: string, content: string | object) {
-	const dir = join(repoPath, ".superset");
+	const dir = join(repoPath, ".choros");
 	mkdirSync(dir, { recursive: true });
 	writeFileSync(
 		join(dir, "config.local.json"),
@@ -54,7 +54,7 @@ function writeUserOverride(
 	projectId: string,
 	content: object,
 ) {
-	const dir = join(homeDir, ".superset", "projects", projectId);
+	const dir = join(homeDir, ".choros", "projects", projectId);
 	mkdirSync(dir, { recursive: true });
 	writeFileSync(join(dir, "config.json"), JSON.stringify(content), "utf-8");
 }
@@ -64,7 +64,7 @@ function writeUserOverrideByPath(
 	repoPath: string,
 	content: object,
 ) {
-	const dir = join(homeDir, ".superset", "projects", repoPath);
+	const dir = join(homeDir, ".choros", "projects", repoPath);
 	mkdirSync(dir, { recursive: true });
 	writeFileSync(join(dir, "config.json"), JSON.stringify(content), "utf-8");
 }
@@ -435,7 +435,7 @@ describe("resolveScript", () => {
 	}
 
 	function writeFallbackScript(key: string) {
-		const dir = join(sandbox.repoPath, ".superset");
+		const dir = join(sandbox.repoPath, ".choros");
 		mkdirSync(dir, { recursive: true });
 		const scriptPath = join(dir, `${key}.sh`);
 		writeFileSync(scriptPath, "#!/usr/bin/env bash\n", "utf-8");
@@ -485,8 +485,8 @@ describe("resolveScript", () => {
 	it("prefers the worktree script when worktreePath is in scope", () => {
 		writeFallbackScript("teardown");
 		const worktreePath = join(sandbox.repoPath, ".worktrees", "feature");
-		mkdirSync(join(worktreePath, ".superset"), { recursive: true });
-		const worktreeScript = join(worktreePath, ".superset", "teardown.sh");
+		mkdirSync(join(worktreePath, ".choros"), { recursive: true });
+		const worktreeScript = join(worktreePath, ".choros", "teardown.sh");
 		writeFileSync(worktreeScript, "#!/usr/bin/env bash\n", "utf-8");
 
 		expect(

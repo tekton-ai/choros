@@ -10,7 +10,7 @@ test("returns null (no probe) for non-/hosts URLs without fetching", async () =>
 	globalThis.fetch = (() => {
 		throw new Error("should not fetch");
 	}) as unknown as typeof fetch;
-	expect(await primeRelayAffinity("wss://relay.superset.sh/ws")).toBeNull();
+	expect(await primeRelayAffinity("wss://relay.choros.sh/ws")).toBeNull();
 });
 
 test("probes /_whoowns keeping the token, and parses status + region", async () => {
@@ -23,7 +23,7 @@ test("probes /_whoowns keeping the token, and parses status + region", async () 
 	}) as unknown as typeof fetch;
 
 	const probe = await primeRelayAffinity(
-		"wss://relay.superset.sh/hosts/org:host/terminal/t1?token=abc",
+		"wss://relay.choros.sh/hosts/org:host/terminal/t1?token=abc",
 	);
 
 	expect(probe).toEqual({ status: 200, region: "iad" });
@@ -38,7 +38,7 @@ test("surfaces a 503 as host-offline signal (status 503, no region)", async () =
 			status: 503,
 		})) as unknown as typeof fetch;
 	expect(
-		await primeRelayAffinity("wss://relay.superset.sh/hosts/h/events?token=x"),
+		await primeRelayAffinity("wss://relay.choros.sh/hosts/h/events?token=x"),
 	).toEqual({ status: 503, region: null });
 });
 
@@ -48,7 +48,7 @@ test("returns null when the relay is unreachable", async () => {
 	}) as unknown as typeof fetch;
 	expect(
 		await primeRelayAffinity(
-			"wss://relay.superset.sh/hosts/h/terminal/t?token=x",
+			"wss://relay.choros.sh/hosts/h/terminal/t?token=x",
 		),
 	).toBeNull();
 });

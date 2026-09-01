@@ -14,7 +14,7 @@ import { and, eq } from "drizzle-orm";
 import { env } from "./env";
 import { auth } from "./server";
 
-const CLI_CLIENT_ID = "superset-cli";
+const CLI_CLIENT_ID = "choros-cli";
 const CLI_LOOPBACK_PORTS = [51789, 51790, 51791, 51792, 51793];
 
 const CLI_WEB_URLS = [
@@ -83,7 +83,7 @@ async function seedDevAccount(): Promise<void> {
 
 async function seedCliOAuthClient(): Promise<void> {
 	const registration = {
-		name: "Superset CLI",
+		name: "Choros CLI",
 		redirectUris: CLI_REDIRECT_URIS,
 		grantTypes: ["authorization_code", "refresh_token"],
 		responseTypes: ["code"],

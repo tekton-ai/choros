@@ -383,7 +383,7 @@ export class HostServiceCoordinator extends EventEmitter {
 	 * tracked in this process (e.g. a stale manifest left by a CLI-spawned
 	 * host-service) — then removes the manifest so callers can't pick up the
 	 * stale entry, and respawns. Used by the recovery path for
-	 * superset-sh/superset#4299 where a wedged host-service keeps serving
+	 * superset-sh/choros#4299 where a wedged host-service keeps serving
 	 * stale state.
 	 */
 	async reset(
@@ -1182,19 +1182,19 @@ export class HostServiceCoordinator extends EventEmitter {
 				? i18n._({
 						id: "main.hostService.crashed.messageForOrganization",
 						message:
-							"The Superset host service for {organization} stopped unexpectedly ({cause}) and could not be restarted automatically.",
+							"The Choros host service for {organization} stopped unexpectedly ({cause}) and could not be restarted automatically.",
 						values: { organization: orgName, cause },
 					})
 				: i18n._({
 						id: "main.hostService.crashed.message",
 						message:
-							"The Superset host service stopped unexpectedly ({cause}) and could not be restarted automatically.",
+							"The Choros host service stopped unexpectedly ({cause}) and could not be restarted automatically.",
 						values: { cause },
 					}),
 			detail: i18n._({
 				id: "main.hostService.crashed.detail",
 				message:
-					"Its workspaces and terminals are unavailable until it restarts — use the Superset tray menu > Host Service > Restart.",
+					"Its workspaces and terminals are unavailable until it restarts — use the Choros tray menu > Host Service > Restart.",
 			}),
 		});
 	}

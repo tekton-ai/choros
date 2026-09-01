@@ -13,7 +13,7 @@ import { homedir } from "node:os";
 import { join } from "node:path";
 import { env } from "./env";
 
-export type SupersetConfig = {
+export type ChorosConfig = {
 	auth?: {
 		accessToken: string;
 		refreshToken?: string;
@@ -24,7 +24,7 @@ export type SupersetConfig = {
 };
 
 export const SUPERSET_HOME_DIR =
-	process.env.SUPERSET_HOME_DIR ?? join(homedir(), ".superset");
+	process.env.SUPERSET_HOME_DIR ?? join(homedir(), ".choros");
 export const SUPERSET_CONFIG_PATH = join(SUPERSET_HOME_DIR, "config.json");
 
 function ensureDir() {
@@ -37,7 +37,7 @@ function ensureDir() {
 	} catch {}
 }
 
-export function readConfig(): SupersetConfig {
+export function readConfig(): ChorosConfig {
 	if (!existsSync(SUPERSET_CONFIG_PATH)) return {};
 	try {
 		const stat = statSync(SUPERSET_CONFIG_PATH);
@@ -53,12 +53,12 @@ export function readConfig(): SupersetConfig {
  * persisted to disk.
  */
 export function resolveOrganizationId(
-	config: SupersetConfig,
+	config: ChorosConfig,
 ): string | undefined {
 	return process.env.SUPERSET_ORGANIZATION_ID?.trim() || config.organizationId;
 }
 
-export function writeConfig(config: SupersetConfig): void {
+export function writeConfig(config: ChorosConfig): void {
 	ensureDir();
 	const tempPath = join(
 		SUPERSET_HOME_DIR,

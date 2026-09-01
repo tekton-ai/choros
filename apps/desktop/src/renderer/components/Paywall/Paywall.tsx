@@ -141,7 +141,7 @@ export const Paywall = () => {
 						<Trans id="components.paywall.cancel">Cancel</Trans>
 					</Button>
 					<Button onClick={handleUpgrade}>
-						<Trans id="components.paywall.upgradeCta">Get Superset Pro</Trans>
+						<Trans id="components.paywall.upgradeCta">Get Choros Pro</Trans>
 					</Button>
 				</div>
 			</DialogContent>

@@ -339,7 +339,7 @@ export function AgentDetail({
 								<div className="flex items-center gap-1.5">
 									<div className="text-sm font-medium">
 										<Trans id="settings.agents.detail.hooksTitle">
-											Superset hooks
+											Choros hooks
 										</Trans>
 									</div>
 									<Tooltip>
@@ -349,10 +349,10 @@ export function AgentDetail({
 										<TooltipContent side="top" className="max-w-[320px]">
 											<Trans id="settings.agents.detail.hooksTooltip">
 												Registers lifecycle hooks in this agent's global config
-												so Superset can show status and send notifications.
-												Turning this off removes Superset's entries everywhere —
+												so Choros can show status and send notifications.
+												Turning this off removes Choros's entries everywhere —
 												status and notifications stop for this agent, including
-												inside Superset.
+												inside Choros.
 											</Trans>
 										</TooltipContent>
 									</Tooltip>
@@ -366,7 +366,7 @@ export function AgentDetail({
 							<Switch
 								aria-label={t({
 									id: "settings.agents.detail.hooksAriaLabel",
-									message: "Superset hooks",
+									message: "Choros hooks",
 								})}
 								checked={hooksEnabled}
 								onCheckedChange={(enabled) =>

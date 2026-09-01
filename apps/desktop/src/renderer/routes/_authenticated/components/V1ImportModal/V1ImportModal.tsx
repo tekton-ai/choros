@@ -54,7 +54,7 @@ export function V1ImportModal() {
 			>
 				<DialogTitle className="sr-only">
 					{page === "welcome"
-						? "Welcome to Superset v2"
+						? "Welcome to Choros v2"
 						: page === "intro"
 							? "Let's get you started"
 							: "Import from v1"}

@@ -74,11 +74,11 @@ export function StepHeader({ title, subtitle, icon }: StepHeaderProps) {
 	);
 }
 
-interface SupersetPillProps {
+interface ChorosPillProps {
 	children: React.ReactNode;
 }
 
-export function SupersetPill({ children }: SupersetPillProps) {
+export function ChorosPill({ children }: ChorosPillProps) {
 	return (
 		<div className="flex items-center justify-center gap-2 rounded-2xl border border-border bg-card p-2">
 			{children}

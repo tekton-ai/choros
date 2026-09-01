@@ -38,7 +38,7 @@ export function CTASection() {
 					</div>
 					<p className="mt-10 mb-4 text-sm text-muted-foreground">
 						<Trans id="marketing.cta.installPrompt">
-							Or ask your coding agent to install the Superset CLI.
+							Or ask your coding agent to install the Choros CLI.
 						</Trans>
 					</p>
 					<InstallCommand />

@@ -40,7 +40,7 @@ Sentry.init({
 	// and wallet-injected code). Requires applicationKey in next.config.ts.
 	integrations: [
 		Sentry.thirdPartyErrorFilterIntegration({
-			filterKeys: ["superset-web"],
+			filterKeys: ["choros-web"],
 			behaviour: "drop-error-if-exclusively-contains-third-party-frames",
 		}),
 	],

@@ -21,7 +21,7 @@ afterAll(async () => {
  * How a standing warning presents, below the rows and the scope line:
  *
  *   ⚠ This trigger will not run for messages in #access-requests
- *     until @Superset is invited.
+ *     until @Choros is invited.
  *
  * Amber rather than destructive, and no banner: the config is valid and saves
  * fine. These describe the world, not an unfinished edit, so they must not
@@ -41,7 +41,7 @@ async function warnings(list: string[]) {
 describe("standing warnings", () => {
 	test("say what will not run, and what to do about it", async () => {
 		const text =
-			"This trigger will not run for messages in #access-requests until @Superset is invited.";
+			"This trigger will not run for messages in #access-requests until @Choros is invited.";
 		const { ui } = await warnings([text]);
 		expect(ui.getByText(text)).toBeDefined();
 	});

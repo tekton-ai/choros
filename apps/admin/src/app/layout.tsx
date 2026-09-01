@@ -26,7 +26,7 @@ const inter = Inter({
 initI18n();
 
 export const metadata: Metadata = {
-	title: "Superset | Company Dashboard",
+	title: "Choros | Company Dashboard",
 	description: "Analytics, Ops, and more",
 	icons: {
 		icon: [

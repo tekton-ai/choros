@@ -41,7 +41,7 @@ async function commitFile(
 }
 
 function mkTmp(): string {
-	return mkdtempSync(join(tmpdir(), "superset-git-integration-"));
+	return mkdtempSync(join(tmpdir(), "choros-git-integration-"));
 }
 
 // ── resolveUpstream ────────────────────────────────────────────────

@@ -27,7 +27,7 @@ export default command({
 
 		const organizationId = ctx.config.organizationId;
 		if (!organizationId) {
-			throw new CLIError("No active organization", "Run: superset auth login");
+			throw new CLIError("No active organization", "Run: choros auth login");
 		}
 
 		// The row carries its host-served project name; the host id is
@@ -49,7 +49,7 @@ export default command({
 		if (!workspace) {
 			throw new CLIError(
 				`Workspace not found on host ${hostId}: ${id}`,
-				"Pass --host <id> if it lives on another machine. List with: superset workspaces list",
+				"Pass --host <id> if it lives on another machine. List with: choros workspaces list",
 			);
 		}
 

@@ -42,19 +42,19 @@ export function HomePaywallScreen() {
 				<View className="items-center gap-2">
 					<Text className="text-2xl font-semibold text-foreground">
 						<Trans id="mobile.paywall.title">
-							Superset Mobile is part of Pro
+							Choros Mobile is part of Pro
 						</Trans>
 					</Text>
 					<Text className="text-center text-base text-muted-foreground">
 						{activeOrganization
 							? t({
 									id: "mobile.paywall.descriptionNamed",
-									message: `${activeOrganization.name} is on the Free plan. Superset Mobile is available for organizations on Pro.`,
+									message: `${activeOrganization.name} is on the Free plan. Choros Mobile is available for organizations on Pro.`,
 								})
 							: t({
 									id: "mobile.paywall.description",
 									message:
-										"This organization is on the Free plan. Superset Mobile is available for organizations on Pro.",
+										"This organization is on the Free plan. Choros Mobile is available for organizations on Pro.",
 								})}
 					</Text>
 				</View>

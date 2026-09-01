@@ -179,7 +179,7 @@ export function ptyDaemonSocketPath(
 ): string {
 	assertIsolatedDaemonNamespaceInTests(env);
 	const home = env.SUPERSET_HOME_DIR;
-	const defaultHome = path.join(os.homedir(), ".superset");
+	const defaultHome = path.join(os.homedir(), ".choros");
 	const isDefaultHome =
 		!home || path.resolve(home) === path.resolve(defaultHome);
 	// Hash the RESOLVED home so equivalent spellings of one custom home
@@ -188,7 +188,7 @@ export function ptyDaemonSocketPath(
 		? organizationId
 		: `${organizationId}:${path.resolve(home)}`;
 	const shortId = createHash("sha256").update(key).digest("hex").slice(0, 12);
-	return path.join(os.tmpdir(), `superset-ptyd-${shortId}.sock`);
+	return path.join(os.tmpdir(), `choros-ptyd-${shortId}.sock`);
 }
 
 /**

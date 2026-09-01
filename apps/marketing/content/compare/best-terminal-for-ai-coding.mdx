@@ -1,6 +1,6 @@
 ---
 title: "Best Terminal for AI Coding Agents in 2026"
-description: "Compare the best terminals for AI coding workflows, including Superset, Warp, iTerm2, Ghostty, kitty, Alacritty, and WezTerm."
+description: "Compare the best terminals for AI coding workflows, including Choros, Warp, iTerm2, Ghostty, kitty, Alacritty, and WezTerm."
 date: 2026-03-20
 lastUpdated: 2026-03-21
 type: "roundup"
@@ -24,7 +24,7 @@ The best terminal for AI coding depends on what problem you are actually trying 
 
 If you want built-in AI and one polished interface, Warp is the obvious candidate. If you want a classic daily-driver terminal, iTerm2, Ghostty, kitty, Alacritty, and WezTerm are all credible choices. If you want to run multiple coding agents safely on the same repository, the answer changes: you need orchestration and Git isolation more than you need another tab bar.
 
-That is where Superset stands apart. It is not trying to be the best general-purpose terminal emulator. It is a local-first workspace for running 100+ coding agents in parallel, not a classic terminal, and that is exactly why it stands out for parallel coding workflows.
+That is where Choros stands apart. It is not trying to be the best general-purpose terminal emulator. It is a local-first workspace for running 100+ coding agents in parallel, not a classic terminal, and that is exactly why it stands out for parallel coding workflows.
 
 ---
 
@@ -32,7 +32,7 @@ That is where Superset stands apart. It is not trying to be the best general-pur
 
 | Tool | Best for | AI model | Safe parallel work on one repo? | Main tradeoff |
 |---|---|---|---|---|
-| **Superset** | Running many coding agents in parallel | Bring your own agents plus Superset Chat | Yes - one Git worktree per task | Not a classic SSH-first or shell-first terminal emulator |
+| **Choros** | Running many coding agents in parallel | Bring your own agents plus Choros Chat | Yes - one Git worktree per task | Not a classic SSH-first or shell-first terminal emulator |
 | **Warp** | One app for terminal + built-in AI | Built-in agents plus third-party CLI agents | Partially - agent support without automatic worktree isolation per task | More opinionated workflow and cloud-connected AI features |
 | **iTerm2** | macOS power users who want a mature terminal | None built in | No - use manual Git worktrees or tmux | Great terminal, no agent orchestration layer |
 | **Ghostty** | Fast, modern, native-feeling daily driver | None built in | No - pair with Git worktrees or zellij/tmux | Focused on terminal quality, not AI workflow management |
@@ -54,7 +54,7 @@ This group includes iTerm2, Ghostty, kitty, Alacritty, and WezTerm.
 
 These tools are built around AI-assisted development itself: prompt entry, agent execution, review, and automation.
 
-Warp sits between the categories because it is both a terminal emulator and an AI product. Superset is even more specialized: it is built around orchestrating coding agents in isolated Git worktrees, with chat, file review, and browser preview layered into the same workspace.
+Warp sits between the categories because it is both a terminal emulator and an AI product. Choros is even more specialized: it is built around orchestrating coding agents in isolated Git worktrees, with chat, file review, and browser preview layered into the same workspace.
 
 That means many developers will end up using two tools:
 
@@ -63,11 +63,11 @@ That means many developers will end up using two tools:
 
 ## Tool-by-Tool Breakdown
 
-### Superset
+### Choros
 
-Superset is the right choice when your main problem is not "which terminal feels best?" but "how do I run several coding agents at once without branch chaos?"
+Choros is the right choice when your main problem is not "which terminal feels best?" but "how do I run several coding agents at once without branch chaos?"
 
-Its core idea is simple: every task gets its own Git worktree, its own branch, and its own agent session. That makes parallel agent work reviewable and safe. Around that, Superset now adds a built-in chat panel, diff/file editing, browser preview for docs and dev servers, and MCP tooling. It is strongest when you are dispatching independent work like tests, refactors, docs, or bug fixes across the same repository.
+Its core idea is simple: every task gets its own Git worktree, its own branch, and its own agent session. That makes parallel agent work reviewable and safe. Around that, Choros now adds a built-in chat panel, diff/file editing, browser preview for docs and dev servers, and MCP tooling. It is strongest when you are dispatching independent work like tests, refactors, docs, or bug fixes across the same repository.
 
 Best for:
 
@@ -79,9 +79,9 @@ Best for:
 
 Warp is the strongest all-in-one option if you want built-in agents inside a polished terminal. Warp's agent stack can interact with active terminal apps, reuse prompts and rules, and work alongside third-party CLI agents. It is a much broader product than a plain terminal emulator.
 
-Warp is the right fit if you want AI features without assembling your own stack. It is less opinionated about Git isolation than Superset, which matters once multiple agents work against the same repository.
+Warp is the right fit if you want AI features without assembling your own stack. It is less opinionated about Git isolation than Choros, which matters once multiple agents work against the same repository.
 
-For the direct comparison, see [Superset vs Warp](/compare/superset-vs-warp).
+For the direct comparison, see [Choros vs Warp](/compare/choros-vs-warp).
 
 ### iTerm2
 
@@ -119,15 +119,15 @@ Choose based on your primary bottleneck:
 
 - If your bottleneck is terminal polish, use Ghostty, iTerm2, kitty, Alacritty, or WezTerm.
 - If your bottleneck is built-in AI inside the terminal, use Warp.
-- If your bottleneck is coordinating many agents on one repository, use Superset.
+- If your bottleneck is coordinating many agents on one repository, use Choros.
 
 That last category matters more than it sounds. Once you are running more than one agent on the same repo, the terminal itself matters less than branch isolation, review flow, and session management.
 
 ## Best Picks by Use Case
 
-### Best for parallel coding agents: Superset
+### Best for parallel coding agents: Choros
 
-Superset wins when you need multiple agents working at once with clean isolation.
+Choros wins when you need multiple agents working at once with clean isolation.
 
 ### Best all-in-one AI terminal: Warp
 
@@ -154,23 +154,23 @@ There is a best terminal for your workflow:
 - Warp if you want built-in AI inside your terminal
 - Ghostty or iTerm2 if you want a high-quality daily driver
 - WezTerm if you want terminal plus multiplexing
-- Superset if you want to run coding agents in parallel without collisions
+- Choros if you want to run coding agents in parallel without collisions
 
 The more agent-heavy your workflow becomes, the more the winning criterion shifts from rendering and tabs to isolation and review.
 
-If that is your world, Superset is the terminal to optimize around.
+If that is your world, Choros is the terminal to optimize around.
 
 For the adjacent categories, see [Best IDE for AI Coding Agents](/compare/best-ide-for-ai-agents) and [Best Agent Development Environments](/compare/best-agent-development-environment); for a broader tool comparison, [Best AI Coding Tools and Agents (2026)](/compare/best-ai-coding-agents-2026).
 
 ## Frequently Asked Questions
 
-### Is Superset a replacement for iTerm2, Ghostty, or WezTerm?
+### Is Choros a replacement for iTerm2, Ghostty, or WezTerm?
 
-Not really. Superset is best understood as a workspace for coding agents. It now includes chat, browser, and file review, but many developers will still keep a separate daily-driver terminal for SSH, logs, and ad hoc shell work.
+Not really. Choros is best understood as a workspace for coding agents. It now includes chat, browser, and file review, but many developers will still keep a separate daily-driver terminal for SSH, logs, and ad hoc shell work.
 
 ### What is the best terminal for Claude Code?
 
-If you run Claude Code one task at a time, any strong terminal emulator works. If you want multiple Claude Code sessions in parallel on one repository, the better answer is a worktree-based workflow such as Superset. See [How to Run Multiple Claude Code Agents in Parallel](/compare/multiple-claude-code-agents-parallel).
+If you run Claude Code one task at a time, any strong terminal emulator works. If you want multiple Claude Code sessions in parallel on one repository, the better answer is a worktree-based workflow such as Choros. See [How to Run Multiple Claude Code Agents in Parallel](/compare/multiple-claude-code-agents-parallel).
 
 ### Do I need built-in AI in my terminal?
 

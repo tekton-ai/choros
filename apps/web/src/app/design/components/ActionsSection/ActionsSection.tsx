@@ -197,7 +197,7 @@ export function ActionsSection() {
 						<Trans id="web.design.actionsSection.https">https://</Trans>
 					</ButtonGroupText>
 					<Button variant="outline">
-						<Trans id="web.design.actionsSection.supersetSh">superset.sh</Trans>
+						<Trans id="web.design.actionsSection.chorosSh">choros.sh</Trans>
 					</Button>
 					<Button
 						variant="outline"

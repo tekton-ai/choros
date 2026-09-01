@@ -9,7 +9,7 @@ import { TRPCError } from "@trpc/server";
  * exactly one session workspace, created and removed by the host.
  */
 export function defaultSessionsRoot(): string {
-	return join(homedir(), ".superset", "sessions");
+	return join(homedir(), ".choros", "sessions");
 }
 
 /** Resolve `<sessionsRoot>/<folderName>` with a path-traversal guard. */

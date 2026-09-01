@@ -31,7 +31,7 @@ const SCENARIOS: Scenario[] = [
 	{
 		name: "command",
 		prompt:
-			"Run the shell command `echo superset-probe` and then tell me its output. Do not do anything else.",
+			"Run the shell command `echo choros-probe` and then tell me its output. Do not do anything else.",
 		sandbox: "workspace-write",
 		approvalPolicy: "never",
 		timeoutMs: 90_000,

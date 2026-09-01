@@ -96,7 +96,7 @@ async function runApiKeyLogin({
 	apiKey: string;
 	requestedOrganization: string | undefined;
 }): Promise<LoginOutput> {
-	p.intro("superset auth login");
+	p.intro("choros auth login");
 
 	const api = createApiClient({ bearer: apiKey });
 
@@ -143,14 +143,14 @@ async function runApiKeyLogin({
 }
 
 export default command({
-	description: "Authenticate with Superset. Re-run to switch organizations.",
+	description: "Authenticate with Choros. Re-run to switch organizations.",
 	skipMiddleware: true,
 	options: {
 		organization: string().desc(
 			"Organization id or slug — required for non-TTY logins when you belong to multiple orgs",
 		),
 		apiKey: string().desc(
-			"Store a Superset API key (sk_live_…) at ~/.superset/config.json instead of running the OAuth flow",
+			"Store a Choros API key (sk_live_…) at ~/.superset/config.json instead of running the OAuth flow",
 		),
 	},
 	run: async (opts) => {
@@ -200,7 +200,7 @@ export default command({
 		};
 
 		if (!inkInstance) {
-			p.intro("superset auth login");
+			p.intro("choros auth login");
 		}
 
 		let result: Awaited<ReturnType<typeof login>> | null = null;

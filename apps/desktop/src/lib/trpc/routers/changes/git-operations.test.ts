@@ -148,7 +148,7 @@ describe("existing PR push target resolution", () => {
 				remotes: [
 					{
 						name: "origin",
-						fetchUrl: "git@github.com:superset-sh/superset.git",
+						fetchUrl: "git@github.com:superset-sh/choros.git",
 					},
 				],
 				pr: {
@@ -165,17 +165,17 @@ describe("existing PR push target resolution", () => {
 				remotes: [
 					{
 						name: "origin",
-						fetchUrl: "git@github.com:superset-sh/superset.git",
+						fetchUrl: "git@github.com:superset-sh/choros.git",
 					},
 					{
 						name: "kitenite",
-						fetchUrl: "git@github.com:kitenite/superset.git",
-						pushUrl: "git@github.com:kitenite/superset.git",
+						fetchUrl: "git@github.com:kitenite/choros.git",
+						pushUrl: "git@github.com:kitenite/choros.git",
 					},
 				],
 				pr: {
 					headRepositoryOwner: "kitenite",
-					headRepositoryName: "superset",
+					headRepositoryName: "choros",
 					isCrossRepository: true,
 				},
 				fallbackRemote: "origin",
@@ -189,12 +189,12 @@ describe("existing PR push target resolution", () => {
 				remotes: [
 					{
 						name: "origin",
-						fetchUrl: "git@github.com:superset-sh/superset.git",
+						fetchUrl: "git@github.com:superset-sh/choros.git",
 					},
 				],
 				pr: {
 					headRepositoryOwner: "kitenite",
-					headRepositoryName: "superset",
+					headRepositoryName: "choros",
 					isCrossRepository: true,
 				},
 				fallbackRemote: "origin",
@@ -206,10 +206,10 @@ describe("existing PR push target resolution", () => {
 		expect(
 			getExistingPRHeadRepoUrl({
 				headRepositoryOwner: "kitenite",
-				headRepositoryName: "superset",
+				headRepositoryName: "choros",
 				isCrossRepository: true,
 			}),
-		).toBe("https://github.com/kitenite/superset");
+		).toBe("https://github.com/kitenite/choros");
 	});
 
 	test("retargets push when the tracked branch differs from the linked PR head", () => {

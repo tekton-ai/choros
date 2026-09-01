@@ -96,7 +96,7 @@ export async function createInMemoryMcpClient({
 	await server.connect(serverTransport);
 
 	const client = new Client({
-		name: "superset-internal",
+		name: "choros-internal",
 		version: "1.0.0",
 	});
 	await client.connect(clientTransport);

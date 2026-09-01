@@ -32,12 +32,12 @@ async function listTools() {
 export async function GET(): Promise<Response> {
 	const card = {
 		name: DOCS_MCP_NAME,
-		title: "Superset docs",
-		icon: "https://superset.sh/apple-touch-icon.png",
+		title: "Choros docs",
+		icon: "https://choros.sh/apple-touch-icon.png",
 		version: DOCS_MCP_VERSION,
 		kind: "docs",
 		description:
-			"Read-only search and retrieval over the Superset documentation. Every page is also an MCP resource addressed by its canonical URL. No authentication.",
+			"Read-only search and retrieval over the Choros documentation. Every page is also an MCP resource addressed by its canonical URL. No authentication.",
 		serverUrl: `${DOCS_BASE_URL}/mcp`,
 		transport: "streamable-http",
 		documentationUrl: `${DOCS_BASE_URL}/mcp-server`,

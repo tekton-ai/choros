@@ -271,7 +271,7 @@ msgstr "Haftalık sayfa görüntüleme → indirme dönüşümü, Mac ziyaretçi
 #. js-lingui-explicit-id
 #: ../../apps/admin/src/app/(dashboard)/page.tsx
 msgid "admin.insight.newSiteVisitors"
-msgstr "superset.sh üzerinde günlük ilk kez sayfa görüntüleme"
+msgstr "choros.sh üzerinde günlük ilk kez sayfa görüntüleme"
 
 #. js-lingui-explicit-id
 #: ../../apps/admin/src/app/(dashboard)/page.tsx
@@ -564,7 +564,7 @@ msgstr "Hata ayrıntılarını kopyala"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/error.tsx
 msgid "app.errorPage.description"
-msgstr "Superset beklenmeyen bir hatayla karşılaştı. Yeniden denemek için sayfayı yeniden yükleyin."
+msgstr "Choros beklenmeyen bir hatayla karşılaştı. Yeniden denemek için sayfayı yeniden yükleyin."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/error.tsx
@@ -733,9 +733,9 @@ msgid "auth.signIn.lastUsed"
 msgstr "Son kullanılan"
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/sign-in/components/SupersetLogo/SupersetLogo.tsx
+#: ../../apps/desktop/src/renderer/routes/sign-in/components/ChorosLogo/ChorosLogo.tsx
 msgid "auth.signIn.logoTitle"
-msgstr "Superset"
+msgstr "Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/sign-in/page.tsx
@@ -755,7 +755,7 @@ msgstr "Oturum açarak <0>Hizmet Şartları</0> ve <1>Gizlilik Politikası</1> b
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/sign-in/page.tsx
 msgid "auth.signIn.welcomeTitle"
-msgstr "Superset'e hoş geldiniz"
+msgstr "Choros'e hoş geldiniz"
 
 #. js-lingui-explicit-id
 #: ../chat-ui/src/components/PromptInput/components/ComposerBody/ComposerBody.tsx
@@ -1541,7 +1541,7 @@ msgstr "Yeniden yükle"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/BootErrorBoundary/BootErrorBoundary.tsx
 msgid "components.bootError.title"
-msgstr "Superset başlatılamadı"
+msgstr "Choros başlatılamadı"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/MarkdownRenderer/components/TipTapMarkdownRenderer/components/BubbleMenuToolbar/BubbleMenuToolbar.tsx
@@ -1772,7 +1772,7 @@ msgstr "En etkin kullanıcılarımızdan birisiniz. Gelin, birlikte geliştireli
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/SidebarCardSlot/cards/useHiringCard/useHiringCard.ts
 msgid "components.hiringCard.title"
-msgstr "Superset ile geliştirmeyi seviyor musunuz?"
+msgstr "Choros ile geliştirmeyi seviyor musunuz?"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/ImportHistoryDialog/ImportHistoryDialog.tsx
@@ -1792,7 +1792,7 @@ msgstr "Yeniden denetle"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/ImportHistoryDialog/ImportHistoryDialog.tsx
 msgid "components.importHistoryDialog.description"
-msgstr "Tarama geçmişinizi ve oturum bilgilerinizi başka bir tarayıcıdan Superset'e kopyalayın. Özgün tarayıcınız değişmez."
+msgstr "Tarama geçmişinizi ve oturum bilgilerinizi başka bir tarayıcıdan Choros'e kopyalayın. Özgün tarayıcınız değişmez."
 
 #. js-lingui-explicit-id
 #. placeholder {0}: result.imported
@@ -1859,7 +1859,7 @@ msgstr " ve "
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/ImportHistoryDialog/ImportHistoryDialog.tsx
 msgid "components.importHistoryDialog.needsFullDiskAccess"
-msgstr "Superset'in başka bir tarayıcının verilerini okuyabilmesi için Tam Disk Erişimi gerekir. Sistem Ayarları'ndan verin, sonra yeniden denetleyin."
+msgstr "Choros'in başka bir tarayıcının verilerini okuyabilmesi için Tam Disk Erişimi gerekir. Sistem Ayarları'ndan verin, sonra yeniden denetleyin."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/ImportHistoryDialog/ImportHistoryDialog.tsx
@@ -2034,7 +2034,7 @@ msgstr "Açıklama ekleyin..."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/MobileAppDemo/MobileAppDemo.tsx
 msgid "components.mobileAppDemo.agentName"
-msgstr "Superset Ajanı"
+msgstr "Choros Ajanı"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/MobileAppDemo/MobileAppDemo.tsx
@@ -2195,7 +2195,7 @@ msgstr "Mobil uygulama"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/constants.ts
 msgid "components.paywall.remoteAccess.description"
-msgstr "Superset rölesi üzerinden bu Mac'e her yerden erişin veya bulut çalışma alanları başlatın. Herhangi bir istemciden bağlanın."
+msgstr "Choros rölesi üzerinden bu Mac'e her yerden erişin veya bulut çalışma alanları başlatın. Herhangi bir istemciden bağlanın."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/constants.ts
@@ -2215,7 +2215,7 @@ msgstr "Slack entegrasyonu"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/constants.ts
 msgid "components.paywall.tasks.description"
-msgstr "Linear'dan eşitlenen görevleri izleyin ve yönetin. Superset'ten çıkmadan işinize hâkim olun."
+msgstr "Linear'dan eşitlenen görevleri izleyin ve yönetin. Choros'ten çıkmadan işinize hâkim olun."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/constants.ts
@@ -2235,7 +2235,7 @@ msgstr "Takım iş birliği"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/Paywall.tsx
 msgid "components.paywall.upgradeCta"
-msgstr "Superset Pro'yu edinin"
+msgstr "Choros Pro'yu edinin"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/UpdatesPill/components/PreUpdateConfirmPopover/PreUpdateConfirmPopover.tsx
@@ -2769,17 +2769,17 @@ msgstr "İstem önizlemesi"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/SidebarCardSlot/cards/useStarNagCard/useStarNagCard.tsx
 msgid "components.starNagCard.description"
-msgstr "Superset açık kaynaklıdır. Bugün işinize yaradıysa, bir GitHub yıldızı diğer geliştiricilerin onu bulmasına yardımcı olur."
+msgstr "Choros açık kaynaklıdır. Bugün işinize yaradıysa, bir GitHub yıldızı diğer geliştiricilerin onu bulmasına yardımcı olur."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/SidebarCardSlot/cards/useStarNagCard/useStarNagCard.tsx
 msgid "components.starNagCard.title"
-msgstr "Superset'ten memnun musunuz?"
+msgstr "Choros'ten memnun musunuz?"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/StarNagToast/StarNagToast.tsx
 msgid "components.starNagToast.body"
-msgstr "Superset'ten şimdiye kadar memnunsanız, bir GitHub yıldızı diğer geliştiricilerin onu keşfetmesine yardımcı olur."
+msgstr "Choros'ten şimdiye kadar memnunsanız, bir GitHub yıldızı diğer geliştiricilerin onu keşfetmesine yardımcı olur."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/StarNagToast/StarNagToast.tsx
@@ -2870,7 +2870,7 @@ msgstr "Denetleniyor..."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/UpdateRequiredPage/UpdateRequiredPage.tsx
 msgid "components.updateRequiredPage.defaultMessage"
-msgstr "Devam etmek için Superset'in yeni bir sürümü gerekiyor. Lütfen en son sürüme güncelleyin."
+msgstr "Devam etmek için Choros'in yeni bir sürümü gerekiyor. Lütfen en son sürüme güncelleyin."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/UpdateRequiredPage/UpdateRequiredPage.tsx
@@ -3334,13 +3334,13 @@ msgstr "Host ayarları"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/HostOfflineRunDialog/HostOfflineRunDialog.tsx
 msgid "dashboard.automations.hostOfflineDialog.localBody"
-msgstr "Bu cihaz Superset rölesine bağlı olmadığı için çalıştırma atlandı. Otomasyonlar bu cihazda çalışsa bile röle üzerinden gider. Röle erişimini etkinleştirip yeniden çalıştırın."
+msgstr "Bu cihaz Choros rölesine bağlı olmadığı için çalıştırma atlandı. Otomasyonlar bu cihazda çalışsa bile röle üzerinden gider. Röle erişimini etkinleştirip yeniden çalıştırın."
 
 #. js-lingui-explicit-id
 #. placeholder {0}: remoteHost?.name ?? t({ id: "dashboard.automations.hostOfflineDialog.targetHostFallback", message: "the target host", })
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/HostOfflineRunDialog/HostOfflineRunDialog.tsx
 msgid "dashboard.automations.hostOfflineDialog.remoteBody"
-msgstr "<0>{0}</0> Superset rölesine bağlı olmadığı için çalıştırma atlandı. O cihazda Ayarlar > Uzaktan erişim bölümünde röle erişiminin açık olduğundan emin olun, sonra yeniden çalıştırın."
+msgstr "<0>{0}</0> Choros rölesine bağlı olmadığı için çalıştırma atlandı. O cihazda Ayarlar > Uzaktan erişim bölümünde röle erişiminin açık olduğundan emin olun, sonra yeniden çalıştırın."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/HostOfflineRunDialog/HostOfflineRunDialog.tsx
@@ -3355,7 +3355,7 @@ msgstr "Hedef host çevrimdışı"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/utils/hostOfflineError/hostOfflineError.ts
 msgid "dashboard.automations.hostOfflineHelp"
-msgstr "Host, Superset rölesine bağlı değil. Bu cihazsa Ayarlar > Uzaktan erişim bölümünde \"Uzaktan erişimnın bu cihaza röle üzerinden erişmesine izin ver\" seçeneğini açıp yeniden deneyin."
+msgstr "Host, Choros rölesine bağlı değil. Bu cihazsa Ayarlar > Uzaktan erişim bölümünde \"Uzaktan erişimnın bu cihaza röle üzerinden erişmesine izin ver\" seçeneğini açıp yeniden deneyin."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/page.tsx
@@ -3365,7 +3365,7 @@ msgstr "CLI belgeleri"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/page.tsx
 msgid "dashboard.automations.page.cliHint"
-msgstr "Çalışma alanı açmak, görev çalıştırmak veya otomasyonları yönetmek için herhangi bir ajana <0>superset</0> CLI'yi kullanmasını söyleyin."
+msgstr "Çalışma alanı açmak, görev çalıştırmak veya otomasyonları yönetmek için herhangi bir ajana <0>choros</0> CLI'yi kullanmasını söyleyin."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/page.tsx
@@ -4201,13 +4201,13 @@ msgstr "Röle erişimini etkinleştir…"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/RelayOfflineNotice/RelayOfflineNotice.tsx
 msgid "dashboard.automations.relayOfflineNotice.localBody"
-msgstr "Bu cihaz Superset rölesine bağlı değil, bu yüzden otomasyon çalıştırmaları atlanacak."
+msgstr "Bu cihaz Choros rölesine bağlı değil, bu yüzden otomasyon çalıştırmaları atlanacak."
 
 #. js-lingui-explicit-id
 #. placeholder {0}: remoteHost.name
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/RelayOfflineNotice/RelayOfflineNotice.tsx
 msgid "dashboard.automations.relayOfflineNotice.remoteBody"
-msgstr "<0>{0}</0> Superset rölesine bağlı değil, bu yüzden çalıştırmaları atlanacak. <1>Host ayarlarını</1> kontrol edin ve o cihazda Ayarlar > Uzaktan erişim bölümünde röle erişiminin açık olduğundan emin olun."
+msgstr "<0>{0}</0> Choros rölesine bağlı değil, bu yüzden çalıştırmaları atlanacak. <1>Host ayarlarını</1> kontrol edin ve o cihazda Ayarlar > Uzaktan erişim bölümünde röle erişiminin açık olduğundan emin olun."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/AutomationRow/AutomationRow.tsx
@@ -5425,6 +5425,16 @@ msgstr "Birkaç TODO'yu bitir"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
+msgid "dashboard.newWorkspaceModal.samplePrompts.explainChoros.description"
+msgstr "Bu depoya uygun iş akışını öğren — paralel çalışma alanları ve ajan kurulumu."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
+msgid "dashboard.newWorkspaceModal.samplePrompts.explainChoros.label"
+msgstr "Choros'ten daha fazlasını al"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
 msgid "dashboard.newWorkspaceModal.samplePrompts.explainRepo.description"
 msgstr "Mimari turu al: giriş noktaları, nasıl çalıştırılır, önce ne okunmalı."
 
@@ -5432,16 +5442,6 @@ msgstr "Mimari turu al: giriş noktaları, nasıl çalıştırılır, önce ne o
 #: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
 msgid "dashboard.newWorkspaceModal.samplePrompts.explainRepo.label"
 msgstr "Bu deponun nasıl çalıştığını anlat"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
-msgid "dashboard.newWorkspaceModal.samplePrompts.explainSuperset.description"
-msgstr "Bu depoya uygun iş akışını öğren — paralel çalışma alanları ve ajan kurulumu."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
-msgid "dashboard.newWorkspaceModal.samplePrompts.explainSuperset.label"
-msgstr "Superset'ten daha fazlasını al"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
@@ -5471,7 +5471,7 @@ msgstr "Her yeni çalışma alanının çalışmaya hazır başlaması için kur
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
 msgid "dashboard.newWorkspaceModal.samplePrompts.setUpProject.label"
-msgstr "Bu projeyi Superset için kur"
+msgstr "Bu projeyi Choros için kur"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: first.message
@@ -5721,7 +5721,7 @@ msgstr "Ajan yapılandırmalarınızda bulundu"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/$pluginName/components/PluginDetail/PluginDetail.tsx
 msgid "dashboard.plugins.detail.detectedHint"
-msgstr "Bunları siz eklediniz — Superset onlara hiç dokunmaz ve zaten sahip olduğunuz sunucuların kopyalarını asla yazmaz."
+msgstr "Bunları siz eklediniz — Choros onlara hiç dokunmaz ve zaten sahip olduğunuz sunucuların kopyalarını asla yazmaz."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/$pluginName/components/PluginDetail/PluginDetail.tsx
@@ -5768,7 +5768,7 @@ msgstr "Beceriler"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/$pluginName/components/PluginDetail/PluginDetail.tsx
 msgid "dashboard.plugins.detail.statusDisabled"
-msgstr "Devre dışı — kurulu kalır, ancak Superset ajan yapılandırmalarınıza hiçbir şey yazmaz."
+msgstr "Devre dışı — kurulu kalır, ancak Choros ajan yapılandırmalarınıza hiçbir şey yazmaz."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/$pluginName/components/PluginDetail/PluginDetail.tsx
@@ -6047,7 +6047,7 @@ msgstr "Devre dışı"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/components/PluginsView/components/SkillsList/SkillsList.tsx
 msgid "dashboard.plugins.skillsList.intro"
-msgstr "Beceriler Superset eklentisiyle gelir ve kullandığınız her ajanda otomatik olarak güncel tutulur. Önizlemek için birine tıklayın."
+msgstr "Beceriler Choros eklentisiyle gelir ve kullandığınız her ajanda otomatik olarak güncel tutulur. Önizlemek için birine tıklayın."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/components/PluginsView/components/SkillsList/SkillsList.tsx
@@ -6296,7 +6296,7 @@ msgstr "Tümünü içe aktar"
 #. placeholder {0}: importableWorktrees.length
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/project/$projectId/components/ExternalWorktreesBanner/ExternalWorktreesBanner.tsx
 msgid "dashboard.project.worktreesBanner.importDialogDescription"
-msgstr "{0, plural, one {Bu işlem, mevcut # worktree'yi Superset'e çalışma alanı olarak aktarır. Diskteki her worktree izlenir ve kenar çubuğunuzda görünür. Hiçbir dosya değiştirilmez.} other {Bu işlem, mevcut # worktree'yi Superset'e çalışma alanı olarak aktarır. Diskteki her worktree izlenir ve kenar çubuğunuzda görünür. Hiçbir dosya değiştirilmez.}}"
+msgstr "{0, plural, one {Bu işlem, mevcut # worktree'yi Choros'e çalışma alanı olarak aktarır. Diskteki her worktree izlenir ve kenar çubuğunuzda görünür. Hiçbir dosya değiştirilmez.} other {Bu işlem, mevcut # worktree'yi Choros'e çalışma alanı olarak aktarır. Diskteki her worktree izlenir ve kenar çubuğunuzda görünür. Hiçbir dosya değiştirilmez.}}"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/project/$projectId/components/ExternalWorktreesBanner/ExternalWorktreesBanner.tsx
@@ -7385,7 +7385,7 @@ msgstr "{workspaceName}: host kullanılamıyor"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarBulkDeleteDialog/hooks/useBulkWorkspaceDelete/useBulkWorkspaceDelete.ts
 msgid "dashboard.sidebar.bulkDelete.partialFailureDescription"
-msgstr "Çalışma alanı listesini yenilemek için Superset'i yeniden yükleyin."
+msgstr "Çalışma alanı listesini yenilemek için Choros'i yeniden yükleyin."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarBulkDeleteDialog/hooks/useBulkWorkspaceDelete/useBulkWorkspaceDelete.ts
@@ -7416,7 +7416,7 @@ msgstr "Commit'lenmemiş · Push edilmemiş"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarBulkDeleteDialog/hooks/useBulkWorkspaceDelete/useBulkWorkspaceDelete.ts
 msgid "dashboard.sidebar.bulkDelete.unexpectedFailureDescription"
-msgstr "Yeniden deneyin. Sorun sürerse Superset'i yeniden yükleyin."
+msgstr "Yeniden deneyin. Sorun sürerse Choros'i yeniden yükleyin."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarBulkDeleteDialog/hooks/useBulkWorkspaceDelete/useBulkWorkspaceDelete.ts
@@ -8988,7 +8988,7 @@ msgstr "Linear'ı bağla"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/tasks/components/TasksView/components/LinearCTA/LinearCTA.tsx
 msgid "dashboard.tasks.linearCta.description"
-msgstr "Issue'ları eşitlemek ve görevleri doğrudan Superset'ten yönetmek için Linear çalışma alanınızı bağlayın."
+msgstr "Issue'ları eşitlemek ve görevleri doğrudan Choros'ten yönetmek için Linear çalışma alanınızı bağlayın."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/tasks/components/TasksView/components/LinearCTA/LinearCTA.tsx
@@ -9713,7 +9713,7 @@ msgstr "Görev düzeni"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/AppResourceSection/AppResourceSection.tsx
 msgid "dashboard.topBar.appResources.appName"
-msgstr "Superset uygulaması"
+msgstr "Choros uygulaması"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/AppResourceSection/AppResourceSection.tsx
@@ -10050,7 +10050,7 @@ msgstr "CPU"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
 msgid "dashboard.topBar.resourceSummary.cpuTooltip"
-msgstr "Superset ve izlenen terminal süreç ağaçlarının kullandığı CPU toplamı. %100'ün üzeri, birden fazla CPU çekirdeğinin meşgul olduğu anlamına gelir. Sürekli yüksek değerler genellikle arayüzde yavaşlığa ve daha hızlı pil tüketimine yol açar."
+msgstr "Choros ve izlenen terminal süreç ağaçlarının kullandığı CPU toplamı. %100'ün üzeri, birden fazla CPU çekirdeğinin meşgul olduğu anlamına gelir. Sürekli yüksek değerler genellikle arayüzde yavaşlığa ve daha hızlı pil tüketimine yol açar."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
@@ -10060,7 +10060,7 @@ msgstr "Bellek"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
 msgid "dashboard.topBar.resourceSummary.memoryTooltip"
-msgstr "Superset ve izlenen terminal süreç ağaçlarının kullandığı yerleşik bellek. Düşmeden sürekli yükseliyorsa bir çalışma alanı süreci belleği tutuyor olabilir. Yüksek değerler takas riskini artırır ve takılmalara yol açabilir."
+msgstr "Choros ve izlenen terminal süreç ağaçlarının kullandığı yerleşik bellek. Düşmeden sürekli yükseliyorsa bir çalışma alanı süreci belleği tutuyor olabilir. Yüksek değerler takas riskini artırır ve takılmalara yol açabilir."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
@@ -10070,13 +10070,13 @@ msgstr "RAM payı"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
 msgid "dashboard.topBar.resourceSummary.ramShareTooltip"
-msgstr "Yalnızca izlenen Superset kaynaklarının kullandığı toplam sistem RAM'i yüzdesi (tüm uygulamalar değil). Yüksek pay, Superset'in sistem bellek baskısına önemli ölçüde katkıda bulunduğu anlamına gelir; düşük pay ise baskının büyük olasılıkla başka yerden geldiğini gösterir."
+msgstr "Yalnızca izlenen Choros kaynaklarının kullandığı toplam sistem RAM'i yüzdesi (tüm uygulamalar değil). Yüksek pay, Choros'in sistem bellek baskısına önemli ölçüde katkıda bulunduğu anlamına gelir; düşük pay ise baskının büyük olasılıkla başka yerden geldiğini gösterir."
 
 #. js-lingui-explicit-id
 #. placeholder {0}: formatPercent(trackedMemorySharePercent)
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
 msgid "dashboard.topBar.resourceSummary.systemRamShare"
-msgstr "Superset sistem RAM'inin {0} kadarını kullanıyor"
+msgstr "Choros sistem RAM'inin {0} kadarını kullanıyor"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
@@ -10131,7 +10131,7 @@ msgstr "Çalışma alanı çalıştırma komutunu durdur"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
 msgid "dashboard.topBar.submitPromptDialog.description"
-msgstr "Superset'te görmek istediğiniz şeyi geliştirmesi için bir kodlama ajanına istem verin. İsteminizi beğenirsek çalıştırıp sonucu birleştiririz."
+msgstr "Choros'te görmek istediğiniz şeyi geliştirmesi için bir kodlama ajanına istem verin. İsteminizi beğenirsek çalıştırıp sonucu birleştiririz."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
@@ -10876,7 +10876,7 @@ msgstr "İndir"
 #. js-lingui-explicit-id
 #: ../../apps/docs/src/app/components/NavigationBar/NavigationBar.tsx
 msgid "docs.nav.githubRepo"
-msgstr "Superset deposunu GitHub'da görüntüle"
+msgstr "Choros deposunu GitHub'da görüntüle"
 
 #. js-lingui-explicit-id
 #: ../../apps/docs/src/app/components/NavigationBar/NavigationBar.tsx
@@ -11084,7 +11084,7 @@ msgstr "Yerel oturum kaydı kaldırılamadı"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/hooks/useSignOut/useSignOut.ts
 msgid "hooks.signOut.removeLocalSignInFailedDescription"
-msgstr "Superset yeniden başlattıktan sonra sizi tekrar oturuma alabilir. Lütfen yeniden oturum kapatmayı deneyin."
+msgstr "Choros yeniden başlattıktan sonra sizi tekrar oturuma alabilir. Lütfen yeniden oturum kapatmayı deneyin."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/host-service-unavailable.ts
@@ -11239,12 +11239,12 @@ msgstr "Birkaç saniye sonra yeniden deneyin."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/host-service-unavailable.ts
 msgid "hostServiceUnavailable.recovery.stopped"
-msgstr "Superset tepsi menüsünde Host hizmeti > Yeniden başlat yolunu kullanın, sonra yeniden deneyin."
+msgstr "Choros tepsi menüsünde Host hizmeti > Yeniden başlat yolunu kullanın, sonra yeniden deneyin."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/host-service-unavailable.ts
 msgid "hostServiceUnavailable.recovery.unknown"
-msgstr "Birkaç saniye sonra yeniden deneyin; sorun sürerse Superset'i yeniden başlatın."
+msgstr "Birkaç saniye sonra yeniden deneyin; sorun sürerse Choros'i yeniden başlatın."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/host-service-unavailable.ts
@@ -11849,7 +11849,7 @@ msgstr "Çalışma alanları kenar çubuğunu aç/kapat"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/index.ts
 msgid "main.auth.failed.detail"
-msgstr "Superset oturum açmayı tamamlayamadı. Lütfen yeniden deneyin."
+msgstr "Choros oturum açmayı tamamlayamadı. Lütfen yeniden deneyin."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/index.ts
@@ -11930,17 +11930,17 @@ msgstr "İptal"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/host-service-coordinator.ts
 msgid "main.hostService.crashed.detail"
-msgstr "Yeniden başlayana kadar çalışma alanları ve terminalleri kullanılamaz — Superset tepsi menüsünde Host hizmeti > Yeniden başlat yolunu kullanın."
+msgstr "Yeniden başlayana kadar çalışma alanları ve terminalleri kullanılamaz — Choros tepsi menüsünde Host hizmeti > Yeniden başlat yolunu kullanın."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/host-service-coordinator.ts
 msgid "main.hostService.crashed.message"
-msgstr "Superset host hizmeti beklenmedik şekilde durdu ({cause}) ve otomatik olarak yeniden başlatılamadı."
+msgstr "Choros host hizmeti beklenmedik şekilde durdu ({cause}) ve otomatik olarak yeniden başlatılamadı."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/host-service-coordinator.ts
 msgid "main.hostService.crashed.messageForOrganization"
-msgstr "{organization} için Superset host hizmeti beklenmedik şekilde durdu ({cause}) ve otomatik olarak yeniden başlatılamadı."
+msgstr "{organization} için Choros host hizmeti beklenmedik şekilde durdu ({cause}) ve otomatik olarak yeniden başlatılamadı."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/host-service-coordinator.ts
@@ -11955,7 +11955,7 @@ msgstr "Güncellemeleri denetle..."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/menu.ts
 msgid "main.menu.app.quitCompletely"
-msgstr "Superset'ten tamamen çık"
+msgstr "Choros'ten tamamen çık"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/menu.ts
@@ -12096,7 +12096,7 @@ msgstr "Çıkmak istediğinizden emin misiniz?"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/index.ts
 msgid "main.quit.title"
-msgstr "Superset'ten çık"
+msgstr "Choros'ten çık"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/quit-completely.ts
@@ -12106,17 +12106,17 @@ msgstr "Tamamen çık"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/quit-completely.ts
 msgid "main.quitCompletely.detail"
-msgstr "Açık tüm terminal oturumları sonlandırılacak ve çalışan host hizmetleri durdurulacak. Hizmetlerin sonraki açılış için çalışmaya devam etmesini istiyorsanız “Superset'i kapat” seçeneğini kullanın."
+msgstr "Açık tüm terminal oturumları sonlandırılacak ve çalışan host hizmetleri durdurulacak. Hizmetlerin sonraki açılış için çalışmaya devam etmesini istiyorsanız “Choros'i kapat” seçeneğini kullanın."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/quit-completely.ts
 msgid "main.quitCompletely.message"
-msgstr "Superset'ten çıkılsın ve tüm arka plan hizmetleri durdurulsun mu?"
+msgstr "Choros'ten çıkılsın ve tüm arka plan hizmetleri durdurulsun mu?"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/quit-completely.ts
 msgid "main.quitCompletely.title"
-msgstr "Superset'ten tamamen çık"
+msgstr "Choros'ten tamamen çık"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/auto-updater.ts
@@ -12196,7 +12196,7 @@ msgstr "İlgili yazılar"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/blog/page.tsx
 msgid "marketing.blog.subtitle"
-msgstr "Superset ekibinden paralel kodlama ajanları ve geliştirici verimliliği üzerine görüşler."
+msgstr "Choros ekibinden paralel kodlama ajanları ve geliştirici verimliliği üzerine görüşler."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/blog/page.tsx
@@ -12211,7 +12211,7 @@ msgstr "Başlayın"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/CategoryArticle/CategoryArticle.tsx
 msgid "marketing.categoryArticle.cta.title"
-msgstr "Superset'i denemeye hazır mısınız?"
+msgstr "Choros'i denemeye hazır mısınız?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/CategoryArticle/CategoryArticle.tsx
@@ -12246,7 +12246,7 @@ msgstr "Değişiklik günlüğü"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/changelog/page.tsx
 msgid "marketing.changelog.subtitle"
-msgstr "Superset'teki en son güncellemeler, iyileştirmeler ve yeni özellikler. Haftalık güncellenir. Ayrıntılı sürüm notları için <0>GitHub Releases<1/></0> sayfasına bakın"
+msgstr "Choros'teki en son güncellemeler, iyileştirmeler ve yeni özellikler. Haftalık güncellenir. Ayrıntılı sürüm notları için <0>GitHub Releases<1/></0> sayfasına bakın"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/changelog/page.tsx
@@ -12291,7 +12291,7 @@ msgstr "YILDIZ"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/community/page.tsx
 msgid "marketing.community.subtitle"
-msgstr "Yardım almak, fikir paylaşmak ve en son haber ve güncellemelerden haberdar olmak için <0>Superset</0> topluluğuna katılın."
+msgstr "Yardım almak, fikir paylaşmak ve en son haber ve güncellemelerden haberdar olmak için <0>Choros</0> topluluğuna katılın."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/community/page.tsx
@@ -12311,7 +12311,7 @@ msgstr "Başlayın"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/[slug]/components/CompareLayout/CompareLayout.tsx
 msgid "marketing.compare.cta.title"
-msgstr "Superset'i denemeye hazır mısınız?"
+msgstr "Choros'i denemeye hazır mısınız?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/page.tsx
@@ -12346,12 +12346,12 @@ msgstr "İş akışı eğitimleri"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/page.tsx
 msgid "marketing.compare.subtitle"
-msgstr "Superset'in AI düzenleyicilerinden kodlama ajanlarına ve bulut tabanlı AI mühendislerine kadar diğer AI kodlama araçlarıyla nasıl karşılaştırıldığını görün."
+msgstr "Choros'in AI düzenleyicilerinden kodlama ajanlarına ve bulut tabanlı AI mühendislerine kadar diğer AI kodlama araçlarıyla nasıl karşılaştırıldığını görün."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/page.tsx
 msgid "marketing.compare.title"
-msgstr "Superset ve alternatifleri"
+msgstr "Choros ve alternatifleri"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/components/ContactForm/ContactForm.tsx
@@ -12401,22 +12401,22 @@ msgstr "Sorular, geri bildirim, destek veya başka herhangi bir şey. Bir not g�
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
 msgid "marketing.contact.hero.title"
-msgstr "Superset ile konuşun"
+msgstr "Choros ile konuşun"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
 msgid "marketing.contact.otherWays.community"
-msgstr "Hata bildirimleri ve özellik istekleri için en hızlı yol <0>github.com/superset-sh/superset</0> adresinde bir GitHub issue açmaktır. Topluluğumuz <1>Discord</1> üzerinde; güncellemeleri <2>X (@superset_sh)</2> ve <3>LinkedIn</3> üzerinden paylaşıyoruz."
+msgstr "Hata bildirimleri ve özellik istekleri için en hızlı yol <0>github.com/superset-sh/choros</0> adresinde bir GitHub issue açmaktır. Topluluğumuz <1>Discord</1> üzerinde; güncellemeleri <2>X (@choros_sh)</2> ve <3>LinkedIn</3> üzerinden paylaşıyoruz."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
 msgid "marketing.contact.otherWays.email"
-msgstr "Superset, San Francisco, Kaliforniya merkezli bir ekip tarafından geliştirilir. Ürün desteği veya hesap soruları için <0>{supportEmail}</0> adresine e-posta gönderin; bir iş günü içinde size dönelim. İş birliği, basın, kurumsal veya kurucu ekibe iletilecek her konu için <1>{foundersEmail}</1> adresine yazın."
+msgstr "Choros, San Francisco, Kaliforniya merkezli bir ekip tarafından geliştirilir. Ürün desteği veya hesap soruları için <0>{supportEmail}</0> adresine e-posta gönderin; bir iş günü içinde size dönelim. İş birliği, basın, kurumsal veya kurucu ekibe iletilecek her konu için <1>{foundersEmail}</1> adresine yazın."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
 msgid "marketing.contact.otherWays.status"
-msgstr "Hizmet durumu <0>status.superset.sh</0> adresinde, güvenlik ve uyumluluk belgeleri ise <1>trust.superset.sh</1> adresinde yayımlanır."
+msgstr "Hizmet durumu <0>status.choros.sh</0> adresinde, güvenlik ve uyumluluk belgeleri ise <1>trust.choros.sh</1> adresinde yayımlanır."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
@@ -12456,7 +12456,7 @@ msgstr "Ajanlarınızı bir araya getirin."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/CTASection/CTASection.tsx
 msgid "marketing.cta.installPrompt"
-msgstr "Ya da kodlama ajanınızdan Superset CLI'yi kurmasını isteyin."
+msgstr "Ya da kodlama ajanınızdan Choros CLI'yi kurmasını isteyin."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/CTASection/CTASection.tsx
@@ -12476,12 +12476,12 @@ msgstr "İndirme otomatik olarak başlıyor. Başlamadıysa buradan indirin."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadInterstitial/DownloadInterstitial.tsx
 msgid "marketing.download.autoTitle"
-msgstr "Superset'i indirmek üzeresiniz"
+msgstr "Choros'i indirmek üzeresiniz"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/ReleaseList/ReleaseList.tsx
 msgid "marketing.download.availability"
-msgstr "Superset masaüstü uygulaması macOS ve Linux için kullanılabilir."
+msgstr "Choros masaüstü uygulaması macOS ve Linux için kullanılabilir."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadLinkForm/DownloadLinkForm.tsx
@@ -12567,12 +12567,12 @@ msgstr "İndirme bağlantısını {submittedEmail} adresine gönderdik."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadInterstitial/DownloadInterstitial.tsx
 msgid "marketing.download.mobileBody"
-msgstr "Superset bir masaüstü uygulamasıdır. E-postanızı girin, Mac'inizde açabileceğiniz bir indirme bağlantısı gönderelim."
+msgstr "Choros bir masaüstü uygulamasıdır. E-postanızı girin, Mac'inizde açabileceğiniz bir indirme bağlantısı gönderelim."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadInterstitial/DownloadInterstitial.tsx
 msgid "marketing.download.mobileTitle"
-msgstr "Superset'i Mac'inize alın"
+msgstr "Choros'i Mac'inize alın"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadLinkForm/actions.ts
@@ -12657,17 +12657,17 @@ msgstr "Ajanlarınızı masaüstünden, herhangi bir terminalden veya telefonunu
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadInterstitial/DownloadInterstitial.tsx
 msgid "marketing.download.waitlistBody"
-msgstr "Superset'i Windows ve Linux'a getiriyoruz. E-postanızı bırakın, hazır olduğu anda haber verelim."
+msgstr "Choros'i Windows ve Linux'a getiriyoruz. E-postanızı bırakın, hazır olduğu anda haber verelim."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadInterstitial/DownloadInterstitial.tsx
 msgid "marketing.download.waitlistTitle"
-msgstr "Superset şimdilik yalnızca Mac'te"
+msgstr "Choros şimdilik yalnızca Mac'te"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/components/EnterpriseFAQ/constants.ts
 msgid "marketing.enterprise.faq.dataSecurity.answer"
-msgstr "Superset, geliştiricilerinizin makinelerinde yerel olarak çalışır. Kodunuzu veya AI konuşmalarınızı saklamayız ve Superset, bağımsız bir denetçiyle SOC 2 Type II denetimini tamamlamıştır. Raporu talep edin ve güvenlik belgelerimizi trust.superset.sh adresinde inceleyin."
+msgstr "Choros, geliştiricilerinizin makinelerinde yerel olarak çalışır. Kodunuzu veya AI konuşmalarınızı saklamayız ve Choros, bağımsız bir denetçiyle SOC 2 Type II denetimini tamamlamıştır. Raporu talep edin ve güvenlik belgelerimizi trust.choros.sh adresinde inceleyin."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/components/EnterpriseFAQ/constants.ts
@@ -12707,12 +12707,12 @@ msgstr "Sık sorulan sorular"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/components/EnterpriseFAQ/constants.ts
 msgid "marketing.enterprise.faq.whatIsEnterprise.answer"
-msgstr "Superset Enterprise, takımlar için Superset'tir. Nelerin dahil olduğunu ve kuruluşunuzda nasıl işleyebileceğini öğrenmek için bize ulaşın."
+msgstr "Choros Enterprise, takımlar için Choros'tir. Nelerin dahil olduğunu ve kuruluşunuzda nasıl işleyebileceğini öğrenmek için bize ulaşın."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/components/EnterpriseFAQ/constants.ts
 msgid "marketing.enterprise.faq.whatIsEnterprise.question"
-msgstr "Superset Enterprise nedir?"
+msgstr "Choros Enterprise nedir?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/components/EnterpriseContactForm/EnterpriseContactForm.tsx
@@ -12772,12 +12772,12 @@ msgstr "SOC 2 Type II uyumlu. Raporumuzu talep edin."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/page.tsx
 msgid "marketing.enterprise.hero.subtitle"
-msgstr "Superset'i kuruluşunuza getirmekle ilgileniyor musunuz? Bize ulaşın, takımınıza uygun kurulumu birlikte belirleyelim."
+msgstr "Choros'i kuruluşunuza getirmekle ilgileniyor musunuz? Bize ulaşın, takımınıza uygun kurulumu birlikte belirleyelim."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/page.tsx
 msgid "marketing.enterprise.hero.title"
-msgstr "Takımınız için Superset"
+msgstr "Takımınız için Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/components/AttentionChart/AttentionChart.tsx
@@ -12817,7 +12817,7 @@ msgstr "Ötesi: F5 yakın vadeli bir iddia değil"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
 msgid "marketing.factory.cta.body"
-msgstr "Superset, F3'ten F4'e geçişin tezgâhıdır: yalıtılmış çalışma alanlarında paralel ajanlar, gerçekten denetleyebileceğiniz filolar ve yazmadığınız kod için bir inceleme yüzeyi."
+msgstr "Choros, F3'ten F4'e geçişin tezgâhıdır: yalıtılmış çalışma alanlarında paralel ajanlar, gerçekten denetleyebileceğiniz filolar ve yazmadığınız kod için bir inceleme yüzeyi."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
@@ -12827,7 +12827,7 @@ msgstr "Değişiklik günlüğünü oku"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
 msgid "marketing.factory.cta.download"
-msgstr "Superset'i indir"
+msgstr "Choros'i indir"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
@@ -13489,7 +13489,7 @@ msgstr "Kısmi"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.existingIde.answer"
-msgstr "Superset mevcut aracınızla çalışacak şekilde tasarlandı; Cursor gibi IDE'lere derin bağlantıyı yerel olarak destekliyoruz, böylece çalışma alanlarınızı ve dosyalarınızı IDE'nizde açabilirsiniz."
+msgstr "Choros mevcut aracınızla çalışacak şekilde tasarlandı; Cursor gibi IDE'lere derin bağlantıyı yerel olarak destekliyoruz, böylece çalışma alanlarınızı ve dosyalarınızı IDE'nizde açabilirsiniz."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
@@ -13499,12 +13499,12 @@ msgstr "Zaten Cursor gibi bir IDE kullanıyorum, bu bana göre mi?"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.freeToUse.answer"
-msgstr "Superset'in ücretsiz bir katmanı var. Kaynak kodu GitHub'da Elastic License 2.0 (ELv2) altında mevcuttur; lisans koşulları çerçevesinde inceleyebilir ve kendi sunucunuzda barındırabilirsiniz."
+msgstr "Choros'in ücretsiz bir katmanı var. Kaynak kodu GitHub'da Elastic License 2.0 (ELv2) altında mevcuttur; lisans koşulları çerçevesinde inceleyebilir ve kendi sunucunuzda barındırabilirsiniz."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.freeToUse.question"
-msgstr "Superset ücretsiz mi?"
+msgstr "Choros ücretsiz mi?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/FAQSection.tsx
@@ -13514,17 +13514,17 @@ msgstr "Sık sorulan<0/>sorular"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.openSource.answer"
-msgstr "Superset kaynağı açık bir üründür: kod, GitHub'da Elastic License 2.0 (ELv2) altında herkese açıktır; lisans koşulları çerçevesinde inceleyip kendi sunucunuzda barındırabilirsiniz, ancak OSI onaylı açık kaynak değildir. Superset'in, iş zekâsı aracı olan Apache Superset ile ilgisi yoktur."
+msgstr "Choros kaynağı açık bir üründür: kod, GitHub'da Elastic License 2.0 (ELv2) altında herkese açıktır; lisans koşulları çerçevesinde inceleyip kendi sunucunuzda barındırabilirsiniz, ancak OSI onaylı açık kaynak değildir. Choros'in, iş zekâsı aracı olan Apache Choros ile ilgisi yoktur."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.openSource.question"
-msgstr "Superset açık kaynak mı?"
+msgstr "Choros açık kaynak mı?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.ownApiKeys.answer"
-msgstr "Kesinlikle. Superset hiçbir API çağrısını vekil olarak iletmez. Seçtiğiniz AI sağlayıcılarıyla doğrudan kendi API anahtarlarınızı kullanırsınız. Böylece maliyet ve kullanım üzerinde tam denetime sahip olursunuz."
+msgstr "Kesinlikle. Choros hiçbir API çağrısını vekil olarak iletmez. Seçtiğiniz AI sağlayıcılarıyla doğrudan kendi API anahtarlarınızı kullanırsınız. Böylece maliyet ve kullanım üzerinde tam denetime sahip olursunuz."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
@@ -13549,17 +13549,17 @@ msgstr "Paralel ajan sistemi nasıl çalışıyor?"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.platforms.answer"
-msgstr "Masaüstü uygulaması macOS'ta çalışır; deneysel bir Linux AppImage vardır, Windows henüz kullanılamıyor. Masaüstü uygulamasının ötesinde bir CLI, bir TypeScript SDK ve bir MCP sunucusu var; böylece Superset'i betiklerden, terminallerden ve diğer ajanlardan yönetebilirsiniz."
+msgstr "Masaüstü uygulaması macOS'ta çalışır; deneysel bir Linux AppImage vardır, Windows henüz kullanılamıyor. Masaüstü uygulamasının ötesinde bir CLI, bir TypeScript SDK ve bir MCP sunucusu var; böylece Choros'i betiklerden, terminallerden ve diğer ajanlardan yönetebilirsiniz."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.platforms.question"
-msgstr "Superset hangi platformlarda çalışıyor?"
+msgstr "Choros hangi platformlarda çalışıyor?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.supportedAgents.answer"
-msgstr "Superset, Claude Code, OpenCode, OpenAI Codex ve daha fazlası dahil olmak üzere CLI tabanlı her kodlama ajanıyla çalışır. Çalışma alanınızı veya inceleme akışınızı değiştirmeden her görev için farklı bir ajan seçin."
+msgstr "Choros, Claude Code, OpenCode, OpenAI Codex ve daha fazlası dahil olmak üzere CLI tabanlı her kodlama ajanıyla çalışır. Çalışma alanınızı veya inceleme akışınızı değiştirmeden her görev için farklı bir ajan seçin."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
@@ -13569,27 +13569,27 @@ msgstr "Hangi AI kodlama ajanları destekleniyor?"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.vsTerminal.answer"
-msgstr "Claude Code, Codex ve OpenCode ajanlardır; Superset ise bunların birçoğunu aynı anda çalıştırdığınız yerdir. Her görev kendi yalıtılmış Git worktree'sini alır, böylece on ajan on dalda eşzamanlı çalışırken siz tek bir yerden izler, inceler ve birleştirirsiniz."
+msgstr "Claude Code, Codex ve OpenCode ajanlardır; Choros ise bunların birçoğunu aynı anda çalıştırdığınız yerdir. Her görev kendi yalıtılmış Git worktree'sini alır, böylece on ajan on dalda eşzamanlı çalışırken siz tek bir yerden izler, inceler ve birleştirirsiniz."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.vsTerminal.link"
-msgstr "Superset'in diğer araçlarla karşılaştırmasına bakın"
+msgstr "Choros'in diğer araçlarla karşılaştırmasına bakın"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.vsTerminal.question"
-msgstr "Superset'in Claude Code'u terminalde çalıştırmaktan farkı ne?"
+msgstr "Choros'in Claude Code'u terminalde çalıştırmaktan farkı ne?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.wrapper.answer"
-msgstr "Hayır. Ajanlarınız bağımsız kalır; Superset onların etrafındaki orkestrasyon katmanıdır. Her görev yalıtılmış bir Git worktree'si, kalıcı oturumlar, fark incelemesi ve zamanlanmış çalıştırmalar alır; iş akışı tek bir sağlayıcıya bağlanmaz."
+msgstr "Hayır. Ajanlarınız bağımsız kalır; Choros onların etrafındaki orkestrasyon katmanıdır. Her görev yalıtılmış bir Git worktree'si, kalıcı oturumlar, fark incelemesi ve zamanlanmış çalıştırmalar alır; iş akışı tek bir sağlayıcıya bağlanmaz."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.wrapper.question"
-msgstr "Superset yalnızca Claude Code'un üzerine bir sarmalayıcı mı?"
+msgstr "Choros yalnızca Claude Code'un üzerine bir sarmalayıcı mı?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FeaturesSection/constants.ts
@@ -13699,7 +13699,7 @@ msgstr "Tekrarlayan işleri zamanlamaya alın"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FeaturesSection/constants.ts
 msgid "marketing.features.cliSdk.description"
-msgstr "Her şey betiklenebilir. CLI'den çalışma alanı ve ajan başlatın, SDK ile Superset'i CI'ye bağlayın veya ajanınızın MCP üzerinden yönetmesine izin verin."
+msgstr "Her şey betiklenebilir. CLI'den çalışma alanı ve ajan başlatın, SDK ile Choros'i CI'ye bağlayın veya ajanınızın MCP üzerinden yönetmesine izin verin."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FeaturesSection/constants.ts
@@ -13889,7 +13889,7 @@ msgstr "Durum"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Footer/Footer.tsx
 msgid "marketing.footer.copyright"
-msgstr "© {year} Superset Inc."
+msgstr "© {year} Choros Inc."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Footer/Footer.tsx
@@ -14265,7 +14265,7 @@ msgstr "Sonucu inceleyin."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/HowItWorksSection/constants.ts
 msgid "marketing.howItWorks.startWithWork.description"
-msgstr "Neye ihtiyacınız olduğunu anlatın. Superset, görev için yalıtılmış bir çalışma alanı ve temiz bir dal oluşturur."
+msgstr "Neye ihtiyacınız olduğunu anlatın. Choros, görev için yalıtılmış bir çalışma alanı ve temiz bir dal oluşturur."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/HowItWorksSection/constants.ts
@@ -14275,17 +14275,17 @@ msgstr "İşle başlayın."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
 msgid "marketing.joinUs.bodyScale"
-msgstr "Bugün on binlerce mühendis Superset'i birincil IDE'si olarak kullanıyor; Wix, DoorDash ve Netflix gibi şirketlerde. Yakında takımlar yüzlerce ajanı paralel çalıştıracak - kodu otonom biçimde üreten ve gönderen yazılım fabrikaları. Superset'i, takımların bu fabrikaları çalıştırıp yönettiği yer hâline getiriyoruz; kendimizinkiyle başlayarak."
+msgstr "Bugün on binlerce mühendis Choros'i birincil IDE'si olarak kullanıyor; Wix, DoorDash ve Netflix gibi şirketlerde. Yakında takımlar yüzlerce ajanı paralel çalıştıracak - kodu otonom biçimde üreten ve gönderen yazılım fabrikaları. Choros'i, takımların bu fabrikaları çalıştırıp yönettiği yer hâline getiriyoruz; kendimizinkiyle başlayarak."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
 msgid "marketing.joinUs.bodyTeam"
-msgstr "Superset, Superset içinde geliştiriliyor; yani bir numaralı kullanıcısı biziz - kendi hayatınızı kolaylaştırdığınız için para alıyorsunuz. Yatay ve yetenek yoğunluğu yüksek bir ekip kuruyoruz; çılgın fikirleri olan ve onları gönderecek kadar da çılgın insanlar arıyoruz. Kullanmayı seveceğiniz bir ürün geliştirmek istediyseniz, gelin birlikte geliştirelim."
+msgstr "Choros, Choros içinde geliştiriliyor; yani bir numaralı kullanıcısı biziz - kendi hayatınızı kolaylaştırdığınız için para alıyorsunuz. Yatay ve yetenek yoğunluğu yüksek bir ekip kuruyoruz; çılgın fikirleri olan ve onları gönderecek kadar da çılgın insanlar arıyoruz. Kullanmayı seveceğiniz bir ürün geliştirmek istediyseniz, gelin birlikte geliştirelim."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
 msgid "marketing.joinUs.lede"
-msgstr "Superset, kendini geliştiren yazılım üretiyor. Bu, mühendislere zamanla ihtiyaçlarına uyum sağlayan en iyi araçları vermekle başlıyor."
+msgstr "Choros, kendini geliştiren yazılım üretiyor. Bu, mühendislere zamanla ihtiyaçlarına uyum sağlayan en iyi araçları vermekle başlıyor."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
@@ -14335,7 +14335,7 @@ msgstr "Token"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/leaderboard/components/LeaderboardBoard/components/LeaderboardTable/LeaderboardTable.tsx
 msgid "marketing.leaderboard.empty.optIn"
-msgstr "Superset'te Ayarlar → Hesap bölümünden katılın."
+msgstr "Choros'te Ayarlar → Hesap bölümünden katılın."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/leaderboard/components/LeaderboardBoard/components/LeaderboardTable/LeaderboardTable.tsx
@@ -14610,12 +14610,12 @@ msgstr "<0>Temayı İçe Aktar</0> seçeneğine tıklayın ve indirdiğiniz dosy
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/[slug]/page.tsx
 msgid "marketing.marketplace.theme.installStep.openSettings"
-msgstr "Superset masaüstü uygulamasında <0>Ayarlar → Görünüm → Tema</0> bölümünü açın."
+msgstr "Choros masaüstü uygulamasında <0>Ayarlar → Görünüm → Tema</0> bölümünü açın."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/[slug]/page.tsx
 msgid "marketing.marketplace.theme.installTitle"
-msgstr "{name} teması Superset'e nasıl kurulur"
+msgstr "{name} teması Choros'e nasıl kurulur"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/[slug]/page.tsx
@@ -14670,7 +14670,7 @@ msgstr "Terminal"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/page.tsx
 msgid "marketing.marketplace.themes.description"
-msgstr "Superset'e içe aktarabileceğiniz paylaşılan tema JSON dosyaları."
+msgstr "Choros'e içe aktarabileceğiniz paylaşılan tema JSON dosyaları."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/page.tsx
@@ -14870,7 +14870,7 @@ msgstr "Claude, Codex, Cursor veya herhangi bir <0>MCP</0> istemcisini bağlayı
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/mcp-install/page.tsx
 msgid "marketing.mcpInstall.hero.title"
-msgstr "Superset MCP'yi istemcinize kurun"
+msgstr "Choros MCP'yi istemcinize kurun"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/mcp-install/page.tsx
@@ -14880,7 +14880,7 @@ msgstr "Tek satırlık kurulum için ajanınızı seçin veya yapılandırmayı 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/blog/page.tsx
 msgid "marketing.meta.blog.description"
-msgstr "Superset ekibinden paralel kodlama ajanları ve geliştirici verimliliği hakkında haberler, güncellemeler ve içgörüler."
+msgstr "Choros ekibinden paralel kodlama ajanları ve geliştirici verimliliği hakkında haberler, güncellemeler ve içgörüler."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/blog/page.tsx
@@ -14890,7 +14890,7 @@ msgstr "Blog"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/changelog/page.tsx
 msgid "marketing.meta.changelog.description"
-msgstr "Superset'teki en son güncellemeler, iyileştirmeler ve yeni özellikler."
+msgstr "Choros'teki en son güncellemeler, iyileştirmeler ve yeni özellikler."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/changelog/page.tsx
@@ -14900,7 +14900,7 @@ msgstr "Değişiklik günlüğü"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/community/page.tsx
 msgid "marketing.meta.community.description"
-msgstr "Yardım almak, fikir paylaşmak ve en son haberlerle güncellemelerden haberdar olmak için Superset topluluğuna katılın."
+msgstr "Yardım almak, fikir paylaşmak ve en son haberlerle güncellemelerden haberdar olmak için Choros topluluğuna katılın."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/community/page.tsx
@@ -14910,12 +14910,12 @@ msgstr "Topluluk"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/page.tsx
 msgid "marketing.meta.compare.description"
-msgstr "Superset'i Cursor, Claude Code, Codex, Windsurf, Devin, GitHub Copilot ve daha fazlasıyla karşılaştırın. Yan yana karşılaştırmalara, derlemelere ve iş akışı kılavuzlarına göz atın."
+msgstr "Choros'i Cursor, Claude Code, Codex, Windsurf, Devin, GitHub Copilot ve daha fazlasıyla karşılaştırın. Yan yana karşılaştırmalara, derlemelere ve iş akışı kılavuzlarına göz atın."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/page.tsx
 msgid "marketing.meta.compare.title"
-msgstr "Superset'i karşılaştırın | AI kodlama karşılaştırmaları ve kılavuzları"
+msgstr "Choros'i karşılaştırın | AI kodlama karşılaştırmaları ve kılavuzları"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
@@ -14930,12 +14930,12 @@ msgstr "İletişim"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/page.tsx
 msgid "marketing.meta.download.description"
-msgstr "Superset indirmeniz başlıyor."
+msgstr "Choros indirmeniz başlıyor."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/page.tsx
 msgid "marketing.meta.download.title"
-msgstr "Superset'i indir"
+msgstr "Choros'i indir"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/page.tsx
@@ -14955,7 +14955,7 @@ msgstr "Kendi kendine çalışan yazılım fabrikası için yanlışlanabilir bi
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
 msgid "marketing.meta.factory2026.ogTitle"
-msgstr "Factory 2026 | Superset"
+msgstr "Factory 2026 | Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
@@ -14970,7 +14970,7 @@ msgstr "San Francisco'da mühendis arıyoruz. İlk yazılım fabrikası platform
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
 msgid "marketing.meta.joinUs.ogTitle"
-msgstr "Superset'te bize katılın"
+msgstr "Choros'te bize katılın"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
@@ -14990,7 +14990,7 @@ msgstr "Liderlik tablosu"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/agents/page.tsx
 msgid "marketing.meta.marketplace.agents.description"
-msgstr "Yeniden kullanılabilir Superset ajan yapılandırmaları, istemleri ve kurulum kılavuzları için gelecekteki adres."
+msgstr "Yeniden kullanılabilir Choros ajan yapılandırmaları, istemleri ve kurulum kılavuzları için gelecekteki adres."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/agents/page.tsx
@@ -15000,12 +15000,12 @@ msgstr "Ajan yapılandırmaları"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/page.tsx
 msgid "marketing.meta.marketplace.description"
-msgstr "Superset için paylaşılan temalara ve gelecekteki ajan yapılandırmalarına göz atın."
+msgstr "Choros için paylaşılan temalara ve gelecekteki ajan yapılandırmalarına göz atın."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/page.tsx
 msgid "marketing.meta.marketplace.themes.description"
-msgstr "GitHub Dark Colorblind, Catppuccin, Ember ve One Dark Pro dahil olmak üzere toplulukça paylaşılan Superset tema dosyalarına göz atın."
+msgstr "GitHub Dark Colorblind, Catppuccin, Ember ve One Dark Pro dahil olmak üzere toplulukça paylaşılan Choros tema dosyalarına göz atın."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/page.tsx
@@ -15040,7 +15040,7 @@ msgstr "Fiyatlandırma"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/page.tsx
 msgid "marketing.meta.roadmap.description"
-msgstr "Şu anda ne geliştirdiğimizi, sırada ne olduğunu ve Superset'in nereye gittiğini görün."
+msgstr "Şu anda ne geliştirdiğimizi, sırada ne olduğunu ve Choros'in nereye gittiğini görün."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/page.tsx
@@ -15060,7 +15060,7 @@ msgstr "Yıldız geçmişi"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/stats/page.tsx
 msgid "marketing.meta.stats.description"
-msgstr "Superset liderlik tablosundaki her geliştiricinin toplam ajan kullanımı — token, maliyet, önbellek davranışı ve insanların gerçekte tercih ettiği modeller."
+msgstr "Choros liderlik tablosundaki her geliştiricinin toplam ajan kullanımı — token, maliyet, önbellek davranışı ve insanların gerçekte tercih ettiği modeller."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/stats/page.tsx
@@ -15070,12 +15070,12 @@ msgstr "İstatistikler"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.meta.team.description"
-msgstr "Superset nedir, kimler geliştiriyor ve kimler için. Paralel kodlama ajanları için çalışma alanını geliştiren, üç eski YC CTO'sundan oluşan bir San Francisco ekibi."
+msgstr "Choros nedir, kimler geliştiriyor ve kimler için. Paralel kodlama ajanları için çalışma alanını geliştiren, üç eski YC CTO'sundan oluşan bir San Francisco ekibi."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.meta.team.ogDescription"
-msgstr "Geliştiriciler için paralel kodlama ajanları geliştiren Superset ekibiyle tanışın."
+msgstr "Geliştiriciler için paralel kodlama ajanları geliştiren Choros ekibiyle tanışın."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
@@ -15155,7 +15155,7 @@ msgstr "Değişiklik günlüğü"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Header/constants.tsx
 msgid "marketing.nav.product.mcp.description"
-msgstr "Herhangi bir AI ajanını Superset'e bağlayın."
+msgstr "Herhangi bir AI ajanını Choros'e bağlayın."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Header/constants.tsx
@@ -15186,7 +15186,7 @@ msgstr "Ürün"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Header/constants.tsx
 msgid "marketing.nav.resources.about.description"
-msgstr "Superset'in arkasındaki insanlar."
+msgstr "Choros'in arkasındaki insanlar."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Header/constants.tsx
@@ -15477,7 +15477,7 @@ msgstr "Uygulamayı indir"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
 msgid "marketing.pricing.faq.agentSubscriptions.answer"
-msgstr "Evet. Superset, ajanlarınızın çalıştığı çalışma alanıdır, bir model sağlayıcısı değil. Claude Code, Codex, OpenCode veya herhangi bir CLI ajanını getirin ve her planda mevcut hesaplarınızı ya da API anahtarlarınızı kullanın."
+msgstr "Evet. Choros, ajanlarınızın çalıştığı çalışma alanıdır, bir model sağlayıcısı değil. Claude Code, Codex, OpenCode veya herhangi bir CLI ajanını getirin ve her planda mevcut hesaplarınızı ya da API anahtarlarınızı kullanın."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
@@ -15522,12 +15522,12 @@ msgstr "Pro fiyatlandırması nasıl işliyor?"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
 msgid "marketing.pricing.faq.soc2.answer"
-msgstr "Evet. Superset, güvenlik kontrollerinin zaman içindeki işleyişini kapsayan SOC 2 Type II denetimini bağımsız bir denetçiyle tamamlamıştır. Raporu talep edin ve güvenlik belgelerimizi trust.superset.sh adresinde inceleyin."
+msgstr "Evet. Choros, güvenlik kontrollerinin zaman içindeki işleyişini kapsayan SOC 2 Type II denetimini bağımsız bir denetçiyle tamamlamıştır. Raporu talep edin ve güvenlik belgelerimizi trust.choros.sh adresinde inceleyin."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
 msgid "marketing.pricing.faq.soc2.question"
-msgstr "Superset SOC 2 uyumlu mu?"
+msgstr "Choros SOC 2 uyumlu mu?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
@@ -15547,7 +15547,7 @@ msgstr "Sık sorulan sorular"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
 msgid "marketing.pricing.faq.whereCodeRuns.answer"
-msgstr "Sizin makinenizde. Depolar, worktree'ler, terminal çıktısı ve ajan oturumları varsayılan olarak yerelde kalır; bulut eşitlemesi yalnızca hesap ve kuruluş meta verilerini kapsar. Superset hiçbir API çağrısını vekil olarak iletmez."
+msgstr "Sizin makinenizde. Depolar, worktree'ler, terminal çıktısı ve ajan oturumları varsayılan olarak yerelde kalır; bulut eşitlemesi yalnızca hesap ve kuruluş meta verilerini kapsar. Choros hiçbir API çağrısını vekil olarak iletmez."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
@@ -15987,7 +15987,7 @@ msgstr "Geliştirilmiş fark görüntüleyici"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/data.ts
 msgid "marketing.roadmap.item.inAppPrMerge.description"
-msgstr "Superset'ten çıkmadan pull request birleştirin; ayrıca bir dizi sohbet düzeltmesi ve rötuş."
+msgstr "Choros'ten çıkmadan pull request birleştirin; ayrıca bir dizi sohbet düzeltmesi ve rötuş."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/data.ts
@@ -16017,7 +16017,7 @@ msgstr "MCP yöneticisi"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/data.ts
 msgid "marketing.roadmap.item.nativePrReviews.description"
-msgstr "Pull request'leri Superset içinde inceleyin: fark bölmesi, ajan destekli inceleme, yorumlara doğrudan müdahale."
+msgstr "Pull request'leri Choros içinde inceleyin: fark bölmesi, ajan destekli inceleme, yorumlara doğrudan müdahale."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/data.ts
@@ -16257,7 +16257,7 @@ msgstr "Kodunuz varsayılan olarak yerelde kalır; bağlı hizmetler üzerinde a
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/SecuritySection/SecuritySection.tsx
 msgid "marketing.security.yourAccounts.description"
-msgstr "Mevcut ajan aboneliklerinizi ve API anahtarlarınızı kullanın. Superset model çağrılarını asla vekil olarak iletmez ve iş akışınızı tek bir sağlayıcıya kilitlemez."
+msgstr "Mevcut ajan aboneliklerinizi ve API anahtarlarınızı kullanın. Choros model çağrılarını asla vekil olarak iletmez ve iş akışınızı tek bir sağlayıcıya kilitlemez."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/SecuritySection/SecuritySection.tsx
@@ -16508,7 +16508,7 @@ msgstr "İstatistikler şu anda kullanılamıyor."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.eyebrow"
-msgstr "Superset hakkında"
+msgstr "Choros hakkında"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
@@ -16523,12 +16523,12 @@ msgstr "Kurucular"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.foundersPhoto.alt"
-msgstr "Superset kurucuları bir hackathon'da, YC merkezi San Francisco"
+msgstr "Choros kurucuları bir hackathon'da, YC merkezi San Francisco"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.foundersPhoto.caption"
-msgstr "Superset'in başladığı hackathon'da kurucular <0>|</0> YC merkezi, Kasım 2025"
+msgstr "Choros'in başladığı hackathon'da kurucular <0>|</0> YC merkezi, Kasım 2025"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
@@ -16543,7 +16543,7 @@ msgstr "San Francisco'da işe alıyoruz"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.intro"
-msgstr "Superset, kendini geliştiren yazılım üretiyor. Bu, mühendislere zamanla ihtiyaçlarına uyum sağlayan en iyi araçları vermekle başlıyor. Sevdiğimiz bir araç geliştiren 3 eski YC CTO'suyuz."
+msgstr "Choros, kendini geliştiren yazılım üretiyor. Bu, mühendislere zamanla ihtiyaçlarına uyum sağlayan en iyi araçları vermekle başlıyor. Sevdiğimiz bir araç geliştiren 3 eski YC CTO'suyuz."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/[id]/page.tsx
@@ -16563,7 +16563,7 @@ msgstr "Diğer takım üyeleri"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.story.adoption"
-msgstr "Yalnızca birkaç ayda <0>on binlerce mühendis</0> Superset'i birincil IDE'si olarak kullanmaya başladı; Wix, DoorDash ve Netflix gibi şirketlerde."
+msgstr "Yalnızca birkaç ayda <0>on binlerce mühendis</0> Choros'i birincil IDE'si olarak kullanmaya başladı; Wix, DoorDash ve Netflix gibi şirketlerde."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
@@ -16578,7 +16578,7 @@ msgstr "Peki buraya nasıl geldik?"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.story.origin"
-msgstr "Superset, Kasım 2025'te bir hackathon projesi olarak başladı. Worktree yönetimi için basit bir masaüstü uygulamasıydı."
+msgstr "Choros, Kasım 2025'te bir hackathon projesi olarak başladı. Worktree yönetimi için basit bir masaüstü uygulamasıydı."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/TierBadge/TierBadge.tsx
@@ -16665,7 +16665,7 @@ msgstr "Bekleme listesine katıl"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/WaitlistModal/WaitlistModal.tsx
 msgid "marketing.waitlist.modalDescription"
-msgstr "Superset, Windows ve Linux'ta kullanılabilir olduğunda haberdar olun."
+msgstr "Choros, Windows ve Linux'ta kullanılabilir olduğunda haberdar olun."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/WaitlistModal/WaitlistModal.tsx
@@ -16685,7 +16685,7 @@ msgstr "Listedesiniz!"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/WallOfLoveSection/WallOfLoveSection.tsx
 msgid "marketing.wallOfLove.heading"
-msgstr "Geliştiriciler Superset hakkında ne diyor"
+msgstr "Geliştiriciler Choros hakkında ne diyor"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/WallOfLoveSection/WallOfLoveSection.tsx
@@ -17281,7 +17281,7 @@ msgstr "Kurulum rehberini okuyun"
 #. placeholder {0}: COMPANY.DOMAIN
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-connect-host/HomeConnectHostScreen.tsx
 msgid "mobile.connectHost.step1.body"
-msgstr "Superset'i <0>{0}/download</0> adresinden indirin."
+msgstr "Choros'i <0>{0}/download</0> adresinden indirin."
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-connect-host/HomeConnectHostScreen.tsx
@@ -17307,7 +17307,7 @@ msgstr "Röle üzerinden erişime izin verin"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-connect-host/HomeConnectHostScreen.tsx
 msgid "mobile.connectHost.subtitle"
-msgstr "Superset Mobile, ajanları bağladığınız bilgisayarlarda çalıştırır."
+msgstr "Choros Mobile, ajanları bağladığınız bilgisayarlarda çalıştırır."
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-connect-host/HomeConnectHostScreen.tsx
@@ -17707,7 +17707,7 @@ msgstr "Henüz cihaz yok"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/hosts/HostsSettingsScreen.tsx
 msgid "mobile.hostsSettings.emptyDescription"
-msgstr "Superset masaüstü uygulamasında Ayarlar → Uzaktan erişim bölümünü açın ve “Bu cihaza röle üzerinden uzaktan erişime izin ver” seçeneğini açın."
+msgstr "Choros masaüstü uygulamasında Ayarlar → Uzaktan erişim bölümünü açın ve “Bu cihaza röle üzerinden uzaktan erişime izin ver” seçeneğini açın."
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/hosts/HostsSettingsScreen.tsx
@@ -17951,13 +17951,13 @@ msgstr "Bağımlılıklar"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-paywall/HomePaywallScreen.tsx
 msgid "mobile.paywall.description"
-msgstr "Bu kuruluş Ücretsiz planda. Superset Mobile, Pro planındaki kuruluşlar için kullanılabilir."
+msgstr "Bu kuruluş Ücretsiz planda. Choros Mobile, Pro planındaki kuruluşlar için kullanılabilir."
 
 #. js-lingui-explicit-id
 #. placeholder {0}: activeOrganization.name
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-paywall/HomePaywallScreen.tsx
 msgid "mobile.paywall.descriptionNamed"
-msgstr "{0} Ücretsiz planda. Superset Mobile, Pro planındaki kuruluşlar için kullanılabilir."
+msgstr "{0} Ücretsiz planda. Choros Mobile, Pro planındaki kuruluşlar için kullanılabilir."
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-paywall/HomePaywallScreen.tsx
@@ -17967,7 +17967,7 @@ msgstr "Yenile"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-paywall/HomePaywallScreen.tsx
 msgid "mobile.paywall.title"
-msgstr "Superset Mobile, Pro'nun bir parçasıdır"
+msgstr "Choros Mobile, Pro'nun bir parçasıdır"
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/components/ai-elements/plan.tsx
@@ -18431,7 +18431,7 @@ msgstr "Hesabı sil"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/SettingsScreen.tsx
 msgid "mobile.settings.deleteAccount.failedMessage"
-msgstr "Bir şeyler ters gitti. Yeniden deneyin veya support@superset.sh adresine yazın."
+msgstr "Bir şeyler ters gitti. Yeniden deneyin veya support@choros.sh adresine yazın."
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/SettingsScreen.tsx
@@ -18513,8 +18513,8 @@ msgstr "Kuruluş"
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/SettingsScreen.tsx
-msgid "mobile.settings.row.rateSuperset"
-msgstr "Superset'i puanla"
+msgid "mobile.settings.row.rateChoros"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/SettingsScreen.tsx
@@ -18594,7 +18594,7 @@ msgstr "Başlamak için oturum açın"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(auth)/sign-in/SignInScreen.tsx
 msgid "mobile.signIn.title"
-msgstr "Superset'e hoş geldiniz"
+msgstr "Choros'e hoş geldiniz"
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/components/ai-elements/sources.tsx
@@ -18835,7 +18835,7 @@ msgstr "Bu çalışma alanının host'u çevrimdışı"
 #. placeholder {2}: hostCompatibility.minVersion
 #: ../../apps/mobile/screens/(authenticated)/workspace/[id]/WorkspaceScreen/WorkspaceScreen.tsx
 msgid "mobile.workspace.hostOutdated.body"
-msgstr "{0} üzerinde host hizmeti {1} çalışıyor — bu uygulama {2} veya daha yenisini gerektiriyor. O makinede Superset'i güncelleyin."
+msgstr "{0} üzerinde host hizmeti {1} çalışıyor — bu uygulama {2} veya daha yenisini gerektiriyor. O makinede Choros'i güncelleyin."
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/workspace/[id]/WorkspaceScreen/WorkspaceScreen.tsx
@@ -19542,7 +19542,7 @@ msgstr "Avatar yüklenemedi"
 #. js-lingui-explicit-id
 #: src/server-errors.ts
 msgid "serverError.user.theRecoveryPeriodHasEndedContact"
-msgstr "Kurtarma süresi sona erdi. support@superset.sh adresine yazın."
+msgstr "Kurtarma süresi sona erdi. support@choros.sh adresine yazın."
 
 #. js-lingui-explicit-id
 #: src/server-errors.ts
@@ -19757,7 +19757,7 @@ msgstr "Oturumu kapat"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/AccountSettings.tsx
 msgid "settings.account.signOutHint"
-msgstr "Superset'i bu cihazda kullanmak için yeniden oturum açmanız gerekecek."
+msgstr "Choros'i bu cihazda kullanmak için yeniden oturum açmanız gerekecek."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/AccountSettings.tsx
@@ -19958,7 +19958,7 @@ msgstr "Ajanı sil"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/agents/components/V2AgentsSettings/components/AgentDetail/AgentDetail.tsx
 msgid "settings.agents.detail.hooksAriaLabel"
-msgstr "Superset hook'ları"
+msgstr "Choros hook'ları"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/agents/components/V2AgentsSettings/components/AgentDetail/AgentDetail.tsx
@@ -19968,12 +19968,12 @@ msgstr "Bu ajan için durum göster ve bildirim gönder."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/agents/components/V2AgentsSettings/components/AgentDetail/AgentDetail.tsx
 msgid "settings.agents.detail.hooksTitle"
-msgstr "Superset hook'ları"
+msgstr "Choros hook'ları"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/agents/components/V2AgentsSettings/components/AgentDetail/AgentDetail.tsx
 msgid "settings.agents.detail.hooksTooltip"
-msgstr "Superset'in durum gösterebilmesi ve bildirim gönderebilmesi için bu ajanın genel yapılandırmasına yaşam döngüsü hook'ları kaydeder. Bunu kapatmak Superset'in kayıtlarını her yerden kaldırır — Superset içinde dahil olmak üzere bu ajan için durum ve bildirimler durur."
+msgstr "Choros'in durum gösterebilmesi ve bildirim gönderebilmesi için bu ajanın genel yapılandırmasına yaşam döngüsü hook'ları kaydeder. Bunu kapatmak Choros'in kayıtlarını her yerden kaldırır — Choros içinde dahil olmak üzere bu ajan için durum ve bildirimler durur."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/agents/components/V2AgentsSettings/components/AgentDetail/AgentDetail.tsx
@@ -20589,7 +20589,7 @@ msgstr "Tufte"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/appearance/components/AppearanceSettings/AppearanceSettings.tsx
 msgid "settings.appearance.subtitle"
-msgstr "Superset'in cihazınızda nasıl göründüğünü özelleştirin"
+msgstr "Choros'in cihazınızda nasıl göründüğünü özelleştirin"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/appearance/components/AppearanceSettings/components/ThemeSection/ThemeSection.tsx
@@ -20896,7 +20896,7 @@ msgstr "Projeyi bir GitHub yıldızıyla destekleyin"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/behavior/components/BehaviorSettings/components/GithubStarRow/GithubStarRow.tsx
 msgid "settings.behavior.githubStar.label"
-msgstr "Superset'i GitHub'da yıldızla"
+msgstr "Choros'i GitHub'da yıldızla"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/behavior/components/BehaviorSettings/components/GithubStarRow/GithubStarRow.tsx
@@ -21543,7 +21543,7 @@ msgstr "İçe aktar…"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/browser/components/BrowserSettings/BrowserSettings.tsx
 msgid "settings.browser.importHint"
-msgstr "Tarama geçmişini ve oturum bilgilerini Chrome, Brave, Arc veya başka bir Chromium tarayıcısından Superset'e kopyalayın."
+msgstr "Tarama geçmişini ve oturum bilgilerini Chrome, Brave, Arc veya başka bir Chromium tarayıcısından Choros'e kopyalayın."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/browser/components/BrowserSettings/BrowserSettings.tsx
@@ -21932,7 +21932,7 @@ msgstr "Yeni çalışma alanı deneyimini kullanın."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/ExperimentalSettings/ExperimentalSettings.tsx
 msgid "settings.experimental.v2Label"
-msgstr "Superset v2'yi deneyin"
+msgstr "Choros v2'yi deneyin"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/ExperimentalSettings/components/WaitForSetupBeforeAgentSetting/WaitForSetupBeforeAgentSetting.tsx
@@ -22163,7 +22163,7 @@ msgstr "Host'u sil"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/hosts/$hostId/components/HostSettings/components/DeleteHostSection/DeleteHostSection.tsx
 msgid "settings.hosts.deleteHost.localHint"
-msgstr "Başka bir cihazdan silmek için Superset'i burada durdurun."
+msgstr "Başka bir cihazdan silmek için Choros'i burada durdurun."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/hosts/page.tsx
@@ -23052,8 +23052,8 @@ msgstr "Bağlı"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/models/components/ModelsSettings/utils.ts
-msgid "settings.models.status.connectedInSuperset"
-msgstr "Superset'te bağlı"
+msgid "settings.models.status.connectedInChoros"
+msgstr "Choros'te bağlı"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/models/components/ModelsSettings/utils.ts
@@ -23190,7 +23190,7 @@ msgstr "Kuruluş siliniyor..."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/organization/components/OrganizationSettings/OrganizationSettings.tsx
 msgid "settings.organization.idHint"
-msgstr "Superset API'yi çağırırken bunu kullanın."
+msgstr "Choros API'yi çağırırken bunu kullanın."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/organization/components/OrganizationSettings/OrganizationSettings.tsx
@@ -23425,7 +23425,7 @@ msgstr "Bilinmiyor"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/permissions/components/PermissionsSettings/PermissionsSettings.tsx
 msgid "settings.permissions.subtitle"
-msgstr "Superset'in ihtiyaç duyduğu işletim sistemi izinlerini verin."
+msgstr "Choros'in ihtiyaç duyduğu işletim sistemi izinlerini verin."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/permissions/components/PermissionsSettings/PermissionsSettings.tsx
@@ -25987,6 +25987,11 @@ msgstr "{countdown} sonra sıfırlanır · {absolute}"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
+msgid "settings.usage.resources.chorosApp"
+msgstr "Choros uygulaması"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.collapseProject"
 msgstr "Projeyi daralt"
 
@@ -26071,7 +26076,7 @@ msgstr "Renderer"
 #. placeholder {2}: formatMemory(freeMemory)
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.ramBarAriaLabel"
-msgstr "Sistem RAM'i: Superset {0}, diğer uygulamalar {1}, boş {2}"
+msgstr "Sistem RAM'i: Choros {0}, diğer uygulamalar {1}, boş {2}"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
@@ -26126,12 +26131,22 @@ msgstr "Kenar çubuğu sırası"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.sparklineCpu"
-msgstr "Superset CPU · son 5 dk"
+msgstr "Choros CPU · son 5 dk"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.sparklineMemory"
-msgstr "Superset belleği · son 5 dk"
+msgstr "Choros belleği · son 5 dk"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
+msgid "settings.usage.resources.statChorosCpu"
+msgstr "Choros CPU"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
+msgid "settings.usage.resources.statChorosMemory"
+msgstr "Choros belleği"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
@@ -26145,16 +26160,6 @@ msgstr "Yük (1 dk)"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
-msgid "settings.usage.resources.statSupersetCpu"
-msgstr "Superset CPU"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
-msgid "settings.usage.resources.statSupersetMemory"
-msgstr "Superset belleği"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.statSystemMemory"
 msgstr "Sistem belleği"
 
@@ -26162,11 +26167,6 @@ msgstr "Sistem belleği"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.statSystemRamShare"
 msgstr "Sistem RAM payı"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
-msgid "settings.usage.resources.supersetApp"
-msgstr "Superset uygulaması"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/components/ResourceSparkline/ResourceSparkline.tsx
@@ -26661,7 +26661,7 @@ msgstr "Güncellemeleri denetle"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/tray/index.ts
 msgid "tray.closeApp"
-msgstr "Superset'i kapat"
+msgstr "Choros'i kapat"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/tray/index.ts
@@ -26711,12 +26711,12 @@ msgstr "Etkin hizmet yok"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/tray/index.ts
 msgid "tray.openApp"
-msgstr "Superset'i aç"
+msgstr "Choros'i aç"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/tray/index.ts
 msgid "tray.quitCompletely"
-msgstr "Superset'ten tamamen çık"
+msgstr "Choros'ten tamamen çık"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/tray/index.ts
@@ -27667,7 +27667,7 @@ msgstr "Paralel kodlama ajanları çalıştırmaya başlamak için masaüstü uy
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(agents)/agents/page.tsx
 msgid "web.agents.downloadTitle"
-msgstr "Superset'i indir"
+msgstr "Choros'i indir"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(agents)/constants.ts
@@ -27777,7 +27777,7 @@ msgstr "Yetkilendirme başarısız"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/cli/auth/code/components/CliAuthCodeDisplay/CliAuthCodeDisplay.tsx
 msgid "web.cliAuth.codeHint"
-msgstr "Bunu Superset CLI'ye yapıştırın:"
+msgstr "Bunu Choros CLI'ye yapıştırın:"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/cli/auth/code/components/CliAuthCodeDisplay/CliAuthCodeDisplay.tsx
@@ -27903,7 +27903,7 @@ msgstr "<0>{userName}</0> olarak oturum açıldı"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/oauth/consent/components/ConsentForm/ConsentForm.tsx
 msgid "web.consent.subtitle"
-msgstr "<0>{displayName}</0> Superset hesabınıza erişim istiyor"
+msgstr "<0>{displayName}</0> Choros hesabınıza erişim istiyor"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/oauth/consent/components/ConsentForm/ConsentForm.tsx
@@ -27964,6 +27964,11 @@ msgstr "Düğme — varyantlar"
 #: ../../apps/web/src/app/design/components/ActionsSection/ActionsSection.tsx
 msgid "web.design.actionsSection.chooseApp"
 msgstr "Uygulama seç"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/ActionsSection/ActionsSection.tsx
+msgid "web.design.actionsSection.chorosSh"
+msgstr "choros.sh"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/ActionsSection/ActionsSection.tsx
@@ -28102,11 +28107,6 @@ msgstr "Bölünmüş düğme masaüstündeki OpenInButton'ı yansıtır; seçici
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/ActionsSection/ActionsSection.tsx
-msgid "web.design.actionsSection.supersetSh"
-msgstr "superset.sh"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/ActionsSection/ActionsSection.tsx
 msgid "web.design.actionsSection.terminal"
 msgstr "Terminal"
 
@@ -28161,344 +28161,514 @@ msgid "web.design.actionsSection.xsSmDefaultLgIcon"
 msgstr "xs · sm · default · lg · icon-xs → icon-lg"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.55CallSitesPassShowarrow"
 msgstr "55 çağrı noktası {code} geçiriyor"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.aiAgentActivity"
 msgstr "AI · Ajan etkinliği"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.appsDesktopSrcRenderer"
 msgstr "apps/desktop/src/renderer"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.bakingTheChipStyleInto"
 msgstr "Çip stilini tooltip.tsx içine gömme"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.chainOfThought"
 msgstr "Düşünce zinciri"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.comparedAgainstTheDefaultStyle"
 msgstr "Varsayılan stille karşılaştırıldı"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.found12TooltipCallSites"
 msgstr "12 tooltip çağrı noktası bulundu"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.grepped"
 msgstr "Grep'lendi"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.hotkeytooltipTsx"
 msgstr "HotkeyTooltip.tsx"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.makeTheChipStyleThe"
 msgstr "Çip stilini TooltipContent varsayılanı yap"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.packagesUiSrcComponentsUi"
 msgstr "packages/ui/src/components/ui/kbd.tsx"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.paneheaderactionsTsx"
 msgstr "PaneHeaderActions.tsx"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.plan"
 msgstr "Plan"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.planningTheTooltipRefactor"
 msgstr "Tooltip yeniden düzenlemesi planlanıyor"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.presetsbarTsx"
 msgstr "PresetsBar.tsx"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.read"
 msgstr "Okundu"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.searchedForTooltipOverrides"
 msgstr "Tooltip geçersiz kılmaları arandı"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.searchingForKbdUsages"
 msgstr "Kbd kullanımları aranıyor"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.standardizeTooltipStyling"
 msgstr "Tooltip stilini standartlaştır"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.stripRedundantOverridesAtCall"
 msgstr "Çağrı noktalarındaki gereksiz geçersiz kılmaları kaldır"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.structuredProgressChainOfThought"
 msgstr "Yapılandırılmış ilerleme: düşünce zinciri, görevler, planlar"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.task"
 msgstr "Görev"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.threeStepsTouchesPackagesUi"
 msgstr "Üç adım · packages/ui ve apps/desktop dizinlerine dokunur"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.verifyKbdStaysVisibleInside"
 msgstr "Kbd'nin tooltip'ler içinde görünür kaldığını doğrula"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.aiConversation"
 msgstr "AI · Konuşma"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
-msgid "web.design.aiChatSection.alsoSupersetUiAiElements"
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
+msgid "web.design.aiChatSection.alsoChorosUiAiElements"
 msgstr "Ayrıca: @choros/ui/ai-elements/message — içerik akarken en alta yapışır"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.canYouStandardizeTheTooltips"
 msgstr "Uygulama genelindeki tooltip'leri standartlaştırabilir misin?"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.chatSurfacesMessagesReasoningSuggestions"
 msgstr "Sohbet yüzeyleri: mesajlar, akıl yürütme, öneriler"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.collapsibleThinkingBlockWithDuration"
 msgstr "Süre etiketli, daraltılabilir düşünme bloğu"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.conversationMessage"
 msgstr "Konuşma · Mesaj"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.doneTheBorderedChipStyle"
 msgstr "Tamam — hazır ayarlar çubuğunun kullandığı çerçeveli çip stili artık her tooltip için varsayılan ve kopyala-yapıştır geçersiz kılmalar kaldırıldı (net −90 satır)."
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.niceOpenAPrWhen"
 msgstr "Güzel, hazır olduğunda bir PR aç."
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.reasoning"
 msgstr "Akıl yürütme"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.suggestions"
 msgstr "Öneriler"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.45Files82172"
 msgstr "45 dosya · +82 −172"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.874kOf200kTokens"
 msgstr "Bu oturumda 200K token'ın 87,4K'sı kullanıldı."
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.aiContent"
 msgstr "AI · İçerik"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.artifact"
 msgstr "Artifact"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.checkpoint"
 msgstr "Kontrol noktası"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.checkpointBeforeTooltipRefactor"
 msgstr "Kontrol noktası · tooltip yeniden düzenlemesinden önce"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.classnameRoundedSmBorderBorder"
 msgstr "- className=\"rounded-sm border border-border bg-background …\""
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.codeBlock"
 msgstr "Kod bloğu"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.context"
 msgstr "Bağlam"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.download"
 msgstr "İndir"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.inlineCitation"
 msgstr "Satır içi kaynak"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.needLiveChatToolCall"
 msgstr "Canlı sohbet/araç çağrısı durumu (ToolUIPart, akışlar) veya bir uygulama kabuğu gerekir"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.notDemoedHere"
 msgstr "Burada gösterilmiyor"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.popperBasedPositioningPlacesAnd"
 msgstr "Popper tabanlı konumlandırma, ok öğelerini otomatik olarak yerleştirir ve döndürür."
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.radixPrimitives"
 msgstr "Radix Primitives"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.radixRotatesTheTooltipArrow"
 msgstr "Radix, tooltip ok sarmalayıcısını her yön için döndürür,"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.radixTooltipDocs"
 msgstr "Radix Tooltip belgeleri"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.renderedOutputCodeSourcesCitations"
 msgstr "İşlenmiş çıktı: kod, kaynaklar, alıntılar, bağlam"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.shadcnUiTooltipRecipe"
 msgstr "shadcn/ui tooltip tarifi"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.shikiHighlightedWithOptionalLine"
 msgstr "Shiki ile vurgulanmış, isteğe bağlı satır numaralarıyla"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.soABorderOnTwo"
 msgstr "böylece döndürülmüş karenin iki kenarındaki çerçeve her zaman dışa bakar."
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.sources"
 msgstr "Kaynaklar"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.tailwindV4ThemeReference"
 msgstr "Tailwind v4 tema referansı"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.tokenBudgetIndicatorHoverThe"
 msgstr "Token bütçesi göstergesi — yüzdenin üzerine gelin"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.tooltipRefactorDiff"
 msgstr "tooltip-refactor.diff"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.aiStatus"
 msgstr "AI · Durum"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
-msgid "web.design.aiStatusSection.alsoSupersetUiAiElements"
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
+msgid "web.design.aiStatusSection.alsoChorosUiAiElements"
 msgstr "Ayrıca: @choros/ui/ai-elements/braille-spinner"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.animatedTextForInFlight"
 msgstr "Devam eden ajan etkinliği için animasyonlu metin"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.doneIsshimmeringFalse"
 msgstr "Bitti (isShimmering=false)"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.loaderBrailleSpinner"
 msgstr "Yükleyici · Braille spinner"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.loadingAndInFlightActivity"
 msgstr "Yükleme ve devam eden etkinlik göstergeleri"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.runningBunTest"
 msgstr "bun test çalışıyor…"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.shimmerShimmerLabel"
 msgstr "Shimmer · Shimmer etiketi"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.thinkingAboutTheApproach"
 msgstr "Yaklaşım üzerine düşünülüyor"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.choros.descriptionLead"
+msgstr "İlkellerin üzerine kurduğumuz her şey — Choros özgünleri, ajan arayüzleri için"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.choros.descriptionTail"
+msgstr "paketi ve paylaşılan uygulama bileşenleri. Kopyalamak için herhangi bir içe aktarma yoluna tıklayın."
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.choros.title"
+msgstr "Choros Bileşenleri"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.aiAgentActivity"
+msgstr "AI · Ajan etkinliği"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.aiContent"
+msgstr "AI · İçerik"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.aiConversation"
+msgstr "AI · Konuşma"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.aiStatus"
+msgstr "AI · Durum"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.originals"
+msgstr "Özgünler"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.sharedAppComponents"
+msgstr "Paylaşılan uygulama bileşenleri"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertCheckbox"
+msgstr "Bir daha sorma"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertDescription"
+msgstr "Worktree'de ajan oturumundan kalan commit'lenmemiş düzenlemeler var."
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertDiscard"
+msgstr "At"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertImperative"
+msgstr "Uyarı (imperatif)"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertKeepWorking"
+msgstr "Çalışmaya devam et"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertOpensAPromiseFriendly"
+msgstr "alert(), bağlanmış Alerter üzerinden promise dostu bir pencere açar"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertTitle"
+msgstr "Değişiklikler atılsın mı?"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.animatedWebglGradientStripeGradient"
+msgstr "Animasyonlu WebGL gradyanı (stripe-gradient)"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.avatarAtom"
+msgstr "Avatar (atom)"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.chorosOriginals"
+msgstr "Choros özgünleri"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.customComponentsBeyondTheShadcn"
+msgstr "shadcn setinin ötesindeki özel bileşenler"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.initialsFallbackViaGetinitialsSizes"
+msgstr "getInitials ile baş harf yedeği, xs → xl boyutları"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.meshGradient"
+msgstr "Mesh gradyanı"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.mobileApp"
+msgstr "Mobil uygulama"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.monitorAgentsFromYourPhone"
+msgstr "Ajanları telefonunuzdan izleyin."
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.needAppLevelWiringForm"
+msgstr "Uygulama düzeyinde bağlantı gerekir (form durumu, grafik verisi, uygulama kabuğu)"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.referencedNotDemoed"
+msgstr "Referans verildi, gösterilmedi"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.sidebarCard"
+msgstr "Kenar çubuğu kartı"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.themePreviewCard"
+msgstr "Tema önizleme kartı"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.themeSubtitle"
+msgstr "Varsayılan terminal teması"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.toastDiscarded"
+msgstr "Atıldı"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.toastDiscardedNoAsk"
+msgstr "Atıldı — bir daha sorulmayacak"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.toastDismissed"
+msgstr "Yok sayıldı"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.toastOpeningTestflight"
+msgstr "TestFlight açılıyor…"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.triggerAlert"
+msgstr "alert() tetikle"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/ComponentCard/ComponentCard.tsx
@@ -28567,8 +28737,13 @@ msgstr "Karusel"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
-msgid "web.design.dataSection.chooseWhenSupersetPingsYou"
-msgstr "Superset'in sizi ne zaman uyaracağını seçin."
+msgid "web.design.dataSection.chooseWhenChorosPingsYou"
+msgstr "Choros'in sizi ne zaman uyaracağını seçin."
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
+msgid "web.design.dataSection.choros"
+msgstr "Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
@@ -28607,8 +28782,8 @@ msgstr "Boşta · dal push edildi"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
-msgid "web.design.dataSection.includesTheSupersetSpecificBox"
-msgstr "Superset'e özgü kutu varyantını içerir"
+msgid "web.design.dataSection.includesTheChorosSpecificBox"
+msgstr "Choros'e özgü kutu varyantını içerir"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
@@ -28652,11 +28827,6 @@ msgstr "Durum"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
-msgid "web.design.dataSection.superset"
-msgstr "Superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
 msgid "web.design.dataSection.table"
 msgstr "Tablo"
 
@@ -28682,7 +28852,7 @@ msgstr "Uyarılar, bildirimler, ilerleme ve yükleme durumları"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/FeedbackSection/FeedbackSection.tsx
-msgid "web.design.feedbackSection.alsoSupersetUiSpinner"
+msgid "web.design.feedbackSection.alsoChorosUiSpinner"
 msgstr "Ayrıca: @choros/ui/spinner"
 
 #. js-lingui-explicit-id
@@ -28802,7 +28972,7 @@ msgstr "Koşulları kabul et"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
-msgid "web.design.inputsSection.alsoSupersetUiRadioGroup"
+msgid "web.design.inputsSection.alsoChorosUiRadioGroup"
 msgstr "Ayrıca: @choros/ui/radio-group, @choros/ui/switch"
 
 #. js-lingui-explicit-id
@@ -28834,6 +29004,11 @@ msgstr "Takvim"
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
 msgid "web.design.inputsSection.checkboxRadioSwitch"
 msgstr "Onay kutusu · Radyo · Anahtar"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
+msgid "web.design.inputsSection.choros"
+msgstr "choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
@@ -28947,11 +29122,6 @@ msgstr "Kaydırıcı"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
-msgid "web.design.inputsSection.superset"
-msgstr "superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
 msgid "web.design.inputsSection.textarea"
 msgstr "Metin alanı"
 
@@ -28962,7 +29132,7 @@ msgstr "Çalışma alanı"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
-msgid "web.design.layoutSection.alsoSupersetUiOverflowFade"
+msgid "web.design.layoutSection.alsoChorosUiOverflowFade"
 msgstr "Ayrıca: @choros/ui/overflow-fade-text"
 
 #. js-lingui-explicit-id
@@ -28979,6 +29149,11 @@ msgstr "En boy oranı"
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
 msgid "web.design.layoutSection.changelog"
 msgstr "Değişiklik günlüğü"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
+msgid "web.design.layoutSection.chorosUi"
+msgstr "Choros UI"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
@@ -29034,11 +29209,6 @@ msgstr "Kaynak"
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
 msgid "web.design.layoutSection.structureScrollingAndOverflowHandling"
 msgstr "Yapı, kaydırma ve taşma yönetimi"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
-msgid "web.design.layoutSection.supersetUi"
-msgstr "Superset UI"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
@@ -29387,6 +29557,16 @@ msgstr "İptal"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
+msgid "web.design.overlaysSection.choros"
+msgstr "@choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
+msgid "web.design.overlaysSection.choros2"
+msgstr "Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
 msgid "web.design.overlaysSection.close"
 msgstr "Kapat"
 
@@ -29532,16 +29712,6 @@ msgstr "Görünüm alanının kenarından kayarak girer."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
-msgid "web.design.overlaysSection.superset"
-msgstr "@superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
-msgid "web.design.overlaysSection.superset2"
-msgstr "Superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
 msgid "web.design.overlaysSection.terminalFontSize"
 msgstr "Terminal yazı tipi boyutu"
 
@@ -29593,105 +29763,105 @@ msgstr ". Her kart standart içe aktarma yolunu gösterir — kopyalamak için t
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/page.tsx
 msgid "web.design.primitives.title"
-msgstr "Superset Tasarım Sistemi"
+msgstr "Choros Tasarım Sistemi"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.agentPickerClaudeCodexCursor"
 msgstr "Her oturum oluşturma akışının kullandığı ajan seçici (Claude, Codex, Cursor…)"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.canonicalMarkdownSurfaceForAgent"
 msgstr "Ajan çıktısı, yorumlar ve belgeler için standart markdown yüzeyi"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.ghostTriggerIconTruncatingLabel"
 msgstr "Hayalet tetikleyici: simge + kısaltılan etiket + yukarı-aşağı ok (Primitives sayfasında gösterilen kalıp)"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.longHoverShortcutOnlyTooltip"
 msgstr "Uzun bekletmede yalnızca kısayol gösteren tooltip; çip stili artık TooltipContent varsayılanı"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.markdownAuthoringSurfaceWithPreview"
 msgstr "Önizlemeli markdown yazma yüzeyi"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.modelPickerScopedToThe"
 msgstr "Seçili ajanla sınırlı model seçici"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.paneLayoutRootRendersA"
 msgstr "Bölme düzeni kökü: bir çalışma alanının bölme ağacını işler"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.rendersARegisteredHotkeyInside"
 msgstr "Açılır menü/menü çubuğu öğelerinde kayıtlı bir kısayolu gösterir"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.sidebarPillShownWhenAn"
 msgstr "Bir uygulama güncellemesi kurulmaya hazır olduğunda gösterilen kenar çubuğu rozeti"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.splitButtonOpenWorktreeIn"
 msgstr "Bölünmüş düğme: worktree'yi varsayılan uygulamada aç + uygulama seçici açılır menü"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.standardActionStripForPane"
 msgstr "Bölme başlıkları için standart eylem şeridi"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.terminalThemeColorPalettePreview"
 msgstr "Terminal teması renk paleti önizlemesi"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.textInputWithEmojiPicker"
 msgstr "Emoji seçici destekli metin girişi"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.workspaceAccentColorPicker"
 msgstr "Çalışma alanı vurgu rengi seçici"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.crossFeatureComponentsLivingOutside"
 msgstr "packages/ui dışında yaşayan, özellikler arası bileşenler — yenisini geliştirmeden önce buraya bakın"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.desktopRenderer"
 msgstr "Masaüstü renderer"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.electronTrpcCoupledSoReferenced"
 msgstr "Electron/tRPC'ye bağlı olduğu için işlenmek yerine referans veriliyor. Rozet = bugünkü içe aktarma noktaları; yüksek sayılar packages/ui'ye taşınma adayıdır"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.paneSystem"
 msgstr "Bölme sistemi"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.reactLayerOfTheShared"
 msgstr "Paylaşılan bölme/çalışma alanı düzen motorunun React katmanı"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.sharedAppComponents"
 msgstr "Paylaşılan uygulama bileşenleri"
 
@@ -29699,176 +29869,6 @@ msgstr "Paylaşılan uygulama bileşenleri"
 #: ../../apps/web/src/app/design/components/ShowcaseNav/ShowcaseNav.tsx
 msgid "web.design.showcaseNav.sections"
 msgstr "Bölümler"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.superset.descriptionLead"
-msgstr "İlkellerin üzerine kurduğumuz her şey — Superset özgünleri, ajan arayüzleri için"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.superset.descriptionTail"
-msgstr "paketi ve paylaşılan uygulama bileşenleri. Kopyalamak için herhangi bir içe aktarma yoluna tıklayın."
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.superset.title"
-msgstr "Superset Bileşenleri"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.aiAgentActivity"
-msgstr "AI · Ajan etkinliği"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.aiContent"
-msgstr "AI · İçerik"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.aiConversation"
-msgstr "AI · Konuşma"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.aiStatus"
-msgstr "AI · Durum"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.originals"
-msgstr "Özgünler"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.sharedAppComponents"
-msgstr "Paylaşılan uygulama bileşenleri"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertCheckbox"
-msgstr "Bir daha sorma"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertDescription"
-msgstr "Worktree'de ajan oturumundan kalan commit'lenmemiş düzenlemeler var."
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertDiscard"
-msgstr "At"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertImperative"
-msgstr "Uyarı (imperatif)"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertKeepWorking"
-msgstr "Çalışmaya devam et"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertOpensAPromiseFriendly"
-msgstr "alert(), bağlanmış Alerter üzerinden promise dostu bir pencere açar"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertTitle"
-msgstr "Değişiklikler atılsın mı?"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.animatedWebglGradientStripeGradient"
-msgstr "Animasyonlu WebGL gradyanı (stripe-gradient)"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.avatarAtom"
-msgstr "Avatar (atom)"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.customComponentsBeyondTheShadcn"
-msgstr "shadcn setinin ötesindeki özel bileşenler"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.initialsFallbackViaGetinitialsSizes"
-msgstr "getInitials ile baş harf yedeği, xs → xl boyutları"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.meshGradient"
-msgstr "Mesh gradyanı"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.mobileApp"
-msgstr "Mobil uygulama"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.monitorAgentsFromYourPhone"
-msgstr "Ajanları telefonunuzdan izleyin."
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.needAppLevelWiringForm"
-msgstr "Uygulama düzeyinde bağlantı gerekir (form durumu, grafik verisi, uygulama kabuğu)"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.referencedNotDemoed"
-msgstr "Referans verildi, gösterilmedi"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.sidebarCard"
-msgstr "Kenar çubuğu kartı"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.supersetOriginals"
-msgstr "Superset özgünleri"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.themePreviewCard"
-msgstr "Tema önizleme kartı"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.themeSubtitle"
-msgstr "Varsayılan terminal teması"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.toastDiscarded"
-msgstr "Atıldı"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.toastDiscardedNoAsk"
-msgstr "Atıldı — bir daha sorulmayacak"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.toastDismissed"
-msgstr "Yok sayıldı"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.toastOpeningTestflight"
-msgstr "TestFlight açılıyor…"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.triggerAlert"
-msgstr "alert() tetikle"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/auth/desktop/success/page.tsx
@@ -29903,7 +29903,7 @@ msgstr "Web'de takip mesajları yakında geliyor"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/components/Footer/Footer.tsx
 msgid "web.footer.copyright"
-msgstr "© {year} Superset"
+msgstr "© {year} Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/components/Footer/Footer.tsx
@@ -30095,7 +30095,7 @@ msgstr "GitHub depolarınızı bağlayın ve pull request'leri eşitleyin. CI du
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/github/page.tsx
 msgid "web.integrations.github.callback.alreadyConnected"
-msgstr "Bu GitHub kurulumu zaten başka bir Superset kuruluşuna bağlı. Oradaki bağlantıyı kesin veya Superset GitHub App'i kaldırın, sonra yeniden deneyin."
+msgstr "Bu GitHub kurulumu zaten başka bir Choros kuruluşuna bağlı. Oradaki bağlantıyı kesin veya Choros GitHub App'i kaldırın, sonra yeniden deneyin."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/github/page.tsx
@@ -30130,7 +30130,7 @@ msgstr "GitHub bağlandı, ancak ilk eşitleme başlatılamadı. Lütfen yeniden
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/github/page.tsx
 msgid "web.integrations.github.connectionDescription"
-msgstr "Depolarınızı bağlamak için Superset GitHub App'i kurun."
+msgstr "Depolarınızı bağlamak için Choros GitHub App'i kurun."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/github/components/ConnectionControls/ConnectionControls.tsx
@@ -30175,7 +30175,7 @@ msgstr "Hem Calendar hem de Gmail erişimi gereklidir. Lütfen sorulduğunda iki
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/google/page.tsx
 msgid "web.integrations.google.callback.noRefreshToken"
-msgstr "Google kalıcı erişim vermedi. Superset'i Google hesabınızın üçüncü taraf erişiminden kaldırıp yeniden deneyin."
+msgstr "Google kalıcı erişim vermedi. Choros'i Google hesabınızın üçüncü taraf erişiminden kaldırıp yeniden deneyin."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/google/page.tsx
@@ -30215,7 +30215,7 @@ msgstr "Google'a yeniden bağlan"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/linear/page.tsx
 msgid "web.integrations.linear.blurb"
-msgstr "Issue'ları Linear ile çift yönlü eşitleyin. Superset'te görev oluşturup Linear'da görünmesini sağlayın veya mevcut Linear issue'larını içe aktarın."
+msgstr "Issue'ları Linear ile çift yönlü eşitleyin. Choros'te görev oluşturup Linear'da görünmesini sağlayın veya mevcut Linear issue'larını içe aktarın."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/linear/page.tsx
@@ -30245,7 +30245,7 @@ msgstr "Yeni görevler için varsayılan takım"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/linear/page.tsx
 msgid "web.integrations.linear.defaultTeamHint"
-msgstr "Superset'te oluşturulan görevler bu Linear takımına eşitlenecek."
+msgstr "Choros'te oluşturulan görevler bu Linear takımına eşitlenecek."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/linear/components/ConnectionControls/ConnectionControls.tsx
@@ -30275,7 +30275,7 @@ msgstr "Ayarlar"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/linear/page.tsx
 msgid "web.integrations.linear.settingsDescription"
-msgstr "Görevlerin Superset ile Linear arasında nasıl eşitleneceğini yapılandırın."
+msgstr "Görevlerin Choros ile Linear arasında nasıl eşitleneceğini yapılandırın."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/github/page.tsx
@@ -30376,7 +30376,7 @@ msgstr "Slack'e bağlanılamadı. Lütfen yeniden deneyin."
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/slack/page.tsx
 msgid "web.integrations.slack.callback.workspaceLinked"
-msgstr "Bu Slack çalışma alanı başka bir Superset kuruluşu tarafından zaten bağlanmış."
+msgstr "Bu Slack çalışma alanı başka bir Choros kuruluşu tarafından zaten bağlanmış."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/slack/page.tsx
@@ -30436,7 +30436,7 @@ msgstr "Bağlandı, ancak Microsoft Graph bildirim aboneliklerini reddetti."
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/microsoft-teams/page.tsx
 msgid "web.integrations.teams.callback.tenantLinked"
-msgstr "Bu Microsoft kiracısı başka bir Superset kuruluşu tarafından zaten bağlanmış."
+msgstr "Bu Microsoft kiracısı başka bir Choros kuruluşu tarafından zaten bağlanmış."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/microsoft-teams/page.tsx
@@ -30535,8 +30535,8 @@ msgstr "Bağlantı yanlış olabilir, sayfa silinmiş olabilir ya da erişiminiz
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/page/[slug]/not-found.tsx
-msgid "web.pageNotFound.goToSuperset"
-msgstr "Superset'e git"
+msgid "web.pageNotFound.goToChoros"
+msgstr "Choros'e git"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/page/[slug]/not-found.tsx
@@ -30798,7 +30798,7 @@ msgstr "Hesabınız yok mu? <0>Kaydolun</0>"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(auth)/sign-in/[[...sign-in]]/page.tsx
 msgid "web.signIn.subtitle"
-msgstr "Superset'e devam etmek için oturum açın"
+msgstr "Choros'e devam etmek için oturum açın"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(auth)/sign-in/[[...sign-in]]/page.tsx
@@ -30838,7 +30838,7 @@ msgstr "Zaten hesabınız var mı? <0>Oturum açın</0>"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(auth)/sign-up/[[...sign-up]]/page.tsx
 msgid "web.signUp.subtitle"
-msgstr "Superset'i kullanmaya başlamak için kaydolun"
+msgstr "Choros'i kullanmaya başlamak için kaydolun"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(auth)/sign-up/[[...sign-up]]/page.tsx
@@ -30858,7 +30858,7 @@ msgstr "Google ile kaydol"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/slack/linked/page.tsx
 msgid "web.slackLinked.description"
-msgstr "Slack hesabınız Superset'e bağlandı. Bu sekmeyi kapatıp Slack'e dönebilirsiniz."
+msgstr "Slack hesabınız Choros'e bağlandı. Bu sekmeyi kapatıp Slack'e dönebilirsiniz."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/slack/linked/page.tsx
@@ -33446,17 +33446,17 @@ msgstr "Yeniden adlandır..."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
 msgid "workspace.hostReachability.connectionFailed"
-msgstr "Bağlantı başarısız oldu (röle durumu {status}). Yeniden deneyin; sorun sürerse o cihazda Superset'i yeniden başlatın."
+msgstr "Bağlantı başarısız oldu (röle durumu {status}). Yeniden deneyin; sorun sürerse o cihazda Choros'i yeniden başlatın."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
 msgid "workspace.hostReachability.deviceNotConnected"
-msgstr "O cihaz röleye bağlı değil. Uyanık, çevrimiçi ve Superset çalışır durumda olduğunu kontrol edin — olduğunda kendiliğinden yeniden bağlanır."
+msgstr "O cihaz röleye bağlı değil. Uyanık, çevrimiçi ve Choros çalışır durumda olduğunu kontrol edin — olduğunda kendiliğinden yeniden bağlanır."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
 msgid "workspace.hostReachability.localStopped"
-msgstr "Yerel host hizmeti yanıt vermeyi bıraktı. Önce yeniden deneyin; işe yaramazsa Superset tepsi menüsünde Host hizmeti > Yeniden başlat yolundan yeniden başlatın."
+msgstr "Yerel host hizmeti yanıt vermeyi bıraktı. Önce yeniden deneyin; işe yaramazsa Choros tepsi menüsünde Host hizmeti > Yeniden başlat yolundan yeniden başlatın."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
@@ -33466,12 +33466,12 @@ msgstr "Bu host'a erişiminiz yok. Kendi cihazınızsa orada Ayarlar > Güvenlik
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
 msgid "workspace.hostReachability.onlineButFailed"
-msgstr "O cihaz çevrimiçi ancak bağlantı kurulamadı — bu genellikle cihazdan değil, röle yönlendirmesinden kaynaklanır. Yeniden deneyin; sorun sürerse o cihazda Superset'i yeniden başlatın."
+msgstr "O cihaz çevrimiçi ancak bağlantı kurulamadı — bu genellikle cihazdan değil, röle yönlendirmesinden kaynaklanır. Yeniden deneyin; sorun sürerse o cihazda Choros'i yeniden başlatın."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
 msgid "workspace.hostReachability.onlineButFailedRegion"
-msgstr "O cihaz çevrimiçi ({region} bölgesi) ancak bağlantı kurulamadı — bu genellikle cihazdan değil, röle yönlendirmesinden kaynaklanır. Yeniden deneyin; sorun sürerse o cihazda Superset'i yeniden başlatın."
+msgstr "O cihaz çevrimiçi ({region} bölgesi) ancak bağlantı kurulamadı — bu genellikle cihazdan değil, röle yönlendirmesinden kaynaklanır. Yeniden deneyin; sorun sürerse o cihazda Choros'i yeniden başlatın."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
@@ -34329,7 +34329,7 @@ msgstr "Bilinmeyen host"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/WorkspaceHostIncompatibleState/WorkspaceHostIncompatibleState.tsx
 msgid "workspace.states.hostIncompatibleBody"
-msgstr "Bu çalışma alanının host'u, bu istemcinin desteklediğinden daha eski bir Superset sürümünde. Yeniden bağlanmak için o cihazdaki Superset uygulamasını güncelleyin."
+msgstr "Bu çalışma alanının host'u, bu istemcinin desteklediğinden daha eski bir Choros sürümünde. Yeniden bağlanmak için o cihazdaki Choros uygulamasını güncelleyin."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/WorkspaceHostIncompatibleState/WorkspaceHostIncompatibleState.tsx
@@ -34354,7 +34354,7 @@ msgstr "Host'un güncellenmesi gerekiyor"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/WorkspaceHostUnreachableState/WorkspaceHostUnreachableState.tsx
 msgid "workspace.states.hostUnreachableBody"
-msgstr "Bu çalışma alanı, Superset'in şu anda erişemediği bir cihazda bulunuyor. Terminaller, dosyalar ve ajanlar yerinde kalır — bağlantı geri geldiğinde onlar da geri gelir."
+msgstr "Bu çalışma alanı, Choros'in şu anda erişemediği bir cihazda bulunuyor. Terminaller, dosyalar ve ajanlar yerinde kalır — bağlantı geri geldiğinde onlar da geri gelir."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/WorkspaceHostUnreachableState/WorkspaceHostUnreachableState.tsx
@@ -34409,7 +34409,7 @@ msgstr "Yerel host hizmeti çalışmıyor, bu yüzden bu cihazda hiçbir şey ç
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/providers/WorkspaceProvider/utils/localHostServiceDetail/localHostServiceDetail.ts
 msgid "workspace.states.localHostDetailUnknown"
-msgstr "Yerel host hizmeti yanıt vermiyor. Yeniden başlatmak genellikle bunu giderir; sorun sürerse Superset'i yeniden başlatın."
+msgstr "Yerel host hizmeti yanıt vermiyor. Yeniden başlatmak genellikle bunu giderir; sorun sürerse Choros'i yeniden başlatın."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/providers/WorkspaceProvider/components/WorkspaceLocalHostPendingState/WorkspaceLocalHostPendingState.tsx
@@ -34430,7 +34430,7 @@ msgstr "Host hizmeti yeniden başlatılamadı"
 #. placeholder {0}: error.message
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/providers/WorkspaceProvider/components/WorkspaceLocalHostPendingState/WorkspaceLocalHostPendingState.tsx
 msgid "workspace.states.localHostPendingRestartFailedDescription"
-msgstr "{0} — Superset tepsi menüsünde Host hizmeti > Yeniden başlat yolunu deneyin."
+msgstr "{0} — Choros tepsi menüsünde Host hizmeti > Yeniden başlat yolunu deneyin."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/providers/WorkspaceProvider/components/WorkspaceLocalHostPendingState/WorkspaceLocalHostPendingState.tsx

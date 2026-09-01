@@ -67,7 +67,7 @@ export default function SignUpPage() {
 				</h1>
 				<p className="text-muted-foreground text-sm">
 					<Trans id="web.signUp.subtitle">
-						Sign up to get started with Superset
+						Sign up to get started with Choros
 					</Trans>
 				</p>
 			</div>

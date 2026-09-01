@@ -64,9 +64,9 @@ Median 16 words (range 6-29); 1-2 sentences, never 3; zero colons; long subtitle
 ## House style
 
 The lintable subset of these rules is enforced by Vale: config in `apps/marketing/vale.ini`,
-rules in `vale-styles/Superset/`, run with `bun run lint:prose` (errors fail CI via the
+rules in `vale-styles/Choros/`, run with `bun run lint:prose` (errors fail CI via the
 `vale` job in `ci.yml`). Paths are deliberately non-hidden: some local checkouts
-(the Superset CLI settings exclude) carry a `.git/info/exclude` rule that ignores `.*`, so a
+(the Choros CLI settings exclude) carry a `.git/info/exclude` rule that ignores `.*`, so a
 `.vale.ini` can sit invisible to `git status` and silently never get committed. Third-party
 packages (proselint, write-good, alex, MDX) are vendored into `vale-styles/` by `vale sync` and
 committed; they run advisory-only, calibrated in `vale.ini` (write-good.E-Prime,

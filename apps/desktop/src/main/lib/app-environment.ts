@@ -12,7 +12,7 @@ process.env[SUPERSET_HOME_DIR_ENV] = SUPERSET_HOME_DIR;
 export const SUPERSET_HOME_DIR_MODE = 0o700;
 export const SUPERSET_SENSITIVE_FILE_MODE = 0o600;
 
-export function ensureSupersetHomeDirExists(): void {
+export function ensureChorosHomeDirExists(): void {
 	if (!existsSync(SUPERSET_HOME_DIR)) {
 		mkdirSync(SUPERSET_HOME_DIR, {
 			recursive: true,
@@ -25,7 +25,7 @@ export function ensureSupersetHomeDirExists(): void {
 		chmodSync(SUPERSET_HOME_DIR, SUPERSET_HOME_DIR_MODE);
 	} catch (error) {
 		console.warn(
-			"[app-environment] Failed to chmod Superset home dir (best-effort):",
+			"[app-environment] Failed to chmod Choros home dir (best-effort):",
 			SUPERSET_HOME_DIR,
 			error,
 		);

@@ -73,7 +73,7 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
 						description={t({
 							id: "marketing.waitlist.modalDescription",
 							message:
-								"Get notified when Superset is available on Windows & Linux.",
+								"Get notified when Choros is available on Windows & Linux.",
 						})}
 					/>
 				</div>

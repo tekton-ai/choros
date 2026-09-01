@@ -9,7 +9,7 @@ import { env } from "@/env";
 
 const apiUrl = env.NEXT_PUBLIC_API_URL.replace(/\/+$/, "");
 
-const TRUSTED_API_CLIENTS = new Set(["superset-cli"]);
+const TRUSTED_API_CLIENTS = new Set(["choros-cli"]);
 
 function looksLikeJwt(token: string): boolean {
 	const parts = token.split(".");

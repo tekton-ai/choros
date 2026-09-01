@@ -1,0 +1,1 @@
+export { ChorosIcon } from "./ChorosIcon";

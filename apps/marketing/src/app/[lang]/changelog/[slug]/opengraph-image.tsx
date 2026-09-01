@@ -4,7 +4,7 @@ import { ImageResponse } from "next/og";
 import { getChangelogEntry } from "@/lib/changelog";
 import { formatChangelogDate } from "@/lib/changelog-utils";
 
-export const alt = "Superset Changelog";
+export const alt = "Choros Changelog";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -75,7 +75,7 @@ export default async function Image({
 					fontFamily: "Inter",
 				}}
 			>
-				Superset Changelog
+				Choros Changelog
 			</div>,
 			{
 				...size,
@@ -185,7 +185,7 @@ export default async function Image({
 								color: "#ffffff",
 							}}
 						>
-							Superset
+							Choros
 						</div>
 					)}
 				</div>

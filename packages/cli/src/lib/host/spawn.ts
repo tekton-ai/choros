@@ -73,7 +73,7 @@ async function pollHealth(port: number, secret: string): Promise<boolean> {
 }
 
 /**
- * Resolve the sibling `superset-host` wrapper binary.
+ * Resolve the sibling `choros-host` wrapper binary.
  *
  * When running as a compiled binary, it's a sibling file in the same bin/
  * directory as the current executable. In dev (`bun run dev`), allow
@@ -82,14 +82,14 @@ async function pollHealth(port: number, secret: string): Promise<boolean> {
 function resolveHostBinary(): string {
 	if (process.env.SUPERSET_HOST_BIN) return process.env.SUPERSET_HOST_BIN;
 	const cliBin = process.execPath;
-	return join(dirname(cliBin), "superset-host");
+	return join(dirname(cliBin), "choros-host");
 }
 
 function resolveMigrationsFolder(): string {
 	if (process.env.HOST_MIGRATIONS_FOLDER) {
 		return process.env.HOST_MIGRATIONS_FOLDER;
 	}
-	// Compiled layout: <bundle>/bin/superset → <bundle>/share/migrations
+	// Compiled layout: <bundle>/bin/choros → <bundle>/share/migrations
 	const cliBin = process.execPath;
 	const bundleRoot = dirname(dirname(cliBin));
 	return join(bundleRoot, "share", "migrations");
@@ -102,11 +102,11 @@ export async function spawnHostService(
 	if (!existsSync(hostBin)) {
 		if (isDesktopBundled()) {
 			throw new Error(
-				"`superset start` is not available in the CLI bundled with the Superset desktop app; the app runs the host service itself. For headless use, install the standalone CLI: curl -fsSL https://superset.sh/cli/install.sh | sh",
+				"`choros start` is not available in the CLI bundled with the Choros desktop app; the app runs the host service itself. For headless use, install the standalone CLI: curl -fsSL https://choros.sh/cli/install.sh | sh",
 			);
 		}
 		throw new Error(
-			`superset-host binary not found at ${hostBin}. Set SUPERSET_HOST_BIN to override.`,
+			`choros-host binary not found at ${hostBin}. Set SUPERSET_HOST_BIN to override.`,
 		);
 	}
 

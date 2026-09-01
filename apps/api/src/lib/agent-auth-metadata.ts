@@ -27,7 +27,7 @@ export function withAgentAuthMetadata(handler: MetadataHandler) {
 				: undefined;
 
 		metadata.agent_auth = {
-			skill: "https://superset.sh/auth.md",
+			skill: "https://choros.sh/auth.md",
 			...(registerUri ? { register_uri: registerUri } : {}),
 			...(revocationUri ? { revocation_uri: revocationUri } : {}),
 			identity_types_supported: ["anonymous"],

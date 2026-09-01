@@ -135,7 +135,7 @@ describe("formatDesignModeContextMarkdown", () => {
 		});
 		expect(md).toContain("## Live page");
 		expect(md).toContain(
-			"superset browser screenshot --workspace ws-1 --pane pane-1",
+			"choros browser screenshot --workspace ws-1 --pane pane-1",
 		);
 		expect(formatDesignModeContextMarkdown(payload(), "fix")).not.toContain(
 			"## Live page",

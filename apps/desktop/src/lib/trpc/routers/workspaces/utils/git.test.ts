@@ -24,7 +24,7 @@ import {
 
 const TEST_DIR = join(
 	realpathSync(tmpdir()),
-	`superset-test-git-${process.pid}`,
+	`choros-test-git-${process.pid}`,
 );
 
 function createTestRepo(name: string): string {
@@ -101,7 +101,7 @@ describe("getDefaultBranch", () => {
 	} {
 		const testDir = join(
 			realpathSync(tmpdir()),
-			`superset-test-${testName}-${Date.now()}-${Math.random().toString(36).slice(2)}`,
+			`choros-test-${testName}-${Date.now()}-${Math.random().toString(36).slice(2)}`,
 		);
 		mkdirSync(testDir, { recursive: true });
 		execSync("git init", { cwd: testDir, stdio: "ignore" });
@@ -672,7 +672,7 @@ describe("getCurrentBranch", () => {
 	test("returns branch name for empty repo with unborn HEAD", async () => {
 		const repoPath = join(
 			realpathSync(tmpdir()),
-			`superset-test-current-branch-empty-${Date.now()}-${Math.random().toString(36).slice(2)}`,
+			`choros-test-current-branch-empty-${Date.now()}-${Math.random().toString(36).slice(2)}`,
 		);
 
 		mkdirSync(repoPath, { recursive: true });
@@ -696,7 +696,7 @@ describe("getCurrentBranch", () => {
 	test("returns null in detached HEAD state", async () => {
 		const repoPath = join(
 			realpathSync(tmpdir()),
-			`superset-test-current-branch-detached-${Date.now()}-${Math.random().toString(36).slice(2)}`,
+			`choros-test-current-branch-detached-${Date.now()}-${Math.random().toString(36).slice(2)}`,
 		);
 
 		mkdirSync(repoPath, { recursive: true });
@@ -1112,25 +1112,25 @@ describe("hasUnpushedCommits", () => {
 describe("parsePrUrl", () => {
 	test("parses canonical GitHub PR URL", () => {
 		expect(
-			parsePrUrl("https://github.com/superset-sh/superset/pull/1781"),
+			parsePrUrl("https://github.com/superset-sh/choros/pull/1781"),
 		).toEqual({
 			owner: "superset-sh",
-			repo: "superset",
+			repo: "choros",
 			number: 1781,
 		});
 	});
 
 	test("parses GitHub URL without protocol", () => {
-		expect(parsePrUrl("github.com/superset-sh/superset/pull/1781")).toEqual({
+		expect(parsePrUrl("github.com/superset-sh/choros/pull/1781")).toEqual({
 			owner: "superset-sh",
-			repo: "superset",
+			repo: "choros",
 			number: 1781,
 		});
 	});
 
 	test("returns null for non-PR URLs", () => {
 		expect(
-			parsePrUrl("https://github.com/superset-sh/superset/issues/1781"),
+			parsePrUrl("https://github.com/superset-sh/choros/issues/1781"),
 		).toBe(null);
 	});
 });

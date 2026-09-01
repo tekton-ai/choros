@@ -52,7 +52,7 @@ describe("terminal router integration", () => {
 		__setAccountShellForTesting(undefined);
 		// Dispose BEFORE dropping the isolation env: cleanup paths resolve
 		// daemon manifests/sockets, and without SUPERSET_HOME_DIR they would
-		// hit the real ~/.superset namespace (the manifest layer now throws
+		// hit the real ~/.choros namespace (the manifest layer now throws
 		// on that in tests).
 		await scenario?.dispose();
 		delete process.env.SUPERSET_PTY_DAEMON_SOCKET;

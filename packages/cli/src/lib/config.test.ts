@@ -19,7 +19,7 @@ const realFs = {
 };
 
 const originalSupersetHomeDir = process.env.SUPERSET_HOME_DIR;
-const tempHome = realFs.mkdtempSync(join(tmpdir(), "superset-cli-config-"));
+const tempHome = realFs.mkdtempSync(join(tmpdir(), "choros-cli-config-"));
 process.env.SUPERSET_HOME_DIR = tempHome;
 
 // Per-test mutable state for the mocked fs.
@@ -103,7 +103,7 @@ describe("config writes", () => {
 		expect(realFs.existsSync(unlinkedPaths[0] ?? "")).toBe(false);
 	});
 
-	test("writeConfig writes the exported Superset config path", () => {
+	test("writeConfig writes the exported Choros config path", () => {
 		writeConfig({ organizationId: "org_123" });
 
 		expect(

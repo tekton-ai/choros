@@ -50,7 +50,7 @@ export function ActivationNudge1({
 			</Text>
 
 			<Section>
-				<Button href={`https://superset.sh/download${utm}`}>
+				<Button href={`https://choros.sh/download${utm}`}>
 					Get the desktop app
 				</Button>
 			</Section>

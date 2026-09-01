@@ -256,7 +256,7 @@ async function updateTrayMenu(): Promise<void> {
 		},
 		{ type: "separator" },
 		{
-			label: i18n._({ id: "tray.openApp", message: "Open Superset" }),
+			label: i18n._({ id: "tray.openApp", message: "Open Choros" }),
 			click: focusMainWindow,
 		},
 		{
@@ -274,14 +274,14 @@ async function updateTrayMenu(): Promise<void> {
 		},
 		{ type: "separator" },
 		{
-			label: i18n._({ id: "tray.closeApp", message: "Close Superset" }),
+			label: i18n._({ id: "tray.closeApp", message: "Close Choros" }),
 			click: () => quitApp(),
 		},
 		{ type: "separator" },
 		{
 			label: i18n._({
 				id: "tray.quitCompletely",
-				message: "Quit Superset Completely",
+				message: "Quit Choros Completely",
 			}),
 			click: () => {
 				void confirmAndQuitCompletely();
@@ -317,7 +317,7 @@ export function initTray(): void {
 		}
 
 		tray = new Tray(icon);
-		tray.setToolTip("Superset");
+		tray.setToolTip("Choros");
 
 		void updateTrayMenu();
 

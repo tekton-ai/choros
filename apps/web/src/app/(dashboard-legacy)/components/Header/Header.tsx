@@ -63,7 +63,7 @@ export function Header() {
 				>
 					<Image
 						src="/title.svg"
-						alt="Superset"
+						alt="Choros"
 						width={150}
 						height={25}
 						priority

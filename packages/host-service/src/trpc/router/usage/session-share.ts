@@ -55,7 +55,7 @@ const SESSION_DIRS = [
 	"transcripts",
 ];
 
-const MERGE_SUFFIX = ".superset-merge";
+const MERGE_SUFFIX = ".choros-merge";
 
 /** Real path when the dir exists (a symlink alias of a protected dir must
  * compare equal to it), plain resolution otherwise. */

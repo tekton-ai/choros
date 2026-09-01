@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 
-const FILE_PATH_MIME = "application/x-superset-file-path";
+const FILE_PATH_MIME = "application/x-choros-file-path";
 
 /**
  * Stamp a native drag with a file's absolute path. `text/plain` is what the

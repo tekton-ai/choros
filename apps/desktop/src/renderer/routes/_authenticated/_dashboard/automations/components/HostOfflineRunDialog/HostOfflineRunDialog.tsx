@@ -64,7 +64,7 @@ export function HostOfflineRunDialog({
 								<p>
 									<Trans id="dashboard.automations.hostOfflineDialog.localBody">
 										The run was skipped because this device isn't connected to
-										the Superset relay. Automations go through the relay even
+										the Choros relay. Automations go through the relay even
 										when they run on this device. Enable relay access, then run
 										it again.
 									</Trans>
@@ -80,7 +80,7 @@ export function HostOfflineRunDialog({
 													message: "the target host",
 												})}
 										</span>{" "}
-										isn't connected to the Superset relay. Make sure relay
+										isn't connected to the Choros relay. Make sure relay
 										access is on in Settings &gt; Remote Access on that device,
 										then run it again.
 									</Trans>

@@ -43,7 +43,7 @@ describe("gitRouter.discardChanges", () => {
 	let git: SimpleGit;
 
 	beforeEach(async () => {
-		root = mkdtempSync(join(tmpdir(), "superset-discard-"));
+		root = mkdtempSync(join(tmpdir(), "choros-discard-"));
 		repo = join(root, "worktree");
 		await mkdir(repo);
 		git = await initRepo(repo);
@@ -169,7 +169,7 @@ describe("gitRouter.discardAllStaged", () => {
 	let git: SimpleGit;
 
 	beforeEach(async () => {
-		root = mkdtempSync(join(tmpdir(), "superset-discard-staged-"));
+		root = mkdtempSync(join(tmpdir(), "choros-discard-staged-"));
 		repo = join(root, "worktree");
 		await mkdir(repo);
 		git = await initRepo(repo);

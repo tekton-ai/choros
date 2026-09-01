@@ -102,7 +102,7 @@ export function CategoryArticle({ page }: CategoryArticleProps) {
 					<div className="max-w-3xl mx-auto px-6 py-10 text-center">
 						<p className="text-muted-foreground mb-4">
 							<Trans id="marketing.categoryArticle.cta.title">
-								Ready to try Superset?
+								Ready to try Choros?
 							</Trans>
 						</p>
 						<Link

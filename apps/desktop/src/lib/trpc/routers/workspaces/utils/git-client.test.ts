@@ -56,7 +56,7 @@ describe("simple-git user env options", () => {
 	let workRoot: string;
 
 	beforeEach(() => {
-		workRoot = mkdtempSync(join(tmpdir(), "superset-git-client-"));
+		workRoot = mkdtempSync(join(tmpdir(), "choros-git-client-"));
 	});
 
 	afterEach(() => {

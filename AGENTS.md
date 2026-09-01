@@ -1,8 +1,8 @@
-# Superset Monorepo
+# Choros Monorepo
 
-Superset is an agent-first development platform, with an Electron desktop IDE, Next.js web apps, and an Expo mobile app as the main customer-facing surfaces. It's a Turborepo monorepo, deployed apps are in apps/ and supporting packages are in packages/, and we use tRPC for the api.
+Choros is a personal fork of the Superset agent-first development platform, tekton-ai/choros. Under the hood the fork uses upstream conventions — this repo still opens as a workspace under the parent Superset dev app on the author's machine, and integrates with the upstream MCP where useful. Everything the fork itself builds and ships is branded Choros.
 
-You're working inside a Superset workspace, an isolated git-worktree copy of this repo. "Workspace" in a user message means that, not an editor workspace.
+You're working inside a Superset workspace (parent tool), which is an isolated git-worktree copy of this repo. "Workspace" in a user message means that, not an editor workspace.
 
 ## Project Structure
 
@@ -93,17 +93,17 @@ Desktop, host-service, and cli share one version; cut releases on a dedicated br
 ## Orchestrating agents and workspaces
 
 When work wants a fresh isolated environment, a parallel agent, or a long-running job, reach for the
-`superset` CLI instead of hand-rolling git worktrees or doing it all serially in this one. It's
+`choros` CLI instead of hand-rolling git worktrees or doing it all serially in this one. It's
 already on `PATH` in Superset terminals, and we dogfood it.
 
 Replace the capitalized placeholders before running these:
 
 ```bash
-superset ws create --project PROJECT_ID --branch BRANCH --agent claude --prompt "..."
-superset agents create --workspace WORKSPACE_ID --agent claude --prompt "..."
-superset ws list
-superset terminals read --workspace WORKSPACE_ID --terminal TERMINAL_ID
-superset ws delete WORKSPACE_ID
+choros ws create --project PROJECT_ID --branch BRANCH --agent claude --prompt "..."
+choros agents create --workspace WORKSPACE_ID --agent claude --prompt "..."
+choros ws list
+choros terminals read --workspace WORKSPACE_ID --terminal TERMINAL_ID
+choros ws delete WORKSPACE_ID
 ```
 
 In order: an isolated workspace with an agent already working in it, another agent in an existing
@@ -115,7 +115,7 @@ of scattering across the project. `ws list --tag SOME_TAG` filters to them, and
 `ws update WORKSPACE_ID --tag ...` retags (`--clear-tags` ungroups). Automation-created workspaces
 are tagged `automation` by default and collect in an "automation" folder.
 
-`superset <command> --help` covers the rest (tasks, automations, hosts, settings). Pass `--json` for
+`choros <command> --help` covers the rest (tasks, automations, hosts, settings). Pass `--json` for
 parsable output; it's on by default under agent environments.
 
 ## Internationalization

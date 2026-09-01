@@ -107,14 +107,14 @@ describe("assertIsolatedDaemonNamespaceInTests", () => {
 		expect(() =>
 			assertIsolatedDaemonNamespaceInTests({
 				NODE_ENV: "test",
-				SUPERSET_HOME_DIR: path.join(os.homedir(), ".superset"),
+				SUPERSET_HOME_DIR: path.join(os.homedir(), ".choros"),
 			}),
 		).toThrow(/isolated temp dir/);
 		// Aliases of the default home must not slip past the guard.
 		expect(() =>
 			assertIsolatedDaemonNamespaceInTests({
 				NODE_ENV: "test",
-				SUPERSET_HOME_DIR: `${path.join(os.homedir(), ".superset")}${path.sep}`,
+				SUPERSET_HOME_DIR: `${path.join(os.homedir(), ".choros")}${path.sep}`,
 			}),
 		).toThrow(/isolated temp dir/);
 		expect(() =>
@@ -124,7 +124,7 @@ describe("assertIsolatedDaemonNamespaceInTests", () => {
 					os.homedir(),
 					"somewhere",
 					"..",
-					".superset",
+					".choros",
 				),
 			}),
 		).toThrow(/isolated temp dir/);

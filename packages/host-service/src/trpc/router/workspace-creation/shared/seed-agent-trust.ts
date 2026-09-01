@@ -98,7 +98,7 @@ async function atomicWrite(file: string, content: string): Promise<void> {
 		(info) => info.mode & 0o777,
 		() => 0o600,
 	);
-	const tmpDir = await mkdtemp(join(dirname(file), ".superset-trust-"));
+	const tmpDir = await mkdtemp(join(dirname(file), ".choros-trust-"));
 	const tmpFile = join(tmpDir, "next");
 	try {
 		await writeFile(tmpFile, content);

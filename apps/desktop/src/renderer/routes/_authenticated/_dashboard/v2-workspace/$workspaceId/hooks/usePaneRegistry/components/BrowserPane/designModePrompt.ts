@@ -173,12 +173,12 @@ export function formatDesignModeContextMarkdown(
 			"",
 			"## Live page",
 			"This page is open in this workspace's in-app browser pane. After making",
-			"changes (and hot reload), verify them yourself with the `superset` CLI:",
+			"changes (and hot reload), verify them yourself with the `choros` CLI:",
 			"",
-			`- \`superset browser screenshot ${scope} --out /tmp/design-check.png\` — see the result`,
-			`- \`superset browser console ${scope}\` — check for page errors`,
-			`- \`superset browser eval ${scope} --code '<js>'\` — inspect the live DOM`,
-			`- \`superset browser navigate ${scope} --url <url>\` — reload or change page`,
+			`- \`choros browser screenshot ${scope} --out /tmp/design-check.png\` — see the result`,
+			`- \`choros browser console ${scope}\` — check for page errors`,
+			`- \`choros browser eval ${scope} --code '<js>'\` — inspect the live DOM`,
+			`- \`choros browser navigate ${scope} --url <url>\` — reload or change page`,
 		);
 	}
 	return `${lines.join("\n").trimEnd()}\n`;

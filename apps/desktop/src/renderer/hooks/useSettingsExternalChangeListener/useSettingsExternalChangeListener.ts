@@ -21,7 +21,7 @@ function isExternalThemeState(value: unknown): value is ExternalThemeState {
 }
 
 /**
- * Applies settings changes made outside the app (the `superset settings`
+ * Applies settings changes made outside the app (the `choros settings`
  * CLI POSTs /settings-changed after writing): re-applies canonical theme
  * state and refetches every settings query, so CLI changes appear live
  * without a window refocus or app restart.

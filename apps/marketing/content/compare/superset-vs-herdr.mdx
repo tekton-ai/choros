@@ -1,13 +1,13 @@
 ---
-title: "Superset vs Herdr (2026): Agent Workspace vs Agent Runtime"
-description: "Compare Superset and Herdr for running AI coding agents. See how a desktop agent workspace differs from Herdr's terminal-native runtime that keeps agents alive anywhere."
+title: "Choros vs Herdr (2026): Agent Workspace vs Agent Runtime"
+description: "Compare Choros and Herdr for running AI coding agents. See how a desktop agent workspace differs from Herdr's terminal-native runtime that keeps agents alive anywhere."
 date: 2026-08-07
 lastUpdated: 2026-08-07
 type: "1v1"
 competitors:
   - herdr
 keywords:
-  - superset vs herdr
+  - choros vs herdr
   - herdr alternative
   - herdr.dev
   - agent runtime
@@ -15,13 +15,13 @@ keywords:
   - ai agent orchestration
 ---
 
-Superset and Herdr both solve "I have more coding agents than terminals," but from opposite ends. Superset is a desktop workspace: a GUI where agents run in isolated Git worktrees with diff review, chat, a browser, and automations around them. Herdr (YC F26) is a runtime: an always-running background server with a terminal UI that holds real terminals open so agents survive your laptop lid closing, your SSH connection dropping, or every client quitting. Herdr's own compare page names Superset directly and frames the distinction as "apps manage the herd. Herdr runs it."
+Choros and Herdr both solve "I have more coding agents than terminals," but from opposite ends. Choros is a desktop workspace: a GUI where agents run in isolated Git worktrees with diff review, chat, a browser, and automations around them. Herdr (YC F26) is a runtime: an always-running background server with a terminal UI that holds real terminals open so agents survive your laptop lid closing, your SSH connection dropping, or every client quitting. Herdr's own compare page names Choros directly and frames the distinction as "apps manage the herd. Herdr runs it."
 
 ---
 
 ## At a Glance
 
-| | **Superset** | **Herdr** |
+| | **Choros** | **Herdr** |
 |---|---|---|
 | **What it does** | Runs 100+ AI agents in parallel with Git worktree isolation, chat, review, and browser | Persistent runtime for agents: sessions, workspaces, tabs, and panes that outlive clients |
 | **Category** | Local-first agent workspace with remote/cloud hosts | Terminal-native agent runtime (TUI + CLI + socket API) |
@@ -35,9 +35,9 @@ Superset and Herdr both solve "I have more coding agents than terminals," but fr
 
 ---
 
-## What Is Superset?
+## What Is Choros?
 
-Superset is a local-first desktop workspace for AI coding agents. It launches Claude Code, Codex, OpenCode, Cursor Agent, Copilot, Gemini CLI, Mistral Vibe, and other agent workflows inside isolated Git worktrees with persistent terminal sessions. Around that core, it adds a built-in diff/file editor, chat panel, in-app browser for docs and dev servers, port management, and MCP tooling. It also runs across your own network devices through remote and cloud workspaces, and it can schedule agent sessions as automations with a TypeScript SDK and a Slack bot. You can review inside Superset or jump into VS Code, Cursor, Windsurf, JetBrains, or Zed. Source-available under Elastic License 2.0 (ELv2).
+Choros is a local-first desktop workspace for AI coding agents. It launches Claude Code, Codex, OpenCode, Cursor Agent, Copilot, Gemini CLI, Mistral Vibe, and other agent workflows inside isolated Git worktrees with persistent terminal sessions. Around that core, it adds a built-in diff/file editor, chat panel, in-app browser for docs and dev servers, port management, and MCP tooling. It also runs across your own network devices through remote and cloud workspaces, and it can schedule agent sessions as automations with a TypeScript SDK and a Slack bot. You can review inside Choros or jump into VS Code, Cursor, Windsurf, JetBrains, or Zed. Source-available under Elastic License 2.0 (ELv2).
 
 ## What Is Herdr?
 
@@ -47,35 +47,35 @@ Herdr is an open-source runtime for AI coding agents -- in its own words, "the r
 
 ### Workspace vs Runtime
 
-Superset is the place you work: launch agents, watch diffs, review, browse, merge -- one app for the whole loop. Herdr is the layer agents run on: it keeps their terminals alive and observable, and expects you to bring your own review flow, editor, and browser. Herdr's compare page is explicit that it pairs with manager apps rather than replacing the review experience. If you want one tool for the full loop, that is Superset. If you want a persistence layer under whatever tools you already use, that is Herdr.
+Choros is the place you work: launch agents, watch diffs, review, browse, merge -- one app for the whole loop. Herdr is the layer agents run on: it keeps their terminals alive and observable, and expects you to bring your own review flow, editor, and browser. Herdr's compare page is explicit that it pairs with manager apps rather than replacing the review experience. If you want one tool for the full loop, that is Choros. If you want a persistence layer under whatever tools you already use, that is Herdr.
 
 ### GUI vs Terminal
 
-Superset is a desktop GUI with a terminal inside it. Herdr is terminal-native: TUI, tmux-style prefix keys, SSH-friendly, and "mobile support" means an SSH client on your phone. Developers who live in the terminal and want zero Electron will feel at home in Herdr; developers who want visual diff review, a browser pane, and clickable orchestration will prefer Superset.
+Choros is a desktop GUI with a terminal inside it. Herdr is terminal-native: TUI, tmux-style prefix keys, SSH-friendly, and "mobile support" means an SSH client on your phone. Developers who live in the terminal and want zero Electron will feel at home in Herdr; developers who want visual diff review, a browser pane, and clickable orchestration will prefer Choros.
 
 ### Review and the Rest of the Loop
 
-Herdr has no built-in diff review -- agent status tells you something finished, and then you review in your editor or an external tool; its Vercel Sandbox flow returns raw Git patches you apply manually. Superset builds the review step in: a diff/file editor per worktree, plus one-click handoff to VS Code, Cursor, or JetBrains. Herdr also has no built-in scheduling; its automation story is the socket API and plugins, which are powerful but assume you script the recurring parts yourself. Superset ships automations with a TypeScript SDK and a Slack bot.
+Herdr has no built-in diff review -- agent status tells you something finished, and then you review in your editor or an external tool; its Vercel Sandbox flow returns raw Git patches you apply manually. Choros builds the review step in: a diff/file editor per worktree, plus one-click handoff to VS Code, Cursor, or JetBrains. Herdr also has no built-in scheduling; its automation story is the socket API and plugins, which are powerful but assume you script the recurring parts yourself. Choros ships automations with a TypeScript SDK and a Slack bot.
 
 ### Persistence and Remote
 
-This is Herdr's home turf. The server owns the terminals, so agents keep working when every client disconnects, and a thin client can attach to a remote server over SSH with the UI streaming locally. Superset covers similar ground differently -- persistent terminal sessions plus remote and cloud workspaces that move whole worktree-isolated workspaces across your devices with the full GUI. Herdr's model is leaner and more composable; Superset's carries the entire workspace, review surface included.
+This is Herdr's home turf. The server owns the terminals, so agents keep working when every client disconnects, and a thin client can attach to a remote server over SSH with the UI streaming locally. Choros covers similar ground differently -- persistent terminal sessions plus remote and cloud workspaces that move whole worktree-isolated workspaces across your devices with the full GUI. Herdr's model is leaner and more composable; Choros's carries the entire workspace, review surface included.
 
 ### Sandboxing
 
-Herdr's Vercel Sandbox plugin is genuinely distinctive: each agent runs in an isolated Firecracker microVM, nothing touches your machine, uploads are reviewed before they happen, and deletion requires typing DELETE. Superset's isolation is Git worktrees on machines you control, which keeps your real environment, services, and dependencies available to agents. Stronger containment versus higher-fidelity environments -- which one wins depends on the task.
+Herdr's Vercel Sandbox plugin is genuinely distinctive: each agent runs in an isolated Firecracker microVM, nothing touches your machine, uploads are reviewed before they happen, and deletion requires typing DELETE. Choros's isolation is Git worktrees on machines you control, which keeps your real environment, services, and dependencies available to agents. Stronger containment versus higher-fidelity environments -- which one wins depends on the task.
 
 ---
 
 ## Pricing
 
-Superset offers a free tier and Pro at $20/seat/month. Herdr's runtime is free and Apache-2.0; the YC announcement says the runtime stays open, with commercial features to be built on top later (none priced as of August 2026). Vercel Sandbox usage bills at Vercel's standard rates. Both are bring-your-own-agent for model costs.
+Choros offers a free tier and Pro at $20/seat/month. Herdr's runtime is free and Apache-2.0; the YC announcement says the runtime stays open, with commercial features to be built on top later (none priced as of August 2026). Vercel Sandbox usage bills at Vercel's standard rates. Both are bring-your-own-agent for model costs.
 
 ---
 
 ## Which Should You Choose?
 
-**Choose Superset if you:**
+**Choose Choros if you:**
 
 - Want the full loop -- orchestration, diff review, browser, chat -- in one workspace
 - Prefer a GUI over a terminal multiplexer
@@ -89,24 +89,24 @@ Superset offers a free tier and Pro at $20/seat/month. Herdr's runtime is free a
 - Want to script everything over a JSON socket API or extend via plugins
 - Want per-agent cloud microVM isolation via the Vercel Sandbox plugin
 
-**Verdict:** Herdr is the best-in-class answer to "keep my agents alive anywhere I can SSH," and its runtime-not-app framing is honest -- it deliberately leaves review, browsing, and scheduling to other tools. Superset is the better fit if you want those other tools built in: worktree orchestration, diff review, browser, automations, and remote access as one product. Plenty of terminal-first developers will run Herdr; teams standardizing an agent workflow end to end will get further with Superset.
+**Verdict:** Herdr is the best-in-class answer to "keep my agents alive anywhere I can SSH," and its runtime-not-app framing is honest -- it deliberately leaves review, browsing, and scheduling to other tools. Choros is the better fit if you want those other tools built in: worktree orchestration, diff review, browser, automations, and remote access as one product. Plenty of terminal-first developers will run Herdr; teams standardizing an agent workflow end to end will get further with Choros.
 
 ---
 
 ## Frequently Asked Questions
 
-### Is Herdr a Superset alternative?
+### Is Herdr a Choros alternative?
 
-Partially. Both orchestrate parallel coding agents, and Herdr's own comparison page lists Superset. But Herdr is a terminal runtime that deliberately excludes diff review, a browser, and scheduling, while Superset is a full workspace that includes them. Some developers use a runtime like Herdr underneath other tools.
+Partially. Both orchestrate parallel coding agents, and Herdr's own comparison page lists Choros. But Herdr is a terminal runtime that deliberately excludes diff review, a browser, and scheduling, while Choros is a full workspace that includes them. Some developers use a runtime like Herdr underneath other tools.
 
 ### Do both support Git worktrees?
 
-Yes. Superset creates a worktree per task automatically. Herdr manages worktrees through its CLI, where creating a worktree creates a workspace, though it leaves the merge and review flow to you.
+Yes. Choros creates a worktree per task automatically. Herdr manages worktrees through its CLI, where creating a worktree creates a workspace, though it leaves the merge and review flow to you.
 
 ### Is Herdr open source?
 
-Yes. Herdr's runtime is Apache-2.0 and free, and the team has said it stays open after joining Y Combinator. Superset is source-available under the Elastic License 2.0 with a free tier and paid Pro.
+Yes. Herdr's runtime is Apache-2.0 and free, and the team has said it stays open after joining Y Combinator. Choros is source-available under the Elastic License 2.0 with a free tier and paid Pro.
 
 ### What is Herdr's Vercel Sandbox integration?
 
-A first-party plugin that runs each agent in an isolated Vercel Sandbox microVM instead of on your machine, with reviewed file uploads, changes returned as Git patches, and human-confirmed deletion. It is the strongest isolation story in the terminal-runtime category; Superset instead runs agents in worktrees on your own local, remote, or cloud machines.
+A first-party plugin that runs each agent in an isolated Vercel Sandbox microVM instead of on your machine, with reviewed file uploads, changes returned as Git patches, and human-confirmed deletion. It is the strongest isolation story in the terminal-runtime category; Choros instead runs agents in worktrees on your own local, remote, or cloud machines.

@@ -31,18 +31,18 @@ async function writeTaskPromptFile(
 		throw new Error(`Workspace path not found: ${workspaceId}`);
 	}
 
-	const supersetDirectory = joinAbsolutePath(
+	const chorosDirectory = joinAbsolutePath(
 		workspace.worktreePath,
-		".superset",
+		".choros",
 	);
 	await electronTrpcClient.filesystem.createDirectory.mutate({
 		workspaceId,
-		absolutePath: supersetDirectory,
+		absolutePath: chorosDirectory,
 		recursive: true,
 	});
 	await electronTrpcClient.filesystem.writeFile.mutate({
 		workspaceId,
-		absolutePath: joinAbsolutePath(supersetDirectory, baseName),
+		absolutePath: joinAbsolutePath(chorosDirectory, baseName),
 		content,
 		encoding: "utf-8",
 	});
@@ -112,7 +112,7 @@ async function writeAttachmentFiles(
 		throw new Error(`Workspace path not found: ${workspaceId}`);
 	}
 
-	// `.superset` doesn't exist in a fresh worktree, so this must be
+	// `.choros` doesn't exist in a fresh worktree, so this must be
 	// recursive — a plain mkdir ENOENTs and kills the whole agent launch.
 	const attachmentsDirectory = joinAbsolutePath(
 		workspace.worktreePath,

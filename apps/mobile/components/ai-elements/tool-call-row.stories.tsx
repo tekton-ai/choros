@@ -87,7 +87,7 @@ export const WithStatusAndHeaderExtra: Story = {
 	render: () => (
 		<View className="w-full">
 			<ToolCallRow
-				description="superset.sh/docs"
+				description="choros.sh/docs"
 				headerExtra={
 					<Pressable className="mr-1 rounded px-1 py-0.5">
 						<Text className="text-muted-foreground text-xs">Open</Text>
@@ -101,7 +101,7 @@ export const WithStatusAndHeaderExtra: Story = {
 			>
 				<View className="py-1.5 pl-2">
 					<Text className="font-mono text-muted-foreground text-xs">
-						# Superset Docs{"\n"}Orchestrate coding agents across devices...
+						# Choros Docs{"\n"}Orchestrate coding agents across devices...
 					</Text>
 				</View>
 			</ToolCallRow>

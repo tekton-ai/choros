@@ -30,7 +30,7 @@ const withIosAccentColor = (config, { color }) => {
 				(Number.parseInt(value.slice(offset, offset + 2), 16) / 255).toFixed(3);
 			const colorset = path.join(
 				config.modRequest.platformProjectRoot,
-				config.modRequest.projectName ?? "Superset",
+				config.modRequest.projectName ?? "Choros",
 				"Images.xcassets",
 				"AccentColor.colorset",
 			);

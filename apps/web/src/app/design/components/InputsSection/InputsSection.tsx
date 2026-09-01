@@ -134,8 +134,8 @@ export function InputsSection() {
 					<InputGroup>
 						<InputGroupInput
 							placeholder={i18n._({
-								id: "web.design.inputsSection.superset",
-								message: "superset",
+								id: "web.design.inputsSection.choros",
+								message: "choros",
 							})}
 						/>
 						<InputGroupAddon align="inline-end">
@@ -196,7 +196,7 @@ export function InputsSection() {
 				})}
 				importPath="@choros/ui/checkbox"
 				description={i18n._({
-					id: "web.design.inputsSection.alsoSupersetUiRadioGroup",
+					id: "web.design.inputsSection.alsoChorosUiRadioGroup",
 					message: "Also: @choros/ui/radio-group, @choros/ui/switch",
 				})}
 			>

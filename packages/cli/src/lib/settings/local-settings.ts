@@ -19,8 +19,8 @@ function openLocalDb() {
 	const path = getLocalDbPath();
 	if (!existsSync(path)) {
 		throw new CLIError(
-			`Superset local database not found at ${path}`,
-			"Launch the Superset desktop app once on this machine first.",
+			`Choros local database not found at ${path}`,
+			"Launch the Choros desktop app once on this machine first.",
 		);
 	}
 	let sqlite: Database;
@@ -84,8 +84,8 @@ export function writeSettings(patch: Partial<InsertSettings>): void {
 	} catch (error) {
 		if (isMissingTableError(error)) {
 			throw new CLIError(
-				"The Superset local database has no settings table",
-				"Launch the Superset desktop app once to run its migrations, then retry.",
+				"The Choros local database has no settings table",
+				"Launch the Choros desktop app once to run its migrations, then retry.",
 			);
 		}
 		throw error;
@@ -123,8 +123,8 @@ export function updateSettingsAtomically<Result>(
 	} catch (error) {
 		if (isMissingTableError(error)) {
 			throw new CLIError(
-				"The Superset local database has no settings table",
-				"Launch the Superset desktop app once to run its migrations, then retry.",
+				"The Choros local database has no settings table",
+				"Launch the Choros desktop app once to run its migrations, then retry.",
 			);
 		}
 		throw error;

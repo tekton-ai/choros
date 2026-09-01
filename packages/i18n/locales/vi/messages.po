@@ -271,7 +271,7 @@ msgstr "Chuyển đổi lượt xem trang → tải xuống theo tuần, khách 
 #. js-lingui-explicit-id
 #: ../../apps/admin/src/app/(dashboard)/page.tsx
 msgid "admin.insight.newSiteVisitors"
-msgstr "Lượt xem trang đầu tiên trên superset.sh, theo ngày"
+msgstr "Lượt xem trang đầu tiên trên choros.sh, theo ngày"
 
 #. js-lingui-explicit-id
 #: ../../apps/admin/src/app/(dashboard)/page.tsx
@@ -564,7 +564,7 @@ msgstr "Sao chép chi tiết lỗi"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/error.tsx
 msgid "app.errorPage.description"
-msgstr "Superset gặp lỗi không mong muốn. Tải lại để thử lại."
+msgstr "Choros gặp lỗi không mong muốn. Tải lại để thử lại."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/error.tsx
@@ -733,9 +733,9 @@ msgid "auth.signIn.lastUsed"
 msgstr "Dùng lần cuối"
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/sign-in/components/SupersetLogo/SupersetLogo.tsx
+#: ../../apps/desktop/src/renderer/routes/sign-in/components/ChorosLogo/ChorosLogo.tsx
 msgid "auth.signIn.logoTitle"
-msgstr "Superset"
+msgstr "Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/sign-in/page.tsx
@@ -755,7 +755,7 @@ msgstr "Khi đăng nhập, bạn đồng ý với <0>Điều khoản dịch vụ
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/sign-in/page.tsx
 msgid "auth.signIn.welcomeTitle"
-msgstr "Chào mừng đến với Superset"
+msgstr "Chào mừng đến với Choros"
 
 #. js-lingui-explicit-id
 #: ../chat-ui/src/components/PromptInput/components/ComposerBody/ComposerBody.tsx
@@ -1541,7 +1541,7 @@ msgstr "Tải lại"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/BootErrorBoundary/BootErrorBoundary.tsx
 msgid "components.bootError.title"
-msgstr "Superset không khởi động được"
+msgstr "Choros không khởi động được"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/MarkdownRenderer/components/TipTapMarkdownRenderer/components/BubbleMenuToolbar/BubbleMenuToolbar.tsx
@@ -1772,7 +1772,7 @@ msgstr "Bạn là một trong những người dùng tích cực nhất của ch
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/SidebarCardSlot/cards/useHiringCard/useHiringCard.ts
 msgid "components.hiringCard.title"
-msgstr "Thích xây dựng cùng Superset?"
+msgstr "Thích xây dựng cùng Choros?"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/ImportHistoryDialog/ImportHistoryDialog.tsx
@@ -1792,7 +1792,7 @@ msgstr "Kiểm tra lại"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/ImportHistoryDialog/ImportHistoryDialog.tsx
 msgid "components.importHistoryDialog.description"
-msgstr "Sao chép lịch sử duyệt web và thông tin đăng nhập từ trình duyệt khác vào Superset. Trình duyệt gốc của bạn không bị thay đổi."
+msgstr "Sao chép lịch sử duyệt web và thông tin đăng nhập từ trình duyệt khác vào Choros. Trình duyệt gốc của bạn không bị thay đổi."
 
 #. js-lingui-explicit-id
 #. placeholder {0}: result.imported
@@ -1859,7 +1859,7 @@ msgstr " và "
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/ImportHistoryDialog/ImportHistoryDialog.tsx
 msgid "components.importHistoryDialog.needsFullDiskAccess"
-msgstr "Superset cần quyền Full Disk Access để đọc dữ liệu của trình duyệt khác. Cấp quyền trong System Settings rồi kiểm tra lại."
+msgstr "Choros cần quyền Full Disk Access để đọc dữ liệu của trình duyệt khác. Cấp quyền trong System Settings rồi kiểm tra lại."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/ImportHistoryDialog/ImportHistoryDialog.tsx
@@ -2034,7 +2034,7 @@ msgstr "Thêm mô tả..."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/MobileAppDemo/MobileAppDemo.tsx
 msgid "components.mobileAppDemo.agentName"
-msgstr "Superset Agent"
+msgstr "Choros Agent"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/MobileAppDemo/MobileAppDemo.tsx
@@ -2195,7 +2195,7 @@ msgstr "Ứng dụng di động"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/constants.ts
 msgid "components.paywall.remoteAccess.description"
-msgstr "Truy cập chiếc Mac này từ bất cứ đâu qua relay của Superset, hoặc khởi tạo workspace trên cloud. Kết nối từ mọi thiết bị."
+msgstr "Truy cập chiếc Mac này từ bất cứ đâu qua relay của Choros, hoặc khởi tạo workspace trên cloud. Kết nối từ mọi thiết bị."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/constants.ts
@@ -2215,7 +2215,7 @@ msgstr "Tích hợp Slack"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/constants.ts
 msgid "components.paywall.tasks.description"
-msgstr "Theo dõi và quản lý tác vụ được đồng bộ từ Linear. Nắm bắt công việc mà không cần rời Superset."
+msgstr "Theo dõi và quản lý tác vụ được đồng bộ từ Linear. Nắm bắt công việc mà không cần rời Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/constants.ts
@@ -2235,7 +2235,7 @@ msgstr "Cộng tác nhóm"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/Paywall.tsx
 msgid "components.paywall.upgradeCta"
-msgstr "Mua Superset Pro"
+msgstr "Mua Choros Pro"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/UpdatesPill/components/PreUpdateConfirmPopover/PreUpdateConfirmPopover.tsx
@@ -2769,17 +2769,17 @@ msgstr "Xem trước prompt"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/SidebarCardSlot/cards/useStarNagCard/useStarNagCard.tsx
 msgid "components.starNagCard.description"
-msgstr "Superset là mã nguồn mở. Nếu hôm nay nó giúp được bạn, một star trên GitHub sẽ giúp các lập trình viên khác tìm thấy nó."
+msgstr "Choros là mã nguồn mở. Nếu hôm nay nó giúp được bạn, một star trên GitHub sẽ giúp các lập trình viên khác tìm thấy nó."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/SidebarCardSlot/cards/useStarNagCard/useStarNagCard.tsx
 msgid "components.starNagCard.title"
-msgstr "Thích Superset chứ?"
+msgstr "Thích Choros chứ?"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/StarNagToast/StarNagToast.tsx
 msgid "components.starNagToast.body"
-msgstr "Nếu đến giờ bạn thấy Superset hữu ích, một star trên GitHub sẽ giúp các lập trình viên khác biết đến nó."
+msgstr "Nếu đến giờ bạn thấy Choros hữu ích, một star trên GitHub sẽ giúp các lập trình viên khác biết đến nó."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/StarNagToast/StarNagToast.tsx
@@ -2870,7 +2870,7 @@ msgstr "Đang kiểm tra..."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/UpdateRequiredPage/UpdateRequiredPage.tsx
 msgid "components.updateRequiredPage.defaultMessage"
-msgstr "Cần phiên bản Superset mới để tiếp tục. Vui lòng cập nhật lên phiên bản mới nhất."
+msgstr "Cần phiên bản Choros mới để tiếp tục. Vui lòng cập nhật lên phiên bản mới nhất."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/UpdateRequiredPage/UpdateRequiredPage.tsx
@@ -3334,13 +3334,13 @@ msgstr "Cài đặt host"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/HostOfflineRunDialog/HostOfflineRunDialog.tsx
 msgid "dashboard.automations.hostOfflineDialog.localBody"
-msgstr "Lần chạy bị bỏ qua vì thiết bị này chưa kết nối tới relay của Superset. Tự động hóa luôn đi qua relay kể cả khi chạy trên chính thiết bị này. Hãy bật truy cập relay rồi chạy lại."
+msgstr "Lần chạy bị bỏ qua vì thiết bị này chưa kết nối tới relay của Choros. Tự động hóa luôn đi qua relay kể cả khi chạy trên chính thiết bị này. Hãy bật truy cập relay rồi chạy lại."
 
 #. js-lingui-explicit-id
 #. placeholder {0}: remoteHost?.name ?? t({ id: "dashboard.automations.hostOfflineDialog.targetHostFallback", message: "the target host", })
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/HostOfflineRunDialog/HostOfflineRunDialog.tsx
 msgid "dashboard.automations.hostOfflineDialog.remoteBody"
-msgstr "Lần chạy bị bỏ qua vì <0>{0}</0> chưa kết nối tới relay của Superset. Hãy đảm bảo đã bật truy cập relay trong Cài đặt > Truy cập từ xa trên thiết bị đó, rồi chạy lại."
+msgstr "Lần chạy bị bỏ qua vì <0>{0}</0> chưa kết nối tới relay của Choros. Hãy đảm bảo đã bật truy cập relay trong Cài đặt > Truy cập từ xa trên thiết bị đó, rồi chạy lại."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/HostOfflineRunDialog/HostOfflineRunDialog.tsx
@@ -3355,7 +3355,7 @@ msgstr "Host đích đang ngoại tuyến"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/utils/hostOfflineError/hostOfflineError.ts
 msgid "dashboard.automations.hostOfflineHelp"
-msgstr "Host chưa kết nối tới relay của Superset. Nếu đó là thiết bị này, hãy bật \"Cho phép truy cập từ xa vào thiết bị này qua relay\" trong Cài đặt > Truy cập từ xa, rồi thử lại."
+msgstr "Host chưa kết nối tới relay của Choros. Nếu đó là thiết bị này, hãy bật \"Cho phép truy cập từ xa vào thiết bị này qua relay\" trong Cài đặt > Truy cập từ xa, rồi thử lại."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/page.tsx
@@ -3365,7 +3365,7 @@ msgstr "Tài liệu CLI"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/page.tsx
 msgid "dashboard.automations.page.cliHint"
-msgstr "Bảo bất kỳ agent nào dùng CLI <0>superset</0> để tạo workspace, chạy tác vụ hoặc quản lý tự động hóa."
+msgstr "Bảo bất kỳ agent nào dùng CLI <0>choros</0> để tạo workspace, chạy tác vụ hoặc quản lý tự động hóa."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/page.tsx
@@ -4201,13 +4201,13 @@ msgstr "Bật truy cập relay…"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/RelayOfflineNotice/RelayOfflineNotice.tsx
 msgid "dashboard.automations.relayOfflineNotice.localBody"
-msgstr "Thiết bị này chưa kết nối tới relay của Superset nên các lần chạy tự động hóa sẽ bị bỏ qua."
+msgstr "Thiết bị này chưa kết nối tới relay của Choros nên các lần chạy tự động hóa sẽ bị bỏ qua."
 
 #. js-lingui-explicit-id
 #. placeholder {0}: remoteHost.name
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/RelayOfflineNotice/RelayOfflineNotice.tsx
 msgid "dashboard.automations.relayOfflineNotice.remoteBody"
-msgstr "<0>{0}</0> chưa kết nối tới relay của Superset nên các lần chạy sẽ bị bỏ qua. Kiểm tra <1>cài đặt host</1> và đảm bảo đã bật truy cập relay trong Cài đặt > Truy cập từ xa trên thiết bị đó."
+msgstr "<0>{0}</0> chưa kết nối tới relay của Choros nên các lần chạy sẽ bị bỏ qua. Kiểm tra <1>cài đặt host</1> và đảm bảo đã bật truy cập relay trong Cài đặt > Truy cập từ xa trên thiết bị đó."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/AutomationRow/AutomationRow.tsx
@@ -5425,6 +5425,16 @@ msgstr "Xử lý bớt vài TODO"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
+msgid "dashboard.newWorkspaceModal.samplePrompts.explainChoros.description"
+msgstr "Tìm hiểu quy trình phù hợp với repo này — workspace song song và thiết lập agent."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
+msgid "dashboard.newWorkspaceModal.samplePrompts.explainChoros.label"
+msgstr "Khai thác Choros nhiều hơn"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
 msgid "dashboard.newWorkspaceModal.samplePrompts.explainRepo.description"
 msgstr "Đi một vòng kiến trúc: điểm vào, cách chạy, nên đọc gì trước."
 
@@ -5432,16 +5442,6 @@ msgstr "Đi một vòng kiến trúc: điểm vào, cách chạy, nên đọc g�
 #: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
 msgid "dashboard.newWorkspaceModal.samplePrompts.explainRepo.label"
 msgstr "Giải thích cho tôi repository này hoạt động thế nào"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
-msgid "dashboard.newWorkspaceModal.samplePrompts.explainSuperset.description"
-msgstr "Tìm hiểu quy trình phù hợp với repo này — workspace song song và thiết lập agent."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
-msgid "dashboard.newWorkspaceModal.samplePrompts.explainSuperset.label"
-msgstr "Khai thác Superset nhiều hơn"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
@@ -5471,7 +5471,7 @@ msgstr "Viết script setup và teardown để mọi workspace mới sẵn sàng
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/SamplePrompts/constants.ts
 msgid "dashboard.newWorkspaceModal.samplePrompts.setUpProject.label"
-msgstr "Thiết lập dự án này cho Superset"
+msgstr "Thiết lập dự án này cho Choros"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: first.message
@@ -5721,7 +5721,7 @@ msgstr "Phát hiện trong cấu hình agent của bạn"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/$pluginName/components/PluginDetail/PluginDetail.tsx
 msgid "dashboard.plugins.detail.detectedHint"
-msgstr "Bạn tự thêm những mục này — Superset không bao giờ đụng vào, cũng không ghi trùng các server bạn đã có."
+msgstr "Bạn tự thêm những mục này — Choros không bao giờ đụng vào, cũng không ghi trùng các server bạn đã có."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/$pluginName/components/PluginDetail/PluginDetail.tsx
@@ -5768,7 +5768,7 @@ msgstr "Skill"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/$pluginName/components/PluginDetail/PluginDetail.tsx
 msgid "dashboard.plugins.detail.statusDisabled"
-msgstr "Đã tắt — vẫn được cài, nhưng Superset không ghi gì vào cấu hình agent của bạn."
+msgstr "Đã tắt — vẫn được cài, nhưng Choros không ghi gì vào cấu hình agent của bạn."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/$pluginName/components/PluginDetail/PluginDetail.tsx
@@ -6047,7 +6047,7 @@ msgstr "Đã tắt"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/components/PluginsView/components/SkillsList/SkillsList.tsx
 msgid "dashboard.plugins.skillsList.intro"
-msgstr "Skill đi kèm plugin Superset và được tự động cập nhật trong mọi agent bạn dùng. Nhấp vào một skill để xem trước."
+msgstr "Skill đi kèm plugin Choros và được tự động cập nhật trong mọi agent bạn dùng. Nhấp vào một skill để xem trước."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/components/PluginsView/components/SkillsList/SkillsList.tsx
@@ -6296,7 +6296,7 @@ msgstr "Nhập tất cả"
 #. placeholder {0}: importableWorktrees.length
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/project/$projectId/components/ExternalWorktreesBanner/ExternalWorktreesBanner.tsx
 msgid "dashboard.project.worktreesBanner.importDialogDescription"
-msgstr "{0, plural, one {Thao tác này sẽ nhập # worktree có sẵn vào Superset thành workspace. Mỗi worktree trên đĩa sẽ được theo dõi và xuất hiện trong thanh bên. Không tệp nào bị thay đổi.} other {Thao tác này sẽ nhập # worktree có sẵn vào Superset thành workspace. Mỗi worktree trên đĩa sẽ được theo dõi và xuất hiện trong thanh bên. Không tệp nào bị thay đổi.}}"
+msgstr "{0, plural, one {Thao tác này sẽ nhập # worktree có sẵn vào Choros thành workspace. Mỗi worktree trên đĩa sẽ được theo dõi và xuất hiện trong thanh bên. Không tệp nào bị thay đổi.} other {Thao tác này sẽ nhập # worktree có sẵn vào Choros thành workspace. Mỗi worktree trên đĩa sẽ được theo dõi và xuất hiện trong thanh bên. Không tệp nào bị thay đổi.}}"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/project/$projectId/components/ExternalWorktreesBanner/ExternalWorktreesBanner.tsx
@@ -7385,7 +7385,7 @@ msgstr "{workspaceName}: host không khả dụng"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarBulkDeleteDialog/hooks/useBulkWorkspaceDelete/useBulkWorkspaceDelete.ts
 msgid "dashboard.sidebar.bulkDelete.partialFailureDescription"
-msgstr "Tải lại Superset để làm mới danh sách workspace."
+msgstr "Tải lại Choros để làm mới danh sách workspace."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarBulkDeleteDialog/hooks/useBulkWorkspaceDelete/useBulkWorkspaceDelete.ts
@@ -7416,7 +7416,7 @@ msgstr "Chưa commit · Chưa push"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarBulkDeleteDialog/hooks/useBulkWorkspaceDelete/useBulkWorkspaceDelete.ts
 msgid "dashboard.sidebar.bulkDelete.unexpectedFailureDescription"
-msgstr "Hãy thử lại. Nếu vẫn lỗi, tải lại Superset."
+msgstr "Hãy thử lại. Nếu vẫn lỗi, tải lại Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarBulkDeleteDialog/hooks/useBulkWorkspaceDelete/useBulkWorkspaceDelete.ts
@@ -8988,7 +8988,7 @@ msgstr "Kết nối Linear"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/tasks/components/TasksView/components/LinearCTA/LinearCTA.tsx
 msgid "dashboard.tasks.linearCta.description"
-msgstr "Kết nối workspace Linear của bạn để đồng bộ issue và quản lý tác vụ ngay trong Superset."
+msgstr "Kết nối workspace Linear của bạn để đồng bộ issue và quản lý tác vụ ngay trong Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/tasks/components/TasksView/components/LinearCTA/LinearCTA.tsx
@@ -9713,7 +9713,7 @@ msgstr "Bố cục tác vụ"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/AppResourceSection/AppResourceSection.tsx
 msgid "dashboard.topBar.appResources.appName"
-msgstr "Ứng dụng Superset"
+msgstr "Ứng dụng Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/AppResourceSection/AppResourceSection.tsx
@@ -10050,7 +10050,7 @@ msgstr "CPU"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
 msgid "dashboard.topBar.resourceSummary.cpuTooltip"
-msgstr "Tổng CPU mà Superset và các cây tiến trình terminal được theo dõi sử dụng. Trên 100% nghĩa là nhiều nhân CPU đang bận. Giá trị cao kéo dài thường làm giao diện chậm và hao pin hơn."
+msgstr "Tổng CPU mà Choros và các cây tiến trình terminal được theo dõi sử dụng. Trên 100% nghĩa là nhiều nhân CPU đang bận. Giá trị cao kéo dài thường làm giao diện chậm và hao pin hơn."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
@@ -10060,7 +10060,7 @@ msgstr "Bộ nhớ"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
 msgid "dashboard.topBar.resourceSummary.memoryTooltip"
-msgstr "Bộ nhớ thường trú mà Superset và các cây tiến trình terminal được theo dõi sử dụng. Nếu con số này cứ tăng mà không giảm, có thể một tiến trình workspace đang giữ bộ nhớ. Giá trị cao làm tăng nguy cơ swap và có thể gây giật."
+msgstr "Bộ nhớ thường trú mà Choros và các cây tiến trình terminal được theo dõi sử dụng. Nếu con số này cứ tăng mà không giảm, có thể một tiến trình workspace đang giữ bộ nhớ. Giá trị cao làm tăng nguy cơ swap và có thể gây giật."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
@@ -10070,13 +10070,13 @@ msgstr "Tỷ lệ RAM"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
 msgid "dashboard.topBar.resourceSummary.ramShareTooltip"
-msgstr "Phần trăm tổng RAM hệ thống chỉ do các tài nguyên Superset được theo dõi sử dụng (không tính mọi ứng dụng). Tỷ lệ cao nghĩa là Superset góp phần lớn gây áp lực bộ nhớ; tỷ lệ thấp nghĩa là áp lực có thể đến từ nơi khác."
+msgstr "Phần trăm tổng RAM hệ thống chỉ do các tài nguyên Choros được theo dõi sử dụng (không tính mọi ứng dụng). Tỷ lệ cao nghĩa là Choros góp phần lớn gây áp lực bộ nhớ; tỷ lệ thấp nghĩa là áp lực có thể đến từ nơi khác."
 
 #. js-lingui-explicit-id
 #. placeholder {0}: formatPercent(trackedMemorySharePercent)
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
 msgid "dashboard.topBar.resourceSummary.systemRamShare"
-msgstr "Superset dùng {0} RAM hệ thống"
+msgstr "Choros dùng {0} RAM hệ thống"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/ResourceMetricsSummary/ResourceMetricsSummary.tsx
@@ -10131,7 +10131,7 @@ msgstr "Dừng lệnh chạy của workspace"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
 msgid "dashboard.topBar.submitPromptDialog.description"
-msgstr "Ra prompt cho một coding agent để xây điều bạn muốn thấy trong Superset. Nếu chúng tôi thích prompt của bạn, chúng tôi sẽ chạy nó và merge kết quả."
+msgstr "Ra prompt cho một coding agent để xây điều bạn muốn thấy trong Choros. Nếu chúng tôi thích prompt của bạn, chúng tôi sẽ chạy nó và merge kết quả."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
@@ -10876,7 +10876,7 @@ msgstr "Tải xuống"
 #. js-lingui-explicit-id
 #: ../../apps/docs/src/app/components/NavigationBar/NavigationBar.tsx
 msgid "docs.nav.githubRepo"
-msgstr "Xem repository Superset trên GitHub"
+msgstr "Xem repository Choros trên GitHub"
 
 #. js-lingui-explicit-id
 #: ../../apps/docs/src/app/components/NavigationBar/NavigationBar.tsx
@@ -11084,7 +11084,7 @@ msgstr "Không thể xóa phiên đăng nhập cục bộ"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/hooks/useSignOut/useSignOut.ts
 msgid "hooks.signOut.removeLocalSignInFailedDescription"
-msgstr "Superset có thể đăng nhập lại cho bạn sau khi khởi động lại. Vui lòng thử đăng xuất lần nữa."
+msgstr "Choros có thể đăng nhập lại cho bạn sau khi khởi động lại. Vui lòng thử đăng xuất lần nữa."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/host-service-unavailable.ts
@@ -11239,12 +11239,12 @@ msgstr "Thử lại sau vài giây."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/host-service-unavailable.ts
 msgid "hostServiceUnavailable.recovery.stopped"
-msgstr "Dùng menu khay Superset > Host Service > Restart, rồi thử lại."
+msgstr "Dùng menu khay Choros > Host Service > Restart, rồi thử lại."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/host-service-unavailable.ts
 msgid "hostServiceUnavailable.recovery.unknown"
-msgstr "Thử lại sau vài giây; nếu vẫn lỗi, khởi động lại Superset."
+msgstr "Thử lại sau vài giây; nếu vẫn lỗi, khởi động lại Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/host-service-unavailable.ts
@@ -11849,7 +11849,7 @@ msgstr "Bật/tắt thanh bên workspace"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/index.ts
 msgid "main.auth.failed.detail"
-msgstr "Superset không hoàn tất được việc đăng nhập. Vui lòng thử lại."
+msgstr "Choros không hoàn tất được việc đăng nhập. Vui lòng thử lại."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/index.ts
@@ -11930,17 +11930,17 @@ msgstr "Hủy"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/host-service-coordinator.ts
 msgid "main.hostService.crashed.detail"
-msgstr "Các workspace và terminal của nó không khả dụng cho đến khi khởi động lại — dùng menu khay Superset > Host Service > Restart."
+msgstr "Các workspace và terminal của nó không khả dụng cho đến khi khởi động lại — dùng menu khay Choros > Host Service > Restart."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/host-service-coordinator.ts
 msgid "main.hostService.crashed.message"
-msgstr "Dịch vụ host Superset đã dừng bất ngờ ({cause}) và không tự khởi động lại được."
+msgstr "Dịch vụ host Choros đã dừng bất ngờ ({cause}) và không tự khởi động lại được."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/host-service-coordinator.ts
 msgid "main.hostService.crashed.messageForOrganization"
-msgstr "Dịch vụ host Superset cho {organization} đã dừng bất ngờ ({cause}) và không tự khởi động lại được."
+msgstr "Dịch vụ host Choros cho {organization} đã dừng bất ngờ ({cause}) và không tự khởi động lại được."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/host-service-coordinator.ts
@@ -11955,7 +11955,7 @@ msgstr "Kiểm tra cập nhật..."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/menu.ts
 msgid "main.menu.app.quitCompletely"
-msgstr "Thoát hẳn Superset"
+msgstr "Thoát hẳn Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/menu.ts
@@ -12096,7 +12096,7 @@ msgstr "Bạn có chắc muốn thoát?"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/index.ts
 msgid "main.quit.title"
-msgstr "Thoát Superset"
+msgstr "Thoát Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/quit-completely.ts
@@ -12106,17 +12106,17 @@ msgstr "Thoát hẳn"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/quit-completely.ts
 msgid "main.quitCompletely.detail"
-msgstr "Mọi phiên terminal đang mở sẽ bị kết thúc và các host-service đang chạy sẽ bị dừng. Hãy dùng “Đóng Superset” nếu bạn muốn các dịch vụ tiếp tục chạy cho lần khởi động sau."
+msgstr "Mọi phiên terminal đang mở sẽ bị kết thúc và các host-service đang chạy sẽ bị dừng. Hãy dùng “Đóng Choros” nếu bạn muốn các dịch vụ tiếp tục chạy cho lần khởi động sau."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/quit-completely.ts
 msgid "main.quitCompletely.message"
-msgstr "Thoát Superset và dừng mọi dịch vụ nền?"
+msgstr "Thoát Choros và dừng mọi dịch vụ nền?"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/quit-completely.ts
 msgid "main.quitCompletely.title"
-msgstr "Thoát hẳn Superset"
+msgstr "Thoát hẳn Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/auto-updater.ts
@@ -12196,7 +12196,7 @@ msgstr "Bài viết liên quan"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/blog/page.tsx
 msgid "marketing.blog.subtitle"
-msgstr "Góc nhìn từ đội ngũ Superset về coding agent chạy song song và năng suất của lập trình viên."
+msgstr "Góc nhìn từ đội ngũ Choros về coding agent chạy song song và năng suất của lập trình viên."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/blog/page.tsx
@@ -12211,7 +12211,7 @@ msgstr "Bắt đầu"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/CategoryArticle/CategoryArticle.tsx
 msgid "marketing.categoryArticle.cta.title"
-msgstr "Sẵn sàng thử Superset?"
+msgstr "Sẵn sàng thử Choros?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/CategoryArticle/CategoryArticle.tsx
@@ -12246,7 +12246,7 @@ msgstr "Changelog"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/changelog/page.tsx
 msgid "marketing.changelog.subtitle"
-msgstr "Các cập nhật, cải tiến và tính năng mới nhất trong Superset. Cập nhật hằng tuần. Xem ghi chú phát hành chi tiết tại <0>GitHub Releases<1/></0>"
+msgstr "Các cập nhật, cải tiến và tính năng mới nhất trong Choros. Cập nhật hằng tuần. Xem ghi chú phát hành chi tiết tại <0>GitHub Releases<1/></0>"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/changelog/page.tsx
@@ -12291,7 +12291,7 @@ msgstr "STAR"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/community/page.tsx
 msgid "marketing.community.subtitle"
-msgstr "Tham gia cộng đồng <0>Superset</0> để được hỗ trợ, chia sẻ ý tưởng và cập nhật tin tức mới nhất."
+msgstr "Tham gia cộng đồng <0>Choros</0> để được hỗ trợ, chia sẻ ý tưởng và cập nhật tin tức mới nhất."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/community/page.tsx
@@ -12311,7 +12311,7 @@ msgstr "Bắt đầu"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/[slug]/components/CompareLayout/CompareLayout.tsx
 msgid "marketing.compare.cta.title"
-msgstr "Sẵn sàng thử Superset?"
+msgstr "Sẵn sàng thử Choros?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/page.tsx
@@ -12346,12 +12346,12 @@ msgstr "Hướng dẫn quy trình"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/page.tsx
 msgid "marketing.compare.subtitle"
-msgstr "Xem Superset so với các công cụ lập trình AI khác, từ editor AI đến coding agent và kỹ sư AI trên cloud."
+msgstr "Xem Choros so với các công cụ lập trình AI khác, từ editor AI đến coding agent và kỹ sư AI trên cloud."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/page.tsx
 msgid "marketing.compare.title"
-msgstr "Superset và các lựa chọn khác"
+msgstr "Choros và các lựa chọn khác"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/components/ContactForm/ContactForm.tsx
@@ -12401,22 +12401,22 @@ msgstr "Câu hỏi, góp ý, hỗ trợ hay bất cứ điều gì. Gửi một 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
 msgid "marketing.contact.hero.title"
-msgstr "Trò chuyện với Superset"
+msgstr "Trò chuyện với Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
 msgid "marketing.contact.otherWays.community"
-msgstr "Với báo lỗi và đề xuất tính năng, cách nhanh nhất là mở issue trên GitHub tại <0>github.com/superset-sh/superset</0>. Cộng đồng của chúng tôi ở <1>Discord</1>, và chúng tôi đăng cập nhật trên <2>X (@superset_sh)</2> và <3>LinkedIn</3>."
+msgstr "Với báo lỗi và đề xuất tính năng, cách nhanh nhất là mở issue trên GitHub tại <0>github.com/superset-sh/choros</0>. Cộng đồng của chúng tôi ở <1>Discord</1>, và chúng tôi đăng cập nhật trên <2>X (@choros_sh)</2> và <3>LinkedIn</3>."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
 msgid "marketing.contact.otherWays.email"
-msgstr "Superset được xây dựng bởi một đội ngũ tại San Francisco, California. Với hỗ trợ sản phẩm hoặc câu hỏi về tài khoản, hãy gửi email tới <0>{supportEmail}</0> và chúng tôi sẽ phản hồi trong vòng một ngày làm việc. Với hợp tác, báo chí, doanh nghiệp hoặc bất cứ điều gì dành cho đội ngũ sáng lập, hãy viết tới <1>{foundersEmail}</1>."
+msgstr "Choros được xây dựng bởi một đội ngũ tại San Francisco, California. Với hỗ trợ sản phẩm hoặc câu hỏi về tài khoản, hãy gửi email tới <0>{supportEmail}</0> và chúng tôi sẽ phản hồi trong vòng một ngày làm việc. Với hợp tác, báo chí, doanh nghiệp hoặc bất cứ điều gì dành cho đội ngũ sáng lập, hãy viết tới <1>{foundersEmail}</1>."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
 msgid "marketing.contact.otherWays.status"
-msgstr "Tình trạng dịch vụ được công bố tại <0>status.superset.sh</0>, còn tài liệu bảo mật và tuân thủ tại <1>trust.superset.sh</1>."
+msgstr "Tình trạng dịch vụ được công bố tại <0>status.choros.sh</0>, còn tài liệu bảo mật và tuân thủ tại <1>trust.choros.sh</1>."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
@@ -12456,7 +12456,7 @@ msgstr "Quy tụ các agent của bạn."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/CTASection/CTASection.tsx
 msgid "marketing.cta.installPrompt"
-msgstr "Hoặc bảo coding agent của bạn cài CLI Superset."
+msgstr "Hoặc bảo coding agent của bạn cài CLI Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/CTASection/CTASection.tsx
@@ -12476,12 +12476,12 @@ msgstr "Quá trình tải xuống sẽ tự động bắt đầu. Nếu không, 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadInterstitial/DownloadInterstitial.tsx
 msgid "marketing.download.autoTitle"
-msgstr "Bạn sắp có Superset"
+msgstr "Bạn sắp có Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/ReleaseList/ReleaseList.tsx
 msgid "marketing.download.availability"
-msgstr "Ứng dụng desktop Superset có sẵn cho macOS và Linux."
+msgstr "Ứng dụng desktop Choros có sẵn cho macOS và Linux."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadLinkForm/DownloadLinkForm.tsx
@@ -12567,12 +12567,12 @@ msgstr "Chúng tôi đã gửi liên kết tải tới {submittedEmail}."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadInterstitial/DownloadInterstitial.tsx
 msgid "marketing.download.mobileBody"
-msgstr "Superset là ứng dụng máy tính. Nhập email và chúng tôi sẽ gửi liên kết tải để bạn mở trên máy Mac."
+msgstr "Choros là ứng dụng máy tính. Nhập email và chúng tôi sẽ gửi liên kết tải để bạn mở trên máy Mac."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadInterstitial/DownloadInterstitial.tsx
 msgid "marketing.download.mobileTitle"
-msgstr "Cài Superset trên máy Mac"
+msgstr "Cài Choros trên máy Mac"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadLinkForm/actions.ts
@@ -12657,17 +12657,17 @@ msgstr "Chạy agent của bạn từ desktop, bất kỳ terminal nào, hoặc 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadInterstitial/DownloadInterstitial.tsx
 msgid "marketing.download.waitlistBody"
-msgstr "Chúng tôi đang đưa Superset lên Windows & Linux. Để lại email và chúng tôi sẽ báo ngay khi sẵn sàng."
+msgstr "Chúng tôi đang đưa Choros lên Windows & Linux. Để lại email và chúng tôi sẽ báo ngay khi sẵn sàng."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/components/DownloadInterstitial/DownloadInterstitial.tsx
 msgid "marketing.download.waitlistTitle"
-msgstr "Hiện Superset chỉ có trên Mac"
+msgstr "Hiện Choros chỉ có trên Mac"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/components/EnterpriseFAQ/constants.ts
 msgid "marketing.enterprise.faq.dataSecurity.answer"
-msgstr "Superset chạy cục bộ trên máy của lập trình viên. Chúng tôi không lưu code hay hội thoại AI của bạn, và Superset đã hoàn tất kiểm toán SOC 2 Type II với một đơn vị kiểm toán độc lập. Hãy yêu cầu báo cáo và xem tài liệu bảo mật tại trust.superset.sh."
+msgstr "Choros chạy cục bộ trên máy của lập trình viên. Chúng tôi không lưu code hay hội thoại AI của bạn, và Choros đã hoàn tất kiểm toán SOC 2 Type II với một đơn vị kiểm toán độc lập. Hãy yêu cầu báo cáo và xem tài liệu bảo mật tại trust.choros.sh."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/components/EnterpriseFAQ/constants.ts
@@ -12707,12 +12707,12 @@ msgstr "Câu hỏi thường gặp"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/components/EnterpriseFAQ/constants.ts
 msgid "marketing.enterprise.faq.whatIsEnterprise.answer"
-msgstr "Superset Enterprise là Superset dành cho đội nhóm. Hãy liên hệ để biết thêm về những gì được bao gồm và cách nó phù hợp với tổ chức của bạn."
+msgstr "Choros Enterprise là Choros dành cho đội nhóm. Hãy liên hệ để biết thêm về những gì được bao gồm và cách nó phù hợp với tổ chức của bạn."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/components/EnterpriseFAQ/constants.ts
 msgid "marketing.enterprise.faq.whatIsEnterprise.question"
-msgstr "Superset Enterprise là gì?"
+msgstr "Choros Enterprise là gì?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/components/EnterpriseContactForm/EnterpriseContactForm.tsx
@@ -12772,12 +12772,12 @@ msgstr "Tuân thủ SOC 2 Type II. Yêu cầu báo cáo của chúng tôi."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/page.tsx
 msgid "marketing.enterprise.hero.subtitle"
-msgstr "Muốn đưa Superset vào tổ chức của bạn? Hãy liên hệ và chúng tôi sẽ cùng bạn tìm thiết lập phù hợp cho đội ngũ."
+msgstr "Muốn đưa Choros vào tổ chức của bạn? Hãy liên hệ và chúng tôi sẽ cùng bạn tìm thiết lập phù hợp cho đội ngũ."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/page.tsx
 msgid "marketing.enterprise.hero.title"
-msgstr "Superset cho đội ngũ của bạn"
+msgstr "Choros cho đội ngũ của bạn"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/components/AttentionChart/AttentionChart.tsx
@@ -12817,7 +12817,7 @@ msgstr "Xa hơn: F5 không phải tuyên bố cho tương lai gần"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
 msgid "marketing.factory.cta.body"
-msgstr "Superset là bàn làm việc cho bước chuyển F3 sang F4: agent chạy song song trong các workspace tách biệt, đội agent bạn thực sự giám sát được, và một nơi để review code bạn không viết."
+msgstr "Choros là bàn làm việc cho bước chuyển F3 sang F4: agent chạy song song trong các workspace tách biệt, đội agent bạn thực sự giám sát được, và một nơi để review code bạn không viết."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
@@ -12827,7 +12827,7 @@ msgstr "Đọc changelog"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
 msgid "marketing.factory.cta.download"
-msgstr "Tải Superset"
+msgstr "Tải Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
@@ -13489,22 +13489,22 @@ msgstr "Một phần"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.existingIde.answer"
-msgstr "Superset được thiết kế để làm việc cùng công cụ sẵn có của bạn, chúng tôi hỗ trợ sẵn deep-link tới các IDE như Cursor để bạn mở workspace và tệp ngay trong IDE của mình."
+msgstr "Choros được thiết kế để làm việc cùng công cụ sẵn có của bạn, chúng tôi hỗ trợ sẵn deep-link tới các IDE như Cursor để bạn mở workspace và tệp ngay trong IDE của mình."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.existingIde.question"
-msgstr "Tôi đã dùng IDE như Cursor, Superset có hợp với tôi không?"
+msgstr "Tôi đã dùng IDE như Cursor, Choros có hợp với tôi không?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.freeToUse.answer"
-msgstr "Superset có gói miễn phí. Mã nguồn có trên GitHub theo Elastic License 2.0 (ELv2), nên bạn có thể xem và tự host theo các điều khoản của giấy phép."
+msgstr "Choros có gói miễn phí. Mã nguồn có trên GitHub theo Elastic License 2.0 (ELv2), nên bạn có thể xem và tự host theo các điều khoản của giấy phép."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.freeToUse.question"
-msgstr "Superset có miễn phí không?"
+msgstr "Choros có miễn phí không?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/FAQSection.tsx
@@ -13514,17 +13514,17 @@ msgstr "Câu hỏi<0/>thường gặp"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.openSource.answer"
-msgstr "Superset là source-available: mã nguồn công khai trên GitHub theo Elastic License 2.0 (ELv2), cho phép bạn xem và tự host theo các điều khoản của giấy phép, nhưng không phải mã nguồn mở được OSI công nhận. Superset không liên quan tới Apache Superset, công cụ business intelligence."
+msgstr "Choros là source-available: mã nguồn công khai trên GitHub theo Elastic License 2.0 (ELv2), cho phép bạn xem và tự host theo các điều khoản của giấy phép, nhưng không phải mã nguồn mở được OSI công nhận. Choros không liên quan tới Apache Choros, công cụ business intelligence."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.openSource.question"
-msgstr "Superset có phải mã nguồn mở không?"
+msgstr "Choros có phải mã nguồn mở không?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.ownApiKeys.answer"
-msgstr "Hoàn toàn được. Superset không proxy bất kỳ lệnh gọi API nào. Bạn dùng khóa API của chính mình trực tiếp với nhà cung cấp AI bạn chọn. Nghĩa là bạn hoàn toàn kiểm soát chi phí và mức sử dụng."
+msgstr "Hoàn toàn được. Choros không proxy bất kỳ lệnh gọi API nào. Bạn dùng khóa API của chính mình trực tiếp với nhà cung cấp AI bạn chọn. Nghĩa là bạn hoàn toàn kiểm soát chi phí và mức sử dụng."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
@@ -13549,17 +13549,17 @@ msgstr "Hệ thống agent song song hoạt động thế nào?"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.platforms.answer"
-msgstr "Ứng dụng máy tính chạy trên macOS, kèm bản AppImage Linux thử nghiệm; Windows chưa có. Ngoài ứng dụng máy tính còn có CLI, SDK TypeScript và server MCP, nên bạn có thể điều khiển Superset từ script, terminal và các agent khác."
+msgstr "Ứng dụng máy tính chạy trên macOS, kèm bản AppImage Linux thử nghiệm; Windows chưa có. Ngoài ứng dụng máy tính còn có CLI, SDK TypeScript và server MCP, nên bạn có thể điều khiển Choros từ script, terminal và các agent khác."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.platforms.question"
-msgstr "Superset chạy trên những nền tảng nào?"
+msgstr "Choros chạy trên những nền tảng nào?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.supportedAgents.answer"
-msgstr "Superset làm việc với mọi coding agent dạng CLI, gồm Claude Code, OpenCode, OpenAI Codex và nhiều agent khác. Chọn agent khác nhau cho từng tác vụ mà không phải đổi workspace hay quy trình review."
+msgstr "Choros làm việc với mọi coding agent dạng CLI, gồm Claude Code, OpenCode, OpenAI Codex và nhiều agent khác. Chọn agent khác nhau cho từng tác vụ mà không phải đổi workspace hay quy trình review."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
@@ -13569,27 +13569,27 @@ msgstr "Những coding agent AI nào được hỗ trợ?"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.vsTerminal.answer"
-msgstr "Claude Code, Codex và OpenCode là các agent; Superset là nơi bạn chạy nhiều agent cùng lúc. Mỗi tác vụ có git worktree tách biệt riêng, nên mười agent có thể làm trên mười nhánh đồng thời trong khi bạn theo dõi, review và merge từ một chỗ."
+msgstr "Claude Code, Codex và OpenCode là các agent; Choros là nơi bạn chạy nhiều agent cùng lúc. Mỗi tác vụ có git worktree tách biệt riêng, nên mười agent có thể làm trên mười nhánh đồng thời trong khi bạn theo dõi, review và merge từ một chỗ."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.vsTerminal.link"
-msgstr "Xem Superset so với các công cụ khác"
+msgstr "Xem Choros so với các công cụ khác"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.vsTerminal.question"
-msgstr "Superset khác gì so với chỉ chạy Claude Code trong terminal?"
+msgstr "Choros khác gì so với chỉ chạy Claude Code trong terminal?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.wrapper.answer"
-msgstr "Không. Các agent của bạn vẫn độc lập; Superset là lớp điều phối bao quanh chúng. Mỗi tác vụ có git worktree tách biệt, phiên bền vững, review diff và các lần chạy theo lịch mà không trói quy trình vào một nhà cung cấp."
+msgstr "Không. Các agent của bạn vẫn độc lập; Choros là lớp điều phối bao quanh chúng. Mỗi tác vụ có git worktree tách biệt, phiên bền vững, review diff và các lần chạy theo lịch mà không trói quy trình vào một nhà cung cấp."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FAQSection/constants.ts
 msgid "marketing.faq.wrapper.question"
-msgstr "Superset chỉ là lớp bọc quanh Claude Code thôi à?"
+msgstr "Choros chỉ là lớp bọc quanh Claude Code thôi à?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FeaturesSection/constants.ts
@@ -13699,7 +13699,7 @@ msgstr "Đưa việc lặp lại vào lịch"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FeaturesSection/constants.ts
 msgid "marketing.features.cliSdk.description"
-msgstr "Mọi thứ đều viết script được. Tạo workspace và agent từ CLI, nối Superset vào CI bằng SDK, hoặc để agent của bạn điều khiển qua MCP."
+msgstr "Mọi thứ đều viết script được. Tạo workspace và agent từ CLI, nối Choros vào CI bằng SDK, hoặc để agent của bạn điều khiển qua MCP."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/FeaturesSection/constants.ts
@@ -13889,7 +13889,7 @@ msgstr "Trạng thái"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Footer/Footer.tsx
 msgid "marketing.footer.copyright"
-msgstr "© {year} Superset Inc."
+msgstr "© {year} Choros Inc."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Footer/Footer.tsx
@@ -14265,7 +14265,7 @@ msgstr "Review kết quả."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/HowItWorksSection/constants.ts
 msgid "marketing.howItWorks.startWithWork.description"
-msgstr "Mô tả điều bạn cần. Superset tạo một workspace tách biệt và một nhánh sạch cho tác vụ đó."
+msgstr "Mô tả điều bạn cần. Choros tạo một workspace tách biệt và một nhánh sạch cho tác vụ đó."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/HowItWorksSection/constants.ts
@@ -14275,17 +14275,17 @@ msgstr "Bắt đầu từ công việc."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
 msgid "marketing.joinUs.bodyScale"
-msgstr "Hôm nay, hàng chục nghìn kỹ sư dùng Superset làm IDE chính, tại các công ty như Wix, DoorDash và Netflix. Sắp tới, các đội sẽ chạy hàng trăm agent song song - những nhà máy phần mềm tự động sản xuất và ship code. Chúng tôi đang biến Superset thành nơi các đội vận hành và quản lý những nhà máy đó, bắt đầu từ chính chúng tôi."
+msgstr "Hôm nay, hàng chục nghìn kỹ sư dùng Choros làm IDE chính, tại các công ty như Wix, DoorDash và Netflix. Sắp tới, các đội sẽ chạy hàng trăm agent song song - những nhà máy phần mềm tự động sản xuất và ship code. Chúng tôi đang biến Choros thành nơi các đội vận hành và quản lý những nhà máy đó, bắt đầu từ chính chúng tôi."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
 msgid "marketing.joinUs.bodyTeam"
-msgstr "Superset được xây dựng trong Superset, nên chúng tôi là người dùng số 1 của chính mình - bạn được trả tiền để làm cuộc sống của chính bạn dễ hơn. Chúng tôi đang xây một đội phẳng và đậm đặc nhân tài, và tìm những người có ý tưởng điên rồ và đủ điên để ship chúng. Nếu bạn từng muốn xây một sản phẩm mà chính mình thích dùng, hãy đến xây cùng chúng tôi."
+msgstr "Choros được xây dựng trong Choros, nên chúng tôi là người dùng số 1 của chính mình - bạn được trả tiền để làm cuộc sống của chính bạn dễ hơn. Chúng tôi đang xây một đội phẳng và đậm đặc nhân tài, và tìm những người có ý tưởng điên rồ và đủ điên để ship chúng. Nếu bạn từng muốn xây một sản phẩm mà chính mình thích dùng, hãy đến xây cùng chúng tôi."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
 msgid "marketing.joinUs.lede"
-msgstr "Superset đang xây dựng phần mềm tự cải thiện. Nó bắt đầu bằng việc trao cho kỹ sư những công cụ tốt nhất, biết thích nghi với nhu cầu của họ theo thời gian."
+msgstr "Choros đang xây dựng phần mềm tự cải thiện. Nó bắt đầu bằng việc trao cho kỹ sư những công cụ tốt nhất, biết thích nghi với nhu cầu của họ theo thời gian."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
@@ -14335,7 +14335,7 @@ msgstr "Token"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/leaderboard/components/LeaderboardBoard/components/LeaderboardTable/LeaderboardTable.tsx
 msgid "marketing.leaderboard.empty.optIn"
-msgstr "Tham gia từ Superset trong Cài đặt → Tài khoản."
+msgstr "Tham gia từ Choros trong Cài đặt → Tài khoản."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/leaderboard/components/LeaderboardBoard/components/LeaderboardTable/LeaderboardTable.tsx
@@ -14610,12 +14610,12 @@ msgstr "Nhấp <0>Import Theme</0> và chọn tệp vừa tải."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/[slug]/page.tsx
 msgid "marketing.marketplace.theme.installStep.openSettings"
-msgstr "Trong ứng dụng Superset trên máy tính, mở <0>Cài đặt → Giao diện → Chủ đề</0>."
+msgstr "Trong ứng dụng Choros trên máy tính, mở <0>Cài đặt → Giao diện → Chủ đề</0>."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/[slug]/page.tsx
 msgid "marketing.marketplace.theme.installTitle"
-msgstr "Cách cài {name} trong Superset"
+msgstr "Cách cài {name} trong Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/[slug]/page.tsx
@@ -14670,7 +14670,7 @@ msgstr "Terminal"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/page.tsx
 msgid "marketing.marketplace.themes.description"
-msgstr "Các tệp JSON chủ đề được chia sẻ, bạn có thể nhập vào Superset."
+msgstr "Các tệp JSON chủ đề được chia sẻ, bạn có thể nhập vào Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/page.tsx
@@ -14870,7 +14870,7 @@ msgstr "Kết nối Claude, Codex, Cursor hay bất kỳ client <0>MCP</0> nào 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/mcp-install/page.tsx
 msgid "marketing.mcpInstall.hero.title"
-msgstr "Cài Superset MCP vào client của bạn"
+msgstr "Cài Choros MCP vào client của bạn"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/mcp-install/page.tsx
@@ -14880,7 +14880,7 @@ msgstr "Chọn agent của bạn để cài bằng một dòng lệnh, hoặc t�
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/blog/page.tsx
 msgid "marketing.meta.blog.description"
-msgstr "Tin tức, cập nhật và góc nhìn từ đội ngũ Superset về các agent lập trình song song và năng suất của lập trình viên."
+msgstr "Tin tức, cập nhật và góc nhìn từ đội ngũ Choros về các agent lập trình song song và năng suất của lập trình viên."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/blog/page.tsx
@@ -14890,7 +14890,7 @@ msgstr "Blog"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/changelog/page.tsx
 msgid "marketing.meta.changelog.description"
-msgstr "Các cập nhật, cải tiến và tính năng mới nhất trong Superset."
+msgstr "Các cập nhật, cải tiến và tính năng mới nhất trong Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/changelog/page.tsx
@@ -14900,7 +14900,7 @@ msgstr "Nhật ký thay đổi"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/community/page.tsx
 msgid "marketing.meta.community.description"
-msgstr "Tham gia cộng đồng Superset để được hỗ trợ, chia sẻ ý tưởng và cập nhật tin tức mới nhất."
+msgstr "Tham gia cộng đồng Choros để được hỗ trợ, chia sẻ ý tưởng và cập nhật tin tức mới nhất."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/community/page.tsx
@@ -14910,12 +14910,12 @@ msgstr "Cộng đồng"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/page.tsx
 msgid "marketing.meta.compare.description"
-msgstr "So sánh Superset với Cursor, Claude Code, Codex, Windsurf, Devin, GitHub Copilot và nhiều công cụ khác. Xem các so sánh song song, bài tổng hợp và hướng dẫn quy trình làm việc."
+msgstr "So sánh Choros với Cursor, Claude Code, Codex, Windsurf, Devin, GitHub Copilot và nhiều công cụ khác. Xem các so sánh song song, bài tổng hợp và hướng dẫn quy trình làm việc."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/compare/page.tsx
 msgid "marketing.meta.compare.title"
-msgstr "So sánh Superset | So sánh và hướng dẫn lập trình AI"
+msgstr "So sánh Choros | So sánh và hướng dẫn lập trình AI"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
@@ -14930,12 +14930,12 @@ msgstr "Liên hệ"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/page.tsx
 msgid "marketing.meta.download.description"
-msgstr "Bản tải xuống Superset của bạn đang bắt đầu."
+msgstr "Bản tải xuống Choros của bạn đang bắt đầu."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/download/page.tsx
 msgid "marketing.meta.download.title"
-msgstr "Tải xuống Superset"
+msgstr "Tải xuống Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/enterprise/page.tsx
@@ -14955,7 +14955,7 @@ msgstr "Một thang đánh giá có thể bác bỏ cho nhà máy phần mềm t
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
 msgid "marketing.meta.factory2026.ogTitle"
-msgstr "Factory 2026 | Superset"
+msgstr "Factory 2026 | Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/factory-2026/page.tsx
@@ -14970,7 +14970,7 @@ msgstr "Chúng tôi đang tuyển kỹ sư tại San Francisco. Hãy cùng chún
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
 msgid "marketing.meta.joinUs.ogTitle"
-msgstr "Gia nhập Superset"
+msgstr "Gia nhập Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/join-us/page.tsx
@@ -14990,7 +14990,7 @@ msgstr "Bảng xếp hạng"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/agents/page.tsx
 msgid "marketing.meta.marketplace.agents.description"
-msgstr "Nơi sẽ chứa các cấu hình agent, prompt và hướng dẫn thiết lập Superset có thể tái sử dụng."
+msgstr "Nơi sẽ chứa các cấu hình agent, prompt và hướng dẫn thiết lập Choros có thể tái sử dụng."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/agents/page.tsx
@@ -15000,12 +15000,12 @@ msgstr "Cấu hình agent"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/page.tsx
 msgid "marketing.meta.marketplace.description"
-msgstr "Duyệt các theme được chia sẻ và những cấu hình agent sắp tới cho Superset."
+msgstr "Duyệt các theme được chia sẻ và những cấu hình agent sắp tới cho Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/page.tsx
 msgid "marketing.meta.marketplace.themes.description"
-msgstr "Duyệt các file theme Superset do cộng đồng chia sẻ, gồm GitHub Dark Colorblind, Catppuccin, Ember và One Dark Pro."
+msgstr "Duyệt các file theme Choros do cộng đồng chia sẻ, gồm GitHub Dark Colorblind, Catppuccin, Ember và One Dark Pro."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/marketplace/themes/page.tsx
@@ -15040,7 +15040,7 @@ msgstr "Bảng giá"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/page.tsx
 msgid "marketing.meta.roadmap.description"
-msgstr "Xem chúng tôi đang xây dựng gì, sắp tới có gì và Superset đang hướng tới đâu."
+msgstr "Xem chúng tôi đang xây dựng gì, sắp tới có gì và Choros đang hướng tới đâu."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/page.tsx
@@ -15060,7 +15060,7 @@ msgstr "Lịch sử Star"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/stats/page.tsx
 msgid "marketing.meta.stats.description"
-msgstr "Tổng hợp mức sử dụng agent của mọi lập trình viên trên bảng xếp hạng Superset — token, chi phí, hành vi cache và những mô hình mọi người thực sự dùng."
+msgstr "Tổng hợp mức sử dụng agent của mọi lập trình viên trên bảng xếp hạng Choros — token, chi phí, hành vi cache và những mô hình mọi người thực sự dùng."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/stats/page.tsx
@@ -15070,12 +15070,12 @@ msgstr "Thống kê"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.meta.team.description"
-msgstr "Superset là gì, ai xây dựng nó và dành cho ai. Một đội ngũ ba cựu CTO YC tại San Francisco xây dựng workspace cho các agent lập trình song song."
+msgstr "Choros là gì, ai xây dựng nó và dành cho ai. Một đội ngũ ba cựu CTO YC tại San Francisco xây dựng workspace cho các agent lập trình song song."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.meta.team.ogDescription"
-msgstr "Gặp gỡ đội ngũ đứng sau Superset, xây dựng các agent lập trình song song cho lập trình viên."
+msgstr "Gặp gỡ đội ngũ đứng sau Choros, xây dựng các agent lập trình song song cho lập trình viên."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
@@ -15155,7 +15155,7 @@ msgstr "Changelog"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Header/constants.tsx
 msgid "marketing.nav.product.mcp.description"
-msgstr "Kết nối mọi agent AI với Superset."
+msgstr "Kết nối mọi agent AI với Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Header/constants.tsx
@@ -15186,7 +15186,7 @@ msgstr "Sản phẩm"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Header/constants.tsx
 msgid "marketing.nav.resources.about.description"
-msgstr "Những người đứng sau Superset."
+msgstr "Những người đứng sau Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/Header/constants.tsx
@@ -15477,7 +15477,7 @@ msgstr "Tải ứng dụng"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
 msgid "marketing.pricing.faq.agentSubscriptions.answer"
-msgstr "Có. Superset là nơi các agent của bạn chạy, không phải nhà cung cấp mô hình. Hãy mang Claude Code, Codex, OpenCode hay bất kỳ agent CLI nào, và dùng tài khoản hoặc khóa API sẵn có ở mọi gói."
+msgstr "Có. Choros là nơi các agent của bạn chạy, không phải nhà cung cấp mô hình. Hãy mang Claude Code, Codex, OpenCode hay bất kỳ agent CLI nào, và dùng tài khoản hoặc khóa API sẵn có ở mọi gói."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
@@ -15522,12 +15522,12 @@ msgstr "Giá gói Pro tính thế nào?"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
 msgid "marketing.pricing.faq.soc2.answer"
-msgstr "Có. Superset đã hoàn tất kiểm toán SOC 2 Type II với một đơn vị kiểm toán độc lập, bao quát các biện pháp bảo mật vận hành theo thời gian. Hãy yêu cầu báo cáo và xem tài liệu bảo mật tại trust.superset.sh."
+msgstr "Có. Choros đã hoàn tất kiểm toán SOC 2 Type II với một đơn vị kiểm toán độc lập, bao quát các biện pháp bảo mật vận hành theo thời gian. Hãy yêu cầu báo cáo và xem tài liệu bảo mật tại trust.choros.sh."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
 msgid "marketing.pricing.faq.soc2.question"
-msgstr "Superset có tuân thủ SOC 2 không?"
+msgstr "Choros có tuân thủ SOC 2 không?"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
@@ -15547,7 +15547,7 @@ msgstr "Câu hỏi thường gặp"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
 msgid "marketing.pricing.faq.whereCodeRuns.answer"
-msgstr "Trên máy của bạn. Repo, worktree, output terminal và phiên agent mặc định vẫn ở cục bộ; đồng bộ cloud chỉ gồm metadata tài khoản và tổ chức. Superset không proxy bất kỳ lệnh gọi API nào."
+msgstr "Trên máy của bạn. Repo, worktree, output terminal và phiên agent mặc định vẫn ở cục bộ; đồng bộ cloud chỉ gồm metadata tài khoản và tổ chức. Choros không proxy bất kỳ lệnh gọi API nào."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/pricing/constants.ts
@@ -15987,7 +15987,7 @@ msgstr "Khung xem diff cải tiến"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/data.ts
 msgid "marketing.roadmap.item.inAppPrMerge.description"
-msgstr "Merge pull request mà không cần rời Superset, kèm một đợt sửa lỗi và trau chuốt chat."
+msgstr "Merge pull request mà không cần rời Choros, kèm một đợt sửa lỗi và trau chuốt chat."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/data.ts
@@ -16017,7 +16017,7 @@ msgstr "Trình quản lý MCP"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/data.ts
 msgid "marketing.roadmap.item.nativePrReviews.description"
-msgstr "Review pull request ngay trong Superset: khung diff, review có agent hỗ trợ, xử lý bình luận trực tiếp."
+msgstr "Review pull request ngay trong Choros: khung diff, review có agent hỗ trợ, xử lý bình luận trực tiếp."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/roadmap/data.ts
@@ -16257,7 +16257,7 @@ msgstr "Code của bạn mặc định ở lại cục bộ, với quyền kiể
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/SecuritySection/SecuritySection.tsx
 msgid "marketing.security.yourAccounts.description"
-msgstr "Dùng gói đăng ký agent và khóa API sẵn có của bạn. Superset không bao giờ proxy lệnh gọi mô hình hay trói quy trình của bạn vào một nhà cung cấp."
+msgstr "Dùng gói đăng ký agent và khóa API sẵn có của bạn. Choros không bao giờ proxy lệnh gọi mô hình hay trói quy trình của bạn vào một nhà cung cấp."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/SecuritySection/SecuritySection.tsx
@@ -16508,7 +16508,7 @@ msgstr "Hiện chưa có số liệu."
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.eyebrow"
-msgstr "Về Superset"
+msgstr "Về Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
@@ -16523,12 +16523,12 @@ msgstr "Những người sáng lập"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.foundersPhoto.alt"
-msgstr "Những người sáng lập Superset tại một hackathon, trụ sở YC San Francisco"
+msgstr "Những người sáng lập Choros tại một hackathon, trụ sở YC San Francisco"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.foundersPhoto.caption"
-msgstr "Những người sáng lập tại hackathon nơi Superset ra đời <0>|</0> Trụ sở YC, tháng 11 năm 2025"
+msgstr "Những người sáng lập tại hackathon nơi Choros ra đời <0>|</0> Trụ sở YC, tháng 11 năm 2025"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
@@ -16543,7 +16543,7 @@ msgstr "Chúng tôi đang tuyển tại San Francisco"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.intro"
-msgstr "Superset đang xây dựng phần mềm tự cải thiện. Nó bắt đầu bằng việc trao cho kỹ sư những công cụ tốt nhất, biết thích nghi với nhu cầu của họ theo thời gian. Chúng tôi là 3 cựu CTO của YC đang xây một công cụ mà chính mình yêu thích."
+msgstr "Choros đang xây dựng phần mềm tự cải thiện. Nó bắt đầu bằng việc trao cho kỹ sư những công cụ tốt nhất, biết thích nghi với nhu cầu của họ theo thời gian. Chúng tôi là 3 cựu CTO của YC đang xây một công cụ mà chính mình yêu thích."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/[id]/page.tsx
@@ -16563,7 +16563,7 @@ msgstr "Các thành viên khác"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.story.adoption"
-msgstr "Chỉ trong vài tháng, <0>hàng chục nghìn kỹ sư</0> dùng Superset làm IDE chính, tại các công ty như Wix, DoorDash và Netflix."
+msgstr "Chỉ trong vài tháng, <0>hàng chục nghìn kỹ sư</0> dùng Choros làm IDE chính, tại các công ty như Wix, DoorDash và Netflix."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
@@ -16578,7 +16578,7 @@ msgstr "Vậy chúng tôi đã đến đây bằng cách nào?"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/team/page.tsx
 msgid "marketing.team.story.origin"
-msgstr "Superset khởi đầu là một dự án hackathon vào tháng 11 năm 2025. Đó là một ứng dụng máy tính đơn giản để quản lý worktree."
+msgstr "Choros khởi đầu là một dự án hackathon vào tháng 11 năm 2025. Đó là một ứng dụng máy tính đơn giản để quản lý worktree."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/TierBadge/TierBadge.tsx
@@ -16665,7 +16665,7 @@ msgstr "Tham gia danh sách chờ"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/WaitlistModal/WaitlistModal.tsx
 msgid "marketing.waitlist.modalDescription"
-msgstr "Nhận thông báo khi Superset có trên Windows & Linux."
+msgstr "Nhận thông báo khi Choros có trên Windows & Linux."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/WaitlistModal/WaitlistModal.tsx
@@ -16685,7 +16685,7 @@ msgstr "Bạn đã có trong danh sách!"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/WallOfLoveSection/WallOfLoveSection.tsx
 msgid "marketing.wallOfLove.heading"
-msgstr "Các nhà phát triển nói gì về Superset"
+msgstr "Các nhà phát triển nói gì về Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/components/WallOfLoveSection/WallOfLoveSection.tsx
@@ -17281,7 +17281,7 @@ msgstr "Đọc hướng dẫn thiết lập"
 #. placeholder {0}: COMPANY.DOMAIN
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-connect-host/HomeConnectHostScreen.tsx
 msgid "mobile.connectHost.step1.body"
-msgstr "Tải Superset tại <0>{0}/download</0>."
+msgstr "Tải Choros tại <0>{0}/download</0>."
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-connect-host/HomeConnectHostScreen.tsx
@@ -17307,7 +17307,7 @@ msgstr "Cho phép truy cập qua relay"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-connect-host/HomeConnectHostScreen.tsx
 msgid "mobile.connectHost.subtitle"
-msgstr "Superset Mobile chạy agent trên những máy tính bạn kết nối."
+msgstr "Choros Mobile chạy agent trên những máy tính bạn kết nối."
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-connect-host/HomeConnectHostScreen.tsx
@@ -17707,7 +17707,7 @@ msgstr "Chưa có thiết bị nào"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/hosts/HostsSettingsScreen.tsx
 msgid "mobile.hostsSettings.emptyDescription"
-msgstr "Trong ứng dụng Superset trên máy tính, mở Cài đặt → Truy cập từ xa và bật “Cho phép truy cập từ xa vào thiết bị này qua relay”."
+msgstr "Trong ứng dụng Choros trên máy tính, mở Cài đặt → Truy cập từ xa và bật “Cho phép truy cập từ xa vào thiết bị này qua relay”."
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/hosts/HostsSettingsScreen.tsx
@@ -17951,13 +17951,13 @@ msgstr "Dependency"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-paywall/HomePaywallScreen.tsx
 msgid "mobile.paywall.description"
-msgstr "Tổ chức này đang dùng gói Free. Superset Mobile chỉ dành cho tổ chức dùng gói Pro."
+msgstr "Tổ chức này đang dùng gói Free. Choros Mobile chỉ dành cho tổ chức dùng gói Pro."
 
 #. js-lingui-explicit-id
 #. placeholder {0}: activeOrganization.name
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-paywall/HomePaywallScreen.tsx
 msgid "mobile.paywall.descriptionNamed"
-msgstr "{0} đang dùng gói Free. Superset Mobile chỉ dành cho tổ chức dùng gói Pro."
+msgstr "{0} đang dùng gói Free. Choros Mobile chỉ dành cho tổ chức dùng gói Pro."
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-paywall/HomePaywallScreen.tsx
@@ -17967,7 +17967,7 @@ msgstr "Làm mới"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/(home)/home-paywall/HomePaywallScreen.tsx
 msgid "mobile.paywall.title"
-msgstr "Superset Mobile thuộc gói Pro"
+msgstr "Choros Mobile thuộc gói Pro"
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/components/ai-elements/plan.tsx
@@ -18431,7 +18431,7 @@ msgstr "Xóa tài khoản"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/SettingsScreen.tsx
 msgid "mobile.settings.deleteAccount.failedMessage"
-msgstr "Đã xảy ra lỗi. Hãy thử lại hoặc liên hệ support@superset.sh."
+msgstr "Đã xảy ra lỗi. Hãy thử lại hoặc liên hệ support@choros.sh."
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/SettingsScreen.tsx
@@ -18513,8 +18513,8 @@ msgstr "Tổ chức"
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/SettingsScreen.tsx
-msgid "mobile.settings.row.rateSuperset"
-msgstr "Đánh giá Superset"
+msgid "mobile.settings.row.rateChoros"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/SettingsScreen.tsx
@@ -18594,7 +18594,7 @@ msgstr "Đăng nhập để bắt đầu"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(auth)/sign-in/SignInScreen.tsx
 msgid "mobile.signIn.title"
-msgstr "Chào mừng đến với Superset"
+msgstr "Chào mừng đến với Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/components/ai-elements/sources.tsx
@@ -18835,7 +18835,7 @@ msgstr "Host của workspace này đang ngoại tuyến"
 #. placeholder {2}: hostCompatibility.minVersion
 #: ../../apps/mobile/screens/(authenticated)/workspace/[id]/WorkspaceScreen/WorkspaceScreen.tsx
 msgid "mobile.workspace.hostOutdated.body"
-msgstr "{0} đang chạy dịch vụ host {1} — ứng dụng này cần {2} trở lên. Hãy cập nhật Superset trên máy đó."
+msgstr "{0} đang chạy dịch vụ host {1} — ứng dụng này cần {2} trở lên. Hãy cập nhật Choros trên máy đó."
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/workspace/[id]/WorkspaceScreen/WorkspaceScreen.tsx
@@ -19542,7 +19542,7 @@ msgstr "Không thể tải ảnh đại diện lên"
 #. js-lingui-explicit-id
 #: src/server-errors.ts
 msgid "serverError.user.theRecoveryPeriodHasEndedContact"
-msgstr "Thời hạn khôi phục đã kết thúc. Hãy liên hệ support@superset.sh."
+msgstr "Thời hạn khôi phục đã kết thúc. Hãy liên hệ support@choros.sh."
 
 #. js-lingui-explicit-id
 #: src/server-errors.ts
@@ -19757,7 +19757,7 @@ msgstr "Đăng xuất"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/AccountSettings.tsx
 msgid "settings.account.signOutHint"
-msgstr "Bạn sẽ phải đăng nhập lại để dùng Superset trên thiết bị này."
+msgstr "Bạn sẽ phải đăng nhập lại để dùng Choros trên thiết bị này."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/AccountSettings.tsx
@@ -19958,7 +19958,7 @@ msgstr "Xóa agent"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/agents/components/V2AgentsSettings/components/AgentDetail/AgentDetail.tsx
 msgid "settings.agents.detail.hooksAriaLabel"
-msgstr "Hook của Superset"
+msgstr "Hook của Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/agents/components/V2AgentsSettings/components/AgentDetail/AgentDetail.tsx
@@ -19968,12 +19968,12 @@ msgstr "Hiển thị trạng thái và gửi thông báo cho agent này."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/agents/components/V2AgentsSettings/components/AgentDetail/AgentDetail.tsx
 msgid "settings.agents.detail.hooksTitle"
-msgstr "Hook của Superset"
+msgstr "Hook của Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/agents/components/V2AgentsSettings/components/AgentDetail/AgentDetail.tsx
 msgid "settings.agents.detail.hooksTooltip"
-msgstr "Đăng ký các hook vòng đời vào cấu hình toàn cục của agent này để Superset hiển thị trạng thái và gửi thông báo. Tắt tùy chọn này sẽ gỡ các mục của Superset ở mọi nơi — trạng thái và thông báo cho agent này sẽ dừng, kể cả bên trong Superset."
+msgstr "Đăng ký các hook vòng đời vào cấu hình toàn cục của agent này để Choros hiển thị trạng thái và gửi thông báo. Tắt tùy chọn này sẽ gỡ các mục của Choros ở mọi nơi — trạng thái và thông báo cho agent này sẽ dừng, kể cả bên trong Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/agents/components/V2AgentsSettings/components/AgentDetail/AgentDetail.tsx
@@ -20589,7 +20589,7 @@ msgstr "Tufte"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/appearance/components/AppearanceSettings/AppearanceSettings.tsx
 msgid "settings.appearance.subtitle"
-msgstr "Tùy chỉnh giao diện Superset trên thiết bị của bạn"
+msgstr "Tùy chỉnh giao diện Choros trên thiết bị của bạn"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/appearance/components/AppearanceSettings/components/ThemeSection/ThemeSection.tsx
@@ -20896,7 +20896,7 @@ msgstr "Ủng hộ dự án bằng một sao trên GitHub"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/behavior/components/BehaviorSettings/components/GithubStarRow/GithubStarRow.tsx
 msgid "settings.behavior.githubStar.label"
-msgstr "Gắn sao cho Superset trên GitHub"
+msgstr "Gắn sao cho Choros trên GitHub"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/behavior/components/BehaviorSettings/components/GithubStarRow/GithubStarRow.tsx
@@ -21543,7 +21543,7 @@ msgstr "Nhập…"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/browser/components/BrowserSettings/BrowserSettings.tsx
 msgid "settings.browser.importHint"
-msgstr "Sao chép lịch sử duyệt web và thông tin đăng nhập từ Chrome, Brave, Arc hoặc trình duyệt Chromium khác vào Superset."
+msgstr "Sao chép lịch sử duyệt web và thông tin đăng nhập từ Chrome, Brave, Arc hoặc trình duyệt Chromium khác vào Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/browser/components/BrowserSettings/BrowserSettings.tsx
@@ -21932,7 +21932,7 @@ msgstr "Dùng trải nghiệm workspace mới."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/ExperimentalSettings/ExperimentalSettings.tsx
 msgid "settings.experimental.v2Label"
-msgstr "Dùng thử Superset v2"
+msgstr "Dùng thử Choros v2"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/ExperimentalSettings/components/WaitForSetupBeforeAgentSetting/WaitForSetupBeforeAgentSetting.tsx
@@ -22163,7 +22163,7 @@ msgstr "Xóa host"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/hosts/$hostId/components/HostSettings/components/DeleteHostSection/DeleteHostSection.tsx
 msgid "settings.hosts.deleteHost.localHint"
-msgstr "Hãy dừng Superset ở đây để xóa từ thiết bị khác."
+msgstr "Hãy dừng Choros ở đây để xóa từ thiết bị khác."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/hosts/page.tsx
@@ -23052,8 +23052,8 @@ msgstr "Đã kết nối"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/models/components/ModelsSettings/utils.ts
-msgid "settings.models.status.connectedInSuperset"
-msgstr "Đã kết nối trong Superset"
+msgid "settings.models.status.connectedInChoros"
+msgstr "Đã kết nối trong Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/models/components/ModelsSettings/utils.ts
@@ -23190,7 +23190,7 @@ msgstr "Đang xóa tổ chức..."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/organization/components/OrganizationSettings/OrganizationSettings.tsx
 msgid "settings.organization.idHint"
-msgstr "Dùng ID này khi gọi API của Superset."
+msgstr "Dùng ID này khi gọi API của Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/organization/components/OrganizationSettings/OrganizationSettings.tsx
@@ -23425,7 +23425,7 @@ msgstr "Không rõ"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/permissions/components/PermissionsSettings/PermissionsSettings.tsx
 msgid "settings.permissions.subtitle"
-msgstr "Cấp các quyền hệ điều hành mà Superset cần."
+msgstr "Cấp các quyền hệ điều hành mà Choros cần."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/permissions/components/PermissionsSettings/PermissionsSettings.tsx
@@ -25987,6 +25987,11 @@ msgstr "Đặt lại sau {countdown} · {absolute}"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
+msgid "settings.usage.resources.chorosApp"
+msgstr "Ứng dụng Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.collapseProject"
 msgstr "Thu gọn dự án"
 
@@ -26071,7 +26076,7 @@ msgstr "Renderer"
 #. placeholder {2}: formatMemory(freeMemory)
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.ramBarAriaLabel"
-msgstr "RAM hệ thống: Superset {0}, ứng dụng khác {1}, trống {2}"
+msgstr "RAM hệ thống: Choros {0}, ứng dụng khác {1}, trống {2}"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
@@ -26126,12 +26131,22 @@ msgstr "Thứ tự thanh bên"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.sparklineCpu"
-msgstr "CPU của Superset · 5 phút gần nhất"
+msgstr "CPU của Choros · 5 phút gần nhất"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.sparklineMemory"
-msgstr "Bộ nhớ của Superset · 5 phút gần nhất"
+msgstr "Bộ nhớ của Choros · 5 phút gần nhất"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
+msgid "settings.usage.resources.statChorosCpu"
+msgstr "CPU của Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
+msgid "settings.usage.resources.statChorosMemory"
+msgstr "Bộ nhớ của Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
@@ -26145,16 +26160,6 @@ msgstr "Tải (1 phút)"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
-msgid "settings.usage.resources.statSupersetCpu"
-msgstr "CPU của Superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
-msgid "settings.usage.resources.statSupersetMemory"
-msgstr "Bộ nhớ của Superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.statSystemMemory"
 msgstr "Bộ nhớ hệ thống"
 
@@ -26162,11 +26167,6 @@ msgstr "Bộ nhớ hệ thống"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
 msgid "settings.usage.resources.statSystemRamShare"
 msgstr "Tỷ lệ RAM hệ thống"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/UsageResourcesPage.tsx
-msgid "settings.usage.resources.supersetApp"
-msgstr "Ứng dụng Superset"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageResourcesPage/components/ResourceSparkline/ResourceSparkline.tsx
@@ -26661,7 +26661,7 @@ msgstr "Kiểm tra cập nhật"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/tray/index.ts
 msgid "tray.closeApp"
-msgstr "Đóng Superset"
+msgstr "Đóng Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/tray/index.ts
@@ -26711,12 +26711,12 @@ msgstr "Không có dịch vụ nào đang chạy"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/tray/index.ts
 msgid "tray.openApp"
-msgstr "Mở Superset"
+msgstr "Mở Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/tray/index.ts
 msgid "tray.quitCompletely"
-msgstr "Thoát hẳn Superset"
+msgstr "Thoát hẳn Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/main/lib/tray/index.ts
@@ -27667,7 +27667,7 @@ msgstr "Dùng ứng dụng máy tính để chạy song song nhiều agent lập
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(agents)/agents/page.tsx
 msgid "web.agents.downloadTitle"
-msgstr "Tải Superset"
+msgstr "Tải Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(agents)/constants.ts
@@ -27777,7 +27777,7 @@ msgstr "Cấp quyền thất bại"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/cli/auth/code/components/CliAuthCodeDisplay/CliAuthCodeDisplay.tsx
 msgid "web.cliAuth.codeHint"
-msgstr "Dán mã này vào Superset CLI:"
+msgstr "Dán mã này vào Choros CLI:"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/cli/auth/code/components/CliAuthCodeDisplay/CliAuthCodeDisplay.tsx
@@ -27903,7 +27903,7 @@ msgstr "Đang đăng nhập với <0>{userName}</0>"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/oauth/consent/components/ConsentForm/ConsentForm.tsx
 msgid "web.consent.subtitle"
-msgstr "<0>{displayName}</0> đang yêu cầu truy cập tài khoản Superset của bạn"
+msgstr "<0>{displayName}</0> đang yêu cầu truy cập tài khoản Choros của bạn"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/oauth/consent/components/ConsentForm/ConsentForm.tsx
@@ -27964,6 +27964,11 @@ msgstr "Nút — biến thể"
 #: ../../apps/web/src/app/design/components/ActionsSection/ActionsSection.tsx
 msgid "web.design.actionsSection.chooseApp"
 msgstr "Chọn ứng dụng"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/ActionsSection/ActionsSection.tsx
+msgid "web.design.actionsSection.chorosSh"
+msgstr "choros.sh"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/ActionsSection/ActionsSection.tsx
@@ -28102,11 +28107,6 @@ msgstr "Nút tách đôi phản chiếu OpenInButton của desktop; trigger củ
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/ActionsSection/ActionsSection.tsx
-msgid "web.design.actionsSection.supersetSh"
-msgstr "superset.sh"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/ActionsSection/ActionsSection.tsx
 msgid "web.design.actionsSection.terminal"
 msgstr "Terminal"
 
@@ -28161,344 +28161,514 @@ msgid "web.design.actionsSection.xsSmDefaultLgIcon"
 msgstr "xs · sm · default · lg · icon-xs → icon-lg"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.55CallSitesPassShowarrow"
 msgstr "55 vị trí gọi truyền {code}"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.aiAgentActivity"
 msgstr "AI · Hoạt động agent"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.appsDesktopSrcRenderer"
 msgstr "apps/desktop/src/renderer"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.bakingTheChipStyleInto"
 msgstr "Đưa kiểu chip vào thẳng tooltip.tsx"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.chainOfThought"
 msgstr "Chuỗi suy luận"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.comparedAgainstTheDefaultStyle"
 msgstr "So sánh với kiểu mặc định"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.found12TooltipCallSites"
 msgstr "Tìm thấy 12 chỗ gọi tooltip"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.grepped"
 msgstr "Đã grep"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.hotkeytooltipTsx"
 msgstr "HotkeyTooltip.tsx"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.makeTheChipStyleThe"
 msgstr "Đặt kiểu chip làm mặc định cho TooltipContent"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.packagesUiSrcComponentsUi"
 msgstr "packages/ui/src/components/ui/kbd.tsx"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.paneheaderactionsTsx"
 msgstr "PaneHeaderActions.tsx"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.plan"
 msgstr "Kế hoạch"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.planningTheTooltipRefactor"
 msgstr "Lên kế hoạch refactor tooltip"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.presetsbarTsx"
 msgstr "PresetsBar.tsx"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.read"
 msgstr "Đã đọc"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.searchedForTooltipOverrides"
 msgstr "Đã tìm các chỗ ghi đè tooltip"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.searchingForKbdUsages"
 msgstr "Đang tìm các chỗ dùng Kbd"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.standardizeTooltipStyling"
 msgstr "Chuẩn hóa kiểu tooltip"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.stripRedundantOverridesAtCall"
 msgstr "Bỏ các chỗ ghi đè thừa tại nơi gọi"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.structuredProgressChainOfThought"
 msgstr "Tiến độ có cấu trúc: chuỗi suy luận, tác vụ, kế hoạch"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.task"
 msgstr "Tác vụ"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.threeStepsTouchesPackagesUi"
 msgstr "Ba bước · động tới packages/ui và apps/desktop"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiAgentSection/AiAgentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiAgentSection/AiAgentSection.tsx
 msgid "web.design.aiAgentSection.verifyKbdStaysVisibleInside"
 msgstr "Kiểm tra Kbd vẫn hiện rõ bên trong tooltip"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.aiConversation"
 msgstr "AI · Hội thoại"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
-msgid "web.design.aiChatSection.alsoSupersetUiAiElements"
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
+msgid "web.design.aiChatSection.alsoChorosUiAiElements"
 msgstr "Ngoài ra: @choros/ui/ai-elements/message — luôn bám đáy khi nội dung stream về"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.canYouStandardizeTheTooltips"
 msgstr "Bạn chuẩn hóa tooltip trên toàn ứng dụng được không?"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.chatSurfacesMessagesReasoningSuggestions"
 msgstr "Các bề mặt chat: tin nhắn, suy luận, gợi ý"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.collapsibleThinkingBlockWithDuration"
 msgstr "Khối suy nghĩ thu gọn được, kèm nhãn thời lượng"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.conversationMessage"
 msgstr "Hội thoại · Tin nhắn"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.doneTheBorderedChipStyle"
 msgstr "Xong — kiểu chip có viền mà thanh preset dùng giờ là mặc định cho mọi tooltip, và các chỗ ghi đè sao chép lặp đã được gỡ (giảm ròng 90 dòng)."
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.niceOpenAPrWhen"
 msgstr "Tốt, mở PR khi sẵn sàng nhé."
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.reasoning"
 msgstr "Suy luận"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.suggestions"
 msgstr "Gợi ý"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.45Files82172"
 msgstr "45 tệp · +82 −172"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.874kOf200kTokens"
 msgstr "Đã dùng 87.4K trên 200K token trong phiên này."
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.aiContent"
 msgstr "AI · Nội dung"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.artifact"
 msgstr "Artifact"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.checkpoint"
 msgstr "Checkpoint"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.checkpointBeforeTooltipRefactor"
 msgstr "Checkpoint · trước khi refactor tooltip"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.classnameRoundedSmBorderBorder"
 msgstr "- className=\"rounded-sm border border-border bg-background …\""
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.codeBlock"
 msgstr "Code Block"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.context"
 msgstr "Ngữ cảnh"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.download"
 msgstr "Tải xuống"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.inlineCitation"
 msgstr "Inline Citation"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.needLiveChatToolCall"
 msgstr "Cần trạng thái chat/tool-call trực tiếp (ToolUIPart, stream) hoặc một app shell"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.notDemoedHere"
 msgstr "Không demo ở đây"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.popperBasedPositioningPlacesAnd"
 msgstr "Cách định vị dựa trên Popper tự đặt và xoay các phần tử mũi tên."
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.radixPrimitives"
 msgstr "Radix Primitives"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.radixRotatesTheTooltipArrow"
 msgstr "Radix xoay lớp bọc mũi tên tooltip theo từng phía,"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.radixTooltipDocs"
 msgstr "Tài liệu Radix Tooltip"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.renderedOutputCodeSourcesCitations"
 msgstr "Kết quả hiển thị: code, nguồn, trích dẫn, ngữ cảnh"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.shadcnUiTooltipRecipe"
 msgstr "Công thức tooltip của shadcn/ui"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.shikiHighlightedWithOptionalLine"
 msgstr "Tô màu bằng Shiki, có thể kèm số dòng"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.soABorderOnTwo"
 msgstr "nên viền ở hai cạnh của hình vuông đã xoay luôn hướng ra ngoài."
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.sources"
 msgstr "Nguồn"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.tailwindV4ThemeReference"
 msgstr "Tham chiếu theme Tailwind v4"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.tokenBudgetIndicatorHoverThe"
 msgstr "Chỉ báo hạn mức token — di chuột lên phần trăm"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiContentSection/AiContentSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiContentSection/AiContentSection.tsx
 msgid "web.design.aiContentSection.tooltipRefactorDiff"
 msgstr "tooltip-refactor.diff"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.aiStatus"
 msgstr "AI · Trạng thái"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
-msgid "web.design.aiStatusSection.alsoSupersetUiAiElements"
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
+msgid "web.design.aiStatusSection.alsoChorosUiAiElements"
 msgstr "Ngoài ra: @choros/ui/ai-elements/braille-spinner"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.animatedTextForInFlight"
 msgstr "Văn bản động cho hoạt động agent đang diễn ra"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.doneIsshimmeringFalse"
 msgstr "Xong (isShimmering=false)"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.loaderBrailleSpinner"
 msgstr "Loader · Braille Spinner"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.loadingAndInFlightActivity"
 msgstr "Chỉ báo đang tải và hoạt động đang diễn ra"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.runningBunTest"
 msgstr "Đang chạy bun test…"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.shimmerShimmerLabel"
 msgstr "Shimmer · Shimmer Label"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
+#: ../../apps/web/src/app/design/choros/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.thinkingAboutTheApproach"
 msgstr "Đang nghĩ về hướng tiếp cận"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.choros.descriptionLead"
+msgstr "Mọi thứ chúng tôi dựng trên nền các primitive — thành phần riêng của Choros, bộ"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.choros.descriptionTail"
+msgstr "cho giao diện agent, và các component dùng chung của ứng dụng. Nhấp vào đường dẫn import bất kỳ để sao chép."
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.choros.title"
+msgstr "Component của Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.aiAgentActivity"
+msgstr "AI · Hoạt động agent"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.aiContent"
+msgstr "AI · Nội dung"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.aiConversation"
+msgstr "AI · Hội thoại"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.aiStatus"
+msgstr "AI · Trạng thái"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.originals"
+msgstr "Riêng của Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/page.tsx
+msgid "web.design.chorosNav.sharedAppComponents"
+msgstr "Component dùng chung của ứng dụng"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertCheckbox"
+msgstr "Đừng hỏi lại"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertDescription"
+msgstr "Worktree có các chỉnh sửa chưa commit từ phiên agent."
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertDiscard"
+msgstr "Bỏ"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertImperative"
+msgstr "Alert (dạng lệnh)"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertKeepWorking"
+msgstr "Tiếp tục làm"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertOpensAPromiseFriendly"
+msgstr "alert() mở một dialog thân thiện với promise thông qua Alerter đã gắn"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.alertTitle"
+msgstr "Bỏ thay đổi?"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.animatedWebglGradientStripeGradient"
+msgstr "Gradient WebGL động (stripe-gradient)"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.avatarAtom"
+msgstr "Avatar (atom)"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.chorosOriginals"
+msgstr "Thành phần riêng của Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.customComponentsBeyondTheShadcn"
+msgstr "Component tùy chỉnh ngoài bộ shadcn"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.initialsFallbackViaGetinitialsSizes"
+msgstr "Dự phòng bằng chữ cái đầu qua getInitials, cỡ xs → xl"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.meshGradient"
+msgstr "Mesh Gradient"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.mobileApp"
+msgstr "Ứng dụng di động"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.monitorAgentsFromYourPhone"
+msgstr "Theo dõi agent ngay trên điện thoại."
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.needAppLevelWiringForm"
+msgstr "Cần đấu nối ở tầng ứng dụng (trạng thái form, dữ liệu biểu đồ, app shell)"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.referencedNotDemoed"
+msgstr "Chỉ được nhắc tới, không demo"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.sidebarCard"
+msgstr "Sidebar Card"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.themePreviewCard"
+msgstr "Theme Preview Card"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.themeSubtitle"
+msgstr "Theme terminal mặc định"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.toastDiscarded"
+msgstr "Đã bỏ"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.toastDiscardedNoAsk"
+msgstr "Đã bỏ — sẽ không hỏi lại"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.toastDismissed"
+msgstr "Đã bỏ qua"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.toastOpeningTestflight"
+msgstr "Đang mở TestFlight…"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/choros/components/ChorosSection/ChorosSection.tsx
+msgid "web.design.chorosSection.triggerAlert"
+msgstr "Kích hoạt alert()"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/ComponentCard/ComponentCard.tsx
@@ -28567,8 +28737,13 @@ msgstr "Carousel"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
-msgid "web.design.dataSection.chooseWhenSupersetPingsYou"
-msgstr "Chọn khi nào Superset báo cho bạn."
+msgid "web.design.dataSection.chooseWhenChorosPingsYou"
+msgstr "Chọn khi nào Choros báo cho bạn."
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
+msgid "web.design.dataSection.choros"
+msgstr "Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
@@ -28607,8 +28782,8 @@ msgstr "Rảnh · đã push nhánh"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
-msgid "web.design.dataSection.includesTheSupersetSpecificBox"
-msgstr "Bao gồm biến thể box riêng của Superset"
+msgid "web.design.dataSection.includesTheChorosSpecificBox"
+msgstr "Bao gồm biến thể box riêng của Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
@@ -28652,11 +28827,6 @@ msgstr "Trạng thái"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
-msgid "web.design.dataSection.superset"
-msgstr "Superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/DataSection/DataSection.tsx
 msgid "web.design.dataSection.table"
 msgstr "Table"
 
@@ -28682,7 +28852,7 @@ msgstr "Alert, toast, tiến độ và trạng thái đang tải"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/FeedbackSection/FeedbackSection.tsx
-msgid "web.design.feedbackSection.alsoSupersetUiSpinner"
+msgid "web.design.feedbackSection.alsoChorosUiSpinner"
 msgstr "Ngoài ra: @choros/ui/spinner"
 
 #. js-lingui-explicit-id
@@ -28802,7 +28972,7 @@ msgstr "Chấp nhận điều khoản"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
-msgid "web.design.inputsSection.alsoSupersetUiRadioGroup"
+msgid "web.design.inputsSection.alsoChorosUiRadioGroup"
 msgstr "Ngoài ra: @choros/ui/radio-group, @choros/ui/switch"
 
 #. js-lingui-explicit-id
@@ -28834,6 +29004,11 @@ msgstr "Calendar"
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
 msgid "web.design.inputsSection.checkboxRadioSwitch"
 msgstr "Checkbox · Radio · Switch"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
+msgid "web.design.inputsSection.choros"
+msgstr "choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
@@ -28947,11 +29122,6 @@ msgstr "Slider"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
-msgid "web.design.inputsSection.superset"
-msgstr "superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
 msgid "web.design.inputsSection.textarea"
 msgstr "Textarea"
 
@@ -28962,7 +29132,7 @@ msgstr "Workspace"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
-msgid "web.design.layoutSection.alsoSupersetUiOverflowFade"
+msgid "web.design.layoutSection.alsoChorosUiOverflowFade"
 msgstr "Ngoài ra: @choros/ui/overflow-fade-text"
 
 #. js-lingui-explicit-id
@@ -28979,6 +29149,11 @@ msgstr "Aspect Ratio"
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
 msgid "web.design.layoutSection.changelog"
 msgstr "Changelog"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
+msgid "web.design.layoutSection.chorosUi"
+msgstr "Choros UI"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
@@ -29034,11 +29209,6 @@ msgstr "Nguồn"
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
 msgid "web.design.layoutSection.structureScrollingAndOverflowHandling"
 msgstr "Cấu trúc, cuộn và xử lý tràn nội dung"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
-msgid "web.design.layoutSection.supersetUi"
-msgstr "Superset UI"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
@@ -29387,6 +29557,16 @@ msgstr "Hủy"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
+msgid "web.design.overlaysSection.choros"
+msgstr "@choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
+msgid "web.design.overlaysSection.choros2"
+msgstr "Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
 msgid "web.design.overlaysSection.close"
 msgstr "Đóng"
 
@@ -29532,16 +29712,6 @@ msgstr "Trượt vào từ mép khung nhìn."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
-msgid "web.design.overlaysSection.superset"
-msgstr "@superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
-msgid "web.design.overlaysSection.superset2"
-msgstr "Superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/components/OverlaysSection/OverlaysSection.tsx
 msgid "web.design.overlaysSection.terminalFontSize"
 msgstr "Cỡ chữ terminal"
 
@@ -29593,105 +29763,105 @@ msgstr ". Mỗi thẻ hiện đường dẫn import chuẩn — nhấp để sao
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/page.tsx
 msgid "web.design.primitives.title"
-msgstr "Hệ thống thiết kế Superset"
+msgstr "Hệ thống thiết kế Choros"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.agentPickerClaudeCodexCursor"
 msgstr "Bộ chọn agent (Claude, Codex, Cursor…) dùng trong mọi luồng tạo phiên"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.canonicalMarkdownSurfaceForAgent"
 msgstr "Bề mặt markdown chuẩn cho kết quả agent, bình luận và tài liệu"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.ghostTriggerIconTruncatingLabel"
 msgstr "Trigger ghost: biểu tượng + nhãn cắt ngắn + chevron lên-xuống (mẫu được demo ở trang Primitives)"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.longHoverShortcutOnlyTooltip"
 msgstr "Tooltip chỉ hiện phím tắt khi di chuột lâu; kiểu chip của nó giờ là mặc định của TooltipContent"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.markdownAuthoringSurfaceWithPreview"
 msgstr "Bề mặt soạn markdown kèm xem trước"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.modelPickerScopedToThe"
 msgstr "Bộ chọn mô hình giới hạn theo agent đang chọn"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.paneLayoutRootRendersA"
 msgstr "Gốc bố cục khung: dựng cây khung của một workspace"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.rendersARegisteredHotkeyInside"
 msgstr "Hiển thị một phím tắt đã đăng ký bên trong mục dropdown/menubar"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.sidebarPillShownWhenAn"
 msgstr "Pill ở thanh bên hiện khi có bản cập nhật ứng dụng sẵn sàng cài"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.splitButtonOpenWorktreeIn"
 msgstr "Nút tách đôi: mở worktree bằng ứng dụng mặc định + menu chọn ứng dụng"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.standardActionStripForPane"
 msgstr "Dải hành động chuẩn cho tiêu đề khung"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.terminalThemeColorPalettePreview"
 msgstr "Xem trước bảng màu của theme terminal"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.textInputWithEmojiPicker"
 msgstr "Ô nhập văn bản có hỗ trợ chọn emoji"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponents.note.workspaceAccentColorPicker"
 msgstr "Bộ chọn màu nhấn cho workspace"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.crossFeatureComponentsLivingOutside"
 msgstr "Các component dùng chung nhiều tính năng, nằm ngoài packages/ui — hãy xem ở đây trước khi dựng cái mới"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.desktopRenderer"
 msgstr "Renderer của ứng dụng máy tính"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.electronTrpcCoupledSoReferenced"
 msgstr "Gắn với Electron/tRPC nên chỉ được nhắc tới chứ không dựng. Badge = số nơi import hiện tại; số cao là ứng viên đưa lên packages/ui"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.paneSystem"
 msgstr "Hệ thống khung"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.reactLayerOfTheShared"
 msgstr "Lớp React của bộ máy bố cục khung/workspace dùng chung"
 
 #. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SharedComponentsSection/SharedComponentsSection.tsx
+#: ../../apps/web/src/app/design/choros/components/SharedComponentsSection/SharedComponentsSection.tsx
 msgid "web.design.sharedComponentsSection.sharedAppComponents"
 msgstr "Component dùng chung của ứng dụng"
 
@@ -29699,176 +29869,6 @@ msgstr "Component dùng chung của ứng dụng"
 #: ../../apps/web/src/app/design/components/ShowcaseNav/ShowcaseNav.tsx
 msgid "web.design.showcaseNav.sections"
 msgstr "Các mục"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.superset.descriptionLead"
-msgstr "Mọi thứ chúng tôi dựng trên nền các primitive — thành phần riêng của Superset, bộ"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.superset.descriptionTail"
-msgstr "cho giao diện agent, và các component dùng chung của ứng dụng. Nhấp vào đường dẫn import bất kỳ để sao chép."
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.superset.title"
-msgstr "Component của Superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.aiAgentActivity"
-msgstr "AI · Hoạt động agent"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.aiContent"
-msgstr "AI · Nội dung"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.aiConversation"
-msgstr "AI · Hội thoại"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.aiStatus"
-msgstr "AI · Trạng thái"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.originals"
-msgstr "Riêng của Superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/page.tsx
-msgid "web.design.supersetNav.sharedAppComponents"
-msgstr "Component dùng chung của ứng dụng"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertCheckbox"
-msgstr "Đừng hỏi lại"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertDescription"
-msgstr "Worktree có các chỉnh sửa chưa commit từ phiên agent."
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertDiscard"
-msgstr "Bỏ"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertImperative"
-msgstr "Alert (dạng lệnh)"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertKeepWorking"
-msgstr "Tiếp tục làm"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertOpensAPromiseFriendly"
-msgstr "alert() mở một dialog thân thiện với promise thông qua Alerter đã gắn"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.alertTitle"
-msgstr "Bỏ thay đổi?"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.animatedWebglGradientStripeGradient"
-msgstr "Gradient WebGL động (stripe-gradient)"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.avatarAtom"
-msgstr "Avatar (atom)"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.customComponentsBeyondTheShadcn"
-msgstr "Component tùy chỉnh ngoài bộ shadcn"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.initialsFallbackViaGetinitialsSizes"
-msgstr "Dự phòng bằng chữ cái đầu qua getInitials, cỡ xs → xl"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.meshGradient"
-msgstr "Mesh Gradient"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.mobileApp"
-msgstr "Ứng dụng di động"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.monitorAgentsFromYourPhone"
-msgstr "Theo dõi agent ngay trên điện thoại."
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.needAppLevelWiringForm"
-msgstr "Cần đấu nối ở tầng ứng dụng (trạng thái form, dữ liệu biểu đồ, app shell)"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.referencedNotDemoed"
-msgstr "Chỉ được nhắc tới, không demo"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.sidebarCard"
-msgstr "Sidebar Card"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.supersetOriginals"
-msgstr "Thành phần riêng của Superset"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.themePreviewCard"
-msgstr "Theme Preview Card"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.themeSubtitle"
-msgstr "Theme terminal mặc định"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.toastDiscarded"
-msgstr "Đã bỏ"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.toastDiscardedNoAsk"
-msgstr "Đã bỏ — sẽ không hỏi lại"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.toastDismissed"
-msgstr "Đã bỏ qua"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.toastOpeningTestflight"
-msgstr "Đang mở TestFlight…"
-
-#. js-lingui-explicit-id
-#: ../../apps/web/src/app/design/superset/components/SupersetSection/SupersetSection.tsx
-msgid "web.design.supersetSection.triggerAlert"
-msgstr "Kích hoạt alert()"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/auth/desktop/success/page.tsx
@@ -29903,7 +29903,7 @@ msgstr "Gửi tiếp trên web sẽ sớm có"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/components/Footer/Footer.tsx
 msgid "web.footer.copyright"
-msgstr "© {year} Superset"
+msgstr "© {year} Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/components/Footer/Footer.tsx
@@ -30095,7 +30095,7 @@ msgstr "Kết nối các repository GitHub của bạn và đồng bộ pull req
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/github/page.tsx
 msgid "web.integrations.github.callback.alreadyConnected"
-msgstr "Bản cài đặt GitHub này đã kết nối với một tổ chức Superset khác. Hãy ngắt kết nối ở đó, hoặc gỡ Superset GitHub App, rồi thử lại."
+msgstr "Bản cài đặt GitHub này đã kết nối với một tổ chức Choros khác. Hãy ngắt kết nối ở đó, hoặc gỡ Choros GitHub App, rồi thử lại."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/github/page.tsx
@@ -30130,7 +30130,7 @@ msgstr "Đã kết nối GitHub, nhưng lần đồng bộ đầu tiên không k
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/github/page.tsx
 msgid "web.integrations.github.connectionDescription"
-msgstr "Hãy cài Superset GitHub App để kết nối các repository của bạn."
+msgstr "Hãy cài Choros GitHub App để kết nối các repository của bạn."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/github/components/ConnectionControls/ConnectionControls.tsx
@@ -30175,7 +30175,7 @@ msgstr "Cần cả quyền Calendar và Gmail. Vui lòng cho phép cả hai khi 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/google/page.tsx
 msgid "web.integrations.google.callback.noRefreshToken"
-msgstr "Google không cấp quyền truy cập lâu dài. Hãy gỡ Superset khỏi phần truy cập của bên thứ ba trong tài khoản Google của bạn rồi thử lại."
+msgstr "Google không cấp quyền truy cập lâu dài. Hãy gỡ Choros khỏi phần truy cập của bên thứ ba trong tài khoản Google của bạn rồi thử lại."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/google/page.tsx
@@ -30215,7 +30215,7 @@ msgstr "Kết nối lại Google"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/linear/page.tsx
 msgid "web.integrations.linear.blurb"
-msgstr "Đồng bộ issue hai chiều với Linear. Tạo tác vụ trong Superset để chúng xuất hiện trong Linear, hoặc nhập issue Linear có sẵn."
+msgstr "Đồng bộ issue hai chiều với Linear. Tạo tác vụ trong Choros để chúng xuất hiện trong Linear, hoặc nhập issue Linear có sẵn."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/linear/page.tsx
@@ -30245,7 +30245,7 @@ msgstr "Nhóm mặc định cho tác vụ mới"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/linear/page.tsx
 msgid "web.integrations.linear.defaultTeamHint"
-msgstr "Tác vụ tạo trong Superset sẽ được đồng bộ sang nhóm Linear này."
+msgstr "Tác vụ tạo trong Choros sẽ được đồng bộ sang nhóm Linear này."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/linear/components/ConnectionControls/ConnectionControls.tsx
@@ -30275,7 +30275,7 @@ msgstr "Cài đặt"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/linear/page.tsx
 msgid "web.integrations.linear.settingsDescription"
-msgstr "Cấu hình cách tác vụ đồng bộ giữa Superset và Linear."
+msgstr "Cấu hình cách tác vụ đồng bộ giữa Choros và Linear."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/github/page.tsx
@@ -30376,7 +30376,7 @@ msgstr "Không thể kết nối tới Slack. Vui lòng thử lại."
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/slack/page.tsx
 msgid "web.integrations.slack.callback.workspaceLinked"
-msgstr "Workspace Slack này đã được một tổ chức Superset khác kết nối."
+msgstr "Workspace Slack này đã được một tổ chức Choros khác kết nối."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/slack/page.tsx
@@ -30436,7 +30436,7 @@ msgstr "Đã kết nối, nhưng Microsoft Graph từ chối các đăng ký th�
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/microsoft-teams/page.tsx
 msgid "web.integrations.teams.callback.tenantLinked"
-msgstr "Tenant Microsoft này đã được một tổ chức Superset khác kết nối."
+msgstr "Tenant Microsoft này đã được một tổ chức Choros khác kết nối."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/microsoft-teams/page.tsx
@@ -30535,8 +30535,8 @@ msgstr "Liên kết có thể sai, trang có thể đã bị xóa, hoặc bạn 
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/page/[slug]/not-found.tsx
-msgid "web.pageNotFound.goToSuperset"
-msgstr "Tới Superset"
+msgid "web.pageNotFound.goToChoros"
+msgstr "Tới Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/page/[slug]/not-found.tsx
@@ -30798,7 +30798,7 @@ msgstr "Chưa có tài khoản? <0>Đăng ký</0>"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(auth)/sign-in/[[...sign-in]]/page.tsx
 msgid "web.signIn.subtitle"
-msgstr "Đăng nhập để tiếp tục vào Superset"
+msgstr "Đăng nhập để tiếp tục vào Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(auth)/sign-in/[[...sign-in]]/page.tsx
@@ -30838,7 +30838,7 @@ msgstr "Đã có tài khoản? <0>Đăng nhập</0>"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(auth)/sign-up/[[...sign-up]]/page.tsx
 msgid "web.signUp.subtitle"
-msgstr "Đăng ký để bắt đầu với Superset"
+msgstr "Đăng ký để bắt đầu với Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(auth)/sign-up/[[...sign-up]]/page.tsx
@@ -30858,7 +30858,7 @@ msgstr "Đăng ký bằng Google"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/slack/linked/page.tsx
 msgid "web.slackLinked.description"
-msgstr "Tài khoản Slack của bạn đã được liên kết với Superset. Bạn có thể đóng tab này và quay lại Slack."
+msgstr "Tài khoản Slack của bạn đã được liên kết với Choros. Bạn có thể đóng tab này và quay lại Slack."
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/(dashboard-legacy)/integrations/slack/linked/page.tsx
@@ -33446,17 +33446,17 @@ msgstr "Đổi tên..."
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
 msgid "workspace.hostReachability.connectionFailed"
-msgstr "Kết nối thất bại (trạng thái relay {status}). Hãy thử lại, và nếu vẫn vậy thì khởi động lại Superset trên thiết bị đó."
+msgstr "Kết nối thất bại (trạng thái relay {status}). Hãy thử lại, và nếu vẫn vậy thì khởi động lại Choros trên thiết bị đó."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
 msgid "workspace.hostReachability.deviceNotConnected"
-msgstr "Thiết bị đó chưa kết nối tới relay. Hãy kiểm tra máy đã bật, có mạng và đang chạy Superset — nó sẽ tự kết nối lại khi sẵn sàng."
+msgstr "Thiết bị đó chưa kết nối tới relay. Hãy kiểm tra máy đã bật, có mạng và đang chạy Choros — nó sẽ tự kết nối lại khi sẵn sàng."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
 msgid "workspace.hostReachability.localStopped"
-msgstr "Dịch vụ host cục bộ đã ngừng phản hồi. Hãy thử lại trước; nếu không được, khởi động lại từ menu khay Superset > Dịch vụ host > Khởi động lại."
+msgstr "Dịch vụ host cục bộ đã ngừng phản hồi. Hãy thử lại trước; nếu không được, khởi động lại từ menu khay Choros > Dịch vụ host > Khởi động lại."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
@@ -33466,12 +33466,12 @@ msgstr "Bạn không có quyền truy cập host này. Nếu đó là thiết b�
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
 msgid "workspace.hostReachability.onlineButFailed"
-msgstr "Thiết bị đó đang trực tuyến nhưng không thiết lập được kết nối — thường là do định tuyến relay chứ không phải bản thân thiết bị. Hãy thử lại, và nếu vẫn vậy thì khởi động lại Superset trên thiết bị đó."
+msgstr "Thiết bị đó đang trực tuyến nhưng không thiết lập được kết nối — thường là do định tuyến relay chứ không phải bản thân thiết bị. Hãy thử lại, và nếu vẫn vậy thì khởi động lại Choros trên thiết bị đó."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
 msgid "workspace.hostReachability.onlineButFailedRegion"
-msgstr "Thiết bị đó đang trực tuyến (vùng {region}) nhưng không thiết lập được kết nối — thường là do định tuyến relay chứ không phải bản thân thiết bị. Hãy thử lại, và nếu vẫn vậy thì khởi động lại Superset trên thiết bị đó."
+msgstr "Thiết bị đó đang trực tuyến (vùng {region}) nhưng không thiết lập được kết nối — thường là do định tuyến relay chứ không phải bản thân thiết bị. Hãy thử lại, và nếu vẫn vậy thì khởi động lại Choros trên thiết bị đó."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/hooks/useHostReachability/useHostReachability.ts
@@ -34329,7 +34329,7 @@ msgstr "Host không xác định"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/WorkspaceHostIncompatibleState/WorkspaceHostIncompatibleState.tsx
 msgid "workspace.states.hostIncompatibleBody"
-msgstr "Host của workspace này đang chạy phiên bản Superset cũ hơn mức client này hỗ trợ. Hãy cập nhật ứng dụng Superset trên thiết bị đó để kết nối lại."
+msgstr "Host của workspace này đang chạy phiên bản Choros cũ hơn mức client này hỗ trợ. Hãy cập nhật ứng dụng Choros trên thiết bị đó để kết nối lại."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/WorkspaceHostIncompatibleState/WorkspaceHostIncompatibleState.tsx
@@ -34354,7 +34354,7 @@ msgstr "Host cần được cập nhật"
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/WorkspaceHostUnreachableState/WorkspaceHostUnreachableState.tsx
 msgid "workspace.states.hostUnreachableBody"
-msgstr "Workspace này nằm trên một thiết bị mà Superset hiện không kết nối được. Terminal, tệp và agent vẫn nguyên đó — chúng trở lại ngay khi có kết nối."
+msgstr "Workspace này nằm trên một thiết bị mà Choros hiện không kết nối được. Terminal, tệp và agent vẫn nguyên đó — chúng trở lại ngay khi có kết nối."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/WorkspaceHostUnreachableState/WorkspaceHostUnreachableState.tsx
@@ -34409,7 +34409,7 @@ msgstr "Dịch vụ host cục bộ không chạy nên không có gì trên thi�
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/providers/WorkspaceProvider/utils/localHostServiceDetail/localHostServiceDetail.ts
 msgid "workspace.states.localHostDetailUnknown"
-msgstr "Dịch vụ host cục bộ không phản hồi. Khởi động lại thường xử lý được; nếu vẫn lặp lại, hãy khởi động lại Superset."
+msgstr "Dịch vụ host cục bộ không phản hồi. Khởi động lại thường xử lý được; nếu vẫn lặp lại, hãy khởi động lại Choros."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/providers/WorkspaceProvider/components/WorkspaceLocalHostPendingState/WorkspaceLocalHostPendingState.tsx
@@ -34430,7 +34430,7 @@ msgstr "Không thể khởi động lại dịch vụ host"
 #. placeholder {0}: error.message
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/providers/WorkspaceProvider/components/WorkspaceLocalHostPendingState/WorkspaceLocalHostPendingState.tsx
 msgid "workspace.states.localHostPendingRestartFailedDescription"
-msgstr "{0} — hãy thử menu khay Superset > Dịch vụ host > Khởi động lại."
+msgstr "{0} — hãy thử menu khay Choros > Dịch vụ host > Khởi động lại."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/providers/WorkspaceProvider/components/WorkspaceLocalHostPendingState/WorkspaceLocalHostPendingState.tsx

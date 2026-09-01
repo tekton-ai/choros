@@ -34,7 +34,7 @@ describe("host-wide default account pointers", () => {
 
 	beforeEach(() => {
 		previousHome = process.env.SUPERSET_HOME_DIR;
-		home = mkdtempSync(join(tmpdir(), "superset-default-account-"));
+		home = mkdtempSync(join(tmpdir(), "choros-default-account-"));
 		process.env.SUPERSET_HOME_DIR = home;
 	});
 

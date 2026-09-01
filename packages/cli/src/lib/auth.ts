@@ -3,12 +3,12 @@ import { createServer, type Server } from "node:http";
 import { CLIError } from "@choros/cli-framework";
 import { env } from "./env";
 
-const CLIENT_ID = "superset-cli";
+const CLIENT_ID = "choros-cli";
 const PASTE_REDIRECT_PATH = "/cli/auth/code";
 const SCOPE = "openid profile email offline_access";
 const LOOPBACK_PORTS = [51789, 51790, 51791, 51792, 51793];
 const CALLBACK_TIMEOUT_MS = 5 * 60 * 1000;
-const LOGIN_AGAIN_SUGGESTION = "Run `superset auth login` again.";
+const LOGIN_AGAIN_SUGGESTION = "Run `choros auth login` again.";
 
 export interface LoginResult {
 	accessToken: string;
@@ -150,7 +150,7 @@ function waitForCallback({
 			response
 				.writeHead(200, { "Content-Type": "text/html" })
 				.end(
-					"<h1>Signed in to Superset CLI</h1><p>You can close this tab.</p>",
+					"<h1>Signed in to Choros CLI</h1><p>You can close this tab.</p>",
 				);
 			finish(null, code);
 		});
@@ -378,7 +378,7 @@ export async function login(
 						if (returnedState !== state) {
 							throw new CLIError(
 								"State mismatch",
-								"The pasted code does not match this login attempt. Run `superset auth login` again.",
+								"The pasted code does not match this login attempt. Run `choros auth login` again.",
 							);
 						}
 						settle(() => {

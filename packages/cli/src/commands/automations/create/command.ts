@@ -48,7 +48,7 @@ export default command({
 
 		const organizationId = ctx.config.organizationId;
 		if (!organizationId) {
-			throw new CLIError("No active organization", "Run: superset auth login");
+			throw new CLIError("No active organization", "Run: choros auth login");
 		}
 		const target = await resolveAutomationTarget({
 			organizationId,

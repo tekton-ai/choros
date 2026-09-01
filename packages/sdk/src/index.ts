@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export { type ClientOptions, Superset as default, Superset } from "./client";
+export { type ClientOptions, Choros as default, Choros } from "./client";
 export { APIPromise } from "./core/api-promise";
 export {
 	APIConnectionError,
@@ -14,14 +14,14 @@ export {
 	NotFoundError,
 	PermissionDeniedError,
 	RateLimitError,
-	SupersetError,
+	ChorosError,
 	UnprocessableEntityError,
 } from "./core/error";
 export { toFile, type Uploadable } from "./core/uploads";
 
 // Resource classes + their data shapes — bare top-level exports so consumers
-// can `import { type Task } from '@superset_sh/sdk'` without going through
-// the `Superset` namespace.
+// can `import { type Task } from '@choros_sh/sdk'` without going through
+// the `Choros` namespace.
 export {
 	type AgentCreateParams,
 	type AgentCreateResult,

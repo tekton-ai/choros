@@ -26,13 +26,13 @@ function createSandbox(): Sandbox {
 }
 
 function writeConfig(repoPath: string, content: object) {
-	const dir = join(repoPath, ".superset");
+	const dir = join(repoPath, ".choros");
 	mkdirSync(dir, { recursive: true });
 	writeFileSync(join(dir, "config.json"), JSON.stringify(content), "utf-8");
 }
 
 function writeFallbackScript(repoPath: string) {
-	const dir = join(repoPath, ".superset");
+	const dir = join(repoPath, ".choros");
 	mkdirSync(dir, { recursive: true });
 	writeFileSync(join(dir, "setup.sh"), "#!/bin/bash\necho hi\n", "utf-8");
 }
@@ -79,14 +79,14 @@ describe("resolveInitialCommand", () => {
 		writeFallbackScript(sandbox.repoPath);
 
 		expect(resolve()).toEqual({
-			initialCommand: `bash '${join(sandbox.repoPath, ".superset", "setup.sh")}'`,
+			initialCommand: `bash '${join(sandbox.repoPath, ".choros", "setup.sh")}'`,
 		});
 	});
 
 	it("falls back to setup.sh when no config.json exists at all", () => {
 		writeFallbackScript(sandbox.repoPath);
 		expect(resolve()).toEqual({
-			initialCommand: `bash '${join(sandbox.repoPath, ".superset", "setup.sh")}'`,
+			initialCommand: `bash '${join(sandbox.repoPath, ".choros", "setup.sh")}'`,
 		});
 	});
 
@@ -167,7 +167,7 @@ describe("resolveInitialCommand", () => {
 				homeDir: sandbox.homeDir,
 			}),
 		).toEqual({
-			initialCommand: `bash '${join(worktreePath, ".superset", "setup.sh")}'`,
+			initialCommand: `bash '${join(worktreePath, ".choros", "setup.sh")}'`,
 		});
 	});
 });

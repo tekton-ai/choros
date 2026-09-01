@@ -33,7 +33,7 @@ export async function generateMetadata(): Promise<Metadata> {
 		openGraph: {
 			title: i18n._({
 				id: "marketing.meta.factory2026.ogTitle",
-				message: "Factory 2026 | Superset",
+				message: "Factory 2026 | Choros",
 			}),
 			description,
 			url: localeUrl(lang, "/factory-2026"),
@@ -43,7 +43,7 @@ export async function generateMetadata(): Promise<Metadata> {
 			card: "summary_large_image",
 			title: i18n._({
 				id: "marketing.meta.factory2026.ogTitle",
-				message: "Factory 2026 | Superset",
+				message: "Factory 2026 | Choros",
 			}),
 			description,
 			images: ["/opengraph-image"],
@@ -246,7 +246,7 @@ export default async function Factory2026Page() {
 					</h2>
 					<p className="text-muted-foreground mt-3 max-w-lg mx-auto leading-relaxed">
 						<Trans id="marketing.factory.cta.body">
-							Superset is the workbench for the F3 to F4 transition: parallel
+							Choros is the workbench for the F3 to F4 transition: parallel
 							agents in isolated workspaces, fleets you can actually supervise,
 							and a review surface for code you did not write.
 						</Trans>
@@ -257,7 +257,7 @@ export default async function Factory2026Page() {
 							className="bg-foreground text-background px-6 py-3 text-sm font-normal transition-colors hover:bg-brand hover:text-white"
 						>
 							<Trans id="marketing.factory.cta.download">
-								Download Superset
+								Download Choros
 							</Trans>
 						</Link>
 						<Link

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { DesktopNav } from "./components/DesktopNav";
 import { MobileNav } from "./components/MobileNav";
-import { SupersetLogo } from "./components/SupersetLogo";
+import { ChorosLogo } from "./components/ChorosLogo";
 
 interface HeaderProps {
 	ctaButtons: React.ReactNode;
@@ -38,7 +38,7 @@ export function Header({ ctaButtons, starCounter }: HeaderProps) {
 							href="/"
 							className="flex items-center text-foreground hover:text-foreground/80 transition-colors"
 						>
-							<SupersetLogo />
+							<ChorosLogo />
 						</Link>
 					</m.div>
 

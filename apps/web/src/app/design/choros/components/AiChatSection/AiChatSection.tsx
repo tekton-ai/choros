@@ -45,7 +45,7 @@ export function AiChatSection() {
 				})}
 				importPath="@choros/ui/ai-elements/conversation"
 				description={i18n._({
-					id: "web.design.aiChatSection.alsoSupersetUiAiElements",
+					id: "web.design.aiChatSection.alsoChorosUiAiElements",
 					message:
 						"Also: @choros/ui/ai-elements/message — sticks to bottom as content streams",
 				})}

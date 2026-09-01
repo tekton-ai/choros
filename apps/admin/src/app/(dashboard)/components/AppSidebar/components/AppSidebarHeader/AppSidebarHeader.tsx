@@ -13,13 +13,13 @@ export function AppSidebarHeader() {
 					<a href="/">
 						<Image
 							src="/icon.png"
-							alt="Superset"
+							alt="Choros"
 							width={32}
 							height={32}
 							className="size-8 rounded-lg"
 						/>
 						<div className="flex flex-col gap-0.5 leading-none">
-							<span className="font-medium">Superset</span>
+							<span className="font-medium">Choros</span>
 						</div>
 					</a>
 				</SidebarMenuButton>

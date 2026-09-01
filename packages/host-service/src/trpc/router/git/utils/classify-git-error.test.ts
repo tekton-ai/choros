@@ -68,7 +68,7 @@ describe("rethrowEnvironmentalGitError", () => {
 		// code. The worker boundary drops `config` too, leaving only the message.
 		let caught: unknown;
 		try {
-			simpleGit("/superset-classifier-probe/does/not/exist");
+			simpleGit("/choros-classifier-probe/does/not/exist");
 		} catch (error) {
 			caught = error;
 		}

@@ -1,6 +1,6 @@
 import { Trans } from "@lingui/react/macro";
 
-function SupersetIcon({ className }: { className?: string }) {
+function ChorosIcon({ className }: { className?: string }) {
 	return (
 		<svg
 			viewBox="0 0 86 66"
@@ -74,12 +74,12 @@ export function MobileAppDemo() {
 					<div className="flex items-center justify-between px-5 py-3 border-b border-border">
 						<div className="flex items-center gap-3">
 							<div className="w-8 h-8 rounded-lg bg-foreground/10 flex items-center justify-center">
-								<SupersetIcon className="w-4 h-4 text-white" />
+								<ChorosIcon className="w-4 h-4 text-white" />
 							</div>
 							<div>
 								<div className="text-sm font-semibold text-foreground">
 									<Trans id="components.mobileAppDemo.agentName">
-										Superset Agent
+										Choros Agent
 									</Trans>
 								</div>
 								<div className="text-[10px] text-emerald-400">

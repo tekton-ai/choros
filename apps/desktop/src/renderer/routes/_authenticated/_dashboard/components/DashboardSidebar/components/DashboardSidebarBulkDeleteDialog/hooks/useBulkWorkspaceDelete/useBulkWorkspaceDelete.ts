@@ -269,12 +269,12 @@ export function useBulkWorkspaceDelete({
 							deletedIds.length > 0
 								? t({
 										id: "dashboard.sidebar.bulkDelete.partialFailureDescription",
-										message: "Reload Superset to refresh the workspace list.",
+										message: "Reload Choros to refresh the workspace list.",
 									})
 								: t({
 										id: "dashboard.sidebar.bulkDelete.unexpectedFailureDescription",
 										message:
-											"Try again. If the problem continues, reload Superset.",
+											"Try again. If the problem continues, reload Choros.",
 									}),
 					},
 				);

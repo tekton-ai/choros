@@ -5,9 +5,9 @@ import { join } from "node:path";
 import { readThemeState } from "./app-state";
 import { readHostGitSettings, writeHostGitSetting } from "./host-settings";
 import { readSettingsRow } from "./local-settings";
-import { createLocalSettingsDb, withTempSupersetHome } from "./test-helpers";
+import { createLocalSettingsDb, withTempChorosHome } from "./test-helpers";
 
-const home = withTempSupersetHome("superset-cli-hardening-");
+const home = withTempChorosHome("choros-cli-hardening-");
 const createLocalDb = (rowId?: number) =>
 	createLocalSettingsDb(home.dir, rowId);
 

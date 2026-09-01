@@ -155,7 +155,7 @@ export const usageRouter = router({
 			setDefaultAccountSelection(ctx.db, input.agent, input.selection);
 			// A profile dir is a whole config root, not just a login: without
 			// provisioning, agents launched there lose the user's skills,
-			// plugins, MCP servers and settings along with Superset's lifecycle
+			// plugins, MCP servers and settings along with Choros's lifecycle
 			// hooks — and, for Claude, the shared session history. Best-effort —
 			// a failed share must not undo the switch, and provisioning retries
 			// on the next switch and at host boot.

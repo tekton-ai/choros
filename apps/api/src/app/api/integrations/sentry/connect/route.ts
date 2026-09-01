@@ -1,7 +1,7 @@
 import { env } from "@/env";
 import { requireOrgMember } from "@/lib/integrations/requireOrgMember";
 
-/** How the callback recovers which Superset org started the install. */
+/** How the callback recovers which Choros org started the install. */
 export const SENTRY_STATE_COOKIE = "sentry_oauth_state";
 
 /**
@@ -10,7 +10,7 @@ export const SENTRY_STATE_COOKIE = "sentry_oauth_state";
  * A public Sentry integration is installed from Sentry's side, and Sentry
  * redirects back to the app's one fixed Redirect URL with a grant code, an
  * install id and the Sentry org's slug — but no state of ours, and nothing
- * naming the Superset org. So the one place the Superset org is known is right
+ * naming the Choros org. So the one place the Choros org is known is right
  * here, and it is carried to the callback in a signed, first-party cookie
  * rather than through Sentry.
  */

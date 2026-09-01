@@ -57,7 +57,7 @@ const config: NextConfig = {
 
 	async redirects() {
 		const docsUrl =
-			process.env.NEXT_PUBLIC_DOCS_URL || "https://docs.superset.sh";
+			process.env.NEXT_PUBLIC_DOCS_URL || "https://docs.choros.sh";
 		return [
 			{
 				source: "/about",
@@ -66,7 +66,7 @@ const config: NextConfig = {
 			},
 			{
 				source: "/mcp",
-				destination: "https://api.superset.sh/mcp",
+				destination: "https://api.choros.sh/mcp",
 				permanent: false,
 			},
 			{
@@ -94,7 +94,7 @@ const config: NextConfig = {
 							'</index.md>; rel="alternate"; type="text/markdown"',
 							'</llms.txt>; rel="describedby"; type="text/plain"',
 							'</.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json"',
-							'<https://api.superset.sh/openapi.json>; rel="service-desc"; type="application/vnd.oai.openapi+json"',
+							'<https://api.choros.sh/openapi.json>; rel="service-desc"; type="application/vnd.oai.openapi+json"',
 						].join(", "),
 					},
 				],
@@ -123,7 +123,7 @@ const config: NextConfig = {
 export default withSentryConfig(config, {
 	org: "superset-sh",
 	project: "marketing",
-	applicationKey: "superset-marketing",
+	applicationKey: "choros-marketing",
 	silent: !process.env.CI,
 	authToken: process.env.SENTRY_AUTH_TOKEN,
 	widenClientFileUpload: true,

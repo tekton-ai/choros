@@ -227,7 +227,7 @@ fixing before the dispatch rewrite is considered done:
    proper cross-platform join (or just use `path-browserify`).
 
 5. **Schema coupling between old and new IDB stores.** Dexie opened
-   the hand-rolled store's existing DB (`superset-pending-attachments`,
+   the hand-rolled store's existing DB (`choros-pending-attachments`,
    version 1) transparently. Any future schema change (indices,
    migration) requires bumping the Dexie version and writing a
    migration step.

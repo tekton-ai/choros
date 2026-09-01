@@ -8,7 +8,7 @@
 
 import { TunnelClientV2 } from "../../../packages/host-service/src/tunnel/tunnel-client-v2";
 
-const API_URL = "https://api.superset.sh";
+const API_URL = "https://api.choros.sh";
 const relayArg = process.argv.indexOf("--relay");
 const RELAY =
 	relayArg > -1 ? (process.argv[relayArg + 1] ?? "") : "http://localhost:8787";

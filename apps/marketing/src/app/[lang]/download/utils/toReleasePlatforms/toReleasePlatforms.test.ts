@@ -5,16 +5,16 @@ import { classifyAsset, toReleasePlatforms } from "./toReleasePlatforms";
 const REAL_ASSETS = [
 	"latest-linux.yml",
 	"latest-mac.yml",
-	"Superset-1.25.1-arm64-mac.zip",
-	"Superset-1.25.1-arm64.dmg",
-	"Superset-1.25.1-mac.zip",
-	"superset-1.25.1-x86_64.AppImage",
-	"Superset-1.25.1.dmg",
-	"Superset-arm64-mac.zip",
-	"Superset-arm64.dmg",
-	"Superset-x64-mac.zip",
-	"Superset-x64.dmg",
-	"Superset-x86_64.AppImage",
+	"Choros-1.25.1-arm64-mac.zip",
+	"Choros-1.25.1-arm64.dmg",
+	"Choros-1.25.1-mac.zip",
+	"choros-1.25.1-x86_64.AppImage",
+	"Choros-1.25.1.dmg",
+	"Choros-arm64-mac.zip",
+	"Choros-arm64.dmg",
+	"Choros-x64-mac.zip",
+	"Choros-x64.dmg",
+	"Choros-x86_64.AppImage",
 ].map((name) => ({
 	name,
 	size: 100,
@@ -23,12 +23,12 @@ const REAL_ASSETS = [
 
 describe("classifyAsset", () => {
 	test("labels the mac disk images by architecture", () => {
-		expect(classifyAsset("Superset-1.25.1-arm64.dmg", "1.25.1")).toMatchObject({
+		expect(classifyAsset("Choros-1.25.1-arm64.dmg", "1.25.1")).toMatchObject({
 			os: "macOS",
 			key: "mac-arm64",
 			label: "Mac (Apple Silicon)",
 		});
-		expect(classifyAsset("Superset-1.25.1.dmg", "1.25.1")).toMatchObject({
+		expect(classifyAsset("Choros-1.25.1.dmg", "1.25.1")).toMatchObject({
 			os: "macOS",
 			key: "mac-x64",
 			label: "Mac (Intel)",
@@ -37,7 +37,7 @@ describe("classifyAsset", () => {
 
 	test("labels the linux AppImage", () => {
 		expect(
-			classifyAsset("superset-1.25.1-x86_64.AppImage", "1.25.1"),
+			classifyAsset("choros-1.25.1-x86_64.AppImage", "1.25.1"),
 		).toMatchObject({
 			os: "Linux",
 			key: "linux-appimage-x64",
@@ -51,15 +51,15 @@ describe("classifyAsset", () => {
 
 	// The -mac.zip archives exist for electron-updater, not for people.
 	test("drops the updater zip archives", () => {
-		expect(classifyAsset("Superset-1.25.1-arm64-mac.zip", "1.25.1")).toBeNull();
-		expect(classifyAsset("Superset-1.25.1-mac.zip", "1.25.1")).toBeNull();
+		expect(classifyAsset("Choros-1.25.1-arm64-mac.zip", "1.25.1")).toBeNull();
+		expect(classifyAsset("Choros-1.25.1-mac.zip", "1.25.1")).toBeNull();
 	});
 
 	// The unversioned aliases point at the same files as the versioned assets;
 	// keeping them would list every download twice.
 	test("drops the unversioned latest aliases", () => {
-		expect(classifyAsset("Superset-arm64.dmg", "1.25.1")).toBeNull();
-		expect(classifyAsset("Superset-x86_64.AppImage", "1.25.1")).toBeNull();
+		expect(classifyAsset("Choros-arm64.dmg", "1.25.1")).toBeNull();
+		expect(classifyAsset("Choros-x86_64.AppImage", "1.25.1")).toBeNull();
 	});
 });
 
@@ -100,12 +100,12 @@ describe("toReleasePlatforms", () => {
 		const platforms = toReleasePlatforms(
 			[
 				{
-					name: "Superset-2.0.0-x64.exe",
+					name: "Choros-2.0.0-x64.exe",
 					size: 1,
 					browser_download_url: "https://example.test/exe",
 				},
 				{
-					name: "superset-2.0.0-arm64.deb",
+					name: "choros-2.0.0-arm64.deb",
 					size: 1,
 					browser_download_url: "https://example.test/deb",
 				},

@@ -13,7 +13,7 @@ import { OverlaysSection } from "./components/OverlaysSection";
 import { ShowcaseNav, type ShowcaseNavItem } from "./components/ShowcaseNav";
 
 export const metadata: Metadata = {
-	title: "Design · Superset",
+	title: "Design · Choros",
 	description: "Living reference for every @choros/ui component",
 };
 
@@ -67,7 +67,7 @@ export default function DesignPage() {
 				active="primitives"
 				title={i18n._({
 					id: "web.design.primitives.title",
-					message: "Superset Design System",
+					message: "Choros Design System",
 				})}
 				description={
 					<>

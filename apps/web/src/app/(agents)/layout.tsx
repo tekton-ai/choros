@@ -21,7 +21,7 @@ export default async function AgentsLayout({
 
 	const trpc = await api();
 	const organization = await trpc.user.myOrganization.query();
-	const displayName = organization?.name ?? "Superset";
+	const displayName = organization?.name ?? "Choros";
 
 	return (
 		<div className="flex min-h-screen flex-col">

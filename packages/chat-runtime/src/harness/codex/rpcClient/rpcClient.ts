@@ -204,7 +204,7 @@ export class CodexRpcClient {
 				else this.options.onServerRequest({ id, method, params });
 			} catch (error) {
 				if (id !== undefined) {
-					this.respondWithError(id, `unhandled by superset chat runtime`);
+					this.respondWithError(id, `unhandled by choros chat runtime`);
 				}
 				this.options.onDispatchError?.(error, method);
 			}

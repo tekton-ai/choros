@@ -76,7 +76,7 @@ export async function generateMetadata({
 	}
 
 	return {
-		title: `${page.title} - Superset`,
+		title: `${page.title} - Choros`,
 		description: page.description,
 		alternates: localizedAlternates(lang, `/${slug}`),
 	};

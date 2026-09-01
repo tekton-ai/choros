@@ -2,7 +2,7 @@ import { readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { parseStaticPortsConfig } from "@choros/port-scanner";
 
-const PROJECT_SUPERSET_DIR_NAME = ".superset";
+const PROJECT_SUPERSET_DIR_NAME = ".choros";
 const PORTS_FILE_NAME = "ports.json";
 
 interface LabelCacheEntry {

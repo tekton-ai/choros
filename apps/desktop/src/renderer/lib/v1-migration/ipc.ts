@@ -4,7 +4,7 @@ import { electronTrpcClient } from "renderer/lib/trpc-client";
 import type { V1LedgerOutcome, V1LedgerRow } from "./ledger";
 
 // Minimal row shapes the migrator actually reads — the electron queries
-// return supersets. Keeping the interface narrow is what lets the whole
+// return choross. Keeping the interface narrow is what lets the whole
 // pass run against in-memory fakes in tests.
 
 export interface V1ProjectRow {

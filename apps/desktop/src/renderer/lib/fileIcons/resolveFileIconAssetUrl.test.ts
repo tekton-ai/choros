@@ -16,10 +16,10 @@ describe("resolveFileIconAssetUrl", () => {
 		expect(
 			resolveFileIconAssetUrl(
 				"typescript",
-				"file:///Applications/Superset.app/Contents/Resources/app.asar/dist/renderer/index.html#/workspace/123",
+				"file:///Applications/Choros.app/Contents/Resources/app.asar/dist/renderer/index.html#/workspace/123",
 			),
 		).toBe(
-			"file:///Applications/Superset.app/Contents/Resources/app.asar/dist/renderer/file-icons/typescript.svg",
+			"file:///Applications/Choros.app/Contents/Resources/app.asar/dist/renderer/file-icons/typescript.svg",
 		);
 	});
 });

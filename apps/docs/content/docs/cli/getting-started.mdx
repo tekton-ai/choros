@@ -1,24 +1,24 @@
 ---
 title: Getting Started
-description: Install the Superset CLI, sign in, and run your first commands.
+description: Install the Choros CLI, sign in, and run your first commands.
 ---
 
 <Callout type="warn">
 The CLI is currently in Beta. Commands and flags are still evolving. Make sure you're on the latest version of the CLI if you run into issues.
 </Callout>
 
-The Superset CLI (`superset`) is a single static binary that drives the same
+The Choros CLI (`choros`) is a single static binary that drives the same
 backend as the desktop app. Use it to manage workspaces, tasks, automations,
 and the local host server from your terminal or from CI.
 
-<YouTubeVideo id="8g-l5kYEGBc" title="Superset CLI + Skills Demo" thumbnail="/images/cli-skills-demo.jpg" />
+<YouTubeVideo id="8g-l5kYEGBc" title="Choros CLI + Skills Demo" thumbnail="/images/cli-skills-demo.jpg" />
 
 ## Install
 
 ### Desktop app
 
-The desktop app includes the Superset CLI. When the app launches, it writes
-an app-managed shim at `~/.superset/bin/superset`, and Superset terminals
+The desktop app includes the Choros CLI. When the app launches, it writes
+an app-managed shim at `~/.superset/bin/choros`, and Choros terminals
 prepend `~/.superset/bin` to `PATH` automatically.
 
 To use the bundled CLI from a normal shell, add the directory to your shell
@@ -31,23 +31,23 @@ export PATH="$HOME/.superset/bin:$PATH"
 ### Standalone install
 
 ```bash
-curl -fsSL https://superset.sh/cli/install.sh | sh
+curl -fsSL https://choros.sh/cli/install.sh | sh
 ```
 
 The script auto-detects your platform (macOS on Apple Silicon or Intel, Linux on
-x64 or arm64), installs Superset under `~/superset` by default, and adds
-`~/superset/bin` to your shell `PATH`.
+x64 or arm64), installs Choros under `~/choros` by default, and adds
+`~/choros/bin` to your shell `PATH`.
 
 ### Homebrew
 
 ```bash
-brew install superset-sh/tap/superset
+brew install superset-sh/tap/choros
 ```
 
 ## Sign in
 
 ```bash
-superset auth login
+choros auth login
 ```
 
 The CLI starts a loopback callback server on `127.0.0.1:51789` (or `51790`
@@ -58,7 +58,7 @@ If you belong to multiple organizations, you'll be prompted to pick one. To
 skip the prompt and pick directly:
 
 ```bash
-superset auth login --organization acme
+choros auth login --organization acme
 ```
 
 For CI or other non-interactive environments (where there's no browser to
@@ -66,15 +66,15 @@ complete the OAuth flow), use an API key instead. You can either store it
 once with `auth login --api-key`:
 
 ```bash
-superset auth login --api-key sk_live_…
-superset auth whoami
+choros auth login --api-key sk_live_…
+choros auth whoami
 ```
 
 …or set `SUPERSET_API_KEY` per-invocation without writing anything to disk:
 
 ```bash
 export SUPERSET_API_KEY=sk_live_…
-superset auth whoami
+choros auth whoami
 ```
 
 API keys are issued from the **Settings → API Keys** page in the desktop app.
@@ -82,7 +82,7 @@ API keys are issued from the **Settings → API Keys** page in the desktop app.
 ## Verify your session
 
 ```bash
-superset auth whoami
+choros auth whoami
 ```
 
 ```text
@@ -93,10 +93,10 @@ Auth: Session (expires in 32 min)
 
 ## Explore interactively
 
-Bare `superset` in a terminal opens an interactive command browser:
+Bare `choros` in a terminal opens an interactive command browser:
 arrow-key through the commands, read their flags, and fill in required
 inputs with guided prompts. The confirmation screen shows the exact
-command before running it. `superset --help` prints the same catalog as
+command before running it. `choros --help` prints the same catalog as
 static, grouped help. Agents and CI always get static help; the browser
 never opens there.
 
@@ -107,7 +107,7 @@ never opens there.
 List the projects in your organization:
 
 ```bash
-superset projects list
+choros projects list
 ```
 
 If your repo isn't there yet, register it on this machine. Clone from a
@@ -115,25 +115,25 @@ Git URL or import an existing checkout:
 
 ```bash
 # Clone from a URL
-superset projects create --name "my-app" --local \
+choros projects create --name "my-app" --local \
   --clone https://github.com/org/my-app.git \
   --parent-dir ~/code
 
 # Or register an existing local checkout
-superset projects create --name "my-app" --local --import ~/code/my-app
+choros projects create --name "my-app" --local --import ~/code/my-app
 ```
 
 If the project already exists in your org but isn't on this machine,
 attach to it instead of creating a duplicate:
 
 ```bash
-superset projects setup <id-from-projects-list> --local --parent-dir ~/code
+choros projects setup <id-from-projects-list> --local --parent-dir ~/code
 ```
 
 Then create a workspace against it:
 
 ```bash
-superset workspaces create \
+choros workspaces create \
   --project prj_… \
   --name "fix-login-bug" \
   --branch fix/login-bug \
@@ -143,9 +143,9 @@ superset workspaces create \
 Trigger an automation immediately:
 
 ```bash
-superset automations list
-superset automations run aut_…
-superset automations logs aut_…
+choros automations list
+choros automations run aut_…
+choros automations logs aut_…
 ```
 
 ## Output modes
@@ -159,8 +159,8 @@ shape of the output for scripting:
 | `--quiet` | One ID per line for arrays of objects with `id`; the ID for single objects; JSON otherwise. |
 
 ```bash
-superset tasks list --status in_progress --json | jq '.[].title'
-superset workspaces list --quiet | xargs -L1 superset workspaces delete
+choros tasks list --status in_progress --json | jq '.[].title'
+choros workspaces list --quiet | xargs -L1 choros workspaces delete
 ```
 
 When the CLI detects an agent or CI environment (`CLAUDE_CODE`,
@@ -176,9 +176,9 @@ straight to the host server over loopback (offline-friendly); remote
 calls route through the cloud API and the relay.
 
 ```bash
-superset hosts list
-superset workspaces list              # this machine
-superset workspaces list --host h_…  # another host
+choros hosts list
+choros workspaces list              # this machine
+choros workspaces list --host h_…  # another host
 ```
 
 Every host-scoped command targets exactly one host. Reads

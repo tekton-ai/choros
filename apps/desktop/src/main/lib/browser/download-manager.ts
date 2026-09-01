@@ -8,7 +8,7 @@ import { app, session, shell } from "electron";
 import { localDb } from "../local-db";
 
 /** The partition the in-app browser pane (and app renderer) use. */
-const BROWSER_PARTITION = "persist:superset";
+const BROWSER_PARTITION = "persist:choros";
 const MAX_TRACKED_DOWNLOADS = 200;
 
 /**

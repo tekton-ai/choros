@@ -2,10 +2,10 @@ import { existsSync, readFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";
 
-const PROJECT_SUPERSET_DIR_NAME = ".superset";
+const PROJECT_SUPERSET_DIR_NAME = ".choros";
 const CONFIG_FILE_NAME = "config.json";
 const LOCAL_CONFIG_FILE_NAME = "config.local.json";
-const SUPERSET_DIR_NAME = ".superset";
+const SUPERSET_DIR_NAME = ".choros";
 const PROJECTS_DIR_NAME = "projects";
 
 export interface SetupConfig {

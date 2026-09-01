@@ -307,7 +307,7 @@ async function releaseFromCommit(
 
 	await $`git push origin --delete ${tempBranch}`.nothrow().quiet();
 
-	const worktree = mkdtempSync(join(tmpdir(), "superset-release-"));
+	const worktree = mkdtempSync(join(tmpdir(), "choros-release-"));
 	let bumped = false;
 	try {
 		await $`git worktree add --detach ${worktree} ${fullSha}`.quiet();

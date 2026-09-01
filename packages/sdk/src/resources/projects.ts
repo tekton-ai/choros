@@ -1,5 +1,5 @@
 import type { APIPromise } from "../core/api-promise";
-import { SupersetError } from "../core/error";
+import { ChorosError } from "../core/error";
 import { APIResource } from "../core/resource";
 import type { RequestOptions } from "../internal/request-options";
 
@@ -11,7 +11,7 @@ export class Projects extends APIResource {
 	/**
 	 * List projects set up on a host.
 	 *
-	 * Mirrors `superset projects list --host <id>`.
+	 * Mirrors `choros projects list --host <id>`.
 	 */
 	list(
 		params: ProjectListParams,
@@ -28,8 +28,8 @@ export class Projects extends APIResource {
 
 	private _requireOrgId(): string {
 		if (!this._client.organizationId) {
-			throw new SupersetError(
-				"organizationId is required. Set SUPERSET_ORGANIZATION_ID, or pass `organizationId` to the Superset constructor.",
+			throw new ChorosError(
+				"organizationId is required. Set SUPERSET_ORGANIZATION_ID, or pass `organizationId` to the Choros constructor.",
 			);
 		}
 		return this._client.organizationId;

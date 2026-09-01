@@ -70,8 +70,8 @@ export function DataSection() {
 				title={i18n._({ id: "web.design.dataSection.badge", message: "Badge" })}
 				importPath="@choros/ui/badge"
 				description={i18n._({
-					id: "web.design.dataSection.includesTheSupersetSpecificBox",
-					message: "Includes the Superset-specific box variant",
+					id: "web.design.dataSection.includesTheChorosSpecificBox",
+					message: "Includes the Choros-specific box variant",
 				})}
 			>
 				<Badge>
@@ -102,8 +102,8 @@ export function DataSection() {
 					<AvatarImage
 						src="https://github.com/superset-sh.png"
 						alt={i18n._({
-							id: "web.design.dataSection.superset",
-							message: "Superset",
+							id: "web.design.dataSection.choros",
+							message: "Choros",
 						})}
 					/>
 					<AvatarFallback>
@@ -136,8 +136,8 @@ export function DataSection() {
 							</Trans>
 						</CardTitle>
 						<CardDescription>
-							<Trans id="web.design.dataSection.chooseWhenSupersetPingsYou">
-								Choose when Superset pings you.
+							<Trans id="web.design.dataSection.chooseWhenChorosPingsYou">
+								Choose when Choros pings you.
 							</Trans>
 						</CardDescription>
 					</CardHeader>

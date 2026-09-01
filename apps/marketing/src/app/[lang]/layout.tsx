@@ -81,7 +81,7 @@ export const metadata: Metadata = {
 		title: `${COMPANY.NAME} - Orchestrate any coding agent`,
 		description: siteDescription,
 		images: ["/og-image.png"],
-		creator: "@superset_sh",
+		creator: "@choros_sh",
 	},
 	robots: {
 		index: true,

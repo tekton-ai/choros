@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import type { Superset } from "../client";
+import type { Choros } from "../client";
 
 export abstract class APIResource {
-	protected _client: Superset;
+	protected _client: Choros;
 
-	constructor(client: Superset) {
+	constructor(client: Choros) {
 		this._client = client;
 	}
 }

@@ -1,4 +1,4 @@
-// Code-drawn stand-in for a terminal screenshot: the root `superset` command's
+// Code-drawn stand-in for a terminal screenshot: the root `choros` command's
 // own listing. A real capture would pin a version number and someone's shell
 // prompt into an evergreen page; this stays current because the command list is
 // the same text the CLI prints.
@@ -24,7 +24,7 @@ export function CliMock() {
 				<span className="text-muted-foreground">~/w/demo-app </span>
 				<span className="text-brand">main</span>
 				<span className="text-muted-foreground"> ❯ </span>
-				<span className="text-foreground">superset</span>
+				<span className="text-foreground">choros</span>
 			</div>
 			<div className="mt-1 whitespace-nowrap text-muted-foreground">
 				Command your fleet of coding agents from any shell.

@@ -249,7 +249,7 @@ Host Service (N)
 ├── <another org>
 │   └── ...
 ├── ─────────
-├── Open Superset
+├── Open Choros
 ├── Settings
 ├── Check for Updates
 ├── ─────────
@@ -394,4 +394,4 @@ createApp({
 });
 ```
 
-No `if (process.resourcesPath)`. No `if (platform() === "darwin")`. No `~/.superset` defaults. The host service is a pure server; the caller decides how it's configured.
+No `if (process.resourcesPath)`. No `if (platform() === "darwin")`. No `~/.choros` defaults. The host service is a pure server; the caller decides how it's configured.

@@ -55,7 +55,7 @@ export default async function DashboardLayout({
 					<Breadcrumb>
 						<BreadcrumbList>
 							<BreadcrumbItem className="hidden md:block">
-								<BreadcrumbLink href="/">Superset</BreadcrumbLink>
+								<BreadcrumbLink href="/">Choros</BreadcrumbLink>
 							</BreadcrumbItem>
 							<BreadcrumbSeparator className="hidden md:block" />
 							<BreadcrumbItem>

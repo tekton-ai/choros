@@ -27,9 +27,9 @@ const web = (params = "") =>
  * Finishes a Sentry install: exchanges the grant code for a token pair and
  * writes the connection.
  *
- * This is the authoritative path — it is the only one that knows the Superset
+ * This is the authoritative path — it is the only one that knows the Choros
  * org (from the signed cookie the connect route set). The `installation.created`
- * webhook that Sentry fires in parallel names no Superset org, so it can only
+ * webhook that Sentry fires in parallel names no Choros org, so it can only
  * ever update a row this route already wrote; the two never both create.
  */
 export async function GET(request: Request) {

@@ -185,14 +185,14 @@ describe("codexAdapter fixtures", () => {
 			kind: "tool_call",
 			toolName: "commandExecution",
 			toolKind: "execute",
-			title: "echo superset-probe",
+			title: "echo choros-probe",
 			status: "completed",
 		});
 		expect(call?.content).toEqual([
 			{
 				type: "terminal",
-				command: "/bin/zsh -lc 'echo superset-probe'",
-				output: "superset-probe\n",
+				command: "/bin/zsh -lc 'echo choros-probe'",
+				output: "choros-probe\n",
 				exitCode: 0,
 			},
 		]);

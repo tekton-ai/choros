@@ -25,13 +25,13 @@ Each parallel agent runs in its own isolated workspace. Here's how to create one
 
 ```bash
 # Create a new workspace for a feature
-superset create --branch feature/auth
+choros create --branch feature/auth
 
 # List all active workspaces
-superset list
+choros list
 
 # Switch to a workspace
-superset switch feature/auth
+choros switch feature/auth
 ```
 
 <Video src="/blog/parallel-agents-guide/parallel-agents-demo.mov" title="Parallel agents in action" />
@@ -123,7 +123,7 @@ export async function GET(
 
 ### Configuration Example
 
-You can configure Superset with a simple config file:
+You can configure Choros with a simple config file:
 
 ```json
 {

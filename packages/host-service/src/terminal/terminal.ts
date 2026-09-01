@@ -1782,7 +1782,7 @@ void (async () => {
 	try {
 		const dir = tmpdir();
 		for (const name of await readdir(dir)) {
-			if (!name.startsWith("superset-launch-")) continue;
+			if (!name.startsWith("choros-launch-")) continue;
 			const scriptPath = join(dir, name);
 			try {
 				const { mtimeMs } = await stat(scriptPath);
@@ -1816,7 +1816,7 @@ function stageInitialCommandScript(
 	const safeId = session.terminalId.replace(/[^\w-]/g, "_").slice(0, 60);
 	const scriptPath = join(
 		tmpdir(),
-		`superset-launch-${safeId}-${randomBytes(4).toString("hex")}.sh`,
+		`choros-launch-${safeId}-${randomBytes(4).toString("hex")}.sh`,
 	);
 	// tmpdir paths never contain quotes, so this quoting is identical in
 	// POSIX shells and fish.
@@ -2129,7 +2129,7 @@ async function typeInitialCommandUngated(
  * Rewrite a bash-only heredoc prompt transport for a fish launch shell. fish
  * has no heredocs, so the shared "$(cat <<'SUPERSET_PROMPT_…')" transport
  * dies at parse and the agent never starts (#4705). The prompt bytes go to a
- * staged temp file (the `superset-launch-` prefix keeps it under the boot
+ * staged temp file (the `choros-launch-` prefix keeps it under the boot
  * sweep's crash cleanup) and the typed command becomes the fish equivalent,
  * which deletes the file as soon as it's consumed. POSIX shells keep today's
  * heredoc byte-for-byte — this runs only when the launch shell is fish.
@@ -2144,7 +2144,7 @@ function stageFishPromptTransport(
 	const safeId = session.terminalId.replace(/[^\w-]/g, "_").slice(0, 60);
 	const promptPath = join(
 		tmpdir(),
-		`superset-launch-prompt-${safeId}-${randomBytes(4).toString("hex")}.txt`,
+		`choros-launch-prompt-${safeId}-${randomBytes(4).toString("hex")}.txt`,
 	);
 	try {
 		// Trailing newline matches the heredoc body (`…\n` before the tag);
@@ -2174,7 +2174,7 @@ function stageFishPromptTransport(
 // Shown in the terminal when a fish prompt launch can't be staged — the
 // alternative (typing the bash heredoc into fish) is guaranteed garbage.
 const FISH_PROMPT_STAGE_FAILED_NOTICE = new TextEncoder().encode(
-	"\r\n\x1b[31m[superset] Failed to stage the agent prompt for fish — the agent was not started. Retry the launch; see host-service logs for the cause.\x1b[0m\r\n",
+	"\r\n\x1b[31m[choros] Failed to stage the agent prompt for fish — the agent was not started. Retry the launch; see host-service logs for the cause.\x1b[0m\r\n",
 );
 
 function queueInitialCommand(
@@ -2711,7 +2711,7 @@ export async function createTerminalSessionInternal({
 			workspaceId,
 			workspacePath: workspace.worktreePath,
 			rootPath,
-			supersetEnv:
+			chorosEnv:
 				process.env.NODE_ENV === "development" ? "development" : "production",
 			agentHookPort: process.env.SUPERSET_AGENT_HOOK_PORT || "",
 			agentHookVersion: process.env.SUPERSET_AGENT_HOOK_VERSION || "",

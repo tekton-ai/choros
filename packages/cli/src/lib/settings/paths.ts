@@ -6,7 +6,7 @@ import { join } from "node:path";
  * SUPERSET_HOME_DIR at a sandbox before touching the stores.
  */
 export function getSupersetHomeDir(): string {
-	return process.env.SUPERSET_HOME_DIR ?? join(homedir(), ".superset");
+	return process.env.SUPERSET_HOME_DIR ?? join(homedir(), ".choros");
 }
 
 export function getLocalDbPath(): string {

@@ -113,7 +113,7 @@ const config = {
 export default withSentryConfig(withMDX(config), {
 	org: "superset-sh",
 	project: "docs",
-	applicationKey: "superset-docs",
+	applicationKey: "choros-docs",
 	silent: !process.env.CI,
 	widenClientFileUpload: true,
 	tunnelRoute: "/monitoring",

@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 
-const FILE_PATH_MIME = "application/x-superset-file-path";
+const FILE_PATH_MIME = "application/x-choros-file-path";
 
 interface UseFileDragProps {
 	absolutePath: string | null;

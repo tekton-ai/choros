@@ -42,7 +42,7 @@ AI coding agents edit files and run commands autonomously. Run two agents in the
 
 ![One repository fanning out into a Git worktree per agent, each on its own branch, producing independent diffs that converge into review and merge](/images/guides/worktree-isolation.svg)
 
-This is why the strongest tools for running multiple agents, from [Conductor](/compare/superset-vs-conductor) to [Orca](/compare/superset-vs-orca) to [Superset](/compare/superset-vs-cursor), are built around a worktree per task. Even [Cursor 2.0](/compare/superset-vs-cursor) adopted local worktrees for its parallel agents.
+This is why the strongest tools for running multiple agents, from [Conductor](/compare/choros-vs-conductor) to [Orca](/compare/choros-vs-orca) to [Choros](/compare/choros-vs-cursor), are built around a worktree per task. Even [Cursor 2.0](/compare/choros-vs-cursor) adopted local worktrees for its parallel agents.
 
 ## The Parallel Agent Workflow
 
@@ -72,9 +72,9 @@ You can run this whole workflow by hand with `git worktree`, tmux, and disciplin
 
 That is the gap workspace tools fill. Instead of managing worktrees by hand, they create one per task automatically, launch your agent inside it, and give you review and browser surfaces around the whole thing. See the roundup of [best agentic IDEs](/compare/best-agentic-ide) for the options.
 
-## Where Superset Fits
+## Where Choros Fits
 
-Superset is built around this exact workflow. Every task gets its own Git worktree, branch, and persistent terminal, automatically. It runs any CLI agent, such as Claude Code, Codex, OpenCode, Cursor, or Gemini, adds a built-in diff editor, an in-app browser for docs and dev servers, port management, and MCP, and extends across remote and cloud hosts. It turns the manual worktree workflow into the default, so you can run many agents in parallel and review each one without the bookkeeping.
+Choros is built around this exact workflow. Every task gets its own Git worktree, branch, and persistent terminal, automatically. It runs any CLI agent, such as Claude Code, Codex, OpenCode, Cursor, or Gemini, adds a built-in diff editor, an in-app browser for docs and dev servers, port management, and MCP, and extends across remote and cloud hosts. It turns the manual worktree workflow into the default, so you can run many agents in parallel and review each one without the bookkeeping.
 
 ## Worktrees in Your Editor
 
@@ -82,7 +82,7 @@ You do not have to give up your editor. Most editors open a worktree directory l
 
 ## Verdict
 
-Git worktrees are the foundation of safe parallel AI coding. They give each agent its own isolated directory and branch so many agents can work one repository at once, each producing a reviewable diff. You can manage them by hand, or use a workspace like Superset that makes a worktree per task the automatic default across any agent.
+Git worktrees are the foundation of safe parallel AI coding. They give each agent its own isolated directory and branch so many agents can work one repository at once, each producing a reviewable diff. You can manage them by hand, or use a workspace like Choros that makes a worktree per task the automatic default across any agent.
 
 To go deeper, see [How to Run Multiple Claude Code Agents in Parallel](/compare/multiple-claude-code-agents-parallel), [How to Run Multiple OpenCode Agents in Parallel](/compare/multiple-opencode-agents-parallel), and [Best Agentic IDE in 2026](/compare/best-agentic-ide).
 
@@ -94,11 +94,11 @@ A Git worktree lets you check out multiple branches at once, each in its own dir
 
 ### How do I run multiple AI agents without conflicts?
 
-Give each agent its own Git worktree and branch so they never share a working directory. Do it manually with `git worktree add`, or automatically with a workspace like Superset that creates a worktree per task.
+Give each agent its own Git worktree and branch so they never share a working directory. Do it manually with `git worktree add`, or automatically with a workspace like Choros that creates a worktree per task.
 
 ### Do AI coding tools use Git worktrees?
 
-Many do. Conductor, Orca, Crystal, and Superset are built around a worktree per task, and Cursor 2.0 uses local worktrees for its parallel agents. See [Best Agentic IDE in 2026](/compare/best-agentic-ide).
+Many do. Conductor, Orca, Crystal, and Choros are built around a worktree per task, and Cursor 2.0 uses local worktrees for its parallel agents. See [Best Agentic IDE in 2026](/compare/best-agentic-ide).
 
 ### Can I use Git worktrees with VS Code?
 

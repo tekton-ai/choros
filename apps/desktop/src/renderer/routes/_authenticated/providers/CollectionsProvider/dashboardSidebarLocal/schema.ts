@@ -418,7 +418,7 @@ export const v2UserPreferencesSchema = z.object({
 // The fixed set of built-in preset ids. Consumers derive their id constants
 // from this list (compile-checked via `satisfies`) so the heal-time pruning
 // below can never drop an id that is still in use.
-export const KNOWN_BUILTIN_PRESET_IDS = ["superset-cli"] as const;
+export const KNOWN_BUILTIN_PRESET_IDS = ["choros-cli"] as const;
 
 export const MAX_FAVORITE_PAGE_IDS = 200;
 

@@ -45,7 +45,7 @@ export function LayoutSection() {
 			>
 				<div className="w-full max-w-64">
 					<p className="text-sm font-medium">
-						<Trans id="web.design.layoutSection.supersetUi">Superset UI</Trans>
+						<Trans id="web.design.layoutSection.chorosUi">Choros UI</Trans>
 					</p>
 					<p className="text-sm text-muted-foreground">
 						<Trans id="web.design.layoutSection.sharedComponentLibrary">
@@ -109,7 +109,7 @@ export function LayoutSection() {
 				})}
 				importPath="@choros/ui/overflow-fade-container"
 				description={i18n._({
-					id: "web.design.layoutSection.alsoSupersetUiOverflowFade",
+					id: "web.design.layoutSection.alsoChorosUiOverflowFade",
 					message: "Also: @choros/ui/overflow-fade-text",
 				})}
 			>

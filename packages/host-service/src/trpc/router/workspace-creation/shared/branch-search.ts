@@ -64,7 +64,7 @@ export async function listWorktreeBranches(git: GitClient): Promise<{
 /**
  * Check whether a git worktree is registered at `worktreePath` with the given
  * branch checked out. Used by adopt when the caller provides an explicit path
- * (e.g. v1→v2 migration) rather than a Superset-managed `.worktrees/<branch>`
+ * (e.g. v1→v2 migration) rather than a Choros-managed `.worktrees/<branch>`
  * path discovered via `listWorktreeBranches`.
  */
 export async function findWorktreeAtPath(

@@ -56,12 +56,12 @@ export default async function EnterprisePage() {
 							</span>
 							<h1 className="text-3xl md:text-4xl font-medium tracking-tight text-foreground mt-4">
 								<Trans id="marketing.enterprise.hero.title">
-									Superset for your team
+									Choros for your team
 								</Trans>
 							</h1>
 							<p className="text-muted-foreground mt-3 max-w-lg">
 								<Trans id="marketing.enterprise.hero.subtitle">
-									Interested in bringing Superset to your organization? Reach
+									Interested in bringing Choros to your organization? Reach
 									out and we&apos;ll work with you to find the right setup for
 									your team.
 								</Trans>

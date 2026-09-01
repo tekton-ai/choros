@@ -88,7 +88,7 @@ export function EmailLayout({
 							padding: "40px 24px 48px",
 						}}
 					>
-						<Img src={`${assets}/logo-full.png`} alt="Superset" width="116" />
+						<Img src={`${assets}/logo-full.png`} alt="Choros" width="116" />
 
 						<Section style={{ paddingTop: "32px" }}>{children}</Section>
 
@@ -101,13 +101,13 @@ export function EmailLayout({
 						/>
 						<Text style={footerText}>
 							<Link
-								href="https://superset.sh"
+								href="https://choros.sh"
 								style={{
 									color: emailTheme.colors.faint,
 									textDecoration: "none",
 								}}
 							>
-								Superset
+								Choros
 							</Link>
 							, Inc., San Francisco, CA
 						</Text>

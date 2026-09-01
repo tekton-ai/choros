@@ -101,13 +101,13 @@ const SEED_ATTACHMENTS: PromptInputAttachmentInput[] = [
 		mediaType: "image/jpeg",
 		name: "screenshot.jpg",
 		type: "image",
-		uri: "https://picsum.photos/seed/superset-1/200",
+		uri: "https://picsum.photos/seed/choros-1/200",
 	},
 	{
 		mediaType: "image/jpeg",
 		name: "diagram.jpg",
 		type: "image",
-		uri: "https://picsum.photos/seed/superset-2/200",
+		uri: "https://picsum.photos/seed/choros-2/200",
 	},
 	{
 		mediaType: "application/pdf",

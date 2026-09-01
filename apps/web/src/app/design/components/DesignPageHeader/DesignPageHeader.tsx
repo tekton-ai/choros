@@ -9,11 +9,11 @@ const PAGES = [
 		label: { id: "web.design.header.primitives", message: "Primitives" },
 	},
 	{
-		key: "superset",
-		href: "/design/superset",
+		key: "choros",
+		href: "/design/choros",
 		label: {
-			id: "web.design.header.supersetComponents",
-			message: "Superset components",
+			id: "web.design.header.chorosComponents",
+			message: "Choros components",
 		},
 	},
 ] as const;

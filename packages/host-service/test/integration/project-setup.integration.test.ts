@@ -161,9 +161,9 @@ describe("project.create empty mode is fully local", () => {
 			GIT_COMMITTER_EMAIL: process.env.GIT_COMMITTER_EMAIL,
 		};
 		process.env.GIT_AUTHOR_NAME = "Test Runner";
-		process.env.GIT_AUTHOR_EMAIL = "test@superset.sh";
+		process.env.GIT_AUTHOR_EMAIL = "test@choros.sh";
 		process.env.GIT_COMMITTER_NAME = "Test Runner";
-		process.env.GIT_COMMITTER_EMAIL = "test@superset.sh";
+		process.env.GIT_COMMITTER_EMAIL = "test@choros.sh";
 		try {
 			const created = await host.trpc.project.create.mutate({
 				name: "Fresh Local",

@@ -42,7 +42,7 @@ export const PRODUCT_LINKS: NavLink[] = [
 		label: "MCP",
 		description: (
 			<Trans id="marketing.nav.product.mcp.description">
-				Connect any AI agent to Superset.
+				Connect any AI agent to Choros.
 			</Trans>
 		),
 	},
@@ -84,7 +84,7 @@ export const RESOURCE_LINKS: NavLink[] = [
 		label: <Trans id="marketing.nav.resources.about.label">About</Trans>,
 		description: (
 			<Trans id="marketing.nav.resources.about.description">
-				The people behind Superset.
+				The people behind Choros.
 			</Trans>
 		),
 	},

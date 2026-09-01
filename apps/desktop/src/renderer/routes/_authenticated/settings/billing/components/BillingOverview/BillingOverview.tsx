@@ -172,7 +172,7 @@ export function BillingOverview({ visibleItems }: BillingOverviewProps) {
 						<Trans id="settings.billing.subtitle">
 							For questions about billing,{" "}
 							<a
-								href="mailto:support@superset.sh"
+								href="mailto:support@choros.sh"
 								className="text-primary hover:underline"
 							>
 								contact us

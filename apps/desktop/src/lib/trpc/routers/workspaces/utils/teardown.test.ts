@@ -11,8 +11,8 @@ import { homedir, tmpdir } from "node:os";
 import { join } from "node:path";
 import { PROJECTS_DIR_NAME, SUPERSET_DIR_NAME } from "shared/constants";
 
-const TEST_DIR = join(tmpdir(), `superset-test-teardown-${process.pid}`);
-const TEST_SUPERSET_HOME = join(TEST_DIR, "superset-home");
+const TEST_DIR = join(tmpdir(), `choros-test-teardown-${process.pid}`);
+const TEST_SUPERSET_HOME = join(TEST_DIR, "choros-home");
 const MAIN_REPO = join(TEST_DIR, "main-repo");
 const WORKTREE = join(TEST_DIR, "worktree");
 const PROJECT_ID = "test-teardown-project";
@@ -33,7 +33,7 @@ describe("runTeardown", () => {
 	beforeEach(() => {
 		process.env.SUPERSET_HOME_DIR = TEST_SUPERSET_HOME;
 		// Create test directories
-		mkdirSync(join(MAIN_REPO, ".superset"), { recursive: true });
+		mkdirSync(join(MAIN_REPO, ".choros"), { recursive: true });
 		mkdirSync(WORKTREE, { recursive: true });
 	});
 
@@ -80,7 +80,7 @@ describe("runTeardown", () => {
 
 	test("returns success when config has no teardown commands", async () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({ setup: ["echo setup"] }),
 		);
 
@@ -94,7 +94,7 @@ describe("runTeardown", () => {
 
 	test("returns success when teardown array is empty", async () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({ teardown: [] }),
 		);
 
@@ -112,7 +112,7 @@ describe("runTeardown", () => {
 		const markerFile = join(WORKTREE, "main-repo-config-executed.txt");
 
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({ teardown: [`echo "executed" > "${markerFile}"`] }),
 		);
 
@@ -129,9 +129,9 @@ describe("runTeardown", () => {
 
 	test("uses worktreePath config when present", async () => {
 		const worktreeMarker = join(WORKTREE, "worktree-config-executed.txt");
-		mkdirSync(join(WORKTREE, ".superset"), { recursive: true });
+		mkdirSync(join(WORKTREE, ".choros"), { recursive: true });
 		writeFileSync(
-			join(WORKTREE, ".superset", "config.json"),
+			join(WORKTREE, ".choros", "config.json"),
 			JSON.stringify({ teardown: [`echo "executed" > "${worktreeMarker}"`] }),
 		);
 
@@ -151,13 +151,13 @@ describe("runTeardown", () => {
 		const worktreeMarker = join(WORKTREE, "from-worktree.txt");
 
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({ teardown: [`echo "main" > "${mainMarker}"`] }),
 		);
 
-		mkdirSync(join(WORKTREE, ".superset"), { recursive: true });
+		mkdirSync(join(WORKTREE, ".choros"), { recursive: true });
 		writeFileSync(
-			join(WORKTREE, ".superset", "config.json"),
+			join(WORKTREE, ".choros", "config.json"),
 			JSON.stringify({ teardown: [`echo "worktree" > "${worktreeMarker}"`] }),
 		);
 
@@ -174,7 +174,7 @@ describe("runTeardown", () => {
 
 	test("returns error when teardown command fails", async () => {
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({ teardown: ["exit 1"] }),
 		);
 
@@ -190,7 +190,7 @@ describe("runTeardown", () => {
 	test("chains multiple teardown commands with &&", async () => {
 		const testFile = join(WORKTREE, "teardown-test.txt");
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({
 				teardown: [`echo "created" > "${testFile}"`, `test -f "${testFile}"`],
 			}),
@@ -208,7 +208,7 @@ describe("runTeardown", () => {
 	test("sets environment variables for teardown scripts", async () => {
 		const envFile = join(WORKTREE, "env-test.txt");
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({
 				teardown: [
 					`echo "$SUPERSET_WORKSPACE_NAME|$SUPERSET_ROOT_PATH" > "${envFile}"`,
@@ -232,7 +232,7 @@ describe("runTeardown", () => {
 		const userMarker = join(WORKTREE, "from-user.txt");
 
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({ teardown: [`echo "main" > "${mainMarker}"`] }),
 		);
 
@@ -259,7 +259,7 @@ describe("runTeardown", () => {
 		const mainMarker = join(WORKTREE, "from-main.txt");
 
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({ teardown: [`echo "main" > "${mainMarker}"`] }),
 		);
 
@@ -307,7 +307,7 @@ echo wrapper
 		chmodSync(join(wrapperBinDir, "claude"), 0o755);
 
 		writeFileSync(
-			join(MAIN_REPO, ".superset", "config.json"),
+			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({ teardown: [`claude > "${markerFile}"`] }),
 		);
 

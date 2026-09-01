@@ -33,7 +33,7 @@ export function setSandboxCredentials(
 
 export function getHostServiceHeaders(hostUrl: string): Record<string, string> {
 	const headers: Record<string, string> = clientMachineId
-		? { "x-superset-client-machine-id": clientMachineId }
+		? { "x-choros-client-machine-id": clientMachineId }
 		: {};
 	const previewToken = previewTokens.get(hostUrl);
 	if (previewToken) headers["X-Blaxel-Preview-Token"] = previewToken;

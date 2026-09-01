@@ -131,7 +131,7 @@ export interface ClientOptions {
 
 	/**
 	 * Organization ID to scope every request to. Sent as the
-	 * `x-superset-organization-id` header. Defaults to
+	 * `x-choros-organization-id` header. Defaults to
 	 * process.env['SUPERSET_ORGANIZATION_ID'].
 	 *
 	 * Required for any procedure that calls `requireActiveOrgMembership` —
@@ -153,7 +153,7 @@ export interface ClientOptions {
 	 * When set (or via process.env['SUPERSET_RELAY_URL']) it is used as-is.
 	 * When omitted, the client asks the API which relay this account's hosts
 	 * are on before each host-routed call (cached briefly), falling back to
-	 * `https://relay.superset.sh` if the API is unreachable — a hardcoded
+	 * `https://relay.choros.sh` if the API is unreachable — a hardcoded
 	 * default silently misses hosts after a server-side relay move.
 	 */
 	relayURL?: string | null | undefined;
@@ -230,9 +230,9 @@ type TRPCEnvelope<T> = {
 };
 
 /**
- * API Client for interfacing with the Superset API.
+ * API Client for interfacing with the Choros API.
  */
-export class Superset {
+export class Choros {
 	apiKey: string;
 	organizationId: string | null;
 	relayURL: string;
@@ -255,10 +255,10 @@ export class Superset {
 	private _relayUrlInflight: Promise<string> | null = null;
 
 	/**
-	 * API Client for interfacing with the Superset API.
+	 * API Client for interfacing with the Choros API.
 	 *
 	 * @param {string | undefined} [opts.apiKey=process.env['SUPERSET_API_KEY'] ?? undefined]
-	 * @param {string} [opts.baseURL=process.env['SUPERSET_BASE_URL'] ?? https://api.superset.sh] - Override the default base URL for the API.
+	 * @param {string} [opts.baseURL=process.env['SUPERSET_BASE_URL'] ?? https://api.choros.sh] - Override the default base URL for the API.
 	 * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
 	 * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
 	 * @param {Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -274,8 +274,8 @@ export class Superset {
 		...opts
 	}: ClientOptions = {}) {
 		if (apiKey === undefined) {
-			throw new Errors.SupersetError(
-				"The SUPERSET_API_KEY environment variable is missing or empty; either provide it, or instantiate the Superset client with an apiKey option, like new Superset({ apiKey: 'My API Key' }).",
+			throw new Errors.ChorosError(
+				"The SUPERSET_API_KEY environment variable is missing or empty; either provide it, or instantiate the Choros client with an apiKey option, like new Choros({ apiKey: 'My API Key' }).",
 			);
 		}
 
@@ -283,11 +283,11 @@ export class Superset {
 			apiKey,
 			organizationId,
 			...opts,
-			baseURL: baseURL || `https://api.superset.sh`,
+			baseURL: baseURL || `https://api.choros.sh`,
 		};
 
 		this.baseURL = options.baseURL!;
-		this.timeout = options.timeout ?? Superset.DEFAULT_TIMEOUT /* 1 minute */;
+		this.timeout = options.timeout ?? Choros.DEFAULT_TIMEOUT /* 1 minute */;
 		this.logger = options.logger ?? console;
 		const defaultLogLevel = "warn";
 		// Set default logLevel early so that we can log a warning in parseLogLevel.
@@ -324,7 +324,7 @@ export class Superset {
 		this.apiKey = apiKey;
 		this.organizationId = organizationId ?? null;
 		this._relayUrlExplicit = Boolean(relayURL);
-		this.relayURL = relayURL || "https://relay.superset.sh";
+		this.relayURL = relayURL || "https://relay.choros.sh";
 	}
 
 	/**
@@ -356,7 +356,7 @@ export class Superset {
 	 * Check whether the base URL is set to its default.
 	 */
 	#baseURLOverridden(): boolean {
-		return this.baseURL !== "https://api.superset.sh";
+		return this.baseURL !== "https://api.choros.sh";
 	}
 
 	protected defaultQuery(): Record<string, string | undefined> | undefined {
@@ -375,7 +375,7 @@ export class Superset {
 				? { "x-api-key": this.apiKey }
 				: { Authorization: `Bearer ${this.apiKey}` };
 		if (this.organizationId) {
-			auth["x-superset-organization-id"] = this.organizationId;
+			auth["x-choros-organization-id"] = this.organizationId;
 		}
 		return buildHeaders([auth]);
 	}
@@ -533,7 +533,7 @@ export class Superset {
 		options?: RequestOptions,
 	): APIPromise<Rsp> {
 		if (!this.organizationId) {
-			throw new Errors.SupersetError(
+			throw new Errors.ChorosError(
 				"organizationId is required for host-routed calls. Set SUPERSET_ORGANIZATION_ID or pass `organizationId` to the constructor.",
 			);
 		}
@@ -569,7 +569,7 @@ export class Superset {
 		options?: RequestOptions,
 	): APIPromise<Rsp> {
 		if (!this.organizationId) {
-			throw new Errors.SupersetError(
+			throw new Errors.ChorosError(
 				"organizationId is required for host-routed calls. Set SUPERSET_ORGANIZATION_ID or pass `organizationId` to the constructor.",
 			);
 		}
@@ -674,13 +674,13 @@ export class Superset {
 			},
 		);
 		if (!res.ok) {
-			throw new Errors.SupersetError(
+			throw new Errors.ChorosError(
 				`Failed to exchange API key for JWT (HTTP ${res.status}). The API key may be invalid or revoked.`,
 			);
 		}
 		const body = (await res.json()) as { token?: string };
 		if (!body.token) {
-			throw new Errors.SupersetError("Auth token endpoint returned no token");
+			throw new Errors.ChorosError("Auth token endpoint returned no token");
 		}
 		// Server issues 1h JWTs; cache for 55 minutes to be safe.
 		this._jwtCache = {
@@ -1132,7 +1132,7 @@ export class Superset {
 			(typeof body === "string" &&
 				// Preserve legacy string encoding behavior for now
 				headers.values.has("content-type")) ||
-			// `Blob` is superset of `File`
+			// `Blob` is choros of `File`
 			((globalThis as any).Blob && body instanceof (globalThis as any).Blob) ||
 			// `FormData` -> `multipart/form-data`
 			body instanceof FormData ||
@@ -1167,10 +1167,10 @@ export class Superset {
 		}
 	}
 
-	static Superset = this;
+	static Choros = this;
 	static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-	static SupersetError = Errors.SupersetError;
+	static ChorosError = Errors.ChorosError;
 	static APIError = Errors.APIError;
 	static APIConnectionError = Errors.APIConnectionError;
 	static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -1204,16 +1204,16 @@ export class Superset {
 	organization: API.Organization = new API.Organization(this);
 }
 
-Superset.Tasks = Tasks;
-Superset.Workspaces = Workspaces;
-Superset.Projects = Projects;
-Superset.Hosts = Hosts;
-Superset.Automations = Automations;
-Superset.Agents = Agents;
-Superset.Terminals = Terminals;
-Superset.Organization = Organization;
+Choros.Tasks = Tasks;
+Choros.Workspaces = Workspaces;
+Choros.Projects = Projects;
+Choros.Hosts = Hosts;
+Choros.Automations = Automations;
+Choros.Agents = Agents;
+Choros.Terminals = Terminals;
+Choros.Organization = Organization;
 
-export declare namespace Superset {
+export declare namespace Choros {
 	export type RequestOptions = Opts.RequestOptions;
 
 	export {

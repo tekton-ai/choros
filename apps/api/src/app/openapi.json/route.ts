@@ -1,6 +1,6 @@
-const API_URL = "https://api.superset.sh";
-const MARKETING_URL = "https://superset.sh";
-const DOCS_URL = "https://docs.superset.sh";
+const API_URL = "https://api.choros.sh";
+const MARKETING_URL = "https://choros.sh";
+const DOCS_URL = "https://docs.choros.sh";
 
 const ERROR_SCHEMA = {
 	type: "object",
@@ -99,7 +99,7 @@ const UNAUTHORIZED_RESPONSE = {
 	headers: {
 		"WWW-Authenticate": {
 			schema: { type: "string" },
-			description: `Bearer realm="superset", resource_metadata="${API_URL}/.well-known/oauth-protected-resource"`,
+			description: `Bearer realm="choros", resource_metadata="${API_URL}/.well-known/oauth-protected-resource"`,
 		},
 	},
 	content: {
@@ -110,23 +110,23 @@ const UNAUTHORIZED_RESPONSE = {
 const SPEC = {
 	openapi: "3.1.0",
 	info: {
-		title: "Superset API",
+		title: "Choros API",
 		version: "1.0.0",
-		summary: "Programmatic access to Superset's agent-orchestration platform.",
+		summary: "Programmatic access to Choros's agent-orchestration platform.",
 		description: [
-			"Superset (https://superset.sh) runs parallel AI coding agents in isolated Git worktrees.",
+			"Choros (https://choros.sh) runs parallel AI coding agents in isolated Git worktrees.",
 			"",
 			"The primary programmatic surface is the **MCP server** (Model Context Protocol, JSON-RPC 2.0 over Streamable HTTP) at `/mcp` (legacy alias: `/api/v2/agent/mcp`). It exposes tools for tasks, workspaces, coding-agent sessions, terminals, automations, hosts, projects, and organization members. The tool catalog with input schemas is published at `" +
 				`${API_URL}/.well-known/mcp/server-card.json` +
 				"` and served live via the MCP `tools/list` method.",
 			"",
-			`Authentication is OAuth 2.1 authorization code + PKCE with RFC 7591 dynamic client registration, or a user-issued Superset API key sent as a Bearer token. Agent walkthrough: ${MARKETING_URL}/auth.md`,
+			`Authentication is OAuth 2.1 authorization code + PKCE with RFC 7591 dynamic client registration, or a user-issued Choros API key sent as a Bearer token. Agent walkthrough: ${MARKETING_URL}/auth.md`,
 			"",
 			`Versioning and deprecation: the current surface is v2, versioned in the URL path (/api/v2/...). Deprecations are announced in the changelog (${MARKETING_URL}/changelog). The legacy v1 MCP server at /api/agent/mcp has been removed and returns 410 Gone.`,
 		].join("\n"),
 		contact: {
-			name: "Superset support",
-			email: "support@superset.sh",
+			name: "Choros support",
+			email: "support@choros.sh",
 			url: `${MARKETING_URL}/contact`,
 		},
 		termsOfService: `${MARKETING_URL}/terms`,
@@ -138,7 +138,7 @@ const SPEC = {
 		},
 	},
 	externalDocs: {
-		description: "Superset MCP documentation",
+		description: "Choros MCP documentation",
 		url: `${DOCS_URL}/mcp-server`,
 	},
 	servers: [{ url: API_URL, description: "Production" }],
@@ -155,7 +155,7 @@ const SPEC = {
 				tags: ["mcp"],
 				summary: "Send an MCP JSON-RPC request",
 				description:
-					"Streamable HTTP transport endpoint for the Superset MCP server (also served at the legacy alias /api/v2/agent/mcp). Send `initialize`, then `tools/list` to enumerate the available tools, then `tools/call` to act on the authenticated user's tasks, workspaces, agents, automations, terminals, hosts, and projects. Responses are `application/json` or `text/event-stream` depending on the request's Accept header. Rate limit: 600 requests per 60 seconds per credential, reported in RateLimit-* headers; over the limit returns 429 with Retry-After. A plain GET without `Accept: text/event-stream` returns a JSON description of the server instead of opening a stream.",
+					"Streamable HTTP transport endpoint for the Choros MCP server (also served at the legacy alias /api/v2/agent/mcp). Send `initialize`, then `tools/list` to enumerate the available tools, then `tools/call` to act on the authenticated user's tasks, workspaces, agents, automations, terminals, hosts, and projects. Responses are `application/json` or `text/event-stream` depending on the request's Accept header. Rate limit: 600 requests per 60 seconds per credential, reported in RateLimit-* headers; over the limit returns 429 with Retry-After. A plain GET without `Accept: text/event-stream` returns a JSON description of the server instead of opening a stream.",
 				requestBody: {
 					required: true,
 					content: {
@@ -494,7 +494,7 @@ const SPEC = {
 				tags: ["discovery"],
 				summary: "MCP server card",
 				description:
-					"Name, description, version, serverUrl, transport, authentication, and the full tool catalog of the Superset MCP server.",
+					"Name, description, version, serverUrl, transport, authentication, and the full tool catalog of the Choros MCP server.",
 				security: [],
 				responses: {
 					"200": {
@@ -533,7 +533,7 @@ const SPEC = {
 				type: "http",
 				scheme: "bearer",
 				description:
-					"Superset API key or OAuth 2.1 access token. Unauthenticated requests receive 401 with a WWW-Authenticate header pointing at the protected resource metadata.",
+					"Choros API key or OAuth 2.1 access token. Unauthenticated requests receive 401 with a WWW-Authenticate header pointing at the protected resource metadata.",
 			},
 			oauth2: {
 				type: "oauth2",

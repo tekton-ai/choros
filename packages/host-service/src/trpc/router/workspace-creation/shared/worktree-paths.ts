@@ -6,7 +6,7 @@ import { TRPCError } from "@trpc/server";
 // Kept outside the primary checkout so editors, file watchers, and
 // ignore rules treat worktrees as separate trees, not nested ones.
 export function defaultWorktreesRoot(): string {
-	return join(homedir(), ".superset", "worktrees");
+	return join(homedir(), ".choros", "worktrees");
 }
 
 export function normalizeWorktreeBaseDir(

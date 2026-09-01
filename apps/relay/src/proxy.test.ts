@@ -52,10 +52,10 @@ test("internalProxyUrl targets the owner machine over 6PN with the loop guard", 
 		"org:host",
 		"/terminal/t1",
 		"?token=x&workspaceId=w",
-		{ appName: "superset-relay", port: 8080 },
+		{ appName: "choros-relay", port: 8080 },
 	);
 	expect(url).toBe(
-		"ws://abc123.vm.superset-relay.internal:8080/hosts/org:host/terminal/t1?token=x&workspaceId=w&_rlp=1",
+		"ws://abc123.vm.choros-relay.internal:8080/hosts/org:host/terminal/t1?token=x&workspaceId=w&_rlp=1",
 	);
 	// No prior query → the guard opens with `?`.
 	expect(

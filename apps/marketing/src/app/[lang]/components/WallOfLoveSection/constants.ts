@@ -13,7 +13,7 @@ export const TESTIMONIALS: Testimonial[] = [
 	{
 		id: "1",
 		content:
-			"Just realized that I have done all my work in @superset_sh since Dec 26.",
+			"Just realized that I have done all my work in @choros_sh since Dec 26.",
 		author: "Abhi Aiyer",
 		handle: "@abhiaiyer",
 		role: "Co-founder & CTO at Mastra",
@@ -23,7 +23,7 @@ export const TESTIMONIALS: Testimonial[] = [
 	{
 		id: "2",
 		content:
-			"Oh snap @superset_sh is soooooo damn good!\n\nNow THIS is the experience I've been wanting for CLI agents!",
+			"Oh snap @choros_sh is soooooo damn good!\n\nNow THIS is the experience I've been wanting for CLI agents!",
 		author: "Chris Laupama",
 		handle: "@chrislaupama",
 		role: "TS Lead at Webflow",
@@ -33,7 +33,7 @@ export const TESTIMONIALS: Testimonial[] = [
 	{
 		id: "3",
 		content:
-			"Damn @superset_sh is really cool. You should try it.\n\nworktrees are a breeze\ncmd + t auto opens Claude Code\nyou can view git changes within itself\nclosing a laptop doesn't kill the sessions",
+			"Damn @choros_sh is really cool. You should try it.\n\nworktrees are a breeze\ncmd + t auto opens Claude Code\nyou can view git changes within itself\nclosing a laptop doesn't kill the sessions",
 		author: "Gregor Zunic",
 		handle: "@gregpr07",
 		role: "Co-founder & CTO at Browser Use",
@@ -43,7 +43,7 @@ export const TESTIMONIALS: Testimonial[] = [
 	{
 		id: "4",
 		content:
-			"if you're not using @superset_sh, you're getting left behind in 2026",
+			"if you're not using @choros_sh, you're getting left behind in 2026",
 		author: "Zach Dive",
 		handle: "@zachdive",
 		role: "Co-founder & CEO at Adam",
@@ -53,7 +53,7 @@ export const TESTIMONIALS: Testimonial[] = [
 	{
 		id: "5",
 		content:
-			"Was using Warp, but now @superset_sh has become my primary terminal",
+			"Was using Warp, but now @choros_sh has become my primary terminal",
 		author: "Eric Clemmons",
 		handle: "@ericclemmons",
 		role: "Principal Engineer at Cloudflare",
@@ -63,7 +63,7 @@ export const TESTIMONIALS: Testimonial[] = [
 	{
 		id: "6",
 		content:
-			"If you prefer a more GUI-oriented approach to multiple agents in parallel, it seems like @superset_sh is doing a tremendous job.",
+			"If you prefer a more GUI-oriented approach to multiple agents in parallel, it seems like @choros_sh is doing a tremendous job.",
 		author: "Felipe Coury",
 		handle: "@fcoury",
 		role: "Codex at OpenAI",
@@ -73,7 +73,7 @@ export const TESTIMONIALS: Testimonial[] = [
 	{
 		id: "8",
 		content:
-			"@superset_sh is a sick product - love OS since I don't have to wait for someone else to fix bugs",
+			"@choros_sh is a sick product - love OS since I don't have to wait for someone else to fix bugs",
 		author: "Chase McDougall",
 		handle: "@ChaseMcDou",
 		role: "Founding Engineer at Decoda Health",
@@ -83,7 +83,7 @@ export const TESTIMONIALS: Testimonial[] = [
 	{
 		id: "9",
 		content:
-			"hasn't been a day i haven't used superset since onboarding\n\ncomplete paradigm shift on how i use ai to code",
+			"hasn't been a day i haven't used choros since onboarding\n\ncomplete paradigm shift on how i use ai to code",
 		author: "Leo",
 		handle: "@LeosReal",
 		role: "Co-founder & CTO at Outlit",
@@ -93,9 +93,9 @@ export const TESTIMONIALS: Testimonial[] = [
 	{
 		id: "10",
 		content:
-			"Tested various GUI tools for git worktree and agents - Conductor, Vibe Kanban, Agentastic, Crystal, FleetCode, Emdash, Sculptor - but Superset suits my taste the best",
+			"Tested various GUI tools for git worktree and agents - Conductor, Vibe Kanban, Agentastic, Crystal, FleetCode, Emdash, Sculptor - but Choros suits my taste the best",
 		originalContent:
-			"试了各种 GUI 的 git worktree + agent 工具，Conductor、Vibe Kanban、Agentastic、Crystal、FleetCode、Emdash、Sculptor，还是 Superset 最合我的胃口",
+			"试了各种 GUI 的 git worktree + agent 工具，Conductor、Vibe Kanban、Agentastic、Crystal、FleetCode、Emdash、Sculptor，还是 Choros 最合我的胃口",
 		author: "Iven",
 		handle: "@ivenvd",
 		role: "Engineer at Paraflow",
@@ -105,7 +105,7 @@ export const TESTIMONIALS: Testimonial[] = [
 	{
 		id: "11",
 		content:
-			"superset became my default tools now so keep the great work folks",
+			"choros became my default tools now so keep the great work folks",
 		author: "Vlad Arbatov",
 		handle: "@vladzima",
 		role: "Founding Engineer at Loyal",
@@ -115,7 +115,7 @@ export const TESTIMONIALS: Testimonial[] = [
 	{
 		id: "12",
 		content:
-			"just started using remote desktop instead of ssh just to be able to use @superset_sh on my mac mini from my macbook pro\n\ngenerational product in the making, mark my words",
+			"just started using remote desktop instead of ssh just to be able to use @choros_sh on my mac mini from my macbook pro\n\ngenerational product in the making, mark my words",
 		author: "Elias Ståvik",
 		handle: "@eliasstravik",
 		role: "Founder at Cleanroom",

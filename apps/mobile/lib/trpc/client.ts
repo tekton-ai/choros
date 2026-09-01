@@ -15,7 +15,7 @@ export const apiClient = createTRPCProxyClient<AppRouter>({
 				const cookies = authClient.getCookie();
 				const jwt = getJwt();
 				return {
-					"x-superset-client": clientVersionHeader,
+					"x-choros-client": clientVersionHeader,
 					...(cookies ? { Cookie: cookies } : {}),
 					...(jwt ? { Authorization: `Bearer ${jwt}` } : {}),
 				};

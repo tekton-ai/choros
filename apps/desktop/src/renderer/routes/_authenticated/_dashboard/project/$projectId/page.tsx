@@ -366,7 +366,7 @@ function ProjectPage() {
 										These commands run automatically when a workspace is
 										created.{" "}
 										<a
-											href="https://docs.superset.sh/setup-teardown-scripts"
+											href="https://docs.choros.sh/setup-teardown-scripts"
 											target="_blank"
 											rel="noopener noreferrer"
 											className="group inline-flex items-center gap-0.5 underline underline-offset-2 hover:text-foreground transition-colors"

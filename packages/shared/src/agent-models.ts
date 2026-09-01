@@ -36,14 +36,14 @@ export interface AgentModelSupport {
 	models: AgentModelOption[];
 }
 
-export interface SupersetChatModel extends AgentModelOption {
+export interface ChorosChatModel extends AgentModelOption {
 	provider: string;
 }
 
 /**
  * Canonical model catalog served by the cloud `tRPC chat.getModels`.
  */
-export const SUPERSET_CHAT_MODELS: readonly SupersetChatModel[] = [
+export const SUPERSET_CHAT_MODELS: readonly ChorosChatModel[] = [
 	{ id: "anthropic/claude-opus-5", label: "Opus 5", provider: "Anthropic" },
 	{ id: "anthropic/claude-opus-4-8", label: "Opus 4.8", provider: "Anthropic" },
 	{ id: "anthropic/claude-opus-4-7", label: "Opus 4.7", provider: "Anthropic" },
@@ -266,7 +266,7 @@ const PI_THINKING_LEVELS: AgentModelOption[] = [
  * Curated per-agent reasoning-effort catalogs, mirroring
  * `AGENT_MODEL_SUPPORT`. Flags and accepted values were verified against each
  * CLI's `--help` (or its own validator) — agents absent from this list
- * (gemini, opencode, cursor-agent, droid, superset chat) expose no effort
+ * (gemini, opencode, cursor-agent, droid, choros chat) expose no effort
  * control on their interactive launch command.
  */
 export const AGENT_EFFORT_SUPPORT: readonly AgentEffortSupport[] = [
@@ -360,7 +360,7 @@ export const AGENT_MODE_SUPPORT: readonly AgentModeSupport[] = [
 ];
 
 /**
- * Existing Superset profiles can use Pi's preset/icon with an overridden OMP
+ * Existing Choros profiles can use Pi's preset/icon with an overridden OMP
  * executable. Resolve capabilities from that executable so legacy Pi keeps its
  * own launch surface while `omp` and absolute OMP paths get OMP controls.
  */
@@ -453,7 +453,7 @@ export function buildAgentModeArgs(
 /**
  * Argv tokens that select `model` for the given preset, e.g.
  * `["--model", "sonnet"]`. Returns `[]` for unknown presets, presets without
- * a CLI flag (superset chat), an unset model, or a model id that isn't in
+ * a CLI flag (choros chat), an unset model, or a model id that isn't in
  * the preset's curated list — callers can spread the result unconditionally
  * and a stale or arbitrary model id degrades to the CLI default instead of
  * a broken launch.

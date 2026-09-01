@@ -248,7 +248,7 @@ export function AccountSettings({ visibleItems }: AccountSettingsProps) {
 							hint={t({
 								id: "settings.account.signOutHint",
 								message:
-									"You'll need to sign in again to use Superset on this device.",
+									"You'll need to sign in again to use Choros on this device.",
 							})}
 						>
 							<Button

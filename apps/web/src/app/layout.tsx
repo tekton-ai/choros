@@ -20,7 +20,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-	title: "Superset",
+	title: "Choros",
 	description: "Run 10+ parallel coding agents on your machine",
 	icons: {
 		icon: [

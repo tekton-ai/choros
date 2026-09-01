@@ -64,12 +64,12 @@ export function useStarNagCard({
 		id: "star-nag",
 		title: t({
 			id: "components.starNagCard.title",
-			message: "Enjoying Superset?",
+			message: "Enjoying Choros?",
 		}),
 		description: t({
 			id: "components.starNagCard.description",
 			message:
-				"Superset is open source. If it's helped you today, a GitHub star helps other developers find it.",
+				"Choros is open source. If it's helped you today, a GitHub star helps other developers find it.",
 		}),
 		onDismiss: () => {
 			track("star_nag_dismissed", { surface: "card" });

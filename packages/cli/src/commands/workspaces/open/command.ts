@@ -22,7 +22,7 @@ function openUrl(url: string): Promise<void> {
 }
 
 export default command({
-	description: "Open a workspace in the Superset desktop app",
+	description: "Open a workspace in the Choros desktop app",
 	args: [positional("id").required().desc("Workspace ID")],
 	options: {
 		host: string().desc("Host the workspace lives on (default: this machine)"),
@@ -34,7 +34,7 @@ export default command({
 		const id = args.id as string;
 		const organizationId = ctx.config.organizationId;
 		if (!organizationId) {
-			throw new CLIError("No active organization", "Run: superset auth login");
+			throw new CLIError("No active organization", "Run: choros auth login");
 		}
 
 		const { hostId, workspace } = await findWorkspaceOnHost(
@@ -49,11 +49,11 @@ export default command({
 		if (!workspace) {
 			throw new CLIError(
 				`Workspace not found on host ${hostId}: ${id}`,
-				"Pass --host <id> if it lives on another machine. List with: superset workspaces list",
+				"Pass --host <id> if it lives on another machine. List with: choros workspaces list",
 			);
 		}
 
-		const url = `superset://v2-workspace/${workspace.id}`;
+		const url = `choros://v2-workspace/${workspace.id}`;
 
 		if (!options.print) {
 			try {
@@ -70,7 +70,7 @@ export default command({
 			data: { id: workspace.id, name: workspace.name, url },
 			message: options.print
 				? url
-				: `Opening "${workspace.name}" in Superset desktop`,
+				: `Opening "${workspace.name}" in Choros desktop`,
 		};
 	},
 });

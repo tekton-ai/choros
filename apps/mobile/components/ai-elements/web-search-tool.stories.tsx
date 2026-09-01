@@ -12,8 +12,8 @@ const RESULTS = [
 		url: "https://electric-sql.com/docs/intro",
 	},
 	{
-		title: "Superset — Orchestrate coding agents",
-		url: "https://superset.sh/docs/workspaces",
+		title: "Choros — Orchestrate coding agents",
+		url: "https://choros.sh/docs/workspaces",
 	},
 	{
 		title: "Drizzle ORM - next gen TypeScript ORM",
@@ -69,7 +69,7 @@ export const Failed: Story = {
 
 export const NoResults: Story = {
 	args: {
-		query: "superset workspace txid wait electric localstorage",
+		query: "choros workspace txid wait electric localstorage",
 		results: [],
 		state: "output-available",
 	},

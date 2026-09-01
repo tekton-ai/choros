@@ -101,7 +101,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
 		description: msg({
 			id: "marketing.roadmap.item.inAppPrMerge.description",
 			message:
-				"Merge pull requests without leaving Superset, plus a round of chat fixes and polish.",
+				"Merge pull requests without leaving Choros, plus a round of chat fixes and polish.",
 		}),
 		category: "Desktop",
 		status: "now",
@@ -173,7 +173,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
 		description: msg({
 			id: "marketing.roadmap.item.nativePrReviews.description",
 			message:
-				"Review pull requests inside Superset: diff pane, agent-assisted review, act on comments directly.",
+				"Review pull requests inside Choros: diff pane, agent-assisted review, act on comments directly.",
 		}),
 		category: "Desktop",
 		status: "next",
@@ -390,7 +390,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
 		category: "Desktop",
 		status: "shipped",
 		shippedDate: "Aug 2026",
-		pr: "https://github.com/superset-sh/superset/pull/5731",
+		pr: "https://github.com/superset-sh/choros/pull/5731",
 	},
 	{
 		id: "workspace-pinning-bulk-actions",

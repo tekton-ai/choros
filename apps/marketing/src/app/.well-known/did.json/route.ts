@@ -1,7 +1,7 @@
 import { COMPANY } from "@choros/shared/constants";
 import { AGENT_DID, AGENT_SIGNING_KEY } from "@/lib/agent-identity";
 
-// did:web document for superset.sh. Resolves the identity referenced by the
+// did:web document for choros.sh. Resolves the identity referenced by the
 // ARD ai-catalog trust manifests and the Web Bot Auth key directory.
 export function GET() {
 	const keyId = `${AGENT_DID}#${AGENT_SIGNING_KEY.kid}`;

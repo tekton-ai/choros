@@ -4,9 +4,9 @@ export const revalidate = false;
 
 export function GET() {
 	const lines = [
-		"# Superset Documentation",
+		"# Choros Documentation",
 		"",
-		"> Official documentation for Superset — run parallel AI coding agents in isolated Git worktrees on your machine.",
+		"> Official documentation for Choros — run parallel AI coding agents in isolated Git worktrees on your machine.",
 		"",
 		"Each page is available as markdown at /llms.mdx/<path>. The full corpus is at /llms-full.txt.",
 		"",
@@ -17,7 +17,7 @@ export function GET() {
 				typeof page.data.description === "string" && page.data.description
 					? `: ${page.data.description}`
 					: "";
-			return `- [${page.data.title}](https://docs.superset.sh${page.url})${description}`;
+			return `- [${page.data.title}](https://docs.choros.sh${page.url})${description}`;
 		}),
 	];
 

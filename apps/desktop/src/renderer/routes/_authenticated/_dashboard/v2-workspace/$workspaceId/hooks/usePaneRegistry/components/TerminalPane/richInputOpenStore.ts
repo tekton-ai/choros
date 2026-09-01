@@ -9,7 +9,7 @@ export type RichInputToggleSource = "hotkey" | "header_button" | "escape";
  * hotkey flip one shared switch that all panes reflect. Persisted to
  * localStorage so the preference survives reloads.
  */
-const STORAGE_KEY = "superset.terminalRichInputOpen";
+const STORAGE_KEY = "choros.terminalRichInputOpen";
 
 let isOpen = readPersisted();
 const listeners = new Set<() => void>();

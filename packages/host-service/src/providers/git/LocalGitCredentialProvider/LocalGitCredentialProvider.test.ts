@@ -32,7 +32,7 @@ printf 'password=stored-credential\\n'
 const tempDirs: string[] = [];
 
 function stubPath(gitStub: string): string {
-	const dir = mkdtempSync(join(tmpdir(), "superset-cred-stub-"));
+	const dir = mkdtempSync(join(tmpdir(), "choros-cred-stub-"));
 	tempDirs.push(dir);
 	for (const [name, body] of [
 		["gh", GH_STUB],

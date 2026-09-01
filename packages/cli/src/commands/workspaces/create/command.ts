@@ -24,7 +24,7 @@ export default command({
 			"Use --branch exactly as given instead of namespacing it under the project branch prefix",
 		),
 		agent: string().desc(
-			"Agent to spawn after creation. Preset id (`claude`, `codex`, …), HostAgentConfig instance UUID, or `superset`",
+			"Agent to spawn after creation. Preset id (`claude`, `codex`, …), HostAgentConfig instance UUID, or `choros`",
 		),
 		prompt: string().desc(
 			"Initial prompt the agent starts with. Required when --agent is set",
@@ -49,7 +49,7 @@ export default command({
 	run: async ({ ctx, options }) => {
 		const organizationId = ctx.config.organizationId;
 		if (!organizationId) {
-			throw new CLIError("No active organization", "Run: superset auth login");
+			throw new CLIError("No active organization", "Run: choros auth login");
 		}
 
 		const projectId = options.project;

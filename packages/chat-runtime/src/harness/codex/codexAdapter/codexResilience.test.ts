@@ -39,7 +39,7 @@ function startAdapter(): Harness {
 							JSON.stringify({
 								id: frame.id,
 								result: {
-									userAgent: "superset-chat-runtime/0.143.0 (Mac OS)",
+									userAgent: "choros-chat-runtime/0.143.0 (Mac OS)",
 								},
 							}),
 						);

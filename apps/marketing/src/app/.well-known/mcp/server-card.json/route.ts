@@ -2,11 +2,11 @@ import { COMPANY } from "@choros/shared/constants";
 import { API_URL, MCP_SERVER_URL } from "@/lib/llms";
 
 const FALLBACK_CARD = {
-	name: "superset",
-	title: "Superset",
+	name: "choros",
+	title: "Choros",
 	icon: `${COMPANY.MARKETING_URL}/apple-touch-icon.png`,
 	description:
-		"Superset MCP server: create Git-worktree workspaces, launch coding-agent sessions, schedule automations, open terminals, and manage tasks on behalf of a Superset user.",
+		"Choros MCP server: create Git-worktree workspaces, launch coding-agent sessions, schedule automations, open terminals, and manage tasks on behalf of a Choros user.",
 	version: "0.1.0",
 	serverUrl: MCP_SERVER_URL,
 	transport: "streamable-http",

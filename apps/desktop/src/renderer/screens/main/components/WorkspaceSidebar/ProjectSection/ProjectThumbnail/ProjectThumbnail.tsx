@@ -84,7 +84,7 @@ export function ProjectThumbnail({
 		? { borderColor: hexToRgba(projectColor, 0.6) }
 		: undefined;
 
-	// Priority 1: Show project icon if available (works for both superset-icon:// and https://)
+	// Priority 1: Show project icon if available (works for both choros-icon:// and https://)
 	if (iconUrl && !iconError) {
 		return (
 			<div

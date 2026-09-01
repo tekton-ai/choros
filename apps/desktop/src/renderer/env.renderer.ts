@@ -15,13 +15,13 @@ const envSchema = z.object({
 	NODE_ENV: z
 		.enum(["development", "production", "test"])
 		.default("development"),
-	NEXT_PUBLIC_API_URL: z.url().default("https://api.superset.sh"),
-	NEXT_PUBLIC_WEB_URL: z.url().default("https://app.superset.sh"),
-	NEXT_PUBLIC_MARKETING_URL: z.url().default("https://superset.sh"),
+	NEXT_PUBLIC_API_URL: z.url().default("https://api.choros.sh"),
+	NEXT_PUBLIC_WEB_URL: z.url().default("https://app.choros.sh"),
+	NEXT_PUBLIC_MARKETING_URL: z.url().default("https://choros.sh"),
 	NEXT_PUBLIC_POSTHOG_KEY: z.string().optional(),
 	NEXT_PUBLIC_POSTHOG_HOST: z.string().default("https://us.i.posthog.com"),
 	SENTRY_DSN_DESKTOP: z.string().optional(),
-	RELAY_URL: z.url().default("https://relay.superset.sh"),
+	RELAY_URL: z.url().default("https://relay.choros.sh"),
 });
 
 /**

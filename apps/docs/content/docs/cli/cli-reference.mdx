@@ -1,6 +1,6 @@
 ---
-title: Superset CLI Reference
-description: Complete reference for Superset command-line interface, including commands and flags.
+title: Choros CLI Reference
+description: Complete reference for Choros command-line interface, including commands and flags.
 ---
 
 <Callout type="warn">
@@ -10,11 +10,11 @@ The CLI is currently in Beta. Commands and flags are still evolving. Make sure y
 ## Synopsis
 
 ```text
-superset <command> [subcommand] [options]
+choros <command> [subcommand] [options]
 ```
 
-Run `superset --help` for the top-level command list, or
-`superset <command> --help` for any group.
+Run `choros --help` for the top-level command list, or
+`choros <command> --help` for any group.
 
 ## Global options
 
@@ -39,7 +39,7 @@ setup, run, and teardown entries in `.superset/config.json` are project
 lifecycle scripts. The legacy `presets` command name remains an alias.
 
 <Command
-	name="superset scripts add"
+	name="choros scripts add"
 	options={[
 		{ flag: "--name <name>", required: true, description: "Display name." },
 		{ flag: "--command <command...>", required: true, description: "Shell command. Repeat to launch multiple commands." },
@@ -56,8 +56,8 @@ have been launched once so its local database exists, and the CLI must have an
 active organization so the script is imported into the correct v2 profile.
 
 ```bash
-superset scripts add --name dev --command "bun run dev"
-superset presets add --name services \
+choros scripts add --name dev --command "bun run dev"
+choros presets add --name services \
   --command "docker compose up" --command "bun run dev" \
   --execution-mode split-pane
 ```
@@ -74,7 +74,7 @@ The created terminal script, including its generated ID.
 Authentication and session inspection.
 
 <Command
-	name="superset auth login"
+	name="choros auth login"
 	options={[
 		{
 			flag: "--organization <idOrSlug>",
@@ -82,7 +82,7 @@ Authentication and session inspection.
 		},
 		{
 			flag: "--api-key <key>",
-			description: "Store a Superset API key (`sk_live_…`) at `~/.superset/config.json` instead of running the OAuth flow.",
+			description: "Store a Choros API key (`sk_live_…`) at `~/.superset/config.json` instead of running the OAuth flow.",
 		},
 	]}
 >
@@ -94,8 +94,8 @@ TTY, the CLI prompts; with multiple orgs and no TTY, you must pass
 `--organization` or the command exits 1 listing the available slugs.
 
 ```bash
-superset auth login
-superset auth login --organization acme
+choros auth login
+choros auth login --organization acme
 ```
 
 To sign in with an API key (useful for CI or any environment where the
@@ -104,8 +104,8 @@ the key, stores it at `~/.superset/config.json`, and clears any prior
 OAuth session.
 
 ```bash
-superset auth login --api-key sk_live_…
-superset auth login --api-key sk_live_… --organization acme
+choros auth login --api-key sk_live_…
+choros auth login --api-key sk_live_… --organization acme
 ```
 
 <CommandReturns>
@@ -132,13 +132,13 @@ The newly authenticated user and active organization.
 </CommandReturns>
 </Command>
 
-<Command name="superset auth logout">
+<Command name="choros auth logout">
 Clear stored credentials: both an OAuth session and a stored API key.
 Does not call the API and does not clear the active organization (your
 preferred org persists across re-logins).
 
 ```bash
-superset auth logout
+choros auth logout
 ```
 
 <CommandReturns>
@@ -158,11 +158,11 @@ Logged out.
 </CommandReturns>
 </Command>
 
-<Command name="superset auth whoami">
+<Command name="choros auth whoami">
 Show the current user, active organization, and auth source.
 
 ```bash
-superset auth whoami
+choros auth whoami
 ```
 
 <CommandReturns>
@@ -199,7 +199,7 @@ Start the local host server: the daemon the CLI and desktop app both
 talk to when targeting this machine.
 
 <Command
-	name="superset start"
+	name="choros start"
 	options={[
 		{ flag: "--daemon", description: "Run detached." },
 		{ flag: "--port <n>", description: "Specific port. Default: a free loopback port." },
@@ -212,7 +212,7 @@ polls `/trpc/health.check` for up to 10 seconds, and writes the manifest.
 Binds to `127.0.0.1` only.
 
 ```bash
-superset start --daemon
+choros start --daemon
 ```
 
 <CommandReturns>
@@ -241,13 +241,13 @@ The running host server.
 
 Stop the local host server.
 
-<Command name="superset stop">
+<Command name="choros stop">
 Sends SIGTERM, waits up to 10 seconds, sends SIGKILL if still alive, then
 removes the manifest. If sending SIGTERM itself throws, the command errors
 and the manifest is left in place.
 
 ```bash
-superset stop
+choros stop
 ```
 
 <CommandReturns>
@@ -270,7 +270,7 @@ The stopped host server, if one was running.
 Inspect the local host server.
 
 <Command
-	name="superset status"
+	name="choros status"
 	options={[
 		{ flag: "--org <id>", description: "Organization to inspect. Default: the active organization." },
 	]}
@@ -278,7 +278,7 @@ Inspect the local host server.
 `healthy` reflects a live `health.check` request (2-second timeout).
 
 ```bash
-superset status
+choros status
 ```
 
 <CommandReturns>
@@ -317,24 +317,24 @@ The host server state. Three shapes depending on what's running.
 
 ### update
 
-Update the Superset CLI and host server binary.
+Update the Choros CLI and host server binary.
 
 <Command
-	name="superset update"
+	name="choros update"
 	options={[
 		{ flag: "--check", description: "Only check for updates; don't install." },
 		{ flag: "--force", description: "Re-install even if already on that version." },
 		{ flag: "--version <version>", description: "Install a specific version (e.g. `0.1.2`) instead of the rolling latest. Accepts upgrade or downgrade." },
 	]}
 >
-Downloads the matching `superset-<platform>.tar.gz` from GitHub Releases
+Downloads the matching `choros-<platform>.tar.gz` from GitHub Releases
 and atomically replaces the install root. Only available in built
 binaries; running from `bun run dev` errors out.
 
 ```bash
-superset update                     # upgrade to the latest release
-superset update --check             # show current → target without installing
-superset update --version 0.1.2     # install a specific version (up or down)
+choros update                     # upgrade to the latest release
+choros update --check             # show current → target without installing
+choros update --version 0.1.2     # install a specific version (up or down)
 ```
 
 <CommandReturns>
@@ -342,7 +342,7 @@ The current and target version, plus whether anything changed.
 
 <HumanOutput>
 ```text
-Updated 0.1.4 → 0.1.5 (/Users/you/.local/share/superset)
+Updated 0.1.4 → 0.1.5 (/Users/you/.local/share/choros)
 ```
 </HumanOutput>
 
@@ -375,7 +375,7 @@ Updated 0.1.4 → 0.1.5 (/Users/you/.local/share/superset)
 Manage which organization the CLI targets.
 
 <Command
-	name="superset organization list"
+	name="choros organization list"
 	output={`Array<{
   id: string;
   name: string;
@@ -390,7 +390,7 @@ active one.
 </Command>
 
 <Command
-	name="superset organization switch <idOrSlug>"
+	name="choros organization switch <idOrSlug>"
 	args={[
 		{ name: "idOrSlug", required: true, description: "Organization ID or slug." },
 	]}
@@ -399,13 +399,13 @@ active one.
 Set the active organization in `~/.superset/config.json`.
 
 ```bash
-superset organization switch acme
-superset org switch org_…
+choros organization switch acme
+choros org switch org_…
 ```
 </Command>
 
 <Command
-	name="superset organization members list"
+	name="choros organization members list"
 	options={[
 		{ flag: "--search <query>, -s", description: "Search by name or email." },
 		{ flag: "--limit <n>", description: "Default 50." },
@@ -422,8 +422,8 @@ superset org switch org_…
 List members in the active organization.
 
 ```bash
-superset organization members list
-superset org members list -s satya
+choros organization members list
+choros org members list -s satya
 ```
 </Command>
 
@@ -436,7 +436,7 @@ each host serves the projects set up on that machine; there is no org-wide
 listing. Workspaces branch off a host's checkout.
 
 <Command
-	name="superset projects list"
+	name="choros projects list"
 	options={[
 		{ flag: "--host <id>", description: "List projects on a specific host machineId." },
 		{ flag: "--local", description: "List projects on this machine (the default)." },
@@ -455,7 +455,7 @@ another host.
 </Command>
 
 <Command
-	name="superset projects create"
+	name="choros projects create"
 	options={[
 		{ flag: "--name <name>", required: true, description: "Display name for the project." },
 		{ flag: "--host <id>", description: "Target host machineId. Mutually exclusive with `--local`; one is required." },
@@ -481,17 +481,17 @@ Either way, a new cloud project record is created and the host's main
 workspace is ensured.
 
 `create` always creates a new cloud project, even if your org already has
-one for the same Git URL. Use [`projects setup`](#superset-projects-setup-id)
+one for the same Git URL. Use [`projects setup`](#choros-projects-setup-id)
 when adopting an existing project on a fresh machine.
 
 ```bash
-superset projects create --name "my-app" --local --clone https://github.com/org/my-app.git --parent-dir ~/code
-superset projects create --name "my-app" --local --import ~/code/my-app
+choros projects create --name "my-app" --local --clone https://github.com/org/my-app.git --parent-dir ~/code
+choros projects create --name "my-app" --local --import ~/code/my-app
 ```
 </Command>
 
 <Command
-	name="superset projects setup <id>"
+	name="choros projects setup <id>"
 	args={[
 		{ name: "id", required: true, description: "Project UUID to adopt." },
 	]}
@@ -510,20 +510,20 @@ superset projects create --name "my-app" --local --import ~/code/my-app
 }`}
 >
 Adopt an existing project onto a host without creating a duplicate cloud
-record. Counterpart to [`create`](#superset-projects-create) for the
+record. Counterpart to [`create`](#choros-projects-create) for the
 "new machine, repo already in the org" case.
 
-Find the project ID via [`projects list`](#superset-projects-list).
+Find the project ID via [`projects list`](#choros-projects-list).
 
 Idempotent: re-running against a project that's already set up at the same
 path is a no-op that returns the existing `mainWorkspaceId`.
 
 ```bash
-# Pick an ID from `superset projects list`, then clone it onto this machine
-superset projects setup 47c31b04-… --local --parent-dir ~/code
+# Pick an ID from `choros projects list`, then clone it onto this machine
+choros projects setup 47c31b04-… --local --parent-dir ~/code
 
 # Or register an existing local checkout
-superset projects setup 47c31b04-… --local --import ~/code/my-app
+choros projects setup 47c31b04-… --local --import ~/code/my-app
 ```
 </Command>
 
@@ -536,7 +536,7 @@ host server running on this machine, use [`start`](#start),
 [`stop`](#stop), and [`status`](#status).
 
 <Command
-	name="superset hosts list"
+	name="choros hosts list"
 	options={[
 		{ flag: "--org <id>", description: "Organization to list. Default: the active organization." },
 	]}
@@ -549,16 +549,16 @@ host server running on this machine, use [`start`](#start),
 	quiet="host IDs"
 >
 List hosts registered to the active organization. Host registration
-happens via `superset start` on each machine. There is no
+happens via `choros start` on each machine. There is no
 separate registration command.
 
 ```bash
-superset hosts list
+choros hosts list
 ```
 </Command>
 
 <Command
-	name="superset hosts set-wake <host> <command...>"
+	name="choros hosts set-wake <host> <command...>"
 	args={[
 		{ name: "host", required: true, description: "Host name or id." },
 		{ name: "command", variadic: true, description: "Command to run locally to wake the host, e.g. `vercel sandbox resume my-box`." },
@@ -571,13 +571,13 @@ superset hosts list
 Set (or clear) the command used to wake a host.
 
 ```bash
-superset hosts set-wake my-sandbox vercel sandbox resume my-box
-superset hosts set-wake my-sandbox --clear
+choros hosts set-wake my-sandbox vercel sandbox resume my-box
+choros hosts set-wake my-sandbox --clear
 ```
 </Command>
 
 <Command
-	name="superset hosts wake <host>"
+	name="choros hosts wake <host>"
 	args={[
 		{ name: "host", required: true, description: "Host name or id." },
 	]}
@@ -590,7 +590,7 @@ Wake a host by running its configured wake command locally, streaming its
 output.
 
 ```bash
-superset hosts wake my-sandbox
+choros hosts wake my-sandbox
 ```
 </Command>
 
@@ -605,11 +605,11 @@ the host server directly over loopback HTTP: no cloud roundtrip, works
 offline. Otherwise it routes through the cloud API and the relay.
 
 If the resolved host is the local machine but the host server isn't
-responding, the CLI errors out and points you at `superset start` rather
+responding, the CLI errors out and points you at `choros start` rather
 than silently falling through to the cloud.
 
 <Command
-	name="superset workspaces list"
+	name="choros workspaces list"
 	options={[
 		{ flag: "--host <id>", description: "List workspaces on a specific host machineId." },
 		{ flag: "--local", description: "List workspaces on this machine (the default)." },
@@ -636,7 +636,7 @@ project id when the host doesn't know the project's name.
 </Command>
 
 <Command
-	name="superset workspaces create"
+	name="choros workspaces create"
 	options={[
 		{ flag: "--project <projectId>", description: "Project ID. Omit to create a project-less session (a managed scratch folder)." },
 		{ flag: "--name <name>", description: "Workspace name. Required when `--project` is set; optional for sessions." },
@@ -647,7 +647,7 @@ project id when the host doesn't know the project's name.
 		{ flag: "--skip-branch-prefix", description: "Use `--branch` exactly as given instead of namespacing it under the project branch prefix." },
 		{ flag: "--host <id>", description: "Target host machineId. Mutually exclusive with `--local`; one is required." },
 		{ flag: "--local", description: "Target this machine. Mutually exclusive with `--host`; one is required." },
-		{ flag: "--agent <preset|uuid|superset>", description: "Agent to spawn after creation." },
+		{ flag: "--agent <preset|uuid|choros>", description: "Agent to spawn after creation." },
 		{ flag: "--prompt <text>", description: "Initial prompt. Required when `--agent` is set." },
 		{ flag: "--effort <level>", description: "Reasoning effort for the spawned agent. Omit to use the agent default." },
 		{ flag: "--command <cmd>", description: "Shell command to run in the new workspace after creation." },
@@ -670,28 +670,28 @@ repo. Sessions have no branch semantics, so `--branch`, `--pr`, `--task`,
 optional, and the output has no `alreadyExists` field.
 
 ```bash
-superset workspaces create \
+choros workspaces create \
   --project prj_… \
   --name "fix-login-bug" \
   --branch fix/login-bug \
   --local
 
-superset workspaces create \
+choros workspaces create \
   --project prj_… \
   --name "review-pr-123" \
   --pr 123 \
   --local
 
 # Project-less session with an agent
-superset workspaces create --local --agent claude --prompt "…"
+choros workspaces create --local --agent claude --prompt "…"
 
 # Tags group the workspace into sidebar folders — no folder setup needed
-superset workspaces create --project prj_… --name "perf-spike" --branch perf/spike --local --tag perf
+choros workspaces create --project prj_… --name "perf-spike" --branch perf/spike --local --tag perf
 ```
 </Command>
 
 <Command
-	name="superset workspaces delete <id...>"
+	name="choros workspaces delete <id...>"
 	args={[
 		{ name: "id", required: true, variadic: true, description: "Workspace IDs to delete." },
 	]}
@@ -704,12 +704,12 @@ superset workspaces create --project prj_… --name "perf-spike" --branch perf/s
 Delete one or more workspaces on the target host (default: this machine).
 
 ```bash
-superset workspaces delete ws_a ws_b ws_c
+choros workspaces delete ws_a ws_b ws_c
 ```
 </Command>
 
 <Command
-	name="superset workspaces get [id]"
+	name="choros workspaces get [id]"
 	args={[
 		{ name: "id", description: "Workspace ID. Defaults to `$SUPERSET_WORKSPACE_ID` when run inside a workspace." },
 	]}
@@ -733,16 +733,16 @@ superset workspaces delete ws_a ws_b ws_c
 }`}
 >
 Show details for a single workspace on its host. `--field` is handy in
-scripts: `superset workspaces get --field worktreePath`.
+scripts: `choros workspaces get --field worktreePath`.
 
 ```bash
-superset workspaces get ws_…
-superset workspaces get --field branch   # inside a workspace
+choros workspaces get ws_…
+choros workspaces get --field branch   # inside a workspace
 ```
 </Command>
 
 <Command
-	name="superset workspaces update <id>"
+	name="choros workspaces update <id>"
 	args={[
 		{ name: "id", required: true, description: "Workspace UUID." },
 	]}
@@ -761,15 +761,15 @@ whole tag set — tagging is how workspaces group into sidebar folders, so
 retagging moves the workspace between folders.
 
 ```bash
-superset workspaces update ws_… --name "better-name"
-superset workspaces update ws_… --task-id tsk_…
-superset workspaces update ws_… --tag perf --tag infra
-superset workspaces update ws_… --clear-task
+choros workspaces update ws_… --name "better-name"
+choros workspaces update ws_… --task-id tsk_…
+choros workspaces update ws_… --tag perf --tag infra
+choros workspaces update ws_… --clear-task
 ```
 </Command>
 
 <Command
-	name="superset workspaces open <id>"
+	name="choros workspaces open <id>"
 	args={[
 		{ name: "id", required: true, description: "Workspace ID." },
 	]}
@@ -783,42 +783,42 @@ superset workspaces update ws_… --clear-task
   url: string;
 }`}
 >
-Open a workspace in the Superset desktop app.
+Open a workspace in the Choros desktop app.
 
 ```bash
-superset workspaces open ws_…
-superset workspaces open ws_… --print
+choros workspaces open ws_…
+choros workspaces open ws_… --print
 ```
 </Command>
 
 #### Opening a specific session
 
 `workspaces open` targets a workspace, not a session. Terminal sessions started
-with [`agents create`](#superset-agents-create) are automatically adopted into
+with [`agents create`](#choros-agents-create) are automatically adopted into
 panes while their workspace is open. Opening the workspace later also creates
 panes for running terminal sessions that aren't already attached, without
 stealing focus from the active tab. `workspaces open` can't focus a specific
 session, so use a session deep link when focus matters. The same deep link
-creates or focuses the pane for a Superset chat session. Choose the query param
+creates or focuses the pane for a Choros chat session. Choose the query param
 from the session `kind` returned by `agents create`:
 
 | `kind` | Example agents | Query param |
 | --- | --- | --- |
-| `chat` | `superset` | `?chatSessionId=<sessionId>` |
+| `chat` | `choros` | `?chatSessionId=<sessionId>` |
 | `terminal` | `claude`, `codex` | `?terminalId=<sessionId>` |
 
 ```bash
 # Run the agent with --json, then pull kind + sessionId out of the payload:
-session=$(superset agents create --workspace ws_… --agent claude --prompt "…" --json)
+session=$(choros agents create --workspace ws_… --agent claude --prompt "…" --json)
 kind=$(echo "$session" | jq -r '.kind')           # "chat" or "terminal"
 sessionId=$(echo "$session" | jq -r '.sessionId')
 
 # Open the session using the query param that matches its kind:
 # chat session (kind: "chat")
-open "superset://v2-workspace/<workspaceId>?chatSessionId=$sessionId"
+open "choros://v2-workspace/<workspaceId>?chatSessionId=$sessionId"
 
 # terminal session (kind: "terminal")
-open "superset://v2-workspace/<workspaceId>?terminalId=$sessionId"
+open "choros://v2-workspace/<workspaceId>?terminalId=$sessionId"
 ```
 
 Append `&focusRequestId=<unique>` to force a re-focus when opening the same link
@@ -836,7 +836,7 @@ prompt-transport mode, and environment used to launch the agent in a fresh
 terminal session inside a workspace.
 
 <Command
-	name="superset agents list"
+	name="choros agents list"
 	options={[
 		{ flag: "--host <id>", description: "Target host machineId." },
 		{ flag: "--local", description: "Target this machine. Mutually exclusive with --host; exactly one is required." },
@@ -859,17 +859,17 @@ List agents configured on a host. First call on a fresh host seeds the
 bundled defaults.
 
 ```bash
-superset agents list --local
-superset agents list --host host_…
+choros agents list --local
+choros agents list --host host_…
 ```
 </Command>
 
 <Command
-	name="superset agents create"
+	name="choros agents create"
 	options={[
 		{ flag: "--workspace <id>", required: true, description: "Workspace UUID to create the agent session in." },
 		{ flag: "--host <id>", description: "Host the workspace lives on (default: this machine)." },
-		{ flag: "--agent <preset|uuid|superset>", required: true, description: "Agent preset id (e.g. `claude`, `codex`), HostAgentConfig instance UUID, or `superset`." },
+		{ flag: "--agent <preset|uuid|choros>", required: true, description: "Agent preset id (e.g. `claude`, `codex`), HostAgentConfig instance UUID, or `choros`." },
 		{ flag: "--prompt <text>", description: "Prompt sent to the agent. Required unless `--resume-session` is set." },
 		{ flag: "--resume-session <id>", description: "Agent session id of a previous run to restore instead of starting fresh (e.g. `claude --resume <id>`). Fails for agents without an id-based resume." },
 		{ flag: "--effort <level>", description: "Reasoning effort for this launch. Omit to use the agent default." },
@@ -887,16 +887,16 @@ machine): starts the named preset (or HostAgentConfig instance) in a fresh
 terminal session there.
 
 ```bash
-superset agents create --workspace ws_… --agent claude --effort high --prompt "Audit the login flow"
-superset agents create --workspace ws_… --agent codex --prompt "Review this diff" --attachment ./trace.log
+choros agents create --workspace ws_… --agent claude --effort high --prompt "Audit the login flow"
+choros agents create --workspace ws_… --agent codex --prompt "Review this diff" --attachment ./trace.log
 # Restore a killed agent session by the agent's own session id
-superset agents create --workspace ws_… --agent claude --resume-session 0b7c…
+choros agents create --workspace ws_… --agent claude --resume-session 0b7c…
 ```
 
 #### Agent effort levels
 
 Effort is an explicit override for one launch. If you omit `--effort`,
-Superset passes no effort flag and the agent uses its own configured default.
+Choros passes no effort flag and the agent uses its own configured default.
 The host rejects unsupported values before launching the agent.
 
 | Agent | Supported levels |
@@ -908,7 +908,7 @@ The host rejects unsupported values before launching the agent.
 | Pi | `off`, `minimal`, `low`, `medium`, `high`, `xhigh` |
 | Copilot | `low`, `medium`, `high`, `xhigh` |
 
-Other agents, including Superset chat, currently use their own default and
+Other agents, including Choros chat, currently use their own default and
 reject an explicit effort override.
 </Command>
 
@@ -920,7 +920,7 @@ Terminals are PTY sessions on a host, scoped to a workspace. Create one to run
 a one-off command in a worktree or to open an interactive shell.
 
 <Command
-	name="superset terminals create"
+	name="choros terminals create"
 	options={[
 		{ flag: "--workspace <id>", required: true, description: "Workspace UUID to create the terminal in." },
 		{ flag: "--host <id>", description: "Host the workspace lives on (default: this machine)." },
@@ -936,13 +936,13 @@ Create a terminal session in an existing workspace on its host (default: this
 machine): opens a fresh PTY in the worktree, optionally running a command.
 
 ```bash
-superset terminals create --workspace ws_… --command "bun install && bun test"
-superset terminals create --workspace ws_…
+choros terminals create --workspace ws_… --command "bun install && bun test"
+choros terminals create --workspace ws_…
 ```
 </Command>
 
 <Command
-	name="superset terminals list"
+	name="choros terminals list"
 	options={[
 		{ flag: "--workspace <id>", required: true, description: "Workspace UUID." },
 		{ flag: "--host <id>", description: "Host the workspace lives on (default: this machine)." },
@@ -956,7 +956,7 @@ PTY exists, not that an agent inside it is working or idle.
 </Command>
 
 <Command
-	name="superset terminals read"
+	name="choros terminals read"
 	options={[
 		{ flag: "--workspace <id>", required: true, description: "Workspace UUID." },
 		{ flag: "--terminal <id>", required: true, description: "Terminal session ID." },
@@ -973,12 +973,12 @@ PTY exists, not that an agent inside it is working or idle.
 Read a terminal's current screen back as text without mutating the session.
 
 ```bash
-superset terminals read --workspace ws_… --terminal term_… --max-lines 240
+choros terminals read --workspace ws_… --terminal term_… --max-lines 240
 ```
 </Command>
 
 <Command
-	name="superset terminals send"
+	name="choros terminals send"
 	options={[
 		{ flag: "--workspace <id>", required: true, description: "Workspace UUID." },
 		{ flag: "--terminal <id>", required: true, description: "Terminal session ID." },
@@ -992,7 +992,7 @@ give an agent new instructions mid-session.
 </Command>
 
 <Command
-	name="superset terminals close"
+	name="choros terminals close"
 	options={[
 		{ flag: "--workspace <id>", required: true, description: "Workspace UUID." },
 		{ flag: "--terminal <id>", required: true, description: "Terminal session ID." },
@@ -1016,7 +1016,7 @@ these commands error. A `paneId` is scoped to its workspace — pass the same
 agent-facing protocol.
 
 <Command
-	name="superset browser list"
+	name="choros browser list"
 	options={[
 		{ flag: "--workspace <id>", required: true, description: "Workspace UUID." },
 		{ flag: "--host <id>", description: "Host the workspace lives on (default: this machine)." },
@@ -1029,7 +1029,7 @@ List the browser panes open in a workspace.
 </Command>
 
 <Command
-	name="superset browser open"
+	name="choros browser open"
 	options={[
 		{ flag: "--workspace <id>", required: true, description: "Workspace UUID." },
 		{ flag: "--url <url>", required: true, description: "URL to open (http/https)." },
@@ -1046,12 +1046,12 @@ Open a URL in a browser pane and return its `paneId`. Requires the workspace to
 be visible in the desktop app (the renderer creates the pane).
 
 ```bash
-superset browser open --workspace ws_… --url http://localhost:3000 --target new-tab
+choros browser open --workspace ws_… --url http://localhost:3000 --target new-tab
 ```
 </Command>
 
 <Command
-	name="superset browser navigate"
+	name="choros browser navigate"
 	options={[
 		{ flag: "--workspace <id>", required: true, description: "Workspace UUID." },
 		{ flag: "--pane <id>", required: true, description: "Pane ID (from `browser list`)." },
@@ -1064,7 +1064,7 @@ are refused.
 </Command>
 
 <Command
-	name="superset browser screenshot"
+	name="choros browser screenshot"
 	options={[
 		{ flag: "--workspace <id>", required: true, description: "Workspace UUID." },
 		{ flag: "--pane <id>", required: true, description: "Pane ID." },
@@ -1077,7 +1077,7 @@ Capture a PNG screenshot of the pane's page.
 </Command>
 
 <Command
-	name="superset browser eval"
+	name="choros browser eval"
 	options={[
 		{ flag: "--workspace <id>", required: true, description: "Workspace UUID." },
 		{ flag: "--pane <id>", required: true, description: "Pane ID." },
@@ -1090,13 +1090,13 @@ Evaluate JavaScript in the page and return the result — the ergonomic path for
 reading or nudging the DOM.
 
 ```bash
-superset browser eval --workspace ws_… --pane pane_… \
+choros browser eval --workspace ws_… --pane pane_… \
   --code "document.querySelector('h1')?.textContent"
 ```
 </Command>
 
 <Command
-	name="superset browser console"
+	name="choros browser console"
 	options={[
 		{ flag: "--workspace <id>", required: true, description: "Workspace UUID." },
 		{ flag: "--pane <id>", required: true, description: "Pane ID." },
@@ -1109,7 +1109,7 @@ Read the pane's captured console output.
 </Command>
 
 <Command
-	name="superset browser cdp"
+	name="choros browser cdp"
 	options={[
 		{ flag: "--workspace <id>", required: true, description: "Workspace UUID." },
 		{ flag: "--pane <id>", required: true, description: "Pane ID." },
@@ -1129,7 +1129,7 @@ The URL embeds an auth token — treat it as a secret.
 Tasks are units of work in your organization's task tracker.
 
 <Command
-	name="superset tasks list"
+	name="choros tasks list"
 	options={[
 		{ flag: "--status <id>", description: "Filter by status ID." },
 		{ flag: "--priority <urgent|high|medium|low|none>", description: "Filter by priority." },
@@ -1154,13 +1154,13 @@ Tasks are units of work in your organization's task tracker.
 List tasks in the active organization.
 
 ```bash
-superset tasks list --assignee-me
-superset t list -s "auth" --json
+choros tasks list --assignee-me
+choros t list -s "auth" --json
 ```
 </Command>
 
 <Command
-	name="superset tasks get <idOrSlug>"
+	name="choros tasks get <idOrSlug>"
 	args={[
 		{ name: "idOrSlug", required: true, description: "Task ID or slug." },
 	]}
@@ -1169,13 +1169,13 @@ superset t list -s "auth" --json
 Get a task by ID or slug.
 
 ```bash
-superset tasks get tsk_…
-superset tasks get fix-login-bug
+choros tasks get tsk_…
+choros tasks get fix-login-bug
 ```
 </Command>
 
 <Command
-	name="superset tasks create"
+	name="choros tasks create"
 	options={[
 		{ flag: "--title <title>", required: true, description: "Task title." },
 		{ flag: "--description <text>", description: "Task description." },
@@ -1191,12 +1191,12 @@ superset tasks get fix-login-bug
 Create a task.
 
 ```bash
-superset tasks create --title "Audit auth flow" --priority high
+choros tasks create --title "Audit auth flow" --priority high
 ```
 </Command>
 
 <Command
-	name="superset tasks update <idOrSlug>"
+	name="choros tasks update <idOrSlug>"
 	args={[
 		{ name: "idOrSlug", required: true, description: "Task ID or slug." },
 	]}
@@ -1216,12 +1216,12 @@ superset tasks create --title "Audit auth flow" --priority high
 Update a task. Same fields as `create`, all optional.
 
 ```bash
-superset tasks update fix-login-bug --priority urgent
+choros tasks update fix-login-bug --priority urgent
 ```
 </Command>
 
 <Command
-	name="superset tasks delete <idOrSlug...>"
+	name="choros tasks delete <idOrSlug...>"
 	args={[
 		{ name: "idOrSlug", required: true, variadic: true, description: "Task IDs or slugs to delete." },
 	]}
@@ -1230,12 +1230,12 @@ superset tasks update fix-login-bug --priority urgent
 Delete one or more tasks.
 
 ```bash
-superset tasks delete tsk_a tsk_b
+choros tasks delete tsk_a tsk_b
 ```
 </Command>
 
 <Command
-	name="superset tasks statuses list"
+	name="choros tasks statuses list"
 	output={`Array<{
   id: string;
   name: string;
@@ -1250,7 +1250,7 @@ List task statuses in the active organization. Use the returned IDs with
 `tasks update --status-id`.
 
 ```bash
-superset tasks statuses list
+choros tasks statuses list
 ```
 </Command>
 
@@ -1262,7 +1262,7 @@ Scheduled agent runs. Schedules use RFC 5545 RRULE bodies, e.g.
 `FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR;BYHOUR=9;BYMINUTE=0`.
 
 <Command
-	name="superset automations list"
+	name="choros automations list"
 	options={[
 		{ flag: "--name <text>", description: "Case-insensitive substring filter on the automation name. Alias: -n." },
 	]}
@@ -1274,19 +1274,19 @@ List automations in the active organization.
 </Command>
 
 <Command
-	name="superset automations get <id>"
+	name="choros automations get <id>"
 	args={[
 		{ name: "id", required: true, description: "Automation ID." },
 	]}
 	output="Automation"
 >
 Get an automation's metadata. The prompt body is omitted. Use
-[`automations prompt get`](#superset-automations-prompt-get-id) to read it.
-Use [`automations logs`](#superset-automations-logs-id) for run history.
+[`automations prompt get`](#choros-automations-prompt-get-id) to read it.
+Use [`automations logs`](#choros-automations-logs-id) for run history.
 </Command>
 
 <Command
-	name="superset automations create"
+	name="choros automations create"
 	options={[
 		{ flag: "--name <name>", required: true, description: "Automation name." },
 		{ flag: "--prompt <text>", description: "Inline prompt." },
@@ -1297,7 +1297,7 @@ Use [`automations logs`](#superset-automations-logs-id) for run history.
 		{ flag: "--workspace <workspaceId>", description: "Reuse an existing workspace (session workspaces are accepted)." },
 		{ flag: "--project <projectId>", description: "Project ID for new-workspace-per-run mode. Omit (with no --workspace) for session mode." },
 		{ flag: "--host <hostId>", description: "Host the automation dispatches to (default: this machine)." },
-		{ flag: "--agent <agent>", description: "Host agent presetId, instance UUID, or 'superset' for built-in chat. Default: claude." },
+		{ flag: "--agent <agent>", description: "Host agent presetId, instance UUID, or 'choros' for built-in chat. Default: claude." },
 		{ flag: "--tag <tag>", description: "Workspace tag applied to each run's created workspace. Repeatable. Default: automation." },
 	]}
 	output="Automation"
@@ -1314,7 +1314,7 @@ into the matching sidebar folders. By default automations are tagged
 pass `--tag` to file runs elsewhere.
 
 ```bash
-superset automations create \
+choros automations create \
   --name "Weekday triage" \
   --project prj_… \
   --workspace ws_… \
@@ -1324,7 +1324,7 @@ superset automations create \
 </Command>
 
 <Command
-	name="superset automations update <id>"
+	name="choros automations update <id>"
 	args={[
 		{ name: "id", required: true, description: "Automation ID." },
 	]}
@@ -1337,7 +1337,7 @@ superset automations create \
 		{ flag: "--project <projectId>", description: "New v2 project ID." },
 		{ flag: "--workspace <workspaceId>", description: "New v2 workspace ID." },
 		{ flag: "--session", description: "Switch to session mode: clears the project and any workspace pin; each run creates a project-less session workspace. Mutually exclusive with --project/--workspace." },
-		{ flag: "--agent <agent>", description: "New host agent presetId, instance UUID, or 'superset'." },
+		{ flag: "--agent <agent>", description: "New host agent presetId, instance UUID, or 'choros'." },
 		{ flag: "--mcp-scope <a,b,c>", description: "Comma-separated MCP scope strings." },
 		{ flag: "--tag <tag>", description: "Replace the tag set applied to each run's created workspace. Repeatable." },
 		{ flag: "--clear-tags", description: "Remove every tag (runs stop grouping). Mutually exclusive with --tag." },
@@ -1347,13 +1347,13 @@ superset automations create \
 >
 Update an automation's metadata (name, schedule, agent, host). All flags
 optional. Omitting a flag preserves the existing value: `undefined` means
-"no change", not "clear". Use [`automations prompt get`](#superset-automations-prompt-get-id)
-or [`automations prompt set`](#superset-automations-prompt-set-id) to read or
+"no change", not "clear". Use [`automations prompt get`](#choros-automations-prompt-get-id)
+or [`automations prompt set`](#choros-automations-prompt-set-id) to read or
 replace the prompt body.
 </Command>
 
 <Command
-	name="superset automations prompt get <id>"
+	name="choros automations prompt get <id>"
 	args={[
 		{ name: "id", required: true, description: "Automation ID." },
 	]}
@@ -1365,15 +1365,15 @@ byte-exactly.
 
 ```bash
 # Read to a file
-superset automations prompt get aut_… > prompt.md
+choros automations prompt get aut_… > prompt.md
 
 # Verify a push landed
-superset automations prompt get aut_… | diff - ./prompt.md
+choros automations prompt get aut_… | diff - ./prompt.md
 ```
 </Command>
 
 <Command
-	name="superset automations prompt set <id>"
+	name="choros automations prompt set <id>"
 	args={[
 		{ name: "id", required: true, description: "Automation ID." },
 	]}
@@ -1387,15 +1387,15 @@ old one.
 
 ```bash
 # Write from file
-superset automations prompt set aut_… --from-file ./prompt.md
+choros automations prompt set aut_… --from-file ./prompt.md
 
 # Write from stdin
-cat ./prompt.md | superset automations prompt set aut_… --from-file -
+cat ./prompt.md | choros automations prompt set aut_… --from-file -
 ```
 </Command>
 
 <Command
-	name="superset automations delete <id>"
+	name="choros automations delete <id>"
 	args={[
 		{ name: "id", required: true, description: "Automation ID." },
 	]}
@@ -1404,12 +1404,12 @@ cat ./prompt.md | superset automations prompt set aut_… --from-file -
 Delete an automation.
 
 ```bash
-superset automations delete aut_…
+choros automations delete aut_…
 ```
 </Command>
 
 <Command
-	name="superset automations pause <id>"
+	name="choros automations pause <id>"
 	args={[
 		{ name: "id", required: true, description: "Automation ID." },
 	]}
@@ -1418,12 +1418,12 @@ superset automations delete aut_…
 Pause an automation (sets `enabled: false`).
 
 ```bash
-superset automations pause aut_…
+choros automations pause aut_…
 ```
 </Command>
 
 <Command
-	name="superset automations resume <id>"
+	name="choros automations resume <id>"
 	args={[
 		{ name: "id", required: true, description: "Automation ID." },
 	]}
@@ -1433,12 +1433,12 @@ Resume an automation (sets `enabled: true`). The API recomputes
 `nextRunAt` on resume.
 
 ```bash
-superset automations resume aut_…
+choros automations resume aut_…
 ```
 </Command>
 
 <Command
-	name="superset automations run <id>"
+	name="choros automations run <id>"
 	args={[
 		{ name: "id", required: true, description: "Automation ID." },
 	]}
@@ -1450,12 +1450,12 @@ superset automations resume aut_…
 Dispatch an automation immediately. Does not wait for completion.
 
 ```bash
-superset automations run aut_…
+choros automations run aut_…
 ```
 </Command>
 
 <Command
-	name="superset automations logs <id>"
+	name="choros automations logs <id>"
 	args={[
 		{ name: "id", required: true, description: "Automation ID." },
 	]}
@@ -1469,7 +1469,7 @@ superset automations run aut_…
 List recent runs for an automation.
 
 ```bash
-superset automations logs aut_…
+choros automations logs aut_…
 ```
 </Command>
 
@@ -1477,7 +1477,7 @@ superset automations logs aut_…
 
 ### settings
 
-Read and update the Superset desktop app's settings on this machine:
+Read and update the Choros desktop app's settings on this machine:
 behavior, git, notifications, terminal, terminal/editor appearance, and the
 app theme. These commands work offline and don't require login.
 
@@ -1488,10 +1488,10 @@ Without a running app (or on older app versions) settings apply on next
 window focus and theme changes on next launch. Git settings
 (`branchPrefixMode`, `branchPrefixCustom`, `worktreeBaseDir`) are
 host-wide and written through the local host service, so the desktop app
-or `superset start` must be running for those.
+or `choros start` must be running for those.
 
 <Command
-	name="superset settings list"
+	name="choros settings list"
 	output={`Array<{
   key: string;
   value: string;
@@ -1507,12 +1507,12 @@ List every settable key with its current value, default, and allowed values.
 `isSet: false` means the app is using its built-in default.
 
 ```bash
-superset settings list
+choros settings list
 ```
 </Command>
 
 <Command
-	name="superset settings get <key>"
+	name="choros settings get <key>"
 	args={[
 		{ name: "key", required: true, description: "Setting key from `settings list`." },
 	]}
@@ -1529,12 +1529,12 @@ Print the effective value of one setting (falls back to the app default
 when unset).
 
 ```bash
-superset settings get terminalFontSize
+choros settings get terminalFontSize
 ```
 </Command>
 
 <Command
-	name="superset settings set <key> <value>"
+	name="choros settings set <key> <value>"
 	args={[
 		{ name: "key", required: true, description: "Setting key from `settings list`." },
 		{ name: "value", required: true, description: "New value. Validated against the setting's type, range, and allowed values." },
@@ -1545,15 +1545,15 @@ numeric ranges are validated the same way the desktop settings UI validates
 them.
 
 ```bash
-superset settings set confirmOnQuit false
-superset settings set terminalFontSize 16
-superset settings set defaultEditor cursor
-superset settings set selectedRingtoneId ping
+choros settings set confirmOnQuit false
+choros settings set terminalFontSize 16
+choros settings set defaultEditor cursor
+choros settings set selectedRingtoneId ping
 ```
 </Command>
 
 <Command
-	name="superset settings reset <key>"
+	name="choros settings reset <key>"
 	args={[
 		{ name: "key", required: true, description: "Setting key from `settings list`." },
 	]}
@@ -1561,12 +1561,12 @@ superset settings set selectedRingtoneId ping
 Reset a setting to the app default.
 
 ```bash
-superset settings reset terminalFontSize
+choros settings reset terminalFontSize
 ```
 </Command>
 
 <Command
-	name="superset settings theme list"
+	name="choros settings theme list"
 	output={`{
   activeThemeId: string;
   systemLightThemeId: string;
@@ -1580,12 +1580,12 @@ List available themes: `system` (follows OS appearance), the built-ins
 app.
 
 ```bash
-superset settings theme list
+choros settings theme list
 ```
 </Command>
 
 <Command
-	name="superset settings theme get"
+	name="choros settings theme get"
 	output={`{
   activeThemeId: string;
   systemLightThemeId: string;
@@ -1595,12 +1595,12 @@ superset settings theme list
 Print the active theme.
 
 ```bash
-superset settings theme get
+choros settings theme get
 ```
 </Command>
 
 <Command
-	name="superset settings theme export <id>"
+	name="choros settings theme export <id>"
 	args={[
 		{ name: "id", required: true, description: "Theme id (built-in or custom)." },
 	]}
@@ -1613,12 +1613,12 @@ Export a theme's full JSON definition, the starting point for creating a
 custom theme: export a built-in, edit the colors, then import it.
 
 ```bash
-superset settings theme export dark --out my-theme.json
+choros settings theme export dark --out my-theme.json
 ```
 </Command>
 
 <Command
-	name="superset settings theme import <file>"
+	name="choros settings theme import <file>"
 	args={[
 		{ name: "file", required: true, description: "Path to a theme JSON file (max 256 KB): a single theme, an array, or `{ themes: [...] }`." },
 	]}
@@ -1633,15 +1633,15 @@ the built-in base theme; reserved ids like `dark` are rejected).
 Re-importing an id replaces that custom theme.
 
 ```bash
-superset settings theme export dark --out my-theme.json
+choros settings theme export dark --out my-theme.json
 # edit my-theme.json (id, name, ui/terminal/editor colors)
-superset settings theme import my-theme.json
-superset settings theme set my-theme
+choros settings theme import my-theme.json
+choros settings theme set my-theme
 ```
 </Command>
 
 <Command
-	name="superset settings theme remove <id>"
+	name="choros settings theme remove <id>"
 	args={[
 		{ name: "id", required: true, description: "Custom theme id. Built-ins can't be removed." },
 	]}
@@ -1650,12 +1650,12 @@ Remove a custom theme. If it was the active theme (or a system light/dark
 mapping), that reference falls back to the default.
 
 ```bash
-superset settings theme remove my-theme
+choros settings theme remove my-theme
 ```
 </Command>
 
 <Command
-	name="superset settings theme set [theme]"
+	name="choros settings theme set [theme]"
 	args={[
 		{ name: "theme", description: "Theme id, or `system` to follow the OS appearance." },
 	]}
@@ -1670,8 +1670,8 @@ desktop app restyles live; without one the theme applies on next launch.
 relaunch, or the app may overwrite the change.)
 
 ```bash
-superset settings theme set monokai
-superset settings theme set system --system-light light --system-dark monokai
+choros settings theme set monokai
+choros settings theme set system --system-light light --system-dark monokai
 ```
 </Command>
 

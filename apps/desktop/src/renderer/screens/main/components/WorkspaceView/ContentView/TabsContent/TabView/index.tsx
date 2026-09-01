@@ -26,7 +26,7 @@ import { DevToolsPane } from "./DevToolsPane";
 import { FileViewerPane } from "./FileViewerPane";
 import { TabPane } from "./TabPane";
 
-export const MOSAIC_ID = "superset-mosaic";
+export const MOSAIC_ID = "choros-mosaic";
 
 interface TabViewProps {
 	tab: Tab;

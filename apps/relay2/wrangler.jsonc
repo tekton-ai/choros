@@ -1,6 +1,6 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "superset-relay2",
+	"name": "choros-relay2",
 	"main": "src/index.ts",
 	// The workers.dev URL is load-bearing: it is the flag payload every shipped
 	// build's CSP allows. Adding routes below silently disables it on deploy
@@ -8,13 +8,13 @@
 	"workers_dev": true,
 	// Also reachable at the workers.dev URL; both serve the same Durable
 	// Objects, so hosts and clients may mix hostnames during migration.
-	"routes": [{ "pattern": "relay2.superset.sh", "custom_domain": true }],
+	"routes": [{ "pattern": "relay2.choros.sh", "custom_domain": true }],
 	"compatibility_date": "2026-07-01",
 	"compatibility_flags": ["nodejs_als"],
 	"vars": {
 		// Must match the API's JWT issuer/audience exactly — a mismatch 401s
 		// every connection. Same value as the Fly relay's NEXT_PUBLIC_API_URL.
-		"NEXT_PUBLIC_API_URL": "https://api.superset.sh"
+		"NEXT_PUBLIC_API_URL": "https://api.choros.sh"
 	},
 	"durable_objects": {
 		"bindings": [{ "name": "HostTunnel", "class_name": "HostTunnel" }]

@@ -74,7 +74,7 @@ export function PersonalLayout({
 								color: "#8E8E8E",
 							}}
 						>
-							Superset, Inc., San Francisco, CA
+							Choros, Inc., San Francisco, CA
 							{unsubscribeUrl ? (
 								<>
 									{" "}

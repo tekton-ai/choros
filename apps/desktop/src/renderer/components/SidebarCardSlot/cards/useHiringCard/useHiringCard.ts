@@ -27,7 +27,7 @@ export function useHiringCard({
 		}),
 		title: t({
 			id: "components.hiringCard.title",
-			message: "Like building with Superset?",
+			message: "Like building with Choros?",
 		}),
 		description: t({
 			id: "components.hiringCard.description",

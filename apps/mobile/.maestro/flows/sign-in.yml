@@ -1,10 +1,10 @@
-appId: sh.superset.mobile
+appId: sh.choros.mobile
 ---
 - launchApp:
     stopApp: true
     clearKeychain: true
 - extendedWaitUntil:
-    visible: "Welcome to Superset"
+    visible: "Welcome to Choros"
     timeout: 60000
 - assertVisible: "Sign in to get started"
 - tapOn:

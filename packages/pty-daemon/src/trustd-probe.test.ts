@@ -52,7 +52,7 @@ describe("probeTrustdHealthy", () => {
 		expect(cmd).toBe("security");
 		expect(args[0]).toBe("verify-cert");
 		expect(args[1]).toBe("-c");
-		expect(args[2]).toMatch(/superset-trustd-[^/]+\/probe\.pem$/);
+		expect(args[2]).toMatch(/choros-trustd-[^/]+\/probe\.pem$/);
 	});
 
 	it("finds the END marker after BEGIN when an earlier PEM type precedes it", async () => {

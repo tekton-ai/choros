@@ -56,7 +56,7 @@ export default async function AgentsPage() {
 					<h1 className="mb-3 text-3xl font-medium">
 						{i18n._({
 							id: "web.agents.downloadTitle",
-							message: "Download Superset",
+							message: "Download Choros",
 						})}
 					</h1>
 					<p className="text-muted-foreground">

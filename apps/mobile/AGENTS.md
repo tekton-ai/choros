@@ -1,8 +1,8 @@
-# Superset Mobile App
+# Choros Mobile App
 
 ## Project Structure
 
-Guidelines for organizing the Superset mobile app mostly follow repo's patterns,
+Guidelines for organizing the Choros mobile app mostly follow repo's patterns,
 with some caveats:
 
 ### Keep in app/

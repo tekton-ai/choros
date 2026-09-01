@@ -56,7 +56,7 @@ export function getSyntheticPrHeadRef(prNumber: number): string {
 }
 
 export function getSyntheticPrFetchRef(prNumber: number): string {
-	return `refs/superset/pr-fetch/${prNumber}/head`;
+	return `refs/choros/pr-fetch/${prNumber}/head`;
 }
 
 function normalizeOid(oid: string): string {
@@ -71,7 +71,7 @@ function normalizeRemoteUrl(url: string): string {
 }
 
 function getForkRemoteName(prNumber: number): string {
-	return `superset-pr-${prNumber}`;
+	return `choros-pr-${prNumber}`;
 }
 
 function getHeadRepositoryUrl(pr: PrBranchMetadata): string | null {
@@ -224,7 +224,7 @@ async function fetchSyntheticPrBranch(args: {
 		warning:
 			args.warning ??
 			(args.pr.isCrossRepository && !forkRemoteUrl
-				? `Superset checked out PR #${args.pr.number} through ${syntheticRef}, but GitHub did not return the fork repository. Plain git push may require manual remote configuration.`
+				? `Choros checked out PR #${args.pr.number} through ${syntheticRef}, but GitHub did not return the fork repository. Plain git push may require manual remote configuration.`
 				: undefined),
 	};
 }
@@ -324,7 +324,7 @@ async function resolvePrBranchSource(args: {
 			git: args.git,
 			remoteName: args.remoteName,
 			pr: args.pr,
-			warning: `The PR head branch "${args.pr.headRefName}" was unavailable from ${args.remoteName}, so Superset fetched ${getSyntheticPrHeadRef(args.pr.number)} instead. Original error: ${err.originalError instanceof Error ? err.originalError.message : String(err.originalError)}`,
+			warning: `The PR head branch "${args.pr.headRefName}" was unavailable from ${args.remoteName}, so Choros fetched ${getSyntheticPrHeadRef(args.pr.number)} instead. Original error: ${err.originalError instanceof Error ? err.originalError.message : String(err.originalError)}`,
 		});
 	}
 }

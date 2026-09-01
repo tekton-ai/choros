@@ -48,7 +48,7 @@ const SETTLE_MS = 3_000;
 function parseArgs(argv: string[]): Options {
 	const options: Options = {
 		variant: "after",
-		repoPath: resolve("/tmp/superset-gitignored-churn-repo"),
+		repoPath: resolve("/tmp/choros-gitignored-churn-repo"),
 		outDir: resolve(".cache/gitignored-churn-bench"),
 		files: 2_000,
 		churnEvents: 300,
@@ -115,7 +115,7 @@ async function writeTextFile(path: string, contents: string): Promise<void> {
 }
 
 /** Marker so the destructive reset below can never run on a real repo. */
-const BENCH_MARKER = ".superset-bench-repo";
+const BENCH_MARKER = ".choros-bench-repo";
 
 async function ensureRepo(options: Options): Promise<void> {
 	if (existsSync(join(options.repoPath, ".git"))) {

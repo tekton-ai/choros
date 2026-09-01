@@ -24,12 +24,12 @@ export async function generateMetadata(): Promise<Metadata> {
 	const description = i18n._({
 		id: "marketing.meta.team.description",
 		message:
-			"What Superset is, who builds it, and who it's for. A San Francisco team of three ex-YC CTOs building the workspace for parallel coding agents.",
+			"What Choros is, who builds it, and who it's for. A San Francisco team of three ex-YC CTOs building the workspace for parallel coding agents.",
 	});
 	const ogDescription = i18n._({
 		id: "marketing.meta.team.ogDescription",
 		message:
-			"Meet the team behind Superset, building parallel coding agents for developers.",
+			"Meet the team behind Choros, building parallel coding agents for developers.",
 	});
 	return {
 		title,
@@ -39,14 +39,14 @@ export async function generateMetadata(): Promise<Metadata> {
 			languages: localizedAlternates(lang, "/team").languages,
 		},
 		openGraph: {
-			title: `${title} | Superset`,
+			title: `${title} | Choros`,
 			description: ogDescription,
 			url: localeUrl(lang, "/team"),
 			images: ["/opengraph-image"],
 		},
 		twitter: {
 			card: "summary_large_image",
-			title: `${title} | Superset`,
+			title: `${title} | Choros`,
 			description: ogDescription,
 			images: ["/opengraph-image"],
 		},
@@ -65,7 +65,7 @@ export default async function TeamPage() {
 				{/* Hero */}
 				<section className="mb-24 md:mb-32">
 					<p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6">
-						<Trans id="marketing.team.eyebrow">About Superset</Trans>
+						<Trans id="marketing.team.eyebrow">About Choros</Trans>
 					</p>
 					<h1 className="text-4xl sm:text-5xl md:text-6xl font-normal leading-[1.05] text-foreground max-w-4xl mb-8">
 						<Trans id="marketing.team.headline">
@@ -74,7 +74,7 @@ export default async function TeamPage() {
 					</h1>
 					<p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
 						<Trans id="marketing.team.intro">
-							Superset is building self-improving software. It starts with
+							Choros is building self-improving software. It starts with
 							giving engineers the best tools that adapt to their needs over
 							time. We're 3 ex-YC CTOs building a tool that we love.
 						</Trans>
@@ -93,7 +93,7 @@ export default async function TeamPage() {
 							<div className="space-y-4 text-muted-foreground leading-relaxed">
 								<p>
 									<Trans id="marketing.team.story.origin">
-										Superset started as a hackathon project in November 2025. It
+										Choros started as a hackathon project in November 2025. It
 										was a simple desktop app for managing worktrees.
 									</Trans>
 								</p>
@@ -103,7 +103,7 @@ export default async function TeamPage() {
 										<span className="text-foreground">
 											tens of thousands of engineers
 										</span>{" "}
-										run Superset as their primary IDE, at companies like Wix,
+										run Choros as their primary IDE, at companies like Wix,
 										DoorDash, and Netflix.
 									</Trans>
 								</p>
@@ -124,7 +124,7 @@ export default async function TeamPage() {
 									alt={t({
 										id: "marketing.team.foundersPhoto.alt",
 										message:
-											"The Superset founders at a hackathon, YC HQ San Francisco",
+											"The Choros founders at a hackathon, YC HQ San Francisco",
 									})}
 									fill
 									className="object-cover"
@@ -133,7 +133,7 @@ export default async function TeamPage() {
 							</div>
 							<figcaption className="mt-3 text-xs text-muted-foreground">
 								<Trans id="marketing.team.foundersPhoto.caption">
-									The founders at the hackathon where Superset started{" "}
+									The founders at the hackathon where Choros started{" "}
 									<span className="text-muted-foreground/40">|</span> YC HQ,
 									November 2025
 								</Trans>

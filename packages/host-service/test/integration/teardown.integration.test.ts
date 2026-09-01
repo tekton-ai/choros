@@ -68,7 +68,7 @@ describe("runTeardown integration", () => {
 		});
 
 		scenario = await createBasicScenario();
-		const scriptDir = join(scenario.repo.repoPath, ".superset");
+		const scriptDir = join(scenario.repo.repoPath, ".choros");
 		const markerPath = join(scenario.repo.repoPath, "teardown-marker.txt");
 		mkdirSync(scriptDir, { recursive: true });
 		writeFileSync(

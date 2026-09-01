@@ -193,7 +193,7 @@ describe("materializePrBranch (real git)", () => {
 			pr: prMetadata,
 		});
 
-		expect(stableRef).toBe("refs/superset/pr-fetch/5252/head");
+		expect(stableRef).toBe("refs/choros/pr-fetch/5252/head");
 		expect(first.startPoint).toBe(scenario.prHeadOid);
 		expect(
 			(
@@ -209,7 +209,7 @@ describe("materializePrBranch (real git)", () => {
 				await scenario.local.git.raw([
 					"for-each-ref",
 					"--format=%(refname)",
-					"refs/superset/pr-fetch/5252",
+					"refs/choros/pr-fetch/5252",
 				])
 			)
 				.trim()
@@ -253,7 +253,7 @@ describe("materializePrBranch (real git)", () => {
 				await scenario.local.git.raw([
 					"for-each-ref",
 					"--format=%(refname)",
-					"refs/superset/pr-fetch/5252",
+					"refs/choros/pr-fetch/5252",
 				])
 			)
 				.trim()

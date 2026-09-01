@@ -40,7 +40,7 @@ const CALLBACK_MESSAGES = {
 	no_refresh_token: i18n._({
 		id: "web.integrations.google.callback.noRefreshToken",
 		message:
-			"Google did not grant lasting access. Remove Superset from your Google account's third-party access and try again.",
+			"Google did not grant lasting access. Remove Choros from your Google account's third-party access and try again.",
 	}),
 	userinfo_failed: i18n._({
 		id: "web.integrations.google.callback.userinfoFailed",

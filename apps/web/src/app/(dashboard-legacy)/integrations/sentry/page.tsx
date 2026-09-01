@@ -18,15 +18,15 @@ import { ConnectionControls } from "./components/ConnectionControls";
  * Sentry records the installation the moment the admin accepts it, and refuses
  * to install it twice — so every failure after that point leaves the app
  * installed in Sentry but unlinked here, and the install page's button greyed
- * out. Superset cannot clear it (an installation token is refused a DELETE on
+ * out. Choros cannot clear it (an installation token is refused a DELETE on
  * its own installation), so the messages for those failures have to say what
  * the only way back is.
  */
-const RECONNECT = "Uninstall Superset in Sentry, then connect again.";
+const RECONNECT = "Uninstall Choros in Sentry, then connect again.";
 
 const CALLBACK_MESSAGES = {
 	not_configured:
-		"Sentry isn't available yet — the Superset app hasn't been registered with Sentry.",
+		"Sentry isn't available yet — the Choros app hasn't been registered with Sentry.",
 	oauth_denied: "The install was cancelled. Please try again.",
 	missing_params: `Invalid response from Sentry. ${RECONNECT}`,
 	invalid_state: `Your session expired. ${RECONNECT}`,
@@ -38,7 +38,7 @@ const CALLBACK_MESSAGES = {
 		withParam:
 			"This Sentry organization is already connected by {owner}. Ask them to disconnect first.",
 		withoutParam:
-			"This Sentry organization is already connected by another Superset organization.",
+			"This Sentry organization is already connected by another Choros organization.",
 	},
 };
 
@@ -101,7 +101,7 @@ export default async function SentryIntegrationPage() {
 				<CardHeader>
 					<CardTitle>Connection</CardTitle>
 					<CardDescription>
-						Install the Superset app in your Sentry organization.
+						Install the Choros app in your Sentry organization.
 					</CardDescription>
 				</CardHeader>
 				<CardContent>

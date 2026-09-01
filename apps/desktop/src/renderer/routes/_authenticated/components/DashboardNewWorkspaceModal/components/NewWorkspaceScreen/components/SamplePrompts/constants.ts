@@ -20,14 +20,14 @@ export const SAMPLE_PROMPTS: Record<string, SamplePrompt> = {
 		id: "set-up-project",
 		label: msg({
 			id: "dashboard.newWorkspaceModal.samplePrompts.setUpProject.label",
-			message: "Set up this project for Superset",
+			message: "Set up this project for Choros",
 		}),
 		description: msg({
 			id: "dashboard.newWorkspaceModal.samplePrompts.setUpProject.description",
 			message:
 				"Write setup and teardown scripts so every new workspace starts ready to run.",
 		}),
-		prompt: `Set up this repository to work well with Superset workspaces. Read https://docs.superset.sh/setup-teardown-scripts and create a .superset/config.json with: setup commands that install dependencies and copy untracked files (like .env) from "$SUPERSET_ROOT_PATH" into new workspaces, teardown commands that stop anything setup starts, and a run command that launches the dev server. If parallel workspaces would collide on dev-server ports, make the scripts pick a free port per workspace (see https://docs.superset.sh/ports). When you're done, summarize what you configured and how to use it.`,
+		prompt: `Set up this repository to work well with Choros workspaces. Read https://docs.choros.sh/setup-teardown-scripts and create a .superset/config.json with: setup commands that install dependencies and copy untracked files (like .env) from "$SUPERSET_ROOT_PATH" into new workspaces, teardown commands that stop anything setup starts, and a run command that launches the dev server. If parallel workspaces would collide on dev-server ports, make the scripts pick a free port per workspace (see https://docs.choros.sh/ports). When you're done, summarize what you configured and how to use it.`,
 	},
 	"explain-repo": {
 		id: "explain-repo",
@@ -98,19 +98,19 @@ export const SAMPLE_PROMPTS: Record<string, SamplePrompt> = {
 		prompt:
 			"Search this codebase for TODO and FIXME comments. Triage them: resolve the ones that are quick and low-risk, delete the ones that are obsolete, and list the ones that need a real project. Keep each fix minimal and explain what you did.",
 	},
-	"explain-superset": {
-		id: "explain-superset",
+	"explain-choros": {
+		id: "explain-choros",
 		label: msg({
-			id: "dashboard.newWorkspaceModal.samplePrompts.explainSuperset.label",
-			message: "Get more out of Superset",
+			id: "dashboard.newWorkspaceModal.samplePrompts.explainChoros.label",
+			message: "Get more out of Choros",
 		}),
 		description: msg({
-			id: "dashboard.newWorkspaceModal.samplePrompts.explainSuperset.description",
+			id: "dashboard.newWorkspaceModal.samplePrompts.explainChoros.description",
 			message:
 				"Learn the workflow that fits this repo — parallel workspaces and agent setup.",
 		}),
 		prompt:
-			"Read https://docs.superset.sh and figure out how I should be using Superset for this specific repository. Cover how to run several workspaces in parallel without them colliding, what belongs in .superset/config.json, and which agent settings suit this codebase. Be concrete about this repo rather than generic, and end with the two or three changes worth making first.",
+			"Read https://docs.choros.sh and figure out how I should be using Choros for this specific repository. Cover how to run several workspaces in parallel without them colliding, what belongs in .superset/config.json, and which agent settings suit this codebase. Be concrete about this repo rather than generic, and end with the two or three changes worth making first.",
 	},
 };
 
@@ -136,7 +136,7 @@ export const SAMPLE_PROMPT_TIERS = {
 	],
 	returning: [
 		"set-up-project",
-		"explain-superset",
+		"explain-choros",
 		"improve-agent-docs",
 		"add-missing-tests",
 		"clean-up-todos",

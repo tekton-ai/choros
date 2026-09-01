@@ -2,7 +2,7 @@ import { afterEach, describe, expect, test } from "bun:test";
 
 import { table } from "./output";
 
-const URL = "http://localhost:3000/page/schema-history-superset-7njjhq";
+const URL = "http://localhost:3000/page/schema-history-choros-7njjhq";
 const ROWS = [{ title: "Schema history", url: URL }];
 const COLUMNS = ["title", "url"];
 const CAPS = [30, 50];

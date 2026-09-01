@@ -234,14 +234,14 @@ describe("buildDashboardSidebarPinnedWorkspaces", () => {
 				}),
 			],
 			sidebarProjects: [
-				makeProject({ id: "project-1", name: "Superset", iconUrl: "icon.png" }),
+				makeProject({ id: "project-1", name: "Choros", iconUrl: "icon.png" }),
 			],
 			machineId: MACHINE_ID,
 			pullRequestsByWorkspaceId: new Map(),
 		});
 
 		expect(rows.map((row) => row.id)).toEqual(["pinned-1"]);
-		expect(rows[0].projectName).toBe("Superset");
+		expect(rows[0].projectName).toBe("Choros");
 		expect(rows[0].projectIconUrl).toBe("icon.png");
 		expect(rows[0].isPinned).toBe(true);
 	});

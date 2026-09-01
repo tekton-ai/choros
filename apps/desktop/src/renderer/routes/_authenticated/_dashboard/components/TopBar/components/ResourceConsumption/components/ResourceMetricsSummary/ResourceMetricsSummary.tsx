@@ -53,7 +53,7 @@ export function ResourceMetricsSummary({
 					tooltip={t({
 						id: "dashboard.topBar.resourceSummary.cpuTooltip",
 						message:
-							"Sum of CPU used by Superset and monitored terminal process trees. Over 100% means multiple CPU cores are busy. Sustained high values usually cause UI sluggishness and higher battery drain.",
+							"Sum of CPU used by Choros and monitored terminal process trees. Over 100% means multiple CPU cores are busy. Sustained high values usually cause UI sluggishness and higher battery drain.",
 					})}
 				/>
 				<MetricBadge
@@ -65,7 +65,7 @@ export function ResourceMetricsSummary({
 					tooltip={t({
 						id: "dashboard.topBar.resourceSummary.memoryTooltip",
 						message:
-							"Resident memory used by Superset and monitored terminal process trees. If this keeps climbing without dropping, a workspace process may be retaining memory. High values increase swap risk and can cause stutter.",
+							"Resident memory used by Choros and monitored terminal process trees. If this keeps climbing without dropping, a workspace process may be retaining memory. High values increase swap risk and can cause stutter.",
 					})}
 				/>
 				<MetricBadge
@@ -77,7 +77,7 @@ export function ResourceMetricsSummary({
 					tooltip={t({
 						id: "dashboard.topBar.resourceSummary.ramShareTooltip",
 						message:
-							"Percent of total system RAM used by monitored Superset resources only (not all apps). A high share means Superset is a major contributor to system memory pressure; a low share means pressure is likely elsewhere.",
+							"Percent of total system RAM used by monitored Choros resources only (not all apps). A high share means Choros is a major contributor to system memory pressure; a low share means pressure is likely elsewhere.",
 					})}
 				/>
 			</div>
@@ -105,7 +105,7 @@ export function ResourceMetricsSummary({
 				</TooltipTrigger>
 				<TooltipContent side="bottom" sideOffset={6}>
 					<Trans id="dashboard.topBar.resourceSummary.systemRamShare">
-						Superset uses {formatPercent(trackedMemorySharePercent)} of system
+						Choros uses {formatPercent(trackedMemorySharePercent)} of system
 						RAM
 					</Trans>
 				</TooltipContent>

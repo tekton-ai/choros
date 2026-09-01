@@ -18,7 +18,7 @@ export const AGENT_ICONS: Record<string, number> = {
 	opencode: require("@/assets/agents/opencode.png"),
 	pi: require("@/assets/agents/pi.png"),
 	polygraph: require("@/assets/agents/polygraph.png"),
-	superset: require("@/assets/agents/superset.png"),
+	choros: require("@/assets/agents/choros.png"),
 	vibe: require("@/assets/agents/vibe.png"),
 };
 

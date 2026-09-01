@@ -170,7 +170,7 @@ interface UseGithubStarActionOptions {
 }
 
 /**
- * Shared check-star-repo/star-repo flow, reused by every "Star Superset on
+ * Shared check-star-repo/star-repo flow, reused by every "Star Choros on
  * GitHub" surface (settings row, empty-state pill, threshold card, onboarding
  * toast). `state` is the live, truthful star status — backed by the shared
  * query cache, so a confirmed star from any one surface is reflected on

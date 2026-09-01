@@ -35,14 +35,14 @@ export function CliDemo() {
 					<div className="size-2 rounded-full bg-[#28c840]/85" />
 				</div>
 				<span className="pointer-events-none absolute inset-x-0 text-center font-mono text-[10px] tracking-tight text-muted-foreground/60">
-					superset (cli)
+					choros (cli)
 				</span>
 			</div>
 
 			<div className="space-y-1.5 p-4 font-mono text-[11px] leading-relaxed">
 				<div className="text-foreground">
 					<span className="text-muted-foreground/55">❯</span>{" "}
-					<span className="text-brand-light">superset new</span>{" "}
+					<span className="text-brand-light">choros new</span>{" "}
 					<span className="text-muted-foreground/70">
 						&quot;fix onboarding crash&quot; --agent claude
 					</span>
@@ -64,7 +64,7 @@ export function CliDemo() {
 					transition={{ duration: 0.3, delay: 0.5 }}
 				>
 					<span className="text-muted-foreground/55">❯</span>{" "}
-					<span className="text-brand-light">superset ls</span>
+					<span className="text-brand-light">choros ls</span>
 				</m.div>
 				{WORKSPACE_ROWS.map((row, index) => (
 					<m.div

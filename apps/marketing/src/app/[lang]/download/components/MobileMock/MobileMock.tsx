@@ -20,7 +20,7 @@ export function MobileMock() {
 						SUPERSET
 					</span>
 					<span className="rounded-[2px] border border-border px-1.5 py-0.5 font-mono text-[7px] text-muted-foreground">
-						Superset
+						Choros
 					</span>
 				</div>
 
@@ -28,7 +28,7 @@ export function MobileMock() {
 					Workspace
 				</div>
 				<div className="font-medium text-[12px] text-foreground">
-					Superset Main
+					Choros Main
 				</div>
 
 				<div className="mt-3 space-y-2.5">

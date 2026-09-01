@@ -37,7 +37,7 @@ Sentry.init({
 	sendDefaultPii: true,
 	integrations: [
 		Sentry.thirdPartyErrorFilterIntegration({
-			filterKeys: ["superset-admin"],
+			filterKeys: ["choros-admin"],
 			behaviour: "drop-error-if-exclusively-contains-third-party-frames",
 		}),
 	],

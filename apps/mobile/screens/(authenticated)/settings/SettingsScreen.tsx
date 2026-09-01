@@ -116,7 +116,7 @@ export function SettingsScreen() {
 								t({
 									id: "mobile.settings.deleteAccount.failedMessage",
 									message:
-										"Something went wrong. Try again, or contact support@superset.sh.",
+										"Something went wrong. Try again, or contact support@choros.sh.",
 								}),
 							);
 						});
@@ -293,8 +293,8 @@ export function SettingsScreen() {
 						/>
 					}
 					label={t({
-						id: "mobile.settings.row.rateSuperset",
-						message: "Rate Superset",
+						id: "mobile.settings.row.rateChoros",
+						message: "Rate Choros",
 					})}
 					trailing={<ExternalIcon color={theme.mutedForeground} />}
 					onPress={() => openUrl(WRITE_REVIEW_URL)}

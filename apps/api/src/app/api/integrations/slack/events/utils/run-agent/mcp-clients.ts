@@ -13,7 +13,7 @@ interface McpTool {
 const SLACK_CLIENT_LABEL = "slack-agent";
 
 // Uses InMemoryTransport — no HTTP, no forgeable headers.
-export async function createSupersetMcpClient({
+export async function createChorosMcpClient({
 	organizationId,
 	userId,
 }: {
@@ -37,7 +37,7 @@ export async function createSupersetMcpClient({
 					duration_ms: event.durationMs,
 					success: event.success,
 					error_message: event.errorMessage,
-					mcp_server: "superset-v2",
+					mcp_server: "choros-v2",
 				},
 				groups: { organization: event.organizationId },
 			});

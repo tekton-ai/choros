@@ -12,7 +12,7 @@ import type { TRPCContext } from "../../trpc";
  * Two sources, and they are not equally trustworthy. An MCP call is
  * authoritative — that transport carries nothing but agents, and `agentCaller`
  * is set from it rather than from the body. A CLI agent self-reports via
- * `agentSessionId`, and the server cannot check it: `superset` presents the
+ * `agentSessionId`, and the server cannot check it: `choros` presents the
  * user's own credential whether a human or an agent in a pane invoked it.
  *
  * So a comment marked `agent` is proof for MCP and a claim for the CLI. That

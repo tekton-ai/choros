@@ -45,7 +45,7 @@ function collectDiagnostics(): FeedbackAttachment | null {
 		`CLI version: ${process.env.SUPERSET_VERSION ?? "dev"}`,
 		`OS: ${os.platform()} ${os.release()} ${os.arch()}`,
 	];
-	const logPath = join(os.homedir(), "Library", "Logs", "Superset", "main.log");
+	const logPath = join(os.homedir(), "Library", "Logs", "Choros", "main.log");
 	if (process.platform === "darwin" && existsSync(logPath)) {
 		lines.push(
 			"",
@@ -63,7 +63,7 @@ function collectDiagnostics(): FeedbackAttachment | null {
 
 export default command({
 	description:
-		"Submit feedback privately to the Superset team (sent from your account so we can reply)",
+		"Submit feedback privately to the Choros team (sent from your account so we can reply)",
 	options: {
 		type: string()
 			.enum("bug", "feature", "general")
@@ -139,7 +139,7 @@ export default command({
 		return {
 			data: { submitted: true, attachments: attachments.length },
 			message:
-				"Feedback sent to the Superset team. A copy was CC'd to your account email; replies land there too.",
+				"Feedback sent to the Choros team. A copy was CC'd to your account email; replies land there too.",
 		};
 	},
 });

@@ -51,7 +51,7 @@ export function LeaderboardTable({
 				</p>
 				<p className="text-xs text-muted-foreground mt-2">
 					<Trans id="marketing.leaderboard.empty.optIn">
-						Opt in from Superset under Settings → Account.
+						Opt in from Choros under Settings → Account.
 					</Trans>
 				</p>
 			</div>

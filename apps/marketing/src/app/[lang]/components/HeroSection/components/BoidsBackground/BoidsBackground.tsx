@@ -9,7 +9,7 @@ const FONT_SIZE = 11;
 
 // the source text each boid writes as it flies, so trails spell real code
 const CODE =
-	'awaitagent.spawn({preset:"claude",workspace:"boid"})superset.orchestrate({agents:100,' +
+	'awaitagent.spawn({preset:"claude",workspace:"boid"})choros.orchestrate({agents:100,' +
 	'parallel:true})agent.review({channel:"all",sla:"24h"})awaitworktree.create({branch:"main",' +
 	"isolate:true})flock.align({perception:75,cohesion:0.8})if(!agent.idle())thrownewAgentBusyError" +
 	'("BOID_1")terminal.attach({pty:daemon,rows:42})pr.merge({squash:true,title:"feat(desktop):flock"})';

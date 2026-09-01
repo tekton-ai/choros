@@ -14,7 +14,7 @@ type UpsertIdentityInput = {
 };
 
 /**
- * Links an external account to a Superset user. Re-linking claims the account
+ * Links an external account to a Choros user. Re-linking claims the account
  * for whoever linked it last.
  */
 export async function upsertIdentity(

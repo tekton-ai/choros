@@ -14,8 +14,8 @@ import { EmailSignInLink } from "./components/EmailSignInLink";
 import type { SocialProvider } from "./components/SocialButton";
 import { SocialButton } from "./components/SocialButton";
 
-const TERMS_URL = "https://superset.sh/terms";
-const PRIVACY_URL = "https://superset.sh/privacy";
+const TERMS_URL = "https://choros.sh/terms";
+const PRIVACY_URL = "https://choros.sh/privacy";
 
 export function SignInScreen() {
 	const { t } = useLingui();
@@ -106,7 +106,7 @@ export function SignInScreen() {
 
 			<View className="items-center gap-2">
 				<Text className="text-2xl font-semibold text-foreground">
-					<Trans id="mobile.signIn.title">Welcome to Superset</Trans>
+					<Trans id="mobile.signIn.title">Welcome to Choros</Trans>
 				</Text>
 				<Text className="text-base text-muted-foreground">
 					<Trans id="mobile.signIn.subtitle">Sign in to get started</Trans>

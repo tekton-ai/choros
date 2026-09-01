@@ -46,7 +46,7 @@ const EXCHANGES: Array<[string, string]> = [
 	],
 	[
 		"Where's the backup before the write?",
-		"I exported the pre-write state to /tmp/superset_exa_enrichment_2026_08.csv and also duplicated the tab as `leads_backup_0804` inside the workbook.",
+		"I exported the pre-write state to /tmp/choros_exa_enrichment_2026_08.csv and also duplicated the tab as `leads_backup_0804` inside the workbook.",
 	],
 	[
 		"Can you dedupe companies that appear twice?",

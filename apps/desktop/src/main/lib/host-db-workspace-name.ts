@@ -8,7 +8,7 @@ export interface ReadonlySqlite {
 	close(): void;
 }
 
-export const DEFAULT_HOST_DB_ROOT = join(homedir(), ".superset", "host");
+export const DEFAULT_HOST_DB_ROOT = join(homedir(), ".choros", "host");
 
 /**
  * Resolve a workspace's display title from the outer (production) host-service

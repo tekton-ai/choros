@@ -7,7 +7,7 @@ description: Isolated environments for each git branch
 
 Each workspace = one git branch. Workspaces are isolated git worktrees with their own directory, terminal, and ports. The exception: [sessions](#sessions), which get a managed scratch folder instead of a branch.
 
-<YouTubeVideo id="8PuptrsyNvM" title="Superset Workspaces" thumbnail="/images/branches.png" />
+<YouTubeVideo id="8PuptrsyNvM" title="Choros Workspaces" thumbnail="/images/branches.png" />
 
 ## Create Workspaces
 
@@ -19,7 +19,7 @@ Press **⌘N** or click "New Workspace". Create from:
 
 In the prompt-first workspace flow, **Link pull request** lets you search by title or PR number, or paste the full PR URL to match it directly. The prompt box also keeps a searchable history of your previous prompts; click the history icon to reuse one.
 
-If you type a workspace name yourself, the branch name is derived from it (slugified to kebab-case). Otherwise Superset generates a name from your prompt. Per-project **Naming instructions** (in project settings) steer generated names, e.g. "prefix branches with fix/ or feat/".
+If you type a workspace name yourself, the branch name is derived from it (slugified to kebab-case). Otherwise Choros generates a name from your prompt. Per-project **Naming instructions** (in project settings) steer generated names, e.g. "prefix branches with fix/ or feat/".
 
 Each workspace gets:
 - Own git branch
@@ -29,7 +29,7 @@ Each workspace gets:
 
 ## Import Worktrees
 
-If you have existing git worktrees on disk, use the **Import** tab in the New Workspace modal to bring them into Superset. Click **Import all** to bulk-import all discovered worktrees at once.
+If you have existing git worktrees on disk, use the **Import** tab in the New Workspace modal to bring them into Choros. Click **Import all** to bulk-import all discovered worktrees at once.
 
 You can also right-click a project in the sidebar and choose **Import untracked worktrees**. A confirmation dialog lists the branches and paths that will be imported; the **Run setup script** checkbox is off by default, since existing worktrees are usually already set up.
 
@@ -42,7 +42,7 @@ Sessions created outside the app (by the CLI or a session-mode automation) appea
 From the CLI, omit `--project`:
 
 ```bash
-superset workspaces create --local --agent claude --prompt "…"
+choros workspaces create --local --agent claude --prompt "…"
 ```
 
 Automations can run in session mode too; see [Automations](/automations).

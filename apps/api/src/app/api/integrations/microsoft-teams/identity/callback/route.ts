@@ -29,7 +29,7 @@ const idTokenClaims = z.object({
  * Admin consent identifies a tenant, not a person, and `me` on a Teams
  * trigger needs the person's Entra object id. So after consent the admin is
  * sent through a plain OpenID sign-in, and the id token's `oid` is linked to
- * their Superset user. The connection is already saved by the time this runs:
+ * their Choros user. The connection is already saved by the time this runs:
  * declining here costs only "Me", not the integration.
  */
 export async function GET(request: Request) {

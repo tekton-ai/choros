@@ -12,14 +12,14 @@ export function GET() {
 					{
 						href: `${API_URL}/openapi.json`,
 						type: "application/vnd.oai.openapi+json",
-						title: "Superset API OpenAPI 3.1 specification",
+						title: "Choros API OpenAPI 3.1 specification",
 					},
 				],
 				"service-doc": [
 					{
 						href: `${COMPANY.DOCS_URL}/mcp-server`,
 						type: "text/html",
-						title: "Superset MCP server documentation",
+						title: "Choros MCP server documentation",
 					},
 					{
 						href: `${baseUrl}/auth.md`,
@@ -52,7 +52,7 @@ export function GET() {
 				item: [
 					{
 						href: MCP_SERVER_URL,
-						title: "Superset MCP server (Streamable HTTP)",
+						title: "Choros MCP server (Streamable HTTP)",
 					},
 				],
 			},

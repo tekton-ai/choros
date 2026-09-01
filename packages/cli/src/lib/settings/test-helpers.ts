@@ -10,7 +10,7 @@ import { getTableConfig } from "drizzle-orm/sqlite-core";
  * Point SUPERSET_HOME_DIR at a fresh temp dir for every test in the calling
  * file, restoring the previous value afterwards.
  */
-export function withTempSupersetHome(prefix: string): { readonly dir: string } {
+export function withTempChorosHome(prefix: string): { readonly dir: string } {
 	let dir = "";
 	let previousHome: string | undefined;
 

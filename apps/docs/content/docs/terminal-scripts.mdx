@@ -3,7 +3,7 @@ title: Terminal Scripts
 description: Save and reuse commands that launch in terminals
 ---
 
-<YouTubeVideo id="jT8AoqYTwRU" title="Superset terminal scripts" thumbnail="/images/preset.png" />
+<YouTubeVideo id="jT8AoqYTwRU" title="Choros terminal scripts" thumbnail="/images/preset.png" />
 
 ## Overview
 
@@ -15,10 +15,10 @@ Terminal scripts are different from [project lifecycle scripts](/setup-teardown-
 
 | Type | Purpose | Stored in |
 | --- | --- | --- |
-| **Terminal script** | A reusable command or group of commands you launch from the app | Superset user settings |
+| **Terminal script** | A reusable command or group of commands you launch from the app | Choros user settings |
 | **Project lifecycle script** | Repository setup, teardown, or Run-button behavior | `.superset/config.json` or `.superset/*.sh` |
 
-Older versions of Superset called terminal scripts **presets**. You may still
+Older versions of Choros called terminal scripts **presets**. You may still
 see `preset` in old links, CLI aliases, or compatibility-oriented API and
 storage fields, but the product term is **terminal script**.
 
@@ -47,21 +47,21 @@ Go to **Settings → Terminal → Terminal Scripts**, then click **Add Script**.
 You can also add one from a terminal:
 
 ```bash
-superset scripts add --name dev --command "bun run dev"
+choros scripts add --name dev --command "bun run dev"
 ```
 
 Repeat `--command` for a grouped script and use `--execution-mode` to control
 its layout:
 
 ```bash
-superset scripts add \
+choros scripts add \
   --name services \
   --command "docker compose up" \
   --command "bun run dev" \
   --execution-mode split-pane
 ```
 
-`superset presets add` remains an alias for compatibility. See the
+`choros presets add` remains an alias for compatibility. See the
 [CLI reference](/cli/cli-reference#scripts) for every option.
 
 ## Launch Modes
@@ -94,7 +94,7 @@ for one-click access.
 - **Manage**: use the gear menu to browse scripts or open Terminal settings
 - **Keyboard shortcuts**: press Control+1 through Control+9 to open visible scripts 1 through 9
 
-The bar includes a built-in **Superset CLI** script that runs `superset --help`.
+The bar includes a built-in **Choros CLI** script that runs `choros --help`.
 Built-in scripts can be hidden and restored, but not edited or reordered.
 
 ## Workspace Actions
@@ -108,10 +108,10 @@ A terminal script can participate in three workspace actions:
 These are explicit per-script controls. Launching a script directly from the
 bar, menu, or keyboard shortcut always works regardless of its workspace-action
 settings. On v1 desktop builds, the global auto-apply settings (such as
-`autoApplyDefaultPreset`, visible in `superset settings list`) also gate
+`autoApplyDefaultPreset`, visible in `choros settings list`) also gate
 auto-run behavior.
 
-If more than one Run source matches a workspace, Superset uses the first
+If more than one Run source matches a workspace, Choros uses the first
 project-targeted terminal script marked **Use as workspace run**, then the
 project lifecycle Run command, then the first matching global terminal script.
 Keep only one matching script enabled for Run when you want the choice to be

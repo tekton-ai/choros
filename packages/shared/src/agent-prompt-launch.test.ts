@@ -146,10 +146,10 @@ describe("buildFishPromptCommandString", () => {
 				command: "claude",
 				suffix: "--verbose",
 				transport: "argv",
-				promptFilePath: "/tmp/superset-launch-prompt-x.txt",
+				promptFilePath: "/tmp/choros-launch-prompt-x.txt",
 			}),
 		).toBe(
-			"claude (begin; cat '/tmp/superset-launch-prompt-x.txt'; command rm -f -- '/tmp/superset-launch-prompt-x.txt'; end | string collect --allow-empty) --verbose",
+			"claude (begin; cat '/tmp/choros-launch-prompt-x.txt'; command rm -f -- '/tmp/choros-launch-prompt-x.txt'; end | string collect --allow-empty) --verbose",
 		);
 	});
 

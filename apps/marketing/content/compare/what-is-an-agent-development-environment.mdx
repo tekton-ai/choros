@@ -65,7 +65,7 @@ When an agent finishes, the ADE shows the changed files and diff, then helps you
 | How is parallel work handled? | More windows or sessions | Separate worktrees, branches, or sandboxes |
 | What is the final handoff? | Saved files and a commit | A reviewed diff, branch, or pull request |
 
-The categories overlap. Cursor, VS Code, Zed, JetBrains, and Devin Desktop add task-oriented agent surfaces to full editors. Superset, Orca, Emdash, and Conductor start from the workspace and orchestration side, then add enough editing and review to complete the loop.
+The categories overlap. Cursor, VS Code, Zed, JetBrains, and Devin Desktop add task-oriented agent surfaces to full editors. Choros, Orca, Emdash, and Conductor start from the workspace and orchestration side, then add enough editing and review to complete the loop.
 
 "Agentic IDE" is a broad label for both shapes. "ADE" is more precise when agents and their environments are the primary objects.
 
@@ -77,7 +77,7 @@ The agent and ADE are different layers:
 - **Agent or harness:** the loop that gives the model tools to read, edit, run, and iterate
 - **ADE:** the environment that launches agents, isolates tasks, preserves state, and presents work for review
 
-For example, Codex can be the agent running inside Superset. Codex decides which files to change and commands to run. Superset creates the worktree, keeps the terminal and workspace attached to the task, and presents the diff for review.
+For example, Codex can be the agent running inside Choros. Codex decides which files to change and commands to run. Choros creates the worktree, keeps the terminal and workspace attached to the task, and presents the diff for review.
 
 Some products bundle all three layers. Others let you bring your own agent and subscription.
 
@@ -156,9 +156,9 @@ No single person or standards body owns the term. AI coding products now use it 
 
 Not necessarily. An AI code editor helps a developer write code with AI. An ADE manages tasks performed by agents. Some products combine the two, while dedicated ADEs often hand work off to your existing editor.
 
-### Is Superset an ADE?
+### Is Choros an ADE?
 
-Yes. Superset treats each task as an isolated workspace with its own Git worktree, branch, terminals, ports, agent sessions, and review flow. It also exposes the workspace layer through a desktop app, CLI, SDK, and MCP server.
+Yes. Choros treats each task as an isolated workspace with its own Git worktree, branch, terminals, ports, agent sessions, and review flow. It also exposes the workspace layer through a desktop app, CLI, SDK, and MCP server.
 
 ### Can I use an ADE with my current IDE?
 

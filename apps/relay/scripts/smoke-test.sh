@@ -6,7 +6,7 @@
 # that booted but aren't actually serving.
 #
 # Usage: smoke-test.sh <hostname> <region> [<region> ...]
-#   smoke-test.sh superset-relay-staging.fly.dev sjc iad fra
+#   smoke-test.sh choros-relay-staging.fly.dev sjc iad fra
 #
 # Exits non-zero on any failure so callers (deploy.sh, deploy-staging.sh)
 # can halt the pipeline.

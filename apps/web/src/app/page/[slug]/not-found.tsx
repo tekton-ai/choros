@@ -21,8 +21,8 @@ export default function PageNotFound() {
 				<Button asChild size="sm" variant="outline">
 					<Link href="/">
 						{i18n._({
-							id: "web.pageNotFound.goToSuperset",
-							message: "Go to Superset",
+							id: "web.pageNotFound.goToChoros",
+							message: "Go to Choros",
 						})}
 					</Link>
 				</Button>

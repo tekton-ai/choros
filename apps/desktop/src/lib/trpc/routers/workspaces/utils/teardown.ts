@@ -45,12 +45,12 @@ export async function runTeardown({
 		const shell =
 			process.env.SHELL ||
 			(process.platform === "darwin" ? "/bin/zsh" : "/bin/bash");
-		const supersetHomeDir =
+		const ChorosHomeDir =
 			process.env.SUPERSET_HOME_DIR || join(homedir(), SUPERSET_DIR_NAME);
 		const shellWrapperPaths = {
-			BIN_DIR: join(supersetHomeDir, "bin"),
-			ZSH_DIR: join(supersetHomeDir, "zsh"),
-			BASH_DIR: join(supersetHomeDir, "bash"),
+			BIN_DIR: join(ChorosHomeDir, "bin"),
+			ZSH_DIR: join(ChorosHomeDir, "zsh"),
+			BASH_DIR: join(ChorosHomeDir, "bash"),
 		};
 
 		const baseEnv = buildSafeEnv(sanitizeEnv(process.env) || {});

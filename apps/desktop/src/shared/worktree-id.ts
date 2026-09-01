@@ -5,7 +5,7 @@
  * In-app code should use getWorkspaceName() from env.shared.ts instead.
  */
 export function normalizeWorkspaceName(name?: string): string | undefined {
-	if (!name || name === "superset") return undefined;
+	if (!name || name === "choros") return undefined;
 	return name
 		.toLowerCase()
 		.replace(/[^a-z0-9-]/g, "-")
@@ -17,9 +17,9 @@ export function normalizeWorkspaceName(name?: string): string | undefined {
  * ~/.superset/worktrees/<project>/...
  *
  * Examples:
- * - ["superset", "my-branch", "apps", "desktop"] -> "my-branch"
- * - ["superset", "owner", "workspace", "apps", "desktop"] -> "owner-workspace"
- * - ["superset", "owner", "feature", "x", "apps", "desktop"] -> "owner-feature-x"
+ * - ["choros", "my-branch", "apps", "desktop"] -> "my-branch"
+ * - ["choros", "owner", "workspace", "apps", "desktop"] -> "owner-workspace"
+ * - ["choros", "owner", "feature", "x", "apps", "desktop"] -> "owner-feature-x"
  */
 export function deriveWorkspaceNameFromWorktreeSegments(
 	segments: string[],

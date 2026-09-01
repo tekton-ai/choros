@@ -1471,7 +1471,7 @@ describe("GitHub rejected-credential errors map to actionable UNAUTHORIZED", () 
 		);
 		expect(error.data?.code).toBe("UNAUTHORIZED");
 		expect(error.message).toBe(
-			"GitHub rejected this machine's gh CLI login (not the Superset integration). Run `gh auth login`, then restart Superset.",
+			"GitHub rejected this machine's gh CLI login (not the Choros integration). Run `gh auth login`, then restart Choros.",
 		);
 	});
 
@@ -1516,7 +1516,7 @@ describe("GitHub rejected-credential errors map to actionable UNAUTHORIZED", () 
 		);
 		expect(error.data?.code).toBe("PRECONDITION_FAILED");
 		expect(error.message).toBe(
-			"No GitHub login on this machine (the Superset integration doesn't cover this). Run `gh auth login`.",
+			"No GitHub login on this machine (the Choros integration doesn't cover this). Run `gh auth login`.",
 		);
 	});
 });

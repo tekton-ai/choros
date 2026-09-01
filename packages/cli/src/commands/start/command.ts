@@ -28,7 +28,7 @@ export default command({
 			};
 		}
 
-		p.intro(`superset start (${organization.name})`);
+		p.intro(`choros start (${organization.name})`);
 		const spinner = p.spinner();
 		spinner.start("Starting host service...");
 

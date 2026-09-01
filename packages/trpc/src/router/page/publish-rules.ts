@@ -63,7 +63,7 @@ export function validatePublishContent({
 }
 
 // Reserved on the page origin: these path shapes are the origin's own.
-const RESERVED_ASSET_PREFIXES = ["versions/", "files/", "_superset/", "~"];
+const RESERVED_ASSET_PREFIXES = ["versions/", "files/", "_choros/", "~"];
 
 /**
  * An asset path is the author's relative reference, served verbatim under

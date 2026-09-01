@@ -1,7 +1,7 @@
 import type { AgentDefinitionId, AgentIdentityId } from "./agent-catalog";
 
 /**
- * Runtime identity of an agent process detected by a Superset terminal hook.
+ * Runtime identity of an agent process detected by a Choros terminal hook.
  *
  * Reported by the in-shell `notify-hook.sh` script, broadcast over the
  * host-service event bus, and stored in renderer state keyed by terminalId.

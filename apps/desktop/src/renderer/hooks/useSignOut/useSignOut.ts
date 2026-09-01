@@ -36,7 +36,7 @@ export function useSignOut() {
 					description: t({
 						id: "hooks.signOut.removeLocalSignInFailedDescription",
 						message:
-							"Superset may sign you back in after restart. Please try signing out again.",
+							"Choros may sign you back in after restart. Please try signing out again.",
 					}),
 				},
 			);

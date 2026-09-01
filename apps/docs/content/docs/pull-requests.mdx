@@ -3,7 +3,7 @@ title: Pull Requests
 description: Review, check, and merge PRs from your projects without leaving the app
 ---
 
-The **Pull requests** view brings the PRs from your projects' GitHub repositories into Superset, so the loop of reviewing, fixing, and merging agent work never leaves the app. It's a destination in the dashboard sidebar with a resizable split view: the PR list on the left, and a full detail view — rendered description, CI checks, and the complete diff — on the right.
+The **Pull requests** view brings the PRs from your projects' GitHub repositories into Choros, so the loop of reviewing, fixing, and merging agent work never leaves the app. It's a destination in the dashboard sidebar with a resizable split view: the PR list on the left, and a full detail view — rendered description, CI checks, and the complete diff — on the right.
 
 ![The Pull requests split view: filterable list on the left, detail with rendered markdown on the right](/images/pull-requests-view.png)
 
@@ -44,7 +44,7 @@ The **Code** tab is a complete diff viewer: a file tree with per-file added/dele
 Select lines in the Code tab and write a comment — then send it to an agent instead of (or as well as) leaving it on GitHub. The comment goes out with the file, line range, and side baked in:
 
 - If a workspace is already linked to the PR, send it to one of its **running agent terminals**, or start a **new agent session** there
-- If no workspace exists yet, Superset **creates a PR-checkout workspace** and launches the agent with your comment as its first prompt
+- If no workspace exists yet, Choros **creates a PR-checkout workspace** and launches the agent with your comment as its first prompt
 
 That turns "this function should handle the empty case" from a review comment into a running fix.
 

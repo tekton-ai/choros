@@ -101,8 +101,8 @@ export function getProviderSubtitle(
 	if (status.authMethod === "oauth") {
 		return i18n._(
 			msg({
-				id: "settings.models.status.connectedInSuperset",
-				message: "Connected in Superset",
+				id: "settings.models.status.connectedInChoros",
+				message: "Connected in Choros",
 			}),
 		);
 	}

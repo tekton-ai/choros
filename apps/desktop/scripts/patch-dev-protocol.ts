@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 /**
  * Patches the development Electron.app's Info.plist to register a
- * workspace-specific URL scheme (superset-{workspace}://) for deep linking.
+ * workspace-specific URL scheme (choros-{workspace}://) for deep linking.
  *
  * Each worktree gets a unique bundle ID and protocol scheme so macOS Launch
  * Services treats them as distinct apps and routes deep links correctly.
@@ -214,7 +214,7 @@ export function main() {
 		process.exit(0);
 	}
 
-	const DISPLAY_NAME = `Superset (${bundleDisplayWorkspaceName})`;
+	const DISPLAY_NAME = `Choros (${bundleDisplayWorkspaceName})`;
 
 	try {
 		const currentBundleId = execSync(
@@ -293,7 +293,7 @@ export function main() {
 	const commands = [
 		`Add :CFBundleURLTypes array`,
 		`Add :CFBundleURLTypes:0 dict`,
-		`Add :CFBundleURLTypes:0:CFBundleURLName string 'Superset Dev'`,
+		`Add :CFBundleURLTypes:0:CFBundleURLName string 'Choros Dev'`,
 		`Add :CFBundleURLTypes:0:CFBundleURLSchemes array`,
 		`Add :CFBundleURLTypes:0:CFBundleURLSchemes:0 string '${PROTOCOL_SCHEME}'`,
 		`Add :CFBundleURLTypes:0:CFBundleTypeRole string 'Editor'`,

@@ -5,7 +5,7 @@ import path from "node:path";
 
 const originalSupersetHomeDir = process.env.SUPERSET_HOME_DIR;
 const tempHome = fs.mkdtempSync(
-	path.join(os.tmpdir(), "superset-cli-resolve-auth-"),
+	path.join(os.tmpdir(), "choros-cli-resolve-auth-"),
 );
 process.env.SUPERSET_HOME_DIR = tempHome;
 

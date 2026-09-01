@@ -16,9 +16,9 @@ const ACTIVE_LINKAGE_INDEXES = new Set([
 export type ConnectionConflict = { ownerEmail: string | null };
 
 /**
- * The active connection in a DIFFERENT Superset organization already holding
+ * The active connection in a DIFFERENT Choros organization already holding
  * this external workspace/tenant/account, if any. One external org, one
- * Superset organization: a second organization claiming the same one would
+ * Choros organization: a second organization claiming the same one would
  * receive its events too.
  */
 export async function connectionConflict(
@@ -65,7 +65,7 @@ export type UpsertConnectionResult =
 /**
  * Writes (or revives) the organization's connection for a provider. Refuses
  * with `conflict` when the external org is already actively linked to a
- * different Superset organization.
+ * different Choros organization.
  */
 export async function upsertConnection(
 	input: UpsertConnectionInput,

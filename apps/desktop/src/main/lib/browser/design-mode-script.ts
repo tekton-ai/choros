@@ -1,7 +1,7 @@
 // Browser Design Mode — self-contained JS strings injected into the guest page
 // via executeJavaScript(). The guest webview has no preload, so everything the
 // overlay needs must live in one plain-JS string that runs in the page's own
-// world. State lives on window.__supersetDesignMode so the teardown/await
+// world. State lives on window.__chorosDesignMode so the teardown/await
 // scripts can reach it across separate executeJavaScript calls.
 
 import {
@@ -29,20 +29,20 @@ const ARM_SCRIPT = `(function() {
   'use strict';
 
   // Always tear down pre-existing state before arming: a malicious page could
-  // predefine window.__supersetDesignMode with a fake extractPayload. Tearing
+  // predefine window.__chorosDesignMode with a fake extractPayload. Tearing
   // down unconditionally guarantees the freshly installed extraction logic is
   // the only code that runs.
-  if (window.__supersetDesignMode) {
+  if (window.__chorosDesignMode) {
     try {
       // cancelAwait (when a selection is pending) also settles that pending
       // executeJavaScript promise; bare cleanup would leave it dangling.
-      if (typeof window.__supersetDesignMode.cancelAwait === 'function') {
-        window.__supersetDesignMode.cancelAwait();
-      } else if (typeof window.__supersetDesignMode.cleanup === 'function') {
-        window.__supersetDesignMode.cleanup();
+      if (typeof window.__chorosDesignMode.cancelAwait === 'function') {
+        window.__chorosDesignMode.cancelAwait();
+      } else if (typeof window.__chorosDesignMode.cleanup === 'function') {
+        window.__chorosDesignMode.cleanup();
       }
     } catch (e) {}
-    delete window.__supersetDesignMode;
+    delete window.__chorosDesignMode;
   }
 
   // Interpolated from shared/browser-design-mode.ts so guest-side clamping
@@ -487,7 +487,7 @@ const ARM_SCRIPT = `(function() {
   // the page never receives the selection click. Hit-testing the element under
   // the cursor is done by momentarily disabling the host's pointer events.
   var host = document.createElement('div');
-  host.id = '__superset-design-mode-host';
+  host.id = '__choros-design-mode-host';
   host.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:2147483647;pointer-events:all;cursor:crosshair;';
   document.documentElement.appendChild(host);
 
@@ -568,7 +568,7 @@ const ARM_SCRIPT = `(function() {
   // click captures) can't go stale.
   window.addEventListener('scroll', refreshHitTest, true);
 
-  window.__supersetDesignMode = {
+  window.__chorosDesignMode = {
     host: host,
     extractPayload: extractPayload,
     getCurrentElement: function() { return currentEl; },
@@ -586,7 +586,7 @@ const ARM_SCRIPT = `(function() {
       host.removeEventListener('mousemove', onPointerMove);
       window.removeEventListener('scroll', refreshHitTest, true);
       try { host.remove(); } catch (e) {}
-      delete window.__supersetDesignMode;
+      delete window.__chorosDesignMode;
     }
   };
 
@@ -601,7 +601,7 @@ const AWAIT_CLICK_SCRIPT = `(async function() {
   // promise comes from the engine intrinsic, which page code cannot reassign.
   return await new Promise(function(resolve, reject) {
     'use strict';
-    var design = window.__supersetDesignMode;
+    var design = window.__chorosDesignMode;
     if (!design) {
       reject(new Error('Design mode not armed'));
       return;
@@ -621,7 +621,7 @@ const AWAIT_CLICK_SCRIPT = `(async function() {
       var el = design.getCurrentElement();
       if (!el) {
         design.cleanup();
-        resolve({ __supersetDesignCancelled: true });
+        resolve({ __chorosDesignCancelled: true });
         return;
       }
       var payload;
@@ -644,7 +644,7 @@ const AWAIT_CLICK_SCRIPT = `(async function() {
       e.stopPropagation();
       removeListeners();
       design.cleanup();
-      resolve({ __supersetDesignCancelled: true });
+      resolve({ __chorosDesignCancelled: true });
     }
 
     design.host.addEventListener('click', onSelect, true);
@@ -659,14 +659,14 @@ const AWAIT_CLICK_SCRIPT = `(async function() {
       design.cleanup();
       // Cancellation is a normal user flow; resolving a marker avoids a noisy
       // guest-console error while main still treats it as a cancel.
-      resolve({ __supersetDesignCancelled: true });
+      resolve({ __chorosDesignCancelled: true });
     };
   });
 })()`;
 
 const TEARDOWN_SCRIPT = `(function() {
   'use strict';
-  var design = window.__supersetDesignMode;
+  var design = window.__chorosDesignMode;
   if (!design) return true;
   if (design.cancelAwait) {
     design.cancelAwait();

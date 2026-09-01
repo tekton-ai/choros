@@ -23,7 +23,7 @@ const renderBootError = (message: string, error?: unknown) => {
 	inner.style.maxWidth = "520px";
 
 	const title = document.createElement("div");
-	title.textContent = "Superset failed to start";
+	title.textContent = "Choros failed to start";
 	title.style.fontSize = "18px";
 	title.style.marginBottom = "8px";
 

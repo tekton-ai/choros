@@ -153,7 +153,7 @@ function validateWorkspacePackagesBundled(): void {
 
 	for (const filePath of jsFiles) {
 		const content = readFileSync(filePath, "utf8");
-		const matches = content.matchAll(/require\(["'](@superset\/[^"']+)["']\)/g);
+		const matches = content.matchAll(/require\(["'](@choros\/[^"']+)["']\)/g);
 		for (const match of matches) {
 			const specifier = match[1];
 			// Native workspace packages that are explicitly externalized are allowed.

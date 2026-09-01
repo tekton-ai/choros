@@ -168,7 +168,7 @@ describe("fish prompt transport rewrite", () => {
 				// The staged prompt file deleted itself when the command consumed it.
 				const leftovers = fs
 					.readdirSync(os.tmpdir())
-					.filter((f) => f.startsWith(`superset-launch-prompt-${terminalId}`));
+					.filter((f) => f.startsWith(`choros-launch-prompt-${terminalId}`));
 				assert.deepEqual(leftovers, []);
 			} finally {
 				await disposeSessionAndWait(terminalId, db);
@@ -198,7 +198,7 @@ describe("fish prompt transport rewrite", () => {
 
 				const leftovers = fs
 					.readdirSync(os.tmpdir())
-					.filter((f) => f.startsWith(`superset-launch-prompt-${terminalId}`));
+					.filter((f) => f.startsWith(`choros-launch-prompt-${terminalId}`));
 				assert.deepEqual(leftovers, []);
 			} finally {
 				await disposeSessionAndWait(terminalId, db);

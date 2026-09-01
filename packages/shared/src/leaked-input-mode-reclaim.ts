@@ -20,12 +20,12 @@
 const ESC = "\x1b";
 
 /**
- * Superset's app-private prompt marker (`OSC 777;superset-shell-ready`), emitted
+ * Choros's app-private prompt marker (`OSC 777;superset-shell-ready`), emitted
  * by the shell wrappers before every prompt. Its arrival means the shell owns the
  * foreground again. Reclaim keys on this — NOT the co-emitted FinalTerm `OSC
  * 133;A` — because 133;A is also emitted by third-party shell integrations and
- * forwarded by tmux for shells Superset did not wrap, so disarming on it would
- * clear a live tmux's own modes. Only Superset's wrappers emit 777.
+ * forwarded by tmux for shells Choros did not wrap, so disarming on it would
+ * clear a live tmux's own modes. Only Choros's wrappers emit 777.
  */
 export const SHELL_READY_OSC_ID = 777;
 export const SHELL_READY_MARKER_PAYLOAD = "superset-shell-ready";

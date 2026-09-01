@@ -12,7 +12,7 @@ export const DEFAULT_MCP_INSTALL_TAB: McpInstallTab = {
 	id: "claude-code",
 	label: "Claude Code",
 	kind: "cli",
-	content: `claude mcp add superset --transport http ${MCP_SERVER_URL}`,
+	content: `claude mcp add choros --transport http ${MCP_SERVER_URL}`,
 };
 
 export const MCP_INSTALL_TABS: McpInstallTab[] = [
@@ -21,19 +21,19 @@ export const MCP_INSTALL_TABS: McpInstallTab[] = [
 		id: "codex",
 		label: "Codex",
 		kind: "cli",
-		content: `codex mcp add superset --url ${MCP_SERVER_URL}`,
+		content: `codex mcp add choros --url ${MCP_SERVER_URL}`,
 	},
 	{
 		id: "gemini",
 		label: "Gemini CLI",
 		kind: "cli",
-		content: `gemini mcp add --transport http superset ${MCP_SERVER_URL}`,
+		content: `gemini mcp add --transport http choros ${MCP_SERVER_URL}`,
 	},
 	{
 		id: "amp",
 		label: "Amp CLI",
 		kind: "cli",
-		content: `amp mcp add --workspace superset ${MCP_SERVER_URL}`,
+		content: `amp mcp add --workspace choros ${MCP_SERVER_URL}`,
 	},
 	{
 		id: "claude-desktop",
@@ -42,7 +42,7 @@ export const MCP_INSTALL_TABS: McpInstallTab[] = [
 		filename: "claude_desktop_config.json",
 		content: `{
   "mcpServers": {
-    "superset": {
+    "choros": {
       "type": "http",
       "url": "${MCP_SERVER_URL}"
     }
@@ -56,7 +56,7 @@ export const MCP_INSTALL_TABS: McpInstallTab[] = [
 		filename: ".cursor/mcp.json",
 		content: `{
   "mcpServers": {
-    "superset": {
+    "choros": {
       "url": "${MCP_SERVER_URL}"
     }
   }

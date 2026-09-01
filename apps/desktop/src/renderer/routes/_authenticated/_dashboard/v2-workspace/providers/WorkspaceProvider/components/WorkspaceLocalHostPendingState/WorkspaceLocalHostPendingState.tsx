@@ -30,7 +30,7 @@ export function WorkspaceLocalHostPendingState({ hostId }: { hostId: string }) {
 				{
 					description: t({
 						id: "workspace.states.localHostPendingRestartFailedDescription",
-						message: `${error.message} — try the Superset tray menu > Host Service > Restart.`,
+						message: `${error.message} — try the Choros tray menu > Host Service > Restart.`,
 					}),
 				},
 			);

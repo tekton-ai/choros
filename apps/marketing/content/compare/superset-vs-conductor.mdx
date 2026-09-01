@@ -1,26 +1,26 @@
 ---
-title: "Superset vs Conductor (2026): Comparing AI Agent Orchestration Platforms"
-description: "Compare Superset and Conductor for managing AI coding agents. See how these orchestration tools differ in agent support, workflow, and developer experience."
+title: "Choros vs Conductor (2026): Comparing AI Agent Orchestration Platforms"
+description: "Compare Choros and Conductor for managing AI coding agents. See how these orchestration tools differ in agent support, workflow, and developer experience."
 date: 2026-02-02
 lastUpdated: 2026-07-13
 type: "1v1"
 competitors:
   - conductor
 keywords:
-  - superset vs conductor
+  - choros vs conductor
   - conductor alternative
   - ai agent orchestration
   - coding agent management
-  - conductor vs superset
+  - conductor vs choros
 ---
 
-Superset and Conductor both run multiple coding agents in parallel with Git worktrees. The difference is scope: Conductor is a focused macOS app for Claude Code, Codex, and Cursor, while Superset has grown into a broader local-first workspace for many agents, with chat, browser, and review surfaces around the orchestration core.
+Choros and Conductor both run multiple coding agents in parallel with Git worktrees. The difference is scope: Conductor is a focused macOS app for Claude Code, Codex, and Cursor, while Choros has grown into a broader local-first workspace for many agents, with chat, browser, and review surfaces around the orchestration core.
 
 ---
 
 ## At a Glance
 
-| | **Superset** | **Conductor** |
+| | **Choros** | **Conductor** |
 |---|---|---|
 | **What it does** | Runs 100+ AI agents in parallel with Git worktree isolation | Runs Claude Code / Codex / Cursor agents in parallel with Git worktree isolation |
 | **Agent support** | Any CLI agent (Claude Code, Codex, OpenCode, Cursor, Gemini, etc.) | Claude Code, Codex, and Cursor |
@@ -31,9 +31,9 @@ Superset and Conductor both run multiple coding agents in parallel with Git work
 
 ---
 
-## What Is Superset?
+## What Is Choros?
 
-Superset is a local-first desktop workspace for AI coding agents. It launches Claude Code, Codex, OpenCode, Aider, Copilot, Cursor Agent, Gemini CLI, Superset Chat, and other agent workflows inside isolated Git worktrees with persistent terminal sessions. Around that core, it adds a built-in diff/file editor, chat panel, in-app browser for docs and dev servers, port management, and MCP tooling. You can review inside Superset or jump into VS Code, Cursor, Windsurf, JetBrains, or Xcode. Source-available under Elastic License 2.0 (ELv2).
+Choros is a local-first desktop workspace for AI coding agents. It launches Claude Code, Codex, OpenCode, Aider, Copilot, Cursor Agent, Gemini CLI, Choros Chat, and other agent workflows inside isolated Git worktrees with persistent terminal sessions. Around that core, it adds a built-in diff/file editor, chat panel, in-app browser for docs and dev servers, port management, and MCP tooling. You can review inside Choros or jump into VS Code, Cursor, Windsurf, JetBrains, or Xcode. Source-available under Elastic License 2.0 (ELv2).
 
 ---
 
@@ -47,31 +47,31 @@ Conductor is a macOS app from Melty Labs for running Claude Code, Codex, and Cur
 
 ### Agent Flexibility
 
-Superset is deliberately broad -- any process that runs in a shell can fit into its workflow, and the current product also layers chat, browser preview, and review tooling around those agents. Conductor supports Claude Code, Codex, and Cursor. If those are your primary agents, that focus can be a feature. If you want to mix in OpenCode, Gemini, custom scripts, or whatever launches next month, Superset gives you more room to adapt.
+Choros is deliberately broad -- any process that runs in a shell can fit into its workflow, and the current product also layers chat, browser preview, and review tooling around those agents. Conductor supports Claude Code, Codex, and Cursor. If those are your primary agents, that focus can be a feature. If you want to mix in OpenCode, Gemini, custom scripts, or whatever launches next month, Choros gives you more room to adapt.
 
 ### Mac App Workflow vs Agent-Agnostic Terminal
 
-Conductor is purpose-built around its Mac app workflow: clone the repo, deploy Claude Code or Codex agents, review the work, then merge. Superset is broader and less tied to one agent pair. It now has its own chat, diff/file review, and browser surfaces, but it still keeps the orchestration layer independent from the underlying agents. That makes Conductor easier to grasp if you want one polished app for a narrow agent set, while Superset is better if you want flexibility.
+Conductor is purpose-built around its Mac app workflow: clone the repo, deploy Claude Code or Codex agents, review the work, then merge. Choros is broader and less tied to one agent pair. It now has its own chat, diff/file review, and browser surfaces, but it still keeps the orchestration layer independent from the underlying agents. That makes Conductor easier to grasp if you want one polished app for a narrow agent set, while Choros is better if you want flexibility.
 
 ### Local Workspaces vs Existing Repo Worktrees
 
-Conductor's current homepage says it clones your repo and works entirely on your Mac, then creates an isolated workspace for each agent. Superset typically starts from the repo you already have open and creates additional Git worktrees around that existing checkout. Both use worktrees; the difference is which local workflow they wrap around.
+Conductor's current homepage says it clones your repo and works entirely on your Mac, then creates an isolated workspace for each agent. Choros typically starts from the repo you already have open and creates additional Git worktrees around that existing checkout. Both use worktrees; the difference is which local workflow they wrap around.
 
 ### Workflow Integration
 
-Conductor's docs lean into workflow guides: issue-to-PR, provider setup, migrating from Cursor, and opening workspaces in Cursor or VS Code. Superset integrates with more editors and broader CLI agent combinations, and it now includes more first-party surface area inside the app itself, but it still leaves more of the surrounding process up to you than a narrowly scoped product does.
+Conductor's docs lean into workflow guides: issue-to-PR, provider setup, migrating from Cursor, and opening workspaces in Cursor or VS Code. Choros integrates with more editors and broader CLI agent combinations, and it now includes more first-party surface area inside the app itself, but it still leaves more of the surrounding process up to you than a narrowly scoped product does.
 
 ---
 
 ## Pricing
 
-Superset offers a free tier and Pro at $20/seat/month. Conductor's current website is download-first and does not emphasize a separate public pricing page. In both cases, you still pay the underlying providers for Claude Code, Codex, or any compatible API usage.
+Choros offers a free tier and Pro at $20/seat/month. Conductor's current website is download-first and does not emphasize a separate public pricing page. In both cases, you still pay the underlying providers for Claude Code, Codex, or any compatible API usage.
 
 ---
 
 ## Which Should You Choose?
 
-**Choose Superset if you:**
+**Choose Choros if you:**
 
 - Use multiple CLI agents or want the freedom to adopt new ones instantly
 - Want orchestration to stay separate from any one agent vendor or app
@@ -84,7 +84,7 @@ Superset offers a free tier and Pro at $20/seat/month. Conductor's current websi
 - Want a polished issue-to-PR style workflow around those agents
 - Prefer Conductor's workspace dashboard and documented Cursor/VS Code handoff
 
-**Verdict:** Conductor is strongest if your world already revolves around Claude Code, Codex, and Cursor on macOS. Superset is the better fit if you expect your agent mix to change, want the orchestration layer to stay editor-independent, or care more about breadth than a tightly scoped app workflow.
+**Verdict:** Conductor is strongest if your world already revolves around Claude Code, Codex, and Cursor on macOS. Choros is the better fit if you expect your agent mix to change, want the orchestration layer to stay editor-independent, or care more about breadth than a tightly scoped app workflow.
 
 ---
 
@@ -92,11 +92,11 @@ Superset offers a free tier and Pro at $20/seat/month. Conductor's current websi
 
 ### Is Conductor Mac-only?
 
-Conductor currently markets itself as a Mac app. Its homepage language and download flow are Mac-focused, while Superset's compare story is about orchestrating CLI agents more broadly.
+Conductor currently markets itself as a Mac app. Its homepage language and download flow are Mac-focused, while Choros's compare story is about orchestrating CLI agents more broadly.
 
 ### Can Conductor run agents other than Claude Code?
 
-Conductor supports Claude Code, Codex, and Cursor. If you want OpenCode, Gemini, or custom CLI tools in the same orchestrator, Superset is the more flexible choice.
+Conductor supports Claude Code, Codex, and Cursor. If you want OpenCode, Gemini, or custom CLI tools in the same orchestrator, Choros is the more flexible choice.
 
 ### Do both tools use Git worktrees?
 

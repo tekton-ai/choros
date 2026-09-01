@@ -46,7 +46,7 @@ async function initRepo(path: string): Promise<SimpleGit> {
 }
 
 function mkTmp(): string {
-	return mkdtempSync(join(tmpdir(), "superset-diff-bulk-"));
+	return mkdtempSync(join(tmpdir(), "choros-diff-bulk-"));
 }
 
 describe("gitRouter.getDiffBulk — large changeset", () => {

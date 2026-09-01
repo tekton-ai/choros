@@ -121,7 +121,7 @@ describe("validateAssetPaths", () => {
 		bad("a//b.png");
 		bad("versions/1/x.png");
 		bad("files/abc");
-		bad("_superset/runtime.js");
+		bad("_choros/runtime.js");
 		bad("~ticket/x.png");
 		bad("index.html");
 		bad("thumbnail.jpg");

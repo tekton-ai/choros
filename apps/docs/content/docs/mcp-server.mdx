@@ -1,15 +1,15 @@
 ---
-title: Superset MCP Server
-description: Connect AI agents directly to Superset via MCP
+title: Choros MCP Server
+description: Connect AI agents directly to Choros via MCP
 ---
 
 <Callout type="info">
-The Superset MCP server lives at `https://api.superset.sh/mcp`. The versioned URL (`/api/v2/agent/mcp`) keeps working for existing configurations; the legacy v1 server (`/api/agent/mcp`) has been removed and returns `410 Gone`.
+The Choros MCP server lives at `https://api.choros.sh/mcp`. The versioned URL (`/api/v2/agent/mcp`) keeps working for existing configurations; the legacy v1 server (`/api/agent/mcp`) has been removed and returns `410 Gone`.
 </Callout>
 
 ## Overview
 
-Superset provides an [MCP (Model Context Protocol)](https://modelcontextprotocol.io) server that lets AI agents interact with your tasks, workspaces, and devices programmatically.
+Choros provides an [MCP (Model Context Protocol)](https://modelcontextprotocol.io) server that lets AI agents interact with your tasks, workspaces, and devices programmatically.
 
 ## Capabilities
 
@@ -32,17 +32,17 @@ Superset provides an [MCP (Model Context Protocol)](https://modelcontextprotocol
 <Tabs items={["Claude Code", "Codex", "Gemini CLI", "Open Code", "Amp CLI", "Mistral Vibe", "Kimi Code", "Grok"]}>
 <Tab value="Claude Code">
 ```bash title="terminal"
-claude mcp add superset --transport http https://api.superset.sh/mcp
+claude mcp add choros --transport http https://api.choros.sh/mcp
 ```
 </Tab>
 <Tab value="Codex">
 ```bash title="terminal"
-codex mcp add superset --url https://api.superset.sh/mcp
+codex mcp add choros --url https://api.choros.sh/mcp
 ```
 </Tab>
 <Tab value="Gemini CLI">
 ```bash title="terminal"
-gemini mcp add --transport http superset https://api.superset.sh/mcp
+gemini mcp add --transport http choros https://api.choros.sh/mcp
 ```
 </Tab>
 <Tab value="Open Code">
@@ -57,13 +57,13 @@ opencode mcp add
 [2m│[0m  [36mCurrent project[0m
 [2m│[0m
 [2m◇[0m  Enter MCP server name
-[2m│[0m  [36msuperset[0m
+[2m│[0m  [36mchoros[0m
 [2m│[0m
 [2m◇[0m  Select MCP server type
 [2m│[0m  [36mRemote[0m
 [2m│[0m
 [2m◇[0m  Enter MCP server URL
-[2m│[0m  [36mhttps://api.superset.sh/mcp[0m
+[2m│[0m  [36mhttps://api.choros.sh/mcp[0m
 [2m│[0m
 [2m◇[0m  Does this server require OAuth authentication?
 [2m│[0m  [36mYes[0m
@@ -76,7 +76,7 @@ opencode mcp add
 </Tab>
 <Tab value="Amp CLI">
 ```bash title="terminal"
-amp mcp add --workspace superset https://api.superset.sh/mcp
+amp mcp add --workspace choros https://api.choros.sh/mcp
 ```
 </Tab>
 <Tab value="Mistral Vibe">
@@ -84,25 +84,25 @@ Add to your `.vibe/config.toml`:
 
 ```toml title=".vibe/config.toml"
 [[mcp_servers]]
-name = "superset"
+name = "choros"
 transport = "http"
-url = "https://api.superset.sh/mcp"
+url = "https://api.choros.sh/mcp"
 ```
 </Tab>
 <Tab value="Kimi Code">
-Run `kimi`, enter `/mcp-config`, and add an HTTP server named `superset` with this URL:
+Run `kimi`, enter `/mcp-config`, and add an HTTP server named `choros` with this URL:
 
 ```text title="Kimi Code"
-https://api.superset.sh/mcp
+https://api.choros.sh/mcp
 ```
 
-Then enter `/mcp-config login superset` to authorize it.
+Then enter `/mcp-config login choros` to authorize it.
 </Tab>
 <Tab value="Grok">
-Run `grok`, enter `/mcps`, and add an HTTP server named `superset` with this URL:
+Run `grok`, enter `/mcps`, and add an HTTP server named `choros` with this URL:
 
 ```text title="Grok"
-https://api.superset.sh/mcp
+https://api.choros.sh/mcp
 ```
 </Tab>
 </Tabs>
@@ -118,9 +118,9 @@ Add a `.mcp.json` to your project root. Claude Code auto-discovers this file and
 ```json title=".mcp.json"
 {
   "mcpServers": {
-    "superset": {
+    "choros": {
       "type": "http",
-      "url": "https://api.superset.sh/mcp"
+      "url": "https://api.choros.sh/mcp"
     }
   }
 }
@@ -132,9 +132,9 @@ Add to your `claude_desktop_config.json`:
 ```json title="claude_desktop_config.json"
 {
   "mcpServers": {
-    "superset": {
+    "choros": {
       "type": "http",
-      "url": "https://api.superset.sh/mcp"
+      "url": "https://api.choros.sh/mcp"
     }
   }
 }
@@ -146,8 +146,8 @@ Add to `.cursor/mcp.json` in your project root:
 ```json title=".cursor/mcp.json"
 {
   "mcpServers": {
-    "superset": {
-      "url": "https://api.superset.sh/mcp"
+    "choros": {
+      "url": "https://api.choros.sh/mcp"
     }
   }
 }
@@ -157,8 +157,8 @@ Add to `.cursor/mcp.json` in your project root:
 Add to your `~/.codex/config.toml`:
 
 ```toml title="config.toml"
-[mcp_servers.superset]
-url = "https://api.superset.sh/mcp"
+[mcp_servers.choros]
+url = "https://api.choros.sh/mcp"
 ```
 </Tab>
 <Tab value="Gemini CLI">
@@ -167,8 +167,8 @@ Add to your `.gemini/settings.json`:
 ```json title="settings.json"
 {
   "mcpServers": {
-    "superset": {
-      "httpUrl": "https://api.superset.sh/mcp"
+    "choros": {
+      "httpUrl": "https://api.choros.sh/mcp"
     }
   }
 }
@@ -181,9 +181,9 @@ Add to your `opencode.json`:
 {
   "$schema": "https://opencode.ai/config.json",
   "mcp": {
-    "superset": {
+    "choros": {
       "type": "remote",
-      "url": "https://api.superset.sh/mcp"
+      "url": "https://api.choros.sh/mcp"
     }
   }
 }
@@ -195,8 +195,8 @@ Add to `.amp/settings.json` in your project root:
 ```json title=".amp/settings.json"
 {
   "amp.mcpServers": {
-    "superset": {
-      "url": "https://api.superset.sh/mcp"
+    "choros": {
+      "url": "https://api.choros.sh/mcp"
     }
   }
 }
@@ -207,9 +207,9 @@ Add to `.vibe/config.toml` in your project root (or `~/.vibe/config.toml` for gl
 
 ```toml title=".vibe/config.toml"
 [[mcp_servers]]
-name = "superset"
+name = "choros"
 transport = "http"
-url = "https://api.superset.sh/mcp"
+url = "https://api.choros.sh/mcp"
 ```
 </Tab>
 <Tab value="Kimi Code">
@@ -218,21 +218,21 @@ Add to `.kimi-code/mcp.json` in your project root (or `~/.kimi-code/mcp.json` fo
 ```json title=".kimi-code/mcp.json"
 {
   "mcpServers": {
-    "superset": {
-      "url": "https://api.superset.sh/mcp"
+    "choros": {
+      "url": "https://api.choros.sh/mcp"
     }
   }
 }
 ```
 
-Then enter `/mcp-config login superset` in Kimi Code to authorize it.
+Then enter `/mcp-config login choros` in Kimi Code to authorize it.
 </Tab>
 <Tab value="Grok">
 Add to your `~/.grok/config.toml`:
 
 ```toml title="~/.grok/config.toml"
-[mcp_servers.superset]
-url = "https://api.superset.sh/mcp"
+[mcp_servers.choros]
+url = "https://api.choros.sh/mcp"
 ```
 </Tab>
 </Tabs>
@@ -247,7 +247,7 @@ For headless environments, CI/CD pipelines, or scripts where browser-based OAuth
 
 **Generating an API key:**
 
-1. Open the Superset desktop app
+1. Open the Choros desktop app
 2. Go to **Settings > API Keys**
 3. Click **Create API Key**
 4. Copy the key (it starts with `sk_live_`). You won't be able to see it again.
@@ -265,9 +265,9 @@ MCP clients that support custom headers can use this directly. For Claude Code, 
 ```json
 {
   "mcpServers": {
-    "superset": {
+    "choros": {
       "type": "http",
-      "url": "https://api.superset.sh/mcp",
+      "url": "https://api.choros.sh/mcp",
       "headers": {
         "Authorization": "Bearer sk_live_your_api_key_here"
       }

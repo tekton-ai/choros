@@ -20,7 +20,7 @@ export default function SlackLinkedPage() {
 						{i18n._({
 							id: "web.slackLinked.description",
 							message:
-								"Your Slack account has been linked to Superset. You can close this tab and return to Slack.",
+								"Your Slack account has been linked to Choros. You can close this tab and return to Slack.",
 						})}
 					</p>
 				</div>

@@ -128,8 +128,8 @@ export const auth = betterAuth({
 		...(env.NEXT_PUBLIC_DESKTOP_URL ? [env.NEXT_PUBLIC_DESKTOP_URL] : []),
 		...getTrustedVercelPreviewOrigins(request?.url ?? env.NEXT_PUBLIC_API_URL),
 		...desktopDevOrigins,
-		"superset://app",
-		"superset://",
+		"choros://app",
+		"choros://",
 		"https://appleid.apple.com",
 		...(process.env.NODE_ENV === "development"
 			? ["exp://", "exp://**", "exp://192.168.*.*:*/**"]
@@ -302,10 +302,10 @@ export const auth = betterAuth({
 					// condition mid-flight and the run became unreadable.
 					try {
 						const { error } = await resend.emails.send({
-							from: "Superset <noreply@superset.sh>",
-							replyTo: "founders@superset.sh",
+							from: "Choros <noreply@choros.sh>",
+							replyTo: "founders@choros.sh",
 							to: user.email,
-							subject: "Welcome to Superset",
+							subject: "Welcome to Choros",
 							react: WelcomeEmail({
 								userName: user.name,
 								userEmail: user.email,
@@ -486,7 +486,7 @@ export const auth = betterAuth({
 				});
 
 				await resend.emails.send({
-					from: "Superset <noreply@superset.sh>",
+					from: "Choros <noreply@choros.sh>",
 					to: data.email,
 					subject: `${data.inviter.user.name} invited you to join ${data.organization.name}`,
 					react: OrganizationInvitationEmail({
@@ -761,7 +761,7 @@ export const auth = betterAuth({
 
 					if (acceptedInvitation) {
 						await resend.emails.send({
-							from: "Superset <noreply@superset.sh>",
+							from: "Choros <noreply@choros.sh>",
 							to: user.email,
 							subject: `You've been added to ${organization.name}`,
 							react: MemberAddedEmail({
@@ -830,7 +830,7 @@ export const auth = betterAuth({
 
 					await resend.batch.send(
 						recipients.map((recipient) => ({
-							from: "Superset <noreply@superset.sh>",
+							from: "Choros <noreply@choros.sh>",
 							to: recipient.email,
 							subject: `Billing update: New member added to ${organization.name}`,
 							react: MemberAddedBillingEmail({
@@ -870,7 +870,7 @@ export const auth = betterAuth({
 
 				afterRemoveMember: async ({ user, organization }) => {
 					await resend.emails.send({
-						from: "Superset <noreply@superset.sh>",
+						from: "Choros <noreply@choros.sh>",
 						to: user.email,
 						subject: `You've been removed from ${organization.name}`,
 						react: MemberRemovedEmail({
@@ -941,7 +941,7 @@ export const auth = betterAuth({
 
 					await resend.batch.send(
 						recipients.map((recipient) => ({
-							from: "Superset <noreply@superset.sh>",
+							from: "Choros <noreply@choros.sh>",
 							to: recipient.email,
 							subject: `Billing update: Member removed from ${organization.name}`,
 							react: MemberRemovedBillingEmail({
@@ -1109,7 +1109,7 @@ export const auth = betterAuth({
 				) => {
 					if (plan.name === "enterprise") {
 						throw new Error(
-							"Enterprise subscriptions are managed by admins. Contact support@superset.sh.",
+							"Enterprise subscriptions are managed by admins. Contact support@choros.sh.",
 						);
 					}
 
@@ -1164,9 +1164,9 @@ export const auth = betterAuth({
 
 					await resend.batch.send(
 						owners.map((owner) => ({
-							from: "Superset <noreply@superset.sh>",
+							from: "Choros <noreply@choros.sh>",
 							to: owner.email,
-							subject: `Welcome to Superset ${plan.name}!`,
+							subject: `Welcome to Choros ${plan.name}!`,
 							react: SubscriptionStartedEmail({
 								ownerName: owner.name,
 								organizationName: org.name,
@@ -1219,7 +1219,7 @@ export const auth = betterAuth({
 
 					await resend.batch.send(
 						recipients.map((recipient) => ({
-							from: "Superset <noreply@superset.sh>",
+							from: "Choros <noreply@choros.sh>",
 							to: recipient.email,
 							subject: `Your ${subscription.plan} subscription has been cancelled`,
 							react: SubscriptionCancelledEmail({
@@ -1288,7 +1288,7 @@ export const auth = betterAuth({
 
 						await resend.batch.send(
 							recipients.map((recipient) => ({
-								from: "Superset <noreply@superset.sh>",
+								from: "Choros <noreply@choros.sh>",
 								to: recipient.email,
 								subject: `Payment failed for ${org.name}`,
 								react: PaymentFailedEmail({

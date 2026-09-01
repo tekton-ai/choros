@@ -28,17 +28,17 @@ const REFERENCED_ONLY = [
 	},
 ];
 
-export function SupersetSection() {
+export function ChorosSection() {
 	return (
 		<ShowcaseSection
-			id="superset"
+			id="choros"
 			index="01"
 			title={i18n._({
-				id: "web.design.supersetSection.supersetOriginals",
-				message: "Superset originals",
+				id: "web.design.chorosSection.chorosOriginals",
+				message: "Choros originals",
 			})}
 			description={i18n._({
-				id: "web.design.supersetSection.customComponentsBeyondTheShadcn",
+				id: "web.design.chorosSection.customComponentsBeyondTheShadcn",
 				message: "Custom components beyond the shadcn set",
 			})}
 		>
@@ -46,12 +46,12 @@ export function SupersetSection() {
 
 			<ComponentCard
 				title={i18n._({
-					id: "web.design.supersetSection.meshGradient",
+					id: "web.design.chorosSection.meshGradient",
 					message: "Mesh Gradient",
 				})}
 				importPath="@choros/ui/mesh-gradient"
 				description={i18n._({
-					id: "web.design.supersetSection.animatedWebglGradientStripeGradient",
+					id: "web.design.chorosSection.animatedWebglGradientStripeGradient",
 					message: "Animated WebGL gradient (stripe-gradient)",
 				})}
 				bleed
@@ -64,15 +64,15 @@ export function SupersetSection() {
 
 			<ComponentCard
 				title={i18n._({
-					id: "web.design.supersetSection.themePreviewCard",
+					id: "web.design.chorosSection.themePreviewCard",
 					message: "Theme Preview Card",
 				})}
 				importPath="@choros/ui/theme-preview-card"
 			>
 				<ThemePreviewCard
-					name="Superset Dark"
+					name="Choros Dark"
 					subtitle={i18n._({
-						id: "web.design.supersetSection.themeSubtitle",
+						id: "web.design.chorosSection.themeSubtitle",
 						message: "Default terminal theme",
 					})}
 					backgroundColor="#16161e"
@@ -94,7 +94,7 @@ export function SupersetSection() {
 
 			<ComponentCard
 				title={i18n._({
-					id: "web.design.supersetSection.sidebarCard",
+					id: "web.design.chorosSection.sidebarCard",
 					message: "Sidebar Card",
 				})}
 				importPath="@choros/ui/sidebar-card"
@@ -102,18 +102,18 @@ export function SupersetSection() {
 				<SidebarCard
 					badge="Beta"
 					title={i18n._({
-						id: "web.design.supersetSection.mobileApp",
+						id: "web.design.chorosSection.mobileApp",
 						message: "Mobile app",
 					})}
 					description={i18n._({
-						id: "web.design.supersetSection.monitorAgentsFromYourPhone",
+						id: "web.design.chorosSection.monitorAgentsFromYourPhone",
 						message: "Monitor agents from your phone.",
 					})}
 					actionLabel="Join TestFlight"
 					onAction={() =>
 						toast(
 							i18n._({
-								id: "web.design.supersetSection.toastOpeningTestflight",
+								id: "web.design.chorosSection.toastOpeningTestflight",
 								message: "Opening TestFlight…",
 							}),
 						)
@@ -121,7 +121,7 @@ export function SupersetSection() {
 					onDismiss={() =>
 						toast(
 							i18n._({
-								id: "web.design.supersetSection.toastDismissed",
+								id: "web.design.chorosSection.toastDismissed",
 								message: "Dismissed",
 							}),
 						)
@@ -132,12 +132,12 @@ export function SupersetSection() {
 
 			<ComponentCard
 				title={i18n._({
-					id: "web.design.supersetSection.alertImperative",
+					id: "web.design.chorosSection.alertImperative",
 					message: "Alert (imperative)",
 				})}
 				importPath="@choros/ui/atoms/Alert"
 				description={i18n._({
-					id: "web.design.supersetSection.alertOpensAPromiseFriendly",
+					id: "web.design.chorosSection.alertOpensAPromiseFriendly",
 					message:
 						"alert() opens a promise-friendly dialog via the mounted Alerter",
 				})}
@@ -147,31 +147,31 @@ export function SupersetSection() {
 					onClick={() =>
 						alert({
 							title: i18n._({
-								id: "web.design.supersetSection.alertTitle",
+								id: "web.design.chorosSection.alertTitle",
 								message: "Discard changes?",
 							}),
 							description: i18n._({
-								id: "web.design.supersetSection.alertDescription",
+								id: "web.design.chorosSection.alertDescription",
 								message:
 									"The worktree has uncommitted edits from the agent session.",
 							}),
 							checkbox: {
 								label: i18n._({
-									id: "web.design.supersetSection.alertCheckbox",
+									id: "web.design.chorosSection.alertCheckbox",
 									message: "Don't ask me again",
 								}),
 							},
 							actions: [
 								{
 									label: i18n._({
-										id: "web.design.supersetSection.alertKeepWorking",
+										id: "web.design.chorosSection.alertKeepWorking",
 										message: "Keep working",
 									}),
 									variant: "ghost",
 								},
 								{
 									label: i18n._({
-										id: "web.design.supersetSection.alertDiscard",
+										id: "web.design.chorosSection.alertDiscard",
 										message: "Discard",
 									}),
 									variant: "destructive",
@@ -179,11 +179,11 @@ export function SupersetSection() {
 										toast(
 											checkboxChecked
 												? i18n._({
-														id: "web.design.supersetSection.toastDiscardedNoAsk",
+														id: "web.design.chorosSection.toastDiscardedNoAsk",
 														message: "Discarded — won't ask again",
 													})
 												: i18n._({
-														id: "web.design.supersetSection.toastDiscarded",
+														id: "web.design.chorosSection.toastDiscarded",
 														message: "Discarded",
 													}),
 										);
@@ -193,7 +193,7 @@ export function SupersetSection() {
 						})
 					}
 				>
-					<Trans id="web.design.supersetSection.triggerAlert">
+					<Trans id="web.design.chorosSection.triggerAlert">
 						Trigger alert()
 					</Trans>
 				</Button>
@@ -201,12 +201,12 @@ export function SupersetSection() {
 
 			<ComponentCard
 				title={i18n._({
-					id: "web.design.supersetSection.avatarAtom",
+					id: "web.design.chorosSection.avatarAtom",
 					message: "Avatar (atom)",
 				})}
 				importPath="@choros/ui/atoms/Avatar"
 				description={i18n._({
-					id: "web.design.supersetSection.initialsFallbackViaGetinitialsSizes",
+					id: "web.design.chorosSection.initialsFallbackViaGetinitialsSizes",
 					message: "Initials fallback via getInitials, sizes xs → xl",
 				})}
 			>
@@ -219,13 +219,13 @@ export function SupersetSection() {
 
 			<ComponentCard
 				title={i18n._({
-					id: "web.design.supersetSection.referencedNotDemoed",
+					id: "web.design.chorosSection.referencedNotDemoed",
 					message: "Referenced, not demoed",
 				})}
 				importPath="@choros/ui/*"
 				copyable={false}
 				description={i18n._({
-					id: "web.design.supersetSection.needAppLevelWiringForm",
+					id: "web.design.chorosSection.needAppLevelWiringForm",
 					message: "Need app-level wiring (form state, chart data, app shell)",
 				})}
 				span

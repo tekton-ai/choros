@@ -1,6 +1,6 @@
 # @choros/email
 
-Email templates for Superset, built with [React Email](https://react.email).
+Email templates for Choros, built with [React Email](https://react.email).
 
 ## Images in Email
 
@@ -12,7 +12,7 @@ Email templates for Superset, built with [React Email](https://react.email).
    - Footer logo (`logo-full.png`): 512x83px (pixelated SUPERSET text)
    - Social icons: 48x48px (displayed at 24x24 for retina)
 2. Place in `apps/marketing/public/assets/emails/`
-3. Images load from `https://superset.sh/assets/emails/` in production
+3. Images load from `https://choros.sh/assets/emails/` in production
 
 ### Environment Variables
 
@@ -27,7 +27,7 @@ NEXT_PUBLIC_MARKETING_URL=http://localhost:3002  # Marketing app port
 **For production:**
 Set in your deployment environment:
 ```bash
-NEXT_PUBLIC_MARKETING_URL=https://superset.sh
+NEXT_PUBLIC_MARKETING_URL=https://choros.sh
 ```
 
 **Note:** For actual email sending, the environment variable should be set in your API/backend service.
@@ -124,9 +124,9 @@ const html = render(<WelcomeEmail userName="Satya" />);
 
 // Send with your email provider (e.g., Resend, SendGrid)
 await resend.emails.send({
-  from: "noreply@superset.sh",
+  from: "noreply@choros.sh",
   to: user.email,
-  subject: "Welcome to Superset!",
+  subject: "Welcome to Choros!",
   html,
 });
 ```
@@ -158,8 +158,8 @@ Primary and secondary button styles.
 
 **Example:**
 ```tsx
-<Button href="https://app.superset.sh">Get Started</Button>
-<Button href="https://superset.sh" variant="secondary">
+<Button href="https://app.choros.sh">Get Started</Button>
+<Button href="https://choros.sh" variant="secondary">
   Learn More
 </Button>
 ```

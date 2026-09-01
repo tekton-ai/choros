@@ -5,10 +5,10 @@
 # machine that never ran the desktop app — and verifies the full agent-hook
 # chain the desktop otherwise provides:
 #
-#   1. First boot provisions ~/.superset (notify.sh, bin wrappers, zsh/bash
+#   1. First boot provisions ~/.choros (notify.sh, bin wrappers, zsh/bash
 #      bootstrap) and every agent's managed hook config from the tarball's
 #      lib/agent-templates — with NO SUPERSET_HOME_DIR in the environment,
-#      so the ~/.superset fallback is what's under test.
+#      so the ~/.choros fallback is what's under test.
 #   2. The provisioned notify.sh delivers a lifecycle event to
 #      notifications.hook and a row lands in terminal_agent_bindings.
 #      Unknown terminal ids are accepted (200) but recorded nowhere.
@@ -22,7 +22,7 @@
 #      tear down (and re-enabling restores) per-agent hook configs.
 #   7. Two hosts provisioning concurrently leave valid, deduplicated configs.
 #
-# DESTRUCTIVE: wipes $HOME/.superset, ~/.claude, ~/.agents, ~/.codex,
+# DESTRUCTIVE: wipes $HOME/.choros, ~/.claude, ~/.agents, ~/.codex,
 # ~/.gemini and appends to the login-shell profile. Only runs when
 # SUPERSET_HEADLESS_E2E=1 — set by build-dist-linux-docker.sh (throwaway
 # container) and by the Linux jobs in .github/workflows/build-cli.yml
@@ -44,13 +44,13 @@ if [[ "$(uname -s)" != "Linux" ]]; then
 fi
 
 # ── Fixture: a fresh home with login-shell-only env additions ────────────
-rm -rf "$HOME/.superset" "$HOME/.claude" "$HOME/.agents" "$HOME/.codex" "$HOME/.gemini"
-FAKE_TOOLS_DIR="${TMPDIR:-/tmp}/superset-e2e-fake-tools/bin"
+rm -rf "$HOME/.choros" "$HOME/.claude" "$HOME/.agents" "$HOME/.codex" "$HOME/.gemini"
+FAKE_TOOLS_DIR="${TMPDIR:-/tmp}/choros-e2e-fake-tools/bin"
 mkdir -p "$FAKE_TOOLS_DIR"
 # bash login shells read .bash_profile and ignore .profile when both exist.
 PROFILE="$HOME/.profile"
 [[ -f "$HOME/.bash_profile" ]] && PROFILE="$HOME/.bash_profile"
-grep -q superset-e2e-fake-tools "$PROFILE" 2>/dev/null || \
+grep -q choros-e2e-fake-tools "$PROFILE" 2>/dev/null || \
   echo "export PATH=\"$FAKE_TOOLS_DIR:\$PATH\"" >> "$PROFILE"
 # Runtime-altering var a dotfile might export; the merge must never import it
 # (it would flip the host into dev-mode shutdown, killing PTYs on restart).
@@ -84,13 +84,13 @@ boot_host() {
     SHELL=/bin/bash \
     ORGANIZATION_ID="$org" \
     AUTH_TOKEN="e2e-token" \
-    SUPERSET_API_URL="https://api.superset.sh" \
+    SUPERSET_API_URL="https://api.choros.sh" \
     PORT="$port" HOST_SERVICE_PORT="$port" \
     HOST_SERVICE_SECRET="e2e-secret" \
     HOST_DB_PATH="$db" \
     HOST_MIGRATIONS_FOLDER="$DIST/share/migrations" \
     "$@" \
-    "$DIST/bin/superset-host" > "$log" 2>&1 &
+    "$DIST/bin/choros-host" > "$log" 2>&1 &
   HSPID=$!
 }
 
@@ -138,7 +138,7 @@ sleep 1  # managed-skills provisioning is async fire-and-forget
 
 echo "[e2e] === assert: provisioning artifacts ==="
 test -x "$HOME/.superset/hooks/notify.sh"
-grep -q "Superset agent notification hook" "$HOME/.superset/hooks/notify.sh"
+grep -q "Choros agent notification hook" "$HOME/.superset/hooks/notify.sh"
 test -f "$HOME/.superset/zsh/.zshrc"
 grep -q "133;A" "$HOME/.superset/zsh/.zlogin"
 test -f "$HOME/.superset/bash/rcfile"
@@ -160,23 +160,23 @@ test -f "$HOME/.codex/hooks.json"
 test -f "$HOME/.gemini/settings.json"
 
 echo "[e2e] === assert: managed skills from bundled templates ==="
-test -f "$HOME/.claude/skills/superset/skills/doctor/SKILL.md"
-ls "$HOME/.agents/skills" | grep -q "superset-doctor"
+test -f "$HOME/.claude/skills/choros/skills/doctor/SKILL.md"
+ls "$HOME/.agents/skills" | grep -q "choros-doctor"
 
 echo "[e2e] === assert: login-shell PATH merge ==="
 grep -q "login-shell PATH entries into process env" "$HSDIR/host.log"
 
 echo "[e2e] === assert: real shell login flows through the wrappers ==="
 BASH_PROBE=$(env -i HOME="$HOME" TERM=dumb PATH=/usr/bin:/bin \
-  bash -c "source \"$HOME/.superset/bash/rcfile\"; echo \"PATH=\$PATH\"; declare -F __superset_prompt_mark")
+  bash -c "source \"$HOME/.superset/bash/rcfile\"; echo \"PATH=\$PATH\"; declare -F __choros_prompt_mark")
 echo "$BASH_PROBE" | grep -q "$HOME/.superset/bin"
-echo "$BASH_PROBE" | grep -q "__superset_prompt_mark"
+echo "$BASH_PROBE" | grep -q "__choros_prompt_mark"
 if command -v zsh >/dev/null 2>&1; then
   ZSH_PROBE=$(env -i HOME="$HOME" TERM=dumb PATH=/usr/bin:/bin \
     SUPERSET_ORIG_ZDOTDIR="$HOME" ZDOTDIR="$HOME/.superset/zsh" \
-    zsh -ilc 'print -r -- "PATH=$PATH"; whence -w __superset_prompt_mark' 2>/dev/null)
+    zsh -ilc 'print -r -- "PATH=$PATH"; whence -w __choros_prompt_mark' 2>/dev/null)
   echo "$ZSH_PROBE" | grep -q "$HOME/.superset/bin"
-  echo "$ZSH_PROBE" | grep -q "__superset_prompt_mark: function"
+  echo "$ZSH_PROBE" | grep -q "__choros_prompt_mark: function"
 else
   echo "[e2e] zsh not installed — skipping zsh wrapper-chain check"
 fi

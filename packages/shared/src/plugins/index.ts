@@ -68,7 +68,7 @@ export interface PluginCatalogEntry {
 }
 
 /**
- * An MCP server found in the user's agent configs that Superset didn't write
+ * An MCP server found in the user's agent configs that Choros didn't write
  * — any scope (Claude user/project, Codex, Cursor). Carries enough of the
  * config to match against catalog entries by more than name: people name
  * servers freely ("linear-server"), so identity comes from where the server
@@ -187,7 +187,7 @@ export function getPluginComponentKinds(
 }
 
 /**
- * The managed skills the `superset` plugin provisions into every agent CLI
+ * The managed skills the `choros` plugin provisions into every agent CLI
  * (see packages/agent-setup/src/managed-skills.ts). The Plugins page lists
  * these read-only on its Skills tab; they are not installable units in the
  * MVP.
@@ -195,11 +195,11 @@ export function getPluginComponentKinds(
 export const SUPERSET_MANAGED_SKILLS = [
 	{
 		name: "10x",
-		description: "Personalized audit of Superset features you're not using yet",
+		description: "Personalized audit of Choros features you're not using yet",
 	},
 	{
 		name: "automate",
-		description: "Turn a recurring chore into a Superset automation",
+		description: "Turn a recurring chore into a Choros automation",
 	},
 	{
 		name: "browser",
@@ -211,26 +211,26 @@ export const SUPERSET_MANAGED_SKILLS = [
 	},
 	{
 		name: "contribute",
-		description: "Set up an open-source contribution to Superset",
+		description: "Set up an open-source contribution to Choros",
 	},
-	{ name: "doctor", description: "Diagnose and fix Superset problems" },
+	{ name: "doctor", description: "Diagnose and fix Choros problems" },
 	{ name: "feedback", description: "Report bugs and request features" },
 	{
 		name: "orchestrate",
 		description: "Coordinate multiple coding agents across workspaces",
 	},
-	{ name: "setup", description: "Make a repository Superset-ready" },
-	{ name: "standup", description: "Digest of what your Superset agents did" },
+	{ name: "setup", description: "Make a repository Choros-ready" },
+	{ name: "standup", description: "Digest of what your Choros agents did" },
 ] as const;
 
 export const PLUGIN_CATALOG: readonly PluginCatalogEntry[] = [
 	{
-		name: "superset",
+		name: "choros",
 		version: "1.0.0",
-		description: "Manage Superset workspaces, tasks, and automations",
-		interface: { displayName: "Superset", category: "Productivity" },
+		description: "Manage Choros workspaces, tasks, and automations",
+		interface: { displayName: "Choros", category: "Productivity" },
 		mcpServers: {
-			superset: { type: "http", url: "https://api.superset.sh/mcp" },
+			choros: { type: "http", url: "https://api.choros.sh/mcp" },
 		},
 		skills: SUPERSET_MANAGED_SKILLS.map((skill) => skill.name),
 		featured: true,

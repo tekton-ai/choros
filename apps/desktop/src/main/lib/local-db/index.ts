@@ -10,14 +10,14 @@ import { app } from "electron";
 import { validate as uuidValidate, version as uuidVersion } from "uuid";
 import { env } from "../../env.main";
 import {
-	ensureSupersetHomeDirExists,
+	ensureChorosHomeDirExists,
 	SUPERSET_HOME_DIR,
 	SUPERSET_SENSITIVE_FILE_MODE,
 } from "../app-environment";
 
 const DB_PATH = join(SUPERSET_HOME_DIR, "local.db");
 
-ensureSupersetHomeDirExists();
+ensureChorosHomeDirExists();
 
 /**
  * Gets the migrations directory path.

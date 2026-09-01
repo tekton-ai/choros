@@ -1,18 +1,18 @@
 {
 	"name": "@choros/sdk",
 	"version": "0.0.1-alpha.12",
-	"description": "TypeScript SDK for the Superset API",
-	"homepage": "https://superset.sh",
+	"description": "TypeScript SDK for the Choros API",
+	"homepage": "https://choros.sh",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/superset-sh/superset.git",
+		"url": "git+https://github.com/superset-sh/choros.git",
 		"directory": "packages/sdk"
 	},
 	"bugs": {
-		"url": "https://github.com/superset-sh/superset/issues"
+		"url": "https://github.com/superset-sh/choros/issues"
 	},
 	"keywords": [
-		"superset",
+		"choros",
 		"coding-agents",
 		"agent-orchestration",
 		"git-worktree",
@@ -29,7 +29,7 @@
 		}
 	},
 	"publishConfig": {
-		"name": "@superset_sh/sdk",
+		"name": "@choros_sh/sdk",
 		"access": "public"
 	},
 	"scripts": {

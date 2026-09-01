@@ -1,6 +1,6 @@
 ---
 title: Custom Themes
-description: Build, edit, and import your own Superset theme files
+description: Build, edit, and import your own Choros theme files
 ---
 
 import { COMPANY } from "@choros/shared/constants";
@@ -22,16 +22,16 @@ Marketplace themes are available from the <a href={`${COMPANY.MARKETING_URL}/mar
 After downloading the base file, you can prompt an agent with something like:
 
 ```text
-Customize this Superset theme JSON to feel like a neon cyberpunk arcade.
+Customize this Choros theme JSON to feel like a neon cyberpunk arcade.
 Keep the schema valid. Preserve all required ui and terminal keys.
 Return the full JSON file contents only.
 ```
 
-Then save the returned JSON and import it in Superset.
+Then save the returned JSON and import it in Choros.
 
 ## Theme File Format
 
-Superset accepts:
+Choros accepts:
 
 - A single theme object
 - An array of theme objects
@@ -44,7 +44,7 @@ The importer supports:
 - `terminal` color overrides
 - `colors` as an alias for `terminal`
 
-Missing values fall back to Superset defaults for the selected theme type.
+Missing values fall back to Choros defaults for the selected theme type.
 
 ## Example: Single Theme
 

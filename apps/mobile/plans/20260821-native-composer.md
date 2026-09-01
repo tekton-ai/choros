@@ -58,7 +58,7 @@ settled unless the Open questions section says otherwise.
 growing upward:
 
 - Grabber centered at the top edge.
-- Header row (home only): `superset main ⌄` (project + branch, one chip) · `☁ Cloud ⌄` (target).
+- Header row (home only): `choros main ⌄` (project + branch, one chip) · `☁ Cloud ⌄` (target).
 - Attachment carousel, when non-empty.
 - Text area: multi-line, top-aligned, ~4-line minimum height.
 - Toolbar row: `+` · model picker as text + chevron · spacer · mic · send.

@@ -75,6 +75,6 @@ export function rethrowCloudUnreachable(error: unknown): void {
 	if (message === null) return;
 	throw new TRPCError({
 		code: "SERVICE_UNAVAILABLE",
-		message: `Could not reach the Superset cloud API: ${message}`,
+		message: `Could not reach the Choros cloud API: ${message}`,
 	});
 }

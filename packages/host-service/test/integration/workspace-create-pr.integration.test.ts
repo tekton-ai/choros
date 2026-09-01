@@ -185,10 +185,10 @@ describe("workspaces.create PR checkout integration", () => {
 					"branch.contributor/feature/pr-lockfile.pushRemote",
 				])
 			).trim(),
-		).toBe("superset-pr-6060");
+		).toBe("choros-pr-6060");
 		expect(
 			(
-				await scenario.repo.git.raw(["config", "remote.superset-pr-6060.push"])
+				await scenario.repo.git.raw(["config", "remote.choros-pr-6060.push"])
 			).trim(),
 		).toBe("HEAD:refs/heads/feature/pr-lockfile");
 		const dryRunOutput = await worktreeGit.raw(["push", "--dry-run"]);
@@ -288,7 +288,7 @@ describe("workspaces.create PR checkout integration", () => {
 					`branch.${expectedBranch}.remote`,
 				])
 			).trim(),
-		).toBe(`superset-pr-${prNumber}`);
+		).toBe(`choros-pr-${prNumber}`);
 		expect(
 			(
 				await scenario.repo.git.raw([
@@ -296,12 +296,12 @@ describe("workspaces.create PR checkout integration", () => {
 					`branch.${expectedBranch}.pushRemote`,
 				])
 			).trim(),
-		).toBe(`superset-pr-${prNumber}`);
+		).toBe(`choros-pr-${prNumber}`);
 		expect(
 			(
 				await scenario.repo.git.raw([
 					"config",
-					`remote.superset-pr-${prNumber}.push`,
+					`remote.choros-pr-${prNumber}.push`,
 				])
 			).trim(),
 		).toBe("HEAD:refs/heads/feature/adopt-local");

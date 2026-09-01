@@ -936,8 +936,8 @@ export const automationEvents = pgTable(
 			.references(() => organizations.id, { onDelete: "cascade" }),
 
 		// Text, not integration_provider: this must hold "webhook" and
-		// "superset", which have no connection behind them.
-		// Which connection produced this. Null for webhook and superset events.
+		// "choros", which have no connection behind them.
+		// Which connection produced this. Null for webhook and choros events.
 		// Not backfillable later: provider payloads do not always name it.
 		integrationConnectionId: uuid("integration_connection_id").references(
 			() => integrationConnections.id,
@@ -964,7 +964,7 @@ export const automationEvents = pgTable(
 		payload: jsonb(),
 
 		// Provenance pointer, deliberately not a foreign key, so ingest stays
-		// prunable. Null for webhook and superset events.
+		// prunable. Null for webhook and choros events.
 		webhookEventId: uuid("webhook_event_id"),
 
 		receivedAt: timestamp("received_at", { withTimezone: true })

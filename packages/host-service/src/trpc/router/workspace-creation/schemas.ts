@@ -19,7 +19,7 @@ export const adoptInputSchema = z.object({
 	// of looking one up under <repoPath>/.worktrees/<branch>. Used by
 	// the v1→v2 migration to adopt worktrees at legacy paths (e.g.
 	// ~/.superset/worktrees/...) that aren't under the picker's
-	// Superset-managed prefix.
+	// Choros-managed prefix.
 	worktreePath: z.string().optional(),
 });
 

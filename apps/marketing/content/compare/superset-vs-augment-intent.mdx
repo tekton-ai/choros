@@ -1,13 +1,13 @@
 ---
-title: "Superset vs Augment Intent (2026): Developer-Led or Coordinator-Led Orchestration?"
-description: "Compare Superset and Augment Intent for multi-agent development. Spec-driven coordination vs direct orchestration, agent support, pricing, and platform reach."
+title: "Choros vs Augment Intent (2026): Developer-Led or Coordinator-Led Orchestration?"
+description: "Compare Choros and Augment Intent for multi-agent development. Spec-driven coordination vs direct orchestration, agent support, pricing, and platform reach."
 date: 2026-08-17
 lastUpdated: 2026-08-17
 type: "1v1"
 competitors:
   - augment-intent
 keywords:
-  - superset vs augment intent
+  - choros vs augment intent
   - augment intent alternative
   - augment intent
   - agent orchestration
@@ -15,13 +15,13 @@ keywords:
   - multi agent workspace
 ---
 
-Superset and Augment Intent are both workspaces for running multiple coding agents against real repositories, and both isolate parallel work in Git worktrees. The philosophical split is who decomposes the work: Intent puts a coordinator agent in charge of drafting a spec and fanning out tasks to implementor agents, with you approving at checkpoints, while Superset keeps decomposition with the developer and makes dispatch, monitoring, and review as fast as possible.
+Choros and Augment Intent are both workspaces for running multiple coding agents against real repositories, and both isolate parallel work in Git worktrees. The philosophical split is who decomposes the work: Intent puts a coordinator agent in charge of drafting a spec and fanning out tasks to implementor agents, with you approving at checkpoints, while Choros keeps decomposition with the developer and makes dispatch, monitoring, and review as fast as possible.
 
 ---
 
 ## At a Glance
 
-| | **Superset** | **Augment Intent** |
+| | **Choros** | **Augment Intent** |
 |---|---|---|
 | **What it does** | Runs 100+ agents in parallel with Git worktree isolation, you direct the work | Coordinator agent drafts a spec, decomposes tasks, runs implementor agents in waves, verifier checks results |
 | **Agent support** | Any CLI agent (Claude Code, Codex, OpenCode, Gemini, Copilot, more) | Auggie (native) or bring your own: Claude Code, Codex, OpenCode |
@@ -33,11 +33,11 @@ Superset and Augment Intent are both workspaces for running multiple coding agen
 
 ---
 
-## What Is Superset?
+## What Is Choros?
 
-Superset is a local-first desktop workspace for AI coding agents. It launches Claude Code, Codex, OpenCode, Aider, Copilot, Cursor Agent, Gemini CLI, Superset Chat, and other agent workflows inside isolated Git worktrees with persistent terminal sessions. Around that core, it adds a built-in diff/file editor, chat panel, in-app browser for docs and dev servers, port management, scheduled automations, and an MCP server for driving everything programmatically. You can review inside Superset or jump into VS Code, Cursor, Windsurf, JetBrains, or Xcode. Source-available under Elastic License 2.0 (ELv2).
+Choros is a local-first desktop workspace for AI coding agents. It launches Claude Code, Codex, OpenCode, Aider, Copilot, Cursor Agent, Gemini CLI, Choros Chat, and other agent workflows inside isolated Git worktrees with persistent terminal sessions. Around that core, it adds a built-in diff/file editor, chat panel, in-app browser for docs and dev servers, port management, scheduled automations, and an MCP server for driving everything programmatically. You can review inside Choros or jump into VS Code, Cursor, Windsurf, JetBrains, or Xcode. Source-available under Elastic License 2.0 (ELv2).
 
-![Claude streaming a billing migration in one Superset workspace while other agents run in parallel workspaces](/images/readme/agents-working.gif)
+![Claude streaming a billing migration in one Choros workspace while other agents run in parallel workspaces](/images/readme/agents-working.gif)
 
 ---
 
@@ -51,35 +51,35 @@ Intent is Augment Code's multi-agent workspace, announced in February 2026 as th
 
 ### Who Decomposes the Work
 
-Intent's bet is that an AI coordinator should plan: it drafts the spec, splits the tasks, and reconciles overlapping files at merge time. That buys real hands-off breadth on well-scoped features, and the living spec keeps agents aligned as code changes. Superset's bet is that decomposition is where engineering judgment lives: you scope the tasks (or let your own coordinating agent do it over MCP), and the product makes everything after that instant. Augment's own guidance says Intent is best for PR-sized, multi-file features and performs poorly on single-file hotfixes, urgent production fixes, and 50+ file refactors; Superset doesn't constrain task shape: a one-line hotfix and a 50-file refactor dispatch the same way.
+Intent's bet is that an AI coordinator should plan: it drafts the spec, splits the tasks, and reconciles overlapping files at merge time. That buys real hands-off breadth on well-scoped features, and the living spec keeps agents aligned as code changes. Choros's bet is that decomposition is where engineering judgment lives: you scope the tasks (or let your own coordinating agent do it over MCP), and the product makes everything after that instant. Augment's own guidance says Intent is best for PR-sized, multi-file features and performs poorly on single-file hotfixes, urgent production fixes, and 50+ file refactors; Choros doesn't constrain task shape: a one-line hotfix and a 50-file refactor dispatch the same way.
 
 ### Ceremony vs Throughput
 
-Intent's three checkpoints (spec, decomposition, diff) are a genuine safety feature and a real cost: every unit of work flows through review gates designed for feature-sized changes. Superset has one gate, the diff. For a day of many small dispatches, the ceremony difference compounds; for one large feature with fuzzy requirements, Intent's structure can earn its overhead.
+Intent's three checkpoints (spec, decomposition, diff) are a genuine safety feature and a real cost: every unit of work flows through review gates designed for feature-sized changes. Choros has one gate, the diff. For a day of many small dispatches, the ceremony difference compounds; for one large feature with fuzzy requirements, Intent's structure can earn its overhead.
 
 ### Agent Breadth
 
-Intent supports its native Auggie plus exactly three BYOA agents: Claude Code, Codex, and OpenCode (the full coordinator/implementor/verifier suite requires Auggie). Superset runs anything that lives in a terminal, which also means new agents work the day they ship. If your fleet includes Gemini CLI, Copilot CLI, Aider, or custom scripts, only one of these tools runs it today.
+Intent supports its native Auggie plus exactly three BYOA agents: Claude Code, Codex, and OpenCode (the full coordinator/implementor/verifier suite requires Auggie). Choros runs anything that lives in a terminal, which also means new agents work the day they ship. If your fleet includes Gemini CLI, Copilot CLI, Aider, or custom scripts, only one of these tools runs it today.
 
 ### Platforms, Editing, and Handoff
 
-Intent's public beta is macOS on Apple Silicon only, with Windows waitlisted, no Linux story, and a built-in diff viewer that (per Augment's own docs) has no LSP integration. Superset is macOS with an experimental Linux AppImage, and hands off to VS Code, Cursor, JetBrains, or Xcode when you want a real editor. Neither product covers Windows today.
+Intent's public beta is macOS on Apple Silicon only, with Windows waitlisted, no Linux story, and a built-in diff viewer that (per Augment's own docs) has no LSP integration. Choros is macOS with an experimental Linux AppImage, and hands off to VS Code, Cursor, JetBrains, or Xcode when you want a real editor. Neither product covers Windows today.
 
 ### Automations and Being Driven by Other Agents
 
-Superset schedules recurring agent runs and exposes its whole orchestration surface (workspaces, agents, terminals, tasks) over an MCP server, CLI, and SDK. Intent exposes Augment's Context Engine over MCP, which is useful context plumbing, but no scheduling or orchestration API is documented. If you want agents launching agents, or nightly runs that happen without you, Intent documents neither and Superset ships both.
+Choros schedules recurring agent runs and exposes its whole orchestration surface (workspaces, agents, terminals, tasks) over an MCP server, CLI, and SDK. Intent exposes Augment's Context Engine over MCP, which is useful context plumbing, but no scheduling or orchestration API is documented. If you want agents launching agents, or nightly runs that happen without you, Intent documents neither and Choros ships both.
 
 ---
 
 ## Pricing
 
-Superset has a free tier and paid seats; it never proxies model calls, so your agent subscriptions and API keys are your own. The Intent app is free during beta, with usage billed in Augment credits (plans from $20/month Indie to $200/month Max, plus top-ups) or through your own Claude Code, Codex, or OpenCode subscription in BYOA mode. The practical difference: Superset's cost model is a seat, Intent's native mode is metered usage.
+Choros has a free tier and paid seats; it never proxies model calls, so your agent subscriptions and API keys are your own. The Intent app is free during beta, with usage billed in Augment credits (plans from $20/month Indie to $200/month Max, plus top-ups) or through your own Claude Code, Codex, or OpenCode subscription in BYOA mode. The practical difference: Choros's cost model is a seat, Intent's native mode is metered usage.
 
 ---
 
 ## Which Should You Choose?
 
-**Choose Superset if you:**
+**Choose Choros if you:**
 
 - Prefer to scope tasks yourself and want dispatch, isolation, and review to be instant
 - Run a mixed or fast-changing agent fleet beyond Claude Code, Codex, and OpenCode
@@ -93,28 +93,28 @@ Superset has a free tier and paid seats; it never proxies model calls, so your a
 - Already use Augment's Context Engine or Auggie
 - Work mostly in the 3-to-15-file feature band their workflow targets
 
-**Verdict:** Intent's spec-checkpoint-verify loop has no equivalent in anything else on this page, and on well-scoped features it earns its ceremony. Superset is the better daily driver when orchestration needs to match the full shape of real work: small fixes and big refactors, any agent, scheduled runs, and other software driving the fleet. Decide by whether you want to delegate decomposition or keep it.
+**Verdict:** Intent's spec-checkpoint-verify loop has no equivalent in anything else on this page, and on well-scoped features it earns its ceremony. Choros is the better daily driver when orchestration needs to match the full shape of real work: small fixes and big refactors, any agent, scheduled runs, and other software driving the fleet. Decide by whether you want to delegate decomposition or keep it.
 
 ---
 
 ## Frequently Asked Questions
 
-### Do Superset and Augment Intent both use Git worktrees?
+### Do Choros and Augment Intent both use Git worktrees?
 
-Yes. Intent backs each workspace with an isolated worktree and a dedicated branch, and each implementor commits to its own branch during parallel waves. Superset creates a worktree per task automatically. The isolation mechanism is the same; the orchestration philosophy differs.
+Yes. Intent backs each workspace with an isolated worktree and a dedicated branch, and each implementor commits to its own branch during parallel waves. Choros creates a worktree per task automatically. The isolation mechanism is the same; the orchestration philosophy differs.
 
 ### Can Augment Intent use any coding agent?
 
-No. Intent supports Augment's native Auggie plus Claude Code, Codex, and OpenCode in bring-your-own-agent mode. Superset runs any CLI agent, including Gemini CLI, Copilot CLI, Aider, and custom tools.
+No. Intent supports Augment's native Auggie plus Claude Code, Codex, and OpenCode in bring-your-own-agent mode. Choros runs any CLI agent, including Gemini CLI, Copilot CLI, Aider, and custom tools.
 
 ### Is Augment Intent available on Windows or Linux?
 
-Not currently. The public beta is macOS on Apple Silicon only (Intel unsupported), Windows is waitlisted, and there is no Linux release. Superset runs on macOS with an experimental Linux AppImage.
+Not currently. The public beta is macOS on Apple Silicon only (Intel unsupported), Windows is waitlisted, and there is no Linux release. Choros runs on macOS with an experimental Linux AppImage.
 
 ### What are Intent's known limitations?
 
 Augment's own walkthrough recommends Intent for PR-sized, multi-file features (roughly 3 to 15 files) and says it performs poorly for single-file hotfixes, time-critical fixes, and very large refactors; the verifier can also miss issues not named in the spec, like race conditions and performance regressions.
 
-### Does Superset have anything like Intent's coordinator agent?
+### Does Choros have anything like Intent's coordinator agent?
 
-Not built in by design: you (or an agent you choose) do the decomposition. Because Superset exposes workspaces, agents, and terminals over an MCP server, you can point your own coordinator, a chat agent or script, at the same fan-out pattern while keeping control of how work is split.
+Not built in by design: you (or an agent you choose) do the decomposition. Because Choros exposes workspaces, agents, and terminals over an MCP server, you can point your own coordinator, a chat agent or script, at the same fan-out pattern while keeping control of how work is split.

@@ -47,7 +47,7 @@ describe("gitRouter.getDiffPatch", () => {
 	let git: SimpleGit;
 
 	beforeEach(async () => {
-		repo = mkdtempSync(join(tmpdir(), "superset-diff-patch-"));
+		repo = mkdtempSync(join(tmpdir(), "choros-diff-patch-"));
 		git = await initRepo(repo);
 		await writeFile(join(repo, "tracked.txt"), "one\ntwo\nthree\n");
 		await git.add(["tracked.txt"]);

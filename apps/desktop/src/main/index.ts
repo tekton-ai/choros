@@ -76,7 +76,7 @@ void applyShellEnvToProcess().catch((error) => {
 if (IS_DEV) {
 	const workspaceName = resolveDevWorkspaceName();
 	if (workspaceName) {
-		app.setName(`Superset (${workspaceName})`);
+		app.setName(`Choros (${workspaceName})`);
 	}
 }
 
@@ -117,7 +117,7 @@ async function processDeepLink(url: string): Promise<void> {
 							i18n._({
 								id: "main.auth.failed.detail",
 								message:
-									"Superset could not complete sign-in. Please try again.",
+									"Choros could not complete sign-in. Please try again.",
 							}))
 					: i18n._({
 							id: "main.auth.failed.incompleteLink",
@@ -131,7 +131,7 @@ async function processDeepLink(url: string): Promise<void> {
 	console.log("[main] Processing deep link:", url);
 
 	// Non-auth deep links: extract path and navigate in renderer
-	// e.g. superset://tasks/my-slug -> /tasks/my-slug
+	// e.g. choros://tasks/my-slug -> /tasks/my-slug
 	const path = `/${url.split("://")[1]}`;
 	focusMainWindow();
 
@@ -257,7 +257,7 @@ app.on("before-quit", async (event) => {
 				],
 				defaultId: 0,
 				cancelId: 1,
-				title: i18n._({ id: "main.quit.title", message: "Quit Superset" }),
+				title: i18n._({ id: "main.quit.title", message: "Quit Choros" }),
 				message: i18n._({
 					id: "main.quit.message",
 					message: "Are you sure you want to quit?",
@@ -363,7 +363,7 @@ app.commandLine.appendSwitch("disk-cache-size", String(1024 * 1024 * 1024));
 
 protocol.registerSchemesAsPrivileged([
 	{
-		scheme: "superset-icon",
+		scheme: "choros-icon",
 		privileges: {
 			standard: true,
 			secure: true,
@@ -372,7 +372,7 @@ protocol.registerSchemesAsPrivileged([
 		},
 	},
 	{
-		scheme: "superset-font",
+		scheme: "choros-font",
 		privileges: {
 			standard: true,
 			secure: true,
@@ -437,10 +437,10 @@ if (!gotTheLock) {
 			}
 			return net.fetch(pathToFileURL(iconPath).toString());
 		};
-		protocol.handle("superset-icon", iconProtocolHandler);
+		protocol.handle("choros-icon", iconProtocolHandler);
 		session
-			.fromPartition("persist:superset")
-			.protocol.handle("superset-icon", iconProtocolHandler);
+			.fromPartition("persist:choros")
+			.protocol.handle("choros-icon", iconProtocolHandler);
 
 		// Serve system fonts (e.g. SF Mono on macOS) via custom protocol
 		// so the renderer can use @font-face with font-src 'self' CSP
@@ -466,10 +466,10 @@ if (!gotTheLock) {
 				}
 				return new Response("Not found", { status: 404 });
 			};
-			protocol.handle("superset-font", fontProtocolHandler);
+			protocol.handle("choros-font", fontProtocolHandler);
 			session
-				.fromPartition("persist:superset")
-				.protocol.handle("superset-font", fontProtocolHandler);
+				.fromPartition("persist:choros")
+				.protocol.handle("choros-font", fontProtocolHandler);
 		}
 
 		ensureProjectIconsDir();

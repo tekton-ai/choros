@@ -61,7 +61,7 @@ const CALLBACK_MESSAGES = {
 		withoutParam: i18n._({
 			id: "web.integrations.teams.callback.tenantLinked",
 			message:
-				"This Microsoft tenant is already connected by another Superset organization.",
+				"This Microsoft tenant is already connected by another Choros organization.",
 		}),
 	},
 	identity_denied: i18n._({

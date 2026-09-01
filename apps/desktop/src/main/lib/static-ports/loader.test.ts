@@ -4,9 +4,9 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { hasStaticPortsConfig, loadStaticPorts } from "./loader";
 
-const TEST_DIR = join(tmpdir(), `superset-test-loader-${process.pid}`);
+const TEST_DIR = join(tmpdir(), `choros-test-loader-${process.pid}`);
 const WORKTREE_PATH = join(TEST_DIR, "worktree");
-const SUPERSET_DIR = join(WORKTREE_PATH, ".superset");
+const SUPERSET_DIR = join(WORKTREE_PATH, ".choros");
 const PORTS_FILE = join(SUPERSET_DIR, "ports.json");
 
 describe("loadStaticPorts", () => {

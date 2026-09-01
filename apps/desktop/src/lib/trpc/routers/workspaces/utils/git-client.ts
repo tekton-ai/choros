@@ -10,7 +10,7 @@ import { getProcessEnvWithShellPath } from "./shell-env";
 
 const execFileAsync = promisify(execFile);
 
-// Superset is a local Git client, so inherited user Git config/env is expected
+// Choros is a local Git client, so inherited user Git config/env is expected
 // behavior. simple-git 3.36 blocks these hooks by default; allow them centrally
 // instead of deleting individual env vars and changing Git semantics.
 const SIMPLE_GIT_OPTIONS =

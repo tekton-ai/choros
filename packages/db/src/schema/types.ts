@@ -56,7 +56,7 @@ export type MicrosoftTeamsConfig = {
  * A public Sentry integration is one app with one client secret (an env var),
  * so unlike Linear/Slack there is no per-connection secret here. What is per
  * connection is the installation uuid: it is how an inbound webhook, which
- * names no Superset org, finds the connection it belongs to. Never select
+ * names no Choros org, finds the connection it belongs to. Never select
  * `config` into a client-facing response.
  */
 export type SentryConfig = {

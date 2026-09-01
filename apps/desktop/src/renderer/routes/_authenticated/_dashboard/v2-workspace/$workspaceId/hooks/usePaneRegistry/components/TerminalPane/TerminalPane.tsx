@@ -60,7 +60,7 @@ import {
 } from "./richInputOpenStore";
 import { PasteUploadLimitError, uploadPastedFiles } from "./uploadPastedFiles";
 import { shellEscapePaths } from "./utils";
-import { parseSupersetPageUrl } from "./utils/parseSupersetPageUrl";
+import { parseChorosPageUrl } from "./utils/parseChorosPageUrl";
 
 interface TerminalPaneProps {
 	ctx: RendererContext<PaneViewerData>;
@@ -335,7 +335,7 @@ export function TerminalPane({
 						return;
 					}
 					const pageSlug = isPagesEnabled
-						? parseSupersetPageUrl(url, env.NEXT_PUBLIC_WEB_URL)
+						? parseChorosPageUrl(url, env.NEXT_PUBLIC_WEB_URL)
 						: null;
 					if (pageSlug) {
 						openPagePaneInStore(ctx.store, { slug: pageSlug });

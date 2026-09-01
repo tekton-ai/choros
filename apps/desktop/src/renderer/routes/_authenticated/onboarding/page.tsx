@@ -126,7 +126,7 @@ function OnboardingDashboardPage() {
 					type="button"
 					onClick={() =>
 						window.open(
-							"https://docs.superset.sh/providers",
+							"https://docs.choros.sh/providers",
 							"_blank",
 							"noopener,noreferrer",
 						)

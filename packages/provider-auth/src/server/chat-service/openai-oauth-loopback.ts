@@ -133,13 +133,13 @@ const SUCCESS_PAGE = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Superset · Connected</title>
+<title>Choros · Connected</title>
 <style>${PAGE_STYLES}</style>
 </head>
 <body>
 <div class="card">
 <h1>Connected to OpenAI</h1>
-<p>You can close this tab and return to Superset.</p>
+<p>You can close this tab and return to Choros.</p>
 </div>
 </body>
 </html>`;
@@ -149,7 +149,7 @@ function renderErrorPage(message: string): string {
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Superset · Connection failed</title>
+<title>Choros · Connection failed</title>
 <style>${PAGE_STYLES}</style>
 </head>
 <body>

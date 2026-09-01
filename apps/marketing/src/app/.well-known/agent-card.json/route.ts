@@ -6,9 +6,9 @@ export function GET() {
 
 	const card = {
 		protocolVersion: "0.3.0",
-		name: "Superset",
+		name: "Choros",
 		description:
-			"Superset runs parallel AI coding agents in isolated Git worktrees. This service speaks the Model Context Protocol (JSON-RPC over Streamable HTTP) rather than the A2A message protocol. Connect an MCP client to the URL below to create workspaces, launch coding agents, schedule automations, and manage tasks on behalf of a Superset user.",
+			"Choros runs parallel AI coding agents in isolated Git worktrees. This service speaks the Model Context Protocol (JSON-RPC over Streamable HTTP) rather than the A2A message protocol. Connect an MCP client to the URL below to create workspaces, launch coding agents, schedule automations, and manage tasks on behalf of a Choros user.",
 		url: MCP_SERVER_URL,
 		preferredTransport: "JSONRPC",
 		provider: {
@@ -69,7 +69,7 @@ export function GET() {
 				id: "tasks",
 				name: "Task tracking",
 				description:
-					"Create, search, update, and delete tasks in a Superset organization, including statuses and member assignment.",
+					"Create, search, update, and delete tasks in a Choros organization, including statuses and member assignment.",
 				tags: ["tasks", "project-management"],
 			},
 		],

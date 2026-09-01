@@ -51,7 +51,7 @@ export default async function ContactPage() {
 						<Trans id="marketing.contact.hero.eyebrow">Contact</Trans>
 					</span>
 					<h1 className="text-3xl md:text-4xl font-medium tracking-tight text-foreground mt-4">
-						<Trans id="marketing.contact.hero.title">Talk to Superset</Trans>
+						<Trans id="marketing.contact.hero.title">Talk to Choros</Trans>
 					</h1>
 					<p className="text-muted-foreground mt-3 max-w-lg">
 						<Trans id="marketing.contact.hero.subtitle">
@@ -76,7 +76,7 @@ export default async function ContactPage() {
 					</h2>
 					<p className="text-muted-foreground mt-3">
 						<Trans id="marketing.contact.otherWays.email">
-							Superset is built by a team based in San Francisco, California.
+							Choros is built by a team based in San Francisco, California.
 							For product support or account questions, email{" "}
 							<a className="text-foreground underline" href={COMPANY.MAIL_TO}>
 								{supportEmail}
@@ -101,7 +101,7 @@ export default async function ContactPage() {
 								className="text-foreground underline"
 								href={COMPANY.REPORT_ISSUE_URL}
 							>
-								github.com/superset-sh/superset
+								github.com/superset-sh/choros
 							</a>
 							. Our community lives on{" "}
 							<a
@@ -112,7 +112,7 @@ export default async function ContactPage() {
 							</a>
 							, and we post updates on{" "}
 							<a className="text-foreground underline" href={COMPANY.X_URL}>
-								X (@superset_sh)
+								X (@choros_sh)
 							</a>{" "}
 							and{" "}
 							<a
@@ -131,11 +131,11 @@ export default async function ContactPage() {
 								className="text-foreground underline"
 								href={COMPANY.STATUS_URL}
 							>
-								status.superset.sh
+								status.choros.sh
 							</a>
 							, and security and compliance documentation at{" "}
 							<a className="text-foreground underline" href={COMPANY.TRUST_URL}>
-								trust.superset.sh
+								trust.choros.sh
 							</a>
 							.
 						</Trans>

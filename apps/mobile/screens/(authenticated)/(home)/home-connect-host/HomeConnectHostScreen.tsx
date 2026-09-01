@@ -19,7 +19,7 @@ const SETUP_DOCS_URL = `${COMPANY.DOCS_URL}/remote-access`;
 
 /**
  * Home for an organization with no device of yours in it. Every list on this
- * tab is served by a machine running Superset, and a machine only reaches the
+ * tab is served by a machine running Choros, and a machine only reaches the
  * relay once someone opts it in on a desktop — so with none connected the
  * normal home is an empty list above a composer that can't send anywhere,
  * which reads as a broken app rather than an unfinished setup.
@@ -76,7 +76,7 @@ export function HomeConnectHostScreen() {
 						</Text>
 						<Text className="text-muted-foreground text-center text-base">
 							<Trans id="mobile.connectHost.subtitle">
-								Superset Mobile runs agents on the computers you connect.
+								Choros Mobile runs agents on the computers you connect.
 							</Trans>
 						</Text>
 					</View>
@@ -91,7 +91,7 @@ export function HomeConnectHostScreen() {
 						})}
 					>
 						<Trans id="mobile.connectHost.step1.body">
-							Download Superset at{" "}
+							Download Choros at{" "}
 							<Text className="text-foreground text-sm font-medium">
 								{COMPANY.DOMAIN}/download
 							</Text>

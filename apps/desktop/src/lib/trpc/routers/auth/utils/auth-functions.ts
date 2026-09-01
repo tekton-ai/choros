@@ -351,7 +351,7 @@ export async function handleAuthCallback(params: {
 		console.error("[auth] Failed to persist desktop auth token", error);
 		return {
 			success: false,
-			error: `Superset could not save your sign-in to ${getTokenFile()}. Your existing data was left untouched. Check the path and try again.`,
+			error: `Choros could not save your sign-in to ${getTokenFile()}. Your existing data was left untouched. Check the path and try again.`,
 		};
 	}
 

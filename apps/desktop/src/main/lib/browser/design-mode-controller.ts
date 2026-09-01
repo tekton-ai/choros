@@ -23,7 +23,7 @@ function isCancellationPayload(rawPayload: unknown): boolean {
 	return (
 		typeof rawPayload === "object" &&
 		rawPayload !== null &&
-		(rawPayload as Record<string, unknown>).__supersetDesignCancelled === true
+		(rawPayload as Record<string, unknown>).__chorosDesignCancelled === true
 	);
 }
 

@@ -151,7 +151,7 @@ function SystemOverview({ snapshot }: { snapshot: ResourceMetricsSnapshot }) {
 				? "bg-amber-500/80"
 				: "bg-foreground/60";
 
-	// Composition of physical RAM: Superset's tracked processes, everything
+	// Composition of physical RAM: Choros's tracked processes, everything
 	// else on the machine, and free — segments of one bar (hosting-dashboard
 	// disk-bar pattern) instead of a lone share fill.
 	const otherUsedMemory = Math.max(0, host.usedMemory - snapshot.totalMemory);
@@ -166,15 +166,15 @@ function SystemOverview({ snapshot }: { snapshot: ResourceMetricsSnapshot }) {
 			<div className="grid grid-cols-3 gap-x-4 gap-y-1 border-y py-2 md:grid-cols-6">
 				<Stat
 					label={t({
-						id: "settings.usage.resources.statSupersetCpu",
-						message: "Superset CPU",
+						id: "settings.usage.resources.statChorosCpu",
+						message: "Choros CPU",
 					})}
 					value={formatCpu(snapshot.totalCpu)}
 				/>
 				<Stat
 					label={t({
-						id: "settings.usage.resources.statSupersetMemory",
-						message: "Superset memory",
+						id: "settings.usage.resources.statChorosMemory",
+						message: "Choros memory",
 					})}
 					value={formatMemory(snapshot.totalMemory)}
 				/>
@@ -212,7 +212,7 @@ function SystemOverview({ snapshot }: { snapshot: ResourceMetricsSnapshot }) {
 				className="flex h-1.5 w-full gap-px overflow-hidden rounded-full bg-muted/60"
 				aria-label={t({
 					id: "settings.usage.resources.ramBarAriaLabel",
-					message: `System RAM: Superset ${formatMemory(snapshot.totalMemory)}, other apps ${formatMemory(otherUsedMemory)}, free ${formatMemory(freeMemory)}`,
+					message: `System RAM: Choros ${formatMemory(snapshot.totalMemory)}, other apps ${formatMemory(otherUsedMemory)}, free ${formatMemory(freeMemory)}`,
 				})}
 			>
 				<div
@@ -230,7 +230,7 @@ function SystemOverview({ snapshot }: { snapshot: ResourceMetricsSnapshot }) {
 			<div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[10px] text-muted-foreground">
 				<MemoryLegendItem
 					colorClass={trackedBarColorClass}
-					label="Superset"
+					label="Choros"
 					value={formatMemory(snapshot.totalMemory)}
 				/>
 				<MemoryLegendItem
@@ -391,7 +391,7 @@ export function UsageResourcesPage() {
 						<ResourceSparkline
 							label={t({
 								id: "settings.usage.resources.sparklineCpu",
-								message: "Superset CPU · last 5 min",
+								message: "Choros CPU · last 5 min",
 							})}
 							current={formatCpu(snapshot.totalCpu)}
 							color="var(--chart-1)"
@@ -402,7 +402,7 @@ export function UsageResourcesPage() {
 						<ResourceSparkline
 							label={t({
 								id: "settings.usage.resources.sparklineMemory",
-								message: "Superset memory · last 5 min",
+								message: "Choros memory · last 5 min",
 							})}
 							current={formatMemory(snapshot.totalMemory)}
 							color="var(--chart-2)"
@@ -432,12 +432,12 @@ export function UsageResourcesPage() {
 							</span>
 						</div>
 
-						{/* Superset app processes */}
+						{/* Choros app processes */}
 						<div className="flex items-center gap-3 px-3 py-2">
 							<div className="flex min-w-0 flex-1 items-center gap-1.5">
 								<span className="truncate text-[13px] font-medium">
-									<Trans id="settings.usage.resources.supersetApp">
-										Superset app
+									<Trans id="settings.usage.resources.chorosApp">
+										Choros app
 									</Trans>
 								</span>
 								<UsageSeverityBadge

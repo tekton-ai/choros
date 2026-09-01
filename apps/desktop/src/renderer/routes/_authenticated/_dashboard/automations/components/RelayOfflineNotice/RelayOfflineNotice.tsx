@@ -46,7 +46,7 @@ export function RelayOfflineNotice({
 					{ICON}
 					<span>
 						<Trans id="dashboard.automations.relayOfflineNotice.localBody">
-							This device isn't connected to the Superset relay, so automation
+							This device isn't connected to the Choros relay, so automation
 							runs will be skipped.
 						</Trans>
 					</span>
@@ -87,7 +87,7 @@ export function RelayOfflineNotice({
 				<span>
 					<Trans id="dashboard.automations.relayOfflineNotice.remoteBody">
 						<span className="font-medium">{remoteHost.name}</span> isn't
-						connected to the Superset relay, so its runs will be skipped. Check
+						connected to the Choros relay, so its runs will be skipped. Check
 						its{" "}
 						<Link
 							to="/settings/hosts/$hostId"

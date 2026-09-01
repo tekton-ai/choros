@@ -2,17 +2,17 @@ import { Trans } from "@lingui/react/macro";
 import { cn } from "@choros/ui/utils";
 import { useId } from "react";
 
-interface SupersetLogoProps {
+interface ChorosLogoProps {
 	className?: string;
 	gradient?: boolean;
 }
 
-export function SupersetLogo({
+export function ChorosLogo({
 	className,
 	gradient = false,
-}: SupersetLogoProps) {
+}: ChorosLogoProps) {
 	const reactId = useId();
-	const gradientId = `superset-logo-gradient-${reactId}`;
+	const gradientId = `choros-logo-gradient-${reactId}`;
 
 	return (
 		<svg
@@ -22,10 +22,10 @@ export function SupersetLogo({
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
 			className={cn("text-foreground", className)}
-			aria-label="Superset"
+			aria-label="Choros"
 		>
 			<title>
-				<Trans id="auth.signIn.logoTitle">Superset</Trans>
+				<Trans id="auth.signIn.logoTitle">Choros</Trans>
 			</title>
 			{gradient && (
 				<defs>

@@ -13,7 +13,7 @@ import { isProcessAlive, manifestDir } from "./host-service-manifest";
 /**
  * Cross-instance spawn lock for a per-org host-service.
  *
- * Multiple Superset app instances share one `$SUPERSET_HOME_DIR`, so their
+ * Multiple Choros app instances share one `$SUPERSET_HOME_DIR`, so their
  * in-process `pendingStarts` maps can't stop two instances from spawning the
  * same org's host-service at once. This atomic exclusive-create lockfile
  * single-flights the spawn+health-check critical section across processes.

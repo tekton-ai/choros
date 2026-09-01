@@ -22,7 +22,7 @@ interface UseAutoAdoptBackgroundSessionsArgs {
  * When a workspace is opened, running terminal daemon sessions that have no
  * pane get their panes created automatically instead of sitting behind the
  * background-terminals dropdown — this is the only surface for sessions
- * launched outside the desktop (e.g. `superset workspaces create --agent …`
+ * launched outside the desktop (e.g. `choros workspaces create --agent …`
  * from the CLI, which writes no pane layout of its own).
  *
  * Gated on pane-layout hydration so the attached-pane check runs against the

@@ -445,7 +445,7 @@ export class CodexAdapter implements HarnessAdapter {
 		if (!APPROVAL_METHODS.has(request.method)) {
 			client.respondWithError(
 				request.id,
-				`unsupported by superset chat runtime: ${request.method}`,
+				`unsupported by choros chat runtime: ${request.method}`,
 			);
 			this.emitNotice(
 				"info",

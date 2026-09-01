@@ -19,7 +19,7 @@ export function usePluginMutations() {
 		void utils.plugins.listInstalled.invalidate();
 		void utils.plugins.listExternalServers.invalidate();
 	};
-	// Uninstall/disable only ever remove what Superset wrote; when the user's
+	// Uninstall/disable only ever remove what Choros wrote; when the user's
 	// own entries also provide this plugin, say so instead of implying it's gone.
 	const handWrittenRemains = (name: string) => {
 		const plugin = getPluginByName(name);

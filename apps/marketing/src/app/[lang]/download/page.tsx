@@ -11,11 +11,11 @@ export async function generateMetadata(): Promise<Metadata> {
 	return {
 		title: i18n._({
 			id: "marketing.meta.download.title",
-			message: "Download Superset",
+			message: "Download Choros",
 		}),
 		description: i18n._({
 			id: "marketing.meta.download.description",
-			message: "Your Superset download is starting.",
+			message: "Your Choros download is starting.",
 		}),
 		// The page fires the download on arrival, so it must not be a search
 		// result someone lands on cold.

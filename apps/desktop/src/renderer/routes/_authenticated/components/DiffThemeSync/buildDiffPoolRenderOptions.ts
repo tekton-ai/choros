@@ -6,7 +6,7 @@ import type { Theme } from "shared/themes";
 
 /**
  * Builds the render options the @pierre/diffs worker pool should run with for a
- * given Superset theme.
+ * given Choros theme.
  *
  * Under a worker pool the renderer ignores the per-CodeView-item options and
  * uses the pool's render options instead (see DiffHunksRenderer.getRenderOptions),

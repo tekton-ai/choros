@@ -40,7 +40,7 @@ async function commitFile(
 }
 
 function mkTmp(): string {
-	return mkdtempSync(join(tmpdir(), "superset-v2-surfaces-"));
+	return mkdtempSync(join(tmpdir(), "choros-v2-surfaces-"));
 }
 
 // ───────────────────────────────────────────────────────────────────

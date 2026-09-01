@@ -54,7 +54,7 @@ function removeExistingIcon(projectId: string): void {
  * Returns the protocol URL for a project icon with a cache-busting query param.
  */
 export function getProjectIconProtocolUrl(projectId: string): string {
-	return `superset-icon://projects/${projectId}?v=${encodeURIComponent(randomUUID())}`;
+	return `choros-icon://projects/${projectId}?v=${encodeURIComponent(randomUUID())}`;
 }
 
 export function parseProjectIconDataUrl(dataUrl: string): {

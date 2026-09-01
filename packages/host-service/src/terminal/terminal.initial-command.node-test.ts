@@ -121,7 +121,7 @@ describe("initialCommand delivery", () => {
 		// The staged launch script removed itself when it ran.
 		const leftovers = fs
 			.readdirSync(os.tmpdir())
-			.filter((f) => f.startsWith(`superset-launch-${terminalId}`));
+			.filter((f) => f.startsWith(`choros-launch-${terminalId}`));
 		assert.deepEqual(leftovers, []);
 
 		await disposeSessionAndWait(terminalId, db);
@@ -187,7 +187,7 @@ describe("initialCommand delivery", () => {
 		const staged = () =>
 			fs
 				.readdirSync(os.tmpdir())
-				.filter((f) => f.startsWith(`superset-launch-${terminalId}`));
+				.filter((f) => f.startsWith(`choros-launch-${terminalId}`));
 
 		// The script exists in the write→delayed-Enter window…
 		await waitFor(() => staged().length === 1, 5_000);
@@ -227,7 +227,7 @@ describe("initialCommand delivery", () => {
 			snap.text.includes(`echo run-${id}`),
 			`expected typed command echo, got: ${JSON.stringify(snap.text)}`,
 		);
-		assert.ok(!snap.text.includes("superset-launch-"));
+		assert.ok(!snap.text.includes("choros-launch-"));
 
 		await disposeSessionAndWait(terminalId, db);
 	});

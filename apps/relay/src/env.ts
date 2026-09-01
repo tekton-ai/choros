@@ -13,7 +13,7 @@ export const env = createEnv({
 		// addresses for relay-to-relay WebSocket proxying across instances.
 		FLY_APP_NAME: z.string().default("local"),
 		RELAY_SYNTHETIC_JWT: z.string().min(1).optional(),
-		RELAY_PUBLIC_URL: z.url().default("https://relay.superset.sh"),
+		RELAY_PUBLIC_URL: z.url().default("https://relay.choros.sh"),
 	},
 	runtimeEnv: process.env,
 	emptyStringAsUndefined: true,

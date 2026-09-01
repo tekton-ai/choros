@@ -49,7 +49,7 @@ const KIND_FILTERS: Array<{ value: KindFilter; label: MessageDescriptor }> = [
 ];
 
 /**
- * A row in the Projects pivot: a real Superset project, or one of two
+ * A row in the Projects pivot: a real Choros project, or one of two
  * catch-alls — "Sessions" (project-less session workspaces, e.g. automation
  * runs) and "No project" (cwds matching nothing in host.db, mostly deleted
  * workspaces' worktrees).

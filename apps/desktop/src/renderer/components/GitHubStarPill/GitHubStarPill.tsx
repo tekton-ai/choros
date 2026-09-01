@@ -25,7 +25,7 @@ interface GitHubStarPillProps {
 }
 
 /**
- * Small, always-optional "Star Superset on GitHub" pill for the empty
+ * Small, always-optional "Star Choros on GitHub" pill for the empty
  * "no pane open" screens (v1 EmptyTabView and v2 WorkspaceEmptyState) and
  * the new-workspace screen. Renders straight from live `state`, with no
  * nag-suppression layer — unlike the sidebar card/toast, this is a low-key
