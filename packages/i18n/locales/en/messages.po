@@ -19542,7 +19542,7 @@ msgstr "Failed to upload avatar"
 #. js-lingui-explicit-id
 #: src/server-errors.ts
 msgid "serverError.user.theRecoveryPeriodHasEndedContact"
-msgstr "The recovery period has ended. Contact support@superset.sh."
+msgstr "The recovery period has ended. Contact xchunzhao@gmail.com."
 
 #. js-lingui-explicit-id
 #: src/server-errors.ts

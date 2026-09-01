@@ -29,7 +29,7 @@ describe("parsePo", () => {
 		const entries = parsePo(
 			[
 				'msgid ""',
-				'msgstr "Project-Id-Version: superset\\n"',
+				'msgstr "Project-Id-Version: choros\\n"',
 				"",
 				"#. js-lingui-explicit-id",
 				'msgid "settings.security.title"',

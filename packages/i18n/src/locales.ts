@@ -25,7 +25,7 @@ export const DEFAULT_LOCALE: SupportedLocale = "en";
 // Cookie carrying an explicit language choice from a language switcher. Read
 // server-side by apps that resolve locale per request (marketing) and by
 // inferLocale in the browser, so one choice covers every surface.
-export const LOCALE_COOKIE = "superset_locale";
+export const LOCALE_COOKIE = "choros_locale";
 
 // Native-language names. A user stuck in a language they cannot read must be
 // able to recognize their own in the picker, so these are never translated.

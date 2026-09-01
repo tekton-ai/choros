@@ -468,7 +468,7 @@ export const serverErrorMessages: Record<
 	"serverError.user.theRecoveryPeriodHasEndedContact": () =>
 		i18n._({
 			id: "serverError.user.theRecoveryPeriodHasEndedContact",
-			message: "The recovery period has ended. Contact support@superset.sh.",
+			message: "The recovery period has ended. Contact xchunzhao@gmail.com.",
 		}),
 	"serverError.user.userNotFound": () =>
 		i18n._({
