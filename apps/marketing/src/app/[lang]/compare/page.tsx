@@ -1,5 +1,5 @@
-import { Trans } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
+import { Trans } from "@lingui/react/macro";
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -79,8 +79,8 @@ export default async function ComparePage() {
 					</h1>
 					<p className="text-muted-foreground mt-3 max-w-lg">
 						<Trans id="marketing.compare.subtitle">
-							See how Choros compares to other AI coding tools, from AI
-							editors to coding agents to cloud-based AI engineers.
+							See how Choros compares to other AI coding tools, from AI editors
+							to coding agents to cloud-based AI engineers.
 						</Trans>
 					</p>
 

@@ -1,7 +1,7 @@
-import { useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import { CommentModeButton, PageHeader } from "@choros/ui/page-comments";
 import { Spinner } from "@choros/ui/spinner";
+import { useLingui } from "@lingui/react/macro";
 import { useNavigate } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { useState } from "react";

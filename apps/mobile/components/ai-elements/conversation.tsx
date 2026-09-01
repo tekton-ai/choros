@@ -1,9 +1,9 @@
+import { i18n } from "@choros/i18n";
 import {
 	LegendList,
 	type LegendListProps,
 	type LegendListRef,
 } from "@legendapp/list/react-native";
-import { i18n } from "@choros/i18n";
 import { ArrowDownIcon } from "lucide-react-native";
 import {
 	createContext,

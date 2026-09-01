@@ -1,5 +1,5 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -74,9 +74,9 @@ export default async function TeamPage() {
 					</h1>
 					<p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
 						<Trans id="marketing.team.intro">
-							Choros is building self-improving software. It starts with
-							giving engineers the best tools that adapt to their needs over
-							time. We're 3 ex-YC CTOs building a tool that we love.
+							Choros is building self-improving software. It starts with giving
+							engineers the best tools that adapt to their needs over time.
+							We're 3 ex-YC CTOs building a tool that we love.
 						</Trans>
 					</p>
 				</section>

@@ -1,6 +1,5 @@
 "use client";
 
-import { Trans } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { Alerter, alert } from "@choros/ui/atoms/Alert";
 import { Avatar } from "@choros/ui/atoms/Avatar";
@@ -9,6 +8,7 @@ import { MeshGradient } from "@choros/ui/mesh-gradient";
 import { SidebarCard } from "@choros/ui/sidebar-card";
 import { toast } from "@choros/ui/sonner";
 import { ThemePreviewCard } from "@choros/ui/theme-preview-card";
+import { Trans } from "@lingui/react/macro";
 
 import { ComponentCard } from "../../../components/ComponentCard";
 import { ShowcaseSection } from "../../../components/ShowcaseSection";

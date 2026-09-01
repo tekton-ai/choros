@@ -85,9 +85,7 @@ export function CompareLayout({ page, children }: CompareLayoutProps) {
 				</div>
 				<div className="max-w-3xl mx-auto px-6 py-10 text-center">
 					<p className="text-muted-foreground mb-4">
-						<Trans id="marketing.compare.cta.title">
-							Ready to try Choros?
-						</Trans>
+						<Trans id="marketing.compare.cta.title">Ready to try Choros?</Trans>
 					</p>
 					<Link
 						href="/"

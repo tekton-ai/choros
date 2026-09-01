@@ -144,9 +144,7 @@ describe("buildTaskAgentLaunchRequest", () => {
 		if (request?.kind !== "terminal") {
 			throw new Error("Expected terminal launch request");
 		}
-		expect(request.terminal.command).toBe(
-			"amp < '.choros/task-demo-task.md'",
-		);
+		expect(request.terminal.command).toBe("amp < '.choros/task-demo-task.md'");
 	});
 
 	test("rejects disabled agents", () => {

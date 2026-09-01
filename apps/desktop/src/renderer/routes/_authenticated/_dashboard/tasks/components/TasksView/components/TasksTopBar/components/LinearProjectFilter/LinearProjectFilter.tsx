@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import {
 	Command,
@@ -9,6 +8,7 @@ import {
 	CommandList,
 } from "@choros/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useMemo, useState } from "react";
 import { HiCheck, HiChevronDown, HiOutlineFolder } from "react-icons/hi2";
 import { cloudTrpc } from "renderer/lib/cloud-trpc";

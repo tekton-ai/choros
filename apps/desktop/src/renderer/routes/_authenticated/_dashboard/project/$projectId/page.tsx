@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@choros/i18n/errors";
 import { sanitizeSegment } from "@choros/shared/workspace-launch";
 import { Button } from "@choros/ui/button";
@@ -20,6 +19,7 @@ import { Label } from "@choros/ui/label";
 import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
 import { toast } from "@choros/ui/sonner";
 import { Textarea } from "@choros/ui/textarea";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";

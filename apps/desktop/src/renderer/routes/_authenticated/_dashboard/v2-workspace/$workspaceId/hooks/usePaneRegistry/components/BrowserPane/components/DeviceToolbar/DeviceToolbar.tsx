@@ -1,4 +1,3 @@
-import { useLingui } from "@lingui/react/macro";
 import {
 	Select,
 	SelectContent,
@@ -6,6 +5,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@choros/ui/select";
+import { useLingui } from "@lingui/react/macro";
 import { RefreshCwIcon, XIcon } from "lucide-react";
 import { DEFAULT_DEVICE_PRESET, DEVICE_PRESETS } from "../../constants";
 import type { DeviceToolbarState } from "../../deviceToolbarStore";

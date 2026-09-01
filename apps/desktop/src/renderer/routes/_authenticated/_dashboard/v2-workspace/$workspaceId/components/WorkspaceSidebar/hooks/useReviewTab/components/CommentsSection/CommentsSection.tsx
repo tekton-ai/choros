@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { Avatar, AvatarFallback, AvatarImage } from "@choros/ui/avatar";
 import {
@@ -17,6 +16,7 @@ import { Skeleton } from "@choros/ui/skeleton";
 import { toast } from "@choros/ui/sonner";
 import { cn } from "@choros/ui/utils";
 import { workspaceTrpc } from "@choros/workspace-client";
+import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	CheckCheck,
 	ChevronDown,

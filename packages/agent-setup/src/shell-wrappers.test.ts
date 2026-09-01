@@ -614,7 +614,7 @@ echo wrapper
 		expect(output).toBe("wrapper");
 	});
 
-	describe("SUPERSET_* env var protection from user RC overrides", () => {
+	describe("CHOROS_* env var protection from user RC overrides", () => {
 		it("bash wrapper restores CHOROS_WORKSPACE_NAME after user .bashrc overrides it", () => {
 			const integrationRoot = path.join(TEST_ROOT, "bash-env-protect");
 			const homeDir = path.join(integrationRoot, "home");
@@ -685,7 +685,7 @@ echo wrapper
 			expect(lines[lines.length - 1]).toBe("correct-name");
 		});
 
-		it("bash wrapper restores multiple SUPERSET_* vars after user RC overrides them", () => {
+		it("bash wrapper restores multiple CHOROS_* vars after user RC overrides them", () => {
 			const integrationRoot = path.join(TEST_ROOT, "bash-multi-env-protect");
 			const homeDir = path.join(integrationRoot, "home");
 			mkdirSync(homeDir, { recursive: true });

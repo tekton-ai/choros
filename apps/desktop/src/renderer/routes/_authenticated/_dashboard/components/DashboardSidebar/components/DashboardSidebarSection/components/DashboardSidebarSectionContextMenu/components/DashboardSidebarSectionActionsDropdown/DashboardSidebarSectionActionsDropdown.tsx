@@ -1,9 +1,9 @@
-import { useLingui } from "@lingui/react/macro";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuTrigger,
 } from "@choros/ui/dropdown-menu";
+import { useLingui } from "@lingui/react/macro";
 import { LuEllipsis } from "react-icons/lu";
 import type { DashboardSidebarSectionActionsProps } from "../../types";
 import { SectionActionsMenuItems } from "../SectionActionsMenuItems";

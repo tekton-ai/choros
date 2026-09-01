@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Avatar, AvatarFallback, AvatarImage } from "@choros/ui/avatar";
 import { Button } from "@choros/ui/button";
 import {
@@ -10,6 +9,7 @@ import {
 	CommandList,
 } from "@choros/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo, useState } from "react";
 import { HiCheck, HiChevronDown, HiOutlineUserCircle } from "react-icons/hi2";

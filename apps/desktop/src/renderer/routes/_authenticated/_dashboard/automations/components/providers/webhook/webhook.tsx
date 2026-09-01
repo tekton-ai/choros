@@ -1,5 +1,5 @@
-import { msg } from "@lingui/core/macro";
 import type { TriggerConfigInput } from "@choros/shared/automation-triggers";
+import { msg } from "@lingui/core/macro";
 import { LuWebhook } from "react-icons/lu";
 import type { TriggerProvider } from "../types";
 import { WebhookSentence } from "./WebhookSentence";

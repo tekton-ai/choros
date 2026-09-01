@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import {
 	Breadcrumb,
@@ -22,6 +21,7 @@ import { ScrollArea } from "@choros/ui/scroll-area";
 import { Skeleton } from "@choros/ui/skeleton";
 import { toast } from "@choros/ui/sonner";
 import { cn } from "@choros/ui/utils";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useQuery } from "@tanstack/react-query";
 import { Fragment, useEffect, useState } from "react";
 import {

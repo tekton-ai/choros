@@ -45,8 +45,7 @@ export function YcDealCodeEmail({
 			</Text>
 
 			<Text className="text-[13px] leading-5 text-muted m-0">
-				You're receiving this because you redeemed the Choros deal on
-				Bookface.
+				You're receiving this because you redeemed the Choros deal on Bookface.
 			</Text>
 		</EmailLayout>
 	);

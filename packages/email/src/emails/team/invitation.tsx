@@ -48,8 +48,8 @@ export function OrganizationInvitationEmail({
 			</Text>
 
 			<Text className="text-[15px] leading-6 text-foreground m-0 mb-6">
-				Choros runs coding agents in parallel, each in an isolated copy of
-				your repo. Accept the invite to work alongside your team.
+				Choros runs coding agents in parallel, each in an isolated copy of your
+				repo. Accept the invite to work alongside your team.
 			</Text>
 
 			<Section className="mb-6">

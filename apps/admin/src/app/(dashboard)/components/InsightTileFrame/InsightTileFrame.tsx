@@ -1,6 +1,5 @@
 "use client";
 
-import { useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import {
 	Card,
@@ -11,6 +10,7 @@ import {
 } from "@choros/ui/card";
 import { Skeleton } from "@choros/ui/skeleton";
 import { cn } from "@choros/ui/utils";
+import { useLingui } from "@lingui/react/macro";
 import type { ReactNode } from "react";
 import { LuExternalLink, LuRefreshCw } from "react-icons/lu";
 

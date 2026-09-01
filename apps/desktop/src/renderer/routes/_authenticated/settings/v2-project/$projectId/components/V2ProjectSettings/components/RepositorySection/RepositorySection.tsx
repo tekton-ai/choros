@@ -1,8 +1,8 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { parseGitHubRemote } from "@choros/shared/github-remote";
 import { Button } from "@choros/ui/button";
 import { Input } from "@choros/ui/input";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { FaGithub } from "react-icons/fa";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 

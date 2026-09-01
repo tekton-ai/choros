@@ -1,8 +1,8 @@
-import { useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@choros/i18n/errors";
 import { sanitizePromptForPty } from "@choros/shared/agent-prompt-launch";
 import { toast } from "@choros/ui/sonner";
 import { workspaceTrpc } from "@choros/workspace-client";
+import { useLingui } from "@lingui/react/macro";
 import { useCallback } from "react";
 import { normalizeTerminalCommand } from "renderer/lib/terminal/launch-command";
 

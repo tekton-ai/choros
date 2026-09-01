@@ -1,10 +1,10 @@
-import { useLingui } from "@lingui/react/macro";
 import {
 	type ContextMenuActionConfig,
 	type PaneRegistry,
 	type RendererContext,
 	resolveTabTitle,
 } from "@choros/panes";
+import { useLingui } from "@lingui/react/macro";
 import { useMemo } from "react";
 import {
 	LuColumns2,

@@ -19,10 +19,7 @@ export async function resolveHost(
 		(h) => h.id === nameOrId || h.name === nameOrId,
 	);
 	if (!host) {
-		throw new CLIError(
-			`Host not found: ${nameOrId}`,
-			"Run: choros hosts list",
-		);
+		throw new CLIError(`Host not found: ${nameOrId}`, "Run: choros hosts list");
 	}
 	if (rest.length > 0) {
 		throw new CLIError(

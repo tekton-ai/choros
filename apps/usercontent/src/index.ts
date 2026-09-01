@@ -1,4 +1,3 @@
-import * as Sentry from "@sentry/cloudflare";
 import { PAGE_COMMENTS_RUNTIME_SOURCE } from "@choros/shared/page-comments-runtime";
 import {
 	FILE_CONTENT_SECURITY_POLICY,
@@ -20,6 +19,7 @@ import {
 	verifyFileTicket,
 	verifyPageTicket,
 } from "@choros/shared/usercontent";
+import * as Sentry from "@sentry/cloudflare";
 import { type Context, Hono } from "hono";
 import { assertEnv, type UsercontentEnv } from "./env";
 

@@ -10,9 +10,9 @@ import { app } from "electron";
 import { validate as uuidValidate, version as uuidVersion } from "uuid";
 import { env } from "../../env.main";
 import {
-	ensureChorosHomeDirExists,
 	CHOROS_HOME_DIR,
 	CHOROS_SENSITIVE_FILE_MODE,
+	ensureChorosHomeDirExists,
 } from "../app-environment";
 
 const DB_PATH = join(CHOROS_HOME_DIR, "local.db");

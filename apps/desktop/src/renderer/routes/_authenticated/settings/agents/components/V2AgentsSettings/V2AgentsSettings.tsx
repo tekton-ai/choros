@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import type { HostAgentConfig } from "@choros/host-service/settings";
 import { errorMessage } from "@choros/i18n/errors";
 import {
@@ -7,6 +6,7 @@ import {
 } from "@choros/shared/host-agent-presets";
 import { Skeleton } from "@choros/ui/skeleton";
 import { toast } from "@choros/ui/sonner";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import { Bot } from "lucide-react";

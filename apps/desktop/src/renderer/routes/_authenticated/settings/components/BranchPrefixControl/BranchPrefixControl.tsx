@@ -1,4 +1,3 @@
-import { useLingui } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import {
 	type BranchPrefixMode,
@@ -12,6 +11,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@choros/ui/select";
+import { useLingui } from "@lingui/react/macro";
 import { useEffect, useState } from "react";
 import {
 	BRANCH_PREFIX_MODE_MESSAGES,

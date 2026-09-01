@@ -1,4 +1,3 @@
-import { Trans } from "@lingui/react/macro";
 import { FEATURE_FLAGS } from "@choros/shared/constants";
 import {
 	type IntegrationProvider,
@@ -6,6 +5,7 @@ import {
 } from "@choros/shared/integrations";
 import { Button } from "@choros/ui/button";
 import { Skeleton } from "@choros/ui/skeleton";
+import { Trans } from "@lingui/react/macro";
 import { useFeatureFlagPayload } from "posthog-js/react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { BsMicrosoftTeams } from "react-icons/bs";

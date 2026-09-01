@@ -4,10 +4,7 @@ import { createNodeSQLitePersistence } from "@tanstack/node-db-sqlite-persistenc
 import Database from "better-sqlite3";
 import { ipcMain } from "electron";
 import log from "electron-log/main";
-import {
-	ensureChorosHomeDirExists,
-	CHOROS_HOME_DIR,
-} from "../app-environment";
+import { CHOROS_HOME_DIR, ensureChorosHomeDirExists } from "../app-environment";
 
 type SQLitePersistence = ReturnType<typeof createNodeSQLitePersistence>;
 type SQLitePersistenceAdapter = SQLitePersistence["adapter"];

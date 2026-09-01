@@ -1,4 +1,3 @@
-import type { LinearClient, WorkflowState } from "@linear/sdk";
 import { db } from "@choros/db/client";
 import type { LinearConfig, SelectTask } from "@choros/db/schema";
 import {
@@ -12,6 +11,7 @@ import {
 	getLinearClient,
 	mapPriorityToLinear,
 } from "@choros/trpc/integrations/linear";
+import type { LinearClient, WorkflowState } from "@linear/sdk";
 import { and, eq, isNull, lt, or } from "drizzle-orm";
 import { z } from "zod";
 import { verifyQstashRequest } from "@/lib/verifyQstash";

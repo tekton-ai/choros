@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import {
 	Dialog,
@@ -8,6 +7,7 @@ import {
 } from "@choros/ui/dialog";
 import { Input } from "@choros/ui/input";
 import { ScrollArea } from "@choros/ui/scroll-area";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useEffect, useMemo, useState } from "react";
 import { electronTrpcClient } from "renderer/lib/trpc-client";
 

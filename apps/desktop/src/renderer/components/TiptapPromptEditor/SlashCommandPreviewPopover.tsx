@@ -1,6 +1,6 @@
-import { Trans } from "@lingui/react/macro";
 import { usePromptInputController } from "@choros/ui/ai-elements/prompt-input";
 import { Popover, PopoverAnchor, PopoverContent } from "@choros/ui/popover";
+import { Trans } from "@lingui/react/macro";
 import type { Editor } from "@tiptap/core";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useDebouncedValue } from "renderer/hooks/useDebouncedValue";

@@ -1,9 +1,6 @@
-import * as Sentry from "@sentry/nextjs";
 import { POSTHOG_COOKIE_NAME } from "@choros/shared/constants";
-import {
-	SENTRY_DENY_URLS,
-	SENTRY_IGNORE_ERRORS,
-} from "@choros/shared/sentry";
+import { SENTRY_DENY_URLS, SENTRY_IGNORE_ERRORS } from "@choros/shared/sentry";
+import * as Sentry from "@sentry/nextjs";
 import posthog from "posthog-js";
 
 import { env } from "@/env";

@@ -9,7 +9,7 @@ import {
 } from "node:fs";
 import { homedir, tmpdir } from "node:os";
 import { join } from "node:path";
-import { PROJECTS_DIR_NAME, CHOROS_DIR_NAME } from "shared/constants";
+import { CHOROS_DIR_NAME, PROJECTS_DIR_NAME } from "shared/constants";
 
 const TEST_DIR = join(tmpdir(), `choros-test-teardown-${process.pid}`);
 const TEST_CHOROS_HOME = join(TEST_DIR, "choros-home");

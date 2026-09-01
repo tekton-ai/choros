@@ -1,7 +1,4 @@
-export function parseChorosPageUrl(
-	url: string,
-	webUrl: string,
-): string | null {
+export function parseChorosPageUrl(url: string, webUrl: string): string | null {
 	let parsed: URL;
 	let web: URL;
 	try {

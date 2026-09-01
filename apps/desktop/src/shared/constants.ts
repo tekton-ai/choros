@@ -8,9 +8,7 @@ export const PLATFORM = {
 };
 
 const workspace = getWorkspaceName();
-export const CHOROS_DIR_NAME = workspace
-	? `.choros-${workspace}`
-	: ".choros";
+export const CHOROS_DIR_NAME = workspace ? `.choros-${workspace}` : ".choros";
 export const PROTOCOL_SCHEME = workspace
 	? `choros-${workspace}`
 	: PROTOCOL_SCHEMES.PROD;

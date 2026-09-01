@@ -1,9 +1,9 @@
-import { msg } from "@lingui/core/macro";
-import { Trans } from "@lingui/react/macro";
 import type { ApprovalRequest, Decision } from "@choros/chat/protocol";
 import { i18n } from "@choros/i18n";
 import { Badge } from "@choros/ui/badge";
 import { Button } from "@choros/ui/button";
+import { msg } from "@lingui/core/macro";
+import { Trans } from "@lingui/react/macro";
 import { ToolContentList } from "../ToolContentList";
 
 const DECISION_ANSWERED = msg({

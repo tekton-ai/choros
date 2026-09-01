@@ -1,12 +1,12 @@
 "use client";
 
-import { useLingui } from "@lingui/react/macro";
 import {
 	type ChartConfig,
 	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
 } from "@choros/ui/chart";
+import { useLingui } from "@lingui/react/macro";
 import { Bar, BarChart, CartesianGrid, Cell, XAxis, YAxis } from "recharts";
 import { formatStarCount } from "@/lib/github";
 import type { PeriodDelta } from "../../utils/starPace";

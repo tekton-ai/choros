@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Checkbox } from "@choros/ui/checkbox";
 import {
 	Command,
@@ -9,6 +8,7 @@ import {
 	CommandList,
 } from "@choros/ui/command";
 import { Popover, PopoverAnchor, PopoverContent } from "@choros/ui/popover";
+import { Trans, useLingui } from "@lingui/react/macro";
 import Fuse from "fuse.js";
 import type React from "react";
 import type { RefObject } from "react";

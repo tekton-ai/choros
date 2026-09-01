@@ -1,5 +1,5 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import type { RendererContext, Tab } from "@choros/panes";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useParams } from "@tanstack/react-router";
 import { GlobeIcon, SquareDashedMousePointer, XIcon } from "lucide-react";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";

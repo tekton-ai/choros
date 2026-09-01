@@ -1,4 +1,3 @@
-import { Trans } from "@lingui/react/macro";
 import type { ExternalApp } from "@choros/local-db";
 import {
 	DropdownMenuItem,
@@ -8,6 +7,7 @@ import {
 	DropdownMenuSubTrigger,
 } from "@choros/ui/dropdown-menu";
 import { cn } from "@choros/ui/utils";
+import { Trans } from "@lingui/react/macro";
 import type { ReactNode } from "react";
 import { LuCopy } from "react-icons/lu";
 import jetbrainsIcon from "renderer/assets/app-icons/jetbrains.svg";

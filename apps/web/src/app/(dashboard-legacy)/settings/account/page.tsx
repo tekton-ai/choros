@@ -1,6 +1,5 @@
 "use client";
 
-import { Trans } from "@lingui/react/macro";
 import { authClient } from "@choros/auth/client";
 import { ACCOUNT_DELETION_GRACE_DAYS } from "@choros/shared/constants";
 import {
@@ -15,6 +14,7 @@ import {
 	AlertDialogTrigger,
 } from "@choros/ui/alert-dialog";
 import { Button } from "@choros/ui/button";
+import { Trans } from "@lingui/react/macro";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useState } from "react";

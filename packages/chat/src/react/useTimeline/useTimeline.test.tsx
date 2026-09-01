@@ -1,9 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import {
-	agentMessage,
-	turn,
-	userMessage,
-} from "@choros/chat-runtime/testing";
+import { agentMessage, turn, userMessage } from "@choros/chat-runtime/testing";
 import type { SessionSnapshot, TurnGroup } from "../../core";
 import { emptySnapshot, reduceMany } from "../../core";
 import type { DurableEvent } from "../../protocol/envelope";

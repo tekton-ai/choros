@@ -22,8 +22,8 @@ export {
 } from "./local-settings";
 export {
 	getAppStatePath,
-	getLocalDbPath,
 	getChorosHomeDir,
+	getLocalDbPath,
 } from "./paths";
 export {
 	allowedValues,

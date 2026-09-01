@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	CommandEmpty,
 	CommandGroup,
@@ -6,6 +5,7 @@ import {
 	CommandItem as RawCommandItem,
 } from "@choros/ui/command";
 import { toast } from "@choros/ui/sonner";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useDeferredValue, useMemo } from "react";
 import { cloudTrpc } from "renderer/lib/cloud-trpc";
 import {

@@ -13,7 +13,7 @@ fi
 
 # Agent hook configs are global, so this can fire in sessions launched
 # outside Choros terminals (including via stale entries from older
-# installs). Only Choros terminals set SUPERSET_* vars; the agent-supplied
+# installs). Only Choros terminals set CHOROS_* vars; the agent-supplied
 # payload alone must never dispatch.
 [ -n "$CHOROS_TERMINAL_ID" ] || [ -n "$CHOROS_TAB_ID" ] || exit 0
 

@@ -4,7 +4,6 @@ import { readdir, rm, stat } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { basename, isAbsolute, join } from "node:path";
 import { StringDecoder } from "node:string_decoder";
-import type { NodeWebSocket } from "@hono/node-ws";
 import { resolveChorosHomeDir } from "@choros/agent-setup/paths";
 import { hasRunningForegroundProcess } from "@choros/pty-daemon/process-tree";
 import {
@@ -27,6 +26,7 @@ import {
 	scanForTerminalTitle,
 	type TerminalTitleScanState,
 } from "@choros/shared/terminal-title-scanner";
+import type { NodeWebSocket } from "@hono/node-ws";
 import { and, eq, inArray, isNull, ne } from "drizzle-orm";
 import type { Hono } from "hono";
 import { getSupervisor } from "../daemon/index.ts";

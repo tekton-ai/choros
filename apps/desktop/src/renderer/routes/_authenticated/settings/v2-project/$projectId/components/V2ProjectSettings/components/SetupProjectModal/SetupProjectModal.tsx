@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@choros/i18n/errors";
 import { Button } from "@choros/ui/button";
 import {
@@ -13,6 +12,7 @@ import { Input } from "@choros/ui/input";
 import { Label } from "@choros/ui/label";
 import { toast } from "@choros/ui/sonner";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@choros/ui/tabs";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useEffect, useState } from "react";
 import { LuFolderOpen, LuLoaderCircle } from "react-icons/lu";
 import { RemotePathPicker } from "renderer/components/RemotePathPicker";

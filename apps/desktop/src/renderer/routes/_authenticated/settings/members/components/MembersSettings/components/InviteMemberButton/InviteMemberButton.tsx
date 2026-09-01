@@ -1,10 +1,7 @@
-import { Trans, useLingui } from "@lingui/react/macro";
-import {
-	getInvitableRoles,
-	type OrganizationRole,
-} from "@choros/shared/auth";
+import { getInvitableRoles, type OrganizationRole } from "@choros/shared/auth";
 import { alert } from "@choros/ui/atoms/Alert";
 import { Button } from "@choros/ui/button";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useState } from "react";
 import { HiOutlinePlus } from "react-icons/hi2";
 import { GATED_FEATURES, usePaywall } from "renderer/components/Paywall";

@@ -1,6 +1,5 @@
 "use client";
 
-import { useLingui } from "@lingui/react/macro";
 import {
 	ADMIN_INSIGHTS,
 	type AdminInsightKey,
@@ -12,6 +11,7 @@ import {
 	ChartTooltip,
 	ChartTooltipContent,
 } from "@choros/ui/chart";
+import { useLingui } from "@lingui/react/macro";
 import { Line, LineChart, XAxis, YAxis } from "recharts";
 
 import { useInsightResults } from "../../hooks/useInsightResults";

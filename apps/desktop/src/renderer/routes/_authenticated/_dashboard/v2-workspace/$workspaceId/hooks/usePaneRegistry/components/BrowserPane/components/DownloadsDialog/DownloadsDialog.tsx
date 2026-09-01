@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import type { SelectDownload } from "@choros/local-db";
 import { Button } from "@choros/ui/button";
@@ -9,6 +8,7 @@ import {
 	DialogTitle,
 } from "@choros/ui/dialog";
 import { ScrollArea } from "@choros/ui/scroll-area";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useEffect, useState } from "react";
 import { TbFolderOpen, TbX } from "react-icons/tb";
 import { electronTrpcClient } from "renderer/lib/trpc-client";

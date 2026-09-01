@@ -1,5 +1,3 @@
-import { plural } from "@lingui/core/macro";
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Badge } from "@choros/ui/badge";
 import {
 	HoverCard,
@@ -9,6 +7,8 @@ import {
 import { Separator } from "@choros/ui/separator";
 import { toast } from "@choros/ui/sonner";
 import { cn } from "@choros/ui/utils";
+import { plural } from "@lingui/core/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { LuLoaderCircle, LuRadioTower, LuX } from "react-icons/lu";
 import { useDashboardSidebarPortKill } from "renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/hooks/useDashboardSidebarPortKill";
 import type { DashboardSidebarPort } from "renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/hooks/useDashboardSidebarPortsData";

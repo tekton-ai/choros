@@ -1,9 +1,9 @@
-import type { ContextMenuOpenContext } from "@pierre/trees";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuTrigger,
 } from "@choros/ui/dropdown-menu";
+import type { ContextMenuOpenContext } from "@pierre/trees";
 
 interface PierreRowContextMenuProps extends Record<string, unknown> {
 	anchorRect: ContextMenuOpenContext["anchorRect"];

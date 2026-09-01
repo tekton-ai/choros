@@ -49,9 +49,7 @@ export function WelcomeEmail({ userEmail }: WelcomeEmailProps = {}) {
 			</Text>
 
 			<Section className="mb-8">
-				<Button href={`${DOWNLOAD}${utm("hero-cta")}`}>
-					Download Choros
-				</Button>
+				<Button href={`${DOWNLOAD}${utm("hero-cta")}`}>Download Choros</Button>
 			</Section>
 
 			<Text className="text-[13px] leading-5 text-muted m-0">

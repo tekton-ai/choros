@@ -1,6 +1,5 @@
 "use client";
 
-import { Trans } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { Button } from "@choros/ui/button";
 import {
@@ -35,6 +34,7 @@ import {
 	MenubarShortcut,
 	MenubarTrigger,
 } from "@choros/ui/menubar";
+import { Trans } from "@lingui/react/macro";
 import { useState } from "react";
 
 import { ComponentCard } from "../ComponentCard";

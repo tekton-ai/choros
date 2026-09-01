@@ -63,10 +63,8 @@ function run(
 function buildCliBuildEnv(): NodeJS.ProcessEnv {
 	const env = { ...process.env };
 	env.CHOROS_CLI_CHANNEL = "desktop-bundled";
-	const apiUrl =
-		process.env.CHOROS_API_URL || process.env.NEXT_PUBLIC_API_URL;
-	const webUrl =
-		process.env.CHOROS_WEB_URL || process.env.NEXT_PUBLIC_WEB_URL;
+	const apiUrl = process.env.CHOROS_API_URL || process.env.NEXT_PUBLIC_API_URL;
+	const webUrl = process.env.CHOROS_WEB_URL || process.env.NEXT_PUBLIC_WEB_URL;
 
 	if (apiUrl) {
 		env.CHOROS_API_URL = apiUrl;

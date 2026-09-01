@@ -3,9 +3,9 @@
 import { m } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { ChorosLogo } from "./components/ChorosLogo";
 import { DesktopNav } from "./components/DesktopNav";
 import { MobileNav } from "./components/MobileNav";
-import { ChorosLogo } from "./components/ChorosLogo";
 
 interface HeaderProps {
 	ctaButtons: React.ReactNode;

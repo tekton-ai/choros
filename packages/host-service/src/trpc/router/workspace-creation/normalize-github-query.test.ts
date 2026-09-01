@@ -469,9 +469,7 @@ describe("normalizeGitHubQuery — cross-entity fallback", () => {
 			repo,
 			"pull",
 		);
-		expect(result.query).toBe(
-			"https://github.com/choros-sh/choros/issues/100",
-		);
+		expect(result.query).toBe("https://github.com/choros-sh/choros/issues/100");
 		expect(result.isDirectLookup).toBe(false);
 		expect(result.repoMismatch).toBe(false);
 	});
@@ -482,9 +480,7 @@ describe("normalizeGitHubQuery — cross-entity fallback", () => {
 			repo,
 			"issue",
 		);
-		expect(result.query).toBe(
-			"https://github.com/choros-sh/choros/pull/3354",
-		);
+		expect(result.query).toBe("https://github.com/choros-sh/choros/pull/3354");
 		expect(result.isDirectLookup).toBe(false);
 		expect(result.repoMismatch).toBe(false);
 	});

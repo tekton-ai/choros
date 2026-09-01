@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -9,6 +8,7 @@ import {
 	EnterEnabledAlertDialogContent,
 } from "@choros/ui/alert-dialog";
 import { Button } from "@choros/ui/button";
+import { Trans, useLingui } from "@lingui/react/macro";
 
 interface DiscardConfirmDialogProps {
 	open: boolean;

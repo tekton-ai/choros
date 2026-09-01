@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import { Checkbox } from "@choros/ui/checkbox";
 import {
@@ -11,6 +10,7 @@ import {
 } from "@choros/ui/dialog";
 import { Label } from "@choros/ui/label";
 import { toast } from "@choros/ui/sonner";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useState } from "react";
 import { electronTrpcClient } from "renderer/lib/trpc-client";
 

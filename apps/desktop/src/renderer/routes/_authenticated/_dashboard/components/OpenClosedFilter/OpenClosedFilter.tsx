@@ -1,5 +1,5 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { ToggleGroup, ToggleGroupItem } from "@choros/ui/toggle-group";
+import { Trans, useLingui } from "@lingui/react/macro";
 
 interface OpenClosedFilterProps {
 	includeClosed: boolean;

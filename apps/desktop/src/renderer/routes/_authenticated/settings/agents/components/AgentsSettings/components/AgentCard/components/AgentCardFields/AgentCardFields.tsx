@@ -1,8 +1,8 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import type { ResolvedAgentConfig } from "@choros/shared/agent-settings";
 import { Input } from "@choros/ui/input";
 import { Label } from "@choros/ui/label";
 import { Textarea } from "@choros/ui/textarea";
+import { Trans, useLingui } from "@lingui/react/macro";
 import type { AgentEditableField } from "../../agent-card.types";
 
 interface AgentCardFieldsProps {

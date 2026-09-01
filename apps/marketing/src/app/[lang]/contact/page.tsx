@@ -1,6 +1,6 @@
-import { Trans } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { COMPANY } from "@choros/shared/constants";
+import { Trans } from "@lingui/react/macro";
 import type { Metadata } from "next";
 import { GridCross } from "@/app/[lang]/blog/components/GridCross";
 import { localizedAlternates } from "@/app/[lang]/metadata";
@@ -76,8 +76,8 @@ export default async function ContactPage() {
 					</h2>
 					<p className="text-muted-foreground mt-3">
 						<Trans id="marketing.contact.otherWays.email">
-							Choros is built by a team based in San Francisco, California.
-							For product support or account questions, email{" "}
+							Choros is built by a team based in San Francisco, California. For
+							product support or account questions, email{" "}
 							<a className="text-foreground underline" href={COMPANY.MAIL_TO}>
 								{supportEmail}
 							</a>{" "}

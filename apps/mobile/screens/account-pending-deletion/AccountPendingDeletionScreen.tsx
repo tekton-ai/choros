@@ -1,6 +1,6 @@
+import { COMPANY } from "@choros/shared/constants";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Plural, Trans, useLingui } from "@lingui/react/macro";
-import { COMPANY } from "@choros/shared/constants";
 import { useState } from "react";
 import { Alert, Linking, View } from "react-native";
 import { Button } from "@/components/ui/button";

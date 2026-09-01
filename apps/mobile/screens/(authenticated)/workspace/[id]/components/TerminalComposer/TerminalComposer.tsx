@@ -1,4 +1,3 @@
-import { useLingui } from "@lingui/react/macro";
 import {
 	Composer,
 	type ComposerHandle,
@@ -8,6 +7,7 @@ import {
 	type ComposerSlashCommand,
 } from "@choros/composer";
 import type { SlashCommand } from "@choros/shared/slash-commands";
+import { useLingui } from "@lingui/react/macro";
 import { forwardRef, useImperativeHandle, useRef, useState } from "react";
 import { Alert, View } from "react-native";
 import type { PromptInputMessage } from "@/components/ai-elements/prompt-input";

@@ -29,8 +29,7 @@ function seedHostDb(
 
 describe("getWorkspaceNameFromHostDbs", () => {
 	let root: string;
-	const worktreePath =
-		"/Users/me/.choros/worktrees/proj/silky-ophthalmologist";
+	const worktreePath = "/Users/me/.choros/worktrees/proj/silky-ophthalmologist";
 
 	beforeEach(() => {
 		root = mkdtempSync(join(tmpdir(), "host-db-workspace-name-"));

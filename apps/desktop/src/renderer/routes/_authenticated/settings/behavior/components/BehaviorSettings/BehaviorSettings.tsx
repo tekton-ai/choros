@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import type { FileOpenMode } from "@choros/local-db";
 import { Label } from "@choros/ui/label";
 import {
@@ -9,6 +8,7 @@ import {
 	SelectValue,
 } from "@choros/ui/select";
 import { Switch } from "@choros/ui/switch";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { HighlightText } from "renderer/routes/_authenticated/settings/components/HighlightText";
 import { useSettingsSearchQuery } from "renderer/stores/settings-state";

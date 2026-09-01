@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import type { TaskPriority } from "@choros/db/enums";
 import { errorMessage } from "@choros/i18n/errors";
 import { Button } from "@choros/ui/button";
@@ -13,6 +12,7 @@ import {
 } from "@choros/ui/dialog";
 import { Kbd, KbdGroup } from "@choros/ui/kbd";
 import { toast } from "@choros/ui/sonner";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { HiChevronRight, HiOutlinePaperClip, HiXMark } from "react-icons/hi2";

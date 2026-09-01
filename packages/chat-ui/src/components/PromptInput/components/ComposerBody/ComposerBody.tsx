@@ -1,5 +1,7 @@
 "use client";
 
+import { getClipboardFiles } from "@choros/ui/lib/clipboard-files";
+import { cn } from "@choros/ui/utils";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary";
@@ -7,8 +9,6 @@ import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { PlainTextPlugin } from "@lexical/react/LexicalPlainTextPlugin";
 import { LexicalTypeaheadMenuPlugin } from "@lexical/react/LexicalTypeaheadMenuPlugin";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { getClipboardFiles } from "@choros/ui/lib/clipboard-files";
-import { cn } from "@choros/ui/utils";
 import {
 	$createNodeSelection,
 	$createTextNode,

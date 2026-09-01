@@ -1,6 +1,5 @@
 "use client";
 
-import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	Card,
 	CardContent,
@@ -10,6 +9,7 @@ import {
 } from "@choros/ui/card";
 import { Skeleton } from "@choros/ui/skeleton";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { Trans, useLingui } from "@lingui/react/macro";
 import type { ReactNode } from "react";
 import { LuClock, LuMoveDownRight, LuMoveRight } from "react-icons/lu";
 

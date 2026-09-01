@@ -1,11 +1,11 @@
 "use client";
 
-import { Trans } from "@lingui/react/macro";
 import {
 	formatCompactNumber,
 	formatCurrency,
 	formatPercent,
 } from "@choros/i18n/format";
+import { Trans } from "@lingui/react/macro";
 import type { LanguageModelUsage } from "ai";
 import { type ComponentProps, createContext, useContext } from "react";
 import { getUsage } from "tokenlens";

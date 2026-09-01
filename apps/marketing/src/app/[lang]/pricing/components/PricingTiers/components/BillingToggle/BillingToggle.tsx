@@ -1,7 +1,7 @@
 "use client";
 
-import { Trans } from "@lingui/react/macro";
 import { cn } from "@choros/ui/utils";
+import { Trans } from "@lingui/react/macro";
 
 interface BillingToggleProps {
 	isYearly: boolean;

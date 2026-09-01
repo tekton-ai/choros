@@ -1,9 +1,9 @@
-import { useLingui } from "@lingui/react/macro";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuTrigger,
 } from "@choros/ui/dropdown-menu";
+import { useLingui } from "@lingui/react/macro";
 import { ChevronDown } from "lucide-react";
 import { type ReactNode, useCallback, useRef, useState } from "react";
 

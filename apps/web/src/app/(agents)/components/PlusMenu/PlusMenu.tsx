@@ -1,10 +1,10 @@
 "use client";
 
-import { useLingui } from "@lingui/react/macro";
 import {
 	PromptInputButton,
 	usePromptInputAttachments,
 } from "@choros/ui/ai-elements/prompt-input";
+import { useLingui } from "@lingui/react/macro";
 import { PaperclipIcon, PlusIcon } from "lucide-react";
 import { ResponsiveDropdown } from "../ResponsiveDropdown";
 

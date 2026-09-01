@@ -1,5 +1,5 @@
-import { Trans } from "@lingui/react/macro";
 import { Pixel404 } from "@choros/ui/pixel-404";
+import { Trans } from "@lingui/react/macro";
 import { Link } from "@tanstack/react-router";
 
 export function NotFound() {

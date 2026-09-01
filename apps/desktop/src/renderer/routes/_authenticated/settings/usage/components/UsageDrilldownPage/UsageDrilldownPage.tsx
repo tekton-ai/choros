@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import type { ChartConfig } from "@choros/ui/chart";
 import {
 	ChartContainer,
@@ -6,6 +5,7 @@ import {
 	ChartTooltipContent,
 } from "@choros/ui/chart";
 import { Tabs, TabsList, TabsTrigger } from "@choros/ui/tabs";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Link } from "@tanstack/react-router";
 import { useMemo, useRef, useState } from "react";
 import { LuArrowLeft, LuCheck, LuCopy } from "react-icons/lu";

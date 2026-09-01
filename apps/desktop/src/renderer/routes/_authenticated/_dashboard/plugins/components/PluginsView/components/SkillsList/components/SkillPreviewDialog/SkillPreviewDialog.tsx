@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@choros/i18n/errors";
 import { Badge } from "@choros/ui/badge";
 import { Button } from "@choros/ui/button";
@@ -19,6 +18,7 @@ import {
 import { toast } from "@choros/ui/sonner";
 import { Switch } from "@choros/ui/switch";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { XIcon } from "lucide-react";
 import { useRef } from "react";
 import {

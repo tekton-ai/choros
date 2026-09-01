@@ -1,10 +1,5 @@
 import { db } from "@choros/db/client";
-import {
-	members,
-	oauthClients,
-	subscriptions,
-	users,
-} from "@choros/db/schema";
+import { members, oauthClients, subscriptions, users } from "@choros/db/schema";
 import {
 	DEV_EMAIL,
 	DEV_NAME,

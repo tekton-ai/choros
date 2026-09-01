@@ -7,12 +7,12 @@ import {
 	buildAgentModeArgs,
 	buildAgentModelArgs,
 	buildAgentModelEnv,
+	CHOROS_CHAT_MODELS,
 	getAgentEffortSupport,
 	getAgentEfforts,
 	getAgentModelSupport,
 	getAgentModeSupport,
 	resolveAgentLaunchPresetId,
-	CHOROS_CHAT_MODELS,
 } from "./agent-models";
 import { BUILTIN_TERMINAL_AGENT_TYPES } from "./builtin-terminal-agents";
 
@@ -95,9 +95,9 @@ describe("buildAgentModelArgs", () => {
 	});
 
 	it("returns [] for choros (model travels via chat metadata)", () => {
-		expect(
-			buildAgentModelArgs("choros", "anthropic/claude-opus-4-8"),
-		).toEqual([]);
+		expect(buildAgentModelArgs("choros", "anthropic/claude-opus-4-8")).toEqual(
+			[],
+		);
 	});
 
 	it("includes fable in claude's curated list", () => {

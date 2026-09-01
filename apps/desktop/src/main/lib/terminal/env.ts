@@ -352,7 +352,7 @@ const ALLOWED_ENV_VARS = new Set([
  * These are checked after exact matches fail.
  */
 const ALLOWED_PREFIXES = [
-	"SUPERSET_", // Our own metadata vars
+	"CHOROS_", // Our own metadata vars
 	"LC_", // Locale settings
 ];
 

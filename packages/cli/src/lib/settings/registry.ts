@@ -370,10 +370,7 @@ export const EXCLUDED_SETTINGS_COLUMNS: Record<string, string> = {
 export function getSettingDefinition(key: string): SettingDefinition {
 	const def = SETTINGS.find((setting) => setting.key === key);
 	if (!def) {
-		throw new CLIError(
-			`Unknown setting: ${key}`,
-			"Run: choros settings list",
-		);
+		throw new CLIError(`Unknown setting: ${key}`, "Run: choros settings list");
 	}
 	return def;
 }

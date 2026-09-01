@@ -17,8 +17,7 @@ import {
 
 export const GROK_COMPAT_MARKER_START =
 	"# >>> choros-managed-grok-compat v1 (do not edit) >>>";
-export const GROK_COMPAT_MARKER_END =
-	"# <<< choros-managed-grok-compat v1 <<<";
+export const GROK_COMPAT_MARKER_END = "# <<< choros-managed-grok-compat v1 <<<";
 
 export const GROK_HOOKS_FILE = "choros-notify.json";
 

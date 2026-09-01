@@ -1,6 +1,5 @@
 "use client";
 
-import { Trans } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import {
 	ChainOfThought,
@@ -24,6 +23,7 @@ import {
 	TaskItemFile,
 	TaskTrigger,
 } from "@choros/ui/ai-elements/task";
+import { Trans } from "@lingui/react/macro";
 import { FileSearchIcon, SearchIcon, WrenchIcon } from "lucide-react";
 
 import { ComponentCard } from "../../../components/ComponentCard";

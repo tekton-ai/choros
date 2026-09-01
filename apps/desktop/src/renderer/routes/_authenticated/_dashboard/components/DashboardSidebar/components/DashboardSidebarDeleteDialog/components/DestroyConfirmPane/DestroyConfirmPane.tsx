@@ -1,4 +1,3 @@
-import { Trans } from "@lingui/react/macro";
 import {
 	AlertDialog,
 	AlertDialogContent,
@@ -10,6 +9,7 @@ import {
 import { Button } from "@choros/ui/button";
 import { Checkbox } from "@choros/ui/checkbox";
 import { Label } from "@choros/ui/label";
+import { Trans } from "@lingui/react/macro";
 import { useEffect, useId } from "react";
 import { shouldConfirmDeleteDialogKey } from "../../utils/shouldConfirmDeleteDialogKey";
 

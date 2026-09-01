@@ -1,6 +1,3 @@
-import type { MessageDescriptor } from "@lingui/core";
-import { msg } from "@lingui/core/macro";
-import { Trans, useLingui } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { Button } from "@choros/ui/button";
 import {
@@ -13,6 +10,9 @@ import {
 import { cn } from "@choros/ui/lib/utils";
 import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import type { MessageDescriptor } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useState } from "react";
 import {
 	HiOutlineArrowPath,

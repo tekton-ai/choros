@@ -1,5 +1,5 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { prompt } from "@choros/alert-prompt";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useState } from "react";
 import { Text } from "@/components/ui/text";
 import { signIn } from "@/lib/auth/client";

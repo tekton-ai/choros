@@ -1,5 +1,5 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { ToggleGroup, ToggleGroupItem } from "@choros/ui/toggle-group";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { LuColumns2, LuPanelTopOpen } from "react-icons/lu";
 import type { AgentSessionPlacement } from "../../hooks/useDiffCommentTarget";
 

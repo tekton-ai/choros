@@ -1,6 +1,6 @@
 export {
+	ChorosPill,
 	StepHeader,
 	StepShell,
-	ChorosPill,
 	useSetupChromeStore,
 } from "./StepShell";

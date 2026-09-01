@@ -1,5 +1,5 @@
-import { Trans } from "@lingui/react/macro";
 import type { Plan } from "@choros/chat/protocol";
+import { Trans } from "@lingui/react/macro";
 import { CheckCircle2, Circle, CircleDotDashed } from "lucide-react";
 
 const ICON_BY_STATUS = {

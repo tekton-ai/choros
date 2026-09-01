@@ -1,4 +1,3 @@
-import { Trans } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import {
 	DropdownMenu,
@@ -8,6 +7,7 @@ import {
 	DropdownMenuTrigger,
 } from "@choros/ui/dropdown-menu";
 import { cn } from "@choros/ui/utils";
+import { Trans } from "@lingui/react/macro";
 import { useNavigate } from "@tanstack/react-router";
 import { HiMiniCommandLine } from "react-icons/hi2";
 import { LuCheck, LuChevronDown, LuPlus, LuSettings } from "react-icons/lu";

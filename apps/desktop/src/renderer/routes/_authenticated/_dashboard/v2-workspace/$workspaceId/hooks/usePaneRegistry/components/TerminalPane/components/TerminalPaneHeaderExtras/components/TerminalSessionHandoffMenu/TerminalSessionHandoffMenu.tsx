@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { formatNumber } from "@choros/i18n/format";
 import { buildTerminalSessionHandoffPrompt } from "@choros/shared/terminal-session-handoff";
 import { Button } from "@choros/ui/button";
@@ -19,6 +18,7 @@ import {
 import { Label } from "@choros/ui/label";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { workspaceTrpc } from "@choros/workspace-client";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Bot, GitFork, PanelRight, SquareStack } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { AgentSelect } from "renderer/components/AgentSelect";

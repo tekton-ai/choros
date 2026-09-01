@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@choros/i18n/errors";
 import { formatDate as formatLocaleDate } from "@choros/i18n/format";
 import { COMPANY } from "@choros/shared/constants";
@@ -16,6 +15,7 @@ import { Input } from "@choros/ui/input";
 import { Label } from "@choros/ui/label";
 import { Skeleton } from "@choros/ui/skeleton";
 import { toast } from "@choros/ui/sonner";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useState } from "react";
 import {
 	HiArrowTopRightOnSquare,

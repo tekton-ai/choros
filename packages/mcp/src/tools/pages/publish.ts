@@ -1,4 +1,3 @@
-import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import {
 	ANCHOR_MESSAGE,
 	hasCompleteWorkspaceLink,
@@ -6,6 +5,7 @@ import {
 	pageFields,
 	WORKSPACE_LINK_MESSAGE,
 } from "@choros/trpc/page-schema";
+import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 import { createMcpCaller } from "../../caller";
 import { defineTool } from "../../define-tool";

@@ -1,10 +1,10 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import type { SelectAutomationRun } from "@choros/db/schema";
 import { errorMessage } from "@choros/i18n/errors";
 import type { RouterOutputs } from "@choros/trpc";
 import { toast } from "@choros/ui/sonner";
 import { Switch } from "@choros/ui/switch";
 import { cn } from "@choros/ui/utils";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useRef, useState } from "react";
 import { EmojiTextInput } from "renderer/components/EmojiTextInput";

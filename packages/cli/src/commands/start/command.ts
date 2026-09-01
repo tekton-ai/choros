@@ -1,5 +1,5 @@
-import * as p from "@clack/prompts";
 import { boolean, CLIError, number, string } from "@choros/cli-framework";
+import * as p from "@clack/prompts";
 import { command } from "../../lib/command";
 import { CHOROS_CONFIG_PATH } from "../../lib/config";
 import { isProcessAlive, readManifest } from "../../lib/host/manifest";

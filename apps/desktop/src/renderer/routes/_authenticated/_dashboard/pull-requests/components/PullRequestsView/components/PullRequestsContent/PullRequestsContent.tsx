@@ -1,5 +1,5 @@
-import { Plural, Trans, useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
+import { Plural, Trans, useLingui } from "@lingui/react/macro";
 import { useNavigate } from "@tanstack/react-router";
 import { GoGitPullRequest } from "react-icons/go";
 import { LuRefreshCw } from "react-icons/lu";

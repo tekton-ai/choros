@@ -1,4 +1,3 @@
-import { Trans } from "@lingui/react/macro";
 import type { TeardownFailureCause } from "@choros/host-service";
 import {
 	AlertDialog,
@@ -9,6 +8,7 @@ import {
 	AlertDialogTitle,
 } from "@choros/ui/alert-dialog";
 import { Button } from "@choros/ui/button";
+import { Trans } from "@lingui/react/macro";
 import { useEffect } from "react";
 import stripAnsi from "strip-ansi";
 import { shouldConfirmDeleteDialogKey } from "../../utils/shouldConfirmDeleteDialogKey";

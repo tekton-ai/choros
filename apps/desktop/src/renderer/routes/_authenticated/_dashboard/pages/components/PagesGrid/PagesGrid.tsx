@@ -1,4 +1,3 @@
-import { Trans } from "@lingui/react/macro";
 import {
 	Empty,
 	EmptyDescription,
@@ -7,6 +6,7 @@ import {
 	EmptyTitle,
 } from "@choros/ui/empty";
 import { Skeleton } from "@choros/ui/skeleton";
+import { Trans } from "@lingui/react/macro";
 import { LuFileText, LuSearchX } from "react-icons/lu";
 import { PageCard, type PageCardItem } from "./components/PageCard";
 import { THUMBNAIL_ASPECT_RATIO } from "./constants";

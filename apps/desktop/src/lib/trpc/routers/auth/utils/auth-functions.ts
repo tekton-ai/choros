@@ -39,10 +39,7 @@ type InspectedTokenStorage =
 	| { status: "invalid"; reason: string };
 
 function getTokenFile(): string {
-	return join(
-		process.env.CHOROS_HOME_DIR || CHOROS_HOME_DIR,
-		TOKEN_FILE_NAME,
-	);
+	return join(process.env.CHOROS_HOME_DIR || CHOROS_HOME_DIR, TOKEN_FILE_NAME);
 }
 
 async function withAuthLock<Result>(

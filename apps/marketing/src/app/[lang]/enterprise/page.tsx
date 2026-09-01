@@ -1,6 +1,6 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { COMPANY } from "@choros/shared/constants";
+import { Trans, useLingui } from "@lingui/react/macro";
 import type { Metadata } from "next";
 import { GridCross } from "@/app/[lang]/blog/components/GridCross";
 import { Soc2Badge } from "@/app/[lang]/components/Soc2Badge";
@@ -61,9 +61,9 @@ export default async function EnterprisePage() {
 							</h1>
 							<p className="text-muted-foreground mt-3 max-w-lg">
 								<Trans id="marketing.enterprise.hero.subtitle">
-									Interested in bringing Choros to your organization? Reach
-									out and we&apos;ll work with you to find the right setup for
-									your team.
+									Interested in bringing Choros to your organization? Reach out
+									and we&apos;ll work with you to find the right setup for your
+									team.
 								</Trans>
 							</p>
 						</div>

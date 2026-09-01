@@ -1,5 +1,5 @@
-import { msg } from "@lingui/core/macro";
 import { i18n } from "@choros/i18n";
+import { msg } from "@lingui/core/macro";
 
 /** Formats the time until a quota window resets, e.g. "2d 4h", "3h 12m", "14m". */
 export function formatResetIn(resetsAt: Date, now: Date = new Date()): string {

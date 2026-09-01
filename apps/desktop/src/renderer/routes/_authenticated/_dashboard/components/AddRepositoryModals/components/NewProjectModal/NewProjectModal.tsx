@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { errorMessage, rawErrorMessage } from "@choros/i18n/errors";
 import { Button } from "@choros/ui/button";
 import {
@@ -12,6 +11,7 @@ import {
 import { Input } from "@choros/ui/input";
 import { Label } from "@choros/ui/label";
 import { toast } from "@choros/ui/sonner";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useEffect, useState } from "react";
 import { LuFolderOpen, LuLoaderCircle } from "react-icons/lu";
 import { useIsV2CloudEnabled } from "renderer/hooks/useIsV2CloudEnabled";

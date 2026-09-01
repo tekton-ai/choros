@@ -292,9 +292,7 @@ describe("agent-wrappers copilot", () => {
 		expect(wrapper).toContain('kill -TERM "$_choros_child_pid"');
 		expect(wrapper).toContain('kill -KILL "$_choros_watcher_pid"');
 		expect(wrapper).not.toContain("mkfifo");
-		expect(wrapper).not.toContain(
-			"CHOROS_CODEX_SESSION_WATCHER_TAIL_PID_PATH",
-		);
+		expect(wrapper).not.toContain("CHOROS_CODEX_SESSION_WATCHER_TAIL_PID_PATH");
 		expect(wrapper).toContain('"UserTurn"');
 		expect(wrapper).toContain("_approval_request");
 
@@ -765,8 +763,7 @@ exit 0
 
 	it("replaces stale Cursor hook commands from old choros paths", () => {
 		const cursorHooksPath = path.join(mockedHomeDir, ".cursor", "hooks.json");
-		const staleHookPath =
-			"/tmp/worktree/choros-dev-data/hooks/cursor-hook.sh";
+		const staleHookPath = "/tmp/worktree/choros-dev-data/hooks/cursor-hook.sh";
 		const currentHookPath = "/tmp/.choros-new/hooks/cursor-hook.sh";
 
 		mkdirSync(path.dirname(cursorHooksPath), { recursive: true });
@@ -831,8 +828,7 @@ exit 0
 			".gemini",
 			"settings.json",
 		);
-		const staleHookPath =
-			"/tmp/worktree/choros-dev-data/hooks/gemini-hook.sh";
+		const staleHookPath = "/tmp/worktree/choros-dev-data/hooks/gemini-hook.sh";
 		const currentHookPath = "/tmp/.choros-new/hooks/gemini-hook.sh";
 
 		mkdirSync(path.dirname(geminiSettingsPath), { recursive: true });
@@ -1906,9 +1902,7 @@ describe("vibe hooks.toml", () => {
 		// Exactly one complete managed block, no dangling/duplicate markers.
 		expect(out.split(VIBE_HOOKS_MARKER_START).length - 1).toBe(1);
 		expect(out.split(VIBE_HOOKS_MARKER_END).length - 1).toBe(1);
-		expect(out.split('name = "choros-notify-before-tool"').length - 1).toBe(
-			1,
-		);
+		expect(out.split('name = "choros-notify-before-tool"').length - 1).toBe(1);
 	});
 });
 
@@ -2112,13 +2106,7 @@ describe("agent-wrappers pi", () => {
 	it("installs the pi extension into the global ~/.pi/agent/extensions directory", () => {
 		const extensionPath = getPiExtensionPath();
 		expect(extensionPath).toBe(
-			path.join(
-				mockedHomeDir,
-				".pi",
-				"agent",
-				"extensions",
-				"choros-hooks.ts",
-			),
+			path.join(mockedHomeDir, ".pi", "agent", "extensions", "choros-hooks.ts"),
 		);
 
 		createPiExtension();
@@ -2343,9 +2331,7 @@ describe("managed hooks junk tolerance", () => {
 			}),
 		);
 
-		const content = getDroidSettingsJsonContent(
-			"/tmp/.choros/hooks/notify.sh",
-		);
+		const content = getDroidSettingsJsonContent("/tmp/.choros/hooks/notify.sh");
 		expect(content).not.toBeNull();
 		const parsed = JSON.parse(content as string);
 		expect(parsed.hooks.Stop[0]).toBe(null);

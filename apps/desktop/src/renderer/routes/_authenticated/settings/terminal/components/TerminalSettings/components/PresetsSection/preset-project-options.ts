@@ -1,5 +1,5 @@
-import { msg } from "@lingui/core/macro";
 import { i18n } from "@choros/i18n";
+import { msg } from "@lingui/core/macro";
 import { normalizePresetProjectIds } from "shared/preset-project-targeting";
 
 export interface PresetProjectOption {

@@ -1,9 +1,9 @@
-import type { MessageDescriptor } from "@lingui/core";
-import { msg } from "@lingui/core/macro";
 import type {
 	SlackTriggerEvent,
 	TriggerConfigInput,
 } from "@choros/shared/automation-triggers";
+import type { MessageDescriptor } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
 import type { TriggerMenuEntry } from "../types";
 
 export type SlackConfig = Extract<TriggerConfigInput, { kind: "slack" }>;

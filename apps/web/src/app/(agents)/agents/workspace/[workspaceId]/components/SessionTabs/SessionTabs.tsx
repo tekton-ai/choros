@@ -1,7 +1,7 @@
 "use client";
 
-import { Trans, useLingui } from "@lingui/react/macro";
 import { cn } from "@choros/ui/utils";
+import { Trans, useLingui } from "@lingui/react/macro";
 
 type SessionTabsProps = {
 	activeTab: "chat" | "diff";

@@ -24,7 +24,7 @@ printf '{}\n'
 
 # The injected .github/hooks file persists in the worktree, so copilot run
 # there outside Choros would still fire this; only Choros terminals set
-# SUPERSET_* vars.
+# CHOROS_* vars.
 [ -n "$CHOROS_TERMINAL_ID" ] || [ -n "$CHOROS_TAB_ID" ] || exit 0
 
 V1_EVENT_TYPE="$EVENT_TYPE"

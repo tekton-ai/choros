@@ -1,8 +1,8 @@
 "use client";
 
-import { Trans, useLingui } from "@lingui/react/macro";
 import { authClient } from "@choros/auth/client";
 import { Button } from "@choros/ui/button";
+import { Trans, useLingui } from "@lingui/react/macro";
 import Link from "next/link";
 import { useState } from "react";
 import { FaGithub } from "react-icons/fa";

@@ -1,5 +1,3 @@
-import { plural } from "@lingui/core/macro";
-import { Plural, Trans, useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@choros/i18n/errors";
 import {
 	AlertDialog,
@@ -14,6 +12,8 @@ import {
 } from "@choros/ui/alert-dialog";
 import { Button } from "@choros/ui/button";
 import { toast } from "@choros/ui/sonner";
+import { plural } from "@lingui/core/macro";
+import { Plural, Trans, useLingui } from "@lingui/react/macro";
 import { motion } from "framer-motion";
 import { GoGitBranch } from "react-icons/go";
 import { electronTrpc } from "renderer/lib/electron-trpc";

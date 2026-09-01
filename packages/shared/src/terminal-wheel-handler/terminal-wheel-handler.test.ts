@@ -309,8 +309,7 @@ describe("createTerminalWheelEventHandler", () => {
 		const original = globals.localStorage;
 		try {
 			globals.localStorage = {
-				getItem: (key) =>
-					key === "CHOROS_TERMINAL_STOCK_WHEEL" ? "1" : null,
+				getItem: (key) => (key === "CHOROS_TERMINAL_STOCK_WHEEL" ? "1" : null),
 			};
 			const { terminal, input } = makeFakeTerminal();
 			const handler = createTerminalWheelEventHandler(terminal, isSgrActive);

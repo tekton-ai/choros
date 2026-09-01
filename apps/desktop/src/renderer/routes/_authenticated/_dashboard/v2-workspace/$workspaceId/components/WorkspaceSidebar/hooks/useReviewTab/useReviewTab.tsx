@@ -1,6 +1,6 @@
-import { useLingui } from "@lingui/react/macro";
 import type { AppRouter } from "@choros/host-service";
 import { workspaceTrpc } from "@choros/workspace-client";
+import { useLingui } from "@lingui/react/macro";
 import type { inferRouterOutputs } from "@trpc/server";
 import { useMemo } from "react";
 import { LuMessageSquare } from "react-icons/lu";

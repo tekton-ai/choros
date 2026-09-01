@@ -1,6 +1,5 @@
 "use client";
 
-import { Trans } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { Calendar } from "@choros/ui/calendar";
 import { Checkbox } from "@choros/ui/checkbox";
@@ -42,6 +41,7 @@ import {
 import { Slider } from "@choros/ui/slider";
 import { Switch } from "@choros/ui/switch";
 import { Textarea } from "@choros/ui/textarea";
+import { Trans } from "@lingui/react/macro";
 import { SearchIcon, SendIcon } from "lucide-react";
 import { useState } from "react";
 

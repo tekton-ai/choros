@@ -87,10 +87,7 @@ describe("withManagedMarker", () => {
 
 describe("setFrontmatterName", () => {
 	it("rewrites only the frontmatter name", () => {
-		const renamed = setFrontmatterName(
-			skillMd("feedback"),
-			"choros-feedback",
-		);
+		const renamed = setFrontmatterName(skillMd("feedback"), "choros-feedback");
 		expect(renamed).toContain("name: choros-feedback");
 		expect(renamed).toContain("# feedback body");
 	});
@@ -149,12 +146,7 @@ describe("createManagedSkills", () => {
 		}
 		expect(
 			existsSync(
-				path.join(
-					agentsSkills,
-					"choros-orchestrate",
-					"agents",
-					"openai.yaml",
-				),
+				path.join(agentsSkills, "choros-orchestrate", "agents", "openai.yaml"),
 			),
 		).toBe(true);
 	});
@@ -247,9 +239,7 @@ describe("createManagedSkills", () => {
 
 		await run(["feedback"]);
 
-		expect(existsSync(path.join(agentsSkills, "choros-feedback"))).toBe(
-			false,
-		);
+		expect(existsSync(path.join(agentsSkills, "choros-feedback"))).toBe(false);
 		expect(existsSync(path.join(commandsDir, "feedback.md"))).toBe(false);
 		expect(existsSync(path.join(claudePlugin, "skills", "feedback"))).toBe(
 			false,

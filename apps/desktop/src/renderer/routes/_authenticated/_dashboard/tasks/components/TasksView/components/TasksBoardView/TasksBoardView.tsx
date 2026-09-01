@@ -1,3 +1,4 @@
+import type { SelectTaskStatus } from "@choros/db/schema";
 import {
 	DndContext,
 	type DragEndEvent,
@@ -10,7 +11,6 @@ import {
 	useSensors,
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-import type { SelectTaskStatus } from "@choros/db/schema";
 import { type UIEvent, useCallback, useMemo, useState } from "react";
 import { useOptimisticActions } from "renderer/routes/_authenticated/hooks/useOptimisticActions";
 import type { TaskWithStatus } from "../../hooks/useTasksData";

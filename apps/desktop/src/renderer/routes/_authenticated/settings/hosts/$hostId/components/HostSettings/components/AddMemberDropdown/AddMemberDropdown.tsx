@@ -1,4 +1,3 @@
-import { Trans } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import {
 	DropdownMenu,
@@ -6,6 +5,7 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from "@choros/ui/dropdown-menu";
+import { Trans } from "@lingui/react/macro";
 import { HiOutlinePlus } from "react-icons/hi2";
 
 export interface CandidateRow {

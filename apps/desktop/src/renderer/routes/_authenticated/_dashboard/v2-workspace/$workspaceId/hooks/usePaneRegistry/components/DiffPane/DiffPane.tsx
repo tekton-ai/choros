@@ -1,3 +1,9 @@
+import { errorMessage } from "@choros/i18n/errors";
+import type { RendererContext } from "@choros/panes";
+import { alert } from "@choros/ui/atoms/Alert";
+import { Button } from "@choros/ui/button";
+import { toast } from "@choros/ui/sonner";
+import { useWorkspaceClient, workspaceTrpc } from "@choros/workspace-client";
 import { Trans, useLingui } from "@lingui/react/macro";
 import type {
 	CodeViewItem,
@@ -12,13 +18,6 @@ import {
 	type CodeViewHandle,
 	EditProvider,
 } from "@pierre/diffs/react";
-import { errorMessage } from "@choros/i18n/errors";
-
-import type { RendererContext } from "@choros/panes";
-import { alert } from "@choros/ui/atoms/Alert";
-import { Button } from "@choros/ui/button";
-import { toast } from "@choros/ui/sonner";
-import { useWorkspaceClient, workspaceTrpc } from "@choros/workspace-client";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { LuFileCode } from "react-icons/lu";
 import {

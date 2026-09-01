@@ -1,4 +1,3 @@
-import { Trans } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import {
 	ContextMenu,
@@ -8,6 +7,7 @@ import {
 	ContextMenuTrigger,
 } from "@choros/ui/context-menu";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { Trans } from "@lingui/react/macro";
 import { HiMiniCommandLine } from "react-icons/hi2";
 import { getPresetIcon } from "renderer/assets/app-icons/preset-icons";
 import type { V2TerminalPresetRow } from "renderer/routes/_authenticated/providers/CollectionsProvider/dashboardSidebarLocal";

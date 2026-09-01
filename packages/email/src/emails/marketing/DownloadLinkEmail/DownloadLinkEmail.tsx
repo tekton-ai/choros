@@ -29,8 +29,8 @@ export function DownloadLinkEmail({
 			</Section>
 
 			<Text className="m-0 text-[13px] leading-5 text-muted">
-				Choros is available for macOS today. Windows and Linux support is on
-				the way.
+				Choros is available for macOS today. Windows and Linux support is on the
+				way.
 			</Text>
 		</EmailLayout>
 	);

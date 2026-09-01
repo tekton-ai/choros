@@ -9,10 +9,10 @@ import {
 import { getBundledPluginDir } from "@choros/agent-setup/config";
 import { settings } from "@choros/local-db";
 import {
+	CHOROS_MANAGED_SKILLS,
 	getPluginByName,
 	type InstalledPlugin,
 	type PluginMcpServerConfig,
-	CHOROS_MANAGED_SKILLS,
 } from "@choros/shared/plugins";
 import { localDb } from "main/lib/local-db";
 

@@ -1,9 +1,9 @@
-import { useLingui } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { errorMessage, rawErrorMessage } from "@choros/i18n/errors";
 import type { CreatePaneInput, WorkspaceStore } from "@choros/panes";
 import { toast } from "@choros/ui/sonner";
 import { workspaceTrpc } from "@choros/workspace-client";
+import { useLingui } from "@lingui/react/macro";
 import { eq } from "@tanstack/db";
 import { useLiveQuery } from "@tanstack/react-db";
 import { useCallback, useMemo, useRef, useState } from "react";

@@ -31,17 +31,17 @@ function getShellName(shell: string): string {
 }
 
 /**
- * Shell snippet to save all SUPERSET_* env vars before sourcing user RC files.
+ * Shell snippet to save all CHOROS_* env vars before sourcing user RC files.
  * Used in tandem with {@link CHOROS_ENV_RESTORE} to prevent user shell
  * configs from overriding Choros-managed environment variables (e.g.
  * CHOROS_WORKSPACE_NAME).
  *
  * @see https://github.com/AidenIO/choros/issues/2386
  */
-const CHOROS_ENV_SAVE = `_choros_saved_env="$(export -p 2>/dev/null | grep ' SUPERSET_')"`;
+const CHOROS_ENV_SAVE = `_choros_saved_env="$(export -p 2>/dev/null | grep ' CHOROS_')"`;
 
 /**
- * Shell snippet to restore previously saved SUPERSET_* env vars after
+ * Shell snippet to restore previously saved CHOROS_* env vars after
  * sourcing user RC files.
  */
 const CHOROS_ENV_RESTORE = `eval "$_choros_saved_env" 2>/dev/null || true`;

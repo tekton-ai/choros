@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import { existsSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { homedir, tmpdir } from "node:os";
 import { join } from "node:path";
-import { PROJECTS_DIR_NAME, CHOROS_DIR_NAME } from "shared/constants";
+import { CHOROS_DIR_NAME, PROJECTS_DIR_NAME } from "shared/constants";
 import { loadSetupConfig, mergeConfigs } from "./setup";
 
 const TEST_DIR = join(tmpdir(), `choros-test-setup-${process.pid}`);
@@ -52,10 +52,7 @@ describe("loadSetupConfig", () => {
 	});
 
 	test("returns null for invalid JSON", () => {
-		writeFileSync(
-			join(MAIN_REPO, ".choros", "config.json"),
-			"{ invalid json",
-		);
+		writeFileSync(join(MAIN_REPO, ".choros", "config.json"), "{ invalid json");
 
 		const config = loadSetupConfig({ mainRepoPath: MAIN_REPO });
 		expect(config).toBeNull();

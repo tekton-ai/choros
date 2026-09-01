@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@choros/i18n/errors";
 import { formatDate as formatLocaleDate } from "@choros/i18n/format";
 import { Avatar } from "@choros/ui/atoms/Avatar";
@@ -24,6 +23,7 @@ import {
 	TableHeader,
 	TableRow,
 } from "@choros/ui/table";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { HiArrowLeft } from "react-icons/hi2";

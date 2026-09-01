@@ -1,6 +1,6 @@
-import { Trans } from "@lingui/react/macro";
 import { CHOROS_MANAGED_SKILLS } from "@choros/shared/plugins";
 import { Badge } from "@choros/ui/badge";
+import { Trans } from "@lingui/react/macro";
 import { useState } from "react";
 import { SkillIcon } from "renderer/routes/_authenticated/_dashboard/plugins/components/SkillIcon";
 import { SkillPreviewDialog } from "./components/SkillPreviewDialog";

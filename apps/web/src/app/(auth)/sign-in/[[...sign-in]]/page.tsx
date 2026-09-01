@@ -1,6 +1,5 @@
 "use client";
 
-import { Trans, useLingui } from "@lingui/react/macro";
 import { authClient } from "@choros/auth/client";
 import {
 	DEV_EMAIL,
@@ -8,6 +7,7 @@ import {
 	DEV_PASSWORD,
 } from "@choros/shared/dev-credentials";
 import { Button } from "@choros/ui/button";
+import { Trans, useLingui } from "@lingui/react/macro";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -151,9 +151,7 @@ export default function SignInPage() {
 					<Trans id="web.signIn.title">Welcome back</Trans>
 				</h1>
 				<p className="text-muted-foreground text-sm">
-					<Trans id="web.signIn.subtitle">
-						Sign in to continue to Choros
-					</Trans>
+					<Trans id="web.signIn.subtitle">Sign in to continue to Choros</Trans>
 				</p>
 			</div>
 			<div className="grid gap-4">

@@ -1,4 +1,3 @@
-import { Trans } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { Button } from "@choros/ui/button";
 import {
@@ -9,6 +8,7 @@ import {
 	EmptyMedia,
 	EmptyTitle,
 } from "@choros/ui/empty";
+import { Trans } from "@lingui/react/macro";
 import { useMatchRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
 import {

@@ -1,6 +1,6 @@
-import { useLingui } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { useLingui } from "@lingui/react/macro";
 import { VscGitPullRequest, VscLoading } from "react-icons/vsc";
 import { V2WorkspaceOpenInButton } from "renderer/routes/_authenticated/_dashboard/components/TopBar/components/V2WorkspaceOpenInButton";
 import { PRStatusGroup } from "./components/PRStatusGroup";

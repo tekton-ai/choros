@@ -1,5 +1,5 @@
-import { useLingui } from "@lingui/react/macro";
 import { prompt } from "@choros/alert-prompt";
+import { useLingui } from "@lingui/react/macro";
 import { useQueryClient } from "@tanstack/react-query";
 import * as Clipboard from "expo-clipboard";
 import { useRouter } from "expo-router";

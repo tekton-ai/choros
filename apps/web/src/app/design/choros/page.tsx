@@ -7,8 +7,8 @@ import { AiAgentSection } from "./components/AiAgentSection";
 import { AiChatSection } from "./components/AiChatSection";
 import { AiContentSection } from "./components/AiContentSection";
 import { AiStatusSection } from "./components/AiStatusSection";
-import { SharedComponentsSection } from "./components/SharedComponentsSection";
 import { ChorosSection } from "./components/ChorosSection";
+import { SharedComponentsSection } from "./components/SharedComponentsSection";
 
 export const metadata: Metadata = {
 	title: "Design · Choros components",

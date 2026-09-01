@@ -39,9 +39,9 @@ describe("buildDefaultAccountResolver", () => {
 	it("adopts the pointer in a Choros terminal with no spawn-time value", () => {
 		const { home, profile } = makeHome("");
 		writeFileSync(join(home, "state", "default-claude-config-dir"), profile);
-		expect(
-			resolve({ CHOROS_TERMINAL_ID: "t1", CHOROS_HOME_DIR: home }),
-		).toBe(profile);
+		expect(resolve({ CHOROS_TERMINAL_ID: "t1", CHOROS_HOME_DIR: home })).toBe(
+			profile,
+		);
 	});
 
 	it("re-resolves over a stale Choros-injected value", () => {
@@ -102,8 +102,8 @@ describe("buildDefaultAccountResolver", () => {
 
 	it("ignores a pointer at a vanished dir instead of booting signed out", () => {
 		const { home } = makeHome("/tmp/deleted-profile-dir-that-is-gone");
-		expect(
-			resolve({ CHOROS_TERMINAL_ID: "t1", CHOROS_HOME_DIR: home }),
-		).toBe("<unset>");
+		expect(resolve({ CHOROS_TERMINAL_ID: "t1", CHOROS_HOME_DIR: home })).toBe(
+			"<unset>",
+		);
 	});
 });

@@ -1,12 +1,9 @@
-import { Trans } from "@lingui/react/macro";
-import {
-	ContextMenuItem,
-	ContextMenuSeparator,
-} from "@choros/ui/context-menu";
+import { ContextMenuItem, ContextMenuSeparator } from "@choros/ui/context-menu";
 import {
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 } from "@choros/ui/dropdown-menu";
+import { Trans } from "@lingui/react/macro";
 import type { ReactNode } from "react";
 import { LuClock, LuPause, LuPencil, LuPlay, LuTrash2 } from "react-icons/lu";
 

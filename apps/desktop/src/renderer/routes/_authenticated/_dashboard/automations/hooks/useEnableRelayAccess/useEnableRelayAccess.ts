@@ -1,6 +1,6 @@
-import { msg } from "@lingui/core/macro";
 import { i18n } from "@choros/i18n";
 import { toast } from "@choros/ui/sonner";
+import { msg } from "@lingui/core/macro";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 
 /** Enable relay access with the same mutation + feedback as Settings > Remote Access. */

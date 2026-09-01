@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Command, CommandInput } from "@choros/ui/command";
 import {
 	Dialog,
@@ -7,6 +6,7 @@ import {
 	DialogHeader,
 	DialogTitle,
 } from "@choros/ui/dialog";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { ArrowLeftIcon } from "lucide-react";
 import {
 	createContext,

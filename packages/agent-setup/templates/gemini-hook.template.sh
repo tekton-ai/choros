@@ -22,7 +22,7 @@ esac
 printf '{}\n'
 
 # ~/.gemini/settings.json is global, so this also fires in sessions launched
-# outside Choros terminals; only those terminals set SUPERSET_* vars.
+# outside Choros terminals; only those terminals set CHOROS_* vars.
 [ -n "$CHOROS_TERMINAL_ID" ] || [ -n "$CHOROS_TAB_ID" ] || exit 0
 
 V1_EVENT_TYPE="$EVENT_TYPE"

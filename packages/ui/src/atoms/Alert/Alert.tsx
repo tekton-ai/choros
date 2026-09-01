@@ -1,6 +1,5 @@
 "use client";
 
-import { Trans } from "@lingui/react/macro";
 import { Button, type buttonVariants } from "@choros/ui/button";
 import { Checkbox } from "@choros/ui/checkbox";
 import {
@@ -12,6 +11,7 @@ import {
 	DialogTitle,
 } from "@choros/ui/dialog";
 import { Label } from "@choros/ui/label";
+import { Trans } from "@lingui/react/macro";
 import type { VariantProps } from "class-variance-authority";
 import { useState } from "react";
 

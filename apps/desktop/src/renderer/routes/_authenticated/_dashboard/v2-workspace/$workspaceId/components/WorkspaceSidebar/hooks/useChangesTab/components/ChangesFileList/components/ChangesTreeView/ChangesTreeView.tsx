@@ -1,3 +1,7 @@
+import { errorMessage } from "@choros/i18n/errors";
+import { toast } from "@choros/ui/sonner";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { workspaceTrpc } from "@choros/workspace-client";
 import { Trans, useLingui } from "@lingui/react/macro";
 import type {
 	FileTreeDirectoryHandle,
@@ -10,10 +14,6 @@ import {
 	FileTree as PierreFileTree,
 	useFileTree as usePierreFileTree,
 } from "@pierre/trees/react";
-import { errorMessage } from "@choros/i18n/errors";
-import { toast } from "@choros/ui/sonner";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
-import { workspaceTrpc } from "@choros/workspace-client";
 import { Undo2 } from "lucide-react";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {

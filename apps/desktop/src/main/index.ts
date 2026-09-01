@@ -116,8 +116,7 @@ async function processDeepLink(url: string): Promise<void> {
 					? (result.error ??
 							i18n._({
 								id: "main.auth.failed.detail",
-								message:
-									"Choros could not complete sign-in. Please try again.",
+								message: "Choros could not complete sign-in. Please try again.",
 							}))
 					: i18n._({
 							id: "main.auth.failed.incompleteLink",

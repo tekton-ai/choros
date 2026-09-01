@@ -1,6 +1,6 @@
-import { Trans } from "@lingui/react/macro";
 import type { ToolContent } from "@choros/chat/protocol";
 import { Badge } from "@choros/ui/badge";
+import { Trans } from "@lingui/react/macro";
 
 const MAX_OUTPUT_CHARS = 20_000;
 

@@ -22,8 +22,8 @@ export function ActivationNudge2({
 			<Body style={{ margin: 0, backgroundColor: "#FFFFFF" }}>
 				<Text style={paragraph}>Hi {userName},</Text>
 				<Text style={paragraph}>
-					I&apos;m Kiet, one of the founders of Choros. I saw you signed up
-					last week but it doesn&apos;t look like you&apos;ve gotten a workspace
+					I&apos;m Kiet, one of the founders of Choros. I saw you signed up last
+					week but it doesn&apos;t look like you&apos;ve gotten a workspace
 					running yet.
 				</Text>
 				<Text style={paragraph}>

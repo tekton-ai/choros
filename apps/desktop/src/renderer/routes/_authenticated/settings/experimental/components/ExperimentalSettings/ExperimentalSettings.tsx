@@ -1,7 +1,7 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import { Label } from "@choros/ui/label";
 import { Switch } from "@choros/ui/switch";
+import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	useIsV1FlipLocked,
 	useIsV2CloudEnabled,

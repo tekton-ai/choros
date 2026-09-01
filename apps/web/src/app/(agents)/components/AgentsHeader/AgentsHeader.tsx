@@ -1,8 +1,5 @@
 "use client";
 
-import type { MessageDescriptor } from "@lingui/core";
-import { msg } from "@lingui/core/macro";
-import { Trans, useLingui } from "@lingui/react/macro";
 import { authClient } from "@choros/auth/client";
 import { i18n } from "@choros/i18n";
 import { isPaidPlan } from "@choros/shared/billing";
@@ -22,6 +19,9 @@ import {
 } from "@choros/ui/dropdown-menu";
 import { useIsMobile } from "@choros/ui/hooks/use-mobile";
 import { toast } from "@choros/ui/sonner";
+import type { MessageDescriptor } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Check, ChevronDown, LogOut } from "lucide-react";
 import Link from "next/link";

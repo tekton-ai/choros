@@ -1,6 +1,5 @@
 "use client";
 
-import { Trans } from "@lingui/react/macro";
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -11,6 +10,7 @@ import {
 	navigationMenuTriggerStyle,
 } from "@choros/ui/navigation-menu";
 import { cn } from "@choros/ui/utils";
+import { Trans } from "@lingui/react/macro";
 import Link from "next/link";
 import { useState } from "react";
 import {

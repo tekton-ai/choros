@@ -1,4 +1,3 @@
-import { useLingui } from "@lingui/react/macro";
 import type {
 	AgentPresetPatch,
 	ResolvedAgentConfig,
@@ -6,6 +5,7 @@ import type {
 import { Card, CardContent } from "@choros/ui/card";
 import { Collapsible, CollapsibleContent } from "@choros/ui/collapsible";
 import { toast } from "@choros/ui/sonner";
+import { useLingui } from "@lingui/react/macro";
 import { useMemo, useState } from "react";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import type { AgentCardProps, AgentEditableField } from "./agent-card.types";

@@ -1,9 +1,9 @@
-import type { MessageDescriptor } from "@lingui/core";
-import { msg } from "@lingui/core/macro";
-import { Plural, Trans, useLingui } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { Input } from "@choros/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@choros/ui/tabs";
+import type { MessageDescriptor } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
+import { Plural, Trans, useLingui } from "@lingui/react/macro";
 import { Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { LuArrowLeft, LuX } from "react-icons/lu";

@@ -1,5 +1,5 @@
-import { useLingui } from "@lingui/react/macro";
 import { COMPANY, FEATURE_FLAGS } from "@choros/shared/constants";
+import { useLingui } from "@lingui/react/macro";
 import { useFeatureFlagEnabled } from "posthog-js/react";
 import { track } from "renderer/lib/analytics";
 import { electronTrpc } from "renderer/lib/electron-trpc";

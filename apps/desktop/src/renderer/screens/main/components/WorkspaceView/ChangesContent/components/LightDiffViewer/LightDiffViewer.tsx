@@ -1,5 +1,5 @@
-import { MultiFileDiff } from "@pierre/diffs/react";
 import { cn } from "@choros/ui/utils";
+import { MultiFileDiff } from "@pierre/diffs/react";
 import type { CSSProperties } from "react";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import {

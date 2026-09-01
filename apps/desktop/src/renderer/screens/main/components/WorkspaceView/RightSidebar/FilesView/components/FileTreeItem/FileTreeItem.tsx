@@ -1,4 +1,3 @@
-import type { ItemInstance } from "@headless-tree/core";
 import {
 	ContextMenu,
 	ContextMenuContent,
@@ -7,6 +6,7 @@ import {
 	ContextMenuTrigger,
 } from "@choros/ui/context-menu";
 import { cn } from "@choros/ui/utils";
+import type { ItemInstance } from "@headless-tree/core";
 import {
 	LuChevronDown,
 	LuChevronRight,

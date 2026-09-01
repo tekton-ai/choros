@@ -1,6 +1,6 @@
-import { Trans } from "@lingui/react/macro";
 import type { SelectUser } from "@choros/db/schema";
 import { Avatar } from "@choros/ui/atoms/Avatar";
+import { Trans } from "@lingui/react/macro";
 import type { ReactNode } from "react";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 

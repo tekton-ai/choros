@@ -1,5 +1,5 @@
-import { WebClient } from "@slack/web-api";
 import type { SlackConfig } from "@choros/db/schema";
+import { WebClient } from "@slack/web-api";
 
 import { env } from "@/env";
 import { posthog } from "@/lib/analytics";

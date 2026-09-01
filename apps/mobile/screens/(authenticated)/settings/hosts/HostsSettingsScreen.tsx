@@ -1,5 +1,5 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { COMPANY } from "@choros/shared/constants";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useMemo } from "react";
 import { ScrollView, View } from "react-native";
 import { Button } from "@/components/ui/button";
@@ -48,8 +48,8 @@ export function HostsSettingsScreen() {
 						style={{ color: theme.mutedForeground }}
 					>
 						<Trans id="mobile.hostsSettings.emptyDescription">
-							In the Choros desktop app, open Settings → Remote Access and
-							turn on “Allow remote access to this device via relay”.
+							In the Choros desktop app, open Settings → Remote Access and turn
+							on “Allow remote access to this device via relay”.
 						</Trans>
 					</Text>
 					<Button

@@ -1,7 +1,5 @@
 "use client";
 
-import type { MessageDescriptor } from "@lingui/core";
-import { msg } from "@lingui/core/macro";
 import { i18n } from "@choros/i18n";
 import {
 	Collapsible,
@@ -21,6 +19,8 @@ import {
 	SidebarMenuItem,
 	SidebarRail,
 } from "@choros/ui/sidebar";
+import type { MessageDescriptor } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
 import { usePathname } from "next/navigation";
 import { LuChevronRight, LuHouse } from "react-icons/lu";
 

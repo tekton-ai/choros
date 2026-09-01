@@ -1,4 +1,3 @@
-import { Trans } from "@lingui/react/macro";
 import type { SelectTaskStatus } from "@choros/db/schema";
 import {
 	DropdownMenu,
@@ -6,6 +5,7 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from "@choros/ui/dropdown-menu";
+import { Trans } from "@lingui/react/macro";
 import { useMemo, useState } from "react";
 import { HiChevronDown } from "react-icons/hi2";
 import {

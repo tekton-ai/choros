@@ -1,5 +1,3 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import { Card, CardContent, CardHeader } from "@choros/ui/card";
 import {
@@ -13,6 +11,8 @@ import {
 } from "@choros/ui/form";
 import { Input } from "@choros/ui/input";
 import { toast } from "@choros/ui/sonner";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";

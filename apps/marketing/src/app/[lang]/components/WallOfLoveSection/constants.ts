@@ -104,8 +104,7 @@ export const TESTIMONIALS: Testimonial[] = [
 	},
 	{
 		id: "11",
-		content:
-			"choros became my default tools now so keep the great work folks",
+		content: "choros became my default tools now so keep the great work folks",
 		author: "Vlad Arbatov",
 		handle: "@vladzima",
 		role: "Founding Engineer at Loyal",

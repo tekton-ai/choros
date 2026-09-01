@@ -1,6 +1,6 @@
-import { Trans } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import { cn } from "@choros/ui/utils";
+import { Trans } from "@lingui/react/macro";
 import { LuRefreshCw } from "react-icons/lu";
 
 interface WorkItemDetailStateProps {

@@ -1,7 +1,7 @@
 "use client";
 
-import { Trans, useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@choros/i18n/errors";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useState } from "react";
 import {
 	AlertDialog,

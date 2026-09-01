@@ -254,7 +254,7 @@ export function getOpenCodePluginContent(notifyPath: string): string {
 }
 
 /**
- * Wrapper for Claude: forwards SUPERSET_* env vars into the agent process
+ * Wrapper for Claude: forwards CHOROS_* env vars into the agent process
  * tree and follows the Usage-tab account switch at launch time. Hooks live
  * in ~/.claude/settings.json (createClaudeSettingsJson).
  */

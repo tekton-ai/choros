@@ -1,6 +1,6 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { cn } from "@choros/ui/lib/utils";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { Trans, useLingui } from "@lingui/react/macro";
 import type { ResourceMetricsSnapshot } from "../../types";
 import { formatCpu, formatMemory, formatPercent } from "../../utils/formatters";
 import { getTrackedHostMemorySeverity } from "../../utils/resourceSeverity";
@@ -105,8 +105,7 @@ export function ResourceMetricsSummary({
 				</TooltipTrigger>
 				<TooltipContent side="bottom" sideOffset={6}>
 					<Trans id="dashboard.topBar.resourceSummary.systemRamShare">
-						Choros uses {formatPercent(trackedMemorySharePercent)} of system
-						RAM
+						Choros uses {formatPercent(trackedMemorySharePercent)} of system RAM
 					</Trans>
 				</TooltipContent>
 			</Tooltip>

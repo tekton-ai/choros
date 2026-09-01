@@ -110,7 +110,7 @@ describe("stripTerminalRuntimeEnv", () => {
 		VITE_API_URL: "http://localhost:3000",
 		NEXT_PUBLIC_KEY: "pk_123",
 		TURBO_TEAM: "my-team",
-		// Legacy SUPERSET_* vars that should be stripped
+		// Legacy CHOROS_* vars that should be stripped
 		CHOROS_PANE_ID: "pane-1",
 		CHOROS_TAB_ID: "tab-1",
 		CHOROS_PORT: "51741",

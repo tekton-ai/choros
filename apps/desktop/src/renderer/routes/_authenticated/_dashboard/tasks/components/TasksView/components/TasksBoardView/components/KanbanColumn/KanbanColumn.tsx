@@ -1,10 +1,10 @@
+import type { SelectTaskStatus } from "@choros/db/schema";
+import { cn } from "@choros/ui/utils";
 import { useDroppable } from "@dnd-kit/core";
 import {
 	SortableContext,
 	verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import type { SelectTaskStatus } from "@choros/db/schema";
-import { cn } from "@choros/ui/utils";
 import type { UIEvent } from "react";
 import {
 	StatusIcon,

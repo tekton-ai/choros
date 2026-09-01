@@ -1,4 +1,3 @@
-import { Trans } from "@lingui/react/macro";
 import type { HostAgentConfig } from "@choros/host-service/settings";
 import { Button } from "@choros/ui/button";
 import {
@@ -8,6 +7,7 @@ import {
 	ContextMenuSeparator,
 	ContextMenuTrigger,
 } from "@choros/ui/context-menu";
+import { Trans } from "@lingui/react/macro";
 import { useEffect, useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { HiMiniCommandLine } from "react-icons/hi2";

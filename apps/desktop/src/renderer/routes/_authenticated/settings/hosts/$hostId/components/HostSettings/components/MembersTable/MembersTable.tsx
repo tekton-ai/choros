@@ -1,4 +1,3 @@
-import { Trans } from "@lingui/react/macro";
 import {
 	Table,
 	TableBody,
@@ -7,6 +6,7 @@ import {
 	TableHeader,
 	TableRow,
 } from "@choros/ui/table";
+import { Trans } from "@lingui/react/macro";
 import { MemberRow, type MemberRowData } from "./components/MemberRow";
 
 interface MembersTableProps {

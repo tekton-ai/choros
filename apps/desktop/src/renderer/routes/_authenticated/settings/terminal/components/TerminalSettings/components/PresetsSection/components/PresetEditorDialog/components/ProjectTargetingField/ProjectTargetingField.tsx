@@ -1,4 +1,3 @@
-import { Plural, Trans, useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import {
 	Command,
@@ -10,6 +9,7 @@ import {
 } from "@choros/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
 import { cn } from "@choros/ui/utils";
+import { Plural, Trans, useLingui } from "@lingui/react/macro";
 import { CheckIcon, ChevronsUpDownIcon } from "lucide-react";
 import { useMemo, useState } from "react";
 import { normalizePresetProjectIds } from "shared/preset-project-targeting";

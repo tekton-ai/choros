@@ -6,9 +6,7 @@
 		"paths": {
 			"@/*": ["./*"],
 			"@choros/alert-prompt": ["./modules/alert-prompt/src/index.ts"],
-			"@choros/attachments-sheet": [
-				"./modules/attachments-sheet/src/index.ts"
-			],
+			"@choros/attachments-sheet": ["./modules/attachments-sheet/src/index.ts"],
 			"@choros/composer": ["./modules/composer/src/index.tsx"]
 		}
 	},

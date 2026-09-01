@@ -22,13 +22,7 @@ export default function TaskDeepLinkPage() {
 	return (
 		<div className="flex min-h-screen flex-col items-center justify-center bg-background p-4">
 			<div className="flex flex-col items-center gap-6">
-				<Image
-					src="/title.svg"
-					alt="Choros"
-					width={280}
-					height={86}
-					priority
-				/>
+				<Image src="/title.svg" alt="Choros" width={280} height={86} priority />
 				<p className="text-xl text-muted-foreground">
 					<Trans id="web.taskDeepLink.redirecting">
 						Redirecting to desktop app...

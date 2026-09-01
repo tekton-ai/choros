@@ -77,10 +77,8 @@ function geminiHooksSpec(
 		// legacy flat `command` or inside its nested hooks — Choros never
 		// shares a definition with user hooks in Gemini's config.
 		cleanEntry: (definition) =>
-			isChorosManagedHookCommand(
-				definition.command,
-				GEMINI_HOOK_SCRIPT_NAME,
-			) || definition.hooks?.some((hook) => isManagedCommand(hook.command))
+			isChorosManagedHookCommand(definition.command, GEMINI_HOOK_SCRIPT_NAME) ||
+			definition.hooks?.some((hook) => isManagedCommand(hook.command))
 				? null
 				: definition,
 		dropEmptyContainerOnRemove: true,

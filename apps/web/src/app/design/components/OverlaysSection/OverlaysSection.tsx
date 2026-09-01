@@ -1,6 +1,5 @@
 "use client";
 
-import { Trans } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import {
 	AlertDialog,
@@ -62,6 +61,7 @@ import {
 	SheetTrigger,
 } from "@choros/ui/sheet";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { Trans } from "@lingui/react/macro";
 import { CalendarIcon, RocketIcon, SettingsIcon, UserIcon } from "lucide-react";
 
 import { ComponentCard } from "../ComponentCard";
@@ -286,9 +286,7 @@ export function OverlaysSection() {
 							<RocketIcon className="mt-1 size-4 shrink-0" />
 							<div className="space-y-1">
 								<p className="text-sm font-medium">
-									<Trans id="web.design.overlaysSection.choros2">
-										Choros
-									</Trans>
+									<Trans id="web.design.overlaysSection.choros2">Choros</Trans>
 								</p>
 								<p className="text-sm text-muted-foreground">
 									<Trans id="web.design.overlaysSection.run10ParallelCodingAgents">

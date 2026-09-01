@@ -1,9 +1,9 @@
-import { Trans } from "@lingui/react/macro";
 import {
 	DropdownMenuCheckboxItem,
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 } from "@choros/ui/dropdown-menu";
+import { Trans } from "@lingui/react/macro";
 import { BsTerminalPlus } from "react-icons/bs";
 import { TbMessageCirclePlus, TbWorld } from "react-icons/tb";
 import { HotkeyMenuShortcut } from "renderer/components/HotkeyMenuShortcut";

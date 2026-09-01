@@ -1,12 +1,12 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import {
+	CHOROS_MANAGED_SKILLS,
 	getMatchingExternalServers,
 	type PluginCatalogEntry,
-	CHOROS_MANAGED_SKILLS,
 } from "@choros/shared/plugins";
 import { Badge } from "@choros/ui/badge";
 import { Button } from "@choros/ui/button";
 import { Switch } from "@choros/ui/switch";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useNavigate } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { LuArrowLeft, LuTrash2 } from "react-icons/lu";

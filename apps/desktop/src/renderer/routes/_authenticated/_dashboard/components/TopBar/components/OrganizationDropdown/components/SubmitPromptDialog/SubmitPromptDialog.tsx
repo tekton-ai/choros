@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import {
 	Dialog,
@@ -12,6 +11,7 @@ import { Input } from "@choros/ui/input";
 import { Label } from "@choros/ui/label";
 import { toast } from "@choros/ui/sonner";
 import { Textarea } from "@choros/ui/textarea";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useState } from "react";
 import { apiTrpcClient } from "renderer/lib/api-trpc-client";
 
@@ -87,8 +87,8 @@ export function SubmitPromptDialog({
 					</DialogTitle>
 					<DialogDescription>
 						<Trans id="dashboard.topBar.submitPromptDialog.description">
-							Prompt a coding agent to build what you want to see in Choros.
-							If we like your prompt, we'll run it and merge the result.
+							Prompt a coding agent to build what you want to see in Choros. If
+							we like your prompt, we'll run it and merge the result.
 						</Trans>
 					</DialogDescription>
 				</DialogHeader>

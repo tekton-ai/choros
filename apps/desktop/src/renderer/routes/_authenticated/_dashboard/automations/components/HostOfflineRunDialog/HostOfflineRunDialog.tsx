@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import {
 	Dialog,
@@ -9,6 +8,7 @@ import {
 	DialogHeader,
 	DialogTitle,
 } from "@choros/ui/dialog";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { LuTriangleAlert } from "react-icons/lu";
@@ -64,9 +64,9 @@ export function HostOfflineRunDialog({
 								<p>
 									<Trans id="dashboard.automations.hostOfflineDialog.localBody">
 										The run was skipped because this device isn't connected to
-										the Choros relay. Automations go through the relay even
-										when they run on this device. Enable relay access, then run
-										it again.
+										the Choros relay. Automations go through the relay even when
+										they run on this device. Enable relay access, then run it
+										again.
 									</Trans>
 								</p>
 							) : (
@@ -80,9 +80,9 @@ export function HostOfflineRunDialog({
 													message: "the target host",
 												})}
 										</span>{" "}
-										isn't connected to the Choros relay. Make sure relay
-										access is on in Settings &gt; Remote Access on that device,
-										then run it again.
+										isn't connected to the Choros relay. Make sure relay access
+										is on in Settings &gt; Remote Access on that device, then
+										run it again.
 									</Trans>
 								</p>
 							)}

@@ -2,11 +2,11 @@ import { cpSync, existsSync, readFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";
 import {
+	CHOROS_DIR_NAME,
 	CONFIG_FILE_NAME,
 	LOCAL_CONFIG_FILE_NAME,
 	PROJECT_CHOROS_DIR_NAME,
 	PROJECTS_DIR_NAME,
-	CHOROS_DIR_NAME,
 } from "shared/constants";
 import type { LocalSetupConfig, SetupConfig } from "shared/types";
 

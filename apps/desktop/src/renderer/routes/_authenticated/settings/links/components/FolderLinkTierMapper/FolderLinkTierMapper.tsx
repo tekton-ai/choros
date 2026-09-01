@@ -1,4 +1,3 @@
-import { Trans } from "@lingui/react/macro";
 import { Label } from "@choros/ui/label";
 import {
 	Select,
@@ -7,6 +6,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@choros/ui/select";
+import { Trans } from "@lingui/react/macro";
 import { useCallback } from "react";
 import {
 	type FolderLinkAction,

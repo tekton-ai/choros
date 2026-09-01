@@ -1,8 +1,5 @@
 import { db } from "@choros/db/client";
-import {
-	githubInstallations,
-	integrationConnections,
-} from "@choros/db/schema";
+import { githubInstallations, integrationConnections } from "@choros/db/schema";
 import { and, eq, isNull } from "drizzle-orm";
 import { z } from "zod";
 import { protectedProcedure } from "../../trpc";

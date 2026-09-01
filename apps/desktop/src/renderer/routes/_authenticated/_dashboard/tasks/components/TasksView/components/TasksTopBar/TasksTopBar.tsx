@@ -1,7 +1,7 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@choros/ui/tabs";
 import { cn } from "@choros/ui/utils";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useState } from "react";
 import { GoIssueOpened } from "react-icons/go";
 import {

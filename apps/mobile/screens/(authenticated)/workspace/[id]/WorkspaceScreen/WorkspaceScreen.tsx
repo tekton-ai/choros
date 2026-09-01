@@ -1,6 +1,3 @@
-import type { MessageDescriptor } from "@lingui/core";
-import { msg } from "@lingui/core/macro";
-import { Trans, useLingui } from "@lingui/react/macro";
 import type {
 	ComposerHandle,
 	ComposerSessionAction,
@@ -8,6 +5,9 @@ import type {
 } from "@choros/composer";
 import { i18n } from "@choros/i18n";
 import { errorMessage } from "@choros/i18n/errors";
+import type { MessageDescriptor } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useQueryClient } from "@tanstack/react-query";
 import * as Clipboard from "expo-clipboard";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";

@@ -10,8 +10,7 @@ import path from "node:path";
  */
 export function resolveChorosHomeDir(): string {
 	return (
-		process.env.CHOROS_HOME_DIR?.trim() ||
-		path.join(os.homedir(), ".choros")
+		process.env.CHOROS_HOME_DIR?.trim() || path.join(os.homedir(), ".choros")
 	);
 }
 

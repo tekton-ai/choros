@@ -1,5 +1,5 @@
-import { mermaid } from "@streamdown/mermaid";
 import { Avatar, AvatarFallback, AvatarImage } from "@choros/ui/avatar";
+import { mermaid } from "@streamdown/mermaid";
 import {
 	type ReactNode,
 	useCallback,

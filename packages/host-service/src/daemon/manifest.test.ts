@@ -120,12 +120,7 @@ describe("assertIsolatedDaemonNamespaceInTests", () => {
 		expect(() =>
 			assertIsolatedDaemonNamespaceInTests({
 				NODE_ENV: "test",
-				CHOROS_HOME_DIR: path.join(
-					os.homedir(),
-					"somewhere",
-					"..",
-					".choros",
-				),
+				CHOROS_HOME_DIR: path.join(os.homedir(), "somewhere", "..", ".choros"),
 			}),
 		).toThrow(/isolated temp dir/);
 	});

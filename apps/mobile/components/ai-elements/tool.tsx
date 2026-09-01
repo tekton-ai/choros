@@ -1,6 +1,6 @@
+import { i18n } from "@choros/i18n";
 import { Trans } from "@lingui/react/macro";
 import { useControllableState } from "@rn-primitives/hooks";
-import { i18n } from "@choros/i18n";
 import { ChevronDownIcon, WrenchIcon, XIcon } from "lucide-react-native";
 import type { ReactNode } from "react";
 import { createContext, isValidElement, useContext, useMemo } from "react";

@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { formatRelativeTime } from "@choros/i18n/format";
 import { Button } from "@choros/ui/button";
 import {
@@ -10,6 +9,7 @@ import {
 import { DeletePageDialog } from "@choros/ui/page-comments";
 import { toast } from "@choros/ui/sonner";
 import { cn } from "@choros/ui/utils";
+import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	Globe,
 	Link2,

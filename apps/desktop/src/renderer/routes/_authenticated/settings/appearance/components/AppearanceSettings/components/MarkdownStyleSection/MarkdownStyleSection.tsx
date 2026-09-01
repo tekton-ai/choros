@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	Select,
 	SelectContent,
@@ -6,6 +5,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@choros/ui/select";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { HighlightText } from "renderer/routes/_authenticated/settings/components/HighlightText";
 import {
 	type MarkdownStyle,

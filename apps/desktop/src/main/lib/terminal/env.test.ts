@@ -464,8 +464,8 @@ describe("env", () => {
 			});
 		});
 
-		describe("includes SUPERSET_* prefix vars", () => {
-			it("should include SUPERSET_* vars (our metadata)", () => {
+		describe("includes CHOROS_* prefix vars", () => {
+			it("should include CHOROS_* vars (our metadata)", () => {
 				const env = {
 					CHOROS_PANE_ID: "pane-1",
 					CHOROS_TAB_ID: "tab-1",

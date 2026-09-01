@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	isPluginExternallyConfigured,
 	PLUGIN_CATALOG,
@@ -10,6 +9,7 @@ import { Input } from "@choros/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@choros/ui/tabs";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { cn } from "@choros/ui/utils";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useNavigate } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { LuSearch, LuSettings2 } from "react-icons/lu";

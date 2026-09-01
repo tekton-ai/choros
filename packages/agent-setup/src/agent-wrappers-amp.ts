@@ -12,7 +12,7 @@ import { getTemplatePath } from "./config";
 /**
  * Creates the Amp wrapper that preserves Choros's terminal environment.
  * Amp lifecycle events are registered through a system plugin; the wrapper
- * exists to forward SUPERSET_* env vars into the plugin runtime.
+ * exists to forward CHOROS_* env vars into the plugin runtime.
  */
 export function createAmpWrapper(): void {
 	const script = buildWrapperScript("amp", `exec "$REAL_BIN" "$@"`, {

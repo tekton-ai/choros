@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@choros/i18n/errors";
 import { Button } from "@choros/ui/button";
 import {
@@ -12,6 +11,7 @@ import {
 import { useFramePointerDown } from "@choros/ui/page-comments";
 import { toast } from "@choros/ui/sonner";
 import { workspaceTrpc } from "@choros/workspace-client";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { formatDistanceToNowStrict } from "date-fns";
 import { Bot, Check, EyeOff } from "lucide-react";
 import { useCallback, useState } from "react";

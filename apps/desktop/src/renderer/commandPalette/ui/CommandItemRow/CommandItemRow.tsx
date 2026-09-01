@@ -1,5 +1,5 @@
-import { useLingui } from "@lingui/react/macro";
 import { CommandItem, CommandShortcut } from "@choros/ui/command";
+import { useLingui } from "@lingui/react/macro";
 import { useHotkeyDisplay } from "renderer/hotkeys/hooks/useHotkeyDisplay";
 import type { Command } from "../../core/types";
 

@@ -1,5 +1,5 @@
-import { msg } from "@lingui/core/macro";
 import { i18n } from "@choros/i18n";
+import { msg } from "@lingui/core/macro";
 import { SiGooglecalendar } from "react-icons/si";
 import { ScopeChip } from "../../TriggerSentence/components/ScopeChip";
 import { SelectChip } from "../../TriggerSentence/components/SelectChip";

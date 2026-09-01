@@ -1,5 +1,5 @@
-import { useLingui } from "@lingui/react/macro";
 import { cn } from "@choros/ui/lib/utils";
+import { useLingui } from "@lingui/react/macro";
 import type { UsageSeverity } from "../../types";
 
 interface UsageSeverityBadgeProps {

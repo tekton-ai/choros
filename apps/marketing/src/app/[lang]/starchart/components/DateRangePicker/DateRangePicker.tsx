@@ -1,11 +1,11 @@
 "use client";
 
-import type { MessageDescriptor } from "@lingui/core";
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import { Calendar } from "@choros/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
+import type { MessageDescriptor } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react/macro";
 import { CalendarIcon } from "lucide-react";
 import type { DateRange } from "react-day-picker";
 import { formatRangeLabel } from "@/app/[lang]/utils/formatRangeLabel";

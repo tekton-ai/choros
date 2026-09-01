@@ -1,6 +1,6 @@
+import { workspaceTrpc } from "@choros/workspace-client";
 import type { SelectionSide } from "@pierre/diffs";
 import type { DiffLineAnnotation } from "@pierre/diffs/react";
-import { workspaceTrpc } from "@choros/workspace-client";
 import { useMemo } from "react";
 import { useSettings } from "renderer/stores/settings";
 

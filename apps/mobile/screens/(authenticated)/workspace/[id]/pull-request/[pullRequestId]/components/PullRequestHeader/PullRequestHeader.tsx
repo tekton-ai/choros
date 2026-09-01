@@ -1,5 +1,5 @@
-import { Plural, useLingui } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
+import { Plural, useLingui } from "@lingui/react/macro";
 import { Pressable, View } from "react-native";
 import { Text } from "@/components/ui/text";
 import { cn } from "@/lib/utils";

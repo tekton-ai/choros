@@ -1,6 +1,6 @@
-import { Trans } from "@lingui/react/macro";
 import { Badge } from "@choros/ui/badge";
 import { ScrollArea } from "@choros/ui/scroll-area";
+import { Trans } from "@lingui/react/macro";
 import { useIsV2CloudEnabled } from "renderer/hooks/useIsV2CloudEnabled";
 import type { TaskWithStatus } from "../../../components/TasksView/hooks/useTasksTable";
 import { AssigneeProperty } from "./components/AssigneeProperty";

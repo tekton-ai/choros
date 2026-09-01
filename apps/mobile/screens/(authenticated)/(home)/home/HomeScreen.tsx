@@ -1,6 +1,6 @@
+import { i18n } from "@choros/i18n";
 import { LegendList } from "@legendapp/list/react-native";
 import { useLingui } from "@lingui/react/macro";
-import { i18n } from "@choros/i18n";
 import { useQueryClient } from "@tanstack/react-query";
 import { isAfter } from "date-fns";
 import * as Haptics from "expo-haptics";

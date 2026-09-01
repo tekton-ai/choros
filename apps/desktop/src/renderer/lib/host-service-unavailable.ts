@@ -1,7 +1,7 @@
-import type { MessageDescriptor } from "@lingui/core";
-import { msg } from "@lingui/core/macro";
 import { i18n } from "@choros/i18n";
 import { toast } from "@choros/ui/sonner";
+import type { MessageDescriptor } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
 
 export type HostServiceAvailabilityStatus =
 	| "starting"

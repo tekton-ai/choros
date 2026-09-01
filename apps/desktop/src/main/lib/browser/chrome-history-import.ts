@@ -77,9 +77,7 @@ export async function readHistoryFromProfile(
 	const source = path.join(profileDir, "History");
 	if (!existsSync(source)) return [];
 
-	const tempDir = mkdtempSync(
-		path.join(os.tmpdir(), "choros-chrome-import-"),
-	);
+	const tempDir = mkdtempSync(path.join(os.tmpdir(), "choros-chrome-import-"));
 	const tempDb = path.join(tempDir, "History");
 
 	try {

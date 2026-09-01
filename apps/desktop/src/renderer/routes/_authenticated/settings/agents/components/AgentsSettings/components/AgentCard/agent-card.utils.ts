@@ -1,4 +1,3 @@
-import { msg } from "@lingui/core/macro";
 import { i18n } from "@choros/i18n";
 import {
 	type AgentPresetPatch,
@@ -7,6 +6,7 @@ import {
 	renderTaskPromptTemplate,
 	validateTaskPromptTemplate,
 } from "@choros/shared/agent-settings";
+import { msg } from "@lingui/core/macro";
 import type { AgentEditableField } from "./agent-card.types";
 
 const SAMPLE_TASK = {

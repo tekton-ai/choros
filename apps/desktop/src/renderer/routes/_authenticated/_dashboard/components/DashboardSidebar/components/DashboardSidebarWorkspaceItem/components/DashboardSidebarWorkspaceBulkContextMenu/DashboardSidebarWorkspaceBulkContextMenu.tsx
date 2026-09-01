@@ -1,4 +1,3 @@
-import { Plural, Trans } from "@lingui/react/macro";
 import {
 	ContextMenu,
 	ContextMenuContent,
@@ -9,6 +8,7 @@ import {
 	ContextMenuSubTrigger,
 	ContextMenuTrigger,
 } from "@choros/ui/context-menu";
+import { Plural, Trans } from "@lingui/react/macro";
 import type { ReactNode } from "react";
 import {
 	LuArrowRightLeft,

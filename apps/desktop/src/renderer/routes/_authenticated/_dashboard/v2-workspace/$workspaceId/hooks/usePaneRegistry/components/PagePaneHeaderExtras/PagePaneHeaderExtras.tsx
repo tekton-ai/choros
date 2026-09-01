@@ -1,9 +1,6 @@
-import { useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
-import {
-	CommentModeButton,
-	PageSharePopover,
-} from "@choros/ui/page-comments";
+import { CommentModeButton, PageSharePopover } from "@choros/ui/page-comments";
+import { useLingui } from "@lingui/react/macro";
 import { Share2 } from "lucide-react";
 import { usePageHeaderData } from "renderer/routes/_authenticated/_dashboard/hooks/usePageHeaderData";
 import type { PagePaneData } from "../../../../types";

@@ -5,7 +5,6 @@
  * The coordinator polls health.check to know when it's ready.
  */
 
-import { serve } from "@hono/node-server";
 import {
 	captureFatalStartupError,
 	createApp,
@@ -23,6 +22,7 @@ import {
 	resolveTerminalBaseEnv,
 } from "@choros/host-service/terminal-env";
 import { connectRelay } from "@choros/host-service/tunnel";
+import { serve } from "@hono/node-server";
 import { loadToken } from "lib/trpc/routers/auth/utils/auth-functions";
 import {
 	type HostServiceManifest,

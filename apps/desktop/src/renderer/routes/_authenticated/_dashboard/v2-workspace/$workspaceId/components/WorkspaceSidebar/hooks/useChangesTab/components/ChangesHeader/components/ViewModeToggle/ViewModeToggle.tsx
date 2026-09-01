@@ -1,6 +1,6 @@
-import { useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { useLingui } from "@lingui/react/macro";
 import { Folder, ListTree } from "lucide-react";
 import type { ChangesViewMode } from "renderer/routes/_authenticated/providers/CollectionsProvider/dashboardSidebarLocal/schema";
 

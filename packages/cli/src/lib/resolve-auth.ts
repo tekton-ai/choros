@@ -2,9 +2,9 @@ import { CLIError } from "@choros/cli-framework";
 import { type ApiClient, createApiClient } from "./api-client";
 import { refreshAccessToken } from "./auth";
 import {
+	type ChorosConfig,
 	readConfig,
 	resolveOrganizationId,
-	type ChorosConfig,
 	writeConfig,
 } from "./config";
 

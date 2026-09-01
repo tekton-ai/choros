@@ -1,6 +1,6 @@
-import { Trans } from "@lingui/react/macro";
 import type { AppRouter } from "@choros/host-service";
 import { Spinner } from "@choros/ui/spinner";
+import { Trans } from "@lingui/react/macro";
 import type { inferRouterOutputs } from "@trpc/server";
 import { memo, useCallback, useState } from "react";
 import type {

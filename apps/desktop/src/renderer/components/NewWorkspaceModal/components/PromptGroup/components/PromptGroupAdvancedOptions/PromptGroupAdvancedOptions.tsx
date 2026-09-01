@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import {
 	Collapsible,
@@ -16,6 +15,7 @@ import { Input } from "@choros/ui/input";
 import { Label } from "@choros/ui/label";
 import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
 import { Switch } from "@choros/ui/switch";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { GoGitBranch } from "react-icons/go";
 import {
 	HiCheck,

@@ -1,5 +1,5 @@
-import * as p from "@clack/prompts";
 import { CLIError, string } from "@choros/cli-framework";
+import * as p from "@clack/prompts";
 import { render } from "ink";
 import { createElement } from "react";
 import { type ApiClient, createApiClient } from "../../../lib/api-client";

@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { formatDate as formatLocaleDate } from "@choros/i18n/format";
 import {
 	canRemoveMember,
@@ -16,6 +15,7 @@ import {
 	TableHeader,
 	TableRow,
 } from "@choros/ui/table";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useMemo } from "react";
 import { useActiveOrganizationId } from "renderer/hooks/useActiveOrganizationId";
 import { authClient } from "renderer/lib/auth-client";

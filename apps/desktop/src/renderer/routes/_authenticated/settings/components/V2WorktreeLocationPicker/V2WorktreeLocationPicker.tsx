@@ -1,6 +1,6 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useState } from "react";
 import { LuFolderOpen, LuRotateCcw } from "react-icons/lu";
 import { RemotePathPicker } from "renderer/components/RemotePathPicker";

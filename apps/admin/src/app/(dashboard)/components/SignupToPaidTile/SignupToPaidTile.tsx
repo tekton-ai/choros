@@ -1,12 +1,12 @@
 "use client";
 
-import { useLingui } from "@lingui/react/macro";
 import {
 	type ChartConfig,
 	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
 } from "@choros/ui/chart";
+import { useLingui } from "@lingui/react/macro";
 import { useQuery } from "@tanstack/react-query";
 import { Bar, ComposedChart, Line, XAxis, YAxis } from "recharts";
 

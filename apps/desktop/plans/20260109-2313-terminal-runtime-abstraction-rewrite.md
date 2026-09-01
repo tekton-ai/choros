@@ -150,7 +150,7 @@ The cloud workspace plan (`docs/CLOUD_WORKSPACE_PLAN.md`) makes a few things exp
 ### What’s local-only today (current coupling)
 
 1. **Terminal IO keys by `paneId` (client identity):** today `terminal.createOrAttach`, `terminal.write`, and `terminal.stream` treat `paneId` as the stable session key (`apps/desktop/src/lib/trpc/routers/terminal/terminal.ts`). This rewrite moves the boundary to `{ backendSessionId, clientId, attachmentId }` (via `streamV2`) so multi-device/cloud doesn’t require reworking every callsite later.
-2. **Agent lifecycle events assume localhost hooks:** terminal env injects `SUPERSET_*` and `CHOROS_PORT` (`apps/desktop/src/main/lib/terminal/env.ts`), and the notify hook script `curl`s `http://127.0.0.1:$CHOROS_PORT/hook/complete` (`apps/desktop/src/main/lib/agent-setup/templates/notify-hook.template.sh`). This cannot work from a remote runner.
+2. **Agent lifecycle events assume localhost hooks:** terminal env injects `CHOROS_*` and `CHOROS_PORT` (`apps/desktop/src/main/lib/terminal/env.ts`), and the notify hook script `curl`s `http://127.0.0.1:$CHOROS_PORT/hook/complete` (`apps/desktop/src/main/lib/agent-setup/templates/notify-hook.template.sh`). This cannot work from a remote runner.
 3. **“Changes” assumes local worktree filesystem:** git status/diff/staging/commit/push/pull operate against a local `worktreePath` using `simple-git`, and file reads/writes are guarded by secure path validation (`apps/desktop/src/lib/trpc/routers/changes/*`).
 
 ### How this plan enables remote terminals (what’s already aligned)

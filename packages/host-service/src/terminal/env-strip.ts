@@ -46,7 +46,7 @@ const CHOROS_KEEP_KEYS = new Set([
  * Auth secrets that must never leak from host-service into spawned PTYs.
  * Parent CLI/desktop may have these in process.env; they pass through to
  * host-service but stop here. CHOROS_REFRESH_TOKEN would already be caught
- * by the SUPERSET_ prefix rule, but listing it explicitly keeps the
+ * by the CHOROS_ prefix rule, but listing it explicitly keeps the
  * protection load-bearing if CHOROS_KEEP_KEYS ever changes.
  */
 const SENSITIVE_AUTH_KEYS = new Set([
@@ -64,7 +64,7 @@ export function stripTerminalRuntimeEnv(
 		if (HOST_SERVICE_RUNTIME_KEYS.has(key)) continue;
 		if (NODE_APP_KEYS.has(key)) continue;
 		if (STRIP_PREFIXES.some((prefix) => key.startsWith(prefix))) continue;
-		if (key.startsWith("SUPERSET_") && !CHOROS_KEEP_KEYS.has(key)) continue;
+		if (key.startsWith("CHOROS_") && !CHOROS_KEEP_KEYS.has(key)) continue;
 
 		result[key] = value;
 	}

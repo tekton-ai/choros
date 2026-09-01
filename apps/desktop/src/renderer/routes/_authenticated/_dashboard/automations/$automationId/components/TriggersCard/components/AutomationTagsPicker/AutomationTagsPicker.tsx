@@ -1,4 +1,3 @@
-import { msg } from "@lingui/core/macro";
 import { i18n } from "@choros/i18n";
 import {
 	normalizeWorkspaceTag,
@@ -12,6 +11,7 @@ import {
 	DropdownMenuTrigger,
 } from "@choros/ui/dropdown-menu";
 import { Input } from "@choros/ui/input";
+import { msg } from "@lingui/core/macro";
 import { useMemo, useState } from "react";
 import { useHostWorkspaces } from "renderer/routes/_authenticated/providers/HostWorkspacesProvider";
 import { ChipButton } from "../../../../../components/TriggerSentence/components/ChipButton";

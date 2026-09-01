@@ -11,9 +11,9 @@ export type {
 	ShellLaunchParams,
 } from "./shell-launch.ts";
 export {
+	getChorosShellPaths,
 	getShellBootstrapEnv,
 	getShellLaunchArgs,
-	getChorosShellPaths,
 	resolveLaunchShell,
 	shellLaunchExpectsReadyMarker,
 } from "./shell-launch.ts";

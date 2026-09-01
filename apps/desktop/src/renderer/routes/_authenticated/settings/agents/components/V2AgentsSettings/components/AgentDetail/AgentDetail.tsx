@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import type { HostAgentConfig } from "@choros/host-service/settings";
 import { errorMessage } from "@choros/i18n/errors";
 import { AGENT_TYPES } from "@choros/shared/agent-command";
@@ -20,6 +19,7 @@ import { Input } from "@choros/ui/input";
 import { toast } from "@choros/ui/sonner";
 import { Switch } from "@choros/ui/switch";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useMutation } from "@tanstack/react-query";
 import { Info, RotateCcw, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";

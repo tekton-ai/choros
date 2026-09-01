@@ -1,5 +1,5 @@
-import { Plural, Trans } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
+import { Plural, Trans } from "@lingui/react/macro";
 import {
 	ChevronDownIcon,
 	ExternalLinkIcon,
