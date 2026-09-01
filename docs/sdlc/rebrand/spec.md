@@ -2,8 +2,9 @@
 artifact: spec
 feature: rebrand
 author: Claude (opus-4.7-1m via omp harness), on behalf of XXLOKI
-status: draft
+status: accepted
 created: 2026-09-01
+accepted: 2026-09-01
 revised: 2026-09-01
 intent: ./intent.md
 ---
