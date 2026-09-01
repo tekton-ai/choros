@@ -18514,7 +18514,7 @@ msgstr "Kuruluş"
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/SettingsScreen.tsx
 msgid "mobile.settings.row.rateChoros"
-msgstr ""
+msgstr "Rate Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/mobile/screens/(authenticated)/settings/SettingsScreen.tsx
