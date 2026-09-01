@@ -1,8 +1,8 @@
 # Choros Monorepo
 
-Choros is a personal fork of the Superset agent-first development platform, tekton-ai/choros. Under the hood the fork uses upstream conventions — this repo still opens as a workspace under the parent Superset dev app on the author's machine, and integrates with the upstream MCP where useful. Everything the fork itself builds and ships is branded Choros.
+Choros is an agent-first development platform, with an Electron desktop IDE, Next.js web apps, and an Expo mobile app as the main customer-facing surfaces. It's a Turborepo monorepo, deployed apps are in apps/ and supporting packages are in packages/, and we use tRPC for the api.
 
-You're working inside a Superset workspace (parent tool), which is an isolated git-worktree copy of this repo. "Workspace" in a user message means that, not an editor workspace.
+You're working inside a Choros workspace, an isolated git-worktree copy of this repo. "Workspace" in a user message means that, not an editor workspace.
 
 ## Project Structure
 
