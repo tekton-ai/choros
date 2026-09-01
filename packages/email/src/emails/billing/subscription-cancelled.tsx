@@ -56,10 +56,7 @@ export function SubscriptionCancelledEmail({
 
 			<Text className="text-[13px] leading-5 text-muted m-0">
 				Something not working?{" "}
-				<Link
-					href="mailto:support@choros.sh"
-					className="text-muted underline"
-				>
+				<Link href="mailto:support@choros.sh" className="text-muted underline">
 					Tell us
 				</Link>{" "}
 				and we'll fix it.

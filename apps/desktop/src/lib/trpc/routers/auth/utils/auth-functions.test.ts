@@ -11,11 +11,11 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const originalChorosHomeDir = process.env.SUPERSET_HOME_DIR;
+const originalChorosHomeDir = process.env.CHOROS_HOME_DIR;
 const testChorosHomeDir = fs.mkdtempSync(
 	path.join(os.tmpdir(), "auth-functions-test-"),
 );
-process.env.SUPERSET_HOME_DIR = testChorosHomeDir;
+process.env.CHOROS_HOME_DIR = testChorosHomeDir;
 const tokenFile = path.join(testChorosHomeDir, "auth-token.enc");
 
 // Keep this unit test independent from suite-global host-info mocks. The
@@ -56,7 +56,7 @@ function quarantinedTokenPaths(): string[] {
 }
 
 beforeEach(() => {
-	process.env.SUPERSET_HOME_DIR = testChorosHomeDir;
+	process.env.CHOROS_HOME_DIR = testChorosHomeDir;
 	for (const entry of fs.readdirSync(testChorosHomeDir)) {
 		fs.rmSync(path.join(testChorosHomeDir, entry), {
 			recursive: true,
@@ -69,9 +69,9 @@ beforeEach(() => {
 afterAll(() => {
 	fs.rmSync(testChorosHomeDir, { recursive: true, force: true });
 	if (originalChorosHomeDir === undefined) {
-		delete process.env.SUPERSET_HOME_DIR;
+		delete process.env.CHOROS_HOME_DIR;
 	} else {
-		process.env.SUPERSET_HOME_DIR = originalChorosHomeDir;
+		process.env.CHOROS_HOME_DIR = originalChorosHomeDir;
 	}
 });
 
@@ -160,7 +160,7 @@ describe("auth token storage", () => {
 		stateStore.set(state, Date.now());
 		const blockedHome = path.join(testChorosHomeDir, "blocked-home");
 		fs.writeFileSync(blockedHome, "not a directory");
-		process.env.SUPERSET_HOME_DIR = blockedHome;
+		process.env.CHOROS_HOME_DIR = blockedHome;
 		const errorSpy = spyOn(console, "error").mockImplementation(() => {});
 
 		try {
@@ -174,7 +174,7 @@ describe("auth token storage", () => {
 			expect(stateStore.has(state)).toBe(true);
 		} finally {
 			errorSpy.mockRestore();
-			process.env.SUPERSET_HOME_DIR = testChorosHomeDir;
+			process.env.CHOROS_HOME_DIR = testChorosHomeDir;
 		}
 
 		fs.unlinkSync(blockedHome);
@@ -211,7 +211,7 @@ describe("auth token storage", () => {
 		fs.mkdirSync(readOnlyHome);
 		fs.writeFileSync(path.join(readOnlyHome, "auth-token.enc"), "corrupt");
 		fs.chmodSync(readOnlyHome, 0o500);
-		process.env.SUPERSET_HOME_DIR = readOnlyHome;
+		process.env.CHOROS_HOME_DIR = readOnlyHome;
 		const tokenCleared = mock(() => {});
 		authEvents.once("token-cleared", tokenCleared);
 
@@ -220,7 +220,7 @@ describe("auth token storage", () => {
 			expect(tokenCleared).not.toHaveBeenCalled();
 		} finally {
 			authEvents.off("token-cleared", tokenCleared);
-			process.env.SUPERSET_HOME_DIR = testChorosHomeDir;
+			process.env.CHOROS_HOME_DIR = testChorosHomeDir;
 			fs.chmodSync(readOnlyHome, 0o700);
 		}
 	});

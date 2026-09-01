@@ -187,7 +187,7 @@ describe("createModeTracker", () => {
 });
 
 describe("host-side leaked-input-mode reclaim", () => {
-	const MARKER = "\x1b]777;superset-shell-ready\x07";
+	const MARKER = "\x1b]777;choros-shell-ready\x07";
 	const flush = () => new Promise<void>((r) => queueMicrotask(r));
 
 	function makeTracker() {

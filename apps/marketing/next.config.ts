@@ -121,7 +121,7 @@ const config: NextConfig = {
 };
 
 export default withSentryConfig(config, {
-	org: "superset-sh",
+	org: "choros-sh",
 	project: "marketing",
 	applicationKey: "choros-marketing",
 	silent: !process.env.CI,

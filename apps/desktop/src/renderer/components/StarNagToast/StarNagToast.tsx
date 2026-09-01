@@ -1,5 +1,5 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { toast } from "@choros/ui/sonner";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { X } from "lucide-react";
 import { useEffect } from "react";
 import { AnimatedStarButton } from "renderer/components/AnimatedStarButton";
@@ -57,8 +57,8 @@ function StarNagToastContent({ toastId }: { toastId: string | number }) {
 			</div>
 			<p className="mt-1 text-xs text-muted-foreground">
 				<Trans id="components.starNagToast.body">
-					If you're enjoying Choros so far, a GitHub star helps other
-					developers discover it.
+					If you're enjoying Choros so far, a GitHub star helps other developers
+					discover it.
 				</Trans>
 			</p>
 			{/* A "loading" or "unknown" read isn't trustworthy enough to act on —

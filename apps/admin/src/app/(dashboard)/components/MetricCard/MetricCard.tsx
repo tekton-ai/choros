@@ -1,6 +1,5 @@
 "use client";
 
-import { Trans } from "@lingui/react/macro";
 import {
 	Card,
 	CardContent,
@@ -10,6 +9,7 @@ import {
 } from "@choros/ui/card";
 import { Skeleton } from "@choros/ui/skeleton";
 import { cn } from "@choros/ui/utils";
+import { Trans } from "@lingui/react/macro";
 import type { ReactNode } from "react";
 
 interface MetricCardProps {

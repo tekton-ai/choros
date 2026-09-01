@@ -20,7 +20,7 @@ const envSchema = z.object({
 	DESKTOP_VITE_PORT: z.coerce.number().default(5173),
 	DESKTOP_NOTIFICATIONS_PORT: z.coerce.number().default(51741),
 	// Workspace name for instance isolation
-	SUPERSET_WORKSPACE_NAME: z.string().default("choros"),
+	CHOROS_WORKSPACE_NAME: z.string().default("choros"),
 });
 
 /**
@@ -34,11 +34,11 @@ export const env = envSchema.parse({
 	NODE_ENV: process.env.NODE_ENV,
 	DESKTOP_VITE_PORT: process.env.DESKTOP_VITE_PORT,
 	DESKTOP_NOTIFICATIONS_PORT: process.env.DESKTOP_NOTIFICATIONS_PORT,
-	SUPERSET_WORKSPACE_NAME: process.env.SUPERSET_WORKSPACE_NAME,
+	CHOROS_WORKSPACE_NAME: process.env.CHOROS_WORKSPACE_NAME,
 });
 
 export function getWorkspaceName(): string | undefined {
-	const name = env.SUPERSET_WORKSPACE_NAME;
+	const name = env.CHOROS_WORKSPACE_NAME;
 	if (name === "choros") return undefined;
 	return name
 		.toLowerCase()

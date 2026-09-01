@@ -1,8 +1,5 @@
 "use client";
 
-import type { MessageDescriptor } from "@lingui/core";
-import { msg } from "@lingui/core/macro";
-import { Trans, useLingui } from "@lingui/react/macro";
 import { authClient } from "@choros/auth/client";
 import { i18n } from "@choros/i18n";
 import { Button } from "@choros/ui/button";
@@ -13,6 +10,9 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@choros/ui/select";
+import type { MessageDescriptor } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useState } from "react";
 import {
 	LuBuilding2,

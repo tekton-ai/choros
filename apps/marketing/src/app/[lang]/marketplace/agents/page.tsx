@@ -1,6 +1,6 @@
-import { Trans } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { Button } from "@choros/ui/button";
+import { Trans } from "@lingui/react/macro";
 import { ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
 import { localizedAlternates } from "@/app/[lang]/metadata";

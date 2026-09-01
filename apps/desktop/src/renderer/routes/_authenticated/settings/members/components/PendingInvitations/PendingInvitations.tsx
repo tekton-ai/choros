@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { formatDate as formatLocaleDate } from "@choros/i18n/format";
 import type { OrganizationRole } from "@choros/shared/auth";
 import { Badge } from "@choros/ui/badge";
@@ -11,6 +10,7 @@ import {
 	TableHeader,
 	TableRow,
 } from "@choros/ui/table";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { cloudTrpc } from "renderer/lib/cloud-trpc";
 import { HighlightText } from "renderer/routes/_authenticated/settings/components/HighlightText";
 import { useSettingsSearchQuery } from "renderer/stores/settings-state";

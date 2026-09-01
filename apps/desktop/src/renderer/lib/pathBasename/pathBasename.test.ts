@@ -56,9 +56,7 @@ describe("getBaseName", () => {
 
 	describe("windows paths", () => {
 		it("returns the final segment of a backslash path", () => {
-			expect(getBaseName("C:\\Users\\alice\\projects\\choros")).toBe(
-				"choros",
-			);
+			expect(getBaseName("C:\\Users\\alice\\projects\\choros")).toBe("choros");
 		});
 
 		it("handles a trailing backslash", () => {
@@ -68,9 +66,7 @@ describe("getBaseName", () => {
 		});
 
 		it("handles mixed forward and back slashes", () => {
-			expect(getBaseName("C:\\Users\\alice/projects\\choros")).toBe(
-				"choros",
-			);
+			expect(getBaseName("C:\\Users\\alice/projects\\choros")).toBe("choros");
 		});
 
 		it("handles UNC-style paths", () => {

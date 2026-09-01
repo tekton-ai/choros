@@ -1,6 +1,5 @@
 "use client";
 
-import { Trans } from "@lingui/react/macro";
 import {
 	Conversation,
 	ConversationContent,
@@ -12,6 +11,7 @@ import {
 	MessageContent,
 	MessageResponse,
 } from "@choros/ui/ai-elements/message";
+import { Trans } from "@lingui/react/macro";
 import type { MockDiffFile, MockMessage } from "../../../../../mock-data";
 
 type SessionChatProps = {

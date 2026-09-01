@@ -1,5 +1,3 @@
-import { plural } from "@lingui/core/macro";
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Badge } from "@choros/ui/badge";
 import {
 	HoverCard,
@@ -7,6 +5,8 @@ import {
 	HoverCardTrigger,
 } from "@choros/ui/hover-card";
 import { cn } from "@choros/ui/utils";
+import { plural } from "@lingui/core/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { STATUS_PRIORITY } from "shared/tabs-types";
 import { useDashboardSidebarChipHoverSuppression } from "../../hooks/useDashboardSidebarChipHoverSuppression";
 import type { DashboardSidebarRunningAgent } from "../../hooks/useDashboardSidebarWorkspaceRunningAgents";

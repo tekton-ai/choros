@@ -13,12 +13,12 @@ import { copyFile, rename, unlink } from "node:fs/promises";
 import { basename, extname, join, resolve } from "node:path";
 import { CUSTOM_RINGTONE_ID } from "shared/ringtones";
 import {
-	SUPERSET_HOME_DIR,
-	SUPERSET_HOME_DIR_MODE,
-	SUPERSET_SENSITIVE_FILE_MODE,
+	CHOROS_HOME_DIR,
+	CHOROS_HOME_DIR_MODE,
+	CHOROS_SENSITIVE_FILE_MODE,
 } from "./app-environment";
 
-const RINGTONES_ASSETS_DIR = join(SUPERSET_HOME_DIR, "assets", "ringtones");
+const RINGTONES_ASSETS_DIR = join(CHOROS_HOME_DIR, "assets", "ringtones");
 const CUSTOM_RINGTONE_FILE_STEM = "notification-custom";
 const CUSTOM_RINGTONE_METADATA_PATH = join(
 	RINGTONES_ASSETS_DIR,
@@ -127,7 +127,7 @@ function writeCustomRingtoneMetadata(name: string): void {
 	);
 
 	try {
-		chmodSync(CUSTOM_RINGTONE_METADATA_PATH, SUPERSET_SENSITIVE_FILE_MODE);
+		chmodSync(CUSTOM_RINGTONE_METADATA_PATH, CHOROS_SENSITIVE_FILE_MODE);
 	} catch {
 		// Best effort only.
 	}
@@ -137,12 +137,12 @@ export function ensureCustomRingtonesDir(): void {
 	if (!existsSync(RINGTONES_ASSETS_DIR)) {
 		mkdirSync(RINGTONES_ASSETS_DIR, {
 			recursive: true,
-			mode: SUPERSET_HOME_DIR_MODE,
+			mode: CHOROS_HOME_DIR_MODE,
 		});
 	}
 
 	try {
-		chmodSync(RINGTONES_ASSETS_DIR, SUPERSET_HOME_DIR_MODE);
+		chmodSync(RINGTONES_ASSETS_DIR, CHOROS_HOME_DIR_MODE);
 	} catch {
 		// Best effort only.
 	}
@@ -205,7 +205,7 @@ export async function importCustomRingtoneFromPath(
 	// Re-importing the same file path should not delete the active ringtone.
 	if (areSamePath(sourcePath, destinationPath) && existsSync(destinationPath)) {
 		try {
-			chmodSync(destinationPath, SUPERSET_SENSITIVE_FILE_MODE);
+			chmodSync(destinationPath, CHOROS_SENSITIVE_FILE_MODE);
 		} catch {
 			// Best effort only.
 		}
@@ -240,7 +240,7 @@ export async function importCustomRingtoneFromPath(
 	}
 
 	try {
-		chmodSync(destinationPath, SUPERSET_SENSITIVE_FILE_MODE);
+		chmodSync(destinationPath, CHOROS_SENSITIVE_FILE_MODE);
 	} catch {
 		// Best effort only.
 	}

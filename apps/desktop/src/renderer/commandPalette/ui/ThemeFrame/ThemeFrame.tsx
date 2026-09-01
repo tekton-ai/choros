@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	CommandEmpty,
 	CommandGroup,
@@ -6,6 +5,7 @@ import {
 	CommandList,
 	CommandSeparator,
 } from "@choros/ui/command";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { ThemeSwatch } from "renderer/components/ThemeSwatch";
 import {
 	SYSTEM_THEME_ID,

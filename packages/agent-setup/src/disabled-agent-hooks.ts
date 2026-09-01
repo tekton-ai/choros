@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { resolveSupersetHomeDir } from "./paths";
+import { resolveChorosHomeDir } from "./paths";
 import { writeFileIfChanged } from "./write-file-if-changed";
 
 export const AGENT_HOOKS_STATE_FILE = "agent-hooks.json";
@@ -14,11 +14,11 @@ export const AGENT_HOOKS_STATE_FILE = "agent-hooks.json";
  * until the desktop's next boot tore them down again.
  *
  * The desktop rewrites this file at boot and on every toggle; headless
- * provisioners read it (plus the SUPERSET_DISABLED_AGENT_HOOKS env override,
+ * provisioners read it (plus the CHOROS_DISABLED_AGENT_HOOKS env override,
  * for hosts whose machine never runs the desktop).
  */
 export function getAgentHooksStateFilePath(): string {
-	return path.join(resolveSupersetHomeDir(), AGENT_HOOKS_STATE_FILE);
+	return path.join(resolveChorosHomeDir(), AGENT_HOOKS_STATE_FILE);
 }
 
 export function readSharedDisabledAgentIds(): string[] {
@@ -38,7 +38,7 @@ export function readSharedDisabledAgentIds(): string[] {
 
 export function writeSharedDisabledAgentIds(ids: readonly string[]): void {
 	try {
-		fs.mkdirSync(resolveSupersetHomeDir(), { recursive: true });
+		fs.mkdirSync(resolveChorosHomeDir(), { recursive: true });
 		writeFileIfChanged(
 			getAgentHooksStateFilePath(),
 			`${JSON.stringify({ disabledAgentIds: [...ids].sort() }, null, "\t")}\n`,
@@ -53,7 +53,7 @@ export function writeSharedDisabledAgentIds(ids: readonly string[]): void {
 }
 
 function envDisabledAgentIds(): string[] {
-	return (process.env.SUPERSET_DISABLED_AGENT_HOOKS ?? "")
+	return (process.env.CHOROS_DISABLED_AGENT_HOOKS ?? "")
 		.split(",")
 		.map((id) => id.trim())
 		.filter(Boolean);

@@ -1,6 +1,6 @@
-import { useLingui } from "@lingui/react/macro";
 import { Badge } from "@choros/ui/badge";
 import { Checkbox } from "@choros/ui/checkbox";
+import { useLingui } from "@lingui/react/macro";
 import {
 	type ColumnFiltersState,
 	createColumnHelper,

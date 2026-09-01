@@ -3,7 +3,7 @@
 // relay under test, then probes through the client-facing routes exactly as
 // desktop/web would. Exits non-zero on any failure.
 //
-//   SUPERSET_API_KEY=sk_live_… bun apps/relay2/scripts/e2e-probe.ts \
+//   CHOROS_API_KEY=sk_live_… bun apps/relay2/scripts/e2e-probe.ts \
 //     [--relay http://localhost:8787] [--host-id <orgId>:<machineId>]
 
 import { TunnelClientV2 } from "../../../packages/host-service/src/tunnel/tunnel-client-v2";
@@ -18,9 +18,9 @@ const HOST_ID =
 		? (process.argv[hostIdArg + 1] ?? "")
 		: "a1b2c3d4-e5f6-7890-abcd-ef1234567890:a5b47dedad57a63d234ffff6753c74df";
 
-const API_KEY = process.env.SUPERSET_API_KEY;
+const API_KEY = process.env.CHOROS_API_KEY;
 if (!API_KEY) {
-	console.error("SUPERSET_API_KEY required");
+	console.error("CHOROS_API_KEY required");
 	process.exit(1);
 }
 

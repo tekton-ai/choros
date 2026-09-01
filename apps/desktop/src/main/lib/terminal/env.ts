@@ -352,7 +352,7 @@ const ALLOWED_ENV_VARS = new Set([
  * These are checked after exact matches fail.
  */
 const ALLOWED_PREFIXES = [
-	"SUPERSET_", // Our own metadata vars
+	"CHOROS_", // Our own metadata vars
 	"LC_", // Locale settings
 ];
 
@@ -480,17 +480,17 @@ export function buildTerminalEnv(params: {
 		COLORFGBG: colorFgBg,
 		TERM_THEME: termTheme,
 		LANG: locale,
-		SUPERSET_PANE_ID: paneId,
-		SUPERSET_TAB_ID: tabId,
-		SUPERSET_WORKSPACE_ID: workspaceId,
-		SUPERSET_WORKSPACE_NAME: workspaceName || "",
-		SUPERSET_WORKSPACE_PATH: workspacePath || "",
-		SUPERSET_ROOT_PATH: rootPath || "",
-		SUPERSET_PORT: String(env.DESKTOP_NOTIFICATIONS_PORT),
+		CHOROS_PANE_ID: paneId,
+		CHOROS_TAB_ID: tabId,
+		CHOROS_WORKSPACE_ID: workspaceId,
+		CHOROS_WORKSPACE_NAME: workspaceName || "",
+		CHOROS_WORKSPACE_PATH: workspacePath || "",
+		CHOROS_ROOT_PATH: rootPath || "",
+		CHOROS_PORT: String(env.DESKTOP_NOTIFICATIONS_PORT),
 		// Environment identifier for dev/prod separation
-		SUPERSET_ENV: env.NODE_ENV === "development" ? "development" : "production",
+		CHOROS_ENV: env.NODE_ENV === "development" ? "development" : "production",
 		// Hook protocol version for forward compatibility
-		SUPERSET_HOOK_VERSION: HOOK_PROTOCOL_VERSION,
+		CHOROS_HOOK_VERSION: HOOK_PROTOCOL_VERSION,
 	};
 
 	delete terminalEnv.GOOGLE_API_KEY;

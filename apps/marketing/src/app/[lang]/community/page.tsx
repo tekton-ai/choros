@@ -1,7 +1,7 @@
-import { msg } from "@lingui/core/macro";
-import { Trans } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { COMPANY } from "@choros/shared/constants";
+import { msg } from "@lingui/core/macro";
+import { Trans } from "@lingui/react/macro";
 import { ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
 import { localizedAlternates } from "@/app/[lang]/metadata";
@@ -64,7 +64,7 @@ const COMMUNITY_LINKS = [
 	},
 	{
 		name: "YOUTUBE",
-		href: "https://www.youtube.com/@superset-sh",
+		href: "https://www.youtube.com/@choros-sh",
 		cta: msg({
 			id: "marketing.community.cta.youtube",
 			message: "SUBSCRIBE",
@@ -78,7 +78,7 @@ const COMMUNITY_LINKS = [
 	},
 	{
 		name: "LINKEDIN",
-		href: "https://www.linkedin.com/company/superset-sh",
+		href: "https://www.linkedin.com/company/choros-sh",
 		cta: msg({
 			id: "marketing.community.cta.linkedin",
 			message: "FOLLOW US",

@@ -1,3 +1,6 @@
+import { OverflowFadeContainer } from "@choros/ui/overflow-fade-container";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { cn } from "@choros/ui/utils";
 import {
 	SortableContext,
 	useSortable,
@@ -5,9 +8,6 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { useLingui } from "@lingui/react/macro";
-import { OverflowFadeContainer } from "@choros/ui/overflow-fade-container";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
-import { cn } from "@choros/ui/utils";
 import { useMatchRoute, useNavigate } from "@tanstack/react-router";
 import { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { HiOutlineCog6Tooth } from "react-icons/hi2";

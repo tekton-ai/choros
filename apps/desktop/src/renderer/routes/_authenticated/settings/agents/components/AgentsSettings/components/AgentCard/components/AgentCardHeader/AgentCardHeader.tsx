@@ -1,8 +1,8 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import type { ResolvedAgentConfig } from "@choros/shared/agent-settings";
 import { CardDescription, CardHeader, CardTitle } from "@choros/ui/card";
 import { Switch } from "@choros/ui/switch";
 import { cn } from "@choros/ui/utils";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { ChevronDownIcon } from "lucide-react";
 import {
 	getPresetIcon,

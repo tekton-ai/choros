@@ -259,7 +259,7 @@ export class Server {
 		// loop forever auto-updating. Successor reads its bundle's
 		// package.json instead.
 		const successorEnv: NodeJS.ProcessEnv = { ...process.env };
-		delete successorEnv.SUPERSET_PTY_DAEMON_VERSION;
+		delete successorEnv.CHOROS_PTY_DAEMON_VERSION;
 		let child: childProcess.ChildProcess;
 		try {
 			child = childProcess.spawn(

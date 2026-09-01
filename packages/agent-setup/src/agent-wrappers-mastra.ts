@@ -43,8 +43,8 @@ const MASTRA_MANAGED_EVENTS = [
 function mastraHooksSpec(
 	notifyScriptPath: string,
 ): ManagedJsonHooksSpec<MastraHookDefinition> {
-	// Guarded on SUPERSET_HOME_DIR so the hook is a no-op in mastracode
-	// sessions launched outside Superset terminals (hooks.json is global).
+	// Guarded on CHOROS_HOME_DIR so the hook is a no-op in mastracode
+	// sessions launched outside Choros terminals (hooks.json is global).
 	const notifyCommand = getManagedNotifyHookCommand("mastracode");
 	return {
 		fileLabel: "Mastra hooks.json",
@@ -75,7 +75,7 @@ export function getMastraHooksJsonContent(
 }
 
 /**
- * Removes Superset-managed hook entries from ~/.mastracode/hooks.json,
+ * Removes Choros-managed hook entries from ~/.mastracode/hooks.json,
  * preserving user hooks. No-op when the file does not exist.
  */
 export function removeMastraManagedHooks(): void {

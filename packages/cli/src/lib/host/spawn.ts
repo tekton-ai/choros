@@ -8,7 +8,7 @@ import {
 	openRotatingLogFd,
 } from "@choros/shared/rotating-log";
 import type { ApiClient } from "../api-client";
-import { SUPERSET_HOME_DIR } from "../config";
+import { CHOROS_HOME_DIR } from "../config";
 import { env, isDesktopBundled } from "../env";
 import {
 	ensureManifestDir,
@@ -77,10 +77,10 @@ async function pollHealth(port: number, secret: string): Promise<boolean> {
  *
  * When running as a compiled binary, it's a sibling file in the same bin/
  * directory as the current executable. In dev (`bun run dev`), allow
- * override via SUPERSET_HOST_BIN env var.
+ * override via CHOROS_HOST_BIN env var.
  */
 function resolveHostBinary(): string {
-	if (process.env.SUPERSET_HOST_BIN) return process.env.SUPERSET_HOST_BIN;
+	if (process.env.CHOROS_HOST_BIN) return process.env.CHOROS_HOST_BIN;
 	const cliBin = process.execPath;
 	return join(dirname(cliBin), "choros-host");
 }
@@ -106,7 +106,7 @@ export async function spawnHostService(
 			);
 		}
 		throw new Error(
-			`choros-host binary not found at ${hostBin}. Set SUPERSET_HOST_BIN to override.`,
+			`choros-host binary not found at ${hostBin}. Set CHOROS_HOST_BIN to override.`,
 		);
 	}
 
@@ -136,9 +136,9 @@ export async function spawnHostService(
 			ORGANIZATION_ID: options.organizationId,
 			AUTH_TOKEN: options.sessionToken,
 			...(options.authConfigPath
-				? { SUPERSET_AUTH_CONFIG_PATH: options.authConfigPath }
+				? { CHOROS_AUTH_CONFIG_PATH: options.authConfigPath }
 				: {}),
-			SUPERSET_API_URL: env.SUPERSET_API_URL,
+			CHOROS_API_URL: env.CHOROS_API_URL,
 			RELAY_URL: relayUrl,
 			PORT: String(port),
 			HOST_SERVICE_PORT: String(port),
@@ -147,9 +147,9 @@ export async function spawnHostService(
 			HOST_MIGRATIONS_FOLDER: migrationsFolder,
 			// The desktop injects this into hosts it spawns
 			// (host-service-coordinator.ts); without it the host's PTYs get no
-			// SUPERSET_HOME_DIR and every managed agent hook self-disables on
+			// CHOROS_HOME_DIR and every managed agent hook self-disables on
 			// its own guard (#6254).
-			SUPERSET_HOME_DIR,
+			CHOROS_HOME_DIR,
 		},
 	});
 

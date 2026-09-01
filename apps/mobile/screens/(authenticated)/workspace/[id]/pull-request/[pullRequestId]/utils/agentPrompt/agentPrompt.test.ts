@@ -25,7 +25,7 @@ function detail(checks: PullRequestCheck[] = []): PullRequestDetail {
 			number: 42,
 			title: "A pull request",
 			body: "",
-			url: "https://github.com/superset-sh/choros/pull/42",
+			url: "https://github.com/choros-sh/choros/pull/42",
 			baseBranch: "main",
 			state: "open",
 			isDraft: false,
@@ -61,7 +61,7 @@ function detail(checks: PullRequestCheck[] = []): PullRequestDetail {
 describe("agentPrompt", () => {
 	test("conflicts name the base branch", () => {
 		expect(agentPrompt("ask-resolve-conflicts", detail())).toBe(
-			"PR #42 (https://github.com/superset-sh/choros/pull/42) has merge conflicts with main. Resolve them on this branch and push the result.",
+			"PR #42 (https://github.com/choros-sh/choros/pull/42) has merge conflicts with main. Resolve them on this branch and push the result.",
 		);
 	});
 
@@ -110,13 +110,13 @@ describe("agentPrompt", () => {
 
 	test("fix-checks without a named failure still reads whole", () => {
 		expect(agentPrompt("ask-fix-checks", detail())).toBe(
-			"Checks are failing on PR #42 (https://github.com/superset-sh/choros/pull/42). Find out why, fix the code, and push the fix to this branch.",
+			"Checks are failing on PR #42 (https://github.com/choros-sh/choros/pull/42). Find out why, fix the code, and push the fix to this branch.",
 		);
 	});
 
 	test("review feedback prompt says what to do with it", () => {
 		expect(agentPrompt("ask-address-comments", detail())).toBe(
-			"Reviewers left feedback on PR #42 (https://github.com/superset-sh/choros/pull/42). Address the requested changes and unresolved review comments, then push your fixes.",
+			"Reviewers left feedback on PR #42 (https://github.com/choros-sh/choros/pull/42). Address the requested changes and unresolved review comments, then push your fixes.",
 		);
 	});
 });

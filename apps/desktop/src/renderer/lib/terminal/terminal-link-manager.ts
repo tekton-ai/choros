@@ -163,7 +163,7 @@ export class TerminalLinkManager {
 			this._terminal.options.linkHandler = this._oscLinkHandler;
 		}
 
-		// 3. SUPERSET ADDITION: Word link detector (lowest priority).
+		// 3. CHOROS ADDITION: Word link detector (lowest priority).
 		// Adapted from VSCode's TerminalWordLinkDetector. VSCode opens a
 		// workspace search on click; ours opens the file directly if it
 		// exists (validated via stat). Catches bare filenames like

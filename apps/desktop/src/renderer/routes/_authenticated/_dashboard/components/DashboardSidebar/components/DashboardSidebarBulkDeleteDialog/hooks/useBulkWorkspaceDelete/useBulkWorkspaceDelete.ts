@@ -1,7 +1,7 @@
-import { plural } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { toast } from "@choros/ui/sonner";
+import { plural } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react/macro";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
 	type DestroyWorkspaceError,

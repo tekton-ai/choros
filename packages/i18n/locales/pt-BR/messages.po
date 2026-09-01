@@ -12406,7 +12406,7 @@ msgstr "Fale com o Choros"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
 msgid "marketing.contact.otherWays.community"
-msgstr "Para relatar bugs e pedir recursos, o caminho mais rápido é abrir uma issue no GitHub em <0>github.com/superset-sh/choros</0>. Nossa comunidade fica no <1>Discord</1>, e publicamos novidades no <2>X (@choros_sh)</2> e no <3>LinkedIn</3>."
+msgstr "Para relatar bugs e pedir recursos, o caminho mais rápido é abrir uma issue no GitHub em <0>github.com/choros-sh/choros</0>. Nossa comunidade fica no <1>Discord</1>, e publicamos novidades no <2>X (@choros_sh)</2> e no <3>LinkedIn</3>."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx

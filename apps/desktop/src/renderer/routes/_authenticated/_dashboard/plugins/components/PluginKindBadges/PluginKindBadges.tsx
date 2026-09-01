@@ -1,4 +1,3 @@
-import { useLingui } from "@lingui/react/macro";
 import {
 	getPluginComponentKinds,
 	type PluginCatalogEntry,
@@ -6,6 +5,7 @@ import {
 } from "@choros/shared/plugins";
 import { Badge } from "@choros/ui/badge";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { useLingui } from "@lingui/react/macro";
 
 export function PluginKindBadges({ plugin }: { plugin: PluginCatalogEntry }) {
 	const { t } = useLingui();

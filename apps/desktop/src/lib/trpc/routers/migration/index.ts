@@ -8,7 +8,7 @@ import {
 	worktrees,
 } from "@choros/local-db";
 import { eq, isNotNull, isNull } from "drizzle-orm";
-import { SUPERSET_HOME_DIR } from "main/lib/app-environment";
+import { CHOROS_HOME_DIR } from "main/lib/app-environment";
 import { appState } from "main/lib/app-state";
 import { localDb } from "main/lib/local-db";
 import { z } from "zod";
@@ -103,7 +103,7 @@ export const createMigrationRouter = () => {
 		 * covers pid reuse by an unrelated long-lived process.
 		 */
 		acquireRunLock: publicProcedure.mutation(() => {
-			const path = join(SUPERSET_HOME_DIR, "v1-migration.lock");
+			const path = join(CHOROS_HOME_DIR, "v1-migration.lock");
 			const tryExclusiveWrite = () => {
 				try {
 					writeFileSync(
@@ -145,7 +145,7 @@ export const createMigrationRouter = () => {
 
 		releaseRunLock: publicProcedure.mutation(() => {
 			try {
-				unlinkSync(join(SUPERSET_HOME_DIR, "v1-migration.lock"));
+				unlinkSync(join(CHOROS_HOME_DIR, "v1-migration.lock"));
 			} catch {}
 		}),
 

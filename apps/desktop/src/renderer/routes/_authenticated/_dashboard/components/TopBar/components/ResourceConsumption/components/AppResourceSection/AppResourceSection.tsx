@@ -1,5 +1,5 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { cn } from "@choros/ui/lib/utils";
+import { Trans, useLingui } from "@lingui/react/macro";
 import type { AppMetrics, UsageValues } from "../../types";
 import { formatCpu, formatMemory } from "../../utils/formatters";
 import { getUsageSeverity } from "../../utils/resourceSeverity";
@@ -54,9 +54,7 @@ export function AppResourceSection({
 			<div className="flex items-center justify-between px-3.5 py-1.5">
 				<div className="flex items-center gap-1.5 min-w-0 mr-2">
 					<span className="text-[12px] font-medium text-foreground truncate min-w-0">
-						<Trans id="dashboard.topBar.appResources.appName">
-							Choros App
-						</Trans>
+						<Trans id="dashboard.topBar.appResources.appName">Choros App</Trans>
 					</span>
 					<UsageSeverityBadge severity={appSeverity} />
 				</div>

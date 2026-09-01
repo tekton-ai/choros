@@ -12,7 +12,7 @@ const HOST_SETTINGS_ID = 1;
 // Set by the desktop coordinator from the v1 user setting so a first-run
 // host-service inherits the previous worktree location instead of silently
 // falling back to the default.
-const LEGACY_WORKTREE_BASE_DIR_ENV = "SUPERSET_LEGACY_WORKTREE_BASE_DIR";
+const LEGACY_WORKTREE_BASE_DIR_ENV = "CHOROS_LEGACY_WORKTREE_BASE_DIR";
 
 export interface HostWorktreeLocationSettings {
 	worktreeBaseDir: string | null;

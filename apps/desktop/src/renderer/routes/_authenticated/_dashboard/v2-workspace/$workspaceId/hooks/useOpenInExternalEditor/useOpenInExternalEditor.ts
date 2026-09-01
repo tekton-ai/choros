@@ -1,6 +1,6 @@
-import { useLingui } from "@lingui/react/macro";
 import { toast } from "@choros/ui/sonner";
 import { workspaceTrpc } from "@choros/workspace-client";
+import { useLingui } from "@lingui/react/macro";
 import { useCallback } from "react";
 import { electronTrpcClient } from "renderer/lib/trpc-client";
 import { useV2ProjectDefaultApp } from "renderer/routes/_authenticated/hooks/useV2ProjectDefaultApp";

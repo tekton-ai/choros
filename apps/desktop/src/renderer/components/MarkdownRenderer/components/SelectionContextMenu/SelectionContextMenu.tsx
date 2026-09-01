@@ -1,4 +1,3 @@
-import { Trans } from "@lingui/react/macro";
 import {
 	ContextMenu,
 	ContextMenuContent,
@@ -7,6 +6,7 @@ import {
 	ContextMenuShortcut,
 	ContextMenuTrigger,
 } from "@choros/ui/context-menu";
+import { Trans } from "@lingui/react/macro";
 import type {
 	MouseEvent as ReactMouseEvent,
 	ReactNode,

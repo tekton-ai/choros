@@ -2,14 +2,14 @@ import type { Terminal as XTerm } from "@xterm/xterm";
 import { getCellDimensions } from "./cell-dimensions";
 
 // Escape hatch: revert to stock xterm wheel handling without a rebuild.
-// Run in DevTools console: localStorage.setItem('SUPERSET_TERMINAL_STOCK_WHEEL', '1')
+// Run in DevTools console: localStorage.setItem('CHOROS_TERMINAL_STOCK_WHEEL', '1')
 // Checked per wheel event (localStorage reads are sub-microsecond in
 // Chromium) because terminal instances are parked and reused across React
 // mounts — an install-time check would require a full window reload to
 // take effect.
 export function isStockWheelForced(): boolean {
 	try {
-		return localStorage.getItem("SUPERSET_TERMINAL_STOCK_WHEEL") === "1";
+		return localStorage.getItem("CHOROS_TERMINAL_STOCK_WHEEL") === "1";
 	} catch {
 		return false;
 	}

@@ -1,5 +1,5 @@
-import { Trans } from "@lingui/react/macro";
 import { cn } from "@choros/ui/utils";
+import { Trans } from "@lingui/react/macro";
 import { LuCheck } from "react-icons/lu";
 import { useCopiedIndicator } from "../../hooks/useCopyOnSelect";
 

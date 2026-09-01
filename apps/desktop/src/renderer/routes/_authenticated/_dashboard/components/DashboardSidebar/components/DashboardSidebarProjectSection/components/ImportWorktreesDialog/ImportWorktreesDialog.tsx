@@ -1,4 +1,3 @@
-import { Plural, Trans } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import { Checkbox } from "@choros/ui/checkbox";
 import {
@@ -10,6 +9,7 @@ import {
 	DialogTitle,
 } from "@choros/ui/dialog";
 import { Label } from "@choros/ui/label";
+import { Plural, Trans } from "@lingui/react/macro";
 import { useState } from "react";
 import { LuGitBranch } from "react-icons/lu";
 

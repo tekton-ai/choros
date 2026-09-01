@@ -46,7 +46,7 @@ The reusable setup, measurement, evidence, and cleanup procedure is recorded in 
 
 | Gate | Verified value |
 |---|---|
-| Worktree | `/Users/kietho/.superset/worktrees/1c99c8eb-1b31-4f04-9ac4-61a2760c74b6/agent/renderer-churn-current-main` |
+| Worktree | `/Users/kietho/.choros/worktrees/1c99c8eb-1b31-4f04-9ac4-61a2760c74b6/agent/renderer-churn-current-main` |
 | Branch / final tested commit | `agent/renderer-churn-current-main` / `374ed2135c90a4961a3ae5331ebb122000b11965` |
 | Included `origin/main` | `20cde02967270178f60ac2c3fab2bbb955dfaad3` |
 | API / renderer | `7501` / `7505` |
@@ -104,7 +104,7 @@ The final fetch moved twice during the earlier diagnostic investigation, so thos
 
 | Gate | Verified value |
 |---|---|
-| Worktree | `/Users/kietho/.superset/worktrees/1c99c8eb-1b31-4f04-9ac4-61a2760c74b6/agent/renderer-churn-current-main` |
+| Worktree | `/Users/kietho/.choros/worktrees/1c99c8eb-1b31-4f04-9ac4-61a2760c74b6/agent/renderer-churn-current-main` |
 | Branch | `agent/renderer-churn-current-main` |
 | Commit | `cf68c53caf0ee0c5cac167d8189f7b4cf18c02a9` (equal to `origin/main` immediately before the final run) |
 | API / renderer | `7501` / `7505` |

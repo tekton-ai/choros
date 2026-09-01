@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	CommandEmpty,
 	CommandGroup,
@@ -6,6 +5,7 @@ import {
 	CommandList,
 } from "@choros/ui/command";
 import { cn } from "@choros/ui/utils";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useLocation, useNavigate } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { LuCpu, LuGitBranch } from "react-icons/lu";

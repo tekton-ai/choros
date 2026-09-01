@@ -5,7 +5,7 @@ import { findWorkspaceOnHost } from "../../../lib/host-workspaces";
 export default command({
 	description: "Show details for a single workspace by id",
 	args: [
-		positional("id").desc("Workspace ID (defaults to $SUPERSET_WORKSPACE_ID)"),
+		positional("id").desc("Workspace ID (defaults to $CHOROS_WORKSPACE_ID)"),
 	],
 	options: {
 		host: string().desc("Host the workspace lives on (default: this machine)"),
@@ -17,11 +17,11 @@ export default command({
 	},
 	run: async ({ ctx, args, options }) => {
 		const id =
-			(args.id as string | undefined) ?? process.env.SUPERSET_WORKSPACE_ID;
+			(args.id as string | undefined) ?? process.env.CHOROS_WORKSPACE_ID;
 		if (!id) {
 			throw new CLIError(
 				"No workspace id",
-				"Pass an id or run inside a workspace where $SUPERSET_WORKSPACE_ID is set",
+				"Pass an id or run inside a workspace where $CHOROS_WORKSPACE_ID is set",
 			);
 		}
 

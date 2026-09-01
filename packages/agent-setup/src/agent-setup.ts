@@ -59,12 +59,12 @@ const BOOTSTRAP_SETUP: readonly LabeledAction[] = [
 ];
 
 interface AgentSetupDefinition {
-	/** Writers that (re)register the agent's Superset integration. */
+	/** Writers that (re)register the agent's Choros integration. */
 	setup: readonly (() => void)[];
 	/**
-	 * Removes Superset's footprint from the agent's global config when the
+	 * Removes Choros's footprint from the agent's global config when the
 	 * user disables its hook integration. Wrappers and scripts under
-	 * ~/.superset/ stay — they are Superset-owned and inert outside its
+	 * ~/.choros/ stay — they are Choros-owned and inert outside its
 	 * terminals. Absent when the agent has no global footprint (Copilot,
 	 * OpenCode).
 	 */
@@ -247,7 +247,7 @@ export function setupSingleAgent(agentId: string): boolean {
 }
 
 /**
- * Removes one agent's Superset footprint from its global config. Returns
+ * Removes one agent's Choros footprint from its global config. Returns
  * `false` for unknown ids; `true` even when the agent has no teardown
  * actions (no global footprint to remove).
  */

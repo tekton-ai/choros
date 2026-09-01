@@ -1,6 +1,6 @@
 import { rm } from "node:fs/promises";
 import { join } from "node:path";
-import { SUPERSET_HOME_DIR } from "main/lib/app-environment";
+import { CHOROS_HOME_DIR } from "main/lib/app-environment";
 import { appState } from "main/lib/app-state";
 import { defaultAppState } from "main/lib/app-state/schemas";
 import {
@@ -34,7 +34,7 @@ export async function resetTerminalStateDev(): Promise<void> {
 	}
 
 	for (const relativePath of TERMINAL_STATE_PATHS) {
-		const fullPath = join(SUPERSET_HOME_DIR, relativePath);
+		const fullPath = join(CHOROS_HOME_DIR, relativePath);
 		await rm(fullPath, { recursive: true, force: true }).catch((error) => {
 			console.warn(
 				"[dev/reset-terminal-state] Failed to remove state path:",

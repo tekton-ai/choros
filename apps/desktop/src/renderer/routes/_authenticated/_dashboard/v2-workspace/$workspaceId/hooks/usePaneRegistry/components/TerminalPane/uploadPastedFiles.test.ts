@@ -82,7 +82,7 @@ function makeDeps(options: { existing?: string[]; failWrites?: boolean } = {}) {
 	return { deps, createdDirs, writes };
 }
 
-const WORKTREE = "/home/user/.superset/worktrees/demo";
+const WORKTREE = "/home/user/.choros/worktrees/demo";
 const DIR_ABS = `${WORKTREE}/${WORKSPACE_ATTACHMENTS_DIR}`;
 
 describe("uploadPastedFiles", () => {

@@ -1,5 +1,5 @@
-import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { CommandPrimitive, CommandSeparator } from "@choros/ui/command";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { SearchIcon } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { LuChevronDown, LuChevronRight } from "react-icons/lu";

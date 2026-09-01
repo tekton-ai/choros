@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import type { HostAgentConfig } from "@choros/host-service/settings";
 import {
 	type ExecutionMode,
@@ -7,6 +6,7 @@ import {
 } from "@choros/local-db";
 import { HOST_AGENT_PRESETS } from "@choros/shared/host-agent-presets";
 import { Button } from "@choros/ui/button";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useLiveQuery } from "@tanstack/react-db";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { HiOutlinePlus } from "react-icons/hi2";

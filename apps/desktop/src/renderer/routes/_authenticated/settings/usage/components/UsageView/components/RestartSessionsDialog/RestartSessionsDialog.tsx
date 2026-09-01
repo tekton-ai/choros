@@ -1,4 +1,3 @@
-import { Plural, Trans } from "@lingui/react/macro";
 import {
 	AlertDialog,
 	AlertDialogDescription,
@@ -8,6 +7,7 @@ import {
 	EnterEnabledAlertDialogContent,
 } from "@choros/ui/alert-dialog";
 import { Button } from "@choros/ui/button";
+import { Plural, Trans } from "@lingui/react/macro";
 import { useRef } from "react";
 
 export interface RestartSessionsPrompt {

@@ -1,5 +1,3 @@
-import { plural } from "@lingui/core/macro";
-import { Trans, useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@choros/i18n/errors";
 import { COMPANY } from "@choros/shared/constants";
 import { Button } from "@choros/ui/button";
@@ -14,6 +12,8 @@ import {
 	SelectValue,
 } from "@choros/ui/select";
 import { toast } from "@choros/ui/sonner";
+import { plural } from "@lingui/core/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { type ChangeEvent, useRef, useState } from "react";
 import {
 	HiOutlineArrowDownTray,

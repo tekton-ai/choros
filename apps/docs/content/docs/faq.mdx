@@ -40,7 +40,7 @@ For projects, yes: every project must be a git repository, and its workspaces ar
 No. One branch = one workspace. Create a new branch if needed.
 
 **Where are workspaces stored on disk?**
-`~/.superset/worktrees/`, as ordinary git worktrees (sessions live at `~/.superset/sessions/`). Deleting a workspace removes its worktree; Choros never deletes worktrees behind your back.
+`~/.choros/worktrees/`, as ordinary git worktrees (sessions live at `~/.choros/sessions/`). Deleting a workspace removes its worktree; Choros never deletes worktrees behind your back.
 
 **I already have worktrees from another tool.**
 Use the **Import** tab in the New Workspace modal to bring existing worktrees in. See [Workspaces](/workspaces).
@@ -60,7 +60,7 @@ See [AI Agents](/agent-integration) for the full list. If an installed agent doe
 Under **Settings → Agents**, per agent. Preset-level tweaks don't override the agent's own launch settings.
 
 **Why did Choros add hooks to my agent configs?**
-Choros installs lifecycle hooks and command wrappers (in `~/.superset/bin`) so it can show agent status and send finished/waiting notifications. Removing them disables those features.
+Choros installs lifecycle hooks and command wrappers (in `~/.choros/bin`) so it can show agent status and send finished/waiting notifications. Removing them disables those features.
 
 **Do sessions survive restarts?**
 Yes. Terminals are backed by a background daemon, so running processes and scrollback survive app restarts and updates.
@@ -93,6 +93,6 @@ The CLI works against the v2 local-first model only. If you're on the legacy v1 
 
 - [Troubleshooting](/troubleshooting) for symptom-by-symptom fixes
 - [Discord](https://discord.gg/cZeD9WYcV7) for the fastest answers
-- Report issues: [github.com/superset-sh/choros/issues](https://github.com/superset-sh/choros/issues)
+- Report issues: [github.com/choros-sh/choros/issues](https://github.com/choros-sh/choros/issues)
 - Email: [support@choros.sh](mailto:support@choros.sh)
 - All channels: [Community & Support](/community)

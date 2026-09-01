@@ -1,7 +1,7 @@
 "use client";
 
-import { useLingui } from "@lingui/react/macro";
 import { COMPANY } from "@choros/shared/constants";
+import { useLingui } from "@lingui/react/macro";
 
 interface SocialLinksProps {
 	className?: string;

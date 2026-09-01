@@ -1,6 +1,6 @@
-import { Trans } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { COMPANY } from "@choros/shared/constants";
+import { Trans } from "@lingui/react/macro";
 import { ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
 import { FaGithub } from "react-icons/fa";
@@ -79,7 +79,7 @@ export default async function ChangelogPage() {
 							The latest updates, improvements, and new features in Choros.
 							Updated weekly. For detailed release notes, see{" "}
 							<a
-								href="https://github.com/superset-sh/choros/releases"
+								href="https://github.com/choros-sh/choros/releases"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="inline-flex items-center gap-1 hover:text-foreground transition-colors"

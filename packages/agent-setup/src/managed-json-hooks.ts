@@ -23,7 +23,7 @@ export interface ManagedJsonHooksSpec<Entry> {
 	/** Managed entries appended per event after stale ones are stripped. */
 	desiredEntriesByEvent: Record<string, Entry[]>;
 	/**
-	 * Strips Superset-managed content from one existing entry. Returns the
+	 * Strips Choros-managed content from one existing entry. Returns the
 	 * entry unchanged when it is user-owned, a cleaned copy when it mixed user
 	 * and managed inner hooks, or null when nothing user-owned remains.
 	 */
@@ -141,7 +141,7 @@ export function ensureManagedJsonHooks<Entry>(
 }
 
 /**
- * Removes Superset-managed entries, preserving user entries byte-for-byte.
+ * Removes Choros-managed entries, preserving user entries byte-for-byte.
  * No-op when the file does not exist — teardown must never create files.
  */
 export function removeManagedJsonHooks<Entry>(

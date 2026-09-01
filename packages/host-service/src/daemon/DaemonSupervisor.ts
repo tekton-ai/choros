@@ -149,7 +149,7 @@ const REACHABILITY_PROBE_INTERVAL_MS = 5_000;
  * unreachable (which would offer the user a destructive restart).
  */
 const REACHABILITY_PROBE_TOTAL_TIMEOUT_MS = 3_000;
-const ADOPT_IN_DEV_ENV = "SUPERSET_PTY_DAEMON_ADOPT_IN_DEV";
+const ADOPT_IN_DEV_ENV = "CHOROS_PTY_DAEMON_ADOPT_IN_DEV";
 
 export function shouldKillStaleDaemonForDev(
 	env: NodeJS.ProcessEnv = process.env,
@@ -160,13 +160,13 @@ export function shouldKillStaleDaemonForDev(
 
 /**
  * Per-instance socket path. **Must stay short** — Darwin's `sun_path`
- * is 104 bytes, and `$SUPERSET_HOME_DIR/host/{orgId}/pty-daemon.sock` blows
- * past that in dev (worktree-relative SUPERSET_HOME_DIR + 36-char UUID), so
+ * is 104 bytes, and `$CHOROS_HOME_DIR/host/{orgId}/pty-daemon.sock` blows
+ * past that in dev (worktree-relative CHOROS_HOME_DIR + 36-char UUID), so
  * the socket lives in `os.tmpdir()` under a fixed-length hash. Owner-only
  * file mode (0600, set by the daemon's Server.listen) is the auth boundary;
  * the directory permissions don't matter.
  *
- * Any non-default `SUPERSET_HOME_DIR` (dev worktrees, test temp homes)
+ * Any non-default `CHOROS_HOME_DIR` (dev worktrees, test temp homes)
  * namespaces the socket by home as well as org — two instances of the same
  * org must never share a socket, or one instance's supervisor/reaper acts
  * on the other's PTYs. All default-home (production) paths deliberately
@@ -178,7 +178,7 @@ export function ptyDaemonSocketPath(
 	env: NodeJS.ProcessEnv = process.env,
 ): string {
 	assertIsolatedDaemonNamespaceInTests(env);
-	const home = env.SUPERSET_HOME_DIR;
+	const home = env.CHOROS_HOME_DIR;
 	const defaultHome = path.join(os.homedir(), ".choros");
 	const isDefaultHome =
 		!home || path.resolve(home) === path.resolve(defaultHome);
@@ -1241,7 +1241,7 @@ export class DaemonSupervisor {
 			// Source of truth for daemon version. The daemon's main.ts reads
 			// this and surfaces it in the hello-ack so adoption probes can
 			// detect drift against EXPECTED_DAEMON_VERSION.
-			SUPERSET_PTY_DAEMON_VERSION: EXPECTED_DAEMON_VERSION,
+			CHOROS_PTY_DAEMON_VERSION: EXPECTED_DAEMON_VERSION,
 		};
 
 		console.log(

@@ -1,6 +1,6 @@
-import { Trans } from "@lingui/react/macro";
-import { SUPERSET_MANAGED_SKILLS } from "@choros/shared/plugins";
+import { CHOROS_MANAGED_SKILLS } from "@choros/shared/plugins";
 import { Badge } from "@choros/ui/badge";
+import { Trans } from "@lingui/react/macro";
 import { useState } from "react";
 import { SkillIcon } from "renderer/routes/_authenticated/_dashboard/plugins/components/SkillIcon";
 import { SkillPreviewDialog } from "./components/SkillPreviewDialog";
@@ -29,7 +29,7 @@ export function SkillsList() {
 				</Trans>
 			</p>
 			<div className="flex flex-col divide-y divide-border/60 rounded-lg border border-border/60">
-				{SUPERSET_MANAGED_SKILLS.map((skill) => {
+				{CHOROS_MANAGED_SKILLS.map((skill) => {
 					const isDisabled = disabledSkills.has(skill.name);
 					return (
 						<button

@@ -1,5 +1,5 @@
-import { useLingui } from "@lingui/react/macro";
 import { toast } from "@choros/ui/sonner";
+import { useLingui } from "@lingui/react/macro";
 import { AnimatePresence, motion } from "framer-motion";
 import { DownloadIcon, XIcon } from "lucide-react";
 import { useEffect, useState } from "react";

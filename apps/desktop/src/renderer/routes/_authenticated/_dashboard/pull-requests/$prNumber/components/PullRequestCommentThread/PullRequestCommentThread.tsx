@@ -1,4 +1,3 @@
-import { Plural, Trans, useLingui } from "@lingui/react/macro";
 import { Avatar, AvatarFallback, AvatarImage } from "@choros/ui/avatar";
 import { Button } from "@choros/ui/button";
 import {
@@ -9,6 +8,7 @@ import {
 import { toast } from "@choros/ui/sonner";
 import { Textarea } from "@choros/ui/textarea";
 import { cn } from "@choros/ui/utils";
+import { Plural, Trans, useLingui } from "@lingui/react/macro";
 import { useEffect, useState } from "react";
 import {
 	LuCheck,

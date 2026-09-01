@@ -5,7 +5,7 @@ import { resolveConfiguredShell } from "./user-shell.ts";
 
 const SHELL_ENV_TIMEOUT_MS = 8_000;
 const CACHE_TTL_MS = 60_000;
-const DELIMITER = "__SUPERSET_SHELL_ENV__";
+const DELIMITER = "__CHOROS_SHELL_ENV__";
 const DIAGNOSTIC_OUTPUT_LIMIT = 200;
 
 const SHELL_BOOTSTRAP_KEYS = [

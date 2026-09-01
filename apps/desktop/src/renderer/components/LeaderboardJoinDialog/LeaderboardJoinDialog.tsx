@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import {
 	Dialog,
@@ -10,6 +9,7 @@ import {
 } from "@choros/ui/dialog";
 import { Input } from "@choros/ui/input";
 import { Label } from "@choros/ui/label";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useEffect, useState } from "react";
 import { RankTeaser } from "./components/RankTeaser";
 import type { LeaderboardPreview } from "./types";

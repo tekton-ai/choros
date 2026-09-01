@@ -14,8 +14,6 @@
 // fall through to electron-trpc and fail with "no procedure on path
 // terminal.daemon.*" — there's no such namespace on electron-trpc.
 
-import { plural } from "@lingui/core/macro";
-import { Trans, useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@choros/i18n/errors";
 import {
 	AlertDialog,
@@ -32,6 +30,8 @@ import {
 	WorkspaceClientProvider,
 	workspaceTrpc,
 } from "@choros/workspace-client";
+import { plural } from "@lingui/core/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useState } from "react";
 import { HiChevronRight } from "react-icons/hi2";
 import {

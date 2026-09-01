@@ -85,7 +85,7 @@ export function getAnthropicEnvConfigPath(
 ): string {
 	if (options?.configPath) return options.configPath;
 	const chorosHome =
-		process.env.SUPERSET_HOME_DIR?.trim() || join(homedir(), ".choros");
+		process.env.CHOROS_HOME_DIR?.trim() || join(homedir(), ".choros");
 	return join(chorosHome, CONFIG_FILE_NAME);
 }
 

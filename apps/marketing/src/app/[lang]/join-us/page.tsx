@@ -1,5 +1,5 @@
-import { Trans } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
+import { Trans } from "@lingui/react/macro";
 import type { Metadata } from "next";
 import Script from "next/script";
 import { localeUrl, localizedAlternates } from "@/app/[lang]/metadata";
@@ -91,12 +91,11 @@ export default async function JoinUsPage() {
 
 							<p>
 								<Trans id="marketing.joinUs.bodyTeam">
-									Choros is built in Choros, so we're our own #1 users - you
-									get paid to make your own life easier. We're building a flat
-									and talent-dense team, and we're looking for people who have
-									crazy ideas and are crazy enough to ship them. If you've ever
-									wanted to build a product you love to use, come build it with
-									us.
+									Choros is built in Choros, so we're our own #1 users - you get
+									paid to make your own life easier. We're building a flat and
+									talent-dense team, and we're looking for people who have crazy
+									ideas and are crazy enough to ship them. If you've ever wanted
+									to build a product you love to use, come build it with us.
 								</Trans>
 							</p>
 						</div>

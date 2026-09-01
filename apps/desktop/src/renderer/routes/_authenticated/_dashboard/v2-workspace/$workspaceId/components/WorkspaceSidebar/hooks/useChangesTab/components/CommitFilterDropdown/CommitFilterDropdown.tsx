@@ -1,4 +1,3 @@
-import { Plural, Trans } from "@lingui/react/macro";
 import type { AppRouter } from "@choros/host-service";
 import { i18n } from "@choros/i18n";
 import {
@@ -8,6 +7,7 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@choros/ui/dropdown-menu";
+import { Plural, Trans } from "@lingui/react/macro";
 import type { inferRouterOutputs } from "@trpc/server";
 import { Check, ChevronDown, ListFilter } from "lucide-react";
 import { useState } from "react";

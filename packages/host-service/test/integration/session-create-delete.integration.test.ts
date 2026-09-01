@@ -17,7 +17,7 @@ import { createTestHost, type TestHost } from "../helpers/createTestHost";
 
 /**
  * Session workspaces: project-less rows whose worktreePath is a standalone
- * git repo under `~/.superset/sessions`. Like the worktree suites, these
+ * git repo under `~/.choros/sessions`. Like the worktree suites, these
  * write into the real managed root and clean up after themselves.
  */
 describe("workspaces.createSession + delete integration", () => {

@@ -1,6 +1,5 @@
 "use client";
 
-import { Trans } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { Alert, AlertDescription, AlertTitle } from "@choros/ui/alert";
 import { Button } from "@choros/ui/button";
@@ -16,6 +15,7 @@ import { Progress } from "@choros/ui/progress";
 import { Skeleton } from "@choros/ui/skeleton";
 import { toast } from "@choros/ui/sonner";
 import { Spinner } from "@choros/ui/spinner";
+import { Trans } from "@lingui/react/macro";
 import { AlertCircleIcon, InboxIcon, TerminalIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 

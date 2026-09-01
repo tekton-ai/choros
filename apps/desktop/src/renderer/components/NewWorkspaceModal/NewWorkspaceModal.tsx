@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@choros/i18n/errors";
 import {
 	PromptInputProvider,
@@ -12,6 +11,7 @@ import {
 	DialogTitle,
 } from "@choros/ui/dialog";
 import { toast } from "@choros/ui/sonner";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useEffect, useRef } from "react";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { useOpenProject } from "renderer/react-query/projects";

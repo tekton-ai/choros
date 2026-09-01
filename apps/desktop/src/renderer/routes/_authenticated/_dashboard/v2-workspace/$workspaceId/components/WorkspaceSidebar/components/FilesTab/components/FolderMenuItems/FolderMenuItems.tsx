@@ -1,8 +1,8 @@
-import { Trans } from "@lingui/react/macro";
 import {
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 } from "@choros/ui/dropdown-menu";
+import { Trans } from "@lingui/react/macro";
 import { FilePlus, FolderPlus, Pencil, Trash2 } from "lucide-react";
 import { PathActions } from "../PathActions";
 

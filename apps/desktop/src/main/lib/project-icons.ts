@@ -6,9 +6,9 @@ import {
 	getImageExtensionFromMimeType,
 	parseBase64DataUrl,
 } from "shared/file-types";
-import { SUPERSET_HOME_DIR } from "./app-environment";
+import { CHOROS_HOME_DIR } from "./app-environment";
 
-export const PROJECT_ICONS_DIR = join(SUPERSET_HOME_DIR, "project-icons");
+export const PROJECT_ICONS_DIR = join(CHOROS_HOME_DIR, "project-icons");
 
 /** Max icon file size: 512KB */
 const MAX_ICON_SIZE = 512 * 1024;

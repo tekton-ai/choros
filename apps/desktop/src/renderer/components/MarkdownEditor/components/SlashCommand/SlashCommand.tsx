@@ -1,7 +1,7 @@
+import { i18n } from "@choros/i18n";
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
-import { i18n } from "@choros/i18n";
 import { Extension } from "@tiptap/core";
 import { PluginKey } from "@tiptap/pm/state";
 import { type Editor, ReactRenderer } from "@tiptap/react";

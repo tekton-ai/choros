@@ -33,14 +33,14 @@ describe("host-wide default account pointers", () => {
 	let previousHome: string | undefined;
 
 	beforeEach(() => {
-		previousHome = process.env.SUPERSET_HOME_DIR;
+		previousHome = process.env.CHOROS_HOME_DIR;
 		home = mkdtempSync(join(tmpdir(), "choros-default-account-"));
-		process.env.SUPERSET_HOME_DIR = home;
+		process.env.CHOROS_HOME_DIR = home;
 	});
 
 	afterEach(() => {
-		if (previousHome === undefined) delete process.env.SUPERSET_HOME_DIR;
-		else process.env.SUPERSET_HOME_DIR = previousHome;
+		if (previousHome === undefined) delete process.env.CHOROS_HOME_DIR;
+		else process.env.CHOROS_HOME_DIR = previousHome;
 		rmSync(home, { recursive: true, force: true });
 	});
 

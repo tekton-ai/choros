@@ -148,7 +148,7 @@ describe("existing PR push target resolution", () => {
 				remotes: [
 					{
 						name: "origin",
-						fetchUrl: "git@github.com:superset-sh/choros.git",
+						fetchUrl: "git@github.com:choros-sh/choros.git",
 					},
 				],
 				pr: {
@@ -165,7 +165,7 @@ describe("existing PR push target resolution", () => {
 				remotes: [
 					{
 						name: "origin",
-						fetchUrl: "git@github.com:superset-sh/choros.git",
+						fetchUrl: "git@github.com:choros-sh/choros.git",
 					},
 					{
 						name: "kitenite",
@@ -189,7 +189,7 @@ describe("existing PR push target resolution", () => {
 				remotes: [
 					{
 						name: "origin",
-						fetchUrl: "git@github.com:superset-sh/choros.git",
+						fetchUrl: "git@github.com:choros-sh/choros.git",
 					},
 				],
 				pr: {

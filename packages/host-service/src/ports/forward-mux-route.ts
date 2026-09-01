@@ -1,5 +1,4 @@
 import net from "node:net";
-import type { NodeWebSocket } from "@hono/node-ws";
 import type { DetectedPort } from "@choros/port-scanner";
 import {
 	decodeMuxFrame,
@@ -19,6 +18,7 @@ import {
 	MuxFrameType,
 	MuxOpenFailCode,
 } from "@choros/shared/port-forward-mux";
+import type { NodeWebSocket } from "@hono/node-ws";
 import type { Hono } from "hono";
 import type { WSContext } from "hono/ws";
 

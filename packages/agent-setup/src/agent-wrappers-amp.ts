@@ -10,9 +10,9 @@ import {
 import { getTemplatePath } from "./config";
 
 /**
- * Creates the Amp wrapper that preserves Superset's terminal environment.
+ * Creates the Amp wrapper that preserves Choros's terminal environment.
  * Amp lifecycle events are registered through a system plugin; the wrapper
- * exists to forward SUPERSET_* env vars into the plugin runtime.
+ * exists to forward CHOROS_* env vars into the plugin runtime.
  */
 export function createAmpWrapper(): void {
 	const script = buildWrapperScript("amp", `exec "$REAL_BIN" "$@"`, {
@@ -21,8 +21,8 @@ export function createAmpWrapper(): void {
 	createWrapper("amp", script);
 }
 
-export const AMP_PLUGIN_FILE = "superset-lifecycle.ts";
-const AMP_PLUGIN_SIGNATURE = "// Superset Amp lifecycle plugin";
+export const AMP_PLUGIN_FILE = "choros-lifecycle.ts";
+const AMP_PLUGIN_SIGNATURE = "// Choros Amp lifecycle plugin";
 const AMP_PLUGIN_VERSION = "v3";
 export const AMP_PLUGIN_MARKER = `${AMP_PLUGIN_SIGNATURE} ${AMP_PLUGIN_VERSION}`;
 
@@ -37,7 +37,7 @@ export function getAmpGlobalPluginPath(): string {
 
 /**
  * Renders a global Amp plugin that bridges Amp's lifecycle events into the
- * existing Superset notify hook. The notify hook owns v2/v1 fallback dispatch,
+ * existing Choros notify hook. The notify hook owns v2/v1 fallback dispatch,
  * so this plugin stays small and avoids duplicating mapping logic.
  */
 export function getAmpPluginContent(): string {
@@ -57,7 +57,7 @@ export function createAmpPlugin(): void {
 	);
 }
 
-/** Removes the wholly Superset-owned Amp plugin file (signature-gated). */
+/** Removes the wholly Choros-owned Amp plugin file (signature-gated). */
 export function removeAmpPlugin(): void {
 	removeOwnedFileIfMarked(
 		getAmpGlobalPluginPath(),

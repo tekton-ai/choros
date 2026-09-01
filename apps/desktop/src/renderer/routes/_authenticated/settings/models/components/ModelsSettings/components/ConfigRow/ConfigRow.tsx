@@ -1,7 +1,7 @@
-import { useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import { Label } from "@choros/ui/label";
 import { cn } from "@choros/ui/utils";
+import { useLingui } from "@lingui/react/macro";
 import type { ReactNode } from "react";
 import { HighlightText } from "renderer/routes/_authenticated/settings/components/HighlightText";
 import { useSettingsSearchQuery } from "renderer/stores/settings-state";

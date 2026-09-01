@@ -9,21 +9,21 @@ import {
 	writeSharedDisabledAgentIds,
 } from "./disabled-agent-hooks";
 
-const TEST_HOME = fs.mkdtempSync(path.join(os.tmpdir(), "superset-hooks-"));
-const ORIGINAL_HOME_DIR = process.env.SUPERSET_HOME_DIR;
-const ORIGINAL_DISABLED = process.env.SUPERSET_DISABLED_AGENT_HOOKS;
+const TEST_HOME = fs.mkdtempSync(path.join(os.tmpdir(), "choros-hooks-"));
+const ORIGINAL_HOME_DIR = process.env.CHOROS_HOME_DIR;
+const ORIGINAL_DISABLED = process.env.CHOROS_DISABLED_AGENT_HOOKS;
 
 beforeEach(() => {
-	process.env.SUPERSET_HOME_DIR = TEST_HOME;
-	delete process.env.SUPERSET_DISABLED_AGENT_HOOKS;
+	process.env.CHOROS_HOME_DIR = TEST_HOME;
+	delete process.env.CHOROS_DISABLED_AGENT_HOOKS;
 });
 
 afterEach(() => {
-	if (ORIGINAL_HOME_DIR === undefined) delete process.env.SUPERSET_HOME_DIR;
-	else process.env.SUPERSET_HOME_DIR = ORIGINAL_HOME_DIR;
+	if (ORIGINAL_HOME_DIR === undefined) delete process.env.CHOROS_HOME_DIR;
+	else process.env.CHOROS_HOME_DIR = ORIGINAL_HOME_DIR;
 	if (ORIGINAL_DISABLED === undefined)
-		delete process.env.SUPERSET_DISABLED_AGENT_HOOKS;
-	else process.env.SUPERSET_DISABLED_AGENT_HOOKS = ORIGINAL_DISABLED;
+		delete process.env.CHOROS_DISABLED_AGENT_HOOKS;
+	else process.env.CHOROS_DISABLED_AGENT_HOOKS = ORIGINAL_DISABLED;
 	fs.rmSync(TEST_HOME, { recursive: true, force: true });
 	fs.mkdirSync(TEST_HOME, { recursive: true });
 });
@@ -59,7 +59,7 @@ describe("shared disabled-agent-hooks state", () => {
 
 	it("lets an explicit list replace the file, with env on top", () => {
 		writeSharedDisabledAgentIds(["claude"]);
-		process.env.SUPERSET_DISABLED_AGENT_HOOKS = "codex, gemini,,";
+		process.env.CHOROS_DISABLED_AGENT_HOOKS = "codex, gemini,,";
 
 		expect(resolveDisabledAgentIds(["droid"]).sort()).toEqual([
 			"codex",

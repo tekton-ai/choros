@@ -1,6 +1,6 @@
+import { i18n } from "@choros/i18n";
 import { Plural, Trans } from "@lingui/react/macro";
 import { useControllableState } from "@rn-primitives/hooks";
-import { i18n } from "@choros/i18n";
 import { BrainIcon, ChevronDownIcon } from "lucide-react-native";
 import type { ReactNode } from "react";
 import {

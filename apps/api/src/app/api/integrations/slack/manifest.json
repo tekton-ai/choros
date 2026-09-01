@@ -31,9 +31,7 @@
 		}
 	},
 	"oauth_config": {
-		"redirect_urls": [
-			"https://api.choros.sh/api/integrations/slack/callback"
-		],
+		"redirect_urls": ["https://api.choros.sh/api/integrations/slack/callback"],
 		"scopes": {
 			"bot": [
 				"app_mentions:read",

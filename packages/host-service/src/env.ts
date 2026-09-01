@@ -12,8 +12,8 @@ export const env = createEnv({
 		HOST_DB_PATH: z.string().min(1),
 		HOST_MIGRATIONS_FOLDER: z.string().min(1),
 		AUTH_TOKEN: z.string().min(1),
-		SUPERSET_AUTH_CONFIG_PATH: z.string().min(1).optional(),
-		SUPERSET_API_URL: z.string().url(),
+		CHOROS_AUTH_CONFIG_PATH: z.string().min(1).optional(),
+		CHOROS_API_URL: z.string().url(),
 		CORS_ORIGINS: z
 			.string()
 			.transform((s) => s.split(",").map((o) => o.trim()))
@@ -30,7 +30,7 @@ export const env = createEnv({
 		 * host or hold a relay socket — that would put it in the device picker
 		 * and keep it awake against the provider's wake-on-inbound sleep.
 		 */
-		SUPERSET_HOST_RUN_MODE: z.enum(["local", "sandbox"]).default("local"),
+		CHOROS_HOST_RUN_MODE: z.enum(["local", "sandbox"]).default("local"),
 	},
 	runtimeEnv: process.env,
 	emptyStringAsUndefined: true,

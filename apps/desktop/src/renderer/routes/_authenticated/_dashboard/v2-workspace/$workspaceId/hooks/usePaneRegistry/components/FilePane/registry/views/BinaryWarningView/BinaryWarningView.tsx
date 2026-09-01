@@ -1,5 +1,5 @@
-import { Trans } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
+import { Trans } from "@lingui/react/macro";
 import type { ViewProps } from "../../types";
 
 export function BinaryWarningView({ filePath, onForceView }: ViewProps) {

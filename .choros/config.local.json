@@ -1,0 +1,4 @@
+{
+	"setup": ["./.choros/setup.local.sh"],
+	"teardown": ["./.choros/teardown.local.sh"]
+}

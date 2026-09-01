@@ -2,7 +2,7 @@
 
 ## Goal
 
-Define a shippable Superset pane-layout package before we continue implementation.
+Define a shippable Choros pane-layout package before we continue implementation.
 
 This package must support:
 
@@ -25,7 +25,7 @@ The current spike package is **not** the contract. It was useful to surface the 
 - One active pane per group
 - Dragging a pane over another root tab activates that root and lets the drag continue there
 - Advanced docking previews
-- Renderer layer must be design-system-native, using Tailwind + `@superset/ui`
+- Renderer layer must be design-system-native, using Tailwind + `@choros/ui`
 
 ### Nice Later
 
@@ -44,7 +44,7 @@ The current spike package is **not** the contract. It was useful to surface the 
 
 Use one workspace package:
 
-- `@superset/pane-layout`
+- `@choros/pane-layout`
 
 It should expose two layers:
 
@@ -56,7 +56,7 @@ It should expose two layers:
 - `react`
   - top-level root tab strip component
   - per-root layout component
-  - group/tab chrome built from `@superset/ui`
+  - group/tab chrome built from `@choros/ui`
   - drop target visuals and drag affordances
 
 The package must remain platform-agnostic:
@@ -69,7 +69,7 @@ Electron and web should both be able to render the same `PaneWorkspaceState`.
 
 ## Store Strategy
 
-This package is internal to Superset. It does not need an external-consumer-neutral API.
+This package is internal to Choros. It does not need an external-consumer-neutral API.
 
 So the recommended integration surface is:
 
@@ -837,7 +837,7 @@ This is where we prove the layout math works.
 
 ### 3. Drag Interaction Tests
 
-New for Superset because cross-root drag/drop is a core requirement.
+New for Choros because cross-root drag/drop is a core requirement.
 
 We need component or integration tests for:
 
@@ -902,10 +902,10 @@ These should be treated as behavioral inspiration only.
 
 ## Implementation Order
 
-1. Lock the core API in `@superset/pane-layout`
+1. Lock the core API in `@choros/pane-layout`
 2. Write reducer and tree utility tests first
 3. Implement root-aware reducer
-4. Implement minimal React renderer with `@superset/ui` primitives
+4. Implement minimal React renderer with `@choros/ui` primitives
 5. Add same-root drag/drop
 6. Add cross-root drag activation
 7. Replace the v2 pane viewer with the new package
@@ -917,7 +917,7 @@ These should be treated as behavioral inspiration only.
 Proceed with a clean-room implementation of:
 
 - a root-aware pane workspace core
-- a Superset-specific React renderer
+- a Choros-specific React renderer
 - a test suite modeled after FlexLayout’s model/e2e split and Mosaic’s tree utility coverage
 
 Do **not** continue iterating on the current spike package until the API and test surface above are accepted.

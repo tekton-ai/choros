@@ -2,10 +2,10 @@
  * Debug logging utility for development and QA.
  *
  * Enable debug logs by setting environment variable:
- *   SUPERSET_DEBUG=1 bun run desktop
+ *   CHOROS_DEBUG=1 bun run desktop
  *
  * Or in .env:
- *   SUPERSET_DEBUG=1
+ *   CHOROS_DEBUG=1
  *
  * Usage:
  *   import { debugLog } from "shared/debug";
@@ -15,10 +15,10 @@
 
 const isDebugEnabled =
 	typeof process !== "undefined" &&
-	(process.env.SUPERSET_DEBUG === "1" || process.env.SUPERSET_DEBUG === "true");
+	(process.env.CHOROS_DEBUG === "1" || process.env.CHOROS_DEBUG === "true");
 
 /**
- * Log a debug message if SUPERSET_DEBUG is enabled.
+ * Log a debug message if CHOROS_DEBUG is enabled.
  *
  * @param namespace - Category for the log (e.g., "notifications", "agent-hooks")
  * @param args - Values to log (same as console.log)

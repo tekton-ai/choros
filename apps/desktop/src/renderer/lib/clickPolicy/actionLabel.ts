@@ -1,6 +1,6 @@
+import { i18n } from "@choros/i18n";
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
-import { i18n } from "@choros/i18n";
 import type { LinkAction, Surface } from "./types";
 
 const FILE_LABELS: Record<LinkAction, MessageDescriptor> = {

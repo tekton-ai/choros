@@ -14,7 +14,7 @@ export function normalizeWorkspaceName(name?: string): string | undefined {
 
 /**
  * Derive a workspace name from worktree path segments relative to:
- * ~/.superset/worktrees/<project>/...
+ * ~/.choros/worktrees/<project>/...
  *
  * Examples:
  * - ["choros", "my-branch", "apps", "desktop"] -> "my-branch"
@@ -43,5 +43,5 @@ export function deriveWorkspaceNameFromWorktreeSegments(
 }
 
 export function getWorkspaceName(): string | undefined {
-	return normalizeWorkspaceName(process.env.SUPERSET_WORKSPACE_NAME);
+	return normalizeWorkspaceName(process.env.CHOROS_WORKSPACE_NAME);
 }

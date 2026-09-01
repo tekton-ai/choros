@@ -1,5 +1,5 @@
-import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { workspaceTagsInputSchema } from "@choros/shared/workspace-tags";
+import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 import { defineTool } from "../../define-tool";
 import { hostServiceCall } from "../../host-service-client";

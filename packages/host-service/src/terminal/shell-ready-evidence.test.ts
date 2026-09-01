@@ -8,20 +8,20 @@ import {
 	recordShellReadyMarkerEvidence,
 } from "./shell-ready-evidence";
 
-const originalHomeDir = process.env.SUPERSET_HOME_DIR;
+const originalHomeDir = process.env.CHOROS_HOME_DIR;
 let tmpDir: string;
 
 beforeEach(() => {
 	tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "shell-ready-evidence-"));
-	process.env.SUPERSET_HOME_DIR = tmpDir;
+	process.env.CHOROS_HOME_DIR = tmpDir;
 	__resetShellReadyEvidenceForTesting();
 });
 
 afterEach(() => {
 	if (originalHomeDir === undefined) {
-		delete process.env.SUPERSET_HOME_DIR;
+		delete process.env.CHOROS_HOME_DIR;
 	} else {
-		process.env.SUPERSET_HOME_DIR = originalHomeDir;
+		process.env.CHOROS_HOME_DIR = originalHomeDir;
 	}
 	__resetShellReadyEvidenceForTesting();
 	fs.rmSync(tmpDir, { recursive: true, force: true });
@@ -86,8 +86,8 @@ describe("shell-ready evidence", () => {
 		expect(getShellReadyMarkerEvidence("bash")).toBe("delivered");
 	});
 
-	test("no SUPERSET_HOME_DIR keeps evidence in memory only", () => {
-		delete process.env.SUPERSET_HOME_DIR;
+	test("no CHOROS_HOME_DIR keeps evidence in memory only", () => {
+		delete process.env.CHOROS_HOME_DIR;
 		__resetShellReadyEvidenceForTesting();
 		recordShellReadyMarkerEvidence("zsh", "missing");
 		expect(getShellReadyMarkerEvidence("zsh")).toBe("missing");

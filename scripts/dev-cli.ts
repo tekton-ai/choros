@@ -6,11 +6,11 @@
  * organization (e.g. a1b2c3d4-…), which has nothing to do with the org your
  * `choros auth login` lands in. So a plain `bun run --cwd packages/cli dev`
  * authenticates as the wrong org and can't find the dev host. This wrapper
- * reads the live host manifest under `<worktree>/superset-dev-data/host/*` and
+ * reads the live host manifest under `<worktree>/choros-dev-data/host/*` and
  * points the CLI at it:
- *   - SUPERSET_HOME_DIR      → the dev data dir (so it reads the dev manifests)
- *   - SUPERSET_ORGANIZATION_ID → the live host's org (so the local host resolves)
- *   - SUPERSET_API_KEY       → a placeholder to satisfy the auth gate; local
+ *   - CHOROS_HOME_DIR      → the dev data dir (so it reads the dev manifests)
+ *   - CHOROS_ORGANIZATION_ID → the live host's org (so the local host resolves)
+ *   - CHOROS_API_KEY       → a placeholder to satisfy the auth gate; local
  *                              host commands use the manifest token, not this.
  *
  * Usage:  bun scripts/dev-cli.ts browser list --workspace <id> --json
@@ -25,7 +25,7 @@ function repoRoot(): string {
 			encoding: "utf-8",
 		}).trim();
 	} catch {
-		// Fall back to walking up from this file to the first dir with a superset-dev-data.
+		// Fall back to walking up from this file to the first dir with a choros-dev-data.
 		let dir = dirname(new URL(import.meta.url).pathname);
 		for (let i = 0; i < 8; i++) {
 			if (existsSync(join(dir, "package.json"))) return dir;
@@ -70,7 +70,7 @@ function findLiveHost(homeDir: string): Manifest | null {
 }
 
 const root = repoRoot();
-const homeDir = join(root, "superset-dev-data");
+const homeDir = join(root, "choros-dev-data");
 const host = findLiveHost(homeDir);
 if (!host) {
 	console.error(
@@ -86,11 +86,11 @@ console.error(
 
 const env: NodeJS.ProcessEnv = {
 	...process.env,
-	SUPERSET_HOME_DIR: homeDir,
-	SUPERSET_ORGANIZATION_ID: host.organizationId,
+	CHOROS_HOME_DIR: homeDir,
+	CHOROS_ORGANIZATION_ID: host.organizationId,
 	// Placeholder just satisfies the "logged in" gate and bypasses OAuth refresh;
 	// local host commands authenticate with the manifest token, not this.
-	SUPERSET_API_KEY: process.env.SUPERSET_API_KEY ?? "sk_dev_local_placeholder",
+	CHOROS_API_KEY: process.env.CHOROS_API_KEY ?? "sk_dev_local_placeholder",
 };
 
 try {

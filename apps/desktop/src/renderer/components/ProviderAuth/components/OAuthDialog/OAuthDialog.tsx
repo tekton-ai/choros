@@ -1,5 +1,3 @@
-import type { MessageDescriptor } from "@lingui/core";
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import {
 	Dialog,
@@ -10,6 +8,8 @@ import {
 } from "@choros/ui/dialog";
 import { InputGroup, InputGroupInput } from "@choros/ui/input-group";
 import { Label } from "@choros/ui/label";
+import type { MessageDescriptor } from "@lingui/core";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useCallback, useState } from "react";
 
 export interface OAuthDialogProps {

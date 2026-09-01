@@ -1,5 +1,5 @@
-import { Trans } from "@lingui/react/macro";
 import { COMPANY } from "@choros/shared/constants";
+import { Trans } from "@lingui/react/macro";
 import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";

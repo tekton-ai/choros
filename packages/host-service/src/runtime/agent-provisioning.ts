@@ -11,12 +11,12 @@ import {
  * Locates the agent-setup template assets for this deployment. The CLI
  * tarball copies them to lib/agent-templates next to the host-service bundle
  * (see packages/cli/scripts/build-dist.ts); an env override exists for
- * custom launchers, mirroring SUPERSET_PTY_DAEMON_SCRIPT_PATH. When running
+ * custom launchers, mirroring CHOROS_PTY_DAEMON_SCRIPT_PATH. When running
  * from TS source neither exists and @choros/agent-setup falls back to its
  * in-repo templates.
  */
 function resolveAgentTemplatesDir(): string | undefined {
-	const fromEnv = process.env.SUPERSET_AGENT_TEMPLATES_DIR?.trim();
+	const fromEnv = process.env.CHOROS_AGENT_TEMPLATES_DIR?.trim();
 	if (fromEnv) return fromEnv;
 	const sideBySide = path.join(
 		path.dirname(fileURLToPath(import.meta.url)),
@@ -26,7 +26,7 @@ function resolveAgentTemplatesDir(): string | undefined {
 }
 
 /**
- * Provisions agent lifecycle hooks (~/.superset/hooks/notify.sh + managed
+ * Provisions agent lifecycle hooks (~/.choros/hooks/notify.sh + managed
  * entries in each agent's global config), PATH wrappers, and the zsh/bash
  * bootstrap files host-service's shell-launch path expects. The Electron app
  * does this at boot for hosts it spawns; a standalone (CLI-launched) host has
@@ -45,7 +45,7 @@ export function provisionAgentIntegrations(): void {
 		if (!existsSync(path.join(effectiveDir, "notify-hook.template.sh"))) {
 			console.error(
 				`[host-service] agent-setup templates missing at ${effectiveDir} — agent hooks will NOT work on this host. ` +
-					"Reinstall the CLI or set SUPERSET_AGENT_TEMPLATES_DIR.",
+					"Reinstall the CLI or set CHOROS_AGENT_TEMPLATES_DIR.",
 			);
 		}
 		setupAgentIntegrations();

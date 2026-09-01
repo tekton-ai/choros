@@ -1,6 +1,6 @@
-import { Trans } from "@lingui/react/macro";
 import { COMPANY } from "@choros/shared/constants";
 import { Button } from "@choros/ui/button";
+import { Trans } from "@lingui/react/macro";
 import { useState } from "react";
 import { HiArrowPath, HiExclamationTriangle } from "react-icons/hi2";
 import { electronTrpc } from "renderer/lib/electron-trpc";
@@ -72,8 +72,8 @@ export function UpdateRequiredPage({
 						<p className="max-w-md text-muted-foreground">
 							{message || (
 								<Trans id="components.updateRequiredPage.defaultMessage">
-									A new version of Choros is required to continue. Please
-									update to the latest version.
+									A new version of Choros is required to continue. Please update
+									to the latest version.
 								</Trans>
 							)}
 						</p>

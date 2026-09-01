@@ -52,7 +52,7 @@ const MAX_LINE_COUNT_SIZE = 1 * 1024 * 1024;
 // Chunk size for streaming untracked files when counting lines, so a file is
 // never fully held in memory. Comfortably covers the binary sniff window.
 const LINE_COUNT_CHUNK_SIZE = 64 * 1024;
-const WORKER_DEBUG = process.env.SUPERSET_WORKER_DEBUG === "1";
+const WORKER_DEBUG = process.env.CHOROS_WORKER_DEBUG === "1";
 
 function logWorkerWarning(message: string, error: unknown): void {
 	console.warn(`[changes-git-worker] ${message}`, error);

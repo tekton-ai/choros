@@ -37,7 +37,7 @@ jobs:
         uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5.0.0
         with:
           path: release-artifacts
-          pattern: superset-*
+          pattern: choros-*
           merge-multiple: true
 
       - name: Create Release
@@ -52,7 +52,7 @@ jobs:
           # desktop-latest rolling pointer.
           gh release create "${{ github.ref_name }}" \
             release-artifacts/*.tar.gz \
-            --title "Superset CLI ${{ github.ref_name }}" \
+            --title "Choros CLI ${{ github.ref_name }}" \
             --generate-notes \
             --prerelease
 
@@ -101,11 +101,11 @@ jobs:
           gh release create cli-latest \
             release-artifacts/*.tar.gz \
             release-artifacts/version.txt \
-            --title "Latest Superset CLI" \
+            --title "Latest Choros CLI" \
             --notes "Rolling pointer to the latest published CLI release. See [${VERSION_TAG}](https://github.com/${{ github.repository }}/releases/tag/${VERSION_TAG}) for changelog." \
             --target "${{ github.sha }}" \
             --prerelease
 
-  # bump-homebrew: disabled. The upstream homebrew-tap (superset-sh/homebrew-tap)
+  # bump-homebrew: disabled. The upstream homebrew-tap (choros-sh/homebrew-tap)
   # is not this fork's — no downstream Homebrew formula ships from tekton-ai/choros.
   # Reintroduce this job if the fork ever publishes its own tap.

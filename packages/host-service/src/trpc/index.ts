@@ -132,7 +132,7 @@ export const protectedProcedure = baseProcedure.use(async ({ ctx, next }) => {
  */
 export const machineOnlyProcedure = protectedProcedure.use(
 	async ({ ctx, next, path }) => {
-		if (process.env.SUPERSET_HOST_RUN_MODE === "sandbox") {
+		if (process.env.CHOROS_HOST_RUN_MODE === "sandbox") {
 			throw new TRPCError({
 				code: "PRECONDITION_FAILED",
 				message: `${path} is not available in a cloud workspace: its sandbox holds exactly one project and one workspace.`,

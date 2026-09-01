@@ -1,9 +1,9 @@
-import { Trans } from "@lingui/react/macro";
 import {
 	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
 } from "@choros/ui/chart";
+import { Trans } from "@lingui/react/macro";
 import { useMemo } from "react";
 import { Area, AreaChart, XAxis, YAxis } from "recharts";
 import type { ResourceSample } from "../../hooks/useResourceSampleBuffer";

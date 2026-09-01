@@ -1,9 +1,9 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 	DropdownMenuShortcut,
 } from "@choros/ui/dropdown-menu";
+import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	ExternalLink,
 	FileText,

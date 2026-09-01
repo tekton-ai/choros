@@ -1,4 +1,3 @@
-import { Trans } from "@lingui/react/macro";
 import {
 	ContextMenu,
 	ContextMenuContent,
@@ -9,6 +8,7 @@ import {
 	ContextMenuSubTrigger,
 	ContextMenuTrigger,
 } from "@choros/ui/context-menu";
+import { Trans } from "@lingui/react/macro";
 import {
 	LuEye,
 	LuFolderInput,

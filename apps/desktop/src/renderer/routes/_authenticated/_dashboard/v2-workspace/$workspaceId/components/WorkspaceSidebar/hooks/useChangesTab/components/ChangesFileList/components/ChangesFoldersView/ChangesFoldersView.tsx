@@ -1,5 +1,5 @@
-import { msg } from "@lingui/core/macro";
 import { i18n } from "@choros/i18n";
+import { msg } from "@lingui/core/macro";
 import { defaultRangeExtractor, useVirtualizer } from "@tanstack/react-virtual";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {

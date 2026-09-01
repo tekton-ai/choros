@@ -230,9 +230,7 @@ export async function readCookiesFromProfile(
 	if (!safeStorageKey) return [];
 	const key = deriveCookieKey(safeStorageKey);
 
-	const tempDir = mkdtempSync(
-		path.join(os.tmpdir(), "choros-cookie-import-"),
-	);
+	const tempDir = mkdtempSync(path.join(os.tmpdir(), "choros-cookie-import-"));
 	const tempDb = path.join(tempDir, "Cookies");
 	try {
 		copyFileSync(source, tempDb);

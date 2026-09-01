@@ -1,5 +1,5 @@
-import { Trans } from "@lingui/react/macro";
 import { cn } from "@choros/ui/utils";
+import { Trans } from "@lingui/react/macro";
 import { useId } from "react";
 
 interface ChorosLogoProps {
@@ -7,10 +7,7 @@ interface ChorosLogoProps {
 	gradient?: boolean;
 }
 
-export function ChorosLogo({
-	className,
-	gradient = false,
-}: ChorosLogoProps) {
+export function ChorosLogo({ className, gradient = false }: ChorosLogoProps) {
 	const reactId = useId();
 	const gradientId = `choros-logo-gradient-${reactId}`;
 
@@ -62,7 +59,7 @@ export function ChorosLogo({
 				letterSpacing="6"
 				fill={gradient ? `url(#${gradientId})` : "currentColor"}
 			>
-				CHOROS
+				{"CHOROS"}
 			</text>
 		</svg>
 	);

@@ -1,7 +1,7 @@
-import { useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@choros/i18n/errors";
 import { normalizeWorkspaceTags } from "@choros/shared/workspace-tags";
 import { toast } from "@choros/ui/sonner";
+import { useLingui } from "@lingui/react/macro";
 import { useQueryClient } from "@tanstack/react-query";
 import { useMatchRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";

@@ -1,5 +1,5 @@
-import { useLingui } from "@lingui/react/macro";
 import { toast } from "@choros/ui/sonner";
+import { useLingui } from "@lingui/react/macro";
 import { useNavigate } from "@tanstack/react-router";
 import { useCallback } from "react";
 import { useHostProjects } from "renderer/hooks/host-projects/useHostProjects";

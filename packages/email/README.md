@@ -9,7 +9,7 @@ Email templates for Choros, built with [React Email](https://react.email).
 ### Image Setup
 1. Generate PNG assets (email clients don't support SVG):
    - Header logo (`logo.png`): 240x240px
-   - Footer logo (`logo-full.png`): 512x83px (pixelated SUPERSET text)
+   - Footer logo (`logo-full.png`): 512x83px (pixelated CHOROS text)
    - Social icons: 48x48px (displayed at 24x24 for retina)
 2. Place in `apps/marketing/public/assets/emails/`
 3. Images load from `https://choros.sh/assets/emails/` in production

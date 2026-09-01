@@ -1,4 +1,3 @@
-import { Plural, Trans } from "@lingui/react/macro";
 import {
 	AlertDialog,
 	AlertDialogContent,
@@ -8,6 +7,7 @@ import {
 	AlertDialogTitle,
 } from "@choros/ui/alert-dialog";
 import { Button } from "@choros/ui/button";
+import { Plural, Trans } from "@lingui/react/macro";
 import stripAnsi from "strip-ansi";
 import { formatTeardownReason } from "../../../DashboardSidebarDeleteDialog/components/TeardownFailedPane";
 import {

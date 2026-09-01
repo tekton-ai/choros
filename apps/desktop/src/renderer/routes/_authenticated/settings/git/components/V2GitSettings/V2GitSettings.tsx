@@ -1,10 +1,10 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@choros/i18n/errors";
 import {
 	type BranchPrefixMode,
 	resolveBranchPrefix,
 } from "@choros/shared/workspace-launch";
 import { toast } from "@choros/ui/sonner";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import { useMemo } from "react";

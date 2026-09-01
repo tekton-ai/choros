@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	getAgentEffortSupport,
 	getAgentEfforts,
@@ -18,6 +17,7 @@ import { isEnterSubmit } from "@choros/ui/lib/keyboard";
 import { toast } from "@choros/ui/sonner";
 import { Spinner } from "@choros/ui/spinner";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useNavigate } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import {

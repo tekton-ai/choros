@@ -36,7 +36,7 @@ const workspaceDependencies = Object.keys(dependencies).filter((dependency) =>
 // Sentry plugin for uploading sourcemaps (only in CI with auth token)
 const sentryPlugin = process.env.SENTRY_AUTH_TOKEN
 	? sentryVitePlugin({
-			org: "superset-sh",
+			org: "choros-sh",
 			project: "desktop",
 			authToken: process.env.SENTRY_AUTH_TOKEN,
 			release: { name: version },
@@ -49,7 +49,7 @@ const sentryPlugin = process.env.SENTRY_AUTH_TOKEN
 // from file content, so the double injection with sentryPlugin is identical.
 const hostServiceSentryPlugin = process.env.SENTRY_AUTH_TOKEN
 	? sentryVitePlugin({
-			org: "superset-sh",
+			org: "choros-sh",
 			project: "host-service",
 			authToken: process.env.SENTRY_AUTH_TOKEN,
 			release: { name: version },
@@ -115,8 +115,8 @@ export default defineConfig({
 			"process.env.DESKTOP_NOTIFICATIONS_PORT": defineEnv(
 				process.env.DESKTOP_NOTIFICATIONS_PORT,
 			),
-			"process.env.SUPERSET_WORKSPACE_NAME": defineEnv(
-				process.env.SUPERSET_WORKSPACE_NAME,
+			"process.env.CHOROS_WORKSPACE_NAME": defineEnv(
+				process.env.CHOROS_WORKSPACE_NAME,
 			),
 		},
 
@@ -234,8 +234,8 @@ export default defineConfig({
 			"process.env.DESKTOP_NOTIFICATIONS_PORT": defineEnv(
 				process.env.DESKTOP_NOTIFICATIONS_PORT,
 			),
-			"process.env.SUPERSET_WORKSPACE_NAME": defineEnv(
-				process.env.SUPERSET_WORKSPACE_NAME,
+			"process.env.CHOROS_WORKSPACE_NAME": defineEnv(
+				process.env.CHOROS_WORKSPACE_NAME,
 			),
 		},
 

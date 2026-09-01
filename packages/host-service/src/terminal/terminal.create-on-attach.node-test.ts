@@ -17,9 +17,9 @@ import * as os from "node:os";
 import * as path from "node:path";
 import { after, before, test } from "node:test";
 import { fileURLToPath } from "node:url";
+import { Server } from "@choros/pty-daemon";
 import { serve } from "@hono/node-server";
 import { createNodeWebSocket } from "@hono/node-ws";
-import { Server } from "@choros/pty-daemon";
 import { eq } from "drizzle-orm";
 import { Hono } from "hono";
 import { createDb, type HostDb } from "../db/index.ts";
@@ -106,8 +106,8 @@ before(async () => {
 	});
 	await server.listen();
 
-	process.env.SUPERSET_PTY_DAEMON_SOCKET = SOCK;
-	process.env.SUPERSET_HOME_DIR = TEST_HOME;
+	process.env.CHOROS_PTY_DAEMON_SOCKET = SOCK;
+	process.env.CHOROS_HOME_DIR = TEST_HOME;
 	process.env.HOST_SERVICE_VERSION = "0.0.0-createattach-test";
 	process.env.NODE_ENV = "development";
 

@@ -1,9 +1,9 @@
-import type { MessageDescriptor } from "@lingui/core";
-import { msg } from "@lingui/core/macro";
 import type {
 	NotionTriggerEvent,
 	TriggerConfigInput,
 } from "@choros/shared/automation-triggers";
+import type { MessageDescriptor } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
 import type { TriggerMenuEntry } from "../types";
 
 export type NotionConfig = Extract<TriggerConfigInput, { kind: "notion" }>;

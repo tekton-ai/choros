@@ -1,6 +1,6 @@
-import type { SlackEvent } from "@slack/types";
 import { db } from "@choros/db/client";
 import { integrationConnections } from "@choros/db/schema";
+import type { SlackEvent } from "@slack/types";
 import { and, eq, isNull } from "drizzle-orm";
 
 import {

@@ -2,7 +2,7 @@ import { readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { parseStaticPortsConfig } from "@choros/port-scanner";
 
-const PROJECT_SUPERSET_DIR_NAME = ".choros";
+const PROJECT_CHOROS_DIR_NAME = ".choros";
 const PORTS_FILE_NAME = "ports.json";
 
 interface LabelCacheEntry {
@@ -12,7 +12,7 @@ interface LabelCacheEntry {
 }
 
 function getPortsPath(worktreePath: string): string {
-	return join(worktreePath, PROJECT_SUPERSET_DIR_NAME, PORTS_FILE_NAME);
+	return join(worktreePath, PROJECT_CHOROS_DIR_NAME, PORTS_FILE_NAME);
 }
 
 function isMissingPathError(error: unknown): boolean {
@@ -64,7 +64,7 @@ function safeLoadLabels(worktreePath: string): Map<number, string> | null {
 }
 
 /**
- * Read `<worktree>/.superset/ports.json` and return a `port → label` map.
+ * Read `<worktree>/.choros/ports.json` and return a `port → label` map.
  * Returns null if the file is missing or malformed — this endpoint is a
  * best-effort label hint, not a validator, so parse errors are silent.
  */

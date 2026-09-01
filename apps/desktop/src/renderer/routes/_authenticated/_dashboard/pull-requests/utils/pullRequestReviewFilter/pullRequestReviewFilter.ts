@@ -1,6 +1,6 @@
+import { i18n } from "@choros/i18n";
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
-import { i18n } from "@choros/i18n";
 
 export const PULL_REQUEST_REVIEW_FILTERS = [
 	{

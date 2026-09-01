@@ -1,6 +1,3 @@
-import type { MessageDescriptor } from "@lingui/core";
-import { msg } from "@lingui/core/macro";
-import { Trans, useLingui } from "@lingui/react/macro";
 import type { SelectAutomationRun, SelectUser } from "@choros/db/schema";
 import { i18n } from "@choros/i18n";
 import { formatCompactRelativeTime } from "@choros/i18n/format";
@@ -23,6 +20,9 @@ import {
 import { TableCell, TableRow } from "@choros/ui/table";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { cn } from "@choros/ui/utils";
+import type { MessageDescriptor } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useNavigate } from "@tanstack/react-router";
 import { LuEllipsis, LuPlay, LuRotateCw } from "react-icons/lu";
 import type { AutomationLastRun } from "renderer/routes/_authenticated/_dashboard/hooks/useFailedAutomations";

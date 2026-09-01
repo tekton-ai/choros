@@ -1,10 +1,10 @@
-import { MessageScroller } from "@shadcn/react/message-scroller";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
 	type ChatHistorySidebarMessage,
 	ChatHistorySidebarScroller,
 } from "@choros/ui/chat-history-sidebar";
 import { getPresetIcon } from "@choros/ui/icons/preset-icons";
+import { MessageScroller } from "@shadcn/react/message-scroller";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
 	BoxIcon,
 	ChartNoAxesColumnIcon,

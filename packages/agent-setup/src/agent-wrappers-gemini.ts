@@ -4,7 +4,7 @@ import path from "node:path";
 import {
 	buildWrapperScript,
 	createWrapper,
-	isSupersetManagedHookCommand,
+	isChorosManagedHookCommand,
 	writeFileIfChanged,
 } from "./agent-wrappers-common";
 import { getTemplatePath, getV1NotificationsPort } from "./config";
@@ -18,7 +18,7 @@ import { getHooksDir } from "./paths";
 
 export const GEMINI_HOOK_SCRIPT_NAME = "gemini-hook.sh";
 
-const GEMINI_HOOK_SIGNATURE = "# Superset gemini hook";
+const GEMINI_HOOK_SIGNATURE = "# Choros gemini hook";
 const GEMINI_HOOK_VERSION = "v6";
 export const GEMINI_HOOK_MARKER = `${GEMINI_HOOK_SIGNATURE} ${GEMINI_HOOK_VERSION}`;
 
@@ -61,7 +61,7 @@ function geminiHooksSpec(
 ): ManagedJsonHooksSpec<GeminiHookDefinition> {
 	const isManagedCommand = (command: string | undefined) =>
 		command?.includes(hookScriptPath) ||
-		isSupersetManagedHookCommand(command, GEMINI_HOOK_SCRIPT_NAME);
+		isChorosManagedHookCommand(command, GEMINI_HOOK_SCRIPT_NAME);
 	return {
 		fileLabel: "Gemini settings.json",
 		agentLabel: "Gemini",
@@ -74,13 +74,11 @@ function geminiHooksSpec(
 			]),
 		),
 		// A definition is dropped whole when it carries our command either as a
-		// legacy flat `command` or inside its nested hooks — Superset never
+		// legacy flat `command` or inside its nested hooks — Choros never
 		// shares a definition with user hooks in Gemini's config.
 		cleanEntry: (definition) =>
-			isSupersetManagedHookCommand(
-				definition.command,
-				GEMINI_HOOK_SCRIPT_NAME,
-			) || definition.hooks?.some((hook) => isManagedCommand(hook.command))
+			isChorosManagedHookCommand(definition.command, GEMINI_HOOK_SCRIPT_NAME) ||
+			definition.hooks?.some((hook) => isManagedCommand(hook.command))
 				? null
 				: definition,
 		dropEmptyContainerOnRemove: true,
@@ -117,7 +115,7 @@ export function createGeminiWrapper(): void {
 }
 
 /**
- * Removes Superset-managed hook definitions from ~/.gemini/settings.json,
+ * Removes Choros-managed hook definitions from ~/.gemini/settings.json,
  * preserving user hooks and non-hook settings. No-op when the file does not
  * exist.
  */

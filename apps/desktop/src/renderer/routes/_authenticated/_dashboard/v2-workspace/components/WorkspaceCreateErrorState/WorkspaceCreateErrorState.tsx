@@ -1,5 +1,5 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useNavigate } from "@tanstack/react-router";
 import { AlertCircle, GitBranch } from "lucide-react";
 import { useCollections } from "renderer/routes/_authenticated/providers/CollectionsProvider";

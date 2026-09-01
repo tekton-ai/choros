@@ -35,7 +35,7 @@ const IMAGE_NAME = process.env.SANDBOX_IMAGE_NAME ?? "choros-hostsvc";
  * build needs no credential, and the runtime supplies one per fetch.
  */
 const SANDBOX_REPO_URL =
-	process.env.SANDBOX_REPO_URL ?? "https://github.com/superset-sh/choros.git";
+	process.env.SANDBOX_REPO_URL ?? "https://github.com/choros-sh/choros.git";
 const SANDBOX_REPO_DEFAULT_BRANCH =
 	process.env.SANDBOX_REPO_DEFAULT_BRANCH ?? "main";
 
@@ -178,7 +178,7 @@ export const sandboxImage = ImageInstance.fromRegistry("node:24-bookworm-slim")
 	// and then killed it. Running that at build time instead removes the entire
 	// step: a fresh sandbox copies a file.
 	.runCommands(
-		`cd /app && ORGANIZATION_ID=00000000-0000-0000-0000-000000000000 HOST_DB_PATH=/app/host.db.template HOST_MIGRATIONS_FOLDER=/app/drizzle AUTH_TOKEN=build SUPERSET_API_URL=https://example.invalid SUPERSET_HOST_RUN_MODE=sandbox node -e "$(printf '%s' 'const { spawn } = require("node:child_process"); const p = spawn("node", ["host-service.js"], { stdio: ["ignore", "pipe", "pipe"] }); let out = ""; const done = (code) => { try { p.kill("SIGTERM"); } catch {} process.exit(code); }; const watch = (chunk) => { out += chunk; if (out.includes("Initialized at")) setTimeout(() => done(0), 2000); }; p.stdout.on("data", watch); p.stderr.on("data", watch); setTimeout(() => { console.error(out.slice(-800)); done(1); }, 60000);')" `,
+		`cd /app && ORGANIZATION_ID=00000000-0000-0000-0000-000000000000 HOST_DB_PATH=/app/host.db.template HOST_MIGRATIONS_FOLDER=/app/drizzle AUTH_TOKEN=build CHOROS_API_URL=https://example.invalid CHOROS_HOST_RUN_MODE=sandbox node -e "$(printf '%s' 'const { spawn } = require("node:child_process"); const p = spawn("node", ["host-service.js"], { stdio: ["ignore", "pipe", "pipe"] }); let out = ""; const done = (code) => { try { p.kill("SIGTERM"); } catch {} process.exit(code); }; const watch = (chunk) => { out += chunk; if (out.includes("Initialized at")) setTimeout(() => done(0), 2000); }; p.stdout.on("data", watch); p.stderr.on("data", watch); setTimeout(() => { console.error(out.slice(-800)); done(1); }, 60000);')" `,
 	)
 	// SQLite in WAL mode leaves the schema in host.db.template-wal until
 	// something checkpoints it, and a signalled process does not. Without this

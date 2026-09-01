@@ -1,9 +1,9 @@
 "use client";
 
-import type { MessageDescriptor } from "@lingui/core";
-import { msg } from "@lingui/core/macro";
 import { i18n } from "@choros/i18n";
 import { MeshGradient } from "@choros/ui/mesh-gradient";
+import type { MessageDescriptor } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 

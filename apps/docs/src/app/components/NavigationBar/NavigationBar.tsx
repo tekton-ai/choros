@@ -1,8 +1,8 @@
 "use client";
 
-import { Trans, useLingui } from "@lingui/react/macro";
 import { LanguageSwitcher } from "@choros/i18n/react";
 import { COMPANY } from "@choros/shared/constants";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Languages, Menu } from "lucide-react";
 import Link from "next/link";
 import { MobileSearchIcon } from "@/app/(docs)/[[...slug]]/components/DocsPageLayout/components/PageClient/components/MobileSearchIcon";
@@ -75,7 +75,7 @@ export default function NavigationBar() {
 							<Trans id="docs.nav.website">Website</Trans>
 						</NavLink>
 						<NavLink
-							href="https://github.com/superset-sh/choros"
+							href="https://github.com/choros-sh/choros"
 							external
 							aria-label={t({
 								id: "docs.nav.githubRepo",

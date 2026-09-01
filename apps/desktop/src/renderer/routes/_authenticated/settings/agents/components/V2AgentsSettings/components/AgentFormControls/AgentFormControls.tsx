@@ -1,9 +1,9 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { FORK_SESSION_ID_TOKEN } from "@choros/shared/agent-definition";
 import type { PromptTransport } from "@choros/shared/agent-prompt-launch";
 import { Input } from "@choros/ui/input";
 import { Label } from "@choros/ui/label";
 import { cn } from "@choros/ui/utils";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { AgentIcon } from "../AgentIcon";
 
 /**

@@ -1,6 +1,6 @@
-import { Trans } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import { Spinner } from "@choros/ui/spinner";
+import { Trans } from "@lingui/react/macro";
 import { useCallback, useState } from "react";
 import { ErrorState } from "renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/FilePane/components/ErrorState";
 import { FileViewToggle } from "renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/FilePane/components/FileViewToggle";

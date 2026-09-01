@@ -1,10 +1,10 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@choros/i18n/errors";
 import {
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 } from "@choros/ui/dropdown-menu";
 import { toast } from "@choros/ui/sonner";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Clipboard, Copy, FolderOpen } from "lucide-react";
 import { useCopyToClipboard } from "renderer/hooks/useCopyToClipboard";
 import { electronTrpcClient } from "renderer/lib/trpc-client";

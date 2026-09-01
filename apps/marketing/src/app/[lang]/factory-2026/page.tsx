@@ -1,5 +1,5 @@
-import { Trans } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
+import { Trans } from "@lingui/react/macro";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { GridCross } from "@/app/[lang]/blog/components/GridCross";
@@ -256,9 +256,7 @@ export default async function Factory2026Page() {
 							href="/download"
 							className="bg-foreground text-background px-6 py-3 text-sm font-normal transition-colors hover:bg-brand hover:text-white"
 						>
-							<Trans id="marketing.factory.cta.download">
-								Download Choros
-							</Trans>
+							<Trans id="marketing.factory.cta.download">Download Choros</Trans>
 						</Link>
 						<Link
 							href="/changelog"

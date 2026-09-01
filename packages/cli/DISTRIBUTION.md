@@ -38,16 +38,16 @@ choros-darwin-arm64/
 
 ```
 choros start
-  └─ reads ~/.superset/config.json (auth token, org ID, API URL)
+  └─ reads ~/.choros/config.json (auth token, org ID, API URL)
   └─ resolves choros-host binary (sibling in bin/)
   └─ spawns: choros-host (which runs: lib/node lib/host-service.js)
-  └─ passes env: AUTH_TOKEN, SUPERSET_API_URL, HOST_DB_PATH, RELAY_URL, etc.
+  └─ passes env: AUTH_TOKEN, CHOROS_API_URL, HOST_DB_PATH, RELAY_URL, etc.
   └─ polls GET /trpc/health.check until ready
   └─ host service connects to relay via WebSocket tunnel
   └─ prints "Host service running on port XXXXX"
 
 choros start --daemon
-  └─ same but detached, writes manifest to ~/.superset/host/<orgId>/manifest.json
+  └─ same but detached, writes manifest to ~/.choros/host/<orgId>/manifest.json
   └─ manifest: { pid, port, secret, startedAt }
 ```
 
@@ -144,7 +144,7 @@ jobs:
 curl -fsSL https://get.choros.sh | sh
 ```
 
-Detects platform/arch, downloads tarball from GitHub Releases, extracts to `~/.superset/bin/`, prints PATH instructions.
+Detects platform/arch, downloads tarball from GitHub Releases, extracts to `~/.choros/bin/`, prints PATH instructions.
 
 ### Manual
 
@@ -153,11 +153,11 @@ Detects platform/arch, downloads tarball from GitHub Releases, extracts to `~/.s
 curl -LO https://github.com/user/choros/releases/latest/download/choros-darwin-arm64.tar.gz
 
 # Extract
-mkdir -p ~/.superset/bin
-tar -xzf choros-darwin-arm64.tar.gz -C ~/.superset/bin
+mkdir -p ~/.choros/bin
+tar -xzf choros-darwin-arm64.tar.gz -C ~/.choros/bin
 
 # Add to PATH
-export PATH="$HOME/.superset/bin/bin:$PATH"
+export PATH="$HOME/.choros/bin/bin:$PATH"
 
 # Login
 choros auth login
@@ -215,7 +215,7 @@ choros host install   # writes systemd unit or launchd plist
 | `packages/cli/src/commands/host/status/command.ts` | Host status command (stub) |
 | `packages/cli/src/commands/host/install/command.ts` | Host install command (stub) |
 | `packages/cli/src/lib/auth.ts` | OAuth device flow |
-| `packages/cli/src/lib/config.ts` | ~/.superset/config.json read/write |
+| `packages/cli/src/lib/config.ts` | ~/.choros/config.json read/write |
 | `packages/cli/package.json` | Build scripts, cross-compile targets |
 | `packages/host-service/src/serve.ts` | Standalone host service entry point |
 | `packages/host-service/src/app.ts` | createApp() — core setup |

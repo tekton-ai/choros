@@ -1,5 +1,3 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Trans, useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@choros/i18n/errors";
 import { Button } from "@choros/ui/button";
 import {
@@ -19,6 +17,8 @@ import {
 } from "@choros/ui/form";
 import { Input } from "@choros/ui/input";
 import { toast } from "@choros/ui/sonner";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { apiTrpcClient } from "renderer/lib/api-trpc-client";

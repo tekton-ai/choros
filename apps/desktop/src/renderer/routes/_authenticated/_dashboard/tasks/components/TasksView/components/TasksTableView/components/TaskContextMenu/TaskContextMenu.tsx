@@ -1,4 +1,3 @@
-import { Trans } from "@lingui/react/macro";
 import type { SelectTaskStatus } from "@choros/db/schema";
 import {
 	ContextMenu,
@@ -10,6 +9,7 @@ import {
 	ContextMenuSubTrigger,
 	ContextMenuTrigger,
 } from "@choros/ui/context-menu";
+import { Trans } from "@lingui/react/macro";
 import { type ReactNode, useMemo, useState } from "react";
 import {
 	HiOutlineDocumentDuplicate,

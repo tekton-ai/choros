@@ -1,6 +1,6 @@
+import { COMPANY } from "@choros/shared/constants";
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
-import { COMPANY } from "@choros/shared/constants";
 
 export type TierId = "free" | "pro" | "enterprise";
 

@@ -1,8 +1,8 @@
 "use client";
 
-import { Trans } from "@lingui/react/macro";
 import { formatNumber } from "@choros/i18n/format";
 import { COMPANY } from "@choros/shared/constants";
+import { Trans } from "@lingui/react/macro";
 import { FaApple, FaLinux, FaWindows } from "react-icons/fa";
 import {
 	HiMiniArrowDownTray,

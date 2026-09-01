@@ -1,4 +1,3 @@
-import { useLingui } from "@lingui/react/macro";
 import {
 	isSupportedLocale,
 	LOCALE_LABELS,
@@ -11,6 +10,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@choros/ui/select";
+import { useLingui } from "@lingui/react/macro";
 import { HiOutlineLanguage } from "react-icons/hi2";
 import { cloudTrpc } from "renderer/lib/cloud-trpc";
 import { electronTrpc } from "renderer/lib/electron-trpc";

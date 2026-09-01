@@ -1,5 +1,5 @@
-import { Trans } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
+import { Trans } from "@lingui/react/macro";
 import type { Metadata } from "next";
 import { localeUrl, localizedAlternates } from "@/app/[lang]/metadata";
 import { initServerI18n } from "@/app/i18n-server";

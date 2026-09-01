@@ -1,7 +1,7 @@
-import { Trans } from "@lingui/react/macro";
 import type { SelectTask, SelectTaskStatus } from "@choros/db/schema";
 import { ScrollArea } from "@choros/ui/scroll-area";
 import { Separator } from "@choros/ui/separator";
+import { Trans } from "@lingui/react/macro";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { MarkdownEditor } from "renderer/components/MarkdownEditor";

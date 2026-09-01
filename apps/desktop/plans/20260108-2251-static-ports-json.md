@@ -1,7 +1,7 @@
 # Static Ports Configuration via ports.json
 
 > Superseded semantics: this plan documents the original static-port replacement
-> design. Current behavior treats `.superset/ports.json` as supplemental label
+> design. Current behavior treats `.choros/ports.json` as supplemental label
 > metadata only: it names dynamically detected listening ports, but does not
 > create port rows, hide unlabeled ports, or replace dynamic discovery. See
 > `plans/20260422-v2-remote-ports.md` and `apps/docs/content/docs/ports.mdx`
@@ -13,15 +13,15 @@ Reference: This plan follows conventions from AGENTS.md and the ExecPlan templat
 
 ## Purpose / Big Picture
 
-After this change, users can define static port entries in a `.superset/ports.json` file within their repository. When this file is present, the Ports section in the left sidebar will display the configured ports with custom labels instead of dynamically scanning for listening processes. This is useful for teams who want consistent port documentation or for projects where dynamic port scanning doesn't work well.
+After this change, users can define static port entries in a `.choros/ports.json` file within their repository. When this file is present, the Ports section in the left sidebar will display the configured ports with custom labels instead of dynamically scanning for listening processes. This is useful for teams who want consistent port documentation or for projects where dynamic port scanning doesn't work well.
 
 Users will see: ports configured in `ports.json` appear as clickable badges in the PORTS section of the sidebar, each showing the port number with a tooltip displaying the custom label. If the file is malformed, a toast notification appears explaining the error and no ports are shown.
 
 ## Assumptions
 
-1. The `.superset` directory already exists in repositories using Superset (same location as `config.json` for setup/teardown scripts).
+1. The `.choros` directory already exists in repositories using Choros (same location as `config.json` for setup/teardown scripts).
 2. Static ports should completely replace dynamic port discovery when `ports.json` is present (not merge with dynamic ports).
-3. Each workspace reads from its own worktree's `.superset/ports.json` file (workspace-scoped, not project-scoped).
+3. Each workspace reads from its own worktree's `.choros/ports.json` file (workspace-scoped, not project-scoped).
 
 ## Open Questions
 
@@ -44,16 +44,16 @@ None remaining - all questions resolved in Decision Log below.
 
 ## Surprises & Discoveries
 
-- Observation: Toast import path is `@superset/ui/sonner`, not `sonner` directly
+- Observation: Toast import path is `@choros/ui/sonner`, not `sonner` directly
   Evidence: Other components in the codebase use this import path
 
 - Observation: File watching needed additional logic to handle both file and directory watching
-  Evidence: When ports.json doesn't exist, we watch the .superset directory for file creation; when it exists, we watch the file directly for changes
+  Evidence: When ports.json doesn't exist, we watch the .choros directory for file creation; when it exists, we watch the file directly for changes
 
 ## Decision Log
 
 - Decision: Workspace-scoped ports.json reading
-  Rationale: User requested this approach. Each workspace's worktree has its own `.superset/ports.json`, allowing different branches to have different port configurations.
+  Rationale: User requested this approach. Each workspace's worktree has its own `.choros/ports.json`, allowing different branches to have different port configurations.
   Date/Author: 2026-01-08 / Planning phase
 
 - Decision: Toast notification for malformed ports.json errors
@@ -118,7 +118,7 @@ The desktop app has a dynamic port scanning system:
 
 The existing `config.json` setup/teardown feature provides a pattern to follow:
 
-- Constants defined in `apps/desktop/src/shared/constants.ts`: `PROJECT_SUPERSET_DIR_NAME = ".superset"`, `CONFIG_FILE_NAME = "config.json"`
+- Constants defined in `apps/desktop/src/shared/constants.ts`: `PROJECT_CHOROS_DIR_NAME = ".choros"`, `CONFIG_FILE_NAME = "config.json"`
 - Loading logic in `apps/desktop/src/lib/trpc/routers/workspaces/utils/setup.ts`: `loadSetupConfig(mainRepoPath)` reads and validates JSON
 - Tests in `apps/desktop/src/lib/trpc/routers/workspaces/utils/setup.test.ts`
 
@@ -128,7 +128,7 @@ Workspaces store their worktree path. The workspaces tRPC router (`apps/desktop/
 
 ### Toast Notifications
 
-The app uses `sonner` for toast notifications. Import `toast` from `@superset/ui/sonner` and call `toast.error("message")` to show an error toast.
+The app uses `sonner` for toast notifications. Import `toast` from `@choros/ui/sonner` and call `toast.error("message")` to show an error toast.
 
 ## Plan of Work
 
@@ -162,7 +162,7 @@ Create a new module to load and validate `ports.json`.
 
 Create a function `loadStaticPorts(worktreePath: string)` that:
 
-1. Constructs path: `join(worktreePath, PROJECT_SUPERSET_DIR_NAME, PORTS_FILE_NAME)`
+1. Constructs path: `join(worktreePath, PROJECT_CHOROS_DIR_NAME, PORTS_FILE_NAME)`
 2. Checks if file exists using `existsSync`
 3. If not exists, returns `{ exists: false, ports: null, error: null }`
 4. If exists, reads the file with `readFileSync`
@@ -241,9 +241,9 @@ Create a new page with:
 1. Title: "Static Port Configuration"
 2. Subtitle: "Define custom ports for your workspace with ports.json"
 
-3. **Overview section**: Explain that Superset normally auto-discovers ports from running processes, but you can override this with a static configuration file.
+3. **Overview section**: Explain that Choros normally auto-discovers ports from running processes, but you can override this with a static configuration file.
 
-4. **Configuration section**: Show path `.superset/ports.json`
+4. **Configuration section**: Show path `.choros/ports.json`
 
 5. **Schema section**: Show example:
    ```json
@@ -268,7 +268,7 @@ Create a new page with:
 
 8. **Tips section**:
    - Document ports that aren't auto-detected (like databases)
-   - Share port documentation with your team by committing `.superset/ports.json`
+   - Share port documentation with your team by committing `.choros/ports.json`
    - Use meaningful labels to help teammates understand what each port is for
 
 ## Concrete Steps
@@ -297,7 +297,7 @@ For manual validation:
     # Verify ports appear dynamically in sidebar
 
     # Test 2: Valid ports.json
-    # In the workspace's worktree, create .superset/ports.json:
+    # In the workspace's worktree, create .choros/ports.json:
     # { "ports": [{ "port": 3000, "label": "Test Server" }] }
     # Refresh/switch workspace, verify static port appears with label in tooltip
 
@@ -317,7 +317,7 @@ For manual validation:
 
 3. **Unit tests**: Run `bun test apps/desktop/src/main/lib/static-ports/` - all pass
 
-4. **Manual test - no config**: With no `.superset/ports.json`, dynamic port discovery works as before
+4. **Manual test - no config**: With no `.choros/ports.json`, dynamic port discovery works as before
 
 5. **Manual test - valid config**: With valid `ports.json`, static ports appear with custom labels in tooltips
 
@@ -393,4 +393,4 @@ No new npm dependencies required. Uses existing:
 - `node:fs` for file operations (main process only)
 - `node:path` for path construction
 - `zod` for input validation in tRPC
-- `@superset/ui/sonner` for toast notifications (already used in app)
+- `@choros/ui/sonner` for toast notifications (already used in app)

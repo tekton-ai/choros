@@ -1,6 +1,5 @@
 "use client";
 
-import { useLingui } from "@lingui/react/macro";
 import {
 	type ChartConfig,
 	ChartContainer,
@@ -14,6 +13,7 @@ import {
 	SelectValue,
 } from "@choros/ui/select";
 import { cn } from "@choros/ui/utils";
+import { useLingui } from "@lingui/react/macro";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { Area, AreaChart, XAxis, YAxis } from "recharts";

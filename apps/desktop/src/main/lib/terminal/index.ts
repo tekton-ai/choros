@@ -12,7 +12,7 @@ export type {
 	TerminalExitEvent,
 } from "./types";
 
-const DEBUG_TERMINAL = process.env.SUPERSET_TERMINAL_DEBUG === "1";
+const DEBUG_TERMINAL = process.env.CHOROS_TERMINAL_DEBUG === "1";
 let prewarmInFlight: Promise<void> | null = null;
 
 /**

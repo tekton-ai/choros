@@ -1,5 +1,5 @@
-import { useLingui } from "@lingui/react/macro";
 import type { CheckItem } from "@choros/local-db";
+import { useLingui } from "@lingui/react/macro";
 import { LuCircleCheck, LuCircleX } from "react-icons/lu";
 import type { V2WorkspacePrSummary } from "renderer/routes/_authenticated/_dashboard/v2-workspaces/hooks/useAccessibleV2Workspaces";
 

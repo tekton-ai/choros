@@ -188,7 +188,7 @@ async createOrAttach(params: CreateSessionParams) {
 When the daemon dies (machine reboot, crash, kill -9), sessions are lost. But we still have disk history:
 
 ```
-~/.superset/terminal-sessions/
+~/.choros/terminal-sessions/
 └── workspace-abc/
     └── pane-123/
         ├── meta.json        # {"startedAt": ..., "cwd": "/project"}
@@ -376,4 +376,4 @@ Today, `LocalTerminalRuntime` wraps our daemon. Tomorrow, `CloudTerminalRuntime`
 
 ---
 
-*Want to dive deeper? Check out the [Choros desktop source](https://github.com/superset-sh/choros) for the full implementation.*
+*Want to dive deeper? Check out the [Choros desktop source](https://github.com/choros-sh/choros) for the full implementation.*

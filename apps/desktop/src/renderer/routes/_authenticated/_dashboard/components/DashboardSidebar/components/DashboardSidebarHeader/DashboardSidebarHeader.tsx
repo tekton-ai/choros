@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { FEATURE_FLAGS } from "@choros/shared/constants";
 import {
 	DropdownMenu,
@@ -9,6 +8,7 @@ import {
 import { toast } from "@choros/ui/sonner";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { cn } from "@choros/ui/utils";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useMatchRoute, useNavigate } from "@tanstack/react-router";
 import { useFeatureFlagEnabled } from "posthog-js/react";
 import { useRef } from "react";

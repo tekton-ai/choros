@@ -7,7 +7,7 @@ const FETCHED_CONTENT = `# Workspaces
 Choros workspaces are isolated git worktrees. Each workspace gets:
 
 - Its own branch, checked out from the repo default branch
-- An isolated working directory under ~/.superset/worktrees
+- An isolated working directory under ~/.choros/worktrees
 - A dedicated terminal session wired to the host service
 
 ## Creating a workspace

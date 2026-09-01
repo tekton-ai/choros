@@ -1,7 +1,7 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import type { PromptTransport } from "@choros/shared/agent-prompt-launch";
 import { Button } from "@choros/ui/button";
 import { Input } from "@choros/ui/input";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useState } from "react";
 import { parseAgentCommandText } from "renderer/lib/agent-launch-command";
 import { parseArgs } from "renderer/lib/argv";

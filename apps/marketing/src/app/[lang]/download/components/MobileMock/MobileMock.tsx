@@ -17,7 +17,7 @@ export function MobileMock() {
 			<div className="w-[66%] min-w-[150px] rounded-t-[20px] border border-border border-b-0 bg-background p-4 shadow-[0_-1px_0_rgba(255,255,255,0.04)]">
 				<div className="flex items-center justify-between">
 					<span className="font-mono text-[9px] text-foreground tracking-wider">
-						SUPERSET
+						CHOROS
 					</span>
 					<span className="rounded-[2px] border border-border px-1.5 py-0.5 font-mono text-[7px] text-muted-foreground">
 						Choros

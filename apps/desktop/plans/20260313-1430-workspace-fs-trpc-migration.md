@@ -13,7 +13,7 @@ Refactor `packages/workspace-fs` and desktop filesystem router to match `plans/w
 - `writeFile` uses `{ create, overwrite }` flags + `precondition.ifMatch` for conflict detection.
 - Watch events: no revision, no ordering guarantees. Overflow → full resync.
 - Revision token: `mtime-ms + size` string. Cheap, good enough for conflict detection. Not a content hash.
-- `createDirectory` is idempotent — succeeds silently if directory already exists. `recursive?: boolean` enables `mkdir -p` semantics for higher-level callers such as nested new-file creation. Needed for infra setup (`.superset/` dir) without error handling.
+- `createDirectory` is idempotent — succeeds silently if directory already exists. `recursive?: boolean` enables `mkdir -p` semantics for higher-level callers such as nested new-file creation. Needed for infra setup (`.choros/` dir) without error handling.
 - `movePath` fails if destination exists. Client must check or delete first. Matches current behavior.
 - `readFile` encoding behavior: encoding provided → `kind: "text"`, `content: string`. Encoding omitted → `kind: "bytes"`, `content: Uint8Array`.
 
@@ -148,8 +148,8 @@ Remove `import fs` from `staging.ts`.
 ## Milestone 6: Terminal writeTaskFile
 
 Client handles entirely:
-1. `trpc.filesystem.createDirectory({ workspaceId, absolutePath: "<workspace>/.superset" })` — idempotent, safe if exists
-2. `trpc.filesystem.writeFile({ workspaceId, absolutePath: "<workspace>/.superset/<file>", content })` — default create-or-overwrite
+1. `trpc.filesystem.createDirectory({ workspaceId, absolutePath: "<workspace>/.choros" })` — idempotent, safe if exists
+2. `trpc.filesystem.writeFile({ workspaceId, absolutePath: "<workspace>/.choros/<file>", content })` — default create-or-overwrite
 3. Then `trpc.terminal.createOrAttach` — remove `taskPromptContent`/`taskPromptFileName` from input.
 
 Remove `import { mkdir, writeFile }` from `terminal.ts`. No raw `node:fs` left.

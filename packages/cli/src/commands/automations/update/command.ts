@@ -59,10 +59,7 @@ export default command({
 		if (options.workspace || options.project) {
 			const organizationId = ctx.config.organizationId;
 			if (!organizationId) {
-				throw new CLIError(
-					"No active organization",
-					"Run: choros auth login",
-				);
+				throw new CLIError("No active organization", "Run: choros auth login");
 			}
 			target = await resolveAutomationTarget({
 				organizationId,

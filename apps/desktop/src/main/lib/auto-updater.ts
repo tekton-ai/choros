@@ -1,7 +1,7 @@
 import { EventEmitter } from "node:events";
 import { statfsSync } from "node:fs";
-import * as Sentry from "@sentry/electron/main";
 import { i18n } from "@choros/i18n";
+import * as Sentry from "@sentry/electron/main";
 import { app, dialog } from "electron";
 import log from "electron-log/main";
 import { autoUpdater, type UpdateCheckResult } from "electron-updater";
@@ -60,8 +60,8 @@ const IS_AUTO_UPDATE_PLATFORM = PLATFORM.IS_MAC || PLATFORM.IS_LINUX;
 // - Stable: fetches from /releases/latest/download/ (latest non-prerelease)
 // - Canary: fetches from /releases/download/desktop-canary/ (rolling canary tag)
 const UPDATE_FEED_URL = IS_PRERELEASE
-	? "https://github.com/superset-sh/choros/releases/download/desktop-canary"
-	: "https://github.com/superset-sh/choros/releases/latest/download";
+	? "https://github.com/choros-sh/choros/releases/download/desktop-canary"
+	: "https://github.com/choros-sh/choros/releases/latest/download";
 
 export type { AutoUpdateStatusEvent } from "shared/auto-update";
 

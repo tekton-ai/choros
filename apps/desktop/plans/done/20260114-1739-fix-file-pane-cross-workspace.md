@@ -68,7 +68,7 @@ Outcomes:
 
 Validation:
 
-    bun run typecheck --filter=@superset/desktop
+    bun run typecheck --filter=@choros/desktop
     bun run lint
     bun test apps/desktop/src/renderer/stores/tabs/utils.test.ts
 
@@ -84,7 +84,7 @@ This change affects only the desktop app renderer (`apps/desktop/src/renderer`).
 
 Key concepts:
 
-- Workspace: A Superset concept representing a git worktree. The UI routes to `/workspace/$workspaceId`.
+- Workspace: A Choros concept representing a git worktree. The UI routes to `/workspace/$workspaceId`.
 - Tab: A container for one or more panes. In state, a tab has `workspaceId`, `layout`, and `id`. Defined in `apps/desktop/src/shared/tabs-types.ts` and extended in `apps/desktop/src/renderer/stores/tabs/types.ts`.
 - Pane: A leaf in a tab’s mosaic layout. Panes can be `terminal`, `webview`, or `file-viewer`. File viewers store `fileViewer` state (`filePath`, `viewMode`, etc.).
 - Tabs Store: A global Zustand store (`apps/desktop/src/renderer/stores/tabs/store.ts`) persisted via a tRPC storage adapter (`apps/desktop/src/renderer/lib/trpc-storage.ts`). It stores all tabs across all workspaces.

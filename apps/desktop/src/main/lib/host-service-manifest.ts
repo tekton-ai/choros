@@ -7,7 +7,7 @@ import {
 	writeFileSync,
 } from "node:fs";
 import { join } from "node:path";
-import { SUPERSET_HOME_DIR } from "./app-environment";
+import { CHOROS_HOME_DIR } from "./app-environment";
 
 export interface HostServiceManifest {
 	pid: number;
@@ -18,7 +18,7 @@ export interface HostServiceManifest {
 }
 
 export function manifestDir(organizationId: string): string {
-	return join(SUPERSET_HOME_DIR, "host", organizationId);
+	return join(CHOROS_HOME_DIR, "host", organizationId);
 }
 
 function manifestPath(organizationId: string): string {

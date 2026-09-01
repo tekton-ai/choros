@@ -1,5 +1,5 @@
-import type { MessageDescriptor } from "@lingui/core";
 import type { ExternalApp } from "@choros/local-db";
+import type { MessageDescriptor } from "@lingui/core";
 import type { ElementType } from "react";
 import type { HotkeyId } from "renderer/hotkeys/registry";
 import type { HostServiceAvailabilityStatus } from "renderer/lib/host-service-unavailable";

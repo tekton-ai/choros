@@ -1,9 +1,9 @@
-import type { MessageDescriptor } from "@lingui/core";
-import { msg } from "@lingui/core/macro";
-import { Trans, useLingui } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { Button } from "@choros/ui/button";
 import { cn } from "@choros/ui/utils";
+import type { MessageDescriptor } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Check, GitBranch, Loader2, RotateCw } from "lucide-react";
 import { useEffect, useState } from "react";
 import "./WorkspaceCreatingState.css";

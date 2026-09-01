@@ -2,10 +2,10 @@ import { existsSync, readFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";
 
-const PROJECT_SUPERSET_DIR_NAME = ".choros";
+const PROJECT_CHOROS_DIR_NAME = ".choros";
 const CONFIG_FILE_NAME = "config.json";
 const LOCAL_CONFIG_FILE_NAME = "config.local.json";
-const SUPERSET_DIR_NAME = ".choros";
+const CHOROS_DIR_NAME = ".choros";
 const PROJECTS_DIR_NAME = "projects";
 
 export interface SetupConfig {
@@ -162,13 +162,13 @@ function applyLocalOverlay(
 }
 
 export function getProjectConfigPath(repoPath: string): string {
-	return join(repoPath, PROJECT_SUPERSET_DIR_NAME, CONFIG_FILE_NAME);
+	return join(repoPath, PROJECT_CHOROS_DIR_NAME, CONFIG_FILE_NAME);
 }
 
 /**
  * Candidate user-override files, highest priority first: keyed by the
  * project's repo path mirrored under the projects dir (e.g.
- * `~/.superset/projects/Users/me/work/app/config.json` — discoverable
+ * `~/.choros/projects/Users/me/work/app/config.json` — discoverable
  * without looking up an ID), then by project id (legacy). The first
  * candidate that parses wins.
  */
@@ -177,7 +177,7 @@ function getUserOverridePaths(args: {
 	projectId: string;
 	homeDir: string;
 }): string[] {
-	const projectsDir = join(args.homeDir, SUPERSET_DIR_NAME, PROJECTS_DIR_NAME);
+	const projectsDir = join(args.homeDir, CHOROS_DIR_NAME, PROJECTS_DIR_NAME);
 	const paths = [join(projectsDir, args.repoPath, CONFIG_FILE_NAME)];
 	if (!args.projectId.includes("/") && !args.projectId.includes("\\")) {
 		paths.push(join(projectsDir, args.projectId, CONFIG_FILE_NAME));
@@ -186,17 +186,17 @@ function getUserOverridePaths(args: {
 }
 
 function getLocalOverlayPath(repoPath: string): string {
-	return join(repoPath, PROJECT_SUPERSET_DIR_NAME, LOCAL_CONFIG_FILE_NAME);
+	return join(repoPath, PROJECT_CHOROS_DIR_NAME, LOCAL_CONFIG_FILE_NAME);
 }
 
 /**
  * Resolve setup/teardown/run config for a v2 project. Base merge, per key,
  * later wins:
  *
- *   1. <repoPath>/.superset/config.json      — canonical project config
- *   2. <worktreePath>/.superset/config.json  — workspace/branch override
+ *   1. <repoPath>/.choros/config.json      — canonical project config
+ *   2. <worktreePath>/.choros/config.json  — workspace/branch override
  *      (only when a worktree is in scope: setup at create, teardown at delete)
- *   3. ~/.superset/projects/<repoPath>/config.json — per-machine user
+ *   3. ~/.choros/projects/<repoPath>/config.json — per-machine user
  *      override (falls back to the legacy <project-id> key)
  *
  * Then a local overlay with before/after/replace semantics: the worktree's
@@ -263,7 +263,7 @@ export type ResolvedScript =
  *
  *   1. Configured commands via {@link loadSetupConfig} — worktree config
  *      overrides the main repo's when `worktreePath` is in scope.
- *   2. Fallback: `.superset/<key>.sh`, worktree first (when in scope), then
+ *   2. Fallback: `.choros/<key>.sh`, worktree first (when in scope), then
  *      the main repo — gitignored scripts only exist in the main repo.
  *
  * Setup and teardown pass their worktree; `run` resolves per project, where
@@ -294,7 +294,7 @@ export function resolveScript(
 		? [args.worktreePath, args.repoPath]
 		: [args.repoPath];
 	for (const root of roots) {
-		const scriptPath = join(root, PROJECT_SUPERSET_DIR_NAME, `${key}.sh`);
+		const scriptPath = join(root, PROJECT_CHOROS_DIR_NAME, `${key}.sh`);
 		if (existsSync(scriptPath)) {
 			return { kind: "script", scriptPath, ...(cwd && { cwd }) };
 		}

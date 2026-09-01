@@ -1,6 +1,5 @@
 "use client";
 
-import { Trans } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import {
 	Artifact,
@@ -37,6 +36,7 @@ import {
 	SourcesTrigger,
 } from "@choros/ui/ai-elements/sources";
 import { Button } from "@choros/ui/button";
+import { Trans } from "@lingui/react/macro";
 import { DownloadIcon } from "lucide-react";
 
 import { ComponentCard } from "../../../components/ComponentCard";

@@ -5,8 +5,8 @@
 #
 # Targets:
 #   - Dev neon branch via .env DATABASE_URL (must be a non-prod branch)
-#   - superset-dev-data/local.db          (v1 fixtures)
-#   - superset-dev-data/host/<orgId>/host.db  (host.db fixtures)
+#   - choros-dev-data/local.db          (v1 fixtures)
+#   - choros-dev-data/host/<orgId>/host.db  (host.db fixtures)
 #   - ~/code/<repo>                       (on-disk fixture repos)
 #
 # v1 local DB project rows that already exist (choros, cal.com, onbook,
@@ -17,12 +17,12 @@
 set -euo pipefail
 
 SATYA_TEST_ORG=b2c3d4e5-f6a7-4890-9bcd-ef1234567891
-SUPERSET_ORG=a1b2c3d4-e5f6-7890-abcd-ef1234567890
+CHOROS_ORG=a1b2c3d4-e5f6-7890-abcd-ef1234567890
 
-DEV_DATA="$(pwd)/superset-dev-data"
+DEV_DATA="$(pwd)/choros-dev-data"
 DEV_DATA_LOCAL_DB="$DEV_DATA/local.db"
 SATYA_TEST_HOST_DB="$DEV_DATA/host/$SATYA_TEST_ORG/host.db"
-SUPERSET_HOST_DB="$DEV_DATA/host/$SUPERSET_ORG/host.db"
+CHOROS_HOST_DB="$DEV_DATA/host/$CHOROS_ORG/host.db"
 
 NEW_NO_REMOTE_ID=22222222-bbbb-4bbb-8bbb-000000000001
 NEW_GHOST_ID=22222222-bbbb-4bbb-8bbb-000000000002
@@ -109,10 +109,10 @@ SQL
 echo "→ seeding v2 projects in Choros Org"
 psql "$PGURL" >/dev/null <<SQL
 INSERT INTO public.v2_projects (id, organization_id, name, slug, repo_clone_url) VALUES
-  ('33333333-aaaa-4aaa-8aaa-000000000001', '$SUPERSET_ORG', 'cal.com (calcom)',      'v1v2-test-cal-com-calcom',     'https://github.com/calcom/cal.com'),
-  ('33333333-aaaa-4aaa-8aaa-000000000002', '$SUPERSET_ORG', 'cal.com (onlook fork)', 'v1v2-test-cal-com-onlook-dev', 'https://github.com/onlook-dev/cal.com'),
-  ('33333333-aaaa-4aaa-8aaa-000000000003', '$SUPERSET_ORG', 'onlook (test fixture)', 'v1v2-test-onlook',             'https://github.com/onlook-dev/onlook'),
-  ('$ONBOOK_FIXTURE_V2_ID',                '$SUPERSET_ORG', 'onbook (test fixture)', 'v1v2-test-onbook',             'https://github.com/onlook-dev/onbook')
+  ('33333333-aaaa-4aaa-8aaa-000000000001', '$CHOROS_ORG', 'cal.com (calcom)',      'v1v2-test-cal-com-calcom',     'https://github.com/calcom/cal.com'),
+  ('33333333-aaaa-4aaa-8aaa-000000000002', '$CHOROS_ORG', 'cal.com (onlook fork)', 'v1v2-test-cal-com-onlook-dev', 'https://github.com/onlook-dev/cal.com'),
+  ('33333333-aaaa-4aaa-8aaa-000000000003', '$CHOROS_ORG', 'onlook (test fixture)', 'v1v2-test-onlook',             'https://github.com/onlook-dev/onlook'),
+  ('$ONBOOK_FIXTURE_V2_ID',                '$CHOROS_ORG', 'onbook (test fixture)', 'v1v2-test-onbook',             'https://github.com/onlook-dev/onbook')
 ON CONFLICT (id) DO NOTHING;
 SQL
 
@@ -161,7 +161,7 @@ SQL
 # ---- 5. host.db row for relocate scenario -----------------------------------
 
 echo "→ inserting host.db relocate row (Choros org)"
-sqlite3 "$SUPERSET_HOST_DB" <<SQL
+sqlite3 "$CHOROS_HOST_DB" <<SQL
 INSERT INTO projects (id, repo_path, created_at, repo_provider, repo_owner, repo_name, repo_url, remote_name)
 VALUES (
   '$ONBOOK_FIXTURE_V2_ID',

@@ -1,10 +1,5 @@
 import { db, dbWs } from "@choros/db/client";
-import {
-	subscriptions,
-	users,
-	v2Hosts,
-	v2UsersHosts,
-} from "@choros/db/schema";
+import { subscriptions, users, v2Hosts, v2UsersHosts } from "@choros/db/schema";
 import {
 	ACTIVE_SUBSCRIPTION_STATUSES,
 	isActiveSubscriptionStatus,

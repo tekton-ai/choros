@@ -38,7 +38,7 @@ function detail(overrides: {
 			number: 1,
 			title: "A pull request",
 			body: "",
-			url: "https://github.com/superset-sh/choros/pull/1",
+			url: "https://github.com/choros-sh/choros/pull/1",
 			baseBranch: "main",
 			state: "open",
 			isDraft: false,

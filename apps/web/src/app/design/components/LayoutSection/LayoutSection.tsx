@@ -1,6 +1,5 @@
 "use client";
 
-import { Trans } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { AspectRatio } from "@choros/ui/aspect-ratio";
 import { OverflowFadeContainer } from "@choros/ui/overflow-fade-container";
@@ -12,6 +11,7 @@ import {
 } from "@choros/ui/resizable";
 import { ScrollArea } from "@choros/ui/scroll-area";
 import { Separator } from "@choros/ui/separator";
+import { Trans } from "@lingui/react/macro";
 
 import { ComponentCard } from "../ComponentCard";
 import { ShowcaseSection } from "../ShowcaseSection";

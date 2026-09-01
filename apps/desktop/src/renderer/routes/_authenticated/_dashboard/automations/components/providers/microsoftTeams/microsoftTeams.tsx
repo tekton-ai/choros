@@ -1,5 +1,5 @@
-import { msg } from "@lingui/core/macro";
 import { i18n } from "@choros/i18n";
+import { msg } from "@lingui/core/macro";
 import { BsMicrosoftTeams } from "react-icons/bs";
 import { ScopeChip } from "../../TriggerSentence/components/ScopeChip";
 import { TextFilterChip } from "../../TriggerSentence/components/TextFilterChip";

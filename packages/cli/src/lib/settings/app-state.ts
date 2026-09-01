@@ -16,7 +16,7 @@ import {
 	type Theme,
 } from "@choros/shared/themes";
 import { notifyDesktopSettingsChanged } from "./notify";
-import { getAppStatePath, getSupersetHomeDir } from "./paths";
+import { getAppStatePath, getChorosHomeDir } from "./paths";
 
 export const SYSTEM_THEME_ID = "system";
 
@@ -97,7 +97,7 @@ export async function writeThemeState(
 
 	const path = getAppStatePath();
 	const tempPath = join(
-		getSupersetHomeDir(),
+		getChorosHomeDir(),
 		`.${randomUUID()}.${process.pid}.app-state.tmp`,
 	);
 	writeFileSync(tempPath, JSON.stringify(next, null, 2), { mode: 0o600 });

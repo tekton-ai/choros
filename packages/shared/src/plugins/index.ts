@@ -192,7 +192,7 @@ export function getPluginComponentKinds(
  * these read-only on its Skills tab; they are not installable units in the
  * MVP.
  */
-export const SUPERSET_MANAGED_SKILLS = [
+export const CHOROS_MANAGED_SKILLS = [
 	{
 		name: "10x",
 		description: "Personalized audit of Choros features you're not using yet",
@@ -232,7 +232,7 @@ export const PLUGIN_CATALOG: readonly PluginCatalogEntry[] = [
 		mcpServers: {
 			choros: { type: "http", url: "https://api.choros.sh/mcp" },
 		},
-		skills: SUPERSET_MANAGED_SKILLS.map((skill) => skill.name),
+		skills: CHOROS_MANAGED_SKILLS.map((skill) => skill.name),
 		featured: true,
 	},
 	{

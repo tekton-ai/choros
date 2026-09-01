@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	Select,
 	SelectContent,
@@ -6,6 +5,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@choros/ui/select";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { HiOutlineComputerDesktop, HiOutlineServer } from "react-icons/hi2";
 
 export interface HostSelectOption {

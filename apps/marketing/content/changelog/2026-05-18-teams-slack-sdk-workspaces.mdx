@@ -19,13 +19,13 @@ Typical uses:
 
 This batch brings automations into their own as a first-class workflow:
 
-- **Prompt version history** <PRBadge url="https://github.com/superset-sh/choros/pull/3996" />: every edit to an automation's prompt is snapshotted. Browse previous versions and restore any of them, so an accidental change is no longer a one-way door.
-- **Redesigned automations tab** <PRBadge url="https://github.com/superset-sh/choros/pull/4225" />: new layout that makes a queue of runs easier to scan at a glance.
-- **Mine vs. Team filter** <PRBadge url="https://github.com/superset-sh/choros/pull/4403" />: automations now belong to a team. Filter the runs view between **Mine** and **Team** to see only what you ran vs. everything your team kicked off.
+- **Prompt version history** <PRBadge url="https://github.com/choros-sh/choros/pull/3996" />: every edit to an automation's prompt is snapshotted. Browse previous versions and restore any of them, so an accidental change is no longer a one-way door.
+- **Redesigned automations tab** <PRBadge url="https://github.com/choros-sh/choros/pull/4225" />: new layout that makes a queue of runs easier to scan at a glance.
+- **Mine vs. Team filter** <PRBadge url="https://github.com/choros-sh/choros/pull/4403" />: automations now belong to a team. Filter the runs view between **Mine** and **Team** to see only what you ran vs. everything your team kicked off.
 
 ### Drive them from the CLI
 
-Everything you can do in the UI is now scriptable. New in this batch: `prompt get` / `prompt set` <PRBadge url="https://github.com/superset-sh/choros/pull/3966" /> and the `--name` filter on list <PRBadge url="https://github.com/superset-sh/choros/pull/3959" />.
+Everything you can do in the UI is now scriptable. New in this batch: `prompt get` / `prompt set` <PRBadge url="https://github.com/choros-sh/choros/pull/3966" /> and the `--name` filter on list <PRBadge url="https://github.com/choros-sh/choros/pull/3959" />.
 
 ```bash
 # create a recurring run from a prompt file
@@ -58,18 +58,18 @@ The `choros` CLI grew real project and workspace commands and a cross-device log
 
 **New commands:**
 
-- `choros projects create` <PRBadge url="https://github.com/superset-sh/choros/pull/4355" />: scaffold a new Choros project from your shell.
-- `choros projects setup` <PRBadge url="https://github.com/superset-sh/choros/pull/4356" />: link an existing local repo to a Choros project.
-- `choros workspaces open` <PRBadge url="https://github.com/superset-sh/choros/pull/4258" />: open a workspace directly from the terminal.
-- `choros auth login` <PRBadge url="https://github.com/superset-sh/choros/pull/3965" />: now uses OAuth device code + PKCE, so it works on headless servers and across devices.
+- `choros projects create` <PRBadge url="https://github.com/choros-sh/choros/pull/4355" />: scaffold a new Choros project from your shell.
+- `choros projects setup` <PRBadge url="https://github.com/choros-sh/choros/pull/4356" />: link an existing local repo to a Choros project.
+- `choros workspaces open` <PRBadge url="https://github.com/choros-sh/choros/pull/4258" />: open a workspace directly from the terminal.
+- `choros auth login` <PRBadge url="https://github.com/choros-sh/choros/pull/3965" />: now uses OAuth device code + PKCE, so it works on headless servers and across devices.
 
 **Setting it up:**
 
 ```bash
 # install
 curl -fsSL https://choros.sh/cli/install.sh | sh
-# or: brew install superset-sh/tap/choros
-# or: it's already bundled with the desktop app at ~/.superset/bin/choros
+# or: brew install choros-sh/tap/choros
+# or: it's already bundled with the desktop app at ~/.choros/bin/choros
 
 # sign in (opens a browser, or prints a code for a second device)
 choros auth login
@@ -79,7 +79,7 @@ choros projects create
 choros workspaces open
 ```
 
-The accompanying **TypeScript SDK** <PRBadge url="https://github.com/superset-sh/choros/pull/3937" /> (`@choros_sh/sdk`) mirrors the CLI 1:1 (same procedures, same shapes), so anything you can do from your shell, you can do from a script, a CI job, or an internal tool.
+The accompanying **TypeScript SDK** <PRBadge url="https://github.com/choros-sh/choros/pull/3937" /> (`@choros_sh/sdk`) mirrors the CLI 1:1 (same procedures, same shapes), so anything you can do from your shell, you can do from a script, a CI job, or an internal tool.
 
 ```bash
 npm install @choros_sh/sdk
@@ -87,11 +87,11 @@ npm install @choros_sh/sdk
 
 ```ts
 import Choros from '@choros_sh/sdk';
-const client = new Choros(); // reads SUPERSET_API_KEY / SUPERSET_ORGANIZATION_ID
+const client = new Choros(); // reads CHOROS_API_KEY / CHOROS_ORGANIZATION_ID
 await client.automations.run('<automation-id>');
 ```
 
-Linux `choros start` and `choros update` are now fixed <PRBadge url="https://github.com/superset-sh/choros/pull/4635" />.
+Linux `choros start` and `choros update` are now fixed <PRBadge url="https://github.com/choros-sh/choros/pull/4635" />.
 
 ## Slack bot
 
@@ -100,7 +100,7 @@ Linux `choros start` and `choros update` are now fixed <PRBadge url="https://git
 `@choros` in Slack is now an actual agent, not a task-filer. Mention it in a channel or DM it from anywhere, and it can:
 
 - **Create, update, search, and triage tasks** from the conversation it's standing in, pulling assignees, statuses, and priorities from your team's Linear/Choros setup.
-- **Spin up a cloud workspace and launch a coding agent** to actually do the work. For code-change requests (e.g. "@choros bump our Sentry SDK to v9 across all apps"), it now defaults to spawning a workspace and agent rather than just filing a ticket <PRBadge url="https://github.com/superset-sh/choros/pull/4660" />.
+- **Spin up a cloud workspace and launch a coding agent** to actually do the work. For code-change requests (e.g. "@choros bump our Sentry SDK to v9 across all apps"), it now defaults to spawning a workspace and agent rather than just filing a ticket <PRBadge url="https://github.com/choros-sh/choros/pull/4660" />.
 - **Read the thread or channel history** on its own to gather context: no need to copy-paste the prior messages.
 - **Search the web with citations** when a request needs up-to-date info.
 - **Unfurl Choros task and workspace links** with rich previews when they're shared in a channel.
@@ -119,10 +119,10 @@ The mobile app is in **internal review**. Core flows (workspaces list, task tria
 
 ## Also in this batch
 
-- **Teams as a first-class primitive** <PRBadge url="https://github.com/superset-sh/choros/pull/4403" />: assign members, workspaces, and automations to a team. Powers the Mine/Team automations split above.
-- **Terminal sessions survive app updates** <PRBadge url="https://github.com/superset-sh/choros/pull/3971" />: the PTY daemon hands off file descriptors on upgrade, so running shells stay alive when Choros auto-updates.
-- **Web terminal presets** <PRBadge url="https://github.com/superset-sh/choros/pull/4653" />: run your common commands with a single click in the web terminal, same as desktop.
+- **Teams as a first-class primitive** <PRBadge url="https://github.com/choros-sh/choros/pull/4403" />: assign members, workspaces, and automations to a team. Powers the Mine/Team automations split above.
+- **Terminal sessions survive app updates** <PRBadge url="https://github.com/choros-sh/choros/pull/3971" />: the PTY daemon hands off file descriptors on upgrade, so running shells stay alive when Choros auto-updates.
+- **Web terminal presets** <PRBadge url="https://github.com/choros-sh/choros/pull/4653" />: run your common commands with a single click in the web terminal, same as desktop.
 
 ## Minor updates
 
-V2 changes tab gained inline stage/unstage/discard controls <PRBadge url="https://github.com/superset-sh/choros/pull/4022" /> and diff comments gained a copy action <PRBadge url="https://github.com/superset-sh/choros/pull/4389" />. Workspaces can be started with a preset for repeatable agent runs <PRBadge url="https://github.com/superset-sh/choros/pull/4335" />. The relay server now drains tunnel connections cleanly on shutdown ahead of the multi-region rollout <PRBadge url="https://github.com/superset-sh/choros/pull/4594" />. Theme search in the command palette <PRBadge url="https://github.com/superset-sh/choros/pull/4573" />. macOS notifications now include workspace and project context <PRBadge url="https://github.com/superset-sh/choros/pull/4614" />. MCP OAuth access token TTL bumped to 7 days <PRBadge url="https://github.com/superset-sh/choros/pull/4365" />.
+V2 changes tab gained inline stage/unstage/discard controls <PRBadge url="https://github.com/choros-sh/choros/pull/4022" /> and diff comments gained a copy action <PRBadge url="https://github.com/choros-sh/choros/pull/4389" />. Workspaces can be started with a preset for repeatable agent runs <PRBadge url="https://github.com/choros-sh/choros/pull/4335" />. The relay server now drains tunnel connections cleanly on shutdown ahead of the multi-region rollout <PRBadge url="https://github.com/choros-sh/choros/pull/4594" />. Theme search in the command palette <PRBadge url="https://github.com/choros-sh/choros/pull/4573" />. macOS notifications now include workspace and project context <PRBadge url="https://github.com/choros-sh/choros/pull/4614" />. MCP OAuth access token TTL bumped to 7 days <PRBadge url="https://github.com/choros-sh/choros/pull/4365" />.

@@ -1,10 +1,10 @@
 "use client";
 
-import { useLingui } from "@lingui/react/macro";
 import {
 	ADMIN_INSIGHTS,
 	POSTHOG_PROJECT_URL,
 } from "@choros/trpc/insight-registry";
+import { useLingui } from "@lingui/react/macro";
 import { useInsightResults } from "../../hooks/useInsightResults";
 import { formatDay } from "../../utils/chartAxis";
 import {

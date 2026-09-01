@@ -1,7 +1,7 @@
 "use client";
 
-import { Trans } from "@lingui/react/macro";
 import { Badge } from "@choros/ui/badge";
+import { Trans } from "@lingui/react/macro";
 import Link from "next/link";
 import { type MouseEvent, type ReactNode, useRef, useState } from "react";
 

@@ -1,4 +1,3 @@
-import { Trans } from "@lingui/react/macro";
 import type { TeardownFailureCause } from "@choros/host-service";
 import {
 	AlertDialog,
@@ -9,6 +8,7 @@ import {
 	AlertDialogTitle,
 } from "@choros/ui/alert-dialog";
 import { Button } from "@choros/ui/button";
+import { Trans } from "@lingui/react/macro";
 import { useEffect } from "react";
 import stripAnsi from "strip-ansi";
 import { shouldConfirmDeleteDialogKey } from "../../utils/shouldConfirmDeleteDialogKey";
@@ -22,7 +22,7 @@ interface TeardownFailedPaneProps {
 	onForceDelete: () => void;
 }
 
-/** Shown when `.superset/teardown.sh` exited non-zero or timed out. */
+/** Shown when `.choros/teardown.sh` exited non-zero or timed out. */
 export function TeardownFailedPane({
 	open,
 	onOpenChange,

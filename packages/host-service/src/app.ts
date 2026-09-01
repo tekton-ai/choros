@@ -1,7 +1,7 @@
+import { ChatService } from "@choros/provider-auth/server";
 import { createNodeWebSocket } from "@hono/node-ws";
 import { trpcServer } from "@hono/trpc-server";
 import { Octokit } from "@octokit/rest";
-import { ChatService } from "@choros/provider-auth/server";
 import { TRPCError } from "@trpc/server";
 import type { MiddlewareHandler } from "hono";
 import { Hono } from "hono";
@@ -248,7 +248,7 @@ export function createApp(options: CreateAppOptions): CreateAppResult {
 	// the main-workspace sweep already added a phantom second workspace here
 	// before bootstrap started seeding `type='main'`.
 	void (async () => {
-		if (process.env.SUPERSET_HOST_RUN_MODE === "sandbox") return;
+		if (process.env.CHOROS_HOST_RUN_MODE === "sandbox") return;
 		await runProjectBackfill({
 			db,
 			eventBus,

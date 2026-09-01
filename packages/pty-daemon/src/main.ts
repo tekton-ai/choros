@@ -72,8 +72,7 @@ async function runFresh(): Promise<void> {
 	// Env takes precedence so the supervisor (or a test harness) can pin
 	// the version to a known value. Falls back to the package.json read
 	// when env is unset — that's the deployed-artifact source of truth.
-	const daemonVersion =
-		process.env.SUPERSET_PTY_DAEMON_VERSION ?? DAEMON_VERSION;
+	const daemonVersion = process.env.CHOROS_PTY_DAEMON_VERSION ?? DAEMON_VERSION;
 	const server = new Server({
 		socketPath: args.socket,
 		daemonVersion,
@@ -128,7 +127,7 @@ async function runHandoffReceiver(): Promise<void> {
 	log(`snapshotPath=${snapshotPath} socketPath=${socketPath}`);
 
 	// Ignore env in handoff mode: an old-bundle predecessor won't strip
-	// SUPERSET_PTY_DAEMON_VERSION when spawning us, and trusting it
+	// CHOROS_PTY_DAEMON_VERSION when spawning us, and trusting it
 	// would make us report the predecessor's stale version forever.
 	const daemonVersion = DAEMON_VERSION;
 	log(`daemonVersion=${daemonVersion}`);

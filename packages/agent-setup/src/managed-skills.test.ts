@@ -18,16 +18,16 @@ import {
 
 const TEST_ROOT = path.join(
 	os.tmpdir(),
-	`superset-managed-skills-${process.pid}-${Date.now()}`,
+	`choros-managed-skills-${process.pid}-${Date.now()}`,
 );
 const HOME_DIR = path.join(TEST_ROOT, "home");
 const TEMPLATES_DIR = path.join(TEST_ROOT, "templates");
 const BUNDLED_PLUGIN = path.join(TEMPLATES_DIR, "plugin");
 
 const claudeSkills = path.join(HOME_DIR, ".claude", "skills");
-const claudePlugin = path.join(claudeSkills, "superset");
+const claudePlugin = path.join(claudeSkills, "choros");
 const agentsSkills = path.join(HOME_DIR, ".agents", "skills");
-const commandsDir = path.join(HOME_DIR, ".agents", "commands", "superset");
+const commandsDir = path.join(HOME_DIR, ".agents", "commands", "choros");
 
 function skillMd(name: string): string {
 	return `---\nname: ${name}\ndescription: test ${name} skill\n---\n\n# ${name} body\n`;
@@ -37,7 +37,7 @@ function seedBundledPlugin(): void {
 	mkdirSync(path.join(BUNDLED_PLUGIN, ".claude-plugin"), { recursive: true });
 	writeFileSync(
 		path.join(BUNDLED_PLUGIN, ".claude-plugin", "plugin.json"),
-		JSON.stringify({ name: "superset", version: "0.3.0" }),
+		JSON.stringify({ name: "choros", version: "0.3.0" }),
 	);
 	for (const name of ["feedback", "10x", "orchestrate"]) {
 		const dir = path.join(BUNDLED_PLUGIN, "skills", name);
@@ -87,11 +87,8 @@ describe("withManagedMarker", () => {
 
 describe("setFrontmatterName", () => {
 	it("rewrites only the frontmatter name", () => {
-		const renamed = setFrontmatterName(
-			skillMd("feedback"),
-			"superset-feedback",
-		);
-		expect(renamed).toContain("name: superset-feedback");
+		const renamed = setFrontmatterName(skillMd("feedback"), "choros-feedback");
+		expect(renamed).toContain("name: choros-feedback");
 		expect(renamed).toContain("# feedback body");
 	});
 });
@@ -107,7 +104,7 @@ describe("createManagedSkills", () => {
 					"utf-8",
 				),
 			).name,
-		).toBe("superset");
+		).toBe("choros");
 		for (const name of ["feedback", "10x", "orchestrate"]) {
 			expect(
 				readFileSync(
@@ -136,9 +133,9 @@ describe("createManagedSkills", () => {
 		await run();
 
 		for (const dirName of [
-			"superset-feedback",
-			"superset-10x",
-			"superset-orchestrate",
+			"choros-feedback",
+			"choros-10x",
+			"choros-orchestrate",
 		]) {
 			const content = readFileSync(
 				path.join(agentsSkills, dirName, "SKILL.md"),
@@ -149,12 +146,7 @@ describe("createManagedSkills", () => {
 		}
 		expect(
 			existsSync(
-				path.join(
-					agentsSkills,
-					"superset-orchestrate",
-					"agents",
-					"openai.yaml",
-				),
+				path.join(agentsSkills, "choros-orchestrate", "agents", "openai.yaml"),
 			),
 		).toBe(true);
 	});
@@ -173,7 +165,7 @@ describe("createManagedSkills", () => {
 	it("never touches a user-owned plugin dir or files without markers", async () => {
 		mkdirSync(claudePlugin, { recursive: true });
 		writeFileSync(path.join(claudePlugin, "SKILL.md"), "users own plugin\n");
-		const userSkill = path.join(agentsSkills, "superset-feedback", "SKILL.md");
+		const userSkill = path.join(agentsSkills, "choros-feedback", "SKILL.md");
 		mkdirSync(path.dirname(userSkill), { recursive: true });
 		writeFileSync(userSkill, "my own skill\n");
 
@@ -187,17 +179,17 @@ describe("createManagedSkills", () => {
 	});
 
 	it("reaps stale managed dirs from earlier versions but keeps user dirs", async () => {
-		const staleClaude = path.join(claudeSkills, "superset-feedback");
+		const staleClaude = path.join(claudeSkills, "choros-feedback");
 		mkdirSync(staleClaude, { recursive: true });
 		writeFileSync(
 			path.join(staleClaude, "SKILL.md"),
-			withManagedMarker(skillMd("superset-feedback")),
+			withManagedMarker(skillMd("choros-feedback")),
 		);
-		const staleAgents = path.join(agentsSkills, "superset-orchestration");
+		const staleAgents = path.join(agentsSkills, "choros-orchestration");
 		mkdirSync(staleAgents, { recursive: true });
 		writeFileSync(
 			path.join(staleAgents, "SKILL.md"),
-			withManagedMarker(skillMd("superset-orchestration")),
+			withManagedMarker(skillMd("choros-orchestration")),
 		);
 		const userDir = path.join(claudeSkills, "decide");
 		mkdirSync(userDir, { recursive: true });
@@ -219,10 +211,10 @@ describe("createManagedSkills", () => {
 
 		expect(
 			readFileSync(
-				path.join(agentsSkills, "superset-newskill", "SKILL.md"),
+				path.join(agentsSkills, "choros-newskill", "SKILL.md"),
 				"utf-8",
 			),
-		).toContain("name: superset-newskill");
+		).toContain("name: choros-newskill");
 		expect(
 			existsSync(path.join(claudePlugin, "skills", "newskill", "SKILL.md")),
 		).toBe(true);
@@ -243,19 +235,17 @@ describe("createManagedSkills", () => {
 
 	it("withholds a disabled skill from every surface and reaps it if already provisioned", async () => {
 		await run();
-		expect(existsSync(path.join(agentsSkills, "superset-feedback"))).toBe(true);
+		expect(existsSync(path.join(agentsSkills, "choros-feedback"))).toBe(true);
 
 		await run(["feedback"]);
 
-		expect(existsSync(path.join(agentsSkills, "superset-feedback"))).toBe(
-			false,
-		);
+		expect(existsSync(path.join(agentsSkills, "choros-feedback"))).toBe(false);
 		expect(existsSync(path.join(commandsDir, "feedback.md"))).toBe(false);
 		expect(existsSync(path.join(claudePlugin, "skills", "feedback"))).toBe(
 			false,
 		);
 		// Untouched skills stay provisioned.
-		expect(existsSync(path.join(agentsSkills, "superset-10x"))).toBe(true);
+		expect(existsSync(path.join(agentsSkills, "choros-10x"))).toBe(true);
 		expect(readFileSync(path.join(commandsDir, "10x.md"), "utf-8")).toContain(
 			MANAGED_SKILL_MARKER,
 		);

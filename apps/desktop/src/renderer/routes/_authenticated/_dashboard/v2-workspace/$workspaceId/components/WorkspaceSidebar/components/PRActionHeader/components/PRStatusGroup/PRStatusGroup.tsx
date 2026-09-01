@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -14,6 +13,7 @@ import {
 import { toast } from "@choros/ui/sonner";
 import { cn } from "@choros/ui/utils";
 import { workspaceTrpc } from "@choros/workspace-client";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useMemo } from "react";
 import { VscChevronDown, VscGitMerge, VscLoading } from "react-icons/vsc";
 import { PRIcon, type PRState } from "renderer/screens/main/components/PRIcon";

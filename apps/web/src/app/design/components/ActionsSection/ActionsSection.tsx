@@ -1,6 +1,5 @@
 "use client";
 
-import { Trans } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { Button } from "@choros/ui/button";
 import {
@@ -18,6 +17,7 @@ import { Kbd, KbdGroup } from "@choros/ui/kbd";
 import { Spinner } from "@choros/ui/spinner";
 import { Toggle } from "@choros/ui/toggle";
 import { ToggleGroup, ToggleGroupItem } from "@choros/ui/toggle-group";
+import { Trans } from "@lingui/react/macro";
 import {
 	ArchiveIcon,
 	BoldIcon,

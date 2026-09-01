@@ -1,6 +1,6 @@
 import type { AgentType } from "@choros/shared/agent-command";
 
-export type SupersetManagedBinary = AgentType;
+export type ChorosManagedBinary = AgentType;
 
 interface AgentSetupTarget {
 	id: AgentType;
@@ -8,7 +8,7 @@ interface AgentSetupTarget {
 }
 
 /**
- * Agents Superset integrates with, in setup order. The setup/teardown writers
+ * Agents Choros integrates with, in setup order. The setup/teardown writers
  * for each id live in agent-setup.ts (AGENT_SETUP_DEFINITIONS) — this file
  * stays free of fs-touching imports so shared consumers (e.g. shell-wrappers)
  * can read the target list without pulling in the writers.
@@ -32,6 +32,6 @@ export const AGENT_SETUP_TARGETS = [
 
 export type AgentSetupTargetId = (typeof AGENT_SETUP_TARGETS)[number]["id"];
 
-export const SUPERSET_MANAGED_BINARIES = AGENT_SETUP_TARGETS.filter(
+export const CHOROS_MANAGED_BINARIES = AGENT_SETUP_TARGETS.filter(
 	(target) => "managedBinary" in target && target.managedBinary,
-).map((target) => target.id) satisfies SupersetManagedBinary[];
+).map((target) => target.id) satisfies ChorosManagedBinary[];

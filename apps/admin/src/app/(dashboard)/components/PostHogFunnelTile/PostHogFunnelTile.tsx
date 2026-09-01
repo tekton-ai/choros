@@ -1,8 +1,5 @@
 "use client";
 
-import type { MessageDescriptor } from "@lingui/core";
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import {
 	ADMIN_INSIGHTS,
@@ -10,6 +7,9 @@ import {
 } from "@choros/trpc/insight-registry";
 import { Button } from "@choros/ui/button";
 import { cn } from "@choros/ui/utils";
+import type { MessageDescriptor } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react/macro";
 import { LuExternalLink, LuRefreshCw } from "react-icons/lu";
 
 import { useInsightResults } from "../../hooks/useInsightResults";

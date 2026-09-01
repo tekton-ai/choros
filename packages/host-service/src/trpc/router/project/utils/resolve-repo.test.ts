@@ -577,7 +577,7 @@ describe("cloneRepoInto", () => {
 	});
 
 	test("creates the parent directory (and ancestors) when it does not exist", async () => {
-		// Mirrors the default `~/.superset/projects` location not existing on a
+		// Mirrors the default `~/.choros/projects` location not existing on a
 		// fresh machine: clone should mkdir -p the parent rather than erroring.
 		const missingParent = join(workRoot, "deeply", "nested", "projects");
 		expect(existsSync(missingParent)).toBe(false);

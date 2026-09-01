@@ -1,5 +1,3 @@
-import { msg } from "@lingui/core/macro";
-import { Trans } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { Label } from "@choros/ui/label";
 import {
@@ -9,6 +7,8 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@choros/ui/select";
+import { msg } from "@lingui/core/macro";
+import { Trans } from "@lingui/react/macro";
 import { useCallback } from "react";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 

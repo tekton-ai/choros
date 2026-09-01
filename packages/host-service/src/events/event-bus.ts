@@ -1,10 +1,7 @@
 import path from "node:path";
-import type { NodeWebSocket } from "@hono/node-ws";
 import type { DetectedPort } from "@choros/port-scanner";
-import {
-	type FsWatchEvent,
-	watchSingleFile,
-} from "@choros/workspace-fs/host";
+import { type FsWatchEvent, watchSingleFile } from "@choros/workspace-fs/host";
+import type { NodeWebSocket } from "@hono/node-ws";
 import type { Hono } from "hono";
 import type { HostDb } from "../db/index.ts";
 import { portManager } from "../ports/port-manager.ts";
@@ -412,7 +409,7 @@ export class EventBus {
 					const next = await iterator.next();
 					if (disposed || next.done) return;
 
-					if (process.env.SUPERSET_FS_EVENTS_DEBUG === "1") {
+					if (process.env.CHOROS_FS_EVENTS_DEBUG === "1") {
 						console.log("[fs:debug] event-bus send", {
 							workspaceId,
 							count: next.value.events.length,

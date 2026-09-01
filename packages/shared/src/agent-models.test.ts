@@ -7,12 +7,12 @@ import {
 	buildAgentModeArgs,
 	buildAgentModelArgs,
 	buildAgentModelEnv,
+	CHOROS_CHAT_MODELS,
 	getAgentEffortSupport,
 	getAgentEfforts,
 	getAgentModelSupport,
 	getAgentModeSupport,
 	resolveAgentLaunchPresetId,
-	SUPERSET_CHAT_MODELS,
 } from "./agent-models";
 import { BUILTIN_TERMINAL_AGENT_TYPES } from "./builtin-terminal-agents";
 
@@ -51,9 +51,9 @@ describe("AGENT_MODEL_SUPPORT", () => {
 	});
 });
 
-describe("SUPERSET_CHAT_MODELS", () => {
+describe("CHOROS_CHAT_MODELS", () => {
 	it("includes opus 5 and the GPT-5.6 Codex models", () => {
-		const ids = SUPERSET_CHAT_MODELS.map((model) => model.id);
+		const ids = CHOROS_CHAT_MODELS.map((model) => model.id);
 		expect(ids).toContain("anthropic/claude-opus-5");
 		expect(ids).toContain("openai/gpt-5.6-sol");
 		expect(ids).toContain("openai/gpt-5.6-terra");
@@ -95,9 +95,9 @@ describe("buildAgentModelArgs", () => {
 	});
 
 	it("returns [] for choros (model travels via chat metadata)", () => {
-		expect(
-			buildAgentModelArgs("choros", "anthropic/claude-opus-4-8"),
-		).toEqual([]);
+		expect(buildAgentModelArgs("choros", "anthropic/claude-opus-4-8")).toEqual(
+			[],
+		);
 	});
 
 	it("includes fable in claude's curated list", () => {

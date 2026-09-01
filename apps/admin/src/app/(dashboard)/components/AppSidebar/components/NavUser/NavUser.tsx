@@ -1,6 +1,5 @@
 "use client";
 
-import { Trans, useLingui } from "@lingui/react/macro";
 import { authClient } from "@choros/auth/client";
 import { Avatar, AvatarFallback, AvatarImage } from "@choros/ui/avatar";
 import { Button } from "@choros/ui/button";
@@ -29,6 +28,7 @@ import {
 	useSidebar,
 } from "@choros/ui/sidebar";
 import { toast } from "@choros/ui/sonner";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import {

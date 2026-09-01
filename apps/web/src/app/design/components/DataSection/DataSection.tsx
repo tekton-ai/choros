@@ -1,6 +1,5 @@
 "use client";
 
-import { Trans } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { Avatar, AvatarFallback, AvatarImage } from "@choros/ui/avatar";
 import { Badge } from "@choros/ui/badge";
@@ -41,6 +40,7 @@ import {
 	TableHeader,
 	TableRow,
 } from "@choros/ui/table";
+import { Trans } from "@lingui/react/macro";
 import { FolderGitIcon, MoreHorizontalIcon } from "lucide-react";
 
 import { ComponentCard } from "../ComponentCard";
@@ -100,7 +100,7 @@ export function DataSection() {
 			>
 				<Avatar>
 					<AvatarImage
-						src="https://github.com/superset-sh.png"
+						src="https://github.com/choros-sh.png"
 						alt={i18n._({
 							id: "web.design.dataSection.choros",
 							message: "Choros",

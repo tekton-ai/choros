@@ -33,7 +33,7 @@ export function sanitizePromptForPty(prompt: string): string {
 }
 
 function resolveDelimiter(prompt: string, randomId: string): string {
-	let delimiter = `SUPERSET_PROMPT_${randomId.replaceAll("-", "")}`;
+	let delimiter = `CHOROS_PROMPT_${randomId.replaceAll("-", "")}`;
 	while (prompt.includes(delimiter)) {
 		delimiter = `${delimiter}_X`;
 	}
@@ -101,13 +101,13 @@ export interface ParsedPromptHeredocCommand {
 	suffix?: string;
 }
 
-// The delimiter is SUPERSET_PROMPT_<hex uuid> plus optional _X de-collision
+// The delimiter is CHOROS_PROMPT_<hex uuid> plus optional _X de-collision
 // runs — never present in the prompt body (resolveDelimiter guarantees it),
 // so the backreference match is unambiguous.
 const ARGV_HEREDOC_PATTERN =
-	/^([\s\S]+?) "\$\(cat <<'(SUPERSET_PROMPT_[A-Za-z0-9_]+)'\n([\s\S]*)\n\2\n\)"([^\n]*)$/;
+	/^([\s\S]+?) "\$\(cat <<'(CHOROS_PROMPT_[A-Za-z0-9_]+)'\n([\s\S]*)\n\2\n\)"([^\n]*)$/;
 const STDIN_HEREDOC_PATTERN =
-	/^([\s\S]+?) <<'(SUPERSET_PROMPT_[A-Za-z0-9_]+)'\n([\s\S]*)\n\2$/;
+	/^([\s\S]+?) <<'(CHOROS_PROMPT_[A-Za-z0-9_]+)'\n([\s\S]*)\n\2$/;
 
 export function parsePromptHeredocCommand(
 	commandText: string,

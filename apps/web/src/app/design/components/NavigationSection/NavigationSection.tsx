@@ -1,6 +1,5 @@
 "use client";
 
-import { Trans } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import {
 	Accordion,
@@ -41,6 +40,7 @@ import {
 	PaginationPrevious,
 } from "@choros/ui/pagination";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@choros/ui/tabs";
+import { Trans } from "@lingui/react/macro";
 import { ChevronsUpDownIcon } from "lucide-react";
 
 import { ComponentCard } from "../ComponentCard";

@@ -1,5 +1,5 @@
-import { Trans } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
+import { Trans } from "@lingui/react/macro";
 import { BotIcon } from "lucide-react-native";
 import { memo } from "react";
 import { View } from "react-native";

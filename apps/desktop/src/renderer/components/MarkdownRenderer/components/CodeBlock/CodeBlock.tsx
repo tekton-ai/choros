@@ -1,5 +1,5 @@
-import { mermaid } from "@streamdown/mermaid";
 import { ShowCode } from "@choros/ui/ai-elements/show-code";
+import { mermaid } from "@streamdown/mermaid";
 import type { ReactNode } from "react";
 import { useTheme } from "renderer/stores";
 import { Streamdown } from "streamdown";

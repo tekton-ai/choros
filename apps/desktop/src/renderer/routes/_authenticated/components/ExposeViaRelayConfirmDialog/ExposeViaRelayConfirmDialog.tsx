@@ -56,8 +56,8 @@ export function ExposeViaRelayConfirmDialog({
 								</p>
 							) : (
 								<p>
-									Nothing else will be able to reach this device through
-									Choros Relay.
+									Nothing else will be able to reach this device through Choros
+									Relay.
 								</p>
 							)}
 						</div>

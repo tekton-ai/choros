@@ -1,5 +1,5 @@
 // Manifest for a running pty-daemon instance. Lives under
-// $SUPERSET_HOME_DIR/host/{organizationId}/. Different lifecycle from
+// $CHOROS_HOME_DIR/host/{organizationId}/. Different lifecycle from
 // host-service's own manifest — the daemon outlives host-service restarts.
 
 import {
@@ -46,34 +46,34 @@ export function isTestRunnerContext(
  * dials a real socket can adopt, reap, or kill daemons and shells that
  * belong to running desktop instances — this has killed live dev stacks
  * and their agents' terminals. Fail loudly instead: every test that
- * touches the daemon layer must point SUPERSET_HOME_DIR at an isolated
- * temp dir (and usually SUPERSET_PTY_DAEMON_SOCKET at a temp socket).
+ * touches the daemon layer must point CHOROS_HOME_DIR at an isolated
+ * temp dir (and usually CHOROS_PTY_DAEMON_SOCKET at a temp socket).
  */
 export function assertIsolatedDaemonNamespaceInTests(
 	env: NodeJS.ProcessEnv = process.env,
 ): void {
 	if (!isTestRunnerContext(env)) return;
-	const home = env.SUPERSET_HOME_DIR;
+	const home = env.CHOROS_HOME_DIR;
 	const defaultHome = join(homedir(), ".choros");
 	// Resolve before comparing: a trailing-slash or relative alias of the
 	// default home must not slip past the guard.
 	if (!home || resolve(home) === resolve(defaultHome)) {
 		throw new Error(
 			"refusing to touch the default ~/.choros daemon namespace from a " +
-				"test: set SUPERSET_HOME_DIR to an isolated temp dir (and " +
-				"SUPERSET_PTY_DAEMON_SOCKET to a temp socket) before using the " +
+				"test: set CHOROS_HOME_DIR to an isolated temp dir (and " +
+				"CHOROS_PTY_DAEMON_SOCKET to a temp socket) before using the " +
 				"daemon layer.",
 		);
 	}
 }
 
-function supersetHomeDir(): string {
+function chorosHomeDir(): string {
 	assertIsolatedDaemonNamespaceInTests();
-	return process.env.SUPERSET_HOME_DIR || join(homedir(), ".choros");
+	return process.env.CHOROS_HOME_DIR || join(homedir(), ".choros");
 }
 
 export function ptyDaemonManifestDir(organizationId: string): string {
-	return join(supersetHomeDir(), "host", organizationId);
+	return join(chorosHomeDir(), "host", organizationId);
 }
 
 function ptyDaemonManifestPath(organizationId: string): string {
@@ -137,7 +137,7 @@ export function readPtyDaemonManifest(
 }
 
 export function listPtyDaemonManifests(): PtyDaemonManifest[] {
-	const hostDir = join(supersetHomeDir(), "host");
+	const hostDir = join(chorosHomeDir(), "host");
 	if (!existsSync(hostDir)) return [];
 	const manifests: PtyDaemonManifest[] = [];
 	try {

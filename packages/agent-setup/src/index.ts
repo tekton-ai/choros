@@ -23,7 +23,7 @@ import {
 } from "./shell-wrappers";
 
 /**
- * Provisions everything Superset manages in the user's environment for the
+ * Provisions everything Choros manages in the user's environment for the
  * supported terminal agents: lifecycle hooks, binary wrappers, shell
  * integration, and the managed skills plugin. Agents in
  * `options.disabledAgentIds` get their global-config footprint removed
@@ -31,8 +31,8 @@ import {
  * process and the standalone (CLI-launched) host-service alike.
  *
  * Callers without their own settings store (headless hosts) omit
- * `disabledAgentIds`/`disabledSkillIds`; the shared ~/.superset mirror files
- * (agent-hooks.json, disabled-skills.json) and their SUPERSET_DISABLED_*
+ * `disabledAgentIds`/`disabledSkillIds`; the shared ~/.choros mirror files
+ * (agent-hooks.json, disabled-skills.json) and their CHOROS_DISABLED_*
  * env overrides apply instead, so a machine running both the desktop and CLI
  * hosts converges on one disable set.
  */
@@ -93,4 +93,4 @@ export {
 	syncManagedMcpServers,
 } from "./managed-mcp-servers";
 export { createManagedSkills } from "./managed-skills";
-export { getBinDir, resolveSupersetHomeDir } from "./paths";
+export { getBinDir, resolveChorosHomeDir } from "./paths";

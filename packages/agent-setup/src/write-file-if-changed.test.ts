@@ -4,7 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import { writeFileIfChanged } from "./write-file-if-changed";
 
-const TEST_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "superset-wfic-"));
+const TEST_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "choros-wfic-"));
 
 afterEach(() => {
 	fs.rmSync(TEST_DIR, { recursive: true, force: true });

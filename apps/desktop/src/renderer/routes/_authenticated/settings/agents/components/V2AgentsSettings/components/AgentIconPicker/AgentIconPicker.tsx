@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -8,6 +7,7 @@ import {
 } from "@choros/ui/dropdown-menu";
 import { toast } from "@choros/ui/sonner";
 import { cn } from "@choros/ui/utils";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Check, ChevronDown, ImagePlus } from "lucide-react";
 import { useState } from "react";
 import { isDataImageUri } from "renderer/assets/app-icons/preset-icons";

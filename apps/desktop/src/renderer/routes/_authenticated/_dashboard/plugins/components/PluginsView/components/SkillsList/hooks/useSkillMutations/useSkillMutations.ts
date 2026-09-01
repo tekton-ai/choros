@@ -1,6 +1,6 @@
-import { useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@choros/i18n/errors";
 import { toast } from "@choros/ui/sonner";
+import { useLingui } from "@lingui/react/macro";
 import { useMemo } from "react";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { posthog } from "renderer/lib/posthog";

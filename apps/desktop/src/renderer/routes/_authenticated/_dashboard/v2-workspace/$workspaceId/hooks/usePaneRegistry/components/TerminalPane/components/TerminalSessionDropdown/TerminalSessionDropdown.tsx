@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import type { RendererContext } from "@choros/panes";
 import {
@@ -11,6 +10,7 @@ import {
 } from "@choros/ui/dropdown-menu";
 import { toast } from "@choros/ui/sonner";
 import { workspaceTrpc } from "@choros/workspace-client";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { eq } from "@tanstack/db";
 import { useLiveQuery } from "@tanstack/react-db";
 import { Check, LoaderCircle, Plus, Trash2 } from "lucide-react";

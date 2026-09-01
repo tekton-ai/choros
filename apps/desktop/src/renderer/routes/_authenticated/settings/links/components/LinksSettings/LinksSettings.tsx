@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Label } from "@choros/ui/label";
 import {
 	Select,
@@ -8,6 +7,7 @@ import {
 	SelectValue,
 } from "@choros/ui/select";
 import { toast } from "@choros/ui/sonner";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useCallback } from "react";
 import { useV2UserPreferences } from "renderer/hooks/useV2UserPreferences";
 import {

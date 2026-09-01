@@ -1,4 +1,3 @@
-import { Trans } from "@lingui/react/macro";
 import type {
 	OutboxEntry,
 	SessionSnapshot,
@@ -7,6 +6,7 @@ import type {
 import type { ApprovalRequest, Decision } from "@choros/chat/protocol";
 import { Badge } from "@choros/ui/badge";
 import { Button } from "@choros/ui/button";
+import { Trans } from "@lingui/react/macro";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { TurnGroupSection } from "./components/TurnGroupSection";
 

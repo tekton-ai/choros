@@ -1,6 +1,6 @@
-import { useLingui } from "@lingui/react/macro";
 import { ContextMenuItem } from "@choros/ui/context-menu";
 import { cn } from "@choros/ui/utils";
+import { useLingui } from "@lingui/react/macro";
 import { HiCheck } from "react-icons/hi2";
 import {
 	PROJECT_COLOR_DEFAULT,

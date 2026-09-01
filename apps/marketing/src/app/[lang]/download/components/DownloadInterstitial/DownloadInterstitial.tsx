@@ -1,7 +1,7 @@
 "use client";
 
-import { Trans } from "@lingui/react/macro";
 import { formatNumber } from "@choros/i18n/format";
+import { Trans } from "@lingui/react/macro";
 import { useEffect, useRef } from "react";
 import { WaitlistForm } from "@/app/[lang]/components/WaitlistForm";
 import { Platform, usePlatform } from "@/app/[lang]/hooks/useOS";

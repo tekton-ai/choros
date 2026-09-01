@@ -158,7 +158,7 @@ Required parity:
 - line/column jump from file viewer state
 - copy path with current line or selection range
 - basic find support
-- theme application using existing Superset theme tokens
+- theme application using existing Choros theme tokens
 
 Explicitly defer anything not used today.
 
@@ -271,7 +271,7 @@ Monaco theming is currently specialized.
 
 Mitigation:
 
-- map Superset theme tokens to a shared editor theme contract
+- map Choros theme tokens to a shared editor theme contract
 - avoid embedding Monaco-specific theme types into the broader renderer state
 
 ### Rollout Complexity
@@ -330,5 +330,5 @@ Mitigation:
 ## Open Questions
 
 1. Does `diffs.com` need to support in-place editable diffs, or is read/review-only acceptable initially?
-2. Should find be implemented with native CodeMirror search UI, or should it continue to route through Superset-owned UI controls?
+2. Should find be implemented with native CodeMirror search UI, or should it continue to route through Choros-owned UI controls?
 3. Do we want Monaco kept as a hidden fallback for one release, or removed immediately after internal validation?

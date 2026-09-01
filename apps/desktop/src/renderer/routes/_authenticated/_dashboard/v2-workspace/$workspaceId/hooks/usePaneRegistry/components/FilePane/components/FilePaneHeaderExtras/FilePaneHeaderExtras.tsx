@@ -1,6 +1,6 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import type { RendererContext } from "@choros/panes";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useCallback } from "react";
 import { LuCheck, LuCopy } from "react-icons/lu";
 import { TbExternalLink, TbFolderOpen } from "react-icons/tb";

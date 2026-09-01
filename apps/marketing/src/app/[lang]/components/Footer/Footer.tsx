@@ -1,6 +1,5 @@
 "use client";
 
-import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	i18n,
 	isSupportedLocale,
@@ -16,6 +15,7 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from "@choros/ui/dropdown-menu";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { m } from "framer-motion";
 import { ArrowUpRight, Check, ChevronDown, Languages } from "lucide-react";
 import Link from "next/link";

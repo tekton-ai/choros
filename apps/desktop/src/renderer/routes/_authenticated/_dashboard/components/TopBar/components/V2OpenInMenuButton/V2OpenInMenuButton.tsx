@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import type { ExternalApp } from "@choros/local-db";
 import {
 	DropdownMenu,
@@ -10,6 +9,7 @@ import { OverflowFadeText } from "@choros/ui/overflow-fade-text";
 import { toast } from "@choros/ui/sonner";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { cn } from "@choros/ui/utils";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useCallback, useMemo } from "react";
 import { VscChevronDown } from "react-icons/vsc";
 import {

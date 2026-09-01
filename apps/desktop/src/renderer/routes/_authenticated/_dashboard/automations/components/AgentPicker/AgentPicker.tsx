@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { getPresetById } from "@choros/shared/host-agent-presets";
 import {
 	DropdownMenu,
@@ -8,6 +7,7 @@ import {
 	DropdownMenuTrigger,
 } from "@choros/ui/dropdown-menu";
 import { getPresetIcon } from "@choros/ui/icons/preset-icons";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useNavigate } from "@tanstack/react-router";
 import { HiCheck } from "react-icons/hi2";
 import { LuCpu, LuSettings } from "react-icons/lu";

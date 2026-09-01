@@ -1,6 +1,5 @@
 "use client";
 
-import { Trans } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import {
 	Conversation,
@@ -14,6 +13,7 @@ import {
 	ReasoningTrigger,
 } from "@choros/ui/ai-elements/reasoning";
 import { Suggestion, Suggestions } from "@choros/ui/ai-elements/suggestion";
+import { Trans } from "@lingui/react/macro";
 
 import { ComponentCard } from "../../../components/ComponentCard";
 import { ShowcaseSection } from "../../../components/ShowcaseSection";

@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import type { ExternalApp } from "@choros/local-db";
 import { Button } from "@choros/ui/button";
 import { ButtonGroup } from "@choros/ui/button-group";
@@ -8,6 +7,7 @@ import {
 	DropdownMenuTrigger,
 } from "@choros/ui/dropdown-menu";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useState } from "react";
 import { HiChevronDown } from "react-icons/hi2";
 import {

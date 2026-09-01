@@ -1,7 +1,7 @@
+import { formatDateTime } from "@choros/i18n/format";
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { formatDateTime } from "@choros/i18n/format";
 import { Stack, useRouter } from "expo-router";
 import { ArrowUpRight } from "lucide-react-native";
 import { Pressable, ScrollView, View } from "react-native";

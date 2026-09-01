@@ -1,7 +1,7 @@
 "use client";
 
-import { useLingui } from "@lingui/react/macro";
 import { ModelSelectorLogo } from "@choros/ui/ai-elements/model-selector";
+import { useLingui } from "@lingui/react/macro";
 import { ChevronDown } from "lucide-react";
 import type { MockModel } from "../../../../mock-data";
 import { ResponsiveDropdown } from "../../../ResponsiveDropdown";

@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 /**
  * Preflight for `dev:desktop` / `dev`: the whole stack binds fixed ports off
- * SUPERSET_PORT_BASE (3960–3973) from the shared .env, so a crashed stack
+ * CHOROS_PORT_BASE (3960–3973) from the shared .env, so a crashed stack
  * leaves a port held and the next launch dies with a cryptic
  * `kj::Exception … Address already in use`, and two worktrees can't run at once.
  *
@@ -126,7 +126,7 @@ if (foreign.length > 0) {
 	}
 	console.error(
 		`\nLikely another dev stack running in: ${[...worktrees].join(", ")}\n` +
-			"The whole repo shares fixed ports (SUPERSET_PORT_BASE=3960), so only one\n" +
+			"The whole repo shares fixed ports (CHOROS_PORT_BASE=3960), so only one\n" +
 			"dev:desktop stack can run at a time. Stop the other stack, or free these:\n\n" +
 			`  kill -9 ${[...new Set(foreign.map((f) => f.pid))].join(" ")}\n`,
 	);

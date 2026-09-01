@@ -1,7 +1,4 @@
-import {
-	ACCOUNT_DELETION_GRACE_DAYS,
-	COMPANY,
-} from "@choros/shared/constants";
+import { ACCOUNT_DELETION_GRACE_DAYS, COMPANY } from "@choros/shared/constants";
 import { Button } from "@choros/ui/button";
 import { useNavigate } from "@tanstack/react-router";
 import { useState } from "react";

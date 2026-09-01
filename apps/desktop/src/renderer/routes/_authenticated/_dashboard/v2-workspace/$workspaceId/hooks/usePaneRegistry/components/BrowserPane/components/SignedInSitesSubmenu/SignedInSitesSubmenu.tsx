@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	DropdownMenuItem,
 	DropdownMenuSub,
@@ -7,6 +6,7 @@ import {
 } from "@choros/ui/dropdown-menu";
 import { Input } from "@choros/ui/input";
 import { toast } from "@choros/ui/sonner";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useMemo, useState } from "react";
 import { TbX } from "react-icons/tb";
 import { electronTrpcClient } from "renderer/lib/trpc-client";

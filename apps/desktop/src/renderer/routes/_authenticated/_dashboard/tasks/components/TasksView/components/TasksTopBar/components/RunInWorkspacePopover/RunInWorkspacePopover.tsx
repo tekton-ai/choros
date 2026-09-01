@@ -1,5 +1,3 @@
-import { plural } from "@lingui/core/macro";
-import { Plural, Trans, useLingui } from "@lingui/react/macro";
 import type { AgentLaunchRequest } from "@choros/shared/agent-launch";
 import { buildTaskAgentLaunchRequest } from "@choros/shared/agent-launch-request";
 import {
@@ -20,6 +18,8 @@ import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
 import { toast } from "@choros/ui/sonner";
 import { Spinner } from "@choros/ui/spinner";
 import { Switch } from "@choros/ui/switch";
+import { plural } from "@lingui/core/macro";
+import { Plural, Trans, useLingui } from "@lingui/react/macro";
 import { ChevronDownIcon } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
 import { HiCheck, HiMiniPlay, HiXMark } from "react-icons/hi2";

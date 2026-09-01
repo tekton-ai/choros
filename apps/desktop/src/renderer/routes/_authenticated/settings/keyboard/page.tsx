@@ -1,5 +1,3 @@
-import type { MessageDescriptor } from "@lingui/core";
-import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	AlertDialog,
 	AlertDialogContent,
@@ -15,6 +13,8 @@ import { Label } from "@choros/ui/label";
 import { toast } from "@choros/ui/sonner";
 import { Switch } from "@choros/ui/switch";
 import { cn } from "@choros/ui/utils";
+import type { MessageDescriptor } from "@lingui/core";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { HiMagnifyingGlass } from "react-icons/hi2";

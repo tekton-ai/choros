@@ -1,7 +1,7 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { Button } from "@choros/ui/button";
 import { ThemePreviewCard } from "@choros/ui/theme-preview-card";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { ArrowUpRight, Download } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";

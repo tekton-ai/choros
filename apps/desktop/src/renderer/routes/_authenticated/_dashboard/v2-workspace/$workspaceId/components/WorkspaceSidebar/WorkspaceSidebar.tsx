@@ -1,5 +1,5 @@
-import { useLingui } from "@lingui/react/macro";
 import { workspaceTrpc } from "@choros/workspace-client";
+import { useLingui } from "@lingui/react/macro";
 import { eq } from "@tanstack/db";
 import { useLiveQuery } from "@tanstack/react-db";
 import { useEffect, useRef, useState } from "react";

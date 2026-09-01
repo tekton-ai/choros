@@ -1,7 +1,7 @@
-import type { LinearClient } from "@linear/sdk";
 import { buildConflictUpdateColumns } from "@choros/db";
 import { db } from "@choros/db/client";
 import { taskStatuses } from "@choros/db/schema";
+import type { LinearClient } from "@linear/sdk";
 import { calculateProgressForStates } from "./utils";
 
 export async function syncWorkflowStates({

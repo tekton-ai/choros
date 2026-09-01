@@ -13,8 +13,8 @@ import {
 } from "./managed-toml-block";
 
 export const KIMI_HOOKS_MARKER_START =
-	"# >>> superset-managed-kimi-hooks v1 (do not edit) >>>";
-export const KIMI_HOOKS_MARKER_END = "# <<< superset-managed-kimi-hooks v1 <<<";
+	"# >>> choros-managed-kimi-hooks v1 (do not edit) >>>";
+export const KIMI_HOOKS_MARKER_END = "# <<< choros-managed-kimi-hooks v1 <<<";
 
 const KIMI_MANAGED_HOOK_EVENTS = [
 	"SessionStart",
@@ -63,7 +63,7 @@ function isManagedOrPartialHookTable(lines: string[]): boolean {
 	}
 
 	const commandLine = lines.find((line) => /^\s*command\s*=/.test(line));
-	return !commandLine || commandLine.includes("SUPERSET_AGENT_ID=kimi");
+	return !commandLine || commandLine.includes("CHOROS_AGENT_ID=kimi");
 }
 
 const KIMI_TOML_SPEC: ManagedTomlBlockSpec = {
@@ -77,13 +77,13 @@ const KIMI_TOML_SPEC: ManagedTomlBlockSpec = {
 	buildBlock: () => buildKimiManagedHooksBlock(),
 };
 
-/** Preserve user config while replacing Superset's marker-owned hook block. */
+/** Preserve user config while replacing Choros's marker-owned hook block. */
 export function getKimiConfigTomlContent(existing: string): string {
 	return getManagedTomlContent(KIMI_TOML_SPEC, existing);
 }
 
 /**
- * Removes Superset's marker-owned hook block from Kimi's config.toml,
+ * Removes Choros's marker-owned hook block from Kimi's config.toml,
  * preserving user config. Deletes the file when nothing but the managed
  * block was in it. No-op when the file does not exist.
  */

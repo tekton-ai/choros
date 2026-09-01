@@ -1,11 +1,11 @@
-import type { EmitterWebhookEvent } from "@octokit/webhooks";
-import { Webhooks } from "@octokit/webhooks";
 import { db } from "@choros/db/client";
 import {
 	githubInstallations,
 	githubPullRequests,
 	githubRepositories,
 } from "@choros/db/schema";
+import type { EmitterWebhookEvent } from "@octokit/webhooks";
+import { Webhooks } from "@octokit/webhooks";
 import { and, eq } from "drizzle-orm";
 
 import { env } from "@/env";

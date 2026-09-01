@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@choros/i18n/errors";
 import { alert } from "@choros/ui/atoms/Alert";
 import { Button } from "@choros/ui/button";
@@ -9,6 +8,7 @@ import {
 	DialogTitle,
 } from "@choros/ui/dialog";
 import { toast } from "@choros/ui/sonner";
+import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	keepPreviousData,
 	useMutation,

@@ -1,6 +1,6 @@
+import { cn } from "@choros/ui/utils";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { cn } from "@choros/ui/utils";
 import { useMemo } from "react";
 import type { WorkspaceSelectionEvent } from "../../providers/DashboardSidebarSelectionProvider";
 import type {

@@ -1,10 +1,10 @@
 "use client";
 
-import { Plural, Trans, useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@choros/i18n/errors";
 import { Badge } from "@choros/ui/badge";
 import { Button } from "@choros/ui/button";
 import { toast } from "@choros/ui/sonner";
+import { Plural, Trans, useLingui } from "@lingui/react/macro";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { GitBranch, Lock, RefreshCw, Unlock } from "lucide-react";
 import { useTRPC } from "@/trpc/react";

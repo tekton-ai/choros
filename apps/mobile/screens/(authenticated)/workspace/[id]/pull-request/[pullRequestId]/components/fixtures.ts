@@ -77,7 +77,7 @@ const PR: PullRequest = {
 		"- [x] `bun run lint` and `bun run typecheck` pass",
 		"- [x] No runtime or build behaviour changes",
 	].join("\n"),
-	url: "https://github.com/superset-sh/choros/pull/6510",
+	url: "https://github.com/choros-sh/choros/pull/6510",
 	baseBranch: "main",
 	state: "open",
 	isDraft: false,

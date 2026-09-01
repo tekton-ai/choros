@@ -1,7 +1,7 @@
 "use client";
 
-import { Trans } from "@lingui/react/macro";
 import { OverflowFadeContainer } from "@choros/ui/overflow-fade-container";
+import { Trans } from "@lingui/react/macro";
 import { useSearchContext } from "fumadocs-ui/contexts/search";
 import { Search } from "lucide-react";
 import { AsideLink } from "@/components/AsideLink";

@@ -1,5 +1,3 @@
-import { msg } from "@lingui/core/macro";
-import { Trans, useLingui } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { errorMessage } from "@choros/i18n/errors";
 import { Button } from "@choros/ui/button";
@@ -12,6 +10,8 @@ import {
 } from "@choros/ui/dialog";
 import { Input } from "@choros/ui/input";
 import { toast } from "@choros/ui/sonner";
+import { msg } from "@lingui/core/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useEffect, useRef, useState } from "react";
 import { LuCheck, LuCopy, LuLoaderCircle } from "react-icons/lu";
 import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";

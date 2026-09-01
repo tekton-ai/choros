@@ -1,7 +1,7 @@
 "use client";
 
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useEffect } from "react";
 import { MessageScreen } from "@/components/MessageScreen";
 

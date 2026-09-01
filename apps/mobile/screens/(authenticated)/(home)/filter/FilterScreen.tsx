@@ -1,6 +1,6 @@
+import { i18n } from "@choros/i18n";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useLingui } from "@lingui/react/macro";
-import { i18n } from "@choros/i18n";
 import { Stack, useRouter } from "expo-router";
 import { Cloud } from "lucide-react-native";
 import { View } from "react-native";

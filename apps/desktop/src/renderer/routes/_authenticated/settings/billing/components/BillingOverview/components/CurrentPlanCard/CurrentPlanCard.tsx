@@ -1,7 +1,7 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { isPaymentFailingStatus } from "@choros/shared/billing";
 import { Button } from "@choros/ui/button";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { format } from "date-fns";
 import { PLANS, type PlanTier } from "../../../../constants";
 

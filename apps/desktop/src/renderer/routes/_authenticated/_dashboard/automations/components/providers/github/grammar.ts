@@ -1,9 +1,9 @@
-import type { MessageDescriptor } from "@lingui/core";
-import { msg } from "@lingui/core/macro";
 import type {
 	GithubTriggerEvent,
 	TriggerConfigInput,
 } from "@choros/shared/automation-triggers";
+import type { MessageDescriptor } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
 import type { TriggerMenuEntry } from "../types";
 
 export type GithubConfig = Extract<TriggerConfigInput, { kind: "github" }>;

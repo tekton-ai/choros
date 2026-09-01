@@ -246,7 +246,7 @@ All changes are code deletions and refactors. They can be reverted with `git che
 
 ## Interfaces and Dependencies
 
-No new dependencies. The `ResizeObserver` is a standard browser API available in all Electron versions Superset targets.
+No new dependencies. The `ResizeObserver` is a standard browser API available in all Electron versions Choros targets.
 
 The `lodash.debounce` import in `helpers.ts` may become unused after removing `setupResizeHandlers`. If so, it should be removed. The `lodash` package itself is used elsewhere and should not be uninstalled.
 

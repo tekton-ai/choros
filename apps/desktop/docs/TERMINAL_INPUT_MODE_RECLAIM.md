@@ -37,10 +37,10 @@ A renderer reclaimer installed on every xterm in `createTerminal`:
   Reusable by any surface that observes the stream (a host-side VT scanner later).
 - `renderer/lib/terminal/terminalInputModeReclaimer.ts` — a thin xterm-parser
   adapter: handlers for kitty (`CSI >/=/< u`), mouse (`?1000/1002/1003`), focus
-  (`?1004`), and the `OSC 777;superset-shell-ready` marker feed the core; the
+  (`?1004`), and the `OSC 777;choros-shell-ready` marker feed the core; the
   disarm is written back on a microtask.
 
-**Marker choice:** reclaim keys on `OSC 777;superset-shell-ready` (emitted only by
+**Marker choice:** reclaim keys on `OSC 777;choros-shell-ready` (emitted only by
 Choros's shell wrappers), **not** the co-emitted FinalTerm `OSC 133;A` — `133;A`
 is also produced by third-party shell integrations and forwarded by tmux, so
 disarming on it would clear a live tmux's own modes.

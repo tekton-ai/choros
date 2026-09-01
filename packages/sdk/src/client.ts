@@ -125,14 +125,14 @@ import { VERSION } from "./version";
 
 export interface ClientOptions {
 	/**
-	 * Defaults to process.env['SUPERSET_API_KEY'].
+	 * Defaults to process.env['CHOROS_API_KEY'].
 	 */
 	apiKey?: string | undefined;
 
 	/**
 	 * Organization ID to scope every request to. Sent as the
 	 * `x-choros-organization-id` header. Defaults to
-	 * process.env['SUPERSET_ORGANIZATION_ID'].
+	 * process.env['CHOROS_ORGANIZATION_ID'].
 	 *
 	 * Required for any procedure that calls `requireActiveOrgMembership` —
 	 * which is most resources (tasks, workspaces, projects, hosts, …).
@@ -142,7 +142,7 @@ export interface ClientOptions {
 	/**
 	 * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
 	 *
-	 * Defaults to process.env['SUPERSET_BASE_URL'].
+	 * Defaults to process.env['CHOROS_BASE_URL'].
 	 */
 	baseURL?: string | null | undefined;
 
@@ -150,7 +150,7 @@ export interface ClientOptions {
 	 * Relay base URL for host-routed operations (e.g. workspace create/delete,
 	 * which physically run on the developer's machine via the relay tunnel).
 	 *
-	 * When set (or via process.env['SUPERSET_RELAY_URL']) it is used as-is.
+	 * When set (or via process.env['CHOROS_RELAY_URL']) it is used as-is.
 	 * When omitted, the client asks the API which relay this account's hosts
 	 * are on before each host-routed call (cached briefly), falling back to
 	 * `https://relay.choros.sh` if the API is unreachable — a hardcoded
@@ -208,7 +208,7 @@ export interface ClientOptions {
 	/**
 	 * Set the log level.
 	 *
-	 * Defaults to process.env['SUPERSET_LOG'] or 'warn' if it isn't set.
+	 * Defaults to process.env['CHOROS_LOG'] or 'warn' if it isn't set.
 	 */
 	logLevel?: LogLevel | undefined;
 
@@ -257,8 +257,8 @@ export class Choros {
 	/**
 	 * API Client for interfacing with the Choros API.
 	 *
-	 * @param {string | undefined} [opts.apiKey=process.env['SUPERSET_API_KEY'] ?? undefined]
-	 * @param {string} [opts.baseURL=process.env['SUPERSET_BASE_URL'] ?? https://api.choros.sh] - Override the default base URL for the API.
+	 * @param {string | undefined} [opts.apiKey=process.env['CHOROS_API_KEY'] ?? undefined]
+	 * @param {string} [opts.baseURL=process.env['CHOROS_BASE_URL'] ?? https://api.choros.sh] - Override the default base URL for the API.
 	 * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
 	 * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
 	 * @param {Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -267,15 +267,15 @@ export class Choros {
 	 * @param {Record<string, string | undefined>} opts.defaultQuery - Default query parameters to include with every request to the API.
 	 */
 	constructor({
-		baseURL = readEnv("SUPERSET_BASE_URL"),
-		apiKey = readEnv("SUPERSET_API_KEY"),
-		organizationId = readEnv("SUPERSET_ORGANIZATION_ID"),
-		relayURL = readEnv("SUPERSET_RELAY_URL"),
+		baseURL = readEnv("CHOROS_BASE_URL"),
+		apiKey = readEnv("CHOROS_API_KEY"),
+		organizationId = readEnv("CHOROS_ORGANIZATION_ID"),
+		relayURL = readEnv("CHOROS_RELAY_URL"),
 		...opts
 	}: ClientOptions = {}) {
 		if (apiKey === undefined) {
 			throw new Errors.ChorosError(
-				"The SUPERSET_API_KEY environment variable is missing or empty; either provide it, or instantiate the Choros client with an apiKey option, like new Choros({ apiKey: 'My API Key' }).",
+				"The CHOROS_API_KEY environment variable is missing or empty; either provide it, or instantiate the Choros client with an apiKey option, like new Choros({ apiKey: 'My API Key' }).",
 			);
 		}
 
@@ -295,8 +295,8 @@ export class Choros {
 		this.logLevel =
 			parseLogLevel(options.logLevel, "ClientOptions.logLevel", this) ??
 			parseLogLevel(
-				readEnv("SUPERSET_LOG"),
-				"process.env['SUPERSET_LOG']",
+				readEnv("CHOROS_LOG"),
+				"process.env['CHOROS_LOG']",
 				this,
 			) ??
 			defaultLogLevel;
@@ -305,7 +305,7 @@ export class Choros {
 		this.fetch = options.fetch ?? Shims.getDefaultFetch();
 		this.#encoder = Opts.FallbackEncoder;
 
-		const customHeadersEnv = readEnv("SUPERSET_CUSTOM_HEADERS");
+		const customHeadersEnv = readEnv("CHOROS_CUSTOM_HEADERS");
 		if (customHeadersEnv) {
 			const parsed: Record<string, string> = {};
 			for (const line of customHeadersEnv.split("\n")) {
@@ -534,7 +534,7 @@ export class Choros {
 	): APIPromise<Rsp> {
 		if (!this.organizationId) {
 			throw new Errors.ChorosError(
-				"organizationId is required for host-routed calls. Set SUPERSET_ORGANIZATION_ID or pass `organizationId` to the constructor.",
+				"organizationId is required for host-routed calls. Set CHOROS_ORGANIZATION_ID or pass `organizationId` to the constructor.",
 			);
 		}
 		const routingKey = `${this.organizationId}:${hostId}`;
@@ -570,7 +570,7 @@ export class Choros {
 	): APIPromise<Rsp> {
 		if (!this.organizationId) {
 			throw new Errors.ChorosError(
-				"organizationId is required for host-routed calls. Set SUPERSET_ORGANIZATION_ID or pass `organizationId` to the constructor.",
+				"organizationId is required for host-routed calls. Set CHOROS_ORGANIZATION_ID or pass `organizationId` to the constructor.",
 			);
 		}
 		const routingKey = `${this.organizationId}:${hostId}`;

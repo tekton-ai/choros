@@ -1,9 +1,9 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@choros/i18n/errors";
 import { toast } from "@choros/ui/sonner";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { cn } from "@choros/ui/utils";
 import { workspaceTrpc } from "@choros/workspace-client";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { LuCheck, LuCopy, LuExternalLink, LuUndo2, LuX } from "react-icons/lu";
 import { useCopyToClipboard } from "renderer/hooks/useCopyToClipboard";

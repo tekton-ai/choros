@@ -11,9 +11,9 @@ describe("parseChorosPageUrl", () => {
 	});
 
 	it("tolerates a trailing slash", () => {
-		expect(
-			parseChorosPageUrl(`${WEB_URL}/page/report-a3f9k2/`, WEB_URL),
-		).toBe("report-a3f9k2");
+		expect(parseChorosPageUrl(`${WEB_URL}/page/report-a3f9k2/`, WEB_URL)).toBe(
+			"report-a3f9k2",
+		);
 	});
 
 	it("ignores query strings and hashes", () => {
@@ -39,10 +39,7 @@ describe("parseChorosPageUrl", () => {
 
 	it("rejects a different scheme on the same host", () => {
 		expect(
-			parseChorosPageUrl(
-				"http://app.choros.sh/page/report-a3f9k2",
-				WEB_URL,
-			),
+			parseChorosPageUrl("http://app.choros.sh/page/report-a3f9k2", WEB_URL),
 		).toBeNull();
 	});
 

@@ -51,8 +51,8 @@ We're under active development. The SDK follows the API as it grows, so **stay o
 2. Note your **organization ID**. Find it in the org switcher inside the desktop app.
 
 ```bash
-export SUPERSET_API_KEY=sk_live_…
-export SUPERSET_ORGANIZATION_ID=…
+export CHOROS_API_KEY=sk_live_…
+export CHOROS_ORGANIZATION_ID=…
 ```
 
 ## Create the client
@@ -61,7 +61,7 @@ export SUPERSET_ORGANIZATION_ID=…
 import Choros from '@choros_sh/sdk';
 
 const client = new Choros();
-// reads SUPERSET_API_KEY and SUPERSET_ORGANIZATION_ID from env
+// reads CHOROS_API_KEY and CHOROS_ORGANIZATION_ID from env
 ```
 
 That's all the setup. From here, every resource works the same way:

@@ -18,7 +18,7 @@ That's the user-facing feature. To get there, generalize the hook contract so ev
 
 The repo already has a canonical model for agent identity. Reuse it:
 
-- `BuiltinAgentId` — `"claude" | "amp" | "codex" | "gemini" | "mastracode" | "opencode" | "pi" | "copilot" | "cursor-agent" | "superset"`. Defined in `packages/shared/src/agent-catalog.ts:23` from `BUILTIN_TERMINAL_AGENTS` in `packages/shared/src/builtin-terminal-agents.ts:59`.
+- `BuiltinAgentId` — `"claude" | "amp" | "codex" | "gemini" | "mastracode" | "opencode" | "pi" | "copilot" | "cursor-agent" | "choros"`. Defined in `packages/shared/src/agent-catalog.ts:23` from `BUILTIN_TERMINAL_AGENTS` in `packages/shared/src/builtin-terminal-agents.ts:59`.
 - `AgentDefinitionId` — `BuiltinAgentId | \`custom:${string}\`` (`agent-catalog.ts:24`). User-customized definitions get the `custom:` prefix.
 - `HostAgentPreset.presetId` (`packages/shared/src/host-agent-presets.ts:4`) uses these same strings for terminal presets.
 - `PRESET_ICONS` (`packages/ui/src/assets/icons/preset-icons/index.ts`) is keyed by these same strings — `usePresetIcon("claude")` already does the right thing.
@@ -33,7 +33,7 @@ End-to-end lifecycle pipe already works, keyed by `terminalId`:
 
 | Step | Where |
 | --- | --- |
-| `SUPERSET_TERMINAL_ID` + hook URL injected into PTY env | `packages/host-service/src/terminal/env.ts:183,195` |
+| `CHOROS_TERMINAL_ID` + hook URL injected into PTY env | `packages/host-service/src/terminal/env.ts:183,195` |
 | Hook script POSTs `{terminalId, eventType}` to host-service | `apps/desktop/src/main/lib/agent-setup/templates/notify-hook.template.sh:91-107` |
 | `notifications.hook` broadcasts `agent:lifecycle` over WS | `packages/host-service/src/trpc/router/notifications/notifications.ts:31` |
 | Renderer keys pane status (working/permission/review/idle) by `terminalId` | `apps/desktop/src/renderer/routes/_authenticated/components/V2NotificationController/lib/{lifecycleEvents,statusTransitions}.ts` |
@@ -47,7 +47,7 @@ The hook currently carries `eventType` but not which agent fired it.
 One thing every layer agrees on. Define once, share across host-service / main / renderer:
 
 ```ts
-import type { BuiltinAgentId, AgentDefinitionId } from "@superset/shared";
+import type { BuiltinAgentId, AgentDefinitionId } from "@choros/shared";
 
 // Reported by hook, broadcast over WS, stored in renderer state.
 // Everything besides `agentId` is optional — a hook that knows only the
@@ -75,7 +75,7 @@ We pass identity through unchanged at every boundary. No enum gating on `agentId
 Each agent wrapper writes its hook command line. Inject one env var there — the hook script doesn't need to sniff JSON shape:
 
 ```sh
-SUPERSET_AGENT_ID=claude $SUPERSET_HOME_DIR/hooks/notify.sh
+CHOROS_AGENT_ID=claude $CHOROS_HOME_DIR/hooks/notify.sh
 ```
 
 The value is a `BuiltinAgentId`. Per-wrapper assignments:
@@ -89,7 +89,7 @@ The value is a `BuiltinAgentId`. Per-wrapper assignments:
 - `agent-wrappers-mastra.ts` → `mastracode`
 - `agent-wrappers-droid.ts` → `droid` (no preset entry today; either skip the icon for droid or add it to `BUILTIN_TERMINAL_AGENTS` first)
 
-`SUPERSET_AGENT_ID` is the only env var the wrapper needs to set. `sessionId` is parsed out of the agent's own JSON payload at hook time (next step).
+`CHOROS_AGENT_ID` is the only env var the wrapper needs to set. `sessionId` is parsed out of the agent's own JSON payload at hook time (next step).
 
 ### 2. Hook script forwards identity
 
@@ -100,10 +100,10 @@ In `notify-hook.template.sh:91-107` (v2 branch):
 ```sh
 # Build identity object inline so missing fields naturally drop out as empty strings.
 PAYLOAD="{\"json\":{
-  \"terminalId\":\"$(json_escape "$SUPERSET_TERMINAL_ID")\",
+  \"terminalId\":\"$(json_escape "$CHOROS_TERMINAL_ID")\",
   \"eventType\":\"$(json_escape "$EVENT_TYPE")\",
   \"agent\":{
-    \"agentId\":\"$(json_escape "$SUPERSET_AGENT_ID")\",
+    \"agentId\":\"$(json_escape "$CHOROS_AGENT_ID")\",
     \"sessionId\":\"$(json_escape "$HOOK_SESSION_ID")\"
   }
 }}"
@@ -145,7 +145,7 @@ ctx.eventBus.broadcastAgentLifecycle({
 });
 ```
 
-Add `agent?: AgentIdentity` to `AgentLifecycleMessage` (`packages/host-service/src/events/types.ts:25`) and `AgentLifecyclePayload` in `@superset/workspace-client`. Define `AgentIdentity` once — best home is `packages/shared/src/agent-identity.ts` since `BuiltinAgentId` lives in `@superset/shared` already — and re-export from `@superset/workspace-client` so host-service / main / renderer share one source of truth.
+Add `agent?: AgentIdentity` to `AgentLifecycleMessage` (`packages/host-service/src/events/types.ts:25`) and `AgentLifecyclePayload` in `@choros/workspace-client`. Define `AgentIdentity` once — best home is `packages/shared/src/agent-identity.ts` since `BuiltinAgentId` lives in `@choros/shared` already — and re-export from `@choros/workspace-client` so host-service / main / renderer share one source of truth.
 
 ### 4. Renderer: live binding store
 
@@ -153,7 +153,7 @@ New small zustand slice — no persistence, generic over the identity shape:
 
 ```ts
 // renderer/stores/v2-agent-bindings/store.ts
-import type { AgentIdentity } from "@superset/workspace-client";
+import type { AgentIdentity } from "@choros/workspace-client";
 
 type Binding = { identity: AgentIdentity; lastEventAt: number };
 
@@ -197,14 +197,14 @@ return (
 );
 ```
 
-`usePresetIcon` already handles dark/light variants and returns `undefined` for unknown ids → nothing renders. `BUILTIN_AGENT_LABELS` (from `@superset/shared/agent-catalog`) gives the human-readable name for tooltip / a11y. Safe default for any future agent id that ships before its icon does.
+`usePresetIcon` already handles dark/light variants and returns `undefined` for unknown ids → nothing renders. `BUILTIN_AGENT_LABELS` (from `@choros/shared/agent-catalog`) gives the human-readable name for tooltip / a11y. Safe default for any future agent id that ships before its icon does.
 
 ## What this does not do
 
 - No persistence — refresh and the binding rebuilds on the next lifecycle event (next agent message). For the first second after reload there's no icon; acceptable.
 - No multi-agent-per-terminal display — last-seen identity wins.
 - No chat-pane / session-resume integration. The `sessionId` field is *captured* so those features can land later without a protocol round trip; this PR doesn't expose it in the UI.
-- No `definitionId` resolution. The wrapper-level hook can't tell which user-customized definition launched (e.g. `custom:my-claude-no-thinking` vs builtin `claude`) — they share a binary and a `~/.claude/settings.json`. To plumb it later: have the launch path (`packages/shared/src/agent-launch-request.ts` and callers) inject `SUPERSET_AGENT_DEFINITION_ID=<id>` into the spawned command's env; the hook script picks it up and adds `definitionId` to the identity object. Field is reserved in the schema today.
+- No `definitionId` resolution. The wrapper-level hook can't tell which user-customized definition launched (e.g. `custom:my-claude-no-thinking` vs builtin `claude`) — they share a binary and a `~/.claude/settings.json`. To plumb it later: have the launch path (`packages/shared/src/agent-launch-request.ts` and callers) inject `CHOROS_AGENT_DEFINITION_ID=<id>` into the spawned command's env; the hook script picks it up and adds `definitionId` to the identity object. Field is reserved in the schema today.
 
 ## Test plan
 
@@ -212,7 +212,7 @@ return (
 - `notifications.test.ts` — `agent` passes through to broadcast; empty-string fields normalized to undefined; identity missing entirely → broadcast still fires (icon just won't render).
 - Renderer unit — store stores `{agentId, sessionId}` on `Start`, retains it on `Stop`, replaces on a different `sessionId` or `agentId`, clears on `terminal:lifecycle exit`.
 - Manual — open terminal, run `claude`, header shows the Claude glyph; `/exit`, run `codex`, header switches to Codex; close terminal, icon goes away.
-- Mutation check — flip `SUPERSET_AGENT_ID=claude` to empty in the wrapper template; renderer test asserting the icon renders should fail.
+- Mutation check — flip `CHOROS_AGENT_ID=claude` to empty in the wrapper template; renderer test asserting the icon renders should fail.
 
 ## Rollout
 

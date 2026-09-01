@@ -1,7 +1,7 @@
-import { useLingui } from "@lingui/react/macro";
 import { toast } from "@choros/ui/sonner";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { cn } from "@choros/ui/utils";
+import { useLingui } from "@lingui/react/macro";
 import { LuCopy } from "react-icons/lu";
 import { CHIP, CHIP_EMPTY } from "../../chipStyles";
 

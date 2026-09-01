@@ -1,4 +1,3 @@
-import { Trans } from "@lingui/react/macro";
 import { COMPANY } from "@choros/shared/constants";
 import {
 	DropdownMenuItem,
@@ -7,6 +6,7 @@ import {
 	DropdownMenuSubContent,
 	DropdownMenuSubTrigger,
 } from "@choros/ui/dropdown-menu";
+import { Trans } from "@lingui/react/macro";
 import { useNavigate } from "@tanstack/react-router";
 import { FaDiscord, FaGithub, FaXTwitter } from "react-icons/fa6";
 import {

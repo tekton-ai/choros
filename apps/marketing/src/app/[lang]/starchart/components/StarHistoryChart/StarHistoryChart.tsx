@@ -1,12 +1,12 @@
 "use client";
 
-import { useLingui } from "@lingui/react/macro";
 import {
 	type ChartConfig,
 	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
 } from "@choros/ui/chart";
+import { useLingui } from "@lingui/react/macro";
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import { formatStarCount } from "@/lib/github";
 import type { StarHistoryPoint } from "../../utils/getStarHistory";

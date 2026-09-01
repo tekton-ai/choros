@@ -1,3 +1,8 @@
+import {
+	type SlackMatchableEvent,
+	slackEmojiName,
+	slackEventNames,
+} from "@choros/shared/automation-matching";
 import type {
 	BotMessageEvent,
 	ChannelCreatedEvent,
@@ -7,11 +12,6 @@ import type {
 	ReactionAddedEvent,
 	ThreadBroadcastMessageEvent,
 } from "@slack/types";
-import {
-	type SlackMatchableEvent,
-	slackEmojiName,
-	slackEventNames,
-} from "@choros/shared/automation-matching";
 
 import type { NormalizedDelivery } from "@/lib/automations/ingestAutomationEvent";
 

@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@choros/i18n/errors";
 import { chatServiceTrpc } from "@choros/provider-auth/client";
 import { Badge } from "@choros/ui/badge";
@@ -13,6 +12,7 @@ import { Input } from "@choros/ui/input";
 import { Label } from "@choros/ui/label";
 import { toast } from "@choros/ui/sonner";
 import { Textarea } from "@choros/ui/textarea";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useEffect, useMemo, useState } from "react";
 import { HiChevronDown } from "react-icons/hi2";
 import { AnthropicOAuthDialog } from "renderer/components/ProviderAuth/components/AnthropicOAuthDialog";

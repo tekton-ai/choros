@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	Collapsible,
 	CollapsibleContent,
@@ -6,6 +5,7 @@ import {
 } from "@choros/ui/collapsible";
 import { cn } from "@choros/ui/utils";
 import { workspaceTrpc } from "@choros/workspace-client";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
 	LuArrowUpRight,

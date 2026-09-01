@@ -1,6 +1,6 @@
-import { useLingui } from "@lingui/react/macro";
 import { Label } from "@choros/ui/label";
 import { Switch } from "@choros/ui/switch";
+import { useLingui } from "@lingui/react/macro";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { HighlightText } from "renderer/routes/_authenticated/settings/components/HighlightText";
 import { useSettingsSearchQuery } from "renderer/stores/settings-state";

@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Avatar } from "@choros/ui/atoms/Avatar";
 import {
 	DropdownMenu,
@@ -6,6 +5,7 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from "@choros/ui/dropdown-menu";
+import { Trans, useLingui } from "@lingui/react/macro";
 import type { CellContext } from "@tanstack/react-table";
 import { useMemo, useState } from "react";
 import { HiOutlineUserCircle } from "react-icons/hi2";

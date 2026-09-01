@@ -6,9 +6,9 @@
 
 export const env = {
 	RELAY_URL: process.env.RELAY_URL || "https://relay.choros.sh",
-	SUPERSET_API_URL: process.env.SUPERSET_API_URL || "https://api.choros.sh",
-	SUPERSET_WEB_URL: process.env.SUPERSET_WEB_URL || "https://app.choros.sh",
-	VERSION: process.env.SUPERSET_VERSION || "0.0.0-dev",
+	CHOROS_API_URL: process.env.CHOROS_API_URL || "https://api.choros.sh",
+	CHOROS_WEB_URL: process.env.CHOROS_WEB_URL || "https://app.choros.sh",
+	VERSION: process.env.CHOROS_VERSION || "0.0.0-dev",
 };
 
 /**
@@ -18,5 +18,5 @@ export const env = {
  * host service standalone nor update itself in place.
  */
 export function isDesktopBundled(): boolean {
-	return process.env.SUPERSET_CLI_CHANNEL === "desktop-bundled";
+	return process.env.CHOROS_CLI_CHANNEL === "desktop-bundled";
 }

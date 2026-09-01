@@ -51,10 +51,10 @@ async function main(): Promise<void> {
 	// launches, which previously had no notify hooks or shell wrappers (#6254).
 	provisionAgentIntegrations();
 
-	const configTokenSource = env.SUPERSET_AUTH_CONFIG_PATH
+	const configTokenSource = env.CHOROS_AUTH_CONFIG_PATH
 		? new ConfigFileSessionTokenSource({
-				configPath: env.SUPERSET_AUTH_CONFIG_PATH,
-				apiUrl: env.SUPERSET_API_URL,
+				configPath: env.CHOROS_AUTH_CONFIG_PATH,
+				apiUrl: env.CHOROS_API_URL,
 			})
 		: null;
 	const authProvider = new JwtApiAuthProvider({
@@ -64,14 +64,14 @@ async function main(): Promise<void> {
 		onInvalidateCache: configTokenSource
 			? () => configTokenSource.invalidateCache()
 			: undefined,
-		apiUrl: env.SUPERSET_API_URL,
+		apiUrl: env.CHOROS_API_URL,
 	});
 
 	const { app, injectWebSocket, api, db } = createApp({
 		config: {
 			organizationId: env.ORGANIZATION_ID,
 			dbPath: env.HOST_DB_PATH,
-			cloudApiUrl: env.SUPERSET_API_URL,
+			cloudApiUrl: env.CHOROS_API_URL,
 			migrationsFolder: env.HOST_MIGRATIONS_FOLDER,
 			allowedOrigins: env.CORS_ORIGINS ?? [],
 			browserBridge: resolveBrowserBridgeFromEnv(env),
@@ -79,7 +79,7 @@ async function main(): Promise<void> {
 		providers: {
 			auth: authProvider,
 			hostAuth:
-				env.SUPERSET_HOST_RUN_MODE === "sandbox"
+				env.CHOROS_HOST_RUN_MODE === "sandbox"
 					? new EdgeGuardedHostAuthProvider()
 					: new PskHostAuthProvider(env.HOST_SERVICE_SECRET),
 			credentials: new LocalGitCredentialProvider(),
@@ -115,7 +115,7 @@ async function main(): Promise<void> {
 	}
 
 	const hostname =
-		env.SUPERSET_HOST_RUN_MODE === "sandbox" ? undefined : "127.0.0.1";
+		env.CHOROS_HOST_RUN_MODE === "sandbox" ? undefined : "127.0.0.1";
 	const listen = { fetch: app.fetch, port: env.PORT, hostname };
 	const server = serve(listen, (info) => {
 		// Install only after the server is listening so startup throws still
@@ -128,7 +128,7 @@ async function main(): Promise<void> {
 
 		startTerminalReaper(db);
 
-		if (env.RELAY_URL && env.SUPERSET_HOST_RUN_MODE !== "sandbox") {
+		if (env.RELAY_URL && env.CHOROS_HOST_RUN_MODE !== "sandbox") {
 			void connectRelay({
 				api,
 				relayUrl: env.RELAY_URL,

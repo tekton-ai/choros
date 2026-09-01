@@ -373,7 +373,7 @@ async function main() {
 					stdio: ["ignore", "ignore", "pipe"],
 					env: {
 						...process.env,
-						SUPERSET_PTY_DAEMON_VERSION: "cleanup-smoke",
+						CHOROS_PTY_DAEMON_VERSION: "cleanup-smoke",
 					},
 				},
 			);
@@ -507,7 +507,7 @@ async function findProductionDaemon(orgId) {
 
 function listProductionDaemonManifests() {
 	const home =
-		process.env.SUPERSET_HOME_DIR || path.join(os.homedir(), ".choros");
+		process.env.CHOROS_HOME_DIR || path.join(os.homedir(), ".choros");
 	const hostDir = path.join(home, "host");
 	if (!existsSync(hostDir)) return [];
 

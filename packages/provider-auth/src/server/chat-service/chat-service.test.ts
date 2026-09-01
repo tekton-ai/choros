@@ -104,7 +104,7 @@ const EXTERNAL_OPENAI_ENV_KEYS = [
 	"OPENAI_API_KEY",
 	"OPENAI_AUTH_TOKEN",
 ] as const;
-const originalSupersetHomeDir = process.env.SUPERSET_HOME_DIR;
+const originalChorosHomeDir = process.env.CHOROS_HOME_DIR;
 const originalAnthropicEnvValues = {
 	ANTHROPIC_BASE_URL: process.env.ANTHROPIC_BASE_URL,
 	ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY,
@@ -117,7 +117,7 @@ const originalOpenAIEnvValues = {
 	OPENAI_API_KEY: process.env.OPENAI_API_KEY,
 	OPENAI_AUTH_TOKEN: process.env.OPENAI_AUTH_TOKEN,
 };
-let testSupersetHomeDir: string | null = null;
+let testChorosHomeDir: string | null = null;
 
 mock.module("mastracode", () => ({
 	createAuthStorage: createAuthStorageMock,
@@ -164,8 +164,8 @@ describe("ChatService OpenAI auth storage", () => {
 		fakeAuthStorage.getApiKey.mockClear();
 		anthropicConfigCredential = null;
 		anthropicKeychainCredential = null;
-		testSupersetHomeDir = mkdtempSync(join(tmpdir(), "chat-service-test-"));
-		process.env.SUPERSET_HOME_DIR = testSupersetHomeDir;
+		testChorosHomeDir = mkdtempSync(join(tmpdir(), "chat-service-test-"));
+		process.env.CHOROS_HOME_DIR = testChorosHomeDir;
 		for (const key of MANAGED_ANTHROPIC_ENV_KEYS) {
 			delete process.env[key];
 		}
@@ -175,14 +175,14 @@ describe("ChatService OpenAI auth storage", () => {
 	});
 
 	afterEach(() => {
-		if (testSupersetHomeDir) {
-			rmSync(testSupersetHomeDir, { recursive: true, force: true });
-			testSupersetHomeDir = null;
+		if (testChorosHomeDir) {
+			rmSync(testChorosHomeDir, { recursive: true, force: true });
+			testChorosHomeDir = null;
 		}
-		if (originalSupersetHomeDir) {
-			process.env.SUPERSET_HOME_DIR = originalSupersetHomeDir;
+		if (originalChorosHomeDir) {
+			process.env.CHOROS_HOME_DIR = originalChorosHomeDir;
 		} else {
-			delete process.env.SUPERSET_HOME_DIR;
+			delete process.env.CHOROS_HOME_DIR;
 		}
 		for (const key of MANAGED_ANTHROPIC_ENV_KEYS) {
 			const value = originalAnthropicEnvValues[key];

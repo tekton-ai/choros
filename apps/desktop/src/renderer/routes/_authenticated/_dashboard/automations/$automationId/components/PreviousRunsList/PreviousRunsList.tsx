@@ -1,8 +1,8 @@
-import { msg } from "@lingui/core/macro";
-import { Trans } from "@lingui/react/macro";
 import type { SelectAutomationRun } from "@choros/db/schema";
 import { i18n } from "@choros/i18n";
 import { cn } from "@choros/ui/utils";
+import { msg } from "@lingui/core/macro";
+import { Trans } from "@lingui/react/macro";
 import { useNavigate } from "@tanstack/react-router";
 import { formatDistanceStrict } from "date-fns";
 import { useNow } from "renderer/hooks/useNow";

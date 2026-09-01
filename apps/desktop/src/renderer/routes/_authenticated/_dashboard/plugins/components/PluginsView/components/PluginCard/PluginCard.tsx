@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import type { PluginCatalogEntry } from "@choros/shared/plugins";
 import { Button } from "@choros/ui/button";
 import {
@@ -7,6 +6,7 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from "@choros/ui/dropdown-menu";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { LuCheck, LuEllipsis, LuPause, LuPlay, LuTrash2 } from "react-icons/lu";
 import { PluginIcon } from "renderer/routes/_authenticated/_dashboard/plugins/components/PluginIcon";
 import { PluginKindBadges } from "renderer/routes/_authenticated/_dashboard/plugins/components/PluginKindBadges";

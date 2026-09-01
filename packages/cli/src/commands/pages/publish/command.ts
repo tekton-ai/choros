@@ -41,7 +41,7 @@ export default command({
 			"Publish a new version of this page id, instead of resolving by workspace",
 		),
 		workspace: string().desc(
-			"Workspace to publish into, by name or id (defaults to $SUPERSET_WORKSPACE_ID)",
+			"Workspace to publish into, by name or id (defaults to $CHOROS_WORKSPACE_ID)",
 		),
 		noWatch: boolean().desc(
 			"Do not watch this page for new comments from this session",
@@ -92,13 +92,13 @@ export default command({
 		const entryPath =
 			resolveEntryPath({
 				filePath: entryFilePath,
-				workspacePath: process.env.SUPERSET_WORKSPACE_PATH,
+				workspacePath: process.env.CHOROS_WORKSPACE_PATH,
 			}) ??
 			(isDirectory
 				? `${EXTERNAL_ENTRY_PREFIX}${basename(inputPath)}/index.html`
 				: externalEntryPath(entryFilePath));
 
-		const workspaceRef = options.workspace ?? process.env.SUPERSET_WORKSPACE_ID;
+		const workspaceRef = options.workspace ?? process.env.CHOROS_WORKSPACE_ID;
 		if (!workspaceRef && !options.page) {
 			throw new CLIError(
 				"No workspace to publish into",

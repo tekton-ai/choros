@@ -1,3 +1,4 @@
+import { toast } from "@choros/ui/sonner";
 import { useLingui } from "@lingui/react/macro";
 import type {
 	CodeViewOptions,
@@ -5,7 +6,6 @@ import type {
 	SelectedLineRange,
 } from "@pierre/diffs";
 import type { CodeViewHandle } from "@pierre/diffs/react";
-import { toast } from "@choros/ui/sonner";
 import { type RefObject, useCallback, useMemo, useRef, useState } from "react";
 import {
 	type AgentPromptFileSide,

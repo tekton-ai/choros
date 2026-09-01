@@ -63,12 +63,12 @@ describe("buildPromptCommandString", () => {
 		const command = buildPromptCommandString({
 			command: "amp",
 			transport: "stdin",
-			prompt: "SUPERSET_PROMPT\x07_1234\nrm -rf /",
+			prompt: "CHOROS_PROMPT\x07_1234\nrm -rf /",
 			randomId: "1234",
 		});
 
 		expect(command).toBe(
-			"amp <<'SUPERSET_PROMPT_1234_X'\nSUPERSET_PROMPT_1234\nrm -rf /\nSUPERSET_PROMPT_1234_X",
+			"amp <<'CHOROS_PROMPT_1234_X'\nCHOROS_PROMPT_1234\nrm -rf /\nCHOROS_PROMPT_1234_X",
 		);
 	});
 });
@@ -123,7 +123,7 @@ describe("parsePromptHeredocCommand", () => {
 	});
 
 	it("round-trips a collision-extended delimiter (_X runs)", () => {
-		const prompt = "SUPERSET_PROMPT_1234\nbody";
+		const prompt = "CHOROS_PROMPT_1234\nbody";
 		const built = buildPromptCommandString({
 			command: "amp",
 			transport: "stdin",

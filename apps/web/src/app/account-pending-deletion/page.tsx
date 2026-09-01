@@ -1,13 +1,10 @@
 "use client";
 
+import { authClient } from "@choros/auth/client";
+import { ACCOUNT_DELETION_GRACE_DAYS, COMPANY } from "@choros/shared/constants";
+import { Button } from "@choros/ui/button";
 import { plural } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { authClient } from "@choros/auth/client";
-import {
-	ACCOUNT_DELETION_GRACE_DAYS,
-	COMPANY,
-} from "@choros/shared/constants";
-import { Button } from "@choros/ui/button";
 import { useMutation } from "@tanstack/react-query";
 import { AlertTriangle } from "lucide-react";
 import { useRouter } from "next/navigation";

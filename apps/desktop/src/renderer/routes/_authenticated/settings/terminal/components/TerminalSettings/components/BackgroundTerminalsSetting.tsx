@@ -1,6 +1,6 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Input } from "@choros/ui/input";
 import { Label } from "@choros/ui/label";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useEffect, useState } from "react";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { terminalRuntimeRegistry } from "renderer/lib/terminal/terminal-runtime-registry";

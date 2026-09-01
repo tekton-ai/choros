@@ -10,12 +10,12 @@ import { app } from "electron";
 import { validate as uuidValidate, version as uuidVersion } from "uuid";
 import { env } from "../../env.main";
 import {
+	CHOROS_HOME_DIR,
+	CHOROS_SENSITIVE_FILE_MODE,
 	ensureChorosHomeDirExists,
-	SUPERSET_HOME_DIR,
-	SUPERSET_SENSITIVE_FILE_MODE,
 } from "../app-environment";
 
-const DB_PATH = join(SUPERSET_HOME_DIR, "local.db");
+const DB_PATH = join(CHOROS_HOME_DIR, "local.db");
 
 ensureChorosHomeDirExists();
 
@@ -77,7 +77,7 @@ const migrationsFolder = getMigrationsDirectory();
 
 const sqlite = new Database(DB_PATH);
 try {
-	chmodSync(DB_PATH, SUPERSET_SENSITIVE_FILE_MODE);
+	chmodSync(DB_PATH, CHOROS_SENSITIVE_FILE_MODE);
 } catch {
 	// Best-effort; directory permissions should still protect the DB.
 }

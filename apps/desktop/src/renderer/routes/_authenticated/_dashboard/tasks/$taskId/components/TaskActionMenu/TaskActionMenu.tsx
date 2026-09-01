@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import {
 	DropdownMenu,
@@ -7,6 +6,7 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@choros/ui/dropdown-menu";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useState } from "react";
 import {
 	HiEllipsisHorizontal,

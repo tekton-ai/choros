@@ -44,11 +44,11 @@ export function onDaemonDisconnect(cb: (err?: Error) => void): () => void {
 }
 
 async function ptyDaemonSocketPath(): Promise<string> {
-	// Test escape hatch: when SUPERSET_PTY_DAEMON_SOCKET is set explicitly
+	// Test escape hatch: when CHOROS_PTY_DAEMON_SOCKET is set explicitly
 	// (e.g. by the adoption integration test), skip the supervisor and
 	// connect directly. Production paths leave this env var unset; the
 	// supervisor's own spawn does not set it.
-	const testOverride = process.env.SUPERSET_PTY_DAEMON_SOCKET;
+	const testOverride = process.env.CHOROS_PTY_DAEMON_SOCKET;
 	if (testOverride) return testOverride;
 
 	await waitForDaemonReady(getOrganizationId());

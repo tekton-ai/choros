@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import type { TerminalLinkBehavior } from "@choros/local-db";
 import { Label } from "@choros/ui/label";
 import {
@@ -8,6 +7,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@choros/ui/select";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { HighlightText } from "renderer/routes/_authenticated/settings/components/HighlightText";
 import { useSettingsSearchQuery } from "renderer/stores/settings-state";

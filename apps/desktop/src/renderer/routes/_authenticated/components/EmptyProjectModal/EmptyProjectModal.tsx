@@ -49,7 +49,7 @@ export function EmptyProjectModal({
 
 	useEffect(() => {
 		if (parentDir || !homeDir) return;
-		setParentDir(`${homeDir}/.superset/projects`);
+		setParentDir(`${homeDir}/.choros/projects`);
 	}, [homeDir, parentDir]);
 
 	const reset = () => {

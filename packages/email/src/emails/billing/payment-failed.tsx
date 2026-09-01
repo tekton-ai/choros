@@ -66,10 +66,7 @@ export function PaymentFailedEmail({
 
 			<Text className="text-[13px] leading-5 text-muted m-0">
 				Need help?{" "}
-				<Link
-					href="mailto:support@choros.sh"
-					className="text-muted underline"
-				>
+				<Link href="mailto:support@choros.sh" className="text-muted underline">
 					Contact our support team
 				</Link>{" "}
 				and we'll get you sorted out.

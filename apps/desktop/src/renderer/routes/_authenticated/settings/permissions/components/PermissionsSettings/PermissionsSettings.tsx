@@ -1,8 +1,8 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Badge } from "@choros/ui/badge";
 import { Button } from "@choros/ui/button";
 import { Label } from "@choros/ui/label";
 import { Skeleton } from "@choros/ui/skeleton";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { LuExternalLink } from "react-icons/lu";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { HighlightText } from "renderer/routes/_authenticated/settings/components/HighlightText";

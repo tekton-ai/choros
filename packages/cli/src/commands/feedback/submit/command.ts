@@ -42,7 +42,7 @@ function readTail(filePath: string): string {
 function collectDiagnostics(): FeedbackAttachment | null {
 	const lines = [
 		`Collected: ${new Date().toISOString()}`,
-		`CLI version: ${process.env.SUPERSET_VERSION ?? "dev"}`,
+		`CLI version: ${process.env.CHOROS_VERSION ?? "dev"}`,
 		`OS: ${os.platform()} ${os.release()} ${os.arch()}`,
 	];
 	const logPath = join(os.homedir(), "Library", "Logs", "Choros", "main.log");
@@ -131,7 +131,7 @@ export default command({
 			type: options.type,
 			title: options.title,
 			body,
-			appVersion: process.env.SUPERSET_VERSION ?? "dev",
+			appVersion: process.env.CHOROS_VERSION ?? "dev",
 			os: `${os.platform()} ${os.release()} ${os.arch()}`,
 			attachments: attachments.length > 0 ? attachments : undefined,
 		});

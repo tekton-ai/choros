@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	getAgentEffortSupport,
 	getAgentEfforts,
@@ -21,6 +20,7 @@ import { toast } from "@choros/ui/sonner";
 import { Spinner } from "@choros/ui/spinner";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { cn } from "@choros/ui/utils";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useNavigate } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpIcon, HistoryIcon, Settings2Icon } from "lucide-react";

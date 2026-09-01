@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import type { SelectScreenshot } from "@choros/local-db";
 import { Button } from "@choros/ui/button";
 import {
@@ -9,6 +8,7 @@ import {
 } from "@choros/ui/dialog";
 import { ScrollArea } from "@choros/ui/scroll-area";
 import { toast } from "@choros/ui/sonner";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useEffect, useState } from "react";
 import { LuCheck } from "react-icons/lu";
 import { TbCopy, TbFolderOpen } from "react-icons/tb";

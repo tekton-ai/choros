@@ -1,7 +1,7 @@
-import type { MessageDescriptor } from "@lingui/core";
-import { msg } from "@lingui/core/macro";
 import { i18n } from "@choros/i18n";
 import { cn } from "@choros/ui/utils";
+import type { MessageDescriptor } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
 import { Link, useMatchRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
 import {

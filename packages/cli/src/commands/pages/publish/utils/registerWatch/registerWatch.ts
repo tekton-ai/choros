@@ -2,7 +2,7 @@ import { getHostId } from "@choros/shared/host-info";
 import { resolveHostTarget } from "../../../../../lib/host-target";
 
 export function watchTerminalId(): string | undefined {
-	return process.env.SUPERSET_TERMINAL_ID;
+	return process.env.CHOROS_TERMINAL_ID;
 }
 
 export async function registerWatch({
@@ -36,6 +36,6 @@ export async function registerWatch({
 		title,
 		workspaceId,
 		terminalId,
-		agentId: process.env.SUPERSET_AGENT_ID ?? null,
+		agentId: process.env.CHOROS_AGENT_ID ?? null,
 	});
 }

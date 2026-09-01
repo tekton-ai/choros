@@ -1,6 +1,6 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import { Label } from "@choros/ui/label";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 
 interface WorktreeLocationPickerProps {
@@ -15,7 +15,7 @@ interface WorktreeLocationPickerProps {
 
 export function useDefaultWorktreePath() {
 	const { data: homeDir } = electronTrpc.window.getHomeDir.useQuery();
-	return homeDir ? `${homeDir}/.superset/worktrees` : "~/.superset/worktrees";
+	return homeDir ? `${homeDir}/.choros/worktrees` : "~/.choros/worktrees";
 }
 
 export function WorktreeLocationPicker({

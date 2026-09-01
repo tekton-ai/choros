@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	ContextMenuItem,
 	ContextMenuSeparator,
@@ -13,6 +12,7 @@ import {
 	DropdownMenuSubContent,
 	DropdownMenuSubTrigger,
 } from "@choros/ui/dropdown-menu";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { HiCheck } from "react-icons/hi2";
 import { LuEyeOff, LuPalette, LuPencil, LuTrash2 } from "react-icons/lu";
 import {

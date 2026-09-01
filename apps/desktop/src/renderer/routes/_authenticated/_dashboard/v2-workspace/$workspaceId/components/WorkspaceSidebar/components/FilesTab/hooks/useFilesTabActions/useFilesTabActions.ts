@@ -1,8 +1,8 @@
-import { useLingui } from "@lingui/react/macro";
-import type { FileTree, FileTreeRenameEvent } from "@pierre/trees";
 import { alert } from "@choros/ui/atoms/Alert";
 import { toast } from "@choros/ui/sonner";
 import { workspaceTrpc } from "@choros/workspace-client";
+import { useLingui } from "@lingui/react/macro";
+import type { FileTree, FileTreeRenameEvent } from "@pierre/trees";
 import { useCallback, useEffect, useRef } from "react";
 import { canonicalizeTreePath } from "renderer/lib/pierreTree";
 import { FILE_EXPLORER_ROW_HEIGHT } from "../../constants";

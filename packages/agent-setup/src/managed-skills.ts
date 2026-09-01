@@ -5,23 +5,23 @@ import path from "node:path";
 import { writeFileIfChanged } from "./agent-wrappers-common";
 import { getBundledPluginDir } from "./config";
 
-export const MANAGED_SKILL_MARKER = "<!-- superset-managed-skill v1 -->";
+export const MANAGED_SKILL_MARKER = "<!-- choros-managed-skill v1 -->";
 
 /**
- * Sentinel file marking a directory as Superset-managed (used for the Claude
+ * Sentinel file marking a directory as Choros-managed (used for the Claude
  * plugin dir, whose manifest is JSON and can't carry the markdown marker).
  */
-export const MANAGED_SENTINEL_NAME = ".superset-managed";
+export const MANAGED_SENTINEL_NAME = ".choros-managed";
 
 /** Namespace subdirectory for managed commands under ~/.agents/commands. */
-export const MANAGED_COMMAND_NAMESPACE = "superset";
+export const MANAGED_COMMAND_NAMESPACE = "choros";
 
 /**
  * Claude Code loads any ~/.claude/skills/<name> directory containing a
  * .claude-plugin/plugin.json as a "skills-directory plugin" named
  * `<name>@skills-dir`, namespacing its skills as `<name>:<skill>`.
  */
-const CLAUDE_PLUGIN_DIR_NAME = "superset";
+const CLAUDE_PLUGIN_DIR_NAME = "choros";
 
 /**
  * Skills exposed as slash commands to the in-app chat. Deliberately a curated
@@ -173,7 +173,7 @@ function readPluginSkill(
 
 /**
  * Every skill in the bundled plugin ships everywhere automatically unless the
- * user disabled it — adding a skill to plugins/superset/skills/ requires no
+ * user disabled it — adding a skill to plugins/choros/skills/ requires no
  * code change here. Returns null on enumeration failure: the caller must
  * abort (an empty desired set would make the reaper delete every
  * previously-provisioned skill).
@@ -358,7 +358,7 @@ export async function createManagedSkills(
 }
 
 /**
- * Provisions the bundled Superset plugin into one Claude config dir. Used for
+ * Provisions the bundled Choros plugin into one Claude config dir. Used for
  * a secondary account whose `skills/` directory the user owns, so it can't be
  * linked at the default account's — the plugin is written into it directly
  * instead of being shared.

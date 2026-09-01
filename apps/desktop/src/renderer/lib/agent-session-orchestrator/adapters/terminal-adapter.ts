@@ -31,10 +31,7 @@ async function writeTaskPromptFile(
 		throw new Error(`Workspace path not found: ${workspaceId}`);
 	}
 
-	const chorosDirectory = joinAbsolutePath(
-		workspace.worktreePath,
-		".choros",
-	);
+	const chorosDirectory = joinAbsolutePath(workspace.worktreePath, ".choros");
 	await electronTrpcClient.filesystem.createDirectory.mutate({
 		workspaceId,
 		absolutePath: chorosDirectory,

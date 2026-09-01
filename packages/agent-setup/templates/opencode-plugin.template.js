@@ -1,6 +1,6 @@
 {{MARKER}}
 /**
- * Superset Notification Plugin for OpenCode
+ * Choros Notification Plugin for OpenCode
  *
  * This plugin sends desktop notifications when OpenCode sessions need attention.
  * It hooks into session.status (busy/idle), session.idle, session.error, and permission.ask events.
@@ -9,7 +9,7 @@
  * - Session-scoped: Tracks root sessionID, ignores events from other sessions
  * - Deduplication: Only sends Start on idle→busy, Stop on busy→idle transitions
  * - Safe defaults: On error, assumes child session to avoid false positives
- * - Debug logging: Set SUPERSET_DEBUG=1 to enable verbose logging
+ * - Debug logging: Set CHOROS_DEBUG=1 to enable verbose logging
  *
  * SUBAGENT FILTERING:
  * When using oh-my-opencode or similar tools that spawn background subagents
@@ -22,15 +22,15 @@
  *
  * @see https://github.com/sst/opencode/blob/dev/packages/app/src/context/notification.tsx
  */
-export const SupersetNotifyPlugin = async ({ $, client }) => {
-  if (globalThis.__supersetOpencodeNotifyPluginV9) return {};
-  globalThis.__supersetOpencodeNotifyPluginV9 = true;
+export const ChorosNotifyPlugin = async ({ $, client }) => {
+  if (globalThis.__chorosOpencodeNotifyPluginV9) return {};
+  globalThis.__chorosOpencodeNotifyPluginV9 = true;
 
-  // Only run inside a v2 Superset terminal session.
-  if (!process?.env?.SUPERSET_TERMINAL_ID) return {};
+  // Only run inside a v2 Choros terminal session.
+  if (!process?.env?.CHOROS_TERMINAL_ID) return {};
 
   const notifyPath = "{{NOTIFY_PATH}}";
-  const debug = process?.env?.SUPERSET_DEBUG === '1';
+  const debug = process?.env?.CHOROS_DEBUG === '1';
 
   // State tracking for deduplication and session-scoping
   let currentState = 'idle'; // 'idle' | 'busy'
@@ -38,18 +38,18 @@ export const SupersetNotifyPlugin = async ({ $, client }) => {
   let stopSent = false;      // Prevent duplicate Stop notifications
 
   const log = (...args) => {
-    if (debug) console.log('[superset-plugin]', ...args);
+    if (debug) console.log('[choros-plugin]', ...args);
   };
 
   /**
-   * Sends a notification to Superset's notification server.
+   * Sends a notification to Choros's notification server.
    * Best-effort only - failures are silently ignored to avoid breaking the agent.
    */
   const notify = async (hookEventName) => {
     const payload = JSON.stringify({ hook_event_name: hookEventName });
     log('Sending notification:', hookEventName);
     try {
-      // SUPERSET_AGENT_ID=opencode is exported by the opencode wrapper and
+      // CHOROS_AGENT_ID=opencode is exported by the opencode wrapper and
       // inherited by every child of the opencode process, so the notify
       // script reads the right id from env without any explicit forwarding.
       await $`bash ${notifyPath} ${payload}`;

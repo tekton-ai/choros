@@ -22,7 +22,7 @@ import { env, isDesktopBundled } from "../../lib/env";
 // CLI's update channel independent of desktop releases — which would otherwise
 // shadow CLI on `/releases/latest`.
 const ROLLING_DOWNLOAD_BASE =
-	"https://github.com/superset-sh/choros/releases/download/cli-latest";
+	"https://github.com/choros-sh/choros/releases/download/cli-latest";
 
 function detectTarget(): string {
 	const arch = process.arch === "arm64" ? "arm64" : "x64";
@@ -57,7 +57,7 @@ function tarballUrl(target: string, version?: string): string {
 	if (!version) {
 		return `${ROLLING_DOWNLOAD_BASE}/choros-${target}.tar.gz`;
 	}
-	return `https://github.com/superset-sh/choros/releases/download/cli-v${version}/choros-${target}.tar.gz`;
+	return `https://github.com/choros-sh/choros/releases/download/cli-v${version}/choros-${target}.tar.gz`;
 }
 
 const SEMVER_RE = /^[0-9]+\.[0-9]+\.[0-9]+(?:-[A-Za-z0-9.]+)?$/;
@@ -119,8 +119,8 @@ function atomicReplace(installRoot: string, newRoot: string): void {
 }
 
 function resolveInstallRoot(): string {
-	if (process.env.SUPERSET_INSTALL_ROOT) {
-		return process.env.SUPERSET_INSTALL_ROOT;
+	if (process.env.CHOROS_INSTALL_ROOT) {
+		return process.env.CHOROS_INSTALL_ROOT;
 	}
 	const cliBin = process.execPath;
 	return dirname(dirname(cliBin));

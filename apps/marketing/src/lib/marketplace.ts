@@ -154,8 +154,7 @@ export const themeListings: ThemeListing[] = [
 		type: "dark",
 		author: "Catppuccin",
 		submittedBy: "tamarazuk",
-		description:
-			"The Frappé variant from the Catppuccin theme PR for Choros.",
+		description: "The Frappé variant from the Catppuccin theme PR for Choros.",
 		addedOn: "March 21, 2026",
 		source: {
 			label: "Download",

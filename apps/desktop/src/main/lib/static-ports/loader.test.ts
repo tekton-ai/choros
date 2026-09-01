@@ -6,12 +6,12 @@ import { hasStaticPortsConfig, loadStaticPorts } from "./loader";
 
 const TEST_DIR = join(tmpdir(), `choros-test-loader-${process.pid}`);
 const WORKTREE_PATH = join(TEST_DIR, "worktree");
-const SUPERSET_DIR = join(WORKTREE_PATH, ".choros");
-const PORTS_FILE = join(SUPERSET_DIR, "ports.json");
+const CHOROS_DIR = join(WORKTREE_PATH, ".choros");
+const PORTS_FILE = join(CHOROS_DIR, "ports.json");
 
 describe("loadStaticPorts", () => {
 	beforeEach(() => {
-		mkdirSync(SUPERSET_DIR, { recursive: true });
+		mkdirSync(CHOROS_DIR, { recursive: true });
 	});
 
 	afterEach(() => {
@@ -278,7 +278,7 @@ describe("loadStaticPorts", () => {
 
 describe("hasStaticPortsConfig", () => {
 	beforeEach(() => {
-		mkdirSync(SUPERSET_DIR, { recursive: true });
+		mkdirSync(CHOROS_DIR, { recursive: true });
 	});
 
 	afterEach(() => {

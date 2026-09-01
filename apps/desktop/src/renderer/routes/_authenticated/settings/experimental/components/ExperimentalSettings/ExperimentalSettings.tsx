@@ -1,7 +1,7 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import { Label } from "@choros/ui/label";
 import { Switch } from "@choros/ui/switch";
+import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	useIsV1FlipLocked,
 	useIsV2CloudEnabled,
@@ -37,7 +37,7 @@ export function ExperimentalSettings({
 	const { t } = useLingui();
 	const searchQuery = useSettingsSearchQuery();
 	const showChorosV2 = isItemVisible(
-		SETTING_ITEM_ID.EXPERIMENTAL_SUPERSET_V2,
+		SETTING_ITEM_ID.EXPERIMENTAL_CHOROS_V2,
 		visibleItems,
 	);
 	const showV1Migration = isItemVisible(

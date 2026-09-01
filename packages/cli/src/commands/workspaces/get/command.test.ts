@@ -26,7 +26,7 @@ const WORKSPACE = {
 	taskId: null,
 	createdAt: new Date("2026-04-24T22:00:41.950Z"),
 	updatedAt: new Date("2026-04-24T22:00:41.950Z"),
-	worktreePath: "/home/me/.superset/worktrees/proj-1/setup",
+	worktreePath: "/home/me/.choros/worktrees/proj-1/setup",
 	worktreeExists: true,
 };
 
@@ -61,7 +61,7 @@ function invoke(args: { id?: string }, options: { field?: string } = {}) {
 
 afterEach(() => {
 	findResult = { hostId: "host-1", workspace: undefined };
-	delete process.env.SUPERSET_WORKSPACE_ID;
+	delete process.env.CHOROS_WORKSPACE_ID;
 });
 
 describe("workspaces get", () => {
@@ -79,8 +79,8 @@ describe("workspaces get", () => {
 		expect(result.message).toContain("ludicrous-candytuft");
 	});
 
-	test("defaults the id to $SUPERSET_WORKSPACE_ID when no arg is given", async () => {
-		process.env.SUPERSET_WORKSPACE_ID = WORKSPACE.id;
+	test("defaults the id to $CHOROS_WORKSPACE_ID when no arg is given", async () => {
+		process.env.CHOROS_WORKSPACE_ID = WORKSPACE.id;
 		findResult = { hostId: "host-1", workspace: { ...WORKSPACE } };
 		const result = (await invoke({})) as { data: Record<string, unknown> };
 		expect(result.data.id).toBe(WORKSPACE.id);

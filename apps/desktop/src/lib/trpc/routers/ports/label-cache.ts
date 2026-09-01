@@ -4,7 +4,7 @@ import { workspaces } from "@choros/local-db";
 import { eq } from "drizzle-orm";
 import { localDb } from "main/lib/local-db";
 import { loadStaticPorts } from "main/lib/static-ports";
-import { PORTS_FILE_NAME, PROJECT_SUPERSET_DIR_NAME } from "shared/constants";
+import { PORTS_FILE_NAME, PROJECT_CHOROS_DIR_NAME } from "shared/constants";
 import { getWorkspacePath } from "../workspaces/utils/worktree";
 
 interface LabelCacheEntry {
@@ -16,7 +16,7 @@ interface LabelCacheEntry {
 function getPortsFileSignature(worktreePath: string): string | null {
 	try {
 		const stat = statSync(
-			join(worktreePath, PROJECT_SUPERSET_DIR_NAME, PORTS_FILE_NAME),
+			join(worktreePath, PROJECT_CHOROS_DIR_NAME, PORTS_FILE_NAME),
 		);
 		return `${stat.mtimeMs}:${stat.size}`;
 	} catch (error) {

@@ -40,9 +40,7 @@ export function useV2AgentChoices(
 				),
 			}),
 		);
-		return isChatV3Enabled
-			? [...terminalAgents, CHOROS_AGENT]
-			: terminalAgents;
+		return isChatV3Enabled ? [...terminalAgents, CHOROS_AGENT] : terminalAgents;
 	}, [query.data, isChatV3Enabled]);
 
 	return { agents, isFetched: query.isFetched };

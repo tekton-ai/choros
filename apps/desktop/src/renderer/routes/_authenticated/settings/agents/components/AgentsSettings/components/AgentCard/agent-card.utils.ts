@@ -1,4 +1,3 @@
-import { msg } from "@lingui/core/macro";
 import { i18n } from "@choros/i18n";
 import {
 	type AgentPresetPatch,
@@ -7,6 +6,7 @@ import {
 	renderTaskPromptTemplate,
 	validateTaskPromptTemplate,
 } from "@choros/shared/agent-settings";
+import { msg } from "@lingui/core/macro";
 import type { AgentEditableField } from "./agent-card.types";
 
 const SAMPLE_TASK = {
@@ -38,7 +38,7 @@ export function getPreviewNoPromptCommand(preset: ResolvedAgentConfig): string {
 export function getPreviewTaskCommand(preset: ResolvedAgentConfig): string {
 	return (
 		buildFileCommandFromAgentConfig({
-			filePath: `.superset/task-${SAMPLE_TASK.slug}.md`,
+			filePath: `.choros/task-${SAMPLE_TASK.slug}.md`,
 			config: preset,
 		}) ??
 		i18n._(

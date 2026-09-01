@@ -10,14 +10,14 @@
 # sandbox nothing can talk to.
 set -uo pipefail
 
-WORKSPACE="${SUPERSET_SANDBOX_WORKSPACE_PATH:-/workspace}"
-BRANCH="${SUPERSET_SANDBOX_BRANCH:-}"
-REPO_URL="${SUPERSET_SANDBOX_REPO_URL:-}"
+WORKSPACE="${CHOROS_SANDBOX_WORKSPACE_PATH:-/workspace}"
+BRANCH="${CHOROS_SANDBOX_BRANCH:-}"
+REPO_URL="${CHOROS_SANDBOX_REPO_URL:-}"
 
 # The platform injects its own PORT into the sandbox environment, which beats
 # the image's ENV. host-service reads PORT, so without this it tries to bind 80
 # — reserved here, along with 443 and 8080 — and exits with EADDRINUSE.
-export PORT="${SUPERSET_SANDBOX_HOST_PORT:-4879}"
+export PORT="${CHOROS_SANDBOX_HOST_PORT:-4879}"
 
 # The schema is baked, so first boot has nothing to migrate. Copied rather than
 # used in place because /data is where a persistent volume would mount.
@@ -37,7 +37,7 @@ fi
 # URLs are compared rather than assumed to match.
 if [ -n "$REPO_URL" ]; then
   BAKED_URL=$(git -C "$WORKSPACE" remote get-url origin 2>/dev/null || echo "")
-  if [ -n "${SUPERSET_SANDBOX_GIT_TOKEN:-}" ]; then
+  if [ -n "${CHOROS_SANDBOX_GIT_TOKEN:-}" ]; then
     export GIT_ASKPASS=/app/git-askpass.sh
   fi
   if [ "$BAKED_URL" = "$REPO_URL" ] && [ -d "$WORKSPACE/.git" ]; then

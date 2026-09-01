@@ -99,7 +99,7 @@ describe("installInputModeReclaimer (xterm adapter)", () => {
 			writes,
 			csi: (key: string, params: (number | number[])[] = []) =>
 				csi.get(key)?.(params),
-			marker: (data = "superset-shell-ready") => osc.get(777)?.(data),
+			marker: (data = "choros-shell-ready") => osc.get(777)?.(data),
 		};
 	}
 

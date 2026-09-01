@@ -1,6 +1,6 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import { cn } from "@choros/ui/utils";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { LuCornerDownLeft, LuLoaderCircle } from "react-icons/lu";
 import { useTerminalAgentBindings } from "renderer/hooks/host-service/useTerminalAgentBindings";

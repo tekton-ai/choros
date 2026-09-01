@@ -1,5 +1,5 @@
-import { useDroppable } from "@dnd-kit/core";
 import { cn } from "@choros/ui/utils";
+import { useDroppable } from "@dnd-kit/core";
 
 interface SidebarDropZoneProps {
 	dropZoneId: string;

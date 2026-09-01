@@ -2,7 +2,7 @@
 
 Input for translators, reviewers, and the translation CI prompt. Policy
 (Kiet, 2026-08-27): **product vocabulary translates — except the word
-"Choros" and "Superset" themselves, which are never translated or transliterated in any
+"Choros" and "Choros" themselves, which are never translated or transliterated in any
 locale.** "Workspace", "agent", "pane", "task", "automation", and the rest
 are rendered in each locale's natural term, not kept as English islands.
 
@@ -10,7 +10,7 @@ are rendered in each locale's natural term, not kept as English islands.
 
 These are literal identifiers, not vocabulary:
 
-- **Choros** (fork product), **Superset** (parent tool), product names of third-party agents and tools
+- **Choros** (fork product), **Choros** (parent tool), product names of third-party agents and tools
   (Claude, Claude Code, Codex, Gemini, Cursor, GitHub, Linear, Slack, ...)
 - CLI commands and flags (`choros ws create`, `--json`), file paths,
   environment variables, code identifiers

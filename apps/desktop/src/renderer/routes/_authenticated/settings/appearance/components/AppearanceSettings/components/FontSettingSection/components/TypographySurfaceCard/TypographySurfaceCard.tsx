@@ -1,5 +1,3 @@
-import { msg } from "@lingui/core/macro";
-import { Trans, useLingui } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { Button } from "@choros/ui/button";
 import { Input } from "@choros/ui/input";
@@ -12,6 +10,8 @@ import {
 	SelectValue,
 } from "@choros/ui/select";
 import { Switch } from "@choros/ui/switch";
+import { msg } from "@lingui/core/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import type { inferRouterInputs } from "@trpc/server";
 import type { AppRouter } from "lib/trpc/routers";
 import { Code2, RotateCcw, SquareTerminal } from "lucide-react";

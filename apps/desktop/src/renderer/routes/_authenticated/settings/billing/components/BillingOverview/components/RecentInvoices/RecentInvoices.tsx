@@ -1,10 +1,10 @@
-import { Trans } from "@lingui/react/macro";
 import {
 	formatDate as formatLocaleDate,
 	formatPrice,
 } from "@choros/i18n/format";
 import { Badge } from "@choros/ui/badge";
 import { cn } from "@choros/ui/utils";
+import { Trans } from "@lingui/react/macro";
 import { HiArrowTopRightOnSquare } from "react-icons/hi2";
 import { cloudTrpc } from "renderer/lib/cloud-trpc";
 import { electronTrpc } from "renderer/lib/electron-trpc";

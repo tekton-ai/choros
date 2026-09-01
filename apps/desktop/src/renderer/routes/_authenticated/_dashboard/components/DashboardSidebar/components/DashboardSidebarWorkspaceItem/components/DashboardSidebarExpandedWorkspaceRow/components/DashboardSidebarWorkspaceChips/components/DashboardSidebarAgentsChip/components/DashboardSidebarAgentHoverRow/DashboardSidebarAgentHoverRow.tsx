@@ -1,5 +1,5 @@
-import { useLingui } from "@lingui/react/macro";
 import { cn } from "@choros/ui/utils";
+import { useLingui } from "@lingui/react/macro";
 import { useNavigate } from "@tanstack/react-router";
 import { navigateToV2Workspace } from "renderer/routes/_authenticated/_dashboard/utils/workspace-navigation";
 import { getStatusTooltip } from "renderer/screens/main/components/StatusIndicator";

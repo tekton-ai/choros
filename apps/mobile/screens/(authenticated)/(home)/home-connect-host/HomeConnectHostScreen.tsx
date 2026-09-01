@@ -1,5 +1,5 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { COMPANY } from "@choros/shared/constants";
+import { Trans, useLingui } from "@lingui/react/macro";
 import * as Haptics from "expo-haptics";
 import { useRouter } from "expo-router";
 import { MonitorSmartphone } from "lucide-react-native";

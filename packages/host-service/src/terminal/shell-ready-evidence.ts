@@ -12,7 +12,7 @@
  * flips the record back to `delivered`.
  *
  * Persisted as a tiny JSON map keyed by shell basename in
- * `$SUPERSET_HOME_DIR/shell-ready-evidence.json` so the knowledge survives
+ * `$CHOROS_HOME_DIR/shell-ready-evidence.json` so the knowledge survives
  * host-service restarts. Writes are best-effort; per-org host-service
  * processes share the file and last-write-wins is fine — they observe the
  * same machine and shell.
@@ -20,7 +20,7 @@
 import { readFileSync } from "node:fs";
 import { rename, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { resolveSupersetHomeDir } from "@choros/agent-setup/paths";
+import { resolveChorosHomeDir } from "@choros/agent-setup/paths";
 
 export type ShellReadyEvidence = "delivered" | "missing";
 
@@ -32,7 +32,7 @@ let cache: { dir: string; evidence: EvidenceMap } | null = null;
 let warnedReadError = false;
 
 function evidenceDir(): string {
-	return resolveSupersetHomeDir();
+	return resolveChorosHomeDir();
 }
 
 function loadEvidence(dir: string): EvidenceMap {

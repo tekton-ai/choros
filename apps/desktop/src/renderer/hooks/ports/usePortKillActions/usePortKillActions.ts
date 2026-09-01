@@ -1,6 +1,6 @@
+import { toast } from "@choros/ui/sonner";
 import { plural } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import { toast } from "@choros/ui/sonner";
 import { type QueryKey, useQueryClient } from "@tanstack/react-query";
 import { useCallback, useState } from "react";
 import { confirmClosePorts } from "./confirmClosePorts";

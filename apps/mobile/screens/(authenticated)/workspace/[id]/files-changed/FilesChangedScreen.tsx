@@ -1,6 +1,6 @@
+import { formatNumber } from "@choros/i18n/format";
 import { Plural, Trans, useLingui } from "@lingui/react/macro";
 import { FlashList, type FlashListRef } from "@shopify/flash-list";
-import { formatNumber } from "@choros/i18n/format";
 import { useQueries, useQueryClient } from "@tanstack/react-query";
 import * as Clipboard from "expo-clipboard";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";

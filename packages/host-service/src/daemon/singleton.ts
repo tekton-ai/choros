@@ -20,7 +20,7 @@ let bootstrapPromise: Promise<unknown> | null = null;
  * scripts.
  */
 export function resolveSupervisorScriptPath(): string {
-	const override = process.env.SUPERSET_PTY_DAEMON_SCRIPT_PATH;
+	const override = process.env.CHOROS_PTY_DAEMON_SCRIPT_PATH;
 	if (override) return override;
 
 	const here = path.dirname(fileURLToPath(import.meta.url));

@@ -23,15 +23,15 @@ export function resolveLaunchShell(
 	return resolveConfiguredShell(baseEnv, options);
 }
 
-export function getChorosShellPaths(supersetHomeDir: string): {
+export function getChorosShellPaths(chorosHomeDir: string): {
 	BIN_DIR: string;
 	ZSH_DIR: string;
 	BASH_DIR: string;
 } {
 	return {
-		BIN_DIR: path.join(supersetHomeDir, "bin"),
-		ZSH_DIR: path.join(supersetHomeDir, "zsh"),
-		BASH_DIR: path.join(supersetHomeDir, "bash"),
+		BIN_DIR: path.join(chorosHomeDir, "bin"),
+		ZSH_DIR: path.join(chorosHomeDir, "zsh"),
+		BASH_DIR: path.join(chorosHomeDir, "bash"),
 	};
 }
 
@@ -73,7 +73,7 @@ function buildFishInitCommand(binDir: string): string {
 export interface ShellBootstrapParams {
 	shell: string;
 	baseEnv: Record<string, string>;
-	supersetHomeDir: string;
+	chorosHomeDir: string;
 }
 
 /**
@@ -83,15 +83,15 @@ export interface ShellBootstrapParams {
 export function getShellBootstrapEnv(
 	params: ShellBootstrapParams,
 ): Record<string, string> {
-	const { shell, baseEnv, supersetHomeDir } = params;
+	const { shell, baseEnv, chorosHomeDir } = params;
 	const shellName = getShellName(shell);
-	const paths = getChorosShellPaths(supersetHomeDir);
+	const paths = getChorosShellPaths(chorosHomeDir);
 
 	if (shellName === "zsh") {
 		const zshrc = path.join(paths.ZSH_DIR, ".zshrc");
 		if (existsSync(zshrc)) {
 			return {
-				SUPERSET_ORIG_ZDOTDIR: baseEnv.ZDOTDIR || baseEnv.HOME || homedir(),
+				CHOROS_ORIG_ZDOTDIR: baseEnv.ZDOTDIR || baseEnv.HOME || homedir(),
 				ZDOTDIR: paths.ZSH_DIR,
 			};
 		}
@@ -102,7 +102,7 @@ export function getShellBootstrapEnv(
 
 export interface ShellLaunchParams {
 	shell: string;
-	supersetHomeDir: string;
+	chorosHomeDir: string;
 }
 
 /**
@@ -116,9 +116,9 @@ export interface ShellLaunchParams {
 export function shellLaunchExpectsReadyMarker(
 	params: ShellLaunchParams,
 ): boolean {
-	const { shell, supersetHomeDir } = params;
+	const { shell, chorosHomeDir } = params;
 	const shellName = getShellName(shell);
-	const paths = getChorosShellPaths(supersetHomeDir);
+	const paths = getChorosShellPaths(chorosHomeDir);
 
 	if (shellName === "zsh") {
 		return (
@@ -137,9 +137,9 @@ export function shellLaunchExpectsReadyMarker(
 }
 
 export function getShellLaunchArgs(params: ShellLaunchParams): string[] {
-	const { shell, supersetHomeDir } = params;
+	const { shell, chorosHomeDir } = params;
 	const shellName = getShellName(shell);
-	const paths = getChorosShellPaths(supersetHomeDir);
+	const paths = getChorosShellPaths(chorosHomeDir);
 
 	if (shellName === "zsh") {
 		return ["-l"];

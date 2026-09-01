@@ -1,10 +1,6 @@
 import type { SessionClient } from "@choros/chat/client";
 import type { UserContent } from "@choros/chat/protocol";
-import {
-	useApprovals,
-	useChatSession,
-	useTimeline,
-} from "@choros/chat/react";
+import { useApprovals, useChatSession, useTimeline } from "@choros/chat/react";
 import { Loader } from "@choros/ui/ai-elements/loader";
 import type { ReactNode } from "react";
 import { useEffect, useMemo, useRef } from "react";

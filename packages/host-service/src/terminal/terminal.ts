@@ -4,8 +4,7 @@ import { readdir, rm, stat } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { basename, isAbsolute, join } from "node:path";
 import { StringDecoder } from "node:string_decoder";
-import type { NodeWebSocket } from "@hono/node-ws";
-import { resolveSupersetHomeDir } from "@choros/agent-setup/paths";
+import { resolveChorosHomeDir } from "@choros/agent-setup/paths";
 import { hasRunningForegroundProcess } from "@choros/pty-daemon/process-tree";
 import {
 	buildFishPromptCommandString,
@@ -27,6 +26,7 @@ import {
 	scanForTerminalTitle,
 	type TerminalTitleScanState,
 } from "@choros/shared/terminal-title-scanner";
+import type { NodeWebSocket } from "@hono/node-ws";
 import { and, eq, inArray, isNull, ne } from "drizzle-orm";
 import type { Hono } from "hono";
 import { getSupervisor } from "../daemon/index.ts";
@@ -2127,7 +2127,7 @@ async function typeInitialCommandUngated(
 
 /**
  * Rewrite a bash-only heredoc prompt transport for a fish launch shell. fish
- * has no heredocs, so the shared "$(cat <<'SUPERSET_PROMPT_…')" transport
+ * has no heredocs, so the shared "$(cat <<'CHOROS_PROMPT_…')" transport
  * dies at parse and the agent never starts (#4705). The prompt bytes go to a
  * staged temp file (the `choros-launch-` prefix keeps it under the boot
  * sweep's crash cleanup) and the typed command becomes the fish equivalent,
@@ -2322,7 +2322,7 @@ function isUnknownDaemonSessionError(error: unknown): boolean {
 }
 
 function reachableDaemonSocketPath(): string | null {
-	const explicitSocket = process.env.SUPERSET_PTY_DAEMON_SOCKET;
+	const explicitSocket = process.env.CHOROS_PTY_DAEMON_SOCKET;
 	if (explicitSocket) return explicitSocket;
 
 	const organizationId = process.env.ORGANIZATION_ID;
@@ -2696,14 +2696,14 @@ export async function createTerminalSessionInternal({
 	// Fallback matters for hosts not spawned by the desktop (CLI/systemd):
 	// without it the wrapper paths, hook guard env, and shell bootstrap all
 	// silently disable (#6254).
-	const supersetHomeDir = resolveSupersetHomeDir();
+	const chorosHomeDir = resolveChorosHomeDir();
 	const shell = resolveLaunchShell(baseEnv);
-	const shellArgs = getShellLaunchArgs({ shell, supersetHomeDir });
+	const shellArgs = getShellLaunchArgs({ shell, chorosHomeDir });
 	const ptyEnv = {
 		...buildV2TerminalEnv({
 			baseEnv,
 			shell,
-			supersetHomeDir,
+			chorosHomeDir,
 			organizationId: process.env.ORGANIZATION_ID || "",
 			themeType,
 			cwd,
@@ -2713,8 +2713,8 @@ export async function createTerminalSessionInternal({
 			rootPath,
 			chorosEnv:
 				process.env.NODE_ENV === "development" ? "development" : "production",
-			agentHookPort: process.env.SUPERSET_AGENT_HOOK_PORT || "",
-			agentHookVersion: process.env.SUPERSET_AGENT_HOOK_VERSION || "",
+			agentHookPort: process.env.CHOROS_AGENT_HOOK_PORT || "",
+			agentHookVersion: process.env.CHOROS_AGENT_HOOK_VERSION || "",
 			hostAgentHookUrl: getHostAgentHookUrl(),
 		}),
 		// Usage-tab default account: provider CLIs typed or preset-launched in
@@ -2836,7 +2836,7 @@ export async function createTerminalSessionInternal({
 	// shell startup, so treat them as immediately ready — the OSC 133;A
 	// marker has already flown by and we don't want to gate writes on it.
 	const shellSupportsReady =
-		!isAdopted && shellLaunchExpectsReadyMarker({ shell, supersetHomeDir });
+		!isAdopted && shellLaunchExpectsReadyMarker({ shell, chorosHomeDir });
 
 	let shellReadyResolve: (() => void) | null = null;
 	const shellReadyPromise = shellSupportsReady

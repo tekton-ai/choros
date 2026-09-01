@@ -18,14 +18,14 @@ and the local host server from your terminal or from CI.
 ### Desktop app
 
 The desktop app includes the Choros CLI. When the app launches, it writes
-an app-managed shim at `~/.superset/bin/choros`, and Choros terminals
-prepend `~/.superset/bin` to `PATH` automatically.
+an app-managed shim at `~/.choros/bin/choros`, and Choros terminals
+prepend `~/.choros/bin` to `PATH` automatically.
 
 To use the bundled CLI from a normal shell, add the directory to your shell
 profile:
 
 ```bash
-export PATH="$HOME/.superset/bin:$PATH"
+export PATH="$HOME/.choros/bin:$PATH"
 ```
 
 ### Standalone install
@@ -41,7 +41,7 @@ x64 or arm64), installs Choros under `~/choros` by default, and adds
 ### Homebrew
 
 ```bash
-brew install superset-sh/tap/choros
+brew install choros-sh/tap/choros
 ```
 
 ## Sign in
@@ -52,7 +52,7 @@ choros auth login
 
 The CLI starts a loopback callback server on `127.0.0.1:51789` (or `51790`
 through `51793` if earlier ports are busy), opens your browser to the
-consent page, and stores a session token at `~/.superset/config.json`.
+consent page, and stores a session token at `~/.choros/config.json`.
 
 If you belong to multiple organizations, you'll be prompted to pick one. To
 skip the prompt and pick directly:
@@ -70,10 +70,10 @@ choros auth login --api-key sk_live_…
 choros auth whoami
 ```
 
-…or set `SUPERSET_API_KEY` per-invocation without writing anything to disk:
+…or set `CHOROS_API_KEY` per-invocation without writing anything to disk:
 
 ```bash
-export SUPERSET_API_KEY=sk_live_…
+export CHOROS_API_KEY=sk_live_…
 choros auth whoami
 ```
 
@@ -165,7 +165,7 @@ choros workspaces list --quiet | xargs -L1 choros workspaces delete
 
 When the CLI detects an agent or CI environment (`CLAUDE_CODE`,
 `CLAUDECODE`, `CLAUDE_CODE_ENTRYPOINT`, `CODEX_CLI`, `GEMINI_CLI`,
-`SUPERSET_AGENT`, or `CI` set to a non-empty value), it defaults to JSON
+`CHOROS_AGENT`, or `CI` set to a non-empty value), it defaults to JSON
 output unless you pass `--quiet`.
 
 ## Local vs. remote hosts
@@ -190,12 +190,12 @@ no org-wide listing; the desktop app is the cross-host view.
 ## Where state lives
 
 ```text
-~/.superset/config.json                            # auth, active organization
-~/.superset/host/<organizationId>/manifest.json    # host server endpoint + token
-~/.superset/host/<organizationId>/host.db          # local host server DB
+~/.choros/config.json                            # auth, active organization
+~/.choros/host/<organizationId>/manifest.json    # host server endpoint + token
+~/.choros/host/<organizationId>/host.db          # local host server DB
 ```
 
-`SUPERSET_HOME_DIR` relocates the whole tree, matching the desktop app.
+`CHOROS_HOME_DIR` relocates the whole tree, matching the desktop app.
 
 ## Next steps
 

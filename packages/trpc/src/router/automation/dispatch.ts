@@ -415,7 +415,7 @@ async function createWorkspaceOnHost(args: {
 	runId: string;
 }): Promise<{ workspaceId: string }> {
 	// Session automation: no project, no branch. The host allocates a managed
-	// folder under ~/.superset/sessions and dedupes the name per run.
+	// folder under ~/.choros/sessions and dedupes the name per run.
 	if (args.projectId === null) {
 		const result = await relayMutation<
 			{ name: string; tags?: string[] },

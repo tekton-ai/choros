@@ -1,12 +1,12 @@
 "use client";
 
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Label } from "@choros/ui/label";
 import {
 	SidebarGroup,
 	SidebarGroupContent,
 	SidebarInput,
 } from "@choros/ui/sidebar";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { LuSearch } from "react-icons/lu";
 
 export function SearchForm({ ...props }: React.ComponentProps<"form">) {

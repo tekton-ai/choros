@@ -1,4 +1,3 @@
-import { Trans } from "@lingui/react/macro";
 import {
 	PromptInputProvider,
 	usePromptInputController,
@@ -10,6 +9,7 @@ import {
 	DialogHeader,
 	DialogTitle,
 } from "@choros/ui/dialog";
+import { Trans } from "@lingui/react/macro";
 import { useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
 import { newWorkspaceAttachmentsStore } from "renderer/stores/new-workspace-attachments";

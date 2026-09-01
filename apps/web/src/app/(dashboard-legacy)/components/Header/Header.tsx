@@ -1,6 +1,5 @@
 "use client";
 
-import { Trans, useLingui } from "@lingui/react/macro";
 import { authClient } from "@choros/auth/client";
 import { Avatar, AvatarFallback, AvatarImage } from "@choros/ui/avatar";
 import {
@@ -14,6 +13,7 @@ import {
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
 } from "@choros/ui/dropdown-menu";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Check, ChevronDown, LogOut } from "lucide-react";
 import Image from "next/image";

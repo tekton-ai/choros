@@ -1,4 +1,3 @@
-import { Plural, Trans } from "@lingui/react/macro";
 import {
 	AlertDialog,
 	AlertDialogContent,
@@ -10,6 +9,7 @@ import {
 import { Button } from "@choros/ui/button";
 import { Checkbox } from "@choros/ui/checkbox";
 import { Label } from "@choros/ui/label";
+import { Plural, Trans } from "@lingui/react/macro";
 import { useId } from "react";
 import type { DashboardSidebarWorkspace } from "../../types";
 import { DashboardSidebarBulkDeleteFailures } from "./components/DashboardSidebarBulkDeleteFailures";

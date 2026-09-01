@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import {
 	Select,
@@ -8,6 +7,7 @@ import {
 	SelectValue,
 } from "@choros/ui/select";
 import { TableCell, TableRow } from "@choros/ui/table";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { HiOutlineTrash } from "react-icons/hi2";
 
 export interface MemberRowData {

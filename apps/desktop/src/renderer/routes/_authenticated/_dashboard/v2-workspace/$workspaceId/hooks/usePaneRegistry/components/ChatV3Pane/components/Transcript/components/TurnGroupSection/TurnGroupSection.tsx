@@ -1,4 +1,3 @@
-import { Plural, Trans } from "@lingui/react/macro";
 import type { SessionSnapshot, TurnGroup } from "@choros/chat/core";
 import type { Decision, Item } from "@choros/chat/protocol";
 import { isKnownItem } from "@choros/chat/protocol";
@@ -7,6 +6,7 @@ import {
 	CollapsibleContent,
 	CollapsibleTrigger,
 } from "@choros/ui/collapsible";
+import { Plural, Trans } from "@lingui/react/macro";
 import { ChevronRight } from "lucide-react";
 import { rowKindForItem } from "../../utils/rowKind";
 import { AgentMessageRow } from "../AgentMessageRow";

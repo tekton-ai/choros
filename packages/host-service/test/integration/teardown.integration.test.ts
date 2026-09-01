@@ -30,8 +30,8 @@ describe("runTeardown integration", () => {
 		await disposeDaemonClient();
 		resetTerminalBaseEnvForTests();
 		__setAccountShellForTesting(undefined);
-		delete process.env.SUPERSET_PTY_DAEMON_SOCKET;
-		delete process.env.SUPERSET_HOME_DIR;
+		delete process.env.CHOROS_PTY_DAEMON_SOCKET;
+		delete process.env.CHOROS_HOME_DIR;
 		if (server) {
 			await server.close().catch(() => {});
 			server = null;
@@ -57,8 +57,8 @@ describe("runTeardown integration", () => {
 		});
 		await server.listen();
 
-		process.env.SUPERSET_PTY_DAEMON_SOCKET = socketPath;
-		process.env.SUPERSET_HOME_DIR = tmp;
+		process.env.CHOROS_PTY_DAEMON_SOCKET = socketPath;
+		process.env.CHOROS_HOME_DIR = tmp;
 		__setAccountShellForTesting("/bin/fish");
 		initTerminalBaseEnv({
 			HOME: process.env.HOME ?? tmp,

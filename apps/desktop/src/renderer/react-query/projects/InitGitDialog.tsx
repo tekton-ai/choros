@@ -1,4 +1,3 @@
-import { Trans } from "@lingui/react/macro";
 import {
 	AlertDialog,
 	AlertDialogContent,
@@ -8,6 +7,7 @@ import {
 	AlertDialogTitle,
 } from "@choros/ui/alert-dialog";
 import { Button } from "@choros/ui/button";
+import { Trans } from "@lingui/react/macro";
 import { useGitInitDialogStore } from "renderer/stores/git-init-dialog";
 
 export function InitGitDialog() {

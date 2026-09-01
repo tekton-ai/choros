@@ -363,7 +363,7 @@ async function migrateWorkspaces(
  * Settings that live in a different v2 store: host-wide branch prefix and
  * per-project worktree-dir / branch-prefix overrides (host.db). Everything
  * else is shared with v2 via the electron settings row, and the host-wide
- * worktree dir self-seeds from SUPERSET_LEGACY_WORKTREE_BASE_DIR. Keep-v2
+ * worktree dir self-seeds from CHOROS_LEGACY_WORKTREE_BASE_DIR. Keep-v2
  * on conflict; never gates the flip.
  */
 async function migrateSettings(

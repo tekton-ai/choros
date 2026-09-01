@@ -87,7 +87,7 @@ HSPORT="$("$DIST/lib/node" -e 'const s=require("net").createServer();s.listen(0,
 
 env ORGANIZATION_ID="$HSORG" \
 	AUTH_TOKEN="smoke-test-token" \
-	SUPERSET_API_URL="https://api.choros.sh" \
+	CHOROS_API_URL="https://api.choros.sh" \
 	PORT="$HSPORT" HOST_SERVICE_PORT="$HSPORT" \
 	HOST_SERVICE_SECRET="smoke-test-secret" \
 	HOST_DB_PATH="$HSDIR/host.db" \

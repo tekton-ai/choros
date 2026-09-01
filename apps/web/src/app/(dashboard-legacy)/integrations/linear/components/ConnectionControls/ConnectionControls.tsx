@@ -1,6 +1,5 @@
 "use client";
 
-import { Trans } from "@lingui/react/macro";
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -13,6 +12,7 @@ import {
 	AlertDialogTrigger,
 } from "@choros/ui/alert-dialog";
 import { Button } from "@choros/ui/button";
+import { Trans } from "@lingui/react/macro";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { AlertTriangle, Unplug } from "lucide-react";
 import { useRouter } from "next/navigation";

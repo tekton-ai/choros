@@ -5,7 +5,6 @@
  * The coordinator polls health.check to know when it's ready.
  */
 
-import { serve } from "@hono/node-server";
 import {
 	captureFatalStartupError,
 	createApp,
@@ -23,6 +22,7 @@ import {
 	resolveTerminalBaseEnv,
 } from "@choros/host-service/terminal-env";
 import { connectRelay } from "@choros/host-service/tunnel";
+import { serve } from "@hono/node-server";
 import { loadToken } from "lib/trpc/routers/auth/utils/auth-functions";
 import {
 	type HostServiceManifest,
@@ -102,14 +102,14 @@ async function main(): Promise<void> {
 			const { token } = await loadToken();
 			return token ?? env.AUTH_TOKEN;
 		},
-		apiUrl: env.SUPERSET_API_URL,
+		apiUrl: env.CHOROS_API_URL,
 	});
 
 	const { app, injectWebSocket, api, db } = createApp({
 		config: {
 			organizationId: env.ORGANIZATION_ID,
 			dbPath: env.HOST_DB_PATH,
-			cloudApiUrl: env.SUPERSET_API_URL,
+			cloudApiUrl: env.CHOROS_API_URL,
 			migrationsFolder: env.HOST_MIGRATIONS_FOLDER,
 			allowedOrigins: [
 				`http://localhost:${env.DESKTOP_VITE_PORT}`,

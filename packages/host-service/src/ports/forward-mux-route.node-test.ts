@@ -1,8 +1,6 @@
 import assert from "node:assert/strict";
 import net from "node:net";
 import { after, before, test } from "node:test";
-import { type ServerType, serve } from "@hono/node-server";
-import { createNodeWebSocket } from "@hono/node-ws";
 import type { DetectedPort } from "@choros/port-scanner";
 import {
 	decodeMuxFrame,
@@ -19,6 +17,8 @@ import {
 	MuxFrameType,
 	MuxOpenFailCode,
 } from "@choros/shared/port-forward-mux";
+import { type ServerType, serve } from "@hono/node-server";
+import { createNodeWebSocket } from "@hono/node-ws";
 import { Hono } from "hono";
 import { registerForwardMuxRoute } from "./forward-mux-route.ts";
 

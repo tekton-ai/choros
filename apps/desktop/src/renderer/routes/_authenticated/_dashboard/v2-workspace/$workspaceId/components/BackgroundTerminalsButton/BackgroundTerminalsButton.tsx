@@ -1,5 +1,3 @@
-import { plural } from "@lingui/core/macro";
-import { Trans, useLingui } from "@lingui/react/macro";
 import type { WorkspaceStore } from "@choros/panes";
 import { Button } from "@choros/ui/button";
 import {
@@ -12,6 +10,8 @@ import {
 } from "@choros/ui/dropdown-menu";
 import { toast } from "@choros/ui/sonner";
 import { workspaceTrpc } from "@choros/workspace-client";
+import { plural } from "@lingui/core/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Archive, ChevronDown, Trash2 } from "lucide-react";
 import {
 	memo,

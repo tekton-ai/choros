@@ -2,8 +2,7 @@ import { exec } from "node:child_process";
 import os from "node:os";
 import { promisify } from "node:util";
 
-let nativeMetrics: typeof import("@choros/macos-process-metrics") | null =
-	null;
+let nativeMetrics: typeof import("@choros/macos-process-metrics") | null = null;
 try {
 	// eslint-disable-next-line @typescript-eslint/no-require-imports
 	nativeMetrics = require("@choros/macos-process-metrics");

@@ -9,20 +9,20 @@ import {
 } from "node:fs";
 import { homedir, tmpdir } from "node:os";
 import { join } from "node:path";
-import { PROJECTS_DIR_NAME, SUPERSET_DIR_NAME } from "shared/constants";
+import { CHOROS_DIR_NAME, PROJECTS_DIR_NAME } from "shared/constants";
 
 const TEST_DIR = join(tmpdir(), `choros-test-teardown-${process.pid}`);
-const TEST_SUPERSET_HOME = join(TEST_DIR, "choros-home");
+const TEST_CHOROS_HOME = join(TEST_DIR, "choros-home");
 const MAIN_REPO = join(TEST_DIR, "main-repo");
 const WORKTREE = join(TEST_DIR, "worktree");
 const PROJECT_ID = "test-teardown-project";
 const USER_CONFIG_DIR = join(
 	homedir(),
-	SUPERSET_DIR_NAME,
+	CHOROS_DIR_NAME,
 	PROJECTS_DIR_NAME,
 	PROJECT_ID,
 );
-const ORIGINAL_SUPERSET_HOME_DIR = process.env.SUPERSET_HOME_DIR;
+const ORIGINAL_CHOROS_HOME_DIR = process.env.CHOROS_HOME_DIR;
 const ORIGINAL_SHELL = process.env.SHELL;
 const ORIGINAL_PATH = process.env.PATH;
 const ORIGINAL_HOME = process.env.HOME;
@@ -31,7 +31,7 @@ const { runTeardown } = await import("./teardown");
 
 describe("runTeardown", () => {
 	beforeEach(() => {
-		process.env.SUPERSET_HOME_DIR = TEST_SUPERSET_HOME;
+		process.env.CHOROS_HOME_DIR = TEST_CHOROS_HOME;
 		// Create test directories
 		mkdirSync(join(MAIN_REPO, ".choros"), { recursive: true });
 		mkdirSync(WORKTREE, { recursive: true });
@@ -46,10 +46,10 @@ describe("runTeardown", () => {
 		if (existsSync(USER_CONFIG_DIR)) {
 			rmSync(USER_CONFIG_DIR, { recursive: true, force: true });
 		}
-		if (ORIGINAL_SUPERSET_HOME_DIR === undefined) {
-			delete process.env.SUPERSET_HOME_DIR;
+		if (ORIGINAL_CHOROS_HOME_DIR === undefined) {
+			delete process.env.CHOROS_HOME_DIR;
 		} else {
-			process.env.SUPERSET_HOME_DIR = ORIGINAL_SUPERSET_HOME_DIR;
+			process.env.CHOROS_HOME_DIR = ORIGINAL_CHOROS_HOME_DIR;
 		}
 		if (ORIGINAL_SHELL === undefined) {
 			delete process.env.SHELL;
@@ -211,7 +211,7 @@ describe("runTeardown", () => {
 			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({
 				teardown: [
-					`echo "$SUPERSET_WORKSPACE_NAME|$SUPERSET_ROOT_PATH" > "${envFile}"`,
+					`echo "$CHOROS_WORKSPACE_NAME|$CHOROS_ROOT_PATH" > "${envFile}"`,
 				],
 			}),
 		);
@@ -279,7 +279,7 @@ describe("runTeardown", () => {
 		const markerFile = join(WORKTREE, "managed-wrapper-used.txt");
 		const shellHome = join(TEST_DIR, "shell-home");
 		const systemBinDir = join(TEST_DIR, "system-bin");
-		const wrapperBinDir = join(TEST_SUPERSET_HOME, "bin");
+		const wrapperBinDir = join(TEST_CHOROS_HOME, "bin");
 
 		mkdirSync(shellHome, { recursive: true });
 		mkdirSync(systemBinDir, { recursive: true });

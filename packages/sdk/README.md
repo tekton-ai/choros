@@ -17,8 +17,8 @@ npm install @choros_sh/sdk
 import Choros from '@choros_sh/sdk';
 
 const client = new Choros({
-  apiKey: process.env.SUPERSET_API_KEY,             // sk_live_…
-  organizationId: process.env.SUPERSET_ORGANIZATION_ID, // required for most resources
+  apiKey: process.env.CHOROS_API_KEY,             // sk_live_…
+  organizationId: process.env.CHOROS_ORGANIZATION_ID, // required for most resources
 });
 
 // Tasks
@@ -39,7 +39,7 @@ await client.automations.list();
 await client.automations.run('<automation-id>');
 ```
 
-Both `apiKey` and `organizationId` are picked up automatically from `SUPERSET_API_KEY` / `SUPERSET_ORGANIZATION_ID` environment variables — you can omit them in the constructor.
+Both `apiKey` and `organizationId` are picked up automatically from `CHOROS_API_KEY` / `CHOROS_ORGANIZATION_ID` environment variables — you can omit them in the constructor.
 
 Find your `organizationId` via `choros organization list` in the CLI, or in the URL of any org dashboard.
 

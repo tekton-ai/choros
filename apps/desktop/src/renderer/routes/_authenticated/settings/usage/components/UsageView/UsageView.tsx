@@ -1,5 +1,3 @@
-import { msg } from "@lingui/core/macro";
-import { Trans, useLingui } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { errorMessage } from "@choros/i18n/errors";
 import { Button } from "@choros/ui/button";
@@ -11,6 +9,8 @@ import {
 } from "@choros/ui/dropdown-menu";
 import { toast } from "@choros/ui/sonner";
 import { cn } from "@choros/ui/utils";
+import { msg } from "@lingui/core/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useState } from "react";
 import {
 	LuCheck,

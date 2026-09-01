@@ -1,6 +1,5 @@
 import { spawn } from "node:child_process";
 import { tmpdir } from "node:os";
-import { Agent } from "@mastra/core/agent";
 import { getSmallModel } from "@choros/provider-auth/server/shared";
 import {
 	getBuiltinAgentDefinition,
@@ -15,6 +14,7 @@ import {
 	envOverlayPrefix,
 	quoteSingleShell,
 } from "@choros/shared/agent-prompt-launch";
+import { Agent } from "@mastra/core/agent";
 import { z } from "zod";
 import type { HostDb } from "../../../../db";
 import type { HostServiceContext } from "../../../../types";

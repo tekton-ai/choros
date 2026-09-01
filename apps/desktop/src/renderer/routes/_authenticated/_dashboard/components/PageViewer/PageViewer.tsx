@@ -1,10 +1,10 @@
-import { useLingui } from "@lingui/react/macro";
 import {
 	CommentProvider,
 	CommentsSidebar,
 	PageCommentsView,
 } from "@choros/ui/page-comments";
 import { Spinner } from "@choros/ui/spinner";
+import { useLingui } from "@lingui/react/macro";
 import { TRPCClientError } from "@trpc/client";
 import { useEffect, useRef } from "react";
 import { authClient } from "renderer/lib/auth-client";

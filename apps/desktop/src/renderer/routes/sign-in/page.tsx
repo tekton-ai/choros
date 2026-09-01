@@ -1,4 +1,3 @@
-import { Trans } from "@lingui/react/macro";
 import { type AuthProvider, COMPANY } from "@choros/shared/constants";
 import {
 	DEV_EMAIL,
@@ -8,6 +7,7 @@ import {
 import { Badge } from "@choros/ui/badge";
 import { Button } from "@choros/ui/button";
 import { Spinner } from "@choros/ui/spinner";
+import { Trans } from "@lingui/react/macro";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { FaGithub } from "react-icons/fa";

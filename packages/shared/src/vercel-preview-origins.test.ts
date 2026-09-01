@@ -26,9 +26,7 @@ describe("getTrustedVercelPreviewOrigins", () => {
 	});
 
 	it("ignores non-vercel origins", () => {
-		expect(getTrustedVercelPreviewOrigins("https://api.choros.sh")).toEqual(
-			[],
-		);
+		expect(getTrustedVercelPreviewOrigins("https://api.choros.sh")).toEqual([]);
 		expect(getTrustedVercelPreviewOrigins("http://localhost:3001")).toEqual([]);
 	});
 });

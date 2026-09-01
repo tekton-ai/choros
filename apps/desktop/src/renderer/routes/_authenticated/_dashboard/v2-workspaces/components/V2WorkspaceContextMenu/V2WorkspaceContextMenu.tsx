@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@choros/i18n/errors";
 import {
 	ContextMenu,
@@ -8,6 +7,7 @@ import {
 	ContextMenuTrigger,
 } from "@choros/ui/context-menu";
 import { toast } from "@choros/ui/sonner";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useNavigate } from "@tanstack/react-router";
 import { type ReactNode, useCallback } from "react";
 import {

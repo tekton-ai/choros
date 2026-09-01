@@ -1,8 +1,8 @@
-import { Trans } from "@lingui/react/macro";
 import {
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 } from "@choros/ui/dropdown-menu";
+import { Trans } from "@lingui/react/macro";
 import { ExternalLink } from "lucide-react";
 import { PathActionsMenuItems } from "renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/components/WorkspaceSidebar/components/PathActionsMenuItems";
 import { toAbsoluteWorkspacePath } from "shared/absolute-paths";

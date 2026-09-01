@@ -1,6 +1,6 @@
-import { Plural, Trans, useLingui } from "@lingui/react/macro";
 import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { Plural, Trans, useLingui } from "@lingui/react/macro";
 import { useState } from "react";
 import { LuRadioTower } from "react-icons/lu";
 import { useIsV2CloudEnabled } from "renderer/hooks/useIsV2CloudEnabled";

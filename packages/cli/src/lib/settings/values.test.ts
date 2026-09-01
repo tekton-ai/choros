@@ -9,14 +9,14 @@ let homeDir: string;
 let previousHome: string | undefined;
 
 beforeEach(() => {
-	previousHome = process.env.SUPERSET_HOME_DIR;
+	previousHome = process.env.CHOROS_HOME_DIR;
 	homeDir = mkdtempSync(join(tmpdir(), "choros-cli-values-"));
-	process.env.SUPERSET_HOME_DIR = homeDir;
+	process.env.CHOROS_HOME_DIR = homeDir;
 });
 
 afterEach(() => {
-	if (previousHome === undefined) delete process.env.SUPERSET_HOME_DIR;
-	else process.env.SUPERSET_HOME_DIR = previousHome;
+	if (previousHome === undefined) delete process.env.CHOROS_HOME_DIR;
+	else process.env.CHOROS_HOME_DIR = previousHome;
 	rmSync(homeDir, { recursive: true, force: true });
 });
 

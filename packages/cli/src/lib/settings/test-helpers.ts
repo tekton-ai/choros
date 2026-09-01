@@ -7,7 +7,7 @@ import { settings } from "@choros/local-db/schema";
 import { getTableConfig } from "drizzle-orm/sqlite-core";
 
 /**
- * Point SUPERSET_HOME_DIR at a fresh temp dir for every test in the calling
+ * Point CHOROS_HOME_DIR at a fresh temp dir for every test in the calling
  * file, restoring the previous value afterwards.
  */
 export function withTempChorosHome(prefix: string): { readonly dir: string } {
@@ -15,14 +15,14 @@ export function withTempChorosHome(prefix: string): { readonly dir: string } {
 	let previousHome: string | undefined;
 
 	beforeEach(() => {
-		previousHome = process.env.SUPERSET_HOME_DIR;
+		previousHome = process.env.CHOROS_HOME_DIR;
 		dir = mkdtempSync(join(tmpdir(), prefix));
-		process.env.SUPERSET_HOME_DIR = dir;
+		process.env.CHOROS_HOME_DIR = dir;
 	});
 
 	afterEach(() => {
-		if (previousHome === undefined) delete process.env.SUPERSET_HOME_DIR;
-		else process.env.SUPERSET_HOME_DIR = previousHome;
+		if (previousHome === undefined) delete process.env.CHOROS_HOME_DIR;
+		else process.env.CHOROS_HOME_DIR = previousHome;
 		rmSync(dir, { recursive: true, force: true });
 	});
 

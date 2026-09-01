@@ -3,9 +3,9 @@ import { EventEmitter } from "node:events";
 import fs from "node:fs/promises";
 import { basename, dirname, join } from "node:path";
 import {
-	SUPERSET_HOME_DIR,
-	SUPERSET_HOME_DIR_MODE,
-	SUPERSET_SENSITIVE_FILE_MODE,
+	CHOROS_HOME_DIR,
+	CHOROS_HOME_DIR_MODE,
+	CHOROS_SENSITIVE_FILE_MODE,
 } from "main/lib/app-environment";
 import { lock } from "proper-lockfile";
 import { PROTOCOL_SCHEME } from "shared/constants";
@@ -39,10 +39,7 @@ type InspectedTokenStorage =
 	| { status: "invalid"; reason: string };
 
 function getTokenFile(): string {
-	return join(
-		process.env.SUPERSET_HOME_DIR || SUPERSET_HOME_DIR,
-		TOKEN_FILE_NAME,
-	);
+	return join(process.env.CHOROS_HOME_DIR || CHOROS_HOME_DIR, TOKEN_FILE_NAME);
 }
 
 async function withAuthLock<Result>(
@@ -172,7 +169,7 @@ async function atomicWriteToken(
 	const parentDirectory = dirname(tokenFile);
 	await fs.mkdir(parentDirectory, {
 		recursive: true,
-		mode: SUPERSET_HOME_DIR_MODE,
+		mode: CHOROS_HOME_DIR_MODE,
 	});
 
 	const temporaryFile = join(
@@ -181,14 +178,14 @@ async function atomicWriteToken(
 	);
 	let handle: Awaited<ReturnType<typeof fs.open>> | null = null;
 	try {
-		handle = await fs.open(temporaryFile, "wx", SUPERSET_SENSITIVE_FILE_MODE);
+		handle = await fs.open(temporaryFile, "wx", CHOROS_SENSITIVE_FILE_MODE);
 		await handle.writeFile(contents);
 		await handle.sync();
 		await handle.close();
 		handle = null;
 		// chmod before the commit rename: the open() mode is masked by umask,
 		// and a failure here must leave the previous token intact.
-		await fs.chmod(temporaryFile, SUPERSET_SENSITIVE_FILE_MODE);
+		await fs.chmod(temporaryFile, CHOROS_SENSITIVE_FILE_MODE);
 		await fs.rename(temporaryFile, tokenFile);
 	} catch (error) {
 		await handle?.close().catch(() => {});
@@ -237,7 +234,7 @@ export async function loadToken(): Promise<LoadedAuth> {
 		if (!storedAuth) return EMPTY_LOADED_AUTH;
 
 		await fs
-			.chmod(tokenFile, SUPERSET_SENSITIVE_FILE_MODE)
+			.chmod(tokenFile, CHOROS_SENSITIVE_FILE_MODE)
 			.catch((error) =>
 				console.warn("[auth] Failed to repair auth token permissions", error),
 			);

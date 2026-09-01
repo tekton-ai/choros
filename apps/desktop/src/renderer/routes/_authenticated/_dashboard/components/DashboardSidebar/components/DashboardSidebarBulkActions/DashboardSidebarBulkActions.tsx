@@ -1,5 +1,3 @@
-import { plural } from "@lingui/core/macro";
-import { Plural, Trans, useLingui } from "@lingui/react/macro";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -8,6 +6,8 @@ import {
 	DropdownMenuTrigger,
 } from "@choros/ui/dropdown-menu";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { plural } from "@lingui/core/macro";
+import { Plural, Trans, useLingui } from "@lingui/react/macro";
 import { type ReactNode, useMemo } from "react";
 import {
 	LuFolderInput,

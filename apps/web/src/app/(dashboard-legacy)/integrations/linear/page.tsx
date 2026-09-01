@@ -168,8 +168,7 @@ export default async function LinearIntegrationPage() {
 						<CardDescription>
 							{i18n._({
 								id: "web.integrations.linear.settingsDescription",
-								message:
-									"Configure how tasks sync between Choros and Linear.",
+								message: "Configure how tasks sync between Choros and Linear.",
 							})}
 						</CardDescription>
 					</CardHeader>

@@ -1,6 +1,6 @@
-import { useLingui } from "@lingui/react/macro";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { cn } from "@choros/ui/utils";
+import { useLingui } from "@lingui/react/macro";
 import type { FileUIPart } from "ai";
 import { Loader2, TriangleAlert, XIcon } from "lucide-react";
 import { useState } from "react";

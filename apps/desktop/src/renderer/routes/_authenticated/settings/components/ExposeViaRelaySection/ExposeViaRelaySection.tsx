@@ -1,8 +1,8 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { COMPANY } from "@choros/shared/constants";
 import { Label } from "@choros/ui/label";
 import { toast } from "@choros/ui/sonner";
 import { Switch } from "@choros/ui/switch";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useState } from "react";
 import { HiArrowTopRightOnSquare } from "react-icons/hi2";
 import { GATED_FEATURES, usePaywall } from "renderer/components/Paywall";

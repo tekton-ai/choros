@@ -1,3 +1,8 @@
+import { errorMessage } from "@choros/i18n/errors";
+import { sanitizePromptForPty } from "@choros/shared/agent-prompt-launch";
+import { toast } from "@choros/ui/sonner";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { cn } from "@choros/ui/utils";
 import { Trans, useLingui } from "@lingui/react/macro";
 import type {
 	CodeViewItem,
@@ -8,11 +13,6 @@ import type {
 import { parsePatchFiles } from "@pierre/diffs";
 import { CodeView, type CodeViewHandle } from "@pierre/diffs/react";
 import { FileTree as PierreFileTree, useFileTree } from "@pierre/trees/react";
-import { errorMessage } from "@choros/i18n/errors";
-import { sanitizePromptForPty } from "@choros/shared/agent-prompt-launch";
-import { toast } from "@choros/ui/sonner";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
-import { cn } from "@choros/ui/utils";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {

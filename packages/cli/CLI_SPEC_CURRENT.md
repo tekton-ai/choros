@@ -116,7 +116,7 @@ server lifecycle is handled by top-level `start`, `status`, and `stop`.
 | --- | --- | --- |
 | `--json` | | Prints the command data payload as formatted JSON. No `{ "data": ... }` envelope. |
 | `--quiet` | | Prints IDs for arrays or single objects when possible; falls back to JSON otherwise. |
-| `--api-key <key>` | `SUPERSET_API_KEY` | Uses an API key instead of stored OAuth credentials. |
+| `--api-key <key>` | `CHOROS_API_KEY` | Uses an API key instead of stored OAuth credentials. |
 | `--help`, `-h` | | Recognized at root, group, and leaf command levels. |
 | `--version`, `-v` | | Prints the CLI version. |
 
@@ -129,25 +129,25 @@ CLAUDECODE
 CLAUDE_CODE_ENTRYPOINT
 CODEX_CLI
 GEMINI_CLI
-SUPERSET_AGENT
+CHOROS_AGENT
 CI
 ```
 
 ## Runtime State
 
-CLI runtime state is under `SUPERSET_HOME_DIR`, defaulting to
+CLI runtime state is under `CHOROS_HOME_DIR`, defaulting to
 `~/.choros`.
 
 | Path | Purpose |
 | --- | --- |
-| `~/.superset/config.json` | OAuth token, expiry, and active organization ID. |
-| `~/.superset/host/<organizationId>/manifest.json` | Host service PID, endpoint, auth token, and organization ID. |
-| `~/.superset/host/<organizationId>/host.db` | Host service SQLite database. |
+| `~/.choros/config.json` | OAuth token, expiry, and active organization ID. |
+| `~/.choros/host/<organizationId>/manifest.json` | Host service PID, endpoint, auth token, and organization ID. |
+| `~/.choros/host/<organizationId>/host.db` | Host service SQLite database. |
 
 ## Desktop Shim And Standalone Install
 
 The desktop app installs an app-managed shim at
-`<SUPERSET_HOME_DIR>/bin/choros` (`~/.superset/bin/choros` by default)
+`<CHOROS_HOME_DIR>/bin/choros` (`~/.choros/bin/choros` by default)
 when the app starts. Choros desktop terminals prepend that directory to
 `PATH`, so the bundled CLI is available in app-launched terminals without a
 standalone install.
@@ -156,7 +156,7 @@ The desktop app uses the same host manifest schema and home tree in
 production, so a desktop-started host service and a CLI-started host
 service can discover each other through the same manifest path.
 
-Desktop-managed terminals also set `SUPERSET_ORGANIZATION_ID` to the
+Desktop-managed terminals also set `CHOROS_ORGANIZATION_ID` to the
 workspace's organization. The CLI prefers that invocation-scoped value over
 the active organization stored in `config.json`, which keeps workspace and
 host routing aligned without changing the user's global CLI selection.
@@ -168,8 +168,8 @@ the standalone CLI distribution when a new headless host service must be
 launched.
 
 The standalone install script is separate from runtime state. It installs
-the CLI and host binary under `SUPERSET_HOME` (default `~/choros`) and
-adds `<SUPERSET_HOME>/bin` to the user's shell `PATH`. These locations do
+the CLI and host binary under `CHOROS_HOME` (default `~/choros`) and
+adds `<CHOROS_HOME>/bin` to the user's shell `PATH`. These locations do
 not overwrite each other; whichever `bin` directory appears first in `PATH`
 wins for a normal shell.
 
@@ -193,7 +193,7 @@ The desktop app has its own bundling script,
 - Required named options are enforced by the parser, but help output does
   not visually mark named options as required. Positional required args are
   marked.
-- `SUPERSET_API_URL`, `SUPERSET_WEB_URL`, and `RELAY_URL` are baked into
+- `CHOROS_API_URL`, `CHOROS_WEB_URL`, and `RELAY_URL` are baked into
   built binaries by `cli.config.ts`. Runtime shell overrides are mainly for
   dev builds and custom compile environments.
 - `readConfig()` parses `config.json` directly. A malformed config file can

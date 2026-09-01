@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { errorMessage, rawErrorMessage } from "@choros/i18n/errors";
 import type { AgentLaunchRequest } from "@choros/shared/agent-launch";
 import { buildPromptAgentLaunchRequest } from "@choros/shared/agent-launch-request";
@@ -36,6 +35,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
 import { toast } from "@choros/ui/sonner";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { cn } from "@choros/ui/utils";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useNavigate } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import {

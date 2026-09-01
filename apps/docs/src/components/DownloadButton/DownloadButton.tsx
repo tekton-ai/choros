@@ -1,7 +1,7 @@
 "use client";
 
-import { Trans } from "@lingui/react/macro";
 import { DOWNLOAD_URL_MAC_ARM64 } from "@choros/shared/constants";
+import { Trans } from "@lingui/react/macro";
 
 export function DownloadButton() {
 	return (

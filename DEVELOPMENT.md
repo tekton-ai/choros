@@ -13,7 +13,7 @@ This guide is for developing Choros from source. If you just want to use it, bui
 
 macOS is the primary supported platform. Windows / Linux are untested.
 
-## Run it from a Superset workspace
+## Run it from a Choros workspace
 
 ```bash
 git clone https://github.com/tekton-ai/choros.git
@@ -23,7 +23,7 @@ Add the clone to the installed Choros desktop app and create a workspace for you
 workspace terminal, run:
 
 ```bash
-./.superset/setup.local.sh
+./.choros/setup.local.sh
 bun run dev
 ```
 
@@ -43,12 +43,12 @@ validation, and `setup.local.sh` runs everything against a local Docker stack.
 3. Brings up Postgres + neon-proxy + Redis (behind an HTTP shim, for the relay) via `docker compose` (project-scoped to this worktree)
 4. Runs `bun install` and `bun run db:migrate`
 5. Seeds a `Local Admin` dev account via `bun run db:seed-dev`
-6. Writes a gitignored `.superset/config.local.json` overlay so subsequent worktrees automatically use this setup
+6. Writes a gitignored `.choros/config.local.json` overlay so subsequent worktrees automatically use this setup
 
 Re-run the script any time to refresh the workspace. To tear the local DB stack down:
 
 ```bash
-./.superset/teardown.local.sh
+./.choros/teardown.local.sh
 ```
 
 ### Signing in
@@ -94,10 +94,10 @@ See [`AGENTS.md`](./AGENTS.md) for repo structure, monorepo conventions, and dat
 
 - **Dev desktop exits while the installed app is running**: launch development
   from a Choros workspace instead of the repository's main checkout, run
-  `./.superset/setup.local.sh` in that worktree, then run `bun run dev` again.
+  `./.choros/setup.local.sh` in that worktree, then run `bun run dev` again.
 - **Port collision**: `setup.local.sh` allocates a fresh port window per worktree. If you ran the script before this change landed, re-run it to migrate.
-- **DB connection errors after pulling main**: re-run `./.superset/setup.local.sh`; it's idempotent and will apply any new migrations.
-- **Stuck Docker stack**: `./.superset/teardown.local.sh` then re-run setup.
+- **DB connection errors after pulling main**: re-run `./.choros/setup.local.sh`; it's idempotent and will apply any new migrations.
+- **Stuck Docker stack**: `./.choros/teardown.local.sh` then re-run setup.
 
 ## Contributing
 

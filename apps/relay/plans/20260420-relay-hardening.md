@@ -4,9 +4,9 @@
 
 ## Context
 
-The relay is how remote desktop hosts proxy HTTP + WebSocket traffic to clients on the web. It's a Hono + `@hono/node-ws` server on fly (`superset-relay`, `sjc`) that accepts two kinds of connections:
+The relay is how remote desktop hosts proxy HTTP + WebSocket traffic to clients on the web. It's a Hono + `@hono/node-ws` server on fly (`choros-relay`, `sjc`) that accepts two kinds of connections:
 
-1. **Host-side** — desktops open `wss://relay.superset.sh/tunnel?hostId=<id>&token=<jwt>`. Relay calls this a "tunnel" and keeps an in-memory `Map<hostId, TunnelState>` (`apps/relay/src/tunnel.ts:30`).
+1. **Host-side** — desktops open `wss://relay.choros.sh/tunnel?hostId=<id>&token=<jwt>`. Relay calls this a "tunnel" and keeps an in-memory `Map<hostId, TunnelState>` (`apps/relay/src/tunnel.ts:30`).
 2. **Client-side** — web/desktop clients call `/hosts/:hostId/trpc/*` (HTTP) or upgrade `/hosts/:hostId/*` (WS). Relay looks up the tunnel and forwards the frame via the host-side WS.
 
 The service has been working for internal users but is about to take a large traffic step-up. The 2026-04-20 debugging session exposed a set of issues that will get much worse at scale. Two were patched live (multi-machine sharding → pinned to 1 machine; terminal WS URL bug); everything else is open (SUPER-427).
@@ -89,7 +89,7 @@ Workstreams:
 4. **Clean register/unregister lifecycle.** Current `register()` at `tunnel.ts:38` closes the NEW socket if the old one is still present. Flip to last-write-wins: close the OLD tunnel, take the new one. Prevents flaky clients from getting permanently stuck behind a dead-but-not-yet-detected WS.
 5. **Flip cap back up.** Remove `max_machines_running = 1`, scale to 2, verify via `fly logs` that tunnels are served from both machines and proxy requests get routed correctly.
 
-**Exit criteria:** `fly scale count 3 -a superset-relay`, then have three of us connect our desktops, and every client request succeeds regardless of which machine the client's HTTP lands on.
+**Exit criteria:** `fly scale count 3 -a choros-relay`, then have three of us connect our desktops, and every client request succeeds regardless of which machine the client's HTTP lands on.
 
 ### Phase 2 — truthful `is_online`
 

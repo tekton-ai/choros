@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@choros/i18n/errors";
 import { sanitizeSegment } from "@choros/shared/workspace-launch";
 import { Button } from "@choros/ui/button";
@@ -20,6 +19,7 @@ import { Label } from "@choros/ui/label";
 import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
 import { toast } from "@choros/ui/sonner";
 import { Textarea } from "@choros/ui/textarea";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -707,13 +707,13 @@ function ProjectPage() {
 															</Trans>
 														</span>
 														<span className="rounded bg-muted px-1.5 py-0.5 font-mono">
-															{"$SUPERSET_ROOT_PATH"}
+															{"$CHOROS_ROOT_PATH"}
 														</span>
 														<span className="rounded bg-muted px-1.5 py-0.5 font-mono">
-															{"$SUPERSET_WORKSPACE_PATH"}
+															{"$CHOROS_WORKSPACE_PATH"}
 														</span>
 														<span className="rounded bg-muted px-1.5 py-0.5 font-mono">
-															{"$SUPERSET_WORKSPACE_NAME"}
+															{"$CHOROS_WORKSPACE_NAME"}
 														</span>
 													</div>
 												</div>

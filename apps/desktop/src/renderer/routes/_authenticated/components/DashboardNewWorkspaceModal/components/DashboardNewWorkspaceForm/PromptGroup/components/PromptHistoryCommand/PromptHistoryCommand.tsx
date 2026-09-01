@@ -1,5 +1,3 @@
-import { plural } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react/macro";
 import {
 	Command,
 	CommandEmpty,
@@ -10,6 +8,8 @@ import {
 } from "@choros/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { plural } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react/macro";
 import type { ReactNode } from "react";
 import { useMemo, useState } from "react";
 import { formatRelativeTime } from "renderer/lib/formatRelativeTime";

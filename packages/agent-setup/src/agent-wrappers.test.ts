@@ -14,26 +14,26 @@ import { pathToFileURL } from "node:url";
 
 const TEST_ROOT = path.join(
 	realOs.tmpdir(),
-	`superset-agent-wrappers-${process.pid}-${Date.now()}`,
+	`choros-agent-wrappers-${process.pid}-${Date.now()}`,
 );
-const TEST_BIN_DIR = path.join(TEST_ROOT, "superset", "bin");
-const TEST_HOOKS_DIR = path.join(TEST_ROOT, "superset", "hooks");
-const TEST_ZSH_DIR = path.join(TEST_ROOT, "superset", "zsh");
-const TEST_BASH_DIR = path.join(TEST_ROOT, "superset", "bash");
+const TEST_BIN_DIR = path.join(TEST_ROOT, "choros", "bin");
+const TEST_HOOKS_DIR = path.join(TEST_ROOT, "choros", "hooks");
+const TEST_ZSH_DIR = path.join(TEST_ROOT, "choros", "zsh");
+const TEST_BASH_DIR = path.join(TEST_ROOT, "choros", "bash");
 const TEST_OPENCODE_CONFIG_DIR = path.join(TEST_HOOKS_DIR, "opencode");
 const TEST_OPENCODE_PLUGIN_DIR = path.join(TEST_OPENCODE_CONFIG_DIR, "plugin");
 let mockedHomeDir = path.join(TEST_ROOT, "home");
 
 mock.module("./notify-hook", () => ({
 	NOTIFY_SCRIPT_NAME: "notify.sh",
-	NOTIFY_SCRIPT_MARKER: "# Superset agent notification hook v9",
+	NOTIFY_SCRIPT_MARKER: "# Choros agent notification hook v9",
 	getNotifyScriptPath: () => path.join(TEST_HOOKS_DIR, "notify.sh"),
 	getNotifyScriptContent: () => "#!/bin/bash\nexit 0\n",
 	createNotifyScript: () => {},
 }));
 
 mock.module("./paths", () => ({
-	resolveSupersetHomeDir: () => path.join(TEST_ROOT, "superset"),
+	resolveChorosHomeDir: () => path.join(TEST_ROOT, "choros"),
 	getBinDir: () => TEST_BIN_DIR,
 	getHooksDir: () => TEST_HOOKS_DIR,
 	getZshDir: () => TEST_ZSH_DIR,
@@ -101,7 +101,7 @@ const managedCodexHookCommand = getManagedNotifyHookCommand("codex");
 const managedMastraHookCommand = getManagedNotifyHookCommand("mastracode");
 
 describe("agent-wrappers opencode", () => {
-	const originalTerminalId = process.env.SUPERSET_TERMINAL_ID;
+	const originalTerminalId = process.env.CHOROS_TERMINAL_ID;
 	// Written and imported once. A fresh file per test used to be the way to get
 	// a fresh module, but only the first dynamic import out of this directory
 	// ever resolved — the rest died on "Cannot find module" for a file that was
@@ -114,7 +114,7 @@ describe("agent-wrappers opencode", () => {
 		(...args: unknown[]) => Promise<unknown> | unknown
 	>;
 	let pluginModule: Promise<{
-		SupersetNotifyPlugin: (input: unknown) => Promise<OpenCodeHooks>;
+		ChorosNotifyPlugin: (input: unknown) => Promise<OpenCodeHooks>;
 	}>;
 
 	const loadOpenCodePlugin = async () => {
@@ -130,16 +130,16 @@ describe("agent-wrappers opencode", () => {
 	beforeEach(() => {
 		delete (
 			globalThis as typeof globalThis & {
-				__supersetOpencodeNotifyPluginV9?: boolean;
+				__chorosOpencodeNotifyPluginV9?: boolean;
 			}
-		).__supersetOpencodeNotifyPluginV9;
+		).__chorosOpencodeNotifyPluginV9;
 	});
 
 	afterEach(() => {
 		if (originalTerminalId === undefined) {
-			delete process.env.SUPERSET_TERMINAL_ID;
+			delete process.env.CHOROS_TERMINAL_ID;
 		} else {
-			process.env.SUPERSET_TERMINAL_ID = originalTerminalId;
+			process.env.CHOROS_TERMINAL_ID = originalTerminalId;
 		}
 	});
 
@@ -147,10 +147,10 @@ describe("agent-wrappers opencode", () => {
 		"permission.asked",
 		"question.asked",
 	])("notifies for the current %s event", async (eventType) => {
-		process.env.SUPERSET_TERMINAL_ID = "terminal-1";
-		const { SupersetNotifyPlugin } = await loadOpenCodePlugin();
+		process.env.CHOROS_TERMINAL_ID = "terminal-1";
+		const { ChorosNotifyPlugin } = await loadOpenCodePlugin();
 		const notifications: string[] = [];
-		const hooks = await SupersetNotifyPlugin({
+		const hooks = await ChorosNotifyPlugin({
 			$: (
 				_parts: TemplateStringsArray,
 				_notifyPath: string,
@@ -178,10 +178,10 @@ describe("agent-wrappers opencode", () => {
 	});
 
 	it("retains the legacy permission.ask notification hook", async () => {
-		process.env.SUPERSET_TERMINAL_ID = "terminal-1";
-		const { SupersetNotifyPlugin } = await loadOpenCodePlugin();
+		process.env.CHOROS_TERMINAL_ID = "terminal-1";
+		const { ChorosNotifyPlugin } = await loadOpenCodePlugin();
 		const notifications: string[] = [];
-		const hooks = await SupersetNotifyPlugin({
+		const hooks = await ChorosNotifyPlugin({
 			$: (
 				_parts: TemplateStringsArray,
 				_notifyPath: string,
@@ -208,10 +208,10 @@ describe("agent-wrappers copilot", () => {
 		rmSync(TEST_ROOT, { recursive: true, force: true });
 	});
 
-	it("rewrites stale superset-notify.json with current hook path", () => {
+	it("rewrites stale choros-notify.json with current hook path", () => {
 		const projectDir = path.join(TEST_ROOT, "project");
 		const hooksDir = path.join(projectDir, ".github", "hooks");
-		const hookFile = path.join(hooksDir, "superset-notify.json");
+		const hookFile = path.join(hooksDir, "choros-notify.json");
 		const gitInfoDir = path.join(projectDir, ".git", "info");
 		const realBinDir = path.join(TEST_ROOT, "real-bin");
 		const realCopilot = path.join(realBinDir, "copilot");
@@ -223,7 +223,7 @@ describe("agent-wrappers copilot", () => {
 		mkdirSync(realBinDir, { recursive: true });
 
 		writeFileSync(hookScriptPath, "#!/bin/bash\nexit 0\n", { mode: 0o755 });
-		writeFileSync(hookFile, '{"superset":"old","bash":"/tmp/old-hook.sh"}');
+		writeFileSync(hookFile, '{"choros":"old","bash":"/tmp/old-hook.sh"}');
 
 		writeFileSync(realCopilot, "#!/bin/bash\necho real-copilot\n", {
 			mode: 0o755,
@@ -242,7 +242,7 @@ describe("agent-wrappers copilot", () => {
 			env: {
 				...process.env,
 				PATH: `${TEST_BIN_DIR}:${realBinDir}:${process.env.PATH || ""}`,
-				SUPERSET_TERMINAL_ID: "terminal-1",
+				CHOROS_TERMINAL_ID: "terminal-1",
 			},
 			encoding: "utf-8",
 		});
@@ -259,42 +259,40 @@ describe("agent-wrappers copilot", () => {
 		const wrapper = readFileSync(wrapperPath, "utf-8");
 
 		expect(wrapper).toContain(
-			`"$REAL_BIN" "\${_superset_codex_args[@]}" --enable hooks \${_superset_bypass_hook_trust:+"$_superset_bypass_hook_trust"} "$@"`,
+			`"$REAL_BIN" "\${_choros_codex_args[@]}" --enable hooks \${_choros_bypass_hook_trust:+"$_choros_bypass_hook_trust"} "$@"`,
 		);
 		expect(wrapper).not.toContain("-c 'notify=");
-		expect(wrapper).toContain('export SUPERSET_AGENT_ID="codex"');
+		expect(wrapper).toContain('export CHOROS_AGENT_ID="codex"');
 
-		expect(wrapper).toContain("# Superset agent-wrapper v4");
+		expect(wrapper).toContain("# Choros agent-wrapper v4");
 
 		// Native hooks remain enabled, but the process-scoped TUI session log is
 		// the reliable Start signal for installed Codex TUI builds.
-		expect(wrapper).toContain("SUPERSET_CODEX_SESSION_WATCHER_PID");
+		expect(wrapper).toContain("CHOROS_CODEX_SESSION_WATCHER_PID");
 		expect(wrapper).toContain("CODEX_TUI_RECORD_SESSION");
 		expect(wrapper).toContain("CODEX_TUI_SESSION_LOG_PATH");
-		expect(wrapper).toContain("SUPERSET_TERMINAL_ID$SUPERSET_TAB_ID");
-		expect(wrapper).toContain("_superset_configure_project_trust");
-		expect(wrapper).toContain("SUPERSET_WORKSPACE_PATH/.codex");
+		expect(wrapper).toContain("CHOROS_TERMINAL_ID$CHOROS_TAB_ID");
+		expect(wrapper).toContain("_choros_configure_project_trust");
+		expect(wrapper).toContain("CHOROS_WORKSPACE_PATH/.codex");
 		expect(wrapper).toContain(
-			'projects={\\"$_superset_workspace_path_toml\\"={trust_level=\\"trusted\\"}}',
+			'projects={\\"$_choros_workspace_path_toml\\"={trust_level=\\"trusted\\"}}',
 		);
 		// The Usage-tab default resolver may export CODEX_HOME dynamically from
 		// the pointer file, but the wrapper must never hardcode a home.
 		expect(wrapper).toContain("state/default-codex-home");
-		expect(wrapper).toContain('export CODEX_HOME="$superset_default_account"');
+		expect(wrapper).toContain('export CODEX_HOME="$choros_default_account"');
 		expect(wrapper).not.toContain('export CODEX_HOME="$HOME');
 		expect(wrapper).not.toContain("rollout-*.jsonl");
-		expect(wrapper).not.toContain("_superset_sessions_dir");
+		expect(wrapper).not.toContain("_choros_sessions_dir");
 		expect(wrapper).not.toContain("$" + "{CODEX_HOME:-$HOME/.codex}");
-		expect(wrapper).toContain("SUPERSET_HOOK_DEBUG_LOG");
+		expect(wrapper).toContain("CHOROS_HOOK_DEBUG_LOG");
 		expect(wrapper).toContain("tail -n +1 -F");
-		expect(wrapper).toContain("_superset_cleanup_session_watcher");
-		expect(wrapper).toContain("_superset_child_pids_for");
-		expect(wrapper).toContain('kill -TERM "$_superset_child_pid"');
-		expect(wrapper).toContain('kill -KILL "$_superset_watcher_pid"');
+		expect(wrapper).toContain("_choros_cleanup_session_watcher");
+		expect(wrapper).toContain("_choros_child_pids_for");
+		expect(wrapper).toContain('kill -TERM "$_choros_child_pid"');
+		expect(wrapper).toContain('kill -KILL "$_choros_watcher_pid"');
 		expect(wrapper).not.toContain("mkfifo");
-		expect(wrapper).not.toContain(
-			"SUPERSET_CODEX_SESSION_WATCHER_TAIL_PID_PATH",
-		);
+		expect(wrapper).not.toContain("CHOROS_CODEX_SESSION_WATCHER_TAIL_PID_PATH");
 		expect(wrapper).toContain('"UserTurn"');
 		expect(wrapper).toContain("_approval_request");
 
@@ -305,7 +303,7 @@ describe("agent-wrappers copilot", () => {
 		expect(wrapper).toContain(execLine);
 	});
 
-	it("trusts the Superset workspace codex project config without replacing CODEX_HOME", () => {
+	it("trusts the Choros workspace codex project config without replacing CODEX_HOME", () => {
 		const realBinDir = path.join(TEST_ROOT, "real-bin");
 		const realCodex = path.join(realBinDir, "codex");
 		const wrapperPath = path.join(TEST_BIN_DIR, "codex");
@@ -336,7 +334,7 @@ exit 0
 				...process.env,
 				CODEX_HOME: explicitCodexHome,
 				PATH: `${TEST_BIN_DIR}:${realBinDir}:${process.env.PATH || ""}`,
-				SUPERSET_WORKSPACE_PATH: workspacePath,
+				CHOROS_WORKSPACE_PATH: workspacePath,
 			},
 			encoding: "utf-8",
 		});
@@ -376,8 +374,8 @@ exit 0
 			env: {
 				...process.env,
 				PATH: `${TEST_BIN_DIR}:${realBinDir}:${process.env.PATH || ""}`,
-				SUPERSET_WORKSPACE_PATH: "",
-				SUPERSET_TERMINAL_ID: "terminal-1",
+				CHOROS_WORKSPACE_PATH: "",
+				CHOROS_TERMINAL_ID: "terminal-1",
 			},
 			encoding: "utf-8",
 		});
@@ -424,8 +422,8 @@ exit 0
 				env: {
 					...process.env,
 					PATH: `${TEST_BIN_DIR}:${realBinDir}:${process.env.PATH || ""}`,
-					SUPERSET_WORKSPACE_PATH: "",
-					SUPERSET_TERMINAL_ID: "terminal-1",
+					CHOROS_WORKSPACE_PATH: "",
+					CHOROS_TERMINAL_ID: "terminal-1",
 				},
 				encoding: "utf-8",
 			},
@@ -449,8 +447,8 @@ exit 0
 				env: {
 					...process.env,
 					PATH: `${TEST_BIN_DIR}:${realBinDir}:${process.env.PATH || ""}`,
-					SUPERSET_WORKSPACE_PATH: "",
-					SUPERSET_TERMINAL_ID: "terminal-1",
+					CHOROS_WORKSPACE_PATH: "",
+					CHOROS_TERMINAL_ID: "terminal-1",
 				},
 				encoding: "utf-8",
 			},
@@ -507,9 +505,9 @@ exit 0
 				...process.env,
 				NOTIFY_CAPTURE_PATH: notifyCapturePath,
 				PATH: `${TEST_BIN_DIR}:${realBinDir}:${process.env.PATH || ""}`,
-				SUPERSET_DEBUG_HOOKS: "1",
-				SUPERSET_HOOK_DEBUG_LOG: debugLogPath,
-				SUPERSET_TERMINAL_ID: "terminal-1",
+				CHOROS_DEBUG_HOOKS: "1",
+				CHOROS_HOOK_DEBUG_LOG: debugLogPath,
+				CHOROS_TERMINAL_ID: "terminal-1",
 			},
 			encoding: "utf-8",
 		});
@@ -566,9 +564,9 @@ exit 0
 				...process.env,
 				NOTIFY_CAPTURE_PATH: notifyCapturePath,
 				PATH: `${TEST_BIN_DIR}:${realBinDir}:${process.env.PATH || ""}`,
-				SUPERSET_DEBUG_HOOKS: "1",
-				SUPERSET_HOOK_DEBUG_LOG: debugLogPath,
-				SUPERSET_TAB_ID: "tab-1",
+				CHOROS_DEBUG_HOOKS: "1",
+				CHOROS_HOOK_DEBUG_LOG: debugLogPath,
+				CHOROS_TAB_ID: "tab-1",
 			},
 			encoding: "utf-8",
 		});
@@ -629,9 +627,9 @@ exit 0
 				CODEX_HOME: codexHome,
 				NOTIFY_CAPTURE_PATH: notifyCapturePath,
 				PATH: `${TEST_BIN_DIR}:${realBinDir}:${process.env.PATH || ""}`,
-				SUPERSET_DEBUG_HOOKS: "1",
-				SUPERSET_HOOK_DEBUG_LOG: debugLogPath,
-				SUPERSET_TERMINAL_ID: "terminal-1",
+				CHOROS_DEBUG_HOOKS: "1",
+				CHOROS_HOOK_DEBUG_LOG: debugLogPath,
+				CHOROS_TERMINAL_ID: "terminal-1",
 			},
 			encoding: "utf-8",
 		});
@@ -672,7 +670,7 @@ exit 0
 					...process.env,
 					NOTIFY_CAPTURE_PATH: notifyCapturePath,
 					PATH: `${TEST_BIN_DIR}:${realBinDir}:${process.env.PATH || ""}`,
-					SUPERSET_TERMINAL_ID: "terminal-1",
+					CHOROS_TERMINAL_ID: "terminal-1",
 				},
 				encoding: "utf-8",
 			});
@@ -702,7 +700,7 @@ exit 0
 		const wrapperPath = path.join(TEST_BIN_DIR, "mastracode");
 		const wrapper = readFileSync(wrapperPath, "utf-8");
 
-		expect(wrapper).toContain("# Superset wrapper for mastracode");
+		expect(wrapper).toContain("# Choros wrapper for mastracode");
 		expect(wrapper).toContain('REAL_BIN="$(find_real_binary "mastracode")"');
 		expect(wrapper).toContain('exec "$REAL_BIN" "$@"');
 	});
@@ -713,9 +711,9 @@ exit 0
 		const wrapperPath = path.join(TEST_BIN_DIR, "amp");
 		const wrapper = readFileSync(wrapperPath, "utf-8");
 
-		expect(wrapper).toContain("# Superset wrapper for amp");
+		expect(wrapper).toContain("# Choros wrapper for amp");
 		expect(wrapper).toContain('REAL_BIN="$(find_real_binary "amp")"');
-		expect(wrapper).toContain('export SUPERSET_AGENT_ID="amp"');
+		expect(wrapper).toContain('export CHOROS_AGENT_ID="amp"');
 		expect(wrapper).toContain('exec "$REAL_BIN" "$@"');
 	});
 
@@ -731,7 +729,7 @@ exit 0
 				".config",
 				"amp",
 				"plugins",
-				"superset-lifecycle.ts",
+				"choros-lifecycle.ts",
 			),
 		);
 		expect(plugin).toBe(getAmpPluginContent());
@@ -746,9 +744,9 @@ exit 0
 		expect(plugin).toContain('amp.on("agent.end"');
 		expect(plugin).toContain('notify("Stop", event)');
 		expect(plugin).toContain('import { spawn } from "node:child_process"');
-		expect(plugin).toContain('SUPERSET_AGENT_ID: "amp"');
-		expect(plugin).toContain("[superset-amp-plugin]");
-		expect(plugin).toContain("SUPERSET_HOME_DIR");
+		expect(plugin).toContain('CHOROS_AGENT_ID: "amp"');
+		expect(plugin).toContain("[choros-amp-plugin]");
+		expect(plugin).toContain("CHOROS_HOME_DIR");
 	});
 
 	it("creates droid wrapper passthrough", () => {
@@ -757,17 +755,16 @@ exit 0
 		const wrapperPath = path.join(TEST_BIN_DIR, "droid");
 		const wrapper = readFileSync(wrapperPath, "utf-8");
 
-		expect(wrapper).toContain("# Superset wrapper for droid");
+		expect(wrapper).toContain("# Choros wrapper for droid");
 		expect(wrapper).toContain('REAL_BIN="$(find_real_binary "droid")"');
-		expect(wrapper).toContain('export SUPERSET_AGENT_ID="droid"');
+		expect(wrapper).toContain('export CHOROS_AGENT_ID="droid"');
 		expect(wrapper).toContain('exec "$REAL_BIN" "$@"');
 	});
 
-	it("replaces stale Cursor hook commands from old superset paths", () => {
+	it("replaces stale Cursor hook commands from old choros paths", () => {
 		const cursorHooksPath = path.join(mockedHomeDir, ".cursor", "hooks.json");
-		const staleHookPath =
-			"/tmp/worktree/superset-dev-data/hooks/cursor-hook.sh";
-		const currentHookPath = "/tmp/.superset-new/hooks/cursor-hook.sh";
+		const staleHookPath = "/tmp/worktree/choros-dev-data/hooks/cursor-hook.sh";
+		const currentHookPath = "/tmp/.choros-new/hooks/cursor-hook.sh";
 
 		mkdirSync(path.dirname(cursorHooksPath), { recursive: true });
 		writeFileSync(
@@ -825,15 +822,14 @@ exit 0
 		expect(JSON.parse(content2)).toEqual(JSON.parse(content));
 	});
 
-	it("replaces stale Gemini hook commands from old superset paths", () => {
+	it("replaces stale Gemini hook commands from old choros paths", () => {
 		const geminiSettingsPath = path.join(
 			mockedHomeDir,
 			".gemini",
 			"settings.json",
 		);
-		const staleHookPath =
-			"/tmp/worktree/superset-dev-data/hooks/gemini-hook.sh";
-		const currentHookPath = "/tmp/.superset-new/hooks/gemini-hook.sh";
+		const staleHookPath = "/tmp/worktree/choros-dev-data/hooks/gemini-hook.sh";
+		const currentHookPath = "/tmp/.choros-new/hooks/gemini-hook.sh";
 
 		mkdirSync(path.dirname(geminiSettingsPath), { recursive: true });
 		writeFileSync(
@@ -951,19 +947,19 @@ exit 0
 	});
 
 	it("bumps hook script markers when hook semantics change", () => {
-		expect(COPILOT_HOOK_MARKER).toBe("# Superset copilot hook v5");
-		expect(CURSOR_HOOK_MARKER).toBe("# Superset cursor hook v7");
-		expect(GEMINI_HOOK_MARKER).toBe("# Superset gemini hook v6");
+		expect(COPILOT_HOOK_MARKER).toBe("# Choros copilot hook v5");
+		expect(CURSOR_HOOK_MARKER).toBe("# Choros cursor hook v7");
+		expect(GEMINI_HOOK_MARKER).toBe("# Choros gemini hook v6");
 	});
 
-	it("replaces stale Mastra hook commands from old superset paths", () => {
+	it("replaces stale Mastra hook commands from old choros paths", () => {
 		const mastraHooksPath = path.join(
 			mockedHomeDir,
 			".mastracode",
 			"hooks.json",
 		);
-		const staleHookPath = "/tmp/.superset-old/hooks/notify.sh";
-		const currentHookPath = "/tmp/.superset-new/hooks/notify.sh";
+		const staleHookPath = "/tmp/.choros-old/hooks/notify.sh";
+		const currentHookPath = "/tmp/.choros-new/hooks/notify.sh";
 
 		mkdirSync(path.dirname(mastraHooksPath), { recursive: true });
 		writeFileSync(
@@ -1023,14 +1019,14 @@ exit 0
 		expect(JSON.parse(content2)).toEqual(JSON.parse(content));
 	});
 
-	it("replaces stale Droid hook commands from old superset paths", () => {
+	it("replaces stale Droid hook commands from old choros paths", () => {
 		const droidSettingsPath = path.join(
 			mockedHomeDir,
 			".factory",
 			"settings.json",
 		);
-		const staleHookPath = "/tmp/.superset-old/hooks/notify.sh";
-		const currentHookPath = "/tmp/.superset-new/hooks/notify.sh";
+		const staleHookPath = "/tmp/.choros-old/hooks/notify.sh";
+		const currentHookPath = "/tmp/.choros-new/hooks/notify.sh";
 
 		mkdirSync(path.dirname(droidSettingsPath), { recursive: true });
 		writeFileSync(
@@ -1137,7 +1133,7 @@ exit 0
 		writeFileSync(droidSettingsPath, invalidJson);
 
 		expect(
-			getDroidSettingsJsonContent("/tmp/.superset-new/hooks/notify.sh"),
+			getDroidSettingsJsonContent("/tmp/.choros-new/hooks/notify.sh"),
 		).toBeNull();
 
 		createDroidSettingsJson();
@@ -1156,7 +1152,7 @@ exit 0
 		writeFileSync(droidSettingsPath, JSON.stringify("not-an-object"));
 
 		expect(
-			getDroidSettingsJsonContent("/tmp/.superset-new/hooks/notify.sh"),
+			getDroidSettingsJsonContent("/tmp/.choros-new/hooks/notify.sh"),
 		).toBeNull();
 	});
 });
@@ -1173,7 +1169,7 @@ describe("agent-wrappers claude settings.json", () => {
 	});
 
 	it("creates Claude settings.json with hooks when no file exists", () => {
-		const notifyPath = "/tmp/.superset/hooks/notify.sh";
+		const notifyPath = "/tmp/.choros/hooks/notify.sh";
 		const content = getClaudeGlobalSettingsJsonContent(notifyPath);
 		expect(content).not.toBeNull();
 		if (content === null) throw new Error("Expected content");
@@ -1236,7 +1232,7 @@ describe("agent-wrappers claude settings.json", () => {
 			),
 		);
 
-		const notifyPath = "/tmp/.superset/hooks/notify.sh";
+		const notifyPath = "/tmp/.choros/hooks/notify.sh";
 		const content = getClaudeGlobalSettingsJsonContent(notifyPath);
 		expect(content).not.toBeNull();
 		if (content === null) throw new Error("Expected content");
@@ -1269,14 +1265,14 @@ describe("agent-wrappers claude settings.json", () => {
 		).toBe(true);
 	});
 
-	it("replaces stale Claude hook commands from old superset paths", () => {
+	it("replaces stale Claude hook commands from old choros paths", () => {
 		const claudeSettingsPath = path.join(
 			mockedHomeDir,
 			".claude",
 			"settings.json",
 		);
-		const staleHookPath = "/tmp/.superset-old/hooks/notify.sh";
-		const currentHookPath = "/tmp/.superset-new/hooks/notify.sh";
+		const staleHookPath = "/tmp/.choros-old/hooks/notify.sh";
+		const currentHookPath = "/tmp/.choros-new/hooks/notify.sh";
 
 		mkdirSync(path.dirname(claudeSettingsPath), { recursive: true });
 		writeFileSync(
@@ -1373,7 +1369,7 @@ describe("agent-wrappers claude settings.json", () => {
 		writeFileSync(claudeSettingsPath, invalidJson);
 
 		expect(
-			getClaudeGlobalSettingsJsonContent("/tmp/.superset/hooks/notify.sh"),
+			getClaudeGlobalSettingsJsonContent("/tmp/.choros/hooks/notify.sh"),
 		).toBeNull();
 
 		createClaudeSettingsJson();
@@ -1393,7 +1389,7 @@ describe("agent-wrappers claude settings.json", () => {
 		writeFileSync(claudeSettingsPath, JSON.stringify("not-an-object"));
 
 		expect(
-			getClaudeGlobalSettingsJsonContent("/tmp/.superset/hooks/notify.sh"),
+			getClaudeGlobalSettingsJsonContent("/tmp/.choros/hooks/notify.sh"),
 		).toBeNull();
 	});
 });
@@ -1410,7 +1406,7 @@ describe("agent-wrappers codex hooks.json", () => {
 	});
 
 	it("creates Codex hooks.json with prompt and lifecycle hooks when no file exists", () => {
-		const notifyPath = "/tmp/.superset/hooks/notify.sh";
+		const notifyPath = "/tmp/.choros/hooks/notify.sh";
 		const content = getCodexGlobalHooksJsonContent(notifyPath);
 		expect(content).not.toBeNull();
 		if (content === null) throw new Error("Expected content");
@@ -1498,7 +1494,7 @@ describe("agent-wrappers codex hooks.json", () => {
 			),
 		);
 
-		const notifyPath = "/tmp/.superset/hooks/notify.sh";
+		const notifyPath = "/tmp/.choros/hooks/notify.sh";
 		const content = getCodexGlobalHooksJsonContent(notifyPath);
 		expect(content).not.toBeNull();
 		if (content === null) throw new Error("Expected content");
@@ -1583,10 +1579,10 @@ describe("agent-wrappers codex hooks.json", () => {
 		).toBe(false);
 	});
 
-	it("replaces stale Codex hook commands from old superset paths", () => {
+	it("replaces stale Codex hook commands from old choros paths", () => {
 		const codexHooksPath = path.join(mockedHomeDir, ".codex", "hooks.json");
-		const staleHookPath = "/tmp/.superset-old/hooks/notify.sh";
-		const currentHookPath = "/tmp/.superset-new/hooks/notify.sh";
+		const staleHookPath = "/tmp/.choros-old/hooks/notify.sh";
+		const currentHookPath = "/tmp/.choros-new/hooks/notify.sh";
 
 		mkdirSync(path.dirname(codexHooksPath), { recursive: true });
 		writeFileSync(
@@ -1666,11 +1662,11 @@ describe("agent-wrappers codex hooks.json", () => {
 		expect(JSON.parse(content2 as string)).toEqual(JSON.parse(content));
 	});
 
-	it("removes stale Superset-managed UserPromptSubmit hooks without touching user hooks", () => {
+	it("removes stale Choros-managed UserPromptSubmit hooks without touching user hooks", () => {
 		const codexHooksPath = path.join(mockedHomeDir, ".codex", "hooks.json");
 		const staleHookPath =
-			"/Users/test/.superset/worktrees/repo/superset-dev-data/hooks/notify.sh";
-		const currentHookPath = "/tmp/.superset-new/hooks/notify.sh";
+			"/Users/test/.choros/worktrees/repo/choros-dev-data/hooks/notify.sh";
+		const currentHookPath = "/tmp/.choros-new/hooks/notify.sh";
 
 		mkdirSync(path.dirname(codexHooksPath), { recursive: true });
 		writeFileSync(
@@ -1734,11 +1730,11 @@ describe("agent-wrappers codex hooks.json", () => {
 	it("reaps stale notify.sh paths from in-repo dev worktrees", () => {
 		const codexHooksPath = path.join(mockedHomeDir, ".codex", "hooks.json");
 		// Real-world layout: a dev worktree lives under <repo>/.worktrees/<name>
-		// and its dev setup writes SUPERSET_HOME_DIR=<worktree>/superset-dev-data.
-		// There is no /.superset/ segment anywhere in the path.
+		// and its dev setup writes CHOROS_HOME_DIR=<worktree>/choros-dev-data.
+		// There is no /.choros/ segment anywhere in the path.
 		const staleHookPath =
-			"/Users/test/code/superset/.worktrees/old-branch/superset-dev-data/hooks/notify.sh";
-		const currentHookPath = "/tmp/.superset-new/hooks/notify.sh";
+			"/Users/test/code/choros/.worktrees/old-branch/choros-dev-data/hooks/notify.sh";
+		const currentHookPath = "/tmp/.choros-new/hooks/notify.sh";
 
 		mkdirSync(path.dirname(codexHooksPath), { recursive: true });
 		writeFileSync(
@@ -1803,7 +1799,7 @@ describe("agent-wrappers codex hooks.json", () => {
 		writeFileSync(codexHooksPath, invalidJson);
 
 		expect(
-			getCodexGlobalHooksJsonContent("/tmp/.superset/hooks/notify.sh"),
+			getCodexGlobalHooksJsonContent("/tmp/.choros/hooks/notify.sh"),
 		).toBeNull();
 
 		createCodexHooksJson();
@@ -1818,7 +1814,7 @@ describe("agent-wrappers codex hooks.json", () => {
 		writeFileSync(codexHooksPath, JSON.stringify("not-an-object"));
 
 		expect(
-			getCodexGlobalHooksJsonContent("/tmp/.superset/hooks/notify.sh"),
+			getCodexGlobalHooksJsonContent("/tmp/.choros/hooks/notify.sh"),
 		).toBeNull();
 	});
 });
@@ -1833,7 +1829,7 @@ import {
 describe("vibe wrapper", () => {
 	it("enables experimental hooks and stamps the agent id", () => {
 		const script = getVibeWrapperScript();
-		expect(script).toContain('export SUPERSET_AGENT_ID="vibe"');
+		expect(script).toContain('export CHOROS_AGENT_ID="vibe"');
 		expect(script).toContain("export VIBE_ENABLE_EXPERIMENTAL_HOOKS=true");
 		expect(script).toContain('exec "$REAL_BIN" "$@"');
 	});
@@ -1846,7 +1842,7 @@ describe("vibe hooks.toml", () => {
 		expect(out).toContain(VIBE_HOOKS_MARKER_END);
 		expect(out).toContain('type = "before_tool"');
 		expect(out).toContain('type = "post_agent_turn"');
-		expect(out).toContain("SUPERSET_AGENT_ID=vibe");
+		expect(out).toContain("CHOROS_AGENT_ID=vibe");
 	});
 	it("preserves user hooks and is idempotent", () => {
 		const user =
@@ -1871,7 +1867,7 @@ describe("vibe hooks.toml", () => {
 			"",
 			VIBE_HOOKS_MARKER_START,
 			"[[hooks]]",
-			'name = "superset-notify-before-tool"',
+			'name = "choros-notify-before-tool"',
 			'type = "before_tool"',
 			"",
 		].join("\n");
@@ -1889,7 +1885,7 @@ describe("vibe hooks.toml", () => {
 		const partial = [
 			VIBE_HOOKS_MARKER_START,
 			"[[hooks]]",
-			'name = "superset-notify-before-tool"',
+			'name = "choros-notify-before-tool"',
 			'type = "before_tool"',
 			"command = 'true'",
 			// NO end marker
@@ -1906,9 +1902,7 @@ describe("vibe hooks.toml", () => {
 		// Exactly one complete managed block, no dangling/duplicate markers.
 		expect(out.split(VIBE_HOOKS_MARKER_START).length - 1).toBe(1);
 		expect(out.split(VIBE_HOOKS_MARKER_END).length - 1).toBe(1);
-		expect(out.split('name = "superset-notify-before-tool"').length - 1).toBe(
-			1,
-		);
+		expect(out.split('name = "choros-notify-before-tool"').length - 1).toBe(1);
 	});
 });
 
@@ -1922,7 +1916,7 @@ import {
 describe("kimi wrapper", () => {
 	it("stamps the agent id and forwards arguments to the real binary", () => {
 		const script = getKimiWrapperScript();
-		expect(script).toContain('export SUPERSET_AGENT_ID="kimi"');
+		expect(script).toContain('export CHOROS_AGENT_ID="kimi"');
 		expect(script).toContain('exec "$REAL_BIN" "$@"');
 	});
 });
@@ -1946,7 +1940,7 @@ describe("kimi config.toml", () => {
 		]) {
 			expect(out).toContain(`event = "${event}"`);
 		}
-		expect(out).toContain("SUPERSET_AGENT_ID=kimi");
+		expect(out).toContain("CHOROS_AGENT_ID=kimi");
 	});
 
 	it("preserves user config and replaces the managed block idempotently", () => {
@@ -1972,7 +1966,7 @@ describe("kimi config.toml", () => {
 			KIMI_HOOKS_MARKER_START,
 			"[[hooks]]",
 			'event = "SessionStart"',
-			"command = 'SUPERSET_AGENT_ID=kimi true'",
+			"command = 'CHOROS_AGENT_ID=kimi true'",
 			"",
 			"# user hook",
 			"[[hooks]]",
@@ -2000,7 +1994,7 @@ import {
 describe("grok wrapper", () => {
 	it("stamps the agent id and forwards arguments to the real binary", () => {
 		const script = getGrokWrapperScript();
-		expect(script).toContain('export SUPERSET_AGENT_ID="grok"');
+		expect(script).toContain('export CHOROS_AGENT_ID="grok"');
 		expect(script).toContain('exec "$REAL_BIN" "$@"');
 	});
 });
@@ -2026,7 +2020,7 @@ describe("grok hooks json", () => {
 				hooks: Array<{ type: string; command: string }>;
 			}>;
 			expect(definition.hooks[0].type).toBe("command");
-			expect(definition.hooks[0].command).toContain("SUPERSET_AGENT_ID=grok");
+			expect(definition.hooks[0].command).toContain("CHOROS_AGENT_ID=grok");
 		}
 		expect(parsed.hooks.Notification[0].matcher).toBe(
 			`^(${GROK_BLOCKING_NOTIFICATION_TYPES.join("|")})$`,
@@ -2112,13 +2106,7 @@ describe("agent-wrappers pi", () => {
 	it("installs the pi extension into the global ~/.pi/agent/extensions directory", () => {
 		const extensionPath = getPiExtensionPath();
 		expect(extensionPath).toBe(
-			path.join(
-				mockedHomeDir,
-				".pi",
-				"agent",
-				"extensions",
-				"superset-hooks.ts",
-			),
+			path.join(mockedHomeDir, ".pi", "agent", "extensions", "choros-hooks.ts"),
 		);
 
 		createPiExtension();
@@ -2167,7 +2155,7 @@ describe("managed hooks teardown", () => {
 									{
 										type: "command",
 										command:
-											"SUPERSET_AGENT_ID=droid '/tmp/.superset/hooks/notify.sh'",
+											"CHOROS_AGENT_ID=droid '/tmp/.choros/hooks/notify.sh'",
 									},
 								],
 							},
@@ -2290,7 +2278,7 @@ describe("managed hooks teardown", () => {
 		mkdirSync(path.dirname(hooksPath), { recursive: true });
 		writeFileSync(hooksPath, "{not-json");
 
-		expect(getMastraHooksJsonContent("/tmp/.superset/hooks/notify.sh")).toBe(
+		expect(getMastraHooksJsonContent("/tmp/.choros/hooks/notify.sh")).toBe(
 			null,
 		);
 	});
@@ -2302,14 +2290,14 @@ describe("managed hooks teardown", () => {
 		const userConfig = '[user]\nkey = "value"';
 		writeFileSync(
 			configPath,
-			`${userConfig}\n\n${KIMI_HOOKS_MARKER_START}\n[[hooks]]\nevent = "Stop"\ncommand = 'SUPERSET_AGENT_ID=kimi x'\n${KIMI_HOOKS_MARKER_END}\n`,
+			`${userConfig}\n\n${KIMI_HOOKS_MARKER_START}\n[[hooks]]\nevent = "Stop"\ncommand = 'CHOROS_AGENT_ID=kimi x'\n${KIMI_HOOKS_MARKER_END}\n`,
 		);
 		removeKimiManagedHooks();
 		expect(readFileSync(configPath, "utf-8")).toBe(`${userConfig}\n`);
 
 		writeFileSync(
 			configPath,
-			`${KIMI_HOOKS_MARKER_START}\n[[hooks]]\nevent = "Stop"\ncommand = 'SUPERSET_AGENT_ID=kimi x'\n${KIMI_HOOKS_MARKER_END}\n`,
+			`${KIMI_HOOKS_MARKER_START}\n[[hooks]]\nevent = "Stop"\ncommand = 'CHOROS_AGENT_ID=kimi x'\n${KIMI_HOOKS_MARKER_END}\n`,
 		);
 		removeKimiManagedHooks();
 		expect(existsSync(configPath)).toBe(false);
@@ -2343,9 +2331,7 @@ describe("managed hooks junk tolerance", () => {
 			}),
 		);
 
-		const content = getDroidSettingsJsonContent(
-			"/tmp/.superset/hooks/notify.sh",
-		);
+		const content = getDroidSettingsJsonContent("/tmp/.choros/hooks/notify.sh");
 		expect(content).not.toBeNull();
 		const parsed = JSON.parse(content as string);
 		expect(parsed.hooks.Stop[0]).toBe(null);
@@ -2407,7 +2393,7 @@ describe("agent-wrappers omp", () => {
 		expect(content).toContain("export default function");
 	});
 
-	it("maps OMP lifecycle events to Superset lifecycle hooks", () => {
+	it("maps OMP lifecycle events to Choros lifecycle hooks", () => {
 		const content = getOmpExtensionContent();
 		expect(content).toContain('["session_start", "SessionStart"]');
 		expect(content).toContain('["agent_start", "UserPromptSubmit"]');
@@ -2421,7 +2407,7 @@ describe("agent-wrappers omp", () => {
 		);
 		expect(content).toContain("pi.on(eventName");
 		expect(content).toContain("fire(hookEventName)");
-		expect(content).toContain('SUPERSET_AGENT_ID: "omp"');
+		expect(content).toContain('CHOROS_AGENT_ID: "omp"');
 	});
 
 	it("installs the Oh My Pi extension into the global ~/.omp/agent/extensions directory", () => {
@@ -2432,7 +2418,7 @@ describe("agent-wrappers omp", () => {
 				".omp",
 				"agent",
 				"extensions",
-				"superset-hooks.ts",
+				"choros-hooks.ts",
 			),
 		);
 
@@ -2448,7 +2434,7 @@ describe("agent-wrappers omp", () => {
 		process.env.OMP_CODING_AGENT_DIR = customAgentDir;
 
 		expect(getOmpExtensionPath()).toBe(
-			path.join(customAgentDir, "extensions", "superset-hooks.ts"),
+			path.join(customAgentDir, "extensions", "choros-hooks.ts"),
 		);
 	});
 
@@ -2459,7 +2445,7 @@ describe("agent-wrappers omp", () => {
 				mockedHomeDir,
 				"custom-omp-agent",
 				"extensions",
-				"superset-hooks.ts",
+				"choros-hooks.ts",
 			),
 		);
 
@@ -2468,7 +2454,7 @@ describe("agent-wrappers omp", () => {
 			path.join(
 				`${mockedHomeDir}\\custom-omp-agent`,
 				"extensions",
-				"superset-hooks.ts",
+				"choros-hooks.ts",
 			),
 		);
 	});
@@ -2482,13 +2468,13 @@ describe("agent-wrappers omp", () => {
 				".omp",
 				"agent",
 				"extensions",
-				"superset-hooks.ts",
+				"choros-hooks.ts",
 			),
 		);
 		expect(getOmpExtensionPath()).not.toBe(getPiExtensionPath());
 	});
 
-	it("removes the Superset-owned Oh My Pi extension on teardown", () => {
+	it("removes the Choros-owned Oh My Pi extension on teardown", () => {
 		createOmpExtension();
 		const extensionPath = getOmpExtensionPath();
 		expect(existsSync(extensionPath)).toBe(true);

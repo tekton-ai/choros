@@ -6,11 +6,11 @@ export default command({
 	description: "List pages in the organization",
 	options: {
 		workspace: string().desc(
-			"Only pages published from this workspace, by name or id (defaults to $SUPERSET_WORKSPACE_ID)",
+			"Only pages published from this workspace, by name or id (defaults to $CHOROS_WORKSPACE_ID)",
 		),
 	},
 	run: async ({ ctx, options }) => {
-		const workspace = options.workspace ?? process.env.SUPERSET_WORKSPACE_ID;
+		const workspace = options.workspace ?? process.env.CHOROS_WORKSPACE_ID;
 		const workspaceId = workspace
 			? await resolveWorkspaceId({
 					value: workspace,

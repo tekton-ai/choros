@@ -1,4 +1,3 @@
-import { Trans } from "@lingui/react/macro";
 import {
 	Command,
 	CommandEmpty,
@@ -8,6 +7,7 @@ import {
 } from "@choros/ui/command";
 import { Popover, PopoverAnchor, PopoverContent } from "@choros/ui/popover";
 import { cn } from "@choros/ui/utils";
+import { Trans } from "@lingui/react/macro";
 import { mergeAttributes, Node } from "@tiptap/core";
 import {
 	type NodeViewProps,

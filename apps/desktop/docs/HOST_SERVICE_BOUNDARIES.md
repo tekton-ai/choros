@@ -292,7 +292,7 @@ interface Manifest {
 
 Minimal — just enough to reconnect. No version or protocol fields; the coordinator queries `host.info` after adoption for metadata if needed.
 
-Lives at `~/.superset/host/<organizationId>/manifest.json`. The coordinator writes and reads it. Remote deployments don't use manifests.
+Lives at `~/.choros/host/<organizationId>/manifest.json`. The coordinator writes and reads it. Remote deployments don't use manifests.
 
 ---
 
@@ -306,8 +306,8 @@ Lives at `~/.superset/host/<organizationId>/manifest.json`. The coordinator writ
 | `ORGANIZATION_ID` from `process.env` | `health.ts` | Removed | Org info served via `host.info`, fetched from cloud at registration |
 | `LocalModelProvider` as default | `app.ts` | Injected by caller | `modelResolver` is required, no default |
 | `LocalGitCredentialProvider` as default | `app.ts` | Injected by caller | `credentials` is required, no default |
-| Default `~/.superset/host.db` | `app.ts` | Injected by caller | `dbPath` is required, no default |
-| `~/.superset/chat-anthropic-env.json` | `anthropic-runtime-env.ts` | Moves with `LocalModelProvider` | Desktop-only path |
+| Default `~/.choros/host.db` | `app.ts` | Injected by caller | `dbPath` is required, no default |
+| `~/.choros/chat-anthropic-env.json` | `anthropic-runtime-env.ts` | Moves with `LocalModelProvider` | Desktop-only path |
 | macOS Keychain reads | `resolveAnthropicCredential.ts` | Moves with `LocalModelProvider` | macOS-only |
 | `~/.claude/` credential reads | `resolveAnthropicCredential.ts` | Moves with `LocalModelProvider` | Claude Desktop-only |
 | `project.removeFromDevice` | `project.ts` | Rename to `project.remove` | "Device" framing is wrong |
@@ -356,7 +356,7 @@ import { LocalModelProvider } from "@choros/host-service/providers/desktop";
 createApp({
   config: {
     dbPath: path.join(orgDir, "host.db"),
-    cloudApiUrl: env.SUPERSET_API_URL,
+    cloudApiUrl: env.CHOROS_API_URL,
     migrationsPath: app.isPackaged
       ? path.join(process.resourcesPath, "resources/host-migrations")
       : path.join(app.getAppPath(), "../../packages/host-service/drizzle"),
@@ -381,7 +381,7 @@ import { createApp, PskHostAuthProvider, JwtApiAuthProvider,
 createApp({
   config: {
     dbPath: env.HOST_DB_PATH,
-    cloudApiUrl: env.SUPERSET_API_URL,
+    cloudApiUrl: env.CHOROS_API_URL,
     migrationsPath: join(import.meta.dirname, "../../drizzle"),
     allowedOrigins: env.CORS_ORIGINS,
   },

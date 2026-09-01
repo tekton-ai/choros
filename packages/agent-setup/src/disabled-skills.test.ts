@@ -9,20 +9,20 @@ import {
 	writeSharedDisabledSkillIds,
 } from "./disabled-skills";
 
-const ORIGINAL_HOME_DIR = process.env.SUPERSET_HOME_DIR;
-const ORIGINAL_DISABLED = process.env.SUPERSET_DISABLED_SKILLS;
+const ORIGINAL_HOME_DIR = process.env.CHOROS_HOME_DIR;
+const ORIGINAL_DISABLED = process.env.CHOROS_DISABLED_SKILLS;
 
 let testHome: string;
 
 beforeEach(() => {
 	// A fresh directory per test (rather than wiping/reusing one shared dir)
 	// so this file has no directory-reuse race with anything else in the suite.
-	testHome = fs.mkdtempSync(path.join(os.tmpdir(), "superset-skills-"));
-	process.env.SUPERSET_HOME_DIR = testHome;
-	delete process.env.SUPERSET_DISABLED_SKILLS;
+	testHome = fs.mkdtempSync(path.join(os.tmpdir(), "choros-skills-"));
+	process.env.CHOROS_HOME_DIR = testHome;
+	delete process.env.CHOROS_DISABLED_SKILLS;
 	// Some sibling test file in this suite mock.module()s "./paths" for the
 	// whole process without restoring it, which can point this file's own
-	// resolveSupersetHomeDir() at a directory another test already wrote to.
+	// resolveChorosHomeDir() at a directory another test already wrote to.
 	// Every test writes before it reads today, so that's currently harmless,
 	// but clear it here too so a future test that reads first doesn't
 	// silently inherit foreign state.
@@ -30,11 +30,11 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-	if (ORIGINAL_HOME_DIR === undefined) delete process.env.SUPERSET_HOME_DIR;
-	else process.env.SUPERSET_HOME_DIR = ORIGINAL_HOME_DIR;
+	if (ORIGINAL_HOME_DIR === undefined) delete process.env.CHOROS_HOME_DIR;
+	else process.env.CHOROS_HOME_DIR = ORIGINAL_HOME_DIR;
 	if (ORIGINAL_DISABLED === undefined)
-		delete process.env.SUPERSET_DISABLED_SKILLS;
-	else process.env.SUPERSET_DISABLED_SKILLS = ORIGINAL_DISABLED;
+		delete process.env.CHOROS_DISABLED_SKILLS;
+	else process.env.CHOROS_DISABLED_SKILLS = ORIGINAL_DISABLED;
 	fs.rmSync(testHome, { recursive: true, force: true });
 });
 
@@ -69,7 +69,7 @@ describe("shared disabled-skills state", () => {
 
 	it("lets an explicit list replace the file, with env on top", () => {
 		writeSharedDisabledSkillIds(["doctor"]);
-		process.env.SUPERSET_DISABLED_SKILLS = "orchestrate, feedback,,";
+		process.env.CHOROS_DISABLED_SKILLS = "orchestrate, feedback,,";
 
 		expect(resolveDisabledSkillIds(["10x"]).sort()).toEqual([
 			"10x",

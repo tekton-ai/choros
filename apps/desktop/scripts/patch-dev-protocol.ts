@@ -40,8 +40,8 @@ import {
 	getWorkspaceName,
 } from "../src/shared/worktree-id";
 
-const DEFAULT_WORKTREE_BASE = resolve(homedir(), ".superset/worktrees");
-const DEFAULT_PROD_DB_PATH = resolve(homedir(), ".superset/local.db");
+const DEFAULT_WORKTREE_BASE = resolve(homedir(), ".choros/worktrees");
+const DEFAULT_PROD_DB_PATH = resolve(homedir(), ".choros/local.db");
 
 type ResolveWorkspaceIdentityOptions = {
 	cwd?: string;

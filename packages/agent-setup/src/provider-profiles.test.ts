@@ -16,7 +16,7 @@ import {
 
 const TEST_ROOT = path.join(
 	os.tmpdir(),
-	`superset-provider-profiles-${process.pid}-${Date.now()}`,
+	`choros-provider-profiles-${process.pid}-${Date.now()}`,
 );
 const HOME = path.join(TEST_ROOT, "home");
 const DEFAULT_DIR = path.join(HOME, ".claude");
@@ -47,7 +47,7 @@ function seedDefaultAccount(): void {
 	writeJson(path.join(DEFAULT_DIR, "settings.json"), {
 		model: "claude-opus-5",
 		effortLevel: "high",
-		enabledPlugins: { "superset@superset": true },
+		enabledPlugins: { "choros@choros": true },
 		env: { DISABLE_TELEMETRY: "1", ANTHROPIC_API_KEY: "sk-secret" },
 		apiKeyHelper: "/usr/local/bin/key.sh",
 		hooks: { Stop: [{ hooks: [{ type: "command", command: "user-hook" }] }] },
@@ -111,7 +111,7 @@ describe("provisionClaudeProfile", () => {
 		const settings = readJson(path.join(PROFILE, "settings.json"));
 		expect(settings.model).toBe("claude-opus-5");
 		expect(settings.effortLevel).toBe("high");
-		expect(settings.enabledPlugins).toEqual({ "superset@superset": true });
+		expect(settings.enabledPlugins).toEqual({ "choros@choros": true });
 		expect(settings.env).toEqual({ DISABLE_TELEMETRY: "1" });
 		expect(settings.apiKeyHelper).toBeUndefined();
 		// Hooks are provisioned per profile, not copied from the default's file.
@@ -174,7 +174,7 @@ describe("provisionClaudeProfile", () => {
 		expect(existsSync(path.join(PROFILE, "skills", "mine", "SKILL.md"))).toBe(
 			true,
 		);
-		expect(existsSync(path.join(PROFILE, "skills", "superset", "skills"))).toBe(
+		expect(existsSync(path.join(PROFILE, "skills", "choros", "skills"))).toBe(
 			true,
 		);
 	});
@@ -185,7 +185,7 @@ describe("provisionClaudeProfile", () => {
 		const report = await provisionClaudeProfile(DEFAULT_DIR, { homeDir: HOME });
 
 		expect(report.surfaces).toEqual({});
-		expect(existsSync(path.join(DEFAULT_DIR, ".superset-profile.json"))).toBe(
+		expect(existsSync(path.join(DEFAULT_DIR, ".choros-profile.json"))).toBe(
 			false,
 		);
 	});
@@ -233,6 +233,6 @@ describe("default homes are never provisioning targets", () => {
 			expect(report.surfaces).toEqual({});
 		}
 		expect(existsSync(path.join(configClaude, "skills"))).toBe(false);
-		expect(existsSync(path.join(HOME, ".superset-profile.json"))).toBe(false);
+		expect(existsSync(path.join(HOME, ".choros-profile.json"))).toBe(false);
 	});
 });

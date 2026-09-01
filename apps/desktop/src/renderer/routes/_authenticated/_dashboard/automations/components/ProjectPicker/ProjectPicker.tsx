@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	Command,
 	CommandEmpty,
@@ -8,6 +7,7 @@ import {
 	CommandList,
 } from "@choros/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useState } from "react";
 import { HiCheck } from "react-icons/hi2";
 import { LuBox, LuFolder } from "react-icons/lu";

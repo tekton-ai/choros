@@ -16,11 +16,10 @@ import {
 } from "./managed-toml-block";
 
 export const GROK_COMPAT_MARKER_START =
-	"# >>> superset-managed-grok-compat v1 (do not edit) >>>";
-export const GROK_COMPAT_MARKER_END =
-	"# <<< superset-managed-grok-compat v1 <<<";
+	"# >>> choros-managed-grok-compat v1 (do not edit) >>>";
+export const GROK_COMPAT_MARKER_END = "# <<< choros-managed-grok-compat v1 <<<";
 
-export const GROK_HOOKS_FILE = "superset-notify.json";
+export const GROK_HOOKS_FILE = "choros-notify.json";
 
 // Grok's hook config uses Claude Code's event names; the wire payload it pipes
 // to the command is camelCase (`hookEventName`) with snake_case values, which
@@ -49,8 +48,8 @@ export const GROK_BLOCKING_NOTIFICATION_TYPES = [
 
 const GROK_MANAGED_HOOK_COMMAND = getManagedNotifyHookCommand("grok");
 
-// Vendor hook configs Superset also manages. Grok replays them in compat mode
-// with their inlined SUPERSET_AGENT_ID (claude/cursor-agent), which would
+// Vendor hook configs Choros also manages. Grok replays them in compat mode
+// with their inlined CHOROS_AGENT_ID (claude/cursor-agent), which would
 // misattribute grok sessions; disable replay and register native hooks instead.
 const GROK_COMPAT_HOOK_VENDORS = ["claude", "cursor"] as const;
 
@@ -67,7 +66,7 @@ export function getGrokConfigTomlPath(): string {
 }
 
 /**
- * Grok merges every `*.json` under `~/.grok/hooks/`, so Superset owns this
+ * Grok merges every `*.json` under `~/.grok/hooks/`, so Choros owns this
  * file outright — no merge with user config needed.
  */
 export function getGrokHooksJsonContent(): string {
@@ -123,7 +122,7 @@ function buildGrokCompatBlock(base: string): string {
 
 	const body = [
 		GROK_COMPAT_MARKER_START,
-		"# Superset registers its own Grok hooks; replaying Superset-managed",
+		"# Choros registers its own Grok hooks; replaying Choros-managed",
 		"# Claude/Cursor hook configs here would mislabel grok sessions.",
 		...vendors.flatMap((vendor) => [`[compat.${vendor}]`, "hooks = false", ""]),
 	]
@@ -145,20 +144,20 @@ const GROK_TOML_SPEC: ManagedTomlBlockSpec = {
 };
 
 /**
- * Preserve user config while replacing Superset's marker-owned compat block.
+ * Preserve user config while replacing Choros's marker-owned compat block.
  */
 export function getGrokConfigTomlContent(existing: string): string {
 	return getManagedTomlContent(GROK_TOML_SPEC, existing);
 }
 
 /**
- * Removes Superset's Grok footprint: the wholly-owned hooks file and the
+ * Removes Choros's Grok footprint: the wholly-owned hooks file and the
  * marker-owned compat block in config.toml. No-op when neither exists.
  */
 export function removeGrokManagedHooks(): void {
 	removeOwnedFileIfMarked(
 		getGrokHooksJsonPath(),
-		"SUPERSET_AGENT_ID=grok",
+		"CHOROS_AGENT_ID=grok",
 		"Grok hooks json",
 	);
 	removeManagedTomlBlock(GROK_TOML_SPEC);

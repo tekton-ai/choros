@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@choros/i18n/errors";
 import type { AgentLaunchRequest } from "@choros/shared/agent-launch";
 import { buildTaskAgentLaunchRequest } from "@choros/shared/agent-launch-request";
@@ -18,6 +17,7 @@ import {
 import { Label } from "@choros/ui/label";
 import { toast } from "@choros/ui/sonner";
 import { Switch } from "@choros/ui/switch";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useMemo } from "react";
 import { HiArrowRight, HiChevronDown } from "react-icons/hi2";
 import { AgentSelect } from "renderer/components/AgentSelect";

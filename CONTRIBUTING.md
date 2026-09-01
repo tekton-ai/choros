@@ -7,6 +7,6 @@ Larger changes: open an issue on `github.com/tekton-ai/choros/issues` first so w
 ## Local development
 
 ```bash
-./.superset/setup.local.sh
+./.choros/setup.local.sh
 bun run dev
 ```

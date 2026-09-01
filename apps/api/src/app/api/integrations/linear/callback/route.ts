@@ -1,5 +1,5 @@
-import { LinearClient } from "@linear/sdk";
 import { linearTokenResponseSchema } from "@choros/trpc/integrations/linear";
+import { LinearClient } from "@linear/sdk";
 import { Client } from "@upstash/qstash";
 
 import { env } from "@/env";

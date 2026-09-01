@@ -1,39 +1,39 @@
 import { chmodSync, existsSync, mkdirSync } from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";
-import { SUPERSET_DIR_NAME } from "shared/constants";
+import { CHOROS_DIR_NAME } from "shared/constants";
 
-const SUPERSET_HOME_DIR_ENV = "SUPERSET_HOME_DIR";
+const CHOROS_HOME_DIR_ENV = "CHOROS_HOME_DIR";
 
-export const SUPERSET_HOME_DIR =
-	process.env[SUPERSET_HOME_DIR_ENV] || join(homedir(), SUPERSET_DIR_NAME);
-process.env[SUPERSET_HOME_DIR_ENV] = SUPERSET_HOME_DIR;
+export const CHOROS_HOME_DIR =
+	process.env[CHOROS_HOME_DIR_ENV] || join(homedir(), CHOROS_DIR_NAME);
+process.env[CHOROS_HOME_DIR_ENV] = CHOROS_HOME_DIR;
 
-export const SUPERSET_HOME_DIR_MODE = 0o700;
-export const SUPERSET_SENSITIVE_FILE_MODE = 0o600;
+export const CHOROS_HOME_DIR_MODE = 0o700;
+export const CHOROS_SENSITIVE_FILE_MODE = 0o600;
 
 export function ensureChorosHomeDirExists(): void {
-	if (!existsSync(SUPERSET_HOME_DIR)) {
-		mkdirSync(SUPERSET_HOME_DIR, {
+	if (!existsSync(CHOROS_HOME_DIR)) {
+		mkdirSync(CHOROS_HOME_DIR, {
 			recursive: true,
-			mode: SUPERSET_HOME_DIR_MODE,
+			mode: CHOROS_HOME_DIR_MODE,
 		});
 	}
 
 	// Best-effort repair if the directory already existed with weak permissions.
 	try {
-		chmodSync(SUPERSET_HOME_DIR, SUPERSET_HOME_DIR_MODE);
+		chmodSync(CHOROS_HOME_DIR, CHOROS_HOME_DIR_MODE);
 	} catch (error) {
 		console.warn(
 			"[app-environment] Failed to chmod Choros home dir (best-effort):",
-			SUPERSET_HOME_DIR,
+			CHOROS_HOME_DIR,
 			error,
 		);
 	}
 }
 
 // For lowdb - use our own path instead of app.getPath("userData")
-export const APP_STATE_PATH = join(SUPERSET_HOME_DIR, "app-state.json");
+export const APP_STATE_PATH = join(CHOROS_HOME_DIR, "app-state.json");
 
 // Window geometry state (separate from UI state - main process only, sync I/O)
-export const WINDOW_STATE_PATH = join(SUPERSET_HOME_DIR, "window-state.json");
+export const WINDOW_STATE_PATH = join(CHOROS_HOME_DIR, "window-state.json");

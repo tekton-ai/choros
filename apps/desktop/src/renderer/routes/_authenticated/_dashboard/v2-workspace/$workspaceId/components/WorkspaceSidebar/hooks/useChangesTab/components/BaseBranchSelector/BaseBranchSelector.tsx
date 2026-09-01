@@ -1,7 +1,7 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import type { AppRouter } from "@choros/host-service";
 import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
 import { ScrollArea } from "@choros/ui/scroll-area";
+import { Trans, useLingui } from "@lingui/react/macro";
 import type { inferRouterOutputs } from "@trpc/server";
 import { Check, ChevronDown } from "lucide-react";
 import { useMemo, useState } from "react";

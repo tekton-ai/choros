@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -7,6 +6,7 @@ import {
 	DropdownMenuTrigger,
 } from "@choros/ui/dropdown-menu";
 import { toast } from "@choros/ui/sonner";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useNavigate } from "@tanstack/react-router";
 import { CheckIcon, MinusIcon, PlusIcon, RotateCcwIcon } from "lucide-react";
 import { useState } from "react";

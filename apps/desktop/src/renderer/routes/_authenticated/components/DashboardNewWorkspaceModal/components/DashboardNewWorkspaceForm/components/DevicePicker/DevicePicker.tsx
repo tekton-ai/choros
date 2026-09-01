@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { FEATURE_FLAGS } from "@choros/shared/constants";
 import {
 	DropdownMenu,
@@ -11,6 +10,7 @@ import {
 	DropdownMenuTrigger,
 } from "@choros/ui/dropdown-menu";
 import { cn } from "@choros/ui/utils";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useFeatureFlagEnabled } from "posthog-js/react";
 import { useEffect } from "react";
 import {

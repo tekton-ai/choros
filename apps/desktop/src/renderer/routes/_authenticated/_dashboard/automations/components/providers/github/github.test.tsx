@@ -34,8 +34,8 @@ afterAll(async () => {
  */
 
 const REPOS = [
-	{ id: "10", label: "choros", hint: "superset-sh" },
-	{ id: "20", label: "domains", hint: "superset-sh" },
+	{ id: "10", label: "choros", hint: "choros-sh" },
+	{ id: "20", label: "domains", hint: "choros-sh" },
 ];
 
 /**
@@ -290,9 +290,7 @@ describe("the wording of a GitHub row", () => {
 				repositories: { mode: "list", ids: ["10"] },
 			}),
 		);
-		expect(sentence).toBe(
-			"Any comment by Anyone on a PR by Anyone in choros",
-		);
+		expect(sentence).toBe("Any comment by Anyone on a PR by Anyone in choros");
 	});
 
 	test("a push trigger names the branch before the repository", async () => {

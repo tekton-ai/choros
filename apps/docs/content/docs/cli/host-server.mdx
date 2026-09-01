@@ -8,7 +8,7 @@ The `choros start` command runs a headless HTTP server that any Choros desktop a
 It manages workspaces, ports, and agent runs on the machine it's running on. The desktop app starts it automatically; on a CLI-only or headless machine you start it yourself.
 
 If you installed the desktop app, it already includes the CLI and installs a
-`~/.superset/bin/choros` shim on app launch. Choros terminals prepend
+`~/.choros/bin/choros` shim on app launch. Choros terminals prepend
 that directory to `PATH` automatically. On a headless machine, use the
 standalone installer from [Getting Started](/cli/getting-started).
 
@@ -55,7 +55,7 @@ choros start --daemon
 ```
 
 Spawns the daemon in the background and writes a manifest at
-`~/.superset/host/<organizationId>/manifest.json` so other clients can find
+`~/.choros/host/<organizationId>/manifest.json` so other clients can find
 it. Binds to `127.0.0.1` only.
 
 Verify it's healthy:
@@ -154,15 +154,15 @@ choros stop
 
 ## Shared state
 
-State lives under `~/.superset/host/<organizationId>/`:
+State lives under `~/.choros/host/<organizationId>/`:
 
 ```text
-~/.superset/host/<organizationId>/manifest.json    # endpoint + auth token
-~/.superset/host/<organizationId>/host.db          # local host server DB
+~/.choros/host/<organizationId>/manifest.json    # endpoint + auth token
+~/.choros/host/<organizationId>/host.db          # local host server DB
 ```
 
 A host server started by the desktop app is visible to the CLI and
-vice-versa. `SUPERSET_HOME_DIR` relocates the whole tree.
+vice-versa. `CHOROS_HOME_DIR` relocates the whole tree.
 
 ## Command details
 

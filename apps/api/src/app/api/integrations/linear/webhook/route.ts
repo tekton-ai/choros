@@ -1,11 +1,3 @@
-import type {
-	EntityWebhookPayloadWithIssueData,
-	LinearWebhookPayload,
-} from "@linear/sdk/webhooks";
-import {
-	LINEAR_WEBHOOK_SIGNATURE_HEADER,
-	LinearWebhookClient,
-} from "@linear/sdk/webhooks";
 import { db } from "@choros/db/client";
 import type { SelectIntegrationConnection } from "@choros/db/schema";
 import {
@@ -21,6 +13,14 @@ import {
 	isLinearAuthError,
 	mapPriorityFromLinear,
 } from "@choros/trpc/integrations/linear";
+import type {
+	EntityWebhookPayloadWithIssueData,
+	LinearWebhookPayload,
+} from "@linear/sdk/webhooks";
+import {
+	LINEAR_WEBHOOK_SIGNATURE_HEADER,
+	LinearWebhookClient,
+} from "@linear/sdk/webhooks";
 import { and, asc, eq, isNull, sql } from "drizzle-orm";
 import { env } from "@/env";
 import { ingestAutomationEvent } from "@/lib/automations/ingestAutomationEvent";

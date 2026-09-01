@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import type { HostAgentConfig } from "@choros/host-service/settings";
 import { errorMessage } from "@choros/i18n/errors";
 import type { ExecutionMode, TerminalPreset } from "@choros/local-db";
@@ -23,6 +22,7 @@ import {
 } from "@choros/ui/select";
 import { toast } from "@choros/ui/sonner";
 import { Switch } from "@choros/ui/switch";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { ExternalLink, Trash2 } from "lucide-react";

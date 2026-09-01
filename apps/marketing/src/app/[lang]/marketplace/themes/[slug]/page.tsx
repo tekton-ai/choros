@@ -1,9 +1,9 @@
-import { msg } from "@lingui/core/macro";
-import { Trans } from "@lingui/react/macro";
 import { i18n } from "@choros/i18n";
 import { COMPANY } from "@choros/shared/constants";
 import { Button } from "@choros/ui/button";
 import { ThemePreviewCard } from "@choros/ui/theme-preview-card";
+import { msg } from "@lingui/core/macro";
+import { Trans } from "@lingui/react/macro";
 import { ArrowLeft, Download } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -221,7 +221,7 @@ export default async function ThemeDetailPage({ params }: PageProps) {
 		author: { "@type": "Person", name: theme.author },
 		keywords: theme.tags.join(", "),
 		isAccessibleForFree: true,
-		license: "https://github.com/superset-sh/choros",
+		license: "https://github.com/choros-sh/choros",
 	};
 
 	return (

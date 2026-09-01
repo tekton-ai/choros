@@ -1,8 +1,8 @@
-import { msg } from "@lingui/core/macro";
 import { i18n } from "@choros/i18n";
 import { errorMessage } from "@choros/i18n/errors";
 import type { ExternalApp } from "@choros/local-db";
 import { toast } from "@choros/ui/sonner";
+import { msg } from "@lingui/core/macro";
 import { ArrowUpRightIcon } from "lucide-react";
 import {
 	APP_OPTIONS,

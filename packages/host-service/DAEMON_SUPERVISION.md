@@ -13,7 +13,7 @@ outlives host-service crashes via detached spawn + manifest adoption.
 - **Singleton + bootstrap**: `src/daemon/singleton.ts` — process-level
   cache + `startDaemonBootstrap` / `waitForDaemonReady` for the boot
   pattern below.
-- **Manifest**: `src/daemon/manifest.ts` — `$SUPERSET_HOME_DIR/host/{orgId}/pty-daemon-manifest.json`.
+- **Manifest**: `src/daemon/manifest.ts` — `$CHOROS_HOME_DIR/host/{orgId}/pty-daemon-manifest.json`.
   Read by `tryAdopt` on startup to find a still-running daemon from a
   previous host-service incarnation.
 - **Expected version**: `src/daemon/expected-version.ts` — derives
@@ -127,7 +127,7 @@ per-line prefixes:
 - `[ptyd:<8-char-orgId>] ...` — daemon stdout, fanned through host-service
 
 Production stdio backs to per-org rotating log files
-(`$SUPERSET_HOME_DIR/host/{orgId}/{host-service,pty-daemon}.log`)
+(`$CHOROS_HOME_DIR/host/{orgId}/{host-service,pty-daemon}.log`)
 because the detached children must outlive parent teardown.
 
 The `pipeWithPrefix` helper splits incoming chunks on `\n` so
@@ -166,7 +166,7 @@ on host-service yet — promote to real telemetry when the path is needed.
 
 ## Test escape hatch
 
-Setting `SUPERSET_PTY_DAEMON_SOCKET` env var bypasses the supervisor in
+Setting `CHOROS_PTY_DAEMON_SOCKET` env var bypasses the supervisor in
 `daemon-client-singleton.ts` and connects directly to the given socket.
 Used by `terminal.adoption.node-test.ts` to test host-service against an
 in-process Server instance. Production paths leave this env unset.

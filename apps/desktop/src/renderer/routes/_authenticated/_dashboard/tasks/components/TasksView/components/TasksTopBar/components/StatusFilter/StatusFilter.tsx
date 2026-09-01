@@ -1,4 +1,3 @@
-import { useLingui } from "@lingui/react/macro";
 import { Button } from "@choros/ui/button";
 import {
 	Command,
@@ -7,6 +6,7 @@ import {
 	CommandList,
 } from "@choros/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
+import { useLingui } from "@lingui/react/macro";
 import { useState } from "react";
 import type { IconType } from "react-icons";
 import { HiCheck, HiChevronDown } from "react-icons/hi2";

@@ -27,7 +27,7 @@ export const SAMPLE_PROMPTS: Record<string, SamplePrompt> = {
 			message:
 				"Write setup and teardown scripts so every new workspace starts ready to run.",
 		}),
-		prompt: `Set up this repository to work well with Choros workspaces. Read https://docs.choros.sh/setup-teardown-scripts and create a .superset/config.json with: setup commands that install dependencies and copy untracked files (like .env) from "$SUPERSET_ROOT_PATH" into new workspaces, teardown commands that stop anything setup starts, and a run command that launches the dev server. If parallel workspaces would collide on dev-server ports, make the scripts pick a free port per workspace (see https://docs.choros.sh/ports). When you're done, summarize what you configured and how to use it.`,
+		prompt: `Set up this repository to work well with Choros workspaces. Read https://docs.choros.sh/setup-teardown-scripts and create a .choros/config.json with: setup commands that install dependencies and copy untracked files (like .env) from "$CHOROS_ROOT_PATH" into new workspaces, teardown commands that stop anything setup starts, and a run command that launches the dev server. If parallel workspaces would collide on dev-server ports, make the scripts pick a free port per workspace (see https://docs.choros.sh/ports). When you're done, summarize what you configured and how to use it.`,
 	},
 	"explain-repo": {
 		id: "explain-repo",
@@ -110,7 +110,7 @@ export const SAMPLE_PROMPTS: Record<string, SamplePrompt> = {
 				"Learn the workflow that fits this repo — parallel workspaces and agent setup.",
 		}),
 		prompt:
-			"Read https://docs.choros.sh and figure out how I should be using Choros for this specific repository. Cover how to run several workspaces in parallel without them colliding, what belongs in .superset/config.json, and which agent settings suit this codebase. Be concrete about this repo rather than generic, and end with the two or three changes worth making first.",
+			"Read https://docs.choros.sh and figure out how I should be using Choros for this specific repository. Cover how to run several workspaces in parallel without them colliding, what belongs in .choros/config.json, and which agent settings suit this codebase. Be concrete about this repo rather than generic, and end with the two or three changes worth making first.",
 	},
 };
 

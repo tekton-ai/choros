@@ -68,8 +68,8 @@ before(async () => {
 	});
 	await server.listen();
 
-	process.env.SUPERSET_PTY_DAEMON_SOCKET = SOCK;
-	process.env.SUPERSET_HOME_DIR = TEST_HOME;
+	process.env.CHOROS_PTY_DAEMON_SOCKET = SOCK;
+	process.env.CHOROS_HOME_DIR = TEST_HOME;
 	process.env.HOST_SERVICE_VERSION = "0.0.0-sendsnap-e2e";
 	process.env.NODE_ENV = "development";
 
@@ -661,7 +661,7 @@ describe("terminal.send / terminal.snapshot tRPC procedures", () => {
 		process.env.HOST_DB_PATH = path.join(TEST_HOME, "host.db");
 		process.env.HOST_MIGRATIONS_FOLDER = MIGRATIONS;
 		process.env.AUTH_TOKEN = "test-auth-token";
-		process.env.SUPERSET_API_URL = "https://cloud.example.com";
+		process.env.CHOROS_API_URL = "https://cloud.example.com";
 		const { appRouter } = await import("../trpc/router/router.ts");
 		return appRouter.createCaller({
 			isAuthenticated: true,

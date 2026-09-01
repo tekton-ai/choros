@@ -22,10 +22,7 @@ import {
 	parsePrUrl,
 } from "./git";
 
-const TEST_DIR = join(
-	realpathSync(tmpdir()),
-	`choros-test-git-${process.pid}`,
-);
+const TEST_DIR = join(realpathSync(tmpdir()), `choros-test-git-${process.pid}`);
 
 function createTestRepo(name: string): string {
 	const repoPath = join(TEST_DIR, name);
@@ -378,7 +375,7 @@ describe("Shell Environment", () => {
 		const tmpDir = mkdtempSync(join(realpathSync(tmpdir()), "shell-env-test-"));
 		writeFileSync(
 			join(tmpDir, ".zshrc"),
-			'export __SUPERSET_SHELL_ENV_TEST__="interactive"\n',
+			'export __CHOROS_SHELL_ENV_TEST__="interactive"\n',
 		);
 
 		const origZDOTDIR = process.env.ZDOTDIR;
@@ -389,7 +386,7 @@ describe("Shell Environment", () => {
 
 		try {
 			const env = await getShellEnvironment();
-			expect(env.__SUPERSET_SHELL_ENV_TEST__).toBe("interactive");
+			expect(env.__CHOROS_SHELL_ENV_TEST__).toBe("interactive");
 		} finally {
 			if (origZDOTDIR !== undefined) process.env.ZDOTDIR = origZDOTDIR;
 			else delete process.env.ZDOTDIR;
@@ -1111,26 +1108,26 @@ describe("hasUnpushedCommits", () => {
 
 describe("parsePrUrl", () => {
 	test("parses canonical GitHub PR URL", () => {
-		expect(
-			parsePrUrl("https://github.com/superset-sh/choros/pull/1781"),
-		).toEqual({
-			owner: "superset-sh",
-			repo: "choros",
-			number: 1781,
-		});
+		expect(parsePrUrl("https://github.com/choros-sh/choros/pull/1781")).toEqual(
+			{
+				owner: "choros-sh",
+				repo: "choros",
+				number: 1781,
+			},
+		);
 	});
 
 	test("parses GitHub URL without protocol", () => {
-		expect(parsePrUrl("github.com/superset-sh/choros/pull/1781")).toEqual({
-			owner: "superset-sh",
+		expect(parsePrUrl("github.com/choros-sh/choros/pull/1781")).toEqual({
+			owner: "choros-sh",
 			repo: "choros",
 			number: 1781,
 		});
 	});
 
 	test("returns null for non-PR URLs", () => {
-		expect(
-			parsePrUrl("https://github.com/superset-sh/choros/issues/1781"),
-		).toBe(null);
+		expect(parsePrUrl("https://github.com/choros-sh/choros/issues/1781")).toBe(
+			null,
+		);
 	});
 });

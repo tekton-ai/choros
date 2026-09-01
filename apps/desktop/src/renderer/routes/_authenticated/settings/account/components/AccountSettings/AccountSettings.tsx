@@ -1,4 +1,3 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@choros/i18n/errors";
 import { ACCOUNT_DELETION_GRACE_DAYS } from "@choros/shared/constants";
 import {
@@ -16,6 +15,7 @@ import { Avatar } from "@choros/ui/atoms/Avatar";
 import { Button } from "@choros/ui/button";
 import { Input } from "@choros/ui/input";
 import { toast } from "@choros/ui/sonner";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useEffect, useState } from "react";
 import { useSignOut } from "renderer/hooks/useSignOut";
 import { apiTrpcClient } from "renderer/lib/api-trpc-client";
