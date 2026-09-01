@@ -281,7 +281,7 @@ function workspacesProvider(priority: number): ComposerMentionProvider {
 						ctx.insertChip({
 							label: name,
 							serialized: `workspace://${name}`,
-							iconUrl: getPresetIcon("superset", true),
+							iconUrl: getPresetIcon("choros", true),
 							data: { workspace: name },
 						}),
 				}));

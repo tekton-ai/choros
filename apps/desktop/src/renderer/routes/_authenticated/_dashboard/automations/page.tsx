@@ -531,7 +531,7 @@ function AutomationsPage() {
 	};
 
 	// Opens a project-less agent session seeded with automation-creation
-	// instructions. The in-app "superset" chat agent can't run the CLI, so
+	// instructions. The in-app "choros" chat agent can't run the CLI, so
 	// pick the user's last terminal agent (composer behavior).
 	const [creatingWithAgent, setCreatingWithAgent] = useState(false);
 	const handleCreateWithAgent = () => {
@@ -545,7 +545,7 @@ function AutomationsPage() {
 			);
 			return;
 		}
-		const terminalAgents = agentChoices.filter((a) => a.id !== "superset");
+		const terminalAgents = agentChoices.filter((a) => a.id !== "choros");
 		const stored = window.localStorage.getItem(AGENT_STORAGE_KEY);
 		const agent =
 			terminalAgents.find((a) => a.id === stored)?.id ?? terminalAgents[0]?.id;

@@ -292,7 +292,7 @@ export function V2PresetsBar({
 						);
 					})}
 					{builtinPresets.map(({ preset, isVisible }) => {
-						const builtinIcon = getPresetIcon("superset", isDark);
+						const builtinIcon = getPresetIcon("choros", isDark);
 						return (
 							<DropdownMenuItem
 								key={preset.id}

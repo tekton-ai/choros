@@ -28,7 +28,7 @@ export function BuiltinPresetBarItem({
 	onExecutePreset,
 	onHide,
 }: BuiltinPresetBarItemProps) {
-	const icon = getPresetIcon("superset", isDark);
+	const icon = getPresetIcon("choros", isDark);
 
 	return (
 		<ContextMenu>

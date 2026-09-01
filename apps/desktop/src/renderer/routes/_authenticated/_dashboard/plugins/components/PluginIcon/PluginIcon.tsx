@@ -19,7 +19,7 @@ import superhumanIconUrl from "renderer/assets/icons/superhuman-icon.png";
 /**
  * Per-plugin brand icons. Icons stay per-app rather than in the shared
  * catalog (same split as INTEGRATIONS — packages/shared isn't React-aware).
- * Three tiers: full-bleed marks that ship their own square art (Superset,
+ * Three tiers: full-bleed marks that ship their own square art (Choros,
  * Linear, and white-tile logos), transparent color marks rendered inside a
  * tile, and tinted glyphs for the rest. Black-mark brands (GitHub, Notion,
  * Vercel) stay on the foreground token so they invert with the theme.
@@ -63,11 +63,11 @@ interface PluginIconProps {
 }
 
 export function PluginIcon({ pluginName, className }: PluginIconProps) {
-	const supersetIcon = usePresetIcon("superset");
+	const chorosIcon = usePresetIcon("choros");
 	const size = className ?? "size-9";
 
 	const fullBleed =
-		pluginName === "superset" ? supersetIcon : FULL_BLEED_ICONS[pluginName];
+		pluginName === "choros" ? chorosIcon : FULL_BLEED_ICONS[pluginName];
 	if (fullBleed !== undefined) {
 		return (
 			<img

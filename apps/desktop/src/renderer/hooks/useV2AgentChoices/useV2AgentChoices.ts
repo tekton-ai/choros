@@ -10,13 +10,13 @@ interface UseV2AgentChoicesResult {
 	isFetched: boolean;
 }
 
-const SUPERSET_AGENT: AgentSelectAgent = {
-	id: "superset",
-	label: "Superset",
-	iconId: "superset",
+const CHOROS_AGENT: AgentSelectAgent = {
+	id: "choros",
+	label: "Choros",
+	iconId: "choros",
 };
 
-// Superset chat isn't in the host's `host_agent_configs` table — it's
+// Choros chat isn't in the host's `host_agent_configs` table — it's
 // chat-v3's entry point, so it rides the same flag as the rest of chat-v3.
 // Append after the host's terminal rows so the user's preferred terminal
 // agents stay on top.
@@ -41,7 +41,7 @@ export function useV2AgentChoices(
 			}),
 		);
 		return isChatV3Enabled
-			? [...terminalAgents, SUPERSET_AGENT]
+			? [...terminalAgents, CHOROS_AGENT]
 			: terminalAgents;
 	}, [query.data, isChatV3Enabled]);
 

@@ -1,5 +1,6 @@
 import ampIcon from "./amp.svg";
 import antigravityIcon from "./antigravity.svg";
+import chorosIcon from "./choros.svg";
 import claudeIcon from "./claude.svg";
 import codexIcon from "./codex.svg";
 import codexWhiteIcon from "./codex-white.svg";
@@ -26,7 +27,6 @@ import piIcon from "./pi.svg";
 import piWhiteIcon from "./pi-white.svg";
 import polygraphIcon from "./polygraph.svg";
 import polygraphWhiteIcon from "./polygraph-white.svg";
-import supersetIcon from "./superset.svg";
 import vibeIcon from "./vibe.svg";
 
 export interface PresetIconSet {
@@ -50,7 +50,7 @@ export const PRESET_ICONS: Record<string, PresetIconSet> = {
 	omp: { light: piIcon, dark: piWhiteIcon },
 	pi: { light: piIcon, dark: piWhiteIcon },
 	polygraph: { light: polygraphIcon, dark: polygraphWhiteIcon },
-	superset: { light: supersetIcon, dark: supersetIcon },
+	choros: { light: chorosIcon, dark: chorosIcon },
 	"cursor-agent": { light: cursorAgentIcon, dark: cursorAgentIcon },
 	"cursor-composer": { light: cursorAgentIcon, dark: cursorAgentIcon },
 	droid: { light: droidIcon, dark: droidWhiteIcon },
@@ -82,6 +82,7 @@ export {
 	ampIcon,
 	antigravityIcon,
 	claudeIcon,
+	chorosIcon,
 	codexIcon,
 	codexWhiteIcon,
 	copilotIcon,
@@ -107,6 +108,4 @@ export {
 	piWhiteIcon,
 	polygraphIcon,
 	polygraphWhiteIcon,
-	supersetIcon,
-	vibeIcon,
 };
