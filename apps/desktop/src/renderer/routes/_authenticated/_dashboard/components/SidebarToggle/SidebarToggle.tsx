@@ -1,4 +1,4 @@
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { LuPanelLeft, LuPanelLeftClose, LuPanelLeftOpen } from "react-icons/lu";
 import { HotkeyLabel } from "renderer/hotkeys";
 import { useWorkspaceSidebarStore } from "renderer/stores";

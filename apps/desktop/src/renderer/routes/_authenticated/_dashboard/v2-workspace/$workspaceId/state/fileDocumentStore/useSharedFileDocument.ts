@@ -1,4 +1,4 @@
-import { useWorkspaceClient } from "@superset/workspace-client";
+import { useWorkspaceClient } from "@choros/workspace-client";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { useWorkspaceHostUrl } from "renderer/hooks/host-service/useWorkspaceHostUrl";
 import { getHostEventBus } from "renderer/lib/host-event-bus";

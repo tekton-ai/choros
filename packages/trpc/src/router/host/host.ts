@@ -1,19 +1,19 @@
-import { db, dbWs } from "@superset/db/client";
+import { db, dbWs } from "@choros/db/client";
 import {
 	subscriptions,
 	users,
 	v2Hosts,
 	v2UsersHosts,
-} from "@superset/db/schema";
+} from "@choros/db/schema";
 import {
 	ACTIVE_SUBSCRIPTION_STATUSES,
 	isActiveSubscriptionStatus,
 	isPaidPlan,
-} from "@superset/shared/billing";
+} from "@choros/shared/billing";
 import {
 	buildHostRoutingKey,
 	parseHostRoutingKey,
-} from "@superset/shared/host-routing";
+} from "@choros/shared/host-routing";
 import type { TRPCRouterRecord } from "@trpc/server";
 import { and, count, desc, eq, inArray } from "drizzle-orm";
 import { z } from "zod";

@@ -1,5 +1,5 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { CommandEmpty, CommandGroup, CommandList } from "@superset/ui/command";
+import { CommandEmpty, CommandGroup, CommandList } from "@choros/ui/command";
 import { useMemo } from "react";
 import { useCommandContext } from "../../core/ContextProvider";
 import { rankCommands } from "../../core/rankCommands";

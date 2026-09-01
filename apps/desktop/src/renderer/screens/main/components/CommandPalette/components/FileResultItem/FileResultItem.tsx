@@ -1,4 +1,4 @@
-import { CommandPrimitive } from "@superset/ui/command";
+import { CommandPrimitive } from "@choros/ui/command";
 import { FileIcon } from "renderer/lib/fileIcons";
 
 interface FileResultItemProps {

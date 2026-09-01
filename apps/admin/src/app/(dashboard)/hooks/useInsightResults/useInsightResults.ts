@@ -1,6 +1,6 @@
 "use client";
 
-import type { AdminInsightKey } from "@superset/trpc/insight-registry";
+import type { AdminInsightKey } from "@choros/trpc/insight-registry";
 import { useQuery } from "@tanstack/react-query";
 
 import { useTRPC } from "@/trpc/react";

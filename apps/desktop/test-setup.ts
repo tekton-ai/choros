@@ -218,7 +218,7 @@ mock.module("main/lib/analytics", () => ({
 }));
 
 // =============================================================================
-// @superset/local-db Schema Mock (drizzle-orm/sqlite-core not available in Bun tests)
+// @choros/local-db Schema Mock (drizzle-orm/sqlite-core not available in Bun tests)
 // =============================================================================
 
 const mockTable = (name: string) => ({ id: `${name}_id` });
@@ -285,8 +285,8 @@ const localDbMock = () => ({
 
 // Mock both the package name and the resolved source path to handle
 // bun's workspace package resolution in different versions.
-mock.module("@superset/local-db", localDbMock);
-mock.module("@superset/local-db/schema", localDbMock);
+mock.module("@choros/local-db", localDbMock);
+mock.module("@choros/local-db/schema", localDbMock);
 
 // =============================================================================
 // Local DB Mock (better-sqlite3 not supported in Bun tests)
@@ -391,7 +391,7 @@ mock.module("@lingui/core/macro", () => ({
 // values exist — a real `i18n._` would then find the catalog's placeholder
 // message and render it empty. Resolve descriptors from their own message in
 // tests so assertions see the English defaults.
-const realI18nModule = await import("@superset/i18n");
+const realI18nModule = await import("@choros/i18n");
 // Proxy rather than spread: `i18n` is a class instance, so `load`/`activate`
 // live on the prototype and a spread would drop them.
 const testI18n = new Proxy(realI18nModule.i18n, {
@@ -412,4 +412,4 @@ const testI18n = new Proxy(realI18nModule.i18n, {
 		return typeof value === "function" ? value.bind(target) : value;
 	},
 });
-mock.module("@superset/i18n", () => ({ ...realI18nModule, i18n: testI18n }));
+mock.module("@choros/i18n", () => ({ ...realI18nModule, i18n: testI18n }));

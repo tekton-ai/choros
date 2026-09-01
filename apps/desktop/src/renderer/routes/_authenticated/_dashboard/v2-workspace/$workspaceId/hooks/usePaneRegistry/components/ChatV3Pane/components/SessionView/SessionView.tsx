@@ -1,11 +1,11 @@
-import type { SessionClient } from "@superset/chat/client";
-import type { UserContent } from "@superset/chat/protocol";
+import type { SessionClient } from "@choros/chat/client";
+import type { UserContent } from "@choros/chat/protocol";
 import {
 	useApprovals,
 	useChatSession,
 	useTimeline,
-} from "@superset/chat/react";
-import { Loader } from "@superset/ui/ai-elements/loader";
+} from "@choros/chat/react";
+import { Loader } from "@choros/ui/ai-elements/loader";
 import type { ReactNode } from "react";
 import { useEffect, useMemo, useRef } from "react";
 import { Composer } from "../Composer";

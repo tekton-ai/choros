@@ -1,13 +1,13 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { formatDate as formatLocaleDate } from "@superset/i18n/format";
+import { formatDate as formatLocaleDate } from "@choros/i18n/format";
 import {
 	canRemoveMember,
 	getRoleSortPriority,
 	type OrganizationRole,
-} from "@superset/shared/auth";
-import { Avatar } from "@superset/ui/atoms/Avatar";
-import { Badge } from "@superset/ui/badge";
-import { Skeleton } from "@superset/ui/skeleton";
+} from "@choros/shared/auth";
+import { Avatar } from "@choros/ui/atoms/Avatar";
+import { Badge } from "@choros/ui/badge";
+import { Skeleton } from "@choros/ui/skeleton";
 import {
 	Table,
 	TableBody,
@@ -15,7 +15,7 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from "@superset/ui/table";
+} from "@choros/ui/table";
 import { useMemo } from "react";
 import { useActiveOrganizationId } from "renderer/hooks/useActiveOrganizationId";
 import { authClient } from "renderer/lib/auth-client";

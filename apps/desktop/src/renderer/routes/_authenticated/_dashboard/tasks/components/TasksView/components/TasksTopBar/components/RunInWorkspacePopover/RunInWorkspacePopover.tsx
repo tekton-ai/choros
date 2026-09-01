@@ -1,25 +1,25 @@
 import { plural } from "@lingui/core/macro";
 import { Plural, Trans, useLingui } from "@lingui/react/macro";
-import type { AgentLaunchRequest } from "@superset/shared/agent-launch";
-import { buildTaskAgentLaunchRequest } from "@superset/shared/agent-launch-request";
+import type { AgentLaunchRequest } from "@choros/shared/agent-launch";
+import { buildTaskAgentLaunchRequest } from "@choros/shared/agent-launch-request";
 import {
 	type AgentDefinitionId,
 	getEnabledAgentConfigs,
 	getFallbackAgentId,
 	indexResolvedAgentConfigs,
-} from "@superset/shared/agent-settings";
-import { Button } from "@superset/ui/button";
+} from "@choros/shared/agent-settings";
+import { Button } from "@choros/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { Label } from "@superset/ui/label";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
-import { toast } from "@superset/ui/sonner";
-import { Spinner } from "@superset/ui/spinner";
-import { Switch } from "@superset/ui/switch";
+} from "@choros/ui/dropdown-menu";
+import { Label } from "@choros/ui/label";
+import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
+import { toast } from "@choros/ui/sonner";
+import { Spinner } from "@choros/ui/spinner";
+import { Switch } from "@choros/ui/switch";
 import { ChevronDownIcon } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
 import { HiCheck, HiMiniPlay, HiXMark } from "react-icons/hi2";

@@ -5,13 +5,13 @@ import {
 	ADMIN_INSIGHTS,
 	type AdminInsightKey,
 	POSTHOG_PROJECT_URL,
-} from "@superset/trpc/insight-registry";
+} from "@choros/trpc/insight-registry";
 import {
 	type ChartConfig,
 	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
-} from "@superset/ui/chart";
+} from "@choros/ui/chart";
 import { Line, LineChart, XAxis, YAxis } from "recharts";
 
 import { useInsightResults } from "../../hooks/useInsightResults";

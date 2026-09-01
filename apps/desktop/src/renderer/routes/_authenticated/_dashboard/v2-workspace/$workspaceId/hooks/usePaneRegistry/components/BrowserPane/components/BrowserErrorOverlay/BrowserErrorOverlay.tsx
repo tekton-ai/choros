@@ -1,8 +1,8 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
-import { Button } from "@superset/ui/button";
+import { i18n } from "@choros/i18n";
+import { Button } from "@choros/ui/button";
 import { GlobeIcon } from "lucide-react";
 import { useCallback, useState } from "react";
 import { TbCopy } from "react-icons/tb";

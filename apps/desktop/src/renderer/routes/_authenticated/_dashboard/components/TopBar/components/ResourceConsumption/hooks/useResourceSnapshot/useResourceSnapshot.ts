@@ -1,4 +1,4 @@
-import type { WorkspaceState } from "@superset/panes";
+import type { WorkspaceState } from "@choros/panes";
 import { useLiveQuery } from "@tanstack/react-db";
 import { useEffect, useMemo } from "react";
 import { useHostProjects } from "renderer/hooks/host-projects/useHostProjects";

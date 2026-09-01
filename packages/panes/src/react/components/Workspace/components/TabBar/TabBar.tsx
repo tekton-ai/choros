@@ -1,10 +1,10 @@
-import { Button } from "@superset/ui/button";
+import { Button } from "@choros/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { OverflowFadeContainer } from "@superset/ui/overflow-fade-container";
+} from "@choros/ui/dropdown-menu";
+import { OverflowFadeContainer } from "@choros/ui/overflow-fade-container";
 import { PlusIcon } from "lucide-react";
 import {
 	type ComponentProps,

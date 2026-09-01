@@ -1,9 +1,9 @@
-import { initI18n } from "@superset/i18n";
-import { I18nProvider } from "@superset/i18n/react";
+import { initI18n } from "@choros/i18n";
+import { I18nProvider } from "@choros/i18n/react";
 import { RootProvider } from "fumadocs-ui/provider/next";
 import type { Metadata } from "next";
 import "./global.css";
-import { COMPANY } from "@superset/shared/constants";
+import { COMPANY } from "@choros/shared/constants";
 import { Inter } from "next/font/google";
 import { NavigationBar } from "@/app/components/NavigationBar";
 import { NavbarProvider } from "@/app/components/NavigationBar/components/NavigationMobile";

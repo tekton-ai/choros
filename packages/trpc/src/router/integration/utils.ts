@@ -1,7 +1,7 @@
 import {
 	findOrgMembership,
 	findOrgMembershipWithSubscription,
-} from "@superset/db/utils";
+} from "@choros/db/utils";
 import { userError } from "../../i18n-error";
 
 export async function verifyOrgMembership(

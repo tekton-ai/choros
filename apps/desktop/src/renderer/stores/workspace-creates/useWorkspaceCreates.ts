@@ -1,5 +1,5 @@
-import { i18n } from "@superset/i18n";
-import type { WorkspaceCreateSettledPayload } from "@superset/workspace-client";
+import { i18n } from "@choros/i18n";
+import type { WorkspaceCreateSettledPayload } from "@choros/workspace-client";
 import { TRPCClientError } from "@trpc/client";
 import { useCallback } from "react";
 import { resolveHostUrl } from "renderer/hooks/host-service/useHostTargetUrl";

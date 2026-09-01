@@ -2,8 +2,8 @@ import type {
 	Cursor,
 	DurableEnvelope,
 	DurableEvent,
-} from "@superset/chat/protocol";
-import { durableEventSchema } from "@superset/chat/protocol";
+} from "@choros/chat/protocol";
+import { durableEventSchema } from "@choros/chat/protocol";
 import { eq } from "drizzle-orm";
 import type { ChatDb } from "../../db";
 import { chatJournal } from "../../db";

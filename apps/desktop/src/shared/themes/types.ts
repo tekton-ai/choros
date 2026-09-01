@@ -1,1 +1,1 @@
-export * from "@superset/shared/themes/types";
+export * from "@choros/shared/themes/types";

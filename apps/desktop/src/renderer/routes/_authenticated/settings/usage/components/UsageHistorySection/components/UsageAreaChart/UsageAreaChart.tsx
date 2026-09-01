@@ -2,7 +2,7 @@ import {
 	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
-} from "@superset/ui/chart";
+} from "@choros/ui/chart";
 import { useMemo } from "react";
 import {
 	Area,

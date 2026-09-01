@@ -1,4 +1,4 @@
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import type { TableOfContents } from "fumadocs-core/toc";
 import { AnchorProvider } from "fumadocs-core/toc";
 import { Edit, Text } from "lucide-react";

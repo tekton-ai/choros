@@ -1,23 +1,23 @@
 "use client";
 
 import { Trans } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
-import { Button } from "@superset/ui/button";
+import { i18n } from "@choros/i18n";
+import { Button } from "@choros/ui/button";
 import {
 	ButtonGroup,
 	ButtonGroupSeparator,
 	ButtonGroupText,
-} from "@superset/ui/button-group";
+} from "@choros/ui/button-group";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { Kbd, KbdGroup } from "@superset/ui/kbd";
-import { Spinner } from "@superset/ui/spinner";
-import { Toggle } from "@superset/ui/toggle";
-import { ToggleGroup, ToggleGroupItem } from "@superset/ui/toggle-group";
+} from "@choros/ui/dropdown-menu";
+import { Kbd, KbdGroup } from "@choros/ui/kbd";
+import { Spinner } from "@choros/ui/spinner";
+import { Toggle } from "@choros/ui/toggle";
+import { ToggleGroup, ToggleGroupItem } from "@choros/ui/toggle-group";
 import {
 	ArchiveIcon,
 	BoldIcon,
@@ -53,7 +53,7 @@ export function ActionsSection() {
 					id: "web.design.actionsSection.buttonVariants",
 					message: "Button — variants",
 				})}
-				importPath="@superset/ui/button"
+				importPath="@choros/ui/button"
 				description={i18n._({
 					id: "web.design.actionsSection.defaultSecondaryOutlineGhostLink",
 					message: "default · secondary · outline · ghost · link · destructive",
@@ -85,7 +85,7 @@ export function ActionsSection() {
 					id: "web.design.actionsSection.buttonSizes",
 					message: "Button — sizes",
 				})}
-				importPath="@superset/ui/button"
+				importPath="@choros/ui/button"
 				description={i18n._({
 					id: "web.design.actionsSection.xsSmDefaultLgIcon",
 					message: "xs · sm · default · lg · icon-xs → icon-lg",
@@ -151,7 +151,7 @@ export function ActionsSection() {
 					id: "web.design.actionsSection.buttonStates",
 					message: "Button — states",
 				})}
-				importPath="@superset/ui/button"
+				importPath="@choros/ui/button"
 			>
 				<Button disabled>
 					<Trans id="web.design.actionsSection.disabled">Disabled</Trans>
@@ -171,7 +171,7 @@ export function ActionsSection() {
 					id: "web.design.actionsSection.buttonGroup",
 					message: "Button Group",
 				})}
-				importPath="@superset/ui/button-group"
+				importPath="@choros/ui/button-group"
 			>
 				<ButtonGroup>
 					<Button variant="outline">
@@ -217,7 +217,7 @@ export function ActionsSection() {
 					id: "web.design.actionsSection.toggle",
 					message: "Toggle",
 				})}
-				importPath="@superset/ui/toggle"
+				importPath="@choros/ui/toggle"
 			>
 				<Toggle
 					aria-label={i18n._({
@@ -256,7 +256,7 @@ export function ActionsSection() {
 					id: "web.design.actionsSection.toggleGroup",
 					message: "Toggle Group",
 				})}
-				importPath="@superset/ui/toggle-group"
+				importPath="@choros/ui/toggle-group"
 			>
 				<ToggleGroup type="multiple" variant="outline">
 					<ToggleGroupItem
@@ -305,7 +305,7 @@ export function ActionsSection() {
 					id: "web.design.actionsSection.buttonPatternsInProduct",
 					message: "Button patterns (in product)",
 				})}
-				importPath="@superset/ui/button"
+				importPath="@choros/ui/button"
 				description={i18n._({
 					id: "web.design.actionsSection.splitButtonMirrorsDesktopS",
 					message:
@@ -367,7 +367,7 @@ export function ActionsSection() {
 
 			<ComponentCard
 				title={i18n._({ id: "web.design.actionsSection.kbd", message: "Kbd" })}
-				importPath="@superset/ui/kbd"
+				importPath="@choros/ui/kbd"
 				span
 			>
 				<KbdGroup>

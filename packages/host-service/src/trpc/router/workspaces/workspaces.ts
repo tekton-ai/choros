@@ -3,8 +3,8 @@ import { dirname } from "node:path";
 import {
 	generateFriendlyBranchName,
 	sanitizeUserBranchName,
-} from "@superset/shared/workspace-launch";
-import { workspaceTagsInputSchema } from "@superset/shared/workspace-tags";
+} from "@choros/shared/workspace-launch";
+import { workspaceTagsInputSchema } from "@choros/shared/workspace-tags";
 import { TRPCError } from "@trpc/server";
 import { and, eq, isNull } from "drizzle-orm";
 import { z } from "zod";

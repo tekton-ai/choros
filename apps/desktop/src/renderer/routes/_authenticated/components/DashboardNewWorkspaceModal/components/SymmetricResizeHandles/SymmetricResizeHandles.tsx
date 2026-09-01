@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { useCallback, useRef } from "react";
 
 interface SymmetricResizeHandlesProps {

@@ -1,5 +1,5 @@
-import { ORGANIZATION_HEADER } from "@superset/shared/constants";
-import { getTrustedVercelPreviewOrigins } from "@superset/shared/vercel-preview-origins";
+import { ORGANIZATION_HEADER } from "@choros/shared/constants";
+import { getTrustedVercelPreviewOrigins } from "@choros/shared/vercel-preview-origins";
 import { type NextRequest, NextResponse } from "next/server";
 
 import { env } from "./env";

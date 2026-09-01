@@ -1,14 +1,14 @@
-import { CLIError } from "@superset/cli-framework";
-import { SUPPORTED_LOCALES } from "@superset/i18n/locales";
-import type { InsertSettings } from "@superset/local-db/schema";
+import { CLIError } from "@choros/cli-framework";
+import { SUPPORTED_LOCALES } from "@choros/i18n/locales";
+import type { InsertSettings } from "@choros/local-db/schema";
 import {
 	BRANCH_PREFIX_MODES,
 	EXTERNAL_APPS,
 	FILE_OPEN_MODES,
 	NON_EDITOR_APPS,
 	TERMINAL_LINK_BEHAVIORS,
-} from "@superset/local-db/schema/zod";
-import { RINGTONES } from "@superset/shared/ringtones";
+} from "@choros/local-db/schema/zod";
+import { RINGTONES } from "@choros/shared/ringtones";
 import {
 	FONT_FAMILY_MAX_LENGTH,
 	FONT_SIZE_LIMITS,
@@ -19,7 +19,7 @@ import {
 	TERMINAL_CURSOR_STYLES,
 	TERMINAL_MINIMUM_CONTRAST_CHOICES,
 	TERMINAL_PARKED_RUNTIME_CAP_LIMITS,
-} from "@superset/shared/settings-constraints";
+} from "@choros/shared/settings-constraints";
 
 export type SettingValue = string | number | boolean;
 

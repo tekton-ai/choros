@@ -1,5 +1,5 @@
-import { ORGANIZATION_HEADER } from "@superset/shared/constants";
-import type { AppRouter } from "@superset/trpc";
+import { ORGANIZATION_HEADER } from "@choros/shared/constants";
+import type { AppRouter } from "@choros/trpc";
 import { createTRPCClient, httpBatchLink, type TRPCLink } from "@trpc/client";
 import { observable } from "@trpc/server/observable";
 import SuperJSON from "superjson";

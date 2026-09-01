@@ -6,7 +6,7 @@ import {
 	type ExternalMcpServer,
 	isServerSatisfiedExternally,
 	type PluginMcpServerConfig,
-} from "@superset/shared/plugins";
+} from "@choros/shared/plugins";
 import { writeFileIfChanged } from "./agent-wrappers-common";
 import {
 	ensureManagedTomlBlock,

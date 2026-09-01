@@ -1,5 +1,5 @@
 {
-	"extends": "@superset/typescript/base.json",
+	"extends": "@choros/typescript/base.json",
 	"compilerOptions": {
 		"lib": ["ES2022"],
 		"jsx": "react-jsx",

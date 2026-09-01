@@ -20,7 +20,7 @@ import { chmodSync, existsSync } from "node:fs";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
 import { monitorEventLoopDelay } from "node:perf_hooks";
-import { FsWatcherManager } from "@superset/workspace-fs/host";
+import { FsWatcherManager } from "@choros/workspace-fs/host";
 import type { HostDb } from "../src/db";
 import { EventBus } from "../src/events/event-bus";
 import { GitWatcher } from "../src/events/git-watcher";

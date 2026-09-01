@@ -1,5 +1,5 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { errorMessage } from "@superset/i18n/errors";
+import { errorMessage } from "@choros/i18n/errors";
 import {
 	AlertDialog,
 	AlertDialogContent,
@@ -7,10 +7,10 @@ import {
 	AlertDialogFooter,
 	AlertDialogHeader,
 	AlertDialogTitle,
-} from "@superset/ui/alert-dialog";
-import { Button } from "@superset/ui/button";
-import { Label } from "@superset/ui/label";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/alert-dialog";
+import { Button } from "@choros/ui/button";
+import { Label } from "@choros/ui/label";
+import { toast } from "@choros/ui/sonner";
 import { useMemo, useState } from "react";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { HighlightText } from "renderer/routes/_authenticated/settings/components/HighlightText";

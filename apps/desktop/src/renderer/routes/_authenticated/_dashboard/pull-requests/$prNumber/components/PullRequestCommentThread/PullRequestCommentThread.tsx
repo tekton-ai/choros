@@ -1,14 +1,14 @@
 import { Plural, Trans, useLingui } from "@lingui/react/macro";
-import { Avatar, AvatarFallback, AvatarImage } from "@superset/ui/avatar";
-import { Button } from "@superset/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@choros/ui/avatar";
+import { Button } from "@choros/ui/button";
 import {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
-} from "@superset/ui/collapsible";
-import { toast } from "@superset/ui/sonner";
-import { Textarea } from "@superset/ui/textarea";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/collapsible";
+import { toast } from "@choros/ui/sonner";
+import { Textarea } from "@choros/ui/textarea";
+import { cn } from "@choros/ui/utils";
 import { useEffect, useState } from "react";
 import {
 	LuCheck,

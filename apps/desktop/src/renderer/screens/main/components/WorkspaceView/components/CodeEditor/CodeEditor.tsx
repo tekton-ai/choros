@@ -22,7 +22,7 @@ import {
 	keymap,
 	lineNumbers,
 } from "@codemirror/view";
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { useQuery } from "@tanstack/react-query";
 import { type MutableRefObject, useEffect, useRef } from "react";
 import { electronTrpcClient } from "renderer/lib/trpc-client";

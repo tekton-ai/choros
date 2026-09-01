@@ -1,4 +1,4 @@
-import type { AppRouter as HostServiceAppRouter } from "@superset/host-service";
+import type { AppRouter as HostServiceAppRouter } from "@choros/host-service";
 import { BasicIndex } from "@tanstack/db";
 import type {
 	Collection,

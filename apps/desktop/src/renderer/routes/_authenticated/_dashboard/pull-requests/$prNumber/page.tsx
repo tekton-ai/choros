@@ -1,5 +1,5 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { errorMessage } from "@superset/i18n/errors";
+import { errorMessage } from "@choros/i18n/errors";
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -8,9 +8,9 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 	EnterEnabledAlertDialogContent,
-} from "@superset/ui/alert-dialog";
-import { Avatar, AvatarFallback, AvatarImage } from "@superset/ui/avatar";
-import { Button } from "@superset/ui/button";
+} from "@choros/ui/alert-dialog";
+import { Avatar, AvatarFallback, AvatarImage } from "@choros/ui/avatar";
+import { Button } from "@choros/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -18,13 +18,13 @@ import {
 	DropdownMenuLabel,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { ScrollArea } from "@superset/ui/scroll-area";
-import { Skeleton } from "@superset/ui/skeleton";
-import { toast } from "@superset/ui/sonner";
-import { Textarea } from "@superset/ui/textarea";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/dropdown-menu";
+import { ScrollArea } from "@choros/ui/scroll-area";
+import { Skeleton } from "@choros/ui/skeleton";
+import { toast } from "@choros/ui/sonner";
+import { Textarea } from "@choros/ui/textarea";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { cn } from "@choros/ui/utils";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";

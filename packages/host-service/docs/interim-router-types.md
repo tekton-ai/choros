@@ -39,8 +39,8 @@ Consumer side:
 
 | File | Change |
 |---|---|
-| `apps/mobile/package.json` | deps on `@superset/host-service` (type-only) and `@trpc/server` (for `inferRouterOutputs`) |
-| `apps/mobile/lib/host-service/client.ts` | `import type { AppRouter } from "@superset/host-service/router"`; output aliases via `inferRouterOutputs` |
+| `apps/mobile/package.json` | deps on `@choros/host-service` (type-only) and `@trpc/server` (for `inferRouterOutputs`) |
+| `apps/mobile/lib/host-service/client.ts` | `import type { AppRouter } from "@choros/host-service/router"`; output aliases via `inferRouterOutputs` |
 
 ## Known costs (why this isn't the end state)
 
@@ -53,7 +53,7 @@ Consumer side:
 ## Revert checklist (do this when the contract package lands)
 
 1. Point `apps/mobile/lib/host-service/client.ts` at the contract package's types;
-   drop mobile's `@superset/host-service` and `@trpc/server` deps.
+   drop mobile's `@choros/host-service` and `@trpc/server` deps.
 2. Delete the four `tsconfig.types.json` files and their `build:types` scripts.
 3. Restore `exports.*.types` in port-scanner/pty-daemon/workspace-fs to the `src/*.ts`
    paths (see the commit named above for the originals).

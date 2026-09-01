@@ -8,7 +8,7 @@ import {
 } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { Server } from "@superset/pty-daemon";
+import { Server } from "@choros/pty-daemon";
 import { disposeDaemonClient } from "../../src/terminal/daemon-client-singleton";
 import {
 	initTerminalBaseEnv,

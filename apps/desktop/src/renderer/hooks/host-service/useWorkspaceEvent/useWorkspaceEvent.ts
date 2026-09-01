@@ -5,8 +5,8 @@ import type {
 	PageWatchChangedPayload,
 	PortChangedPayload,
 	TerminalLifecyclePayload,
-} from "@superset/workspace-client";
-import type { FsWatchEvent } from "@superset/workspace-fs/client";
+} from "@choros/workspace-client";
+import type { FsWatchEvent } from "@choros/workspace-fs/client";
 import { useEffect, useEffectEvent } from "react";
 import { getHostEventBus } from "renderer/lib/host-event-bus";
 import { useWorkspaceHostUrl } from "../useWorkspaceHostUrl";

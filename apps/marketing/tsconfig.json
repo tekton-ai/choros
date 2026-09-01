@@ -1,5 +1,5 @@
 {
-	"extends": "@superset/typescript/next.json",
+	"extends": "@choros/typescript/next.json",
 	"compilerOptions": {
 		"types": ["bun-types"],
 		"paths": {

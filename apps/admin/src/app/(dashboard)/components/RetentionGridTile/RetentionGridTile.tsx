@@ -4,7 +4,7 @@ import { useLingui } from "@lingui/react/macro";
 import {
 	ADMIN_INSIGHTS,
 	POSTHOG_PROJECT_URL,
-} from "@superset/trpc/insight-registry";
+} from "@choros/trpc/insight-registry";
 import { useInsightResults } from "../../hooks/useInsightResults";
 import { formatDay } from "../../utils/chartAxis";
 import {

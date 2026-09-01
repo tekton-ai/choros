@@ -64,7 +64,7 @@ useAppHotkey(
 
 In `src/renderer/screens/main/components/WorkspaceView/ContentView/TabsContent/index.tsx`:
 ```tsx
-import { ResizablePanel, ResizablePanelGroup } from "@superset/ui/resizable";
+import { ResizablePanel, ResizablePanelGroup } from "@choros/ui/resizable";
 import { ChatPanelResizable } from "./ChatPanel";
 
 // Replace the return statement:

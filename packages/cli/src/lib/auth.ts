@@ -1,6 +1,6 @@
 import { createHash, randomBytes } from "node:crypto";
 import { createServer, type Server } from "node:http";
-import { CLIError } from "@superset/cli-framework";
+import { CLIError } from "@choros/cli-framework";
 import { env } from "./env";
 
 const CLIENT_ID = "superset-cli";

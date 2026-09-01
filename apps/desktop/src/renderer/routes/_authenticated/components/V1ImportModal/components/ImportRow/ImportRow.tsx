@@ -1,12 +1,12 @@
-import { Button } from "@superset/ui/button";
+import { Button } from "@choros/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { Spinner } from "@superset/ui/spinner";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/dropdown-menu";
+import { Spinner } from "@choros/ui/spinner";
+import { cn } from "@choros/ui/utils";
 import type { ReactNode } from "react";
 import { LuCheck, LuChevronDown, LuTriangle } from "react-icons/lu";
 

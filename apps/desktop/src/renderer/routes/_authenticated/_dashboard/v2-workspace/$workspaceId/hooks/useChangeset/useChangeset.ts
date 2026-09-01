@@ -1,4 +1,4 @@
-import { workspaceTrpc } from "@superset/workspace-client";
+import { workspaceTrpc } from "@choros/workspace-client";
 import { useMemo } from "react";
 import type { FileStatus } from "../../components/StatusIndicator";
 import { useWorkspaceGitStatus } from "../../providers/WorkspaceGitStatusProvider";

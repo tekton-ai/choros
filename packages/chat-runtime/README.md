@@ -1,4 +1,4 @@
-# @superset/chat-runtime
+# @choros/chat-runtime
 
 `HarnessAdapter` → `LiveSession` → journal (`chat.db`) → `SubscriptionHub` → sinks; commands drive it.
 
@@ -19,9 +19,9 @@ The runtime speaks only the vocabulary in `plans/chat-protocol-v1.md`; it never 
 | `harness/` | `HarnessAdapter` + `AdapterEvent` — the contract every harness implements — plus `eventQueue/` (the async-iterable pump adapters emit through), `fake/` (the scripted adapter that drives the runtime tests) and `codex/`. Adapters emit protocol shapes only: no cursors, no persistence, no sockets |
 | `sessions/` | `liveSession/` (one running session: event pump, FIFO prompt queue, cancel) and `registry/`, which builds one per harness |
 | `stream/` | `subscriptions/` — `SubscriptionHub`: replay-then-live subscribe, per-subscriber delta channels, reset frames, delta coalescing |
-| `commands/` | The client-facing verbs, each parsed with the `@superset/chat` command schemas and deduped by `commandId` |
+| `commands/` | The client-facing verbs, each parsed with the `@choros/chat` command schemas and deduped by `commandId` |
 | `router/` | `router/` — `createChatRouter(runtime, { resolveCwd })`, the tRPC surface over `commands/` (the package owns its own `initTRPC`; procedures close over the runtime, and the host resolves `cwd` — clients never send it) — and `wsSink/`, the structural WebSocket→`Sink` adapter host-service's stream route mounts |
-| `testing/` | The cross-cutting test helpers no single module owns — `fixtures/` (protocol item factories), `testUtils/` (sinks, schedules, waits) and `testRuntime/` (the bun-sqlite runtime). Test-only: exported as `@superset/chat-runtime/testing` so sibling chat packages' headless tests can drive a real runtime, never imported by shipping code. Helpers that do have an owner stay beside it, like `harness/fake/` |
+| `testing/` | The cross-cutting test helpers no single module owns — `fixtures/` (protocol item factories), `testUtils/` (sinks, schedules, waits) and `testRuntime/` (the bun-sqlite runtime). Test-only: exported as `@choros/chat-runtime/testing` so sibling chat packages' headless tests can drive a real runtime, never imported by shipping code. Helpers that do have an owner stay beside it, like `harness/fake/` |
 
 ## Wiring a harness
 

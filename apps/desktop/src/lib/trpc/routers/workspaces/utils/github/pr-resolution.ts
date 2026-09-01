@@ -3,7 +3,7 @@
 // backing `git.getPullRequest` + `pullRequests.getByWorkspaces`). Everything
 // under `renderer/screens/main/` + `routes/_authenticated/_dashboard/workspace/`
 // gets deleted together; no port needed.
-import type { CheckItem, GitHubStatus } from "@superset/local-db";
+import type { CheckItem, GitHubStatus } from "@choros/local-db";
 import { execGitWithShellPath } from "../git-client";
 import { execWithShellEnv } from "../shell-env";
 import { getPullRequestRepoArgs } from "./repo-context";

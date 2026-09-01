@@ -1,4 +1,4 @@
-import type { Pane, Tab } from "@superset/panes";
+import type { Pane, Tab } from "@choros/panes";
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 

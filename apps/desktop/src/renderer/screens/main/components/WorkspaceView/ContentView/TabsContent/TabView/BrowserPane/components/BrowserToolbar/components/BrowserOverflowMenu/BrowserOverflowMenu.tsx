@@ -4,7 +4,7 @@ import {
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
+} from "@choros/ui/dropdown-menu";
 import {
 	TbCamera,
 	TbClock,

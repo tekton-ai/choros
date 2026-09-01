@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import type { TaskPriority } from "@superset/db/enums";
+import type { TaskPriority } from "@choros/db/enums";
 import type { ReactNode } from "react";
 import { ALL_PRIORITIES } from "../../utils/sorting";
 import { PriorityIcon } from "./PriorityIcon";

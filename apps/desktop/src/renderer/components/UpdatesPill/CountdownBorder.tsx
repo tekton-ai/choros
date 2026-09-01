@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { useLayoutEffect, useRef, useState } from "react";
 
 const STROKE_WIDTH = 1.5;

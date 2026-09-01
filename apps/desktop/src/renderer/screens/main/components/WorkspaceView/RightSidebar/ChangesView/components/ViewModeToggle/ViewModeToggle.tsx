@@ -1,5 +1,5 @@
-import { Button } from "@superset/ui/button";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+import { Button } from "@choros/ui/button";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { VscListFlat, VscListTree } from "react-icons/vsc";
 import type { ChangesViewMode } from "../../types";
 

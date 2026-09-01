@@ -13,7 +13,7 @@
 import {
 	removeLinkQueryString,
 	removeLinkSuffix,
-} from "@superset/shared/terminal-link-parsing";
+} from "@choros/shared/terminal-link-parsing";
 
 /**
  * The result of resolving a link path against the filesystem.

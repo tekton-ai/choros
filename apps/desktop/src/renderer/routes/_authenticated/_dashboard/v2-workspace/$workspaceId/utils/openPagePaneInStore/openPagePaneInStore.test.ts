@@ -3,7 +3,7 @@ import {
 	createWorkspaceStore,
 	type LayoutNode,
 	type WorkspaceState,
-} from "@superset/panes";
+} from "@choros/panes";
 import type { PagePaneData, PaneViewerData } from "../../types";
 import { openPagePaneInStore } from "./openPagePaneInStore";
 

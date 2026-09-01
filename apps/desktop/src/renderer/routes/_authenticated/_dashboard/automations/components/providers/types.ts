@@ -1,5 +1,5 @@
 import type { MessageDescriptor } from "@lingui/core";
-import type { TriggerConfigInput } from "@superset/shared/automation-triggers";
+import type { TriggerConfigInput } from "@choros/shared/automation-triggers";
 import type { ReactNode } from "react";
 import type { IconType } from "react-icons";
 import type { ScopeOption } from "../TriggerSentence/scopeOption";

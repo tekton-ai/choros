@@ -1,5 +1,5 @@
-import type { SelectFile } from "@superset/db/schema";
-import { signFileTicket } from "@superset/shared/usercontent";
+import type { SelectFile } from "@choros/db/schema";
+import { signFileTicket } from "@choros/shared/usercontent";
 import { env } from "../../env";
 
 // Files are immutable by id, so their tickets turn daily like a pinned page

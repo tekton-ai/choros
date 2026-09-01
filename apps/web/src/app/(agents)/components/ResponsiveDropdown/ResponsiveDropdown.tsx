@@ -1,14 +1,14 @@
 "use client";
 
 import { useLingui } from "@lingui/react/macro";
-import { Drawer, DrawerContent, DrawerTitle } from "@superset/ui/drawer";
+import { Drawer, DrawerContent, DrawerTitle } from "@choros/ui/drawer";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { useIsMobile } from "@superset/ui/hooks/use-mobile";
+} from "@choros/ui/dropdown-menu";
+import { useIsMobile } from "@choros/ui/hooks/use-mobile";
 import {
 	cloneElement,
 	isValidElement,

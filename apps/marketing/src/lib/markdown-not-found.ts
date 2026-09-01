@@ -1,4 +1,4 @@
-import { COMPANY } from "@superset/shared/constants";
+import { COMPANY } from "@choros/shared/constants";
 
 // A 404 agents can recover from: real status code, markdown body, pointers to
 // the indexes worth trying next. Safe to import from the edge proxy.

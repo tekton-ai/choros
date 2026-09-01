@@ -1,4 +1,4 @@
-import type { GitHubStatus } from "@superset/local-db";
+import type { GitHubStatus } from "@choros/local-db";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import {
 	type GitHubStatusQuerySurface,

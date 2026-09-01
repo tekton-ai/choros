@@ -3,9 +3,9 @@
  * runs through the local host's `gh` (the same path issue and PR lookups
  * take), so this deliberately does not call GitHub.
  */
-import { db } from "@superset/db/client";
-import { githubRepositories, v2Projects } from "@superset/db/schema";
-import { parseGitHubRemote } from "@superset/shared/github-remote";
+import { db } from "@choros/db/client";
+import { githubRepositories, v2Projects } from "@choros/db/schema";
+import { parseGitHubRemote } from "@choros/shared/github-remote";
 import { eq } from "drizzle-orm";
 
 export interface ProjectRepo {

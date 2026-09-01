@@ -1,9 +1,9 @@
 "use client";
 
 import { Trans, useLingui } from "@lingui/react/macro";
-import { authClient } from "@superset/auth/client";
-import { Avatar, AvatarFallback, AvatarImage } from "@superset/ui/avatar";
-import { Button } from "@superset/ui/button";
+import { authClient } from "@choros/auth/client";
+import { Avatar, AvatarFallback, AvatarImage } from "@choros/ui/avatar";
+import { Button } from "@choros/ui/button";
 import {
 	Dialog,
 	DialogContent,
@@ -11,7 +11,7 @@ import {
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
-} from "@superset/ui/dialog";
+} from "@choros/ui/dialog";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -20,15 +20,15 @@ import {
 	DropdownMenuLabel,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { Input } from "@superset/ui/input";
+} from "@choros/ui/dropdown-menu";
+import { Input } from "@choros/ui/input";
 import {
 	SidebarMenu,
 	SidebarMenuButton,
 	SidebarMenuItem,
 	useSidebar,
-} from "@superset/ui/sidebar";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/sidebar";
+import { toast } from "@choros/ui/sonner";
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import {

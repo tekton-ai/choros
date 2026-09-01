@@ -1,4 +1,4 @@
-import type { AppRouter } from "@superset/host-service";
+import type { AppRouter } from "@choros/host-service";
 import { useQuery } from "@tanstack/react-query";
 import type { inferRouterOutputs } from "@trpc/server";
 import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";

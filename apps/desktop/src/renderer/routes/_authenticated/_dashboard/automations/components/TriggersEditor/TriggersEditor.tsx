@@ -1,17 +1,17 @@
 import {
 	type DraftTrigger,
 	enabledTriggerKinds,
-} from "@superset/shared/automation-triggers";
-import { FEATURE_FLAGS } from "@superset/shared/constants";
-import { Button } from "@superset/ui/button";
+} from "@choros/shared/automation-triggers";
+import { FEATURE_FLAGS } from "@choros/shared/constants";
+import { Button } from "@choros/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { Input } from "@superset/ui/input";
-import { Separator } from "@superset/ui/separator";
+} from "@choros/ui/dropdown-menu";
+import { Input } from "@choros/ui/input";
+import { Separator } from "@choros/ui/separator";
 import { useFeatureFlagPayload } from "posthog-js/react";
 import {
 	type ReactNode,
@@ -65,7 +65,7 @@ interface TriggersEditorProps {
  * Holds drafts, not saved rows: a trigger can sit here half-configured while
  * someone is still choosing repositories, and the problems it reports are the
  * same ones the API would reject it with — the checks come from
- * `@superset/shared` rather than being restated here.
+ * `@choros/shared` rather than being restated here.
  */
 export function TriggersEditor({
 	triggers,

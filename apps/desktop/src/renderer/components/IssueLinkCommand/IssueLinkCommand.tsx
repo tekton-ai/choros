@@ -1,5 +1,5 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Checkbox } from "@superset/ui/checkbox";
+import { Checkbox } from "@choros/ui/checkbox";
 import {
 	Command,
 	CommandEmpty,
@@ -7,9 +7,9 @@ import {
 	CommandInput,
 	CommandItem,
 	CommandList,
-} from "@superset/ui/command";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+} from "@choros/ui/command";
+import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import Fuse from "fuse.js";
 import type { ReactNode } from "react";
 import { useId, useMemo, useState } from "react";

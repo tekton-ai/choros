@@ -1,4 +1,4 @@
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import type { ComponentProps, ReactNode } from "react";
 import { useHotkeyDisplay } from "../../hooks/useHotkeyDisplay";
 import type { HotkeyId } from "../../registry";

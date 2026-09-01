@@ -1,6 +1,6 @@
-import { db } from "@superset/db/client";
-import { pages, pageVersions } from "@superset/db/schema";
-import { pageThumbnailKey, pageViewUrl } from "@superset/shared/usercontent";
+import { db } from "@choros/db/client";
+import { pages, pageVersions } from "@choros/db/schema";
+import { pageThumbnailKey, pageViewUrl } from "@choros/shared/usercontent";
 import { Client } from "@upstash/qstash";
 import { desc, eq } from "drizzle-orm";
 import { z } from "zod";

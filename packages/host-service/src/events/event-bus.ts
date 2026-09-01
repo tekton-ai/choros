@@ -1,10 +1,10 @@
 import path from "node:path";
 import type { NodeWebSocket } from "@hono/node-ws";
-import type { DetectedPort } from "@superset/port-scanner";
+import type { DetectedPort } from "@choros/port-scanner";
 import {
 	type FsWatchEvent,
 	watchSingleFile,
-} from "@superset/workspace-fs/host";
+} from "@choros/workspace-fs/host";
 import type { Hono } from "hono";
 import type { HostDb } from "../db/index.ts";
 import { portManager } from "../ports/port-manager.ts";

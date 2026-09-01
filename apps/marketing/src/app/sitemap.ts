@@ -1,5 +1,5 @@
-import { SUPPORTED_LOCALES } from "@superset/i18n";
-import { COMPANY } from "@superset/shared/constants";
+import { SUPPORTED_LOCALES } from "@choros/i18n";
+import { COMPANY } from "@choros/shared/constants";
 import type { MetadataRoute } from "next";
 import { localeUrl } from "@/app/[lang]/metadata";
 import { getBlogPosts } from "@/lib/blog";

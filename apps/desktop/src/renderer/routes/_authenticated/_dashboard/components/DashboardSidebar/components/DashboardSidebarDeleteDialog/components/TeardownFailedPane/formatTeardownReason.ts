@@ -1,6 +1,6 @@
-import type { TeardownFailureCause } from "@superset/host-service";
-import { i18n } from "@superset/i18n";
-import { TEARDOWN_TIMEOUT_MS } from "@superset/shared/constants";
+import type { TeardownFailureCause } from "@choros/host-service";
+import { i18n } from "@choros/i18n";
+import { TEARDOWN_TIMEOUT_MS } from "@choros/shared/constants";
 
 /** Human-readable one-liner for the dialog title when teardown fails. */
 export function formatTeardownReason(cause: TeardownFailureCause): string {

@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it } from "bun:test";
-import type { WorkspaceState } from "@superset/panes";
+import type { WorkspaceState } from "@choros/panes";
 import {
 	applyRememberedV2PaneSelection,
 	clearRememberedV2PaneSelectionsForTest,

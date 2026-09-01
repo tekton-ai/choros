@@ -1,6 +1,6 @@
-import { db } from "@superset/db/client";
-import type { SelectMember } from "@superset/db/schema/auth";
-import { ACTIVE_SUBSCRIPTION_STATUSES } from "@superset/shared/billing";
+import { db } from "@choros/db/client";
+import type { SelectMember } from "@choros/db/schema/auth";
+import { ACTIVE_SUBSCRIPTION_STATUSES } from "@choros/shared/billing";
 import { sql } from "drizzle-orm";
 
 /**

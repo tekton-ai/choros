@@ -1,10 +1,10 @@
-import { db } from "@superset/db/client";
+import { db } from "@choros/db/client";
 import {
 	type IntegrationConfig,
 	type IntegrationProvider,
 	integrationConnections,
 	users,
-} from "@superset/db/schema";
+} from "@choros/db/schema";
 import { and, eq, isNull, ne, type SQL, sql } from "drizzle-orm";
 
 const UNIQUE_VIOLATION = "23505";

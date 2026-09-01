@@ -1,4 +1,4 @@
-import { db, dbWs } from "@superset/db/client";
+import { db, dbWs } from "@choros/db/client";
 import {
 	attachments,
 	files,
@@ -9,15 +9,15 @@ import {
 	type SelectPage,
 	users,
 	workspacePages,
-} from "@superset/db/schema";
-import { mintPageSlug } from "@superset/shared/page-slug";
+} from "@choros/db/schema";
+import { mintPageSlug } from "@choros/shared/page-slug";
 import {
 	fileOriginalKey,
 	pageManifestKey,
 	pageThumbnailKey,
 	pageThumbnailUrl,
 	pageViewUrl,
-} from "@superset/shared/usercontent";
+} from "@choros/shared/usercontent";
 import { TRPCError, type TRPCRouterRecord } from "@trpc/server";
 import { and, desc, eq, inArray, or, type SQL, sql } from "drizzle-orm";
 import { z } from "zod";

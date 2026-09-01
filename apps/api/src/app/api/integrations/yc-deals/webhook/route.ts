@@ -1,14 +1,14 @@
 import { createHmac, randomInt, timingSafeEqual } from "node:crypto";
-import { db } from "@superset/db/client";
+import { db } from "@choros/db/client";
 import {
 	dealRedemptions,
 	members,
 	organizations,
 	subscriptions,
 	users,
-} from "@superset/db/schema";
-import { YcDealCodeEmail } from "@superset/email/emails/billing/yc-deal-code";
-import { ACTIVE_SUBSCRIPTION_STATUSES } from "@superset/shared/billing";
+} from "@choros/db/schema";
+import { YcDealCodeEmail } from "@choros/email/emails/billing/yc-deal-code";
+import { ACTIVE_SUBSCRIPTION_STATUSES } from "@choros/shared/billing";
 import { and, eq, inArray, sql } from "drizzle-orm";
 import { Resend } from "resend";
 import Stripe from "stripe";

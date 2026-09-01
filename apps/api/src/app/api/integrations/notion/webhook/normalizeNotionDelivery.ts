@@ -9,14 +9,14 @@ import {
 	type PartialDataSourceObjectResponse,
 	type PartialPageObjectResponse,
 } from "@notionhq/client";
-import type { NotionMatchableEvent } from "@superset/shared/automation-matching";
+import type { NotionMatchableEvent } from "@choros/shared/automation-matching";
 import {
 	isPermanentNotionError,
 	mentionedUserIds,
 	notionClient,
 	pageTitle,
 	plainText,
-} from "@superset/trpc/integrations/notion";
+} from "@choros/trpc/integrations/notion";
 import { z } from "zod";
 
 import type { NormalizedDelivery } from "@/lib/automations/ingestAutomationEvent";

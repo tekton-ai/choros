@@ -1,5 +1,5 @@
 /**
- * Build @superset/sdk into a publish-ready ./dist directory.
+ * Build @choros/sdk into a publish-ready ./dist directory.
  *
  *   bun run scripts/build.ts
  *

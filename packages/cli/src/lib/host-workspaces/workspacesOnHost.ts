@@ -1,4 +1,4 @@
-import { getHostId } from "@superset/shared/host-info";
+import { getHostId } from "@choros/shared/host-info";
 import type { ApiClient } from "../api-client";
 import { type HostServiceClient, resolveHostTarget } from "../host-target";
 

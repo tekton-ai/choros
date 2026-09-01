@@ -1,7 +1,7 @@
 import {
 	normalizeWorkspaceTag,
 	normalizeWorkspaceTags,
-} from "@superset/shared/workspace-tags";
+} from "@choros/shared/workspace-tags";
 import {
 	buildSidebarFolderKey,
 	mintFolderTag,

@@ -5,7 +5,7 @@ import {
 	ContextMenuSub,
 	ContextMenuSubContent,
 	ContextMenuSubTrigger,
-} from "@superset/ui/context-menu";
+} from "@choros/ui/context-menu";
 import {
 	LuColumns2,
 	LuEqual,

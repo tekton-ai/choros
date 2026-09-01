@@ -3,7 +3,7 @@ import {
 	type SelectWorkspace,
 	workspaces,
 	worktrees,
-} from "@superset/local-db";
+} from "@choros/local-db";
 import { eq } from "drizzle-orm";
 import { localDb } from "main/lib/local-db";
 

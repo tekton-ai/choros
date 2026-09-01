@@ -1,12 +1,12 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
-import { errorMessage } from "@superset/i18n/errors";
-import { Button } from "@superset/ui/button";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
-import { toast } from "@superset/ui/sonner";
-import { cn } from "@superset/ui/utils";
+import { i18n } from "@choros/i18n";
+import { errorMessage } from "@choros/i18n/errors";
+import { Button } from "@choros/ui/button";
+import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
+import { toast } from "@choros/ui/sonner";
+import { cn } from "@choros/ui/utils";
 import { createElement, useCallback, useRef, useState } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import type { IconType } from "react-icons";

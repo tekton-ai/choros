@@ -2,7 +2,7 @@ import { userError } from "../../i18n-error";
 import type { TRPCContext } from "../../trpc";
 
 // Split from the router so the unit tests can reach these without importing
-// `@superset/db/client`, which opens a `neon()` connection at module scope and
+// `@choros/db/client`, which opens a `neon()` connection at module scope and
 // throws in CI, where DATABASE_URL is unset. Same reason `page/access.ts` and
 // `page/publish-rules.ts` sit beside their router rather than inside it.
 

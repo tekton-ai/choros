@@ -1,8 +1,8 @@
 import {
 	getCellDimensions,
 	installTerminalWheelEventHandler,
-} from "@superset/shared/terminal-wheel-handler";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/shared/terminal-wheel-handler";
+import { toast } from "@choros/ui/sonner";
 import { ClipboardAddon } from "@xterm/addon-clipboard";
 import { FitAddon } from "@xterm/addon-fit";
 import { ImageAddon } from "@xterm/addon-image";

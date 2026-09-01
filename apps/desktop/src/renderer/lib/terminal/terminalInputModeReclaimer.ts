@@ -2,7 +2,7 @@ import {
 	createLeakedInputModeReclaimer,
 	SHELL_READY_MARKER_PAYLOAD,
 	SHELL_READY_OSC_ID,
-} from "@superset/shared/leaked-input-mode-reclaim";
+} from "@choros/shared/leaked-input-mode-reclaim";
 import type { IDisposable, Terminal } from "@xterm/xterm";
 
 /**

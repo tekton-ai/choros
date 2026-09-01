@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/react/macro";
-import type { RendererContext } from "@superset/panes";
+import type { RendererContext } from "@choros/panes";
 import {
 	type ReactNode,
 	useCallback,

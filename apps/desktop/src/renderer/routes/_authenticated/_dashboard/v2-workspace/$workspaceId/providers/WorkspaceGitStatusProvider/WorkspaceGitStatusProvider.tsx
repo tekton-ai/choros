@@ -1,4 +1,4 @@
-import type { WorkspaceStore } from "@superset/panes";
+import type { WorkspaceStore } from "@choros/panes";
 import { createContext, useContext, useSyncExternalStore } from "react";
 import { useGitStatus } from "renderer/hooks/host-service/useGitStatus";
 import type { StoreApi } from "zustand/vanilla";

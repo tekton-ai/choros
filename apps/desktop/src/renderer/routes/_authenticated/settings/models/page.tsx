@@ -1,4 +1,4 @@
-import { ChatServiceProvider } from "@superset/provider-auth/client";
+import { ChatServiceProvider } from "@choros/provider-auth/client";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { createChatServiceIpcClient } from "renderer/components/ProviderAuth/provider-auth-client";

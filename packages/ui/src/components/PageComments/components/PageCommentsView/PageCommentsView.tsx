@@ -5,7 +5,7 @@ import {
 	type FrameMessage,
 	HOST_CHANNEL,
 	type HostMessageBody,
-} from "@superset/shared/page-comments-runtime";
+} from "@choros/shared/page-comments-runtime";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useComments } from "../../providers/CommentProvider";
 import { CommentBubble, pinClassName } from "./components/CommentBubble";

@@ -1,4 +1,4 @@
-import { findOrgMembership } from "@superset/db/utils";
+import { findOrgMembership } from "@choros/db/utils";
 
 import { verifySignedState } from "@/lib/oauth-state";
 

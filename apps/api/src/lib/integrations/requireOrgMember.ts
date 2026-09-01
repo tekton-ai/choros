@@ -1,5 +1,5 @@
-import { auth } from "@superset/auth/server";
-import { findOrgMembership } from "@superset/db/utils";
+import { auth } from "@choros/auth/server";
+import { findOrgMembership } from "@choros/db/utils";
 
 import { createSignedState } from "@/lib/oauth-state";
 

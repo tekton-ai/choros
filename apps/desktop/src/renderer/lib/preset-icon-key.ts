@@ -1,5 +1,5 @@
-import type { HostAgentConfig } from "@superset/host-service/settings";
-import { HOST_AGENT_PRESETS } from "@superset/shared/host-agent-presets";
+import type { HostAgentConfig } from "@choros/host-service/settings";
+import { HOST_AGENT_PRESETS } from "@choros/shared/host-agent-presets";
 import { parseCommandString } from "./argv";
 
 export interface PresetIconSource {

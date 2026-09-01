@@ -1,9 +1,9 @@
-import type { SelectV2Workspace } from "@superset/db/schema";
-import { buildHostRoutingKey } from "@superset/shared/host-routing";
+import type { SelectV2Workspace } from "@choros/db/schema";
+import { buildHostRoutingKey } from "@choros/shared/host-routing";
 import type {
 	HostConnectionState,
 	WorkspaceSnapshotPayload,
-} from "@superset/workspace-client";
+} from "@choros/workspace-client";
 import { get as idbGet, set as idbSet } from "idb-keyval";
 
 /**

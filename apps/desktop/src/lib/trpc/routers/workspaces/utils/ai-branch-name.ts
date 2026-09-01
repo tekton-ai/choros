@@ -1,6 +1,6 @@
-import { generateTitleFromMessage } from "@superset/provider-auth/server";
-import { getSmallModel } from "@superset/provider-auth/server/shared";
-import { sanitizeBranchNameWithMaxLength } from "@superset/shared/workspace-launch";
+import { generateTitleFromMessage } from "@choros/provider-auth/server";
+import { getSmallModel } from "@choros/provider-auth/server/shared";
+import { sanitizeBranchNameWithMaxLength } from "@choros/shared/workspace-launch";
 
 const BRANCH_NAME_INSTRUCTIONS =
 	"Generate a concise git branch name (2-4 words, kebab-case, descriptive, 20 characters or less). Return ONLY the branch name, nothing else.";

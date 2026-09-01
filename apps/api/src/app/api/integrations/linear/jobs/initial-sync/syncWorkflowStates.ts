@@ -1,7 +1,7 @@
 import type { LinearClient } from "@linear/sdk";
-import { buildConflictUpdateColumns } from "@superset/db";
-import { db } from "@superset/db/client";
-import { taskStatuses } from "@superset/db/schema";
+import { buildConflictUpdateColumns } from "@choros/db";
+import { db } from "@choros/db/client";
+import { taskStatuses } from "@choros/db/schema";
 import { calculateProgressForStates } from "./utils";
 
 export async function syncWorkflowStates({

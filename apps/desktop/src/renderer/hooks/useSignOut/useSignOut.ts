@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import { toast } from "@superset/ui/sonner";
+import { toast } from "@choros/ui/sonner";
 import { authClient } from "renderer/lib/auth-client";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { posthog } from "renderer/lib/posthog";

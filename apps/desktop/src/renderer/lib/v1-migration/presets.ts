@@ -1,9 +1,9 @@
-import type { TerminalPreset } from "@superset/local-db";
+import type { TerminalPreset } from "@choros/local-db";
 import {
 	AGENT_LABELS,
 	AGENT_TYPES,
 	type AgentType,
-} from "@superset/shared/agent-command";
+} from "@choros/shared/agent-command";
 import type { V2TerminalPresetRow } from "renderer/routes/_authenticated/providers/CollectionsProvider/dashboardSidebarLocal";
 
 const BUILTIN_AGENT_IDS = new Set<string>(AGENT_TYPES);

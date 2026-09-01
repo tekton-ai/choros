@@ -7,12 +7,12 @@ import * as net from "node:net";
 import * as os from "node:os";
 import * as path from "node:path";
 import { after, before, test } from "node:test";
-import { Server } from "@superset/pty-daemon";
+import { Server } from "@choros/pty-daemon";
 import {
 	CURRENT_PROTOCOL_VERSION,
 	encodeFrame,
 	FrameDecoder,
-} from "@superset/pty-daemon/protocol";
+} from "@choros/pty-daemon/protocol";
 import { DaemonClient, DaemonUnavailableError } from "./DaemonClient.ts";
 
 const sockPath = path.join(

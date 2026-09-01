@@ -1,6 +1,6 @@
-import type { DetectedPort } from "@superset/port-scanner";
-import type { AgentIdentity } from "@superset/shared/agent-identity";
-import type { FsWatchEvent } from "@superset/workspace-fs/host";
+import type { DetectedPort } from "@choros/port-scanner";
+import type { AgentIdentity } from "@choros/shared/agent-identity";
+import type { FsWatchEvent } from "@choros/workspace-fs/host";
 import type { AgentLifecycleEventType } from "./map-event-type.ts";
 
 // ── Server → Client ────────────────────────────────────────────────

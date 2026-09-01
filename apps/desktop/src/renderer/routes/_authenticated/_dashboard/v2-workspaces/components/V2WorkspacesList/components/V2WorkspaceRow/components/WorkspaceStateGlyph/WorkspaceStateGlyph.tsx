@@ -1,5 +1,5 @@
-import { i18n } from "@superset/i18n";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+import { i18n } from "@choros/i18n";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { BoardColumnIcon } from "renderer/routes/_authenticated/_dashboard/v2-workspaces/components/BoardColumnIcon";
 import type { AccessibleV2Workspace } from "renderer/routes/_authenticated/_dashboard/v2-workspaces/hooks/useAccessibleV2Workspaces";
 import {

@@ -1,5 +1,5 @@
 import { basename } from "node:path";
-import { normalizeWorkspaceTag } from "@superset/shared/workspace-tags";
+import { normalizeWorkspaceTag } from "@choros/shared/workspace-tags";
 import { and, eq } from "drizzle-orm";
 import type { HostDb } from "../db";
 import { projects, workspaceTagSettings } from "../db/schema";

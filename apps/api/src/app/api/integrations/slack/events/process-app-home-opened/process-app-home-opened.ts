@@ -1,5 +1,5 @@
-import { db } from "@superset/db/client";
-import { integrationConnections } from "@superset/db/schema";
+import { db } from "@choros/db/client";
+import { integrationConnections } from "@choros/db/schema";
 import { and, desc, eq, isNull } from "drizzle-orm";
 import { findSlackUserLink } from "../../lib/find-slack-user-link";
 import { generateConnectUrl } from "../utils/generate-connect-url";

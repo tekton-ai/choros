@@ -1,6 +1,6 @@
 import type { MessageDescriptor } from "@lingui/core";
-import { i18n, initI18n } from "@superset/i18n";
-import { COMPANY } from "@superset/shared/constants";
+import { i18n, initI18n } from "@choros/i18n";
+import { COMPANY } from "@choros/shared/constants";
 import { MCP_CAPABILITIES } from "@/app/[lang]/mcp-install/components/McpCapabilities/constants";
 import {
 	COMPARISON_SECTIONS,

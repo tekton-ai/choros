@@ -1,5 +1,5 @@
-import type { WorkspaceState } from "@superset/panes";
-import type { AgentLifecyclePayload } from "@superset/workspace-client";
+import type { WorkspaceState } from "@choros/panes";
+import type { AgentLifecyclePayload } from "@choros/workspace-client";
 import type {
 	PaneViewerData,
 	TerminalPaneData,

@@ -1,13 +1,13 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
+import { Button } from "@choros/ui/button";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
-import { TableCell, TableRow } from "@superset/ui/table";
+} from "@choros/ui/select";
+import { TableCell, TableRow } from "@choros/ui/table";
 import { HiOutlineTrash } from "react-icons/hi2";
 
 export interface MemberRowData {

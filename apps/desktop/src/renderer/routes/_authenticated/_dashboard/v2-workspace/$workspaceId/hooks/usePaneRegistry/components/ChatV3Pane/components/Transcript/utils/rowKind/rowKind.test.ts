@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import type { Item } from "@superset/chat/protocol";
+import type { Item } from "@choros/chat/protocol";
 import { rowKindForItem } from "./rowKind";
 
 const base = { id: "i1", startedAtMs: 1 };

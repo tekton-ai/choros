@@ -5,14 +5,14 @@ import {
 	ContextMenuSeparator,
 	ContextMenuShortcut,
 	ContextMenuTrigger,
-} from "@superset/ui/context-menu";
+} from "@choros/ui/context-menu";
 import {
 	HoverCard,
 	HoverCardContent,
 	HoverCardTrigger,
-} from "@superset/ui/hover-card";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/hover-card";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { cn } from "@choros/ui/utils";
 import { type RefObject, useMemo, useState } from "react";
 import { LuCopy, LuGitBranch, LuX } from "react-icons/lu";
 import { useHotkeyDisplay } from "renderer/hotkeys";

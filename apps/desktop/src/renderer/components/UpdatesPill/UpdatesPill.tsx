@@ -1,6 +1,6 @@
 import { Trans } from "@lingui/react/macro";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
-import { cn } from "@superset/ui/utils";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { cn } from "@choros/ui/utils";
 import { useEffect, useState } from "react";
 import { LuCircleArrowUp, LuCircleCheck } from "react-icons/lu";
 import { useDesktopNotices } from "renderer/hooks/useDesktopNotices";

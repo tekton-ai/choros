@@ -1,12 +1,12 @@
 import { Trans } from "@lingui/react/macro";
-import type { DesktopNotice } from "@superset/shared/desktop-notices";
-import { Button } from "@superset/ui/button";
+import type { DesktopNotice } from "@choros/shared/desktop-notices";
+import { Button } from "@choros/ui/button";
 import {
 	Dialog,
 	DialogContent,
 	DialogFooter,
 	DialogTitle,
-} from "@superset/ui/dialog";
+} from "@choros/ui/dialog";
 import { MarkdownRenderer } from "renderer/components/MarkdownRenderer";
 import { useAutoUpdateStatus } from "renderer/components/UpdatesPill/useAutoUpdateStatus";
 import { electronTrpc } from "renderer/lib/electron-trpc";

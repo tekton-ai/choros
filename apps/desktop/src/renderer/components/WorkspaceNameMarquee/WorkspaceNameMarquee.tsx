@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
 
 const PIXELS_PER_SECOND = 32;

@@ -1,5 +1,5 @@
 import * as p from "@clack/prompts";
-import { CLIError, isAgentMode } from "@superset/cli-framework";
+import { CLIError, isAgentMode } from "@choros/cli-framework";
 import type { ApiClient } from "./api-client";
 
 export interface OrgChoice {

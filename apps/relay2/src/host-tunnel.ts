@@ -3,7 +3,7 @@ import {
 	DIAL_TIMEOUT_MS,
 	RELAY_CLOSE,
 	type StreamDial,
-} from "@superset/shared/tunnel-v2-protocol";
+} from "@choros/shared/tunnel-v2-protocol";
 import { type Connection, type ConnectionContext, Server } from "partyserver";
 import {
 	type HttpExchangeRequest,

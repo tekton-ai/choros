@@ -1,4 +1,4 @@
-import { PortManager } from "@superset/port-scanner";
+import { PortManager } from "@choros/port-scanner";
 import { treeKillWithEscalation } from "../tree-kill";
 
 export const portManager = new PortManager({

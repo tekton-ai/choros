@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
-import { cn } from "@superset/ui/utils";
+import { Button } from "@choros/ui/button";
+import { cn } from "@choros/ui/utils";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { LuLoaderCircle } from "react-icons/lu";
 import { useTerminalAgentBindings } from "renderer/hooks/host-service/useTerminalAgentBindings";

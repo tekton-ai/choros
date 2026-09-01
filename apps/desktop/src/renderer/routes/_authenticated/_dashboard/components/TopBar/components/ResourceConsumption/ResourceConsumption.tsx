@@ -1,18 +1,18 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
-import { Button } from "@superset/ui/button";
+import { i18n } from "@choros/i18n";
+import { Button } from "@choros/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuRadioGroup,
 	DropdownMenuRadioItem,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { cn } from "@superset/ui/lib/utils";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+} from "@choros/ui/dropdown-menu";
+import { cn } from "@choros/ui/lib/utils";
+import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { useState } from "react";
 import {
 	HiOutlineArrowPath,

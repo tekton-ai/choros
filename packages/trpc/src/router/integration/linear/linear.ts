@@ -1,11 +1,11 @@
-import { db, dbWs } from "@superset/db/client";
+import { db, dbWs } from "@choros/db/client";
 import {
 	integrationConnections,
 	type LinearConfig,
 	taskStatuses,
 	tasks,
-} from "@superset/db/schema";
-import { seedDefaultStatuses } from "@superset/db/seed-default-statuses";
+} from "@choros/db/schema";
+import { seedDefaultStatuses } from "@choros/db/seed-default-statuses";
 import type { TRPCRouterRecord } from "@trpc/server";
 import { and, eq } from "drizzle-orm";
 import { z } from "zod";

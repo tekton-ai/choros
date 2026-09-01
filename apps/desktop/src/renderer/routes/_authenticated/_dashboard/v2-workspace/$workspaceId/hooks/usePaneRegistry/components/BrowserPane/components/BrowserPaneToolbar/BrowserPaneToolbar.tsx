@@ -1,7 +1,7 @@
 import { Trans } from "@lingui/react/macro";
-import type { RendererContext } from "@superset/panes";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
-import { cn } from "@superset/ui/utils";
+import type { RendererContext } from "@choros/panes";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { cn } from "@choros/ui/utils";
 import { SquareDashedMousePointer } from "lucide-react";
 import { useCallback } from "react";
 import { TbDeviceDesktop } from "react-icons/tb";

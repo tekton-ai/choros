@@ -4,7 +4,7 @@ import { resolve } from "node:path";
 import {
 	getDefaultSeedPresets,
 	getPresetById,
-} from "@superset/shared/host-agent-presets";
+} from "@choros/shared/host-agent-presets";
 import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/bun-sqlite";
 import { migrate } from "drizzle-orm/bun-sqlite/migrator";

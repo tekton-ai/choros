@@ -1,16 +1,16 @@
 import { Plural, Trans, useLingui } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
-import { errorMessage } from "@superset/i18n/errors";
-import { Avatar, AvatarFallback, AvatarImage } from "@superset/ui/avatar";
-import { Button } from "@superset/ui/button";
+import { i18n } from "@choros/i18n";
+import { errorMessage } from "@choros/i18n/errors";
+import { Avatar, AvatarFallback, AvatarImage } from "@choros/ui/avatar";
+import { Button } from "@choros/ui/button";
 import {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
-} from "@superset/ui/collapsible";
-import { toast } from "@superset/ui/sonner";
-import { cn } from "@superset/ui/utils";
-import { workspaceTrpc } from "@superset/workspace-client";
+} from "@choros/ui/collapsible";
+import { toast } from "@choros/ui/sonner";
+import { cn } from "@choros/ui/utils";
+import { workspaceTrpc } from "@choros/workspace-client";
 import { useEffect, useState } from "react";
 import {
 	LuCheck,

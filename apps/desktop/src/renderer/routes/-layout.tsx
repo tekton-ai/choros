@@ -1,5 +1,5 @@
-import { I18nProvider } from "@superset/i18n/react";
-import { Alerter } from "@superset/ui/atoms/Alert";
+import { I18nProvider } from "@choros/i18n/react";
+import { Alerter } from "@choros/ui/atoms/Alert";
 import type { ReactNode } from "react";
 import { DesktopNoticesGate } from "renderer/components/DesktopNotices";
 import { PostHogSurfaceTagger } from "renderer/components/PostHogSurfaceTagger";

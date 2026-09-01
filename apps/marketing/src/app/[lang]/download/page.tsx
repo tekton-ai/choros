@@ -1,4 +1,4 @@
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import type { Metadata } from "next";
 import { initServerI18n } from "@/app/i18n-server";
 import { DownloadInterstitial } from "./components/DownloadInterstitial";

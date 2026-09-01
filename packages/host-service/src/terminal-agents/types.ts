@@ -1,7 +1,7 @@
 import type {
 	AgentDefinitionId,
 	AgentIdentityId,
-} from "@superset/shared/agent-catalog";
+} from "@choros/shared/agent-catalog";
 
 export type TerminalAgentId = AgentIdentityId;
 

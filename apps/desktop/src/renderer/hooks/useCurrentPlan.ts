@@ -1,4 +1,4 @@
-import type { PlanTier } from "@superset/shared/billing";
+import type { PlanTier } from "@choros/shared/billing";
 import { authClient } from "renderer/lib/auth-client";
 import { cloudTrpc } from "renderer/lib/cloud-trpc";
 

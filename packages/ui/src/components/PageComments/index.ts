@@ -1,7 +1,7 @@
 export type {
 	CommentAnchor,
 	FrameRect,
-} from "@superset/shared/page-comments-runtime";
+} from "@choros/shared/page-comments-runtime";
 export {
 	CommentModeButton,
 	CommentModeToggle,

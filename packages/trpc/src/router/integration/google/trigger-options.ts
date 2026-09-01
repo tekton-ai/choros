@@ -1,5 +1,5 @@
-import { db } from "@superset/db/client";
-import { userIdentities, users } from "@superset/db/schema";
+import { db } from "@choros/db/client";
+import { userIdentities, users } from "@choros/db/schema";
 import { and, eq } from "drizzle-orm";
 import type { TriggerOptionSource } from "../trigger-options";
 import { listCalendars as listGoogleCalendars } from "./calendar";

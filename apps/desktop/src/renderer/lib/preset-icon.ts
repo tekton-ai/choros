@@ -1,4 +1,4 @@
-import type { HostAgentConfig } from "@superset/host-service/settings";
+import type { HostAgentConfig } from "@choros/host-service/settings";
 import { getPresetIcon } from "renderer/assets/app-icons/preset-icons";
 import {
 	type PresetIconSource,

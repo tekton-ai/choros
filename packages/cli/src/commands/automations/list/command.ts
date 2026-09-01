@@ -1,4 +1,4 @@
-import { string, table } from "@superset/cli-framework";
+import { string, table } from "@choros/cli-framework";
 import { command } from "../../../lib/command";
 import { formatAutomationDate } from "../format";
 

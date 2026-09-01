@@ -1,10 +1,10 @@
-import type { SelectIntegrationConnection } from "@superset/db/schema";
-import type { GoogleCalendarMatchableEvent } from "@superset/shared/automation-matching";
-import type { GoogleCalendarTriggerEvent } from "@superset/shared/automation-triggers";
+import type { SelectIntegrationConnection } from "@choros/db/schema";
+import type { GoogleCalendarMatchableEvent } from "@choros/shared/automation-matching";
+import type { GoogleCalendarTriggerEvent } from "@choros/shared/automation-triggers";
 import {
 	eventAttendeeEmails,
 	type GoogleCalendarEvent,
-} from "@superset/trpc/integrations/google";
+} from "@choros/trpc/integrations/google";
 
 /** The domain of the connected account: what "external" is measured against. */
 export function accountDomain(

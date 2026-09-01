@@ -1,6 +1,6 @@
 import type { Octokit } from "@octokit/rest";
-import type { ChatService } from "@superset/provider-auth/server";
-import type { AppRouter } from "@superset/trpc";
+import type { ChatService } from "@choros/provider-auth/server";
+import type { AppRouter } from "@choros/trpc";
 import type { TRPCClient } from "@trpc/client";
 import type { HostDb } from "./db";
 import type { EventBus } from "./events";

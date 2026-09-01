@@ -1,6 +1,6 @@
 import { Trans } from "@lingui/react/macro";
-import type { ResolvedAgentConfig } from "@superset/shared/agent-settings";
-import { Button } from "@superset/ui/button";
+import type { ResolvedAgentConfig } from "@choros/shared/agent-settings";
+import { Button } from "@choros/ui/button";
 import { MarkdownRenderer } from "renderer/components/MarkdownRenderer";
 
 interface AgentCardPreviewProps {

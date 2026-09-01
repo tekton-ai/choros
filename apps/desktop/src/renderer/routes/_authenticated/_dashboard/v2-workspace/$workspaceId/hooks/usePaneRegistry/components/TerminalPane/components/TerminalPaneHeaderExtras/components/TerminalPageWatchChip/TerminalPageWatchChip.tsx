@@ -1,5 +1,5 @@
 import { Plural, useLingui } from "@lingui/react/macro";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { Eye } from "lucide-react";
 import { usePageWatchers } from "renderer/hooks/host-service/usePageWatchers";
 

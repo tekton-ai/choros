@@ -1,7 +1,7 @@
 import { createHash, timingSafeEqual } from "node:crypto";
-import { db } from "@superset/db/client";
-import { integrationConnections } from "@superset/db/schema";
-import { googleConfigOf } from "@superset/trpc/integrations/google";
+import { db } from "@choros/db/client";
+import { integrationConnections } from "@choros/db/schema";
+import { googleConfigOf } from "@choros/trpc/integrations/google";
 import { and, eq, isNull, sql } from "drizzle-orm";
 import { syncCalendar } from "../../lib/syncCalendar";
 

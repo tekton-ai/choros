@@ -1,8 +1,8 @@
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import {
 	assignAttachmentFileName,
 	WORKSPACE_ATTACHMENTS_DIR,
-} from "@superset/shared/workspace-attachments";
+} from "@choros/shared/workspace-attachments";
 import { useMutation } from "@tanstack/react-query";
 import { File } from "expo-file-system";
 import { Alert } from "react-native";

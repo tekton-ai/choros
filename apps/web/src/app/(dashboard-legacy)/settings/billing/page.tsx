@@ -1,8 +1,8 @@
 import {
 	DOWNLOAD_URL_MAC_ARM64,
 	PROTOCOL_SCHEMES,
-} from "@superset/shared/constants";
-import { Button } from "@superset/ui/button";
+} from "@choros/shared/constants";
+import { Button } from "@choros/ui/button";
 import { Download, ExternalLink } from "lucide-react";
 import { HiCheckCircle } from "react-icons/hi2";
 import { i18n } from "@/lib/i18n-server";

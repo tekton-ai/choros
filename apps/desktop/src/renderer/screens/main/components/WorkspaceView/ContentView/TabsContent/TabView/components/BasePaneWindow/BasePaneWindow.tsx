@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { useContext, useMemo, useRef } from "react";
 import type { MosaicBranch } from "react-mosaic-component";
 import {

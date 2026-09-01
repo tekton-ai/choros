@@ -1,8 +1,8 @@
 "use client";
 
-import type { SupportedLocale } from "@superset/i18n";
-import { I18nProvider } from "@superset/i18n/react";
-import { THEME_STORAGE_KEY } from "@superset/shared/constants";
+import type { SupportedLocale } from "@choros/i18n";
+import { I18nProvider } from "@choros/i18n/react";
+import { THEME_STORAGE_KEY } from "@choros/shared/constants";
 import { LazyMotion } from "framer-motion";
 import { ThemeProvider } from "next-themes";
 

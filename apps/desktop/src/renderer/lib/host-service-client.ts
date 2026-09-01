@@ -1,4 +1,4 @@
-import type { AppRouter } from "@superset/host-service";
+import type { AppRouter } from "@choros/host-service";
 import {
 	createTRPCClient,
 	httpBatchStreamLink,
@@ -41,7 +41,7 @@ export function getHostServiceClientByUrl(hostUrl: string): HostServiceClient {
 				// ports.getAll, etc.) can produce a GET URL long enough to blow past
 				// the server's HTTP header-size limit, failing even the CORS
 				// preflight before it reaches the route. See the identical fix on
-				// WorkspaceClientProvider in @superset/workspace-client.
+				// WorkspaceClientProvider in @choros/workspace-client.
 				methodOverride: "POST",
 			}),
 		],

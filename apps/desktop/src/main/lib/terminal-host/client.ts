@@ -29,7 +29,7 @@ import { join } from "node:path";
 import {
 	isPositiveInteger,
 	signalProcessTreeAndGroups,
-} from "@superset/pty-daemon/process-tree";
+} from "@choros/pty-daemon/process-tree";
 import { app } from "electron";
 import { SUPERSET_DIR_NAME } from "shared/constants";
 import { throwIfAborted } from "../terminal/abort";

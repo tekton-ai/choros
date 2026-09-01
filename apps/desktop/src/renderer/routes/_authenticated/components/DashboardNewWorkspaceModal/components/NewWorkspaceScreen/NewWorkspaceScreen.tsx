@@ -4,7 +4,7 @@ import {
 	getAgentEfforts,
 	getAgentModelSupport,
 	getAgentModeSupport,
-} from "@superset/shared/agent-models";
+} from "@choros/shared/agent-models";
 import {
 	PromptInput,
 	PromptInputButton,
@@ -12,12 +12,12 @@ import {
 	PromptInputSubmit,
 	PromptInputTools,
 	useProviderAttachments,
-} from "@superset/ui/ai-elements/prompt-input";
-import { Button } from "@superset/ui/button";
-import { isEnterSubmit } from "@superset/ui/lib/keyboard";
-import { toast } from "@superset/ui/sonner";
-import { Spinner } from "@superset/ui/spinner";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+} from "@choros/ui/ai-elements/prompt-input";
+import { Button } from "@choros/ui/button";
+import { isEnterSubmit } from "@choros/ui/lib/keyboard";
+import { toast } from "@choros/ui/sonner";
+import { Spinner } from "@choros/ui/spinner";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { useNavigate } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import {

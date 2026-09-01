@@ -2,7 +2,7 @@ import { useLingui } from "@lingui/react/macro";
 import {
 	type AttachmentsSheetAction,
 	presentAttachmentsSheet,
-} from "@superset/attachments-sheet";
+} from "@choros/attachments-sheet";
 import * as ImagePicker from "expo-image-picker";
 import { useCallback } from "react";
 import { Alert } from "react-native";

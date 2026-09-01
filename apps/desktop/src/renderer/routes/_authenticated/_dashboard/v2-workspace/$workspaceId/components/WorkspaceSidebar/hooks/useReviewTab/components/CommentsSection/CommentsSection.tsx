@@ -1,22 +1,22 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
-import { Avatar, AvatarFallback, AvatarImage } from "@superset/ui/avatar";
+import { i18n } from "@choros/i18n";
+import { Avatar, AvatarFallback, AvatarImage } from "@choros/ui/avatar";
 import {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
-} from "@superset/ui/collapsible";
+} from "@choros/ui/collapsible";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { Skeleton } from "@superset/ui/skeleton";
-import { toast } from "@superset/ui/sonner";
-import { cn } from "@superset/ui/utils";
-import { workspaceTrpc } from "@superset/workspace-client";
+} from "@choros/ui/dropdown-menu";
+import { Skeleton } from "@choros/ui/skeleton";
+import { toast } from "@choros/ui/sonner";
+import { cn } from "@choros/ui/utils";
+import { workspaceTrpc } from "@choros/workspace-client";
 import {
 	CheckCheck,
 	ChevronDown,

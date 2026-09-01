@@ -1,20 +1,20 @@
 import { spawn } from "node:child_process";
 import { tmpdir } from "node:os";
 import { Agent } from "@mastra/core/agent";
-import { getSmallModel } from "@superset/provider-auth/server/shared";
+import { getSmallModel } from "@choros/provider-auth/server/shared";
 import {
 	getBuiltinAgentDefinition,
 	isBuiltinAgentId,
 	isTerminalAgentDefinition,
-} from "@superset/shared/agent-catalog";
+} from "@choros/shared/agent-catalog";
 import {
 	buildAgentModelArgs,
 	buildAgentModelEnv,
-} from "@superset/shared/agent-models";
+} from "@choros/shared/agent-models";
 import {
 	envOverlayPrefix,
 	quoteSingleShell,
-} from "@superset/shared/agent-prompt-launch";
+} from "@choros/shared/agent-prompt-launch";
 import { z } from "zod";
 import type { HostDb } from "../../../../db";
 import type { HostServiceContext } from "../../../../types";

@@ -1,11 +1,11 @@
 "use client";
 
 import { Trans } from "@lingui/react/macro";
-import { FEATURE_FLAGS } from "@superset/shared/constants";
+import { FEATURE_FLAGS } from "@choros/shared/constants";
 import {
 	type IntegrationProvider,
 	offeredIntegrations,
-} from "@superset/shared/integrations";
+} from "@choros/shared/integrations";
 import { useFeatureFlagPayload } from "posthog-js/react";
 import type { ReactNode } from "react";
 import { BsMicrosoftTeams } from "react-icons/bs";

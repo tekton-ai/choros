@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { errorMessage } from "@superset/i18n/errors";
-import { Button } from "@superset/ui/button";
+import { errorMessage } from "@choros/i18n/errors";
+import { Button } from "@choros/ui/button";
 import {
 	Dialog,
 	DialogContent,
@@ -9,16 +9,16 @@ import {
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
-} from "@superset/ui/dialog";
+} from "@choros/ui/dialog";
 import {
 	Form,
 	FormControl,
 	FormField,
 	FormLabel,
 	FormMessage,
-} from "@superset/ui/form";
-import { Input } from "@superset/ui/input";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/form";
+import { Input } from "@choros/ui/input";
+import { toast } from "@choros/ui/sonner";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { apiTrpcClient } from "renderer/lib/api-trpc-client";

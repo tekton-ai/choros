@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import type { PaneActionConfig } from "@superset/panes";
+import type { PaneActionConfig } from "@choros/panes";
 import { useMemo } from "react";
 import { HiMiniXMark } from "react-icons/hi2";
 import { TbLayoutColumns, TbLayoutRows } from "react-icons/tb";

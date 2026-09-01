@@ -1,7 +1,7 @@
 import { Trans } from "@lingui/react/macro";
-import type { AutomationPromptSource } from "@superset/db/schema";
-import { Badge } from "@superset/ui/badge";
-import { cn } from "@superset/ui/utils";
+import type { AutomationPromptSource } from "@choros/db/schema";
+import { Badge } from "@choros/ui/badge";
+import { cn } from "@choros/ui/utils";
 import { format, isSameYear } from "date-fns";
 
 interface VersionRowProps {

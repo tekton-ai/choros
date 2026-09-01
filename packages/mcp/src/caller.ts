@@ -1,6 +1,6 @@
-import { auth, type Session } from "@superset/auth/server";
-import { ORGANIZATION_HEADER } from "@superset/shared/constants";
-import { createCaller as makeAppCaller } from "@superset/trpc";
+import { auth, type Session } from "@choros/auth/server";
+import { ORGANIZATION_HEADER } from "@choros/shared/constants";
+import { createCaller as makeAppCaller } from "@choros/trpc";
 import type { McpContext } from "./auth";
 
 export type McpCaller = ReturnType<typeof makeAppCaller>;

@@ -4,7 +4,7 @@ import type {
 	ToolCall,
 	Turn,
 	UserContent,
-} from "@superset/chat/protocol";
+} from "@choros/chat/protocol";
 import { EventQueue } from "../eventQueue";
 import type {
 	AdapterEvent,

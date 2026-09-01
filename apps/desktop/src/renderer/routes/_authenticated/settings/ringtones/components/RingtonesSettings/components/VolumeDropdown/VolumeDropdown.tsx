@@ -1,14 +1,14 @@
 import { msg } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
-import { Label } from "@superset/ui/label";
+import { i18n } from "@choros/i18n";
+import { Label } from "@choros/ui/label";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
+} from "@choros/ui/select";
 import { useCallback } from "react";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 

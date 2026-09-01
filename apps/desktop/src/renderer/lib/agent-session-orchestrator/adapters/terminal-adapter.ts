@@ -1,8 +1,8 @@
-import type { AgentLaunchRequest } from "@superset/shared/agent-launch";
+import type { AgentLaunchRequest } from "@choros/shared/agent-launch";
 import {
 	assignAttachmentFileName,
 	WORKSPACE_ATTACHMENTS_DIR,
-} from "@superset/shared/workspace-attachments";
+} from "@choros/shared/workspace-attachments";
 import { launchCommandInPane } from "renderer/lib/terminal/launch-command";
 import type { AgentSessionLaunchContext, LaunchResultPayload } from "../types";
 

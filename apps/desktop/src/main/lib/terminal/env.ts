@@ -1,11 +1,11 @@
 import { exec } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
-import { getShellEnv } from "@superset/agent-setup/shell-wrappers";
+import { getShellEnv } from "@choros/agent-setup/shell-wrappers";
 import {
 	TERMINAL_TERM_PROGRAM,
 	TERMINAL_TERM_PROGRAM_VERSION,
-} from "@superset/shared/constants";
+} from "@choros/shared/constants";
 import defaultShell from "default-shell";
 import { env } from "shared/env.shared";
 

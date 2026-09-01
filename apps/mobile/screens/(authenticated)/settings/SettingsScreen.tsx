@@ -1,10 +1,10 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useLingui } from "@lingui/react/macro";
-import { formatDate } from "@superset/i18n/format";
+import { formatDate } from "@choros/i18n/format";
 import {
 	ACCOUNT_DELETION_GRACE_DAYS,
 	COMPANY,
-} from "@superset/shared/constants";
+} from "@choros/shared/constants";
 import * as Application from "expo-application";
 import { useRouter } from "expo-router";
 import { Alert, ScrollView, View } from "react-native";

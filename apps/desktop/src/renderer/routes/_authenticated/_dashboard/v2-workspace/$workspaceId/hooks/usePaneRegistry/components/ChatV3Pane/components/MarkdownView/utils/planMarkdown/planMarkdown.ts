@@ -1,4 +1,4 @@
-import { fenceState, splitForStreaming } from "@superset/chat/core";
+import { fenceState, splitForStreaming } from "@choros/chat/core";
 
 export type MarkdownBlockPlan = {
 	key: string;

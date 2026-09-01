@@ -1,5 +1,5 @@
 {
-	"name": "@superset/repo",
+	"name": "@choros/repo",
 	"version": "0.0.0",
 	"repository": {
 		"type": "git"
@@ -22,16 +22,16 @@
 	"private": true,
 	"scripts": {
 		"predev": "bun scripts/check-dev-ports.ts",
-		"dev": "turbo run dev --filter=@superset/api --filter=@superset/web --filter=@superset/desktop --filter=//",
+		"dev": "turbo run dev --filter=@choros/api --filter=@choros/web --filter=@choros/desktop --filter=//",
 		"dev:all": "turbo dev --concurrency=15",
 		"predev:desktop": "bun scripts/check-dev-ports.ts",
-		"dev:desktop": "turbo run dev --filter=@superset/api --filter=@superset/desktop --filter=//",
-		"dev:docs": "turbo dev --filter=@superset/docs",
-		"dev:marketing": "turbo dev --filter=@superset/marketing --filter=@superset/docs",
-		"dev:relay": "turbo dev --filter=@superset/relay",
+		"dev:desktop": "turbo run dev --filter=@choros/api --filter=@choros/desktop --filter=//",
+		"dev:docs": "turbo dev --filter=@choros/docs",
+		"dev:marketing": "turbo dev --filter=@choros/marketing --filter=@choros/docs",
+		"dev:relay": "turbo dev --filter=@choros/relay",
 		"cli:dev": "bun scripts/dev-cli.ts",
 		"dev:skills": "bun scripts/sync-dev-skills.ts",
-		"build": "turbo build --filter=@superset/desktop",
+		"build": "turbo build --filter=@choros/desktop",
 		"test": "turbo test --concurrency=2",
 		"lint": "./scripts/lint.sh",
 		"lint:fix": "bunx @biomejs/biome@2.4.2 migrate --write && bunx @biomejs/biome@2.4.2 check --write --unsafe .",

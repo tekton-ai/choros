@@ -1,5 +1,5 @@
 import { spawn } from "node:child_process";
-import { boolean, CLIError, positional, string } from "@superset/cli-framework";
+import { boolean, CLIError, positional, string } from "@choros/cli-framework";
 import { command } from "../../../lib/command";
 import { findWorkspaceOnHost } from "../../../lib/host-workspaces";
 

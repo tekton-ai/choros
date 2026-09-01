@@ -1,11 +1,11 @@
-import type { SessionSnapshot } from "@superset/chat/core";
-import { displayText } from "@superset/chat/core";
-import type { Reasoning as ReasoningItem } from "@superset/chat/protocol";
+import type { SessionSnapshot } from "@choros/chat/core";
+import { displayText } from "@choros/chat/core";
+import type { Reasoning as ReasoningItem } from "@choros/chat/protocol";
 import {
 	Reasoning,
 	ReasoningContent,
 	ReasoningTrigger,
-} from "@superset/ui/ai-elements/reasoning";
+} from "@choros/ui/ai-elements/reasoning";
 
 export function ReasoningRow({
 	item,

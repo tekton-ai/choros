@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Avatar } from "@superset/ui/atoms/Avatar";
-import { Button } from "@superset/ui/button";
+import { Avatar } from "@choros/ui/atoms/Avatar";
+import { Button } from "@choros/ui/button";
 import {
 	Command,
 	CommandEmpty,
@@ -9,8 +9,8 @@ import {
 	CommandItem,
 	CommandList,
 	CommandSeparator,
-} from "@superset/ui/command";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
+} from "@choros/ui/command";
+import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { HiCheck, HiChevronDown, HiOutlineUserCircle } from "react-icons/hi2";
 import { cloudTrpc } from "renderer/lib/cloud-trpc";

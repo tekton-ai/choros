@@ -2,9 +2,9 @@ import { Trans } from "@lingui/react/macro";
 import {
 	formatDate as formatLocaleDate,
 	formatPrice,
-} from "@superset/i18n/format";
-import { Badge } from "@superset/ui/badge";
-import { cn } from "@superset/ui/utils";
+} from "@choros/i18n/format";
+import { Badge } from "@choros/ui/badge";
+import { cn } from "@choros/ui/utils";
 import { HiArrowTopRightOnSquare } from "react-icons/hi2";
 import { cloudTrpc } from "renderer/lib/cloud-trpc";
 import { electronTrpc } from "renderer/lib/electron-trpc";

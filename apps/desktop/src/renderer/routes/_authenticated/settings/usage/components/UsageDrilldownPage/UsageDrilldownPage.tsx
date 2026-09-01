@@ -1,11 +1,11 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { ChartConfig } from "@superset/ui/chart";
+import type { ChartConfig } from "@choros/ui/chart";
 import {
 	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
-} from "@superset/ui/chart";
-import { Tabs, TabsList, TabsTrigger } from "@superset/ui/tabs";
+} from "@choros/ui/chart";
+import { Tabs, TabsList, TabsTrigger } from "@choros/ui/tabs";
 import { Link } from "@tanstack/react-router";
 import { useMemo, useRef, useState } from "react";
 import { LuArrowLeft, LuCheck, LuCopy } from "react-icons/lu";

@@ -1,12 +1,12 @@
-import { errorMessage } from "@superset/i18n/errors";
+import { errorMessage } from "@choros/i18n/errors";
 import {
 	Dialog,
 	DialogContent,
 	DialogDescription,
 	DialogHeader,
 	DialogTitle,
-} from "@superset/ui/dialog";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/dialog";
+import { toast } from "@choros/ui/sonner";
 import { useState } from "react";
 import { useIsV2CloudEnabled } from "renderer/hooks/useIsV2CloudEnabled";
 import { electronTrpc } from "renderer/lib/electron-trpc";

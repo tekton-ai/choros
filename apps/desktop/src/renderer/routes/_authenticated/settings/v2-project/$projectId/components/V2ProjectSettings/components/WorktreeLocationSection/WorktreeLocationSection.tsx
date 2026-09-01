@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
-import { errorMessage } from "@superset/i18n/errors";
-import { toast } from "@superset/ui/sonner";
+import { errorMessage } from "@choros/i18n/errors";
+import { toast } from "@choros/ui/sonner";
 import { useMutation } from "@tanstack/react-query";
 import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";
 import {

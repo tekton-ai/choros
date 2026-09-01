@@ -1,8 +1,8 @@
-import { errorMessage } from "@superset/i18n/errors";
-import { alert } from "@superset/ui/atoms/Alert";
-import { toast } from "@superset/ui/sonner";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
-import { cn } from "@superset/ui/utils";
+import { errorMessage } from "@choros/i18n/errors";
+import { alert } from "@choros/ui/atoms/Alert";
+import { toast } from "@choros/ui/sonner";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { cn } from "@choros/ui/utils";
 import { useMutation } from "@tanstack/react-query";
 import { useParams } from "@tanstack/react-router";
 import { useState } from "react";

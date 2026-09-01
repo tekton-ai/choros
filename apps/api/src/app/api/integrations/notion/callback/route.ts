@@ -1,4 +1,4 @@
-import { NOTION_VERSION } from "@superset/trpc/integrations/notion";
+import { NOTION_VERSION } from "@choros/trpc/integrations/notion";
 import { z } from "zod";
 
 import { env } from "@/env";

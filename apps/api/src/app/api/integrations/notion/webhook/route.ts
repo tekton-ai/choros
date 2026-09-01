@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
-import { db } from "@superset/db/client";
-import type { SelectIntegrationConnection } from "@superset/db/schema";
-import { integrationConnections, webhookEvents } from "@superset/db/schema";
+import { db } from "@choros/db/client";
+import type { SelectIntegrationConnection } from "@choros/db/schema";
+import { integrationConnections, webhookEvents } from "@choros/db/schema";
 import { and, asc, eq, isNull } from "drizzle-orm";
 
 import { env } from "@/env";

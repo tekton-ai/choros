@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { useEffect, useRef, useState } from "react";
 import { LuCheck, LuX } from "react-icons/lu";
 import type { DirectoryEntry } from "shared/file-tree-types";

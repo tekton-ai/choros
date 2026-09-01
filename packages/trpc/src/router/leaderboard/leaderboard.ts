@@ -1,11 +1,11 @@
-import { db, dbWs } from "@superset/db/client";
+import { db, dbWs } from "@choros/db/client";
 import {
 	leaderboardDaily,
 	leaderboardDailyFactory,
 	leaderboardParticipants,
 	userIdentities,
 	users,
-} from "@superset/db/schema";
+} from "@choros/db/schema";
 import { TRPCError } from "@trpc/server";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";

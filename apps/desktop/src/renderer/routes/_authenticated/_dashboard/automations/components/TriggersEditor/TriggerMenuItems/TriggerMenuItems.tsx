@@ -1,12 +1,12 @@
-import type { TriggerConfigInput } from "@superset/shared/automation-triggers";
-import { Badge } from "@superset/ui/badge";
+import type { TriggerConfigInput } from "@choros/shared/automation-triggers";
+import { Badge } from "@choros/ui/badge";
 import {
 	DropdownMenuItem,
 	DropdownMenuPortal,
 	DropdownMenuSub,
 	DropdownMenuSubContent,
 	DropdownMenuSubTrigger,
-} from "@superset/ui/dropdown-menu";
+} from "@choros/ui/dropdown-menu";
 import type { TriggerMenuEntry, TriggerProvider } from "../../providers";
 import { providerLabelText } from "../triggerMenu";
 

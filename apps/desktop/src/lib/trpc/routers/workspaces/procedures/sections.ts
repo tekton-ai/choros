@@ -1,4 +1,4 @@
-import { workspaceSections, workspaces } from "@superset/local-db";
+import { workspaceSections, workspaces } from "@choros/local-db";
 import { TRPCError } from "@trpc/server";
 import { and, eq, inArray, isNull } from "drizzle-orm";
 import { localDb } from "main/lib/local-db";

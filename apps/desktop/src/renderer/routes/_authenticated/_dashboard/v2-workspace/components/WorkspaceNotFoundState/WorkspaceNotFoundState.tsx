@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
+import { Button } from "@choros/ui/button";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, FolderX } from "lucide-react";
 

@@ -3,7 +3,7 @@ export const DEFAULT_BRANCH_NAME_MAX_LENGTH = 100;
 
 /**
  * Branch prefix modes for workspace branch naming. Single source of truth;
- * `@superset/local-db` re-exports these so callers that can't depend on
+ * `@choros/local-db` re-exports these so callers that can't depend on
  * local-db (host-service) share the same definition.
  *
  * - `none`: no prefix

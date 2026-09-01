@@ -1,29 +1,29 @@
 "use client";
 
 import { Trans } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
-import { Alerter, alert } from "@superset/ui/atoms/Alert";
-import { Avatar } from "@superset/ui/atoms/Avatar";
-import { Button } from "@superset/ui/button";
-import { MeshGradient } from "@superset/ui/mesh-gradient";
-import { SidebarCard } from "@superset/ui/sidebar-card";
-import { toast } from "@superset/ui/sonner";
-import { ThemePreviewCard } from "@superset/ui/theme-preview-card";
+import { i18n } from "@choros/i18n";
+import { Alerter, alert } from "@choros/ui/atoms/Alert";
+import { Avatar } from "@choros/ui/atoms/Avatar";
+import { Button } from "@choros/ui/button";
+import { MeshGradient } from "@choros/ui/mesh-gradient";
+import { SidebarCard } from "@choros/ui/sidebar-card";
+import { toast } from "@choros/ui/sonner";
+import { ThemePreviewCard } from "@choros/ui/theme-preview-card";
 
 import { ComponentCard } from "../../../components/ComponentCard";
 import { ShowcaseSection } from "../../../components/ShowcaseSection";
 
 const REFERENCED_ONLY = [
 	{
-		path: "@superset/ui/form",
+		path: "@choros/ui/form",
 		note: "react-hook-form bindings (FormField, FormItem, FormMessage…)",
 	},
 	{
-		path: "@superset/ui/chart",
+		path: "@choros/ui/chart",
 		note: "Recharts container + tooltip themed via --chart-1…5 tokens",
 	},
 	{
-		path: "@superset/ui/sidebar",
+		path: "@choros/ui/sidebar",
 		note: "Full app sidebar system (SidebarProvider, SidebarMenu…)",
 	},
 ];
@@ -49,7 +49,7 @@ export function SupersetSection() {
 					id: "web.design.supersetSection.meshGradient",
 					message: "Mesh Gradient",
 				})}
-				importPath="@superset/ui/mesh-gradient"
+				importPath="@choros/ui/mesh-gradient"
 				description={i18n._({
 					id: "web.design.supersetSection.animatedWebglGradientStripeGradient",
 					message: "Animated WebGL gradient (stripe-gradient)",
@@ -67,7 +67,7 @@ export function SupersetSection() {
 					id: "web.design.supersetSection.themePreviewCard",
 					message: "Theme Preview Card",
 				})}
-				importPath="@superset/ui/theme-preview-card"
+				importPath="@choros/ui/theme-preview-card"
 			>
 				<ThemePreviewCard
 					name="Superset Dark"
@@ -97,7 +97,7 @@ export function SupersetSection() {
 					id: "web.design.supersetSection.sidebarCard",
 					message: "Sidebar Card",
 				})}
-				importPath="@superset/ui/sidebar-card"
+				importPath="@choros/ui/sidebar-card"
 			>
 				<SidebarCard
 					badge="Beta"
@@ -135,7 +135,7 @@ export function SupersetSection() {
 					id: "web.design.supersetSection.alertImperative",
 					message: "Alert (imperative)",
 				})}
-				importPath="@superset/ui/atoms/Alert"
+				importPath="@choros/ui/atoms/Alert"
 				description={i18n._({
 					id: "web.design.supersetSection.alertOpensAPromiseFriendly",
 					message:
@@ -204,7 +204,7 @@ export function SupersetSection() {
 					id: "web.design.supersetSection.avatarAtom",
 					message: "Avatar (atom)",
 				})}
-				importPath="@superset/ui/atoms/Avatar"
+				importPath="@choros/ui/atoms/Avatar"
 				description={i18n._({
 					id: "web.design.supersetSection.initialsFallbackViaGetinitialsSizes",
 					message: "Initials fallback via getInitials, sizes xs → xl",
@@ -222,7 +222,7 @@ export function SupersetSection() {
 					id: "web.design.supersetSection.referencedNotDemoed",
 					message: "Referenced, not demoed",
 				})}
-				importPath="@superset/ui/*"
+				importPath="@choros/ui/*"
 				copyable={false}
 				description={i18n._({
 					id: "web.design.supersetSection.needAppLevelWiringForm",

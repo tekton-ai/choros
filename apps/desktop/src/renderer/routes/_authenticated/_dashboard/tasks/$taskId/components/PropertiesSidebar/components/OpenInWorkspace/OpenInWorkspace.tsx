@@ -1,23 +1,23 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { errorMessage } from "@superset/i18n/errors";
-import type { AgentLaunchRequest } from "@superset/shared/agent-launch";
-import { buildTaskAgentLaunchRequest } from "@superset/shared/agent-launch-request";
+import { errorMessage } from "@choros/i18n/errors";
+import type { AgentLaunchRequest } from "@choros/shared/agent-launch";
+import { buildTaskAgentLaunchRequest } from "@choros/shared/agent-launch-request";
 import {
 	type AgentDefinitionId,
 	getEnabledAgentConfigs,
 	getFallbackAgentId,
 	indexResolvedAgentConfigs,
-} from "@superset/shared/agent-settings";
-import { Button } from "@superset/ui/button";
+} from "@choros/shared/agent-settings";
+import { Button } from "@choros/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { Label } from "@superset/ui/label";
-import { toast } from "@superset/ui/sonner";
-import { Switch } from "@superset/ui/switch";
+} from "@choros/ui/dropdown-menu";
+import { Label } from "@choros/ui/label";
+import { toast } from "@choros/ui/sonner";
+import { Switch } from "@choros/ui/switch";
 import { useMemo } from "react";
 import { HiArrowRight, HiChevronDown } from "react-icons/hi2";
 import { AgentSelect } from "renderer/components/AgentSelect";

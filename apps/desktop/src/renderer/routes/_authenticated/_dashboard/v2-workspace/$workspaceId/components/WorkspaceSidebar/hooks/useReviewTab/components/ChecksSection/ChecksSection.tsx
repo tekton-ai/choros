@@ -3,9 +3,9 @@ import {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
-} from "@superset/ui/collapsible";
-import { cn } from "@superset/ui/utils";
-import { workspaceTrpc } from "@superset/workspace-client";
+} from "@choros/ui/collapsible";
+import { cn } from "@choros/ui/utils";
+import { workspaceTrpc } from "@choros/workspace-client";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
 	LuArrowUpRight,

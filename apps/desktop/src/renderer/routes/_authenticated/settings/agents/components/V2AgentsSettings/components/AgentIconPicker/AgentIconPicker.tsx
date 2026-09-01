@@ -5,9 +5,9 @@ import {
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { toast } from "@superset/ui/sonner";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/dropdown-menu";
+import { toast } from "@choros/ui/sonner";
+import { cn } from "@choros/ui/utils";
 import { Check, ChevronDown, ImagePlus } from "lucide-react";
 import { useState } from "react";
 import { isDataImageUri } from "renderer/assets/app-icons/preset-icons";

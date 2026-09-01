@@ -5,10 +5,10 @@ import {
 	AlertDialogFooter,
 	AlertDialogHeader,
 	AlertDialogTitle,
-} from "@superset/ui/alert-dialog";
-import { Button } from "@superset/ui/button";
-import { Input } from "@superset/ui/input";
-import { Label } from "@superset/ui/label";
+} from "@choros/ui/alert-dialog";
+import { Button } from "@choros/ui/button";
+import { Input } from "@choros/ui/input";
+import { Label } from "@choros/ui/label";
 import { useEffect, useState } from "react";
 
 const CONFIRM_PHRASE = "I understand";

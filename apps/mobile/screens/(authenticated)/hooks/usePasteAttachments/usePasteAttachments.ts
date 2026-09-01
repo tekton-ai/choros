@@ -1,4 +1,4 @@
-import type { ComposerPastedItem } from "@superset/composer";
+import type { ComposerPastedItem } from "@choros/composer";
 import { useCallback } from "react";
 import { useComposerDraft } from "@/screens/(authenticated)/hooks/useComposerDraft";
 

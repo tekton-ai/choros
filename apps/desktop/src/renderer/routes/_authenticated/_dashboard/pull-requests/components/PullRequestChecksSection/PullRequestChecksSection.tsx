@@ -1,5 +1,5 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { LuArrowUpRight, LuCircleMinus } from "react-icons/lu";
 import { CHECK_STATUS_ICONS } from "renderer/routes/_authenticated/_dashboard/utils/checkStatusIcons";
 import {

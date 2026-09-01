@@ -9,8 +9,8 @@ import {
 	NavigationMenuList,
 	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
-} from "@superset/ui/navigation-menu";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/navigation-menu";
+import { cn } from "@choros/ui/utils";
 import Link from "next/link";
 import { useState } from "react";
 import {

@@ -1,4 +1,4 @@
-import { useMaybeWorkspaceClient } from "@superset/workspace-client";
+import { useMaybeWorkspaceClient } from "@choros/workspace-client";
 import { useQuery } from "@tanstack/react-query";
 
 const SEARCH_LIMIT = 50;

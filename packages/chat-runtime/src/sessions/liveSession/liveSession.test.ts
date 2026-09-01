@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import { randomUUID } from "node:crypto";
-import { emptySnapshot, reduceMany } from "@superset/chat/core";
-import type { DurableEnvelope, UserMessage } from "@superset/chat/protocol";
+import { emptySnapshot, reduceMany } from "@choros/chat/core";
+import type { DurableEnvelope, UserMessage } from "@choros/chat/protocol";
 import type { FakeHarnessScript } from "../../harness/fake";
 import type { ChatRuntime } from "../../index";
 import {

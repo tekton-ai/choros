@@ -1,9 +1,9 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { HostAgentConfig } from "@superset/host-service/settings";
-import { errorMessage } from "@superset/i18n/errors";
-import { AGENT_TYPES } from "@superset/shared/agent-command";
-import type { PromptTransport } from "@superset/shared/agent-prompt-launch";
-import { getPresetById } from "@superset/shared/host-agent-presets";
+import type { HostAgentConfig } from "@choros/host-service/settings";
+import { errorMessage } from "@choros/i18n/errors";
+import { AGENT_TYPES } from "@choros/shared/agent-command";
+import type { PromptTransport } from "@choros/shared/agent-prompt-launch";
+import { getPresetById } from "@choros/shared/host-agent-presets";
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -14,12 +14,12 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 	AlertDialogTrigger,
-} from "@superset/ui/alert-dialog";
-import { Button } from "@superset/ui/button";
-import { Input } from "@superset/ui/input";
-import { toast } from "@superset/ui/sonner";
-import { Switch } from "@superset/ui/switch";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+} from "@choros/ui/alert-dialog";
+import { Button } from "@choros/ui/button";
+import { Input } from "@choros/ui/input";
+import { toast } from "@choros/ui/sonner";
+import { Switch } from "@choros/ui/switch";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { useMutation } from "@tanstack/react-query";
 import { Info, RotateCcw, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";

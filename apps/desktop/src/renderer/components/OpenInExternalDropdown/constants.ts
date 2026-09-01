@@ -1,4 +1,4 @@
-import type { ExternalApp } from "@superset/local-db";
+import type { ExternalApp } from "@choros/local-db";
 import androidStudioIcon from "renderer/assets/app-icons/android-studio.svg";
 import antigravityIcon from "renderer/assets/app-icons/antigravity.svg";
 import appcodeIcon from "renderer/assets/app-icons/appcode.svg";

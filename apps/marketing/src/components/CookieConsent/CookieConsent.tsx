@@ -1,7 +1,7 @@
 "use client";
 
 import { Trans } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
+import { Button } from "@choros/ui/button";
 import { AnimatePresence, m } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";

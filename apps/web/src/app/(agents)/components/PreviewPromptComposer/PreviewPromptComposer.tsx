@@ -1,6 +1,6 @@
 "use client";
 
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import {
 	PromptInput,
 	PromptInputAttachment,
@@ -9,8 +9,8 @@ import {
 	PromptInputSubmit,
 	PromptInputTextarea,
 	PromptInputTools,
-} from "@superset/ui/ai-elements/prompt-input";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/ai-elements/prompt-input";
+import { cn } from "@choros/ui/utils";
 import { ArrowUpIcon } from "lucide-react";
 import { type ReactNode, useCallback } from "react";
 import {

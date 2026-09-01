@@ -18,7 +18,7 @@ import { randomUUID } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { promisify } from "node:util";
-import { DEV_EMAIL, DEV_PASSWORD } from "@superset/shared/dev-credentials";
+import { DEV_EMAIL, DEV_PASSWORD } from "@choros/shared/dev-credentials";
 
 const execFileAsync = promisify(execFile);
 

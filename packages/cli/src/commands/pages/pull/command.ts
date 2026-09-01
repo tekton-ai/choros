@@ -1,4 +1,4 @@
-import { CLIError, number, positional } from "@superset/cli-framework";
+import { CLIError, number, positional } from "@choros/cli-framework";
 import { command } from "../../../lib/command";
 import { pageRefFromArg } from "../pageRef";
 

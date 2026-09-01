@@ -1,5 +1,5 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { COMPANY } from "@superset/shared/constants";
+import { COMPANY } from "@choros/shared/constants";
 import type { Metadata } from "next";
 import { Silkscreen } from "next/font/google";
 import Image from "next/image";

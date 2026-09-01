@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import type { TerminalPreset } from "@superset/local-db";
+import type { TerminalPreset } from "@choros/local-db";
 import { clearImportedCliTerminalScripts } from "./cli-terminal-script-import";
 
 const pendingScript = (

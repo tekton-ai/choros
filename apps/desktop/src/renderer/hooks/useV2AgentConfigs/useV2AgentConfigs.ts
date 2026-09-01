@@ -1,4 +1,4 @@
-import type { HostAgentConfig } from "@superset/host-service/settings";
+import type { HostAgentConfig } from "@choros/host-service/settings";
 import { useQuery } from "@tanstack/react-query";
 import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";
 

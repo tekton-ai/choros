@@ -178,7 +178,7 @@ export function SharedComponentsSection() {
 					id: "web.design.sharedComponentsSection.paneSystem",
 					message: "Pane system",
 				})}
-				importPath="@superset/panes"
+				importPath="@choros/panes"
 				description={i18n._({
 					id: "web.design.sharedComponentsSection.reactLayerOfTheShared",
 					message: "React layer of the shared pane/workspace layout engine",

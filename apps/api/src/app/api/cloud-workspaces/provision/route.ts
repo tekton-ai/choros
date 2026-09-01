@@ -1,4 +1,4 @@
-import { provisionCloudWorkspace } from "@superset/trpc/cloud-workspace-provision";
+import { provisionCloudWorkspace } from "@choros/trpc/cloud-workspace-provision";
 import { z } from "zod";
 import { verifyQstashRequest } from "@/lib/verifyQstash";
 

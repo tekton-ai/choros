@@ -1,4 +1,4 @@
-import type { HostAgentConfig } from "@superset/host-service/settings";
+import type { HostAgentConfig } from "@choros/host-service/settings";
 import { useCallback, useMemo, useState } from "react";
 import type { TerminalAgentBinding } from "renderer/hooks/host-service/useTerminalAgentBindings";
 

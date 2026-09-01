@@ -3,7 +3,7 @@ import {
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
+} from "@choros/ui/dropdown-menu";
 import { LuCheck } from "react-icons/lu";
 import { ChipButton } from "../ChipButton";
 

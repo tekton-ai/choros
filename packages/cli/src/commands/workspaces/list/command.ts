@@ -1,5 +1,5 @@
-import { boolean, CLIError, string, table } from "@superset/cli-framework";
-import { normalizeWorkspaceTag } from "@superset/shared/workspace-tags";
+import { boolean, CLIError, string, table } from "@choros/cli-framework";
+import { normalizeWorkspaceTag } from "@choros/shared/workspace-tags";
 import { command } from "../../../lib/command";
 import { resolveHostFilter } from "../../../lib/host-target";
 import { listWorkspacesOnHost } from "../../../lib/host-workspaces";

@@ -1,5 +1,5 @@
-import { COMPANY } from "@superset/shared/constants";
-import { parseGitHubRemote } from "@superset/shared/github-remote";
+import { COMPANY } from "@choros/shared/constants";
+import { parseGitHubRemote } from "@choros/shared/github-remote";
 
 export function getGitHubRepoSlug(): string {
 	const parsed = parseGitHubRemote(COMPANY.GITHUB_URL);

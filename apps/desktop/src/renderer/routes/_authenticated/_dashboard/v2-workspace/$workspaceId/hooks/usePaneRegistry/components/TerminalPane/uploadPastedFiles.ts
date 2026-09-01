@@ -3,7 +3,7 @@ import {
 	attachmentNameWithSuffix,
 	sanitizeAttachmentFileName,
 	WORKSPACE_ATTACHMENTS_DIR,
-} from "@superset/shared/workspace-attachments";
+} from "@choros/shared/workspace-attachments";
 import { fileToBase64 } from "renderer/lib/file-to-base64";
 
 // Pastes follow the shared workspace-attachments convention (same directory

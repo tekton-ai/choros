@@ -1,7 +1,7 @@
 import { Trans } from "@lingui/react/macro";
-import type { HostAgentConfig } from "@superset/host-service/settings";
-import type { TerminalPreset } from "@superset/local-db";
-import { cn } from "@superset/ui/utils";
+import type { HostAgentConfig } from "@choros/host-service/settings";
+import type { TerminalPreset } from "@choros/local-db";
+import { cn } from "@choros/ui/utils";
 import type { RefObject } from "react";
 import { PresetRow } from "../../../PresetRow";
 import type { PresetProjectOption } from "../../preset-project-options";

@@ -1,13 +1,13 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { errorMessage } from "@superset/i18n/errors";
+import { errorMessage } from "@choros/i18n/errors";
 import {
 	getAvailableRoleChanges,
 	getRoleLevel,
 	type OrganizationRole,
 	organizationRoleName,
-} from "@superset/shared/auth";
-import { alert } from "@superset/ui/atoms/Alert";
-import { Button } from "@superset/ui/button";
+} from "@choros/shared/auth";
+import { alert } from "@choros/ui/atoms/Alert";
+import { Button } from "@choros/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -16,8 +16,8 @@ import {
 	DropdownMenuSubContent,
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/dropdown-menu";
+import { toast } from "@choros/ui/sonner";
 import { useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { HiEllipsisVertical, HiOutlineTrash } from "react-icons/hi2";

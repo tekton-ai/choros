@@ -1,5 +1,5 @@
-import { i18n } from "@superset/i18n";
-import type { TriggerConfigInput } from "@superset/shared/automation-triggers";
+import { i18n } from "@choros/i18n";
+import type { TriggerConfigInput } from "@choros/shared/automation-triggers";
 import type { IconType } from "react-icons";
 import {
 	TRIGGER_PROVIDERS,

@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
-import type { RendererContext } from "@superset/panes";
+import { i18n } from "@choros/i18n";
+import type { RendererContext } from "@choros/panes";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -8,9 +8,9 @@ import {
 	DropdownMenuLabel,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { toast } from "@superset/ui/sonner";
-import { workspaceTrpc } from "@superset/workspace-client";
+} from "@choros/ui/dropdown-menu";
+import { toast } from "@choros/ui/sonner";
+import { workspaceTrpc } from "@choros/workspace-client";
 import { eq } from "@tanstack/db";
 import { useLiveQuery } from "@tanstack/react-db";
 import { Check, LoaderCircle, Plus, Trash2 } from "lucide-react";

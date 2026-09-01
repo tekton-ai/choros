@@ -1,5 +1,5 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
+import { Button } from "@choros/ui/button";
 import {
 	Dialog,
 	DialogContent,
@@ -7,11 +7,11 @@ import {
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
-} from "@superset/ui/dialog";
-import { Input } from "@superset/ui/input";
-import { Label } from "@superset/ui/label";
-import { toast } from "@superset/ui/sonner";
-import { Textarea } from "@superset/ui/textarea";
+} from "@choros/ui/dialog";
+import { Input } from "@choros/ui/input";
+import { Label } from "@choros/ui/label";
+import { toast } from "@choros/ui/sonner";
+import { Textarea } from "@choros/ui/textarea";
 import { useState } from "react";
 import { apiTrpcClient } from "renderer/lib/api-trpc-client";
 

@@ -1,4 +1,4 @@
-import { COMPANY } from "@superset/shared/constants";
+import { COMPANY } from "@choros/shared/constants";
 
 // Public half of the Ed25519 key Superset-operated agents sign outbound HTTP
 // requests with (Web Bot Auth, RFC 9421). Published at

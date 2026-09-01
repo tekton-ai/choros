@@ -1,4 +1,4 @@
-import type { DesktopNotice } from "@superset/shared/desktop-notices";
+import type { DesktopNotice } from "@choros/shared/desktop-notices";
 import { create } from "zustand";
 
 interface DesktopNoticePreviewState {

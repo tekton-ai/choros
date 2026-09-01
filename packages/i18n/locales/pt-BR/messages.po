@@ -28288,7 +28288,7 @@ msgstr "IA · Conversa"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.alsoSupersetUiAiElements"
-msgstr "Também: @superset/ui/ai-elements/message — gruda no final conforme o conteúdo chega"
+msgstr "Também: @choros/ui/ai-elements/message — gruda no final conforme o conteúdo chega"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
@@ -28463,7 +28463,7 @@ msgstr "IA · Status"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.alsoSupersetUiAiElements"
-msgstr "Também: @superset/ui/ai-elements/braille-spinner"
+msgstr "Também: @choros/ui/ai-elements/braille-spinner"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
@@ -28683,7 +28683,7 @@ msgstr "Alertas, toasts, progresso e estados de carregamento"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/FeedbackSection/FeedbackSection.tsx
 msgid "web.design.feedbackSection.alsoSupersetUiSpinner"
-msgstr "Também: @superset/ui/spinner"
+msgstr "Também: @choros/ui/spinner"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/FeedbackSection/FeedbackSection.tsx
@@ -28803,7 +28803,7 @@ msgstr "Aceitar os termos"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
 msgid "web.design.inputsSection.alsoSupersetUiRadioGroup"
-msgstr "Também: @superset/ui/radio-group, @superset/ui/switch"
+msgstr "Também: @choros/ui/radio-group, @choros/ui/switch"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
@@ -28843,7 +28843,7 @@ msgstr "component-showcase"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
 msgid "web.design.inputsSection.composableFormLayoutPairsWith"
-msgstr "Layout de formulário componível — combina com @superset/ui/form para react-hook-form"
+msgstr "Layout de formulário componível — combina com @choros/ui/form para react-hook-form"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
@@ -28963,7 +28963,7 @@ msgstr "Área de trabalho"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
 msgid "web.design.layoutSection.alsoSupersetUiOverflowFade"
-msgstr "Também: @superset/ui/overflow-fade-text"
+msgstr "Também: @choros/ui/overflow-fade-text"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx

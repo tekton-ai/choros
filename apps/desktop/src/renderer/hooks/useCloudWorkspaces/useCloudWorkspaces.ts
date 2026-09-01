@@ -1,5 +1,5 @@
-import { FEATURE_FLAGS } from "@superset/shared/constants";
-import type { RouterOutputs } from "@superset/trpc";
+import { FEATURE_FLAGS } from "@choros/shared/constants";
+import type { RouterOutputs } from "@choros/trpc";
 import { useFeatureFlagEnabled } from "posthog-js/react";
 import { useActiveOrganizationId } from "renderer/hooks/useActiveOrganizationId";
 import { cloudTrpc } from "renderer/lib/cloud-trpc";

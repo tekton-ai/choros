@@ -1,6 +1,6 @@
-import { db } from "@superset/db/client";
-import { subscriptions } from "@superset/db/schema";
-import * as authSchema from "@superset/db/schema/auth";
+import { db } from "@choros/db/client";
+import { subscriptions } from "@choros/db/schema";
+import * as authSchema from "@choros/db/schema/auth";
 import { eq } from "drizzle-orm";
 import Stripe from "stripe";
 import { z } from "zod";

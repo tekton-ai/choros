@@ -1,5 +1,5 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { cn } from "@superset/ui/lib/utils";
+import { cn } from "@choros/ui/lib/utils";
 import type { AppMetrics, UsageValues } from "../../types";
 import { formatCpu, formatMemory } from "../../utils/formatters";
 import { getUsageSeverity } from "../../utils/resourceSeverity";

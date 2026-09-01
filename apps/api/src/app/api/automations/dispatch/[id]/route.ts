@@ -1,6 +1,6 @@
-import { dbWs } from "@superset/db/client";
-import { automations } from "@superset/db/schema";
-import { dispatchAutomation } from "@superset/trpc/automation-dispatch";
+import { dbWs } from "@choros/db/client";
+import { automations } from "@choros/db/schema";
+import { dispatchAutomation } from "@choros/trpc/automation-dispatch";
 import { eq } from "drizzle-orm";
 import { getRelayUrl } from "@/lib/relay-url";
 import { verifyQstashRequest } from "@/lib/verifyQstash";

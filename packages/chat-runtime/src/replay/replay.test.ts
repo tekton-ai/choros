@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, test } from "bun:test";
-import type { DurableEnvelope } from "@superset/chat/protocol";
+import type { DurableEnvelope } from "@choros/chat/protocol";
 import { chatJournal } from "../db";
 import type { ChatRuntime } from "../index";
 import { ChatJournal } from "../journal";

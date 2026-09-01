@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";

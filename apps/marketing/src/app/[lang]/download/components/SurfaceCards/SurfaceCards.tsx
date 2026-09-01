@@ -1,7 +1,7 @@
 "use client";
 
 import { Trans } from "@lingui/react/macro";
-import { COMPANY } from "@superset/shared/constants";
+import { COMPANY } from "@choros/shared/constants";
 import { HiMiniArrowRight } from "react-icons/hi2";
 import { CliMock } from "../CliMock";
 import { CopyCommand } from "../CopyCommand";

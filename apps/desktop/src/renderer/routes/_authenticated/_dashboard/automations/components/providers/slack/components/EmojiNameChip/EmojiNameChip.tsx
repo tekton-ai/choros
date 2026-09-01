@@ -1,5 +1,5 @@
-import { Input } from "@superset/ui/input";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
+import { Input } from "@choros/ui/input";
+import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
 import { useState } from "react";
 import { LuCheck } from "react-icons/lu";
 import { ChipButton } from "../../../../TriggerSentence/components/ChipButton";

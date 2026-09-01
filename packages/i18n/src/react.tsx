@@ -32,7 +32,7 @@ export function I18nProvider({
 }) {
 	// Remount the subtree when the locale changes: Trans/useLingui consumers
 	// re-render via Lingui's own subscription, but plain formatter calls
-	// (@superset/i18n/format) read the locale imperatively and only refresh on
+	// (@choros/i18n/format) read the locale imperatively and only refresh on
 	// a re-render. Language switches are rare; a remount keeps every call site
 	// a plain function call instead of a hook.
 	const [activeLocale, setActiveLocale] = useState(() => i18n.locale);

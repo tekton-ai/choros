@@ -6,9 +6,9 @@ import {
 	DropdownMenuLabel,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/dropdown-menu";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { cn } from "@choros/ui/utils";
 import { useLocation, useNavigate } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { LuCpu, LuGitBranch, LuHistory } from "react-icons/lu";

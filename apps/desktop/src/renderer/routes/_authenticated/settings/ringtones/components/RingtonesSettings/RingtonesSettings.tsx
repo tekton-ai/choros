@@ -1,8 +1,8 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
-import { Label } from "@superset/ui/label";
-import { Switch } from "@superset/ui/switch";
-import { cn } from "@superset/ui/utils";
+import { Button } from "@choros/ui/button";
+import { Label } from "@choros/ui/label";
+import { Switch } from "@choros/ui/switch";
+import { cn } from "@choros/ui/utils";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { HiArrowPath, HiCheck, HiPlay, HiPlus, HiStop } from "react-icons/hi2";
 import { electronTrpc } from "renderer/lib/electron-trpc";

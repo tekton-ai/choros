@@ -1,6 +1,6 @@
 import { EventEmitter } from "node:events";
 import net from "node:net";
-import type { DetectedPort } from "@superset/port-scanner";
+import type { DetectedPort } from "@choros/port-scanner";
 import type {
 	ForwardTarget,
 	LocalPortOwner,

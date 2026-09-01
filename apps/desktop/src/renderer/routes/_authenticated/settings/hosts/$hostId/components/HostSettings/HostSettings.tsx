@@ -1,5 +1,5 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { toast } from "@superset/ui/sonner";
+import { toast } from "@choros/ui/sonner";
 import { useMemo } from "react";
 import { useHostUrl } from "renderer/hooks/host-service/useHostTargetUrl";
 import { useHostsPresence } from "renderer/hooks/useHostsPresence";

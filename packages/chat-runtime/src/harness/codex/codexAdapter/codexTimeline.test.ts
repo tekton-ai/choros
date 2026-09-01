@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import { randomUUID } from "node:crypto";
-import { deriveTimeline, emptySnapshot, reduceMany } from "@superset/chat/core";
-import type { Item, Turn } from "@superset/chat/protocol";
+import { deriveTimeline, emptySnapshot, reduceMany } from "@choros/chat/core";
+import type { Item, Turn } from "@choros/chat/protocol";
 import type { HarnessRegistry } from "../../../sessions";
 import { createTestRuntime } from "../../../testing/testRuntime";
 import { journalEnvelopes, waitFor } from "../../../testing/testUtils";

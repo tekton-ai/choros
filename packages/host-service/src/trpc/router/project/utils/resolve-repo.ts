@@ -4,7 +4,7 @@ import { existsSync, mkdirSync, statSync } from "node:fs";
 // walk.
 import { rm } from "node:fs/promises";
 import { join, resolve as resolvePath } from "node:path";
-import { parseGitHubRemote } from "@superset/shared/github-remote";
+import { parseGitHubRemote } from "@choros/shared/github-remote";
 import { TRPCError } from "@trpc/server";
 import type { GitCredentialProvider } from "../../../../runtime/git";
 import { createUserSimpleGit } from "../../../../runtime/git/simple-git";

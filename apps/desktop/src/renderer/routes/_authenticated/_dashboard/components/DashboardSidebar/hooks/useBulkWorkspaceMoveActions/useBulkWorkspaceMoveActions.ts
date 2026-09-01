@@ -1,4 +1,4 @@
-import { normalizeWorkspaceTags } from "@superset/shared/workspace-tags";
+import { normalizeWorkspaceTags } from "@choros/shared/workspace-tags";
 import { useDashboardSidebarState } from "renderer/routes/_authenticated/hooks/useDashboardSidebarState";
 import { useOptimisticActions } from "renderer/routes/_authenticated/hooks/useOptimisticActions";
 import { useHostWorkspaces } from "renderer/routes/_authenticated/providers/HostWorkspacesProvider";

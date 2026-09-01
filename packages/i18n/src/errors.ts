@@ -6,7 +6,7 @@ import { serverErrorMessages } from "./server-errors";
 // English and use rawErrorMessage() or the error object itself. Renders a
 // caught error for the user in the active locale. Replaces the raw
 // `toast.error(error.message)` pattern: if the server attached an i18nKey
-// (via userError() in @superset/trpc, surfaced through shape.data by its
+// (via userError() in @choros/trpc, surfaced through shape.data by its
 // errorFormatter), the translated catalog entry wins; otherwise the error's
 // own message is shown; a generic translated fallback covers messageless
 // errors.

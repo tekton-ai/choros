@@ -3,7 +3,7 @@ import {
 	verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { useState } from "react";
 import { LuPlus } from "react-icons/lu";
 import { useOpenNewSessionModal } from "renderer/stores/new-workspace-modal";

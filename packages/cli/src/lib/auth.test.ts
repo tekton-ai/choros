@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, mock, test } from "bun:test";
-import { CLIError } from "@superset/cli-framework";
+import { CLIError } from "@choros/cli-framework";
 import { refreshAccessToken } from "./auth";
 
 const originalFetch = globalThis.fetch;

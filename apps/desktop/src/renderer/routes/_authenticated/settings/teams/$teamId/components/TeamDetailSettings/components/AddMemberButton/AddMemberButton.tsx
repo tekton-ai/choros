@@ -1,10 +1,10 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Avatar } from "@superset/ui/atoms/Avatar";
-import { Button } from "@superset/ui/button";
-import { Checkbox } from "@superset/ui/checkbox";
-import { Input } from "@superset/ui/input";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
-import { toast } from "@superset/ui/sonner";
+import { Avatar } from "@choros/ui/atoms/Avatar";
+import { Button } from "@choros/ui/button";
+import { Checkbox } from "@choros/ui/checkbox";
+import { Input } from "@choros/ui/input";
+import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
+import { toast } from "@choros/ui/sonner";
 import { Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { HiOutlinePaperAirplane, HiOutlinePlus } from "react-icons/hi2";

@@ -1,7 +1,7 @@
 import {
 	normalizeExecutionMode,
 	type TerminalPreset,
-} from "@superset/local-db/schema/zod";
+} from "@choros/local-db/schema/zod";
 import { normalizePresetProjectIds } from "shared/preset-project-targeting";
 
 export type PresetWithUnknownMode = Omit<

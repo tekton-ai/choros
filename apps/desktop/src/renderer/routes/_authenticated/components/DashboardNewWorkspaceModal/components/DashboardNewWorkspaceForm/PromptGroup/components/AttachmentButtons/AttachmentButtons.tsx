@@ -2,8 +2,8 @@ import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	PromptInputButton,
 	usePromptInputAttachments,
-} from "@superset/ui/ai-elements/prompt-input";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+} from "@choros/ui/ai-elements/prompt-input";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { PaperclipIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { PILL_BUTTON_CLASS } from "../../types";

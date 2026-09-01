@@ -1,5 +1,5 @@
-import { FEATURE_FLAGS } from "@superset/shared/constants";
-import type { RouterOutputs } from "@superset/trpc";
+import { FEATURE_FLAGS } from "@choros/shared/constants";
+import type { RouterOutputs } from "@choros/trpc";
 import { useQuery } from "@tanstack/react-query";
 import { TRPCClientError } from "@trpc/client";
 import { useFeatureFlag } from "posthog-react-native";

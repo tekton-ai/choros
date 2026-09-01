@@ -1,11 +1,11 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { errorMessage } from "@superset/i18n/errors";
-import { formatDate as formatLocaleDate } from "@superset/i18n/format";
+import { errorMessage } from "@choros/i18n/errors";
+import { formatDate as formatLocaleDate } from "@choros/i18n/format";
 import {
 	canRemoveMember,
 	getRoleSortPriority,
 	type OrganizationRole,
-} from "@superset/shared/auth";
+} from "@choros/shared/auth";
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -16,14 +16,14 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 	AlertDialogTrigger,
-} from "@superset/ui/alert-dialog";
-import { Avatar } from "@superset/ui/atoms/Avatar";
-import { Badge } from "@superset/ui/badge";
-import { Button } from "@superset/ui/button";
-import { Input } from "@superset/ui/input";
-import { Label } from "@superset/ui/label";
-import { Skeleton } from "@superset/ui/skeleton";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/alert-dialog";
+import { Avatar } from "@choros/ui/atoms/Avatar";
+import { Badge } from "@choros/ui/badge";
+import { Button } from "@choros/ui/button";
+import { Input } from "@choros/ui/input";
+import { Label } from "@choros/ui/label";
+import { Skeleton } from "@choros/ui/skeleton";
+import { toast } from "@choros/ui/sonner";
 import {
 	Table,
 	TableBody,
@@ -31,8 +31,8 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from "@superset/ui/table";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+} from "@choros/ui/table";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import {

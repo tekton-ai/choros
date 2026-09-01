@@ -1,7 +1,7 @@
 "use client";
 
 import { Trans } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
+import { Button } from "@choros/ui/button";
 import { useEffect, useRef, useState } from "react";
 import { LuCheck, LuClipboard } from "react-icons/lu";
 

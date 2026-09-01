@@ -1,4 +1,4 @@
-import { refreshSigmaMrr } from "@superset/trpc/business-metrics";
+import { refreshSigmaMrr } from "@choros/trpc/business-metrics";
 
 import { verifyQstashRequest } from "@/lib/verifyQstash";
 

@@ -349,9 +349,9 @@ Lives at `~/.superset/host/<organizationId>/manifest.json`. The coordinator writ
 
 ```ts
 // apps/desktop/src/main/host-service/index.ts
-import { createApp, PskHostAuthProvider, JwtApiAuthProvider } from "@superset/host-service";
-import { LocalGitCredentialProvider } from "@superset/host-service/providers/desktop";
-import { LocalModelProvider } from "@superset/host-service/providers/desktop";
+import { createApp, PskHostAuthProvider, JwtApiAuthProvider } from "@choros/host-service";
+import { LocalGitCredentialProvider } from "@choros/host-service/providers/desktop";
+import { LocalModelProvider } from "@choros/host-service/providers/desktop";
 
 createApp({
   config: {

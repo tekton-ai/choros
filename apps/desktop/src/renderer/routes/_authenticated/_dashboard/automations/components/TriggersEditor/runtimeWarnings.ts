@@ -1,9 +1,9 @@
-import type { DraftTrigger } from "@superset/shared/automation-triggers";
-import type { PlanTier } from "@superset/shared/billing";
+import type { DraftTrigger } from "@choros/shared/automation-triggers";
+import type { PlanTier } from "@choros/shared/billing";
 import {
 	planAllowsTriggerKind,
 	requiredPlanForTriggerKind,
-} from "@superset/shared/billing";
+} from "@choros/shared/billing";
 import { providerFor } from "../providers";
 import type { ProviderOptions, TriggerProvider } from "../providers/types";
 

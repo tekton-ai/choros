@@ -1,6 +1,6 @@
-import { db } from "@superset/db/client";
-import { integrationConnections } from "@superset/db/schema";
-import { disconnectSentry } from "@superset/trpc/integrations/sentry";
+import { db } from "@choros/db/client";
+import { integrationConnections } from "@choros/db/schema";
+import { disconnectSentry } from "@choros/trpc/integrations/sentry";
 import { and, eq, sql } from "drizzle-orm";
 
 import { env } from "@/env";

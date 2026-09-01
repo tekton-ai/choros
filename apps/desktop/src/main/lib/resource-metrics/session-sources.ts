@@ -1,4 +1,4 @@
-import { projects, workspaces } from "@superset/local-db";
+import { projects, workspaces } from "@choros/local-db";
 import { eq } from "drizzle-orm";
 import { getHostServiceCoordinator } from "main/lib/host-service-coordinator";
 import { localDb } from "main/lib/local-db";

@@ -1,4 +1,4 @@
-import { projects, worktrees } from "@superset/local-db";
+import { projects, worktrees } from "@choros/local-db";
 import { eq } from "drizzle-orm";
 import { track } from "main/lib/analytics";
 import { localDb } from "main/lib/local-db";

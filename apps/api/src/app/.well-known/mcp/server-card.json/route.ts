@@ -1,6 +1,6 @@
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { InMemoryTransport } from "@modelcontextprotocol/sdk/inMemory.js";
-import { createMcpServer } from "@superset/mcp";
+import { createMcpServer } from "@choros/mcp";
 import { getRequestOrigin } from "@/lib/oauth-metadata";
 
 async function listTools() {

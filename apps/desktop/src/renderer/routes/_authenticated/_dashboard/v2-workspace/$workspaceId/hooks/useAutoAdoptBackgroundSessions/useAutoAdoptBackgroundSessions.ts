@@ -1,5 +1,5 @@
-import type { WorkspaceStore } from "@superset/panes";
-import { workspaceTrpc } from "@superset/workspace-client";
+import type { WorkspaceStore } from "@choros/panes";
+import { workspaceTrpc } from "@choros/workspace-client";
 import { useEffect } from "react";
 import { logStressEvent } from "renderer/lib/performance/stress-instrumentation";
 import { getTerminalBackgroundMarkerIdsKey } from "renderer/lib/terminal/terminal-background-intents";

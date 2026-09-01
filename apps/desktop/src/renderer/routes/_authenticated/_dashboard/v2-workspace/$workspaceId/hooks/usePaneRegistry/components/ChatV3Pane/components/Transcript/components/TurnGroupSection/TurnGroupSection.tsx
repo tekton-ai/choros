@@ -1,12 +1,12 @@
 import { Plural, Trans } from "@lingui/react/macro";
-import type { SessionSnapshot, TurnGroup } from "@superset/chat/core";
-import type { Decision, Item } from "@superset/chat/protocol";
-import { isKnownItem } from "@superset/chat/protocol";
+import type { SessionSnapshot, TurnGroup } from "@choros/chat/core";
+import type { Decision, Item } from "@choros/chat/protocol";
+import { isKnownItem } from "@choros/chat/protocol";
 import {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
-} from "@superset/ui/collapsible";
+} from "@choros/ui/collapsible";
 import { ChevronRight } from "lucide-react";
 import { rowKindForItem } from "../../utils/rowKind";
 import { AgentMessageRow } from "../AgentMessageRow";

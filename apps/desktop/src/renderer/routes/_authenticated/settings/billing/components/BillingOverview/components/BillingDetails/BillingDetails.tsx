@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
-import { toast } from "@superset/ui/sonner";
+import { Button } from "@choros/ui/button";
+import { toast } from "@choros/ui/sonner";
 import { useEffect, useState } from "react";
 import stripeLinkIcon from "renderer/assets/stripe-link.png";
 import { apiTrpcClient } from "renderer/lib/api-trpc-client";

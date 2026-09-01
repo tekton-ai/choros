@@ -1,5 +1,5 @@
-import { db } from "@superset/db/client";
-import type { integrationProvider } from "@superset/db/schema";
+import { db } from "@choros/db/client";
+import type { integrationProvider } from "@choros/db/schema";
 import { DrizzleQueryError, sql } from "drizzle-orm";
 
 type Provider = (typeof integrationProvider.enumValues)[number];

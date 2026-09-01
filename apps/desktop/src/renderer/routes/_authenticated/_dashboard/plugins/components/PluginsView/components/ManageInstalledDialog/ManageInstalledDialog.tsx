@@ -2,16 +2,16 @@ import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	getPluginByName,
 	type InstalledPlugin,
-} from "@superset/shared/plugins";
-import { Button } from "@superset/ui/button";
+} from "@choros/shared/plugins";
+import { Button } from "@choros/ui/button";
 import {
 	Dialog,
 	DialogContent,
 	DialogDescription,
 	DialogHeader,
 	DialogTitle,
-} from "@superset/ui/dialog";
-import { Switch } from "@superset/ui/switch";
+} from "@choros/ui/dialog";
+import { Switch } from "@choros/ui/switch";
 import { LuTrash2 } from "react-icons/lu";
 import { PluginIcon } from "renderer/routes/_authenticated/_dashboard/plugins/components/PluginIcon";
 

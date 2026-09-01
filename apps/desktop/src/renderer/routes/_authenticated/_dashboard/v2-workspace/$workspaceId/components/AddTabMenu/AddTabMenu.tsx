@@ -3,7 +3,7 @@ import {
 	DropdownMenuCheckboxItem,
 	DropdownMenuItem,
 	DropdownMenuSeparator,
-} from "@superset/ui/dropdown-menu";
+} from "@choros/ui/dropdown-menu";
 import { BsTerminalPlus } from "react-icons/bs";
 import { TbMessageCirclePlus, TbWorld } from "react-icons/tb";
 import { HotkeyMenuShortcut } from "renderer/components/HotkeyMenuShortcut";

@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
-import { cn } from "@superset/ui/utils";
+import { Button } from "@choros/ui/button";
+import { cn } from "@choros/ui/utils";
 import { Link } from "@tanstack/react-router";
 import { Monitor, RefreshCw, Settings, WifiOff } from "lucide-react";
 

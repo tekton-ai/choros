@@ -1,7 +1,7 @@
 "use client";
 
-import { i18n } from "@superset/i18n";
-import { cn } from "@superset/ui/utils";
+import { i18n } from "@choros/i18n";
+import { cn } from "@choros/ui/utils";
 import {
 	createContext,
 	type ReactNode,

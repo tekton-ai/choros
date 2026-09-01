@@ -1,4 +1,4 @@
-import type { AutomationEventDispatchInput } from "@superset/db/schema";
+import type { AutomationEventDispatchInput } from "@choros/db/schema";
 import type { PgDatabase, PgQueryResultHKT } from "drizzle-orm/pg-core";
 import { dispatchMatchingTriggers } from "./dispatchMatchingTriggers";
 import {

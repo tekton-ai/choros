@@ -1,4 +1,4 @@
-import type { AgentType } from "@superset/shared/agent-command";
+import type { AgentType } from "@choros/shared/agent-command";
 
 export type SupersetManagedBinary = AgentType;
 

@@ -1,12 +1,12 @@
 import { msg } from "@lingui/core/macro";
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import {
 	type AgentPresetPatch,
 	buildFileCommandFromAgentConfig,
 	type ResolvedAgentConfig,
 	renderTaskPromptTemplate,
 	validateTaskPromptTemplate,
-} from "@superset/shared/agent-settings";
+} from "@choros/shared/agent-settings";
 import type { AgentEditableField } from "./agent-card.types";
 
 const SAMPLE_TASK = {

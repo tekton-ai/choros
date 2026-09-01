@@ -1,4 +1,4 @@
-import type { BranchPrefixMode } from "@superset/shared/workspace-launch";
+import type { BranchPrefixMode } from "@choros/shared/workspace-launch";
 
 // Audit result (see plans/20260716-v1-to-v2-auto-migration.md): v1 and v2
 // share the electron-main settings row for user preferences (fonts,

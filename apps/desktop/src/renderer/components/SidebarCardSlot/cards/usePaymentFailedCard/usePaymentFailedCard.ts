@@ -1,5 +1,5 @@
-import { formatPrice } from "@superset/i18n/format";
-import { isPaymentFailingStatus } from "@superset/shared/billing";
+import { formatPrice } from "@choros/i18n/format";
+import { isPaymentFailingStatus } from "@choros/shared/billing";
 import { useNavigate } from "@tanstack/react-router";
 import { track } from "renderer/lib/analytics";
 import { authClient } from "renderer/lib/auth-client";

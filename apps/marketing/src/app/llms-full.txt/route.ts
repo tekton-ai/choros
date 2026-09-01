@@ -1,4 +1,4 @@
-import { COMPANY } from "@superset/shared/constants";
+import { COMPANY } from "@choros/shared/constants";
 import { getBlogPosts } from "@/lib/blog";
 import { getComparisonPages } from "@/lib/compare";
 import { PRODUCT_SUMMARY, stripMdxSyntax } from "@/lib/llms";

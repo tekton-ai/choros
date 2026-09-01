@@ -1,7 +1,7 @@
 "use server";
 
-import { DownloadLinkEmail } from "@superset/email/emails/marketing/DownloadLinkEmail";
-import { i18n, initI18n } from "@superset/i18n";
+import { DownloadLinkEmail } from "@choros/email/emails/marketing/DownloadLinkEmail";
+import { i18n, initI18n } from "@choros/i18n";
 import { Resend } from "resend";
 import { z } from "zod";
 import { env } from "@/env";

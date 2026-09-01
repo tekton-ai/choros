@@ -1,13 +1,13 @@
 import { Trans } from "@lingui/react/macro";
-import type { ExternalApp } from "@superset/local-db";
+import type { ExternalApp } from "@choros/local-db";
 import {
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 	DropdownMenuSub,
 	DropdownMenuSubContent,
 	DropdownMenuSubTrigger,
-} from "@superset/ui/dropdown-menu";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/dropdown-menu";
+import { cn } from "@choros/ui/utils";
 import type { ReactNode } from "react";
 import { LuCopy } from "react-icons/lu";
 import jetbrainsIcon from "renderer/assets/app-icons/jetbrains.svg";

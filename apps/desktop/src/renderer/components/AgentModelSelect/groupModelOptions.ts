@@ -1,4 +1,4 @@
-import type { AgentModelOption } from "@superset/shared/agent-models";
+import type { AgentModelOption } from "@choros/shared/agent-models";
 
 export interface AgentModelOptionGroup {
 	/** null renders the options with no header, as one leading block. */

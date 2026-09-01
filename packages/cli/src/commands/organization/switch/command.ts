@@ -1,4 +1,4 @@
-import { CLIError, positional } from "@superset/cli-framework";
+import { CLIError, positional } from "@choros/cli-framework";
 import { command } from "../../../lib/command";
 import { readConfig, writeConfig } from "../../../lib/config";
 

@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
+import { Button } from "@choros/ui/button";
 import { LuFileCode, LuLoader } from "react-icons/lu";
 import type { DeferredDiffReason } from "../../hooks/useDiffAnnotations";
 

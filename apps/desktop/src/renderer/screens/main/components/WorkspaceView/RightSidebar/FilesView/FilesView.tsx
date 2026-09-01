@@ -10,7 +10,7 @@ import {
 	ContextMenuContent,
 	ContextMenuItem,
 	ContextMenuTrigger,
-} from "@superset/ui/context-menu";
+} from "@choros/ui/context-menu";
 import { useParams } from "@tanstack/react-router";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { LuFile, LuFolder } from "react-icons/lu";

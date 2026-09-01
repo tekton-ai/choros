@@ -1,11 +1,11 @@
 import { createHash } from "node:crypto";
-import { db } from "@superset/db/client";
-import { automations, automationTriggers } from "@superset/db/schema";
+import { db } from "@choros/db/client";
+import { automations, automationTriggers } from "@choros/db/schema";
 import {
 	presentedWebhookToken,
 	WEBHOOK_TOKEN_PREFIX,
 	webhookTokenMatches,
-} from "@superset/trpc/automation-webhook-secret";
+} from "@choros/trpc/automation-webhook-secret";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 import { and, eq } from "drizzle-orm";

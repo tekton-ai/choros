@@ -1,6 +1,6 @@
 import type { Channel, ChatMessage } from "@microsoft/microsoft-graph-types";
-import type { MicrosoftTeamsMatchableEvent } from "@superset/shared/automation-matching";
-import { plainTextOf } from "@superset/trpc/integrations/microsoft-teams";
+import type { MicrosoftTeamsMatchableEvent } from "@choros/shared/automation-matching";
+import { plainTextOf } from "@choros/trpc/integrations/microsoft-teams";
 
 import type { NormalizedDelivery } from "@/lib/automations/ingestAutomationEvent";
 import type { AuthenticatedConnection } from "./notifications";

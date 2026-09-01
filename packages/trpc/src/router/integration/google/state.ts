@@ -1,9 +1,9 @@
-import { db } from "@superset/db/client";
+import { db } from "@choros/db/client";
 import {
 	type GoogleCalendarWatchState,
 	type GoogleConfig,
 	integrationConnections,
-} from "@superset/db/schema";
+} from "@choros/db/schema";
 import { and, eq, isNull, sql } from "drizzle-orm";
 
 /**

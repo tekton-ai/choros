@@ -1,5 +1,5 @@
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
-import { cn } from "@superset/ui/utils";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { cn } from "@choros/ui/utils";
 import type { Terminal } from "@xterm/xterm";
 import { useCallback, useEffect, useState } from "react";
 import { HiArrowDown } from "react-icons/hi2";

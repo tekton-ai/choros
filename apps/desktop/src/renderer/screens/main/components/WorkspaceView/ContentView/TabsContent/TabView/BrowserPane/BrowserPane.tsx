@@ -1,4 +1,4 @@
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { GlobeIcon } from "lucide-react";
 import { useCallback } from "react";
 import { TbDeviceDesktop } from "react-icons/tb";

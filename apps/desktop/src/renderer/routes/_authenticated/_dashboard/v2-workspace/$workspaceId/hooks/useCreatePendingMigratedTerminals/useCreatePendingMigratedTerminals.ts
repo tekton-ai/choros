@@ -1,5 +1,5 @@
-import { BUILTIN_AGENT_IDS } from "@superset/shared/agent-catalog";
-import { useWorkspaceClient, workspaceTrpc } from "@superset/workspace-client";
+import { BUILTIN_AGENT_IDS } from "@choros/shared/agent-catalog";
+import { useWorkspaceClient, workspaceTrpc } from "@choros/workspace-client";
 import { useEffect, useRef } from "react";
 import { electronTrpcClient } from "renderer/lib/trpc-client";
 import {

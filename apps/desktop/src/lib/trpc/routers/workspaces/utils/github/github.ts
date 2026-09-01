@@ -1,4 +1,4 @@
-import type { GitHubStatus, PullRequestComment } from "@superset/local-db";
+import type { GitHubStatus, PullRequestComment } from "@choros/local-db";
 import {
 	branchExistsOnRemote,
 	getCurrentBranch,

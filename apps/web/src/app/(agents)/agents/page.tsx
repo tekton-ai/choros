@@ -1,5 +1,5 @@
-import { COMPANY, DOWNLOAD_URL_MAC_ARM64 } from "@superset/shared/constants";
-import { Button } from "@superset/ui/button";
+import { COMPANY, DOWNLOAD_URL_MAC_ARM64 } from "@choros/shared/constants";
+import { Button } from "@choros/ui/button";
 import { Download } from "lucide-react";
 import { notFound } from "next/navigation";
 import { FaGithub } from "react-icons/fa";

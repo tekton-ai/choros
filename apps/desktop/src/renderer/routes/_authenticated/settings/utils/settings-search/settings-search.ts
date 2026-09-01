@@ -1,7 +1,7 @@
 import {
 	INTEGRATIONS,
 	type IntegrationProvider,
-} from "@superset/shared/integrations";
+} from "@choros/shared/integrations";
 import type { SettingsSection } from "renderer/stores/settings-state";
 
 export const SETTING_ITEM_ID = {

@@ -1,4 +1,4 @@
-import type { WorkspaceState } from "@superset/panes";
+import type { WorkspaceState } from "@choros/panes";
 
 interface V2PaneSelection {
 	activeTabId: string | null;

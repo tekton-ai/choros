@@ -1,20 +1,20 @@
-import { auth } from "@superset/auth/server";
-import { stripeClient } from "@superset/auth/stripe";
-import { db } from "@superset/db/client";
+import { auth } from "@choros/auth/server";
+import { stripeClient } from "@choros/auth/stripe";
+import { db } from "@choros/db/client";
 import {
 	members,
 	organizations,
 	teamMembers,
 	teams,
 	users,
-} from "@superset/db/schema";
+} from "@choros/db/schema";
 import {
 	sessions as authSessions,
 	invitations,
 	verifications,
-} from "@superset/db/schema/auth";
-import { findOrgMembership } from "@superset/db/utils";
-import { canRemoveMember, type OrganizationRole } from "@superset/shared/auth";
+} from "@choros/db/schema/auth";
+import { findOrgMembership } from "@choros/db/utils";
+import { canRemoveMember, type OrganizationRole } from "@choros/shared/auth";
 import { TRPCError, type TRPCRouterRecord } from "@trpc/server";
 import { and, desc, eq, isNull, ne, sql } from "drizzle-orm";
 import { z } from "zod";

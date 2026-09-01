@@ -17,15 +17,15 @@ import * as path from "node:path";
 import {
 	isPositiveInteger,
 	signalProcessTreeAndGroups,
-} from "@superset/pty-daemon/process-tree";
+} from "@choros/pty-daemon/process-tree";
 import {
 	CURRENT_PROTOCOL_VERSION,
 	encodeFrame,
 	FrameDecoder,
 	type ServerMessage,
 	type SessionInfo,
-} from "@superset/pty-daemon/protocol";
-import { probeTrustdHealthy } from "@superset/pty-daemon/trustd-probe";
+} from "@choros/pty-daemon/protocol";
+import { probeTrustdHealthy } from "@choros/pty-daemon/trustd-probe";
 import semver from "semver";
 import { DaemonClient } from "../terminal/DaemonClient/index.ts";
 import { EXPECTED_DAEMON_VERSION } from "./expected-version.ts";

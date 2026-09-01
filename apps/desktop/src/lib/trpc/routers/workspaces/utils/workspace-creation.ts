@@ -1,5 +1,5 @@
-import type { SelectWorktree } from "@superset/local-db";
-import { projects, workspaces, worktrees } from "@superset/local-db";
+import type { SelectWorktree } from "@choros/local-db";
+import { projects, workspaces, worktrees } from "@choros/local-db";
 import { TRPCError } from "@trpc/server";
 import { and, eq, isNull } from "drizzle-orm";
 import { track } from "main/lib/analytics";

@@ -3,10 +3,10 @@ import {
 	getMatchingExternalServers,
 	type PluginCatalogEntry,
 	SUPERSET_MANAGED_SKILLS,
-} from "@superset/shared/plugins";
-import { Badge } from "@superset/ui/badge";
-import { Button } from "@superset/ui/button";
-import { Switch } from "@superset/ui/switch";
+} from "@choros/shared/plugins";
+import { Badge } from "@choros/ui/badge";
+import { Button } from "@choros/ui/button";
+import { Switch } from "@choros/ui/switch";
 import { useNavigate } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { LuArrowLeft, LuTrash2 } from "react-icons/lu";

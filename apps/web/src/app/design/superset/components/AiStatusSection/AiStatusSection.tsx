@@ -1,10 +1,10 @@
 "use client";
 
-import { i18n } from "@superset/i18n";
-import { BrailleSpinner } from "@superset/ui/ai-elements/braille-spinner";
-import { Loader } from "@superset/ui/ai-elements/loader";
-import { Shimmer } from "@superset/ui/ai-elements/shimmer";
-import { ShimmerLabel } from "@superset/ui/ai-elements/shimmer-label";
+import { i18n } from "@choros/i18n";
+import { BrailleSpinner } from "@choros/ui/ai-elements/braille-spinner";
+import { Loader } from "@choros/ui/ai-elements/loader";
+import { Shimmer } from "@choros/ui/ai-elements/shimmer";
+import { ShimmerLabel } from "@choros/ui/ai-elements/shimmer-label";
 
 import { ComponentCard } from "../../../components/ComponentCard";
 import { ShowcaseSection } from "../../../components/ShowcaseSection";
@@ -28,10 +28,10 @@ export function AiStatusSection() {
 					id: "web.design.aiStatusSection.loaderBrailleSpinner",
 					message: "Loader · Braille Spinner",
 				})}
-				importPath="@superset/ui/ai-elements/loader"
+				importPath="@choros/ui/ai-elements/loader"
 				description={i18n._({
 					id: "web.design.aiStatusSection.alsoSupersetUiAiElements",
-					message: "Also: @superset/ui/ai-elements/braille-spinner",
+					message: "Also: @choros/ui/ai-elements/braille-spinner",
 				})}
 			>
 				<Loader size={16} />
@@ -44,7 +44,7 @@ export function AiStatusSection() {
 					id: "web.design.aiStatusSection.shimmerShimmerLabel",
 					message: "Shimmer · Shimmer Label",
 				})}
-				importPath="@superset/ui/ai-elements/shimmer"
+				importPath="@choros/ui/ai-elements/shimmer"
 				description={i18n._({
 					id: "web.design.aiStatusSection.animatedTextForInFlight",
 					message: "Animated text for in-flight agent activity",

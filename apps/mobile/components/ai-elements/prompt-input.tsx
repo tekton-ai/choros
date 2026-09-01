@@ -1,4 +1,4 @@
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import * as DocumentPicker from "expo-document-picker";
 import { Image } from "expo-image";
 import { manipulateAsync, SaveFormat } from "expo-image-manipulator";

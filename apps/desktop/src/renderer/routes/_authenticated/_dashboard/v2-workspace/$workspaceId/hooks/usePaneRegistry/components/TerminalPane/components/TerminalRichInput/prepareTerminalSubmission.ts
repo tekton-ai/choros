@@ -1,4 +1,4 @@
-import { sanitizePromptForPty } from "@superset/shared/agent-prompt-launch";
+import { sanitizePromptForPty } from "@choros/shared/agent-prompt-launch";
 import { shellEscapePaths } from "../../utils";
 
 /**

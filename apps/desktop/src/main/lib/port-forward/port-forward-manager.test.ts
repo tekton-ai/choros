@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import net from "node:net";
 import { type Duplex, PassThrough } from "node:stream";
-import type { DetectedPort } from "@superset/port-scanner";
+import type { DetectedPort } from "@choros/port-scanner";
 import type { ForwardTarget } from "shared/types";
 import { PortForwardManager } from "./port-forward-manager";
 import type { ForwardTransport } from "./types";

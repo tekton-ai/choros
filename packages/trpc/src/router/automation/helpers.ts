@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { db, type dbWs } from "@superset/db/client";
+import { db, type dbWs } from "@choros/db/client";
 import {
 	type AutomationPromptSource,
 	automationPromptVersions,
@@ -7,8 +7,8 @@ import {
 	automationTriggers,
 	type ScheduleTriggerConfig,
 	type TriggerConfig,
-} from "@superset/db/schema";
-import { nextOccurrenceAfter } from "@superset/shared/rrule";
+} from "@choros/db/schema";
+import { nextOccurrenceAfter } from "@choros/shared/rrule";
 import { and, eq, inArray, sql } from "drizzle-orm";
 import { userError } from "../../i18n-error";
 

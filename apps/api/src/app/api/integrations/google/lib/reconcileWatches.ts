@@ -1,5 +1,5 @@
 import { createHash, randomBytes, randomUUID } from "node:crypto";
-import type { SelectIntegrationConnection } from "@superset/db/schema";
+import type { SelectIntegrationConnection } from "@choros/db/schema";
 import {
 	findGoogleConnectionById,
 	googleConfigOf,
@@ -11,7 +11,7 @@ import {
 	WATCH_RENEW_WINDOW_MS,
 	watchCalendar,
 	watchMailbox,
-} from "@superset/trpc/integrations/google";
+} from "@choros/trpc/integrations/google";
 import { env } from "@/env";
 import { syncCalendar } from "./syncCalendar";
 

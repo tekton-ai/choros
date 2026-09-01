@@ -1,8 +1,8 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { CLIError } from "@superset/cli-framework";
-import type { AppRouter as HostServiceRouter } from "@superset/host-service/trpc";
-import type { BranchPrefixMode } from "@superset/local-db/schema/zod";
+import { CLIError } from "@choros/cli-framework";
+import type { AppRouter as HostServiceRouter } from "@choros/host-service/trpc";
+import type { BranchPrefixMode } from "@choros/local-db/schema/zod";
 import { createTRPCClient, httpBatchLink } from "@trpc/client";
 import SuperJSON from "superjson";
 import { getSupersetHomeDir } from "./paths";

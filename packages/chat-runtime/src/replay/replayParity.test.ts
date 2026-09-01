@@ -1,11 +1,11 @@
 import { describe, expect, test } from "bun:test";
-import { emptySnapshot, reduceMany } from "@superset/chat/core";
+import { emptySnapshot, reduceMany } from "@choros/chat/core";
 import type {
 	DurableEnvelope,
 	DurableEvent,
 	SessionState,
-} from "@superset/chat/protocol";
-import { durableEventSchema } from "@superset/chat/protocol";
+} from "@choros/chat/protocol";
+import { durableEventSchema } from "@choros/chat/protocol";
 import type { AdapterEvent } from "../harness";
 import { FakeHarness, type FakeHarnessScript } from "../harness/fake";
 import {

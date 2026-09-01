@@ -1,7 +1,7 @@
 import { plural } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
-import { Checkbox } from "@superset/ui/checkbox";
+import { Button } from "@choros/ui/button";
+import { Checkbox } from "@choros/ui/checkbox";
 import {
 	Dialog,
 	DialogContent,
@@ -9,11 +9,11 @@ import {
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
-} from "@superset/ui/dialog";
-import { getBrowserLogo } from "@superset/ui/icons/browser-icons";
-import { Label } from "@superset/ui/label";
-import { RadioGroup, RadioGroupItem } from "@superset/ui/radio-group";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/dialog";
+import { getBrowserLogo } from "@choros/ui/icons/browser-icons";
+import { Label } from "@choros/ui/label";
+import { RadioGroup, RadioGroupItem } from "@choros/ui/radio-group";
+import { toast } from "@choros/ui/sonner";
 import { useCallback, useEffect, useState } from "react";
 import type { IconType } from "react-icons";
 import { SiArc } from "react-icons/si";

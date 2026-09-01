@@ -9,7 +9,7 @@
 // background handoff — sessions live in the daemon; the user explicitly
 // triggers restart.
 
-import ptyDaemonPackageJson from "@superset/pty-daemon/package.json" with {
+import ptyDaemonPackageJson from "@choros/pty-daemon/package.json" with {
 	type: "json",
 };
 

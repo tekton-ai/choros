@@ -1,6 +1,6 @@
-import { Workspace } from "@superset/panes";
-import { FEATURE_FLAGS } from "@superset/shared/constants";
-import { workspaceTrpc } from "@superset/workspace-client";
+import { Workspace } from "@choros/panes";
+import { FEATURE_FLAGS } from "@choros/shared/constants";
+import { workspaceTrpc } from "@choros/workspace-client";
 import { createFileRoute } from "@tanstack/react-router";
 import { useFeatureFlagEnabled } from "posthog-js/react";
 import { useCallback, useState } from "react";

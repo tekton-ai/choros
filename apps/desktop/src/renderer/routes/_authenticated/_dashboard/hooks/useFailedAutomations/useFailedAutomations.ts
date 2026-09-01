@@ -1,4 +1,4 @@
-import type { SelectAutomationRun } from "@superset/db/schema";
+import type { SelectAutomationRun } from "@choros/db/schema";
 import { useCallback, useMemo } from "react";
 import { authClient } from "renderer/lib/auth-client";
 import { cloudTrpc } from "renderer/lib/cloud-trpc";

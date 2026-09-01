@@ -1,10 +1,10 @@
 import { describe, expect, test } from "bun:test";
 import { randomUUID } from "node:crypto";
-import type { ChatRuntime, FakeHarnessScript } from "@superset/chat-runtime";
+import type { ChatRuntime, FakeHarnessScript } from "@choros/chat-runtime";
 import {
 	createChatCallerFactory,
 	createChatRouter,
-} from "@superset/chat-runtime";
+} from "@choros/chat-runtime";
 import {
 	agentMessage,
 	createTestRuntime,
@@ -12,7 +12,7 @@ import {
 	fakeHarnessRegistry,
 	turn,
 	waitFor,
-} from "@superset/chat-runtime/testing";
+} from "@choros/chat-runtime/testing";
 import type { Envelope } from "../../protocol/envelope";
 import { isDurableEnvelope } from "../../protocol/envelope";
 import { createMemoryStreamServer } from "../../testing/memoryStream";

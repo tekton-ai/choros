@@ -1,7 +1,7 @@
 "use client";
 
 import { Trans } from "@lingui/react/macro";
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { useEffect } from "react";
 import type { MentionSection } from "../../hooks/useMentionSources";
 import type { ComposerMentionEntry } from "../../types";

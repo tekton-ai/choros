@@ -1,6 +1,6 @@
-import type { RouterOutputs } from "@superset/trpc";
-import type { LeaderboardPeriod } from "@superset/trpc/leaderboard-periods";
-import type { LeaderboardMetric } from "@superset/trpc/leaderboard-types";
+import type { RouterOutputs } from "@choros/trpc";
+import type { LeaderboardPeriod } from "@choros/trpc/leaderboard-periods";
+import type { LeaderboardMetric } from "@choros/trpc/leaderboard-types";
 import { TRPCClientError } from "@trpc/client";
 import { leaderboardClient } from "../leaderboardClient";
 

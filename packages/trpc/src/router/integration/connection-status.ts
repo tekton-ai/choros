@@ -1,8 +1,8 @@
-import { db } from "@superset/db/client";
+import { db } from "@choros/db/client";
 import {
 	githubInstallations,
 	integrationConnections,
-} from "@superset/db/schema";
+} from "@choros/db/schema";
 import { and, eq, isNull } from "drizzle-orm";
 import { z } from "zod";
 import { protectedProcedure } from "../../trpc";

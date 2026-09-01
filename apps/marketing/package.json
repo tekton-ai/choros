@@ -1,5 +1,5 @@
 {
-	"name": "@superset/marketing",
+	"name": "@choros/marketing",
 	"version": "0.1.0",
 	"private": true,
 	"type": "module",
@@ -13,18 +13,18 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
+		"@choros/auth": "workspace:*",
+		"@choros/email": "workspace:*",
+		"@choros/i18n": "workspace:*",
+		"@choros/shared": "workspace:*",
+		"@choros/trpc": "workspace:*",
+		"@choros/ui": "workspace:*",
 		"@lingui/core": "6.6.0",
 		"@lingui/react": "6.6.0",
 		"@paper-design/shaders-react": "0.0.77",
 		"@react-three/drei": "10.7.7",
 		"@react-three/fiber": "9.5.0",
 		"@sentry/nextjs": "10.68.0",
-		"@superset/auth": "workspace:*",
-		"@superset/email": "workspace:*",
-		"@superset/i18n": "workspace:*",
-		"@superset/shared": "workspace:*",
-		"@superset/trpc": "workspace:*",
-		"@superset/ui": "workspace:*",
 		"@t3-oss/env-nextjs": "0.13.11",
 		"@trpc/client": "11.16.0",
 		"@upstash/ratelimit": "2.0.8",
@@ -57,8 +57,8 @@
 		"zod": "4.4.3"
 	},
 	"devDependencies": {
+		"@choros/typescript": "workspace:*",
 		"@lingui/swc-plugin": "6.6.0",
-		"@superset/typescript": "workspace:*",
 		"@tailwindcss/postcss": "4.2.2",
 		"@tailwindcss/typography": "0.5.19",
 		"@types/mdx": "2.0.13",

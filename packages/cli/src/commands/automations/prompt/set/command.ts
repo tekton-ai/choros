@@ -1,5 +1,5 @@
 import { readFileSync } from "node:fs";
-import { positional, string } from "@superset/cli-framework";
+import { positional, string } from "@choros/cli-framework";
 import { command } from "../../../../lib/command";
 
 async function readStdin(): Promise<string> {

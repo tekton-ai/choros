@@ -1,4 +1,4 @@
-import { db, dbWs } from "@superset/db/client";
+import { db, dbWs } from "@choros/db/client";
 import {
 	automationRuns,
 	automations,
@@ -6,14 +6,14 @@ import {
 	v2Hosts,
 	v2UsersHosts,
 	v2Workspaces,
-} from "@superset/db/schema";
-import type { DraftTrigger } from "@superset/shared/automation-triggers";
+} from "@choros/db/schema";
+import type { DraftTrigger } from "@choros/shared/automation-triggers";
 import {
 	describeSchedule,
 	nextOccurrenceAfter,
 	nextOccurrences,
 	parseRrule,
-} from "@superset/shared/rrule";
+} from "@choros/shared/rrule";
 import { TRPCError, type TRPCRouterRecord } from "@trpc/server";
 import { and, asc, desc, eq, ilike } from "drizzle-orm";
 import { z } from "zod";

@@ -1,11 +1,11 @@
-import type { TerminalPreset } from "@superset/local-db";
+import type { TerminalPreset } from "@choros/local-db";
 import {
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 	DropdownMenuSub,
 	DropdownMenuSubContent,
 	DropdownMenuSubTrigger,
-} from "@superset/ui/dropdown-menu";
+} from "@choros/ui/dropdown-menu";
 import { HiMiniCog6Tooth, HiMiniCommandLine } from "react-icons/hi2";
 import {
 	getPresetIcon,

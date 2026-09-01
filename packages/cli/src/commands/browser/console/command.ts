@@ -1,4 +1,4 @@
-import { CLIError, number, string } from "@superset/cli-framework";
+import { CLIError, number, string } from "@choros/cli-framework";
 import { command } from "../../../lib/command";
 import { resolveBrowserTarget } from "../shared";
 

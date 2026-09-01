@@ -16,7 +16,7 @@ import {
 	MUX_MAX_DATA_BYTES,
 	MuxFrameType,
 	MuxOpenFailCode,
-} from "@superset/shared/port-forward-mux";
+} from "@choros/shared/port-forward-mux";
 import { type WebSocket, WebSocketServer } from "ws";
 import { RelayForwardTransport } from "./relay-forward-transport";
 

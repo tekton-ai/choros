@@ -1,13 +1,13 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { ExternalApp } from "@superset/local-db";
-import { Button } from "@superset/ui/button";
-import { ButtonGroup } from "@superset/ui/button-group";
+import type { ExternalApp } from "@choros/local-db";
+import { Button } from "@choros/ui/button";
+import { ButtonGroup } from "@choros/ui/button-group";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+} from "@choros/ui/dropdown-menu";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { useState } from "react";
 import { HiChevronDown } from "react-icons/hi2";
 import {

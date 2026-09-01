@@ -1,13 +1,13 @@
 import { Trans } from "@lingui/react/macro";
-import { type AuthProvider, COMPANY } from "@superset/shared/constants";
+import { type AuthProvider, COMPANY } from "@choros/shared/constants";
 import {
 	DEV_EMAIL,
 	DEV_NAME,
 	DEV_PASSWORD,
-} from "@superset/shared/dev-credentials";
-import { Badge } from "@superset/ui/badge";
-import { Button } from "@superset/ui/button";
-import { Spinner } from "@superset/ui/spinner";
+} from "@choros/shared/dev-credentials";
+import { Badge } from "@choros/ui/badge";
+import { Button } from "@choros/ui/button";
+import { Spinner } from "@choros/ui/spinner";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { FaGithub } from "react-icons/fa";

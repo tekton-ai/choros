@@ -2,12 +2,12 @@
 
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
-} from "@superset/ui/collapsible";
+} from "@choros/ui/collapsible";
 import {
 	Sidebar,
 	SidebarContent,
@@ -20,7 +20,7 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 	SidebarRail,
-} from "@superset/ui/sidebar";
+} from "@choros/ui/sidebar";
 import { usePathname } from "next/navigation";
 import { LuChevronRight, LuHouse } from "react-icons/lu";
 

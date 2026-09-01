@@ -2,8 +2,8 @@
 
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
-import { i18n } from "@superset/i18n";
-import { cn } from "@superset/ui/utils";
+import { i18n } from "@choros/i18n";
+import { cn } from "@choros/ui/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 

@@ -3,8 +3,8 @@ import {
 	CommentProvider,
 	CommentsSidebar,
 	PageCommentsView,
-} from "@superset/ui/page-comments";
-import { Spinner } from "@superset/ui/spinner";
+} from "@choros/ui/page-comments";
+import { Spinner } from "@choros/ui/spinner";
 import { TRPCClientError } from "@trpc/client";
 import { useEffect, useRef } from "react";
 import { authClient } from "renderer/lib/auth-client";

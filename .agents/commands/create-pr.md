@@ -180,7 +180,7 @@ Use **High-risk/Complex** when any of these are true:
     - `bun run lint` (required)
     - `bun test <suite-or-file>` (when touching logic)
     - `bun run lint:check-node-imports` (when touching Desktop renderer/shared)
-    - `bun turbo run build --filter=@superset/desktop` (when touching Desktop)
+    - `bun turbo run build --filter=@choros/desktop` (when touching Desktop)
 
     ## Design Decisions (optional)
     - **Why X instead of Y**: Explain trade-offs when you chose between viable approaches.
@@ -275,7 +275,7 @@ For PRs bundling multiple features, use Part headers to organize (like PR #559):
     - `bun run lint` (required)
     - `bun test` (required)
     - `bun run lint:check-node-imports` (when touching Desktop renderer/shared)
-    - `bun turbo run build --filter=@superset/desktop` (when touching Desktop)
+    - `bun turbo run build --filter=@choros/desktop` (when touching Desktop)
 
     ## Design Decisions
     - **Why X instead of Y**: ...

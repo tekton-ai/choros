@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { LuCircleCheck, LuCircleDot } from "react-icons/lu";
 
 export type IssueState = "open" | "closed";

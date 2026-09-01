@@ -1,4 +1,4 @@
-import { PROTOCOL_SCHEMES } from "@superset/shared/constants";
+import { PROTOCOL_SCHEMES } from "@choros/shared/constants";
 import { getWorkspaceName } from "./env.shared";
 
 export const PLATFORM = {
@@ -46,7 +46,7 @@ export const DEFAULT_TERMINAL_SCROLLBACK = 5000;
 import {
 	DEFAULT_TERMINAL_PARKED_RUNTIME_CAP as SHARED_DEFAULT_PARKED_CAP,
 	TERMINAL_PARKED_RUNTIME_CAP_LIMITS,
-} from "@superset/shared/settings-constraints";
+} from "@choros/shared/settings-constraints";
 
 export const DEFAULT_TERMINAL_PARKED_RUNTIME_CAP = SHARED_DEFAULT_PARKED_CAP;
 export const MIN_TERMINAL_PARKED_RUNTIME_CAP =

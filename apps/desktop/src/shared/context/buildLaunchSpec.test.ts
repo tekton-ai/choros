@@ -3,7 +3,7 @@ import {
 	indexResolvedAgentConfigs,
 	type ResolvedAgentConfig,
 	resolveAgentConfigs,
-} from "@superset/shared/agent-settings";
+} from "@choros/shared/agent-settings";
 import { launchContextMultiSource } from "./__fixtures__";
 import { buildLaunchSpec } from "./buildLaunchSpec";
 import type { AttachmentFile, LaunchContext } from "./types";

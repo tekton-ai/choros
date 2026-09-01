@@ -1,4 +1,4 @@
-import { TERMINAL_HANDOFF_MAX_CHARS } from "@superset/shared/terminal-session-handoff";
+import { TERMINAL_HANDOFF_MAX_CHARS } from "@choros/shared/terminal-session-handoff";
 import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";
 import { z } from "zod";

@@ -1,9 +1,9 @@
 {
-	"extends": "@superset/typescript/electron.json",
+	"extends": "@choros/typescript/electron.json",
 	"compilerOptions": {
 		"types": ["bun"],
 		"paths": {
-			"@superset/chat-runtime": ["../../packages/chat-runtime/src/index.ts"],
+			"@choros/chat-runtime": ["../../packages/chat-runtime/src/index.ts"],
 			"*": ["./src/*"],
 			"~/*": ["./*"]
 		}

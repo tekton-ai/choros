@@ -1,4 +1,4 @@
-import { db, dbWs } from "@superset/db/client";
+import { db, dbWs } from "@choros/db/client";
 import {
 	pageComments,
 	pageCommentThreads,
@@ -6,7 +6,7 @@ import {
 	pageVersions,
 	type SelectPage,
 	users,
-} from "@superset/db/schema";
+} from "@choros/db/schema";
 import { TRPCError, type TRPCRouterRecord } from "@trpc/server";
 import { and, asc, eq, isNotNull, isNull } from "drizzle-orm";
 import { protectedProcedure, userError } from "../../trpc";

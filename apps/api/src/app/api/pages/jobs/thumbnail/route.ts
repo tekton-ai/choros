@@ -2,7 +2,7 @@ import {
 	generatePageThumbnail,
 	PAGE_THUMBNAIL_JOB_PATH,
 	pageThumbnailJobSchema,
-} from "@superset/trpc/page-thumbnail";
+} from "@choros/trpc/page-thumbnail";
 import { verifyQstashRequest } from "@/lib/verifyQstash";
 
 export async function POST(request: Request) {

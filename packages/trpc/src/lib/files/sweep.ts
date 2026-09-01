@@ -1,6 +1,6 @@
-import { db } from "@superset/db/client";
-import { files } from "@superset/db/schema";
-import { fileOriginalKey } from "@superset/shared/usercontent";
+import { db } from "@choros/db/client";
+import { files } from "@choros/db/schema";
+import { fileOriginalKey } from "@choros/shared/usercontent";
 import { and, eq, inArray, lt } from "drizzle-orm";
 import { deleteObjects } from "../r2";
 

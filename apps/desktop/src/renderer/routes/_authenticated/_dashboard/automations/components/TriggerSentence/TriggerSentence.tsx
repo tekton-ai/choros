@@ -1,9 +1,9 @@
 import type {
 	DraftTrigger,
 	TriggerProblem,
-} from "@superset/shared/automation-triggers";
-import { INTEGRATIONS } from "@superset/shared/integrations";
-import { Button } from "@superset/ui/button";
+} from "@choros/shared/automation-triggers";
+import { INTEGRATIONS } from "@choros/shared/integrations";
+import { Button } from "@choros/ui/button";
 import type { ReactNode } from "react";
 import { LuArrowUpRight, LuTrash2 } from "react-icons/lu";
 import { env } from "renderer/env.renderer";

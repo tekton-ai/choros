@@ -9,7 +9,7 @@ import {
 	writeFileSync,
 } from "node:fs";
 import path from "node:path";
-import { getBinDir } from "@superset/agent-setup/paths";
+import { getBinDir } from "@choros/agent-setup/paths";
 import { app } from "electron";
 
 export const BUNDLED_CLI_SHIM_MARKER = "# Superset bundled CLI shim v1";

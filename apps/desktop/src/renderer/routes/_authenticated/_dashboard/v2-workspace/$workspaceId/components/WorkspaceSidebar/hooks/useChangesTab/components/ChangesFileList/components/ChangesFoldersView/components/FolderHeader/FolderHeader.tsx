@@ -1,4 +1,4 @@
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 
 interface FolderHeaderProps {
 	/** Display label — a folder path like "src/components", or "Root Path". */

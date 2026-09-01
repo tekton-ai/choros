@@ -2,9 +2,9 @@ import type {
 	AgentLifecycleEventType,
 	ClientMessage,
 	ServerMessage,
-} from "@superset/host-service/events";
-import type { AgentIdentity } from "@superset/shared/agent-identity";
-import type { FsWatchEvent } from "@superset/workspace-fs/host";
+} from "@choros/host-service/events";
+import type { AgentIdentity } from "@choros/shared/agent-identity";
+import type { FsWatchEvent } from "@choros/workspace-fs/host";
 import type { RelayAffinityProbe } from "./primeRelayAffinity";
 import { createRelaySocket, type RelaySocket } from "./relaySocket";
 

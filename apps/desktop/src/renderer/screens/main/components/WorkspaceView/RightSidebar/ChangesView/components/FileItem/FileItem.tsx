@@ -1,13 +1,13 @@
-import type { ExternalApp } from "@superset/local-db";
+import type { ExternalApp } from "@choros/local-db";
 import {
 	ContextMenu,
 	ContextMenuContent,
 	ContextMenuItem,
 	ContextMenuSeparator,
 	ContextMenuTrigger,
-} from "@superset/ui/context-menu";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/context-menu";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { cn } from "@choros/ui/utils";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
 	VscAdd,

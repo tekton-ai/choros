@@ -5,9 +5,9 @@ import {
 	CommandInput,
 	CommandItem,
 	CommandList,
-} from "@superset/ui/command";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/command";
+import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
+import { cn } from "@choros/ui/utils";
 import { useMemo, useState } from "react";
 import { HiCheck } from "react-icons/hi2";
 import { LuGitBranch, LuSparkles, LuTriangleAlert } from "react-icons/lu";

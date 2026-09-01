@@ -1,5 +1,5 @@
 {
-	"name": "@superset/api",
+	"name": "@choros/api",
 	"version": "0.1.0",
 	"private": true,
 	"type": "module",
@@ -14,6 +14,12 @@
 	"dependencies": {
 		"@anthropic-ai/sdk": "0.78.0",
 		"@better-auth/oauth-provider": "1.6.22",
+		"@choros/auth": "workspace:*",
+		"@choros/db": "workspace:*",
+		"@choros/email": "workspace:*",
+		"@choros/mcp": "workspace:*",
+		"@choros/shared": "workspace:*",
+		"@choros/trpc": "workspace:*",
 		"@linear/sdk": "68.1.1",
 		"@modelcontextprotocol/sdk": "1.30.0",
 		"@notionhq/client": "5.25.2",
@@ -23,12 +29,6 @@
 		"@sentry/nextjs": "10.68.0",
 		"@slack/types": "2.20.1",
 		"@slack/web-api": "7.15.0",
-		"@superset/auth": "workspace:*",
-		"@superset/db": "workspace:*",
-		"@superset/email": "workspace:*",
-		"@superset/mcp": "workspace:*",
-		"@superset/shared": "workspace:*",
-		"@superset/trpc": "workspace:*",
 		"@t3-oss/env-nextjs": "0.13.11",
 		"@trpc/server": "11.16.0",
 		"@upstash/qstash": "2.10.1",
@@ -52,8 +52,8 @@
 		"zod": "4.4.3"
 	},
 	"devDependencies": {
+		"@choros/typescript": "workspace:*",
 		"@microsoft/microsoft-graph-types": "2.43.1",
-		"@superset/typescript": "workspace:*",
 		"@types/lodash.chunk": "4.2.9",
 		"@types/node": "24.12.0",
 		"@types/react": "19.2.14",

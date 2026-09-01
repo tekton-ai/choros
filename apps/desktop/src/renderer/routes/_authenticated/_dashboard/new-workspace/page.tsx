@@ -1,4 +1,4 @@
-import { PromptInputProvider } from "@superset/ui/ai-elements/prompt-input";
+import { PromptInputProvider } from "@choros/ui/ai-elements/prompt-input";
 import { createFileRoute } from "@tanstack/react-router";
 import { NewWorkspaceScreen } from "renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen";
 import { DashboardNewWorkspaceDraftProvider } from "renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/DashboardNewWorkspaceDraftContext";

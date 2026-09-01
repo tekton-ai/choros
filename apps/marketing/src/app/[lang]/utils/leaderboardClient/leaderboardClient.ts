@@ -1,4 +1,4 @@
-import type { AppRouter } from "@superset/trpc";
+import type { AppRouter } from "@choros/trpc";
 import { createTRPCClient, httpBatchLink } from "@trpc/client";
 import superjson from "superjson";
 import { env } from "@/env";

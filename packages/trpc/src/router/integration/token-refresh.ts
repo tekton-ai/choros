@@ -1,6 +1,6 @@
-import { db } from "@superset/db/client";
-import { integrationConnections } from "@superset/db/schema";
-import { withConnectionLock } from "@superset/db/utils";
+import { db } from "@choros/db/client";
+import { integrationConnections } from "@choros/db/schema";
+import { withConnectionLock } from "@choros/db/utils";
 import { eq } from "drizzle-orm";
 
 /** Refresh a token this many ms before it actually expires. */

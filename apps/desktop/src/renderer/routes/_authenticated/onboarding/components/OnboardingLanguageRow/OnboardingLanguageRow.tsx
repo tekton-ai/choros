@@ -3,14 +3,14 @@ import {
 	isSupportedLocale,
 	LOCALE_LABELS,
 	SUPPORTED_LOCALES,
-} from "@superset/i18n";
+} from "@choros/i18n";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
+} from "@choros/ui/select";
 import { HiOutlineLanguage } from "react-icons/hi2";
 import { cloudTrpc } from "renderer/lib/cloud-trpc";
 import { electronTrpc } from "renderer/lib/electron-trpc";

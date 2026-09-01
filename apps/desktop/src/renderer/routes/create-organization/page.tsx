@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
-import { Card, CardContent, CardHeader } from "@superset/ui/card";
+import { Button } from "@choros/ui/button";
+import { Card, CardContent, CardHeader } from "@choros/ui/card";
 import {
 	Form,
 	FormControl,
@@ -10,9 +10,9 @@ import {
 	FormItem,
 	FormLabel,
 	FormMessage,
-} from "@superset/ui/form";
-import { Input } from "@superset/ui/input";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/form";
+import { Input } from "@choros/ui/input";
+import { toast } from "@choros/ui/sonner";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";

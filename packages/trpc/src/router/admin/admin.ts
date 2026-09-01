@@ -1,6 +1,6 @@
-import { auth } from "@superset/auth/server";
-import { stripeClient } from "@superset/auth/stripe";
-import { db, dbWs } from "@superset/db/client";
+import { auth } from "@choros/auth/server";
+import { stripeClient } from "@choros/auth/stripe";
+import { db, dbWs } from "@choros/db/client";
 import {
 	accounts,
 	members,
@@ -15,7 +15,7 @@ import {
 	users,
 	v2Clients,
 	v2UsersHosts,
-} from "@superset/db/schema";
+} from "@choros/db/schema";
 import type { TRPCRouterRecord } from "@trpc/server";
 import { and, count, eq, ne } from "drizzle-orm";
 import { z } from "zod";

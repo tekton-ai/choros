@@ -1,5 +1,5 @@
-import type { AgentDefinitionId } from "@superset/shared/agent-catalog";
-import type { ResolvedAgentConfig } from "@superset/shared/agent-settings";
+import type { AgentDefinitionId } from "@choros/shared/agent-catalog";
+import type { ResolvedAgentConfig } from "@choros/shared/agent-settings";
 
 /**
  * Discriminated union of every kind of source that can contribute context

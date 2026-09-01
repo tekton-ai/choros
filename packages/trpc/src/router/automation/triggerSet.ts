@@ -1,11 +1,11 @@
-import { automationTriggers, type TriggerConfig } from "@superset/db/schema";
+import { automationTriggers, type TriggerConfig } from "@choros/db/schema";
 import {
 	type DraftTrigger,
 	describeTriggerProblems,
 	summarizeTriggerProblems,
-} from "@superset/shared/automation-triggers";
-import { LAUNCHED_TRIGGER_KINDS } from "@superset/shared/constants";
-import { nextOccurrenceAfter } from "@superset/shared/rrule";
+} from "@choros/shared/automation-triggers";
+import { LAUNCHED_TRIGGER_KINDS } from "@choros/shared/constants";
+import { nextOccurrenceAfter } from "@choros/shared/rrule";
 import { TRPCError } from "@trpc/server";
 import { and, eq, inArray, notInArray } from "drizzle-orm";
 

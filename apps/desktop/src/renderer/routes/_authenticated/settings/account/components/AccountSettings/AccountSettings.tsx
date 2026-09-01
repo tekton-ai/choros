@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { errorMessage } from "@superset/i18n/errors";
-import { ACCOUNT_DELETION_GRACE_DAYS } from "@superset/shared/constants";
+import { errorMessage } from "@choros/i18n/errors";
+import { ACCOUNT_DELETION_GRACE_DAYS } from "@choros/shared/constants";
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -11,11 +11,11 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 	AlertDialogTrigger,
-} from "@superset/ui/alert-dialog";
-import { Avatar } from "@superset/ui/atoms/Avatar";
-import { Button } from "@superset/ui/button";
-import { Input } from "@superset/ui/input";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/alert-dialog";
+import { Avatar } from "@choros/ui/atoms/Avatar";
+import { Button } from "@choros/ui/button";
+import { Input } from "@choros/ui/input";
+import { toast } from "@choros/ui/sonner";
 import { useEffect, useState } from "react";
 import { useSignOut } from "renderer/hooks/useSignOut";
 import { apiTrpcClient } from "renderer/lib/api-trpc-client";

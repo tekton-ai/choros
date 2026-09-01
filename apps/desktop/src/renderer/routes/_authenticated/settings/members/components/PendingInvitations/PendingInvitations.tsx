@@ -1,8 +1,8 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { formatDate as formatLocaleDate } from "@superset/i18n/format";
-import type { OrganizationRole } from "@superset/shared/auth";
-import { Badge } from "@superset/ui/badge";
-import { Skeleton } from "@superset/ui/skeleton";
+import { formatDate as formatLocaleDate } from "@choros/i18n/format";
+import type { OrganizationRole } from "@choros/shared/auth";
+import { Badge } from "@choros/ui/badge";
+import { Skeleton } from "@choros/ui/skeleton";
 import {
 	Table,
 	TableBody,
@@ -10,7 +10,7 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from "@superset/ui/table";
+} from "@choros/ui/table";
 import { cloudTrpc } from "renderer/lib/cloud-trpc";
 import { HighlightText } from "renderer/routes/_authenticated/settings/components/HighlightText";
 import { useSettingsSearchQuery } from "renderer/stores/settings-state";

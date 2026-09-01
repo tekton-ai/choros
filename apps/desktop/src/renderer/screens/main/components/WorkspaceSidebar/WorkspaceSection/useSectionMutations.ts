@@ -1,4 +1,4 @@
-import { toast } from "@superset/ui/sonner";
+import { toast } from "@choros/ui/sonner";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { PROJECT_COLOR_DEFAULT } from "shared/constants/project-colors";
 

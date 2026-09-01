@@ -1,4 +1,4 @@
-import { boolean, CLIError, string, table } from "@superset/cli-framework";
+import { boolean, CLIError, string, table } from "@choros/cli-framework";
 import { command } from "../../../lib/command";
 import { requireHostTarget, resolveHostTarget } from "../../../lib/host-target";
 

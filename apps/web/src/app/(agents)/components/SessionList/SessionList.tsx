@@ -3,7 +3,7 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import { Search } from "lucide-react";
 import { useMemo, useState } from "react";
 import { MS_PER_DAY } from "../../constants";

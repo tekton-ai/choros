@@ -1,5 +1,5 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@superset/ui/avatar";
-import { cn } from "@superset/ui/utils";
+import { Avatar, AvatarFallback, AvatarImage } from "@choros/ui/avatar";
+import { cn } from "@choros/ui/utils";
 import { formatRelativeTime } from "renderer/lib/formatRelativeTime";
 import { PullRequestChecksSummary } from "renderer/routes/_authenticated/_dashboard/pull-requests/components/PullRequestChecksSummary";
 import type { PullRequestCheck } from "renderer/routes/_authenticated/_dashboard/pull-requests/components/pull-request-checks";

@@ -1,4 +1,4 @@
-import { workspaces, worktrees } from "@superset/local-db";
+import { workspaces, worktrees } from "@choros/local-db";
 import { TRPCError } from "@trpc/server";
 import { observable } from "@trpc/server/observable";
 import { eq } from "drizzle-orm";

@@ -10,10 +10,10 @@ import {
 	FileTree as PierreFileTree,
 	useFileTree as usePierreFileTree,
 } from "@pierre/trees/react";
-import { errorMessage } from "@superset/i18n/errors";
-import { toast } from "@superset/ui/sonner";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
-import { workspaceTrpc } from "@superset/workspace-client";
+import { errorMessage } from "@choros/i18n/errors";
+import { toast } from "@choros/ui/sonner";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { workspaceTrpc } from "@choros/workspace-client";
 import { Undo2 } from "lucide-react";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {

@@ -5,9 +5,9 @@ import {
 	CommandInput,
 	CommandItem,
 	CommandList,
-} from "@superset/ui/command";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
-import { Tabs, TabsList, TabsTrigger } from "@superset/ui/tabs";
+} from "@choros/ui/command";
+import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
+import { Tabs, TabsList, TabsTrigger } from "@choros/ui/tabs";
 import { useEffect, useRef, useState } from "react";
 import { GoGitBranch, GoGlobe } from "react-icons/go";
 import { HiCheck, HiChevronUpDown } from "react-icons/hi2";

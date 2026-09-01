@@ -1,8 +1,8 @@
-import { isSupportedLocale, type SupportedLocale } from "@superset/i18n";
+import { isSupportedLocale, type SupportedLocale } from "@choros/i18n";
 import {
 	initServerI18n as activateServerI18n,
 	preloadServerLocale,
-} from "@superset/i18n/server";
+} from "@choros/i18n/server";
 import { notFound } from "next/navigation";
 import { lang } from "next/root-params";
 
@@ -19,7 +19,7 @@ import { lang } from "next/root-params";
  *
  * Every route entry must await this — the layout is pruned on client-side
  * navigation, so seeding there covers only full document loads (see
- * @superset/i18n/server; enforced by packages/i18n/test/rsc-seeding.test.ts).
+ * @choros/i18n/server; enforced by packages/i18n/test/rsc-seeding.test.ts).
  */
 export async function initServerI18n(): Promise<SupportedLocale> {
 	const locale = await lang();

@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { useEffect, useMemo, useRef } from "react";
 import { useDragLayer } from "react-dnd";
 import { useStore } from "zustand";

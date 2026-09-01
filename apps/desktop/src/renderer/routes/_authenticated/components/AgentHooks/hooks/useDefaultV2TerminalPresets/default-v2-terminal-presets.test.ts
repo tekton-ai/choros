@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test";
-import type { HostAgentConfig } from "@superset/host-service/settings";
+import type { HostAgentConfig } from "@choros/host-service/settings";
 import type { V2TerminalPresetRow } from "renderer/routes/_authenticated/providers/CollectionsProvider/dashboardSidebarLocal/schema";
 import { createDefaultV2TerminalPresetRows } from "./default-v2-terminal-presets";
 

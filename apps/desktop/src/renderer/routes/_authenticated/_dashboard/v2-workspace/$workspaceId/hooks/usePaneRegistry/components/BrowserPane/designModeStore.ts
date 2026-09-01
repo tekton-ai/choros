@@ -1,5 +1,5 @@
-import { i18n } from "@superset/i18n";
-import { toast } from "@superset/ui/sonner";
+import { i18n } from "@choros/i18n";
+import { toast } from "@choros/ui/sonner";
 import { useCallback, useSyncExternalStore } from "react";
 import { electronTrpcClient } from "renderer/lib/trpc-client";
 import type {

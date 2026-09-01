@@ -1,4 +1,4 @@
-import { COMPANY } from "@superset/shared/constants";
+import { COMPANY } from "@choros/shared/constants";
 import { AGENT_DID } from "@/lib/agent-identity";
 import { API_URL, MCP_SERVER_URL } from "@/lib/llms";
 import { SKILL_NAMES } from "../agent-skills/skills-source";

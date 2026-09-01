@@ -1,8 +1,8 @@
-import type { Pane } from "@superset/panes";
+import type { Pane } from "@choros/panes";
 import {
 	normalizeWorkspaceTag,
 	normalizeWorkspaceTags,
-} from "@superset/shared/workspace-tags";
+} from "@choros/shared/workspace-tags";
 import { useCallback } from "react";
 import { useHostProjects } from "renderer/hooks/host-projects/useHostProjects";
 import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";

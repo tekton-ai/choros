@@ -8,10 +8,10 @@ import {
 	PromptInputProvider,
 	PromptInputSubmit,
 	usePromptInputController,
-} from "@superset/ui/ai-elements/prompt-input";
-import { toast } from "@superset/ui/sonner";
-import { cn } from "@superset/ui/utils";
-import { workspaceTrpc } from "@superset/workspace-client";
+} from "@choros/ui/ai-elements/prompt-input";
+import { toast } from "@choros/ui/sonner";
+import { cn } from "@choros/ui/utils";
+import { workspaceTrpc } from "@choros/workspace-client";
 import type { FileUIPart } from "ai";
 import { ArrowUpIcon } from "lucide-react";
 import { useCallback, useEffect, useRef } from "react";

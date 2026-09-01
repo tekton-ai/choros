@@ -5,7 +5,7 @@ import {
 	NON_EDITOR_APPS,
 	projects,
 	settings,
-} from "@superset/local-db";
+} from "@choros/local-db";
 import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";
 import { app, clipboard, shell } from "electron";

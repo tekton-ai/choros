@@ -1,15 +1,15 @@
-import { db } from "@superset/db/client";
+import { db } from "@choros/db/client";
 import {
 	members,
 	oauthClients,
 	subscriptions,
 	users,
-} from "@superset/db/schema";
+} from "@choros/db/schema";
 import {
 	DEV_EMAIL,
 	DEV_NAME,
 	DEV_PASSWORD,
-} from "@superset/shared/dev-credentials";
+} from "@choros/shared/dev-credentials";
 import { and, eq } from "drizzle-orm";
 import { env } from "./env";
 import { auth } from "./server";

@@ -1,6 +1,6 @@
 import { type ChildProcess, spawn } from "node:child_process";
 import * as os from "node:os";
-import { signalProcessTreeAndGroups } from "@superset/pty-daemon/process-tree";
+import { signalProcessTreeAndGroups } from "@choros/pty-daemon/process-tree";
 import { resolveConfiguredShell } from "./user-shell.ts";
 
 const SHELL_ENV_TIMEOUT_MS = 8_000;

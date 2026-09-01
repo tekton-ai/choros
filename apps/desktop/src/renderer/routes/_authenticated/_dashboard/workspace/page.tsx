@@ -1,4 +1,4 @@
-import { Spinner } from "@superset/ui/spinner";
+import { Spinner } from "@choros/ui/spinner";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo } from "react";
 import { useIsV2CloudEnabled } from "renderer/hooks/useIsV2CloudEnabled";

@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, mock } from "bun:test";
-import { initI18n } from "@superset/i18n";
+import { initI18n } from "@choros/i18n";
 
 // Alert copy now renders through i18n._; activate the default locale so the
 // descriptors fall back to their English messages.

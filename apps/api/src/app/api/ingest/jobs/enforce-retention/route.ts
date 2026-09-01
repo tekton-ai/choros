@@ -1,4 +1,4 @@
-import { dbWs } from "@superset/db/client";
+import { dbWs } from "@choros/db/client";
 import { type SQL, sql } from "drizzle-orm";
 
 import { verifyQstashRequest } from "@/lib/verifyQstash";

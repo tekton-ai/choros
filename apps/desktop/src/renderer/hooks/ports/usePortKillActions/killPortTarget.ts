@@ -1,4 +1,4 @@
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";
 
 export type PortKillResult = { success: boolean; error?: string };

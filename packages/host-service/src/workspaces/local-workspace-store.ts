@@ -1,9 +1,9 @@
 import { randomUUID } from "node:crypto";
-import hostServicePackageJson from "@superset/host-service/package.json" with {
+import hostServicePackageJson from "@choros/host-service/package.json" with {
 	type: "json",
 };
-import { getHostId } from "@superset/shared/host-info";
-import { normalizeWorkspaceTags } from "@superset/shared/workspace-tags";
+import { getHostId } from "@choros/shared/host-info";
+import { normalizeWorkspaceTags } from "@choros/shared/workspace-tags";
 import { eq, inArray } from "drizzle-orm";
 import type { HostDb } from "../db";
 import { workspaces, workspaceTags } from "../db/schema";

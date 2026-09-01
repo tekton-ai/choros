@@ -1,7 +1,7 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Input } from "@superset/ui/input";
-import { toast } from "@superset/ui/sonner";
-import { Tabs, TabsList, TabsTrigger } from "@superset/ui/tabs";
+import { Input } from "@choros/ui/input";
+import { toast } from "@choros/ui/sonner";
+import { Tabs, TabsList, TabsTrigger } from "@choros/ui/tabs";
 import { useEffect, useMemo } from "react";
 import { LuSearch } from "react-icons/lu";
 import { authClient } from "renderer/lib/auth-client";

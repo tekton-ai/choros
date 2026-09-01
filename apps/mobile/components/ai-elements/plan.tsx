@@ -1,4 +1,4 @@
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import { ChevronsUpDownIcon } from "lucide-react-native";
 import { createContext, useContext, useMemo } from "react";
 import { View } from "react-native";

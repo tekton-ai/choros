@@ -1,4 +1,4 @@
-import { boolean, defineConfig, string } from "@superset/cli-framework";
+import { boolean, defineConfig, string } from "@choros/cli-framework";
 import pkg from "./package.json" with { type: "json" };
 
 const VERSION = pkg.version;

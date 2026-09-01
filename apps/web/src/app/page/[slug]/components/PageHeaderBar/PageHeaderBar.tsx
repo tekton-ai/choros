@@ -5,7 +5,7 @@ import {
 	PageHeader,
 	type PageHeaderPage,
 	type PageHeaderVersion,
-} from "@superset/ui/page-comments";
+} from "@choros/ui/page-comments";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useTRPC } from "@/trpc/react";

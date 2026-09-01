@@ -1,7 +1,7 @@
 import { readdir, stat } from "node:fs/promises";
 import { homedir } from "node:os";
 import { dirname, isAbsolute, join, normalize, resolve } from "node:path";
-import { WorkspaceFsPathError } from "@superset/workspace-fs/host";
+import { WorkspaceFsPathError } from "@choros/workspace-fs/host";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import {

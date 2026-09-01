@@ -1,4 +1,4 @@
-import { auth } from "@superset/auth/server";
+import { auth } from "@choros/auth/server";
 import { headers } from "next/headers";
 
 import { env } from "@/env";

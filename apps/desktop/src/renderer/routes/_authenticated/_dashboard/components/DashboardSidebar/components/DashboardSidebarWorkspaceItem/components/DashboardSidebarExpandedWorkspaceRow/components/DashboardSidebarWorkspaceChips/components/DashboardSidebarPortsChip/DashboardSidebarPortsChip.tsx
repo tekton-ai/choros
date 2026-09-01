@@ -1,14 +1,14 @@
 import { plural } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Badge } from "@superset/ui/badge";
+import { Badge } from "@choros/ui/badge";
 import {
 	HoverCard,
 	HoverCardContent,
 	HoverCardTrigger,
-} from "@superset/ui/hover-card";
-import { Separator } from "@superset/ui/separator";
-import { toast } from "@superset/ui/sonner";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/hover-card";
+import { Separator } from "@choros/ui/separator";
+import { toast } from "@choros/ui/sonner";
+import { cn } from "@choros/ui/utils";
 import { LuLoaderCircle, LuRadioTower, LuX } from "react-icons/lu";
 import { useDashboardSidebarPortKill } from "renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/hooks/useDashboardSidebarPortKill";
 import type { DashboardSidebarPort } from "renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/hooks/useDashboardSidebarPortsData";

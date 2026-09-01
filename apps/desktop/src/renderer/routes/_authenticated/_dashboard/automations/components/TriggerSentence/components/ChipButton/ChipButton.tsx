@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import type { ReactNode } from "react";
 import { LuChevronDown } from "react-icons/lu";
 import { CHIP, CHIP_EMPTY } from "../../chipStyles";

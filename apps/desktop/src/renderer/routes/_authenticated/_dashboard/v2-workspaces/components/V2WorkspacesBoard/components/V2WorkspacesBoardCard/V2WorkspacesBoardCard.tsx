@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Badge } from "@superset/ui/badge";
-import { cn } from "@superset/ui/utils";
+import { Badge } from "@choros/ui/badge";
+import { cn } from "@choros/ui/utils";
 import { LuGitBranch, LuLaptop, LuMonitor } from "react-icons/lu";
 import { V2WorkspaceContextMenu } from "renderer/routes/_authenticated/_dashboard/v2-workspaces/components/V2WorkspaceContextMenu";
 import { WorkspaceChecksDot } from "renderer/routes/_authenticated/_dashboard/v2-workspaces/components/WorkspaceChecksDot";

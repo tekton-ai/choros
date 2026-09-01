@@ -20,7 +20,7 @@ import {
 	type ClientMessage,
 	encodeFrame,
 	FrameDecoder,
-} from "@superset/pty-daemon/protocol";
+} from "@choros/pty-daemon/protocol";
 import {
 	DaemonSupervisor,
 	probeDaemonHelloWithRetry,

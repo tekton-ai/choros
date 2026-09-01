@@ -1,4 +1,4 @@
-import { PAGE_CONTENT_TYPES as SHARED_PAGE_CONTENT_TYPES } from "@superset/shared/page-content-types";
+import { PAGE_CONTENT_TYPES as SHARED_PAGE_CONTENT_TYPES } from "@choros/shared/page-content-types";
 import { TRPCError } from "@trpc/server";
 import { validateUploadBytes } from "../../lib/upload-bytes";
 

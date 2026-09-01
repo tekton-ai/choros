@@ -1,5 +1,5 @@
 {
-	"name": "@superset/web",
+	"name": "@choros/web",
 	"version": "0.1.0",
 	"private": true,
 	"type": "module",
@@ -12,16 +12,16 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
+		"@choros/auth": "workspace:*",
+		"@choros/db": "workspace:*",
+		"@choros/i18n": "workspace:*",
+		"@choros/shared": "workspace:*",
+		"@choros/trpc": "workspace:*",
+		"@choros/ui": "workspace:*",
+		"@choros/workspace-client": "workspace:*",
 		"@lingui/core": "6.6.0",
 		"@lingui/react": "6.6.0",
 		"@sentry/nextjs": "10.68.0",
-		"@superset/auth": "workspace:*",
-		"@superset/db": "workspace:*",
-		"@superset/i18n": "workspace:*",
-		"@superset/shared": "workspace:*",
-		"@superset/trpc": "workspace:*",
-		"@superset/ui": "workspace:*",
-		"@superset/workspace-client": "workspace:*",
 		"@t3-oss/env-nextjs": "0.13.11",
 		"@tanstack/react-query": "5.101.4",
 		"@tanstack/react-query-devtools": "5.101.4",
@@ -48,8 +48,8 @@
 		"zod": "4.4.3"
 	},
 	"devDependencies": {
+		"@choros/typescript": "workspace:*",
 		"@lingui/swc-plugin": "6.6.0",
-		"@superset/typescript": "workspace:*",
 		"@tailwindcss/postcss": "4.2.2",
 		"@types/bun": "1.3.14",
 		"@types/node": "24.12.0",

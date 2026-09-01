@@ -1,4 +1,4 @@
-import { db } from "@superset/db/client";
+import { db } from "@choros/db/client";
 import { Redis } from "@upstash/redis";
 import { sql } from "drizzle-orm";
 

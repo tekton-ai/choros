@@ -1,11 +1,11 @@
 import {
 	AGENT_IDENTITY_LABELS,
 	type AgentIdentityId,
-} from "@superset/shared/agent-catalog";
+} from "@choros/shared/agent-catalog";
 import type {
 	AgentIdentity,
 	AgentLifecyclePayload,
-} from "@superset/workspace-client";
+} from "@choros/workspace-client";
 
 interface V2NativeNotificationContentOptions {
 	workspaceName: string;

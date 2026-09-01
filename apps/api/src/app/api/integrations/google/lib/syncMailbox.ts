@@ -1,9 +1,9 @@
-import { db } from "@superset/db/client";
+import { db } from "@choros/db/client";
 import {
 	automationEvents,
 	type SelectIntegrationConnection,
-} from "@superset/db/schema";
-import type { GmailMatchableEvent } from "@superset/shared/automation-matching";
+} from "@choros/db/schema";
+import type { GmailMatchableEvent } from "@choros/shared/automation-matching";
 import {
 	type GmailMessage,
 	getMessage,
@@ -14,7 +14,7 @@ import {
 	messageHasAttachment,
 	parseAddresses,
 	patchGmailState,
-} from "@superset/trpc/integrations/google";
+} from "@choros/trpc/integrations/google";
 import { and, eq, inArray } from "drizzle-orm";
 import {
 	ingestAutomationEvent,

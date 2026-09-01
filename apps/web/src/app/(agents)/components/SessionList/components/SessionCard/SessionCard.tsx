@@ -1,6 +1,6 @@
 "use client";
 
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import { CheckCircle2, Loader2, XCircle } from "lucide-react";
 import Link from "next/link";
 import { MS_PER_DAY, MS_PER_HOUR, MS_PER_MINUTE } from "../../../../constants";

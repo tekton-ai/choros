@@ -1,6 +1,6 @@
-import { auth } from "@superset/auth/server";
-import { db } from "@superset/db/client";
-import { sessions } from "@superset/db/schema/auth";
+import { auth } from "@choros/auth/server";
+import { db } from "@choros/db/client";
+import { sessions } from "@choros/db/schema/auth";
 import { headers } from "next/headers";
 
 import { i18n } from "@/lib/i18n-server";

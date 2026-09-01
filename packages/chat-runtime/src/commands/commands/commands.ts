@@ -7,7 +7,7 @@ import type {
 	PromptInput,
 	RespondToApprovalInput,
 	SetModeInput,
-} from "@superset/chat/protocol";
+} from "@choros/chat/protocol";
 import {
 	cancelTurnInputSchema,
 	createSessionInputSchema,
@@ -17,7 +17,7 @@ import {
 	promptInputSchema,
 	respondToApprovalInputSchema,
 	setModeInputSchema,
-} from "@superset/chat/protocol";
+} from "@choros/chat/protocol";
 import { z } from "zod";
 import type { ChatDb, ChatSessionRow } from "../../db";
 import type { ChatJournal } from "../../journal";

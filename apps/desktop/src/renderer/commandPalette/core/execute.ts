@@ -1,6 +1,6 @@
-import { i18n } from "@superset/i18n";
-import { errorMessage } from "@superset/i18n/errors";
-import { toast } from "@superset/ui/sonner";
+import { i18n } from "@choros/i18n";
+import { errorMessage } from "@choros/i18n/errors";
+import { toast } from "@choros/ui/sonner";
 import { track } from "renderer/lib/analytics";
 import type { Command, CommandContext } from "./types";
 

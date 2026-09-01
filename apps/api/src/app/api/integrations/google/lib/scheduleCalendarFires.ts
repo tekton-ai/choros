@@ -1,13 +1,13 @@
 import { createHash } from "node:crypto";
-import { dbWs } from "@superset/db/client";
-import { automations, automationTriggers } from "@superset/db/schema";
-import { scopeAllows } from "@superset/shared/automation-matching";
-import type { TriggerScope } from "@superset/shared/automation-triggers";
+import { dbWs } from "@choros/db/client";
+import { automations, automationTriggers } from "@choros/db/schema";
+import { scopeAllows } from "@choros/shared/automation-matching";
+import type { TriggerScope } from "@choros/shared/automation-triggers";
 import {
 	eventEnd,
 	eventStart,
 	type GoogleCalendarEvent,
-} from "@superset/trpc/integrations/google";
+} from "@choros/trpc/integrations/google";
 import { Client } from "@upstash/qstash";
 import { and, eq, inArray, sql } from "drizzle-orm";
 import { env } from "@/env";

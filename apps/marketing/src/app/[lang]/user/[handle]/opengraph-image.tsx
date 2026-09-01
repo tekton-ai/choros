@@ -1,4 +1,4 @@
-import { COMPANY } from "@superset/shared/constants";
+import { COMPANY } from "@choros/shared/constants";
 import { ImageResponse } from "next/og";
 import { fetchParticipant } from "@/app/[lang]/utils/fetchLeaderboard";
 import { formatTokens, formatUsd } from "@/app/[lang]/utils/formatUsage";

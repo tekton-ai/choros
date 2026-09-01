@@ -1,4 +1,4 @@
-import { slackEmojiName } from "@superset/shared/automation-matching";
+import { slackEmojiName } from "@choros/shared/automation-matching";
 
 /**
  * Glyphs for the standard reactions people type most, keyed by Slack short

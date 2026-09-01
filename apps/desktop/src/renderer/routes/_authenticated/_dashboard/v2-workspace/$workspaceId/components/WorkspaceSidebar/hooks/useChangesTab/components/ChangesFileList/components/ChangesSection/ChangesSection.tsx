@@ -1,14 +1,14 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { errorMessage } from "@superset/i18n/errors";
+import { errorMessage } from "@choros/i18n/errors";
 import {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
-} from "@superset/ui/collapsible";
-import { toast } from "@superset/ui/sonner";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
-import { cn } from "@superset/ui/utils";
-import { workspaceTrpc } from "@superset/workspace-client";
+} from "@choros/ui/collapsible";
+import { toast } from "@choros/ui/sonner";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { cn } from "@choros/ui/utils";
+import { workspaceTrpc } from "@choros/workspace-client";
 import { ChevronRight, Minus, Plus } from "lucide-react";
 import { type ReactNode, useState } from "react";
 import { LuUndo2 } from "react-icons/lu";

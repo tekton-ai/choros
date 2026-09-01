@@ -1,11 +1,11 @@
 import { Database } from "bun:sqlite";
 import { existsSync } from "node:fs";
-import { CLIError } from "@superset/cli-framework";
+import { CLIError } from "@choros/cli-framework";
 import {
 	type InsertSettings,
 	type SelectSettings,
 	settings,
-} from "@superset/local-db/schema";
+} from "@choros/local-db/schema";
 import { drizzle } from "drizzle-orm/bun-sqlite";
 import { getLocalDbPath } from "./paths";
 import type { SettingsColumn, SettingValue } from "./registry";

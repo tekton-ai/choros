@@ -8,9 +8,9 @@ import {
 	AlertDialogFooter,
 	AlertDialogHeader,
 	AlertDialogTitle,
-} from "@superset/ui/alert-dialog";
-import { Label } from "@superset/ui/label";
-import { Switch } from "@superset/ui/switch";
+} from "@choros/ui/alert-dialog";
+import { Label } from "@choros/ui/label";
+import { Switch } from "@choros/ui/switch";
 import { useState } from "react";
 import { LeaderboardJoinDialog } from "renderer/components/LeaderboardJoinDialog";
 import { useLeaderboardJoinPreview } from "renderer/routes/_authenticated/hooks/useLeaderboardJoinPreview";

@@ -24,7 +24,7 @@ import {
 	lineNumbers,
 } from "@codemirror/view";
 import { colorPicker } from "@replit/codemirror-css-color-picker";
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { useQuery } from "@tanstack/react-query";
 import { type MutableRefObject, useEffect, useRef } from "react";
 import { FONT_SETTINGS_QUERY_KEY } from "renderer/lib/font-settings";

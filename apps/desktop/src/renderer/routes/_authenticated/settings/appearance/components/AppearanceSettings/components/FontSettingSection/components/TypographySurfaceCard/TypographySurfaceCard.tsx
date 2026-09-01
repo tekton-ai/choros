@@ -1,17 +1,17 @@
 import { msg } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
-import { Button } from "@superset/ui/button";
-import { Input } from "@superset/ui/input";
-import { Label } from "@superset/ui/label";
+import { i18n } from "@choros/i18n";
+import { Button } from "@choros/ui/button";
+import { Input } from "@choros/ui/input";
+import { Label } from "@choros/ui/label";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
-import { Switch } from "@superset/ui/switch";
+} from "@choros/ui/select";
+import { Switch } from "@choros/ui/switch";
 import type { inferRouterInputs } from "@trpc/server";
 import type { AppRouter } from "lib/trpc/routers";
 import { Code2, RotateCcw, SquareTerminal } from "lucide-react";

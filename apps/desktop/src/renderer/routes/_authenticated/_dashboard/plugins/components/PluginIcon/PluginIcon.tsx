@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import type { IconType } from "react-icons";
 import { FaGithub } from "react-icons/fa";
 import { LuBookOpen, LuDrama, LuPuzzle } from "react-icons/lu";

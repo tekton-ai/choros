@@ -7,7 +7,7 @@ import {
 	writeSync,
 } from "node:fs";
 import { join } from "node:path";
-import { getHostId } from "@superset/shared/host-info";
+import { getHostId } from "@choros/shared/host-info";
 import { isProcessAlive, manifestDir } from "./host-service-manifest";
 
 /**

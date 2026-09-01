@@ -1,7 +1,7 @@
 import type {
 	DeleteInProgressCause,
 	TeardownFailureCause,
-} from "@superset/host-service";
+} from "@choros/host-service";
 import { TRPCClientError } from "@trpc/client";
 import { useCallback } from "react";
 import { useCloudWorkspaces } from "renderer/hooks/useCloudWorkspaces";

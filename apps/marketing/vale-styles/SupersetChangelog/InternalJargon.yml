@@ -4,4 +4,4 @@ link: https://app.notion.com/p/3b3b9d5bf61681748db2ec6054bf1a25
 level: warning
 ignorecase: false
 raw:
-  - '\btRPC\b|\bDrizzle\b|\bElectric collections?\b|@superset/[a-z-]+'
+  - '\btRPC\b|\bDrizzle\b|\bElectric collections?\b|@choros/[a-z-]+'

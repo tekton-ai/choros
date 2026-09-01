@@ -1,4 +1,4 @@
-import { CLIError } from "@superset/cli-framework";
+import { CLIError } from "@choros/cli-framework";
 import { command } from "../../lib/command";
 import {
 	isProcessAlive,

@@ -1,12 +1,12 @@
 import { Trans } from "@lingui/react/macro";
-import { COMPANY } from "@superset/shared/constants";
+import { COMPANY } from "@choros/shared/constants";
 import {
 	DropdownMenuItem,
 	DropdownMenuShortcut,
 	DropdownMenuSub,
 	DropdownMenuSubContent,
 	DropdownMenuSubTrigger,
-} from "@superset/ui/dropdown-menu";
+} from "@choros/ui/dropdown-menu";
 import { useNavigate } from "@tanstack/react-router";
 import { FaDiscord, FaGithub, FaXTwitter } from "react-icons/fa6";
 import {

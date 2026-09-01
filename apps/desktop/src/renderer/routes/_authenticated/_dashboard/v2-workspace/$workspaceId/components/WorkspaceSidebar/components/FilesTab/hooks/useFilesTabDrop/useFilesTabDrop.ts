@@ -1,9 +1,9 @@
 import { useLingui } from "@lingui/react/macro";
 import type { FileTree } from "@pierre/trees";
-import { i18n } from "@superset/i18n";
-import { alert } from "@superset/ui/atoms/Alert";
-import { toast } from "@superset/ui/sonner";
-import { workspaceTrpc } from "@superset/workspace-client";
+import { i18n } from "@choros/i18n";
+import { alert } from "@choros/ui/atoms/Alert";
+import { toast } from "@choros/ui/sonner";
+import { workspaceTrpc } from "@choros/workspace-client";
 import { useCallback, useEffect, useState } from "react";
 import { fileToBase64 } from "renderer/lib/file-to-base64";
 import {

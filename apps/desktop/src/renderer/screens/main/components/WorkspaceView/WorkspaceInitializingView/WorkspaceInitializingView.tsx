@@ -5,8 +5,8 @@ import {
 	AlertDialogFooter,
 	AlertDialogHeader,
 	AlertDialogTitle,
-} from "@superset/ui/alert-dialog";
-import { Button } from "@superset/ui/button";
+} from "@choros/ui/alert-dialog";
+import { Button } from "@choros/ui/button";
 import { useEffect, useState } from "react";
 import { HiExclamationTriangle } from "react-icons/hi2";
 import { LuGitBranch, LuLoader } from "react-icons/lu";

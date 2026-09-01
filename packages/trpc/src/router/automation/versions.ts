@@ -1,9 +1,9 @@
-import { db, dbWs } from "@superset/db/client";
+import { db, dbWs } from "@choros/db/client";
 import {
 	automationPromptVersions,
 	automations,
 	users,
-} from "@superset/db/schema";
+} from "@choros/db/schema";
 import type { TRPCRouterRecord } from "@trpc/server";
 import { and, desc, eq } from "drizzle-orm";
 import { z } from "zod";

@@ -1,5 +1,5 @@
 import { spawnSync } from "node:child_process";
-import type { ServerOptions } from "@superset/pty-daemon";
+import type { ServerOptions } from "@choros/pty-daemon";
 
 /**
  * In-process PTY spawner for teardown/lifecycle tests: emits the

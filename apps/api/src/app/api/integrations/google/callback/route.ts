@@ -1,5 +1,5 @@
-import { integrationConnections } from "@superset/db/schema";
-import { googleTokenResponseSchema } from "@superset/trpc/integrations/google";
+import { integrationConnections } from "@choros/db/schema";
+import { googleTokenResponseSchema } from "@choros/trpc/integrations/google";
 import { Client } from "@upstash/qstash";
 import { sql } from "drizzle-orm";
 import { z } from "zod";

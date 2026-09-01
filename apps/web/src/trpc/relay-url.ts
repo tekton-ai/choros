@@ -1,4 +1,4 @@
-import { FEATURE_FLAGS } from "@superset/shared/constants";
+import { FEATURE_FLAGS } from "@choros/shared/constants";
 import posthog from "posthog-js";
 import { env } from "../env";
 

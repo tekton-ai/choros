@@ -1,6 +1,6 @@
 import { statSync } from "node:fs";
 import { join } from "node:path";
-import { workspaces } from "@superset/local-db";
+import { workspaces } from "@choros/local-db";
 import { eq } from "drizzle-orm";
 import { localDb } from "main/lib/local-db";
 import { loadStaticPorts } from "main/lib/static-ports";

@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/react/macro";
-import { PopoverContent } from "@superset/ui/popover";
+import { PopoverContent } from "@choros/ui/popover";
 import { useEffect, useRef } from "react";
 import type { SlashCommand } from "../../slash-commands";
 

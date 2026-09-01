@@ -25,7 +25,7 @@ export const Default: Story = {
 export const WithSubtitle: Story = {
 	args: {
 		toolName: "Bash",
-		subtitle: "bun run build --filter=@superset/desktop",
+		subtitle: "bun run build --filter=@choros/desktop",
 	},
 	render: (args) => (
 		<View className="w-full">

@@ -1,9 +1,9 @@
 import { msg } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
-import { COMPANY } from "@superset/shared/constants";
-import { Button } from "@superset/ui/button";
-import { ThemePreviewCard } from "@superset/ui/theme-preview-card";
+import { i18n } from "@choros/i18n";
+import { COMPANY } from "@choros/shared/constants";
+import { Button } from "@choros/ui/button";
+import { ThemePreviewCard } from "@choros/ui/theme-preview-card";
 import { ArrowLeft, Download } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";

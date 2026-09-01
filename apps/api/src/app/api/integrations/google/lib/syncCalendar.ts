@@ -1,9 +1,9 @@
-import { db } from "@superset/db/client";
+import { db } from "@choros/db/client";
 import {
 	automationEvents,
 	type SelectIntegrationConnection,
-} from "@superset/db/schema";
-import type { GoogleCalendarTriggerEvent } from "@superset/shared/automation-triggers";
+} from "@choros/db/schema";
+import type { GoogleCalendarTriggerEvent } from "@choros/shared/automation-triggers";
 import {
 	eventStart,
 	type GoogleCalendarEvent,
@@ -11,7 +11,7 @@ import {
 	listEventChanges,
 	listEventInstances,
 	patchCalendarState,
-} from "@superset/trpc/integrations/google";
+} from "@choros/trpc/integrations/google";
 import { and, desc, eq } from "drizzle-orm";
 import {
 	type IngestOutcome,

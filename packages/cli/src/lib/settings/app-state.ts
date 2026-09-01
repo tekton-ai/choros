@@ -8,13 +8,13 @@ import {
 	writeFileSync,
 } from "node:fs";
 import { join } from "node:path";
-import { CLIError } from "@superset/cli-framework";
+import { CLIError } from "@choros/cli-framework";
 import {
 	builtInThemes,
 	DEFAULT_THEME_ID,
 	parseThemeConfigFile,
 	type Theme,
-} from "@superset/shared/themes";
+} from "@choros/shared/themes";
 import { notifyDesktopSettingsChanged } from "./notify";
 import { getAppStatePath, getSupersetHomeDir } from "./paths";
 

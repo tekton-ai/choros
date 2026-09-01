@@ -1,6 +1,6 @@
 # Daemon Supervision
 
-Host-service owns the lifecycle of `@superset/pty-daemon` — the long-lived
+Host-service owns the lifecycle of `@choros/pty-daemon` — the long-lived
 PTY process. Supervision lives here (not in the desktop app) so
 host-service can be deployed independently of Electron. The daemon
 outlives host-service crashes via detached spawn + manifest adoption.

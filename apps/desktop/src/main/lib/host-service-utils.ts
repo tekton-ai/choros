@@ -3,7 +3,7 @@ import { createServer } from "node:net";
 export {
 	MAX_HOST_LOG_BYTES,
 	openRotatingLogFd,
-} from "@superset/shared/rotating-log";
+} from "@choros/shared/rotating-log";
 
 // Before the server becomes reachable, startup must still clear DB migrate and
 // the daemon bootstrap (the shell-env snapshot now runs in the background, off

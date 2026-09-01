@@ -1,4 +1,4 @@
-import { microsoftCredentials } from "@superset/trpc/integrations/microsoft-teams";
+import { microsoftCredentials } from "@choros/trpc/integrations/microsoft-teams";
 import { z } from "zod";
 
 import { env } from "@/env";

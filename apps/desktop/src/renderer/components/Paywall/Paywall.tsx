@@ -1,6 +1,6 @@
 import { Trans } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
-import { Dialog, DialogContent } from "@superset/ui/dialog";
+import { Button } from "@choros/ui/button";
+import { Dialog, DialogContent } from "@choros/ui/dialog";
 import { useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { track } from "renderer/lib/analytics";

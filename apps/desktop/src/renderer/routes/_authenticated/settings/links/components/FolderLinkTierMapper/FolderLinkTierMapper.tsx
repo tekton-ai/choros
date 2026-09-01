@@ -1,12 +1,12 @@
 import { Trans } from "@lingui/react/macro";
-import { Label } from "@superset/ui/label";
+import { Label } from "@choros/ui/label";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
+} from "@choros/ui/select";
 import { useCallback } from "react";
 import {
 	type FolderLinkAction,

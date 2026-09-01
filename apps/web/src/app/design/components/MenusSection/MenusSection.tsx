@@ -1,8 +1,8 @@
 "use client";
 
 import { Trans } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
-import { Button } from "@superset/ui/button";
+import { i18n } from "@choros/i18n";
+import { Button } from "@choros/ui/button";
 import {
 	ContextMenu,
 	ContextMenuContent,
@@ -10,7 +10,7 @@ import {
 	ContextMenuSeparator,
 	ContextMenuShortcut,
 	ContextMenuTrigger,
-} from "@superset/ui/context-menu";
+} from "@choros/ui/context-menu";
 import {
 	DropdownMenu,
 	DropdownMenuCheckboxItem,
@@ -25,7 +25,7 @@ import {
 	DropdownMenuSubContent,
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
+} from "@choros/ui/dropdown-menu";
 import {
 	Menubar,
 	MenubarContent,
@@ -34,7 +34,7 @@ import {
 	MenubarSeparator,
 	MenubarShortcut,
 	MenubarTrigger,
-} from "@superset/ui/menubar";
+} from "@choros/ui/menubar";
 import { useState } from "react";
 
 import { ComponentCard } from "../ComponentCard";
@@ -59,7 +59,7 @@ export function MenusSection() {
 					id: "web.design.menusSection.dropdownMenu",
 					message: "Dropdown Menu",
 				})}
-				importPath="@superset/ui/dropdown-menu"
+				importPath="@choros/ui/dropdown-menu"
 			>
 				<DropdownMenu>
 					<DropdownMenuTrigger asChild>
@@ -123,7 +123,7 @@ export function MenusSection() {
 					id: "web.design.menusSection.contextMenu",
 					message: "Context Menu",
 				})}
-				importPath="@superset/ui/context-menu"
+				importPath="@choros/ui/context-menu"
 			>
 				<ContextMenu>
 					<ContextMenuTrigger className="flex h-28 w-full max-w-64 items-center justify-center rounded-lg border border-dashed text-sm text-muted-foreground">
@@ -156,7 +156,7 @@ export function MenusSection() {
 					id: "web.design.menusSection.menubar",
 					message: "Menubar",
 				})}
-				importPath="@superset/ui/menubar"
+				importPath="@choros/ui/menubar"
 				span
 			>
 				<Menubar>

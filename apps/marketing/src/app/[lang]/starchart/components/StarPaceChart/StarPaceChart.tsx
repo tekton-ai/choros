@@ -6,7 +6,7 @@ import {
 	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
-} from "@superset/ui/chart";
+} from "@choros/ui/chart";
 import { Bar, BarChart, CartesianGrid, Cell, XAxis, YAxis } from "recharts";
 import { formatStarCount } from "@/lib/github";
 import type { PeriodDelta } from "../../utils/starPace";

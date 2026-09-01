@@ -1,16 +1,16 @@
 "use client";
 
 import { useLingui } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
+import { Button } from "@choros/ui/button";
 import {
 	Card,
 	CardContent,
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from "@superset/ui/card";
-import { Skeleton } from "@superset/ui/skeleton";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/card";
+import { Skeleton } from "@choros/ui/skeleton";
+import { cn } from "@choros/ui/utils";
 import type { ReactNode } from "react";
 import { LuExternalLink, LuRefreshCw } from "react-icons/lu";
 

@@ -2,14 +2,14 @@ import { Trans } from "@lingui/react/macro";
 import {
 	PromptInputProvider,
 	usePromptInputController,
-} from "@superset/ui/ai-elements/prompt-input";
+} from "@choros/ui/ai-elements/prompt-input";
 import {
 	Dialog,
 	DialogContent,
 	DialogDescription,
 	DialogHeader,
 	DialogTitle,
-} from "@superset/ui/dialog";
+} from "@choros/ui/dialog";
 import { useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
 import { newWorkspaceAttachmentsStore } from "renderer/stores/new-workspace-attachments";

@@ -1,4 +1,4 @@
-import type { PullRequestComment } from "@superset/local-db";
+import type { PullRequestComment } from "@choros/local-db";
 import type { z } from "zod";
 import { execWithShellEnv } from "../shell-env";
 import {

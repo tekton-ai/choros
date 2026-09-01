@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test";
-import type { DetectedPort } from "@superset/port-scanner";
+import type { DetectedPort } from "@choros/port-scanner";
 import type { HostDb } from "../db";
 import { portManager } from "../ports/port-manager";
 import type { WorkspaceFilesystemManager } from "../runtime/filesystem";

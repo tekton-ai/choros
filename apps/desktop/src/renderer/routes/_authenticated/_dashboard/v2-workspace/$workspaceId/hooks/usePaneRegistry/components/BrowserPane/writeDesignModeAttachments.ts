@@ -1,4 +1,4 @@
-import type { workspaceTrpc } from "@superset/workspace-client";
+import type { workspaceTrpc } from "@choros/workspace-client";
 import type { DesignModePayload } from "shared/browser-design-mode";
 import { formatDesignModeContextMarkdown } from "./designModePrompt";
 

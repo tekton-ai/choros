@@ -1,9 +1,9 @@
-import { db } from "@superset/db/client";
+import { db } from "@choros/db/client";
 import {
 	leaderboardDaily,
 	leaderboardParticipants,
 	users,
-} from "@superset/db/schema";
+} from "@choros/db/schema";
 import { and, desc, eq, gt, gte, isNull, lte, sql } from "drizzle-orm";
 import { type LeaderboardPeriod, resolveWindow } from "./periods";
 import { type Tier, tierProgress } from "./tier";

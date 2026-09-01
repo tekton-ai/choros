@@ -1,4 +1,4 @@
-import { CommentsSidebar, PageCommentsView } from "@superset/ui/page-comments";
+import { CommentsSidebar, PageCommentsView } from "@choros/ui/page-comments";
 import { TRPCClientError } from "@trpc/client";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";

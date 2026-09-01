@@ -1,4 +1,4 @@
-import { FEATURE_FLAGS } from "@superset/shared/constants";
+import { FEATURE_FLAGS } from "@choros/shared/constants";
 import { useFeatureFlagEnabled } from "posthog-js/react";
 import { useEffect, useRef } from "react";
 import { useIsV2CloudEnabled } from "renderer/hooks/useIsV2CloudEnabled";

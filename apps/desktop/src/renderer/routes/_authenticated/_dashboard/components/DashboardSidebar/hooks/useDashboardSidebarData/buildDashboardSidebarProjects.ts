@@ -1,4 +1,4 @@
-import { normalizeWorkspaceTags } from "@superset/shared/workspace-tags";
+import { normalizeWorkspaceTags } from "@choros/shared/workspace-tags";
 import {
 	getProjectFolderTagIndex,
 	resolveWorkspaceSectionId,

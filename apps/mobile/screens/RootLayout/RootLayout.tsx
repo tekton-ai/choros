@@ -1,6 +1,6 @@
 import { PortalHost } from "@rn-primitives/portal";
-import { initI18n, resolveLocale } from "@superset/i18n";
-import { I18nProvider } from "@superset/i18n/react";
+import { initI18n, resolveLocale } from "@choros/i18n";
+import { I18nProvider } from "@choros/i18n/react";
 import {
 	focusManager,
 	QueryClient,

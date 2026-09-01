@@ -1,21 +1,21 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
+import { Button } from "@choros/ui/button";
 import {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
-} from "@superset/ui/collapsible";
+} from "@choros/ui/collapsible";
 import {
 	Command,
 	CommandEmpty,
 	CommandInput,
 	CommandItem,
 	CommandList,
-} from "@superset/ui/command";
-import { Input } from "@superset/ui/input";
-import { Label } from "@superset/ui/label";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
-import { Switch } from "@superset/ui/switch";
+} from "@choros/ui/command";
+import { Input } from "@choros/ui/input";
+import { Label } from "@choros/ui/label";
+import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
+import { Switch } from "@choros/ui/switch";
 import { GoGitBranch } from "react-icons/go";
 import {
 	HiCheck,

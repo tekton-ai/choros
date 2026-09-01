@@ -1,5 +1,5 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { Link, useMatchRoute } from "@tanstack/react-router";
 
 function pillClass(isActive: boolean) {

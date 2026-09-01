@@ -1,10 +1,10 @@
 import { describe, expect, test } from "bun:test";
 import { randomUUID } from "node:crypto";
-import type { ChatRuntime, FakeHarnessScript } from "@superset/chat-runtime";
+import type { ChatRuntime, FakeHarnessScript } from "@choros/chat-runtime";
 import {
 	createChatCallerFactory,
 	createChatRouter,
-} from "@superset/chat-runtime";
+} from "@choros/chat-runtime";
 import {
 	agentMessage,
 	createManualSchedule,
@@ -14,7 +14,7 @@ import {
 	fakeHarnessRegistry,
 	turn,
 	waitFor,
-} from "@superset/chat-runtime/testing";
+} from "@choros/chat-runtime/testing";
 import type { ChatTransport, SessionClient } from "../../client";
 import { createSessionClient } from "../../client";
 import { emptySnapshot, reduceMany } from "../../core";

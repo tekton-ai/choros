@@ -1,7 +1,7 @@
 import {
 	FILE_SWEEP_JOB_PATH,
 	sweepPendingFiles,
-} from "@superset/trpc/file-sweep";
+} from "@choros/trpc/file-sweep";
 import { verifyQstashRequest } from "@/lib/verifyQstash";
 
 export const maxDuration = 300;

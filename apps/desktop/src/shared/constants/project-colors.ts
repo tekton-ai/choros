@@ -1,4 +1,4 @@
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 
 /** Special value representing "no custom color" - uses default gray border */
 export const PROJECT_COLOR_DEFAULT = "default";

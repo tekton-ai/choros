@@ -7,7 +7,7 @@ import type {
 	ToolCallStatus,
 	Turn,
 	Usage,
-} from "@superset/chat/protocol";
+} from "@choros/chat/protocol";
 import type { AdapterEvent } from "../../types";
 import type { ToolOutcome, ToolUse } from "../mapToolUse";
 import { contentFor, locationsFor, titleFor, toolKindFor } from "../mapToolUse";

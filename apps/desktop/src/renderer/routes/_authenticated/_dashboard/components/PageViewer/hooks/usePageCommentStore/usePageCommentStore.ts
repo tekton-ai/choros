@@ -1,6 +1,6 @@
-import { errorMessage } from "@superset/i18n/errors";
-import type { CommentStore } from "@superset/ui/page-comments";
-import { toast } from "@superset/ui/sonner";
+import { errorMessage } from "@choros/i18n/errors";
+import type { CommentStore } from "@choros/ui/page-comments";
+import { toast } from "@choros/ui/sonner";
 import { useCallback, useMemo } from "react";
 import { cloudTrpc } from "renderer/lib/cloud-trpc";
 import { toThreads } from "renderer/routes/_authenticated/_dashboard/utils/toThreads";

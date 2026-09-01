@@ -1,11 +1,11 @@
-import { type Coalescer, createCoalescer } from "@superset/chat/core";
+import { type Coalescer, createCoalescer } from "@choros/chat/core";
 import type {
 	Cursor,
 	DeltaChannel,
 	DeltaEnvelope,
 	Envelope,
-} from "@superset/chat/protocol";
-import { isDeltaEnvelope } from "@superset/chat/protocol";
+} from "@choros/chat/protocol";
+import { isDeltaEnvelope } from "@choros/chat/protocol";
 import type { ChatDb } from "../../db";
 import type { ChatResetReason } from "../../replay";
 import { readPage, readSince } from "../../replay";

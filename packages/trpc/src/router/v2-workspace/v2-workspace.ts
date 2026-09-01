@@ -1,9 +1,9 @@
 // Workspaces are host-owned; the `v2_workspaces` table is vestigial. These
 // procedures are served as no-ops for pre-R4 host builds that still call
 // them — delete the router once adoption of those builds drains.
-import { db } from "@superset/db/client";
-import { v2WorkspaceTypeValues } from "@superset/db/enums";
-import { type SelectV2Workspace, users } from "@superset/db/schema";
+import { db } from "@choros/db/client";
+import { v2WorkspaceTypeValues } from "@choros/db/enums";
+import { type SelectV2Workspace, users } from "@choros/db/schema";
 import type { TRPCRouterRecord } from "@trpc/server";
 import { eq } from "drizzle-orm";
 import { Resend } from "resend";

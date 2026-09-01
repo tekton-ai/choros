@@ -1,4 +1,4 @@
-import type { SlashCommand } from "@superset/shared/slash-commands";
+import type { SlashCommand } from "@choros/shared/slash-commands";
 import { useQuery } from "@tanstack/react-query";
 import { getHostServiceClientByUrl } from "@/lib/host-service/client";
 

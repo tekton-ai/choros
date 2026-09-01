@@ -1,8 +1,8 @@
 "use client";
 
 import { Trans, useLingui } from "@lingui/react/macro";
-import { POSTHOG_PROJECT_URL } from "@superset/trpc/insight-registry";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@superset/ui/tabs";
+import { POSTHOG_PROJECT_URL } from "@choros/trpc/insight-registry";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@choros/ui/tabs";
 
 import { BurnByVendorTile } from "./components/BurnByVendorTile";
 import { CashBalanceTile } from "./components/CashBalanceTile";

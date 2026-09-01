@@ -24,7 +24,7 @@ export async function runBuild(argv: string[]): Promise<void> {
 		entryPath,
 		`import config from ${JSON.stringify(configPath)};
 import { commands, groups, middleware } from ${JSON.stringify(`${commandsDir}/index.ts`)};
-import { run } from "@superset/cli-framework";
+import { run } from "@choros/cli-framework";
 
 await run({
 	name: config.name,

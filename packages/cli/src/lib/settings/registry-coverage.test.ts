@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { settings } from "@superset/local-db/schema";
+import { settings } from "@choros/local-db/schema";
 import { EXCLUDED_SETTINGS_COLUMNS, SETTINGS } from "./registry";
 
 /**

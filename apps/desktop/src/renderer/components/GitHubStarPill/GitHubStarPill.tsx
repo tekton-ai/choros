@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { AnimatedStarButton } from "renderer/components/AnimatedStarButton";
 import {

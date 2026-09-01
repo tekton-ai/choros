@@ -1,5 +1,5 @@
-import { errorMessage } from "@superset/i18n/errors";
-import { toast } from "@superset/ui/sonner";
+import { errorMessage } from "@choros/i18n/errors";
+import { toast } from "@choros/ui/sonner";
 import { useCallback, useState } from "react";
 import type { LeaderboardPreview } from "renderer/components/LeaderboardJoinDialog";
 import { apiTrpcClient } from "renderer/lib/api-trpc-client";

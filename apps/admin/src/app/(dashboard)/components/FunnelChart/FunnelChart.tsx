@@ -7,9 +7,9 @@ import {
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from "@superset/ui/card";
-import { Skeleton } from "@superset/ui/skeleton";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+} from "@choros/ui/card";
+import { Skeleton } from "@choros/ui/skeleton";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import type { ReactNode } from "react";
 import { LuClock, LuMoveDownRight, LuMoveRight } from "react-icons/lu";
 

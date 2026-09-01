@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test";
-import type { LayoutNode, Pane, Tab, WorkspaceState } from "@superset/panes";
+import type { LayoutNode, Pane, Tab, WorkspaceState } from "@choros/panes";
 import {
 	getSharedPaneLayoutSnapshot,
 	preserveLocalPaneSelection,

@@ -1,4 +1,4 @@
-# @superset/i18n
+# @choros/i18n
 
 Shared internationalization for every surface: one Lingui catalog set, one
 shared `i18n` instance, one locale list. Strategy and phasing:
@@ -7,11 +7,11 @@ shared `i18n` instance, one locale list. Strategy and phasing:
 ## Usage
 
 - **React (desktop renderer, web, marketing, docs, mobile)**: wrap the app in
-  `I18nProvider` from `@superset/i18n/react`, then use macros:
+  `I18nProvider` from `@choros/i18n/react`, then use macros:
   `import { Trans, useLingui } from "@lingui/react/macro"`. Give every message
   an explicit ID with the source text as default:
   `<Trans id="settings.appearance.title">Appearance</Trans>`.
-- **Non-React (Electron main, scripts)**: `import { i18n, initI18n } from "@superset/i18n"`
+- **Non-React (Electron main, scripts)**: `import { i18n, initI18n } from "@choros/i18n"`
   and call `i18n._({ id, message })`. The extractor picks these descriptors up
   too, so main-process strings live in the same catalog with no build-plugin
   changes; at runtime they fall back to `message` if a translation is missing.

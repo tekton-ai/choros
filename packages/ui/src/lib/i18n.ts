@@ -1,4 +1,4 @@
-import { i18n, initI18n } from "@superset/i18n";
+import { i18n, initI18n } from "@choros/i18n";
 
 // `i18n._` throws outright when no locale is active, and these components are
 // imported outside a mounted `I18nProvider` too — unit tests, Storybook, and

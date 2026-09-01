@@ -1,6 +1,6 @@
 import { msg } from "@lingui/core/macro";
-import { i18n } from "@superset/i18n";
-import { cn } from "@superset/ui/utils";
+import { i18n } from "@choros/i18n";
+import { cn } from "@choros/ui/utils";
 import { LuArrowUpRight } from "react-icons/lu";
 import { PRIcon } from "renderer/screens/main/components/PRIcon";
 import type { NormalizedPR } from "../../types";

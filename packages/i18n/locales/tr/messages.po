@@ -28288,7 +28288,7 @@ msgstr "AI · Konuşma"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.alsoSupersetUiAiElements"
-msgstr "Ayrıca: @superset/ui/ai-elements/message — içerik akarken en alta yapışır"
+msgstr "Ayrıca: @choros/ui/ai-elements/message — içerik akarken en alta yapışır"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
@@ -28463,7 +28463,7 @@ msgstr "AI · Durum"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.alsoSupersetUiAiElements"
-msgstr "Ayrıca: @superset/ui/ai-elements/braille-spinner"
+msgstr "Ayrıca: @choros/ui/ai-elements/braille-spinner"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
@@ -28683,7 +28683,7 @@ msgstr "Uyarılar, bildirimler, ilerleme ve yükleme durumları"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/FeedbackSection/FeedbackSection.tsx
 msgid "web.design.feedbackSection.alsoSupersetUiSpinner"
-msgstr "Ayrıca: @superset/ui/spinner"
+msgstr "Ayrıca: @choros/ui/spinner"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/FeedbackSection/FeedbackSection.tsx
@@ -28803,7 +28803,7 @@ msgstr "Koşulları kabul et"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
 msgid "web.design.inputsSection.alsoSupersetUiRadioGroup"
-msgstr "Ayrıca: @superset/ui/radio-group, @superset/ui/switch"
+msgstr "Ayrıca: @choros/ui/radio-group, @choros/ui/switch"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
@@ -28843,7 +28843,7 @@ msgstr "component-showcase"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
 msgid "web.design.inputsSection.composableFormLayoutPairsWith"
-msgstr "Birleştirilebilir form düzeni — react-hook-form için @superset/ui/form ile birlikte kullanılır"
+msgstr "Birleştirilebilir form düzeni — react-hook-form için @choros/ui/form ile birlikte kullanılır"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
@@ -28963,7 +28963,7 @@ msgstr "Çalışma alanı"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
 msgid "web.design.layoutSection.alsoSupersetUiOverflowFade"
-msgstr "Ayrıca: @superset/ui/overflow-fade-text"
+msgstr "Ayrıca: @choros/ui/overflow-fade-text"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx

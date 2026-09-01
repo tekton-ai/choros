@@ -1,10 +1,10 @@
 import { plural } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
-import { errorMessage } from "@superset/i18n/errors";
-import { COMPANY } from "@superset/shared/constants";
-import { describeSchedule } from "@superset/shared/rrule";
-import type { RouterOutputs } from "@superset/trpc";
+import { i18n } from "@choros/i18n";
+import { errorMessage } from "@choros/i18n/errors";
+import { COMPANY } from "@choros/shared/constants";
+import { describeSchedule } from "@choros/shared/rrule";
+import type { RouterOutputs } from "@choros/trpc";
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -14,18 +14,18 @@ import {
 	AlertDialogFooter,
 	AlertDialogHeader,
 	AlertDialogTitle,
-} from "@superset/ui/alert-dialog";
-import { Button } from "@superset/ui/button";
+} from "@choros/ui/alert-dialog";
+import { Button } from "@choros/ui/button";
 import {
 	Empty,
 	EmptyDescription,
 	EmptyHeader,
 	EmptyMedia,
 	EmptyTitle,
-} from "@superset/ui/empty";
-import { Input } from "@superset/ui/input";
-import { Skeleton } from "@superset/ui/skeleton";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/empty";
+import { Input } from "@choros/ui/input";
+import { Skeleton } from "@choros/ui/skeleton";
+import { toast } from "@choros/ui/sonner";
 import {
 	Table,
 	TableBody,
@@ -33,10 +33,10 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from "@superset/ui/table";
-import { Tabs, TabsList, TabsTrigger } from "@superset/ui/tabs";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/table";
+import { Tabs, TabsList, TabsTrigger } from "@choros/ui/tabs";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { cn } from "@choros/ui/utils";
 import { useMutation } from "@tanstack/react-query";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useCallback, useEffect, useMemo, useState } from "react";

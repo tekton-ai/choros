@@ -1,5 +1,5 @@
 import { WebClient } from "@slack/web-api";
-import type { DraftTrigger } from "@superset/shared/automation-triggers";
+import type { DraftTrigger } from "@choros/shared/automation-triggers";
 import { activeConnection } from "../connections";
 
 /**

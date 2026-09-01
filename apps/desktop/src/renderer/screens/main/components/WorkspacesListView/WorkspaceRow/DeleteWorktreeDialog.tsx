@@ -5,9 +5,9 @@ import {
 	AlertDialogFooter,
 	AlertDialogHeader,
 	AlertDialogTitle,
-} from "@superset/ui/alert-dialog";
-import { Button } from "@superset/ui/button";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+} from "@choros/ui/alert-dialog";
+import { Button } from "@choros/ui/button";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import {
 	disposeHostSessionsForWorktreePath,
 	toastDisposeFailures,

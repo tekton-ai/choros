@@ -11,8 +11,8 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 	AlertDialogTrigger,
-} from "@superset/ui/alert-dialog";
-import { Button } from "@superset/ui/button";
+} from "@choros/ui/alert-dialog";
+import { Button } from "@choros/ui/button";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Unplug } from "lucide-react";
 import { useRouter } from "next/navigation";

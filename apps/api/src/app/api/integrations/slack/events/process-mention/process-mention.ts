@@ -1,5 +1,5 @@
-import { db } from "@superset/db/client";
-import { integrationConnections, subscriptions } from "@superset/db/schema";
+import { db } from "@choros/db/client";
+import { integrationConnections, subscriptions } from "@choros/db/schema";
 import { and, desc, eq, isNull } from "drizzle-orm";
 import { posthog } from "@/lib/analytics";
 import { findSlackUserLink } from "../../lib/find-slack-user-link";

@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
-import type { RendererContext } from "@superset/panes";
-import { alert } from "@superset/ui/atoms/Alert";
+import type { RendererContext } from "@choros/panes";
+import { alert } from "@choros/ui/atoms/Alert";
 import { useCallback, useEffect } from "react";
 import { getBaseName } from "renderer/lib/pathBasename";
 import { useSharedFileDocument } from "../../../../state/fileDocumentStore";

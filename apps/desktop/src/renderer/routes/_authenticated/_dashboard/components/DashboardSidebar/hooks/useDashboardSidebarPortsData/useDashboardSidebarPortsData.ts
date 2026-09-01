@@ -1,5 +1,5 @@
-import { i18n } from "@superset/i18n";
-import type { PortChangedPayload } from "@superset/workspace-client";
+import { i18n } from "@choros/i18n";
+import type { PortChangedPayload } from "@choros/workspace-client";
 import { useQueries, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useMemo } from "react";
 import { useKnownHosts } from "renderer/hooks/known-hosts/useKnownHosts";

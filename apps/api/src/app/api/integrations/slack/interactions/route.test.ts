@@ -12,7 +12,7 @@ mock.module("@/lib/analytics", () => ({
 	posthog: { capture: () => undefined },
 }));
 
-mock.module("@superset/db/client", () => ({
+mock.module("@choros/db/client", () => ({
 	db: {
 		query: {
 			userIdentities: { findFirst: findSlackUser },

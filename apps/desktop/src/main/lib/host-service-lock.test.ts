@@ -21,7 +21,7 @@ mock.module("./host-service-manifest", () => ({
 	manifestDir: (orgId: string) => path.join(testRoot, orgId),
 }));
 
-mock.module("@superset/shared/host-info", () => ({
+mock.module("@choros/shared/host-info", () => ({
 	getHostId: () => "host-1",
 	getHostName: () => "host",
 }));

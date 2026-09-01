@@ -1,7 +1,7 @@
 import { plural } from "@lingui/core/macro";
 import { Plural, Trans, useLingui } from "@lingui/react/macro";
-import { errorMessage } from "@superset/i18n/errors";
-import { Button } from "@superset/ui/button";
+import { errorMessage } from "@choros/i18n/errors";
+import { Button } from "@choros/ui/button";
 import {
 	Command,
 	CommandEmpty,
@@ -9,9 +9,9 @@ import {
 	CommandInput,
 	CommandItem,
 	CommandList,
-} from "@superset/ui/command";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/command";
+import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
+import { toast } from "@choros/ui/sonner";
 import { ChevronDownIcon } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { HiCheck, HiMiniPlay } from "react-icons/hi2";

@@ -1,6 +1,6 @@
-import type { TaskPriority, V2UsersHostRole } from "@superset/db/enums";
-import type { RouterOutputs } from "@superset/trpc";
-import { toast } from "@superset/ui/sonner";
+import type { TaskPriority, V2UsersHostRole } from "@choros/db/enums";
+import type { RouterOutputs } from "@choros/trpc";
+import { toast } from "@choros/ui/sonner";
 import { useQueryClient } from "@tanstack/react-query";
 import { getQueryKey } from "@trpc/react-query";
 import { useCallback, useMemo } from "react";

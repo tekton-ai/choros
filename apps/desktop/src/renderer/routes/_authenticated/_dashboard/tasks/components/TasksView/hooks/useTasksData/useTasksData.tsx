@@ -1,5 +1,5 @@
-import type { SelectTask, SelectTaskStatus } from "@superset/db/schema";
-import type { RouterOutputs } from "@superset/trpc";
+import type { SelectTask, SelectTaskStatus } from "@choros/db/schema";
+import type { RouterOutputs } from "@choros/trpc";
 import { useCallback, useMemo } from "react";
 import { cloudTrpc } from "renderer/lib/cloud-trpc";
 import type { TabValue } from "../../components/TasksTopBar";

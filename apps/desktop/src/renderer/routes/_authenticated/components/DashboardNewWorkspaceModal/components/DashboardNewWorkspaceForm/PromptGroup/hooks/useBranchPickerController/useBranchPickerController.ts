@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import { toast } from "@superset/ui/sonner";
+import { toast } from "@choros/ui/sonner";
 import { useNavigate } from "@tanstack/react-router";
 import { useCallback, useState } from "react";
 import { useLocalHostService } from "renderer/routes/_authenticated/providers/LocalHostServiceProvider";

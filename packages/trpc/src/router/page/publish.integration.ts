@@ -29,7 +29,7 @@ mock.module("../../lib/r2", () => ({
 	},
 }));
 
-const { db, dbWs } = await import("@superset/db/client");
+const { db, dbWs } = await import("@choros/db/client");
 const {
 	members,
 	organizations,
@@ -39,7 +39,7 @@ const {
 	users,
 	v2Projects,
 	workspacePages,
-} = await import("@superset/db/schema");
+} = await import("@choros/db/schema");
 const { eq } = await import("drizzle-orm");
 const { publishPage } = await import("./publish");
 

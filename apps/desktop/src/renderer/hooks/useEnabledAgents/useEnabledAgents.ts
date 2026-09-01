@@ -1,7 +1,7 @@
 import {
 	getEnabledAgentConfigs,
 	type ResolvedAgentConfig,
-} from "@superset/shared/agent-settings";
+} from "@choros/shared/agent-settings";
 import { useMemo } from "react";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 

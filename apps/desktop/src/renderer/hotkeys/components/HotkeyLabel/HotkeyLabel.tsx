@@ -1,4 +1,4 @@
-import { Kbd, KbdGroup } from "@superset/ui/kbd";
+import { Kbd, KbdGroup } from "@choros/ui/kbd";
 import { useHotkeyDisplay } from "../../hooks/useHotkeyDisplay";
 import type { HotkeyId } from "../../registry";
 

@@ -3,8 +3,8 @@ import {
 	verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { Plural } from "@lingui/react/macro";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
-import { cn } from "@superset/ui/utils";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { cn } from "@choros/ui/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { type ComponentPropsWithoutRef, forwardRef, useMemo } from "react";
 import { ProjectThumbnail } from "renderer/routes/_authenticated/components/ProjectThumbnail";

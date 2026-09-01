@@ -1,7 +1,7 @@
 "use client";
 
 import { Plural } from "@lingui/react/macro";
-import { FileDiffTool } from "@superset/ui/ai-elements/file-diff-tool";
+import { FileDiffTool } from "@choros/ui/ai-elements/file-diff-tool";
 import { useMemo } from "react";
 import type { MockDiffFile } from "../../../../../mock-data";
 

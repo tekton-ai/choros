@@ -2,7 +2,7 @@ import {
 	ResizableHandle,
 	ResizablePanel,
 	ResizablePanelGroup,
-} from "@superset/ui/resizable";
+} from "@choros/ui/resizable";
 import { useEffect, useRef } from "react";
 import type { StoreApi } from "zustand/vanilla";
 import type { WorkspaceStore } from "../../../../../core/store";

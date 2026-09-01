@@ -7,7 +7,7 @@ const execute = mock(
 	}),
 );
 
-mock.module("@superset/db/client", () => ({
+mock.module("@choros/db/client", () => ({
 	db: { execute },
 	dbWs: { execute },
 }));

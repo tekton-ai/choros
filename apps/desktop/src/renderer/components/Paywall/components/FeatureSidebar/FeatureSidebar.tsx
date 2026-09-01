@@ -1,5 +1,5 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { useMemo } from "react";
 import type { ProFeature } from "../../constants";
 import { PRO_FEATURES } from "../../constants";

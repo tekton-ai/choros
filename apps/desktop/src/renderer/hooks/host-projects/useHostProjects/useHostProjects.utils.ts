@@ -1,5 +1,5 @@
-import { buildHostRoutingKey } from "@superset/shared/host-routing";
-import type { ProjectSnapshotPayload } from "@superset/workspace-client";
+import { buildHostRoutingKey } from "@choros/shared/host-routing";
+import type { ProjectSnapshotPayload } from "@choros/workspace-client";
 import { del as idbDel, get as idbGet, set as idbSet } from "idb-keyval";
 
 /** A project row as served by a host (`project.list`). */

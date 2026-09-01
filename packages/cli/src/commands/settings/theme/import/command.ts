@@ -1,4 +1,4 @@
-import { positional } from "@superset/cli-framework";
+import { positional } from "@choros/cli-framework";
 import { command } from "../../../../lib/command";
 import { importThemes } from "../../../../lib/settings";
 import { THEME_EFFECT } from "../../notes";

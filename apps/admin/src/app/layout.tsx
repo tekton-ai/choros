@@ -1,6 +1,6 @@
-import { initI18n } from "@superset/i18n";
-import { Toaster } from "@superset/ui/sonner";
-import { cn } from "@superset/ui/utils";
+import { initI18n } from "@choros/i18n";
+import { Toaster } from "@choros/ui/sonner";
+import { cn } from "@choros/ui/utils";
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, Inter } from "next/font/google";
 

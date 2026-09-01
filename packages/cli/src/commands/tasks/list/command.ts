@@ -1,4 +1,4 @@
-import { boolean, number, string, table } from "@superset/cli-framework";
+import { boolean, number, string, table } from "@choros/cli-framework";
 import { command } from "../../../lib/command";
 
 /** Accepts date-only input (2026-07-10) and expands it to the ISO datetime the API expects. */

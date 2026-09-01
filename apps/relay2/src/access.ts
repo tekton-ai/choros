@@ -1,4 +1,4 @@
-import { parseHostRoutingKey } from "@superset/shared/host-routing";
+import { parseHostRoutingKey } from "@choros/shared/host-routing";
 import { LRUCache } from "lru-cache";
 import { createApiClient } from "./api-client";
 import type { AuthContext } from "./auth";

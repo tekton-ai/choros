@@ -1,16 +1,16 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { errorMessage } from "@superset/i18n/errors";
+import { errorMessage } from "@choros/i18n/errors";
 import type {
 	ContextMenuActionConfig,
 	PaneRegistry,
 	RendererContext,
 	WorkspaceStore,
-} from "@superset/panes";
-import { FEATURE_FLAGS } from "@superset/shared/constants";
-import { alert } from "@superset/ui/atoms/Alert";
-import { toast } from "@superset/ui/sonner";
-import { cn } from "@superset/ui/utils";
-import { workspaceTrpc } from "@superset/workspace-client";
+} from "@choros/panes";
+import { FEATURE_FLAGS } from "@choros/shared/constants";
+import { alert } from "@choros/ui/atoms/Alert";
+import { toast } from "@choros/ui/sonner";
+import { cn } from "@choros/ui/utils";
+import { workspaceTrpc } from "@choros/workspace-client";
 import {
 	Circle,
 	FileText,

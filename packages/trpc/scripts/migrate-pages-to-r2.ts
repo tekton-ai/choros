@@ -6,9 +6,9 @@
  *
  *   bun --env-file=.env packages/trpc/scripts/migrate-pages-to-r2.ts
  */
-import { db } from "@superset/db/client";
-import { pageVersions } from "@superset/db/schema";
-import { pageVersionKey } from "@superset/shared/usercontent";
+import { db } from "@choros/db/client";
+import { pageVersions } from "@choros/db/schema";
+import { pageVersionKey } from "@choros/shared/usercontent";
 import { head } from "@vercel/blob";
 import { and, eq } from "drizzle-orm";
 import { objectExists, putObject } from "../src/lib/r2";

@@ -1,7 +1,7 @@
 import { plural } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { formatRelativeTime } from "@superset/i18n/format";
-import { cn } from "@superset/ui/utils";
+import { formatRelativeTime } from "@choros/i18n/format";
+import { cn } from "@choros/ui/utils";
 import {
 	LuArrowUpRight,
 	LuCircleCheck,

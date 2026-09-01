@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@import "@superset/ui/globals.css";
+@import "@choros/ui/globals.css";
 @source "../../../../packages/ui/src/**/*.{ts,tsx}";
 
 @theme {

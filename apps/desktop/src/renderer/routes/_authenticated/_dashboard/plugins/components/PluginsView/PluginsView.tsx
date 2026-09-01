@@ -4,12 +4,12 @@ import {
 	PLUGIN_CATALOG,
 	PLUGIN_CATEGORIES,
 	type PluginCatalogEntry,
-} from "@superset/shared/plugins";
-import { Button } from "@superset/ui/button";
-import { Input } from "@superset/ui/input";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@superset/ui/tabs";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
-import { cn } from "@superset/ui/utils";
+} from "@choros/shared/plugins";
+import { Button } from "@choros/ui/button";
+import { Input } from "@choros/ui/input";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@choros/ui/tabs";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { cn } from "@choros/ui/utils";
 import { useNavigate } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { LuSearch, LuSettings2 } from "react-icons/lu";

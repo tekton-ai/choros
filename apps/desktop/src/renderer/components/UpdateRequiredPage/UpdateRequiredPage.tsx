@@ -1,6 +1,6 @@
 import { Trans } from "@lingui/react/macro";
-import { COMPANY } from "@superset/shared/constants";
-import { Button } from "@superset/ui/button";
+import { COMPANY } from "@choros/shared/constants";
+import { Button } from "@choros/ui/button";
 import { useState } from "react";
 import { HiArrowPath, HiExclamationTriangle } from "react-icons/hi2";
 import { electronTrpc } from "renderer/lib/electron-trpc";

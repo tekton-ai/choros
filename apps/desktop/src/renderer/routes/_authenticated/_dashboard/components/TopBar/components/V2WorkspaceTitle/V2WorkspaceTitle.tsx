@@ -1,4 +1,4 @@
-import { OverflowFadeText } from "@superset/ui/overflow-fade-text";
+import { OverflowFadeText } from "@choros/ui/overflow-fade-text";
 import { ChevronRight, GitBranch } from "lucide-react";
 import { useHostWorkspaces } from "renderer/routes/_authenticated/providers/HostWorkspacesProvider";
 import { getV2WorkspaceDisplayName } from "renderer/utils/getV2WorkspaceDisplayName";

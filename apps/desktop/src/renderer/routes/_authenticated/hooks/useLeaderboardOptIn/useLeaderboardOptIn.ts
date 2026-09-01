@@ -1,5 +1,5 @@
-import { errorMessage } from "@superset/i18n/errors";
-import { toast } from "@superset/ui/sonner";
+import { errorMessage } from "@choros/i18n/errors";
+import { toast } from "@choros/ui/sonner";
 import { useQuery } from "@tanstack/react-query";
 import { useCallback, useState } from "react";
 import { apiTrpcClient } from "renderer/lib/api-trpc-client";

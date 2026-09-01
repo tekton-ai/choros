@@ -1,7 +1,7 @@
 "use client";
 
 import { Trans } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -12,8 +12,8 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 	AlertDialogTrigger,
-} from "@superset/ui/alert-dialog";
-import { Button } from "@superset/ui/button";
+} from "@choros/ui/alert-dialog";
+import { Button } from "@choros/ui/button";
 import {
 	Command,
 	CommandEmpty,
@@ -23,7 +23,7 @@ import {
 	CommandList,
 	CommandSeparator,
 	CommandShortcut,
-} from "@superset/ui/command";
+} from "@choros/ui/command";
 import {
 	Dialog,
 	DialogClose,
@@ -33,7 +33,7 @@ import {
 	DialogHeader,
 	DialogTitle,
 	DialogTrigger,
-} from "@superset/ui/dialog";
+} from "@choros/ui/dialog";
 import {
 	Drawer,
 	DrawerClose,
@@ -43,16 +43,16 @@ import {
 	DrawerHeader,
 	DrawerTitle,
 	DrawerTrigger,
-} from "@superset/ui/drawer";
+} from "@choros/ui/drawer";
 import {
 	HoverCard,
 	HoverCardContent,
 	HoverCardTrigger,
-} from "@superset/ui/hover-card";
-import { Input } from "@superset/ui/input";
-import { Kbd, KbdGroup } from "@superset/ui/kbd";
-import { Label } from "@superset/ui/label";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
+} from "@choros/ui/hover-card";
+import { Input } from "@choros/ui/input";
+import { Kbd, KbdGroup } from "@choros/ui/kbd";
+import { Label } from "@choros/ui/label";
+import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
 import {
 	Sheet,
 	SheetContent,
@@ -60,8 +60,8 @@ import {
 	SheetHeader,
 	SheetTitle,
 	SheetTrigger,
-} from "@superset/ui/sheet";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+} from "@choros/ui/sheet";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { CalendarIcon, RocketIcon, SettingsIcon, UserIcon } from "lucide-react";
 
 import { ComponentCard } from "../ComponentCard";
@@ -86,7 +86,7 @@ export function OverlaysSection() {
 					id: "web.design.overlaysSection.dialog",
 					message: "Dialog",
 				})}
-				importPath="@superset/ui/dialog"
+				importPath="@choros/ui/dialog"
 			>
 				<Dialog>
 					<DialogTrigger asChild>
@@ -134,7 +134,7 @@ export function OverlaysSection() {
 					id: "web.design.overlaysSection.alertDialog",
 					message: "Alert Dialog",
 				})}
-				importPath="@superset/ui/alert-dialog"
+				importPath="@choros/ui/alert-dialog"
 			>
 				<AlertDialog>
 					<AlertDialogTrigger asChild>
@@ -175,7 +175,7 @@ export function OverlaysSection() {
 					id: "web.design.overlaysSection.sheet",
 					message: "Sheet",
 				})}
-				importPath="@superset/ui/sheet"
+				importPath="@choros/ui/sheet"
 			>
 				<Sheet>
 					<SheetTrigger asChild>
@@ -207,7 +207,7 @@ export function OverlaysSection() {
 					id: "web.design.overlaysSection.drawer",
 					message: "Drawer",
 				})}
-				importPath="@superset/ui/drawer"
+				importPath="@choros/ui/drawer"
 			>
 				<Drawer>
 					<DrawerTrigger asChild>
@@ -246,7 +246,7 @@ export function OverlaysSection() {
 					id: "web.design.overlaysSection.popover",
 					message: "Popover",
 				})}
-				importPath="@superset/ui/popover"
+				importPath="@choros/ui/popover"
 			>
 				<Popover>
 					<PopoverTrigger asChild>
@@ -273,7 +273,7 @@ export function OverlaysSection() {
 					id: "web.design.overlaysSection.hoverCard",
 					message: "Hover Card",
 				})}
-				importPath="@superset/ui/hover-card"
+				importPath="@choros/ui/hover-card"
 			>
 				<HoverCard>
 					<HoverCardTrigger asChild>
@@ -312,7 +312,7 @@ export function OverlaysSection() {
 					id: "web.design.overlaysSection.tooltip",
 					message: "Tooltip",
 				})}
-				importPath="@superset/ui/tooltip"
+				importPath="@choros/ui/tooltip"
 				description={i18n._({
 					id: "web.design.overlaysSection.borderedChipIsTheDefault",
 					message:
@@ -371,7 +371,7 @@ export function OverlaysSection() {
 					id: "web.design.overlaysSection.command",
 					message: "Command",
 				})}
-				importPath="@superset/ui/command"
+				importPath="@choros/ui/command"
 				description={i18n._({
 					id: "web.design.overlaysSection.alsoAvailableAsCommanddialogFor",
 					message: "Also available as CommandDialog for ⌘K palettes",

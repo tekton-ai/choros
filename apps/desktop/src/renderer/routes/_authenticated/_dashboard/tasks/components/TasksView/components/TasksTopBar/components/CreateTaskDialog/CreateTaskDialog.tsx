@@ -1,7 +1,7 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { TaskPriority } from "@superset/db/enums";
-import { errorMessage } from "@superset/i18n/errors";
-import { Button } from "@superset/ui/button";
+import type { TaskPriority } from "@choros/db/enums";
+import { errorMessage } from "@choros/i18n/errors";
+import { Button } from "@choros/ui/button";
 import {
 	Dialog,
 	DialogClose,
@@ -10,9 +10,9 @@ import {
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
-} from "@superset/ui/dialog";
-import { Kbd, KbdGroup } from "@superset/ui/kbd";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/dialog";
+import { Kbd, KbdGroup } from "@choros/ui/kbd";
+import { toast } from "@choros/ui/sonner";
 import { useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { HiChevronRight, HiOutlinePaperClip, HiXMark } from "react-icons/hi2";

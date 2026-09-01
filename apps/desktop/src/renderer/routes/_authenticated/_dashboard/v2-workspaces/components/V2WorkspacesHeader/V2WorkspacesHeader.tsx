@@ -1,8 +1,8 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
-import { Button } from "@superset/ui/button";
+import { i18n } from "@choros/i18n";
+import { Button } from "@choros/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuCheckboxItem,
@@ -16,8 +16,8 @@ import {
 	DropdownMenuSubContent,
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/dropdown-menu";
+import { cn } from "@choros/ui/utils";
 import {
 	LuArchive,
 	LuArrowDownUp,

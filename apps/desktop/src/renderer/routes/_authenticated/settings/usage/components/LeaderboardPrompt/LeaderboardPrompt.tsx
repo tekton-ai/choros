@@ -1,5 +1,5 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
+import { Button } from "@choros/ui/button";
 import { TrophyIcon, XIcon } from "lucide-react";
 import { useState } from "react";
 import { LeaderboardJoinDialog } from "renderer/components/LeaderboardJoinDialog";

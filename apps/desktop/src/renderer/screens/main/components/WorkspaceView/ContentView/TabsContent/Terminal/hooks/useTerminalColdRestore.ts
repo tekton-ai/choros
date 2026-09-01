@@ -1,4 +1,4 @@
-import { FRESH_SHELL_INPUT_MODE_RESET } from "@superset/shared/leaked-input-mode-reclaim";
+import { FRESH_SHELL_INPUT_MODE_RESET } from "@choros/shared/leaked-input-mode-reclaim";
 import type { Terminal as XTerm } from "@xterm/xterm";
 import { useCallback, useRef, useState } from "react";
 import { electronTrpcClient as trpcClient } from "renderer/lib/trpc-client";

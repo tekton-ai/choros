@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { HiMiniPause, HiMiniPlay, HiMiniXMark } from "react-icons/hi2";
 import type { WorkspaceRunState } from "shared/tabs-types";
 

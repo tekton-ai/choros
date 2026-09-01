@@ -1,5 +1,5 @@
-import { toast } from "@superset/ui/sonner";
-import { cn } from "@superset/ui/utils";
+import { toast } from "@choros/ui/sonner";
+import { cn } from "@choros/ui/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useMemo, useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";

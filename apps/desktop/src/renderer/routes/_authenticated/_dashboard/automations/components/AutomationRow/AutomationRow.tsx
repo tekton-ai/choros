@@ -1,28 +1,28 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { SelectAutomationRun, SelectUser } from "@superset/db/schema";
-import { i18n } from "@superset/i18n";
-import { formatCompactRelativeTime } from "@superset/i18n/format";
+import type { SelectAutomationRun, SelectUser } from "@choros/db/schema";
+import { i18n } from "@choros/i18n";
+import { formatCompactRelativeTime } from "@choros/i18n/format";
 import {
 	describeSchedule,
 	formatDateTimeInTimezone,
-} from "@superset/shared/rrule";
-import type { RouterOutputs } from "@superset/trpc";
-import { Button } from "@superset/ui/button";
+} from "@choros/shared/rrule";
+import type { RouterOutputs } from "@choros/trpc";
+import { Button } from "@choros/ui/button";
 import {
 	ContextMenu,
 	ContextMenuContent,
 	ContextMenuTrigger,
-} from "@superset/ui/context-menu";
+} from "@choros/ui/context-menu";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { TableCell, TableRow } from "@superset/ui/table";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/dropdown-menu";
+import { TableCell, TableRow } from "@choros/ui/table";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { cn } from "@choros/ui/utils";
 import { useNavigate } from "@tanstack/react-router";
 import { LuEllipsis, LuPlay, LuRotateCw } from "react-icons/lu";
 import type { AutomationLastRun } from "renderer/routes/_authenticated/_dashboard/hooks/useFailedAutomations";

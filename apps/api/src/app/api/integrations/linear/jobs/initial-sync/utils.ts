@@ -1,5 +1,5 @@
 import type { LinearClient } from "@linear/sdk";
-import { mapPriorityFromLinear } from "@superset/trpc/integrations/linear";
+import { mapPriorityFromLinear } from "@choros/trpc/integrations/linear";
 import { subMonths } from "date-fns";
 
 export interface LinearIssue {

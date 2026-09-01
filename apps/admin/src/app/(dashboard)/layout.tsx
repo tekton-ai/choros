@@ -1,6 +1,6 @@
-import { auth } from "@superset/auth/server";
-import { i18n } from "@superset/i18n";
-import { COMPANY } from "@superset/shared/constants";
+import { auth } from "@choros/auth/server";
+import { i18n } from "@choros/i18n";
+import { COMPANY } from "@choros/shared/constants";
 import {
 	Breadcrumb,
 	BreadcrumbItem,
@@ -8,13 +8,13 @@ import {
 	BreadcrumbList,
 	BreadcrumbPage,
 	BreadcrumbSeparator,
-} from "@superset/ui/breadcrumb";
-import { Separator } from "@superset/ui/separator";
+} from "@choros/ui/breadcrumb";
+import { Separator } from "@choros/ui/separator";
 import {
 	SidebarInset,
 	SidebarProvider,
 	SidebarTrigger,
-} from "@superset/ui/sidebar";
+} from "@choros/ui/sidebar";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 

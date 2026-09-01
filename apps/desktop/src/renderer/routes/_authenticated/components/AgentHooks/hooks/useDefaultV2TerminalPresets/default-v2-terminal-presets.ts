@@ -1,5 +1,5 @@
-import type { HostAgentConfig } from "@superset/host-service/settings";
-import { getPresetById } from "@superset/shared/host-agent-presets";
+import type { HostAgentConfig } from "@choros/host-service/settings";
+import { getPresetById } from "@choros/shared/host-agent-presets";
 import { getAgentCommandText } from "renderer/lib/agent-launch-command";
 import type { V2TerminalPresetRow } from "renderer/routes/_authenticated/providers/CollectionsProvider/dashboardSidebarLocal/schema";
 

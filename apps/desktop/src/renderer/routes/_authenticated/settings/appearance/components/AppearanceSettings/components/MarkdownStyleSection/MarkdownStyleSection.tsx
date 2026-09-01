@@ -5,7 +5,7 @@ import {
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
+} from "@choros/ui/select";
 import { HighlightText } from "renderer/routes/_authenticated/settings/components/HighlightText";
 import {
 	type MarkdownStyle,

@@ -1,5 +1,5 @@
 {
-	"name": "@superset/i18n",
+	"name": "@choros/i18n",
 	"version": "0.1.0",
 	"private": true,
 	"type": "module",
@@ -50,9 +50,9 @@
 	"devDependencies": {
 		"@anthropic-ai/sdk": "0.78.0",
 		"@ast-grep/napi": "0.41.1",
+		"@choros/typescript": "workspace:*",
 		"@lingui/cli": "6.6.0",
 		"@lingui/format-po": "6.6.0",
-		"@superset/typescript": "workspace:*",
 		"@types/react": "19.2.14",
 		"bun-types": "1.3.14",
 		"react": "19.2.3",

@@ -1,18 +1,18 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { errorMessage } from "@superset/i18n/errors";
-import { chatServiceTrpc } from "@superset/provider-auth/client";
-import { Badge } from "@superset/ui/badge";
-import { Button } from "@superset/ui/button";
+import { errorMessage } from "@choros/i18n/errors";
+import { chatServiceTrpc } from "@choros/provider-auth/client";
+import { Badge } from "@choros/ui/badge";
+import { Button } from "@choros/ui/button";
 import {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
-} from "@superset/ui/collapsible";
-import { claudeIcon } from "@superset/ui/icons/preset-icons";
-import { Input } from "@superset/ui/input";
-import { Label } from "@superset/ui/label";
-import { toast } from "@superset/ui/sonner";
-import { Textarea } from "@superset/ui/textarea";
+} from "@choros/ui/collapsible";
+import { claudeIcon } from "@choros/ui/icons/preset-icons";
+import { Input } from "@choros/ui/input";
+import { Label } from "@choros/ui/label";
+import { toast } from "@choros/ui/sonner";
+import { Textarea } from "@choros/ui/textarea";
 import { useEffect, useMemo, useState } from "react";
 import { HiChevronDown } from "react-icons/hi2";
 import { AnthropicOAuthDialog } from "renderer/components/ProviderAuth/components/AnthropicOAuthDialog";

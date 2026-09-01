@@ -1,4 +1,4 @@
-import { isSupportedLocale } from "@superset/i18n";
+import { isSupportedLocale } from "@choros/i18n";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 

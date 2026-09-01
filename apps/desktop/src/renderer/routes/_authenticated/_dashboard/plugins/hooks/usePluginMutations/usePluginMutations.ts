@@ -1,10 +1,10 @@
 import { useLingui } from "@lingui/react/macro";
-import { errorMessage } from "@superset/i18n/errors";
+import { errorMessage } from "@choros/i18n/errors";
 import {
 	getPluginByName,
 	isPluginExternallyConfigured,
-} from "@superset/shared/plugins";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/shared/plugins";
+import { toast } from "@choros/ui/sonner";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { posthog } from "renderer/lib/posthog";
 

@@ -1,6 +1,6 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import {
 	app,
 	Menu,

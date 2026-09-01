@@ -1,17 +1,17 @@
 "use client";
 
 import { Trans } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
-import { AspectRatio } from "@superset/ui/aspect-ratio";
-import { OverflowFadeContainer } from "@superset/ui/overflow-fade-container";
-import { OverflowFadeText } from "@superset/ui/overflow-fade-text";
+import { i18n } from "@choros/i18n";
+import { AspectRatio } from "@choros/ui/aspect-ratio";
+import { OverflowFadeContainer } from "@choros/ui/overflow-fade-container";
+import { OverflowFadeText } from "@choros/ui/overflow-fade-text";
 import {
 	ResizableHandle,
 	ResizablePanel,
 	ResizablePanelGroup,
-} from "@superset/ui/resizable";
-import { ScrollArea } from "@superset/ui/scroll-area";
-import { Separator } from "@superset/ui/separator";
+} from "@choros/ui/resizable";
+import { ScrollArea } from "@choros/ui/scroll-area";
+import { Separator } from "@choros/ui/separator";
 
 import { ComponentCard } from "../ComponentCard";
 import { ShowcaseSection } from "../ShowcaseSection";
@@ -41,7 +41,7 @@ export function LayoutSection() {
 					id: "web.design.layoutSection.separator",
 					message: "Separator",
 				})}
-				importPath="@superset/ui/separator"
+				importPath="@choros/ui/separator"
 			>
 				<div className="w-full max-w-64">
 					<p className="text-sm font-medium">
@@ -74,7 +74,7 @@ export function LayoutSection() {
 					id: "web.design.layoutSection.aspectRatio",
 					message: "Aspect Ratio",
 				})}
-				importPath="@superset/ui/aspect-ratio"
+				importPath="@choros/ui/aspect-ratio"
 			>
 				<div className="w-full max-w-64">
 					<AspectRatio
@@ -91,7 +91,7 @@ export function LayoutSection() {
 					id: "web.design.layoutSection.scrollArea",
 					message: "Scroll Area",
 				})}
-				importPath="@superset/ui/scroll-area"
+				importPath="@choros/ui/scroll-area"
 			>
 				<ScrollArea className="h-40 w-full max-w-72 rounded-md border">
 					<div className="p-3 font-mono text-xs leading-5 text-muted-foreground">
@@ -107,10 +107,10 @@ export function LayoutSection() {
 					id: "web.design.layoutSection.overflowFade",
 					message: "Overflow Fade",
 				})}
-				importPath="@superset/ui/overflow-fade-container"
+				importPath="@choros/ui/overflow-fade-container"
 				description={i18n._({
 					id: "web.design.layoutSection.alsoSupersetUiOverflowFade",
-					message: "Also: @superset/ui/overflow-fade-text",
+					message: "Also: @choros/ui/overflow-fade-text",
 				})}
 			>
 				<div className="w-full max-w-64 space-y-4">
@@ -139,7 +139,7 @@ export function LayoutSection() {
 					id: "web.design.layoutSection.resizable",
 					message: "Resizable",
 				})}
-				importPath="@superset/ui/resizable"
+				importPath="@choros/ui/resizable"
 				span
 				bleed
 			>

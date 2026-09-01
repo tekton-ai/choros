@@ -1,5 +1,5 @@
 import { isAbsolute, normalize, resolve, sep } from "node:path";
-import { projects, worktrees } from "@superset/local-db";
+import { projects, worktrees } from "@choros/local-db";
 import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";
 import { localDb } from "main/lib/local-db";

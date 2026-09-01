@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { basename } from "node:path";
-import { CLIError } from "@superset/cli-framework";
+import { CLIError } from "@choros/cli-framework";
 import { lookup as lookupMimeType } from "mime-types";
 import type { ApiClient } from "../../../../../lib/api-client";
 import {

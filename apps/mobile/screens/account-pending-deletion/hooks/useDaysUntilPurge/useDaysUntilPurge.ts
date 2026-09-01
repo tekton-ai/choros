@@ -1,4 +1,4 @@
-import { ACCOUNT_DELETION_GRACE_DAYS } from "@superset/shared/constants";
+import { ACCOUNT_DELETION_GRACE_DAYS } from "@choros/shared/constants";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 

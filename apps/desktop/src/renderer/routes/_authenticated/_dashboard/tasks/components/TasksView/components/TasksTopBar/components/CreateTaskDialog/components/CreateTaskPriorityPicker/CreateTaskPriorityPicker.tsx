@@ -1,11 +1,11 @@
 import { useLingui } from "@lingui/react/macro";
-import type { TaskPriority } from "@superset/db/enums";
+import type { TaskPriority } from "@choros/db/enums";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
+} from "@choros/ui/dropdown-menu";
 import { useState } from "react";
 import { HiChevronDown } from "react-icons/hi2";
 import { PriorityIcon } from "renderer/routes/_authenticated/_dashboard/tasks/components/TasksView/components/shared/PriorityIcon";

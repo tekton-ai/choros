@@ -12,7 +12,7 @@ import { isAbsolute, join, normalize, relative, resolve, sep } from "node:path";
 import {
 	BINARY_SNIFF_BYTES,
 	isBinaryMediaFile,
-} from "@superset/shared/media-files";
+} from "@choros/shared/media-files";
 import { TRPCError } from "@trpc/server";
 import type { SimpleGit } from "simple-git";
 import { resolveUpstream } from "../../../../runtime/git/refs";

@@ -1,6 +1,6 @@
 import fs from "node:fs/promises";
 import { homedir } from "node:os";
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import { dialog } from "electron";
 import { menuEmitter } from "main/lib/menu-events";
 import { getOrg, setOrg } from "main/lib/window-registry/window-registry";

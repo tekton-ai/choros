@@ -1,14 +1,14 @@
-import { db, dbWs } from "@superset/db/client";
-import { chatSessions } from "@superset/db/schema";
-import { getCurrentTxid } from "@superset/db/utils";
-import { SUPERSET_CHAT_MODELS } from "@superset/shared/agent-models";
+import { db, dbWs } from "@choros/db/client";
+import { chatSessions } from "@choros/db/schema";
+import { getCurrentTxid } from "@choros/db/utils";
+import { SUPERSET_CHAT_MODELS } from "@choros/shared/agent-models";
 import type { TRPCRouterRecord } from "@trpc/server";
 import { and, desc, eq, inArray } from "drizzle-orm";
 import { z } from "zod";
 import { protectedProcedure, userError } from "../../trpc";
 import { requireActiveOrgMembership } from "../utils/active-org";
 
-// Re-shaped from the canonical catalog in `@superset/shared/agent-models` so
+// Re-shaped from the canonical catalog in `@choros/shared/agent-models` so
 // the chat API and the workspace-create model picker never drift.
 const AVAILABLE_MODELS = SUPERSET_CHAT_MODELS.map((model) => ({
 	id: model.id,

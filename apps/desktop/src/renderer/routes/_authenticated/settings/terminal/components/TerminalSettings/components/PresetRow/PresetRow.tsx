@@ -1,8 +1,8 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { HostAgentConfig } from "@superset/host-service/settings";
-import { normalizeExecutionMode } from "@superset/local-db";
-import { Badge } from "@superset/ui/badge";
-import { cn } from "@superset/ui/utils";
+import type { HostAgentConfig } from "@choros/host-service/settings";
+import { normalizeExecutionMode } from "@choros/local-db";
+import { Badge } from "@choros/ui/badge";
+import { cn } from "@choros/ui/utils";
 import { Eye, EyeOff } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";

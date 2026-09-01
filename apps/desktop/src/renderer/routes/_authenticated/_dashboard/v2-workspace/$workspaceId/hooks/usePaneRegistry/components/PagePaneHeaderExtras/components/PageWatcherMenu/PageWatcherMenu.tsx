@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { errorMessage } from "@superset/i18n/errors";
-import { Button } from "@superset/ui/button";
+import { errorMessage } from "@choros/i18n/errors";
+import { Button } from "@choros/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -8,10 +8,10 @@ import {
 	DropdownMenuLabel,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { useFramePointerDown } from "@superset/ui/page-comments";
-import { toast } from "@superset/ui/sonner";
-import { workspaceTrpc } from "@superset/workspace-client";
+} from "@choros/ui/dropdown-menu";
+import { useFramePointerDown } from "@choros/ui/page-comments";
+import { toast } from "@choros/ui/sonner";
+import { workspaceTrpc } from "@choros/workspace-client";
 import { formatDistanceToNowStrict } from "date-fns";
 import { Bot, Check, EyeOff } from "lucide-react";
 import { useCallback, useState } from "react";

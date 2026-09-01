@@ -1,6 +1,6 @@
 import { Trans } from "@lingui/react/macro";
-import type { AppRouter } from "@superset/host-service";
-import { Button } from "@superset/ui/button";
+import type { AppRouter } from "@choros/host-service";
+import { Button } from "@choros/ui/button";
 import {
 	Dialog,
 	DialogContent,
@@ -8,8 +8,8 @@ import {
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
-} from "@superset/ui/dialog";
-import { ScrollArea } from "@superset/ui/scroll-area";
+} from "@choros/ui/dialog";
+import { ScrollArea } from "@choros/ui/scroll-area";
 import type { inferRouterOutputs } from "@trpc/server";
 import { useEffect, useState } from "react";
 import { CommitRow } from "../CommitRow";

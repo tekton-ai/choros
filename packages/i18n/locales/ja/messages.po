@@ -28287,7 +28287,7 @@ msgstr "AI · 会話"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
 msgid "web.design.aiChatSection.alsoSupersetUiAiElements"
-msgstr "その他: @superset/ui/ai-elements/message — 内容がストリーミングされる間、下端に追従します"
+msgstr "その他: @choros/ui/ai-elements/message — 内容がストリーミングされる間、下端に追従します"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/superset/components/AiChatSection/AiChatSection.tsx
@@ -28462,7 +28462,7 @@ msgstr "AI · ステータス"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
 msgid "web.design.aiStatusSection.alsoSupersetUiAiElements"
-msgstr "その他: @superset/ui/ai-elements/braille-spinner"
+msgstr "その他: @choros/ui/ai-elements/braille-spinner"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/superset/components/AiStatusSection/AiStatusSection.tsx
@@ -28682,7 +28682,7 @@ msgstr "アラート、トースト、進捗、読み込み状態"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/FeedbackSection/FeedbackSection.tsx
 msgid "web.design.feedbackSection.alsoSupersetUiSpinner"
-msgstr "その他: @superset/ui/spinner"
+msgstr "その他: @choros/ui/spinner"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/FeedbackSection/FeedbackSection.tsx
@@ -28802,7 +28802,7 @@ msgstr "利用規約に同意する"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
 msgid "web.design.inputsSection.alsoSupersetUiRadioGroup"
-msgstr "その他: @superset/ui/radio-group, @superset/ui/switch"
+msgstr "その他: @choros/ui/radio-group, @choros/ui/switch"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
@@ -28842,7 +28842,7 @@ msgstr "component-showcase"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
 msgid "web.design.inputsSection.composableFormLayoutPairsWith"
-msgstr "組み合わせ可能なフォームレイアウト — react-hook-form用の@superset/ui/formと合わせて使います"
+msgstr "組み合わせ可能なフォームレイアウト — react-hook-form用の@choros/ui/formと合わせて使います"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/InputsSection/InputsSection.tsx
@@ -28962,7 +28962,7 @@ msgstr "ワークスペース"
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx
 msgid "web.design.layoutSection.alsoSupersetUiOverflowFade"
-msgstr "その他: @superset/ui/overflow-fade-text"
+msgstr "その他: @choros/ui/overflow-fade-text"
 
 #. js-lingui-explicit-id
 #: ../../apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx

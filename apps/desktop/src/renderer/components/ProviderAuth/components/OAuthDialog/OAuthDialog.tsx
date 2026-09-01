@@ -1,15 +1,15 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
+import { Button } from "@choros/ui/button";
 import {
 	Dialog,
 	DialogContent,
 	DialogDescription,
 	DialogHeader,
 	DialogTitle,
-} from "@superset/ui/dialog";
-import { InputGroup, InputGroupInput } from "@superset/ui/input-group";
-import { Label } from "@superset/ui/label";
+} from "@choros/ui/dialog";
+import { InputGroup, InputGroupInput } from "@choros/ui/input-group";
+import { Label } from "@choros/ui/label";
 import { useCallback, useState } from "react";
 
 export interface OAuthDialogProps {

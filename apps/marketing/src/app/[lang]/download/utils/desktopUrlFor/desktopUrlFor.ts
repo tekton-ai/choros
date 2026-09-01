@@ -2,7 +2,7 @@ import {
 	DOWNLOAD_URL_LINUX_X64,
 	DOWNLOAD_URL_MAC_ARM64,
 	DOWNLOAD_URL_MAC_X64,
-} from "@superset/shared/constants";
+} from "@choros/shared/constants";
 import { Platform } from "@/app/[lang]/hooks/useOS";
 
 // Which platforms we actually publish a desktop binary for. Windows is

@@ -1,5 +1,5 @@
-import { db, dbWs } from "@superset/db/client";
-import { cloudWorkspaces, v2Projects } from "@superset/db/schema";
+import { db, dbWs } from "@choros/db/client";
+import { cloudWorkspaces, v2Projects } from "@choros/db/schema";
 import type { TRPCRouterRecord } from "@trpc/server";
 import { TRPCError } from "@trpc/server";
 import { Client } from "@upstash/qstash";

@@ -1,9 +1,9 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { HostAgentConfig } from "@superset/host-service/settings";
-import { errorMessage } from "@superset/i18n/errors";
-import type { ExecutionMode, TerminalPreset } from "@superset/local-db";
-import { Alert, AlertDescription } from "@superset/ui/alert";
-import { Button } from "@superset/ui/button";
+import type { HostAgentConfig } from "@choros/host-service/settings";
+import { errorMessage } from "@choros/i18n/errors";
+import type { ExecutionMode, TerminalPreset } from "@choros/local-db";
+import { Alert, AlertDescription } from "@choros/ui/alert";
+import { Button } from "@choros/ui/button";
 import {
 	Dialog,
 	DialogContent,
@@ -11,18 +11,18 @@ import {
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
-} from "@superset/ui/dialog";
-import { Input } from "@superset/ui/input";
-import { Label } from "@superset/ui/label";
+} from "@choros/ui/dialog";
+import { Input } from "@choros/ui/input";
+import { Label } from "@choros/ui/label";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
-import { toast } from "@superset/ui/sonner";
-import { Switch } from "@superset/ui/switch";
+} from "@choros/ui/select";
+import { toast } from "@choros/ui/sonner";
+import { Switch } from "@choros/ui/switch";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { ExternalLink, Trash2 } from "lucide-react";

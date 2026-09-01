@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import { toast } from "@superset/ui/sonner";
+import { toast } from "@choros/ui/sonner";
 import { useCallback } from "react";
 import { electronTrpcClient } from "renderer/lib/trpc-client";
 import { useHostWorkspaces } from "renderer/routes/_authenticated/providers/HostWorkspacesProvider";

@@ -1,15 +1,15 @@
-import { errorMessage } from "@superset/i18n/errors";
-import { chatServiceTrpc } from "@superset/provider-auth/client";
-import { Button } from "@superset/ui/button";
+import { errorMessage } from "@choros/i18n/errors";
+import { chatServiceTrpc } from "@choros/provider-auth/client";
+import { Button } from "@choros/ui/button";
 import {
 	Dialog,
 	DialogContent,
 	DialogDescription,
 	DialogHeader,
 	DialogTitle,
-} from "@superset/ui/dialog";
-import { Input } from "@superset/ui/input";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/dialog";
+import { Input } from "@choros/ui/input";
+import { toast } from "@choros/ui/sonner";
 import { type FormEvent, useState } from "react";
 import { LuKeyRound } from "react-icons/lu";
 import { AnthropicOAuthDialog } from "renderer/components/ProviderAuth/components/AnthropicOAuthDialog";

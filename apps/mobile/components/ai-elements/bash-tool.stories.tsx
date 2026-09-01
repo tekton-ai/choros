@@ -41,7 +41,7 @@ export const Pending: Story = {
 	render: () => (
 		<View className="w-full">
 			<BashTool
-				command="bun install && bun run build --filter=@superset/mobile"
+				command="bun install && bun run build --filter=@choros/mobile"
 				state="input-available"
 			/>
 		</View>

@@ -1,5 +1,5 @@
-import { boolean, CLIError, string } from "@superset/cli-framework";
-import { EXECUTION_MODES } from "@superset/local-db";
+import { boolean, CLIError, string } from "@choros/cli-framework";
+import { EXECUTION_MODES } from "@choros/local-db";
 import { command } from "../../../lib/command";
 import { readConfig, resolveOrganizationId } from "../../../lib/config";
 import { notifyDesktopSettingsChanged } from "../../../lib/settings/notify";

@@ -1,7 +1,7 @@
 import {
 	type AutomationEventDispatchInput,
 	automationEvents,
-} from "@superset/db/schema";
+} from "@choros/db/schema";
 import type { PgDatabase, PgQueryResultHKT } from "drizzle-orm/pg-core";
 import { stripNullChars } from "@/lib/strip-null-chars";
 

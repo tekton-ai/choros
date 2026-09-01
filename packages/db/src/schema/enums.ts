@@ -1,4 +1,4 @@
-import type { TriggerConfigInput } from "@superset/shared/automation-triggers";
+import type { TriggerConfigInput } from "@choros/shared/automation-triggers";
 import { z } from "zod";
 
 export const taskStatusEnumValues = [
@@ -101,7 +101,7 @@ export const automationPromptSourceEnum = z.enum(automationPromptSourceValues);
 export type AutomationPromptSource = z.infer<typeof automationPromptSourceEnum>;
 
 /**
- * Must list exactly the config kinds in `@superset/shared/automation-triggers`
+ * Must list exactly the config kinds in `@choros/shared/automation-triggers`
  * — the `satisfies` below and the `_EveryKindHasEnumValue` check make either
  * direction of drift a compile error instead of a runtime cast.
  */
@@ -132,7 +132,7 @@ export type _EveryKindHasEnumValue = [
 export const automationTriggerKindEnum = z.enum(automationTriggerKindValues);
 export type AutomationTriggerKind = z.infer<typeof automationTriggerKindEnum>;
 
-// pgEnum columns; the wire/validation zod lives in @superset/shared/desktop-notices.
+// pgEnum columns; the wire/validation zod lives in @choros/shared/desktop-notices.
 // platforms/channels are stored as text[] (no enum needed).
 export const desktopNoticeSeverityValues = [
 	"info",

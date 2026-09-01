@@ -1,13 +1,13 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Label } from "@superset/ui/label";
+import { Label } from "@choros/ui/label";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/select";
+import { toast } from "@choros/ui/sonner";
 import { useCallback } from "react";
 import { useV2UserPreferences } from "renderer/hooks/useV2UserPreferences";
 import {

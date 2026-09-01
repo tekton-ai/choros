@@ -1,4 +1,4 @@
-import { createCommand } from "@superset/cli-framework";
+import { createCommand } from "@choros/cli-framework";
 import type { ApiClient } from "./api-client";
 import type { SupersetConfig } from "./config";
 import type { AuthSource } from "./resolve-auth";

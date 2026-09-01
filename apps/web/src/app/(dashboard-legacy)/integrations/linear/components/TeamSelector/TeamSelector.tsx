@@ -7,9 +7,9 @@ import {
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
-import { Skeleton } from "@superset/ui/skeleton";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/select";
+import { Skeleton } from "@choros/ui/skeleton";
+import { toast } from "@choros/ui/sonner";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { CheckCircle2 } from "lucide-react";
 import { useEffect, useState } from "react";

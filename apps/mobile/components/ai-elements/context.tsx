@@ -1,10 +1,10 @@
 import { Trans } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import {
 	formatCompactNumber,
 	formatCurrency,
 	formatPercent,
-} from "@superset/i18n/format";
+} from "@choros/i18n/format";
 import { createContext, useContext, useMemo } from "react";
 import { View } from "react-native";
 import Svg, { Circle } from "react-native-svg";

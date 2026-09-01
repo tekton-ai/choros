@@ -1,5 +1,5 @@
-import { db } from "@superset/db/client";
-import { teams } from "@superset/db/schema";
+import { db } from "@choros/db/client";
+import { teams } from "@choros/db/schema";
 import type { TRPCRouterRecord } from "@trpc/server";
 import { and, eq } from "drizzle-orm";
 import { z } from "zod";

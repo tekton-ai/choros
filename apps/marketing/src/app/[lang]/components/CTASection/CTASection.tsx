@@ -1,7 +1,7 @@
 "use client";
 
 import { Trans, useLingui } from "@lingui/react/macro";
-import { COMPANY } from "@superset/shared/constants";
+import { COMPANY } from "@choros/shared/constants";
 import { useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { DownloadButton } from "../DownloadButton";

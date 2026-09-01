@@ -1,8 +1,8 @@
-import type { WorkspaceState } from "@superset/panes";
+import type { WorkspaceState } from "@choros/panes";
 import type {
 	AgentLifecyclePayload,
 	TerminalLifecyclePayload,
-} from "@superset/workspace-client";
+} from "@choros/workspace-client";
 import { playRingtone } from "renderer/lib/ringtones/play";
 import { electronTrpcClient } from "renderer/lib/trpc-client";
 import type { PaneViewerData } from "renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/types";

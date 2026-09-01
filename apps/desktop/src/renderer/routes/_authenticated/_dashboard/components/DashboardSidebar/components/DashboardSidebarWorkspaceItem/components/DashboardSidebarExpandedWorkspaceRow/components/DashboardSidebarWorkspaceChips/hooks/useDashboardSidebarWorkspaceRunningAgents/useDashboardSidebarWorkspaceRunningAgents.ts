@@ -1,7 +1,7 @@
 import {
 	AGENT_IDENTITY_LABELS,
 	type AgentIdentityId,
-} from "@superset/shared/agent-catalog";
+} from "@choros/shared/agent-catalog";
 import { useMemo } from "react";
 import { useSidebarWorkspaceStatus } from "renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/providers/DashboardSidebarWorkspaceStatusProvider";
 import type { V2NotificationSource } from "renderer/stores/v2-notifications";

@@ -1,9 +1,9 @@
-import { SUPPORTED_LOCALES } from "@superset/i18n";
-import { chatServiceTrpc } from "@superset/provider-auth/client";
-import { Badge } from "@superset/ui/badge";
-import { Button } from "@superset/ui/button";
-import { Spinner } from "@superset/ui/spinner";
-import { cn } from "@superset/ui/utils";
+import { SUPPORTED_LOCALES } from "@choros/i18n";
+import { chatServiceTrpc } from "@choros/provider-auth/client";
+import { Badge } from "@choros/ui/badge";
+import { Button } from "@choros/ui/button";
+import { Spinner } from "@choros/ui/spinner";
+import { cn } from "@choros/ui/utils";
 import { createFileRoute } from "@tanstack/react-router";
 import { type ReactNode, useState } from "react";
 import { HiArrowUpRight } from "react-icons/hi2";

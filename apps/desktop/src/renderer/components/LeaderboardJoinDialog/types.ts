@@ -1,4 +1,4 @@
-import type { RouterOutputs } from "@superset/trpc";
+import type { RouterOutputs } from "@choros/trpc";
 
 export type LeaderboardPreview = Pick<
 	RouterOutputs["leaderboard"]["previewRank"],

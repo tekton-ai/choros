@@ -1,5 +1,5 @@
-import { TableHeader } from "@superset/ui/table";
-import { cn } from "@superset/ui/utils";
+import { TableHeader } from "@choros/ui/table";
+import { cn } from "@choros/ui/utils";
 import type { ComponentProps } from "react";
 
 /**

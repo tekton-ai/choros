@@ -1,11 +1,11 @@
-import { Badge } from "@superset/ui/badge";
+import { Badge } from "@choros/ui/badge";
 import {
 	Card,
 	CardContent,
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from "@superset/ui/card";
+} from "@choros/ui/card";
 import { AlertTriangle, ArrowLeft, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 import { FaGoogle } from "react-icons/fa";

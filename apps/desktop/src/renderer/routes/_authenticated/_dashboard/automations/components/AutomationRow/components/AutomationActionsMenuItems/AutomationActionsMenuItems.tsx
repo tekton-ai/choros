@@ -2,11 +2,11 @@ import { Trans } from "@lingui/react/macro";
 import {
 	ContextMenuItem,
 	ContextMenuSeparator,
-} from "@superset/ui/context-menu";
+} from "@choros/ui/context-menu";
 import {
 	DropdownMenuItem,
 	DropdownMenuSeparator,
-} from "@superset/ui/dropdown-menu";
+} from "@choros/ui/dropdown-menu";
 import type { ReactNode } from "react";
 import { LuClock, LuPause, LuPencil, LuPlay, LuTrash2 } from "react-icons/lu";
 

@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { memo, useMemo } from "react";
 import { Streamdown } from "streamdown";
 import { planMarkdown } from "./utils/planMarkdown";

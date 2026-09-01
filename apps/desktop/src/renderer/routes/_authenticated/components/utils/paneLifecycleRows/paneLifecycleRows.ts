@@ -1,4 +1,4 @@
-import type { Pane, WorkspaceState } from "@superset/panes";
+import type { Pane, WorkspaceState } from "@choros/panes";
 
 export interface PaneLifecycleRow {
 	workspaceId: unknown;

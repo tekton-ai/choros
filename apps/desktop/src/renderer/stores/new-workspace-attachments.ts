@@ -1,4 +1,4 @@
-import { createPromptInputAttachmentsStore } from "@superset/ui/ai-elements/prompt-input";
+import { createPromptInputAttachmentsStore } from "@choros/ui/ai-elements/prompt-input";
 import { useNewWorkspaceDraftStore } from "renderer/stores/new-workspace-draft";
 
 /**

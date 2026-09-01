@@ -1,4 +1,4 @@
-import { Label } from "@superset/ui/label";
+import { Label } from "@choros/ui/label";
 import type { ReactNode } from "react";
 import { useSettingsSearchQuery } from "renderer/stores/settings-state";
 import { HighlightText } from "../HighlightText";

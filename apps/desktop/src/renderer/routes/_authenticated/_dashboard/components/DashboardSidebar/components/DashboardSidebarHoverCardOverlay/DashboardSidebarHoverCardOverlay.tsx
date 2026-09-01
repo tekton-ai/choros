@@ -1,4 +1,4 @@
-import { Popover, PopoverAnchor, PopoverContent } from "@superset/ui/popover";
+import { Popover, PopoverAnchor, PopoverContent } from "@choros/ui/popover";
 import type { RefObject } from "react";
 import { useEffect, useRef, useState } from "react";
 import { useDiffStats } from "renderer/hooks/host-service/useDiffStats";

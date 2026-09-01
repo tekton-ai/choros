@@ -1,7 +1,7 @@
 import {
 	buildHostRoutingKey,
 	parseHostRoutingKey,
-} from "@superset/shared/host-routing";
+} from "@choros/shared/host-routing";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
 import {

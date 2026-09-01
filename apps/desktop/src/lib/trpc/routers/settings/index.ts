@@ -2,8 +2,8 @@ import {
 	setupSingleAgent,
 	teardownSingleAgent,
 	writeSharedDisabledAgentIds,
-} from "@superset/agent-setup";
-import { isSupportedLocale } from "@superset/i18n/locales";
+} from "@choros/agent-setup";
+import { isSupportedLocale } from "@choros/i18n/locales";
 import {
 	type AgentCustomDefinition,
 	type AgentPresetOverrideEnvelope,
@@ -15,16 +15,16 @@ import {
 	settings,
 	TERMINAL_LINK_BEHAVIORS,
 	type TerminalPreset,
-} from "@superset/local-db";
+} from "@choros/local-db";
 import {
 	AGENT_PRESET_COMMANDS,
 	AGENT_PRESET_DESCRIPTIONS,
 	DEFAULT_TERMINAL_PRESET_AGENT_TYPES,
-} from "@superset/shared/agent-command";
+} from "@choros/shared/agent-command";
 import {
 	applyLegacyPermissionsOverrides,
 	terminalPresetsMatchPre3546Seed,
-} from "@superset/shared/agent-permissions-migration";
+} from "@choros/shared/agent-permissions-migration";
 import {
 	type AgentDefinitionId,
 	applyCustomAgentDefinitionPatch,
@@ -37,8 +37,8 @@ import {
 	resetAllAgentPresetOverrides,
 	resolveAgentConfigs,
 	upsertCustomAgentDefinition,
-} from "@superset/shared/agent-settings";
-import { NOTIFICATION_VOLUME_LIMITS } from "@superset/shared/settings-constraints";
+} from "@choros/shared/agent-settings";
+import { NOTIFICATION_VOLUME_LIMITS } from "@choros/shared/settings-constraints";
 import { TRPCError } from "@trpc/server";
 import { app } from "electron";
 import { env } from "main/env.main";

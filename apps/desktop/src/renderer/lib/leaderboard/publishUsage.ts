@@ -1,5 +1,5 @@
-import type { RouterInputs } from "@superset/trpc";
-import { PUBLISH_PAYLOAD_VERSION } from "@superset/trpc/leaderboard-schema";
+import type { RouterInputs } from "@choros/trpc";
+import { PUBLISH_PAYLOAD_VERSION } from "@choros/trpc/leaderboard-schema";
 import { apiTrpcClient } from "renderer/lib/api-trpc-client";
 import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";
 

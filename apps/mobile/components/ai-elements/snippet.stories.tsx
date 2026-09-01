@@ -33,10 +33,10 @@ export const Default: Story = {
 };
 
 export const InstallCommand: Story = {
-	args: { code: "bun add @superset/sdk" },
+	args: { code: "bun add @choros/sdk" },
 	render: () => (
 		<View className="w-full">
-			<Snippet code="bun add @superset/sdk">
+			<Snippet code="bun add @choros/sdk">
 				<SnippetAddon>
 					<SnippetText>$</SnippetText>
 				</SnippetAddon>

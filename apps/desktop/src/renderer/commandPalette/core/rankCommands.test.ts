@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { initI18n } from "@superset/i18n";
+import { initI18n } from "@choros/i18n";
 import { rankCommands, rankSections, scoreCommand } from "./rankCommands";
 import type { Command, CommandSection } from "./types";
 

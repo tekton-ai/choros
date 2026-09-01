@@ -1,4 +1,4 @@
-import type { FrameRect } from "@superset/shared/page-comments-runtime";
+import type { FrameRect } from "@choros/shared/page-comments-runtime";
 import type { CommentThread } from "../../../../providers/CommentProvider";
 
 export interface GroupedThreads {

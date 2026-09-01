@@ -1,4 +1,4 @@
-import type { RelayAffinityProbe } from "@superset/workspace-client";
+import type { RelayAffinityProbe } from "@choros/workspace-client";
 
 export type TerminalFailureCategory =
 	| "relay-unreachable"

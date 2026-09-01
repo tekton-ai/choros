@@ -1,7 +1,7 @@
 import {
 	BRANCH_PREFIX_MODES,
 	type BranchPrefixMode,
-} from "@superset/shared/workspace-launch";
+} from "@choros/shared/workspace-launch";
 import { z } from "zod";
 import { hostSettings } from "../../../db/schema";
 import { getStrictShellEnvironment } from "../../../terminal/clean-shell-env";

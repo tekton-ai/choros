@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Tabs, TabsList, TabsTrigger } from "@superset/ui/tabs";
-import { cn } from "@superset/ui/utils";
+import { Tabs, TabsList, TabsTrigger } from "@choros/ui/tabs";
+import { cn } from "@choros/ui/utils";
 import { useState } from "react";
 import { LuX } from "react-icons/lu";
 import {

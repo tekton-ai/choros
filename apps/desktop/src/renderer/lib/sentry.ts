@@ -1,4 +1,4 @@
-import { SENTRY_IGNORE_ERRORS } from "@superset/shared/sentry";
+import { SENTRY_IGNORE_ERRORS } from "@choros/shared/sentry";
 import { env } from "../env.renderer";
 
 let sentryInitialized = false;

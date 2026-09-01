@@ -1,6 +1,6 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
-import type { BranchPrefixMode } from "@superset/local-db";
+import type { BranchPrefixMode } from "@choros/local-db";
 
 export const BRANCH_PREFIX_MODE_LABELS: Record<BranchPrefixMode, string> = {
 	none: "No prefix",

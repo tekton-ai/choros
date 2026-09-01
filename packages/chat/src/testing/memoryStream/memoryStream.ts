@@ -1,5 +1,5 @@
-import type { ChatRuntime, WsSinkSocket } from "@superset/chat-runtime";
-import { createWsSink } from "@superset/chat-runtime";
+import type { ChatRuntime, WsSinkSocket } from "@choros/chat-runtime";
+import { createWsSink } from "@choros/chat-runtime";
 import type { StreamSocket } from "../../client";
 import type { Cursor } from "../../protocol/cursor";
 import { parseCursor } from "../../protocol/cursor";

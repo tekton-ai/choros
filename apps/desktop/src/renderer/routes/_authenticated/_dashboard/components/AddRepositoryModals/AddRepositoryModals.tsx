@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import { toast } from "@superset/ui/sonner";
+import { toast } from "@choros/ui/sonner";
 import { EmptyProjectModal } from "renderer/routes/_authenticated/components/EmptyProjectModal";
 import { TemplateGalleryModal } from "renderer/routes/_authenticated/components/TemplateGalleryModal";
 import {

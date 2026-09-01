@@ -5,8 +5,8 @@ import {
 	EmptyHeader,
 	EmptyMedia,
 	EmptyTitle,
-} from "@superset/ui/empty";
-import { Skeleton } from "@superset/ui/skeleton";
+} from "@choros/ui/empty";
+import { Skeleton } from "@choros/ui/skeleton";
 import { LuFileText, LuSearchX } from "react-icons/lu";
 import { PageCard, type PageCardItem } from "./components/PageCard";
 import { THUMBNAIL_ASPECT_RATIO } from "./constants";

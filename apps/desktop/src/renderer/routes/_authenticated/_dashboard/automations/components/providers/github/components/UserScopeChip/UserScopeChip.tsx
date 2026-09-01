@@ -1,5 +1,5 @@
-import type { TriggerScope } from "@superset/shared/automation-triggers";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
+import type { TriggerScope } from "@choros/shared/automation-triggers";
+import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
 import { useState } from "react";
 import { LuCheck } from "react-icons/lu";
 import { ChipButton } from "../../../../TriggerSentence/components/ChipButton";

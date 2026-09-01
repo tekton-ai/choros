@@ -1,5 +1,5 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { toast } from "@superset/ui/sonner";
+import { toast } from "@choros/ui/sonner";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import type { PortForward } from "shared/types";
 

@@ -1,12 +1,12 @@
 import { plural } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Badge } from "@superset/ui/badge";
+import { Badge } from "@choros/ui/badge";
 import {
 	HoverCard,
 	HoverCardContent,
 	HoverCardTrigger,
-} from "@superset/ui/hover-card";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/hover-card";
+import { cn } from "@choros/ui/utils";
 import { STATUS_PRIORITY } from "shared/tabs-types";
 import { useDashboardSidebarChipHoverSuppression } from "../../hooks/useDashboardSidebarChipHoverSuppression";
 import type { DashboardSidebarRunningAgent } from "../../hooks/useDashboardSidebarWorkspaceRunningAgents";

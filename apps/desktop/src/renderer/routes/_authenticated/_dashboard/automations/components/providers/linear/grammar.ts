@@ -3,7 +3,7 @@ import { msg } from "@lingui/core/macro";
 import type {
 	LinearTriggerEvent,
 	TriggerConfigInput,
-} from "@superset/shared/automation-triggers";
+} from "@choros/shared/automation-triggers";
 import type { TriggerMenuEntry } from "../types";
 
 export type LinearConfig = Extract<TriggerConfigInput, { kind: "linear" }>;

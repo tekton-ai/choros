@@ -148,7 +148,7 @@ export const FEATURE_FLAGS = {
 	 * The same payload decides which integrations the settings and web
 	 * integrations pages offer: one that only feeds automations is shown when
 	 * one of its kinds is enabled (`offeredIntegrations` in
-	 * `@superset/shared/integrations`), so a provider is connectable exactly
+	 * `@choros/shared/integrations`), so a provider is connectable exactly
 	 * when its triggers are.
 	 */
 	AUTOMATION_EVENT_TRIGGERS: "automation-event-triggers",
@@ -264,7 +264,7 @@ export const SANDBOX_HOST_DB_PATH = "/data/host.db";
 // Terminal identity presented to shell programs via TERM_PROGRAM. kitty:
 // agent TUIs (claude-code especially) tune wheel-scroll compensation per
 // TERM_PROGRAM, and our terminals install the full-fidelity wheel handler
-// (@superset/shared/terminal-wheel-handler) that produces a native
+// (@choros/shared/terminal-wheel-handler) that produces a native
 // kitty/iTerm-grade report stream. Under kitty-class identities TUIs trust
 // that stream as-is; a vscode identity would make claude-code amplify each
 // report (its compensation for xterm.js's damped stock stream) and

@@ -1,8 +1,8 @@
 import { AuthError, ConfidentialClientApplication } from "@azure/msal-node";
 import { Client, GraphError } from "@microsoft/microsoft-graph-client";
-import { db } from "@superset/db/client";
-import { integrationConnections } from "@superset/db/schema";
-import { withConnectionLock } from "@superset/db/utils";
+import { db } from "@choros/db/client";
+import { integrationConnections } from "@choros/db/schema";
+import { withConnectionLock } from "@choros/db/utils";
 import { and, eq } from "drizzle-orm";
 import { env } from "../../../env";
 

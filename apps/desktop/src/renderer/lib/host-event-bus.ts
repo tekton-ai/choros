@@ -1,4 +1,4 @@
-import { type EventBusHandle, getEventBus } from "@superset/workspace-client";
+import { type EventBusHandle, getEventBus } from "@choros/workspace-client";
 import {
 	getHostServiceWsToken,
 	getHostServiceWsUrlParams,

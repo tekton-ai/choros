@@ -1,5 +1,5 @@
 import { basename, isAbsolute, relative } from "node:path";
-import type { ToolContent, ToolKind } from "@superset/chat/protocol";
+import type { ToolContent, ToolKind } from "@choros/chat/protocol";
 
 export type ToolUse = {
 	id: string;

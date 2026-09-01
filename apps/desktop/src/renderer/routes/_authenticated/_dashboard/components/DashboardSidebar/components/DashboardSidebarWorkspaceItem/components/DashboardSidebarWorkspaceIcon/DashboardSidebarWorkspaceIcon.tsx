@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { CgLaptop } from "react-icons/cg";
 import {
 	LuGitMerge,

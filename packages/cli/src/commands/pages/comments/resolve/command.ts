@@ -1,4 +1,4 @@
-import { boolean, string } from "@superset/cli-framework";
+import { boolean, string } from "@choros/cli-framework";
 import { command } from "../../../../lib/command";
 
 export default command({

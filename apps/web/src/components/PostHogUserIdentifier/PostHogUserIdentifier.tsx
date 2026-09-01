@@ -1,6 +1,6 @@
 "use client";
 
-import { authClient } from "@superset/auth/client";
+import { authClient } from "@choros/auth/client";
 import posthog from "posthog-js";
 import { useEffect } from "react";
 

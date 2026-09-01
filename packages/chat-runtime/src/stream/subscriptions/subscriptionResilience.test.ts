@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import { randomUUID } from "node:crypto";
-import type { Envelope } from "@superset/chat/protocol";
-import { isDeltaEnvelope } from "@superset/chat/protocol";
+import type { Envelope } from "@choros/chat/protocol";
+import { isDeltaEnvelope } from "@choros/chat/protocol";
 import type { ChatRuntime } from "../../index";
 import { createTestRuntime } from "../../testing/testRuntime";
 import {

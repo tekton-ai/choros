@@ -3,16 +3,16 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { authClient } from "@superset/auth/client";
-import { i18n } from "@superset/i18n";
-import { Button } from "@superset/ui/button";
+import { authClient } from "@choros/auth/client";
+import { i18n } from "@choros/i18n";
+import { Button } from "@choros/ui/button";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
+} from "@choros/ui/select";
 import { useState } from "react";
 import {
 	LuBuilding2,

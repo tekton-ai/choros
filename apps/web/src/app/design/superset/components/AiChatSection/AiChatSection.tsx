@@ -1,19 +1,19 @@
 "use client";
 
 import { Trans } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import {
 	Conversation,
 	ConversationContent,
 	ConversationScrollButton,
-} from "@superset/ui/ai-elements/conversation";
-import { Message, MessageContent } from "@superset/ui/ai-elements/message";
+} from "@choros/ui/ai-elements/conversation";
+import { Message, MessageContent } from "@choros/ui/ai-elements/message";
 import {
 	Reasoning,
 	ReasoningContent,
 	ReasoningTrigger,
-} from "@superset/ui/ai-elements/reasoning";
-import { Suggestion, Suggestions } from "@superset/ui/ai-elements/suggestion";
+} from "@choros/ui/ai-elements/reasoning";
+import { Suggestion, Suggestions } from "@choros/ui/ai-elements/suggestion";
 
 import { ComponentCard } from "../../../components/ComponentCard";
 import { ShowcaseSection } from "../../../components/ShowcaseSection";
@@ -43,11 +43,11 @@ export function AiChatSection() {
 					id: "web.design.aiChatSection.conversationMessage",
 					message: "Conversation · Message",
 				})}
-				importPath="@superset/ui/ai-elements/conversation"
+				importPath="@choros/ui/ai-elements/conversation"
 				description={i18n._({
 					id: "web.design.aiChatSection.alsoSupersetUiAiElements",
 					message:
-						"Also: @superset/ui/ai-elements/message — sticks to bottom as content streams",
+						"Also: @choros/ui/ai-elements/message — sticks to bottom as content streams",
 				})}
 				span
 				bleed
@@ -87,7 +87,7 @@ export function AiChatSection() {
 					id: "web.design.aiChatSection.reasoning",
 					message: "Reasoning",
 				})}
-				importPath="@superset/ui/ai-elements/reasoning"
+				importPath="@choros/ui/ai-elements/reasoning"
 				description={i18n._({
 					id: "web.design.aiChatSection.collapsibleThinkingBlockWithDuration",
 					message: "Collapsible thinking block with duration label",
@@ -109,7 +109,7 @@ export function AiChatSection() {
 					id: "web.design.aiChatSection.suggestions",
 					message: "Suggestions",
 				})}
-				importPath="@superset/ui/ai-elements/suggestion"
+				importPath="@choros/ui/ai-elements/suggestion"
 			>
 				<Suggestions className="w-full">
 					<Suggestion suggestion="Fix the failing tests" />

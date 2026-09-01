@@ -1,4 +1,4 @@
-import type { WorkspaceState } from "@superset/panes";
+import type { WorkspaceState } from "@choros/panes";
 import type { HostShapedWorkspace } from "renderer/hooks/host-workspaces/useHostWorkspaces";
 import type { PaneLifecycleRow } from "renderer/routes/_authenticated/components/utils/paneLifecycleRows";
 import type { AppCollections } from "renderer/routes/_authenticated/providers/CollectionsProvider/collections";

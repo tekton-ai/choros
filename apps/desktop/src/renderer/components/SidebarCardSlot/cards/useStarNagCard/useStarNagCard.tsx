@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import { FEATURE_FLAGS } from "@superset/shared/constants";
+import { FEATURE_FLAGS } from "@choros/shared/constants";
 import { useFeatureFlagEnabled } from "posthog-js/react";
 import { useEffect, useReducer } from "react";
 import { AnimatedStarButton } from "renderer/components/AnimatedStarButton";

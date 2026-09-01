@@ -2,7 +2,7 @@ import type {
 	CommentThread,
 	PageHeaderPage,
 	PageHeaderVersion,
-} from "@superset/ui/page-comments";
+} from "@choros/ui/page-comments";
 import { useCallback } from "react";
 import { authClient } from "renderer/lib/auth-client";
 import { cloudTrpc } from "renderer/lib/cloud-trpc";

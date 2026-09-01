@@ -1,4 +1,4 @@
-import type { Decision } from "@superset/chat/protocol";
+import type { Decision } from "@choros/chat/protocol";
 
 export type CodexDecisionOption = {
 	optionId: string;

@@ -1,4 +1,4 @@
-import { useWorkspaceClient } from "@superset/workspace-client";
+import { useWorkspaceClient } from "@choros/workspace-client";
 import { useCallback, useMemo } from "react";
 import { useWorkspace } from "renderer/routes/_authenticated/_dashboard/v2-workspace/providers/WorkspaceProvider";
 import { useTheme } from "renderer/stores/theme";

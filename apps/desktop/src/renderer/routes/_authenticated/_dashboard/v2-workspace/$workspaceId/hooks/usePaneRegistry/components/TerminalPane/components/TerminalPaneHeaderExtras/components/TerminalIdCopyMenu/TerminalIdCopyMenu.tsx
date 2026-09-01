@@ -4,8 +4,8 @@ import {
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+} from "@choros/ui/dropdown-menu";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { Bot, Check, Copy, TerminalSquare } from "lucide-react";
 import { useState } from "react";
 import { useTerminalAgentBinding } from "renderer/hooks/host-service/useTerminalAgentBindings";

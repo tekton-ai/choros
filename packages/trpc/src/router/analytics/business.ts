@@ -1,4 +1,4 @@
-import { db } from "@superset/db/client";
+import { db } from "@choros/db/client";
 import type { TRPCRouterRecord } from "@trpc/server";
 import { sql } from "drizzle-orm";
 import { z } from "zod";

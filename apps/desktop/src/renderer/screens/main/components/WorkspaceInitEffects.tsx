@@ -1,11 +1,11 @@
-import { errorMessage } from "@superset/i18n/errors";
+import { errorMessage } from "@choros/i18n/errors";
 import {
 	type AgentLaunchRequest,
 	buildSetupPaneLaunchRequest,
 	normalizeAgentLaunchRequest,
 	type SetupPaneLaunch,
-} from "@superset/shared/agent-launch";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/shared/agent-launch";
+import { toast } from "@choros/ui/sonner";
 import { useCallback, useEffect, useRef } from "react";
 import { useCreateOrAttachWithTheme } from "renderer/hooks/useCreateOrAttachWithTheme";
 import { launchAgentSession } from "renderer/lib/agent-session-orchestrator";

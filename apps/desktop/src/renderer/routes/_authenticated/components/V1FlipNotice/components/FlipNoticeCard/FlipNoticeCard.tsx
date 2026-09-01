@@ -1,4 +1,4 @@
-import { Button } from "@superset/ui/button";
+import { Button } from "@choros/ui/button";
 import { TriangleAlert, X } from "lucide-react";
 import { lazy, Suspense } from "react";
 

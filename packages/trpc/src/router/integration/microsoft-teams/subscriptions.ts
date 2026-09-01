@@ -1,12 +1,12 @@
 import type { Client } from "@microsoft/microsoft-graph-client";
 import type { Subscription } from "@microsoft/microsoft-graph-types";
-import { db } from "@superset/db/client";
+import { db } from "@choros/db/client";
 import {
 	integrationConnections,
 	type MicrosoftTeamsConfig,
 	type MicrosoftTeamsSubscription,
-} from "@superset/db/schema";
-import { withConnectionLock } from "@superset/db/utils";
+} from "@choros/db/schema";
+import { withConnectionLock } from "@choros/db/utils";
 import { eq } from "drizzle-orm";
 import { env } from "../../../env";
 import { GraphError, getGraphAccessToken, graphClient } from "./graph";

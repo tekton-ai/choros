@@ -7,8 +7,8 @@
  * radius of a leak needs to be one repo for one hour, not a user's account.
  */
 import { App } from "@octokit/app";
-import { db } from "@superset/db/client";
-import { githubInstallations, githubRepositories } from "@superset/db/schema";
+import { db } from "@choros/db/client";
+import { githubInstallations, githubRepositories } from "@choros/db/schema";
 import { eq } from "drizzle-orm";
 import { env } from "../../env";
 import { repoForProject } from "./repo-for-project";

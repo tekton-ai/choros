@@ -838,7 +838,7 @@ export const automations = pgTable(
 
 		// Workspace tags applied to each run's created workspace, so scheduled
 		// runs file themselves into the matching sidebar folders. Stored
-		// normalized (see @superset/shared/workspace-tags). Defaults to
+		// normalized (see @choros/shared/workspace-tags). Defaults to
 		// ["automation"] so every automation groups its runs out of the box;
 		// clearing the set in the editor is the opt-out.
 		tags: jsonb().$type<string[]>().notNull().default(["automation"]),

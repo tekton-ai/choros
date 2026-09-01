@@ -6,7 +6,7 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from "@superset/ui/table";
+} from "@choros/ui/table";
 import { MemberRow, type MemberRowData } from "./components/MemberRow";
 
 interface MembersTableProps {

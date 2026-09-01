@@ -1,14 +1,14 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { errorMessage } from "@superset/i18n/errors";
-import { alert } from "@superset/ui/atoms/Alert";
-import { Button } from "@superset/ui/button";
+import { errorMessage } from "@choros/i18n/errors";
+import { alert } from "@choros/ui/atoms/Alert";
+import { Button } from "@choros/ui/button";
 import {
 	Dialog,
 	DialogClose,
 	DialogContent,
 	DialogTitle,
-} from "@superset/ui/dialog";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/dialog";
+import { toast } from "@choros/ui/sonner";
 import {
 	keepPreviousData,
 	useMutation,

@@ -1,6 +1,6 @@
 import { Trans } from "@lingui/react/macro";
-import { SUPERSET_MANAGED_SKILLS } from "@superset/shared/plugins";
-import { Badge } from "@superset/ui/badge";
+import { SUPERSET_MANAGED_SKILLS } from "@choros/shared/plugins";
+import { Badge } from "@choros/ui/badge";
 import { useState } from "react";
 import { SkillIcon } from "renderer/routes/_authenticated/_dashboard/plugins/components/SkillIcon";
 import { SkillPreviewDialog } from "./components/SkillPreviewDialog";

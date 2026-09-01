@@ -1,4 +1,4 @@
-import { positional, table } from "@superset/cli-framework";
+import { positional, table } from "@choros/cli-framework";
 import { command } from "../../../lib/command";
 import { pageRefFromArg } from "../pageRef";
 

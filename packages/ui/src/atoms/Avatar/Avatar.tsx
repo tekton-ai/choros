@@ -1,4 +1,4 @@
-import { getInitials } from "@superset/shared/names";
+import { getInitials } from "@choros/shared/names";
 import { cva, type VariantProps } from "class-variance-authority";
 import {
 	Avatar as AvatarBase,

@@ -1,8 +1,8 @@
 import { msg } from "@lingui/core/macro";
-import { i18n } from "@superset/i18n";
-import { errorMessage } from "@superset/i18n/errors";
-import type { DesktopNotice } from "@superset/shared/desktop-notices";
-import { toast } from "@superset/ui/sonner";
+import { i18n } from "@choros/i18n";
+import { errorMessage } from "@choros/i18n/errors";
+import type { DesktopNotice } from "@choros/shared/desktop-notices";
+import { toast } from "@choros/ui/sonner";
 import {
 	AppWindowIcon,
 	BellIcon,

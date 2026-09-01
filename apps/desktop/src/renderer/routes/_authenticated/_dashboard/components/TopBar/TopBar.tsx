@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/react/macro";
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { useMatchRoute, useParams } from "@tanstack/react-router";
 import { HiOutlineWifi } from "react-icons/hi2";
 import { ZoomStable } from "renderer/components/ZoomStable";

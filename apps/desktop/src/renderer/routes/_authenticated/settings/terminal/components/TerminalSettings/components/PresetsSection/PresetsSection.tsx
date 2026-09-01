@@ -3,9 +3,9 @@ import {
 	type ExecutionMode,
 	normalizeExecutionMode,
 	type TerminalPreset,
-} from "@superset/local-db";
-import { Button } from "@superset/ui/button";
-import { Label } from "@superset/ui/label";
+} from "@choros/local-db";
+import { Button } from "@choros/ui/button";
+import { Label } from "@choros/ui/label";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { HiOutlinePlus } from "react-icons/hi2";
 import { useIsDarkTheme } from "renderer/assets/app-icons/preset-icons";

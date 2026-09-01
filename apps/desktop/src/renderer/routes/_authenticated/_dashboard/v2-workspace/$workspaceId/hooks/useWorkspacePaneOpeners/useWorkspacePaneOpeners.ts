@@ -1,4 +1,4 @@
-import type { WorkspaceStore } from "@superset/panes";
+import type { WorkspaceStore } from "@choros/panes";
 import { useCallback } from "react";
 import type { V2TerminalPresetRow } from "renderer/routes/_authenticated/providers/CollectionsProvider/dashboardSidebarLocal";
 import type { StoreApi } from "zustand/vanilla";

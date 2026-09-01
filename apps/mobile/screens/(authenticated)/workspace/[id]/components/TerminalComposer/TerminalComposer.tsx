@@ -6,8 +6,8 @@ import {
 	type ComposerSessionAction,
 	type ComposerSessionTab,
 	type ComposerSlashCommand,
-} from "@superset/composer";
-import type { SlashCommand } from "@superset/shared/slash-commands";
+} from "@choros/composer";
+import type { SlashCommand } from "@choros/shared/slash-commands";
 import { forwardRef, useImperativeHandle, useRef, useState } from "react";
 import { Alert, View } from "react-native";
 import type { PromptInputMessage } from "@/components/ai-elements/prompt-input";

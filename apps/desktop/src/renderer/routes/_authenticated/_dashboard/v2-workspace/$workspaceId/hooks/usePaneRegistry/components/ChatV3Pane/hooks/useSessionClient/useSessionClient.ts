@@ -2,10 +2,10 @@ import type {
 	ChatTransport,
 	SessionClient,
 	StreamSocket,
-} from "@superset/chat/client";
-import { createSessionClient } from "@superset/chat/client";
-import type { ChatRouter } from "@superset/chat-runtime";
-import { useWorkspaceClient } from "@superset/workspace-client";
+} from "@choros/chat/client";
+import { createSessionClient } from "@choros/chat/client";
+import type { ChatRouter } from "@choros/chat-runtime";
+import { useWorkspaceClient } from "@choros/workspace-client";
 import { createTRPCClient, httpBatchLink } from "@trpc/client";
 import { useEffect, useMemo } from "react";
 import { getHostServiceHeaders } from "renderer/lib/host-service-auth";

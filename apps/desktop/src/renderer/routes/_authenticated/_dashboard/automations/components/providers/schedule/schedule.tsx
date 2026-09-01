@@ -1,4 +1,4 @@
-import type { TriggerConfigInput } from "@superset/shared/automation-triggers";
+import type { TriggerConfigInput } from "@choros/shared/automation-triggers";
 import { LuClock } from "react-icons/lu";
 import { ScheduleSentence } from "../../ScheduleSentence";
 import type { TriggerProvider } from "../types";

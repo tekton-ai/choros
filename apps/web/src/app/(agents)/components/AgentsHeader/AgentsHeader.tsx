@@ -3,12 +3,12 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { authClient } from "@superset/auth/client";
-import { i18n } from "@superset/i18n";
-import { isPaidPlan } from "@superset/shared/billing";
-import { Avatar, AvatarFallback, AvatarImage } from "@superset/ui/avatar";
-import { Badge } from "@superset/ui/badge";
-import { Drawer, DrawerContent, DrawerTitle } from "@superset/ui/drawer";
+import { authClient } from "@choros/auth/client";
+import { i18n } from "@choros/i18n";
+import { isPaidPlan } from "@choros/shared/billing";
+import { Avatar, AvatarFallback, AvatarImage } from "@choros/ui/avatar";
+import { Badge } from "@choros/ui/badge";
+import { Drawer, DrawerContent, DrawerTitle } from "@choros/ui/drawer";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -19,9 +19,9 @@ import {
 	DropdownMenuSubContent,
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { useIsMobile } from "@superset/ui/hooks/use-mobile";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/dropdown-menu";
+import { useIsMobile } from "@choros/ui/hooks/use-mobile";
+import { toast } from "@choros/ui/sonner";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Check, ChevronDown, LogOut } from "lucide-react";
 import Link from "next/link";

@@ -2,7 +2,7 @@ import { afterEach, describe, expect, test } from "bun:test";
 import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { Server } from "@superset/pty-daemon";
+import { Server } from "@choros/pty-daemon";
 import { eq } from "drizzle-orm";
 import { workspaces } from "../../src/db/schema";
 import { getProjectConfigPath } from "../../src/runtime/setup/config";

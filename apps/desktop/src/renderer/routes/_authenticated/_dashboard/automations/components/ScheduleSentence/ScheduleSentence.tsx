@@ -2,8 +2,8 @@ import {
 	rruleProblem,
 	timezoneAbbreviation,
 	type Weekday,
-} from "@superset/shared/rrule";
-import { cn } from "@superset/ui/utils";
+} from "@choros/shared/rrule";
+import { cn } from "@choros/ui/utils";
 import { type ReactNode, useMemo, useRef, useState } from "react";
 import { CHIP } from "../TriggerSentence/chipStyles";
 import { SelectChip } from "../TriggerSentence/components/SelectChip";

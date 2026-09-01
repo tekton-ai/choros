@@ -1,11 +1,11 @@
 import { Trans } from "@lingui/react/macro";
-import { FEATURE_FLAGS } from "@superset/shared/constants";
+import { FEATURE_FLAGS } from "@choros/shared/constants";
 import {
 	type IntegrationProvider,
 	offeredIntegrations,
-} from "@superset/shared/integrations";
-import { Button } from "@superset/ui/button";
-import { Skeleton } from "@superset/ui/skeleton";
+} from "@choros/shared/integrations";
+import { Button } from "@choros/ui/button";
+import { Skeleton } from "@choros/ui/skeleton";
 import { useFeatureFlagPayload } from "posthog-js/react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { BsMicrosoftTeams } from "react-icons/bs";

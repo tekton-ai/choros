@@ -1,4 +1,4 @@
-import { POSTHOG_COOKIE_NAME } from "@superset/shared/constants";
+import { POSTHOG_COOKIE_NAME } from "@choros/shared/constants";
 
 import { env } from "@/env";
 import { setPosthogInstance } from "@/lib/analytics/lazy";
@@ -51,7 +51,7 @@ async function initSentry() {
 	const [Sentry, { SENTRY_DENY_URLS, SENTRY_IGNORE_ERRORS }] =
 		await Promise.all([
 			import("@sentry/nextjs"),
-			import("@superset/shared/sentry"),
+			import("@choros/shared/sentry"),
 		]);
 
 	Sentry.init({

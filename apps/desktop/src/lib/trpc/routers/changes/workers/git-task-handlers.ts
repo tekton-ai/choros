@@ -3,7 +3,7 @@ import { isAbsolute, relative, resolve, sep } from "node:path";
 import {
 	BINARY_SNIFF_BYTES,
 	isBinaryMediaFile,
-} from "@superset/shared/media-files";
+} from "@choros/shared/media-files";
 import type { ChangedFile, GitChangesStatus } from "shared/changes-types";
 import type { SimpleGit, StatusResult } from "simple-git";
 import { getBranchBaseConfig } from "../../workspaces/utils/base-branch-config";

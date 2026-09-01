@@ -1,4 +1,4 @@
-import { DeletePageDialog, PageTitleMenu } from "@superset/ui/page-comments";
+import { DeletePageDialog, PageTitleMenu } from "@choros/ui/page-comments";
 import { FileText } from "lucide-react";
 import { useState } from "react";
 import { usePageHeaderData } from "renderer/routes/_authenticated/_dashboard/hooks/usePageHeaderData";

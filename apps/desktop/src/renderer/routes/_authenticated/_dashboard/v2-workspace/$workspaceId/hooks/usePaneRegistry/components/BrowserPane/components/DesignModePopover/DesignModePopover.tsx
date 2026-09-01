@@ -1,7 +1,7 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { toast } from "@superset/ui/sonner";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
-import { workspaceTrpc } from "@superset/workspace-client";
+import { toast } from "@choros/ui/sonner";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { workspaceTrpc } from "@choros/workspace-client";
 import { SquareDashedMousePointer, XIcon } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { LuArrowUp, LuLoaderCircle } from "react-icons/lu";

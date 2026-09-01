@@ -1,5 +1,5 @@
-import type { RendererContext } from "@superset/panes";
-import { cn } from "@superset/ui/utils";
+import type { RendererContext } from "@choros/panes";
+import { cn } from "@choros/ui/utils";
 import { MessageSquare } from "lucide-react";
 import type { CommentPaneData, PaneViewerData } from "../../../../../../types";
 

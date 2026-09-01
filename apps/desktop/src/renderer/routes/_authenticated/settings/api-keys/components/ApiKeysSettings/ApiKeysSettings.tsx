@@ -1,9 +1,9 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { errorMessage } from "@superset/i18n/errors";
-import { formatDate as formatLocaleDate } from "@superset/i18n/format";
-import { COMPANY } from "@superset/shared/constants";
-import { alert } from "@superset/ui/atoms/Alert";
-import { Button } from "@superset/ui/button";
+import { errorMessage } from "@choros/i18n/errors";
+import { formatDate as formatLocaleDate } from "@choros/i18n/format";
+import { COMPANY } from "@choros/shared/constants";
+import { alert } from "@choros/ui/atoms/Alert";
+import { Button } from "@choros/ui/button";
 import {
 	Dialog,
 	DialogContent,
@@ -11,11 +11,11 @@ import {
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
-} from "@superset/ui/dialog";
-import { Input } from "@superset/ui/input";
-import { Label } from "@superset/ui/label";
-import { Skeleton } from "@superset/ui/skeleton";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/dialog";
+import { Input } from "@choros/ui/input";
+import { Label } from "@choros/ui/label";
+import { Skeleton } from "@choros/ui/skeleton";
+import { toast } from "@choros/ui/sonner";
 import { useState } from "react";
 import {
 	HiArrowTopRightOnSquare,

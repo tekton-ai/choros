@@ -1,6 +1,6 @@
-import { i18n } from "@superset/i18n";
-import { buildHostRoutingKey } from "@superset/shared/host-routing";
-import { MIN_HOST_SERVICE_VERSION } from "@superset/shared/host-version";
+import { i18n } from "@choros/i18n";
+import { buildHostRoutingKey } from "@choros/shared/host-routing";
+import { MIN_HOST_SERVICE_VERSION } from "@choros/shared/host-version";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
 import type { HostShapedWorkspace } from "renderer/hooks/host-workspaces/useHostWorkspaces";

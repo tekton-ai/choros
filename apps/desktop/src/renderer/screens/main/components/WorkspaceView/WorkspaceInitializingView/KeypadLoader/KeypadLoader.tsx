@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import type { ComponentType } from "react";
 import { useEffect, useRef, useState } from "react";
 import {

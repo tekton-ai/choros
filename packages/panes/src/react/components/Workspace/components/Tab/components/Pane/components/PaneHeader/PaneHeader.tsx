@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { type ReactNode, useCallback, useRef } from "react";
 import { useDrag } from "react-dnd";
 import { DefaultHeaderContent } from "./components/DefaultHeaderContent";

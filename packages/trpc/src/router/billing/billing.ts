@@ -1,7 +1,7 @@
-import { stripeClient } from "@superset/auth/stripe";
-import { db } from "@superset/db/client";
-import { members, organizations, subscriptions } from "@superset/db/schema";
-import { ACTIVE_SUBSCRIPTION_STATUSES } from "@superset/shared/billing";
+import { stripeClient } from "@choros/auth/stripe";
+import { db } from "@choros/db/client";
+import { members, organizations, subscriptions } from "@choros/db/schema";
+import { ACTIVE_SUBSCRIPTION_STATUSES } from "@choros/shared/billing";
 import type { TRPCRouterRecord } from "@trpc/server";
 import { and, desc, eq, inArray } from "drizzle-orm";
 import type Stripe from "stripe";

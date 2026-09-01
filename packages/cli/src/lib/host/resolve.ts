@@ -1,4 +1,4 @@
-import { CLIError } from "@superset/cli-framework";
+import { CLIError } from "@choros/cli-framework";
 import type { ApiClient } from "../api-client";
 
 export interface ResolvedHost {

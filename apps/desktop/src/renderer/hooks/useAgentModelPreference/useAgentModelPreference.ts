@@ -1,4 +1,4 @@
-import { getAgentModelSupport } from "@superset/shared/agent-models";
+import { getAgentModelSupport } from "@choros/shared/agent-models";
 import { useCallback, useEffect, useState } from "react";
 
 function readStoredMap(storageKey: string): Record<string, string> {

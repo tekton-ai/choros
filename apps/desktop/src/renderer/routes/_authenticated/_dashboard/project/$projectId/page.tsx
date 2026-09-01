@@ -1,25 +1,25 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { errorMessage } from "@superset/i18n/errors";
-import { sanitizeSegment } from "@superset/shared/workspace-launch";
-import { Button } from "@superset/ui/button";
-import { Checkbox } from "@superset/ui/checkbox";
+import { errorMessage } from "@choros/i18n/errors";
+import { sanitizeSegment } from "@choros/shared/workspace-launch";
+import { Button } from "@choros/ui/button";
+import { Checkbox } from "@choros/ui/checkbox";
 import {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
-} from "@superset/ui/collapsible";
+} from "@choros/ui/collapsible";
 import {
 	Command,
 	CommandEmpty,
 	CommandInput,
 	CommandItem,
 	CommandList,
-} from "@superset/ui/command";
-import { Input } from "@superset/ui/input";
-import { Label } from "@superset/ui/label";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
-import { toast } from "@superset/ui/sonner";
-import { Textarea } from "@superset/ui/textarea";
+} from "@choros/ui/command";
+import { Input } from "@choros/ui/input";
+import { Label } from "@choros/ui/label";
+import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
+import { toast } from "@choros/ui/sonner";
+import { Textarea } from "@choros/ui/textarea";
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";

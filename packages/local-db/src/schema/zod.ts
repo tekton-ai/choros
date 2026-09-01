@@ -138,11 +138,11 @@ export {
 	agentCustomDefinitionSchema,
 	agentPresetOverrideEnvelopeSchema,
 	agentPresetOverrideSchema,
-} from "@superset/shared/agent-custom";
+} from "@choros/shared/agent-custom";
 export {
 	PROMPT_TRANSPORTS,
 	type PromptTransport,
-} from "@superset/shared/agent-prompt-launch";
+} from "@choros/shared/agent-prompt-launch";
 
 /**
  * Workspace type
@@ -208,7 +208,7 @@ export type TerminalLinkBehavior = (typeof TERMINAL_LINK_BEHAVIORS)[number];
 export {
 	BRANCH_PREFIX_MODES,
 	type BranchPrefixMode,
-} from "@superset/shared/workspace-launch";
+} from "@choros/shared/workspace-launch";
 
 export const FILE_OPEN_MODES = ["split-pane", "new-tab"] as const;
 

@@ -1,12 +1,12 @@
-import { db } from "@superset/db/client";
+import { db } from "@choros/db/client";
 import {
 	members,
 	oauthAccessTokens,
 	oauthRefreshTokens,
 	sessions,
 	users,
-} from "@superset/db/schema";
-import { ACCOUNT_DELETION_GRACE_DAYS } from "@superset/shared/constants";
+} from "@choros/db/schema";
+import { ACCOUNT_DELETION_GRACE_DAYS } from "@choros/shared/constants";
 import { TRPCError, type TRPCRouterRecord } from "@trpc/server";
 import { and, count, desc, eq, ne } from "drizzle-orm";
 import { z } from "zod";

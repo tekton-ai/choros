@@ -1,10 +1,10 @@
-import { dbWs } from "@superset/db/client";
+import { dbWs } from "@choros/db/client";
 import {
 	automations,
 	automationTriggers,
 	type TriggerConfig,
-} from "@superset/db/schema";
-import { nextOccurrenceAfter } from "@superset/shared/rrule";
+} from "@choros/db/schema";
+import { nextOccurrenceAfter } from "@choros/shared/rrule";
 import { Client } from "@upstash/qstash";
 import { and, eq, lte } from "drizzle-orm";
 import { env } from "@/env";

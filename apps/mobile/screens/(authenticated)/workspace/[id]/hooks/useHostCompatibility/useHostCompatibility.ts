@@ -1,4 +1,4 @@
-import { MIN_HOST_SERVICE_VERSION } from "@superset/shared/host-version";
+import { MIN_HOST_SERVICE_VERSION } from "@choros/shared/host-version";
 import { useQuery } from "@tanstack/react-query";
 import { getHostServiceClientByUrl } from "@/lib/host-service/client";
 

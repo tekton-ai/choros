@@ -1,7 +1,7 @@
 "use client";
 
 import { Trans } from "@lingui/react/macro";
-import { ToggleGroup, ToggleGroupItem } from "@superset/ui/toggle-group";
+import { ToggleGroup, ToggleGroupItem } from "@choros/ui/toggle-group";
 import { useMemo, useState } from "react";
 import type { DateRange } from "react-day-picker";
 import type { StarHistoryPoint } from "../../utils/getStarHistory";

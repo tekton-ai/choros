@@ -1,7 +1,7 @@
 import {
 	type ParsedGitHubRemote,
 	parseGitHubRemote,
-} from "@superset/shared/github-remote";
+} from "@choros/shared/github-remote";
 import type { SimpleGit } from "simple-git";
 
 export type { ParsedGitHubRemote };

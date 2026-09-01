@@ -3,10 +3,10 @@ import type {
 	OutboxEntry,
 	SessionSnapshot,
 	TurnGroup,
-} from "@superset/chat/core";
-import type { ApprovalRequest, Decision } from "@superset/chat/protocol";
-import { Badge } from "@superset/ui/badge";
-import { Button } from "@superset/ui/button";
+} from "@choros/chat/core";
+import type { ApprovalRequest, Decision } from "@choros/chat/protocol";
+import { Badge } from "@choros/ui/badge";
+import { Button } from "@choros/ui/button";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { TurnGroupSection } from "./components/TurnGroupSection";
 

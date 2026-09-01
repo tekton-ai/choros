@@ -1,7 +1,7 @@
 import {
 	createChatServiceRouter as buildRouter,
 	ChatService,
-} from "@superset/provider-auth/server";
+} from "@choros/provider-auth/server";
 
 export const chatService = new ChatService();
 

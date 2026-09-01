@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
-import { getBrowserLogo } from "@superset/ui/icons/browser-icons";
+import { Button } from "@choros/ui/button";
+import { getBrowserLogo } from "@choros/ui/icons/browser-icons";
 import { XIcon } from "lucide-react";
 import { TbDownload } from "react-icons/tb";
 

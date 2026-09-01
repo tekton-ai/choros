@@ -4,8 +4,8 @@ import {
 	CommandGroup,
 	CommandList,
 	CommandItem as RawCommandItem,
-} from "@superset/ui/command";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/command";
+import { toast } from "@choros/ui/sonner";
 import { useDeferredValue, useMemo } from "react";
 import { cloudTrpc } from "renderer/lib/cloud-trpc";
 import {

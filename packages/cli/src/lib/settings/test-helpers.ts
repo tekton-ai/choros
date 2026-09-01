@@ -3,7 +3,7 @@ import { afterEach, beforeEach } from "bun:test";
 import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { settings } from "@superset/local-db/schema";
+import { settings } from "@choros/local-db/schema";
 import { getTableConfig } from "drizzle-orm/sqlite-core";
 
 /**

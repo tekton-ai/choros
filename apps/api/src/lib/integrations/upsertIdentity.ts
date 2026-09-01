@@ -1,5 +1,5 @@
-import { db } from "@superset/db/client";
-import { type UserIdentityMetadata, userIdentities } from "@superset/db/schema";
+import { db } from "@choros/db/client";
+import { type UserIdentityMetadata, userIdentities } from "@choros/db/schema";
 
 type UpsertIdentityInput = {
 	userId: string;

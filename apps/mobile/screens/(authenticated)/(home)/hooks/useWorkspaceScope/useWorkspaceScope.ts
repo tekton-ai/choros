@@ -1,4 +1,4 @@
-import { FEATURE_FLAGS } from "@superset/shared/constants";
+import { FEATURE_FLAGS } from "@choros/shared/constants";
 import { useFeatureFlag } from "posthog-react-native";
 import {
 	useWorkspacesFilterStore,

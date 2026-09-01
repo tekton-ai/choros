@@ -1,4 +1,4 @@
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import { GlobeIcon } from "lucide-react-native";
 import { useState } from "react";
 import { Pressable, View } from "react-native";

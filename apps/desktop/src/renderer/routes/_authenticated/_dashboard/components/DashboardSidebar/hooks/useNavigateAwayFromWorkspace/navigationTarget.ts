@@ -1,4 +1,4 @@
-import { getActiveIdAfterRemoval } from "@superset/panes";
+import { getActiveIdAfterRemoval } from "@choros/panes";
 
 export type WorkspaceRemovalNavigationTarget =
 	| { kind: "workspace"; workspaceId: string }

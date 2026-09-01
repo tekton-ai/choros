@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { errorMessage } from "@superset/i18n/errors";
-import { Button } from "@superset/ui/button";
+import { errorMessage } from "@choros/i18n/errors";
+import { Button } from "@choros/ui/button";
 import {
 	Dialog,
 	DialogContent,
@@ -8,11 +8,11 @@ import {
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
-} from "@superset/ui/dialog";
-import { Input } from "@superset/ui/input";
-import { Label } from "@superset/ui/label";
-import { toast } from "@superset/ui/sonner";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@superset/ui/tabs";
+} from "@choros/ui/dialog";
+import { Input } from "@choros/ui/input";
+import { Label } from "@choros/ui/label";
+import { toast } from "@choros/ui/sonner";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@choros/ui/tabs";
 import { useEffect, useState } from "react";
 import { LuFolderOpen, LuLoaderCircle } from "react-icons/lu";
 import { RemotePathPicker } from "renderer/components/RemotePathPicker";

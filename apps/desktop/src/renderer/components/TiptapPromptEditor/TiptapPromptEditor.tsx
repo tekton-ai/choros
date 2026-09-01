@@ -2,7 +2,7 @@ import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	usePromptInputAttachments,
 	usePromptInputController,
-} from "@superset/ui/ai-elements/prompt-input";
+} from "@choros/ui/ai-elements/prompt-input";
 import {
 	Command,
 	CommandEmpty,
@@ -10,10 +10,10 @@ import {
 	CommandInput,
 	CommandItem,
 	CommandList,
-} from "@superset/ui/command";
-import { getClipboardFiles } from "@superset/ui/lib/clipboard-files";
-import { Popover, PopoverAnchor, PopoverContent } from "@superset/ui/popover";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/command";
+import { getClipboardFiles } from "@choros/ui/lib/clipboard-files";
+import { Popover, PopoverAnchor, PopoverContent } from "@choros/ui/popover";
+import { cn } from "@choros/ui/utils";
 import { type Editor, Extension } from "@tiptap/core";
 import { Document } from "@tiptap/extension-document";
 import { HardBreak } from "@tiptap/extension-hard-break";

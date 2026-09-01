@@ -1,8 +1,8 @@
-import { taskPriorityValues } from "@superset/db/enums";
+import { taskPriorityValues } from "@choros/db/enums";
 import {
 	taskListSortByValues,
 	taskListSortOrderValues,
-} from "@superset/db/task-list-query";
+} from "@choros/db/task-list-query";
 import { z } from "zod";
 
 export const createTaskSchema = z.object({

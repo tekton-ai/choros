@@ -6,8 +6,8 @@ import {
 	AlertDialogFooter,
 	AlertDialogHeader,
 	AlertDialogTitle,
-} from "@superset/ui/alert-dialog";
-import { Button } from "@superset/ui/button";
+} from "@choros/ui/alert-dialog";
+import { Button } from "@choros/ui/button";
 import stripAnsi from "strip-ansi";
 import { formatTeardownReason } from "../../../DashboardSidebarDeleteDialog/components/TeardownFailedPane";
 import {

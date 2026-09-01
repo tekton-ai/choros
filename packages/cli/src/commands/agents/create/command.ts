@@ -1,6 +1,6 @@
-import { CLIError, number, string } from "@superset/cli-framework";
-import { getHostId } from "@superset/shared/host-info";
-import { TERMINAL_HANDOFF_MAX_CHARS } from "@superset/shared/terminal-session-handoff";
+import { CLIError, number, string } from "@choros/cli-framework";
+import { getHostId } from "@choros/shared/host-info";
+import { TERMINAL_HANDOFF_MAX_CHARS } from "@choros/shared/terminal-session-handoff";
 import { command } from "../../../lib/command";
 import { resolveHostTarget } from "../../../lib/host-target";
 import { findWorkspaceOnHost } from "../../../lib/host-workspaces";

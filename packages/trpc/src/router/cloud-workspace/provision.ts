@@ -1,9 +1,9 @@
-import { db, dbWs } from "@superset/db/client";
-import { cloudWorkspaces, v2Projects } from "@superset/db/schema";
+import { db, dbWs } from "@choros/db/client";
+import { cloudWorkspaces, v2Projects } from "@choros/db/schema";
 import {
 	SANDBOX_HOST_DB_PATH,
 	SANDBOX_WORKSPACE_PATH,
-} from "@superset/shared/constants";
+} from "@choros/shared/constants";
 import { and, eq } from "drizzle-orm";
 import { env } from "../../env";
 import { deleteSandbox, provisionSandbox } from "../../lib/blaxel";

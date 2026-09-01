@@ -1,6 +1,6 @@
 import { describe, expect, it } from "bun:test";
-import { CLIError } from "@superset/cli-framework";
-import { getHostId } from "@superset/shared/host-info";
+import { CLIError } from "@choros/cli-framework";
+import { getHostId } from "@choros/shared/host-info";
 import type { ApiClient } from "../../lib/api-client";
 import { resolveAutomationTarget } from "./resolveAutomationTarget";
 

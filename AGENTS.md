@@ -122,7 +122,7 @@ parsable output; it's on by default under agent environments.
 
 User-facing strings use Lingui with explicit IDs — `<Trans id="area.name">Text</Trans>`
 or `useLingui()`'s `t({ id, message })` in React, `i18n._({ id, message })` outside React
-(Electron main). Numbers, currencies, and dates go through `@superset/i18n/format`
+(Electron main). Numbers, currencies, and dates go through `@choros/i18n/format`
 helpers, never `new Intl.*("en-US")` or `toLocale*` with a hardcoded locale. After adding
 or changing strings, run `bun run --cwd packages/i18n check` (CI enforces it). Conventions
 and ID scheme: `packages/i18n/README.md`; terms that never translate:

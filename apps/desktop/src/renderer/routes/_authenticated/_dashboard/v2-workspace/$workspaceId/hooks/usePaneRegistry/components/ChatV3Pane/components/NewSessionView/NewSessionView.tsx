@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { UserContent } from "@superset/chat/protocol";
-import { Button } from "@superset/ui/button";
+import type { UserContent } from "@choros/chat/protocol";
+import { Button } from "@choros/ui/button";
 import type { ReactNode } from "react";
 import { Composer } from "../Composer";
 

@@ -1,5 +1,5 @@
 import { EventEmitter } from "node:events";
-import { workspaces } from "@superset/local-db";
+import { workspaces } from "@choros/local-db";
 import { track } from "main/lib/analytics";
 import { appState } from "main/lib/app-state";
 import { localDb } from "main/lib/local-db";

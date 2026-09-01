@@ -1,17 +1,17 @@
 import { msg } from "@lingui/core/macro";
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import {
 	normalizeWorkspaceTag,
 	normalizeWorkspaceTags,
-} from "@superset/shared/workspace-tags";
+} from "@choros/shared/workspace-tags";
 import {
 	DropdownMenu,
 	DropdownMenuCheckboxItem,
 	DropdownMenuContent,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { Input } from "@superset/ui/input";
+} from "@choros/ui/dropdown-menu";
+import { Input } from "@choros/ui/input";
 import { useMemo, useState } from "react";
 import { useHostWorkspaces } from "renderer/routes/_authenticated/providers/HostWorkspacesProvider";
 import { ChipButton } from "../../../../../components/TriggerSentence/components/ChipButton";

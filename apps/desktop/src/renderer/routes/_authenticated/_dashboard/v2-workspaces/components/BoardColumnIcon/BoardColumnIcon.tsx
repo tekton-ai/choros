@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { LuCircleAlert, LuCircleCheck, LuCircleX } from "react-icons/lu";
 import type { BoardColumnKey } from "renderer/routes/_authenticated/_dashboard/v2-workspaces/utils/deriveBoardColumn";
 

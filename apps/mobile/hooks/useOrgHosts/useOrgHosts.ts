@@ -1,4 +1,4 @@
-import type { RouterOutputs } from "@superset/trpc";
+import type { RouterOutputs } from "@choros/trpc";
 import { type UseQueryResult, useQuery } from "@tanstack/react-query";
 import { useSession } from "@/lib/auth/client";
 import { apiClient } from "@/lib/trpc/client";

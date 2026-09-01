@@ -1,10 +1,10 @@
-import { dbWs } from "@superset/db/client";
-import { automations, automationTriggers } from "@superset/db/schema";
+import { dbWs } from "@choros/db/client";
+import { automations, automationTriggers } from "@choros/db/schema";
 import {
 	findGoogleConnection,
 	googleConfigOf,
 	listUpcomingInstances,
-} from "@superset/trpc/integrations/google";
+} from "@choros/trpc/integrations/google";
 import { and, eq, inArray, sql } from "drizzle-orm";
 import { verifyQstashRequest } from "@/lib/verifyQstash";
 import {

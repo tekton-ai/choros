@@ -1,4 +1,4 @@
-import { Input } from "@superset/ui/input";
+import { Input } from "@choros/ui/input";
 import { useRef, useState } from "react";
 import { LuX } from "react-icons/lu";
 

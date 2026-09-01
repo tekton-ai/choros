@@ -1,7 +1,7 @@
-import { formatScaled, type ScaleUnit } from "@superset/shared/format-scaled";
+import { formatScaled, type ScaleUnit } from "@choros/shared/format-scaled";
 import { differenceInCalendarDays, format, parseISO } from "date-fns";
 
-export { formatTokens } from "@superset/shared/format-tokens";
+export { formatTokens } from "@choros/shared/format-tokens";
 
 const USD_UNITS: readonly ScaleUnit[] = [
 	{ limit: 1e6, suffix: "M", digits: 2 },

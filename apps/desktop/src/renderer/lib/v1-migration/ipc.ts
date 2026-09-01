@@ -1,5 +1,5 @@
-import type { TerminalPreset } from "@superset/local-db";
-import type { BranchPrefixMode } from "@superset/shared/workspace-launch";
+import type { TerminalPreset } from "@choros/local-db";
+import type { BranchPrefixMode } from "@choros/shared/workspace-launch";
 import { electronTrpcClient } from "renderer/lib/trpc-client";
 import type { V1LedgerOutcome, V1LedgerRow } from "./ledger";
 

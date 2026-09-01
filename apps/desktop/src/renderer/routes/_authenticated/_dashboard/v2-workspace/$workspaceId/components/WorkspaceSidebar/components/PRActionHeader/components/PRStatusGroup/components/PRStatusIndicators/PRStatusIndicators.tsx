@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { LuCircleCheck, LuCircleDashed, LuCircleX } from "react-icons/lu";
 import type { ChecksRollup } from "../../../../utils/computeChecksStatus";
 

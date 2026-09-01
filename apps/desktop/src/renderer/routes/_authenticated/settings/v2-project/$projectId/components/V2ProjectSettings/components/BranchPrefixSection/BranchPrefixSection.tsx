@@ -1,7 +1,7 @@
 import { useLingui } from "@lingui/react/macro";
-import { errorMessage } from "@superset/i18n/errors";
-import type { BranchPrefixMode } from "@superset/shared/workspace-launch";
-import { toast } from "@superset/ui/sonner";
+import { errorMessage } from "@choros/i18n/errors";
+import type { BranchPrefixMode } from "@choros/shared/workspace-launch";
+import { toast } from "@choros/ui/sonner";
 import { useMutation } from "@tanstack/react-query";
 import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";
 import { BranchPrefixControl } from "renderer/routes/_authenticated/settings/components/BranchPrefixControl";

@@ -4,8 +4,8 @@
  * instead (the user's own auth); a phone has no host to ask, so this is the
  * only source that works with zero machines online.
  */
-import { db } from "@superset/db/client";
-import { githubInstallations, githubRepositories } from "@superset/db/schema";
+import { db } from "@choros/db/client";
+import { githubInstallations, githubRepositories } from "@choros/db/schema";
 import { eq } from "drizzle-orm";
 import { installationOctokit } from "./clone-token";
 import { repoForProject } from "./repo-for-project";

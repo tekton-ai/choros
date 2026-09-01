@@ -1,5 +1,5 @@
 import { writeFileSync } from "node:fs";
-import { CLIError, positional, string } from "@superset/cli-framework";
+import { CLIError, positional, string } from "@choros/cli-framework";
 import { command } from "../../../../lib/command";
 import { exportTheme } from "../../../../lib/settings";
 

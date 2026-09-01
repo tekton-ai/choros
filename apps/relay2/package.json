@@ -1,5 +1,5 @@
 {
-	"name": "@superset/relay2",
+	"name": "@choros/relay2",
 	"version": "0.1.0",
 	"private": true,
 	"type": "module",
@@ -9,9 +9,9 @@
 		"typecheck": "tsc --noEmit --emitDeclarationOnly false"
 	},
 	"dependencies": {
+		"@choros/shared": "workspace:*",
+		"@choros/trpc": "workspace:*",
 		"@sentry/cloudflare": "10.68.0",
-		"@superset/shared": "workspace:*",
-		"@superset/trpc": "workspace:*",
 		"@trpc/client": "11.16.0",
 		"hono": "4.12.34",
 		"jose": "6.2.2",
@@ -20,8 +20,8 @@
 		"superjson": "2.2.6"
 	},
 	"devDependencies": {
+		"@choros/typescript": "workspace:*",
 		"@cloudflare/workers-types": "5.20260801.1",
-		"@superset/typescript": "workspace:*",
 		"typescript": "6.0.3",
 		"wrangler": "4.118.0"
 	}

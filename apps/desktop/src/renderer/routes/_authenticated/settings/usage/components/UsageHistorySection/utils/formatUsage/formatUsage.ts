@@ -1,6 +1,6 @@
-import { formatCurrency } from "@superset/i18n/format";
+import { formatCurrency } from "@choros/i18n/format";
 
-export { formatTokens } from "@superset/shared/format-tokens";
+export { formatTokens } from "@choros/shared/format-tokens";
 
 /** "$19,211", "$46.20", "$0.85" — whole dollars once past $100. */
 export function formatUsd(usd: number): string {

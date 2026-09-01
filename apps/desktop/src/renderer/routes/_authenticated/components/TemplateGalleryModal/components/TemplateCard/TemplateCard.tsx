@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { useState } from "react";
 import { LuLoader } from "react-icons/lu";
 import type { ProjectTemplate } from "../../templates";

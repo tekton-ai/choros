@@ -1,5 +1,5 @@
 {
-	"name": "@superset/docs",
+	"name": "@choros/docs",
 	"version": "0.0.0",
 	"private": true,
 	"type": "module",
@@ -11,14 +11,14 @@
 		"postinstall": "fumadocs-mdx"
 	},
 	"dependencies": {
+		"@choros/i18n": "workspace:*",
+		"@choros/shared": "workspace:*",
+		"@choros/ui": "workspace:*",
 		"@lingui/react": "6.6.0",
 		"@modelcontextprotocol/sdk": "1.30.0",
 		"@radix-ui/react-collapsible": "1.1.12",
 		"@radix-ui/react-scroll-area": "1.2.10",
 		"@sentry/nextjs": "10.68.0",
-		"@superset/i18n": "workspace:*",
-		"@superset/shared": "workspace:*",
-		"@superset/ui": "workspace:*",
 		"@t3-oss/env-nextjs": "0.13.11",
 		"class-variance-authority": "0.7.1",
 		"dotenv": "17.3.1",
@@ -34,8 +34,8 @@
 		"zod": "4.4.3"
 	},
 	"devDependencies": {
+		"@choros/typescript": "workspace:*",
 		"@lingui/swc-plugin": "6.6.0",
-		"@superset/typescript": "workspace:*",
 		"@tailwindcss/postcss": "4.2.2",
 		"@types/mdx": "2.0.13",
 		"@types/node": "24.12.0",

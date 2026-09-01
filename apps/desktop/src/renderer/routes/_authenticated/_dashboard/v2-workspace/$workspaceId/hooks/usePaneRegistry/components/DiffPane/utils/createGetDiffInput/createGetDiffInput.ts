@@ -1,4 +1,4 @@
-import type { AppRouter } from "@superset/host-service";
+import type { AppRouter } from "@choros/host-service";
 import type { inferRouterInputs } from "@trpc/server";
 import type { ChangesetFile } from "../../../../../useChangeset";
 

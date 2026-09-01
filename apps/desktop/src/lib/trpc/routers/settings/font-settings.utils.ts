@@ -7,7 +7,7 @@ import {
 	type NumberLimits,
 	TERMINAL_CURSOR_STYLES,
 	TERMINAL_MINIMUM_CONTRAST_CHOICES,
-} from "@superset/shared/settings-constraints";
+} from "@choros/shared/settings-constraints";
 import { z } from "zod";
 
 function limitedNumber(limits: NumberLimits) {

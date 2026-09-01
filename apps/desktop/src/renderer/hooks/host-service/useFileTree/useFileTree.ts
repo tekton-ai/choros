@@ -1,5 +1,5 @@
-import { workspaceTrpc } from "@superset/workspace-client";
-import type { FsEntry, FsEntryKind } from "@superset/workspace-fs/client";
+import { workspaceTrpc } from "@choros/workspace-client";
+import type { FsEntry, FsEntryKind } from "@choros/workspace-fs/client";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useWorkspaceEvent } from "../useWorkspaceEvent";
 

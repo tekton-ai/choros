@@ -2,7 +2,7 @@ import {
 	type DraftTrigger,
 	describeTriggerProblems,
 	summarizeTriggerProblems,
-} from "@superset/shared/automation-triggers";
+} from "@choros/shared/automation-triggers";
 import { useMemo, useState } from "react";
 
 /**

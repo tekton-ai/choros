@@ -6,8 +6,8 @@ import {
 	AlertDialogFooter,
 	AlertDialogHeader,
 	AlertDialogTitle,
-} from "@superset/ui/alert-dialog";
-import { Button } from "@superset/ui/button";
+} from "@choros/ui/alert-dialog";
+import { Button } from "@choros/ui/button";
 import { useGitInitDialogStore } from "renderer/stores/git-init-dialog";
 
 export function InitGitDialog() {

@@ -1,6 +1,6 @@
 import { existsSync } from "node:fs";
 import { basename } from "node:path";
-import { workspaceTagsInputSchema } from "@superset/shared/workspace-tags";
+import { workspaceTagsInputSchema } from "@choros/shared/workspace-tags";
 import { TRPCError } from "@trpc/server";
 import { eq, isNull } from "drizzle-orm";
 import { z } from "zod";

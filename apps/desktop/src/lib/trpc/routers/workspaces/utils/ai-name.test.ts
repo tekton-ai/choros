@@ -23,11 +23,11 @@ type SelectedWorkspace =
 	  }
 	| null;
 
-mock.module("@superset/provider-auth/server/shared", () => ({
+mock.module("@choros/provider-auth/server/shared", () => ({
 	getSmallModel: getSmallModelMock,
 }));
 
-mock.module("@superset/provider-auth/server", () => ({
+mock.module("@choros/provider-auth/server", () => ({
 	generateTitleFromMessage: generateTitleFromMessageMock,
 }));
 
@@ -60,7 +60,7 @@ mock.module("main/lib/local-db", () => ({
 	localDb: localDbMock,
 }));
 
-mock.module("@superset/local-db", () => ({
+mock.module("@choros/local-db", () => ({
 	workspaces: {
 		id: "id",
 		branch: "branch",

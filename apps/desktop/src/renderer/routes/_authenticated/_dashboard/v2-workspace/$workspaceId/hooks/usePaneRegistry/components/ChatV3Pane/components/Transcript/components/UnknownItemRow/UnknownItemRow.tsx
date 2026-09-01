@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/react/macro";
-import type { Item } from "@superset/chat/protocol";
+import type { Item } from "@choros/chat/protocol";
 
 export function UnknownItemRow({ item }: { item: Item }) {
 	return (

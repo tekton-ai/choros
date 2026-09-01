@@ -1,5 +1,5 @@
-import { Button } from "@superset/ui/button";
-import { Spinner } from "@superset/ui/spinner";
+import { Button } from "@choros/ui/button";
+import { Spinner } from "@choros/ui/spinner";
 import type { QueryClient } from "@tanstack/react-query";
 import { useQueries, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCallback, useMemo, useRef, useState } from "react";

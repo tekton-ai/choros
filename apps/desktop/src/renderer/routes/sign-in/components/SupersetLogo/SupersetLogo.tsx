@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/react/macro";
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { useId } from "react";
 
 interface SupersetLogoProps {

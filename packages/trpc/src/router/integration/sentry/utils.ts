@@ -1,4 +1,4 @@
-import type { SentryConfig } from "@superset/db/schema";
+import type { SentryConfig } from "@choros/db/schema";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { env } from "../../../env";

@@ -1,7 +1,7 @@
-import type { ToolCall, ToolCallStatus } from "@superset/chat/protocol";
-import type { ToolDisplayState } from "@superset/ui/ai-elements/tool";
-import { Tool, ToolContent, ToolHeader } from "@superset/ui/ai-elements/tool";
-import { Badge } from "@superset/ui/badge";
+import type { ToolCall, ToolCallStatus } from "@choros/chat/protocol";
+import type { ToolDisplayState } from "@choros/ui/ai-elements/tool";
+import { Tool, ToolContent, ToolHeader } from "@choros/ui/ai-elements/tool";
+import { Badge } from "@choros/ui/badge";
 import { ToolContentList } from "../ToolContentList";
 
 const STATE_BY_STATUS: Record<ToolCallStatus, ToolDisplayState> = {

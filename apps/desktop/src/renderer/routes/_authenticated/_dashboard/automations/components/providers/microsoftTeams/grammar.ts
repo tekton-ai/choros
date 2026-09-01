@@ -3,7 +3,7 @@ import { msg } from "@lingui/core/macro";
 import type {
 	MicrosoftTeamsTriggerEvent,
 	TriggerConfigInput,
-} from "@superset/shared/automation-triggers";
+} from "@choros/shared/automation-triggers";
 import type { TriggerMenuEntry } from "../types";
 
 export type MicrosoftTeamsConfig = Extract<

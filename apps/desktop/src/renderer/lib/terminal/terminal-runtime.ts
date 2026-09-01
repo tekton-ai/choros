@@ -1,5 +1,5 @@
-import { FRESH_SHELL_INPUT_MODE_RESET } from "@superset/shared/leaked-input-mode-reclaim";
-import { installTerminalWheelEventHandler } from "@superset/shared/terminal-wheel-handler";
+import { FRESH_SHELL_INPUT_MODE_RESET } from "@choros/shared/leaked-input-mode-reclaim";
+import { installTerminalWheelEventHandler } from "@choros/shared/terminal-wheel-handler";
 import { FitAddon } from "@xterm/addon-fit";
 import type { ProgressAddon } from "@xterm/addon-progress";
 import type { SearchAddon } from "@xterm/addon-search";

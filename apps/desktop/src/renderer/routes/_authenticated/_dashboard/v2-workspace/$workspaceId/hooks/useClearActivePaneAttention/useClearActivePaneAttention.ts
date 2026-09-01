@@ -1,4 +1,4 @@
-import type { WorkspaceStore } from "@superset/panes";
+import type { WorkspaceStore } from "@choros/panes";
 import { useEffect } from "react";
 import { useTerminalAgentBindings } from "renderer/hooks/host-service/useTerminalAgentBindings";
 import { useV2PaneNotificationStatus } from "renderer/hooks/host-service/useV2NotificationStatus";

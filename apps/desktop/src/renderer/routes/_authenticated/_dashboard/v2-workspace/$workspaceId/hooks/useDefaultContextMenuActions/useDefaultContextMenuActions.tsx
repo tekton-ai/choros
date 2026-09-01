@@ -4,7 +4,7 @@ import {
 	type PaneRegistry,
 	type RendererContext,
 	resolveTabTitle,
-} from "@superset/panes";
+} from "@choros/panes";
 import { useMemo } from "react";
 import {
 	LuColumns2,

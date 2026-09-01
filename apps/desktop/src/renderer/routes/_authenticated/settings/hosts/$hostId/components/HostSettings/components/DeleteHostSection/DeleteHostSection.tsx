@@ -9,11 +9,11 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 	AlertDialogTrigger,
-} from "@superset/ui/alert-dialog";
-import { Button } from "@superset/ui/button";
-import { Input } from "@superset/ui/input";
-import { Label } from "@superset/ui/label";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/alert-dialog";
+import { Button } from "@choros/ui/button";
+import { Input } from "@choros/ui/input";
+import { Label } from "@choros/ui/label";
+import { toast } from "@choros/ui/sonner";
 import { useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { useOptimisticActions } from "renderer/routes/_authenticated/hooks/useOptimisticActions";

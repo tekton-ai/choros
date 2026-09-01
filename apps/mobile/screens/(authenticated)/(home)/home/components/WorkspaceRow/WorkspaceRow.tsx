@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import type { SelectGithubPullRequest } from "@superset/db/schema";
+import type { SelectGithubPullRequest } from "@choros/db/schema";
 import { useRouter } from "expo-router";
 import { FolderGit2 } from "lucide-react-native";
 import { Pressable, View } from "react-native";

@@ -1,7 +1,7 @@
 import { Trans } from "@lingui/react/macro";
-import type { DesktopNotice } from "@superset/shared/desktop-notices";
-import { Button } from "@superset/ui/button";
-import { Popover, PopoverAnchor, PopoverContent } from "@superset/ui/popover";
+import type { DesktopNotice } from "@choros/shared/desktop-notices";
+import { Button } from "@choros/ui/button";
+import { Popover, PopoverAnchor, PopoverContent } from "@choros/ui/popover";
 import type { ReactNode } from "react";
 import { MarkdownRenderer } from "renderer/components/MarkdownRenderer";
 

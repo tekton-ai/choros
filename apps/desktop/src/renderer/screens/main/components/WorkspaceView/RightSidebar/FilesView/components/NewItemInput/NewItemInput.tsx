@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { useState } from "react";
 import { LuCheck, LuFile, LuFolder, LuX } from "react-icons/lu";
 import { TREE_INDENT } from "../../constants";

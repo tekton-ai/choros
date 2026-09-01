@@ -1,9 +1,9 @@
-import { auth } from "@superset/auth/server";
-import { FEATURE_FLAGS } from "@superset/shared/constants";
+import { auth } from "@choros/auth/server";
+import { FEATURE_FLAGS } from "@choros/shared/constants";
 import {
 	type IntegrationProvider,
 	isIntegrationOffered,
-} from "@superset/shared/integrations";
+} from "@choros/shared/integrations";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { cache } from "react";

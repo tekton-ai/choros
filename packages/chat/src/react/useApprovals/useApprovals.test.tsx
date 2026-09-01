@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { approvalRequest, turn } from "@superset/chat-runtime/testing";
+import { approvalRequest, turn } from "@choros/chat-runtime/testing";
 import type { SessionSnapshot } from "../../core";
 import { emptySnapshot, reduceMany } from "../../core";
 import type { DurableEvent } from "../../protocol/envelope";

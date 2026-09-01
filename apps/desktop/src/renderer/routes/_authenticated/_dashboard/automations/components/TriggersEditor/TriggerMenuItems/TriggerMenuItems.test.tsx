@@ -11,7 +11,7 @@ if (!alreadyRegistered) GlobalRegistrator.register();
 
 const { act, cleanup, render, within } = await import("@testing-library/react");
 const { DropdownMenu, DropdownMenuContent } = await import(
-	"@superset/ui/dropdown-menu"
+	"@choros/ui/dropdown-menu"
 );
 const { TriggerMenuItems } = await import("./TriggerMenuItems");
 const { TRIGGER_PROVIDERS } = await import("../../providers");

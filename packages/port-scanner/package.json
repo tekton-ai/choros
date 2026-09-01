@@ -1,5 +1,5 @@
 {
-	"name": "@superset/port-scanner",
+	"name": "@choros/port-scanner",
 	"version": "0.1.0",
 	"private": true,
 	"type": "module",
@@ -19,7 +19,7 @@
 		"pidtree": "0.6.0"
 	},
 	"devDependencies": {
-		"@superset/typescript": "workspace:*",
+		"@choros/typescript": "workspace:*",
 		"bun-types": "1.3.14",
 		"typescript": "6.0.3"
 	}

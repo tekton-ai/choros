@@ -1,5 +1,5 @@
-import { CLIError } from "@superset/cli-framework";
-import { getHostId } from "@superset/shared/host-info";
+import { CLIError } from "@choros/cli-framework";
+import { getHostId } from "@choros/shared/host-info";
 
 export interface HostFlags {
 	host: string | undefined;

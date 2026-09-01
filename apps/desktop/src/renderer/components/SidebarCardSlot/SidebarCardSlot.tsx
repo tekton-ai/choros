@@ -1,4 +1,4 @@
-import { SidebarCard } from "@superset/ui/sidebar-card";
+import { SidebarCard } from "@choros/ui/sidebar-card";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import type { SidebarCardEntry } from "./types";

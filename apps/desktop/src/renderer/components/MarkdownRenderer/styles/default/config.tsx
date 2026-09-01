@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { CodeBlock, SafeImage } from "../../components";
 import type { MarkdownStyleConfig } from "../types";
 import "./default.css";

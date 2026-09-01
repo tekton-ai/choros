@@ -1,14 +1,14 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { SelectScreenshot } from "@superset/local-db";
-import { Button } from "@superset/ui/button";
+import type { SelectScreenshot } from "@choros/local-db";
+import { Button } from "@choros/ui/button";
 import {
 	Dialog,
 	DialogContent,
 	DialogHeader,
 	DialogTitle,
-} from "@superset/ui/dialog";
-import { ScrollArea } from "@superset/ui/scroll-area";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/dialog";
+import { ScrollArea } from "@choros/ui/scroll-area";
+import { toast } from "@choros/ui/sonner";
 import { useEffect, useState } from "react";
 import { LuCheck } from "react-icons/lu";
 import { TbCopy, TbFolderOpen } from "react-icons/tb";

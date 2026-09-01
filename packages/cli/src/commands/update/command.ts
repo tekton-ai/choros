@@ -12,7 +12,7 @@ import {
 import { dirname, join } from "node:path";
 import { Readable } from "node:stream";
 import { pipeline } from "node:stream/promises";
-import { boolean, CLIError, string } from "@superset/cli-framework";
+import { boolean, CLIError, string } from "@choros/cli-framework";
 import { command } from "../../lib/command";
 import { env, isDesktopBundled } from "../../lib/env";
 

@@ -3,7 +3,7 @@ import {
 	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
-} from "@superset/ui/chart";
+} from "@choros/ui/chart";
 import { useMemo } from "react";
 import { Area, AreaChart, XAxis, YAxis } from "recharts";
 import type { ResourceSample } from "../../hooks/useResourceSampleBuffer";

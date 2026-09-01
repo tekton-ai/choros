@@ -17,12 +17,12 @@ import {
 	PskHostAuthProvider,
 	resolveBrowserBridgeFromEnv,
 	startTerminalReaper,
-} from "@superset/host-service";
+} from "@choros/host-service";
 import {
 	initTerminalBaseEnv,
 	resolveTerminalBaseEnv,
-} from "@superset/host-service/terminal-env";
-import { connectRelay } from "@superset/host-service/tunnel";
+} from "@choros/host-service/terminal-env";
+import { connectRelay } from "@choros/host-service/tunnel";
 import { loadToken } from "lib/trpc/routers/auth/utils/auth-functions";
 import {
 	type HostServiceManifest,

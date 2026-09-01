@@ -1,4 +1,4 @@
-import type { SelectTaskStatus } from "@superset/db/schema";
+import type { SelectTaskStatus } from "@choros/db/schema";
 import type { ReactNode } from "react";
 import { StatusIcon, type StatusType } from "./StatusIcon";
 

@@ -1,9 +1,9 @@
-import type { SentryConfig } from "@superset/db/schema";
+import type { SentryConfig } from "@choros/db/schema";
 import {
 	exchangeSentryCode,
 	fetchSentryOrganization,
 	verifySentryInstall,
-} from "@superset/trpc/integrations/sentry";
+} from "@choros/trpc/integrations/sentry";
 
 import { env } from "@/env";
 import { resolveCallback } from "@/lib/integrations/resolveCallback";

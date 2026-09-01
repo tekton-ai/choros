@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { formatDate as formatLocaleDate } from "@superset/i18n/format";
-import { Skeleton } from "@superset/ui/skeleton";
+import { formatDate as formatLocaleDate } from "@choros/i18n/format";
+import { Skeleton } from "@choros/ui/skeleton";
 import {
 	Table,
 	TableBody,
@@ -8,7 +8,7 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from "@superset/ui/table";
+} from "@choros/ui/table";
 import { useNavigate } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { useActiveOrganizationId } from "renderer/hooks/useActiveOrganizationId";

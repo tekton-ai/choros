@@ -1,14 +1,14 @@
 import { Trans } from "@lingui/react/macro";
-import type { ChatTransport } from "@superset/chat/client";
-import type { ChatSessionRow } from "@superset/chat-runtime";
-import { Button } from "@superset/ui/button";
+import type { ChatTransport } from "@choros/chat/client";
+import type { ChatSessionRow } from "@choros/chat-runtime";
+import { Button } from "@choros/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
+} from "@choros/ui/dropdown-menu";
 import { ChevronDown, Plus } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 

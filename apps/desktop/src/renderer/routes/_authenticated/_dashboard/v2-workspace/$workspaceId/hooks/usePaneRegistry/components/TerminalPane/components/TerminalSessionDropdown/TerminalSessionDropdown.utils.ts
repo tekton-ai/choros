@@ -1,4 +1,4 @@
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 
 export const TERMINAL_SESSION_LIST_REFETCH_INTERVAL_MS = 2_000;
 export const TERMINAL_SESSION_LIST_STALE_MS = 5_000;

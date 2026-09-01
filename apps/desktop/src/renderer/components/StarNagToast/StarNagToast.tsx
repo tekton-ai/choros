@@ -1,5 +1,5 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { toast } from "@superset/ui/sonner";
+import { toast } from "@choros/ui/sonner";
 import { X } from "lucide-react";
 import { useEffect } from "react";
 import { AnimatedStarButton } from "renderer/components/AnimatedStarButton";

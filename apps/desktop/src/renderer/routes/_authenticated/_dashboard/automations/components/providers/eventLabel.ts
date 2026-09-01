@@ -1,5 +1,5 @@
-import { i18n } from "@superset/i18n";
-import type { TriggerConfigInput } from "@superset/shared/automation-triggers";
+import { i18n } from "@choros/i18n";
+import type { TriggerConfigInput } from "@choros/shared/automation-triggers";
 import type { TriggerMenuEntry, TriggerProvider } from "./types";
 
 // Labels are plain strings in this branch's grammars and msg() descriptors in

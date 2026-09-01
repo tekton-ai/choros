@@ -2,7 +2,7 @@ import {
 	AGENT_PRESET_COMMANDS,
 	AGENT_PRESET_DESCRIPTIONS,
 	AGENT_TYPES,
-} from "@superset/shared/agent-command";
+} from "@choros/shared/agent-command";
 
 export type AutoApplyField = "applyOnWorkspaceCreated" | "applyOnNewTab";
 

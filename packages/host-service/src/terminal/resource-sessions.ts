@@ -1,4 +1,4 @@
-import type { SessionInfo } from "@superset/pty-daemon/protocol";
+import type { SessionInfo } from "@choros/pty-daemon/protocol";
 import { inArray } from "drizzle-orm";
 import type { HostDb } from "../db/index.ts";
 import { terminalSessions } from "../db/schema.ts";

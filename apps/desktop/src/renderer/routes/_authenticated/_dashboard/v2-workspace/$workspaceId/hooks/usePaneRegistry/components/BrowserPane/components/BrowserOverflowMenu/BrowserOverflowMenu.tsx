@@ -5,8 +5,8 @@ import {
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/dropdown-menu";
+import { toast } from "@choros/ui/sonner";
 import { useNavigate } from "@tanstack/react-router";
 import { CheckIcon, MinusIcon, PlusIcon, RotateCcwIcon } from "lucide-react";
 import { useState } from "react";

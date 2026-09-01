@@ -1,5 +1,5 @@
-import type { db } from "@superset/db/client";
-import { cloudWorkspaces } from "@superset/db/schema";
+import type { db } from "@choros/db/client";
+import { cloudWorkspaces } from "@choros/db/schema";
 import { eq } from "drizzle-orm";
 import { userError } from "../../i18n-error";
 

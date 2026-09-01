@@ -3,7 +3,7 @@ import {
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 	DropdownMenuShortcut,
-} from "@superset/ui/dropdown-menu";
+} from "@choros/ui/dropdown-menu";
 import {
 	ExternalLink,
 	FileText,

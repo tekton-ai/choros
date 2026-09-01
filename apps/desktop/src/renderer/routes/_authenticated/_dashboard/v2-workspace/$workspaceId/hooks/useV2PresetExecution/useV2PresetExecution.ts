@@ -1,7 +1,7 @@
 import { useLingui } from "@lingui/react/macro";
-import type { CreatePaneInput, Pane, WorkspaceStore } from "@superset/panes";
-import { toast } from "@superset/ui/sonner";
-import { workspaceTrpc } from "@superset/workspace-client";
+import type { CreatePaneInput, Pane, WorkspaceStore } from "@choros/panes";
+import { toast } from "@choros/ui/sonner";
+import { workspaceTrpc } from "@choros/workspace-client";
 import { useLiveQuery } from "@tanstack/react-db";
 import { useCallback, useMemo } from "react";
 import { useV2AgentConfigs } from "renderer/hooks/useV2AgentConfigs";

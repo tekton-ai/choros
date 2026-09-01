@@ -1,5 +1,5 @@
-import type { Item, KnownItem } from "@superset/chat/protocol";
-import { isKnownItem } from "@superset/chat/protocol";
+import type { Item, KnownItem } from "@choros/chat/protocol";
+import { isKnownItem } from "@choros/chat/protocol";
 
 export type RowKind = KnownItem["kind"] | "unknown";
 

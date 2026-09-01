@@ -1,4 +1,4 @@
-import { CLIError, positional, string } from "@superset/cli-framework";
+import { CLIError, positional, string } from "@choros/cli-framework";
 import { command } from "../../../lib/command";
 import { findWorkspaceOnHost } from "../../../lib/host-workspaces";
 

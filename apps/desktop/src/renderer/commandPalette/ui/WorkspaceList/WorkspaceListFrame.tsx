@@ -4,8 +4,8 @@ import {
 	CommandGroup,
 	CommandItem,
 	CommandList,
-} from "@superset/ui/command";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/command";
+import { cn } from "@choros/ui/utils";
 import { useLocation, useNavigate } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { CgLaptop } from "react-icons/cg";

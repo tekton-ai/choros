@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import { toast } from "@superset/ui/sonner";
+import { toast } from "@choros/ui/sonner";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type {
 	DestroyWorkspacePreview,

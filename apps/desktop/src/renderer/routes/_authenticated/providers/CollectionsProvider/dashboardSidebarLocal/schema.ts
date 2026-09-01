@@ -1,5 +1,5 @@
-import type { AppRouter } from "@superset/host-service";
-import type { LayoutNode, Tab, WorkspaceState } from "@superset/panes";
+import type { AppRouter } from "@choros/host-service";
+import type { LayoutNode, Tab, WorkspaceState } from "@choros/panes";
 import type { inferRouterInputs } from "@trpc/server";
 import { z } from "zod";
 

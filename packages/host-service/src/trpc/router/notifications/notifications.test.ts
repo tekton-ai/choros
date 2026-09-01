@@ -1,5 +1,5 @@
 import { describe, expect, it, mock } from "bun:test";
-import type { AgentIdentity } from "@superset/shared/agent-identity";
+import type { AgentIdentity } from "@choros/shared/agent-identity";
 import type { AgentLifecycleEventType } from "../../../events";
 import { TerminalAgentStore } from "../../../terminal-agents";
 import type { HostServiceContext } from "../../../types";

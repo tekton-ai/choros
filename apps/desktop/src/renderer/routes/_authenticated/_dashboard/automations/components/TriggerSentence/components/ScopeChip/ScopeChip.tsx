@@ -1,5 +1,5 @@
-import type { TriggerScope } from "@superset/shared/automation-triggers";
-import { Checkbox } from "@superset/ui/checkbox";
+import type { TriggerScope } from "@choros/shared/automation-triggers";
+import { Checkbox } from "@choros/ui/checkbox";
 import {
 	Command,
 	CommandEmpty,
@@ -7,9 +7,9 @@ import {
 	CommandInput,
 	CommandItem,
 	CommandList,
-} from "@superset/ui/command";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/command";
+import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
+import { cn } from "@choros/ui/utils";
 import { useState } from "react";
 import { LuCheck, LuPlus, LuRefreshCw } from "react-icons/lu";
 import type { OptionGroupState } from "../../../providers/types";

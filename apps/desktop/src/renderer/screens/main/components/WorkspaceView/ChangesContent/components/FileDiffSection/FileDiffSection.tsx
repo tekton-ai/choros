@@ -1,6 +1,6 @@
-import { Alert, AlertDescription, AlertTitle } from "@superset/ui/alert";
-import { Button } from "@superset/ui/button";
-import { Collapsible, CollapsibleContent } from "@superset/ui/collapsible";
+import { Alert, AlertDescription, AlertTitle } from "@choros/ui/alert";
+import { Button } from "@choros/ui/button";
+import { Collapsible, CollapsibleContent } from "@choros/ui/collapsible";
 import { useParams } from "@tanstack/react-router";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { LuFileCode, LuLoader } from "react-icons/lu";

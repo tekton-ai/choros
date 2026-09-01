@@ -1,5 +1,5 @@
-import { ORGANIZATION_HEADER } from "@superset/shared/constants";
-import type { AppRouter } from "@superset/trpc";
+import { ORGANIZATION_HEADER } from "@choros/shared/constants";
+import type { AppRouter } from "@choros/trpc";
 import { httpBatchStreamLink } from "@trpc/client";
 import { createTRPCReact } from "@trpc/react-query";
 import { createContext } from "react";

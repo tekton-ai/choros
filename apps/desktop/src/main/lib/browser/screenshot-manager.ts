@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto";
 import { EventEmitter } from "node:events";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { screenshots } from "@superset/local-db";
+import { screenshots } from "@choros/local-db";
 import { desc, eq } from "drizzle-orm";
 import { app, shell } from "electron";
 import { localDb } from "../local-db";

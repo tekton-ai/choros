@@ -1,4 +1,4 @@
-import { normalizeWorkspaceTag } from "@superset/shared/workspace-tags";
+import { normalizeWorkspaceTag } from "@choros/shared/workspace-tags";
 import { type ReactNode, useEffect, useState } from "react";
 import { useOptimisticActions } from "renderer/routes/_authenticated/hooks/useOptimisticActions";
 import { useHostWorkspaces } from "renderer/routes/_authenticated/providers/HostWorkspacesProvider";

@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { useCallback, useRef } from "react";
 import { FileIcon } from "renderer/lib/fileIcons";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useLingui } from "@lingui/react/macro";
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 
 // Shared cohort-triangle rendering for retention and survival grids: solid
 // chips scaled by percentage, dashed outline while a period is still in

@@ -1,4 +1,4 @@
-import { Skeleton } from "@superset/ui/skeleton";
+import { Skeleton } from "@choros/ui/skeleton";
 
 export default function DashboardLoading() {
 	return (

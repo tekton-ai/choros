@@ -1,12 +1,12 @@
-import { db } from "@superset/db/client";
-import type { SelectIntegrationConnection } from "@superset/db/schema";
+import { db } from "@choros/db/client";
+import type { SelectIntegrationConnection } from "@choros/db/schema";
 import {
 	eventEnd,
 	eventStart,
 	findGoogleConnectionById,
 	type GoogleCalendarEvent,
 	getEvent,
-} from "@superset/trpc/integrations/google";
+} from "@choros/trpc/integrations/google";
 import { z } from "zod";
 import {
 	ingestAutomationEvent,

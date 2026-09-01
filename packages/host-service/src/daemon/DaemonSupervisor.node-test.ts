@@ -21,7 +21,7 @@ import {
 	CURRENT_PROTOCOL_VERSION,
 	encodeFrame,
 	FrameDecoder,
-} from "@superset/pty-daemon/protocol";
+} from "@choros/pty-daemon/protocol";
 import { DaemonSupervisor, ptyDaemonSocketPath } from "./DaemonSupervisor.ts";
 import { EXPECTED_DAEMON_VERSION } from "./expected-version.ts";
 import {

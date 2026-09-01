@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test";
-import type { HostAgentConfig } from "@superset/host-service/settings";
+import type { HostAgentConfig } from "@choros/host-service/settings";
 import { resolveV2PresetIconKey } from "./preset-icon-key";
 
 function createAgent(

@@ -1,17 +1,17 @@
-import { db, dbWs } from "@superset/db/client";
-import { members, taskStatuses, tasks, users } from "@superset/db/schema";
-import { seedDefaultStatuses } from "@superset/db/seed-default-statuses";
+import { db, dbWs } from "@choros/db/client";
+import { members, taskStatuses, tasks, users } from "@choros/db/schema";
+import { seedDefaultStatuses } from "@choros/db/seed-default-statuses";
 import {
 	buildTaskListConditions,
 	buildTaskListOrderBy,
 	InvalidDueDateRangeError,
 	normalizeDueDateRange,
-} from "@superset/db/task-list-query";
-import { getCurrentTxid } from "@superset/db/utils";
+} from "@choros/db/task-list-query";
+import { getCurrentTxid } from "@choros/db/utils";
 import {
 	generateBaseTaskSlug,
 	generateUniqueTaskSlug,
-} from "@superset/shared/task-slug";
+} from "@choros/shared/task-slug";
 import { TRPCError, type TRPCRouterRecord } from "@trpc/server";
 import { and, asc, desc, eq, ilike, isNull, lt, or } from "drizzle-orm";
 import { alias } from "drizzle-orm/pg-core";

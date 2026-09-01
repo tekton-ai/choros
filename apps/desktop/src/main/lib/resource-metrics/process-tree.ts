@@ -2,11 +2,11 @@ import { exec } from "node:child_process";
 import os from "node:os";
 import { promisify } from "node:util";
 
-let nativeMetrics: typeof import("@superset/macos-process-metrics") | null =
+let nativeMetrics: typeof import("@choros/macos-process-metrics") | null =
 	null;
 try {
 	// eslint-disable-next-line @typescript-eslint/no-require-imports
-	nativeMetrics = require("@superset/macos-process-metrics");
+	nativeMetrics = require("@choros/macos-process-metrics");
 } catch {
 	// Native addon unavailable (non-macOS or build skipped).
 }

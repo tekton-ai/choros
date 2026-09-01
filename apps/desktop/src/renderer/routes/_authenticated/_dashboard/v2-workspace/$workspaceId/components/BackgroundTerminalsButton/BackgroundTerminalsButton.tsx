@@ -1,7 +1,7 @@
 import { plural } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { WorkspaceStore } from "@superset/panes";
-import { Button } from "@superset/ui/button";
+import type { WorkspaceStore } from "@choros/panes";
+import { Button } from "@choros/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -9,9 +9,9 @@ import {
 	DropdownMenuLabel,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { toast } from "@superset/ui/sonner";
-import { workspaceTrpc } from "@superset/workspace-client";
+} from "@choros/ui/dropdown-menu";
+import { toast } from "@choros/ui/sonner";
+import { workspaceTrpc } from "@choros/workspace-client";
 import { Archive, ChevronDown, Trash2 } from "lucide-react";
 import {
 	memo,

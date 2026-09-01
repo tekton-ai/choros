@@ -1,13 +1,13 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
+import { Button } from "@choros/ui/button";
 import {
 	Dialog,
 	DialogContent,
 	DialogHeader,
 	DialogTitle,
-} from "@superset/ui/dialog";
-import { Input } from "@superset/ui/input";
-import { ScrollArea } from "@superset/ui/scroll-area";
+} from "@choros/ui/dialog";
+import { Input } from "@choros/ui/input";
+import { ScrollArea } from "@choros/ui/scroll-area";
 import { useEffect, useMemo, useState } from "react";
 import { electronTrpcClient } from "renderer/lib/trpc-client";
 

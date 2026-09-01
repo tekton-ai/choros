@@ -1,7 +1,7 @@
-import { formatDateTime } from "@superset/i18n/format";
-import type { DraftTrigger } from "@superset/shared/automation-triggers";
-import { nextOccurrenceAfter } from "@superset/shared/rrule";
-import type { RouterOutputs } from "@superset/trpc";
+import { formatDateTime } from "@choros/i18n/format";
+import type { DraftTrigger } from "@choros/shared/automation-triggers";
+import { nextOccurrenceAfter } from "@choros/shared/rrule";
+import type { RouterOutputs } from "@choros/trpc";
 import { useRecentProjects } from "renderer/hooks/host-projects/useRecentProjects";
 import type { apiTrpcClient } from "renderer/lib/api-trpc-client";
 import { DevicePicker } from "renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/DashboardNewWorkspaceForm/components/DevicePicker";

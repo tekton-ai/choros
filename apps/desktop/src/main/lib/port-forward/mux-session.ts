@@ -18,7 +18,7 @@ import {
 	MUX_PROTOCOL_VERSION,
 	type MuxFrame,
 	MuxFrameType,
-} from "@superset/shared/port-forward-mux";
+} from "@choros/shared/port-forward-mux";
 import { WebSocket } from "ws";
 
 const HELLO_TIMEOUT_MS = 15_000;
@@ -49,7 +49,7 @@ interface StreamRecord {
 /**
  * The desktop end of one port-forward mux session — one WebSocket through
  * the relay per (host, workspace), every forwarded TCP connection a numbered
- * stream inside it (@superset/shared/port-forward-mux). Opening a connection
+ * stream inside it (@choros/shared/port-forward-mux). Opening a connection
  * costs one OPEN frame on this warm pipe instead of a relay dial-back.
  */
 export class MuxSession {

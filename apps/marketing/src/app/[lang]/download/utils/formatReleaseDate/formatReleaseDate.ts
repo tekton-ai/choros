@@ -1,4 +1,4 @@
-import { formatDate } from "@superset/i18n/format";
+import { formatDate } from "@choros/i18n/format";
 
 // Release dates are rendered on both sides of the server/client boundary, so
 // the zone has to be pinned. Vercel runs UTC while the visitor's browser does

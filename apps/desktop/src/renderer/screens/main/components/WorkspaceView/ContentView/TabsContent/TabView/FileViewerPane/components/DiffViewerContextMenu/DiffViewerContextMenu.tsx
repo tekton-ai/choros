@@ -1,4 +1,4 @@
-import { ContextMenuItem } from "@superset/ui/context-menu";
+import { ContextMenuItem } from "@choros/ui/context-menu";
 import { type MutableRefObject, type ReactNode, useCallback } from "react";
 import { LuSquarePen } from "react-icons/lu";
 import { useCopyToClipboard } from "renderer/hooks/useCopyToClipboard";

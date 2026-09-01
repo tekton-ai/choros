@@ -1,6 +1,6 @@
-import { dbWs } from "@superset/db/client";
-import { organizations, v2Projects } from "@superset/db/schema";
-import { parseGitHubRemote } from "@superset/shared/github-remote";
+import { dbWs } from "@choros/db/client";
+import { organizations, v2Projects } from "@choros/db/schema";
+import { parseGitHubRemote } from "@choros/shared/github-remote";
 import type { TRPCRouterRecord } from "@trpc/server";
 import { and, eq, sql } from "drizzle-orm";
 import { z } from "zod";

@@ -1,7 +1,7 @@
 "use client";
 
 import { Trans } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import {
 	ChainOfThought,
 	ChainOfThoughtContent,
@@ -9,21 +9,21 @@ import {
 	ChainOfThoughtSearchResult,
 	ChainOfThoughtSearchResults,
 	ChainOfThoughtStep,
-} from "@superset/ui/ai-elements/chain-of-thought";
+} from "@choros/ui/ai-elements/chain-of-thought";
 import {
 	Plan,
 	PlanContent,
 	PlanDescription,
 	PlanHeader,
 	PlanTitle,
-} from "@superset/ui/ai-elements/plan";
+} from "@choros/ui/ai-elements/plan";
 import {
 	Task,
 	TaskContent,
 	TaskItem,
 	TaskItemFile,
 	TaskTrigger,
-} from "@superset/ui/ai-elements/task";
+} from "@choros/ui/ai-elements/task";
 import { FileSearchIcon, SearchIcon, WrenchIcon } from "lucide-react";
 
 import { ComponentCard } from "../../../components/ComponentCard";
@@ -48,7 +48,7 @@ export function AiAgentSection() {
 					id: "web.design.aiAgentSection.chainOfThought",
 					message: "Chain of Thought",
 				})}
-				importPath="@superset/ui/ai-elements/chain-of-thought"
+				importPath="@choros/ui/ai-elements/chain-of-thought"
 				span
 			>
 				<ChainOfThought className="w-full" defaultOpen>
@@ -116,7 +116,7 @@ export function AiAgentSection() {
 					id: "web.design.aiAgentSection.task",
 					message: "Task",
 				})}
-				importPath="@superset/ui/ai-elements/task"
+				importPath="@choros/ui/ai-elements/task"
 			>
 				<Task className="w-full" defaultOpen>
 					<TaskTrigger
@@ -156,7 +156,7 @@ export function AiAgentSection() {
 					id: "web.design.aiAgentSection.plan",
 					message: "Plan",
 				})}
-				importPath="@superset/ui/ai-elements/plan"
+				importPath="@choros/ui/ai-elements/plan"
 			>
 				<Plan className="w-full" defaultOpen>
 					<PlanHeader>

@@ -2,8 +2,8 @@ import type {
 	Cursor,
 	DurableEnvelope,
 	RESET_REASONS,
-} from "@superset/chat/protocol";
-import { envelopeSchema, isDurableEnvelope } from "@superset/chat/protocol";
+} from "@choros/chat/protocol";
+import { envelopeSchema, isDurableEnvelope } from "@choros/chat/protocol";
 import { and, asc, desc, eq, gt, lt, max } from "drizzle-orm";
 import type { ChatDb, JournalRow } from "../db";
 import { chatJournal } from "../db";

@@ -1,7 +1,7 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
-import { Input } from "@superset/ui/input";
-import { Label } from "@superset/ui/label";
+import { Button } from "@choros/ui/button";
+import { Input } from "@choros/ui/input";
+import { Label } from "@choros/ui/label";
 import { useEffect, useState } from "react";
 import { TbDownload } from "react-icons/tb";
 import { ImportHistoryDialog } from "renderer/components/ImportHistoryDialog";

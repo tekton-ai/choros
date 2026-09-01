@@ -1,5 +1,5 @@
-import { i18n } from "@superset/i18n";
-import { type AlertOptions, alert } from "@superset/ui/atoms/Alert";
+import { i18n } from "@choros/i18n";
+import { type AlertOptions, alert } from "@choros/ui/atoms/Alert";
 import { useTerminalCloseConfirmStore } from "renderer/stores/terminal-close-confirm/store";
 
 type ShowAlert = (options: AlertOptions) => boolean;

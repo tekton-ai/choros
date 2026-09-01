@@ -1,6 +1,6 @@
-import { db } from "@superset/db/client";
-import { attachments, files, pages, pageVersions } from "@superset/db/schema";
-import { fileOriginalKey } from "@superset/shared/usercontent";
+import { db } from "@choros/db/client";
+import { attachments, files, pages, pageVersions } from "@choros/db/schema";
+import { fileOriginalKey } from "@choros/shared/usercontent";
 import { TRPCError, type TRPCRouterRecord } from "@trpc/server";
 import { and, count, eq, sql } from "drizzle-orm";
 import { presignedPutUrl } from "../../../lib/r2";

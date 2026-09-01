@@ -1,5 +1,5 @@
 {
-	"name": "@superset/composer",
+	"name": "@choros/composer",
 	"version": "0.0.1",
 	"main": "src/index.tsx",
 	"private": true,

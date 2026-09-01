@@ -1,7 +1,7 @@
 import { EventEmitter } from "node:events";
 import { statfsSync } from "node:fs";
 import * as Sentry from "@sentry/electron/main";
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import { app, dialog } from "electron";
 import log from "electron-log/main";
 import { autoUpdater, type UpdateCheckResult } from "electron-updater";

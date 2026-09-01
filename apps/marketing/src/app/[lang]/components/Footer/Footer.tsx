@@ -8,14 +8,14 @@ import {
 	LOCALE_LABELS,
 	SUPPORTED_LOCALES,
 	type SupportedLocale,
-} from "@superset/i18n";
-import { COMPANY } from "@superset/shared/constants";
+} from "@choros/i18n";
+import { COMPANY } from "@choros/shared/constants";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
+} from "@choros/ui/dropdown-menu";
 import { m } from "framer-motion";
 import { ArrowUpRight, Check, ChevronDown, Languages } from "lucide-react";
 import Link from "next/link";

@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
-import type { WorkspaceProps } from "@superset/panes";
-import { workspaceTrpc } from "@superset/workspace-client";
+import type { WorkspaceProps } from "@choros/panes";
+import { workspaceTrpc } from "@choros/workspace-client";
 import { useCallback } from "react";
 import {
 	confirmCloseTerminals,

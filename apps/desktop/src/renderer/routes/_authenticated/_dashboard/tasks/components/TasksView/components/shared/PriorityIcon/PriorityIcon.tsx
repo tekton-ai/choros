@@ -1,4 +1,4 @@
-import type { TaskPriority } from "@superset/db/enums";
+import type { TaskPriority } from "@choros/db/enums";
 import colors from "tailwindcss/colors";
 
 interface PriorityIconProps {

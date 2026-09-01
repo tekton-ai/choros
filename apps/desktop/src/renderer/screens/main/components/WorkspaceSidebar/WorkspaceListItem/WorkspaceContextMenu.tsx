@@ -8,12 +8,12 @@ import {
 	ContextMenuSubContent,
 	ContextMenuSubTrigger,
 	ContextMenuTrigger,
-} from "@superset/ui/context-menu";
+} from "@choros/ui/context-menu";
 import {
 	HoverCard,
 	HoverCardContent,
 	HoverCardTrigger,
-} from "@superset/ui/hover-card";
+} from "@choros/ui/hover-card";
 import { useMemo, useRef, useState } from "react";
 import {
 	LuArrowRightLeft,

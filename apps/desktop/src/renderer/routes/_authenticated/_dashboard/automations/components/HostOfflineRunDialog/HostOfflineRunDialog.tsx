@@ -1,5 +1,5 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
+import { Button } from "@choros/ui/button";
 import {
 	Dialog,
 	DialogClose,
@@ -8,7 +8,7 @@ import {
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
-} from "@superset/ui/dialog";
+} from "@choros/ui/dialog";
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { LuTriangleAlert } from "react-icons/lu";

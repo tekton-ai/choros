@@ -1,4 +1,4 @@
-import type { AgentLaunchRequest } from "@superset/shared/agent-launch";
+import type { AgentLaunchRequest } from "@choros/shared/agent-launch";
 import { useNavigate } from "@tanstack/react-router";
 import { useCallback, useRef } from "react";
 import { electronTrpc } from "renderer/lib/electron-trpc";

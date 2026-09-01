@@ -5,9 +5,9 @@ import {
 	CommandGroup,
 	CommandItem,
 	CommandList,
-} from "@superset/ui/command";
-import { Popover, PopoverAnchor, PopoverContent } from "@superset/ui/popover";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/command";
+import { Popover, PopoverAnchor, PopoverContent } from "@choros/ui/popover";
+import { cn } from "@choros/ui/utils";
 import { mergeAttributes, Node } from "@tiptap/core";
 import {
 	type NodeViewProps,

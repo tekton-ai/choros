@@ -1,6 +1,6 @@
 import { existsSync, statSync } from "node:fs";
 import { rm } from "node:fs/promises";
-import { sanitizePromptForPty } from "@superset/shared/agent-prompt-launch";
+import { sanitizePromptForPty } from "@choros/shared/agent-prompt-launch";
 import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";
 import { z } from "zod";

@@ -1,7 +1,7 @@
 import { execFile } from "node:child_process";
 import { existsSync, type FSWatcher, watch } from "node:fs";
 import { promisify } from "node:util";
-import type { FsWatchEvent } from "@superset/workspace-fs/host";
+import type { FsWatchEvent } from "@choros/workspace-fs/host";
 import { isNull } from "drizzle-orm";
 import type { HostDb } from "../db/index.ts";
 import { workspaces } from "../db/schema.ts";
@@ -220,7 +220,7 @@ interface IgnoredDirsState {
  *    can't change `git status` (`objects/**`, `lfs/**`, `logs/**`, `FETCH_HEAD`)
  *    are filtered via `isStatusRelevantGitDirEvent`; `.git/`-only batches use
  *    the wider `GIT_DIR_DEBOUNCE_MS` window.
- * 2. Worktree root (via `@superset/workspace-fs` watcher manager) — catches
+ * 2. Worktree root (via `@choros/workspace-fs` watcher manager) — catches
  *    working-tree file edits that change `git status` output. The underlying
  *    watcher honors `DEFAULT_IGNORE_PATTERNS`, which excludes `.git/`,
  *    `node_modules/`, `dist/`, etc. — exactly the paths that don't affect

@@ -1,4 +1,4 @@
-import type { ChartConfig } from "@superset/ui/chart";
+import type { ChartConfig } from "@choros/ui/chart";
 
 /**
  * Fixed categorical hue order — color follows the agent, never its rank.

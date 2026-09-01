@@ -1,6 +1,6 @@
 import { existsSync } from "node:fs";
-import type { GitHubStatus } from "@superset/local-db";
-import { workspaces, worktrees } from "@superset/local-db";
+import type { GitHubStatus } from "@choros/local-db";
+import { workspaces, worktrees } from "@choros/local-db";
 import { TRPCError } from "@trpc/server";
 import { and, eq, isNull } from "drizzle-orm";
 import { localDb } from "main/lib/local-db";

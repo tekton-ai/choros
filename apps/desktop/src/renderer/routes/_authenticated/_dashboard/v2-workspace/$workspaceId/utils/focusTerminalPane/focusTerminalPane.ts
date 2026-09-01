@@ -1,4 +1,4 @@
-import type { WorkspaceState, WorkspaceStore } from "@superset/panes";
+import type { WorkspaceState, WorkspaceStore } from "@choros/panes";
 import type { StoreApi } from "zustand/vanilla";
 import type { PaneViewerData, TerminalPaneData } from "../../types";
 

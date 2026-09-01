@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import type { SelectPage } from "@superset/db/schema";
+import type { SelectPage } from "@choros/db/schema";
 import { TRPCError } from "@trpc/server";
 import { assertPageReadable, assertPageWritable } from "./access";
 

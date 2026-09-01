@@ -1,15 +1,15 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { formatRelativeTime } from "@superset/i18n/format";
-import { Button } from "@superset/ui/button";
+import { formatRelativeTime } from "@choros/i18n/format";
+import { Button } from "@choros/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { DeletePageDialog } from "@superset/ui/page-comments";
-import { toast } from "@superset/ui/sonner";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/dropdown-menu";
+import { DeletePageDialog } from "@choros/ui/page-comments";
+import { toast } from "@choros/ui/sonner";
+import { cn } from "@choros/ui/utils";
 import {
 	Globe,
 	Link2,

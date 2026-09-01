@@ -1,5 +1,5 @@
 import { beforeAll, describe, expect, test } from "bun:test";
-import { initI18n, initI18nAsync } from "@superset/i18n";
+import { initI18n, initI18nAsync } from "@choros/i18n";
 import {
 	COST_CEILINGS,
 	FLOORS,

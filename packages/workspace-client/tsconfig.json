@@ -1,5 +1,5 @@
 {
-	"extends": "@superset/typescript/base.json",
+	"extends": "@choros/typescript/base.json",
 	"compilerOptions": {
 		"jsx": "react-jsx",
 		"types": ["bun-types"]

@@ -1,4 +1,4 @@
-import { isEmptyScope } from "@superset/shared/automation-triggers";
+import { isEmptyScope } from "@choros/shared/automation-triggers";
 import { SiSentry } from "react-icons/si";
 import { ScopeChip } from "../../TriggerSentence/components/ScopeChip";
 import { Sentence } from "../components/Sentence";

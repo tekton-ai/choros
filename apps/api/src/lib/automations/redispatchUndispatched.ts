@@ -1,5 +1,5 @@
-import { dbWs } from "@superset/db/client";
-import { automationEvents } from "@superset/db/schema";
+import { dbWs } from "@choros/db/client";
+import { automationEvents } from "@choros/db/schema";
 import { and, asc, isNotNull, isNull, lt } from "drizzle-orm";
 import { dispatchMatchingTriggers } from "./dispatchMatchingTriggers";
 

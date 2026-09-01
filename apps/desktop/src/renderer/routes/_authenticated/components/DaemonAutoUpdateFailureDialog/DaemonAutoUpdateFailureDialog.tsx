@@ -1,4 +1,4 @@
-import { errorMessage } from "@superset/i18n/errors";
+import { errorMessage } from "@choros/i18n/errors";
 import {
 	AlertDialog,
 	AlertDialogContent,
@@ -6,13 +6,13 @@ import {
 	AlertDialogFooter,
 	AlertDialogHeader,
 	AlertDialogTitle,
-} from "@superset/ui/alert-dialog";
-import { Button } from "@superset/ui/button";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/alert-dialog";
+import { Button } from "@choros/ui/button";
+import { toast } from "@choros/ui/sonner";
 import {
 	WorkspaceClientProvider,
 	workspaceTrpc,
-} from "@superset/workspace-client";
+} from "@choros/workspace-client";
 import { useEffect, useState } from "react";
 import {
 	getHostServiceHeaders,

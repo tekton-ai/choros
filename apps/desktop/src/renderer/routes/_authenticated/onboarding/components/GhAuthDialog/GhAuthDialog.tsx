@@ -1,12 +1,12 @@
-import { Button } from "@superset/ui/button";
+import { Button } from "@choros/ui/button";
 import {
 	Dialog,
 	DialogContent,
 	DialogHeader,
 	DialogTitle,
-} from "@superset/ui/dialog";
-import { Spinner } from "@superset/ui/spinner";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/dialog";
+import { Spinner } from "@choros/ui/spinner";
+import { cn } from "@choros/ui/utils";
 import { useEffect, useRef, useState } from "react";
 import {
 	LuArrowUpRight,

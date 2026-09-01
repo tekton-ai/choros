@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { Link } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { useHostsPresence } from "renderer/hooks/useHostsPresence";

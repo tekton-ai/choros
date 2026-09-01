@@ -1,4 +1,4 @@
-import { GOOGLE_SCOPES } from "@superset/trpc/integrations/google";
+import { GOOGLE_SCOPES } from "@choros/trpc/integrations/google";
 
 import { env } from "@/env";
 import { requireOrgMember } from "@/lib/integrations/requireOrgMember";

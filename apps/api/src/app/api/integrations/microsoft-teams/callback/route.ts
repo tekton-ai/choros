@@ -1,14 +1,14 @@
 import { randomBytes } from "node:crypto";
-import { db } from "@superset/db/client";
-import type { MicrosoftTeamsConfig } from "@superset/db/schema";
-import { integrationConnections } from "@superset/db/schema";
+import { db } from "@choros/db/client";
+import type { MicrosoftTeamsConfig } from "@choros/db/schema";
+import { integrationConnections } from "@choros/db/schema";
 import {
 	acquireAppToken,
 	deleteTeamsSubscriptions,
 	ensureTeamsSubscriptions,
 	graphRequest,
 	microsoftCredentials,
-} from "@superset/trpc/integrations/microsoft-teams";
+} from "@choros/trpc/integrations/microsoft-teams";
 import { and, eq } from "drizzle-orm";
 
 import { env } from "@/env";

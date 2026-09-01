@@ -6,10 +6,10 @@ import {
 	AlertDialogFooter,
 	AlertDialogHeader,
 	AlertDialogTitle,
-} from "@superset/ui/alert-dialog";
-import { Button } from "@superset/ui/button";
-import { Checkbox } from "@superset/ui/checkbox";
-import { Label } from "@superset/ui/label";
+} from "@choros/ui/alert-dialog";
+import { Button } from "@choros/ui/button";
+import { Checkbox } from "@choros/ui/checkbox";
+import { Label } from "@choros/ui/label";
 import { useEffect, useId } from "react";
 import { shouldConfirmDeleteDialogKey } from "../../utils/shouldConfirmDeleteDialogKey";
 

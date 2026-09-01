@@ -1,5 +1,5 @@
-import type { WorkspaceStore } from "@superset/panes";
-import { workspaceTrpc } from "@superset/workspace-client";
+import type { WorkspaceStore } from "@choros/panes";
+import { workspaceTrpc } from "@choros/workspace-client";
 import { useEffect, useRef } from "react";
 import type { StoreApi } from "zustand/vanilla";
 import type { PaneViewerData } from "../../types";

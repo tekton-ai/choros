@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test";
-import type { WorkspaceState } from "@superset/panes";
+import type { WorkspaceState } from "@choros/panes";
 import {
 	DEFAULT_V2_USER_PREFERENCES,
 	dashboardSidebarSectionSchema,

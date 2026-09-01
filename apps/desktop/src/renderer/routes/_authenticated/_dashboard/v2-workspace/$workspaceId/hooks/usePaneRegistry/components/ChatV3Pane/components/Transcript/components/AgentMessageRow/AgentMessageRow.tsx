@@ -1,6 +1,6 @@
-import type { SessionSnapshot } from "@superset/chat/core";
-import { displayText } from "@superset/chat/core";
-import type { AgentMessage } from "@superset/chat/protocol";
+import type { SessionSnapshot } from "@choros/chat/core";
+import { displayText } from "@choros/chat/core";
+import type { AgentMessage } from "@choros/chat/protocol";
 import { MarkdownView } from "../../../MarkdownView";
 
 export function AgentMessageRow({

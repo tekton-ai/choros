@@ -1,4 +1,4 @@
-import type { AppRouter } from "@superset/host-service";
+import type { AppRouter } from "@choros/host-service";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import type { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
 import { useMemo } from "react";

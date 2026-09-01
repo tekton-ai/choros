@@ -7,9 +7,9 @@ import {
 	CommandInput,
 	CommandItem,
 	CommandList,
-} from "@superset/ui/command";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+} from "@choros/ui/command";
+import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import type { ReactNode } from "react";
 import { useMemo, useState } from "react";
 import { formatRelativeTime } from "renderer/lib/formatRelativeTime";

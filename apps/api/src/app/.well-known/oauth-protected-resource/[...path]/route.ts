@@ -1,4 +1,4 @@
-import { auth } from "@superset/auth/server";
+import { auth } from "@choros/auth/server";
 import { buildProtectedResourceMetadata } from "@/lib/oauth-metadata";
 
 interface RouteContext {

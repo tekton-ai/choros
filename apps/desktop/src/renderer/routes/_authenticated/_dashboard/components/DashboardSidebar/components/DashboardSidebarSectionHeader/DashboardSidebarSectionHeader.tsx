@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import type { ReactNode } from "react";
 import { HiChevronRight } from "react-icons/hi2";
 import type { SidebarSectionKey } from "renderer/stores/sidebar-sections-collapse";

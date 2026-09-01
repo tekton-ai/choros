@@ -1,5 +1,5 @@
-import { db } from "@superset/db/client";
-import { apikeys } from "@superset/db/schema";
+import { db } from "@choros/db/client";
+import { apikeys } from "@choros/db/schema";
 import { desc, eq } from "drizzle-orm";
 import { z } from "zod";
 

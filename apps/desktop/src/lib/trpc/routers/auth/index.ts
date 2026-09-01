@@ -1,6 +1,6 @@
 import crypto from "node:crypto";
-import { AUTH_PROVIDERS } from "@superset/shared/constants";
-import { getHostId, getHostName } from "@superset/shared/host-info";
+import { AUTH_PROVIDERS } from "@choros/shared/constants";
+import { getHostId, getHostName } from "@choros/shared/host-info";
 import { observable } from "@trpc/server/observable";
 import { shell } from "electron";
 import { env } from "main/env.main";

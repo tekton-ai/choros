@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { TEARDOWN_TIMEOUT_MS } from "@superset/shared/constants";
+import { TEARDOWN_TIMEOUT_MS } from "@choros/shared/constants";
 import type { HostDb } from "../../db";
 import {
 	createTerminalSessionInternal,

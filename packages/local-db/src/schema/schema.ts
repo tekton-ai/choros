@@ -1,4 +1,4 @@
-import type { InstalledPlugin } from "@superset/shared/plugins";
+import type { InstalledPlugin } from "@choros/shared/plugins";
 import {
 	index,
 	integer,

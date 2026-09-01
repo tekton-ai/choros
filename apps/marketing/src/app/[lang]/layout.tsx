@@ -1,5 +1,5 @@
-import { SUPPORTED_LOCALES } from "@superset/i18n";
-import { COMPANY } from "@superset/shared/constants";
+import { SUPPORTED_LOCALES } from "@choros/i18n";
+import { COMPANY } from "@choros/shared/constants";
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, Inter } from "next/font/google";
 import Script from "next/script";

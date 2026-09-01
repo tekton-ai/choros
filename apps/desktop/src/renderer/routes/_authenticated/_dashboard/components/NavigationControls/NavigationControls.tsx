@@ -1,4 +1,4 @@
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { useLocation, useRouter } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { LuArrowLeft, LuArrowRight } from "react-icons/lu";

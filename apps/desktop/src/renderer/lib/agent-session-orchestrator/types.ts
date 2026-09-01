@@ -1,9 +1,9 @@
-import type { TerminalPreset } from "@superset/local-db";
+import type { TerminalPreset } from "@choros/local-db";
 import type {
 	AgentLaunchRequest,
 	AgentLaunchResult,
 	AgentLaunchSource,
-} from "@superset/shared/agent-launch";
+} from "@choros/shared/agent-launch";
 
 export interface AgentLaunchPane {
 	id: string;

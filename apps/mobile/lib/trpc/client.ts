@@ -1,4 +1,4 @@
-import type { AppRouter } from "@superset/trpc";
+import type { AppRouter } from "@choros/trpc";
 import { createTRPCProxyClient, httpBatchLink } from "@trpc/client";
 import * as Application from "expo-application";
 import superjson from "superjson";

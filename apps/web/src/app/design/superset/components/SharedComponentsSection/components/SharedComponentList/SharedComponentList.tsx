@@ -1,4 +1,4 @@
-import { Badge } from "@superset/ui/badge";
+import { Badge } from "@choros/ui/badge";
 
 export interface SharedComponent {
 	name: string;

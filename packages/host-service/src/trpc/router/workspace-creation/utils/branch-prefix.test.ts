@@ -1,7 +1,7 @@
 import { Database } from "bun:sqlite";
 import { describe, expect, it } from "bun:test";
 import { resolve } from "node:path";
-import type { BranchPrefixMode } from "@superset/shared/workspace-launch";
+import type { BranchPrefixMode } from "@choros/shared/workspace-launch";
 import { drizzle } from "drizzle-orm/bun-sqlite";
 import { migrate } from "drizzle-orm/bun-sqlite/migrator";
 import type { SimpleGit } from "simple-git";

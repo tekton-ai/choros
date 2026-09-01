@@ -1,4 +1,4 @@
-import { AGENT_IDENTITY_LABELS } from "@superset/shared/agent-catalog";
+import { AGENT_IDENTITY_LABELS } from "@choros/shared/agent-catalog";
 import { TerminalSquare } from "lucide-react";
 import { usePresetIcon } from "renderer/assets/app-icons/preset-icons";
 import { useTerminalAgentBinding } from "renderer/hooks/host-service/useTerminalAgentBindings";

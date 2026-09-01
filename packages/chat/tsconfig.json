@@ -1,11 +1,11 @@
 {
-	"extends": "@superset/typescript/base.json",
+	"extends": "@choros/typescript/base.json",
 	"compilerOptions": {
 		"lib": ["ES2022"],
 		"jsx": "react-jsx",
 		"paths": {
-			"@superset/chat-runtime": ["../chat-runtime/src/index.ts"],
-			"@superset/chat-runtime/testing": ["../chat-runtime/src/testing/index.ts"]
+			"@choros/chat-runtime": ["../chat-runtime/src/index.ts"],
+			"@choros/chat-runtime/testing": ["../chat-runtime/src/testing/index.ts"]
 		}
 	},
 	"include": ["src/**/*.ts", "src/**/*.tsx"],

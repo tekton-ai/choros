@@ -1,5 +1,5 @@
 import { EventEmitter } from "node:events";
-import type { AgentDefinitionId } from "@superset/shared/agent-catalog";
+import type { AgentDefinitionId } from "@choros/shared/agent-catalog";
 import type {
 	TerminalAgentBinding,
 	TerminalAgentEndReason,

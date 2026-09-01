@@ -1,6 +1,6 @@
 import { readFileSync, statSync } from "node:fs";
 import { basename, extname, resolve } from "node:path";
-import { boolean, CLIError, positional, string } from "@superset/cli-framework";
+import { boolean, CLIError, positional, string } from "@choros/cli-framework";
 import { command } from "../../../lib/command";
 import { resolveWorkspaceId } from "../workspaceRef";
 import {

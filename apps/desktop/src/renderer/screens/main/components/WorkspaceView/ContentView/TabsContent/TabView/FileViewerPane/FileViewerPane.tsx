@@ -1,5 +1,5 @@
-import { Alert, AlertDescription, AlertTitle } from "@superset/ui/alert";
-import { Button } from "@superset/ui/button";
+import { Alert, AlertDescription, AlertTitle } from "@choros/ui/alert";
+import { Button } from "@choros/ui/button";
 import { useParams } from "@tanstack/react-router";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { MosaicBranch } from "react-mosaic-component";

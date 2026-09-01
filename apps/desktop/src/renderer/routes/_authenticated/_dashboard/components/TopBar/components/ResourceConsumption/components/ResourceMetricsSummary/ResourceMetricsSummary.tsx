@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { cn } from "@superset/ui/lib/utils";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+import { cn } from "@choros/ui/lib/utils";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import type { ResourceMetricsSnapshot } from "../../types";
 import { formatCpu, formatMemory, formatPercent } from "../../utils/formatters";
 import { getTrackedHostMemorySeverity } from "../../utils/resourceSeverity";

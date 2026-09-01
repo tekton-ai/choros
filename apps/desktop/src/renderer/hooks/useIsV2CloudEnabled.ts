@@ -1,4 +1,4 @@
-import { isV2OnlyUser } from "@superset/shared/v2-only-user";
+import { isV2OnlyUser } from "@choros/shared/v2-only-user";
 import { env } from "renderer/env.renderer";
 import { authClient } from "renderer/lib/auth-client";
 import {

@@ -1,7 +1,7 @@
 import { existsSync, realpathSync } from "node:fs";
 import { resolve } from "node:path";
-import type { SelectWorktree } from "@superset/local-db";
-import { worktrees } from "@superset/local-db";
+import type { SelectWorktree } from "@choros/local-db";
+import { worktrees } from "@choros/local-db";
 import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";
 import { track } from "main/lib/analytics";

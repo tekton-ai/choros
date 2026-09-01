@@ -1,5 +1,5 @@
-import type { WorkspaceStore } from "@superset/panes";
-import { workspaceTrpc } from "@superset/workspace-client";
+import type { WorkspaceStore } from "@choros/panes";
+import { workspaceTrpc } from "@choros/workspace-client";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { V2UserPreferencesApi } from "renderer/hooks/useV2UserPreferences";
 import { useWorkspace } from "renderer/routes/_authenticated/_dashboard/v2-workspace/providers/WorkspaceProvider";

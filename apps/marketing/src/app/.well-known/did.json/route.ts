@@ -1,4 +1,4 @@
-import { COMPANY } from "@superset/shared/constants";
+import { COMPANY } from "@choros/shared/constants";
 import { AGENT_DID, AGENT_SIGNING_KEY } from "@/lib/agent-identity";
 
 // did:web document for superset.sh. Resolves the identity referenced by the

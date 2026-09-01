@@ -1,8 +1,8 @@
 import { useLingui } from "@lingui/react/macro";
-import type { OutboxEntry } from "@superset/chat/core";
-import type { UserContent } from "@superset/chat/protocol";
-import { Button } from "@superset/ui/button";
-import { Textarea } from "@superset/ui/textarea";
+import type { OutboxEntry } from "@choros/chat/core";
+import type { UserContent } from "@choros/chat/protocol";
+import { Button } from "@choros/ui/button";
+import { Textarea } from "@choros/ui/textarea";
 import { ArrowUp, Square } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 

@@ -1,14 +1,14 @@
-import { errorMessage } from "@superset/i18n/errors";
-import type { GitHubStatus, PullRequestComment } from "@superset/local-db";
-import { Avatar, AvatarFallback, AvatarImage } from "@superset/ui/avatar";
+import { errorMessage } from "@choros/i18n/errors";
+import type { GitHubStatus, PullRequestComment } from "@choros/local-db";
+import { Avatar, AvatarFallback, AvatarImage } from "@choros/ui/avatar";
 import {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
-} from "@superset/ui/collapsible";
-import { Skeleton } from "@superset/ui/skeleton";
-import { toast } from "@superset/ui/sonner";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/collapsible";
+import { Skeleton } from "@choros/ui/skeleton";
+import { toast } from "@choros/ui/sonner";
+import { cn } from "@choros/ui/utils";
 import { useEffect, useRef, useState } from "react";
 import {
 	LuArrowUpRight,

@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import type { PullRequestComment } from "@superset/local-db";
+import type { PullRequestComment } from "@choros/local-db";
 import {
 	countOpenPullRequestComments,
 	splitPullRequestComments,

@@ -3,9 +3,9 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
-import { Calendar } from "@superset/ui/calendar";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
+import { Button } from "@choros/ui/button";
+import { Calendar } from "@choros/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
 import { CalendarIcon } from "lucide-react";
 import type { DateRange } from "react-day-picker";
 import { PillTabs } from "@/app/[lang]/components/PillTabs";

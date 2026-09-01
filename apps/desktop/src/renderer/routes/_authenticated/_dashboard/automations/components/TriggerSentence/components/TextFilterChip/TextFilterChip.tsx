@@ -1,6 +1,6 @@
-import type { TextFilter } from "@superset/shared/automation-triggers";
-import { Input } from "@superset/ui/input";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
+import type { TextFilter } from "@choros/shared/automation-triggers";
+import { Input } from "@choros/ui/input";
+import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
 import { useState } from "react";
 import { ChipButton } from "../ChipButton";
 

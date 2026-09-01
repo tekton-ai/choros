@@ -13,7 +13,7 @@
 import {
 	indexResolvedAgentConfigs,
 	resolveAgentConfigs,
-} from "@superset/shared/agent-settings";
+} from "@choros/shared/agent-settings";
 import { buildLaunchSpec } from "../src/shared/context/buildLaunchSpec";
 import { buildLaunchContext } from "../src/shared/context/composer";
 import { defaultContributorRegistry } from "../src/shared/context/contributors";

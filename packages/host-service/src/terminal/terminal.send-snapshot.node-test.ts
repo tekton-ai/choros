@@ -24,7 +24,7 @@ import * as os from "node:os";
 import * as path from "node:path";
 import { after, before, describe, test } from "node:test";
 import { fileURLToPath } from "node:url";
-import { Server } from "@superset/pty-daemon";
+import { Server } from "@choros/pty-daemon";
 import { createDb, type HostDb } from "../db/index.ts";
 import { projects, workspaces } from "../db/schema.ts";
 import {

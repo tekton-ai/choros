@@ -1,10 +1,10 @@
 import { describe, expect, test } from "bun:test";
-import { emptySnapshot, reduceMany } from "@superset/chat/core";
+import { emptySnapshot, reduceMany } from "@choros/chat/core";
 import type {
 	DurableEnvelope,
 	Item,
 	SessionState,
-} from "@superset/chat/protocol";
+} from "@choros/chat/protocol";
 import { createTestRuntime } from "../../../testing/testRuntime";
 import type { AdapterEvent } from "../../types";
 import { type ClaudeFixture, loadFixture } from "../fixtures";

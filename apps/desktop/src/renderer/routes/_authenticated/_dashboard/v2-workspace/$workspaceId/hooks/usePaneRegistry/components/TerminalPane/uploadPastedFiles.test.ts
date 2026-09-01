@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, describe, expect, it } from "bun:test";
-import { WORKSPACE_ATTACHMENTS_DIR } from "@superset/shared/workspace-attachments";
+import { WORKSPACE_ATTACHMENTS_DIR } from "@choros/shared/workspace-attachments";
 import {
 	PasteUploadLimitError,
 	type UploadPastedFilesDeps,

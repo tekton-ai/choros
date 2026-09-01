@@ -3,7 +3,7 @@ import {
 	agentMessage,
 	turn,
 	userMessage,
-} from "@superset/chat-runtime/testing";
+} from "@choros/chat-runtime/testing";
 import type { SessionSnapshot, TurnGroup } from "../../core";
 import { emptySnapshot, reduceMany } from "../../core";
 import type { DurableEvent } from "../../protocol/envelope";

@@ -1,9 +1,9 @@
-import { db } from "@superset/db/client";
+import { db } from "@choros/db/client";
 import {
 	githubInstallations,
 	githubPullRequests,
 	githubRepositories,
-} from "@superset/db/schema";
+} from "@choros/db/schema";
 import type { TRPCRouterRecord } from "@trpc/server";
 import { Client } from "@upstash/qstash";
 import { and, desc, eq, inArray } from "drizzle-orm";

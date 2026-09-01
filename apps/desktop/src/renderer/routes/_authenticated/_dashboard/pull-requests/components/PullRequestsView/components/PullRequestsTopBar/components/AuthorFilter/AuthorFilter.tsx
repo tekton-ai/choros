@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Avatar, AvatarFallback, AvatarImage } from "@superset/ui/avatar";
-import { Button } from "@superset/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@choros/ui/avatar";
+import { Button } from "@choros/ui/button";
 import {
 	Command,
 	CommandEmpty,
@@ -8,8 +8,8 @@ import {
 	CommandInput,
 	CommandItem,
 	CommandList,
-} from "@superset/ui/command";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
+} from "@choros/ui/command";
+import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo, useState } from "react";
 import { HiCheck, HiChevronDown, HiOutlineUserCircle } from "react-icons/hi2";

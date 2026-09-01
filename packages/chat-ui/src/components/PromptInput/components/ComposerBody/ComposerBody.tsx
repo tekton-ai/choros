@@ -7,8 +7,8 @@ import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { PlainTextPlugin } from "@lexical/react/LexicalPlainTextPlugin";
 import { LexicalTypeaheadMenuPlugin } from "@lexical/react/LexicalTypeaheadMenuPlugin";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { getClipboardFiles } from "@superset/ui/lib/clipboard-files";
-import { cn } from "@superset/ui/utils";
+import { getClipboardFiles } from "@choros/ui/lib/clipboard-files";
+import { cn } from "@choros/ui/utils";
 import {
 	$createNodeSelection,
 	$createTextNode,

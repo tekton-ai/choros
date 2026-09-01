@@ -4,7 +4,7 @@ import {
 	removePaneFromLayout,
 	type Tab,
 	type WorkspaceState,
-} from "@superset/panes";
+} from "@choros/panes";
 
 export function dropUnavailablePanes<TData>(
 	state: WorkspaceState<TData>,

@@ -2,7 +2,7 @@ import { describe, expect, it } from "bun:test";
 import {
 	createLeakedInputModeReclaimer,
 	KITTY_KEYBOARD_DISARM_SEQUENCE,
-} from "@superset/shared/leaked-input-mode-reclaim";
+} from "@choros/shared/leaked-input-mode-reclaim";
 import type { Terminal as XTerm } from "@xterm/xterm";
 import { installInputModeReclaimer } from "./terminalInputModeReclaimer";
 

@@ -1,13 +1,13 @@
 "use client";
 
 import { Trans, useLingui } from "@lingui/react/macro";
-import { authClient } from "@superset/auth/client";
+import { authClient } from "@choros/auth/client";
 import {
 	DEV_EMAIL,
 	DEV_NAME,
 	DEV_PASSWORD,
-} from "@superset/shared/dev-credentials";
-import { Button } from "@superset/ui/button";
+} from "@choros/shared/dev-credentials";
+import { Button } from "@choros/ui/button";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";

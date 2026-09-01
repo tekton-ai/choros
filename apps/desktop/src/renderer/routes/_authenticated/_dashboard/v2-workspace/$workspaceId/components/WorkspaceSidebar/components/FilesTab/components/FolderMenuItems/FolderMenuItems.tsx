@@ -2,7 +2,7 @@ import { Trans } from "@lingui/react/macro";
 import {
 	DropdownMenuItem,
 	DropdownMenuSeparator,
-} from "@superset/ui/dropdown-menu";
+} from "@choros/ui/dropdown-menu";
 import { FilePlus, FolderPlus, Pencil, Trash2 } from "lucide-react";
 import { PathActions } from "../PathActions";
 

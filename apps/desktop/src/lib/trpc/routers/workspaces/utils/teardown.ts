@@ -4,7 +4,7 @@ import { join } from "node:path";
 import {
 	getCommandShellArgs,
 	getShellEnv,
-} from "@superset/agent-setup/shell-wrappers";
+} from "@choros/agent-setup/shell-wrappers";
 import { buildSafeEnv, sanitizeEnv } from "main/lib/terminal/env";
 import { SUPERSET_DIR_NAME } from "shared/constants";
 import { removeWorktree } from "./git";

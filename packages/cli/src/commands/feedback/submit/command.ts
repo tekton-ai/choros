@@ -8,7 +8,7 @@ import {
 } from "node:fs";
 import os from "node:os";
 import { basename, join } from "node:path";
-import { boolean, CLIError, string } from "@superset/cli-framework";
+import { boolean, CLIError, string } from "@choros/cli-framework";
 import { command } from "../../../lib/command";
 
 const MAX_ATTACHMENT_TOTAL_BYTES = 10 * 1024 * 1024;

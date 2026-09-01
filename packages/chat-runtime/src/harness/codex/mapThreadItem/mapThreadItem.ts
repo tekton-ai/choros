@@ -4,7 +4,7 @@ import type {
 	ToolCall,
 	ToolContent,
 	ToolKind,
-} from "@superset/chat/protocol";
+} from "@choros/chat/protocol";
 import type {
 	CodexCommandAction,
 	CodexFileUpdateChange,

@@ -3,7 +3,7 @@ import {
 	hasPageRef,
 	PAGE_REF_MESSAGE,
 	pageFields,
-} from "@superset/trpc/page-schema";
+} from "@choros/trpc/page-schema";
 import { z } from "zod";
 import { createMcpCaller } from "../../caller";
 import { defineTool } from "../../define-tool";

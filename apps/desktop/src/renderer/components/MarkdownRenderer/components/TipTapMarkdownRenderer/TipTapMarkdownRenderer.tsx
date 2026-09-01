@@ -1,6 +1,6 @@
 import "../../../../styles/hljs-github.css";
 
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { EditorState } from "@tiptap/pm/state";
 import { type Editor, EditorContent, useEditor } from "@tiptap/react";
 import { BubbleMenu } from "@tiptap/react/menus";

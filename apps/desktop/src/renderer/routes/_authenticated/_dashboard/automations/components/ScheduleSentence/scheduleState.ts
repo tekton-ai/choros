@@ -3,7 +3,7 @@ import {
 	matchPreset,
 	type PresetMatch,
 	type Weekday,
-} from "@superset/shared/rrule";
+} from "@choros/shared/rrule";
 
 export type PresetKind = PresetMatch["kind"];
 

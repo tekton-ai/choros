@@ -2,8 +2,8 @@ import "../../styles/hljs-github.css";
 import "./markdown-editor.css";
 
 import { useLingui } from "@lingui/react/macro";
-import { getClipboardFiles } from "@superset/ui/lib/clipboard-files";
-import { cn } from "@superset/ui/utils";
+import { getClipboardFiles } from "@choros/ui/lib/clipboard-files";
+import { cn } from "@choros/ui/utils";
 import { Extension } from "@tiptap/core";
 import { Blockquote } from "@tiptap/extension-blockquote";
 import { Bold } from "@tiptap/extension-bold";

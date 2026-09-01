@@ -3,7 +3,7 @@ import { msg } from "@lingui/core/macro";
 import type {
 	SlackTriggerEvent,
 	TriggerConfigInput,
-} from "@superset/shared/automation-triggers";
+} from "@choros/shared/automation-triggers";
 import type { TriggerMenuEntry } from "../types";
 
 export type SlackConfig = Extract<TriggerConfigInput, { kind: "slack" }>;

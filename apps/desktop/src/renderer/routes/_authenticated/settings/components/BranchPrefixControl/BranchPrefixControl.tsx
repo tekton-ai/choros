@@ -1,17 +1,17 @@
 import { useLingui } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import {
 	type BranchPrefixMode,
 	sanitizeSegment,
-} from "@superset/shared/workspace-launch";
-import { Input } from "@superset/ui/input";
+} from "@choros/shared/workspace-launch";
+import { Input } from "@choros/ui/input";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
+} from "@choros/ui/select";
 import { useEffect, useState } from "react";
 import {
 	BRANCH_PREFIX_MODE_MESSAGES,

@@ -1,5 +1,5 @@
 import type { ChildProcess } from "node:child_process";
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import { TRPCError } from "@trpc/server";
 import type { BrowserWindow, OpenDialogOptions } from "electron";
 import { dialog } from "electron";

@@ -1,7 +1,7 @@
 "use client";
 
 import { Trans } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import {
 	Artifact,
 	ArtifactActions,
@@ -9,34 +9,34 @@ import {
 	ArtifactDescription,
 	ArtifactHeader,
 	ArtifactTitle,
-} from "@superset/ui/ai-elements/artifact";
+} from "@choros/ui/ai-elements/artifact";
 import {
 	Checkpoint,
 	CheckpointIcon,
 	CheckpointTrigger,
-} from "@superset/ui/ai-elements/checkpoint";
-import { CodeBlock } from "@superset/ui/ai-elements/code-block";
+} from "@choros/ui/ai-elements/checkpoint";
+import { CodeBlock } from "@choros/ui/ai-elements/code-block";
 import {
 	Context,
 	ContextContent,
 	ContextContentBody,
 	ContextContentHeader,
 	ContextTrigger,
-} from "@superset/ui/ai-elements/context";
+} from "@choros/ui/ai-elements/context";
 import {
 	InlineCitation,
 	InlineCitationCard,
 	InlineCitationCardBody,
 	InlineCitationCardTrigger,
 	InlineCitationText,
-} from "@superset/ui/ai-elements/inline-citation";
+} from "@choros/ui/ai-elements/inline-citation";
 import {
 	Source,
 	Sources,
 	SourcesContent,
 	SourcesTrigger,
-} from "@superset/ui/ai-elements/sources";
-import { Button } from "@superset/ui/button";
+} from "@choros/ui/ai-elements/sources";
+import { Button } from "@choros/ui/button";
 import { DownloadIcon } from "lucide-react";
 
 import { ComponentCard } from "../../../components/ComponentCard";
@@ -98,7 +98,7 @@ export function AiContentSection() {
 					id: "web.design.aiContentSection.codeBlock",
 					message: "Code Block",
 				})}
-				importPath="@superset/ui/ai-elements/code-block"
+				importPath="@choros/ui/ai-elements/code-block"
 				description={i18n._({
 					id: "web.design.aiContentSection.shikiHighlightedWithOptionalLine",
 					message: "Shiki-highlighted, with optional line numbers",
@@ -119,7 +119,7 @@ export function AiContentSection() {
 					id: "web.design.aiContentSection.sources",
 					message: "Sources",
 				})}
-				importPath="@superset/ui/ai-elements/sources"
+				importPath="@choros/ui/ai-elements/sources"
 			>
 				<Sources className="w-full">
 					<SourcesTrigger count={3} />
@@ -154,7 +154,7 @@ export function AiContentSection() {
 					id: "web.design.aiContentSection.inlineCitation",
 					message: "Inline Citation",
 				})}
-				importPath="@superset/ui/ai-elements/inline-citation"
+				importPath="@choros/ui/ai-elements/inline-citation"
 			>
 				<p className="max-w-sm text-sm text-muted-foreground">
 					<InlineCitation>
@@ -195,7 +195,7 @@ export function AiContentSection() {
 					id: "web.design.aiContentSection.context",
 					message: "Context",
 				})}
-				importPath="@superset/ui/ai-elements/context"
+				importPath="@choros/ui/ai-elements/context"
 				description={i18n._({
 					id: "web.design.aiContentSection.tokenBudgetIndicatorHoverThe",
 					message: "Token budget indicator — hover the percentage",
@@ -221,7 +221,7 @@ export function AiContentSection() {
 					id: "web.design.aiContentSection.checkpoint",
 					message: "Checkpoint",
 				})}
-				importPath="@superset/ui/ai-elements/checkpoint"
+				importPath="@choros/ui/ai-elements/checkpoint"
 			>
 				<Checkpoint className="w-full">
 					<CheckpointIcon />
@@ -238,7 +238,7 @@ export function AiContentSection() {
 					id: "web.design.aiContentSection.artifact",
 					message: "Artifact",
 				})}
-				importPath="@superset/ui/ai-elements/artifact"
+				importPath="@choros/ui/ai-elements/artifact"
 				span
 				bleed
 			>
@@ -284,7 +284,7 @@ export function AiContentSection() {
 					id: "web.design.aiContentSection.notDemoedHere",
 					message: "Not demoed here",
 				})}
-				importPath="@superset/ui/ai-elements/*"
+				importPath="@choros/ui/ai-elements/*"
 				copyable={false}
 				description={i18n._({
 					id: "web.design.aiContentSection.needLiveChatToolCall",

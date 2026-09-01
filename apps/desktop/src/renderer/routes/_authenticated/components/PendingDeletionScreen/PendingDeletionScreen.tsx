@@ -1,8 +1,8 @@
 import {
 	ACCOUNT_DELETION_GRACE_DAYS,
 	COMPANY,
-} from "@superset/shared/constants";
-import { Button } from "@superset/ui/button";
+} from "@choros/shared/constants";
+import { Button } from "@choros/ui/button";
 import { useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { HiOutlineExclamationTriangle } from "react-icons/hi2";

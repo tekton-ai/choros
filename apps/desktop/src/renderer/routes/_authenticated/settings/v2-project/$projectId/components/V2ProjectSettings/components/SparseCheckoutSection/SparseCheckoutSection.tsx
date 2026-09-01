@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/react/macro";
-import { Textarea } from "@superset/ui/textarea";
+import { Textarea } from "@choros/ui/textarea";
 import { useMutation } from "@tanstack/react-query";
 import { TRPCClientError } from "@trpc/client";
 import { useCallback, useEffect, useRef, useState } from "react";

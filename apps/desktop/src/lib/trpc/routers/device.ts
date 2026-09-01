@@ -1,4 +1,4 @@
-import { getHostId } from "@superset/shared/host-info";
+import { getHostId } from "@choros/shared/host-info";
 import { publicProcedure, router } from "..";
 
 export const createDeviceRouter = () => {

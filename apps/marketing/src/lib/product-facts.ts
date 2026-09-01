@@ -1,4 +1,4 @@
-import { COMPANY } from "@superset/shared/constants";
+import { COMPANY } from "@choros/shared/constants";
 
 // Single source of truth: the license and platform claims here are checked against
 // LICENSE.md and the release targets, so keep them in one place. Lives in its own

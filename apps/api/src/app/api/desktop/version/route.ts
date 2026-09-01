@@ -1,5 +1,5 @@
-import { db } from "@superset/db";
-import type { DesktopNotice } from "@superset/shared/desktop-notices";
+import { db } from "@choros/db";
+import type { DesktopNotice } from "@choros/shared/desktop-notices";
 
 const MINIMUM_DESKTOP_VERSION = "1.5.0";
 

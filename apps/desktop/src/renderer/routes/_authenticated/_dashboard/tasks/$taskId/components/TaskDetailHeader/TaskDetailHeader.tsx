@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
+import { Button } from "@choros/ui/button";
 import { HiArrowLeft } from "react-icons/hi2";
 import { LuExternalLink } from "react-icons/lu";
 import type { TaskWithStatus } from "../../../components/TasksView/hooks/useTasksTable";

@@ -8,7 +8,7 @@ import {
 	setSystemTime,
 	test,
 } from "bun:test";
-import * as relaySocketModule from "@superset/workspace-client/relay-socket";
+import * as relaySocketModule from "@choros/workspace-client/relay-socket";
 import type { Terminal as XTerm } from "@xterm/xterm";
 
 // The transport builds on createRelaySocket (partysocket) — reconnection,
@@ -111,7 +111,7 @@ class FakeRelaySocket {
 // createRelaySocket. (auth-client / posthog are deliberately NOT mocked: with a
 // faked socket getToken/ensureFreshJwt never runs, and posthog.capture before
 // init is a harmless no-op — the real modules load fine, as the prior test did.)
-mock.module("@superset/workspace-client/relay-socket", () => ({
+mock.module("@choros/workspace-client/relay-socket", () => ({
 	...relaySocketModule,
 	createRelaySocket: (options: Record<string, unknown>) =>
 		new FakeRelaySocket(options),

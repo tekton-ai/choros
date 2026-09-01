@@ -1,5 +1,5 @@
 {
-	"name": "@superset/trpc",
+	"name": "@choros/trpc",
 	"version": "0.1.0",
 	"private": true,
 	"type": "module",
@@ -80,6 +80,10 @@
 		"@aws-sdk/s3-request-presigner": "3.899.0",
 		"@azure/msal-node": "5.5.0",
 		"@blaxel/core": "0.3.11",
+		"@choros/auth": "workspace:*",
+		"@choros/db": "workspace:*",
+		"@choros/email": "workspace:*",
+		"@choros/shared": "workspace:*",
 		"@googleapis/calendar": "16.0.0",
 		"@googleapis/gmail": "18.0.0",
 		"@linear/sdk": "68.1.1",
@@ -87,10 +91,6 @@
 		"@notionhq/client": "5.25.2",
 		"@octokit/app": "16.1.2",
 		"@slack/web-api": "7.15.0",
-		"@superset/auth": "workspace:*",
-		"@superset/db": "workspace:*",
-		"@superset/email": "workspace:*",
-		"@superset/shared": "workspace:*",
 		"@t3-oss/env-core": "0.13.11",
 		"@trpc/server": "11.16.0",
 		"@upstash/qstash": "2.10.1",
@@ -108,8 +108,8 @@
 		"zod": "4.4.3"
 	},
 	"devDependencies": {
+		"@choros/typescript": "workspace:*",
 		"@microsoft/microsoft-graph-types": "2.43.1",
-		"@superset/typescript": "workspace:*",
 		"@types/node": "24.12.0",
 		"typescript": "6.0.3"
 	}

@@ -1,14 +1,14 @@
 import { dirname } from "node:path";
 import type { NodeWebSocket } from "@hono/node-ws";
 import { trpcServer } from "@hono/trpc-server";
-import type { DeltaChannel } from "@superset/chat/protocol";
-import { parseCursor } from "@superset/chat/protocol";
+import type { DeltaChannel } from "@choros/chat/protocol";
+import { parseCursor } from "@choros/chat/protocol";
 import type {
 	ChatRuntime,
 	HarnessFactory,
 	HarnessRegistry,
 	WsSinkSocket,
-} from "@superset/chat-runtime";
+} from "@choros/chat-runtime";
 import {
 	CodexAdapter,
 	createChatRouter,
@@ -16,7 +16,7 @@ import {
 	createClaudeAdapter,
 	createWsSink,
 	DEFAULT_MIGRATIONS_FOLDER,
-} from "@superset/chat-runtime";
+} from "@choros/chat-runtime";
 import type { Hono, MiddlewareHandler } from "hono";
 import type { HostDb } from "../db";
 import { createResolveCwd } from "./resolveCwd";

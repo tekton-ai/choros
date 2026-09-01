@@ -1,5 +1,5 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { COMPANY } from "@superset/shared/constants";
+import { COMPANY } from "@choros/shared/constants";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { initServerI18n } from "@/app/i18n-server";

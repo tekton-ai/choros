@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import { formatCount, formatTokens, formatUsd } from "../../utils/formatUsage";
 
 const PALETTE = [

@@ -1,6 +1,6 @@
 import { Trans } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
-import { cn } from "@superset/ui/utils";
+import { Button } from "@choros/ui/button";
+import { cn } from "@choros/ui/utils";
 import { HiArrowTopRightOnSquare } from "react-icons/hi2";
 import { OpenInButton } from "renderer/components/OpenInButton";
 import { electronTrpc } from "renderer/lib/electron-trpc";

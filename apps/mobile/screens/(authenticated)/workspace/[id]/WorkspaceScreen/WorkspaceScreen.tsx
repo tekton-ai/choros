@@ -5,9 +5,9 @@ import type {
 	ComposerHandle,
 	ComposerSessionAction,
 	ComposerSessionTab,
-} from "@superset/composer";
-import { i18n } from "@superset/i18n";
-import { errorMessage } from "@superset/i18n/errors";
+} from "@choros/composer";
+import { i18n } from "@choros/i18n";
+import { errorMessage } from "@choros/i18n/errors";
 import { useQueryClient } from "@tanstack/react-query";
 import * as Clipboard from "expo-clipboard";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";

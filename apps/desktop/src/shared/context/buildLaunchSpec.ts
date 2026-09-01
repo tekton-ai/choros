@@ -1,6 +1,6 @@
-import { renderPromptTemplate } from "@superset/shared/agent-prompt-template";
-import type { ResolvedAgentConfig } from "@superset/shared/agent-settings";
-import { WORKSPACE_ATTACHMENTS_DIR } from "@superset/shared/workspace-attachments";
+import { renderPromptTemplate } from "@choros/shared/agent-prompt-template";
+import type { ResolvedAgentConfig } from "@choros/shared/agent-settings";
+import { WORKSPACE_ATTACHMENTS_DIR } from "@choros/shared/workspace-attachments";
 import type {
 	AgentLaunchSpec,
 	ContentPart,

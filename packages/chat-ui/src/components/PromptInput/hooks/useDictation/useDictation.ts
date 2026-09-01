@@ -1,6 +1,6 @@
 "use client";
 
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import { type RefObject, useEffect, useRef, useState } from "react";
 import type { PromptInputDictationError } from "../../types";
 

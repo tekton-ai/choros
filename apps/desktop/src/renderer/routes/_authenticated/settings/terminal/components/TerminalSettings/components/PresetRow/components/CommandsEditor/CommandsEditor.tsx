@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
-import { Input } from "@superset/ui/input";
+import { Button } from "@choros/ui/button";
+import { Input } from "@choros/ui/input";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { HiMiniPlus, HiMiniXMark } from "react-icons/hi2";
 

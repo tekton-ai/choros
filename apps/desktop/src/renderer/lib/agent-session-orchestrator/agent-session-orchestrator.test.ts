@@ -1,5 +1,5 @@
 import { describe, expect, it, mock } from "bun:test";
-import type { AgentLaunchRequest } from "@superset/shared/agent-launch";
+import type { AgentLaunchRequest } from "@choros/shared/agent-launch";
 import type { AgentLaunchTabsAdapter } from "./types";
 
 mock.module("renderer/lib/posthog", () => ({

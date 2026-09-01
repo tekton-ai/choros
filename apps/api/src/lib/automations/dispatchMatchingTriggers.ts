@@ -1,23 +1,23 @@
-import { dbWs } from "@superset/db/client";
+import { dbWs } from "@choros/db/client";
 import {
 	automationEvents,
 	automations,
 	automationTriggers,
 	subscriptions,
-} from "@superset/db/schema";
-import { findProviderIdentity } from "@superset/db/utils";
+} from "@choros/db/schema";
+import { findProviderIdentity } from "@choros/db/utils";
 import {
 	configHasMeScope,
 	type MatchableEvent,
 	resolveMeScopes,
 	triggerMatches,
-} from "@superset/shared/automation-matching";
+} from "@choros/shared/automation-matching";
 import {
 	ACTIVE_SUBSCRIPTION_STATUSES,
 	type PlanTier,
 	planAllowsTriggerKind,
 	requiredPlanForTriggerKind,
-} from "@superset/shared/billing";
+} from "@choros/shared/billing";
 import { Client } from "@upstash/qstash";
 import { and, desc, eq, inArray } from "drizzle-orm";
 import { env } from "@/env";

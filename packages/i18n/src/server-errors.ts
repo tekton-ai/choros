@@ -3,7 +3,7 @@ import { i18n } from "./index";
 // Catalog entries for user-facing server errors. Each entry pairs a stable
 // key with the translation call for it; the extractor reads the i18n._()
 // descriptors, so adding a row here is what puts the key into the catalog.
-// Servers throw these via userError() in @superset/trpc with the SAME key and
+// Servers throw these via userError() in @choros/trpc with the SAME key and
 // the SAME English text as `message` (the untranslated fallback) — keep the
 // two in sync when editing either.
 //

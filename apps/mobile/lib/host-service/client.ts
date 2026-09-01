@@ -1,7 +1,7 @@
 // INTERIM: AppRouter comes from generated dist-types until the wire contract
 // moves to a neutral package — see packages/host-service/docs/interim-router-types.md
-import type { AppRouter } from "@superset/host-service/router";
-import { buildHostRoutingKey } from "@superset/shared/host-routing";
+import type { AppRouter } from "@choros/host-service/router";
+import { buildHostRoutingKey } from "@choros/shared/host-routing";
 import { createTRPCClient, httpLink, type TRPCClient } from "@trpc/client";
 import type { inferRouterOutputs } from "@trpc/server";
 import superjson from "superjson";

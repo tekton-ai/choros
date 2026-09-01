@@ -1,6 +1,6 @@
-import { db } from "@superset/db/client";
-import { members } from "@superset/db/schema";
-import * as authSchema from "@superset/db/schema/auth";
+import { db } from "@choros/db/client";
+import { members } from "@choros/db/schema";
+import * as authSchema from "@choros/db/schema/auth";
 import { and, count, eq, inArray, isNull } from "drizzle-orm";
 
 /**

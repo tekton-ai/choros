@@ -1,4 +1,4 @@
-import type { ExternalApp } from "@superset/local-db";
+import type { ExternalApp } from "@choros/local-db";
 import { useParams } from "@tanstack/react-router";
 import { useCallback, useMemo } from "react";
 import type { IconType } from "react-icons";

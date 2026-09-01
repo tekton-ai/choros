@@ -1,4 +1,4 @@
-import type { OrganizationRole } from "@superset/shared/auth";
+import type { OrganizationRole } from "@choros/shared/auth";
 
 export type TeamMember = {
 	memberId: string;

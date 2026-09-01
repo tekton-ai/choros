@@ -1,4 +1,4 @@
-import type { SlashCommand as SharedSlashCommand } from "@superset/shared/slash-commands";
+import type { SlashCommand as SharedSlashCommand } from "@choros/shared/slash-commands";
 
 export type {
 	SlashCommandEntryKind,
@@ -6,13 +6,13 @@ export type {
 	SlashCommandKind,
 	SlashCommandSource,
 	SlashCommandTrigger,
-} from "@superset/shared/slash-commands";
+} from "@choros/shared/slash-commands";
 export {
 	findSlashCommandByNameOrAlias,
 	getCommandMatchRank,
 	shouldSuppressSlashMenuForCommittedCommand,
 	sortSlashCommandMatches,
-} from "@superset/shared/slash-commands";
+} from "@choros/shared/slash-commands";
 
 export interface ModelOption {
 	id: string;

@@ -1,4 +1,4 @@
-import type { TriggerConfigInput } from "@superset/shared/automation-triggers";
+import type { TriggerConfigInput } from "@choros/shared/automation-triggers";
 import { githubProvider } from "./github/github";
 import { gmailProvider } from "./google/gmail";
 import { googleCalendarProvider } from "./google/googleCalendar";

@@ -3,7 +3,7 @@
 import {
 	FRAME_CHANNEL,
 	type FrameMessage,
-} from "@superset/shared/page-comments-runtime";
+} from "@choros/shared/page-comments-runtime";
 import { useEffect, useRef } from "react";
 
 export function useFramePointerDown(onPointerDown: () => void) {

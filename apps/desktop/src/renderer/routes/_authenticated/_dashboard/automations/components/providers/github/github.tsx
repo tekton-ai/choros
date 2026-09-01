@@ -1,5 +1,5 @@
-import { configHasMeScope } from "@superset/shared/automation-matching";
-import { isEmptyScope } from "@superset/shared/automation-triggers";
+import { configHasMeScope } from "@choros/shared/automation-matching";
+import { isEmptyScope } from "@choros/shared/automation-triggers";
 import { FaGithub } from "react-icons/fa";
 import { env } from "renderer/env.renderer";
 import { ScopeChip } from "../../TriggerSentence/components/ScopeChip";

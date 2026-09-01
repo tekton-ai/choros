@@ -1,4 +1,4 @@
-import type { GitHubStatus } from "@superset/local-db";
+import type { GitHubStatus } from "@choros/local-db";
 import { normalizeGitHubRepoUrl } from "./pull-request-url";
 
 type ExistingPullRequest = NonNullable<GitHubStatus["pr"]>;

@@ -1,13 +1,13 @@
 import { createHash, timingSafeEqual } from "node:crypto";
-import { db } from "@superset/db/client";
+import { db } from "@choros/db/client";
 import {
 	members,
 	organizations,
 	subscriptions,
 	users,
-} from "@superset/db/schema";
-import { ACTIVE_SUBSCRIPTION_STATUSES } from "@superset/shared/billing";
-import { bearerToken } from "@superset/trpc/automation-webhook-secret";
+} from "@choros/db/schema";
+import { ACTIVE_SUBSCRIPTION_STATUSES } from "@choros/shared/billing";
+import { bearerToken } from "@choros/trpc/automation-webhook-secret";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 import { and, count, desc, eq, inArray, isNull, sql } from "drizzle-orm";

@@ -14,13 +14,13 @@ import * as path from "node:path";
 import {
 	getCommandShellArgs,
 	getShellArgs,
-} from "@superset/agent-setup/shell-wrappers";
+} from "@choros/agent-setup/shell-wrappers";
 import {
 	createScanState,
 	SHELLS_WITH_READY_MARKER,
 	type ShellReadyScanState,
 	scanForShellReady,
-} from "@superset/shared/shell-ready-scanner";
+} from "@choros/shared/shell-ready-scanner";
 import { DEFAULT_TERMINAL_SCROLLBACK } from "shared/constants";
 import { raceWithAbort, throwIfAborted } from "../lib/terminal/abort";
 import { buildSafeEnv } from "../lib/terminal/env";
@@ -165,7 +165,7 @@ export class Session {
 	// See ShellReadyState for lifecycle docs.
 	private shellReadyState: ShellReadyState;
 	private shellReadyTimeoutId: ReturnType<typeof setTimeout> | null = null;
-	// OSC 133;A scanner state — shared with v2 host-service via @superset/shared
+	// OSC 133;A scanner state — shared with v2 host-service via @choros/shared
 	private scanState: ShellReadyScanState = createScanState();
 
 	private emulatorWriteQueue: string[] = [];

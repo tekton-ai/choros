@@ -5,7 +5,7 @@ import {
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
+} from "@choros/ui/select";
 import { RefreshCwIcon, XIcon } from "lucide-react";
 import { DEFAULT_DEVICE_PRESET, DEVICE_PRESETS } from "../../constants";
 import type { DeviceToolbarState } from "../../deviceToolbarStore";

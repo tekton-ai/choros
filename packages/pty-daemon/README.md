@@ -1,4 +1,4 @@
-# @superset/pty-daemon
+# @choros/pty-daemon
 
 Long-lived PTY-owning process for the v2 desktop terminal. host-service is a
 client over a Unix socket; routine host-service upgrades don't touch shells.
@@ -8,9 +8,9 @@ Implements [Phase 1](../../apps/desktop/plans/done/20260429-pty-daemon-implement
 [Phase 2](../../apps/desktop/plans/done/20260501-pty-daemon-phase2-implementation.md)
 (fd-handoff so sessions survive daemon-binary upgrades too).
 
-This package is **standalone**: it does not import from `@superset/host-service`
+This package is **standalone**: it does not import from `@choros/host-service`
 or any other workspace package. Host-service consumes only the protocol types
-via `@superset/pty-daemon/protocol`.
+via `@choros/pty-daemon/protocol`.
 
 ## Runtime
 

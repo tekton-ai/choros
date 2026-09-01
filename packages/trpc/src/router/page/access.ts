@@ -1,4 +1,4 @@
-import type { SelectPage } from "@superset/db/schema";
+import type { SelectPage } from "@choros/db/schema";
 import { userError } from "../../i18n-error";
 
 export function assertPageReadable(page: SelectPage, userId: string): void {

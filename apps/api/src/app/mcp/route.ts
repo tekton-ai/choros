@@ -6,7 +6,7 @@ import {
 	MCP_SERVER_VERSION,
 	type McpContext,
 	resolveMcpContext,
-} from "@superset/mcp";
+} from "@choros/mcp";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 import { env } from "@/env";

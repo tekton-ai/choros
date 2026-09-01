@@ -1,9 +1,9 @@
 "use client";
 
 import { Trans } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
-import { Alert, AlertDescription, AlertTitle } from "@superset/ui/alert";
-import { Button } from "@superset/ui/button";
+import { i18n } from "@choros/i18n";
+import { Alert, AlertDescription, AlertTitle } from "@choros/ui/alert";
+import { Button } from "@choros/ui/button";
 import {
 	Empty,
 	EmptyContent,
@@ -11,11 +11,11 @@ import {
 	EmptyHeader,
 	EmptyMedia,
 	EmptyTitle,
-} from "@superset/ui/empty";
-import { Progress } from "@superset/ui/progress";
-import { Skeleton } from "@superset/ui/skeleton";
-import { toast } from "@superset/ui/sonner";
-import { Spinner } from "@superset/ui/spinner";
+} from "@choros/ui/empty";
+import { Progress } from "@choros/ui/progress";
+import { Skeleton } from "@choros/ui/skeleton";
+import { toast } from "@choros/ui/sonner";
+import { Spinner } from "@choros/ui/spinner";
 import { AlertCircleIcon, InboxIcon, TerminalIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -50,7 +50,7 @@ export function FeedbackSection() {
 					id: "web.design.feedbackSection.alert",
 					message: "Alert",
 				})}
-				importPath="@superset/ui/alert"
+				importPath="@choros/ui/alert"
 				span
 			>
 				<div className="w-full space-y-3">
@@ -88,7 +88,7 @@ export function FeedbackSection() {
 					id: "web.design.feedbackSection.toastSonner",
 					message: "Toast (Sonner)",
 				})}
-				importPath="@superset/ui/sonner"
+				importPath="@choros/ui/sonner"
 				description={i18n._({
 					id: "web.design.feedbackSection.toasterIsMountedOnceIn",
 					message: "Toaster is mounted once in the root layout",
@@ -153,10 +153,10 @@ export function FeedbackSection() {
 					id: "web.design.feedbackSection.progressSpinner",
 					message: "Progress · Spinner",
 				})}
-				importPath="@superset/ui/progress"
+				importPath="@choros/ui/progress"
 				description={i18n._({
 					id: "web.design.feedbackSection.alsoSupersetUiSpinner",
-					message: "Also: @superset/ui/spinner",
+					message: "Also: @choros/ui/spinner",
 				})}
 			>
 				<div className="flex w-full max-w-64 flex-col items-center gap-5">
@@ -176,7 +176,7 @@ export function FeedbackSection() {
 					id: "web.design.feedbackSection.skeleton",
 					message: "Skeleton",
 				})}
-				importPath="@superset/ui/skeleton"
+				importPath="@choros/ui/skeleton"
 			>
 				<div className="flex w-full max-w-64 items-center gap-3">
 					<Skeleton className="size-10 shrink-0 rounded-full" />
@@ -192,7 +192,7 @@ export function FeedbackSection() {
 					id: "web.design.feedbackSection.empty",
 					message: "Empty",
 				})}
-				importPath="@superset/ui/empty"
+				importPath="@choros/ui/empty"
 				span
 			>
 				<Empty>

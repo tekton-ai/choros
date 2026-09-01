@@ -1,13 +1,13 @@
-import { db } from "@superset/db/client";
+import { db } from "@choros/db/client";
 import {
 	organizations,
 	submittedPrompts,
 	subscriptions,
 	users,
-} from "@superset/db/schema";
-import { FeedbackReportEmail } from "@superset/email/emails/feedback-report";
-import { ACTIVE_SUBSCRIPTION_STATUSES } from "@superset/shared/billing";
-import { COMPANY } from "@superset/shared/constants";
+} from "@choros/db/schema";
+import { FeedbackReportEmail } from "@choros/email/emails/feedback-report";
+import { ACTIVE_SUBSCRIPTION_STATUSES } from "@choros/shared/billing";
+import { COMPANY } from "@choros/shared/constants";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 import { and, eq, inArray } from "drizzle-orm";

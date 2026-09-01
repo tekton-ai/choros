@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { chmodSync, existsSync } from "node:fs";
 import { join } from "node:path";
-import * as schema from "@superset/local-db";
+import * as schema from "@choros/local-db";
 
 import Database from "better-sqlite3";
 import { drizzle } from "drizzle-orm/better-sqlite3";

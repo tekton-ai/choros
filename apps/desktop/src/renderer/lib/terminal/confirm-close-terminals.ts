@@ -1,5 +1,5 @@
-import { alert } from "@superset/ui/atoms/Alert";
-import type { workspaceTrpc } from "@superset/workspace-client";
+import { alert } from "@choros/ui/atoms/Alert";
+import type { workspaceTrpc } from "@choros/workspace-client";
 import { hasTerminalBackgroundIntent } from "renderer/lib/terminal/terminal-background-intents";
 import { useTerminalCloseConfirmStore } from "renderer/stores/terminal-close-confirm/store";
 

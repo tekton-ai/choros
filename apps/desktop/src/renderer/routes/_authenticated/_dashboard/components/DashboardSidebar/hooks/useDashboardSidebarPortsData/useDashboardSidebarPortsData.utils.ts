@@ -1,5 +1,5 @@
-import { buildHostRoutingKey } from "@superset/shared/host-routing";
-import type { PortChangedPayload } from "@superset/workspace-client";
+import { buildHostRoutingKey } from "@choros/shared/host-routing";
+import type { PortChangedPayload } from "@choros/workspace-client";
 import type { DetectedPort } from "shared/types";
 import type { DashboardSidebarWorkspaceHostType } from "../../types";
 

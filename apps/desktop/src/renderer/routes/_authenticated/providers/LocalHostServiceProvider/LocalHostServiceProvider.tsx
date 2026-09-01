@@ -1,4 +1,4 @@
-import { reconnectEventBusIfDown } from "@superset/workspace-client";
+import { reconnectEventBusIfDown } from "@choros/workspace-client";
 import {
 	createContext,
 	type ReactNode,

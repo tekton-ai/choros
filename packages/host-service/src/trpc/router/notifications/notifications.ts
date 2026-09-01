@@ -1,4 +1,4 @@
-import type { AgentIdentity } from "@superset/shared/agent-identity";
+import type { AgentIdentity } from "@choros/shared/agent-identity";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
 import { terminalSessions, workspaces } from "../../../db/schema";

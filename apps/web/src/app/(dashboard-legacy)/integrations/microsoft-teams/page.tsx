@@ -1,11 +1,11 @@
-import { Badge } from "@superset/ui/badge";
+import { Badge } from "@choros/ui/badge";
 import {
 	Card,
 	CardContent,
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from "@superset/ui/card";
+} from "@choros/ui/card";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 import { BsMicrosoftTeams } from "react-icons/bs";

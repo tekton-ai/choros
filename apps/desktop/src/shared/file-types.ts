@@ -3,10 +3,10 @@
  * Used by both main and renderer processes.
  */
 
-import { getFileExtension, isVideoFile } from "@superset/shared/media-files";
+import { getFileExtension, isVideoFile } from "@choros/shared/media-files";
 
 // Re-exported so renderer/main code can keep importing extension helpers from
-// `shared/file-types`; the canonical definitions live in `@superset/shared`.
+// `shared/file-types`; the canonical definitions live in `@choros/shared`.
 export { getFileExtension, isVideoFile };
 
 /** Supported image extensions */

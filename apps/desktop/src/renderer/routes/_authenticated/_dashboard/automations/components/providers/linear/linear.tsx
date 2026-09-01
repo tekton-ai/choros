@@ -1,6 +1,6 @@
 import { msg } from "@lingui/core/macro";
-import { i18n } from "@superset/i18n";
-import { isEmptyScope } from "@superset/shared/automation-triggers";
+import { i18n } from "@choros/i18n";
+import { isEmptyScope } from "@choros/shared/automation-triggers";
 import { SiLinear } from "react-icons/si";
 import { ScopeChip } from "../../TriggerSentence/components/ScopeChip";
 import { Sentence } from "../components/Sentence";

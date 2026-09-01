@@ -1,10 +1,10 @@
-import { db } from "@superset/db/client";
+import { db } from "@choros/db/client";
 import {
 	getChannel,
 	getChannelMessage,
 	getGraphAccessToken,
 	graphClient,
-} from "@superset/trpc/integrations/microsoft-teams";
+} from "@choros/trpc/integrations/microsoft-teams";
 
 import {
 	type IngestOutcome,

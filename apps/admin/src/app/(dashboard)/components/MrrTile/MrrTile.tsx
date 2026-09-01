@@ -5,15 +5,15 @@ import {
 	type ChartConfig,
 	ChartContainer,
 	ChartTooltip,
-} from "@superset/ui/chart";
+} from "@choros/ui/chart";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/select";
+import { cn } from "@choros/ui/utils";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { Area, AreaChart, XAxis, YAxis } from "recharts";

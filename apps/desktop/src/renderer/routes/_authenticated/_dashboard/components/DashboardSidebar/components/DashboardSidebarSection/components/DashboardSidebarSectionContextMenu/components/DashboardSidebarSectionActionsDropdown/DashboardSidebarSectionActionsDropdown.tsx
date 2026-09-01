@@ -3,7 +3,7 @@ import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
+} from "@choros/ui/dropdown-menu";
 import { LuEllipsis } from "react-icons/lu";
 import type { DashboardSidebarSectionActionsProps } from "../../types";
 import { SectionActionsMenuItems } from "../SectionActionsMenuItems";

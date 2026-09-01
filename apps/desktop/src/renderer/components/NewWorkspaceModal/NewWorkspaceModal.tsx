@@ -1,17 +1,17 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { errorMessage } from "@superset/i18n/errors";
+import { errorMessage } from "@choros/i18n/errors";
 import {
 	PromptInputProvider,
 	usePromptInputController,
-} from "@superset/ui/ai-elements/prompt-input";
+} from "@choros/ui/ai-elements/prompt-input";
 import {
 	Dialog,
 	DialogContent,
 	DialogDescription,
 	DialogHeader,
 	DialogTitle,
-} from "@superset/ui/dialog";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/dialog";
+import { toast } from "@choros/ui/sonner";
 import { useEffect, useRef } from "react";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { useOpenProject } from "renderer/react-query/projects";

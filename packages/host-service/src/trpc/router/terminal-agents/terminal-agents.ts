@@ -1,7 +1,7 @@
 import {
 	type AgentDefinitionId,
 	BUILTIN_AGENT_IDS,
-} from "@superset/shared/agent-catalog";
+} from "@choros/shared/agent-catalog";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import type { HostDb } from "../../../db";

@@ -1,13 +1,13 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { LOCALE_LABELS, SUPPORTED_LOCALES } from "@superset/i18n";
+import { LOCALE_LABELS, SUPPORTED_LOCALES } from "@choros/i18n";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/select";
+import { toast } from "@choros/ui/sonner";
 import { cloudTrpc } from "renderer/lib/cloud-trpc";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { HighlightText } from "renderer/routes/_authenticated/settings/components/HighlightText";

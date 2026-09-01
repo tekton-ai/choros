@@ -5,9 +5,9 @@ import {
 	setupAgentIntegrations,
 	writeSharedDisabledAgentIds,
 	writeSharedDisabledSkillIds,
-} from "@superset/agent-setup";
-import { i18n, initI18nAsync } from "@superset/i18n";
-import { settings } from "@superset/local-db";
+} from "@choros/agent-setup";
+import { i18n, initI18nAsync } from "@choros/i18n";
+import { settings } from "@choros/local-db";
 import { app, dialog, Notification, net, protocol, session } from "electron";
 import { makeAppSetup } from "lib/electron-app/factories/app/setup";
 import {
@@ -544,7 +544,7 @@ if (!gotTheLock) {
 		);
 
 		try {
-			// The vite build copies @superset/agent-setup's templates (plus the
+			// The vite build copies @choros/agent-setup's templates (plus the
 			// bundled Claude plugin) next to this bundle; see vite/helpers.ts.
 			setAgentSetupTemplatesDir(path.join(__dirname, "templates"));
 			const settingsRow = localDb.select().from(settings).get();

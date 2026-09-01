@@ -1,7 +1,7 @@
-import { CLIError } from "@superset/cli-framework";
-import type { AppRouter as HostServiceRouter } from "@superset/host-service/trpc";
-import { getHostId } from "@superset/shared/host-info";
-import { buildHostRoutingKey } from "@superset/shared/host-routing";
+import { CLIError } from "@choros/cli-framework";
+import type { AppRouter as HostServiceRouter } from "@choros/host-service/trpc";
+import { getHostId } from "@choros/shared/host-info";
+import { buildHostRoutingKey } from "@choros/shared/host-routing";
 import { createTRPCClient, httpBatchLink } from "@trpc/client";
 import SuperJSON from "superjson";
 import type { ApiClient } from "../api-client";

@@ -1,4 +1,4 @@
-import type { AgentModelOption } from "@superset/shared/agent-models";
+import type { AgentModelOption } from "@choros/shared/agent-models";
 import {
 	Select,
 	SelectContent,
@@ -8,7 +8,7 @@ import {
 	SelectSeparator,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
+} from "@choros/ui/select";
 import { groupModelOptions } from "./groupModelOptions";
 
 // Radix Select reserves "" for clearing, so "Default" needs a sentinel.

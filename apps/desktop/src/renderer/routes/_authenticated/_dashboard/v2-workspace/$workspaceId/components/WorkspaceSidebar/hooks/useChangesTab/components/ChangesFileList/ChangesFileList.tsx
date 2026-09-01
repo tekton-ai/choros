@@ -1,8 +1,8 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
-import { OverflowFadeContainer } from "@superset/ui/overflow-fade-container";
+import { i18n } from "@choros/i18n";
+import { OverflowFadeContainer } from "@choros/ui/overflow-fade-container";
 import { memo, useMemo } from "react";
 import type { ChangesetFile } from "renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/useChangeset";
 import type { ChangesViewMode } from "renderer/routes/_authenticated/providers/CollectionsProvider/dashboardSidebarLocal/schema";

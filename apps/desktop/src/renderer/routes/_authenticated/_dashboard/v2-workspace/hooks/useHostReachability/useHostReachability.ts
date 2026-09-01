@@ -1,5 +1,5 @@
-import { i18n } from "@superset/i18n";
-import type { HostConnectionStatus } from "@superset/workspace-client";
+import { i18n } from "@choros/i18n";
+import type { HostConnectionStatus } from "@choros/workspace-client";
 import { useCallback, useEffect, useMemo, useSyncExternalStore } from "react";
 import { useDelayElapsed } from "renderer/hooks/useDelayElapsed";
 import { getHostEventBus } from "renderer/lib/host-event-bus";

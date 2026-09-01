@@ -5,14 +5,14 @@ import {
 	getAgentSetupTemplatesDir,
 	setAgentSetupTemplatesDir,
 	setupAgentIntegrations,
-} from "@superset/agent-setup";
+} from "@choros/agent-setup";
 
 /**
  * Locates the agent-setup template assets for this deployment. The CLI
  * tarball copies them to lib/agent-templates next to the host-service bundle
  * (see packages/cli/scripts/build-dist.ts); an env override exists for
  * custom launchers, mirroring SUPERSET_PTY_DAEMON_SCRIPT_PATH. When running
- * from TS source neither exists and @superset/agent-setup falls back to its
+ * from TS source neither exists and @choros/agent-setup falls back to its
  * in-repo templates.
  */
 function resolveAgentTemplatesDir(): string | undefined {

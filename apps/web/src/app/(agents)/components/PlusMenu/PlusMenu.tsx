@@ -4,7 +4,7 @@ import { useLingui } from "@lingui/react/macro";
 import {
 	PromptInputButton,
 	usePromptInputAttachments,
-} from "@superset/ui/ai-elements/prompt-input";
+} from "@choros/ui/ai-elements/prompt-input";
 import { PaperclipIcon, PlusIcon } from "lucide-react";
 import { ResponsiveDropdown } from "../ResponsiveDropdown";
 

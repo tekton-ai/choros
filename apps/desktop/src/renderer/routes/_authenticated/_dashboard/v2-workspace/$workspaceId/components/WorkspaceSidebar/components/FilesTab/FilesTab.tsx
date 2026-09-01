@@ -10,8 +10,8 @@ import {
 	FileTree as PierreFileTree,
 	useFileTree as usePierreFileTree,
 } from "@pierre/trees/react";
-import type { AppRouter } from "@superset/host-service";
-import { workspaceTrpc } from "@superset/workspace-client";
+import type { AppRouter } from "@choros/host-service";
+import { workspaceTrpc } from "@choros/workspace-client";
 import type { inferRouterOutputs } from "@trpc/server";
 import {
 	FilePlus,

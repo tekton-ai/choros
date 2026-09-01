@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
+import { Button } from "@choros/ui/button";
 import { useNavigate } from "@tanstack/react-router";
 import { SiLinear } from "react-icons/si";
 

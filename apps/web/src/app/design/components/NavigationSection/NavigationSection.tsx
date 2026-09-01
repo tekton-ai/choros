@@ -1,13 +1,13 @@
 "use client";
 
 import { Trans } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import {
 	Accordion,
 	AccordionContent,
 	AccordionItem,
 	AccordionTrigger,
-} from "@superset/ui/accordion";
+} from "@choros/ui/accordion";
 import {
 	Breadcrumb,
 	BreadcrumbEllipsis,
@@ -16,13 +16,13 @@ import {
 	BreadcrumbList,
 	BreadcrumbPage,
 	BreadcrumbSeparator,
-} from "@superset/ui/breadcrumb";
-import { Button } from "@superset/ui/button";
+} from "@choros/ui/breadcrumb";
+import { Button } from "@choros/ui/button";
 import {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
-} from "@superset/ui/collapsible";
+} from "@choros/ui/collapsible";
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -30,7 +30,7 @@ import {
 	NavigationMenuLink,
 	NavigationMenuList,
 	NavigationMenuTrigger,
-} from "@superset/ui/navigation-menu";
+} from "@choros/ui/navigation-menu";
 import {
 	Pagination,
 	PaginationContent,
@@ -39,8 +39,8 @@ import {
 	PaginationLink,
 	PaginationNext,
 	PaginationPrevious,
-} from "@superset/ui/pagination";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@superset/ui/tabs";
+} from "@choros/ui/pagination";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@choros/ui/tabs";
 import { ChevronsUpDownIcon } from "lucide-react";
 
 import { ComponentCard } from "../ComponentCard";
@@ -65,7 +65,7 @@ export function NavigationSection() {
 					id: "web.design.navigationSection.tabs",
 					message: "Tabs",
 				})}
-				importPath="@superset/ui/tabs"
+				importPath="@choros/ui/tabs"
 			>
 				<Tabs defaultValue="terminal" className="w-full max-w-72">
 					<TabsList className="w-full">
@@ -111,7 +111,7 @@ export function NavigationSection() {
 					id: "web.design.navigationSection.breadcrumb",
 					message: "Breadcrumb",
 				})}
-				importPath="@superset/ui/breadcrumb"
+				importPath="@choros/ui/breadcrumb"
 			>
 				<Breadcrumb>
 					<BreadcrumbList>
@@ -149,7 +149,7 @@ export function NavigationSection() {
 					id: "web.design.navigationSection.pagination",
 					message: "Pagination",
 				})}
-				importPath="@superset/ui/pagination"
+				importPath="@choros/ui/pagination"
 			>
 				<Pagination>
 					<PaginationContent>
@@ -179,7 +179,7 @@ export function NavigationSection() {
 					id: "web.design.navigationSection.navigationMenu",
 					message: "Navigation Menu",
 				})}
-				importPath="@superset/ui/navigation-menu"
+				importPath="@choros/ui/navigation-menu"
 			>
 				<NavigationMenu>
 					<NavigationMenuList>
@@ -234,7 +234,7 @@ export function NavigationSection() {
 					id: "web.design.navigationSection.accordion",
 					message: "Accordion",
 				})}
-				importPath="@superset/ui/accordion"
+				importPath="@choros/ui/accordion"
 			>
 				<Accordion type="single" collapsible className="w-full max-w-72">
 					<AccordionItem value="worktrees">
@@ -270,7 +270,7 @@ export function NavigationSection() {
 					id: "web.design.navigationSection.collapsible",
 					message: "Collapsible",
 				})}
-				importPath="@superset/ui/collapsible"
+				importPath="@choros/ui/collapsible"
 			>
 				<Collapsible className="w-full max-w-72">
 					<div className="flex items-center justify-between">

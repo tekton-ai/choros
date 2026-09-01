@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react-native";
 import type { ReactElement } from "react";
 import {

@@ -1,9 +1,9 @@
 import { useLingui } from "@lingui/react/macro";
-import type { RendererContext } from "@superset/panes";
-import { FEATURE_FLAGS } from "@superset/shared/constants";
-import { toast } from "@superset/ui/sonner";
-import { cn } from "@superset/ui/utils";
-import { workspaceTrpc } from "@superset/workspace-client";
+import type { RendererContext } from "@choros/panes";
+import { FEATURE_FLAGS } from "@choros/shared/constants";
+import { toast } from "@choros/ui/sonner";
+import { cn } from "@choros/ui/utils";
+import { workspaceTrpc } from "@choros/workspace-client";
 import "@xterm/xterm/css/xterm.css";
 import { useFeatureFlagEnabled } from "posthog-js/react";
 import {

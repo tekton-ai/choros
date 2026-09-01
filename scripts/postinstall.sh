@@ -20,4 +20,4 @@ if [ -n "$CI" ]; then
 fi
 
 # Install native dependencies for desktop app
-bun run --filter=@superset/desktop install:deps
+bun run --filter=@choros/desktop install:deps

@@ -1,8 +1,8 @@
 import type {
 	AgentDefinitionId,
 	AgentIdentityId,
-} from "@superset/shared/agent-catalog";
-import type { BranchPrefixMode } from "@superset/shared/workspace-launch";
+} from "@choros/shared/agent-catalog";
+import type { BranchPrefixMode } from "@choros/shared/workspace-launch";
 import { sql } from "drizzle-orm";
 import {
 	index,
@@ -296,7 +296,7 @@ export const workspaceTagSettings = sqliteTable(
 /**
  * Plain-string tags on workspaces — no tag entity, no tag ids. `tag` is
  * stored already-normalized (trimmed + lowercased, see
- * `@superset/shared/workspace-tags`); sidebar folders derive from these
+ * `@choros/shared/workspace-tags`); sidebar folders derive from these
  * rows, so any actor that can tag a workspace can file it.
  */
 export const workspaceTags = sqliteTable(

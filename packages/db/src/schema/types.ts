@@ -1,8 +1,8 @@
-import type { MatchableEvent } from "@superset/shared/automation-matching";
+import type { MatchableEvent } from "@choros/shared/automation-matching";
 import type {
 	TriggerConfigInput,
 	TriggerScope as TriggerConfigScope,
-} from "@superset/shared/automation-triggers";
+} from "@choros/shared/automation-triggers";
 
 /**
  * Everything `dispatchMatchingTriggers` needs for one automation_events row:

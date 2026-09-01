@@ -1,4 +1,4 @@
-import { middleware } from "@superset/cli-framework";
+import { middleware } from "@choros/cli-framework";
 import { trackCommandInvoked } from "../lib/analytics";
 import { resolveAuth } from "../lib/resolve-auth";
 

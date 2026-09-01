@@ -1,5 +1,5 @@
 import * as Sentry from "@sentry/cloudflare";
-import { RELAY_CLOSE } from "@superset/shared/tunnel-v2-protocol";
+import { RELAY_CLOSE } from "@choros/shared/tunnel-v2-protocol";
 import type { Context, MiddlewareHandler } from "hono";
 import { Hono } from "hono";
 import { cors } from "hono/cors";

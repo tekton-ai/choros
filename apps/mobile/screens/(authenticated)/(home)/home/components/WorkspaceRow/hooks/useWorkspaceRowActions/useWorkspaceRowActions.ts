@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import { prompt } from "@superset/alert-prompt";
+import { prompt } from "@choros/alert-prompt";
 import * as Clipboard from "expo-clipboard";
 import { Alert, Share } from "react-native";
 import { useCloudWorkspaceActions } from "@/hooks/useCloudWorkspaceActions";

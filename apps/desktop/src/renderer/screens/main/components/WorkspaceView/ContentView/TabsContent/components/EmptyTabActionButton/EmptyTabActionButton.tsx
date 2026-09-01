@@ -1,5 +1,5 @@
-import { Button } from "@superset/ui/button";
-import { Kbd, KbdGroup } from "@superset/ui/kbd";
+import { Button } from "@choros/ui/button";
+import { Kbd, KbdGroup } from "@choros/ui/kbd";
 import type { IconType } from "react-icons";
 
 interface EmptyTabActionButtonProps {

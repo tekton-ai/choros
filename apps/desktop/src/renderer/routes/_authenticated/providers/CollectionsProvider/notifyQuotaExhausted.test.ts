@@ -1,5 +1,5 @@
 import { afterAll, describe, expect, it } from "bun:test";
-import { toast } from "@superset/ui/sonner";
+import { toast } from "@choros/ui/sonner";
 
 interface ToastCall {
 	level: "warning" | "success";

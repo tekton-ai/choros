@@ -1,7 +1,7 @@
 import {
 	ensureTeamsSubscriptions,
 	type SubscriptionKey,
-} from "@superset/trpc/integrations/microsoft-teams";
+} from "@choros/trpc/integrations/microsoft-teams";
 
 import { verifyQstashRequest } from "@/lib/verifyQstash";
 import { handleNotification } from "../notify/handleNotification";

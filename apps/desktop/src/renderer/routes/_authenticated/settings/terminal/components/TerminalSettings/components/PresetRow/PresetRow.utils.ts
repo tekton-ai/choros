@@ -1,6 +1,6 @@
 import { msg } from "@lingui/core/macro";
-import { i18n } from "@superset/i18n";
-import type { ExecutionMode } from "@superset/local-db/schema/zod";
+import { i18n } from "@choros/i18n";
+import type { ExecutionMode } from "@choros/local-db/schema/zod";
 
 export function getPresetModeLabel(
 	modeValue: ExecutionMode,

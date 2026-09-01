@@ -1,8 +1,8 @@
-import { errorMessage, rawErrorMessage } from "@superset/i18n/errors";
-import { Button } from "@superset/ui/button";
-import { Card } from "@superset/ui/card";
-import { Input } from "@superset/ui/input";
-import { toast } from "@superset/ui/sonner";
+import { errorMessage, rawErrorMessage } from "@choros/i18n/errors";
+import { Button } from "@choros/ui/button";
+import { Card } from "@choros/ui/card";
+import { Input } from "@choros/ui/input";
+import { toast } from "@choros/ui/sonner";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { type FormEvent, type ReactNode, useState } from "react";
 import {

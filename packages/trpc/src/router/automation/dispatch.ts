@@ -1,5 +1,5 @@
-import { mintUserJwt } from "@superset/auth/server";
-import { dbWs } from "@superset/db/client";
+import { mintUserJwt } from "@choros/auth/server";
+import { dbWs } from "@choros/db/client";
 import {
 	automationEvents,
 	automationRuns,
@@ -8,13 +8,13 @@ import {
 	users,
 	v2Hosts,
 	v2UsersHosts,
-} from "@superset/db/schema";
-import { buildHostRoutingKey } from "@superset/shared/host-routing";
+} from "@choros/db/schema";
+import { buildHostRoutingKey } from "@choros/shared/host-routing";
 import {
 	deduplicateBranchName,
 	sanitizeBranchNameWithMaxLength,
 	slugifyForBranch,
-} from "@superset/shared/workspace-launch";
+} from "@choros/shared/workspace-launch";
 import { and, eq, sql } from "drizzle-orm";
 import { fetchRelayPresence } from "../../lib/relay-presence";
 import { RelayDispatchError, relayMutation } from "./relay-client";

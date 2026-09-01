@@ -20,7 +20,7 @@ export const env = createEnv({
 
 	emptyStringAsUndefined: true,
 	// IMPORTANT: Do not re-enable import-time validation here.
-	// `@superset/db` is imported transitively by packages that run in environments
+	// `@choros/db` is imported transitively by packages that run in environments
 	// where DB env vars are intentionally absent (e.g. desktop host bundles).
 	// Validating on import causes those runtimes to crash even when no DB query is
 	// executed. Validation must stay deferred until actual DB client usage.

@@ -5,7 +5,7 @@ import {
 	ContextMenuSeparator,
 	ContextMenuShortcut,
 	ContextMenuTrigger,
-} from "@superset/ui/context-menu";
+} from "@choros/ui/context-menu";
 import type { ReactNode } from "react";
 import {
 	LuClipboard,

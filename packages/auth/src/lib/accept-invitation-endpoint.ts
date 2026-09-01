@@ -1,10 +1,10 @@
-import { db, dbWs } from "@superset/db/client";
+import { db, dbWs } from "@choros/db/client";
 import {
 	invitations,
 	members,
 	users,
 	verifications,
-} from "@superset/db/schema/auth";
+} from "@choros/db/schema/auth";
 import type { BetterAuthPlugin } from "better-auth";
 import { createAuthEndpoint } from "better-auth/api";
 import { and, eq, sql } from "drizzle-orm";

@@ -1,8 +1,8 @@
 import { randomUUID } from "node:crypto";
 import { join } from "node:path";
 import * as Sentry from "@sentry/electron/main";
-import { i18n } from "@superset/i18n";
-import { workspaces, worktrees } from "@superset/local-db";
+import { i18n } from "@choros/i18n";
+import { workspaces, worktrees } from "@choros/local-db";
 import { eq } from "drizzle-orm";
 import type { BrowserWindow } from "electron";
 import { app, Notification, nativeTheme } from "electron";

@@ -6,8 +6,8 @@ import {
 	parseDiffFromFile,
 	parsePatchFiles,
 } from "@pierre/diffs";
-import type { AppRouter } from "@superset/host-service";
-import { useWorkspaceClient, workspaceTrpc } from "@superset/workspace-client";
+import type { AppRouter } from "@choros/host-service";
+import { useWorkspaceClient, workspaceTrpc } from "@choros/workspace-client";
 import { useQueries } from "@tanstack/react-query";
 import { getQueryKey } from "@trpc/react-query";
 import type { inferRouterInputs } from "@trpc/server";

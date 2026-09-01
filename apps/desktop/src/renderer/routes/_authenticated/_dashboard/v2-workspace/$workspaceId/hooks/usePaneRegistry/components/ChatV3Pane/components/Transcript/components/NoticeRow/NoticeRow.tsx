@@ -1,5 +1,5 @@
-import type { Notice } from "@superset/chat/protocol";
-import { cn } from "@superset/ui/utils";
+import type { Notice } from "@choros/chat/protocol";
+import { cn } from "@choros/ui/utils";
 
 export function NoticeRow({ item }: { item: Notice }) {
 	return (

@@ -1,4 +1,4 @@
-import type { RouterOutputs } from "@superset/trpc";
+import type { RouterOutputs } from "@choros/trpc";
 
 /** Recently-viewed entries resolve by id or slug, so fetch a wide page. */
 export const TASK_LOOKUP_LIMIT = 200;

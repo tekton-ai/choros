@@ -1,4 +1,4 @@
-import type { SentryConfig } from "@superset/db/schema";
+import type { SentryConfig } from "@choros/db/schema";
 import { activeConnection } from "../connections";
 import type { TriggerOptionSource } from "../trigger-options";
 import { fetchSentryProjects, getSentryAccessToken, SENTRY_URL } from "./utils";

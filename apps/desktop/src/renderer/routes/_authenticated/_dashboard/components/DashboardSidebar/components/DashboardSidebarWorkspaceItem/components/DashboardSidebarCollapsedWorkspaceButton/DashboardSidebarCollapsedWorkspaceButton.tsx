@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { type ComponentPropsWithoutRef, forwardRef } from "react";
 import type { ActivePaneStatus } from "shared/tabs-types";
 import type {

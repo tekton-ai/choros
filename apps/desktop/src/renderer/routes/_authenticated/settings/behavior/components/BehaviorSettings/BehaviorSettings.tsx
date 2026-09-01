@@ -1,14 +1,14 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { FileOpenMode } from "@superset/local-db";
-import { Label } from "@superset/ui/label";
+import type { FileOpenMode } from "@choros/local-db";
+import { Label } from "@choros/ui/label";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
-import { Switch } from "@superset/ui/switch";
+} from "@choros/ui/select";
+import { Switch } from "@choros/ui/switch";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { HighlightText } from "renderer/routes/_authenticated/settings/components/HighlightText";
 import { useSettingsSearchQuery } from "renderer/stores/settings-state";

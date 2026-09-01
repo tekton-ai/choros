@@ -1,7 +1,7 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
-import { cn } from "@superset/ui/utils";
+import { Button } from "@choros/ui/button";
+import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
+import { cn } from "@choros/ui/utils";
 import { LuListFilter } from "react-icons/lu";
 import { ProjectFilter } from "renderer/routes/_authenticated/_dashboard/components/ProjectFilter";
 import { WorkItemsSearch } from "renderer/routes/_authenticated/_dashboard/components/WorkItemsSearch";

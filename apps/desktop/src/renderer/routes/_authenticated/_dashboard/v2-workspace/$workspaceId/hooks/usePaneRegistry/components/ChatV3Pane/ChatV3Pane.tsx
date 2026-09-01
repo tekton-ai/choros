@@ -1,4 +1,4 @@
-import type { UserContent } from "@superset/chat/protocol";
+import type { UserContent } from "@choros/chat/protocol";
 import { useCallback, useState } from "react";
 import type { HarnessId } from "./components/NewSessionView";
 import { NewSessionView } from "./components/NewSessionView";

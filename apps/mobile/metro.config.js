@@ -33,13 +33,13 @@ config.resolver.unstable_enablePackageExports = true;
 
 // Resolve local Expo Modules (modules/ dir)
 config.resolver.extraNodeModules = {
-	"@superset/alert-prompt": path.resolve(projectRoot, "modules/alert-prompt"),
-	"@superset/composer": path.resolve(projectRoot, "modules/composer"),
-	"@superset/attachments-sheet": path.resolve(
+	"@choros/alert-prompt": path.resolve(projectRoot, "modules/alert-prompt"),
+	"@choros/composer": path.resolve(projectRoot, "modules/composer"),
+	"@choros/attachments-sheet": path.resolve(
 		projectRoot,
 		"modules/attachments-sheet",
 	),
-	"@superset/paste-input": path.resolve(projectRoot, "modules/paste-input"),
+	"@choros/paste-input": path.resolve(projectRoot, "modules/paste-input"),
 };
 
 // Worklets Bundle Mode (react-native-streamdown): resolves the generated

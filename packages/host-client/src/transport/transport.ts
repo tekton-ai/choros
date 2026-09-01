@@ -5,7 +5,7 @@ import SuperJSON from "superjson";
  * relay (`/hosts/:routingKey/...`). The relay proxies tRPC as plain HTTP and
  * WebSockets as raw sockets, so this is fetch + SuperJSON, not a tRPC client:
  * consumers type the boundary via
- * `import type { AppRouter } from "@superset/host-service/router"` instead of
+ * `import type { AppRouter } from "@choros/host-service/router"` instead of
  * dragging host-only modules into their type-check.
  *
  * Environment and auth stay app-owned and are injected via HostClientConfig —

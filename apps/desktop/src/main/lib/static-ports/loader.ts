@@ -1,6 +1,6 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { parseStaticPortsConfig } from "@superset/port-scanner";
+import { parseStaticPortsConfig } from "@choros/port-scanner";
 import { PORTS_FILE_NAME, PROJECT_SUPERSET_DIR_NAME } from "shared/constants";
 import type { StaticPortsResult } from "shared/types";
 

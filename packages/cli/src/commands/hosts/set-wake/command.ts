@@ -1,4 +1,4 @@
-import { boolean, CLIError, positional, string } from "@superset/cli-framework";
+import { boolean, CLIError, positional, string } from "@choros/cli-framework";
 import { command } from "../../../lib/command";
 import { resolveHost } from "../../../lib/host/resolve";
 import { resolveOrganizationFromContext } from "../../../lib/resolve-org";

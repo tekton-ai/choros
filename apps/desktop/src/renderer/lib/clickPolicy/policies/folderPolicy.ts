@@ -1,6 +1,6 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import type {
 	FolderLinkAction,
 	FolderTierMap,

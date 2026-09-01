@@ -1,7 +1,7 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
-import { formatNumber } from "@superset/i18n/format";
-import { COMPANY } from "@superset/shared/constants";
+import { i18n } from "@choros/i18n";
+import { formatNumber } from "@choros/i18n/format";
+import { COMPANY } from "@choros/shared/constants";
 import type { Metadata } from "next";
 import { Silkscreen } from "next/font/google";
 import Link from "next/link";

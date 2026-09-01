@@ -5,7 +5,7 @@ import {
 	type PaneRegistry,
 	type WorkspaceProps,
 	type WorkspaceStore,
-} from "@superset/panes";
+} from "@choros/panes";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import { useV2UserPreferences } from "renderer/hooks/useV2UserPreferences";
 import { useHotkey } from "renderer/hotkeys";

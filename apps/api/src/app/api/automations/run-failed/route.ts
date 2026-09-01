@@ -1,6 +1,6 @@
 import * as Sentry from "@sentry/nextjs";
-import { dbWs } from "@superset/db/client";
-import { automationRuns, automations } from "@superset/db/schema";
+import { dbWs } from "@choros/db/client";
+import { automationRuns, automations } from "@choros/db/schema";
 import { eq, sql } from "drizzle-orm";
 import { z } from "zod";
 import { verifyQstashRequest } from "@/lib/verifyQstash";

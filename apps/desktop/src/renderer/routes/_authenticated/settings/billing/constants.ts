@@ -1,6 +1,6 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
-import { PLAN_TIERS, type PlanTier } from "@superset/shared/billing";
+import { PLAN_TIERS, type PlanTier } from "@choros/shared/billing";
 
 export { PLAN_TIERS, type PlanTier };
 

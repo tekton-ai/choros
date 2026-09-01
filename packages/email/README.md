@@ -1,4 +1,4 @@
-# @superset/email
+# @choros/email
 
 Email templates for Superset, built with [React Email](https://react.email).
 
@@ -116,7 +116,7 @@ export default PasswordResetEmail;
 
 ```tsx
 // apps/api/src/routes/auth.ts
-import { WelcomeEmail } from "@superset/email/emails/welcome";
+import { WelcomeEmail } from "@choros/email/emails/welcome";
 import { render } from "@react-email/render";
 
 // Render to HTML
@@ -211,7 +211,7 @@ Common transactional emails to add:
 To preview email templates during development:
 
 ```bash
-bun --filter=@superset/email dev
+bun --filter=@choros/email dev
 ```
 
 Then:

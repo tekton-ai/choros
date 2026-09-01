@@ -1,4 +1,4 @@
-import type { DetectedPort } from "@superset/port-scanner";
+import type { DetectedPort } from "@choros/port-scanner";
 import { z } from "zod";
 import { portManager } from "../../../ports/port-manager";
 import { getLabelsForWorkspace } from "../../../ports/static-ports";

@@ -16,7 +16,7 @@
 
 import { plural } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { errorMessage } from "@superset/i18n/errors";
+import { errorMessage } from "@choros/i18n/errors";
 import {
 	AlertDialog,
 	AlertDialogContent,
@@ -24,14 +24,14 @@ import {
 	AlertDialogFooter,
 	AlertDialogHeader,
 	AlertDialogTitle,
-} from "@superset/ui/alert-dialog";
-import { Button } from "@superset/ui/button";
-import { toast } from "@superset/ui/sonner";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/alert-dialog";
+import { Button } from "@choros/ui/button";
+import { toast } from "@choros/ui/sonner";
+import { cn } from "@choros/ui/utils";
 import {
 	WorkspaceClientProvider,
 	workspaceTrpc,
-} from "@superset/workspace-client";
+} from "@choros/workspace-client";
 import { useState } from "react";
 import { HiChevronRight } from "react-icons/hi2";
 import {

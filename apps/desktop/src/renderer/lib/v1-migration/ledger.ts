@@ -1,4 +1,4 @@
-import type { V1MigrationKind, V1MigrationStatus } from "@superset/local-db";
+import type { V1MigrationKind, V1MigrationStatus } from "@choros/local-db";
 
 export interface V1LedgerOutcome {
 	v1Id: string;

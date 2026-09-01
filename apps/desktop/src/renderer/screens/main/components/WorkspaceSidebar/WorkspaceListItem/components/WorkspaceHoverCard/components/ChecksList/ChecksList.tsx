@@ -1,4 +1,4 @@
-import type { CheckItem } from "@superset/local-db";
+import type { CheckItem } from "@choros/local-db";
 import { useState } from "react";
 import { LuChevronDown, LuChevronRight } from "react-icons/lu";
 import { STROKE_WIDTH } from "../../../../../constants";

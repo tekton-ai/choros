@@ -1,6 +1,6 @@
 import { Plural, Trans, useLingui } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
-import { Kbd, KbdGroup } from "@superset/ui/kbd";
+import { Button } from "@choros/ui/button";
+import { Kbd, KbdGroup } from "@choros/ui/kbd";
 import { formatDistanceToNow } from "date-fns";
 import { FaGithub } from "react-icons/fa";
 import {

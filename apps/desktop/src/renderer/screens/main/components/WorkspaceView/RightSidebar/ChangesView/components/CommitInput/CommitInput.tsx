@@ -1,16 +1,16 @@
-import type { GitHubStatus } from "@superset/local-db";
-import { Button } from "@superset/ui/button";
-import { ButtonGroup } from "@superset/ui/button-group";
+import type { GitHubStatus } from "@choros/local-db";
+import { Button } from "@choros/ui/button";
+import { ButtonGroup } from "@choros/ui/button-group";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { toast } from "@superset/ui/sonner";
-import { Textarea } from "@superset/ui/textarea";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+} from "@choros/ui/dropdown-menu";
+import { toast } from "@choros/ui/sonner";
+import { Textarea } from "@choros/ui/textarea";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { useState } from "react";
 import {
 	VscArrowDown,

@@ -1,6 +1,6 @@
 import { homedir } from "node:os";
 import { join } from "node:path";
-import { type SelectProject, settings } from "@superset/local-db";
+import { type SelectProject, settings } from "@choros/local-db";
 import { localDb } from "main/lib/local-db";
 import { SUPERSET_DIR_NAME, WORKTREES_DIR_NAME } from "shared/constants";
 

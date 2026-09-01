@@ -1,5 +1,5 @@
-import { boolean, CLIError, positional, string } from "@superset/cli-framework";
-import { getHostId } from "@superset/shared/host-info";
+import { boolean, CLIError, positional, string } from "@choros/cli-framework";
+import { getHostId } from "@choros/shared/host-info";
 import { command } from "../../../lib/command";
 import {
 	type HostServiceClient,

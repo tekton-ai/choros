@@ -1,5 +1,5 @@
-import { PromptInputAttachment } from "@superset/ui/ai-elements/prompt-input";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+import { PromptInputAttachment } from "@choros/ui/ai-elements/prompt-input";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import type { FileUIPart } from "ai";
 import { Loader2, TriangleAlert } from "lucide-react";
 import { useUploadStateFor } from "../../hooks/useUploadAttachments";

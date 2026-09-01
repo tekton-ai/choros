@@ -5,28 +5,28 @@ import { tmpdir } from "node:os";
 import { basename, isAbsolute, join } from "node:path";
 import { StringDecoder } from "node:string_decoder";
 import type { NodeWebSocket } from "@hono/node-ws";
-import { resolveSupersetHomeDir } from "@superset/agent-setup/paths";
-import { hasRunningForegroundProcess } from "@superset/pty-daemon/process-tree";
+import { resolveSupersetHomeDir } from "@choros/agent-setup/paths";
+import { hasRunningForegroundProcess } from "@choros/pty-daemon/process-tree";
 import {
 	buildFishPromptCommandString,
 	type ParsedPromptHeredocCommand,
 	parsePromptHeredocCommand,
-} from "@superset/shared/agent-prompt-launch";
+} from "@choros/shared/agent-prompt-launch";
 import {
 	createScanState,
 	type ShellReadyScanState,
 	scanForShellReady,
-} from "@superset/shared/shell-ready-scanner";
+} from "@choros/shared/shell-ready-scanner";
 import {
 	boundTranscriptText,
 	buildBoundedTerminalSessionTranscript,
 	TERMINAL_HANDOFF_MAX_CHARS,
-} from "@superset/shared/terminal-session-handoff";
+} from "@choros/shared/terminal-session-handoff";
 import {
 	createTerminalTitleScanState,
 	scanForTerminalTitle,
 	type TerminalTitleScanState,
-} from "@superset/shared/terminal-title-scanner";
+} from "@choros/shared/terminal-title-scanner";
 import { and, eq, inArray, isNull, ne } from "drizzle-orm";
 import type { Hono } from "hono";
 import { getSupervisor } from "../daemon/index.ts";
@@ -330,7 +330,7 @@ type TerminalSocket = {
 
 // ---------------------------------------------------------------------------
 // OSC 133 shell readiness detection (FinalTerm semantic prompt standard).
-// Scanner logic lives in @superset/shared/shell-ready-scanner.
+// Scanner logic lives in @choros/shared/shell-ready-scanner.
 // ---------------------------------------------------------------------------
 
 /**

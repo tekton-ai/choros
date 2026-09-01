@@ -2,7 +2,7 @@
 
 import { useLingui } from "@lingui/react/macro";
 import { MessageScroller } from "@shadcn/react/message-scroller";
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { ArrowDownIcon } from "lucide-react";
 
 export type ScrollToBottomButtonProps = {

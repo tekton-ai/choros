@@ -20,7 +20,7 @@
 import { readFileSync } from "node:fs";
 import { rename, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { resolveSupersetHomeDir } from "@superset/agent-setup/paths";
+import { resolveSupersetHomeDir } from "@choros/agent-setup/paths";
 
 export type ShellReadyEvidence = "delivered" | "missing";
 

@@ -1,5 +1,5 @@
 {
-	"name": "@superset/attachments-sheet",
+	"name": "@choros/attachments-sheet",
 	"version": "0.0.1",
 	"main": "src/index.ts",
 	"private": true,

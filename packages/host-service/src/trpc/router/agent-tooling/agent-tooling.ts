@@ -1,4 +1,4 @@
-import type { SlashCommand } from "@superset/shared/slash-commands";
+import type { SlashCommand } from "@choros/shared/slash-commands";
 import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
@@ -11,7 +11,7 @@ import { listAgentSlashCommands } from "./discovery";
 // Declaration emit (docs/interim-router-types.md): the procedure's return
 // type must be nameable from dist-types, and shared is runtime-neutral so
 // mobile can resolve it.
-export type { SlashCommand } from "@superset/shared/slash-commands";
+export type { SlashCommand } from "@choros/shared/slash-commands";
 
 export const agentToolingRouter = router({
 	/**

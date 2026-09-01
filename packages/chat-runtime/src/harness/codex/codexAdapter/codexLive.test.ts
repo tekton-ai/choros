@@ -2,7 +2,7 @@ import { describe, expect, test } from "bun:test";
 import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import type { AgentMessage } from "@superset/chat/protocol";
+import type { AgentMessage } from "@choros/chat/protocol";
 import type { AdapterEvent } from "../../types";
 import { CodexAdapter } from "./codexAdapter";
 

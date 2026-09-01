@@ -1,5 +1,5 @@
-import { resolveAgentLaunchPresetId } from "@superset/shared/agent-models";
-import { FEATURE_FLAGS } from "@superset/shared/constants";
+import { resolveAgentLaunchPresetId } from "@choros/shared/agent-models";
+import { FEATURE_FLAGS } from "@choros/shared/constants";
 import { useFeatureFlagEnabled } from "posthog-js/react";
 import { useMemo } from "react";
 import type { AgentSelectAgent } from "renderer/components/AgentSelect";

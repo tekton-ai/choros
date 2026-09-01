@@ -1,4 +1,4 @@
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import { modifierLabel } from "../modifierLabel";
 import { tierFor } from "../tiers";
 import type {

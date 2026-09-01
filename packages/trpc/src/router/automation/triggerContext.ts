@@ -1,4 +1,4 @@
-import type { SelectAutomationEvent } from "@superset/db/schema";
+import type { SelectAutomationEvent } from "@choros/db/schema";
 
 /**
  * Keeps a provider payload from swamping the prompt. Teams and Notion store

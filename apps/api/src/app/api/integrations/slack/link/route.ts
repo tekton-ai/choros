@@ -1,8 +1,8 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
-import { auth } from "@superset/auth/server";
-import { db } from "@superset/db/client";
-import { integrationConnections } from "@superset/db/schema";
-import { findOrgMembership } from "@superset/db/utils";
+import { auth } from "@choros/auth/server";
+import { db } from "@choros/db/client";
+import { integrationConnections } from "@choros/db/schema";
+import { findOrgMembership } from "@choros/db/utils";
 import { and, desc, eq, isNull } from "drizzle-orm";
 import { headers } from "next/headers";
 import { env } from "@/env";

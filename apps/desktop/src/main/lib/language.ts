@@ -2,7 +2,7 @@ import {
 	initI18nAsync,
 	resolveLocale,
 	type SupportedLocale,
-} from "@superset/i18n";
+} from "@choros/i18n";
 import { app } from "electron";
 import { createApplicationMenu } from "main/lib/menu";
 import { refreshTrayMenu } from "main/lib/tray";

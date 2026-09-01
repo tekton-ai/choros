@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
-import { cn } from "@superset/ui/utils";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { cn } from "@choros/ui/utils";
 import { SquarePen } from "lucide-react";
 import { useHotkeyDisplay } from "renderer/hotkeys";
 import {

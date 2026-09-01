@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
+import { Button } from "@choros/ui/button";
+import { Popover, PopoverContent, PopoverTrigger } from "@choros/ui/popover";
 import { useState } from "react";
 import {
 	HiCheck,

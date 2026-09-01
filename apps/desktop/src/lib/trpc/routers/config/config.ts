@@ -1,7 +1,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { access } from "node:fs/promises";
 import { join } from "node:path";
-import { projects, type SelectProject } from "@superset/local-db";
+import { projects, type SelectProject } from "@choros/local-db";
 import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";
 import { localDb } from "main/lib/local-db";

@@ -1,7 +1,7 @@
 import { msg } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
-import { COMPANY } from "@superset/shared/constants";
+import { i18n } from "@choros/i18n";
+import { COMPANY } from "@choros/shared/constants";
 import { ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
 import { localizedAlternates } from "@/app/[lang]/metadata";

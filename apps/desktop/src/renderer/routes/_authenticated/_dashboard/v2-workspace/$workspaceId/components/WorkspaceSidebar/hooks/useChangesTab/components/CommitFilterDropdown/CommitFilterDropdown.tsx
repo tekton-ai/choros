@@ -1,13 +1,13 @@
 import { Plural, Trans } from "@lingui/react/macro";
-import type { AppRouter } from "@superset/host-service";
-import { i18n } from "@superset/i18n";
+import type { AppRouter } from "@choros/host-service";
+import { i18n } from "@choros/i18n";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
+} from "@choros/ui/dropdown-menu";
 import type { inferRouterOutputs } from "@trpc/server";
 import { Check, ChevronDown, ListFilter } from "lucide-react";
 import { useState } from "react";

@@ -1,4 +1,4 @@
-import { buildHostRoutingKey } from "@superset/shared/host-routing";
+import { buildHostRoutingKey } from "@choros/shared/host-routing";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useActiveOrganizationId } from "renderer/hooks/useActiveOrganizationId";
 import { useRelayUrl } from "renderer/hooks/useRelayUrl";

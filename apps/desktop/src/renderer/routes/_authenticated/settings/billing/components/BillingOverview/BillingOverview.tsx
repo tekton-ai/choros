@@ -1,8 +1,8 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { formatPrice } from "@superset/i18n/format";
-import { isPaymentFailingStatus } from "@superset/shared/billing";
-import { Button } from "@superset/ui/button";
-import { toast } from "@superset/ui/sonner";
+import { formatPrice } from "@choros/i18n/format";
+import { isPaymentFailingStatus } from "@choros/shared/billing";
+import { Button } from "@choros/ui/button";
+import { toast } from "@choros/ui/sonner";
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { HiArrowRight } from "react-icons/hi2";

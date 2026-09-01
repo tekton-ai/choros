@@ -1,4 +1,4 @@
-import type { ToolContent } from "@superset/chat/protocol";
+import type { ToolContent } from "@choros/chat/protocol";
 import { DiffContent } from "./components/DiffContent";
 import { TerminalContent } from "./components/TerminalContent";
 import { TextContent } from "./components/TextContent";

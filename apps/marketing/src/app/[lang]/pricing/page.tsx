@@ -1,5 +1,5 @@
-import { i18n } from "@superset/i18n";
-import { COMPANY } from "@superset/shared/constants";
+import { i18n } from "@choros/i18n";
+import { COMPANY } from "@choros/shared/constants";
 import type { Metadata } from "next";
 import { localizedAlternates } from "@/app/[lang]/metadata";
 import { initServerI18n } from "@/app/i18n-server";

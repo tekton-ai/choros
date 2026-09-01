@@ -1,5 +1,5 @@
 /**
- * Bun test setup for @superset/ui.
+ * Bun test setup for @choros/ui.
  *
  * Lingui macros (`@lingui/react/macro`, `@lingui/core/macro`) are compile-time
  * only — the app builds run the Babel/SWC plugin, but `bun test` executes the

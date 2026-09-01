@@ -1,7 +1,7 @@
 import {
 	type GitChangedPayload,
 	workspaceTrpc,
-} from "@superset/workspace-client";
+} from "@choros/workspace-client";
 import { useCallback, useEffect, useMemo } from "react";
 import { useWorkspaceEvent } from "../useWorkspaceEvent";
 import { createTrailingRefreshScheduler } from "./createTrailingRefreshScheduler";

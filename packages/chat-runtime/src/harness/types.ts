@@ -5,7 +5,7 @@ import type {
 	SessionState,
 	Turn,
 	UserContent,
-} from "@superset/chat/protocol";
+} from "@choros/chat/protocol";
 
 export type AdapterEvent =
 	| { kind: "item"; item: Item; turnId: string }

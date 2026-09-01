@@ -1,6 +1,6 @@
-import { errorMessage } from "@superset/i18n/errors";
-import type { ExternalApp } from "@superset/local-db";
-import { toast } from "@superset/ui/sonner";
+import { errorMessage } from "@choros/i18n/errors";
+import type { ExternalApp } from "@choros/local-db";
+import { toast } from "@choros/ui/sonner";
 import { useCallback } from "react";
 import { useCopyToClipboard } from "renderer/hooks/useCopyToClipboard";
 import { electronTrpc } from "renderer/lib/electron-trpc";

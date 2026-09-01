@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/react/macro";
-import { COMPANY } from "@superset/shared/constants";
+import { COMPANY } from "@choros/shared/constants";
 import type { ReactNode } from "react";
 
 export interface NavLink {

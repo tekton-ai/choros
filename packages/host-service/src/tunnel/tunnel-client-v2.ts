@@ -2,7 +2,7 @@ import {
 	describeRelayClose,
 	type HttpDialFrame,
 	type StreamDial,
-} from "@superset/shared/tunnel-v2-protocol";
+} from "@choros/shared/tunnel-v2-protocol";
 import ReconnectingWebSocket from "partysocket/ws";
 
 import { reportTunnelRescue } from "../sentry";

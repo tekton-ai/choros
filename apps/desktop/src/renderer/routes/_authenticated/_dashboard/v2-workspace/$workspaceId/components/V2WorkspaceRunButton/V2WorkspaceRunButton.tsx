@@ -5,8 +5,8 @@ import {
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/dropdown-menu";
+import { cn } from "@choros/ui/utils";
 import { useNavigate } from "@tanstack/react-router";
 import { ChevronDown, Play, Settings, Square, X } from "lucide-react";
 import { useCallback } from "react";

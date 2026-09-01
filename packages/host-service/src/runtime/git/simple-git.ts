@@ -1,4 +1,4 @@
-import { USER_GIT_ENV_SIMPLE_GIT_OPTIONS } from "@superset/shared/simple-git-options";
+import { USER_GIT_ENV_SIMPLE_GIT_OPTIONS } from "@choros/shared/simple-git-options";
 import simpleGit, { type SimpleGit, type SimpleGitOptions } from "simple-git";
 
 // Superset is a local Git client, so inherited user Git config/env is expected

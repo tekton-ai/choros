@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 
 const RADIUS = 6.5;
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS;

@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import Link from "next/link";
 import { i18n } from "@/lib/i18n-server";
 

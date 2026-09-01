@@ -1,5 +1,5 @@
 {
-	"name": "@superset/auth",
+	"name": "@choros/auth",
 	"version": "0.1.0",
 	"private": true,
 	"type": "module",
@@ -31,9 +31,9 @@
 		"@better-auth/expo": "1.6.22",
 		"@better-auth/oauth-provider": "1.6.22",
 		"@better-auth/stripe": "1.6.22",
-		"@superset/db": "workspace:*",
-		"@superset/email": "workspace:*",
-		"@superset/shared": "workspace:*",
+		"@choros/db": "workspace:*",
+		"@choros/email": "workspace:*",
+		"@choros/shared": "workspace:*",
 		"@t3-oss/env-core": "0.13.11",
 		"@t3-oss/env-nextjs": "0.13.11",
 		"@upstash/qstash": "2.10.1",
@@ -48,7 +48,7 @@
 		"zod": "4.4.3"
 	},
 	"devDependencies": {
-		"@superset/typescript": "workspace:*",
+		"@choros/typescript": "workspace:*",
 		"@types/node": "24.12.0",
 		"typescript": "6.0.3"
 	}

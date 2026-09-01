@@ -1,8 +1,8 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { RendererContext } from "@superset/panes";
-import { Button } from "@superset/ui/button";
-import { cn } from "@superset/ui/utils";
-import { workspaceTrpc } from "@superset/workspace-client";
+import type { RendererContext } from "@choros/panes";
+import { Button } from "@choros/ui/button";
+import { cn } from "@choros/ui/utils";
+import { workspaceTrpc } from "@choros/workspace-client";
 import { History, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useTerminalResumeCandidate } from "renderer/hooks/host-service/useTerminalResumeCandidate";

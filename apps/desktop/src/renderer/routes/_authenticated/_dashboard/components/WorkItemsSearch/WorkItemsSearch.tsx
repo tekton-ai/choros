@@ -1,5 +1,5 @@
-import { Input } from "@superset/ui/input";
-import { cn } from "@superset/ui/utils";
+import { Input } from "@choros/ui/input";
+import { cn } from "@choros/ui/utils";
 import { useRef } from "react";
 import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 import { useHotkey } from "renderer/hotkeys";

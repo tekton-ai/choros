@@ -6,8 +6,8 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 	EnterEnabledAlertDialogContent,
-} from "@superset/ui/alert-dialog";
-import { Button } from "@superset/ui/button";
+} from "@choros/ui/alert-dialog";
+import { Button } from "@choros/ui/button";
 
 interface DiscardConfirmDialogProps {
 	open: boolean;

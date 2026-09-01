@@ -1,7 +1,7 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { formatNumber } from "@superset/i18n/format";
-import { buildTerminalSessionHandoffPrompt } from "@superset/shared/terminal-session-handoff";
-import { Button } from "@superset/ui/button";
+import { formatNumber } from "@choros/i18n/format";
+import { buildTerminalSessionHandoffPrompt } from "@choros/shared/terminal-session-handoff";
+import { Button } from "@choros/ui/button";
 import {
 	Dialog,
 	DialogContent,
@@ -9,16 +9,16 @@ import {
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
-} from "@superset/ui/dialog";
+} from "@choros/ui/dialog";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { Label } from "@superset/ui/label";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
-import { workspaceTrpc } from "@superset/workspace-client";
+} from "@choros/ui/dropdown-menu";
+import { Label } from "@choros/ui/label";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { workspaceTrpc } from "@choros/workspace-client";
 import { Bot, GitFork, PanelRight, SquareStack } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { AgentSelect } from "renderer/components/AgentSelect";

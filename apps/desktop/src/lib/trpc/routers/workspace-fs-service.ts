@@ -3,7 +3,7 @@ import {
 	createFsHostService,
 	type FsHostService,
 	FsWatcherManager,
-} from "@superset/workspace-fs/host";
+} from "@choros/workspace-fs/host";
 import { TRPCError } from "@trpc/server";
 import { shell } from "electron";
 import { getWorkspace } from "./workspaces/utils/db-helpers";

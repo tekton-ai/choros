@@ -27,7 +27,7 @@ Launch dispatch uses the **pending row as the transport** between the
 pending page (producer) and the V2 workspace page (consumer). **Zero V1
 primitives.** Same pattern V2 preset execution uses
 (`useV2PresetExecution`): live-query a record, open a pane in the V2
-`@superset/panes` store, and pass any terminal startup command as transient
+`@choros/panes` store, and pass any terminal startup command as transient
 pane data. `TerminalPane` attaches the PTY through the terminal WebSocket.
 
 ```
@@ -99,7 +99,7 @@ pane data. `TerminalPane` attaches the PTY through the terminal WebSocket.
 V1's dispatcher (`WorkspaceInitEffects` → `launchAgentSession` →
 `terminal-adapter`) is hard-coded to V1's `useTabsStore` in the
 orchestrator's default tabs adapter. V2 workspaces render panes from a
-separate `@superset/panes` store, so launches dispatched through V1
+separate `@choros/panes` store, so launches dispatched through V1
 land in a store V2 never reads — the command runs but no pane appears.
 **V2 must own its launch dispatch.**
 
@@ -124,7 +124,7 @@ orchestrator uses V1's `useTabsStore`, which V2 doesn't render from.
 ### Files (dispatch, to be added)
 
 - `pendingWorkspaceSchema` in `providers/.../schema.ts` — gain `terminalLaunch?` and `chatLaunch?` optional fields.
-- `routes/.../v2-workspace/$workspaceId/hooks/useConsumePendingLaunch/*` — mount-effect hook that live-queries the pending row, opens a pane via V2 `@superset/panes` store, writes the command via `workspaceTrpc`, clears the field.
+- `routes/.../v2-workspace/$workspaceId/hooks/useConsumePendingLaunch/*` — mount-effect hook that live-queries the pending row, opens a pane via V2 `@choros/panes` store, writes the command via `workspaceTrpc`, clears the field.
 
 ### Agent templates
 
@@ -201,7 +201,7 @@ fixing before the dispatch rewrite is considered done:
    provider state. Works correctly but still transports bytes as
    base64 strings across layers. The deep solve is to flow `File` /
    `Blob` objects end-to-end; URLs stay pure UI preview concerns.
-   Library-level change to `@superset/ui/ai-elements/prompt-input`
+   Library-level change to `@choros/ui/ai-elements/prompt-input`
    (`FileUIPart & { file: File }` through the provider) + downstream
    `ChatLaunchConfig.initialFiles: { file: Blob, ... }[]` + bytes
    branch for `workspaceTrpc.filesystem.writeFile`. Touches V1, V2,

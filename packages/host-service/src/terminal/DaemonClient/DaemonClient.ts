@@ -23,7 +23,7 @@ import {
 	type ServerMessage,
 	type SessionInfo,
 	type SessionMeta,
-} from "@superset/pty-daemon/protocol";
+} from "@choros/pty-daemon/protocol";
 
 /**
  * The daemon didn't answer — the single enumeration of TRANSIENT daemon

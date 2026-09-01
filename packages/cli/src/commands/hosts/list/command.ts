@@ -1,5 +1,5 @@
-import { string, table } from "@superset/cli-framework";
-import { getHostId } from "@superset/shared/host-info";
+import { string, table } from "@choros/cli-framework";
+import { getHostId } from "@choros/shared/host-info";
 import { command } from "../../../lib/command";
 import { resolveOrganizationFromContext } from "../../../lib/resolve-org";
 

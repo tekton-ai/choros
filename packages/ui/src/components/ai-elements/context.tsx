@@ -5,7 +5,7 @@ import {
 	formatCompactNumber,
 	formatCurrency,
 	formatPercent,
-} from "@superset/i18n/format";
+} from "@choros/i18n/format";
 import type { LanguageModelUsage } from "ai";
 import { type ComponentProps, createContext, useContext } from "react";
 import { getUsage } from "tokenlens";

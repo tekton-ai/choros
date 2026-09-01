@@ -1,5 +1,5 @@
-import { OverflowFadeContainer } from "@superset/ui/overflow-fade-container";
-import { cn } from "@superset/ui/utils";
+import { OverflowFadeContainer } from "@choros/ui/overflow-fade-container";
+import { cn } from "@choros/ui/utils";
 import {
 	type ReactNode,
 	useCallback,

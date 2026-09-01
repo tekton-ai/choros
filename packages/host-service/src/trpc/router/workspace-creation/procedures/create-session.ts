@@ -1,8 +1,8 @@
 import { existsSync, mkdirSync, readdirSync } from "node:fs";
 import { rm } from "node:fs/promises";
 import { basename } from "node:path";
-import { generateFriendlyBranchName } from "@superset/shared/workspace-launch";
-import { workspaceTagsInputSchema } from "@superset/shared/workspace-tags";
+import { generateFriendlyBranchName } from "@choros/shared/workspace-launch";
+import { workspaceTagsInputSchema } from "@choros/shared/workspace-tags";
 import { TRPCError } from "@trpc/server";
 import { isNull } from "drizzle-orm";
 import { z } from "zod";

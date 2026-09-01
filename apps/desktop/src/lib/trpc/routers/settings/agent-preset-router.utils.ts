@@ -1,9 +1,9 @@
-import { PROMPT_TRANSPORTS } from "@superset/local-db";
+import { PROMPT_TRANSPORTS } from "@choros/local-db";
 import type {
 	AgentPresetPatch,
 	CustomAgentDefinitionPatch,
-} from "@superset/shared/agent-settings";
-import { validateTaskPromptTemplate } from "@superset/shared/agent-settings";
+} from "@choros/shared/agent-settings";
+import { validateTaskPromptTemplate } from "@choros/shared/agent-settings";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 

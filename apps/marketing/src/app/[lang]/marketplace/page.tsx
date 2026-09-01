@@ -1,6 +1,6 @@
 import { msg } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { localizedAlternates } from "@/app/[lang]/metadata";

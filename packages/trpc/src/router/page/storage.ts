@@ -1,11 +1,11 @@
-import { db } from "@superset/db/client";
+import { db } from "@choros/db/client";
 import {
 	attachments,
 	files,
 	pages,
 	pageVersions,
 	type SelectPage,
-} from "@superset/db/schema";
+} from "@choros/db/schema";
 import {
 	fileOriginalKey,
 	type PageManifest,
@@ -13,7 +13,7 @@ import {
 	pageManifestKey,
 	pageThumbnailKey,
 	signPageTicket,
-} from "@superset/shared/usercontent";
+} from "@choros/shared/usercontent";
 import { and, asc, eq, inArray } from "drizzle-orm";
 import { env } from "../../env";
 import { deleteObjects, putObject } from "../../lib/r2";

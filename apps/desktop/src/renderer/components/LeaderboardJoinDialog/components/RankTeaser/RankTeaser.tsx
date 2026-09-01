@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/react/macro";
-import { formatTokens } from "@superset/shared/format-tokens";
+import { formatTokens } from "@choros/shared/format-tokens";
 import type { LeaderboardPreview } from "../../types";
 
 const MIN_PARTICIPANTS_FOR_RANK = 50;

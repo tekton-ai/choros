@@ -1,7 +1,7 @@
 import {
 	sanitizeSegment,
 	sanitizeUserBranchName,
-} from "@superset/shared/workspace-launch";
+} from "@choros/shared/workspace-launch";
 
 /**
  * Branch name for a workspace created from a task. Prefers the external

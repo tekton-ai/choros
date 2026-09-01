@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 
 interface ClaudeLogoProps {
 	className?: string;

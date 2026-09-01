@@ -5,7 +5,7 @@ import type {
 	EntityType,
 	TaskEntityFields,
 } from "@slack/types";
-import type { tasks } from "@superset/db/schema";
+import type { tasks } from "@choros/db/schema";
 
 import { env } from "@/env";
 

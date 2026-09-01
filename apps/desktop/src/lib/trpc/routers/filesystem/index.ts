@@ -1,7 +1,7 @@
 import {
 	toErrorMessage,
 	WorkspaceFsPathError,
-} from "@superset/workspace-fs/host";
+} from "@choros/workspace-fs/host";
 import { TRPCError } from "@trpc/server";
 import { observable } from "@trpc/server/observable";
 import type { FsErrnoCause, FsErrnoCode } from "shared/fs-error-types";

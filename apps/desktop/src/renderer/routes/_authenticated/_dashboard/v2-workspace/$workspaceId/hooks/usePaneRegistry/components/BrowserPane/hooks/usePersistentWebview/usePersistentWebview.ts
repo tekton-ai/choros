@@ -1,4 +1,4 @@
-import type { RendererContext } from "@superset/panes";
+import type { RendererContext } from "@choros/panes";
 import { useParams } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef } from "react";
 import {

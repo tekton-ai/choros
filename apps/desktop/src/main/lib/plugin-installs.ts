@@ -5,15 +5,15 @@ import {
 	resolveDisabledSkillIds,
 	syncManagedMcpServers,
 	writeSharedDisabledSkillIds,
-} from "@superset/agent-setup";
-import { getBundledPluginDir } from "@superset/agent-setup/config";
-import { settings } from "@superset/local-db";
+} from "@choros/agent-setup";
+import { getBundledPluginDir } from "@choros/agent-setup/config";
+import { settings } from "@choros/local-db";
 import {
 	getPluginByName,
 	type InstalledPlugin,
 	type PluginMcpServerConfig,
 	SUPERSET_MANAGED_SKILLS,
-} from "@superset/shared/plugins";
+} from "@choros/shared/plugins";
 import { localDb } from "main/lib/local-db";
 
 /**

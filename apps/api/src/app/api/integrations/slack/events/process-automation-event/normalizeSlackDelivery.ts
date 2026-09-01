@@ -11,7 +11,7 @@ import {
 	type SlackMatchableEvent,
 	slackEmojiName,
 	slackEventNames,
-} from "@superset/shared/automation-matching";
+} from "@choros/shared/automation-matching";
 
 import type { NormalizedDelivery } from "@/lib/automations/ingestAutomationEvent";
 

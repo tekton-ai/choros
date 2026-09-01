@@ -1,6 +1,6 @@
 import type { EntityMetadata, LinkSharedEvent } from "@slack/types";
-import { db } from "@superset/db/client";
-import { integrationConnections, tasks } from "@superset/db/schema";
+import { db } from "@choros/db/client";
+import { integrationConnections, tasks } from "@choros/db/schema";
 import { and, desc, eq, isNull } from "drizzle-orm";
 import { createSlackClient } from "../utils/slack-client";
 import {

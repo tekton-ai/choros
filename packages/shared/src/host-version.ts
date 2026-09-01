@@ -3,7 +3,7 @@
  * **remote** host whose binary we don't control (gates renderer mounting
  * via `useRemoteHostStatus`). For the local host-service we bundle, the
  * desktop coordinator pins to the bundled version exactly (read from
- * `@superset/host-service/package.json`) — this floor does not apply.
+ * `@choros/host-service/package.json`) — this floor does not apply.
  *
  * 0.4.0: terminal launch moved from `terminal.ensureSession` to
  * `terminal.launchSession` plus WebSocket attach params.

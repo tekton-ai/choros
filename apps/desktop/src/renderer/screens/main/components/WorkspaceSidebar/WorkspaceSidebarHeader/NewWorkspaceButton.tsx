@@ -1,4 +1,4 @@
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { useMatchRoute } from "@tanstack/react-router";
 import { LuPlus } from "react-icons/lu";
 import { SidebarKbdHint } from "renderer/components/SidebarKbdHint";

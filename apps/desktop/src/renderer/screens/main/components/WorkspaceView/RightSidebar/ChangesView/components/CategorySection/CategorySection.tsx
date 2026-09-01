@@ -2,8 +2,8 @@ import {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
-} from "@superset/ui/collapsible";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/collapsible";
+import { cn } from "@choros/ui/utils";
 import type { ReactNode } from "react";
 import { VscChevronRight } from "react-icons/vsc";
 import { useChangesSectionDnd } from "renderer/screens/main/components/WorkspaceView/hooks/useChangesSectionDnd";

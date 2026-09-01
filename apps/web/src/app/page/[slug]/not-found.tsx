@@ -1,5 +1,5 @@
-import { Button } from "@superset/ui/button";
-import { Pixel404 } from "@superset/ui/pixel-404";
+import { Button } from "@choros/ui/button";
+import { Pixel404 } from "@choros/ui/pixel-404";
 import Link from "next/link";
 import { MessageScreen } from "@/components/MessageScreen";
 import { i18n } from "@/lib/i18n-server";

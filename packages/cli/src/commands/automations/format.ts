@@ -1,4 +1,4 @@
-import { formatDateTimeInTimezone } from "@superset/shared/rrule";
+import { formatDateTimeInTimezone } from "@choros/shared/rrule";
 
 export function formatAutomationDate(
 	value: Date | string | null | undefined,

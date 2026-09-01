@@ -1,6 +1,6 @@
 import { Trans } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
-import { CardFooter } from "@superset/ui/card";
+import { Button } from "@choros/ui/button";
+import { CardFooter } from "@choros/ui/card";
 
 interface AgentCardActionsProps {
 	isResetting: boolean;

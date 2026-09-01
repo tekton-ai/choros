@@ -1,6 +1,6 @@
 import net from "node:net";
 import type { NodeWebSocket } from "@hono/node-ws";
-import type { DetectedPort } from "@superset/port-scanner";
+import type { DetectedPort } from "@choros/port-scanner";
 import {
 	decodeMuxFrame,
 	decodeOpenPort,
@@ -18,7 +18,7 @@ import {
 	MUX_MAX_STREAMS,
 	MuxFrameType,
 	MuxOpenFailCode,
-} from "@superset/shared/port-forward-mux";
+} from "@choros/shared/port-forward-mux";
 import type { Hono } from "hono";
 import type { WSContext } from "hono/ws";
 
@@ -46,7 +46,7 @@ interface StreamState {
 
 /**
  * One WebSocket per (workspace) forward session, many TCP connections inside
- * it — see @superset/shared/port-forward-mux for the framing. The relay
+ * it — see @choros/shared/port-forward-mux for the framing. The relay
  * splices this stream verbatim, exactly like a terminal: it never learns
  * multiplexing is happening, so it needs no changes and its single-use dial
  * tickets keep their existing lifetime.

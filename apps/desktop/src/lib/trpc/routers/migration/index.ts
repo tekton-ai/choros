@@ -6,7 +6,7 @@ import {
 	v1MigrationState,
 	workspaces,
 	worktrees,
-} from "@superset/local-db";
+} from "@choros/local-db";
 import { eq, isNotNull, isNull } from "drizzle-orm";
 import { SUPERSET_HOME_DIR } from "main/lib/app-environment";
 import { appState } from "main/lib/app-state";

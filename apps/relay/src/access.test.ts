@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test";
-import { buildHostRoutingKey } from "@superset/shared/host-routing";
+import { buildHostRoutingKey } from "@choros/shared/host-routing";
 import {
 	type AccessDenial,
 	accessDenialMessage,

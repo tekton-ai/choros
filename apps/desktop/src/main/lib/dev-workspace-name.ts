@@ -1,7 +1,7 @@
 import { existsSync } from "node:fs";
 import { homedir } from "node:os";
 import path from "node:path";
-import { workspaces, worktrees } from "@superset/local-db";
+import { workspaces, worktrees } from "@choros/local-db";
 import BetterSqlite3 from "better-sqlite3";
 import { and, desc, eq, isNull } from "drizzle-orm";
 import { getWorkspaceName as getEnvWorkspaceName } from "shared/env.shared";

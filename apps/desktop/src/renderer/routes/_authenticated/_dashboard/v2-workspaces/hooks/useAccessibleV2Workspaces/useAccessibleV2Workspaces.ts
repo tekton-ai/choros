@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import type { CheckItem } from "@superset/local-db";
+import type { CheckItem } from "@choros/local-db";
 import { useLiveQuery } from "@tanstack/react-db";
 import { useQueries } from "@tanstack/react-query";
 import { useMemo } from "react";

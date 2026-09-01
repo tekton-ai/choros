@@ -1,6 +1,6 @@
 import { timingSafeEqual } from "node:crypto";
-import { db } from "@superset/db/client";
-import { integrationConnections } from "@superset/db/schema";
+import { db } from "@choros/db/client";
+import { integrationConnections } from "@choros/db/schema";
 import { and, eq, isNull } from "drizzle-orm";
 import { z } from "zod";
 

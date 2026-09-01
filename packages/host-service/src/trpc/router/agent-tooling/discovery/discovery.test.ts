@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it } from "bun:test";
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import type { SlashCommand } from "@superset/shared/slash-commands";
+import type { SlashCommand } from "@choros/shared/slash-commands";
 import type { SlashCommandDiscoveryEntry } from "../registry";
 import {
 	clearSlashCommandDiscoveryCache,

@@ -1,4 +1,4 @@
-import { getPresetById } from "@superset/shared/host-agent-presets";
+import { getPresetById } from "@choros/shared/host-agent-presets";
 import { LuCpu } from "react-icons/lu";
 import { usePresetIcon } from "renderer/assets/app-icons/preset-icons";
 import { useHostUrl } from "renderer/hooks/host-service/useHostTargetUrl";

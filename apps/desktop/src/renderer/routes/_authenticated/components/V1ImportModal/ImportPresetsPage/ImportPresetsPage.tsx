@@ -1,4 +1,4 @@
-import type { TerminalPreset } from "@superset/local-db";
+import type { TerminalPreset } from "@choros/local-db";
 import { useLiveQuery } from "@tanstack/react-db";
 import { useState } from "react";
 import { LuTerminal } from "react-icons/lu";

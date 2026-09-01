@@ -1,6 +1,6 @@
 import { Trans } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
-import { cn } from "@superset/ui/utils";
+import { Button } from "@choros/ui/button";
+import { cn } from "@choros/ui/utils";
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { LuTriangleAlert } from "react-icons/lu";

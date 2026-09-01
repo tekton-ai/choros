@@ -1,7 +1,7 @@
 "use client";
 
-import { I18nProvider } from "@superset/i18n/react";
-import { THEME_STORAGE_KEY } from "@superset/shared/constants";
+import { I18nProvider } from "@choros/i18n/react";
+import { THEME_STORAGE_KEY } from "@choros/shared/constants";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider } from "next-themes";
 import posthog from "posthog-js";

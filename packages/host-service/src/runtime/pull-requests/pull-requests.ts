@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { existsSync } from "node:fs";
 import type { Octokit } from "@octokit/rest";
-import { parseGitHubRemote } from "@superset/shared/github-remote";
+import { parseGitHubRemote } from "@choros/shared/github-remote";
 import { and, eq, inArray, isNull } from "drizzle-orm";
 import type { HostDb } from "../../db";
 import {

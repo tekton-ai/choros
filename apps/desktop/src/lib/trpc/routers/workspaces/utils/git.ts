@@ -4,13 +4,13 @@ import { statSync } from "node:fs";
 import { mkdir, rename } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
 import { promisify } from "node:util";
-import type { BranchPrefixMode } from "@superset/local-db";
-import { runWithPostCheckoutHookTolerance } from "@superset/shared/git-hook-tolerance";
+import type { BranchPrefixMode } from "@choros/local-db";
+import { runWithPostCheckoutHookTolerance } from "@choros/shared/git-hook-tolerance";
 import {
 	sanitizeAuthorPrefix,
 	sanitizeBranchName,
 	sanitizeBranchNameWithMaxLength,
-} from "@superset/shared/workspace-launch";
+} from "@choros/shared/workspace-launch";
 import friendlyWords from "friendly-words";
 import type { StatusResult } from "simple-git";
 import { execGitWithShellPath, getSimpleGitWithShellPath } from "./git-client";

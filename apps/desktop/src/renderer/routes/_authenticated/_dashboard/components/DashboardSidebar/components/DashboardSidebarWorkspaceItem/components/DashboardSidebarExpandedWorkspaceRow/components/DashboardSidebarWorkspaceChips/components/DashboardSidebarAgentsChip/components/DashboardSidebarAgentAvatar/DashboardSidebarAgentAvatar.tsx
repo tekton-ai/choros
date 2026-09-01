@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { LuBot } from "react-icons/lu";
 import { usePresetIcon } from "renderer/assets/app-icons/preset-icons";
 import { StatusIndicator } from "renderer/screens/main/components/StatusIndicator";

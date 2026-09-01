@@ -1,5 +1,5 @@
-import { db } from "@superset/db/client";
-import { githubInstallations, webhookEvents } from "@superset/db/schema";
+import { db } from "@choros/db/client";
+import { githubInstallations, webhookEvents } from "@choros/db/schema";
 import { eq } from "drizzle-orm";
 import { ingestAutomationEvent } from "@/lib/automations/ingestAutomationEvent";
 import { recordWebhookDelivery } from "@/lib/ingest/recordWebhookDelivery";

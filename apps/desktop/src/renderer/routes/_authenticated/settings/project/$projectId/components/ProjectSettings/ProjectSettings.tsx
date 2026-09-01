@@ -1,9 +1,9 @@
-import { errorMessage } from "@superset/i18n/errors";
-import type { BranchPrefixMode } from "@superset/local-db";
+import { errorMessage } from "@choros/i18n/errors";
+import type { BranchPrefixMode } from "@choros/local-db";
 import {
 	resolveBranchPrefix,
 	sanitizeSegment,
-} from "@superset/shared/workspace-launch";
+} from "@choros/shared/workspace-launch";
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -14,20 +14,20 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 	AlertDialogTrigger,
-} from "@superset/ui/alert-dialog";
-import { Button } from "@superset/ui/button";
-import { Input } from "@superset/ui/input";
-import { Label } from "@superset/ui/label";
+} from "@choros/ui/alert-dialog";
+import { Button } from "@choros/ui/button";
+import { Input } from "@choros/ui/input";
+import { Label } from "@choros/ui/label";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
-import { toast } from "@superset/ui/sonner";
-import { Switch } from "@superset/ui/switch";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/select";
+import { toast } from "@choros/ui/sonner";
+import { Switch } from "@choros/ui/switch";
+import { cn } from "@choros/ui/utils";
 import type { ReactNode } from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { LuImagePlus, LuTrash2 } from "react-icons/lu";

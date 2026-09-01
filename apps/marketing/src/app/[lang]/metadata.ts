@@ -1,5 +1,5 @@
-import { SUPPORTED_LOCALES, type SupportedLocale } from "@superset/i18n";
-import { COMPANY } from "@superset/shared/constants";
+import { SUPPORTED_LOCALES, type SupportedLocale } from "@choros/i18n";
+import { COMPANY } from "@choros/shared/constants";
 import type { Metadata } from "next";
 
 // English lives at the bare URL (Decision 1 of the localized-URLs plan:

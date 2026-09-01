@@ -9,7 +9,7 @@ import {
 } from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import type { PluginMcpServerConfig } from "@superset/shared/plugins";
+import type { PluginMcpServerConfig } from "@choros/shared/plugins";
 import {
 	readExternallyConfiguredMcpServers,
 	syncManagedMcpServers,

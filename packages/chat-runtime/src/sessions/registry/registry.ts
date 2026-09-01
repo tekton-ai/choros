@@ -1,4 +1,4 @@
-import type { Envelope } from "@superset/chat/protocol";
+import type { Envelope } from "@choros/chat/protocol";
 import type { HarnessAdapter } from "../../harness";
 import type { ChatJournal } from "../../journal";
 import { LiveSession } from "../liveSession";

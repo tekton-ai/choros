@@ -1,4 +1,4 @@
-import { toast } from "@superset/ui/sonner";
+import { toast } from "@choros/ui/sonner";
 import { clearAllTerminalState } from "renderer/lib/terminal/terminal-buffer-gc";
 
 /**

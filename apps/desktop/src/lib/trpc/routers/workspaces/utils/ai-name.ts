@@ -1,7 +1,7 @@
-import { workspaces } from "@superset/local-db";
-import { generateTitleFromMessage } from "@superset/provider-auth/server";
-import { getSmallModel } from "@superset/provider-auth/server/shared";
-import { deriveWorkspaceTitleFromPrompt } from "@superset/shared/workspace-launch";
+import { workspaces } from "@choros/local-db";
+import { generateTitleFromMessage } from "@choros/provider-auth/server";
+import { getSmallModel } from "@choros/provider-auth/server/shared";
+import { deriveWorkspaceTitleFromPrompt } from "@choros/shared/workspace-launch";
 import { and, eq, isNull } from "drizzle-orm";
 import { localDb } from "main/lib/local-db";
 import { getWorkspaceAutoRenameDecision } from "./workspace-auto-rename";

@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { dbWs } from "@superset/db/client";
+import { dbWs } from "@choros/db/client";
 import {
 	attachments,
 	files,
@@ -8,9 +8,9 @@ import {
 	type SelectPage,
 	type SelectPageVersion,
 	workspacePages,
-} from "@superset/db/schema";
-import { mintPageSlug } from "@superset/shared/page-slug";
-import { fileOriginalKey, pageVersionKey } from "@superset/shared/usercontent";
+} from "@choros/db/schema";
+import { mintPageSlug } from "@choros/shared/page-slug";
+import { fileOriginalKey, pageVersionKey } from "@choros/shared/usercontent";
 import { TRPCError } from "@trpc/server";
 import { and, desc, eq, inArray } from "drizzle-orm";
 import { userError } from "../../i18n-error";

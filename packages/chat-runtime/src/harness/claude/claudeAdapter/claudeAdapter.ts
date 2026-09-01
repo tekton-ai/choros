@@ -7,7 +7,7 @@ import type {
 	ApprovalRequest,
 	Decision,
 	UserContent,
-} from "@superset/chat/protocol";
+} from "@choros/chat/protocol";
 import type {
 	AdapterEvent,
 	HarnessAdapter,

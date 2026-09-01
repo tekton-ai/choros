@@ -1,4 +1,4 @@
-import { FRESH_SHELL_INPUT_MODE_RESET } from "@superset/shared/leaked-input-mode-reclaim";
+import { FRESH_SHELL_INPUT_MODE_RESET } from "@choros/shared/leaked-input-mode-reclaim";
 import type { FitAddon } from "@xterm/addon-fit";
 import type { SearchAddon } from "@xterm/addon-search";
 import type { IDisposable, ITheme, Terminal as XTerm } from "@xterm/xterm";

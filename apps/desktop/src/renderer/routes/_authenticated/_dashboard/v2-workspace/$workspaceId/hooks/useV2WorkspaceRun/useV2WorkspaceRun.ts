@@ -1,9 +1,9 @@
 import { useLingui } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
-import { errorMessage, rawErrorMessage } from "@superset/i18n/errors";
-import type { CreatePaneInput, WorkspaceStore } from "@superset/panes";
-import { toast } from "@superset/ui/sonner";
-import { workspaceTrpc } from "@superset/workspace-client";
+import { i18n } from "@choros/i18n";
+import { errorMessage, rawErrorMessage } from "@choros/i18n/errors";
+import type { CreatePaneInput, WorkspaceStore } from "@choros/panes";
+import { toast } from "@choros/ui/sonner";
+import { workspaceTrpc } from "@choros/workspace-client";
 import { eq } from "@tanstack/db";
 import { useLiveQuery } from "@tanstack/react-db";
 import { useCallback, useMemo, useRef, useState } from "react";

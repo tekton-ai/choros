@@ -1,4 +1,4 @@
-import { readExternallyConfiguredMcpServers } from "@superset/agent-setup";
+import { readExternallyConfiguredMcpServers } from "@choros/agent-setup";
 import { TRPCError } from "@trpc/server";
 import {
 	getBundledSkillContent,
@@ -17,7 +17,7 @@ import { publicProcedure, router } from "../..";
 
 /**
  * Install state for the Plugins page. The catalog itself is static data the
- * renderer imports from @superset/shared/plugins; this router only owns the
+ * renderer imports from @choros/shared/plugins; this router only owns the
  * installed set and the materialization side effects (main/lib/plugin-installs).
  */
 export const createPluginsRouter = () => {

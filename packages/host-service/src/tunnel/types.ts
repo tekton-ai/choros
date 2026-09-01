@@ -8,4 +8,4 @@ export type {
 	TunnelWsClose,
 	TunnelWsFrame,
 	TunnelWsOpen,
-} from "@superset/shared/tunnel-protocol";
+} from "@choros/shared/tunnel-protocol";

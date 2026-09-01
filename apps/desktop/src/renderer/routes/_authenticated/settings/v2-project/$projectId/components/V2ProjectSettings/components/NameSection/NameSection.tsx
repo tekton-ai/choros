@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import { Input } from "@superset/ui/input";
+import { Input } from "@choros/ui/input";
 import { useEffect, useState } from "react";
 import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";
 

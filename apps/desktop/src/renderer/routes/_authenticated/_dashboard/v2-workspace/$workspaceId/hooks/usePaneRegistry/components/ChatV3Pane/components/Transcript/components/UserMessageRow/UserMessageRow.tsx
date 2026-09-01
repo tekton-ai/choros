@@ -1,7 +1,7 @@
 import { Trans } from "@lingui/react/macro";
-import type { UserMessage } from "@superset/chat/protocol";
-import { Message, MessageContent } from "@superset/ui/ai-elements/message";
-import { Badge } from "@superset/ui/badge";
+import type { UserMessage } from "@choros/chat/protocol";
+import { Message, MessageContent } from "@choros/ui/ai-elements/message";
+import { Badge } from "@choros/ui/badge";
 
 export function UserMessageRow({ item }: { item: UserMessage }) {
 	const text = item.content

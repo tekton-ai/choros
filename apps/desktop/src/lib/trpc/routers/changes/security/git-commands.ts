@@ -1,4 +1,4 @@
-import { runWithPostCheckoutHookTolerance } from "@superset/shared/git-hook-tolerance";
+import { runWithPostCheckoutHookTolerance } from "@choros/shared/git-hook-tolerance";
 import { TRPCError } from "@trpc/server";
 import { getCurrentBranch } from "../../workspaces/utils/git";
 import { getSimpleGitWithShellPath } from "../../workspaces/utils/git-client";

@@ -1,20 +1,20 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
-import type { BranchPrefixMode } from "@superset/local-db";
+import { i18n } from "@choros/i18n";
+import type { BranchPrefixMode } from "@choros/local-db";
 import {
 	resolveBranchPrefix,
 	sanitizeSegment,
-} from "@superset/shared/workspace-launch";
-import { Input } from "@superset/ui/input";
-import { Label } from "@superset/ui/label";
+} from "@choros/shared/workspace-launch";
+import { Input } from "@choros/ui/input";
+import { Label } from "@choros/ui/label";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
-import { Switch } from "@superset/ui/switch";
+} from "@choros/ui/select";
+import { Switch } from "@choros/ui/switch";
 import { useEffect, useState } from "react";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { HighlightText } from "renderer/routes/_authenticated/settings/components/HighlightText";

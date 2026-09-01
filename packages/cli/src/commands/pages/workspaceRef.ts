@@ -1,4 +1,4 @@
-import { CLIError } from "@superset/cli-framework";
+import { CLIError } from "@choros/cli-framework";
 import type { ApiClient } from "../../lib/api-client";
 import { listWorkspacesOnHost } from "../../lib/host-workspaces";
 

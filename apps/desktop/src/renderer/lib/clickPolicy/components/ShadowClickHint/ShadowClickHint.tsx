@@ -1,4 +1,4 @@
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const DEFAULT_HINT_DELAY_MS = 500;

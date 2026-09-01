@@ -1,5 +1,5 @@
-import type { RouterOutputs } from "@superset/trpc";
-import type { CommentThread } from "@superset/ui/page-comments";
+import type { RouterOutputs } from "@choros/trpc";
+import type { CommentThread } from "@choros/ui/page-comments";
 
 type ServerThread = RouterOutputs["pageComment"]["list"][number];
 

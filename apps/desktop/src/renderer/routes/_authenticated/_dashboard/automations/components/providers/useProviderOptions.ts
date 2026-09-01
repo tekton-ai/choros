@@ -1,4 +1,4 @@
-import type { DraftTrigger } from "@superset/shared/automation-triggers";
+import type { DraftTrigger } from "@choros/shared/automation-triggers";
 import { useQueries } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { cloudTrpc } from "renderer/lib/cloud-trpc";

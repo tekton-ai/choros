@@ -1,6 +1,6 @@
 import { LinearClient } from "@linear/sdk";
-import { db } from "@superset/db/client";
-import { integrationConnections } from "@superset/db/schema";
+import { db } from "@choros/db/client";
+import { integrationConnections } from "@choros/db/schema";
 import { and, eq } from "drizzle-orm";
 import { markDisconnected, REFRESH_BUFFER_MS } from "../token-refresh";
 import { isLinearAuthError, refreshLinearToken } from "./refresh";

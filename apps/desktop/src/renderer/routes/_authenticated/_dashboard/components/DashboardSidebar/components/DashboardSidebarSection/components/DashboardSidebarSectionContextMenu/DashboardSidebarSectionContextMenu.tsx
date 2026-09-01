@@ -2,7 +2,7 @@ import {
 	ContextMenu,
 	ContextMenuContent,
 	ContextMenuTrigger,
-} from "@superset/ui/context-menu";
+} from "@choros/ui/context-menu";
 import { SectionActionsMenuItems } from "./components/SectionActionsMenuItems";
 import type { DashboardSidebarSectionActionsProps } from "./types";
 

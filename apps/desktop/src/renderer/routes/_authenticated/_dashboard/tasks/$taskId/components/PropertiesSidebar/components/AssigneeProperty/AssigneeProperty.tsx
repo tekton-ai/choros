@@ -1,11 +1,11 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Avatar } from "@superset/ui/atoms/Avatar";
+import { Avatar } from "@choros/ui/atoms/Avatar";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
+} from "@choros/ui/dropdown-menu";
 import { useMemo, useState } from "react";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import { cloudTrpc } from "renderer/lib/cloud-trpc";

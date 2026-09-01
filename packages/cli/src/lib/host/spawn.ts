@@ -6,7 +6,7 @@ import { dirname, join } from "node:path";
 import {
 	MAX_HOST_LOG_BYTES,
 	openRotatingLogFd,
-} from "@superset/shared/rotating-log";
+} from "@choros/shared/rotating-log";
 import type { ApiClient } from "../api-client";
 import { SUPERSET_HOME_DIR } from "../config";
 import { env, isDesktopBundled } from "../env";

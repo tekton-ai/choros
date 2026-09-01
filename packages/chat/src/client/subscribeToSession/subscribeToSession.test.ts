@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import { randomUUID } from "node:crypto";
-import type { ChatRuntime, FakeHarnessScript } from "@superset/chat-runtime";
+import type { ChatRuntime, FakeHarnessScript } from "@choros/chat-runtime";
 import {
 	agentMessage,
 	createRecordingSink,
@@ -9,7 +9,7 @@ import {
 	fakeHarnessRegistry,
 	turn,
 	waitFor,
-} from "@superset/chat-runtime/testing";
+} from "@choros/chat-runtime/testing";
 import { emptySnapshot, reduceMany } from "../../core";
 import type { Envelope } from "../../protocol/envelope";
 import { createManualWait } from "../../testing/manualWait";

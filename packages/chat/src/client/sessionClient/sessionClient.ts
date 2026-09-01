@@ -1,7 +1,7 @@
 import type {
 	ChatRouterInputs,
 	ChatRouterOutputs,
-} from "@superset/chat-runtime";
+} from "@choros/chat-runtime";
 import type { Cursor } from "../../protocol/cursor";
 import type { DeltaChannel, Envelope } from "../../protocol/envelope";
 import type { Decision, UserContent } from "../../protocol/items";

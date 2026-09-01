@@ -1,4 +1,4 @@
-import { formatDate } from "@superset/i18n/format";
+import { formatDate } from "@choros/i18n/format";
 
 const ISO_DATE_PREFIX = /^\d{4}-\d{2}-\d{2}/;
 const MULTI_MONTH_SPAN_DAYS = 60;

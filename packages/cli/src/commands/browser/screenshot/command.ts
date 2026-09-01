@@ -1,5 +1,5 @@
 import { writeFile } from "node:fs/promises";
-import { string } from "@superset/cli-framework";
+import { string } from "@choros/cli-framework";
 import { command } from "../../../lib/command";
 import { resolveBrowserTarget } from "../shared";
 

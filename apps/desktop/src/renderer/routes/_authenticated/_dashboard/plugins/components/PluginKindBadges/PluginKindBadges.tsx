@@ -3,9 +3,9 @@ import {
 	getPluginComponentKinds,
 	type PluginCatalogEntry,
 	type PluginComponentKind,
-} from "@superset/shared/plugins";
-import { Badge } from "@superset/ui/badge";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+} from "@choros/shared/plugins";
+import { Badge } from "@choros/ui/badge";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 
 export function PluginKindBadges({ plugin }: { plugin: PluginCatalogEntry }) {
 	const { t } = useLingui();

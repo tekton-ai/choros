@@ -1,5 +1,5 @@
-import { errorMessage } from "@superset/i18n/errors";
-import { toast } from "@superset/ui/sonner";
+import { errorMessage } from "@choros/i18n/errors";
+import { toast } from "@choros/ui/sonner";
 import { useCallback } from "react";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import type { DetectedLink } from "renderer/lib/terminal/links";

@@ -1,6 +1,6 @@
 import { Trans } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
-import { COMPANY } from "@superset/shared/constants";
+import { i18n } from "@choros/i18n";
+import { COMPANY } from "@choros/shared/constants";
 import type { Metadata } from "next";
 import { GridCross } from "@/app/[lang]/blog/components/GridCross";
 import { localeUrl, localizedAlternates } from "@/app/[lang]/metadata";

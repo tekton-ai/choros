@@ -2,8 +2,8 @@ import {
 	AGENT_PRESET_COMMANDS,
 	AGENT_PRESET_DESCRIPTIONS,
 	AGENT_TYPES,
-} from "@superset/shared/agent-command";
-import { Button } from "@superset/ui/button";
+} from "@choros/shared/agent-command";
+import { Button } from "@choros/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuCheckboxItem,
@@ -11,8 +11,8 @@ import {
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+} from "@choros/ui/dropdown-menu";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { useNavigate, useParams } from "@tanstack/react-router";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { HiMiniCog6Tooth, HiMiniCommandLine } from "react-icons/hi2";

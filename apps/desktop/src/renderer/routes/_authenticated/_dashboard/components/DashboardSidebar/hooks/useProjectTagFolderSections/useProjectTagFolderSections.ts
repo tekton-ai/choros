@@ -1,4 +1,4 @@
-import { normalizeWorkspaceTags } from "@superset/shared/workspace-tags";
+import { normalizeWorkspaceTags } from "@choros/shared/workspace-tags";
 import { useLiveQuery } from "@tanstack/react-db";
 import { useMemo } from "react";
 import { useCollections } from "renderer/routes/_authenticated/providers/CollectionsProvider";

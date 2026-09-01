@@ -1,8 +1,8 @@
 import { plural } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { errorMessage } from "@superset/i18n/errors";
-import { COMPANY } from "@superset/shared/constants";
-import { Button } from "@superset/ui/button";
+import { errorMessage } from "@choros/i18n/errors";
+import { COMPANY } from "@choros/shared/constants";
+import { Button } from "@choros/ui/button";
 import {
 	Select,
 	SelectContent,
@@ -12,8 +12,8 @@ import {
 	SelectSeparator,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/select";
+import { toast } from "@choros/ui/sonner";
 import { type ChangeEvent, useRef, useState } from "react";
 import {
 	HiOutlineArrowDownTray,

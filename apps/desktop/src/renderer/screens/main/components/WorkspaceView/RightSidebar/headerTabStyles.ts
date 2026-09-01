@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 
 const SIDEBAR_HEADER_TAB_ACTIVE_CLASS_NAME = "text-foreground bg-border/30";
 const SIDEBAR_HEADER_TAB_INACTIVE_CLASS_NAME =

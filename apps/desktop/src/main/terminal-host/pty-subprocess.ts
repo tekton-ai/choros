@@ -14,7 +14,7 @@ import {
 	type ProcessSignalTarget,
 	signalProcessTargets,
 	signalProcessTreeAndGroups,
-} from "@superset/pty-daemon/process-tree";
+} from "@choros/pty-daemon/process-tree";
 import type { IPty } from "node-pty";
 import * as pty from "node-pty";
 import treeKill from "tree-kill";

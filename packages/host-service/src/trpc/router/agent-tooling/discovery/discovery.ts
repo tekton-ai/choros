@@ -1,5 +1,5 @@
 import os from "node:os";
-import type { SlashCommand } from "@superset/shared/slash-commands";
+import type { SlashCommand } from "@choros/shared/slash-commands";
 import {
 	getSlashCommandDiscovery,
 	SLASH_COMMAND_DISCOVERY,

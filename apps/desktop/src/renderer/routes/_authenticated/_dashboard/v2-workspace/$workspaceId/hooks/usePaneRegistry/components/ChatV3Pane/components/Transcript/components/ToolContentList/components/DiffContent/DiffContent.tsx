@@ -1,5 +1,5 @@
-import type { ToolContent } from "@superset/chat/protocol";
-import { CodeBlock } from "@superset/ui/ai-elements/code-block";
+import type { ToolContent } from "@choros/chat/protocol";
+import { CodeBlock } from "@choros/ui/ai-elements/code-block";
 
 type DiffToolContent = Extract<ToolContent, { type: "diff" }>;
 

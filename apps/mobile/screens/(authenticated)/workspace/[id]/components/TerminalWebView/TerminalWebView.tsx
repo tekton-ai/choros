@@ -1,4 +1,4 @@
-import { buildHostRoutingKey } from "@superset/shared/host-routing";
+import { buildHostRoutingKey } from "@choros/shared/host-routing";
 import * as Clipboard from "expo-clipboard";
 import { useFocusEffect } from "expo-router";
 import {

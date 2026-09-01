@@ -1,5 +1,5 @@
-import { FEATURE_FLAGS } from "@superset/shared/constants";
-import { getPluginByName } from "@superset/shared/plugins";
+import { FEATURE_FLAGS } from "@choros/shared/constants";
+import { getPluginByName } from "@choros/shared/plugins";
 import { createFileRoute } from "@tanstack/react-router";
 import { useFeatureFlagEnabled } from "posthog-js/react";
 import { Redirect } from "renderer/components/Redirect";

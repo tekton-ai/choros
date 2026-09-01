@@ -50,10 +50,10 @@ const externalizedRuntimeModules: ExternalizedRuntimeModule[] = [
 		asarUnpackGlobs: ["**/node_modules/native-keymap/**/*"],
 	},
 	{
-		specifier: "@superset/macos-process-metrics",
-		materialize: ["@superset/macos-process-metrics"],
-		packagedCopies: [copyWholeModule("@superset/macos-process-metrics")],
-		asarUnpackGlobs: ["**/node_modules/@superset/macos-process-metrics/**/*"],
+		specifier: "@choros/macos-process-metrics",
+		materialize: ["@choros/macos-process-metrics"],
+		packagedCopies: [copyWholeModule("@choros/macos-process-metrics")],
+		asarUnpackGlobs: ["**/node_modules/@choros/macos-process-metrics/**/*"],
 	},
 	{
 		specifier: "@ast-grep/napi",

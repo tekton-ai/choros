@@ -1,5 +1,5 @@
 import Anthropic from "@anthropic-ai/sdk";
-import { deriveWorkspaceTitleFromPrompt } from "@superset/shared/workspace-launch";
+import { deriveWorkspaceTitleFromPrompt } from "@choros/shared/workspace-launch";
 import { env } from "../../env";
 
 /** Same instruction the local host names with, so both paths read alike. */

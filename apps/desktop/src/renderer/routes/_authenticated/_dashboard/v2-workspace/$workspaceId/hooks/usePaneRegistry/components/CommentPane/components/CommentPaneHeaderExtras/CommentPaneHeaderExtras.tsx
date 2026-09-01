@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { RendererContext } from "@superset/panes";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+import type { RendererContext } from "@choros/panes";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { LuCheck, LuCopy } from "react-icons/lu";

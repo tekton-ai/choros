@@ -3,7 +3,7 @@ import {
 	execFile,
 } from "node:child_process";
 import { promisify } from "node:util";
-import { USER_GIT_ENV_SIMPLE_GIT_OPTIONS } from "@superset/shared/simple-git-options";
+import { USER_GIT_ENV_SIMPLE_GIT_OPTIONS } from "@choros/shared/simple-git-options";
 import simpleGit, { type SimpleGit, type SimpleGitOptions } from "simple-git";
 import { GitEnvironmentError } from "./git-errors";
 import { getProcessEnvWithShellPath } from "./shell-env";

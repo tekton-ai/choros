@@ -1,4 +1,4 @@
-import { Button } from "@superset/ui/button";
+import { Button } from "@choros/ui/button";
 import Link from "next/link";
 import { MessageScreen } from "@/components/MessageScreen";
 import { i18n } from "@/lib/i18n-server";

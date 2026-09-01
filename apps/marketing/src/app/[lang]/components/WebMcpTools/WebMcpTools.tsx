@@ -1,6 +1,6 @@
 "use client";
 
-import { COMPANY } from "@superset/shared/constants";
+import { COMPANY } from "@choros/shared/constants";
 import { useEffect } from "react";
 import { MCP_SERVER_URL } from "@/lib/api-url";
 import { PRODUCT_SUMMARY } from "@/lib/product-facts";

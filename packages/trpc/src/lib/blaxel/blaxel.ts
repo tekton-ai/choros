@@ -9,7 +9,7 @@
  */
 
 import { SandboxInstance, settings } from "@blaxel/core";
-import { SANDBOX_CREDENTIAL_PLACEHOLDER } from "@superset/shared/constants";
+import { SANDBOX_CREDENTIAL_PLACEHOLDER } from "@choros/shared/constants";
 import { env } from "../../env";
 import { userError } from "../../i18n-error";
 

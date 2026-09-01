@@ -1,4 +1,4 @@
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import { useRouter } from "expo-router";
 import { View } from "react-native";
 import { posthog } from "@/lib/posthog";

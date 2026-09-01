@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
-import { Label } from "@superset/ui/label";
+import { Button } from "@choros/ui/button";
+import { Label } from "@choros/ui/label";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 
 interface WorktreeLocationPickerProps {

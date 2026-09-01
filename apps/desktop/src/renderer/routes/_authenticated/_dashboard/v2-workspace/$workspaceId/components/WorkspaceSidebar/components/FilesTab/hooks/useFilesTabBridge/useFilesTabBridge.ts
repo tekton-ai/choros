@@ -1,6 +1,6 @@
 import type { FileTree } from "@pierre/trees";
-import { workspaceTrpc } from "@superset/workspace-client";
-import type { FsWatchEvent } from "@superset/workspace-fs/client";
+import { workspaceTrpc } from "@choros/workspace-client";
+import type { FsWatchEvent } from "@choros/workspace-fs/client";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useWorkspaceEvent } from "renderer/hooks/host-service/useWorkspaceEvent";
 import { useWorkspaceHostUrl } from "renderer/hooks/host-service/useWorkspaceHostUrl";

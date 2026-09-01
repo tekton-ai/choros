@@ -1,7 +1,7 @@
 import { Trans } from "@lingui/react/macro";
-import { Skeleton } from "@superset/ui/skeleton";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@superset/ui/tabs";
-import { cn } from "@superset/ui/utils";
+import { Skeleton } from "@choros/ui/skeleton";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@choros/ui/tabs";
+import { cn } from "@choros/ui/utils";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { HiCheckCircle } from "react-icons/hi2";

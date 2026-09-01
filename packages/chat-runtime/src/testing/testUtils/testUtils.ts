@@ -1,4 +1,4 @@
-import type { DurableEnvelope, Envelope } from "@superset/chat/protocol";
+import type { DurableEnvelope, Envelope } from "@choros/chat/protocol";
 import type { FakeHarnessScript } from "../../harness/fake";
 import { FakeHarness } from "../../harness/fake";
 import type { ChatRuntime } from "../../index";

@@ -7,7 +7,7 @@ import {
 	promptInputSchema,
 	respondToApprovalInputSchema,
 	setModeInputSchema,
-} from "@superset/chat/protocol";
+} from "@choros/chat/protocol";
 import type { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
 import { initTRPC, TRPCError } from "@trpc/server";
 import type { ChatRuntime } from "../../index";

@@ -1,10 +1,10 @@
-import type { SelectTaskStatus } from "@superset/db/schema";
+import type { SelectTaskStatus } from "@choros/db/schema";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
+} from "@choros/ui/dropdown-menu";
 import { useMemo, useState } from "react";
 import { cloudTrpc } from "renderer/lib/cloud-trpc";
 import { useOptimisticActions } from "renderer/routes/_authenticated/hooks/useOptimisticActions";

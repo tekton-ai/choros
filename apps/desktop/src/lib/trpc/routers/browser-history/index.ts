@@ -1,4 +1,4 @@
-import { browserHistory } from "@superset/local-db";
+import { browserHistory } from "@choros/local-db";
 import { TRPCError } from "@trpc/server";
 import { like, or, sql } from "drizzle-orm";
 import { session } from "electron";

@@ -101,8 +101,8 @@ mock.module("electron-log/main", () => ({
 	},
 }));
 
-const realHostInfo = await import("@superset/shared/host-info");
-mock.module("@superset/shared/host-info", () => ({
+const realHostInfo = await import("@choros/shared/host-info");
+mock.module("@choros/shared/host-info", () => ({
 	...realHostInfo,
 	getHostId: () => "host-1",
 	getHostName: () => "host",

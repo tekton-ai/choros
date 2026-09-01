@@ -51,8 +51,8 @@ async function runWorker(home: string, marker: string, label: string) {
 			error: (...a: unknown[]) => console.log(`[${label}]`, ...a),
 		},
 	}));
-	const realHostInfo = await import("@superset/shared/host-info");
-	mock.module("@superset/shared/host-info", () => ({
+	const realHostInfo = await import("@choros/shared/host-info");
+	mock.module("@choros/shared/host-info", () => ({
 		...realHostInfo,
 		getHostId: () => `host-${label}`,
 		getHostName: () => `host-${label}`,

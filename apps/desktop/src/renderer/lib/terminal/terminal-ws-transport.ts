@@ -1,8 +1,8 @@
-import type { RelayAffinityProbe } from "@superset/workspace-client";
+import type { RelayAffinityProbe } from "@choros/workspace-client";
 import {
 	createRelaySocket,
 	type RelaySocket,
-} from "@superset/workspace-client/relay-socket";
+} from "@choros/workspace-client/relay-socket";
 import type { Terminal as XTerm } from "@xterm/xterm";
 import { ensureFreshJwt } from "renderer/lib/auth-client";
 import { posthog } from "renderer/lib/posthog";

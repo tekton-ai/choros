@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
-import { useWorkspaceHostUrl } from "@superset/workspace-client";
+import { i18n } from "@choros/i18n";
+import { useWorkspaceHostUrl } from "@choros/workspace-client";
 import type { ReactNode } from "react";
 import type { HostShapedWorkspace } from "renderer/hooks/host-workspaces/useHostWorkspaces";
 import { cloudTrpc } from "renderer/lib/cloud-trpc";

@@ -1,6 +1,6 @@
-import { automationSessionKindValues } from "@superset/db/schema";
-import { draftTriggerSchema } from "@superset/shared/automation-triggers";
-import { workspaceTagsInputSchema } from "@superset/shared/workspace-tags";
+import { automationSessionKindValues } from "@choros/db/schema";
+import { draftTriggerSchema } from "@choros/shared/automation-triggers";
+import { workspaceTagsInputSchema } from "@choros/shared/workspace-tags";
 import { z } from "zod";
 
 /**

@@ -1,5 +1,5 @@
 import type { MessageDescriptor } from "@lingui/core";
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import type { ComponentType } from "react";
 import type { SharedFileDocument } from "../../../../../state/fileDocumentStore";
 

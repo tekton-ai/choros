@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import type { Notice } from "@superset/chat/protocol";
+import type { Notice } from "@choros/chat/protocol";
 import type { AdapterEvent } from "../../types";
 import { FixturePlayer } from "../fixturePlayer";
 import { fixtureCwd, loadCodexFixture } from "../fixtures";

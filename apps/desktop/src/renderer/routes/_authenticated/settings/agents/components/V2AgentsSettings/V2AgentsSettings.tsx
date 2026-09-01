@@ -1,12 +1,12 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import type { HostAgentConfig } from "@superset/host-service/settings";
-import { errorMessage } from "@superset/i18n/errors";
+import type { HostAgentConfig } from "@choros/host-service/settings";
+import { errorMessage } from "@choros/i18n/errors";
 import {
 	HOST_AGENT_PRESETS,
 	type HostAgentPreset,
-} from "@superset/shared/host-agent-presets";
-import { Skeleton } from "@superset/ui/skeleton";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/shared/host-agent-presets";
+import { Skeleton } from "@choros/ui/skeleton";
+import { toast } from "@choros/ui/sonner";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import { Bot } from "lucide-react";

@@ -1,6 +1,6 @@
-import { auth, mintUserJwt } from "@superset/auth/server";
-import { db } from "@superset/db/client";
-import { members, users } from "@superset/db/schema";
+import { auth, mintUserJwt } from "@choros/auth/server";
+import { db } from "@choros/db/client";
+import { members, users } from "@choros/db/schema";
 import { verifyAccessToken } from "better-auth/oauth2";
 import { eq } from "drizzle-orm";
 

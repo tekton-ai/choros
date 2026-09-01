@@ -1,7 +1,7 @@
 "use server";
 
-import { ContactInquiryEmail } from "@superset/email/emails/internal/contact-inquiry";
-import { i18n } from "@superset/i18n";
+import { ContactInquiryEmail } from "@choros/email/emails/internal/contact-inquiry";
+import { i18n } from "@choros/i18n";
 import { Resend } from "resend";
 import { z } from "zod";
 import { env } from "@/env";

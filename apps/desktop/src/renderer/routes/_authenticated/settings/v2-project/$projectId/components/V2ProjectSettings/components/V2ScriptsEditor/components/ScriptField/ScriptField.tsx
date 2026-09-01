@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Textarea } from "@superset/ui/textarea";
-import { cn } from "@superset/ui/utils";
+import { Textarea } from "@choros/ui/textarea";
+import { cn } from "@choros/ui/utils";
 import { useCallback, useRef, useState } from "react";
 import { HiDocumentArrowUp } from "react-icons/hi2";
 

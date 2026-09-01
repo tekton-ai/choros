@@ -1,13 +1,13 @@
 import { Trans } from "@lingui/react/macro";
-import type { HostAgentConfig } from "@superset/host-service/settings";
-import { Button } from "@superset/ui/button";
+import type { HostAgentConfig } from "@choros/host-service/settings";
+import { Button } from "@choros/ui/button";
 import {
 	ContextMenu,
 	ContextMenuContent,
 	ContextMenuItem,
 	ContextMenuSeparator,
 	ContextMenuTrigger,
-} from "@superset/ui/context-menu";
+} from "@choros/ui/context-menu";
 import { useEffect, useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { HiMiniCommandLine } from "react-icons/hi2";

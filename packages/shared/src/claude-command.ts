@@ -1,4 +1,4 @@
-/** @deprecated Use `@superset/shared/agent-command` instead */
+/** @deprecated Use `@choros/shared/agent-command` instead */
 export {
 	AGENT_LABELS,
 	AGENT_PRESET_COMMANDS,

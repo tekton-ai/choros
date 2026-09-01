@@ -1,6 +1,6 @@
-import { db } from "@superset/db/client";
-import { githubInstallations, githubRepositories } from "@superset/db/schema";
-import { findProviderIdentity } from "@superset/db/utils";
+import { db } from "@choros/db/client";
+import { githubInstallations, githubRepositories } from "@choros/db/schema";
+import { findProviderIdentity } from "@choros/db/utils";
 import { desc, eq } from "drizzle-orm";
 import { installationOctokit } from "../../../lib/blaxel/clone-token";
 import type { TriggerOptionSource } from "../trigger-options";

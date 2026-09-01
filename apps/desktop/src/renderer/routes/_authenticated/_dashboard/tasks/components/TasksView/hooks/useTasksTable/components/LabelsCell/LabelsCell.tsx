@@ -1,5 +1,5 @@
-import type { SelectTask } from "@superset/db/schema";
-import { Badge } from "@superset/ui/badge";
+import type { SelectTask } from "@choros/db/schema";
+import { Badge } from "@choros/ui/badge";
 import type { CellContext } from "@tanstack/react-table";
 
 interface LabelsCellProps {

@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { LuChevronDown, LuChevronRight } from "react-icons/lu";
 import { useChangesSectionDnd } from "renderer/screens/main/components/WorkspaceView/hooks/useChangesSectionDnd";
 import type { ChangeCategory } from "shared/changes-types";

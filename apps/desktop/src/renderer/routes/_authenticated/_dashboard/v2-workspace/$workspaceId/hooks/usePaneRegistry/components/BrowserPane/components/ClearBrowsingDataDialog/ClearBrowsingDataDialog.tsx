@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
-import { Checkbox } from "@superset/ui/checkbox";
+import { Button } from "@choros/ui/button";
+import { Checkbox } from "@choros/ui/checkbox";
 import {
 	Dialog,
 	DialogContent,
@@ -8,9 +8,9 @@ import {
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
-} from "@superset/ui/dialog";
-import { Label } from "@superset/ui/label";
-import { toast } from "@superset/ui/sonner";
+} from "@choros/ui/dialog";
+import { Label } from "@choros/ui/label";
+import { toast } from "@choros/ui/sonner";
 import { useState } from "react";
 import { electronTrpcClient } from "renderer/lib/trpc-client";
 

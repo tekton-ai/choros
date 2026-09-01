@@ -6,7 +6,7 @@ import {
 	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
-} from "@superset/ui/chart";
+} from "@choros/ui/chart";
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import { formatStarCount } from "@/lib/github";
 import type { StarHistoryPoint } from "../../utils/getStarHistory";

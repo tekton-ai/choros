@@ -3,8 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
 	type ChatHistorySidebarMessage,
 	ChatHistorySidebarScroller,
-} from "@superset/ui/chat-history-sidebar";
-import { getPresetIcon } from "@superset/ui/icons/preset-icons";
+} from "@choros/ui/chat-history-sidebar";
+import { getPresetIcon } from "@choros/ui/icons/preset-icons";
 import {
 	BoxIcon,
 	ChartNoAxesColumnIcon,

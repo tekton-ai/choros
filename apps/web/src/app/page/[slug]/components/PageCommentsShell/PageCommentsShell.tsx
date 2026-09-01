@@ -3,7 +3,7 @@
 import {
 	CommentProvider,
 	type PageCommentUser,
-} from "@superset/ui/page-comments";
+} from "@choros/ui/page-comments";
 import type { ReactNode } from "react";
 import { usePageCommentStore } from "./hooks/usePageCommentStore";
 

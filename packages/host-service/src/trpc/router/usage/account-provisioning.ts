@@ -9,7 +9,7 @@ import { existsSync } from "node:fs";
 import {
 	provisionClaudeProfile,
 	provisionCodexProfile,
-} from "@superset/agent-setup";
+} from "@choros/agent-setup";
 import type { HostDb } from "../../../db/index.ts";
 import {
 	getDefaultAccountSelections,

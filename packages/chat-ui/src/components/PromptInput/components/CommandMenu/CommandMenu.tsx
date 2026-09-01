@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@superset/ui/utils";
+import { cn } from "@choros/ui/utils";
 import { SlashSquareIcon } from "lucide-react";
 import { Fragment } from "react";
 import type { PromptInputCommand } from "../../types";

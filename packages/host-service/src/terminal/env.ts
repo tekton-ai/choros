@@ -23,7 +23,7 @@ import os from "node:os";
 import {
 	TERMINAL_TERM_PROGRAM,
 	TERMINAL_TERM_PROGRAM_VERSION,
-} from "@superset/shared/constants";
+} from "@choros/shared/constants";
 import {
 	augmentPathForMacOS,
 	clearStrictShellEnvCache,

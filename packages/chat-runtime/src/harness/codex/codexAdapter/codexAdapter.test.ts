@@ -6,8 +6,8 @@ import type {
 	SessionState,
 	ToolCall,
 	Turn,
-} from "@superset/chat/protocol";
-import { itemSchema, turnSchema } from "@superset/chat/protocol";
+} from "@choros/chat/protocol";
+import { itemSchema, turnSchema } from "@choros/chat/protocol";
 import type { AdapterEvent } from "../../types";
 import { FixturePlayer } from "../fixturePlayer";
 import type { CodexFixtureName } from "../fixtures";

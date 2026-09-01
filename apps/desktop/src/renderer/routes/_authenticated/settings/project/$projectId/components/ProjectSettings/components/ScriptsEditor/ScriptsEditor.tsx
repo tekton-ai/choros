@@ -1,6 +1,6 @@
-import { Button } from "@superset/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@superset/ui/tabs";
-import { cn } from "@superset/ui/utils";
+import { Button } from "@choros/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@choros/ui/tabs";
+import { cn } from "@choros/ui/utils";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
 	HiArrowTopRightOnSquare,

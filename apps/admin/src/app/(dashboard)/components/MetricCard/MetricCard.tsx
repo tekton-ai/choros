@@ -7,9 +7,9 @@ import {
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from "@superset/ui/card";
-import { Skeleton } from "@superset/ui/skeleton";
-import { cn } from "@superset/ui/utils";
+} from "@choros/ui/card";
+import { Skeleton } from "@choros/ui/skeleton";
+import { cn } from "@choros/ui/utils";
 import type { ReactNode } from "react";
 
 interface MetricCardProps {

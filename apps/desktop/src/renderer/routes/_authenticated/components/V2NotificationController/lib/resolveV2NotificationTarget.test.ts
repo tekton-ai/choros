@@ -1,6 +1,6 @@
 import { describe, expect, it } from "bun:test";
-import type { WorkspaceState } from "@superset/panes";
-import type { AgentLifecyclePayload } from "@superset/workspace-client";
+import type { WorkspaceState } from "@choros/panes";
+import type { AgentLifecyclePayload } from "@choros/workspace-client";
 import type { PaneViewerData } from "renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/types";
 import {
 	isV2NotificationTargetVisible,

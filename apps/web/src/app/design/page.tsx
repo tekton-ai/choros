@@ -14,7 +14,7 @@ import { ShowcaseNav, type ShowcaseNavItem } from "./components/ShowcaseNav";
 
 export const metadata: Metadata = {
 	title: "Design · Superset",
-	description: "Living reference for every @superset/ui component",
+	description: "Living reference for every @choros/ui component",
 };
 
 const NAV_ITEMS: ShowcaseNavItem[] = [
@@ -75,7 +75,7 @@ export default function DesignPage() {
 							id: "web.design.primitives.descriptionLead",
 							message: "A living reference of every component exported from",
 						})}{" "}
-						<code className="font-mono text-foreground">@superset/ui</code>
+						<code className="font-mono text-foreground">@choros/ui</code>
 						{i18n._({
 							id: "web.design.primitives.descriptionTail",
 							message:

@@ -1,5 +1,5 @@
 {
-	"name": "@superset/macos-process-metrics",
+	"name": "@choros/macos-process-metrics",
 	"version": "0.0.1",
 	"private": true,
 	"main": "index.js",

@@ -1,4 +1,4 @@
-import { DropdownMenuShortcut } from "@superset/ui/dropdown-menu";
+import { DropdownMenuShortcut } from "@choros/ui/dropdown-menu";
 import type { HotkeyId } from "renderer/hotkeys";
 import { useHotkeyDisplay } from "renderer/hotkeys";
 

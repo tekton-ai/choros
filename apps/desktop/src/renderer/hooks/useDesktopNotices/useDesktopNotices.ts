@@ -1,9 +1,9 @@
-import { i18n } from "@superset/i18n";
+import { i18n } from "@choros/i18n";
 import {
 	type DesktopNotice,
 	desktopVersionResponseSchema,
 	filterApplicableNotices,
-} from "@superset/shared/desktop-notices";
+} from "@choros/shared/desktop-notices";
 import { useQuery } from "@tanstack/react-query";
 import { useCallback, useEffect, useMemo } from "react";
 import { env } from "renderer/env.renderer";

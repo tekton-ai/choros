@@ -6,7 +6,7 @@ import {
 	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
-} from "@superset/ui/chart";
+} from "@choros/ui/chart";
 import { useQuery } from "@tanstack/react-query";
 import { Area, AreaChart, XAxis, YAxis } from "recharts";
 

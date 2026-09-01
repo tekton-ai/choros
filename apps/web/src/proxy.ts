@@ -1,5 +1,5 @@
-import { auth } from "@superset/auth/server";
-import { COMPANY } from "@superset/shared/constants";
+import { auth } from "@choros/auth/server";
+import { COMPANY } from "@choros/shared/constants";
 import { headers } from "next/headers";
 import { type NextRequest, NextResponse } from "next/server";
 

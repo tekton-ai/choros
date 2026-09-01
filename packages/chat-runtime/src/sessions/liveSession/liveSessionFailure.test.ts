@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import { randomUUID } from "node:crypto";
-import type { DurableEnvelope } from "@superset/chat/protocol";
+import type { DurableEnvelope } from "@choros/chat/protocol";
 import type { AdapterEvent, HarnessAdapter } from "../../harness";
 import { FakeHarness } from "../../harness/fake";
 import type { ChatRuntime } from "../../index";

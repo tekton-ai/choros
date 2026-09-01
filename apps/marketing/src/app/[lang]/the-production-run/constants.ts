@@ -1,5 +1,5 @@
-import { i18n } from "@superset/i18n";
-import { formatDate } from "@superset/i18n/format";
+import { i18n } from "@choros/i18n";
+import { formatDate } from "@choros/i18n/format";
 import {
 	COST_CEILINGS,
 	costTier,
@@ -7,7 +7,7 @@ import {
 	floorTier,
 	type Tier,
 	tierProgress,
-} from "@superset/trpc/leaderboard-tier";
+} from "@choros/trpc/leaderboard-tier";
 
 export { COST_CEILINGS, FLOORS };
 

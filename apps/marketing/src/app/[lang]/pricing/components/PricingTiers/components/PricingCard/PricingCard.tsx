@@ -1,7 +1,7 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Button } from "@superset/ui/button";
-import { cn } from "@superset/ui/utils";
+import { Button } from "@choros/ui/button";
+import { cn } from "@choros/ui/utils";
 import { Check } from "lucide-react";
 import Link from "next/link";
 import type { PricingTier } from "../../../../constants";

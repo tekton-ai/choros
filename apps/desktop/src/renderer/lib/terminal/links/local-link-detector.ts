@@ -13,7 +13,7 @@ import {
 	getCurrentOS,
 	type IParsedLink,
 	removeLinkSuffix,
-} from "@superset/shared/terminal-link-parsing";
+} from "@choros/shared/terminal-link-parsing";
 import type { TerminalLinkResolver } from "./link-resolver";
 
 const MAX_LINE_LENGTH = 2000;

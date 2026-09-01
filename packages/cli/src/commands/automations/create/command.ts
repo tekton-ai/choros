@@ -1,5 +1,5 @@
 import { readFileSync } from "node:fs";
-import { CLIError, string } from "@superset/cli-framework";
+import { CLIError, string } from "@choros/cli-framework";
 import { command } from "../../../lib/command";
 import { formatAutomationDate } from "../format";
 import { resolveAutomationTarget } from "../resolveAutomationTarget";

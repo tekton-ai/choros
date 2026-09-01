@@ -1,4 +1,4 @@
-import { isAgentMode, positional } from "@superset/cli-framework";
+import { isAgentMode, positional } from "@choros/cli-framework";
 import { command } from "../../../../lib/command";
 
 export default command({

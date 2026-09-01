@@ -1,4 +1,4 @@
-import { Button } from "@superset/ui/button";
+import { Button } from "@choros/ui/button";
 import { useCallback, useMemo, useState } from "react";
 import { useChangesStore } from "renderer/stores/changes";
 import { SidebarMode, useSidebarStore } from "renderer/stores/sidebar-state";

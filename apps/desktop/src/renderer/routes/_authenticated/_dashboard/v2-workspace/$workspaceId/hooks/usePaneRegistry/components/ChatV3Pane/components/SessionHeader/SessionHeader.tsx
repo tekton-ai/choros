@@ -1,10 +1,10 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
-import type { StreamStatus } from "@superset/chat/client";
-import type { SessionState, SessionStatus } from "@superset/chat/protocol";
-import { i18n } from "@superset/i18n";
-import { Badge } from "@superset/ui/badge";
-import { cn } from "@superset/ui/utils";
+import type { StreamStatus } from "@choros/chat/client";
+import type { SessionState, SessionStatus } from "@choros/chat/protocol";
+import { i18n } from "@choros/i18n";
+import { Badge } from "@choros/ui/badge";
+import { cn } from "@choros/ui/utils";
 import type { ReactNode } from "react";
 
 const STATUS_LABELS: Record<SessionStatus, MessageDescriptor> = {

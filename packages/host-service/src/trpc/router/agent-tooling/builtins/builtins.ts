@@ -1,4 +1,4 @@
-import type { SlashCommand } from "@superset/shared/slash-commands";
+import type { SlashCommand } from "@choros/shared/slash-commands";
 
 function builtin(
 	name: string,

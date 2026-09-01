@@ -1,5 +1,5 @@
-import { createWorkspaceStore, type WorkspaceState } from "@superset/panes";
-import { FEATURE_FLAGS } from "@superset/shared/constants";
+import { createWorkspaceStore, type WorkspaceState } from "@choros/panes";
+import { FEATURE_FLAGS } from "@choros/shared/constants";
 import { eq } from "@tanstack/db";
 import { useLiveQuery } from "@tanstack/react-db";
 import { useFeatureFlagEnabled } from "posthog-js/react";

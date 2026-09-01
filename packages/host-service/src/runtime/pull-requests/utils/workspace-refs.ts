@@ -2,7 +2,7 @@
 // own module (not pull-requests.ts) so the worker task can import it without
 // pulling the runtime's DB/Octokit graph into the worker bundle.
 
-import { parseGitHubRemote } from "@superset/shared/github-remote";
+import { parseGitHubRemote } from "@choros/shared/github-remote";
 import type { SimpleGit } from "simple-git";
 
 const UNBORN_HEAD_ERROR_PATTERNS = [

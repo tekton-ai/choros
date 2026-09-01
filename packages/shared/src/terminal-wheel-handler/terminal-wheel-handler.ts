@@ -193,7 +193,7 @@ function getReportCoords(
  * Ghostty) produces.
  *
  * Coupled to terminal identity: TERM_PROGRAM must claim a kitty-class
- * terminal (see TERMINAL_TERM_PROGRAM in @superset/shared/constants).
+ * terminal (see TERMINAL_TERM_PROGRAM in @choros/shared/constants).
  * Under a vscode identity Claude Code amplifies each report to compensate
  * for xterm's damped stream, so full-fidelity reports would over-scroll ~3x.
  */

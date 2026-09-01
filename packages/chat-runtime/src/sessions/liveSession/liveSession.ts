@@ -6,8 +6,8 @@ import type {
 	Turn,
 	UserContent,
 	UserMessage,
-} from "@superset/chat/protocol";
-import { sessionStateSchema } from "@superset/chat/protocol";
+} from "@choros/chat/protocol";
+import { sessionStateSchema } from "@choros/chat/protocol";
 import type {
 	AdapterEvent,
 	HarnessAdapter,

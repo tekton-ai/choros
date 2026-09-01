@@ -1,4 +1,4 @@
-import { formatDateTime } from "@superset/i18n/format";
+import { formatDateTime } from "@choros/i18n/format";
 import { compactTime } from "../../../../../../utils/compactTime";
 
 /** The receipt line under "Merged by": "now · August 15, 2026 at 3:25 PM". */

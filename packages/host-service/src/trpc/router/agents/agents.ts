@@ -1,5 +1,5 @@
-import { isBuiltinAgentId } from "@superset/shared/agent-catalog";
-import { FORK_SESSION_ID_TOKEN } from "@superset/shared/agent-definition";
+import { isBuiltinAgentId } from "@choros/shared/agent-catalog";
+import { FORK_SESSION_ID_TOKEN } from "@choros/shared/agent-definition";
 import {
 	buildAgentEffortArgs,
 	buildAgentModeArgs,
@@ -10,13 +10,13 @@ import {
 	getAgentModelSupport,
 	getAgentModeSupport,
 	resolveAgentLaunchPresetId,
-} from "@superset/shared/agent-models";
+} from "@choros/shared/agent-models";
 import {
 	buildArgvCommand,
 	buildPromptCommandString,
 	envOverlayPrefix,
 	sanitizePromptForPty,
-} from "@superset/shared/agent-prompt-launch";
+} from "@choros/shared/agent-prompt-launch";
 import { TRPCError } from "@trpc/server";
 import { asc, eq } from "drizzle-orm";
 import { z } from "zod";

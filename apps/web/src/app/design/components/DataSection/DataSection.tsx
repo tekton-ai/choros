@@ -1,10 +1,10 @@
 "use client";
 
 import { Trans } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
-import { Avatar, AvatarFallback, AvatarImage } from "@superset/ui/avatar";
-import { Badge } from "@superset/ui/badge";
-import { Button } from "@superset/ui/button";
+import { i18n } from "@choros/i18n";
+import { Avatar, AvatarFallback, AvatarImage } from "@choros/ui/avatar";
+import { Badge } from "@choros/ui/badge";
+import { Button } from "@choros/ui/button";
 import {
 	Card,
 	CardContent,
@@ -12,14 +12,14 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@superset/ui/card";
+} from "@choros/ui/card";
 import {
 	Carousel,
 	CarouselContent,
 	CarouselItem,
 	CarouselNext,
 	CarouselPrevious,
-} from "@superset/ui/carousel";
+} from "@choros/ui/carousel";
 import {
 	Item,
 	ItemActions,
@@ -29,9 +29,9 @@ import {
 	ItemMedia,
 	ItemSeparator,
 	ItemTitle,
-} from "@superset/ui/item";
-import { Label } from "@superset/ui/label";
-import { Switch } from "@superset/ui/switch";
+} from "@choros/ui/item";
+import { Label } from "@choros/ui/label";
+import { Switch } from "@choros/ui/switch";
 import {
 	Table,
 	TableBody,
@@ -40,7 +40,7 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from "@superset/ui/table";
+} from "@choros/ui/table";
 import { FolderGitIcon, MoreHorizontalIcon } from "lucide-react";
 
 import { ComponentCard } from "../ComponentCard";
@@ -68,7 +68,7 @@ export function DataSection() {
 		>
 			<ComponentCard
 				title={i18n._({ id: "web.design.dataSection.badge", message: "Badge" })}
-				importPath="@superset/ui/badge"
+				importPath="@choros/ui/badge"
 				description={i18n._({
 					id: "web.design.dataSection.includesTheSupersetSpecificBox",
 					message: "Includes the Superset-specific box variant",
@@ -96,7 +96,7 @@ export function DataSection() {
 					id: "web.design.dataSection.avatar",
 					message: "Avatar",
 				})}
-				importPath="@superset/ui/avatar"
+				importPath="@choros/ui/avatar"
 			>
 				<Avatar>
 					<AvatarImage
@@ -126,7 +126,7 @@ export function DataSection() {
 
 			<ComponentCard
 				title={i18n._({ id: "web.design.dataSection.card", message: "Card" })}
-				importPath="@superset/ui/card"
+				importPath="@choros/ui/card"
 			>
 				<Card className="w-full max-w-72">
 					<CardHeader>
@@ -169,7 +169,7 @@ export function DataSection() {
 
 			<ComponentCard
 				title={i18n._({ id: "web.design.dataSection.item", message: "Item" })}
-				importPath="@superset/ui/item"
+				importPath="@choros/ui/item"
 			>
 				<ItemGroup className="w-full max-w-80">
 					<Item>
@@ -224,7 +224,7 @@ export function DataSection() {
 
 			<ComponentCard
 				title={i18n._({ id: "web.design.dataSection.table", message: "Table" })}
-				importPath="@superset/ui/table"
+				importPath="@choros/ui/table"
 				span
 				bleed
 			>
@@ -274,7 +274,7 @@ export function DataSection() {
 					id: "web.design.dataSection.carousel",
 					message: "Carousel",
 				})}
-				importPath="@superset/ui/carousel"
+				importPath="@choros/ui/carousel"
 				span
 			>
 				<Carousel className="w-full max-w-56">

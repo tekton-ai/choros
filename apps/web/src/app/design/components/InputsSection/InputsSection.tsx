@@ -1,9 +1,9 @@
 "use client";
 
 import { Trans } from "@lingui/react/macro";
-import { i18n } from "@superset/i18n";
-import { Calendar } from "@superset/ui/calendar";
-import { Checkbox } from "@superset/ui/checkbox";
+import { i18n } from "@choros/i18n";
+import { Calendar } from "@choros/ui/calendar";
+import { Checkbox } from "@choros/ui/checkbox";
 import {
 	Field,
 	FieldDescription,
@@ -12,8 +12,8 @@ import {
 	FieldLabel,
 	FieldLegend,
 	FieldSet,
-} from "@superset/ui/field";
-import { Input } from "@superset/ui/input";
+} from "@choros/ui/field";
+import { Input } from "@choros/ui/input";
 import {
 	InputGroup,
 	InputGroupAddon,
@@ -21,15 +21,15 @@ import {
 	InputGroupInput,
 	InputGroupText,
 	InputGroupTextarea,
-} from "@superset/ui/input-group";
+} from "@choros/ui/input-group";
 import {
 	InputOTP,
 	InputOTPGroup,
 	InputOTPSeparator,
 	InputOTPSlot,
-} from "@superset/ui/input-otp";
-import { Label } from "@superset/ui/label";
-import { RadioGroup, RadioGroupItem } from "@superset/ui/radio-group";
+} from "@choros/ui/input-otp";
+import { Label } from "@choros/ui/label";
+import { RadioGroup, RadioGroupItem } from "@choros/ui/radio-group";
 import {
 	Select,
 	SelectContent,
@@ -38,10 +38,10 @@ import {
 	SelectLabel,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
-import { Slider } from "@superset/ui/slider";
-import { Switch } from "@superset/ui/switch";
-import { Textarea } from "@superset/ui/textarea";
+} from "@choros/ui/select";
+import { Slider } from "@choros/ui/slider";
+import { Switch } from "@choros/ui/switch";
+import { Textarea } from "@choros/ui/textarea";
 import { SearchIcon, SendIcon } from "lucide-react";
 import { useState } from "react";
 
@@ -69,7 +69,7 @@ export function InputsSection() {
 					id: "web.design.inputsSection.input",
 					message: "Input",
 				})}
-				importPath="@superset/ui/input"
+				importPath="@choros/ui/input"
 			>
 				<div className="w-full max-w-64 space-y-3">
 					<Input
@@ -101,7 +101,7 @@ export function InputsSection() {
 					id: "web.design.inputsSection.textarea",
 					message: "Textarea",
 				})}
-				importPath="@superset/ui/textarea"
+				importPath="@choros/ui/textarea"
 			>
 				<Textarea
 					placeholder={i18n._({
@@ -117,7 +117,7 @@ export function InputsSection() {
 					id: "web.design.inputsSection.inputGroup",
 					message: "Input Group",
 				})}
-				importPath="@superset/ui/input-group"
+				importPath="@choros/ui/input-group"
 			>
 				<div className="w-full max-w-72 space-y-3">
 					<InputGroup>
@@ -166,7 +166,7 @@ export function InputsSection() {
 					id: "web.design.inputsSection.select",
 					message: "Select",
 				})}
-				importPath="@superset/ui/select"
+				importPath="@choros/ui/select"
 			>
 				<Select defaultValue="sonnet">
 					<SelectTrigger className="w-56">
@@ -194,10 +194,10 @@ export function InputsSection() {
 					id: "web.design.inputsSection.checkboxRadioSwitch",
 					message: "Checkbox · Radio · Switch",
 				})}
-				importPath="@superset/ui/checkbox"
+				importPath="@choros/ui/checkbox"
 				description={i18n._({
 					id: "web.design.inputsSection.alsoSupersetUiRadioGroup",
-					message: "Also: @superset/ui/radio-group, @superset/ui/switch",
+					message: "Also: @choros/ui/radio-group, @choros/ui/switch",
 				})}
 			>
 				<div className="flex flex-col gap-4">
@@ -239,7 +239,7 @@ export function InputsSection() {
 					id: "web.design.inputsSection.slider",
 					message: "Slider",
 				})}
-				importPath="@superset/ui/slider"
+				importPath="@choros/ui/slider"
 			>
 				<div className="w-full max-w-64 space-y-6">
 					<Slider defaultValue={[60]} max={100} step={1} />
@@ -252,7 +252,7 @@ export function InputsSection() {
 					id: "web.design.inputsSection.inputOtp",
 					message: "Input OTP",
 				})}
-				importPath="@superset/ui/input-otp"
+				importPath="@choros/ui/input-otp"
 			>
 				<InputOTP maxLength={6}>
 					<InputOTPGroup>
@@ -274,11 +274,11 @@ export function InputsSection() {
 					id: "web.design.inputsSection.field",
 					message: "Field",
 				})}
-				importPath="@superset/ui/field"
+				importPath="@choros/ui/field"
 				description={i18n._({
 					id: "web.design.inputsSection.composableFormLayoutPairsWith",
 					message:
-						"Composable form layout — pairs with @superset/ui/form for react-hook-form",
+						"Composable form layout — pairs with @choros/ui/form for react-hook-form",
 				})}
 			>
 				<FieldSet className="w-full max-w-72">
@@ -323,7 +323,7 @@ export function InputsSection() {
 					id: "web.design.inputsSection.calendar",
 					message: "Calendar",
 				})}
-				importPath="@superset/ui/calendar"
+				importPath="@choros/ui/calendar"
 				span
 			>
 				<Calendar

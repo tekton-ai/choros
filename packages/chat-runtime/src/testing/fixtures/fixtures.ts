@@ -6,7 +6,7 @@ import type {
 	ToolCall,
 	Turn,
 	UserMessage,
-} from "@superset/chat/protocol";
+} from "@choros/chat/protocol";
 
 export function sessionState(
 	overrides: Partial<SessionState> = {},
