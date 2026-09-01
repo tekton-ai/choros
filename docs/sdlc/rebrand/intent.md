@@ -7,6 +7,14 @@ created: 2026-09-01
 accepted: 2026-09-01
 ---
 
+> **Scope clarification (2026-09-01, post-spec-draft):** later exploration confirmed this repo is a personal fork
+> at `tekton-ai/superset` (owned by the author), not the upstream corporate Superset. The rebrand therefore
+> only covers what the author actually controls: the fork's own code, config, docs, and any releases the author
+> personally builds. Upstream `superset-sh` — including `superset.sh` domain, vendor integration console names,
+> App Store presence, and the `@superset/*` npm scope — is out of scope. The stated legal driver is refined to
+> "the author does not want to keep publishing personal work under the `Superset` name and accepts any personal
+> trademark risk of adopting `Choros`" — treated as equivalent to a hard legal driver for planning purposes.
+
 # Intent — Retire the "Superset" brand, adopt "Choros"
 
 ## Problem

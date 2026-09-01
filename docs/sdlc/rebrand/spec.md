@@ -4,171 +4,142 @@ feature: rebrand
 author: Claude (opus-4.7-1m via omp harness), on behalf of XXLOKI
 status: draft
 created: 2026-09-01
+revised: 2026-09-01
 intent: ./intent.md
 ---
 
-# Spec — Retire "Superset", ship as "Choros"
+# Spec — Retire "Superset" in the tekton-ai fork, ship as "Choros"
 
-_Prerequisite: `intent.md` in this folder is `status: accepted`._
+_Prerequisite: `intent.md` in this folder is `status: accepted` (with the 2026-09-01 scope clarification note)._
+
+## Context (why this spec is much smaller than the first draft)
+
+The first draft of this spec assumed corporate-Superset ownership. Follow-up scoping established that this repo is a personal fork (`tekton-ai/superset`) that builds locally for the author's own use — no release pipeline, no npm publishing, no vendor consoles, no external users, no App Store presence. Whole categories of concern collapse:
+
+| Prior concern | Fork-scoped status |
+|---|---|
+| Auto-update feed cutover | **N/A** — author does not publish releases |
+| npm `@superset/*` deprecation flow | **N/A** — author does not publish to registry |
+| Vendor integrations (Slack/Linear/Sentry/GitHub App console names) | **N/A** — those accounts belong to upstream |
+| Mobile App Store re-submission | **N/A** — not the author's account |
+| Desktop first-launch migration UX for other users | **N/A** — the author is the only user |
+| Keychain re-authorization UX | **Simplified** — author re-authorizes their own machine once |
+| `BuiltinAgentId="superset"` persisted-data migration | **Trivial** — a one-shot local rewrite for the author's own DB, or a wipe |
+| `update-error-redaction` bundle-id dual-path back-compat | **N/A** — no update pipeline; test fixtures still change to match new bundle id |
+| Cross-repo forks / community PRs | **N/A** — no downstream community |
+| GitHub org acquisition (dormant `Choros`) | **N/A** — using `tekton-ai/choros` via repo rename |
+| `superset.sh` domain policy | **N/A** — upstream property |
+
+What remains: source-tree hygiene. Renaming strings and constants in files the author actually owns.
 
 ## Requirements & design spec
 
 ### Functional requirements
 
-Grouped by surface. Each item is an observable "done" criterion, not an implementation step.
+**Repo & remote**
+- Repo renamed on GitHub: `tekton-ai/superset` → `tekton-ai/choros`. GitHub 301 handles old URLs. Local remote updated: `git remote set-url origin git@github.com:tekton-ai/choros.git`.
 
-**Product identity**
-- The user-visible product name is `Choros` everywhere the shipping app renders it: window titles, About dialog, menus, splash, tray, notifications, marketing hero, docs, MCP `server-card`, Slack integration copy, admin dashboard header, Discord triage bot messages, mobile launcher label.
-- The i18n glossary (`packages/i18n/glossary.md`) has `Superset` removed from the never-translate list and `Choros` added. Every locale in `SUPPORTED_LOCALES` has its `messages.po` entries containing `Superset` replaced. `bun run --cwd packages/i18n check` and `compile --strict` pass with no half-translated messages.
+**Source tree**
+- No occurrence of `Superset` (case-insensitive, whole-word) in `apps/**`, `packages/**`, `scripts/**`, or root config files — with two documented exemption categories:
+  1. Historical planning documents in `plans/**` and `docs/plans/**` (frozen artifacts of prior work).
+  2. Files under `docs/sdlc/rebrand/` themselves — this SDLC audit trail names the old brand deliberately.
+- No occurrence of `superset` (lowercase, word-boundary) in the same tree with the same two exemptions. Path fragments like `/Users/foo/projects/superset/` in test fixtures are updated to `.../choros/` (they represent the author's own worktree path).
+- All `Superset*` PascalCase identifiers renamed to `Choros*` (types, classes, module names, directory names). Camel/snake forms follow: `SUPERSET_PRODUCT_NAME` → `CHOROS_PRODUCT_NAME`, `createSupersetMcpClient` → `createChorosMcpClient`, etc.
+- All `@superset/*` package references in `package.json` files, `import` statements, `tsconfig.json` `paths` and `references`, and any `bunfig.toml` / `turbo.json` filters point at `@choros/*`.
+- URL scheme `superset://` → `choros://`. Custom protocol registered in `electron-builder.ts`, all deep-link generators, and every consumer.
 
-**CLI**
-- The published CLI binary is named `choros` (`choros.exe` on Windows, `choros.cmd` shim on Windows). No `superset` binary or alias ships. Bundled inside the desktop app at `dist/resources/bin/choros`.
-- `choros --help`, subcommand names, and error messages contain no "Superset" references.
-- The CLI's self-install / shim writer refuses to overwrite an unmanaged file at the target path — same policy as today's `bundled-cli.ts`.
+**Build config**
+- `apps/desktop/electron-builder.ts`: `appId` = `com.choros.desktop`, `productName` = `Choros`, `schemes: ["choros"]`, `publish.owner` = `tekton-ai`, `publish.repo` = `choros`.
+- `apps/desktop/electron-builder.canary.ts`: `appId` = `com.choros.desktop.canary`, same publish owner/repo.
+- `apps/desktop/scripts/patch-dev-protocol.ts`: `PROTOCOL_SCHEME` and `BUNDLE_ID` template base strings switch.
+- `apps/desktop/scripts/build-bundled-cli.ts` and `apps/desktop/src/main/lib/bundled-cli.ts`: binary name `superset` / `.exe` / `.cmd` → `choros` / `.exe` / `.cmd`.
 
-**Desktop app**
-- Electron `appId` = `com.choros.desktop` (canary: `com.choros.desktop.canary`). `productName` = `Choros`.
-- Custom URL scheme `choros://` replaces `superset://`. Deep links from marketing / docs / auth callbacks are updated to the new scheme.
-- Auto-update feed points at the new GitHub release feed (new org, decided below). Old feed continues to serve one final version whose only job is to display a "we're now Choros, please install here" screen with a one-click migration action.
-- **Migration flow (new UX):** first launch of `Choros.app` on a machine with `Superset.app` installed detects the old app's data directory, prompts the user to migrate (single dialog: "We renamed. Import your workspaces, settings, and credentials?"), and on accept copies workspaces / settings / local DB. Keychain entries are re-created in the new bundle's keychain namespace with an inline "re-authorize" step (the user re-enters passphrases; we do not attempt to read the old bundle's keychain because macOS ACLs make that inconsistent and risky). Old app is then archived (not deleted) with a link to uninstall.
+**Runtime constants**
+- `packages/shared/src/constants.ts`: `GITHUB_REPO = { OWNER: "tekton-ai", NAME: "choros", URL: "https://github.com/tekton-ai/choros" }`.
+- `packages/shared/src/builtin-terminal-agents.ts`: `"superset"` literal → `"choros"`.
+- `packages/shared/src/agent-catalog.ts`: `BuiltinAgentId` union member `"superset"` → `"choros"`.
+- `packages/ui/src/assets/icons/preset-icons/index.ts`: `PRESET_ICONS` key `superset` → `choros` (asset file renamed too).
+- `apps/desktop/src/renderer/hooks/useV2AgentChoices/useV2AgentChoices.ts`: `SUPERSET_AGENT` constant → `CHOROS_AGENT`, `id`/`label`/`iconId` all `"choros"` / `"Choros"`.
+- `apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/page.tsx`: string filter `a.id !== "superset"` → `"choros"`.
+- `apps/api/integrations/slack/events/utils/work-objects/work-objects.ts`: `SUPERSET_PRODUCT_NAME` → `CHOROS_PRODUCT_NAME` = `"Choros"`.
 
-**Mobile app**
-- iOS bundle id changes to `com.choros.mobile`. Because App Store treats this as a new app, old app is deprecated (last version shows a "we're now Choros" screen with a store link), new app is submitted fresh. Data migration is out of scope for mobile (mobile is thin — no local user data of consequence per `apps/mobile/AGENTS.md`).
+**i18n**
+- `packages/i18n/glossary.md`: remove `Superset`, add `Choros` to never-translate list.
+- Every `messages.po` under `packages/i18n/locales/*` and `apps/*/locales/*`: replace `Superset` → `Choros` in message text. IDs unchanged (repo rule: IDs are stable).
+- `bun run --cwd packages/i18n check` and Lingui `compile --strict` pass.
+- No half-translated messages introduced (the strict compiler enforces).
 
-**Packages / npm**
-- Every published package is republished under `@choros/*`. Package names in each `package.json`, all inter-package imports, `tsconfig` paths / references, and dependency declarations reference the new scope.
-- Each `@superset/*` package receives one final version marked `deprecated` with the message: `"Superset was renamed to Choros. Install @choros/<same-name> instead."` The version bump is a patch. Old versions in registry remain (npm policy) — that's fine, they still work; only `npm install @superset/foo` shows the deprecation banner.
+**Docs**
+- `AGENTS.md` at repo root: all `superset` CLI examples become `choros`; product-name references become `Choros`.
+- `apps/*/AGENTS.md`, `packages/*/AGENTS.md` if present.
+- `.agents/skills/**/*.md`: sweep for product name and CLI references.
+- `README.md` (if any names Superset): update.
+- `docs/**` (excluding `docs/sdlc/rebrand/` and `docs/plans/`): update.
 
-**GitHub**
-- Repo lives at a new org (name decided per Concerns). Old repo redirects (GitHub 301) but README shows: "This repo is archived. We're now at github.com/<new-org>/choros." All internal external links (marketing, docs, CI badges) point at the new URL.
-- `packages/shared/src/constants.ts` `GITHUB_REPO` constant switches to the new owner/name.
-
-**Domains**
-- New root domain hosts marketing, docs, api, app subdomains. Old root domain is taken offline (per intent constraint — no 301 hold). Email suffix changes; existing employee mail is forwarded transitionally then cut.
-
-**Internal identifiers**
-- Symbol renames applied everywhere: `Superset*` types, classes, variables, modules, directory names → `Choros*`. Includes but not limited to `SUPERSET_PRODUCT_NAME` constant, `createSupersetMcpClient` / `cleanupSuperset` / `supersetMcp` in `apps/api/integrations/slack/events/utils/run-agent/`, `SUPERSET_AGENT` in `apps/desktop/src/renderer/hooks/useV2AgentChoices/useV2AgentChoices.ts`.
-- The `BuiltinAgentId` string literal `"superset"` in `packages/shared/src/builtin-terminal-agents.ts` becomes `"choros"`. This is a **breaking data change**: any persisted `HostAgentPreset.presetId === "superset"` in local DBs must be migrated at desktop startup — a one-shot lookup that rewrites `"superset" → "choros"` in the local settings store.
-- Icon key `"superset"` in `PRESET_ICONS` becomes `"choros"` (rename asset file too).
-- `agents.md` / `.agents/skills/**/*.md` string replacements. `AGENTS.md` orchestration commands are rewritten to use `choros` binary.
-
-**Test suite adjustments (contract-preserving, not new tests)**
-- `apps/desktop/src/main/lib/update-error-classification.test.ts` and `update-error-redaction.test.ts` contain hardcoded `com.superset.desktop.ShipIt` cache paths in their redaction fixtures. These are the actual observable contract the redaction function must handle — they change to `com.choros.desktop.ShipIt`. **The redaction function itself must additionally still recognize the old bundle id for one release cycle**, because in-flight update errors on machines that just upgraded will still reference the old path. This is a real backward-compat surface, not a test-only concern.
+**Author's own machine (one-time manual)**
+- Rebuild desktop app with new bundle id. Old `Superset.app` continues to work locally with old bundle id; author drags to Trash after confirming new build runs.
+- Author re-enters any credentials the app persisted in Keychain (one-off; no code needed).
+- Local settings DB entries with `presetId === "superset"` — author either wipes local settings and re-onboards, or the new build ships a one-time startup migration reading `presetId === "superset"` and writing `"choros"`. Recommendation: **wipe** — cheaper than writing migration code for a single-user data set.
 
 ### Non-functional requirements
 
-- **User data continuity (desktop):** zero data loss for any user who launches Choros.app once with Superset.app present. Migration is atomic (copy then verify; original stays until verified) so a mid-copy crash leaves the old app fully functional.
-- **Update pipeline continuity:** the last Superset release must reliably reach every existing user via the old auto-update feed. Delivery success rate ≥ current baseline (measured 7 days post-cutover).
-- **CI green throughout:** repo rename must not break CI. GitHub Actions workflows, secrets, and repo-name-derived references audited pre-cutover.
-- **No performance regression:** rename is textual + config; no runtime code path changes. Benchmarks (startup time, MCP response time) within 1σ of pre-cutover.
-- **Deep link continuity for one release:** the old `superset://` URL scheme remains registered (bound to a redirector that opens the new app with the equivalent `choros://` URL) for one release cycle after cutover, so bookmarked links keep working while users update the source of the link.
+- **CI green throughout.** Repo rename must not break GitHub Actions. Any workflow referencing `superset-sh/superset` (via checkout of a specific ref or hardcoded URL) audited pre-rename. Local dev scripts likewise.
+- **No performance regression.** Rename is text + config; runtime behavior unchanged. Existing benchmarks (if any) within 1σ.
+- **Test suite passes** after rename. Fixtures containing `com.superset.desktop.ShipIt` cache paths, `superset-sh` repo owners, `"superset"` presetId literals, or hardcoded worktree paths (`/Users/.../superset/`) are updated to the new brand — these ARE the observable contract for redaction/classification code that reads bundle-id-shaped paths.
 
 ### Out of scope
 
-- Rewriting git history / previously published npm tarballs / archived desktop installers. (Intent constraint.)
-- Migrating mobile local data. (Mobile is thin.)
-- Renaming external services we integrate with (Slack app name, Linear connection label, Sentry integration name are covered — but the vendor apps themselves are not our surface).
-- Adding new features under the guise of the rebrand.
-- User-facing "why did you rename?" content — a link to a short blog post is enough; a full FAQ is not required.
-- Making the CLI back-compat friendly with `superset` alias. (Intent decided against.)
-- Long-tail `Superset` mentions in `plans/*.md` historical planning docs. Those are frozen artifacts of past work; we leave them.
+- Rewriting git history / rewriting prior commit messages / force-pushing.
+- Anything on `superset-sh` upstream (domains, npm scope, vendor consoles, App Store, docs.superset.sh).
+- Publishing `@choros/*` to npm registry.
+- Setting up a release pipeline / auto-update feed for the fork.
+- Trademark filings for `Choros` (author accepts personal risk; not blocking this spec).
+- Mobile app. Author does not build/ship mobile locally in a way that requires bundle-id change; if this changes, addendum spec.
+- Domain purchase / DNS. Author will pick a placeholder domain string (`choros.dev` in constants and `metadata.title` templates) but not register it in this cycle.
+- Long-tail `plans/**` and `docs/plans/**` historical documents.
+- Changing internal names in `.git/`, `bun.lock`, `node_modules/`.
+- Renaming files under `apps/desktop/scripts/patch-dev-protocol.test.ts` where `"superset"` appears as a **user's real worktree name** in a fixture (`WORKTREE_BASE/superset/kitenite/feature-2058`) — those represent past workspace paths, not the product name. Fixture is updated only if the test's contract logically requires it.
 
 ## Integration with existing code
 
-Representative hotspots (not exhaustive — the plan will enumerate). Each named file is a real reference the spec anchors against:
+See `Requirements` above — every file the author will touch is named there with the specific edit. Total surface (from the initial grep): 569+ files across `apps/` and `packages/` contain the string `Superset`. The distribution is heavily skewed:
 
-**Bundle id, product name, URL scheme, release feed**
-- `apps/desktop/electron-builder.ts` (`appId`, `productName`, `schemes`, `publish.{owner,repo}`)
-- `apps/desktop/electron-builder.canary.ts` (same, canary suffix)
-- `apps/desktop/scripts/patch-dev-protocol.ts` — `PROTOCOL_SCHEME`, `BUNDLE_ID` templates driven by workspace name; adjust the base string.
+- **High-density, low-risk (bulk find-replace candidates):** i18n catalogs (repetitive strings), UI copy files, docs, AGENTS.md files.
+- **Low-density, high-risk (must be read by a human):** build config (`electron-builder.ts` — one wrong char breaks packaging), shared constants (`packages/shared/src/constants.ts` — consumed everywhere), the agent-catalog id union (`packages/shared/src/agent-catalog.ts` — TypeScript literal type, ripples through the codebase).
+- **Test fixtures with dual meaning:** paths like `/Users/xxx/projects/superset/` — some are product-name (rename), some are user-worktree-name (leave).
 
-**CLI binary**
-- `apps/desktop/scripts/build-bundled-cli.ts` — hardcoded `superset` / `superset.exe`.
-- `apps/desktop/src/main/lib/bundled-cli.ts` — `getBundledCliBinaryName` / `getBundledCliShimName` returning `superset` on non-Windows, `superset.exe|.cmd` on Windows.
-- `apps/desktop/src/main/lib/bundled-cli.test.ts` — asserts the binary names above.
-- `packages/cli/` — package name change (`@superset/cli` → `@choros/cli`), any embedded product-name strings in help output.
+Plan stage will produce an exact file list bucketed this way with a landing order.
 
-**Shared constants**
-- `packages/shared/src/constants.ts` — `GITHUB_REPO = { OWNER, NAME, URL }` referenced by star-nag / issue-report / update-feed lookups.
-- `packages/shared/src/builtin-terminal-agents.ts` — `BUILTIN_TERMINAL_AGENTS` array containing `"superset"` as a `BuiltinAgentId`.
-- `packages/shared/src/agent-catalog.ts` — `BuiltinAgentId` type union.
-- `packages/shared/src/host-agent-presets.ts` — `HostAgentPreset.presetId` values.
-- `packages/ui/src/assets/icons/preset-icons/index.ts` — `PRESET_ICONS` map keyed by preset id (rename key + asset).
-
-**MCP / API surface**
-- `apps/api/src/app/.well-known/mcp/route.ts` and `apps/api/src/app/.well-known/mcp/server-card.json/route.ts` — MCP server metadata (name, title, description, icon URL, auth doc URL).
-- `apps/api/src/app/.well-known/oauth-protected-resource/route.ts` and `[...path]/route.ts` — `resourceName`, `resourceDocumentation`.
-
-**Slack / marketing / admin copy**
-- `apps/api/integrations/slack/events/process-app-home-opened/build-home-view.ts` — home tab welcome copy, "Open Superset" button.
-- `apps/api/integrations/slack/events/utils/run-agent/run-agent.ts` — `SYSTEM_PROMPT`, `createSupersetMcpClient`.
-- `apps/api/integrations/slack/events/utils/work-objects/work-objects.ts` — `SUPERSET_PRODUCT_NAME` constant, "Open in Superset" action.
-- `apps/marketing/src/app/[lang]/components/HeroSection/HeroSection.tsx` — hero copy is behind Lingui IDs like `marketing.hero.headlineLead` / `marketing.hero.subheadline`; IDs stay stable (per repo i18n rules), catalog text changes.
-- `apps/admin/src/app/layout.tsx` and `apps/admin/src/app/(dashboard)/layout.tsx` — metadata `title`, breadcrumb label, sidebar header logo alt text.
-
-**Update pipeline compatibility surface**
-- `apps/desktop/src/main/lib/update-error-classification.ts` and `update-error-redaction.ts` — the classifier / redactor must recognize both `com.superset.desktop.ShipIt` and `com.choros.desktop.ShipIt` cache paths for one release cycle. Test fixtures in the co-located `.test.ts` files anchor both.
-
-**Desktop UI enum**
-- `apps/desktop/src/renderer/hooks/useV2AgentChoices/useV2AgentChoices.ts` — `SUPERSET_AGENT` constant (`id`, `label`, `iconId` all `"superset"`).
-- `apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/page.tsx` — string filter `a.id !== "superset"`.
-
-**Docs and agent guidance**
-- `AGENTS.md` — the "Orchestrating agents and workspaces" block uses `superset` CLI in every example. Full rewrite.
-- `.agents/skills/**/*.md` — sweep.
-- `apps/desktop/AGENTS.md`, `apps/mobile/AGENTS.md`, other `AGENTS.md` files — sweep.
-
-**i18n glossary**
-- `packages/i18n/glossary.md` — remove `Superset`, add `Choros`.
-- `packages/i18n/src/locales.ts` — `SUPPORTED_LOCALES` unchanged; catalog contents change per-locale.
-- `packages/i18n/test/enforced-dirs.ts` — verify enforcement still holds after mass string edits.
-
-**Cross-cutting new abstraction**
-- **One added file** justified: `apps/desktop/src/main/migration/legacyRebrand/` (or equivalent) hosts the first-launch legacy-data-import logic. Justification: this is a one-shot upgrade path with distinct concerns (path detection, atomic copy, keychain re-authorization prompt); nothing existing owns it. Slated for removal two releases after cutover — its deletion is part of the plan.
+No new abstractions required. The prior spec proposed a `migration/legacyRebrand/` module for first-launch data import; **fork scope eliminates this** — the author's own machine gets a manual re-onboarding.
 
 ## Policy compliance
 
 ### Brand
-No brand policy skill or `docs/policies/brand.md` detected in this repo. **Manual confirmation required from product / marketing owner** on: (a) the "Choros" wordmark and its typography treatment, (b) the transition messaging shown in the final Superset release and in the migration dialog, (c) whether the Discord / X / other social handles are also in scope. See `Areas of concern`.
+No brand policy skill or `docs/policies/brand.md` in this repo. Author is sole audience; personal brand judgment applies. `Choros` chosen per positioning analysis in prior chat (χορός, "coordinated chorus" — matches the "orchestrate any agent" positioning).
 
 ### Security
-- **Bundle id change is a security-adjacent event**: macOS keychain items scoped to `com.superset.desktop` are not readable by `com.choros.desktop`. We do not attempt to bypass this. Instead the migration flow asks the user to re-authorize, which is auditable and does not require a code-signing chain claim about the old bundle.
-- **Auto-update feed cutover is supply-chain-critical**: the last release from the old feed instructs users to install from the new domain. That last release **must be signed by the existing signing chain** and must not silently switch update sources — silent update-source rotation is a well-known malware pattern and would break user expectations. The user must click through the "install Choros" flow explicitly.
-- **URL scheme handover:** registering `choros://` is fine; keeping `superset://` registered for one release cycle (per NFR) is bounded. It must forward to the equivalent `choros://` deep link without side effects.
-- No changes to authN/authZ, session storage semantics, or secrets management beyond keychain namespace rename.
-
-No security-review skill detected in this repo. **Manual confirmation required from security owner** on the two starred items above.
+- Bundle id change means the new build cannot read the old build's Keychain items. Author accepts this and will re-authorize once. No credentials transferred through code — the OS-mediated re-authorization path is the safe one.
+- URL scheme change: registering `choros://` is straightforward; author will unregister `superset://` locally after verifying no deep-link references remain in personal bookmarks. Not code-relevant beyond the electron-builder registration.
+- No auth/authZ, secrets, or dependency-chain changes.
 
 ### Compliance
-- The change is **legally driven** — trademark conflict is the sole reason for this work. Legal is in the loop by definition.
-- No PII, PCI, GDPR, or SOC2 scope shifts. No data-processor changes. No cross-border data movement.
-- Data-processing agreements referencing "Superset" as the data processor must be re-papered by legal in parallel with technical rollout. Not agent-actionable but tracked here for visibility.
-
-No compliance skill detected. **Manual confirmation required from legal owner** on: DPA / subprocessor list updates, trademark search for `Choros` in target jurisdictions before ship, and the hard deadline (still open).
+- Author personally holds any trademark risk of adopting `Choros` (per intent scope clarification). Not a code concern.
+- No PII / PCI / GDPR / SOC2 surface change.
 
 ### UX
-- Migration dialog on first launch is the entire user-facing UX contract. It must be: (a) modal but not blocking (user can dismiss and migrate later from a "welcome back" card in the sidebar), (b) reversible (choosing "skip" does not delete the old app or its data), (c) clear on scope ("workspaces, settings, saved credentials will be re-imported; you'll be asked to unlock keychain again").
-- Accessibility: dialog follows existing `Dialog` primitive contract (keyboard trap, ESC to dismiss, focus return). Copy pitched at 8th-grade reading level.
-- No changes to any existing interaction pattern beyond the migration surface.
-
-No frontend-design or UX skill loaded automatically. Repo's `.agents/skills/frontend-design` is available on request. **Manual confirmation from UX owner** on the migration dialog copy + interaction is recommended, not blocking.
+- Author is the only user. No migration flow needed. Interaction patterns unchanged.
 
 ## Areas of concern
 
-- **Trademark search for "Choros" not yet performed** (owner: legal). This spec cannot be safely accepted until legal confirms `Choros` is available in target jurisdictions. If it isn't, we re-run the naming step in the intent, not just the spec. This is the single largest risk item.
-- **Hard deadline still unset** (owner: product owner ↔ legal). "尽快" needs a date. The date changes the release strategy (big-bang if tight; staged if there's runway). Everything downstream — plan sequencing, comms schedule — depends on it.
-- **GitHub org name undecided** (owner: product owner). `Choros` is a dormant 2014 org with no contact info. Options: (a) file dormant-account claim (weeks-to-months, no guarantee), (b) accept a suffix (`choros-labs`, `getchoros`, `usechoros`). Recommendation: pick a suffix now, keep the dormant-account claim as an async improvement.
-- **Domain root undecided** (owner: product owner ↔ legal). `choros.dev` / `choros.ai` / `choros.com` all need proper whois + trademark disambiguation before purchase. Recommendation: legal shortlists two, product owner picks.
-- **Keychain re-authorization is a friction point** (owner: security + UX). Users with many saved credentials will feel this. Consider whether an in-product credential export → import path (encrypted archive user carries between apps) is worth building; today's plan says no.
-- **Users who never migrate lose access to old data eventually** (owner: product owner). If we deprecate the old app aggressively, users on stale versions will be stranded. Recommendation: last Superset release stays reachable via a stable download URL indefinitely, but stops receiving updates.
-- **`BuiltinAgentId` string literal is a data-migration boundary** (owner: engineering). Persisted values `"superset"` in local settings DBs must be rewritten to `"choros"` at first launch of the new app. Missing this leaves users' agent preset settings silently reset. Plan-stage detail, flagged here so it isn't lost.
-- **Update-error redaction dual-path fixture** (owner: engineering). The redactor recognizing both `com.superset.desktop.ShipIt` and `com.choros.desktop.ShipIt` for one release cycle is a stated backward-compat surface. Removal of the old path must be scheduled (plan: two releases post-cutover) and tracked, or it becomes rot.
-- **Marketing social account handles** (owner: product / marketing). Intent didn't explicitly include them; spec assumes yes because "彻底消失" implies it. Needs explicit product-owner confirmation.
-- **External integrations named "Superset" on vendor side** (owner: product + each vendor's ops). Slack app name, Linear connection display name, Sentry integration display name, GitHub App name — each is a vendor-console rename with its own workflow. Coordination required; not code-only.
-- **Cross-repo forks / community PRs in flight** (owner: engineering). Any external contributor with a fork of `superset-sh/superset` sees the rename as a discontinuity. Publish a redirect notice and, if practical, a script that helps contributors re-point their remotes.
-- **No brand / security / compliance / UX skills detected in this repo**. Every "manual confirmation required" line above is a real audit gap that a fresh spec run would silently pass. Flagging so the product owner routes each explicitly.
+- **`BuiltinAgentId` typescript literal type is enforced across the codebase.** Changing `"superset"` to `"choros"` in the union requires updating every callsite that pattern-matches or filters on the literal — `automations/page.tsx` is one confirmed site; `lsp references` on the union member will find the rest at plan time. Any missed callsite will fail typecheck loudly, so this is a caught-at-compile-time concern, not a silent-runtime one.
+- **`electron-builder.ts` and its canary sibling drift.** Two files with parallel structure that must stay in sync. Plan should update both in the same PR/commit; a single-file edit is a bug source.
+- **Path-fixture ambiguity in `patch-dev-protocol.test.ts` and `pathBasename.test.ts`.** The word `superset` appears both as (a) the product/CLI name and (b) an example workspace directory name in path-parsing tests. Plan must read each case and decide per-fixture; a global sed will corrupt path-parsing tests. Concrete lines already identified in this spec's "Out of scope" section.
+- **i18n `messages.po` regeneration is environment-sensitive.** Repo AGENTS.md warns catalogs "regenerated on top of local experiments will still commit noise." Plan must run `bun run --cwd packages/i18n check` from a clean tree, and use `orderBy: "messageId"` / `sort-po-references.ts` as already configured.
+- **Some `Superset` occurrences are in comments describing upstream corporate context** (e.g. Slack integration notes about "Superset user" as a concept). These may either be renamed for consistency, or left as historical accuracy (the code was originally written for corp Superset). Plan should surface a sample and decide; the two policies produce different reader experiences.
+- **Local desktop app: author must manually verify new build launches after bundle-id change** on their own macOS install (Gatekeeper re-approval prompt is expected first launch). Not a code concern; a manual verification step in plan's "Proof".
+- **Trademark risk on `Choros` is personally-borne** per intent clarification. This spec does not gate on legal search. If author later needs to publish more widely, this concern reactivates.
 
 ## Author + Status
 
 - **Author:** Claude (opus-4.7-1m via omp harness), on behalf of XXLOKI
-- **Status:** `draft` — flip to `accepted` when the product owner accepts this artifact with flagged concerns dispatched
+- **Status:** `draft` — flip to `accepted` when the author accepts. All concerns above are either (a) plan-time engineering discipline items or (b) personally-owned by the author; none require external policy owners.
