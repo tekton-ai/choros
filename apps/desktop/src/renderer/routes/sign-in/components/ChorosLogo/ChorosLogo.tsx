@@ -59,7 +59,7 @@ export function ChorosLogo({ className, gradient = false }: ChorosLogoProps) {
 				letterSpacing="6"
 				fill={gradient ? `url(#${gradientId})` : "currentColor"}
 			>
-				CHOROS
+				{"CHOROS"}
 			</text>
 		</svg>
 	);
