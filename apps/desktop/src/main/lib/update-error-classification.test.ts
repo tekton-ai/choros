@@ -7,7 +7,7 @@ const ROOMY_VOLUME = 60 * GIGABYTE;
 
 // Captured from production, with the account name and archive digest replaced.
 const DITTO_NO_SPACE_EN = [
-	"ditto: /Users/<user>/Library/Caches/com.superset.desktop.ShipIt/update.aBcDeF1/Superset.app/Contents/Resources/app.asar: No space left on device",
+	"ditto: /Users/<user>/Library/Caches/com.choros.desktop.ShipIt/update.aBcDeF1/Choros.app/Contents/Resources/app.asar: No space left on device",
 	"ditto: Couldn't read pkzip signature.",
 ].join("\n");
 const SQUIRREL_NO_SPACE_ES =
@@ -16,7 +16,7 @@ const SQUIRREL_NO_SPACE_ES =
 const CHECKSUM_MISMATCH =
 	"sha512 checksum mismatch, expected 1PbOs3lC, got fT2wPk9d";
 const SIGNATURE_FAILURE =
-	'Could not get code signature for running application: Error: Command failed: codesign --verify -vvvv "/Applications/Superset.app"';
+	'Could not get code signature for running application: Error: Command failed: codesign --verify -vvvv "/Applications/Choros.app"';
 const FEED_FAILURE =
 	"HttpError: 404 Not Found\nCannot parse update info from latest-mac.yml";
 // Further electron-updater release-artifact defects. Each must survive a full
@@ -80,7 +80,7 @@ describe("isEnvironmentUpdateError", () => {
 	test("keeps the existing errno and read-only classifications", () => {
 		expect(
 			isEnvironmentUpdateError(
-				"ENOENT: no such file or directory, rename '/Users/<user>/Library/Caches/superset-updater/pending/x.zip'",
+				"ENOENT: no such file or directory, rename '/Users/<user>/Library/Caches/choros-updater/pending/x.zip'",
 				ROOMY_VOLUME,
 			),
 		).toBe(true);

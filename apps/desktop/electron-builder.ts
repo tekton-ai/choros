@@ -24,7 +24,7 @@ const dmgBackgroundPath = join(
 );
 
 const config: Configuration = {
-	appId: "com.superset.desktop",
+	appId: "com.choros.desktop",
 	productName,
 	copyright: `Copyright © ${currentYear} — ${author}`,
 	electronVersion: pkg.devDependencies.electron.replace(/^\^/, ""),
@@ -36,8 +36,8 @@ const config: Configuration = {
 	// Generate latest-mac.yml for auto-update (workflow handles actual upload)
 	publish: {
 		provider: "github",
-		owner: "superset-sh",
-		repo: "superset",
+		owner: "tekton-ai",
+		repo: "choros",
 	},
 
 	// Directories
@@ -127,22 +127,22 @@ const config: Configuration = {
 			CFBundleDisplayName: productName,
 			// Required for macOS microphone permission prompt
 			NSMicrophoneUsageDescription:
-				"Superset needs microphone access so voice-enabled tools like Codex transcription can capture audio input.",
+				"Choros needs microphone access so voice-enabled tools like Codex transcription can capture audio input.",
 			// Required for macOS local network permission prompt
 			NSLocalNetworkUsageDescription:
-				"Superset needs access to your local network to discover and connect to development servers running on your network.",
+				"Choros needs access to your local network to discover and connect to development servers running on your network.",
 			// Bonjour service types to browse for (triggers the permission prompt)
 			NSBonjourServices: ["_http._tcp", "_https._tcp"],
 			// Required for Apple Events / Automation permission prompt
 			NSAppleEventsUsageDescription:
-				"Superset needs to interact with other applications to run terminal commands and development tools.",
+				"Choros needs to interact with other applications to run terminal commands and development tools.",
 		},
 	},
 
 	// Deep linking protocol
 	protocols: {
 		name: productName,
-		schemes: ["superset"],
+		schemes: ["choros"],
 	},
 
 	// Linux
@@ -151,7 +151,7 @@ const config: Configuration = {
 		category: "Utility",
 		synopsis: pkg.description,
 		target: ["AppImage"],
-		artifactName: `superset-\${version}-\${arch}.\${ext}`,
+		artifactName: `choros-\${version}-\${arch}.\${ext}`,
 		// GNOME's app menus only show their heuristic "New Window" item
 		// intermittently for running apps; an explicit desktop action (the
 		// Chrome/VS Code approach) is always shown. The action relaunches with

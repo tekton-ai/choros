@@ -7,20 +7,20 @@ import {
 // The failure this redaction exists for, with invented account names and
 // staging tokens. Two machines, two staging attempts, one condition.
 const DITTO_MISSING_ASAR_ADA =
-	"ditto: /Users/ada/Library/Caches/com.superset.desktop.ShipIt/update.qZ4mTb1/Superset.app/Contents/Resources/app.asar: No such file or directory";
+	"ditto: /Users/ada/Library/Caches/com.choros.desktop.ShipIt/update.qZ4mTb1/Choros.app/Contents/Resources/app.asar: No such file or directory";
 const DITTO_MISSING_ASAR_GRACE =
-	"ditto: /Users/grace.h/Library/Caches/com.superset.desktop.ShipIt/update.Kd9wRp7/Superset.app/Contents/Resources/app.asar: No such file or directory";
+	"ditto: /Users/grace.h/Library/Caches/com.choros.desktop.ShipIt/update.Kd9wRp7/Choros.app/Contents/Resources/app.asar: No such file or directory";
 
 // Messages that carry no home directory at all. Every one of these must come
 // back byte-for-byte, or the redaction is destroying evidence we rely on.
 const CHECKSUM_MISMATCH =
 	"sha512 checksum mismatch, expected 1PbOs3lC, got fT2wPk9d";
 const SIGNATURE_FAILURE =
-	'Could not get code signature for running application: Error: Command failed: codesign --verify -vvvv "/Applications/Superset.app"';
+	'Could not get code signature for running application: Error: Command failed: codesign --verify -vvvv "/Applications/Choros.app"';
 const SYSTEM_LIBRARY_PATH =
-	"ENOENT: no such file or directory, open '/Library/Application Support/Superset/update.log'";
+	"ENOENT: no such file or directory, open '/Library/Application Support/Choros/update.log'";
 const TEMP_PATH =
-	"ditto: /tmp/superset-updater/pending/Superset-1.24.0-mac.zip: Operation not permitted";
+	"ditto: /tmp/choros-updater/pending/Choros-1.24.0-mac.zip: Operation not permitted";
 const VERSION_TEXT =
 	"Cannot update from 1.22.0 to 1.24.0: update.yml is newer than update.zip";
 const SQUIRREL_NO_SPACE_ES =
@@ -36,7 +36,7 @@ describe("redactUpdateErrorMessage", () => {
 		expect(redacted).toContain("app.asar");
 		expect(redacted).toContain("No such file or directory");
 		expect(redacted).toBe(
-			"ditto: ~/Library/Caches/com.superset.desktop.ShipIt/update.<id>/Superset.app/Contents/Resources/app.asar: No such file or directory",
+			"ditto: ~/Library/Caches/com.choros.desktop.ShipIt/update.<id>/Choros.app/Contents/Resources/app.asar: No such file or directory",
 		);
 	});
 
@@ -63,9 +63,9 @@ describe("redactUpdateErrorMessage", () => {
 		// /Users/Shared is a real macOS directory, not somebody's account.
 		expect(
 			redactUpdateErrorMessage(
-				"ditto: /Users/Shared/Superset/staged.zip: I/O error",
+				"ditto: /Users/Shared/Choros/staged.zip: I/O error",
 			),
-		).toBe("ditto: /Users/Shared/Superset/staged.zip: I/O error");
+		).toBe("ditto: /Users/Shared/Choros/staged.zip: I/O error");
 		// ...but an account that merely starts with "Shared" is still an account.
 		expect(redactUpdateErrorMessage("/Users/Sharedrive/Library")).toBe(
 			"~/Library",
@@ -92,14 +92,14 @@ describe("redactUpdateError", () => {
 		const error = new Error(CHECKSUM_MISMATCH);
 		// Pinned rather than left ambient: a real thrown error's stack carries
 		// whatever path the test file lives under, which would itself redact.
-		error.stack = `Error: ${CHECKSUM_MISMATCH}\n    at doUpdate (/Applications/Superset.app/Contents/Resources/app.asar/main.js:1:1)`;
+		error.stack = `Error: ${CHECKSUM_MISMATCH}\n    at doUpdate (/Applications/Choros.app/Contents/Resources/app.asar/main.js:1:1)`;
 		expect(redactUpdateError(error)).toBe(error);
 	});
 
 	test("keeps the error name and redacts the stack too", () => {
 		const error = new Error(DITTO_MISSING_ASAR_ADA);
 		error.name = "UpdaterError";
-		error.stack = `UpdaterError: ${DITTO_MISSING_ASAR_ADA}\n    at /Users/ada/Applications/Superset.app/Contents/Resources/app.asar/main.js:1:1`;
+		error.stack = `UpdaterError: ${DITTO_MISSING_ASAR_ADA}\n    at /Users/ada/Applications/Choros.app/Contents/Resources/app.asar/main.js:1:1`;
 
 		const redacted = redactUpdateError(error);
 
@@ -123,21 +123,21 @@ describe("redactUpdateError", () => {
 describe("redactUpdateErrorMessage across platforms", () => {
 	test("removes the account name from a Linux staging path", () => {
 		const redacted = redactUpdateErrorMessage(
-			"ENOENT: no such file or directory, open '/home/ada/.cache/superset-updater/pending/Superset.AppImage'",
+			"ENOENT: no such file or directory, open '/home/ada/.cache/choros-updater/pending/Choros.AppImage'",
 		);
 		expect(redacted).not.toContain("ada");
 		expect(redacted).toBe(
-			"ENOENT: no such file or directory, open '~/.cache/superset-updater/pending/Superset.AppImage'",
+			"ENOENT: no such file or directory, open '~/.cache/choros-updater/pending/Choros.AppImage'",
 		);
 	});
 
 	test("removes the account name from a Windows staging path", () => {
 		const redacted = redactUpdateErrorMessage(
-			"EBUSY: resource busy or locked, open 'C:\\Users\\grace.h\\AppData\\Local\\superset-updater\\installer.exe'",
+			"EBUSY: resource busy or locked, open 'C:\\Users\\grace.h\\AppData\\Local\\choros-updater\\installer.exe'",
 		);
 		expect(redacted).not.toContain("grace.h");
 		expect(redacted).toBe(
-			"EBUSY: resource busy or locked, open '~\\AppData\\Local\\superset-updater\\installer.exe'",
+			"EBUSY: resource busy or locked, open '~\\AppData\\Local\\choros-updater\\installer.exe'",
 		);
 	});
 
@@ -153,10 +153,10 @@ describe("redactUpdateErrorMessage across platforms", () => {
 	// and a "/home/" that is only a substring of a deeper path.
 	test("leaves non-account system directories alone", () => {
 		for (const message of [
-			"EPERM: operation not permitted, open 'C:\\Users\\Public\\Desktop\\Superset.lnk'",
+			"EPERM: operation not permitted, open 'C:\\Users\\Public\\Desktop\\Choros.lnk'",
 			"EPERM: operation not permitted, open 'C:\\Users\\Default\\NTUSER.DAT'",
-			"ditto: /home/linuxbrew/.linuxbrew/bin/superset: Permission denied",
-			"ENOENT: no such file or directory, open '/var/lib/home/superset/cache'",
+			"ditto: /home/linuxbrew/.linuxbrew/bin/choros: Permission denied",
+			"ENOENT: no such file or directory, open '/var/lib/home/choros/cache'",
 		]) {
 			expect(redactUpdateErrorMessage(message)).toBe(message);
 		}
@@ -184,11 +184,11 @@ describe("redactUpdateError property fidelity", () => {
 		const error = new Error(DITTO_MISSING_ASAR_ADA) as Error & {
 			path?: string;
 		};
-		error.path = "/Users/ada/Library/Caches/com.superset.desktop.ShipIt";
+		error.path = "/Users/ada/Library/Caches/com.choros.desktop.ShipIt";
 
 		const redacted = redactUpdateError(error) as Error & { path?: string };
 
-		expect(redacted.path).toBe("~/Library/Caches/com.superset.desktop.ShipIt");
+		expect(redacted.path).toBe("~/Library/Caches/com.choros.desktop.ShipIt");
 	});
 
 	test("carries non-string properties across untouched", () => {
@@ -223,11 +223,11 @@ describe("redactUpdateErrorMessage carve-out precision", () => {
 
 	test("the exact system directories are still left alone", () => {
 		for (const message of [
-			"/Users/Shared/Superset/staged.zip",
-			"/home/linuxbrew/.linuxbrew/bin/superset",
-			"C:\\Users\\Public\\Desktop\\Superset.lnk",
+			"/Users/Shared/Choros/staged.zip",
+			"/home/linuxbrew/.linuxbrew/bin/choros",
+			"C:\\Users\\Public\\Desktop\\Choros.lnk",
 			"C:\\Users\\Default\\NTUSER.DAT",
-			"C:\\Users\\All Users\\Superset\\config",
+			"C:\\Users\\All Users\\Choros\\config",
 		]) {
 			expect(redactUpdateErrorMessage(message)).toBe(message);
 		}
@@ -248,7 +248,7 @@ describe("redactUpdateError stack coverage", () => {
 		// Real whenever the app is installed under ~/Applications: the message
 		// carries no path but every frame does.
 		const error = new Error(CHECKSUM_MISMATCH);
-		error.stack = `Error: ${CHECKSUM_MISMATCH}\n    at doUpdate (/Users/ada/Applications/Superset.app/Contents/Resources/app.asar/main.js:1:1)`;
+		error.stack = `Error: ${CHECKSUM_MISMATCH}\n    at doUpdate (/Users/ada/Applications/Choros.app/Contents/Resources/app.asar/main.js:1:1)`;
 
 		const redacted = redactUpdateError(error);
 

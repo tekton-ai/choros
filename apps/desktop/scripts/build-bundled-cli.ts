@@ -86,7 +86,7 @@ const cliDir = resolve(repoRoot, "packages/cli");
 const outfile = resolve(
 	desktopDir,
 	"dist/resources/bin",
-	TARGET_PLATFORM === "win32" ? "superset.exe" : "superset",
+	TARGET_PLATFORM === "win32" ? "choros.exe" : "choros",
 );
 
 mkdirSync(dirname(outfile), { recursive: true });

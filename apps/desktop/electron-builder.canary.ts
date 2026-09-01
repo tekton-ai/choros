@@ -20,13 +20,13 @@ const canaryWinIconPath = join(pkg.resources, "build/icons/icon-canary.ico");
 
 const config: Configuration = {
 	...baseConfig,
-	appId: "com.superset.desktop.canary",
+	appId: "com.choros.desktop.canary",
 	productName,
 
 	publish: {
 		provider: "github",
-		owner: "superset-sh",
-		repo: "superset",
+		owner: "tekton-ai",
+		repo: "choros",
 		releaseType: "prerelease",
 	},
 

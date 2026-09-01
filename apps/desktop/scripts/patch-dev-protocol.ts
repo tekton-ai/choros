@@ -200,8 +200,8 @@ export function main() {
 		process.exit(0);
 	}
 
-	const PROTOCOL_SCHEME = `superset-${workspaceName}`;
-	const BUNDLE_ID = `com.superset.desktop.${workspaceName}`;
+	const PROTOCOL_SCHEME = `choros-${workspaceName}`;
+	const BUNDLE_ID = `com.choros.desktop.${workspaceName}`;
 	const ELECTRON_DIST_DIR = resolve(
 		import.meta.dirname,
 		"../node_modules/electron/dist",

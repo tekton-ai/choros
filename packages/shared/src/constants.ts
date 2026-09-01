@@ -8,16 +8,15 @@ export const ORGANIZATION_HEADER = "x-superset-organization-id";
 
 // Deep link protocol schemes (used for desktop OAuth callbacks)
 export const PROTOCOL_SCHEMES = {
-	DEV: "superset-dev",
-	PROD: "superset",
+	DEV: "choros-dev",
+	PROD: "choros",
 } as const;
 
 // Company
-// Root domain flips the whole brand at cutover. Default keeps superset.sh so
-// nothing changes until NEXT_PUBLIC_ROOT_DOMAIN is set (e.g. boid.so). All
-// domain-derived URLs below build off this; social handles / GitHub / Discord
-// are external identities and are updated by hand on rebrand.
-const ROOT_DOMAIN = process.env.NEXT_PUBLIC_ROOT_DOMAIN || "superset.sh";
+// Root domain flips the whole brand at cutover. Default is a placeholder for
+// the tekton-ai/choros fork; NEXT_PUBLIC_ROOT_DOMAIN overrides at build time.
+// GitHub / social identities are external and hand-updated on rebrand.
+const ROOT_DOMAIN = process.env.NEXT_PUBLIC_ROOT_DOMAIN || "choros.dev";
 const MARKETING_URL =
 	process.env.NEXT_PUBLIC_MARKETING_URL || `https://${ROOT_DOMAIN}`;
 
@@ -25,7 +24,7 @@ export const COMPANY = {
 	NAME: "Superset",
 	DOMAIN: ROOT_DOMAIN,
 	EMAIL_DOMAIN: `@${ROOT_DOMAIN}`,
-	GITHUB_URL: "https://github.com/superset-sh/superset",
+	GITHUB_URL: "https://github.com/tekton-ai/choros",
 	DOCS_URL: process.env.NEXT_PUBLIC_DOCS_URL || `https://docs.${ROOT_DOMAIN}`,
 	MARKETING_URL,
 	TERMS_URL: `${MARKETING_URL}/terms`,
@@ -37,7 +36,7 @@ export const COMPANY = {
 	MAIL_TO: `mailto:support@${ROOT_DOMAIN}`,
 	FOUNDERS_EMAIL: `founders@${ROOT_DOMAIN}`,
 	FOUNDERS_MAIL_TO: `mailto:founders@${ROOT_DOMAIN}`,
-	REPORT_ISSUE_URL: "https://github.com/superset-sh/superset/issues/new",
+	REPORT_ISSUE_URL: "https://github.com/tekton-ai/choros/issues/new",
 	DISCORD_URL: "https://discord.gg/cZeD9WYcV7",
 	APP_STORE_URL: "https://apps.apple.com/app/id6788926383",
 	STATUS_URL: `https://status.${ROOT_DOMAIN}`,
@@ -56,12 +55,12 @@ export const OPEN_ROLES = [
 ] as const;
 
 // Theme
-export const THEME_STORAGE_KEY = "superset-theme";
+export const THEME_STORAGE_KEY = "choros-theme";
 
 // Download URLs
-export const DOWNLOAD_URL_MAC_ARM64 = `${COMPANY.GITHUB_URL}/releases/latest/download/Superset-arm64.dmg`;
-export const DOWNLOAD_URL_MAC_X64 = `${COMPANY.GITHUB_URL}/releases/latest/download/Superset-x64.dmg`;
-export const DOWNLOAD_URL_LINUX_X64 = `${COMPANY.GITHUB_URL}/releases/latest/download/Superset-x86_64.AppImage`;
+export const DOWNLOAD_URL_MAC_ARM64 = `${COMPANY.GITHUB_URL}/releases/latest/download/Choros-arm64.dmg`;
+export const DOWNLOAD_URL_MAC_X64 = `${COMPANY.GITHUB_URL}/releases/latest/download/Choros-x64.dmg`;
+export const DOWNLOAD_URL_LINUX_X64 = `${COMPANY.GITHUB_URL}/releases/latest/download/Choros-x86_64.AppImage`;
 
 // Auth token configuration
 export const TOKEN_CONFIG = {
@@ -80,7 +79,7 @@ export const TEARDOWN_TIMEOUT_MS = 60_000;
 export const ACCOUNT_DELETION_GRACE_DAYS = 30;
 
 // PostHog
-export const POSTHOG_COOKIE_NAME = "superset";
+export const POSTHOG_COOKIE_NAME = "choros";
 
 // v2-only users have the v1↔v2 surface switch hidden and v2 cloud forced on.
 // Two windows of account-creation time qualify (stored as ISO strings so the
