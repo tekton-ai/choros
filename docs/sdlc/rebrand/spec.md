@@ -76,6 +76,16 @@ What remains: source-tree hygiene. Renaming strings and constants in files the a
 - `README.md` (if any names Superset): update.
 - `docs/**` (excluding `docs/sdlc/rebrand/` and `docs/plans/`): update.
 
+
+**Landing page (new, GH Pages)**
+- A minimal static landing page lives at `docs/site/` and is served via GitHub Pages from `tekton-ai/choros` (default URL: `tekton-ai.github.io/choros`; no custom domain, no DNS setup).
+- Content: one page — Choros name + one-line tagline (adapted from the fork's `HeroSection` copy), a screenshot or two, a link to the GitHub repo, a link to whichever release/download surface the author later chooses (placeholder `#` acceptable until then).
+- Implementation: a single `index.html` (plus one CSS file if needed). No framework, no build step, no i18n. Explicitly NOT a port of `apps/marketing/`.
+- GH Pages source: the `docs/site/` directory on the default branch (configured in repo settings post-rename). No `gh-pages` branch, no submodules.
+
+**`apps/marketing/` handling**
+- Left in the source tree structurally unchanged; not deployed by this fork. Its i18n catalog entries and hero copy references to `Superset` still get renamed to `Choros` as part of the general string sweep so the code compiles and typechecks cleanly, but no next.config, deployment target, or SSR feature is modified.
+
 **Author's own machine (one-time manual)**
 - Rebuild desktop app with new bundle id. Old `Superset.app` continues to work locally with old bundle id; author drags to Trash after confirming new build runs.
 - Author re-enters any credentials the app persisted in Keychain (one-off; no code needed).
@@ -95,7 +105,8 @@ What remains: source-tree hygiene. Renaming strings and constants in files the a
 - Setting up a release pipeline / auto-update feed for the fork.
 - Trademark filings for `Choros` (author accepts personal risk; not blocking this spec).
 - Mobile app. Author does not build/ship mobile locally in a way that requires bundle-id change; if this changes, addendum spec.
-- Domain purchase / DNS. Author will pick a placeholder domain string (`choros.dev` in constants and `metadata.title` templates) but not register it in this cycle.
+- Domain purchase / DNS / custom domain for GH Pages. Landing page uses the default `tekton-ai.github.io/choros` URL. A placeholder domain string (`choros.dev`) may appear as a marker in constants where a display URL is required.
+- Porting `apps/marketing/` to static export, changing its `next.config`, or otherwise making it GH-Pages-deployable. The new landing page is intentionally a separate, minimal artifact.
 - Long-tail `plans/**` and `docs/plans/**` historical documents.
 - Changing internal names in `.git/`, `bun.lock`, `node_modules/`.
 - Renaming files under `apps/desktop/scripts/patch-dev-protocol.test.ts` where `"superset"` appears as a **user's real worktree name** in a fixture (`WORKTREE_BASE/superset/kitenite/feature-2058`) — those represent past workspace paths, not the product name. Fixture is updated only if the test's contract logically requires it.
