@@ -54,4 +54,4 @@ trademark means trademarks, service marks, and similar rights.
 
 ---
 
-Copyright 2025-2026 XXLOKI (Choros fork).
+Copyright 2025-2026 Choros.

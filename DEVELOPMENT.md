@@ -1,6 +1,6 @@
 # Developing Choros
 
-This guide is for developing the `tekton-ai/choros` fork from source. If you just want to use the fork, build the desktop app locally per the section below. To use the original upstream Superset, [download the macOS app](https://github.com/superset-sh/superset/releases/latest) instead.
+This guide is for developing Choros from source. If you just want to use it, build the desktop app locally per the section below.
 
 ## Prerequisites
 
@@ -19,7 +19,7 @@ macOS is the primary supported platform. Windows / Linux are untested.
 git clone https://github.com/tekton-ai/choros.git
 ```
 
-Add the clone to the installed **Superset** desktop app (the parent tool) and create a workspace for your change. Superset creates that workspace as an isolated git worktree. In the new
+Add the clone to the installed Choros desktop app and create a workspace for your change. Choros creates that workspace as an isolated git worktree. In the new
 workspace terminal, run:
 
 ```bash
@@ -29,7 +29,7 @@ bun run dev
 
 Run `setup.local.sh` separately in every new worktree before `bun run dev`. The
 setup and workspace-specific app identity allow the development desktop app to
-run alongside the installed Superset (parent) app and development apps from other
+run alongside the installed Choros app and development apps from other
 worktrees.
 
 **You do not need a Neon account, Stripe keys, or any other third-party
@@ -93,7 +93,7 @@ See [`AGENTS.md`](./AGENTS.md) for repo structure, monorepo conventions, and dat
 ## Troubleshooting
 
 - **Dev desktop exits while the installed app is running**: launch development
-  from a Superset (parent) workspace instead of the repository's main checkout, run
+  from a Choros workspace instead of the repository's main checkout, run
   `./.superset/setup.local.sh` in that worktree, then run `bun run dev` again.
 - **Port collision**: `setup.local.sh` allocates a fresh port window per worktree. If you ran the script before this change landed, re-run it to migrate.
 - **DB connection errors after pulling main**: re-run `./.superset/setup.local.sh`; it's idempotent and will apply any new migrations.
