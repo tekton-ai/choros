@@ -13,12 +13,12 @@ function invoke() {
 }
 
 afterEach(() => {
-	delete process.env.SUPERSET_CLI_CHANNEL;
+	delete process.env.CHOROS_CLI_CHANNEL;
 });
 
 describe("update", () => {
 	test("refuses to run from the desktop-bundled CLI", async () => {
-		process.env.SUPERSET_CLI_CHANNEL = "desktop-bundled";
+		process.env.CHOROS_CLI_CHANNEL = "desktop-bundled";
 		await expect(invoke()).rejects.toThrow(
 			/bundled with the Choros desktop app/,
 		);
@@ -29,12 +29,12 @@ describe("update", () => {
 	});
 });
 
-// Release binaries get SUPERSET_CLI_CHANNEL via build-time define replacement,
+// Release binaries get CHOROS_CLI_CHANNEL via build-time define replacement,
 // not runtime env — assert that wiring statically so a regression can't slip
 // past the runtime-env tests above.
 describe("channel build wiring", () => {
-	test("cli.config.ts bakes SUPERSET_CLI_CHANNEL, defaulting to standalone", () => {
-		expect(cliConfig.define?.["process.env.SUPERSET_CLI_CHANNEL"]).toBe(
+	test("cli.config.ts bakes CHOROS_CLI_CHANNEL, defaulting to standalone", () => {
+		expect(cliConfig.define?.["process.env.CHOROS_CLI_CHANNEL"]).toBe(
 			JSON.stringify("standalone"),
 		);
 	});
@@ -50,7 +50,7 @@ describe("channel build wiring", () => {
 			"utf8",
 		);
 		expect(buildScript).toMatch(
-			/SUPERSET_CLI_CHANNEL\s*[:=]\s*"desktop-bundled"/,
+			/CHOROS_CLI_CHANNEL\s*[:=]\s*"desktop-bundled"/,
 		);
 	});
 });

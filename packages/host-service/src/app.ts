@@ -248,7 +248,7 @@ export function createApp(options: CreateAppOptions): CreateAppResult {
 	// the main-workspace sweep already added a phantom second workspace here
 	// before bootstrap started seeding `type='main'`.
 	void (async () => {
-		if (process.env.SUPERSET_HOST_RUN_MODE === "sandbox") return;
+		if (process.env.CHOROS_HOST_RUN_MODE === "sandbox") return;
 		await runProjectBackfill({
 			db,
 			eventBus,

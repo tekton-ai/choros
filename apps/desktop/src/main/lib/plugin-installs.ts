@@ -12,7 +12,7 @@ import {
 	getPluginByName,
 	type InstalledPlugin,
 	type PluginMcpServerConfig,
-	SUPERSET_MANAGED_SKILLS,
+	CHOROS_MANAGED_SKILLS,
 } from "@choros/shared/plugins";
 import { localDb } from "main/lib/local-db";
 
@@ -94,7 +94,7 @@ export function uninstallPlugin(name: string): InstalledPlugin[] {
  * filesystem unless it's one of ours.
  */
 function resolveBundledSkillPath(name: string): string | null {
-	if (!SUPERSET_MANAGED_SKILLS.some((skill) => skill.name === name)) {
+	if (!CHOROS_MANAGED_SKILLS.some((skill) => skill.name === name)) {
 		return null;
 	}
 	return path.join(getBundledPluginDir(), "skills", name, "SKILL.md");
@@ -137,7 +137,7 @@ const SKILL_ICON_FILES = [
  */
 export function getBundledSkillIcons(): Record<string, string> {
 	const icons: Record<string, string> = {};
-	for (const skill of SUPERSET_MANAGED_SKILLS) {
+	for (const skill of CHOROS_MANAGED_SKILLS) {
 		for (const { file, mime } of SKILL_ICON_FILES) {
 			const iconPath = path.join(
 				getBundledPluginDir(),
@@ -224,13 +224,13 @@ export function writeBundledSkillContent(name: string, content: string): void {
  * (and the Claude plugin mirror), enable rewrites it. Mirrored to the shared
  * disabled-skills file so CLI-launched host-services on this machine honor
  * the choice instead of re-provisioning a skill the user just disabled.
- * Returns null for a name outside SUPERSET_MANAGED_SKILLS.
+ * Returns null for a name outside CHOROS_MANAGED_SKILLS.
  */
 export function setSkillEnabled(
 	name: string,
 	enabled: boolean,
 ): string[] | null {
-	if (!SUPERSET_MANAGED_SKILLS.some((skill) => skill.name === name)) {
+	if (!CHOROS_MANAGED_SKILLS.some((skill) => skill.name === name)) {
 		return null;
 	}
 	const current = new Set(getDisabledSkills());
@@ -249,7 +249,7 @@ export function setSkillEnabled(
 		})
 		.run();
 	writeSharedDisabledSkillIds(next);
-	// resolveDisabledSkillIds folds in SUPERSET_DISABLED_SKILLS — passing
+	// resolveDisabledSkillIds folds in CHOROS_DISABLED_SKILLS — passing
 	// `next` straight through would silently re-enable an env-disabled skill
 	// on the next unrelated toggle.
 	queueManagedSkillsSync(resolveDisabledSkillIds(next));

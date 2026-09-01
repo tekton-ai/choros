@@ -61,8 +61,8 @@ const ZSH = findOnPath("zsh");
 // The harness overwrites process-wide env; restore whatever was there so this
 // suite composes with others in the same node --test invocation.
 const OVERRIDDEN_ENV_KEYS = [
-	"SUPERSET_PTY_DAEMON_SOCKET",
-	"SUPERSET_HOME_DIR",
+	"CHOROS_PTY_DAEMON_SOCKET",
+	"CHOROS_HOME_DIR",
 	"HOST_SERVICE_VERSION",
 	"NODE_ENV",
 ] as const;
@@ -86,7 +86,7 @@ function writeZshWrappers(zshDir: string): void {
 	const sourceUser = (file: string, guard?: string) =>
 		[
 			SAVE,
-			`_choros_home="\${SUPERSET_ORIG_ZDOTDIR:-$HOME}"`,
+			`_choros_home="\${CHOROS_ORIG_ZDOTDIR:-$HOME}"`,
 			`export ZDOTDIR="$_choros_home"`,
 			guard
 				? `if [[ -o interactive ]]; then\n  [[ -f "$_choros_home/${file}" ]] && source "$_choros_home/${file}"\nfi`
@@ -109,7 +109,7 @@ function writeZshWrappers(zshDir: string): void {
 		path.join(zshDir, ".zlogin"),
 		`${sourceUser(".zlogin", "interactive")}
 __choros_prompt_mark() {
-  printf "\\033]777;superset-shell-ready\\007\\033]133;A\\007"
+  printf "\\033]777;choros-shell-ready\\007\\033]133;A\\007"
 }
 precmd_functions=(\${precmd_functions[@]} __choros_prompt_mark)
 export ZDOTDIR="$_choros_home"
@@ -170,8 +170,8 @@ before(async () => {
 	await server.listen();
 
 	for (const key of OVERRIDDEN_ENV_KEYS) savedEnv.set(key, process.env[key]);
-	process.env.SUPERSET_PTY_DAEMON_SOCKET = SOCK;
-	process.env.SUPERSET_HOME_DIR = TEST_HOME;
+	process.env.CHOROS_PTY_DAEMON_SOCKET = SOCK;
+	process.env.CHOROS_HOME_DIR = TEST_HOME;
 	process.env.HOST_SERVICE_VERSION = "0.0.0-shellready-e2e";
 	process.env.NODE_ENV = "development";
 
@@ -225,7 +225,7 @@ describe("shell-ready evidence learning", () => {
 			assert.equal(
 				shellLaunchExpectsReadyMarker({
 					shell: ZSH,
-					supersetHomeDir: TEST_HOME,
+					chorosHomeDir: TEST_HOME,
 				}),
 				true,
 				"wrapper files should make the launch marker-backed",

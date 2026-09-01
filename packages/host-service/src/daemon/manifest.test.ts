@@ -17,14 +17,14 @@ const TEST_HOME = path.join(
 const TEST_ORG = "org-manifest-test";
 
 beforeEach(() => {
-	process.env.SUPERSET_HOME_DIR = TEST_HOME;
+	process.env.CHOROS_HOME_DIR = TEST_HOME;
 	fs.mkdirSync(TEST_HOME, { recursive: true });
 });
 
 afterEach(() => {
 	removePtyDaemonManifest(TEST_ORG);
 	fs.rmSync(TEST_HOME, { recursive: true, force: true });
-	process.env.SUPERSET_HOME_DIR = undefined;
+	process.env.CHOROS_HOME_DIR = undefined;
 });
 
 function baseManifest(): PtyDaemonManifest {
@@ -107,20 +107,20 @@ describe("assertIsolatedDaemonNamespaceInTests", () => {
 		expect(() =>
 			assertIsolatedDaemonNamespaceInTests({
 				NODE_ENV: "test",
-				SUPERSET_HOME_DIR: path.join(os.homedir(), ".choros"),
+				CHOROS_HOME_DIR: path.join(os.homedir(), ".choros"),
 			}),
 		).toThrow(/isolated temp dir/);
 		// Aliases of the default home must not slip past the guard.
 		expect(() =>
 			assertIsolatedDaemonNamespaceInTests({
 				NODE_ENV: "test",
-				SUPERSET_HOME_DIR: `${path.join(os.homedir(), ".choros")}${path.sep}`,
+				CHOROS_HOME_DIR: `${path.join(os.homedir(), ".choros")}${path.sep}`,
 			}),
 		).toThrow(/isolated temp dir/);
 		expect(() =>
 			assertIsolatedDaemonNamespaceInTests({
 				NODE_ENV: "test",
-				SUPERSET_HOME_DIR: path.join(
+				CHOROS_HOME_DIR: path.join(
 					os.homedir(),
 					"somewhere",
 					"..",
@@ -134,7 +134,7 @@ describe("assertIsolatedDaemonNamespaceInTests", () => {
 		expect(() =>
 			assertIsolatedDaemonNamespaceInTests({
 				NODE_ENV: "test",
-				SUPERSET_HOME_DIR: "/tmp/isolated-home",
+				CHOROS_HOME_DIR: "/tmp/isolated-home",
 			}),
 		).not.toThrow();
 		expect(() =>

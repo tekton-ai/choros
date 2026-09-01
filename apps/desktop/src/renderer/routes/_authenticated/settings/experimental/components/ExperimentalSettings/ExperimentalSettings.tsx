@@ -37,7 +37,7 @@ export function ExperimentalSettings({
 	const { t } = useLingui();
 	const searchQuery = useSettingsSearchQuery();
 	const showChorosV2 = isItemVisible(
-		SETTING_ITEM_ID.EXPERIMENTAL_SUPERSET_V2,
+		SETTING_ITEM_ID.EXPERIMENTAL_CHOROS_V2,
 		visibleItems,
 	);
 	const showV1Migration = isItemVisible(

@@ -139,7 +139,7 @@ Changes:
 
 Acceptance (manual log sanity):
 
-    SUPERSET_TERMINAL_DEBUG=1 ELECTRON_RUN_AS_NODE=1 bun run desktop:dev
+    CHOROS_TERMINAL_DEBUG=1 ELECTRON_RUN_AS_NODE=1 bun run desktop:dev
 
 Expected: daemon logs show two authenticated connections per app instance (control + stream), and session data events are only written to the stream socket.
 
@@ -226,7 +226,7 @@ Goal: Make it safe to ship and easy to diagnose.
 Changes:
 
 - Prefer not adding a feature flag unless release process requires it (flags add complexity and a second behavior to maintain). The protocol mismatch handling is the primary safety mechanism; rollback is via reverting the change and shipping a patch release.
-- Improve debug logging (only when `SUPERSET_TERMINAL_DEBUG=1`):
+- Improve debug logging (only when `CHOROS_TERMINAL_DEBUG=1`):
   - Log connection roles and clientId.
   - Log when `createOrAttach` is rejected due to missing stream socket.
 

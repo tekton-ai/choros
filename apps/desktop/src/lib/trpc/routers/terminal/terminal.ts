@@ -22,7 +22,7 @@ import { assertWorkspaceUsable } from "../workspaces/utils/usability";
 import { resolveTerminalThemeType } from "./theme-type";
 import { getWorkspaceTerminalContext, resolveCwd } from "./utils";
 
-const DEBUG_TERMINAL = process.env.SUPERSET_TERMINAL_DEBUG === "1";
+const DEBUG_TERMINAL = process.env.CHOROS_TERMINAL_DEBUG === "1";
 const logger = console;
 let createOrAttachCallCounter = 0;
 
@@ -60,14 +60,14 @@ const terminalProcedure = publicProcedure.use(async ({ next }) => {
  * Sessions are keyed by paneId and linked to workspaces for cwd resolution
  *
  * Environment variables set for terminal sessions:
- * - PATH: Prepends ~/.superset/bin so wrapper scripts intercept agent commands
- * - SUPERSET_PANE_ID: The pane ID (used by notification hooks, session key)
- * - SUPERSET_TAB_ID: The tab ID (parent of pane, used by notification hooks)
- * - SUPERSET_WORKSPACE_ID: The workspace ID (used by notification hooks)
- * - SUPERSET_WORKSPACE_NAME: The workspace name (used by setup/teardown scripts)
- * - SUPERSET_WORKSPACE_PATH: The worktree path (used by setup/teardown scripts)
- * - SUPERSET_ROOT_PATH: The main repo path (used by setup/teardown scripts)
- * - SUPERSET_PORT: The hooks server port for agent completion notifications
+ * - PATH: Prepends ~/.choros/bin so wrapper scripts intercept agent commands
+ * - CHOROS_PANE_ID: The pane ID (used by notification hooks, session key)
+ * - CHOROS_TAB_ID: The tab ID (parent of pane, used by notification hooks)
+ * - CHOROS_WORKSPACE_ID: The workspace ID (used by notification hooks)
+ * - CHOROS_WORKSPACE_NAME: The workspace name (used by setup/teardown scripts)
+ * - CHOROS_WORKSPACE_PATH: The worktree path (used by setup/teardown scripts)
+ * - CHOROS_ROOT_PATH: The main repo path (used by setup/teardown scripts)
+ * - CHOROS_PORT: The hooks server port for agent completion notifications
  */
 export const createTerminalRouter = () => {
 	const registry = getWorkspaceRuntimeRegistry();

@@ -22,8 +22,8 @@ esac
 printf '{}\n'
 
 # ~/.gemini/settings.json is global, so this also fires in sessions launched
-# outside Superset terminals; only those terminals set SUPERSET_* vars.
-[ -n "$SUPERSET_TERMINAL_ID" ] || [ -n "$SUPERSET_TAB_ID" ] || exit 0
+# outside Choros terminals; only those terminals set SUPERSET_* vars.
+[ -n "$CHOROS_TERMINAL_ID" ] || [ -n "$CHOROS_TAB_ID" ] || exit 0
 
 V1_EVENT_TYPE="$EVENT_TYPE"
 case "$V1_EVENT_TYPE" in
@@ -39,11 +39,11 @@ json_escape() {
 # terminal creation and goes stale when the host-service restarts on a new
 # port, while each org manifest is rewritten with the live endpoint on every
 # start. Only the host that owns this terminal answers "ignored":false.
-if [ -n "$SUPERSET_TERMINAL_ID" ]; then
-  PAYLOAD="{\"json\":{\"terminalId\":\"$(json_escape "$SUPERSET_TERMINAL_ID")\",\"eventType\":\"$(json_escape "$EVENT_TYPE")\",\"agent\":{\"agentId\":\"$(json_escape "$SUPERSET_AGENT_ID")\",\"sessionId\":\"$(json_escape "$HOOK_SESSION_ID")\"}}}"
+if [ -n "$CHOROS_TERMINAL_ID" ]; then
+  PAYLOAD="{\"json\":{\"terminalId\":\"$(json_escape "$CHOROS_TERMINAL_ID")\",\"eventType\":\"$(json_escape "$EVENT_TYPE")\",\"agent\":{\"agentId\":\"$(json_escape "$CHOROS_AGENT_ID")\",\"sessionId\":\"$(json_escape "$HOOK_SESSION_ID")\"}}}"
 
-  HOOK_CANDIDATE_URLS="$SUPERSET_HOST_AGENT_HOOK_URL"
-  for MANIFEST_FILE in "${SUPERSET_HOME_DIR:-$HOME/.superset}"/host/*/manifest.json; do
+  HOOK_CANDIDATE_URLS="$CHOROS_HOST_AGENT_HOOK_URL"
+  for MANIFEST_FILE in "${CHOROS_HOME_DIR:-$HOME/.choros}"/host/*/manifest.json; do
     [ -f "$MANIFEST_FILE" ] || continue
     MANIFEST_ENDPOINT=$(grep -oE '"endpoint"[[:space:]]*:[[:space:]]*"[^"]*"' "$MANIFEST_FILE" | head -1 | grep -oE '"[^"]*"$' | tr -d '"')
     [ -n "$MANIFEST_ENDPOINT" ] || continue
@@ -77,21 +77,21 @@ if [ -n "$SUPERSET_TERMINAL_ID" ]; then
   echo "[gemini-hook] no host-service accepted the event; falling back to v1" >&2
 fi
 
-[ -z "$SUPERSET_TAB_ID" ] && [ -z "$SUPERSET_TERMINAL_ID" ] && exit 0
+[ -z "$CHOROS_TAB_ID" ] && [ -z "$CHOROS_TERMINAL_ID" ] && exit 0
 
-curl -sG "http://127.0.0.1:${SUPERSET_PORT:-{{DEFAULT_PORT}}}/hook/complete" \
+curl -sG "http://127.0.0.1:${CHOROS_PORT:-{{DEFAULT_PORT}}}/hook/complete" \
   --connect-timeout 1 --max-time 2 \
-  --data-urlencode "paneId=$SUPERSET_PANE_ID" \
-  --data-urlencode "tabId=$SUPERSET_TAB_ID" \
-  --data-urlencode "workspaceId=$SUPERSET_WORKSPACE_ID" \
-  --data-urlencode "terminalId=$SUPERSET_TERMINAL_ID" \
+  --data-urlencode "paneId=$CHOROS_PANE_ID" \
+  --data-urlencode "tabId=$CHOROS_TAB_ID" \
+  --data-urlencode "workspaceId=$CHOROS_WORKSPACE_ID" \
+  --data-urlencode "terminalId=$CHOROS_TERMINAL_ID" \
   --data-urlencode "sessionId=$HOOK_SESSION_ID" \
   --data-urlencode "hookSessionId=$HOOK_SESSION_ID" \
   --data-urlencode "eventType=$V1_EVENT_TYPE" \
   --data-urlencode "rawEventType=$EVENT_TYPE" \
-  --data-urlencode "agentId=$SUPERSET_AGENT_ID" \
-  --data-urlencode "env=$SUPERSET_ENV" \
-  --data-urlencode "version=$SUPERSET_HOOK_VERSION" \
+  --data-urlencode "agentId=$CHOROS_AGENT_ID" \
+  --data-urlencode "env=$CHOROS_ENV" \
+  --data-urlencode "version=$CHOROS_HOOK_VERSION" \
   > /dev/null 2>&1
 
 exit 0

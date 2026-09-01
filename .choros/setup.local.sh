@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 # Local-development setup. Provisions a fully self-contained, PER-WORKSPACE
-# Superset stack backed by a local Postgres container + fake credentials — no
+# Choros stack backed by a local Postgres container + fake credentials — no
 # Neon account, no real third-party keys. Mirrors setup.sh, but replaces the
 # Neon branch with a docker-compose bundle (Postgres + neon-proxy + Redis/SRH)
 # on per-workspace allocated ports so multiple worktrees never collide.
 set -uo pipefail
 
-SUPERSET_SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ROOT_DIR="$(cd "$SUPERSET_SCRIPT_DIR/.." && pwd)"
+CHOROS_SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(cd "$CHOROS_SCRIPT_DIR/.." && pwd)"
 
 # shellcheck source=/dev/null
-source "$SUPERSET_SCRIPT_DIR/lib/common.sh"
+source "$CHOROS_SCRIPT_DIR/lib/common.sh"
 # shellcheck source=/dev/null
-source "$SUPERSET_SCRIPT_DIR/lib/setup/steps.sh" # reuse allocate_port_base + helpers
+source "$CHOROS_SCRIPT_DIR/lib/setup/steps.sh" # reuse allocate_port_base + helpers
 
 cd "$ROOT_DIR" || exit 1
 
@@ -66,7 +66,7 @@ local_allocate_ports() {
     error "Port allocation failed"
     return 1
   fi
-  local base="$SUPERSET_PORT_BASE"
+  local base="$CHOROS_PORT_BASE"
   # DB stack host ports live in the free tail of the 20-port window
   # (app ports use +0..+13).
   LOCAL_PG_PORT=$((base + 14))
@@ -79,7 +79,7 @@ local_allocate_ports() {
   # var beats the .env file, so this overrides any stale DATABASE_URL.
   export DATABASE_URL="postgres://postgres:postgres@db.localtest.me:$LOCAL_NEON_PROXY_PORT/main"
   export DATABASE_URL_UNPOOLED="postgres://postgres:postgres@localhost:$LOCAL_PG_PORT/main"
-  LOCAL_DB_PROJECT="superset-$(sanitize_name "${SUPERSET_WORKSPACE_NAME:-$(basename "$PWD")}")"
+  LOCAL_DB_PROJECT="choros-$(sanitize_name "${CHOROS_WORKSPACE_NAME:-$(basename "$PWD")}")"
   success "Base $base → pg=$LOCAL_PG_PORT proxy=$LOCAL_NEON_PROXY_PORT redis=$LOCAL_REDIS_PORT srh=$LOCAL_SRH_PORT (project $LOCAL_DB_PROJECT)"
   return 0
 }
@@ -176,12 +176,12 @@ local_seed_dev_account() {
 
 local_write_env() {
   echo "📝 Writing workspace .env (DB URLs + ports)..."
-  if [ -z "${SUPERSET_PORT_BASE:-}" ] || [ -z "$LOCAL_NEON_PROXY_PORT" ]; then
+  if [ -z "${CHOROS_PORT_BASE:-}" ] || [ -z "$LOCAL_NEON_PROXY_PORT" ]; then
     error "Ports not allocated before writing .env"
     return 1
   fi
 
-  local BASE="$SUPERSET_PORT_BASE"
+  local BASE="$CHOROS_PORT_BASE"
   local WEB_PORT=$((BASE))
   local API_PORT=$((BASE + 1))
   local MARKETING_PORT=$((BASE + 2))
@@ -198,9 +198,9 @@ local_write_env() {
   {
     echo ""
     echo "# ===== Local workspace overrides (setup.local.sh) ====="
-    write_env_var "SUPERSET_WORKSPACE_NAME" "${SUPERSET_WORKSPACE_NAME:-$(basename "$PWD")}"
-    write_env_var "SUPERSET_HOME_DIR" "$PWD/superset-dev-data"
-    write_env_var "SUPERSET_PORT_BASE" "$BASE"
+    write_env_var "CHOROS_WORKSPACE_NAME" "${CHOROS_WORKSPACE_NAME:-$(basename "$PWD")}"
+    write_env_var "CHOROS_HOME_DIR" "$PWD/choros-dev-data"
+    write_env_var "CHOROS_PORT_BASE" "$BASE"
     echo ""
     echo "# Per-workspace local DB stack (docker compose project $LOCAL_DB_PROJECT)"
     write_env_var "LOCAL_PG_PORT" "$LOCAL_PG_PORT"
@@ -238,7 +238,7 @@ local_write_env() {
     write_env_var "NEXT_PUBLIC_DESKTOP_URL" "http://localhost:$DESKTOP_VITE_PORT"
     write_env_var "RELAY_URL" "http://localhost:$RELAY_PORT"
     write_env_var "NEXT_PUBLIC_RELAY_URL" "http://localhost:$RELAY_PORT"
-    write_env_var "SUPERSET_WEB_URL" "http://localhost:$WEB_PORT"
+    write_env_var "CHOROS_WEB_URL" "http://localhost:$WEB_PORT"
     write_env_var "USERCONTENT_URL" "http://frame.usercontent.localhost:$USERCONTENT_DEV_PORT"
     echo ""
     echo "# Streams URLs"
@@ -252,7 +252,7 @@ local_write_env() {
     write_env_var "EXPO_PUBLIC_POSTHOG_KEY" "phc_local_dev_disabled"
   } >> .env
 
-  cat > "$SUPERSET_SCRIPT_DIR/ports.json" <<PORTSJSON
+  cat > "$CHOROS_SCRIPT_DIR/ports.json" <<PORTSJSON
 {
   "ports": [
     { "port": $WEB_PORT, "label": "Web" },
@@ -277,11 +277,11 @@ PORTSJSON
 }
 
 local_write_config_overlay() {
-  echo "🔧 Writing .superset/config.local.json (untracked overlay)..."
-  cat > "$SUPERSET_SCRIPT_DIR/config.local.json" <<'CONFIGLOCAL'
+  echo "🔧 Writing .choros/config.local.json (untracked overlay)..."
+  cat > "$CHOROS_SCRIPT_DIR/config.local.json" <<'CONFIGLOCAL'
 {
-  "setup": ["./.superset/setup.local.sh"],
-  "teardown": ["./.superset/teardown.local.sh"]
+  "setup": ["./.choros/setup.local.sh"],
+  "teardown": ["./.choros/teardown.local.sh"]
 }
 CONFIGLOCAL
   success "config.local.json written — worktrees will use setup.local.sh"
@@ -292,7 +292,7 @@ local_setup_main() {
   FAILED_STEPS=()
   SKIPPED_STEPS=()
 
-  echo "🚀 Setting up Superset for LOCAL development..."
+  echo "🚀 Setting up Choros for LOCAL development..."
   echo ""
 
   local_ensure_env || step_failed "Prepare .env"

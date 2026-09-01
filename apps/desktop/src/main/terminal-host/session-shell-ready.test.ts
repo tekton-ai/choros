@@ -276,7 +276,7 @@ describe("Session shell-ready: marker detection", () => {
 		const { session, proc } = createTestSession("/bin/zsh");
 		spawnAndReady(session, proc);
 
-		const COMBINED_MARKER = "\x1b]777;superset-shell-ready\x07\x1b]133;A\x07";
+		const COMBINED_MARKER = "\x1b]777;choros-shell-ready\x07\x1b]133;A\x07";
 		sendData(proc, `direnv output...${COMBINED_MARKER}prompt$ `);
 
 		// Writes after the combined marker pass through (marker detection

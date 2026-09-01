@@ -233,14 +233,14 @@ export async function provisionClaudeProfile(
 
 	if (surfaces["skills/"] === "user-owned") {
 		// The profile brought its own skills dir, so it isn't sharing ours —
-		// the bundled Superset plugin has to be written into it directly.
+		// the bundled Choros plugin has to be written into it directly.
 		// No settings row here (this can run from a headless host), so resolve
 		// through the shared mirror/env — the same source the default account
 		// path converges on.
 		await provisionManagedClaudePluginAt(target, {
 			disabledSkills: resolveDisabledSkillIds(),
 		});
-		surfaces["skills/superset"] = "synced";
+		surfaces["skills/choros"] = "synced";
 	}
 
 	const report = { configDir: target, surfaces };

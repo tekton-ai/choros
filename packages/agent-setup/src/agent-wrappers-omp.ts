@@ -7,9 +7,9 @@ import {
 } from "./agent-wrappers-common";
 import { getTemplatePath } from "./config";
 
-export const OMP_EXTENSION_FILE = "superset-hooks.ts";
+export const OMP_EXTENSION_FILE = "choros-hooks.ts";
 
-const OMP_EXTENSION_SIGNATURE = "// Superset Oh My Pi extension";
+const OMP_EXTENSION_SIGNATURE = "// Choros Oh My Pi extension";
 const OMP_EXTENSION_VERSION = "v1";
 export const OMP_EXTENSION_MARKER = `${OMP_EXTENSION_SIGNATURE} ${OMP_EXTENSION_VERSION}`;
 
@@ -18,10 +18,10 @@ export const OMP_EXTENSION_MARKER = `${OMP_EXTENSION_SIGNATURE} ${OMP_EXTENSION_
  *
  * OMP discovers user extensions from `~/.omp/agent/extensions/` by default.
  * `OMP_CODING_AGENT_DIR` overrides that agent directory; we honor it here so a
- * user running OMP with an isolated profile gets Superset's hook in the same
+ * user running OMP with an isolated profile gets Choros's hook in the same
  * extension tree OMP will load. Pi's `PI_CODING_AGENT_DIR` is deliberately
  * ignored: pi and OMP must resolve to distinct extension trees or the two
- * writers fight over one superset-hooks.ts.
+ * writers fight over one choros-hooks.ts.
  */
 export function getOmpExtensionPath(): string {
 	const configuredAgentDir = process.env.OMP_CODING_AGENT_DIR;
@@ -35,7 +35,7 @@ export function getOmpExtensionPath(): string {
  * Renders the Oh My Pi extension content with the marker substituted.
  *
  * The template is environment-independent: it computes the notify.sh path at
- * runtime from `SUPERSET_HOME_DIR` (which is set in every Superset terminal
+ * runtime from `CHOROS_HOME_DIR` (which is set in every Choros terminal
  * for both dev and prod installs).
  */
 export function getOmpExtensionContent(): string {
@@ -47,7 +47,7 @@ export function getOmpExtensionContent(): string {
 }
 
 /**
- * Writes the Superset-managed Oh My Pi extension into OMP's global extensions
+ * Writes the Choros-managed Oh My Pi extension into OMP's global extensions
  * directory. Idempotent via `writeFileIfChanged`.
  *
  * OMP auto-discovers extensions in this directory at session start, so no
@@ -65,7 +65,7 @@ export function createOmpExtension(): void {
 	);
 }
 
-/** Removes the wholly Superset-owned Oh My Pi extension file (signature-gated). */
+/** Removes the wholly Choros-owned Oh My Pi extension file (signature-gated). */
 export function removeOmpExtension(): void {
 	removeOwnedFileIfMarked(
 		getOmpExtensionPath(),

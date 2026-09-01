@@ -12,7 +12,7 @@ import log from "electron-log/main";
 import { env as sharedEnv } from "shared/env.shared";
 import { getProcessEnvWithShellPath } from "../../lib/trpc/routers/workspaces/utils/shell-env";
 import { env as mainEnv } from "../env.main";
-import { SUPERSET_HOME_DIR } from "./app-environment";
+import { CHOROS_HOME_DIR } from "./app-environment";
 import { getBrowserBridgeInfo } from "./browser/browser-bridge-info";
 import { acquireSpawnLock } from "./host-service-lock";
 import {
@@ -383,7 +383,7 @@ export class HostServiceCoordinator extends EventEmitter {
 	 * tracked in this process (e.g. a stale manifest left by a CLI-spawned
 	 * host-service) — then removes the manifest so callers can't pick up the
 	 * stale entry, and respawns. Used by the recovery path for
-	 * superset-sh/choros#4299 where a wedged host-service keeps serving
+	 * choros-sh/choros#4299 where a wedged host-service keeps serving
 	 * stale state.
 	 */
 	async reset(
@@ -597,7 +597,7 @@ export class HostServiceCoordinator extends EventEmitter {
 
 	/**
 	 * Single-flight a host-service for `organizationId` across every app
-	 * instance sharing this machine's `$SUPERSET_HOME_DIR`.
+	 * instance sharing this machine's `$CHOROS_HOME_DIR`.
 	 *
 	 * First tries to adopt a healthy host-service another instance already
 	 * spawned (reading its manifest for port + secret). Otherwise it takes a
@@ -875,7 +875,7 @@ export class HostServiceCoordinator extends EventEmitter {
 			// chat.db's migrations ship the same way host.db's do: the bundled
 			// host-service can't resolve them from its own module path, so the
 			// folder travels as a resource and the path comes in as env.
-			SUPERSET_CHAT_V3_MIGRATIONS: app.isPackaged
+			CHOROS_CHAT_V3_MIGRATIONS: app.isPackaged
 				? path.join(process.resourcesPath, "resources/chat-migrations")
 				: path.join(
 						app.getAppPath(),
@@ -885,19 +885,19 @@ export class HostServiceCoordinator extends EventEmitter {
 			// bundled host-service (isolated linker + bundling), so its path comes
 			// in as env too. Packaged builds are an open IOU (231MB binary).
 			...(chatV3ClaudeBin()
-				? { SUPERSET_CHAT_V3_CLAUDE_BIN: chatV3ClaudeBin() as string }
+				? { CHOROS_CHAT_V3_CLAUDE_BIN: chatV3ClaudeBin() as string }
 				: {}),
 			DESKTOP_VITE_PORT: String(sharedEnv.DESKTOP_VITE_PORT),
-			SUPERSET_HOME_DIR: SUPERSET_HOME_DIR,
-			SUPERSET_LEGACY_WORKTREE_BASE_DIR: row?.worktreeBaseDir ?? "",
-			SUPERSET_AGENT_HOOK_PORT: String(sharedEnv.DESKTOP_NOTIFICATIONS_PORT),
-			SUPERSET_AGENT_HOOK_VERSION: HOOK_PROTOCOL_VERSION,
+			CHOROS_HOME_DIR: CHOROS_HOME_DIR,
+			CHOROS_LEGACY_WORKTREE_BASE_DIR: row?.worktreeBaseDir ?? "",
+			CHOROS_AGENT_HOOK_PORT: String(sharedEnv.DESKTOP_NOTIFICATIONS_PORT),
+			CHOROS_AGENT_HOOK_VERSION: HOOK_PROTOCOL_VERSION,
 			// BROWSER_BRIDGE_URL/SECRET are set (or stripped) after the shell-env
 			// merge below, alongside RELAY_URL, so an inherited value can't leak
 			// into a standalone host.
 			AUTH_TOKEN: config.authToken,
-			SUPERSET_AUTH_CONFIG_PATH: path.join(SUPERSET_HOME_DIR, "config.json"),
-			SUPERSET_API_URL: config.cloudApiUrl,
+			CHOROS_AUTH_CONFIG_PATH: path.join(CHOROS_HOME_DIR, "config.json"),
+			CHOROS_API_URL: config.cloudApiUrl,
 			// Namespaced so terminals/agents spawned by the host service don't
 			// inherit a generic SENTRY_DSN — third-party tools with a Sentry SDK
 			// auto-pick it up and report into our project.

@@ -54,7 +54,7 @@ describe("workspace.create + workspace.delete integration", () => {
 			.get();
 		expect(persisted?.branch).toBe("feature/new");
 		expect(persisted?.worktreePath).toBeTruthy();
-		// Path scheme is `~/.superset/worktrees/<projectId>/<branch>` —
+		// Path scheme is `~/.choros/worktrees/<projectId>/<branch>` —
 		// pin the suffix rather than the absolute path so the test isn't
 		// HOME-dependent.
 		expect(persisted?.worktreePath).toMatch(/feature\/new$/);
@@ -98,11 +98,11 @@ describe("workspace.create + workspace.delete integration", () => {
 	});
 
 	test("create() seeds the host location from the legacy desktop setting", async () => {
-		const previousLegacyValue = process.env.SUPERSET_LEGACY_WORKTREE_BASE_DIR;
+		const previousLegacyValue = process.env.CHOROS_LEGACY_WORKTREE_BASE_DIR;
 		const legacyRoot = realpathSync(
 			mkdtempSync(join(tmpdir(), "host-service-worktrees-legacy-")),
 		);
-		process.env.SUPERSET_LEGACY_WORKTREE_BASE_DIR = legacyRoot;
+		process.env.CHOROS_LEGACY_WORKTREE_BASE_DIR = legacyRoot;
 
 		try {
 			const scenario = await createProjectScenario({
@@ -130,9 +130,9 @@ describe("workspace.create + workspace.delete integration", () => {
 			);
 		} finally {
 			if (previousLegacyValue === undefined) {
-				delete process.env.SUPERSET_LEGACY_WORKTREE_BASE_DIR;
+				delete process.env.CHOROS_LEGACY_WORKTREE_BASE_DIR;
 			} else {
-				process.env.SUPERSET_LEGACY_WORKTREE_BASE_DIR = previousLegacyValue;
+				process.env.CHOROS_LEGACY_WORKTREE_BASE_DIR = previousLegacyValue;
 			}
 			rmSync(legacyRoot, { recursive: true, force: true });
 		}
@@ -185,7 +185,7 @@ describe("workspace.create + workspace.delete integration", () => {
 
 	test("create() adopts an existing worktree at a non-canonical path instead of failing on `git worktree add`", async () => {
 		// Regress: when the user typed a branch that already has a worktree
-		// somewhere outside `~/.superset/worktrees/<projectId>/<branch>`,
+		// somewhere outside `~/.choros/worktrees/<projectId>/<branch>`,
 		// `workspaces.create` used to call `git worktree add` and crash with
 		// `fatal: '<branch>' is already used by worktree at ...`. Adopt the
 		// existing path instead.

@@ -5,7 +5,7 @@ Choros (χορός, "coordinated chorus") — an agent-first coding platform. On
 ## Building
 
 ```bash
-./.superset/setup.local.sh
+./.choros/setup.local.sh
 bun run dev
 ```
 

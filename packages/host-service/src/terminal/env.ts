@@ -178,7 +178,7 @@ export function normalizeUtf8Locale(baseEnv: Record<string, string>): string {
 interface BuildV2TerminalEnvParams {
 	baseEnv: Record<string, string>;
 	shell: string;
-	supersetHomeDir: string;
+	chorosHomeDir: string;
 	organizationId: string;
 	themeType?: "dark" | "light";
 	cwd: string;
@@ -208,7 +208,7 @@ export function buildV2TerminalEnv(
 	const {
 		baseEnv,
 		shell,
-		supersetHomeDir,
+		chorosHomeDir,
 		organizationId,
 		themeType,
 		cwd,
@@ -226,7 +226,7 @@ export function buildV2TerminalEnv(
 	// to guarantee no runtime keys reach PTYs regardless of call site
 	const env = stripTerminalRuntimeEnv(baseEnv);
 
-	Object.assign(env, getShellBootstrapEnv({ shell, baseEnv, supersetHomeDir }));
+	Object.assign(env, getShellBootstrapEnv({ shell, baseEnv, chorosHomeDir }));
 
 	env.TERM = "xterm-256color";
 	env.SHELL = shell;
@@ -248,34 +248,34 @@ export function buildV2TerminalEnv(
 	env.LANG = normalizeUtf8Locale(baseEnv);
 	env.PWD = cwd;
 
-	env.SUPERSET_TERMINAL_ID = terminalId;
+	env.CHOROS_TERMINAL_ID = terminalId;
 	// Scope CLI commands launched in this terminal to the same organization as
 	// the org-specific host-service that owns the workspace. This is routing
 	// metadata, not a credential; the CLI still uses its own authenticated
 	// session, but no longer consults that session's unrelated active-org choice.
 	if (organizationId) {
-		env.SUPERSET_ORGANIZATION_ID = organizationId;
+		env.CHOROS_ORGANIZATION_ID = organizationId;
 	}
-	env.SUPERSET_WORKSPACE_ID = workspaceId;
-	env.SUPERSET_WORKSPACE_PATH = workspacePath;
-	env.SUPERSET_ROOT_PATH = rootPath;
-	env.SUPERSET_ENV = chorosEnv;
-	env.SUPERSET_AGENT_HOOK_PORT = agentHookPort;
-	env.SUPERSET_AGENT_HOOK_VERSION = agentHookVersion;
+	env.CHOROS_WORKSPACE_ID = workspaceId;
+	env.CHOROS_WORKSPACE_PATH = workspacePath;
+	env.CHOROS_ROOT_PATH = rootPath;
+	env.CHOROS_ENV = chorosEnv;
+	env.CHOROS_AGENT_HOOK_PORT = agentHookPort;
+	env.CHOROS_AGENT_HOOK_VERSION = agentHookVersion;
 	// v2 — agent posts to host-service so the renderer can play the sound
 	// client-side. No auth token: the endpoint is unauthenticated by design
 	// (chimes plus an idempotent linked-task In Progress nudge). The
 	// notify-hook script falls back to the electron endpoint when this URL
 	// isn't set.
 	if (hostAgentHookUrl) {
-		env.SUPERSET_HOST_AGENT_HOOK_URL = hostAgentHookUrl;
+		env.CHOROS_HOST_AGENT_HOOK_URL = hostAgentHookUrl;
 	}
 
-	if (supersetHomeDir) {
-		env.SUPERSET_HOME_DIR = supersetHomeDir;
+	if (chorosHomeDir) {
+		env.CHOROS_HOME_DIR = chorosHomeDir;
 	}
 
-	if (process.env.SUPERSET_HOST_RUN_MODE === "sandbox") {
+	if (process.env.CHOROS_HOST_RUN_MODE === "sandbox") {
 		for (const key of SANDBOX_AGENT_CREDENTIAL_KEYS) {
 			const value = process.env[key];
 			if (value) env[key] = value;

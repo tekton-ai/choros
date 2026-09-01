@@ -42,7 +42,7 @@ interface TerminalComposerProps {
 	/**
 	 * Only agent sessions can use an attachment: they read the paths out of the
 	 * prompt. A plain shell tries to EXECUTE them ("permission denied:
-	 * .superset/attachments/IMG_0006.HEIC"), so it doesn't get the + button.
+	 * .choros/attachments/IMG_0006.HEIC"), so it doesn't get the + button.
 	 */
 	allowAttachments: boolean;
 	/**

@@ -106,8 +106,8 @@ before(async () => {
 	});
 	await server.listen();
 
-	process.env.SUPERSET_PTY_DAEMON_SOCKET = SOCK;
-	process.env.SUPERSET_HOME_DIR = TEST_HOME;
+	process.env.CHOROS_PTY_DAEMON_SOCKET = SOCK;
+	process.env.CHOROS_HOME_DIR = TEST_HOME;
 	process.env.HOST_SERVICE_VERSION = "0.0.0-createattach-test";
 	process.env.NODE_ENV = "development";
 

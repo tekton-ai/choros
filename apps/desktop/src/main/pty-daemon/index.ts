@@ -79,7 +79,7 @@ async function runFresh(): Promise<void> {
 	const args = parseFreshArgs(process.argv.slice(2));
 	// Env wins so the supervisor can pin versions; falls back to the bundle.
 	const daemonVersion =
-		process.env.SUPERSET_PTY_DAEMON_VERSION ?? DAEMON_PACKAGE_VERSION;
+		process.env.CHOROS_PTY_DAEMON_VERSION ?? DAEMON_PACKAGE_VERSION;
 	const server = new Server({
 		socketPath: args.socket,
 		daemonVersion,

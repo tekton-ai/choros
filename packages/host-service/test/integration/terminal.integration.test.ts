@@ -51,12 +51,12 @@ describe("terminal router integration", () => {
 		resetTerminalBaseEnvForTests();
 		__setAccountShellForTesting(undefined);
 		// Dispose BEFORE dropping the isolation env: cleanup paths resolve
-		// daemon manifests/sockets, and without SUPERSET_HOME_DIR they would
+		// daemon manifests/sockets, and without CHOROS_HOME_DIR they would
 		// hit the real ~/.choros namespace (the manifest layer now throws
 		// on that in tests).
 		await scenario?.dispose();
-		delete process.env.SUPERSET_PTY_DAEMON_SOCKET;
-		delete process.env.SUPERSET_HOME_DIR;
+		delete process.env.CHOROS_PTY_DAEMON_SOCKET;
+		delete process.env.CHOROS_HOME_DIR;
 	});
 
 	test("list returns empty when no sessions exist", async () => {
@@ -117,8 +117,8 @@ describe("terminal router integration", () => {
 
 		try {
 			await server.listen();
-			process.env.SUPERSET_PTY_DAEMON_SOCKET = socketPath;
-			process.env.SUPERSET_HOME_DIR = tmp;
+			process.env.CHOROS_PTY_DAEMON_SOCKET = socketPath;
+			process.env.CHOROS_HOME_DIR = tmp;
 			__setAccountShellForTesting(fakeFishPath);
 			resetTerminalBaseEnvForTests();
 			initTerminalBaseEnv({
@@ -144,7 +144,7 @@ describe("terminal router integration", () => {
 			expect(meta.argv[0]).toBe("-l");
 			expect(meta.argv[1]).toBe("--init-command");
 			expect(meta.env?.SHELL).toBe(fakeFishPath);
-			expect(meta.env?.SUPERSET_TERMINAL_ID).toBe(terminalId);
+			expect(meta.env?.CHOROS_TERMINAL_ID).toBe(terminalId);
 		} finally {
 			await scenario.host.trpc.terminal.killSession
 				.mutate({
@@ -182,7 +182,7 @@ describe("terminal router integration", () => {
 				stdio: ["ignore", "pipe", "pipe"],
 				env: {
 					...process.env,
-					SUPERSET_PTY_DAEMON_VERSION: "0.0.0-host-service-terminal-test",
+					CHOROS_PTY_DAEMON_VERSION: "0.0.0-host-service-terminal-test",
 				},
 			});
 			daemonProcess.stdout?.on("data", (chunk) => {
@@ -211,8 +211,8 @@ describe("terminal router integration", () => {
 						`stderr:\n${daemonStderr}`,
 					].join("\n"),
 			);
-			process.env.SUPERSET_PTY_DAEMON_SOCKET = socketPath;
-			process.env.SUPERSET_HOME_DIR = tmp;
+			process.env.CHOROS_PTY_DAEMON_SOCKET = socketPath;
+			process.env.CHOROS_HOME_DIR = tmp;
 
 			await scenario.host.trpc.terminal.createSession.mutate({
 				workspaceId: scenario.workspaceId,
@@ -318,8 +318,8 @@ describe("terminal router integration", () => {
 				},
 			);
 			await waitFor(() => existsSync(socketPath), 3000);
-			process.env.SUPERSET_PTY_DAEMON_SOCKET = socketPath;
-			process.env.SUPERSET_HOME_DIR = tmp;
+			process.env.CHOROS_PTY_DAEMON_SOCKET = socketPath;
+			process.env.CHOROS_HOME_DIR = tmp;
 
 			await scenario.host.trpc.terminal.createSession.mutate({
 				workspaceId: scenario.workspaceId,
@@ -404,8 +404,8 @@ describe("terminal router integration", () => {
 				},
 			);
 			await waitFor(() => existsSync(socketPath), 3000);
-			process.env.SUPERSET_PTY_DAEMON_SOCKET = socketPath;
-			process.env.SUPERSET_HOME_DIR = tmp;
+			process.env.CHOROS_PTY_DAEMON_SOCKET = socketPath;
+			process.env.CHOROS_HOME_DIR = tmp;
 
 			await scenario.host.trpc.terminal.createSession.mutate({
 				workspaceId: scenario.workspaceId,

@@ -10,7 +10,7 @@ import { getWorkspaceNameFromHostDbs } from "./host-db-workspace-name";
 import { localDb } from "./local-db";
 
 const IS_DEV = process.env.NODE_ENV === "development";
-const WORKTREE_BASE = path.resolve(homedir(), ".superset/worktrees");
+const WORKTREE_BASE = path.resolve(homedir(), ".choros/worktrees");
 const PROD_LOCAL_DB_PATH = path.join(homedir(), ".choros", "local.db");
 
 function getWorktreeSegmentsFromCwd(cwd: string): string[] | undefined {

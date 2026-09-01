@@ -65,7 +65,7 @@ function claimedSessionNames(ctx: HostServiceContext): string[] {
 
 /**
  * Create a project-less "session" workspace: a standalone git repo in a
- * managed folder under `~/.superset/sessions`. No project row, no worktree,
+ * managed folder under `~/.choros/sessions`. No project row, no worktree,
  * no branch semantics beyond the repo's own `main` — but a real workspace
  * row, so terminals, chat, agents, and git status all work unchanged.
  */

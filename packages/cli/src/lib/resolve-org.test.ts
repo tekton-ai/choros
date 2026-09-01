@@ -16,7 +16,7 @@ const AGENT_ENV_VARS = [
 	"CLAUDE_CODE_ENTRYPOINT",
 	"CODEX_CLI",
 	"GEMINI_CLI",
-	"SUPERSET_AGENT",
+	"CHOROS_AGENT",
 	"CI",
 ];
 
@@ -90,7 +90,7 @@ describe("resolveOrganization", () => {
 
 	it("refuses to guess with multiple orgs in agent mode even on a TTY", async () => {
 		clearAgentEnv();
-		process.env.SUPERSET_AGENT = "1";
+		process.env.CHOROS_AGENT = "1";
 		setTTY(true);
 		await expect(resolveOrganization([orgA, orgB], undefined)).rejects.toThrow(
 			/Multiple organizations/,

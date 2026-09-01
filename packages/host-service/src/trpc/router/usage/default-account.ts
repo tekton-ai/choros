@@ -28,16 +28,16 @@ const POINTER_NAMES: Record<SwitchableAccountAgent, string> = {
 };
 
 /**
- * Mirror of agent-setup's resolveSupersetHomeDir, not imported: this module
+ * Mirror of agent-setup's resolveChorosHomeDir, not imported: this module
  * sits on the terminal env-resolution path (loaded by node --test) and must
  * stay free of the agent-setup surface — see account-provisioning.ts.
  */
-function supersetHomeDir(): string {
-	return process.env.SUPERSET_HOME_DIR?.trim() || join(homedir(), ".choros");
+function chorosHomeDir(): string {
+	return process.env.CHOROS_HOME_DIR?.trim() || join(homedir(), ".choros");
 }
 
 function defaultAccountPointerPath(agent: SwitchableAccountAgent): string {
-	return join(supersetHomeDir(), "state", POINTER_NAMES[agent]);
+	return join(chorosHomeDir(), "state", POINTER_NAMES[agent]);
 }
 
 function temporaryPointerPath(pointerPath: string): string {
@@ -58,7 +58,7 @@ export function syncDefaultAccountPointer(
 ): void {
 	let temporaryPath: string | null = null;
 	try {
-		const dir = join(supersetHomeDir(), "state");
+		const dir = join(chorosHomeDir(), "state");
 		mkdirSync(dir, { recursive: true });
 		const pointerPath = defaultAccountPointerPath(agent);
 		temporaryPath = temporaryPointerPath(pointerPath);
@@ -85,7 +85,7 @@ function migrateDefaultAccountPointer(
 	agent: SwitchableAccountAgent,
 	selection: string,
 ): void {
-	const dir = join(supersetHomeDir(), "state");
+	const dir = join(chorosHomeDir(), "state");
 	mkdirSync(dir, { recursive: true });
 	const pointerPath = defaultAccountPointerPath(agent);
 	const temporaryPath = temporaryPointerPath(pointerPath);
@@ -229,12 +229,12 @@ export function resolveDefaultAccountEnv(
 		selections.claudeConfigDir &&
 		existsSync(selections.claudeConfigDir)
 	) {
-		// The SUPERSET_DEFAULT_* twin marks the value as Choros-injected, so
+		// The CHOROS_DEFAULT_* twin marks the value as Choros-injected, so
 		// the agent wrapper can re-resolve a later switch without ever
 		// overriding a value the user exported by hand.
 		return {
 			CLAUDE_CONFIG_DIR: selections.claudeConfigDir,
-			SUPERSET_DEFAULT_CLAUDE_CONFIG_DIR: selections.claudeConfigDir,
+			CHOROS_DEFAULT_CLAUDE_CONFIG_DIR: selections.claudeConfigDir,
 		};
 	}
 	if (
@@ -244,7 +244,7 @@ export function resolveDefaultAccountEnv(
 	) {
 		return {
 			CODEX_HOME: selections.codexHome,
-			SUPERSET_DEFAULT_CODEX_HOME: selections.codexHome,
+			CHOROS_DEFAULT_CODEX_HOME: selections.codexHome,
 		};
 	}
 	return {};

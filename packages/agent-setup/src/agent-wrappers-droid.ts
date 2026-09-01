@@ -50,8 +50,8 @@ function droidHooksSpec(
 		agentLabel: "Droid",
 		getFilePath: getDroidSettingsJsonPath,
 		eventsContainerKey: "hooks",
-		// Guarded on SUPERSET_HOME_DIR so the hook is a no-op in droid sessions
-		// launched outside Superset terminals (~/.factory/settings.json is global).
+		// Guarded on CHOROS_HOME_DIR so the hook is a no-op in droid sessions
+		// launched outside Choros terminals (~/.factory/settings.json is global).
 		desiredEntriesByEvent: buildNestedDesiredEntries(
 			DROID_MANAGED_EVENTS,
 			getManagedNotifyHookCommand("droid"),
@@ -78,7 +78,7 @@ export function getDroidSettingsJsonContent(
 }
 
 /**
- * Removes Superset-managed hook entries from ~/.factory/settings.json,
+ * Removes Choros-managed hook entries from ~/.factory/settings.json,
  * preserving user hooks and non-hook settings. No-op when the file does not
  * exist — teardown must never create config files.
  */

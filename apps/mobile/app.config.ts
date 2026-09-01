@@ -56,7 +56,7 @@ export default ({ config }: ConfigContext) => ({
 		[
 			"@sentry/react-native/expo",
 			{
-				organization: "superset-sh",
+				organization: "choros-sh",
 				project: "mobile",
 			},
 		],

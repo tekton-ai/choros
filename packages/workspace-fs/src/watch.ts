@@ -589,7 +589,7 @@ export class FsWatcherManager {
 					return;
 				}
 
-				if (process.env.SUPERSET_FS_EVENTS_DEBUG === "1") {
+				if (process.env.CHOROS_FS_EVENTS_DEBUG === "1") {
 					console.log("[fs:debug] parcel callback", {
 						path: state.absolutePath,
 						count: visibleEvents.length,

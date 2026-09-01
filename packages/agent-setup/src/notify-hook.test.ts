@@ -9,9 +9,9 @@ function readNotifyHookTemplate(): string {
 	return readFileSync(getTemplatePath("notify-hook.template.sh"), "utf-8");
 }
 
-// The script scans ${SUPERSET_HOME_DIR:-$HOME/.superset}/host/*/manifest.json
+// The script scans ${CHOROS_HOME_DIR:-$HOME/.choros}/host/*/manifest.json
 // at call time. Tests must never resolve the developer's real manifests (this
-// test process can itself run inside a Superset terminal), so the default env
+// test process can itself run inside a Choros terminal), so the default env
 // points at an empty home.
 const emptyHome = mkdtempSync(path.join(tmpdir(), "notify-hook-empty-home-"));
 
@@ -24,10 +24,10 @@ function renderNotifyHookScript(): string {
 function hookEnv(envOverrides: Record<string, string>) {
 	return {
 		...process.env,
-		SUPERSET_AGENT_ID: "grok",
-		SUPERSET_DEBUG_HOOKS: "1",
-		SUPERSET_TERMINAL_ID: "terminal-test",
-		SUPERSET_HOME_DIR: emptyHome,
+		CHOROS_AGENT_ID: "grok",
+		CHOROS_DEBUG_HOOKS: "1",
+		CHOROS_TERMINAL_ID: "terminal-test",
+		CHOROS_HOME_DIR: emptyHome,
 		...envOverrides,
 	};
 }
@@ -104,7 +104,7 @@ function writeHookManifest(home: string, orgId: string, endpoint: string) {
 
 describe("getNotifyScriptContent", () => {
 	it("bumps the notify hook marker when hook semantics change", () => {
-		expect(NOTIFY_SCRIPT_MARKER).toBe("# Superset agent notification hook v9");
+		expect(NOTIFY_SCRIPT_MARKER).toBe("# Choros agent notification hook v9");
 	});
 
 	it("ignores hooks fired inside a subagent (agent_id present)", () => {
@@ -129,10 +129,10 @@ describe("getNotifyScriptContent", () => {
 		expect(result.stderr.toString()).toContain("[notify-hook] event=Stop");
 	});
 
-	it("exits silently outside Superset terminals even with a payload session id", () => {
+	it("exits silently outside Choros terminals even with a payload session id", () => {
 		const result = runNotifyHook(
 			{ hook_event_name: "Stop", session_id: "foreign-session" },
-			{ SUPERSET_TERMINAL_ID: "", SUPERSET_TAB_ID: "" },
+			{ CHOROS_TERMINAL_ID: "", CHOROS_TAB_ID: "" },
 		);
 
 		expect(result.exitCode).toBe(0);
@@ -144,10 +144,10 @@ describe("getNotifyScriptContent", () => {
 
 		expect(script).toContain('HOOK_SESSION_ID=$(echo "$INPUT"');
 		expect(script).toContain(
-			'PAYLOAD="{\\"json\\":{\\"terminalId\\":\\"$(json_escape "$SUPERSET_TERMINAL_ID")\\",\\"eventType\\":\\"$(json_escape "$EVENT_TYPE")\\",\\"agent\\":{\\"agentId\\":\\"$(json_escape "$SUPERSET_AGENT_ID")\\",\\"sessionId\\":\\"$(json_escape "$SESSION_ID")\\"}}}"',
+			'PAYLOAD="{\\"json\\":{\\"terminalId\\":\\"$(json_escape "$CHOROS_TERMINAL_ID")\\",\\"eventType\\":\\"$(json_escape "$EVENT_TYPE")\\",\\"agent\\":{\\"agentId\\":\\"$(json_escape "$CHOROS_AGENT_ID")\\",\\"sessionId\\":\\"$(json_escape "$SESSION_ID")\\"}}}"',
 		);
 		expect(script).toContain(
-			"event=$EVENT_TYPE terminalId=$SUPERSET_TERMINAL_ID agentId=$SUPERSET_AGENT_ID sessionId=$SESSION_ID hookSessionId=$HOOK_SESSION_ID resourceId=$RESOURCE_ID paneId=$SUPERSET_PANE_ID tabId=$SUPERSET_TAB_ID workspaceId=$SUPERSET_WORKSPACE_ID",
+			"event=$EVENT_TYPE terminalId=$CHOROS_TERMINAL_ID agentId=$CHOROS_AGENT_ID sessionId=$SESSION_ID hookSessionId=$HOOK_SESSION_ID resourceId=$RESOURCE_ID paneId=$CHOROS_PANE_ID tabId=$CHOROS_TAB_ID workspaceId=$CHOROS_WORKSPACE_ID",
 		);
 		expect(script).toContain('V1_EVENT_TYPE="$EVENT_TYPE"');
 		expect(script).toContain('V1_EVENT_TYPE="Stop"');
@@ -164,10 +164,10 @@ describe("getNotifyScriptContent", () => {
 	it("resolves the endpoint at call time from org manifests, not only the frozen env URL", () => {
 		const script = readNotifyHookTemplate();
 
-		expect(script).toContain("SUPERSET_HOME_DIR:-$HOME/.superset");
+		expect(script).toContain("CHOROS_HOME_DIR:-$HOME/.choros");
 		expect(script).toContain("/host/*/manifest.json; do");
 		expect(script).toContain(
-			'HOOK_CANDIDATE_URLS="$SUPERSET_HOST_AGENT_HOOK_URL"',
+			'HOOK_CANDIDATE_URLS="$CHOROS_HOST_AGENT_HOOK_URL"',
 		);
 		expect(script).toContain("/trpc/notifications.hook");
 	});
@@ -175,14 +175,14 @@ describe("getNotifyScriptContent", () => {
 	it("falls back to the v1 Electron hook when v2 is unavailable", () => {
 		const script = readNotifyHookTemplate();
 
-		expect(script).toContain('if [ -n "$SUPERSET_TERMINAL_ID" ]; then');
+		expect(script).toContain('if [ -n "$CHOROS_TERMINAL_ID" ]; then');
 		expect(script).toContain(
-			'[ -z "$SUPERSET_TAB_ID" ] && [ -z "$SESSION_ID" ] && [ -z "$SUPERSET_TERMINAL_ID" ] && exit 0',
+			'[ -z "$CHOROS_TAB_ID" ] && [ -z "$SESSION_ID" ] && [ -z "$CHOROS_TERMINAL_ID" ] && exit 0',
 		);
 		expect(script).toContain("/hook/complete");
-		expect(script).toContain("terminalId=$SUPERSET_TERMINAL_ID");
-		expect(script).toContain("SUPERSET_TAB_ID");
-		expect(script).toContain("SUPERSET_PANE_ID");
+		expect(script).toContain("terminalId=$CHOROS_TERMINAL_ID");
+		expect(script).toContain("CHOROS_TAB_ID");
+		expect(script).toContain("CHOROS_PANE_ID");
 	});
 
 	it("extracts the codex thread-id as the session id on turn completion", () => {
@@ -251,16 +251,16 @@ describe("getNotifyScriptContent", () => {
 
 describe("per-agent hook scripts dispatch to v2", () => {
 	const buildExpectedV2Payload = (agentIdVar: string) =>
-		`PAYLOAD="{\\"json\\":{\\"terminalId\\":\\"$(json_escape "$SUPERSET_TERMINAL_ID")\\",\\"eventType\\":\\"$(json_escape "$EVENT_TYPE")\\",\\"agent\\":{\\"agentId\\":\\"$(json_escape "$${agentIdVar}")\\",\\"sessionId\\":\\"$(json_escape "$HOOK_SESSION_ID")\\"}}}"`;
+		`PAYLOAD="{\\"json\\":{\\"terminalId\\":\\"$(json_escape "$CHOROS_TERMINAL_ID")\\",\\"eventType\\":\\"$(json_escape "$EVENT_TYPE")\\",\\"agent\\":{\\"agentId\\":\\"$(json_escape "$${agentIdVar}")\\",\\"sessionId\\":\\"$(json_escape "$HOOK_SESSION_ID")\\"}}}"`;
 
-	it("cursor auto-approves permission requests before the outside-Superset bail-out", () => {
+	it("cursor auto-approves permission requests before the outside-Choros bail-out", () => {
 		const script = readFileSync(
 			getTemplatePath("cursor-hook.template.sh"),
 			"utf-8",
 		);
 		const approveIndex = script.indexOf("printf '{\"continue\":true}\\n'");
 		const bailOutIndex = script.indexOf(
-			'[ -n "$SUPERSET_TERMINAL_ID" ] || [ -n "$SUPERSET_TAB_ID" ] || exit 0',
+			'[ -n "$CHOROS_TERMINAL_ID" ] || [ -n "$CHOROS_TAB_ID" ] || exit 0',
 		);
 		expect(approveIndex).toBeGreaterThan(-1);
 		expect(bailOutIndex).toBeGreaterThan(approveIndex);
@@ -268,25 +268,25 @@ describe("per-agent hook scripts dispatch to v2", () => {
 
 	for (const [template, agentIdVar] of [
 		["cursor-hook.template.sh", "AGENT_ID"],
-		["copilot-hook.template.sh", "SUPERSET_AGENT_ID"],
-		["gemini-hook.template.sh", "SUPERSET_AGENT_ID"],
+		["copilot-hook.template.sh", "CHOROS_AGENT_ID"],
+		["gemini-hook.template.sh", "CHOROS_AGENT_ID"],
 	] as const) {
 		it(`${template} posts v2 first and falls back to v1`, () => {
 			const script = readFileSync(getTemplatePath(template), "utf-8");
 			expect(script).toContain(
-				'[ -n "$SUPERSET_TERMINAL_ID" ] || [ -n "$SUPERSET_TAB_ID" ] || exit 0',
+				'[ -n "$CHOROS_TERMINAL_ID" ] || [ -n "$CHOROS_TAB_ID" ] || exit 0',
 			);
 			expect(script).toContain(buildExpectedV2Payload(agentIdVar));
 			expect(script).toContain('curl -sX POST "$HOOK_URL"');
-			expect(script).toContain("SUPERSET_HOME_DIR:-$HOME/.superset");
+			expect(script).toContain("CHOROS_HOME_DIR:-$HOME/.choros");
 			expect(script).toContain("/host/*/manifest.json; do");
-			expect(script).toContain('if [ -n "$SUPERSET_TERMINAL_ID" ]; then');
+			expect(script).toContain('if [ -n "$CHOROS_TERMINAL_ID" ]; then');
 			expect(script).toContain("/hook/complete");
 			expect(script).toContain('V1_EVENT_TYPE="$EVENT_TYPE"');
 			expect(script).toContain("eventType=$V1_EVENT_TYPE");
-			expect(script).toContain("terminalId=$SUPERSET_TERMINAL_ID");
-			expect(script).toContain("SUPERSET_TAB_ID");
-			expect(script).toContain("SUPERSET_PANE_ID");
+			expect(script).toContain("terminalId=$CHOROS_TERMINAL_ID");
+			expect(script).toContain("CHOROS_TAB_ID");
+			expect(script).toContain("CHOROS_PANE_ID");
 		});
 	}
 });
@@ -303,8 +303,8 @@ describe("call-time endpoint resolution (frozen-port healing)", () => {
 		writeHookManifest(home, "org-a", live.url);
 		try {
 			const result = await runNotifyHookAsync(stopEvent, {
-				SUPERSET_HOME_DIR: home,
-				SUPERSET_HOST_AGENT_HOOK_URL: deadUrl,
+				CHOROS_HOME_DIR: home,
+				CHOROS_HOST_AGENT_HOOK_URL: deadUrl,
 			});
 
 			expect(result.exitCode).toBe(0);
@@ -327,8 +327,8 @@ describe("call-time endpoint resolution (frozen-port healing)", () => {
 		writeHookManifest(home, "org-b", owningOrg.url);
 		try {
 			const result = await runNotifyHookAsync(stopEvent, {
-				SUPERSET_HOME_DIR: home,
-				SUPERSET_HOST_AGENT_HOOK_URL: deadUrl,
+				CHOROS_HOME_DIR: home,
+				CHOROS_HOST_AGENT_HOOK_URL: deadUrl,
 			});
 
 			expect(result.exitCode).toBe(0);
@@ -347,8 +347,8 @@ describe("call-time endpoint resolution (frozen-port healing)", () => {
 		writeHookManifest(home, "org-a", manifestHost.url);
 		try {
 			const result = await runNotifyHookAsync(stopEvent, {
-				SUPERSET_HOME_DIR: home,
-				SUPERSET_HOST_AGENT_HOOK_URL: `${envHost.url}/trpc/notifications.hook`,
+				CHOROS_HOME_DIR: home,
+				CHOROS_HOST_AGENT_HOOK_URL: `${envHost.url}/trpc/notifications.hook`,
 			});
 
 			expect(result.exitCode).toBe(0);

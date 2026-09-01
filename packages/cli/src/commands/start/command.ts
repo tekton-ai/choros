@@ -1,7 +1,7 @@
 import * as p from "@clack/prompts";
 import { boolean, CLIError, number, string } from "@choros/cli-framework";
 import { command } from "../../lib/command";
-import { SUPERSET_CONFIG_PATH } from "../../lib/config";
+import { CHOROS_CONFIG_PATH } from "../../lib/config";
 import { isProcessAlive, readManifest } from "../../lib/host/manifest";
 import { spawnHostService } from "../../lib/host/spawn";
 import { resolveOrganization } from "../../lib/resolve-org";
@@ -17,7 +17,7 @@ export default command({
 		const orgs = await ctx.api.user.myOrganizations.query();
 		const organization = await resolveOrganization(
 			orgs,
-			options.org ?? process.env.SUPERSET_ORGANIZATION_ID,
+			options.org ?? process.env.CHOROS_ORGANIZATION_ID,
 		);
 
 		const existing = readManifest(organization.id);
@@ -37,7 +37,7 @@ export default command({
 				organizationId: organization.id,
 				sessionToken: ctx.bearer,
 				authConfigPath:
-					ctx.authSource === "oauth" ? SUPERSET_CONFIG_PATH : undefined,
+					ctx.authSource === "oauth" ? CHOROS_CONFIG_PATH : undefined,
 				api: ctx.api,
 				port: options.port,
 				daemon: options.daemon ?? false,

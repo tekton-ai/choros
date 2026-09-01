@@ -29,7 +29,7 @@ interface RunTeardownOptions {
 	db: HostDb;
 	workspaceId: string;
 	worktreePath: string;
-	/** Main repo path — source of truth for `.superset/config.json`. */
+	/** Main repo path — source of truth for `.choros/config.json`. */
 	repoPath: string;
 	projectId: string;
 	timeoutMs?: number;
@@ -44,8 +44,8 @@ interface RunTeardownOptions {
  * setup runs.
  *
  * The teardown to run is resolved by {@link resolveTeardownCommand}: the
- * configured `teardown` commands from `.superset/config.json` take precedence,
- * falling back to a `.superset/teardown.sh` script (worktree first, then main
+ * configured `teardown` commands from `.choros/config.json` take precedence,
+ * falling back to a `.choros/teardown.sh` script (worktree first, then main
  * repo). Skipped (as a success) when no source resolves to anything runnable.
  *
  * Silent by design — the PTY session is transient and not surfaced as a

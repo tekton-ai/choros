@@ -44,8 +44,8 @@ const FAKE_USER_HOME = path.join(TEST_HOME, "user-home");
 // The harness overwrites process-wide env; restore whatever was there so this
 // suite composes with others in the same node --test invocation.
 const OVERRIDDEN_ENV_KEYS = [
-	"SUPERSET_PTY_DAEMON_SOCKET",
-	"SUPERSET_HOME_DIR",
+	"CHOROS_PTY_DAEMON_SOCKET",
+	"CHOROS_HOME_DIR",
 	"HOST_SERVICE_VERSION",
 	"NODE_ENV",
 ] as const;
@@ -93,8 +93,8 @@ before(async () => {
 	await server.listen();
 
 	for (const key of OVERRIDDEN_ENV_KEYS) savedEnv.set(key, process.env[key]);
-	process.env.SUPERSET_PTY_DAEMON_SOCKET = SOCK;
-	process.env.SUPERSET_HOME_DIR = TEST_HOME;
+	process.env.CHOROS_PTY_DAEMON_SOCKET = SOCK;
+	process.env.CHOROS_HOME_DIR = TEST_HOME;
 	process.env.HOST_SERVICE_VERSION = "0.0.0-ungated-e2e";
 	process.env.NODE_ENV = "development";
 
@@ -146,7 +146,7 @@ describe("ungated launch protection", () => {
 			assert.equal(
 				shellLaunchExpectsReadyMarker({
 					shell: "/bin/bash",
-					supersetHomeDir: TEST_HOME,
+					chorosHomeDir: TEST_HOME,
 				}),
 				false,
 				"bash without a wrapper rcfile must be ungated",

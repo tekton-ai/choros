@@ -43,7 +43,7 @@ export interface ChorosChatModel extends AgentModelOption {
 /**
  * Canonical model catalog served by the cloud `tRPC chat.getModels`.
  */
-export const SUPERSET_CHAT_MODELS: readonly ChorosChatModel[] = [
+export const CHOROS_CHAT_MODELS: readonly ChorosChatModel[] = [
 	{ id: "anthropic/claude-opus-5", label: "Opus 5", provider: "Anthropic" },
 	{ id: "anthropic/claude-opus-4-8", label: "Opus 4.8", provider: "Anthropic" },
 	{ id: "anthropic/claude-opus-4-7", label: "Opus 4.7", provider: "Anthropic" },

@@ -47,10 +47,10 @@ choros status
 
 ### Headless (sandbox, CI, or server)
 
-On a machine with no browser to complete an interactive login, authenticate with an API key instead. Create one in **Settings → API Keys**, then export it. The CLI reads `SUPERSET_API_KEY` automatically (no `choros auth login` needed):
+On a machine with no browser to complete an interactive login, authenticate with an API key instead. Create one in **Settings → API Keys**, then export it. The CLI reads `CHOROS_API_KEY` automatically (no `choros auth login` needed):
 
 ```bash
-export SUPERSET_API_KEY=sk_live_…
+export CHOROS_API_KEY=sk_live_…
 choros start --daemon --org <id|slug|name>
 ```
 

@@ -1,8 +1,8 @@
 {{MARKER}}
 /**
- * Superset Notification Extension for Oh My Pi / OMP.
+ * Choros Notification Extension for Oh My Pi / OMP.
  *
- * Emits Claude-Code-compatible lifecycle hooks to Superset's notify.sh so the
+ * Emits Claude-Code-compatible lifecycle hooks to Choros's notify.sh so the
  * host UI gets a truthful working/review indicator and completion chime for
  * OMP sessions, the same way it does for Claude Code, Codex, etc.
  *
@@ -12,22 +12,22 @@
  *   - legacy Pi builds may emit `before_agent_start` instead of `agent_start`.
  *   - `tool_execution_end` is only a progress signal, not completion.
  *
- * Superset does not infer richer error state from session files: OMP has no
+ * Choros does not infer richer error state from session files: OMP has no
  * on-disk running/error field. Error/completion status is therefore limited to
  * live lifecycle events exposed to this extension.
  *
  * Mapping:
- *   OMP `session_start`       → Claude `SessionStart`      → Superset `Attached`
- *   OMP `agent_start`         → Claude `UserPromptSubmit`  → Superset `Start`
- *   Pi  `before_agent_start`  → Claude `UserPromptSubmit`  → Superset `Start`
+ *   OMP `session_start`       → Claude `SessionStart`      → Choros `Attached`
+ *   OMP `agent_start`         → Claude `UserPromptSubmit`  → Choros `Start`
+ *   Pi  `before_agent_start`  → Claude `UserPromptSubmit`  → Choros `Start`
  *   OMP `tool_execution_end`  → Claude `PostToolUse`       → progress signal
  *   OMP `agent_end`           → Claude `Stop`              → completion / chime
  *   OMP `session_end`         → Claude `SessionEnd`        → pane icon detach
  *   OMP `session_shutdown`    → Claude `Stop`              → cleanup on quit/reload
  *
- * Activates only when running inside a v2 Superset terminal (detected via
- * SUPERSET_TERMINAL_ID). Outside Superset it's a complete no-op. If notify.sh
- * is missing it's also a no-op (Superset uninstalled / never installed).
+ * Activates only when running inside a v2 Choros terminal (detected via
+ * CHOROS_TERMINAL_ID). Outside Choros it's a complete no-op. If notify.sh
+ * is missing it's also a no-op (Choros uninstalled / never installed).
  *
  * Hook dispatch is fire-and-forget: failures to spawn or curl never affect the
  * agent loop. notify.sh has its own connect/max timeouts.
@@ -50,7 +50,7 @@ type OmpLifecycleEventName =
 	| "agent_end"
 	| "session_shutdown";
 
-type SupersetHookEventName =
+type ChorosHookEventName =
 	| "SessionStart"
 	| "SessionEnd"
 	| "UserPromptSubmit"
@@ -62,12 +62,12 @@ interface OmpExtensionApi {
 }
 
 export default function (pi: OmpExtensionApi) {
-	// Only activate inside a v2 Superset terminal.
-	if (!process.env.SUPERSET_TERMINAL_ID) return;
+	// Only activate inside a v2 Choros terminal.
+	if (!process.env.CHOROS_TERMINAL_ID) return;
 
-	const supersetHome =
-		process.env.SUPERSET_HOME_DIR || join(homedir(), ".superset");
-	const notifyScript = join(supersetHome, "hooks", "notify.sh");
+	const chorosHome =
+		process.env.CHOROS_HOME_DIR || join(homedir(), ".choros");
+	const notifyScript = join(chorosHome, "hooks", "notify.sh");
 	if (!existsSync(notifyScript)) return;
 
 	const fire = (eventName: string) => {
@@ -75,7 +75,7 @@ export default function (pi: OmpExtensionApi) {
 			const child = spawn(notifyScript, [], {
 				stdio: ["pipe", "ignore", "ignore"],
 				detached: true,
-				env: { ...process.env, SUPERSET_AGENT_ID: "omp" },
+				env: { ...process.env, CHOROS_AGENT_ID: "omp" },
 			});
 			child.on("error", () => {
 				/* swallow — never let hook failures affect OMP */
@@ -92,7 +92,7 @@ export default function (pi: OmpExtensionApi) {
 
 	// Gate every hook on ctx.hasUI: when this is explicitly false (print
 	// mode `-p`, JSON mode), OMP is running as a subagent or non-interactive
-	// helper and should NOT drive Superset's working indicator. Interactive
+	// helper and should NOT drive Choros's working indicator. Interactive
 	// and RPC sessions (the user-facing ones) have hasUI=true.
 	//
 	// We deliberately check `=== false` rather than `!ctx.hasUI` so that legacy
@@ -113,12 +113,12 @@ export default function (pi: OmpExtensionApi) {
 		["tool_execution_end", "PostToolUse"],
 		["agent_end", "Stop"],
 		// Ensure we mark the agent as stopped if OMP is killed mid-run, so the
-		// Superset working indicator doesn't get stuck on. Fires on Ctrl+C,
+		// Choros working indicator doesn't get stuck on. Fires on Ctrl+C,
 		// SIGTERM, SIGHUP, /quit, /reload, /new, /resume, /fork.
 		["session_shutdown", "Stop"],
 	] as const satisfies readonly (readonly [
 		OmpLifecycleEventName,
-		SupersetHookEventName,
+		ChorosHookEventName,
 	])[];
 
 	for (const [eventName, hookEventName] of lifecycleMappings) {

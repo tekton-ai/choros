@@ -108,8 +108,8 @@ jobs:
           for file in *.AppImage; do
             if [[ -f "$file" ]]; then
               arch=$(echo "$file" | sed -E 's/.*-([^-]+)\.AppImage$/\1/')
-              cp "$file" "Superset-Canary-${arch}.AppImage"
-              echo "Created canary copy: Superset-Canary-${arch}.AppImage"
+              cp "$file" "Choros-Canary-${arch}.AppImage"
+              echo "Created canary copy: Choros-Canary-${arch}.AppImage"
             fi
           done
           # Prerelease builds may request canary-linux.yml; keep latest-linux.yml as fallback.
@@ -140,7 +140,7 @@ jobs:
         uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2.6.2
         with:
           tag_name: desktop-canary
-          name: "Superset Desktop Canary"
+          name: "Choros Desktop Canary"
           body: |
             **Internal Testing Build**
 

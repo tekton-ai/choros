@@ -17,7 +17,7 @@ const REPORT_DELAY_MS = 2000;
 
 interface Scenario {
 	root: string;
-	supersetHome: string;
+	chorosHome: string;
 	notifyLog: string;
 	wrapperPath: string;
 }
@@ -29,15 +29,15 @@ interface Scenario {
 function setupScenario(binaryBody: string): Scenario {
 	const root = mkdtempSync(path.join(tmpdir(), "wrapper-launch-report-"));
 	const binDir = path.join(root, "bin");
-	const supersetHome = path.join(root, "superset-home");
-	const hooksDir = path.join(supersetHome, "hooks");
+	const chorosHome = path.join(root, "choros-home");
+	const hooksDir = path.join(chorosHome, "hooks");
 	mkdirSync(binDir, { recursive: true });
 	mkdirSync(hooksDir, { recursive: true });
 
 	const notifyLog = path.join(root, "notify.log");
 	writeFileIfChanged(
 		path.join(hooksDir, "notify.sh"),
-		`#!/bin/bash\nprintf '%s|%s\\n' "$SUPERSET_AGENT_ID" "$1" >> "${notifyLog}"\n`,
+		`#!/bin/bash\nprintf '%s|%s\\n' "$CHOROS_AGENT_ID" "$1" >> "${notifyLog}"\n`,
 		0o755,
 	);
 	writeFileIfChanged(
@@ -55,7 +55,7 @@ function setupScenario(binaryBody: string): Scenario {
 		0o755,
 	);
 
-	return { root, supersetHome, notifyLog, wrapperPath };
+	return { root, chorosHome, notifyLog, wrapperPath };
 }
 
 async function runWrapper(
@@ -68,8 +68,8 @@ async function runWrapper(
 		env: {
 			...process.env,
 			PATH: `${path.dirname(scenario.wrapperPath)}:${path.join(scenario.root, "bin")}:${process.env.PATH ?? ""}`,
-			SUPERSET_TERMINAL_ID: "terminal-test",
-			SUPERSET_HOME_DIR: scenario.supersetHome,
+			CHOROS_TERMINAL_ID: "terminal-test",
+			CHOROS_HOME_DIR: scenario.chorosHome,
 			...envOverrides,
 		},
 		stdout: "ignore",
@@ -87,7 +87,7 @@ function readNotifyLog(scenario: Scenario): string {
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 describe("wrapper launch report", () => {
-	it("emits SessionStart at launch and skips help/version/fast-exit/non-Superset runs", async () => {
+	it("emits SessionStart at launch and skips help/version/fast-exit/non-Choros runs", async () => {
 		// The report is liveness-gated behind a real 2s delay, so run every
 		// scenario concurrently to keep the suite fast.
 		const longRun = `sleep ${(REPORT_DELAY_MS + 1200) / 1000}`;
@@ -95,7 +95,7 @@ describe("wrapper launch report", () => {
 		const fastExit = setupScenario("exit 0");
 		const helpFlag = setupScenario(longRun);
 		const afterDashDash = setupScenario(longRun);
-		const outsideSuperset = setupScenario(longRun);
+		const outsideChoros = setupScenario(longRun);
 
 		await Promise.all([
 			runWrapper(running, ["chat"]),
@@ -103,9 +103,9 @@ describe("wrapper launch report", () => {
 			runWrapper(helpFlag, ["--help"]),
 			// Tokens past `--` are prompt text, never flags.
 			runWrapper(afterDashDash, ["--", "--help"]),
-			runWrapper(outsideSuperset, [], {
-				SUPERSET_TERMINAL_ID: "",
-				SUPERSET_TAB_ID: "",
+			runWrapper(outsideChoros, [], {
+				CHOROS_TERMINAL_ID: "",
+				CHOROS_TAB_ID: "",
 			}),
 		]);
 		// The fast-exit wrapper returns immediately; give its (never-firing)
@@ -120,7 +120,7 @@ describe("wrapper launch report", () => {
 		);
 		expect(readNotifyLog(fastExit)).toBe("");
 		expect(readNotifyLog(helpFlag)).toBe("");
-		expect(readNotifyLog(outsideSuperset)).toBe("");
+		expect(readNotifyLog(outsideChoros)).toBe("");
 	}, 15000);
 
 	it("only injects the launch report for wrappers with an agent identity", () => {

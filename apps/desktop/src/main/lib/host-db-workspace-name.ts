@@ -12,7 +12,7 @@ export const DEFAULT_HOST_DB_ROOT = join(homedir(), ".choros", "host");
 
 /**
  * Resolve a workspace's display title from the outer (production) host-service
- * DBs at `~/.superset/host/<org>/host.db`. That row's `name` is what AI naming
+ * DBs at `~/.choros/host/<org>/host.db`. That row's `name` is what AI naming
  * and manual renames update, so reading it when the dev app starts means no
  * name has to be captured at setup time. Only columns every host-service
  * version has are referenced (older ones lack `archived_at`).

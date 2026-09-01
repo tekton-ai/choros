@@ -21,14 +21,14 @@ import {
 import { getNotifyScriptPath } from "./notify-hook";
 import { getOpenCodeConfigDir, getOpenCodePluginDir } from "./paths";
 
-export const OPENCODE_PLUGIN_FILE = "superset-notify.js";
+export const OPENCODE_PLUGIN_FILE = "choros-notify.js";
 
-const OPENCODE_PLUGIN_SIGNATURE = "// Superset opencode plugin";
+const OPENCODE_PLUGIN_SIGNATURE = "// Choros opencode plugin";
 const OPENCODE_PLUGIN_VERSION = "v9";
 export const OPENCODE_PLUGIN_MARKER = `${OPENCODE_PLUGIN_SIGNATURE} ${OPENCODE_PLUGIN_VERSION}`;
 
 /**
- * Returns the environment-scoped OpenCode plugin path under Superset home.
+ * Returns the environment-scoped OpenCode plugin path under Choros home.
  */
 export function getOpenCodePluginPath(): string {
 	return path.join(getOpenCodePluginDir(), OPENCODE_PLUGIN_FILE);
@@ -113,7 +113,7 @@ export function getClaudeGlobalSettingsJsonContent(
 }
 
 /**
- * Writes Superset hook definitions directly into ~/.claude/settings.json.
+ * Writes Choros hook definitions directly into ~/.claude/settings.json.
  * This ensures hooks work regardless of whether the binary wrapper is in PATH,
  * matching the approach used for Cursor, Gemini, Droid, and Mastra.
  */
@@ -122,7 +122,7 @@ export function createClaudeSettingsJson(): void {
 }
 
 /**
- * Removes Superset-managed hook entries from ~/.claude/settings.json,
+ * Removes Choros-managed hook entries from ~/.claude/settings.json,
  * preserving user hooks and all non-hook settings. No-op when the file does
  * not exist — teardown must never create config files.
  */
@@ -131,7 +131,7 @@ export function removeClaudeManagedHooks(): void {
 }
 
 /**
- * Merges Superset hooks into `<configDir>/settings.json` for a secondary
+ * Merges Choros hooks into `<configDir>/settings.json` for a secondary
  * Claude profile (CLAUDE_CONFIG_DIR account). Without this, agents launched
  * on a non-default account would lose lifecycle/status hooks — Claude reads
  * settings exclusively from the active config dir.
@@ -170,9 +170,9 @@ function codexHooksSpec(
 		agentLabel: "Codex",
 		getFilePath: getCodexGlobalHooksJsonPath,
 		eventsContainerKey: "hooks",
-		// Guarded on SUPERSET_HOME_DIR so the hook is a no-op in codex sessions
-		// launched outside Superset terminals. Superset terminals without the
-		// PATH wrapper still export SUPERSET_HOME_DIR, so the outside-wrapper
+		// Guarded on CHOROS_HOME_DIR so the hook is a no-op in codex sessions
+		// launched outside Choros terminals. Choros terminals without the
+		// PATH wrapper still export CHOROS_HOME_DIR, so the outside-wrapper
 		// fallback this file provides keeps working.
 		desiredEntriesByEvent: buildNestedDesiredEntries(
 			CODEX_MANAGED_EVENTS,
@@ -189,13 +189,13 @@ function codexHooksSpec(
 /**
  * Reads existing ~/.codex/hooks.json, merges our hook definitions
  * (identified by notify script path), and preserves any user-defined hooks.
- * Stale Superset-managed commands are stripped from every event, including
+ * Stale Choros-managed commands are stripped from every event, including
  * events we no longer manage natively (e.g. from older builds).
  *
  * Codex hooks.json uses the same nested structure as Claude/Droid:
  *   { hooks: { EventName: [{ matcher?, hooks: [{ type, command }] }] } }
  *
- * Superset uses native Codex hooks as the durable lifecycle integration path.
+ * Choros uses native Codex hooks as the durable lifecycle integration path.
  * Recent Codex builds no longer emit the older session-log shapes our wrapper
  * watcher depended on, so we register prompt/tool lifecycle hooks directly in
  * ~/.codex/hooks.json and treat the wrapper session-log watcher as best-effort
@@ -208,17 +208,17 @@ export function getCodexGlobalHooksJsonContent(
 }
 
 /**
- * Writes Superset hook definitions directly into ~/.codex/hooks.json.
+ * Writes Choros hook definitions directly into ~/.codex/hooks.json.
  * This provides a fallback notification path that works even when the
  * binary wrapper is not in PATH (e.g. user runs codex from outside
- * a Superset terminal).
+ * a Choros terminal).
  */
 export function createCodexHooksJson(): void {
 	ensureManagedJsonHooks(codexHooksSpec(getNotifyScriptPath()));
 }
 
 /**
- * Removes Superset-managed hook entries from ~/.codex/hooks.json, preserving
+ * Removes Choros-managed hook entries from ~/.codex/hooks.json, preserving
  * user hooks. No-op when the file does not exist.
  */
 export function removeCodexManagedHooks(): void {
@@ -226,7 +226,7 @@ export function removeCodexManagedHooks(): void {
 }
 
 /**
- * Merges Superset hooks into `<codexHome>/hooks.json` for a secondary Codex
+ * Merges Choros hooks into `<codexHome>/hooks.json` for a secondary Codex
  * home (CODEX_HOME account) — same rationale as ensureClaudeManagedHooksAt.
  */
 export function ensureCodexManagedHooksAt(codexHome: string): void {

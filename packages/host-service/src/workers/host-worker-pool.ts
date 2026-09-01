@@ -34,7 +34,7 @@ const CRASH_BUDGET = 3;
 const CRASH_WINDOW_MS = 60_000;
 
 export function resolveHostWorkerScriptPath(): string | null {
-	const override = process.env.SUPERSET_HOST_WORKER_SCRIPT_PATH;
+	const override = process.env.CHOROS_HOST_WORKER_SCRIPT_PATH;
 	if (override) return existsSync(override) ? override : null;
 
 	const here = path.dirname(fileURLToPath(import.meta.url));

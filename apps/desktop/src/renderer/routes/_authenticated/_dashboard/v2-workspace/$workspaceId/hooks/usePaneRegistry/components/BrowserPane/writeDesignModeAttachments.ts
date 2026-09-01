@@ -22,7 +22,7 @@ export interface DesignModeAttachmentPaths {
 /**
  * Stage the design-mode selection for the agent: the full element context as
  * markdown, plus the element screenshot when one was captured. Files land in
- * `.superset/attachments/` (the same drop zone agent launches use) so the
+ * `.choros/attachments/` (the same drop zone agent launches use) so the
  * one-line terminal prompt can reference them by repo-relative path.
  *
  * Goes through the host-service filesystem router — v2 workspace ids live in
@@ -49,7 +49,7 @@ export async function writeDesignModeAttachments({
 
 	const attachmentsDirectory = joinAbsolutePath(
 		workspace.worktreePath,
-		".superset/attachments",
+		".choros/attachments",
 	);
 	await client.filesystem.createDirectory.mutate({
 		workspaceId,
@@ -81,11 +81,11 @@ export async function writeDesignModeAttachments({
 				data: dataUrl.slice("data:image/png;base64,".length),
 			},
 		});
-		screenshotPath = `.superset/attachments/${screenshotName}`;
+		screenshotPath = `.choros/attachments/${screenshotName}`;
 	}
 
 	return {
-		contextPath: `.superset/attachments/${contextName}`,
+		contextPath: `.choros/attachments/${contextName}`,
 		screenshotPath,
 	};
 }

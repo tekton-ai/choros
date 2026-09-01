@@ -82,7 +82,7 @@ Net: **~1200 lines removed**.
 
 ### Actionable tasks
 1. Create `packages/chat/src/server/shared/small-model/{get-small-model.ts, index.ts}` with the helper above.
-2. Update `packages/chat/src/server/desktop/index.ts` barrel if needed; new helper lives in `shared/` and is imported directly from `@superset/chat/server/shared/small-model` — no re-export from desktop.
+2. Update `packages/chat/src/server/desktop/index.ts` barrel if needed; new helper lives in `shared/` and is imported directly from `@choros/chat/server/shared/small-model` — no re-export from desktop.
 3. Rewrite `apps/desktop/src/lib/trpc/routers/workspaces/utils/ai-branch-name.ts`:
    - Replace `callSmallModel` + provider branching with `getSmallModel()` + `generateText({ model, system, prompt })`.
    - Keep `BRANCH_NAME_INSTRUCTIONS`, `resolveConflict`, `sanitizeBranchNameWithMaxLength`.
@@ -108,7 +108,7 @@ Net: **~1200 lines removed**.
 
 ### Actionable tasks
 1. Port `sanitizeBranchNameWithMaxLength` (`apps/desktop/src/shared/utils/branch.ts`) and `resolveBranchPrefix` (`apps/desktop/src/lib/trpc/routers/workspaces/utils/branch-prefix.ts`) into `packages/host-service/src/trpc/router/workspace-creation/utils/`.
-2. Create `packages/host-service/src/trpc/router/workspace-creation/utils/ai-branch-name.ts` — same helper as desktop's rewritten v1, imports `getSmallModel` from `@superset/chat/server/shared/small-model`.
+2. Create `packages/host-service/src/trpc/router/workspace-creation/utils/ai-branch-name.ts` — same helper as desktop's rewritten v1, imports `getSmallModel` from `@choros/chat/server/shared/small-model`.
 3. Add to `workspace-creation.ts`:
    ```ts
    generateBranchName: publicProcedure

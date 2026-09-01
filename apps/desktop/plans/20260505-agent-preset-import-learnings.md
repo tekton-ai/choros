@@ -24,7 +24,7 @@ current `command`. The stored `commands` array is kept as a snapshot
 fallback for when the agent is missing or disabled.
 
 **Crucially**: do **not** add a `kind: "commands" | "agent"` discriminator,
-do **not** extract a `@superset/shared/agent-preset-resolution` package, do
+do **not** extract a `@choros/shared/agent-preset-resolution` package, do
 **not** ship a separate resolver test file. `agentId?` is sufficient — the
 inline lookup is two lines.
 

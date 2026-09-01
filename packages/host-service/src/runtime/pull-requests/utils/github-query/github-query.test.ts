@@ -30,7 +30,7 @@ describe("GitHub pull request REST queries", () => {
 				{
 					number: 42,
 					title: "Fix sidebar",
-					html_url: "https://github.com/superset-sh/choros/pull/42",
+					html_url: "https://github.com/choros-sh/choros/pull/42",
 					state: "open",
 					draft: false,
 					merged_at: null,
@@ -40,12 +40,12 @@ describe("GitHub pull request REST queries", () => {
 						sha: "abc123",
 						repo: {
 							name: "choros",
-							owner: { login: "superset-sh" },
+							owner: { login: "choros-sh" },
 						},
 					},
 					base: {
 						repo: {
-							full_name: "superset-sh/choros",
+							full_name: "choros-sh/choros",
 						},
 					},
 				},
@@ -54,20 +54,20 @@ describe("GitHub pull request REST queries", () => {
 
 		const result = await fetchPullRequestByHeadFromGh(
 			execGh,
-			{ owner: "superset-sh", name: "choros" },
-			{ owner: "superset-sh", repo: "choros", branch: "fix/sidebar" },
+			{ owner: "choros-sh", name: "choros" },
+			{ owner: "choros-sh", repo: "choros", branch: "fix/sidebar" },
 		);
 
 		expect(result).toEqual({
 			number: 42,
 			title: "Fix sidebar",
-			url: "https://github.com/superset-sh/choros/pull/42",
+			url: "https://github.com/choros-sh/choros/pull/42",
 			state: "OPEN",
 			isDraft: false,
 			headRefName: "fix/sidebar",
 			headRefOid: "abc123",
 			isCrossRepository: false,
-			headRepositoryOwner: { login: "superset-sh" },
+			headRepositoryOwner: { login: "choros-sh" },
 			headRepository: { name: "choros" },
 			updatedAt: "2026-05-08T12:00:00Z",
 		});
@@ -77,11 +77,11 @@ describe("GitHub pull request REST queries", () => {
 					"api",
 					"--method",
 					"GET",
-					"repos/superset-sh/choros/pulls",
+					"repos/choros-sh/choros/pulls",
 					"-f",
 					"state=all",
 					"-f",
-					"head=superset-sh:fix/sidebar",
+					"head=choros-sh:fix/sidebar",
 					"-f",
 					"sort=updated",
 					"-f",
@@ -99,7 +99,7 @@ describe("GitHub pull request REST queries", () => {
 				{
 					number: 41,
 					title: "Wrong fork",
-					html_url: "https://github.com/superset-sh/choros/pull/41",
+					html_url: "https://github.com/choros-sh/choros/pull/41",
 					state: "open",
 					draft: false,
 					merged_at: null,
@@ -114,14 +114,14 @@ describe("GitHub pull request REST queries", () => {
 					},
 					base: {
 						repo: {
-							full_name: "superset-sh/choros",
+							full_name: "choros-sh/choros",
 						},
 					},
 				},
 				{
 					number: 42,
 					title: "Right fork",
-					html_url: "https://github.com/superset-sh/choros/pull/42",
+					html_url: "https://github.com/choros-sh/choros/pull/42",
 					state: "open",
 					draft: false,
 					merged_at: null,
@@ -136,7 +136,7 @@ describe("GitHub pull request REST queries", () => {
 					},
 					base: {
 						repo: {
-							full_name: "superset-sh/choros",
+							full_name: "choros-sh/choros",
 						},
 					},
 				},
@@ -145,7 +145,7 @@ describe("GitHub pull request REST queries", () => {
 
 		const result = await fetchPullRequestByHeadFromGh(
 			execGh,
-			{ owner: "superset-sh", name: "choros" },
+			{ owner: "choros-sh", name: "choros" },
 			{ owner: "fork-owner", repo: "fork-repo", branch: "fix/sidebar" },
 		);
 
@@ -163,7 +163,7 @@ describe("GitHub pull request REST queries", () => {
 				{
 					number: 43,
 					title: "Case drift",
-					html_url: "https://github.com/superset-sh/choros/pull/43",
+					html_url: "https://github.com/choros-sh/choros/pull/43",
 					state: "open",
 					draft: false,
 					merged_at: null,
@@ -173,12 +173,12 @@ describe("GitHub pull request REST queries", () => {
 						sha: "abc123",
 						repo: {
 							name: "choros",
-							owner: { login: "superset-sh" },
+							owner: { login: "choros-sh" },
 						},
 					},
 					base: {
 						repo: {
-							full_name: "superset-sh/choros",
+							full_name: "choros-sh/choros",
 						},
 					},
 				},
@@ -187,8 +187,8 @@ describe("GitHub pull request REST queries", () => {
 
 		const result = await fetchPullRequestByHeadFromGh(
 			execGh,
-			{ owner: "superset-sh", name: "choros" },
-			{ owner: "superset-sh", repo: "choros", branch: "roshvan/fix-thing" },
+			{ owner: "choros-sh", name: "choros" },
+			{ owner: "choros-sh", repo: "choros", branch: "roshvan/fix-thing" },
 		);
 
 		expect(result).toBeNull();
@@ -200,7 +200,7 @@ describe("GitHub pull request REST queries", () => {
 				{
 					number: 44,
 					title: "Open sweep",
-					html_url: "https://github.com/superset-sh/choros/pull/44",
+					html_url: "https://github.com/choros-sh/choros/pull/44",
 					state: "open",
 					draft: false,
 					merged_at: null,
@@ -210,12 +210,12 @@ describe("GitHub pull request REST queries", () => {
 						sha: "def456",
 						repo: {
 							name: "choros",
-							owner: { login: "superset-sh" },
+							owner: { login: "choros-sh" },
 						},
 					},
 					base: {
 						repo: {
-							full_name: "superset-sh/choros",
+							full_name: "choros-sh/choros",
 						},
 					},
 				},
@@ -224,7 +224,7 @@ describe("GitHub pull request REST queries", () => {
 		]);
 
 		const result = await fetchOpenPullRequestsFromGh(execGh, {
-			owner: "superset-sh",
+			owner: "choros-sh",
 			name: "choros",
 		});
 
@@ -236,7 +236,7 @@ describe("GitHub pull request REST queries", () => {
 					"api",
 					"--method",
 					"GET",
-					"repos/superset-sh/choros/pulls",
+					"repos/choros-sh/choros/pulls",
 					"-f",
 					"state=open",
 					"-f",
@@ -290,7 +290,7 @@ describe("GitHub pull request REST queries", () => {
 
 		const result = await fetchPullRequestReviewDecisionFromGh(
 			execGh,
-			{ owner: "superset-sh", name: "choros" },
+			{ owner: "choros-sh", name: "choros" },
 			42,
 			"OPEN",
 		);
@@ -302,7 +302,7 @@ describe("GitHub pull request REST queries", () => {
 					"api",
 					"--method",
 					"GET",
-					"repos/superset-sh/choros/pulls/42/reviews",
+					"repos/choros-sh/choros/pulls/42/reviews",
 					"-f",
 					"per_page=100",
 				],
@@ -315,7 +315,7 @@ describe("GitHub pull request REST queries", () => {
 
 		const result = await fetchPullRequestReviewDecisionFromGh(
 			execGh,
-			{ owner: "superset-sh", name: "choros" },
+			{ owner: "choros-sh", name: "choros" },
 			42,
 			"OPEN",
 		);
@@ -330,7 +330,7 @@ describe("GitHub pull request REST queries", () => {
 					{
 						name: "Typecheck",
 						conclusion: "success",
-						details_url: "https://github.com/superset-sh/choros/actions/1",
+						details_url: "https://github.com/choros-sh/choros/actions/1",
 						status: "completed",
 						started_at: "2026-05-08T12:00:00Z",
 						completed_at: "2026-05-08T12:03:00Z",
@@ -349,7 +349,7 @@ describe("GitHub pull request REST queries", () => {
 
 		const result = await fetchPullRequestChecksFromGh(
 			execGh,
-			{ owner: "superset-sh", name: "choros" },
+			{ owner: "choros-sh", name: "choros" },
 			"abc123",
 		);
 
@@ -358,7 +358,7 @@ describe("GitHub pull request REST queries", () => {
 				__typename: "CheckRun",
 				name: "Typecheck",
 				conclusion: "SUCCESS",
-				detailsUrl: "https://github.com/superset-sh/choros/actions/1",
+				detailsUrl: "https://github.com/choros-sh/choros/actions/1",
 				status: "COMPLETED",
 				startedAt: "2026-05-08T12:00:00Z",
 				completedAt: "2026-05-08T12:03:00Z",
@@ -378,7 +378,7 @@ describe("GitHub pull request REST queries", () => {
 					"api",
 					"--method",
 					"GET",
-					"repos/superset-sh/choros/commits/abc123/check-runs",
+					"repos/choros-sh/choros/commits/abc123/check-runs",
 					"-f",
 					"per_page=100",
 				],
@@ -388,7 +388,7 @@ describe("GitHub pull request REST queries", () => {
 					"api",
 					"--method",
 					"GET",
-					"repos/superset-sh/choros/commits/abc123/statuses",
+					"repos/choros-sh/choros/commits/abc123/statuses",
 					"-f",
 					"per_page=100",
 				],
@@ -407,7 +407,7 @@ describe("GitHub pull request REST queries", () => {
 
 		const result = await fetchPullRequestMergeQueueStateFromGh(
 			execGh,
-			{ owner: "superset-sh", name: "choros" },
+			{ owner: "choros-sh", name: "choros" },
 			42,
 		);
 
@@ -420,7 +420,7 @@ describe("GitHub pull request REST queries", () => {
 					"-f",
 					"query=query($owner:String!,$name:String!,$number:Int!){repository(owner:$owner,name:$name){pullRequest(number:$number){mergeQueueEntry{id}}}}",
 					"-f",
-					"owner=superset-sh",
+					"owner=choros-sh",
 					"-f",
 					"name=choros",
 					"-F",
@@ -437,7 +437,7 @@ describe("GitHub pull request REST queries", () => {
 
 		const result = await fetchPullRequestMergeQueueStateFromGh(
 			execGh,
-			{ owner: "superset-sh", name: "choros" },
+			{ owner: "choros-sh", name: "choros" },
 			42,
 		);
 

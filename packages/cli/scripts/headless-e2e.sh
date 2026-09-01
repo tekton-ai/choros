@@ -7,7 +7,7 @@
 #
 #   1. First boot provisions ~/.choros (notify.sh, bin wrappers, zsh/bash
 #      bootstrap) and every agent's managed hook config from the tarball's
-#      lib/agent-templates — with NO SUPERSET_HOME_DIR in the environment,
+#      lib/agent-templates — with NO CHOROS_HOME_DIR in the environment,
 #      so the ~/.choros fallback is what's under test.
 #   2. The provisioned notify.sh delivers a lifecycle event to
 #      notifications.hook and a row lands in terminal_agent_bindings.
@@ -17,14 +17,14 @@
 #      while runtime-altering vars like NODE_ENV are never imported.
 #   4. A restart is idempotent: no file rewrites, no duplicated hook entries.
 #   5. Real zsh/bash login flows through the provisioned wrappers put
-#      ~/.superset/bin on PATH and register the shell-ready marker.
-#   6. SUPERSET_DISABLED_AGENT_HOOKS and the shared agent-hooks.json mirror
+#      ~/.choros/bin on PATH and register the shell-ready marker.
+#   6. CHOROS_DISABLED_AGENT_HOOKS and the shared agent-hooks.json mirror
 #      tear down (and re-enabling restores) per-agent hook configs.
 #   7. Two hosts provisioning concurrently leave valid, deduplicated configs.
 #
 # DESTRUCTIVE: wipes $HOME/.choros, ~/.claude, ~/.agents, ~/.codex,
 # ~/.gemini and appends to the login-shell profile. Only runs when
-# SUPERSET_HEADLESS_E2E=1 — set by build-dist-linux-docker.sh (throwaway
+# CHOROS_HEADLESS_E2E=1 — set by build-dist-linux-docker.sh (throwaway
 # container) and by the Linux jobs in .github/workflows/build-cli.yml
 # (ephemeral runners), both after the smoke test.
 #
@@ -34,8 +34,8 @@ set -euxo pipefail
 
 DIST="$(cd "${1:?usage: headless-e2e.sh <dist-dir>}" && pwd)"
 
-if [[ "${SUPERSET_HEADLESS_E2E:-}" != "1" ]]; then
-  echo "[e2e] refusing to run: wipes \$HOME agent configs. Set SUPERSET_HEADLESS_E2E=1 inside a disposable container." >&2
+if [[ "${CHOROS_HEADLESS_E2E:-}" != "1" ]]; then
+  echo "[e2e] refusing to run: wipes \$HOME agent configs. Set CHOROS_HEADLESS_E2E=1 inside a disposable container." >&2
   exit 1
 fi
 if [[ "$(uname -s)" != "Linux" ]]; then
@@ -74,7 +74,7 @@ new_port() {
 }
 
 # boot_host <org> <db> <logfile> <port> [EXTRA=env ...]
-# systemd-like environment: stripped PATH, no SUPERSET_HOME_DIR.
+# systemd-like environment: stripped PATH, no CHOROS_HOME_DIR.
 boot_host() {
   local org="$1" db="$2" log="$3" port="$4"
   shift 4
@@ -84,7 +84,7 @@ boot_host() {
     SHELL=/bin/bash \
     ORGANIZATION_ID="$org" \
     AUTH_TOKEN="e2e-token" \
-    SUPERSET_API_URL="https://api.choros.sh" \
+    CHOROS_API_URL="https://api.choros.sh" \
     PORT="$port" HOST_SERVICE_PORT="$port" \
     HOST_SERVICE_SECRET="e2e-secret" \
     HOST_DB_PATH="$db" \
@@ -137,12 +137,12 @@ done
 sleep 1  # managed-skills provisioning is async fire-and-forget
 
 echo "[e2e] === assert: provisioning artifacts ==="
-test -x "$HOME/.superset/hooks/notify.sh"
-grep -q "Choros agent notification hook" "$HOME/.superset/hooks/notify.sh"
-test -f "$HOME/.superset/zsh/.zshrc"
-grep -q "133;A" "$HOME/.superset/zsh/.zlogin"
-test -f "$HOME/.superset/bash/rcfile"
-WRAPPERS=$(ls "$HOME/.superset/bin" | wc -l)
+test -x "$HOME/.choros/hooks/notify.sh"
+grep -q "Choros agent notification hook" "$HOME/.choros/hooks/notify.sh"
+test -f "$HOME/.choros/zsh/.zshrc"
+grep -q "133;A" "$HOME/.choros/zsh/.zlogin"
+test -f "$HOME/.choros/bash/rcfile"
+WRAPPERS=$(ls "$HOME/.choros/bin" | wc -l)
 [[ "$WRAPPERS" -ge 12 ]] || { echo "[e2e] FAIL wrappers=$WRAPPERS"; exit 1; }
 
 echo "[e2e] === assert: managed hook configs ==="
@@ -153,7 +153,7 @@ echo "[e2e] === assert: managed hook configs ==="
   const missing = want.filter((k) => !(k in hooks));
   if (missing.length) { console.error("missing:", missing); process.exit(1); }
   const cmd = hooks.Stop[0].hooks[0].command;
-  if (!cmd.includes("$SUPERSET_HOME_DIR/hooks/notify.sh")) { console.error("bad cmd:", cmd); process.exit(1); }
+  if (!cmd.includes("$CHOROS_HOME_DIR/hooks/notify.sh")) { console.error("bad cmd:", cmd); process.exit(1); }
   console.log("[e2e] claude hook groups OK");
 '
 test -f "$HOME/.codex/hooks.json"
@@ -168,14 +168,14 @@ grep -q "login-shell PATH entries into process env" "$HSDIR/host.log"
 
 echo "[e2e] === assert: real shell login flows through the wrappers ==="
 BASH_PROBE=$(env -i HOME="$HOME" TERM=dumb PATH=/usr/bin:/bin \
-  bash -c "source \"$HOME/.superset/bash/rcfile\"; echo \"PATH=\$PATH\"; declare -F __choros_prompt_mark")
-echo "$BASH_PROBE" | grep -q "$HOME/.superset/bin"
+  bash -c "source \"$HOME/.choros/bash/rcfile\"; echo \"PATH=\$PATH\"; declare -F __choros_prompt_mark")
+echo "$BASH_PROBE" | grep -q "$HOME/.choros/bin"
 echo "$BASH_PROBE" | grep -q "__choros_prompt_mark"
 if command -v zsh >/dev/null 2>&1; then
   ZSH_PROBE=$(env -i HOME="$HOME" TERM=dumb PATH=/usr/bin:/bin \
-    SUPERSET_ORIG_ZDOTDIR="$HOME" ZDOTDIR="$HOME/.superset/zsh" \
+    CHOROS_ORIG_ZDOTDIR="$HOME" ZDOTDIR="$HOME/.choros/zsh" \
     zsh -ilc 'print -r -- "PATH=$PATH"; whence -w __choros_prompt_mark' 2>/dev/null)
-  echo "$ZSH_PROBE" | grep -q "$HOME/.superset/bin"
+  echo "$ZSH_PROBE" | grep -q "$HOME/.choros/bin"
   echo "$ZSH_PROBE" | grep -q "__choros_prompt_mark: function"
 else
   echo "[e2e] zsh not installed — skipping zsh wrapper-chain check"
@@ -194,11 +194,11 @@ NODE_PATH="$DIST/lib/node_modules" HOST_DB="$HSDIR/host.db" "$DIST/lib/node" -e 
 
 fire_hook() {
   echo '{"hook_event_name":"Stop","session_id":"e2e-session-1"}' | \
-    env SUPERSET_TERMINAL_ID="$1" \
-        SUPERSET_AGENT_ID="claude" \
-        SUPERSET_DEBUG_HOOKS=1 \
-        SUPERSET_HOST_AGENT_HOOK_URL="http://127.0.0.1:$PORT/trpc/notifications.hook" \
-        bash "$HOME/.superset/hooks/notify.sh" 2>&1 || true
+    env CHOROS_TERMINAL_ID="$1" \
+        CHOROS_AGENT_ID="claude" \
+        CHOROS_DEBUG_HOOKS=1 \
+        CHOROS_HOST_AGENT_HOOK_URL="http://127.0.0.1:$PORT/trpc/notifications.hook" \
+        bash "$HOME/.choros/hooks/notify.sh" 2>&1 || true
 }
 
 STATUS=$(fire_hook "e2e-unknown-terminal")
@@ -227,11 +227,11 @@ fi
 
 echo "[e2e] === assert: idempotent re-provisioning on restart ==="
 stop_host
-NOTIFY_MTIME1=$(stat -c %Y "$HOME/.superset/hooks/notify.sh")
+NOTIFY_MTIME1=$(stat -c %Y "$HOME/.choros/hooks/notify.sh")
 PORT="$(new_port)"
 boot_host "$ORG" "$HSDIR/host.db" "$HSDIR/host2.log" "$PORT"
 await_healthy "$HSDIR/host2.log" "$PORT"
-NOTIFY_MTIME2=$(stat -c %Y "$HOME/.superset/hooks/notify.sh")
+NOTIFY_MTIME2=$(stat -c %Y "$HOME/.choros/hooks/notify.sh")
 [[ "$NOTIFY_MTIME1" == "$NOTIFY_MTIME2" ]] || { echo "[e2e] FAIL notify.sh rewritten on unchanged content"; exit 1; }
 [[ "$(claude_stop_hook_count)" == "1" ]] || { echo "[e2e] FAIL duplicate hook entries after re-provision"; exit 1; }
 
@@ -244,9 +244,9 @@ if grep -q "dev-mode" "$HSDIR/host.log" "$HSDIR/host2.log"; then
   echo "[e2e] FAIL host entered dev-mode from a dotfile NODE_ENV"; exit 1
 fi
 
-echo "[e2e] === assert: SUPERSET_DISABLED_AGENT_HOOKS tears down on boot ==="
+echo "[e2e] === assert: CHOROS_DISABLED_AGENT_HOOKS tears down on boot ==="
 PORT="$(new_port)"
-boot_host "$ORG" "$HSDIR/host.db" "$HSDIR/host3.log" "$PORT" SUPERSET_DISABLED_AGENT_HOOKS=claude
+boot_host "$ORG" "$HSDIR/host.db" "$HSDIR/host3.log" "$PORT" CHOROS_DISABLED_AGENT_HOOKS=claude
 await_healthy "$HSDIR/host3.log" "$PORT"
 sleep 1
 [[ "$(claude_stop_hook_count)" == "0" ]] || { echo "[e2e] FAIL claude hooks not torn down via env disable"; exit 1; }
@@ -254,7 +254,7 @@ test -f "$HOME/.gemini/settings.json"  # other agents untouched
 stop_host
 
 echo "[e2e] === assert: shared agent-hooks.json mirror is honored ==="
-printf '{\n\t"disabledAgentIds": ["claude"]\n}\n' > "$HOME/.superset/agent-hooks.json"
+printf '{\n\t"disabledAgentIds": ["claude"]\n}\n' > "$HOME/.choros/agent-hooks.json"
 PORT="$(new_port)"
 boot_host "$ORG" "$HSDIR/host.db" "$HSDIR/host4.log" "$PORT"
 await_healthy "$HSDIR/host4.log" "$PORT"
@@ -263,7 +263,7 @@ sleep 1
 stop_host
 
 echo "[e2e] === assert: re-enabling restores the hooks ==="
-rm -f "$HOME/.superset/agent-hooks.json"
+rm -f "$HOME/.choros/agent-hooks.json"
 PORT="$(new_port)"
 boot_host "$ORG" "$HSDIR/host.db" "$HSDIR/host5.log" "$PORT"
 await_healthy "$HSDIR/host5.log" "$PORT"

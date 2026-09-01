@@ -89,9 +89,9 @@ export async function createTestHost(
 	// desktop instances. The manifest layer throws in test runs without
 	// this. Restored (not deleted) on dispose so nested harnesses keep
 	// their own isolation.
-	const priorHomeDir = process.env.SUPERSET_HOME_DIR;
+	const priorHomeDir = process.env.CHOROS_HOME_DIR;
 	if (!priorHomeDir) {
-		process.env.SUPERSET_HOME_DIR = dataDir;
+		process.env.CHOROS_HOME_DIR = dataDir;
 	}
 
 	const sqlite = new BunDatabase(dbPath, { create: true, readwrite: true });
@@ -173,8 +173,8 @@ export async function createTestHost(
 		try {
 			await result.dispose();
 		} finally {
-			if (!priorHomeDir && process.env.SUPERSET_HOME_DIR === dataDir) {
-				delete process.env.SUPERSET_HOME_DIR;
+			if (!priorHomeDir && process.env.CHOROS_HOME_DIR === dataDir) {
+				delete process.env.CHOROS_HOME_DIR;
 			}
 			try {
 				sqlite.close();

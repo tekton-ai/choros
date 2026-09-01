@@ -5,11 +5,11 @@
 	"homepage": "https://choros.sh",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/superset-sh/choros.git",
+		"url": "git+https://github.com/choros-sh/choros.git",
 		"directory": "packages/sdk"
 	},
 	"bugs": {
-		"url": "https://github.com/superset-sh/choros/issues"
+		"url": "https://github.com/choros-sh/choros/issues"
 	},
 	"keywords": [
 		"choros",

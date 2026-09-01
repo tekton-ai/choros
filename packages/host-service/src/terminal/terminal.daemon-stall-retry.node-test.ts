@@ -106,8 +106,8 @@ before(async () => {
 
 	// No daemon Server yet: SOCK has no listener, so every daemon connect is
 	// refused — the "daemon down/stalled" half of the suite.
-	process.env.SUPERSET_PTY_DAEMON_SOCKET = SOCK;
-	process.env.SUPERSET_HOME_DIR = TEST_HOME;
+	process.env.CHOROS_PTY_DAEMON_SOCKET = SOCK;
+	process.env.CHOROS_HOME_DIR = TEST_HOME;
 	process.env.HOST_SERVICE_VERSION = "0.0.0-stallretry-test";
 	process.env.NODE_ENV = "development";
 
@@ -225,7 +225,7 @@ test("unresponsive daemon (accepts, never replies to open) times out attach-retr
 	});
 	await new Promise<void>((resolve) => stallServer.listen(stallSock, resolve));
 	await disposeDaemonClient();
-	process.env.SUPERSET_PTY_DAEMON_SOCKET = stallSock;
+	process.env.CHOROS_PTY_DAEMON_SOCKET = stallSock;
 
 	const tid = `stall-wedge-${randomUUID().slice(0, 8)}`;
 	// The daemon-open timeout is 15s; give the dial margin past it.
@@ -269,7 +269,7 @@ test("handshake-rejecting daemon yields a permanent error, not attach-retryable"
 		rejectServer.listen(rejectSock, resolve),
 	);
 	await disposeDaemonClient();
-	process.env.SUPERSET_PTY_DAEMON_SOCKET = rejectSock;
+	process.env.CHOROS_PTY_DAEMON_SOCKET = rejectSock;
 
 	const tid = `stall-reject-${randomUUID().slice(0, 8)}`;
 	const result = await dial(tid, `?workspaceId=${workspaceId}&create=1`);
@@ -285,7 +285,7 @@ test("handshake-rejecting daemon yields a permanent error, not attach-retryable"
 
 test("retrying the same ids after the daemon recovers attaches exactly once", async () => {
 	await disposeDaemonClient();
-	process.env.SUPERSET_PTY_DAEMON_SOCKET = SOCK;
+	process.env.CHOROS_PTY_DAEMON_SOCKET = SOCK;
 	server = new Server({
 		socketPath: SOCK,
 		daemonVersion: "0.0.0-stallretry-test",

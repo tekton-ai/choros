@@ -85,13 +85,13 @@ describe("buildDesignModePrompt", () => {
 		const prompt = buildDesignModePrompt({
 			payload: payload(),
 			comment: "Make this\nprimary blue",
-			contextPath: ".superset/attachments/design-1.md",
-			screenshotPath: ".superset/attachments/design-1.png",
+			contextPath: ".choros/attachments/design-1.md",
+			screenshotPath: ".choros/attachments/design-1.png",
 		});
 		expect(prompt).not.toContain("\n");
 		expect(prompt).toContain("Make this primary blue");
-		expect(prompt).toContain(".superset/attachments/design-1.md");
-		expect(prompt).toContain(".superset/attachments/design-1.png");
+		expect(prompt).toContain(".choros/attachments/design-1.md");
+		expect(prompt).toContain(".choros/attachments/design-1.png");
 		expect(prompt).toContain("source src/SaveButton.tsx:12");
 	});
 
@@ -99,7 +99,7 @@ describe("buildDesignModePrompt", () => {
 		const prompt = buildDesignModePrompt({
 			payload: payload(),
 			comment: "fix",
-			contextPath: ".superset/attachments/design-1.md",
+			contextPath: ".choros/attachments/design-1.md",
 			screenshotPath: null,
 		});
 		expect(prompt).not.toContain("screenshot");

@@ -655,7 +655,7 @@ export class ChatService {
 		provider: "anthropic" | "openai",
 		details: Record<string, unknown>,
 	): void {
-		if (process.env.SUPERSET_DEBUG_AUTH !== "1") {
+		if (process.env.CHOROS_DEBUG_AUTH !== "1") {
 			return;
 		}
 

@@ -22,7 +22,7 @@ interface TeardownFailedPaneProps {
 	onForceDelete: () => void;
 }
 
-/** Shown when `.superset/teardown.sh` exited non-zero or timed out. */
+/** Shown when `.choros/teardown.sh` exited non-zero or timed out. */
 export function TeardownFailedPane({
 	open,
 	onOpenChange,

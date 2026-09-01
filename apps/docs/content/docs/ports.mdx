@@ -25,7 +25,7 @@ configuration file. Useful for:
 - Providing meaningful labels for your team
 - Making common dev-server ports easier to scan in the UI
 
-Create `.superset/ports.json` in your repository:
+Create `.choros/ports.json` in your repository:
 
 ```json
 {
@@ -57,8 +57,8 @@ If `ports.json` is malformed:
 - Detected ports still appear without those labels
 
 **Tips:**
-- Commit `.superset/ports.json` to share port labels with your team
-- **Pro tip:** If you want deterministic per-workspace port ranges, implement it in project lifecycle setup/teardown scripts by reserving a range in a shared file (for example `~/.superset/port-allocations.json`) during setup and releasing it during teardown. See this repo's examples: [`.superset/setup.sh`](https://github.com/superset-sh/choros/blob/main/.superset/setup.sh) and [`.superset/teardown.sh`](https://github.com/superset-sh/choros/blob/main/.superset/teardown.sh).
+- Commit `.choros/ports.json` to share port labels with your team
+- **Pro tip:** If you want deterministic per-workspace port ranges, implement it in project lifecycle setup/teardown scripts by reserving a range in a shared file (for example `~/.choros/port-allocations.json`) during setup and releasing it during teardown. See this repo's examples: [`.choros/setup.sh`](https://github.com/choros-sh/choros/blob/main/.choros/setup.sh) and [`.choros/teardown.sh`](https://github.com/choros-sh/choros/blob/main/.choros/teardown.sh).
 
 ## Remote Access
 

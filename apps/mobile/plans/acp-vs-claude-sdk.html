@@ -570,7 +570,7 @@ authorization: Bearer &lt;host JWT&gt;
         <div class="cells">
           <div class="c3">
             <div class="pl acp acp-only"><div class="hd"><span class="chip acp">acp</span><span class="cap">trpc/router/acp-sessions.ts:64</span></div>
-<pre>// gate: PRECONDITION_FAILED unless SUPERSET_ACP_SESSIONS=1
+<pre>// gate: PRECONDITION_FAILED unless CHOROS_ACP_SESSIONS=1
 await runtime.acpSessions.create({ sessionId, workspaceId })
 // idempotent — same id returns the existing session</pre></div>
             <div class="pl sdk sdk-only"><div class="hd"><span class="chip sdk">sdk</span><span class="cap">trpc/router/sessions.ts</span></div>
@@ -620,7 +620,7 @@ await runtime.acpSessions.create({ sessionId, workspaceId })
 <pre>query({
   prompt: asyncInputQueue,       // user turns pushed later
   options: {
-    cwd: "/Users/kirill/.superset/worktrees/…",
+    cwd: "/Users/kirill/.choros/worktrees/…",
     sessionId: "c1a2d3e4-…",     // native Claude session uuid
     permissionMode: "default",
     includePartialMessages: true,
@@ -641,7 +641,7 @@ await runtime.acpSessions.create({ sessionId, workspaceId })
             <div class="pl acp"><div class="hd"><span class="chip acp">acp</span></div>
 <pre>{ "jsonrpc": "2.0", "id": 2, "method": "session/new",
   "params": {
-    "cwd": "/Users/kirill/.superset/worktrees/…",
+    "cwd": "/Users/kirill/.choros/worktrees/…",
     "mcpServers": []
   } }</pre></div>
           </div>
@@ -693,7 +693,7 @@ await runtime.acpSessions.create({ sessionId, workspaceId })
     "availableModes": [ … ] },
   "configOptions": [ … ],
   "pendingPermissions": [],
-  "cwd": "/Users/kirill/.superset/worktrees/…",
+  "cwd": "/Users/kirill/.choros/worktrees/…",
   "lastSeq": 1,
   "lastStopReason": null,
   "lastError": null } } } }</pre></div>
@@ -710,7 +710,7 @@ await runtime.acpSessions.create({ sessionId, workspaceId })
   "pendingPermissions": [],
   "pendingUserDialogs": [],
   "pendingElicitations": [],
-  "cwd": "/Users/kirill/.superset/worktrees/…",
+  "cwd": "/Users/kirill/.choros/worktrees/…",
   "lastSeq": 1,
   "lastError": null } } } }</pre></div>
           </div>

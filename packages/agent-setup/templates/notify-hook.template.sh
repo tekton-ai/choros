@@ -12,10 +12,10 @@ else
 fi
 
 # Agent hook configs are global, so this can fire in sessions launched
-# outside Superset terminals (including via stale entries from older
-# installs). Only Superset terminals set SUPERSET_* vars; the agent-supplied
+# outside Choros terminals (including via stale entries from older
+# installs). Only Choros terminals set SUPERSET_* vars; the agent-supplied
 # payload alone must never dispatch.
-[ -n "$SUPERSET_TERMINAL_ID" ] || [ -n "$SUPERSET_TAB_ID" ] || exit 0
+[ -n "$CHOROS_TERMINAL_ID" ] || [ -n "$CHOROS_TAB_ID" ] || exit 0
 
 # Claude Code (and forks sharing its hook schema) set agent_id only when the
 # hook fires inside a subagent (Task tool). Subagent activity must not drive
@@ -59,7 +59,7 @@ fi
 # Grok serializes its configured Notification event as lowercase
 # "notification". Only subtypes where the agent is blocked waiting on the
 # user count: permission_prompt (tool/plan approval) and elicitation_dialog
-# (ask_user_question — the common case, since Superset launches grok with
+# (ask_user_question — the common case, since Choros launches grok with
 # --always-approve so tool approvals rarely prompt). Keep the case pattern
 # in sync with GROK_BLOCKING_NOTIFICATION_TYPES in agent-wrappers-grok.ts.
 if [ "$EVENT_TYPE" = "notification" ]; then
@@ -79,24 +79,24 @@ fi
 [ -z "$EVENT_TYPE" ] && exit 0
 
 DEBUG_HOOKS_ENABLED="0"
-if [ -n "$SUPERSET_DEBUG_HOOKS" ]; then
-  case "$SUPERSET_DEBUG_HOOKS" in
+if [ -n "$CHOROS_DEBUG_HOOKS" ]; then
+  case "$CHOROS_DEBUG_HOOKS" in
     1|true|TRUE|True|yes|YES|on|ON) DEBUG_HOOKS_ENABLED="1" ;;
   esac
-elif [ "$SUPERSET_ENV" = "development" ] || [ "$NODE_ENV" = "development" ]; then
+elif [ "$CHOROS_ENV" = "development" ] || [ "$NODE_ENV" = "development" ]; then
   DEBUG_HOOKS_ENABLED="1"
 fi
 
 if [ "$DEBUG_HOOKS_ENABLED" = "1" ]; then
-  echo "[notify-hook] event=$EVENT_TYPE terminalId=$SUPERSET_TERMINAL_ID agentId=$SUPERSET_AGENT_ID sessionId=$SESSION_ID hookSessionId=$HOOK_SESSION_ID resourceId=$RESOURCE_ID paneId=$SUPERSET_PANE_ID tabId=$SUPERSET_TAB_ID workspaceId=$SUPERSET_WORKSPACE_ID" >&2
+  echo "[notify-hook] event=$EVENT_TYPE terminalId=$CHOROS_TERMINAL_ID agentId=$CHOROS_AGENT_ID sessionId=$SESSION_ID hookSessionId=$HOOK_SESSION_ID resourceId=$RESOURCE_ID paneId=$CHOROS_PANE_ID tabId=$CHOROS_TAB_ID workspaceId=$CHOROS_WORKSPACE_ID" >&2
 fi
 
 debug_log() {
   [ "$DEBUG_HOOKS_ENABLED" = "1" ] || return 0
-  printf '%s [notify-hook] %s\n' "$(date -u '+%Y-%m-%dT%H:%M:%SZ' 2>/dev/null || date)" "$*" >> "${SUPERSET_HOOK_DEBUG_LOG:-/tmp/superset-agent-hooks.log}" 2>/dev/null || true
+  printf '%s [notify-hook] %s\n' "$(date -u '+%Y-%m-%dT%H:%M:%SZ' 2>/dev/null || date)" "$*" >> "${CHOROS_HOOK_DEBUG_LOG:-/tmp/choros-agent-hooks.log}" 2>/dev/null || true
 }
 
-debug_log "event=$EVENT_TYPE terminalId=$SUPERSET_TERMINAL_ID agentId=$SUPERSET_AGENT_ID sessionId=$SESSION_ID hookSessionId=$HOOK_SESSION_ID resourceId=$RESOURCE_ID tabId=$SUPERSET_TAB_ID"
+debug_log "event=$EVENT_TYPE terminalId=$CHOROS_TERMINAL_ID agentId=$CHOROS_AGENT_ID sessionId=$SESSION_ID hookSessionId=$HOOK_SESSION_ID resourceId=$RESOURCE_ID tabId=$CHOROS_TAB_ID"
 
 V1_EVENT_TYPE="$EVENT_TYPE"
 case "$V1_EVENT_TYPE" in
@@ -112,19 +112,19 @@ json_escape() {
   printf '%s' "$1" | sed -e 's/\\/\\\\/g' -e 's/"/\\"/g'
 }
 
-# Resolve the host-service endpoint at call time. SUPERSET_HOST_AGENT_HOOK_URL
+# Resolve the host-service endpoint at call time. CHOROS_HOST_AGENT_HOOK_URL
 # is frozen into the agent's env at terminal creation; after a host-service
 # restart on a new port it would point at a dead socket forever (a live
 # process's env can't change). Each org's manifest
-# (~/.superset/host/<orgId>/manifest.json) is rewritten with the live endpoint
+# (~/.choros/host/<orgId>/manifest.json) is rewritten with the live endpoint
 # on every start, so it never goes stale. Try the env URL first (fast path),
 # then every org manifest's endpoint. Only the host that owns this terminal
 # answers "ignored":false; probing the other orgs' hosts is a harmless no-op.
-if [ -n "$SUPERSET_TERMINAL_ID" ]; then
-  PAYLOAD="{\"json\":{\"terminalId\":\"$(json_escape "$SUPERSET_TERMINAL_ID")\",\"eventType\":\"$(json_escape "$EVENT_TYPE")\",\"agent\":{\"agentId\":\"$(json_escape "$SUPERSET_AGENT_ID")\",\"sessionId\":\"$(json_escape "$SESSION_ID")\"}}}"
+if [ -n "$CHOROS_TERMINAL_ID" ]; then
+  PAYLOAD="{\"json\":{\"terminalId\":\"$(json_escape "$CHOROS_TERMINAL_ID")\",\"eventType\":\"$(json_escape "$EVENT_TYPE")\",\"agent\":{\"agentId\":\"$(json_escape "$CHOROS_AGENT_ID")\",\"sessionId\":\"$(json_escape "$SESSION_ID")\"}}}"
 
-  HOOK_CANDIDATE_URLS="$SUPERSET_HOST_AGENT_HOOK_URL"
-  for MANIFEST_FILE in "${SUPERSET_HOME_DIR:-$HOME/.superset}"/host/*/manifest.json; do
+  HOOK_CANDIDATE_URLS="$CHOROS_HOST_AGENT_HOOK_URL"
+  for MANIFEST_FILE in "${CHOROS_HOME_DIR:-$HOME/.choros}"/host/*/manifest.json; do
     [ -f "$MANIFEST_FILE" ] || continue
     MANIFEST_ENDPOINT=$(grep -oE '"endpoint"[[:space:]]*:[[:space:]]*"[^"]*"' "$MANIFEST_FILE" | head -1 | grep -oE '"[^"]*"$' | tr -d '"')
     [ -n "$MANIFEST_ENDPOINT" ] || continue
@@ -165,45 +165,45 @@ if [ -n "$SUPERSET_TERMINAL_ID" ]; then
 fi
 
 # v1 fallback: Electron localhost hook server. Kept while v1 terminals exist.
-[ -z "$SUPERSET_TAB_ID" ] && [ -z "$SESSION_ID" ] && [ -z "$SUPERSET_TERMINAL_ID" ] && exit 0
+[ -z "$CHOROS_TAB_ID" ] && [ -z "$SESSION_ID" ] && [ -z "$CHOROS_TERMINAL_ID" ] && exit 0
 
 # rawEventType keeps the un-collapsed event (SessionStart/SessionEnd survive)
 # so the app can tell an agent's own goodbye from a turn Stop — the v1 pane
 # agent-session capture needs that to mirror v2 resume-candidate detection.
 if [ "$DEBUG_HOOKS_ENABLED" = "1" ]; then
-  STATUS_CODE=$(curl -sG "http://127.0.0.1:${SUPERSET_PORT:-{{DEFAULT_PORT}}}/hook/complete" \
+  STATUS_CODE=$(curl -sG "http://127.0.0.1:${CHOROS_PORT:-{{DEFAULT_PORT}}}/hook/complete" \
     --connect-timeout 1 --max-time 2 \
-    --data-urlencode "paneId=$SUPERSET_PANE_ID" \
-    --data-urlencode "tabId=$SUPERSET_TAB_ID" \
-    --data-urlencode "workspaceId=$SUPERSET_WORKSPACE_ID" \
-    --data-urlencode "terminalId=$SUPERSET_TERMINAL_ID" \
+    --data-urlencode "paneId=$CHOROS_PANE_ID" \
+    --data-urlencode "tabId=$CHOROS_TAB_ID" \
+    --data-urlencode "workspaceId=$CHOROS_WORKSPACE_ID" \
+    --data-urlencode "terminalId=$CHOROS_TERMINAL_ID" \
     --data-urlencode "sessionId=$SESSION_ID" \
     --data-urlencode "hookSessionId=$HOOK_SESSION_ID" \
     --data-urlencode "resourceId=$RESOURCE_ID" \
     --data-urlencode "eventType=$V1_EVENT_TYPE" \
     --data-urlencode "rawEventType=$EVENT_TYPE" \
-    --data-urlencode "agentId=$SUPERSET_AGENT_ID" \
-    --data-urlencode "env=$SUPERSET_ENV" \
-    --data-urlencode "version=$SUPERSET_HOOK_VERSION" \
+    --data-urlencode "agentId=$CHOROS_AGENT_ID" \
+    --data-urlencode "env=$CHOROS_ENV" \
+    --data-urlencode "version=$CHOROS_HOOK_VERSION" \
     -o /dev/null -w "%{http_code}" 2>/dev/null)
   echo "[notify-hook] v1 dispatched status=$STATUS_CODE" >&2
-  debug_log "v1 status=$STATUS_CODE port=${SUPERSET_PORT:-{{DEFAULT_PORT}}}"
+  debug_log "v1 status=$STATUS_CODE port=${CHOROS_PORT:-{{DEFAULT_PORT}}}"
 else
-  debug_log "v1 dispatch port=${SUPERSET_PORT:-{{DEFAULT_PORT}}}"
-  curl -sG "http://127.0.0.1:${SUPERSET_PORT:-{{DEFAULT_PORT}}}/hook/complete" \
+  debug_log "v1 dispatch port=${CHOROS_PORT:-{{DEFAULT_PORT}}}"
+  curl -sG "http://127.0.0.1:${CHOROS_PORT:-{{DEFAULT_PORT}}}/hook/complete" \
     --connect-timeout 1 --max-time 2 \
-    --data-urlencode "paneId=$SUPERSET_PANE_ID" \
-    --data-urlencode "tabId=$SUPERSET_TAB_ID" \
-    --data-urlencode "workspaceId=$SUPERSET_WORKSPACE_ID" \
-    --data-urlencode "terminalId=$SUPERSET_TERMINAL_ID" \
+    --data-urlencode "paneId=$CHOROS_PANE_ID" \
+    --data-urlencode "tabId=$CHOROS_TAB_ID" \
+    --data-urlencode "workspaceId=$CHOROS_WORKSPACE_ID" \
+    --data-urlencode "terminalId=$CHOROS_TERMINAL_ID" \
     --data-urlencode "sessionId=$SESSION_ID" \
     --data-urlencode "hookSessionId=$HOOK_SESSION_ID" \
     --data-urlencode "resourceId=$RESOURCE_ID" \
     --data-urlencode "eventType=$V1_EVENT_TYPE" \
     --data-urlencode "rawEventType=$EVENT_TYPE" \
-    --data-urlencode "agentId=$SUPERSET_AGENT_ID" \
-    --data-urlencode "env=$SUPERSET_ENV" \
-    --data-urlencode "version=$SUPERSET_HOOK_VERSION" \
+    --data-urlencode "agentId=$CHOROS_AGENT_ID" \
+    --data-urlencode "env=$CHOROS_ENV" \
+    --data-urlencode "version=$CHOROS_HOOK_VERSION" \
     > /dev/null 2>&1
 fi
 

@@ -12406,7 +12406,7 @@ msgstr "Napište nám"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
 msgid "marketing.contact.otherWays.community"
-msgstr "Pro hlášení chyb a náměty na funkce je nejrychlejší cestou GitHub issue na <0>github.com/superset-sh/choros</0>. Naše komunita žije na <1>Discordu</1> a novinky zveřejňujeme na <2>X (@choros_sh)</2> a <3>LinkedInu</3>."
+msgstr "Pro hlášení chyb a náměty na funkce je nejrychlejší cestou GitHub issue na <0>github.com/choros-sh/choros</0>. Naše komunita žije na <1>Discordu</1> a novinky zveřejňujeme na <2>X (@choros_sh)</2> a <3>LinkedInu</3>."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx

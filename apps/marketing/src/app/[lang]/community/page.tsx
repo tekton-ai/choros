@@ -64,7 +64,7 @@ const COMMUNITY_LINKS = [
 	},
 	{
 		name: "YOUTUBE",
-		href: "https://www.youtube.com/@superset-sh",
+		href: "https://www.youtube.com/@choros-sh",
 		cta: msg({
 			id: "marketing.community.cta.youtube",
 			message: "SUBSCRIBE",
@@ -78,7 +78,7 @@ const COMMUNITY_LINKS = [
 	},
 	{
 		name: "LINKEDIN",
-		href: "https://www.linkedin.com/company/superset-sh",
+		href: "https://www.linkedin.com/company/choros-sh",
 		cta: msg({
 			id: "marketing.community.cta.linkedin",
 			message: "FOLLOW US",

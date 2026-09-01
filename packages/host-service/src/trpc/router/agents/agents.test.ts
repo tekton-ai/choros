@@ -49,7 +49,7 @@ const stdinConfig = {
 };
 
 const RANDOM_ID = "test-1234";
-const DELIMITER = "SUPERSET_PROMPT_test1234";
+const DELIMITER = "CHOROS_PROMPT_test1234";
 
 describe("buildAgentCommandString", () => {
 	it("appends the prompt as a quoted positional (argv transport)", () => {
@@ -559,7 +559,7 @@ describe("buildTerminalAgentLaunch default account env", () => {
 			prompt: "hi",
 		});
 		expect(launch.fullCommand).toBe(
-			`CLAUDE_CONFIG_DIR='${existingDir}' SUPERSET_DEFAULT_CLAUDE_CONFIG_DIR='${existingDir}' 'claude' 'hi'`,
+			`CLAUDE_CONFIG_DIR='${existingDir}' CHOROS_DEFAULT_CLAUDE_CONFIG_DIR='${existingDir}' 'claude' 'hi'`,
 		);
 	});
 
@@ -572,11 +572,11 @@ describe("buildTerminalAgentLaunch default account env", () => {
 			agent: "claude",
 			prompt: "hi",
 		});
-		// The per-agent value wins for CLAUDE_CONFIG_DIR; the SUPERSET_DEFAULT_*
+		// The per-agent value wins for CLAUDE_CONFIG_DIR; the CHOROS_DEFAULT_*
 		// twin still carries the host default so the wrapper can re-resolve a
 		// later account switch without overriding the user-pinned value.
 		expect(launch.fullCommand).toBe(
-			`CLAUDE_CONFIG_DIR='/pinned/profile' SUPERSET_DEFAULT_CLAUDE_CONFIG_DIR='${existingDir}' 'claude' 'hi'`,
+			`CLAUDE_CONFIG_DIR='/pinned/profile' CHOROS_DEFAULT_CLAUDE_CONFIG_DIR='${existingDir}' 'claude' 'hi'`,
 		);
 	});
 

@@ -707,13 +707,13 @@ function ProjectPage() {
 															</Trans>
 														</span>
 														<span className="rounded bg-muted px-1.5 py-0.5 font-mono">
-															{"$SUPERSET_ROOT_PATH"}
+															{"$CHOROS_ROOT_PATH"}
 														</span>
 														<span className="rounded bg-muted px-1.5 py-0.5 font-mono">
-															{"$SUPERSET_WORKSPACE_PATH"}
+															{"$CHOROS_WORKSPACE_PATH"}
 														</span>
 														<span className="rounded bg-muted px-1.5 py-0.5 font-mono">
-															{"$SUPERSET_WORKSPACE_NAME"}
+															{"$CHOROS_WORKSPACE_NAME"}
 														</span>
 													</div>
 												</div>

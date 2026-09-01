@@ -224,9 +224,9 @@ From [resolved, anything]:
 
 ### 3.3 Event handling (store-level)
 
-**Constraint: v2 FilePane code uses `@superset/workspace-client` exclusively. No `electronTrpc`.** That's v1's IPC path. The whole point of the v2 architecture is that workspaces talk to the host service directly, not through Electron IPC. Any import of `electronTrpc*` in the new FilePane directory is a bug.
+**Constraint: v2 FilePane code uses `@choros/workspace-client` exclusively. No `electronTrpc`.** That's v1's IPC path. The whole point of the v2 architecture is that workspaces talk to the host service directly, not through Electron IPC. Any import of `electronTrpc*` in the new FilePane directory is a bug.
 
-All tRPC calls go through the imperative client returned by `useWorkspaceClient().trpcClient`; all event-bus subscriptions go through `getEventBus(hostUrl, tokenFn)` from `@superset/workspace-client`. The store itself is module-level but must be initialized from inside a React context once (to capture the trpcClient and host URL resolver); after that it runs imperatively.
+All tRPC calls go through the imperative client returned by `useWorkspaceClient().trpcClient`; all event-bus subscriptions go through `getEventBus(hostUrl, tokenFn)` from `@choros/workspace-client`. The store itself is module-level but must be initialized from inside a React context once (to capture the trpcClient and host URL resolver); after that it runs imperatively.
 
 `packages/workspace-fs/src/watch.ts` already coalesces rapid-fire events, pairs delete+create sequences into `rename` events, and filters atomic-write false positives via `@parcel/watcher`. By the time we see a `delete` event it's a real delete, not a transient artifact. No debounced probe needed.
 

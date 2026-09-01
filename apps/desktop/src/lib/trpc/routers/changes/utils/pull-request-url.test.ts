@@ -8,8 +8,8 @@ import {
 describe("pull-request-url", () => {
 	test("normalizes GitHub remote URLs", () => {
 		expect(
-			normalizeGitHubRepoUrl("https://github.com/superset-sh/choros.git"),
-		).toBe("https://github.com/superset-sh/choros");
+			normalizeGitHubRepoUrl("https://github.com/choros-sh/choros.git"),
+		).toBe("https://github.com/choros-sh/choros");
 		expect(normalizeGitHubRepoUrl("git@github.com:Kitenite/choros.git")).toBe(
 			"https://github.com/Kitenite/choros",
 		);
@@ -28,13 +28,13 @@ describe("pull-request-url", () => {
 	test("builds compare URLs for fork branches", () => {
 		expect(
 			buildPullRequestCompareUrl({
-				baseRepoUrl: "https://github.com/superset-sh/choros.git",
+				baseRepoUrl: "https://github.com/choros-sh/choros.git",
 				baseBranch: "main",
 				headRepoOwner: "Kitenite",
 				headBranch: "kitenite/halved-position",
 			}),
 		).toBe(
-			"https://github.com/superset-sh/choros/compare/main...Kitenite:kitenite/halved-position?expand=1",
+			"https://github.com/choros-sh/choros/compare/main...Kitenite:kitenite/halved-position?expand=1",
 		);
 	});
 });

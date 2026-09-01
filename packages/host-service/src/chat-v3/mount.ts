@@ -29,7 +29,7 @@ export const CHAT_V3_STREAM_PATH = "/chat-v3/sessions/:sessionId/stream";
  * inline: packaged builds must ship the folder and point here at it.
  */
 function migrationsFolder(): string {
-	return process.env.SUPERSET_CHAT_V3_MIGRATIONS ?? DEFAULT_MIGRATIONS_FOLDER;
+	return process.env.CHOROS_CHAT_V3_MIGRATIONS ?? DEFAULT_MIGRATIONS_FOLDER;
 }
 
 function harnessRegistry(): HarnessRegistry {
@@ -38,7 +38,7 @@ function harnessRegistry(): HarnessRegistry {
 			"claude-code",
 			() =>
 				createClaudeAdapter({
-					pathToClaudeCodeExecutable: process.env.SUPERSET_CHAT_V3_CLAUDE_BIN,
+					pathToClaudeCodeExecutable: process.env.CHOROS_CHAT_V3_CLAUDE_BIN,
 				}),
 		],
 		["codex", () => new CodexAdapter()],

@@ -150,7 +150,7 @@ export class Workspaces extends APIResource {
 	private _requireOrgId(): string {
 		if (!this._client.organizationId) {
 			throw new ChorosError(
-				"organizationId is required. Set SUPERSET_ORGANIZATION_ID, or pass `organizationId` to the Choros constructor.",
+				"organizationId is required. Set CHOROS_ORGANIZATION_ID, or pass `organizationId` to the Choros constructor.",
 			);
 		}
 		return this._client.organizationId;

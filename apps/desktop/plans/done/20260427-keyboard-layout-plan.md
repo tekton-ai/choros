@@ -8,7 +8,7 @@
 
 ## Objective
 
-Make Superset's desktop keyboard handling correct on every keyboard layout — Dvorak, AZERTY, QWERTZ, Spanish, CJK IME — without regressing existing US-QWERTY users' muscle memory.
+Make Choros's desktop keyboard handling correct on every keyboard layout — Dvorak, AZERTY, QWERTZ, Spanish, CJK IME — without regressing existing US-QWERTY users' muscle memory.
 
 ## TL;DR
 

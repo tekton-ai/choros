@@ -2,9 +2,9 @@
 
 ## Problem
 
-[#3372](https://github.com/superset-sh/superset/issues/3372): Superset spawns a growing pile of `lsof` processes. Symptoms: CPU pinned at 100%, count grows with open workspaces, closing workspaces doesn't help, quitting Superset leaves `lsof` behind.
+[#3372](https://github.com/choros-sh/choros/issues/3372): Choros spawns a growing pile of `lsof` processes. Symptoms: CPU pinned at 100%, count grows with open workspaces, closing workspaces doesn't help, quitting Choros leaves `lsof` behind.
 
-Related: [#3235](https://github.com/superset-sh/superset/issues/3235) — EDR agents amplify every spawn, so fixing this also reduces their CPU.
+Related: [#3235](https://github.com/choros-sh/choros/issues/3235) — EDR agents amplify every spawn, so fixing this also reduces their CPU.
 
 ## Root Causes (three, compounding)
 
@@ -28,7 +28,7 @@ All in `apps/desktop/src/main/lib/terminal/`.
 - **B3, per-pane `isScanning` + semaphore:** more state, same behavior as B2.
 - **C3, `killSignal: "SIGKILL"`:** kills the shell, child still orphans. Doesn't address the root issue.
 - **D3, delete all hints:** loses fast-detection for dev servers (UX regression).
-- **Option 1: delete the whole dynamic-port subsystem and rely on `.superset/ports.json`:** attractive (-1500 lines) but regresses feature for users without a static config.
+- **Option 1: delete the whole dynamic-port subsystem and rely on `.choros/ports.json`:** attractive (-1500 lines) but regresses feature for users without a static config.
 - **Option 2: delete periodic scan, hint-only:** halves the code but misses silent port openers.
 - **Option 4: delete `lsof` entirely, parse ports from terminal output:** most elegant (-700 lines) but loses PID info (Kill Port), still has edge cases.
 
@@ -36,7 +36,7 @@ Chose minimum-churn because the real cost isn't `lsof`'s per-call expense (~100 
 
 ## Prior Attempt — Superseded
 
-Auto-generated PR [#3373](https://github.com/superset-sh/superset/pull/3373) by `github-actions[bot]` addresses lifecycle + a weaker `isScanning` guard on `scanPane`. Leaves the orphan-on-timeout and noisy-regex causes untouched. This PR addresses all three.
+Auto-generated PR [#3373](https://github.com/choros-sh/choros/pull/3373) by `github-actions[bot]` addresses lifecycle + a weaker `isScanning` guard on `scanPane`. Leaves the orphan-on-timeout and noisy-regex causes untouched. This PR addresses all three.
 
 ## Progress
 
@@ -48,7 +48,7 @@ Auto-generated PR [#3373](https://github.com/superset-sh/superset/pull/3373) by 
 - [x] (2026-04-17) Deleted dead `getProcessName` export and unused `paneId` parameter
 - [x] (2026-04-17) 13 regression tests in `port-manager.test.ts`; A/B verified (8 fail on `main`)
 - [x] (2026-04-17) `bun run typecheck` + `bun run lint:fix` clean; 127/127 terminal tests pass
-- [x] (2026-04-17) PR [#3547](https://github.com/superset-sh/superset/pull/3547) opened
+- [x] (2026-04-17) PR [#3547](https://github.com/choros-sh/choros/pull/3547) opened
 - [ ] Manual validation on macOS with 10 workspaces
 - [ ] #3547 merged, #3372 and #3373 closed
 

@@ -19,7 +19,7 @@ const CLI_LOOPBACK_PORTS = [51789, 51790, 51791, 51792, 51793];
 
 const CLI_WEB_URLS = [
 	...new Set(
-		[process.env.SUPERSET_WEB_URL, env.NEXT_PUBLIC_WEB_URL].filter(
+		[process.env.CHOROS_WEB_URL, env.NEXT_PUBLIC_WEB_URL].filter(
 			(url): url is string => Boolean(url),
 		),
 	),

@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { resolveSupersetHomeDir } from "./paths";
+import { resolveChorosHomeDir } from "./paths";
 import { writeFileIfChanged } from "./write-file-if-changed";
 
 export const DISABLED_SKILLS_STATE_FILE = "disabled-skills.json";
@@ -14,11 +14,11 @@ export const DISABLED_SKILLS_STATE_FILE = "disabled-skills.json";
  * desktop's next boot tore it down again.
  *
  * The desktop rewrites this file at boot and on every toggle; headless
- * provisioners read it (plus the SUPERSET_DISABLED_SKILLS env override, for
+ * provisioners read it (plus the CHOROS_DISABLED_SKILLS env override, for
  * hosts whose machine never runs the desktop).
  */
 export function getDisabledSkillsStateFilePath(): string {
-	return path.join(resolveSupersetHomeDir(), DISABLED_SKILLS_STATE_FILE);
+	return path.join(resolveChorosHomeDir(), DISABLED_SKILLS_STATE_FILE);
 }
 
 export function readSharedDisabledSkillIds(): string[] {
@@ -38,7 +38,7 @@ export function readSharedDisabledSkillIds(): string[] {
 
 export function writeSharedDisabledSkillIds(ids: readonly string[]): void {
 	try {
-		fs.mkdirSync(resolveSupersetHomeDir(), { recursive: true });
+		fs.mkdirSync(resolveChorosHomeDir(), { recursive: true });
 		writeFileIfChanged(
 			getDisabledSkillsStateFilePath(),
 			`${JSON.stringify({ disabledSkillIds: [...ids].sort() }, null, "\t")}\n`,
@@ -53,7 +53,7 @@ export function writeSharedDisabledSkillIds(ids: readonly string[]): void {
 }
 
 function envDisabledSkillIds(): string[] {
-	return (process.env.SUPERSET_DISABLED_SKILLS ?? "")
+	return (process.env.CHOROS_DISABLED_SKILLS ?? "")
 		.split(",")
 		.map((id) => id.trim())
 		.filter(Boolean);

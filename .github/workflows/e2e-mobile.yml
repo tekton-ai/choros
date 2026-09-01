@@ -14,7 +14,7 @@ concurrency:
 
 env:
   EAS_CLI_VERSION: 20.5.1
-  API_ALIAS: api-pr-${{ github.event.pull_request.number }}-superset.vercel.app
+  API_ALIAS: api-pr-${{ github.event.pull_request.number }}-choros.vercel.app
 
 jobs:
   e2e-mobile:

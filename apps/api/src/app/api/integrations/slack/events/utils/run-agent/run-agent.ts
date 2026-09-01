@@ -326,7 +326,7 @@ const TOOL_PROGRESS_STATUS: Record<string, string> = {
 };
 
 // Tools excluded from the Slack agent's tool list (preloaded as context).
-const DENIED_SUPERSET_TOOLS = new Set([
+const DENIED_CHOROS_TOOLS = new Set([
 	"organization_members_list",
 	"tasks_statuses_list",
 	"hosts_list",
@@ -536,7 +536,7 @@ export async function runSlackAgent(
 		]);
 
 		const chorosTools = chorosToolsResult.tools
-			.filter((t) => !DENIED_SUPERSET_TOOLS.has(t.name))
+			.filter((t) => !DENIED_CHOROS_TOOLS.has(t.name))
 			.map((t) => mcpToolToAnthropicTool(t, "choros"));
 
 		const tools: Anthropic.Messages.ToolUnion[] = [

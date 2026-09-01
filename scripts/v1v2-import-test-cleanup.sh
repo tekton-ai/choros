@@ -4,10 +4,10 @@
 set -euo pipefail
 
 SATYA_TEST_ORG=b2c3d4e5-f6a7-4890-9bcd-ef1234567891
-SUPERSET_ORG=a1b2c3d4-e5f6-7890-abcd-ef1234567890
-DEV_DATA_LOCAL_DB="$(pwd)/superset-dev-data/local.db"
-SATYA_TEST_HOST_DB="$(pwd)/superset-dev-data/host/$SATYA_TEST_ORG/host.db"
-SUPERSET_HOST_DB="$(pwd)/superset-dev-data/host/$SUPERSET_ORG/host.db"
+CHOROS_ORG=a1b2c3d4-e5f6-7890-abcd-ef1234567890
+DEV_DATA_LOCAL_DB="$(pwd)/choros-dev-data/local.db"
+SATYA_TEST_HOST_DB="$(pwd)/choros-dev-data/host/$SATYA_TEST_ORG/host.db"
+CHOROS_HOST_DB="$(pwd)/choros-dev-data/host/$CHOROS_ORG/host.db"
 
 NEW_NO_REMOTE_ID=22222222-bbbb-4bbb-8bbb-000000000001
 NEW_GHOST_ID=22222222-bbbb-4bbb-8bbb-000000000002
@@ -39,7 +39,7 @@ SQL
 echo "→ removing fixture host.db rows from both orgs"
 sqlite3 "$SATYA_TEST_HOST_DB" \
   "DELETE FROM projects WHERE id LIKE '11111111-aaaa-4aaa-8aaa-%'"
-sqlite3 "$SUPERSET_HOST_DB" \
+sqlite3 "$CHOROS_HOST_DB" \
   "DELETE FROM projects WHERE id LIKE '33333333-aaaa-4aaa-8aaa-%'"
 
 echo "→ deleting fixture v2 projects from dev cloud"

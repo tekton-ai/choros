@@ -4,7 +4,7 @@ import { z } from "zod";
 export const env = createEnv({
 	server: {
 		AUTH_TOKEN: z.string().min(1),
-		SUPERSET_API_URL: z.string().url(),
+		CHOROS_API_URL: z.string().url(),
 		HOST_DB_PATH: z.string().min(1),
 		HOST_MIGRATIONS_FOLDER: z.string().min(1),
 		HOST_SERVICE_SECRET: z.string().min(1),

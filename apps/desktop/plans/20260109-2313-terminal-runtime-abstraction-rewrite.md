@@ -65,7 +65,7 @@ Observable outcomes:
 
 ## Context / Orientation (Repository Map)
 
-Superset Desktop is an Electron app. In this repo:
+Choros Desktop is an Electron app. In this repo:
 
 1. “Main process” code runs in Node.js and can import Node modules. It lives under `apps/desktop/src/main/`.
 2. “Renderer” code runs in a browser-like environment and must not import Node modules. It lives under `apps/desktop/src/renderer/`.
@@ -136,7 +136,7 @@ This refactor is intentionally conservative to avoid regressions:
 
 ## Future Backend: Remote Runner / Cloud Terminals
 
-This plan intentionally does not implement cloud terminals, but the abstraction boundary should be compatible with adding a backend that runs terminal sessions inside a remote “runner” (a background agent on a server) while preserving Superset Desktop concepts like worktrees, “changes” (diff/status), and agent lifecycle indicators.
+This plan intentionally does not implement cloud terminals, but the abstraction boundary should be compatible with adding a backend that runs terminal sessions inside a remote “runner” (a background agent on a server) while preserving Choros Desktop concepts like worktrees, “changes” (diff/status), and agent lifecycle indicators.
 
 ### Direction for this rewrite (so we don’t paint ourselves into a corner)
 
@@ -150,7 +150,7 @@ The cloud workspace plan (`docs/CLOUD_WORKSPACE_PLAN.md`) makes a few things exp
 ### What’s local-only today (current coupling)
 
 1. **Terminal IO keys by `paneId` (client identity):** today `terminal.createOrAttach`, `terminal.write`, and `terminal.stream` treat `paneId` as the stable session key (`apps/desktop/src/lib/trpc/routers/terminal/terminal.ts`). This rewrite moves the boundary to `{ backendSessionId, clientId, attachmentId }` (via `streamV2`) so multi-device/cloud doesn’t require reworking every callsite later.
-2. **Agent lifecycle events assume localhost hooks:** terminal env injects `SUPERSET_*` and `SUPERSET_PORT` (`apps/desktop/src/main/lib/terminal/env.ts`), and the notify hook script `curl`s `http://127.0.0.1:$SUPERSET_PORT/hook/complete` (`apps/desktop/src/main/lib/agent-setup/templates/notify-hook.template.sh`). This cannot work from a remote runner.
+2. **Agent lifecycle events assume localhost hooks:** terminal env injects `SUPERSET_*` and `CHOROS_PORT` (`apps/desktop/src/main/lib/terminal/env.ts`), and the notify hook script `curl`s `http://127.0.0.1:$CHOROS_PORT/hook/complete` (`apps/desktop/src/main/lib/agent-setup/templates/notify-hook.template.sh`). This cannot work from a remote runner.
 3. **“Changes” assumes local worktree filesystem:** git status/diff/staging/commit/push/pull operate against a local `worktreePath` using `simple-git`, and file reads/writes are guarded by secure path validation (`apps/desktop/src/lib/trpc/routers/changes/*`).
 
 ### How this plan enables remote terminals (what’s already aligned)
@@ -238,7 +238,7 @@ This plan can be executed across multiple PRs. To make handoff safe and reduce r
 
 ### PR1 Acceptance Gates (Must Pass)
 
-1. `bun run lint`, `bun run typecheck --filter=@superset/desktop`, and `bun test --filter=@superset/desktop` all pass.
+1. `bun run lint`, `bun run typecheck --filter=@choros/desktop`, and `bun test --filter=@choros/desktop` all pass.
 2. Manual smoke (minimum):
    - persistence disabled: open terminal, type, exit; Settings “Manage sessions” shows unavailable
    - persistence enabled: warm attach + cold restore still works; Settings “Manage sessions” works
@@ -853,8 +853,8 @@ Acceptance:
 Run these commands from the repo root:
 
     bun run lint
-    bun run typecheck --filter=@superset/desktop
-    bun run test --filter=@superset/desktop
+    bun run typecheck --filter=@choros/desktop
+    bun run test --filter=@choros/desktop
 
 Expected results:
 
@@ -926,14 +926,14 @@ Mitigation: Keep the “stream does not complete on exit” regression test as P
 - [x] Implement session management as `terminal.management: TerminalManagement | null` (no no-op admin methods)
 - [ ] (Follow-up) Add event cursor + bounded replay ring buffer at provider boundary
 - [ ] (Follow-up) Normalize error codes (`TerminalErrorCode`) and enforce resize sequencing (`seq`)
-- [x] Run `bun run typecheck --filter=@superset/desktop`
+- [x] Run `bun run typecheck --filter=@choros/desktop`
 
 ### Milestone 3
 
 - [x] Migrate `apps/desktop/src/lib/trpc/routers/terminal/terminal.ts` to `getWorkspaceRuntimeRegistry()`
 - [x] Remove `instanceof DaemonTerminalManager` checks
 - [ ] (Follow-up / Milestone 4) Add `terminal.streamV2` (identity + since cursor) and migrate router internals to `subscribeSession`
-- [x] Run `bun test --filter=@superset/desktop`
+- [x] Run `bun test --filter=@choros/desktop`
 
 ### Milestone 4
 

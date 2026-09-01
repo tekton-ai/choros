@@ -4,9 +4,9 @@
 		"external_directory": "allow"
 	},
 	"mcp": {
-		"superset": {
+		"choros": {
 			"type": "remote",
-			"url": "https://api.superset.sh/api/v2/agent/mcp",
+			"url": "https://api.choros.sh/api/v2/agent/mcp",
 			"oauth": {}
 		},
 		"expo-mcp": {

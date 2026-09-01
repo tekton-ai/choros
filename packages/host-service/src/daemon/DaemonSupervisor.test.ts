@@ -313,7 +313,7 @@ describe("shouldKillStaleDaemonForDev", () => {
 		expect(
 			shouldKillStaleDaemonForDev({
 				NODE_ENV: "development",
-				SUPERSET_PTY_DAEMON_ADOPT_IN_DEV: "1",
+				CHOROS_PTY_DAEMON_ADOPT_IN_DEV: "1",
 			}),
 		).toBe(false);
 	});
@@ -324,16 +324,16 @@ describe("DaemonSupervisor.tryAdopt", () => {
 	let tmpHome: string;
 
 	beforeEach(() => {
-		originalHome = process.env.SUPERSET_HOME_DIR;
+		originalHome = process.env.CHOROS_HOME_DIR;
 		tmpHome = fs.mkdtempSync(path.join(os.tmpdir(), "pty-daemon-unit-"));
-		process.env.SUPERSET_HOME_DIR = tmpHome;
+		process.env.CHOROS_HOME_DIR = tmpHome;
 	});
 
 	afterEach(() => {
 		if (originalHome !== undefined) {
-			process.env.SUPERSET_HOME_DIR = originalHome;
+			process.env.CHOROS_HOME_DIR = originalHome;
 		} else {
-			delete process.env.SUPERSET_HOME_DIR;
+			delete process.env.CHOROS_HOME_DIR;
 		}
 		fs.rmSync(tmpHome, { recursive: true, force: true });
 	});
@@ -1432,7 +1432,7 @@ describe("ptyDaemonSocketPath", () => {
 		expect(
 			ptyDaemonSocketPath(ORG, {
 				NODE_ENV: "production",
-				SUPERSET_HOME_DIR: path.join(os.homedir(), ".choros"),
+				CHOROS_HOME_DIR: path.join(os.homedir(), ".choros"),
 			}),
 		).toBe(legacyPath());
 	});
@@ -1440,18 +1440,18 @@ describe("ptyDaemonSocketPath", () => {
 	test("equivalent spellings of one custom home share a socket", () => {
 		const canonical = ptyDaemonSocketPath(ORG, {
 			NODE_ENV: "production",
-			SUPERSET_HOME_DIR: "/tmp/custom-home-alias",
+			CHOROS_HOME_DIR: "/tmp/custom-home-alias",
 		});
 		expect(
 			ptyDaemonSocketPath(ORG, {
 				NODE_ENV: "production",
-				SUPERSET_HOME_DIR: "/tmp/custom-home-alias/",
+				CHOROS_HOME_DIR: "/tmp/custom-home-alias/",
 			}),
 		).toBe(canonical);
 		expect(
 			ptyDaemonSocketPath(ORG, {
 				NODE_ENV: "production",
-				SUPERSET_HOME_DIR: "/tmp/elsewhere/../custom-home-alias",
+				CHOROS_HOME_DIR: "/tmp/elsewhere/../custom-home-alias",
 			}),
 		).toBe(canonical);
 	});
@@ -1465,7 +1465,7 @@ describe("ptyDaemonSocketPath", () => {
 			expect(
 				ptyDaemonSocketPath(ORG, {
 					NODE_ENV,
-					SUPERSET_HOME_DIR: "/tmp/custom-home-a",
+					CHOROS_HOME_DIR: "/tmp/custom-home-a",
 				}),
 			).not.toBe(legacyPath());
 		}
@@ -1478,7 +1478,7 @@ describe("ptyDaemonSocketPath", () => {
 		expect(() =>
 			ptyDaemonSocketPath(ORG, {
 				NODE_ENV: "test",
-				SUPERSET_HOME_DIR: path.join(os.homedir(), ".choros"),
+				CHOROS_HOME_DIR: path.join(os.homedir(), ".choros"),
 			}),
 		).toThrow(/isolated temp dir/);
 		expect(() =>
@@ -1489,7 +1489,7 @@ describe("ptyDaemonSocketPath", () => {
 		expect(
 			ptyDaemonSocketPath(ORG, {
 				NODE_ENV: "test",
-				SUPERSET_HOME_DIR: "/tmp/isolated-test-home",
+				CHOROS_HOME_DIR: "/tmp/isolated-test-home",
 			}),
 		).not.toBe(legacyPath());
 	});
@@ -1497,11 +1497,11 @@ describe("ptyDaemonSocketPath", () => {
 	test("non-default development homes get their own stable daemon socket", () => {
 		const a = ptyDaemonSocketPath(ORG, {
 			NODE_ENV: "development",
-			SUPERSET_HOME_DIR: "/tmp/home-a",
+			CHOROS_HOME_DIR: "/tmp/home-a",
 		});
 		const b = ptyDaemonSocketPath(ORG, {
 			NODE_ENV: "development",
-			SUPERSET_HOME_DIR: "/tmp/home-b",
+			CHOROS_HOME_DIR: "/tmp/home-b",
 		});
 		expect(a).not.toBe(legacyPath());
 		expect(b).not.toBe(legacyPath());
@@ -1509,7 +1509,7 @@ describe("ptyDaemonSocketPath", () => {
 		expect(
 			ptyDaemonSocketPath(ORG, {
 				NODE_ENV: "development",
-				SUPERSET_HOME_DIR: "/tmp/home-a",
+				CHOROS_HOME_DIR: "/tmp/home-a",
 			}),
 		).toBe(a);
 	});
@@ -1521,7 +1521,7 @@ describe("ptyDaemonSocketPath", () => {
 		expect(
 			ptyDaemonSocketPath(ORG, {
 				NODE_ENV: "development",
-				SUPERSET_HOME_DIR: `${path.join(os.homedir(), ".choros")}/../.superset/`,
+				CHOROS_HOME_DIR: `${path.join(os.homedir(), ".choros")}/../.choros/`,
 			}),
 		).toBe(legacyPath());
 	});
@@ -1529,8 +1529,8 @@ describe("ptyDaemonSocketPath", () => {
 	test("stays under Darwin's 104-byte sun_path limit for long worktree homes", () => {
 		const socket = ptyDaemonSocketPath("a1b2c3d4-e5f6-7890-abcd-ef1234567890", {
 			NODE_ENV: "development",
-			SUPERSET_HOME_DIR:
-				"/Users/someone/.superset/worktrees/0123456789abcdef-0123/very-long-branch-name-for-a-feature/superset-dev-data",
+			CHOROS_HOME_DIR:
+				"/Users/someone/.choros/worktrees/0123456789abcdef-0123/very-long-branch-name-for-a-feature/choros-dev-data",
 		});
 		expect(Buffer.byteLength(socket)).toBeLessThan(104);
 	});

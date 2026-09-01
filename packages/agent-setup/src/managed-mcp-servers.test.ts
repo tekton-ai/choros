@@ -17,14 +17,14 @@ import {
 
 const TEST_ROOT = path.join(
 	os.tmpdir(),
-	`superset-managed-mcp-${process.pid}-${Date.now()}`,
+	`choros-managed-mcp-${process.pid}-${Date.now()}`,
 );
 const HOME_DIR = path.join(TEST_ROOT, "home");
-const SUPERSET_HOME = path.join(TEST_ROOT, "superset-home");
+const CHOROS_HOME = path.join(TEST_ROOT, "choros-home");
 
 const claudeJson = path.join(HOME_DIR, ".claude.json");
 const codexToml = path.join(HOME_DIR, ".codex", "config.toml");
-const ledgerPath = path.join(SUPERSET_HOME, "plugins", "mcp-ledger.json");
+const ledgerPath = path.join(CHOROS_HOME, "plugins", "mcp-ledger.json");
 
 const LINEAR: PluginMcpServerConfig = {
 	type: "http",
@@ -38,7 +38,7 @@ const PLAYWRIGHT: PluginMcpServerConfig = {
 function run(desired: Record<string, PluginMcpServerConfig>): void {
 	syncManagedMcpServers(desired, {
 		homeDir: HOME_DIR,
-		supersetHomeDir: SUPERSET_HOME,
+		chorosHomeDir: CHOROS_HOME,
 	});
 }
 
@@ -48,7 +48,7 @@ function readClaude(): Record<string, unknown> {
 
 beforeEach(() => {
 	mkdirSync(HOME_DIR, { recursive: true });
-	mkdirSync(SUPERSET_HOME, { recursive: true });
+	mkdirSync(CHOROS_HOME, { recursive: true });
 });
 
 afterEach(() => {
@@ -205,7 +205,7 @@ describe("syncManagedMcpServers — Codex", () => {
 		const content = readFileSync(codexToml, "utf-8");
 		expect(content).toContain('model = "gpt-5"');
 		expect(content).not.toContain("[mcp_servers.linear]");
-		expect(content).not.toContain("superset managed mcp servers");
+		expect(content).not.toContain("choros managed mcp servers");
 	});
 
 	it("deletes a file that held only the managed block", () => {
@@ -246,7 +246,7 @@ describe("syncManagedMcpServers — per-agent external scoping", () => {
 		// Codex side stays the user's single table, no managed block added.
 		const content = readFileSync(codexToml, "utf-8");
 		expect(content.match(/\[mcp_servers\.linear\]/g)?.length).toBe(1);
-		expect(content).not.toContain("superset managed mcp servers");
+		expect(content).not.toContain("choros managed mcp servers");
 	});
 
 	it("a Claude-scope user server suppresses Claude but not Codex", () => {
@@ -277,7 +277,7 @@ describe("readExternallyConfiguredMcpServers", () => {
 	function readExternal() {
 		return readExternallyConfiguredMcpServers({
 			homeDir: HOME_DIR,
-			supersetHomeDir: SUPERSET_HOME,
+			chorosHomeDir: CHOROS_HOME,
 		});
 	}
 

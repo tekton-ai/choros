@@ -31,9 +31,9 @@ interface StartSetupTerminalResult {
  *
  * Source order is the shared lifecycle-script posture (see `resolveScript`):
  * configured `setup` commands (joined with ` && ` so failures short-circuit;
- * worktree config overrides the main repo's), then `bash .superset/setup.sh`
+ * worktree config overrides the main repo's), then `bash .choros/setup.sh`
  * (worktree first, then main repo). Scripts that need the canonical
- * `.superset/` dir read `$SUPERSET_ROOT_PATH`, injected by the v2 terminal
+ * `.choros/` dir read `$CHOROS_ROOT_PATH`, injected by the v2 terminal
  * env builder. Configured `cwd` is honored via the terminal session.
  *
  * No-op when no source resolves to anything runnable.

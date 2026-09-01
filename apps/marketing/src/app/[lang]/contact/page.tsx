@@ -101,7 +101,7 @@ export default async function ContactPage() {
 								className="text-foreground underline"
 								href={COMPANY.REPORT_ISSUE_URL}
 							>
-								github.com/superset-sh/choros
+								github.com/choros-sh/choros
 							</a>
 							. Our community lives on{" "}
 							<a

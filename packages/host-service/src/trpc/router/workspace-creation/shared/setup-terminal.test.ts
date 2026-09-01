@@ -74,7 +74,7 @@ describe("resolveInitialCommand", () => {
 		expect(resolve()).toEqual({ initialCommand: "bun install" });
 	});
 
-	it("falls back to bash <repoPath>/.superset/setup.sh when config is empty", () => {
+	it("falls back to bash <repoPath>/.choros/setup.sh when config is empty", () => {
 		writeConfig(sandbox.repoPath, { setup: [], teardown: [] });
 		writeFallbackScript(sandbox.repoPath);
 
@@ -132,7 +132,7 @@ describe("resolveInitialCommand", () => {
 			expect(cmd).toContain("'\\''");
 			// Verify the escape sequence wraps the single quote correctly.
 			expect(cmd).toBe(
-				`bash '${trickyRepo.replace("'", "'\\''")}/.superset/setup.sh'`,
+				`bash '${trickyRepo.replace("'", "'\\''")}/.choros/setup.sh'`,
 			);
 		} finally {
 			sandboxWithQuote.cleanup();

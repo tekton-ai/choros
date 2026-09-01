@@ -5,5 +5,5 @@
 # an agent following a prompt injection — can read it afterwards.
 case "$1" in
   Username*) printf 'x-access-token' ;;
-  Password*) printf '%s' "${SUPERSET_SANDBOX_GIT_TOKEN:-}" ;;
+  Password*) printf '%s' "${CHOROS_SANDBOX_GIT_TOKEN:-}" ;;
 esac

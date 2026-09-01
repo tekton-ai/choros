@@ -22,7 +22,7 @@ import {
 
 const TEST_ROOT = path.join(
 	os.tmpdir(),
-	`superset-profile-sharing-${process.pid}-${Date.now()}`,
+	`choros-profile-sharing-${process.pid}-${Date.now()}`,
 );
 const SOURCE = path.join(TEST_ROOT, "default");
 const PROFILE = path.join(TEST_ROOT, "profile");

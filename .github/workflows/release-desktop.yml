@@ -69,34 +69,34 @@ jobs:
           # Create stable-named copies (without version) for /releases/latest/download/ URLs
           for file in *.dmg; do
             if [[ -f "$file" ]]; then
-              # Extract architecture from filename (e.g., Superset-0.0.1-arm64.dmg -> arm64)
-              # x64 builds may omit the arch suffix (Superset-0.0.1.dmg), default to x64
+              # Extract architecture from filename (e.g., Choros-0.0.1-arm64.dmg -> arm64)
+              # x64 builds may omit the arch suffix (Choros-0.0.1.dmg), default to x64
               arch=$(echo "$file" | sed -E 's/.*-([^-]+)\.dmg$/\1/')
               if [[ "$arch" =~ ^[0-9]+\.[0-9]+\.[0-9] ]]; then
                 arch="x64"
               fi
-              cp "$file" "Superset-${arch}.dmg"
-              echo "Created stable copy: Superset-${arch}.dmg"
+              cp "$file" "Choros-${arch}.dmg"
+              echo "Created stable copy: Choros-${arch}.dmg"
             fi
           done
           for file in *-mac.zip; do
             if [[ -f "$file" ]]; then
-              # Extract architecture from filename (e.g., Superset-0.0.1-arm64-mac.zip -> arm64)
-              # x64 builds may omit the arch suffix (Superset-0.0.1-mac.zip), default to x64
+              # Extract architecture from filename (e.g., Choros-0.0.1-arm64-mac.zip -> arm64)
+              # x64 builds may omit the arch suffix (Choros-0.0.1-mac.zip), default to x64
               arch=$(echo "$file" | sed -E 's/.*-([^-]+)-mac\.zip$/\1/')
               if [[ "$arch" =~ ^[0-9]+\.[0-9]+\.[0-9] ]]; then
                 arch="x64"
               fi
-              cp "$file" "Superset-${arch}-mac.zip"
-              echo "Created stable copy: Superset-${arch}-mac.zip"
+              cp "$file" "Choros-${arch}-mac.zip"
+              echo "Created stable copy: Choros-${arch}-mac.zip"
             fi
           done
           for file in *.AppImage; do
             if [[ -f "$file" ]]; then
-              # Extract architecture from filename (e.g., superset-0.0.1-x64.AppImage -> x64)
+              # Extract architecture from filename (e.g., choros-0.0.1-x64.AppImage -> x64)
               arch=$(echo "$file" | sed -E 's/.*-([^-]+)\.AppImage$/\1/')
-              cp "$file" "Superset-${arch}.AppImage"
-              echo "Created stable copy: Superset-${arch}.AppImage"
+              cp "$file" "Choros-${arch}.AppImage"
+              echo "Created stable copy: Choros-${arch}.AppImage"
             fi
           done
           # Keep Linux updater manifest at a stable filename for generic provider lookups.
@@ -141,6 +141,6 @@ jobs:
         run: |
           gh release create "${{ github.ref_name }}" \
             release-artifacts/* \
-            --title "Superset Desktop ${{ github.ref_name }}" \
+            --title "Choros Desktop ${{ github.ref_name }}" \
             --notes-file release_notes.md \
             --draft

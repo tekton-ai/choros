@@ -234,7 +234,7 @@ export function buildTaskLaunchRequest({
 		source,
 		terminal: {
 			command: buildAgentFileCommand({
-				filePath: `.superset/${taskPromptFileName}`,
+				filePath: `.choros/${taskPromptFileName}`,
 				agent: agentType,
 			}),
 			name: task.slug,

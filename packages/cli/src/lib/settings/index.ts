@@ -23,7 +23,7 @@ export {
 export {
 	getAppStatePath,
 	getLocalDbPath,
-	getSupersetHomeDir,
+	getChorosHomeDir,
 } from "./paths";
 export {
 	allowedValues,

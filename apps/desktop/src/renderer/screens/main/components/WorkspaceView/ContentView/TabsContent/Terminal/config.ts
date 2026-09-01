@@ -12,10 +12,10 @@ export const TERMINAL_THEME: ITerminalOptions["theme"] = undefined;
 export const FIRST_RENDER_RESTORE_FALLBACK_MS = 250;
 
 // Debug logging for terminal lifecycle (enable via localStorage)
-// Run in DevTools console: localStorage.setItem('SUPERSET_TERMINAL_DEBUG', '1')
+// Run in DevTools console: localStorage.setItem('CHOROS_TERMINAL_DEBUG', '1')
 export const DEBUG_TERMINAL =
 	typeof localStorage !== "undefined" &&
-	localStorage.getItem("SUPERSET_TERMINAL_DEBUG") === "1";
+	localStorage.getItem("CHOROS_TERMINAL_DEBUG") === "1";
 
 // Shared terminal font defaults are serialized as a valid CSS font-family value.
 export const DEFAULT_TERMINAL_FONT_FAMILY = SHARED_DEFAULT_TERMINAL_FONT_FAMILY;

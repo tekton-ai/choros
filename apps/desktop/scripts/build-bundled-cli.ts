@@ -62,17 +62,17 @@ function run(
 
 function buildCliBuildEnv(): NodeJS.ProcessEnv {
 	const env = { ...process.env };
-	env.SUPERSET_CLI_CHANNEL = "desktop-bundled";
+	env.CHOROS_CLI_CHANNEL = "desktop-bundled";
 	const apiUrl =
-		process.env.SUPERSET_API_URL || process.env.NEXT_PUBLIC_API_URL;
+		process.env.CHOROS_API_URL || process.env.NEXT_PUBLIC_API_URL;
 	const webUrl =
-		process.env.SUPERSET_WEB_URL || process.env.NEXT_PUBLIC_WEB_URL;
+		process.env.CHOROS_WEB_URL || process.env.NEXT_PUBLIC_WEB_URL;
 
 	if (apiUrl) {
-		env.SUPERSET_API_URL = apiUrl;
+		env.CHOROS_API_URL = apiUrl;
 	}
 	if (webUrl) {
-		env.SUPERSET_WEB_URL = webUrl;
+		env.CHOROS_WEB_URL = webUrl;
 	}
 
 	return env;

@@ -2,7 +2,7 @@ import { Trans, useLingui } from "@lingui/react/macro";
 import {
 	getMatchingExternalServers,
 	type PluginCatalogEntry,
-	SUPERSET_MANAGED_SKILLS,
+	CHOROS_MANAGED_SKILLS,
 } from "@choros/shared/plugins";
 import { Badge } from "@choros/ui/badge";
 import { Button } from "@choros/ui/button";
@@ -17,7 +17,7 @@ import { SkillIcon } from "renderer/routes/_authenticated/_dashboard/plugins/com
 import { usePluginMutations } from "renderer/routes/_authenticated/_dashboard/plugins/hooks/usePluginMutations";
 
 const SKILL_DESCRIPTIONS = new Map<string, string>(
-	SUPERSET_MANAGED_SKILLS.map((skill) => [skill.name, skill.description]),
+	CHOROS_MANAGED_SKILLS.map((skill) => [skill.name, skill.description]),
 );
 
 export function PluginDetail({ plugin }: { plugin: PluginCatalogEntry }) {

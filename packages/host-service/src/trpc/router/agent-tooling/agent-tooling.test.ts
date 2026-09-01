@@ -17,7 +17,7 @@ const CONFIG_ID = "3c2f9d8f-5678-4abc-8def-0123456789ab";
 let root: string;
 let worktree: string;
 let db: ReturnType<typeof drizzle<typeof schema>>;
-let previousSupersetHomeDir: string | undefined;
+let previousChorosHomeDir: string | undefined;
 
 function createCaller() {
 	const ctx = { db, isAuthenticated: true } as unknown as HostServiceContext;
@@ -58,9 +58,9 @@ function writeCommand(configDir: string, name: string): void {
 }
 
 beforeEach(() => {
-	previousSupersetHomeDir = process.env.SUPERSET_HOME_DIR;
+	previousChorosHomeDir = process.env.CHOROS_HOME_DIR;
 	root = mkdtempSync(join(tmpdir(), "agent-tooling-router-test-"));
-	process.env.SUPERSET_HOME_DIR = root;
+	process.env.CHOROS_HOME_DIR = root;
 	worktree = join(root, "worktree");
 	mkdirSync(worktree, { recursive: true });
 	const sqlite = new Database(":memory:");
@@ -70,10 +70,10 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-	if (previousSupersetHomeDir === undefined) {
-		delete process.env.SUPERSET_HOME_DIR;
+	if (previousChorosHomeDir === undefined) {
+		delete process.env.CHOROS_HOME_DIR;
 	} else {
-		process.env.SUPERSET_HOME_DIR = previousSupersetHomeDir;
+		process.env.CHOROS_HOME_DIR = previousChorosHomeDir;
 	}
 	rmSync(root, { recursive: true, force: true });
 	clearSlashCommandDiscoveryCache();

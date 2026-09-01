@@ -28,7 +28,7 @@ import path from "node:path";
 import { writeFileIfChanged } from "./agent-wrappers-common";
 
 /** Per-profile record of what we last wrote, kept inside the profile dir. */
-export const PROFILE_LEDGER_NAME = ".superset-profile.json";
+export const PROFILE_LEDGER_NAME = ".choros-profile.json";
 
 export type SurfaceOutcome =
 	/** A symlink now points the profile at the default account's dir. */

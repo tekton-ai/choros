@@ -28,7 +28,7 @@ export interface AgentLifecycleMessage {
 	workspaceId: string;
 	eventType: AgentLifecycleEventType;
 	terminalId: string;
-	// Absent when the hook ran without `SUPERSET_AGENT_ID` set (legacy shells
+	// Absent when the hook ran without `CHOROS_AGENT_ID` set (legacy shells
 	// or third-party hook configs that bypass our wrappers).
 	agent?: AgentIdentity;
 	occurredAt: number;

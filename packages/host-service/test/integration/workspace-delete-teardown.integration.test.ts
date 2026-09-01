@@ -39,8 +39,8 @@ describe("workspace delete teardown integration", () => {
 		await disposeDaemonClient();
 		resetTerminalBaseEnvForTests();
 		__setAccountShellForTesting(undefined);
-		delete process.env.SUPERSET_PTY_DAEMON_SOCKET;
-		delete process.env.SUPERSET_HOME_DIR;
+		delete process.env.CHOROS_PTY_DAEMON_SOCKET;
+		delete process.env.CHOROS_HOME_DIR;
 		if (server) {
 			await server.close().catch(() => {});
 			server = null;
@@ -68,8 +68,8 @@ describe("workspace delete teardown integration", () => {
 		});
 		await server.listen();
 
-		process.env.SUPERSET_PTY_DAEMON_SOCKET = socketPath;
-		process.env.SUPERSET_HOME_DIR = tmp;
+		process.env.CHOROS_PTY_DAEMON_SOCKET = socketPath;
+		process.env.CHOROS_HOME_DIR = tmp;
 		__setAccountShellForTesting("/bin/bash");
 		initTerminalBaseEnv({
 			HOME: process.env.HOME ?? tmp,

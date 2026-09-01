@@ -6,7 +6,7 @@ Understanding these files is critical for maintaining workspace isolation and av
 ## Workspace-Specific Directories
 
 The app uses different home directories based on workspace:
-- **Default**: `~/.superset/`
+- **Default**: `~/.choros/`
 - **Named workspace**: `~/.choros-{workspace}/` (e.g. `~/.choros-my-feature/`)
 
 This separation prevents multiple instances from interfering with each other.
@@ -104,16 +104,16 @@ Each terminal session receives these environment variables:
 
 | Variable | Purpose |
 |----------|---------|
-| `SUPERSET_PANE_ID` | Unique identifier for the terminal pane |
-| `SUPERSET_TAB_ID` | Identifier for the containing tab |
-| `SUPERSET_WORKSPACE_ID` | Identifier for the workspace |
-| `SUPERSET_ORGANIZATION_ID` | Organization that owns the workspace; scopes CLI routing in Desktop-managed terminals |
-| `SUPERSET_WORKSPACE_NAME` | Human-readable workspace name |
-| `SUPERSET_WORKSPACE_PATH` | Filesystem path to the workspace |
-| `SUPERSET_ROOT_PATH` | Root path of the project |
-| `SUPERSET_PORT` | Port for the notification server |
-| `SUPERSET_ENV` | Environment (`development` or `production`) |
-| `SUPERSET_HOOK_VERSION` | Hook protocol version for compatibility |
+| `CHOROS_PANE_ID` | Unique identifier for the terminal pane |
+| `CHOROS_TAB_ID` | Identifier for the containing tab |
+| `CHOROS_WORKSPACE_ID` | Identifier for the workspace |
+| `CHOROS_ORGANIZATION_ID` | Organization that owns the workspace; scopes CLI routing in Desktop-managed terminals |
+| `CHOROS_WORKSPACE_NAME` | Human-readable workspace name |
+| `CHOROS_WORKSPACE_PATH` | Filesystem path to the workspace |
+| `CHOROS_ROOT_PATH` | Root path of the project |
+| `CHOROS_PORT` | Port for the notification server |
+| `CHOROS_ENV` | Environment (`development` or `production`) |
+| `CHOROS_HOOK_VERSION` | Hook protocol version for compatibility |
 
 ## Adding New External Files
 
@@ -129,6 +129,6 @@ Before adding new files outside of `~/.choros[-{workspace}]/`:
 If you suspect dev/prod cross-talk:
 
 1. Check logs for "Environment mismatch" warnings
-2. Verify `SUPERSET_ENV` and `SUPERSET_PORT` are set correctly in terminal
+2. Verify `CHOROS_ENV` and `CHOROS_PORT` are set correctly in terminal
 3. Delete stale global files: `rm -rf ~/.config/opencode/plugin/choros-notify.js`
 4. Restart both dev and prod apps to regenerate hooks

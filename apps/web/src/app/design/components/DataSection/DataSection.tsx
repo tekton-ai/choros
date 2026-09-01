@@ -100,7 +100,7 @@ export function DataSection() {
 			>
 				<Avatar>
 					<AvatarImage
-						src="https://github.com/superset-sh.png"
+						src="https://github.com/choros-sh.png"
 						alt={i18n._({
 							id: "web.design.dataSection.choros",
 							message: "Choros",

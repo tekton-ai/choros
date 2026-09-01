@@ -1,9 +1,9 @@
 ---
 description: Create a task, workspace, and start an AI agent session to work on it
-allowed-tools: mcp__superset__create_task, mcp__superset__list_members, mcp__superset__list_devices, mcp__superset__list_projects, mcp__superset__create_workspace, mcp__superset__start_agent_session, Bash(git config user.email)
+allowed-tools: mcp__choros__create_task, mcp__choros__list_members, mcp__choros__list_devices, mcp__choros__list_projects, mcp__choros__create_workspace, mcp__choros__start_agent_session, Bash(git config user.email)
 ---
 
-Create a new task in Superset, spin up a workspace, and start an AI agent session to work on it.
+Create a new task in Choros, spin up a workspace, and start an AI agent session to work on it.
 
 ## Input
 
@@ -16,16 +16,16 @@ Parse `$ARGUMENTS` for:
 ### 0. Resolve current user and environment
 
 Run these in parallel:
-- Call `mcp__superset__list_members` and match against the git user email (`git config user.email`) to get the current user's member ID
-- Call `mcp__superset__list_devices` and select the device owned by the current user
-- Call `mcp__superset__list_projects` on the resolved device and select the project matching the current git repo
+- Call `mcp__choros__list_members` and match against the git user email (`git config user.email`) to get the current user's member ID
+- Call `mcp__choros__list_devices` and select the device owned by the current user
+- Call `mcp__choros__list_projects` on the resolved device and select the project matching the current git repo
 
 ### 1. Create the task
 
 - Parse the arguments to extract the task description and optional priority
 - Generate a clear, concise task title from the description (imperative form, under 80 chars)
 - If the user provided more detail beyond a short title, include it as a markdown description on the task
-- Create the task using `mcp__superset__create_task` with:
+- Create the task using `mcp__choros__create_task` with:
   - `title`: The generated title
   - `description`: Expanded detail if provided, otherwise omit
   - `priority`: Parsed priority or `none`
@@ -42,11 +42,11 @@ Run these in parallel:
   - `docs/...` for documentation-only changes
   - `refactor/...` for code refactors with no behavior change
   - Default to `feat/...` if the type is ambiguous
-- Create the workspace using `mcp__superset__create_workspace`
+- Create the workspace using `mcp__choros__create_workspace`
 
 ### 3. Start AI agent session
 
-- Start an AI agent session using `mcp__superset__start_agent_session` with the created task ID and workspace ID
+- Start an AI agent session using `mcp__choros__start_agent_session` with the created task ID and workspace ID
 
 ## Output
 

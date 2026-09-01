@@ -13,7 +13,7 @@ Before starting, record all of the following in the result:
 5. Verify `/api/auth/get-session` inside the matched renderer and require an active organization. Follow `apps/desktop/AGENTS.md` for local-only auth repair; never print a token or credential literal.
 6. Require this worktree's local development database and host-service data root. Never use a production database, migration, production repository, copied production fixture, or another worktree's host DB.
 
-For another worktree, such as `/Users/kietho/.superset/worktrees/1c99c8eb-1b31-4f04-9ac4-61a2760c74b6/agent/workspace-switch-cache`, repeat the gate from that directory and choose its own unused CDP port. Do not reuse the renderer, API, PID, page target, or auth result from a different workspace.
+For another worktree, such as `/Users/kietho/.choros/worktrees/1c99c8eb-1b31-4f04-9ac4-61a2760c74b6/agent/workspace-switch-cache`, repeat the gate from that directory and choose its own unused CDP port. Do not reuse the renderer, API, PID, page target, or auth result from a different workspace.
 
 ## Synthetic fixture
 

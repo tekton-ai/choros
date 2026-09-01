@@ -37,16 +37,16 @@ function invoke(overrides: Record<string, unknown> = {}) {
 }
 
 beforeEach(() => {
-	previousOrgOverride = process.env.SUPERSET_ORGANIZATION_ID;
-	delete process.env.SUPERSET_ORGANIZATION_ID;
+	previousOrgOverride = process.env.CHOROS_ORGANIZATION_ID;
+	delete process.env.CHOROS_ORGANIZATION_ID;
 	activeOrganizationId = "org-a";
 	createLocalSettingsDb(home.dir);
 });
 
 afterEach(() => {
 	if (previousOrgOverride === undefined)
-		delete process.env.SUPERSET_ORGANIZATION_ID;
-	else process.env.SUPERSET_ORGANIZATION_ID = previousOrgOverride;
+		delete process.env.CHOROS_ORGANIZATION_ID;
+	else process.env.CHOROS_ORGANIZATION_ID = previousOrgOverride;
 });
 
 describe("scripts add", () => {
@@ -84,9 +84,9 @@ describe("scripts add", () => {
 		expect(readSettingsRow()).toBeUndefined();
 	});
 
-	test("honors the SUPERSET_ORGANIZATION_ID override like other commands", async () => {
+	test("honors the CHOROS_ORGANIZATION_ID override like other commands", async () => {
 		activeOrganizationId = undefined;
-		process.env.SUPERSET_ORGANIZATION_ID = "org-env";
+		process.env.CHOROS_ORGANIZATION_ID = "org-env";
 		await invoke();
 		expect(
 			readSettingsRow()?.terminalPresets?.[0]?.cliTargetOrganizationId,

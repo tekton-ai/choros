@@ -3,7 +3,7 @@
  *
  * Drives the REAL HostServiceCoordinator (real spawn lock, manifest, health
  * check, process-liveness code) in two separate OS processes racing to start
- * the same org against an ISOLATED temp $SUPERSET_HOME_DIR. Only Electron and
+ * the same org against an ISOLATED temp $CHOROS_HOME_DIR. Only Electron and
  * a couple of leaf deps are mocked; `spawn` is overridden to launch a countable
  * stand-in child + a real localhost health server + write the real manifest,
  * standing in for the (unbuilt) host-service bundle.
@@ -33,7 +33,7 @@ async function waitForFile(p: string, timeoutMs: number): Promise<boolean> {
 
 // ── Worker: one simulated app instance ─────────────────────────────────
 async function runWorker(home: string, marker: string, label: string) {
-	process.env.SUPERSET_HOME_DIR = home;
+	process.env.CHOROS_HOME_DIR = home;
 
 	const { mock } = await import("bun:test");
 	mock.module("electron", () => ({
@@ -175,7 +175,7 @@ async function main() {
 	const home = fs.mkdtempSync(path.join(os.tmpdir(), "hs-sf-verify-"));
 	const marker = `HS_SF_STANDIN_${randomBytes(4).toString("hex")}`;
 	fs.mkdirSync(path.join(home, "host", ORG), { recursive: true });
-	console.log(`isolated SUPERSET_HOME_DIR=${home}`);
+	console.log(`isolated CHOROS_HOME_DIR=${home}`);
 	console.log(`stand-in child marker=${marker}\n`);
 
 	const self = path.resolve(import.meta.dir, "verify-single-flight.ts");

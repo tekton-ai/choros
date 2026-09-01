@@ -12,13 +12,13 @@ repository or a per-machine override. They are different from
 [terminal scripts](/terminal-scripts), which are reusable launches saved in
 your Choros settings and shown in the Scripts bar.
 
-Create `.superset/config.json` in your project:
+Create `.choros/config.json` in your project:
 
 ```json
 {
-  "setup": ["bun install", "cp \"$SUPERSET_ROOT_PATH/.env\" .env"],
+  "setup": ["bun install", "cp \"$CHOROS_ROOT_PATH/.env\" .env"],
   "teardown": ["docker-compose down"],
-  "run": ["./.superset/run.sh"]
+  "run": ["./.choros/run.sh"]
 }
 ```
 
@@ -43,7 +43,7 @@ The `run` field defines commands that start your dev server or other long-runnin
 ```json
 {
   "setup": ["npm install"],
-  "run": ["./.superset/run.sh"]
+  "run": ["./.choros/run.sh"]
 }
 ```
 
@@ -51,15 +51,15 @@ The `run` field defines commands that start your dev server or other long-runnin
 
 | Variable | Description |
 |----------|-------------|
-| `SUPERSET_ROOT_PATH` | Path to root repository |
-| `SUPERSET_WORKSPACE_NAME` | Current workspace name |
-| `SUPERSET_WORKSPACE_PATH` | Path to the workspace worktree |
+| `CHOROS_ROOT_PATH` | Path to root repository |
+| `CHOROS_WORKSPACE_NAME` | Current workspace name |
+| `CHOROS_WORKSPACE_PATH` | Path to the workspace worktree |
 
 ## Examples
 
 **Node.js:**
 ```json
-{ "setup": ["bun install", "cp \"$SUPERSET_ROOT_PATH/.env\" .env"] }
+{ "setup": ["bun install", "cp \"$CHOROS_ROOT_PATH/.env\" .env"] }
 ```
 
 **Docker:**
@@ -73,9 +73,9 @@ The `run` field defines commands that start your dev server or other long-runnin
 **Full config:**
 ```json
 {
-  "setup": ["./.superset/setup.sh"],
-  "teardown": ["./.superset/teardown.sh"],
-  "run": ["./.superset/run.sh"]
+  "setup": ["./.choros/setup.sh"],
+  "teardown": ["./.choros/teardown.sh"],
+  "run": ["./.choros/run.sh"]
 }
 ```
 
@@ -84,24 +84,24 @@ The `run` field defines commands that start your dev server or other long-runnin
 Override project scripts without modifying the repo by placing a `config.json` in your home directory, mirroring the repo's absolute path:
 
 ```
-~/.superset/projects/<repo-path>/config.json
+~/.choros/projects/<repo-path>/config.json
 ```
 
-For a repo at `/Users/me/work/app`, that's `~/.superset/projects/Users/me/work/app/config.json`. The legacy location keyed by project ID (`~/.superset/projects/<project-id>/config.json`) still works as a fallback.
+For a repo at `/Users/me/work/app`, that's `~/.choros/projects/Users/me/work/app/config.json`. The legacy location keyed by project ID (`~/.choros/projects/<project-id>/config.json`) still works as a fallback.
 
 ### Priority Order
 
 For each key (`setup`, `teardown`, `run`), the highest-priority source that defines it wins:
 
-1. `~/.superset/projects/<repo-path>/config.json`: user override
-2. `<worktree>/.superset/config.json`: workspace-specific (setup and teardown only)
-3. `<repo>/.superset/config.json`: project default
+1. `~/.choros/projects/<repo-path>/config.json`: user override
+2. `<worktree>/.choros/config.json`: workspace-specific (setup and teardown only)
+3. `<repo>/.choros/config.json`: project default
 
 Levels merge per key: a key one level doesn't define falls through to the next. `run` resolves at the project level, so it skips the worktree layer.
 
 ### Script Fallback
 
-If no commands are configured for a key, Choros looks for a script instead: `.superset/<key>.sh` (`setup.sh`, `teardown.sh`, `run.sh`) in the worktree first, then the main repo. A gitignored script isn't checked out into new worktrees, so it typically exists only in the main repo.
+If no commands are configured for a key, Choros looks for a script instead: `.choros/<key>.sh` (`setup.sh`, `teardown.sh`, `run.sh`) in the worktree first, then the main repo. A gitignored script isn't checked out into new worktrees, so it typically exists only in the main repo.
 
 ### Working Directory
 
@@ -116,8 +116,8 @@ Set `cwd` to run commands somewhere other than the workspace root. Relative path
 **Custom setup script:**
 ```json
 {
-  "setup": ["~/.superset/projects/<repo-path>/setup.sh"],
-  "teardown": ["~/.superset/projects/<repo-path>/teardown.sh"]
+  "setup": ["~/.choros/projects/<repo-path>/setup.sh"],
+  "teardown": ["~/.choros/projects/<repo-path>/teardown.sh"]
 }
 ```
 
@@ -128,7 +128,7 @@ Set `cwd` to run commands somewhere other than the workspace root. Relative path
 
 ## Local Config
 
-Extend or override your team's committed scripts without modifying the repo. Create `.superset/config.local.json` alongside `config.json`. It's gitignored automatically.
+Extend or override your team's committed scripts without modifying the repo. Create `.choros/config.local.json` alongside `config.json`. It's gitignored automatically.
 
 ### Prepend and/or append
 
@@ -138,10 +138,10 @@ Add steps before or after the team's scripts:
 {
   "setup": {
     "before": ["echo 'running pre-setup'"],
-    "after": ["./.superset/my-post-setup.sh"]
+    "after": ["./.choros/my-post-setup.sh"]
   },
   "teardown": {
-    "after": ["./.superset/my-cleanup.sh"]
+    "after": ["./.choros/my-cleanup.sh"]
   }
 }
 ```
@@ -154,7 +154,7 @@ Use a plain array to replace the team's scripts completely:
 
 ```json
 {
-  "setup": ["./.superset/my-custom-setup.sh"]
+  "setup": ["./.choros/my-custom-setup.sh"]
 }
 ```
 
@@ -187,8 +187,8 @@ Deleting a workspace through the CLI, SDK, or MCP also runs teardown. Since ther
 ## Tips
 
 - Keep setup fast: it runs on every workspace creation
-- Commit `.superset/` to share with team
-- Use shell scripts for complex logic: `"setup": ["./.superset/setup.sh"]`
+- Commit `.choros/` to share with team
+- Use shell scripts for complex logic: `"setup": ["./.choros/setup.sh"]`
 - Use `config.local.json` to add personal steps without touching the team's config
-- Use user overrides (`~/.superset/projects/`) to replace scripts entirely per-project
+- Use user overrides (`~/.choros/projects/`) to replace scripts entirely per-project
 - Use `run` for dev servers instead of putting them in `setup`: run scripts are restartable and don't block workspace creation

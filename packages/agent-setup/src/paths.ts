@@ -2,33 +2,33 @@ import os from "node:os";
 import path from "node:path";
 
 /**
- * Canonical Superset home directory resolution, shared by every process that
- * provisions or consumes ~/.superset artifacts (Electron main, host-service,
- * CLI). Resolved lazily because the desktop rewrites SUPERSET_HOME_DIR into
- * process.env during boot (dev-workspace builds use ~/.superset-<workspace>),
+ * Canonical Choros home directory resolution, shared by every process that
+ * provisions or consumes ~/.choros artifacts (Electron main, host-service,
+ * CLI). Resolved lazily because the desktop rewrites CHOROS_HOME_DIR into
+ * process.env during boot (dev-workspace builds use ~/.choros-<workspace>),
  * and headless hosts may not have it set at all.
  */
-export function resolveSupersetHomeDir(): string {
+export function resolveChorosHomeDir(): string {
 	return (
-		process.env.SUPERSET_HOME_DIR?.trim() ||
-		path.join(os.homedir(), ".superset")
+		process.env.CHOROS_HOME_DIR?.trim() ||
+		path.join(os.homedir(), ".choros")
 	);
 }
 
 export function getBinDir(): string {
-	return path.join(resolveSupersetHomeDir(), "bin");
+	return path.join(resolveChorosHomeDir(), "bin");
 }
 
 export function getHooksDir(): string {
-	return path.join(resolveSupersetHomeDir(), "hooks");
+	return path.join(resolveChorosHomeDir(), "hooks");
 }
 
 export function getZshDir(): string {
-	return path.join(resolveSupersetHomeDir(), "zsh");
+	return path.join(resolveChorosHomeDir(), "zsh");
 }
 
 export function getBashDir(): string {
-	return path.join(resolveSupersetHomeDir(), "bash");
+	return path.join(resolveChorosHomeDir(), "bash");
 }
 
 export function getOpenCodeConfigDir(): string {

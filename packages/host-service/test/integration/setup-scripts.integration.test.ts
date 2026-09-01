@@ -24,8 +24,8 @@ describe("setup scripts integration", () => {
 		await disposeDaemonClient();
 		resetTerminalBaseEnvForTests();
 		__setAccountShellForTesting(undefined);
-		delete process.env.SUPERSET_PTY_DAEMON_SOCKET;
-		delete process.env.SUPERSET_HOME_DIR;
+		delete process.env.CHOROS_PTY_DAEMON_SOCKET;
+		delete process.env.CHOROS_HOME_DIR;
 
 		if (dispose) {
 			await dispose();
@@ -66,8 +66,8 @@ describe("setup scripts integration", () => {
 		};
 
 		await server.listen();
-		process.env.SUPERSET_PTY_DAEMON_SOCKET = socketPath;
-		process.env.SUPERSET_HOME_DIR = daemonRoot;
+		process.env.CHOROS_PTY_DAEMON_SOCKET = socketPath;
+		process.env.CHOROS_HOME_DIR = daemonRoot;
 		__setAccountShellForTesting("/bin/sh");
 		initTerminalBaseEnv({
 			PATH: process.env.PATH ?? "/usr/bin:/bin",
@@ -151,7 +151,7 @@ describe("setup scripts integration", () => {
 			throw new Error("Expected setup terminal to be spawned");
 
 		expect(setupTerminal.meta.cwd).toBe(workspaceRow.worktreePath);
-		expect(setupTerminal.meta.env?.SUPERSET_ROOT_PATH).toBe(
+		expect(setupTerminal.meta.env?.CHOROS_ROOT_PATH).toBe(
 			scenario.repo.repoPath,
 		);
 	}, 20_000);

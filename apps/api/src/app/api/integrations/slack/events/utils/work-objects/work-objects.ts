@@ -9,7 +9,7 @@ import type { tasks } from "@choros/db/schema";
 
 import { env } from "@/env";
 
-const SUPERSET_PRODUCT_NAME = "Choros";
+const CHOROS_PRODUCT_NAME = "Choros";
 
 type TaskWithRelations = typeof tasks.$inferSelect & {
 	status?: { id: string; name: string } | null;
@@ -61,7 +61,7 @@ export function createTaskWorkObject(task: TaskWithRelations): EntityMetadata {
 				},
 				display_id: task.slug,
 				display_type: "Task",
-				product_name: SUPERSET_PRODUCT_NAME,
+				product_name: CHOROS_PRODUCT_NAME,
 				full_size_preview: {
 					is_supported: false,
 				},
@@ -202,7 +202,7 @@ export function createTaskFlexpaneObject(
 				},
 				display_id: task.slug,
 				display_type: "Task",
-				product_name: SUPERSET_PRODUCT_NAME,
+				product_name: CHOROS_PRODUCT_NAME,
 				full_size_preview: {
 					is_supported: false,
 				},

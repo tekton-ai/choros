@@ -115,7 +115,7 @@ Phase 2 adds `workspaceCreation.createFromPr` with full PR checkout semantics.
 
 ## 13. Init/setup flow
 
-**Streamlined.** After worktree + cloud row creation, if `runSetupScript` is true, the host-service runs the setup script (`.superset/setup.sh` or equivalent) inside the worktree before returning. No background job manager, no progress events, no separate init system.
+**Streamlined.** After worktree + cloud row creation, if `runSetupScript` is true, the host-service runs the setup script (`.choros/setup.sh` or equivalent) inside the worktree before returning. No background job manager, no progress events, no separate init system.
 
 Create blocks until setup is done. The workspace is fully ready when the renderer navigates to it.
 

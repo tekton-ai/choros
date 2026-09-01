@@ -24,10 +24,10 @@ export async function resolveAuth(
 ): Promise<ResolvedAuth> {
 	let config = readConfig();
 
-	// An explicit --api-key wins; otherwise SUPERSET_API_KEY env acts as an
+	// An explicit --api-key wins; otherwise CHOROS_API_KEY env acts as an
 	// override for this invocation (headless/CI). Both beat stored config/OAuth.
 	const overrideKey =
-		apiKeyOption?.trim() || process.env.SUPERSET_API_KEY?.trim();
+		apiKeyOption?.trim() || process.env.CHOROS_API_KEY?.trim();
 	let bearer: string | undefined;
 	let authSource: AuthSource;
 
@@ -65,7 +65,7 @@ export async function resolveAuth(
 	} else {
 		throw new CLIError(
 			"Not logged in",
-			"Run: choros auth login (or set SUPERSET_API_KEY)",
+			"Run: choros auth login (or set CHOROS_API_KEY)",
 		);
 	}
 

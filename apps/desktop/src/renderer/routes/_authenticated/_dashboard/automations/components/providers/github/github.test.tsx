@@ -34,8 +34,8 @@ afterAll(async () => {
  */
 
 const REPOS = [
-	{ id: "10", label: "choros", hint: "superset-sh" },
-	{ id: "20", label: "domains", hint: "superset-sh" },
+	{ id: "10", label: "choros", hint: "choros-sh" },
+	{ id: "20", label: "domains", hint: "choros-sh" },
 ];
 
 /**

@@ -9,7 +9,7 @@ export interface InstallTab {
 export const DEFAULT_INSTALL_TAB: InstallTab = {
 	id: "brew",
 	label: "brew",
-	command: "brew install superset-sh/tap/choros",
+	command: "brew install choros-sh/tap/choros",
 	shell: true,
 };
 

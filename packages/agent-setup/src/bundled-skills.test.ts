@@ -6,7 +6,7 @@ import { getBundledPluginDir } from "./config";
 /**
  * Keeps every bundled plugin skill within the Agent Skills spec
  * (https://agentskills.io/specification) and Anthropic's authoring guidance,
- * since these ship to every agent a user runs through Superset.
+ * since these ship to every agent a user runs through Choros.
  */
 
 const SKILLS_DIR = path.join(getBundledPluginDir(), "skills");

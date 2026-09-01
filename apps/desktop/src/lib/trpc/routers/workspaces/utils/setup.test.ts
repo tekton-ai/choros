@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import { existsSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { homedir, tmpdir } from "node:os";
 import { join } from "node:path";
-import { PROJECTS_DIR_NAME, SUPERSET_DIR_NAME } from "shared/constants";
+import { PROJECTS_DIR_NAME, CHOROS_DIR_NAME } from "shared/constants";
 import { loadSetupConfig, mergeConfigs } from "./setup";
 
 const TEST_DIR = join(tmpdir(), `choros-test-setup-${process.pid}`);
@@ -11,7 +11,7 @@ const WORKTREE = join(TEST_DIR, "worktree");
 const PROJECT_ID = "test-project-id";
 const USER_CONFIG_DIR = join(
 	homedir(),
-	SUPERSET_DIR_NAME,
+	CHOROS_DIR_NAME,
 	PROJECTS_DIR_NAME,
 	PROJECT_ID,
 );
@@ -72,7 +72,7 @@ describe("loadSetupConfig", () => {
 	});
 
 	test("prefers worktree config over main repo config", () => {
-		const mainConfig = { setup: ["./.superset/setup.sh"] };
+		const mainConfig = { setup: ["./.choros/setup.sh"] };
 		const worktreeConfig = { setup: ["scripts/setup-worktree.sh"] };
 
 		writeFileSync(
@@ -97,7 +97,7 @@ describe("loadSetupConfig", () => {
 		writeFileSync(
 			join(MAIN_REPO, ".choros", "config.json"),
 			JSON.stringify({
-				setup: ["./.superset/setup.sh"],
+				setup: ["./.choros/setup.sh"],
 				run: ["bun dev"],
 			}),
 		);

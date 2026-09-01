@@ -31,23 +31,23 @@ When `V2_CLOUD` is disabled:
 
 Today the desktop sidebar is driven by local Electron IPC and local SQLite:
 
-- [layout.tsx](/Users/avipeltz/.superset/worktrees/superset/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/superset-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/routes/_authenticated/_dashboard/layout.tsx#L24) always renders `WorkspaceSidebar`
-- [WorkspaceSidebar.tsx](/Users/avipeltz/.superset/worktrees/superset/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/superset-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/screens/main/components/WorkspaceSidebar/WorkspaceSidebar.tsx#L18) pulls grouped sidebar data from `useWorkspaceShortcuts()`
-- [useWorkspaceShortcuts.ts](/Users/avipeltz/.superset/worktrees/superset/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/superset-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/hooks/useWorkspaceShortcuts.ts#L13) reads `electronTrpc.workspaces.getAllGrouped`
-- [workspace/page.tsx](/Users/avipeltz/.superset/worktrees/superset/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/superset-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/routes/_authenticated/_dashboard/workspace/page.tsx#L18) redirects based on old local workspace data
+- [layout.tsx](/Users/avipeltz/.choros/worktrees/choros/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/choros-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/routes/_authenticated/_dashboard/layout.tsx#L24) always renders `WorkspaceSidebar`
+- [WorkspaceSidebar.tsx](/Users/avipeltz/.choros/worktrees/choros/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/choros-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/screens/main/components/WorkspaceSidebar/WorkspaceSidebar.tsx#L18) pulls grouped sidebar data from `useWorkspaceShortcuts()`
+- [useWorkspaceShortcuts.ts](/Users/avipeltz/.choros/worktrees/choros/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/choros-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/hooks/useWorkspaceShortcuts.ts#L13) reads `electronTrpc.workspaces.getAllGrouped`
+- [workspace/page.tsx](/Users/avipeltz/.choros/worktrees/choros/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/choros-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/routes/_authenticated/_dashboard/workspace/page.tsx#L18) redirects based on old local workspace data
 
 Electric collections already exist in the authenticated desktop shell:
 
-- [collections.ts](/Users/avipeltz/.superset/worktrees/superset/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/superset-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/routes/_authenticated/providers/CollectionsProvider/collections.ts#L49)
+- [collections.ts](/Users/avipeltz/.choros/worktrees/choros/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/choros-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/routes/_authenticated/providers/CollectionsProvider/collections.ts#L49)
 
 Cloud mutations already have a clean renderer-to-API path:
 
-- [api-trpc-client.ts](/Users/avipeltz/.superset/worktrees/superset/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/superset-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/lib/api-trpc-client.ts#L12)
-- [root.ts](/Users/avipeltz/.superset/worktrees/superset/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/superset-sh/issue/super-362/v2-workspa/packages/trpc/src/root.ts#L18)
+- [api-trpc-client.ts](/Users/avipeltz/.choros/worktrees/choros/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/choros-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/lib/api-trpc-client.ts#L12)
+- [root.ts](/Users/avipeltz/.choros/worktrees/choros/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/choros-sh/issue/super-362/v2-workspa/packages/trpc/src/root.ts#L18)
 
 The `V2_CLOUD` flag constant already exists:
 
-- [constants.ts](/Users/avipeltz/.superset/worktrees/superset/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/superset-sh/issue/super-362/v2-workspa/packages/shared/src/constants.ts#L51)
+- [constants.ts](/Users/avipeltz/.choros/worktrees/choros/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/choros-sh/issue/super-362/v2-workspa/packages/shared/src/constants.ts#L51)
 
 
 ## Key Constraints
@@ -74,7 +74,7 @@ The `V2_CLOUD` flag constant already exists:
 2. What should the footer action do while `V2_CLOUD` is on?
    The current footer still opens/imports local repositories and creates old local workspaces.
 3. Should `PortsList` remain visible in V2 mode?
-   It currently depends on old local workspace IDs via [usePortsData.ts](/Users/avipeltz/.superset/worktrees/superset/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/superset-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/screens/main/components/WorkspaceSidebar/PortsList/hooks/usePortsData.ts#L13).
+   It currently depends on old local workspace IDs via [usePortsData.ts](/Users/avipeltz/.choros/worktrees/choros/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/choros-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/screens/main/components/WorkspaceSidebar/PortsList/hooks/usePortsData.ts#L13).
 4. Are all V2 schema tables already defined elsewhere, or must this ticket add the entire `v2_*` table family?
 
 
@@ -133,16 +133,16 @@ Reason:
 
 Relevant existing files:
 
-- [layout.tsx](/Users/avipeltz/.superset/worktrees/superset/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/superset-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/routes/_authenticated/_dashboard/layout.tsx)
-- [WorkspaceSidebar.tsx](/Users/avipeltz/.superset/worktrees/superset/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/superset-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/screens/main/components/WorkspaceSidebar/WorkspaceSidebar.tsx)
-- [WorkspaceSidebarFooter.tsx](/Users/avipeltz/.superset/worktrees/superset/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/superset-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/screens/main/components/WorkspaceSidebar/WorkspaceSidebarFooter.tsx)
-- [WorkspaceListItem.tsx](/Users/avipeltz/.superset/worktrees/superset/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/superset-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/screens/main/components/WorkspaceSidebar/WorkspaceListItem/WorkspaceListItem.tsx)
-- [useWorkspaceShortcuts.ts](/Users/avipeltz/.superset/worktrees/superset/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/superset-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/hooks/useWorkspaceShortcuts.ts)
-- [workspace/page.tsx](/Users/avipeltz/.superset/worktrees/superset/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/superset-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/routes/_authenticated/_dashboard/workspace/page.tsx)
-- [collections.ts](/Users/avipeltz/.superset/worktrees/superset/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/superset-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/routes/_authenticated/providers/CollectionsProvider/collections.ts)
-- [schema.ts](/Users/avipeltz/.superset/worktrees/superset/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/superset-sh/issue/super-362/v2-workspa/packages/db/src/schema/schema.ts)
-- [project.ts](/Users/avipeltz/.superset/worktrees/superset/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/superset-sh/issue/super-362/v2-workspa/packages/trpc/src/router/project/project.ts)
-- [workspace.ts](/Users/avipeltz/.superset/worktrees/superset/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/superset-sh/issue/super-362/v2-workspa/packages/trpc/src/router/workspace/workspace.ts)
+- [layout.tsx](/Users/avipeltz/.choros/worktrees/choros/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/choros-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/routes/_authenticated/_dashboard/layout.tsx)
+- [WorkspaceSidebar.tsx](/Users/avipeltz/.choros/worktrees/choros/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/choros-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/screens/main/components/WorkspaceSidebar/WorkspaceSidebar.tsx)
+- [WorkspaceSidebarFooter.tsx](/Users/avipeltz/.choros/worktrees/choros/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/choros-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/screens/main/components/WorkspaceSidebar/WorkspaceSidebarFooter.tsx)
+- [WorkspaceListItem.tsx](/Users/avipeltz/.choros/worktrees/choros/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/choros-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/screens/main/components/WorkspaceSidebar/WorkspaceListItem/WorkspaceListItem.tsx)
+- [useWorkspaceShortcuts.ts](/Users/avipeltz/.choros/worktrees/choros/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/choros-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/hooks/useWorkspaceShortcuts.ts)
+- [workspace/page.tsx](/Users/avipeltz/.choros/worktrees/choros/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/choros-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/routes/_authenticated/_dashboard/workspace/page.tsx)
+- [collections.ts](/Users/avipeltz/.choros/worktrees/choros/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/choros-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/routes/_authenticated/providers/CollectionsProvider/collections.ts)
+- [schema.ts](/Users/avipeltz/.choros/worktrees/choros/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/choros-sh/issue/super-362/v2-workspa/packages/db/src/schema/schema.ts)
+- [project.ts](/Users/avipeltz/.choros/worktrees/choros/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/choros-sh/issue/super-362/v2-workspa/packages/trpc/src/router/project/project.ts)
+- [workspace.ts](/Users/avipeltz/.choros/worktrees/choros/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/choros-sh/issue/super-362/v2-workspa/packages/trpc/src/router/workspace/workspace.ts)
 
 New files expected by this plan:
 
@@ -219,7 +219,7 @@ Checklist:
 - [ ] Create `packages/trpc/src/router/projects-v2/projects-v2.ts`
 - [ ] Create `packages/trpc/src/router/workspaces-v2/workspaces-v2.ts`
 - [ ] Add router barrels as needed
-- [ ] Mount routers in [root.ts](/Users/avipeltz/.superset/worktrees/superset/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/superset-sh/issue/super-362/v2-workspa/packages/trpc/src/root.ts#L18)
+- [ ] Mount routers in [root.ts](/Users/avipeltz/.choros/worktrees/choros/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/choros-sh/issue/super-362/v2-workspa/packages/trpc/src/root.ts#L18)
 - [ ] `projectsV2.create`
   - [ ] validate `organizationId`, `name`, `slug`, optional `githubRepositoryId`
   - [ ] verify org membership
@@ -257,7 +257,7 @@ Scope:
 
 Checklist:
 
-- [ ] Update `OrgCollections` in [collections.ts](/Users/avipeltz/.superset/worktrees/superset/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/superset-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/routes/_authenticated/providers/CollectionsProvider/collections.ts#L49)
+- [ ] Update `OrgCollections` in [collections.ts](/Users/avipeltz/.choros/worktrees/choros/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/choros-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/routes/_authenticated/providers/CollectionsProvider/collections.ts#L49)
 - [ ] Add `v2Projects`
 - [ ] Add `v2Workspaces`
 - [ ] Add `v2Devices`
@@ -296,9 +296,9 @@ Checklist:
   - [ ] either a small `V2WorkspaceSidebar/local-meta/` module
   - [ ] or a shared renderer helper under `renderer/lib/`
 - [ ] Add storage keys:
-  - [ ] `superset:project-local-meta`
-  - [ ] `superset:workspace-local-meta`
-  - [ ] `superset:section-local-meta`
+  - [ ] `choros:project-local-meta`
+  - [ ] `choros:workspace-local-meta`
+  - [ ] `choros:section-local-meta`
 - [ ] Define types for each local meta record
 - [ ] Implement read/parse with corrupted-data fallback
 - [ ] Implement write/update helpers
@@ -409,7 +409,7 @@ Checklist:
   - [ ] active/selected states
   - [ ] context menu
   - [ ] keyboard shortcut badges if current sidebar shows them
-- [ ] Reuse shared primitives from `@superset/ui` where practical
+- [ ] Reuse shared primitives from `@choros/ui` where practical
 
 Acceptance:
 
@@ -486,7 +486,7 @@ Scope:
 
 Checklist:
 
-- [ ] In [layout.tsx](/Users/avipeltz/.superset/worktrees/superset/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/superset-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/routes/_authenticated/_dashboard/layout.tsx#L24), read `useFeatureFlagEnabled(FEATURE_FLAGS.V2_CLOUD)`
+- [ ] In [layout.tsx](/Users/avipeltz/.choros/worktrees/choros/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/choros-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/routes/_authenticated/_dashboard/layout.tsx#L24), read `useFeatureFlagEnabled(FEATURE_FLAGS.V2_CLOUD)`
 - [ ] When flag is on:
   - [ ] render `V2WorkspaceSidebar`
   - [ ] wire `NEW_WORKSPACE` hotkey to the V2 stub modal
@@ -511,7 +511,7 @@ Scope:
 
 Checklist:
 
-- [ ] Update [workspace/page.tsx](/Users/avipeltz/.superset/worktrees/superset/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/superset-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/routes/_authenticated/_dashboard/workspace/page.tsx#L18) so V2 mode does not redirect based on old local grouped workspaces
+- [ ] Update [workspace/page.tsx](/Users/avipeltz/.choros/worktrees/choros/can-you-review-this-linear-ticket-fully-and-make-a/linear.app/choros-sh/issue/super-362/v2-workspa/apps/desktop/src/renderer/routes/_authenticated/_dashboard/workspace/page.tsx#L18) so V2 mode does not redirect based on old local grouped workspaces
 - [ ] Add a V2-compatible empty-state redirect or placeholder route behavior
 - [ ] Decide whether V2 row click should:
   - [ ] navigate nowhere

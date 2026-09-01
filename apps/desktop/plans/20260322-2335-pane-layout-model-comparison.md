@@ -6,7 +6,7 @@ Compare the data model and API shape of:
 
 1. `react-mosaic`
 2. `FlexLayout`
-3. Our proposed Superset pane-layout implementation
+3. Our proposed Choros pane-layout implementation
 
 This doc is intentionally focused on the core model and API, not styling.
 
@@ -90,7 +90,7 @@ There is no first-class concept of:
 - Paths and split geometry are well-defined
 - Tabs are integrated into the tree rather than bolted on
 
-### Limits For Superset
+### Limits For Choros
 
 - No multi-root session model
 - Path-based identity is not enough for our cross-root drag requirement
@@ -170,7 +170,7 @@ This is much closer to a full workbench model than Mosaic.
 - Explicit support for multiple windows/popouts
 - Explicit docking targets and richer drag/drop semantics
 
-### Limits For Superset
+### Limits For Choros
 
 - The model is coupled to FlexLayout-specific concepts:
   - borders
@@ -392,4 +392,4 @@ Our implementation should combine those lessons with our own product requirement
 - renderer-owned transient drag state with core-owned drop semantics
 - platform-agnostic core plus React renderer
 
-That is the model I would treat as “correct” for Superset, even where it diverges from both reference libraries.
+That is the model I would treat as “correct” for Choros, even where it diverges from both reference libraries.

@@ -24,4 +24,4 @@ export interface AutoUpdateStatusEvent {
 	progress?: AutoUpdateProgress;
 }
 
-export const RELEASES_URL = "https://github.com/superset-sh/choros/releases";
+export const RELEASES_URL = "https://github.com/choros-sh/choros/releases";

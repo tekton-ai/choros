@@ -13,10 +13,10 @@ import {
 	type ManagedTomlBlockSpec,
 	removeManagedTomlBlock,
 } from "./managed-toml-block";
-import { resolveSupersetHomeDir } from "./paths";
+import { resolveChorosHomeDir } from "./paths";
 
 /**
- * Materializes the MCP servers of installed Superset plugins into agent
+ * Materializes the MCP servers of installed Choros plugins into agent
  * configs, and reaps them on uninstall. MVP targets: Claude Code
  * (`~/.claude.json`, the state file where `mcpServers` lives — see
  * provider-profiles.ts) and Codex (`~/.codex/config.toml`).
@@ -25,7 +25,7 @@ import { resolveSupersetHomeDir } from "./paths";
  * fingerprint (unlike hooks, recognized by their notify-script path):
  *
  * - Claude's `mcpServers` is a name→object map inside a user-owned file, so a
- *   sidecar ledger (`~/.superset/plugins/mcp-ledger.json`) records which keys
+ *   sidecar ledger (`~/.choros/plugins/mcp-ledger.json`) records which keys
  *   we wrote and a hash of each value. Reap removes only keys whose current
  *   value still matches what we wrote; a user-edited entry transfers to the
  *   user. A pre-existing key we never wrote is never touched.
@@ -41,8 +41,8 @@ import { resolveSupersetHomeDir } from "./paths";
 export interface SyncManagedMcpServersOptions {
 	/** Override for tests. */
 	homeDir?: string;
-	/** Override for tests; production resolves ~/.superset. */
-	supersetHomeDir?: string;
+	/** Override for tests; production resolves ~/.choros. */
+	chorosHomeDir?: string;
 }
 
 interface McpLedger {
@@ -51,12 +51,12 @@ interface McpLedger {
 	files: Record<string, Record<string, string>>;
 }
 
-function getLedgerPath(supersetHomeDir: string): string {
-	return path.join(supersetHomeDir, "plugins", "mcp-ledger.json");
+function getLedgerPath(chorosHomeDir: string): string {
+	return path.join(chorosHomeDir, "plugins", "mcp-ledger.json");
 }
 
-function readLedger(supersetHomeDir: string): McpLedger {
-	const ledgerPath = getLedgerPath(supersetHomeDir);
+function readLedger(chorosHomeDir: string): McpLedger {
+	const ledgerPath = getLedgerPath(chorosHomeDir);
 	if (!fs.existsSync(ledgerPath)) return { version: 1, files: {} };
 	try {
 		const parsed = JSON.parse(fs.readFileSync(ledgerPath, "utf-8"));
@@ -75,8 +75,8 @@ function readLedger(supersetHomeDir: string): McpLedger {
 	return { version: 1, files: {} };
 }
 
-function writeLedger(supersetHomeDir: string, ledger: McpLedger): void {
-	const ledgerPath = getLedgerPath(supersetHomeDir);
+function writeLedger(chorosHomeDir: string, ledger: McpLedger): void {
+	const ledgerPath = getLedgerPath(chorosHomeDir);
 	fs.mkdirSync(path.dirname(ledgerPath), { recursive: true });
 	writeFileIfChanged(ledgerPath, JSON.stringify(ledger, null, 2), 0o600);
 }
@@ -253,8 +253,8 @@ function syncClaudeMcpServers(
 	console.log("[agent-setup] Updated Claude mcpServers");
 }
 
-const CODEX_MARKER_START = "# >>> superset managed mcp servers >>>";
-const CODEX_MARKER_END = "# <<< superset managed mcp servers <<<";
+const CODEX_MARKER_START = "# >>> choros managed mcp servers >>>";
+const CODEX_MARKER_END = "# <<< choros managed mcp servers <<<";
 
 function tomlString(value: string): string {
 	return `"${value.replace(/\\/g, "\\\\").replace(/"/g, '\\"')}"`;
@@ -313,8 +313,8 @@ function codexMcpSpec(
 			if (entries.length === 0) return "";
 			return [
 				CODEX_MARKER_START,
-				"# Managed by Superset — do not edit inside this block. Entries",
-				"# converge on the plugins installed in the Superset desktop app.",
+				"# Managed by Choros — do not edit inside this block. Entries",
+				"# converge on the plugins installed in the Choros desktop app.",
 				...entries.map(([name, config]) => codexServerTable(name, config)),
 				CODEX_MARKER_END,
 			].join("\n");
@@ -323,7 +323,7 @@ function codexMcpSpec(
 }
 
 /**
- * Server names the user configured in agent configs *outside* Superset:
+ * Server names the user configured in agent configs *outside* Choros:
  * `mcpServers` keys in ~/.claude.json the ledger doesn't track, plus
  * `[mcp_servers.<name>]` tables in Codex's config.toml outside our managed
  * block. Read-only — lets the catalog mark such plugins "already set up"
@@ -333,8 +333,8 @@ export function readExternallyConfiguredMcpServers(
 	options: SyncManagedMcpServersOptions = {},
 ): ExternalMcpServer[] {
 	const homeDir = options.homeDir ?? os.homedir();
-	const supersetHomeDir = options.supersetHomeDir ?? resolveSupersetHomeDir();
-	const ledger = readLedger(supersetHomeDir);
+	const chorosHomeDir = options.chorosHomeDir ?? resolveChorosHomeDir();
+	const ledger = readLedger(chorosHomeDir);
 	const byName = new Map<string, ExternalMcpServer>();
 
 	const record = (name: string, config: unknown, source: string) => {
@@ -475,7 +475,7 @@ export function syncManagedMcpServers(
 	options: SyncManagedMcpServersOptions = {},
 ): void {
 	const homeDir = options.homeDir ?? os.homedir();
-	const supersetHomeDir = options.supersetHomeDir ?? resolveSupersetHomeDir();
+	const chorosHomeDir = options.chorosHomeDir ?? resolveChorosHomeDir();
 	const external = readExternallyConfiguredMcpServers(options);
 
 	const desiredForScope = (sourcePrefix: string) => {
@@ -490,9 +490,9 @@ export function syncManagedMcpServers(
 		);
 	};
 
-	const ledger = readLedger(supersetHomeDir);
+	const ledger = readLedger(chorosHomeDir);
 	syncClaudeMcpServers(desiredForScope("Claude Code"), homeDir, ledger);
-	writeLedger(supersetHomeDir, ledger);
+	writeLedger(chorosHomeDir, ledger);
 
 	const codexDesired = desiredForScope("Codex");
 	const spec = codexMcpSpec(codexDesired, homeDir);

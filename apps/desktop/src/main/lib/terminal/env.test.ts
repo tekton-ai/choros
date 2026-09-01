@@ -467,15 +467,15 @@ describe("env", () => {
 		describe("includes SUPERSET_* prefix vars", () => {
 			it("should include SUPERSET_* vars (our metadata)", () => {
 				const env = {
-					SUPERSET_PANE_ID: "pane-1",
-					SUPERSET_TAB_ID: "tab-1",
-					SUPERSET_WORKSPACE_ID: "ws-1",
+					CHOROS_PANE_ID: "pane-1",
+					CHOROS_TAB_ID: "tab-1",
+					CHOROS_WORKSPACE_ID: "ws-1",
 					PATH: "/usr/bin",
 				};
 				const result = buildSafeEnv(env);
-				expect(result.SUPERSET_PANE_ID).toBe("pane-1");
-				expect(result.SUPERSET_TAB_ID).toBe("tab-1");
-				expect(result.SUPERSET_WORKSPACE_ID).toBe("ws-1");
+				expect(result.CHOROS_PANE_ID).toBe("pane-1");
+				expect(result.CHOROS_TAB_ID).toBe("tab-1");
+				expect(result.CHOROS_WORKSPACE_ID).toBe("ws-1");
 			});
 		});
 
@@ -539,12 +539,12 @@ describe("env", () => {
 			it("should include Choros_* prefix vars case-insensitively on Windows", () => {
 				const env = {
 					Choros_Pane_Id: "pane-1",
-					SUPERSET_TAB_ID: "tab-1",
+					CHOROS_TAB_ID: "tab-1",
 					PATH: "/usr/bin",
 				};
 				const result = buildSafeEnv(env, { platform: "win32" });
 				expect(result.Choros_Pane_Id).toBe("pane-1");
-				expect(result.SUPERSET_TAB_ID).toBe("tab-1");
+				expect(result.CHOROS_TAB_ID).toBe("tab-1");
 			});
 
 			it("should preserve original key casing in output", () => {
@@ -592,7 +592,7 @@ describe("env", () => {
 			"DATABASE_URL",
 			"CLERK_SECRET_KEY",
 			"SSL_CERT_FILE",
-			"SUPERSET_HOME_DIR",
+			"CHOROS_HOME_DIR",
 		];
 
 		beforeEach(() => {
@@ -671,9 +671,9 @@ describe("env", () => {
 			it("should set Choros-specific env vars", () => {
 				const result = buildTerminalEnv(baseParams);
 
-				expect(result.SUPERSET_PANE_ID).toBe("pane-1");
-				expect(result.SUPERSET_TAB_ID).toBe("tab-1");
-				expect(result.SUPERSET_WORKSPACE_ID).toBe("ws-1");
+				expect(result.CHOROS_PANE_ID).toBe("pane-1");
+				expect(result.CHOROS_TAB_ID).toBe("tab-1");
+				expect(result.CHOROS_WORKSPACE_ID).toBe("ws-1");
 			});
 
 			it("should handle optional workspace params", () => {
@@ -684,17 +684,17 @@ describe("env", () => {
 					rootPath: "/root/path",
 				});
 
-				expect(result.SUPERSET_WORKSPACE_NAME).toBe("my-workspace");
-				expect(result.SUPERSET_WORKSPACE_PATH).toBe("/path/to/workspace");
-				expect(result.SUPERSET_ROOT_PATH).toBe("/root/path");
+				expect(result.CHOROS_WORKSPACE_NAME).toBe("my-workspace");
+				expect(result.CHOROS_WORKSPACE_PATH).toBe("/path/to/workspace");
+				expect(result.CHOROS_ROOT_PATH).toBe("/root/path");
 			});
 
 			it("should default optional params to empty string", () => {
 				const result = buildTerminalEnv(baseParams);
 
-				expect(result.SUPERSET_WORKSPACE_NAME).toBe("");
-				expect(result.SUPERSET_WORKSPACE_PATH).toBe("");
-				expect(result.SUPERSET_ROOT_PATH).toBe("");
+				expect(result.CHOROS_WORKSPACE_NAME).toBe("");
+				expect(result.CHOROS_WORKSPACE_PATH).toBe("");
+				expect(result.CHOROS_ROOT_PATH).toBe("");
 			});
 
 			it("should set LANG to a UTF-8 locale", () => {
@@ -702,29 +702,29 @@ describe("env", () => {
 				expect(result.LANG).toContain("UTF-8");
 			});
 
-			it("should include SUPERSET_PORT", () => {
+			it("should include CHOROS_PORT", () => {
 				const result = buildTerminalEnv(baseParams);
-				expect(result.SUPERSET_PORT).toBeDefined();
-				expect(typeof result.SUPERSET_PORT).toBe("string");
+				expect(result.CHOROS_PORT).toBeDefined();
+				expect(typeof result.CHOROS_PORT).toBe("string");
 			});
 
-			it("should preserve SUPERSET_HOME_DIR for app-launched hooks", () => {
-				process.env.SUPERSET_HOME_DIR = "/tmp/choros-home";
+			it("should preserve CHOROS_HOME_DIR for app-launched hooks", () => {
+				process.env.CHOROS_HOME_DIR = "/tmp/choros-home";
 				const result = buildTerminalEnv(baseParams);
-				expect(result.SUPERSET_HOME_DIR).toBe("/tmp/choros-home");
+				expect(result.CHOROS_HOME_DIR).toBe("/tmp/choros-home");
 			});
 		});
 
-		it("should include SUPERSET_ENV for dev/prod separation", () => {
+		it("should include CHOROS_ENV for dev/prod separation", () => {
 			const result = buildTerminalEnv(baseParams);
-			expect(result.SUPERSET_ENV).toBeDefined();
-			expect(["development", "production"]).toContain(result.SUPERSET_ENV);
+			expect(result.CHOROS_ENV).toBeDefined();
+			expect(["development", "production"]).toContain(result.CHOROS_ENV);
 		});
 
-		it("should include SUPERSET_HOOK_VERSION for protocol versioning", () => {
+		it("should include CHOROS_HOOK_VERSION for protocol versioning", () => {
 			const result = buildTerminalEnv(baseParams);
-			expect(result.SUPERSET_HOOK_VERSION).toBeDefined();
-			expect(result.SUPERSET_HOOK_VERSION).toBe("2");
+			expect(result.CHOROS_HOOK_VERSION).toBeDefined();
+			expect(result.CHOROS_HOOK_VERSION).toBe("2");
 		});
 
 		describe("SSL_CERT_FILE fallback on macOS", () => {

@@ -19,10 +19,10 @@ import Choros from '@choros_sh/sdk';
 
 const app = new Hono();
 const client = new Choros();
-// reads SUPERSET_API_KEY + SUPERSET_ORGANIZATION_ID from env
+// reads CHOROS_API_KEY + CHOROS_ORGANIZATION_ID from env
 
-const TARGET_HOST_ID = process.env.SUPERSET_TARGET_HOST_ID!;  // see hosts.list()
-const PROJECT_ID = process.env.SUPERSET_PROJECT_ID!;          // see projects.list()
+const TARGET_HOST_ID = process.env.CHOROS_TARGET_HOST_ID!;  // see hosts.list()
+const PROJECT_ID = process.env.CHOROS_PROJECT_ID!;          // see projects.list()
 
 app.post('/webhooks/sentry', async (c) => {
   const event = await c.req.json();
@@ -95,8 +95,8 @@ Pick up every urgent task in the queue and spawn an agent on each one in paralle
 import Choros from '@choros_sh/sdk';
 
 const client = new Choros();
-const HOST_ID = process.env.SUPERSET_HOST_ID!;
-const PROJECT_ID = process.env.SUPERSET_PROJECT_ID!; // see projects.list()
+const HOST_ID = process.env.CHOROS_HOST_ID!;
+const PROJECT_ID = process.env.CHOROS_PROJECT_ID!; // see projects.list()
 
 const p0s = await client.tasks.list({ priority: 'urgent', limit: 50 });
 
@@ -139,7 +139,7 @@ Internal API rename, dependency bump, lint rule rollout. Anything that has to la
 import Choros from '@choros_sh/sdk';
 
 const client = new Choros();
-const HOST_ID = process.env.SUPERSET_HOST_ID!;
+const HOST_ID = process.env.CHOROS_HOST_ID!;
 
 const projects = await client.projects.list({ hostId: HOST_ID });
 

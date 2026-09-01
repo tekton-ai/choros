@@ -6,7 +6,7 @@ import {
 	getShellEnv,
 } from "@choros/agent-setup/shell-wrappers";
 import { buildSafeEnv, sanitizeEnv } from "main/lib/terminal/env";
-import { SUPERSET_DIR_NAME } from "shared/constants";
+import { CHOROS_DIR_NAME } from "shared/constants";
 import { removeWorktree } from "./git";
 import { loadSetupConfig } from "./setup";
 
@@ -46,7 +46,7 @@ export async function runTeardown({
 			process.env.SHELL ||
 			(process.platform === "darwin" ? "/bin/zsh" : "/bin/bash");
 		const ChorosHomeDir =
-			process.env.SUPERSET_HOME_DIR || join(homedir(), SUPERSET_DIR_NAME);
+			process.env.CHOROS_HOME_DIR || join(homedir(), CHOROS_DIR_NAME);
 		const shellWrapperPaths = {
 			BIN_DIR: join(ChorosHomeDir, "bin"),
 			ZSH_DIR: join(ChorosHomeDir, "zsh"),
@@ -65,8 +65,8 @@ export async function runTeardown({
 				env: {
 					...baseEnv,
 					...wrapperEnv,
-					SUPERSET_WORKSPACE_NAME: workspaceName,
-					SUPERSET_ROOT_PATH: mainRepoPath,
+					CHOROS_WORKSPACE_NAME: workspaceName,
+					CHOROS_ROOT_PATH: mainRepoPath,
 				},
 			});
 

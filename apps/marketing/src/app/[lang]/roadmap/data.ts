@@ -390,7 +390,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
 		category: "Desktop",
 		status: "shipped",
 		shippedDate: "Aug 2026",
-		pr: "https://github.com/superset-sh/choros/pull/5731",
+		pr: "https://github.com/choros-sh/choros/pull/5731",
 	},
 	{
 		id: "workspace-pinning-bulk-actions",

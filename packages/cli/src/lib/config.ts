@@ -23,45 +23,45 @@ export type ChorosConfig = {
 	organizationId?: string;
 };
 
-export const SUPERSET_HOME_DIR =
-	process.env.SUPERSET_HOME_DIR ?? join(homedir(), ".choros");
-export const SUPERSET_CONFIG_PATH = join(SUPERSET_HOME_DIR, "config.json");
+export const CHOROS_HOME_DIR =
+	process.env.CHOROS_HOME_DIR ?? join(homedir(), ".choros");
+export const CHOROS_CONFIG_PATH = join(CHOROS_HOME_DIR, "config.json");
 
 function ensureDir() {
-	if (!existsSync(SUPERSET_HOME_DIR)) {
-		mkdirSync(SUPERSET_HOME_DIR, { recursive: true, mode: 0o700 });
+	if (!existsSync(CHOROS_HOME_DIR)) {
+		mkdirSync(CHOROS_HOME_DIR, { recursive: true, mode: 0o700 });
 	}
 	try {
-		const stat = statSync(SUPERSET_HOME_DIR);
-		if ((stat.mode & 0o077) !== 0) chmodSync(SUPERSET_HOME_DIR, 0o700);
+		const stat = statSync(CHOROS_HOME_DIR);
+		if ((stat.mode & 0o077) !== 0) chmodSync(CHOROS_HOME_DIR, 0o700);
 	} catch {}
 }
 
 export function readConfig(): ChorosConfig {
-	if (!existsSync(SUPERSET_CONFIG_PATH)) return {};
+	if (!existsSync(CHOROS_CONFIG_PATH)) return {};
 	try {
-		const stat = statSync(SUPERSET_CONFIG_PATH);
-		if ((stat.mode & 0o077) !== 0) chmodSync(SUPERSET_CONFIG_PATH, 0o600);
+		const stat = statSync(CHOROS_CONFIG_PATH);
+		if ((stat.mode & 0o077) !== 0) chmodSync(CHOROS_CONFIG_PATH, 0o600);
 	} catch {}
-	return JSON.parse(readFileSync(SUPERSET_CONFIG_PATH, "utf-8"));
+	return JSON.parse(readFileSync(CHOROS_CONFIG_PATH, "utf-8"));
 }
 
 /**
- * SUPERSET_ORGANIZATION_ID overrides the stored org for this invocation
+ * CHOROS_ORGANIZATION_ID overrides the stored org for this invocation
  * (headless/CI, and dev where the CLI must target a specific local org),
- * mirroring how SUPERSET_API_KEY overrides the stored credential. Not
+ * mirroring how CHOROS_API_KEY overrides the stored credential. Not
  * persisted to disk.
  */
 export function resolveOrganizationId(
 	config: ChorosConfig,
 ): string | undefined {
-	return process.env.SUPERSET_ORGANIZATION_ID?.trim() || config.organizationId;
+	return process.env.CHOROS_ORGANIZATION_ID?.trim() || config.organizationId;
 }
 
 export function writeConfig(config: ChorosConfig): void {
 	ensureDir();
 	const tempPath = join(
-		SUPERSET_HOME_DIR,
+		CHOROS_HOME_DIR,
 		`.${randomUUID()}.${process.pid}.config.tmp`,
 	);
 	writeFileSync(tempPath, JSON.stringify(config, null, 2), { mode: 0o600 });
@@ -69,7 +69,7 @@ export function writeConfig(config: ChorosConfig): void {
 		chmodSync(tempPath, 0o600);
 	} catch {}
 	try {
-		renameSync(tempPath, SUPERSET_CONFIG_PATH);
+		renameSync(tempPath, CHOROS_CONFIG_PATH);
 	} catch (error) {
 		try {
 			unlinkSync(tempPath);
@@ -77,10 +77,10 @@ export function writeConfig(config: ChorosConfig): void {
 		throw error;
 	}
 	try {
-		chmodSync(SUPERSET_CONFIG_PATH, 0o600);
+		chmodSync(CHOROS_CONFIG_PATH, 0o600);
 	} catch {}
 }
 
 export function getApiUrl(): string {
-	return env.SUPERSET_API_URL;
+	return env.CHOROS_API_URL;
 }

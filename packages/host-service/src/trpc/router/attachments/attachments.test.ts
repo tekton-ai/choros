@@ -206,7 +206,7 @@ describe("attachmentsRouter.delete", () => {
 });
 
 describe("getAttachmentsRoot", () => {
-	it("falls back to ~/.superset/host/standalone when HOST_MANIFEST_DIR is blank", () => {
+	it("falls back to ~/.choros/host/standalone when HOST_MANIFEST_DIR is blank", () => {
 		const original = process.env.HOST_MANIFEST_DIR;
 		process.env.HOST_MANIFEST_DIR = "";
 		try {

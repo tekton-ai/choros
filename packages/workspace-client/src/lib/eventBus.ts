@@ -37,7 +37,7 @@ export interface GitChangedPayload {
 export interface AgentLifecyclePayload {
 	eventType: AgentLifecycleEventType;
 	terminalId: string;
-	// Absent when the hook ran without `SUPERSET_AGENT_ID` set.
+	// Absent when the hook ran without `CHOROS_AGENT_ID` set.
 	agent?: AgentIdentity;
 	occurredAt: number;
 }

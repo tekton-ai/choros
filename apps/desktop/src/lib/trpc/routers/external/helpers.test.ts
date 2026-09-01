@@ -218,7 +218,7 @@ describe("getAppCommand", () => {
 	// the launcher detects the running instance and routes the open-project
 	// request to it, so no duplicate IDE process is spawned.
 	describe("opening a worktree as a project (issue #5090)", () => {
-		const WORKTREE = "/Users/me/.superset/worktrees/my-feature";
+		const WORKTREE = "/Users/me/.choros/worktrees/my-feature";
 
 		test("intellij passes the worktree via --args so it opens as a project", () => {
 			const result = getAppCommand("intellij", WORKTREE);

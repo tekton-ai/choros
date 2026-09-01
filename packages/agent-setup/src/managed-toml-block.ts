@@ -4,7 +4,7 @@ import { writeFileIfChanged } from "./agent-wrappers-common";
 
 /**
  * Shared engine for agents whose global config is a TOML file holding a
- * Superset-owned block between start/end markers (Kimi, Vibe, Grok compat).
+ * Choros-owned block between start/end markers (Kimi, Vibe, Grok compat).
  * No TOML parser needed: we own the block content, user config outside the
  * markers is preserved verbatim.
  */
@@ -19,7 +19,7 @@ export interface ManagedTomlBlockSpec {
 	fileMode: number;
 	/**
 	 * Orphan recovery: whether a TOML table (header line + body, up to the next
-	 * header) inside a truncated managed block is Superset-owned.
+	 * header) inside a truncated managed block is Choros-owned.
 	 */
 	isManagedTable(tableLines: string[]): boolean;
 	/**

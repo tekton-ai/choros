@@ -468,7 +468,7 @@ describe("resolveScript", () => {
 		expect(resolve("run")).toBeNull();
 	});
 
-	it("falls back to <repoPath>/.superset/<key>.sh per key", () => {
+	it("falls back to <repoPath>/.choros/<key>.sh per key", () => {
 		const setupScript = writeFallbackScript("setup");
 		const teardownScript = writeFallbackScript("teardown");
 		expect(resolve("setup")).toEqual({
@@ -558,7 +558,7 @@ describe("shellSingleQuote", () => {
 });
 
 describe("getProjectConfigPath", () => {
-	it("appends .superset/config.json to the repoPath", () => {
-		expect(getProjectConfigPath("/tmp/x")).toBe("/tmp/x/.superset/config.json");
+	it("appends .choros/config.json to the repoPath", () => {
+		expect(getProjectConfigPath("/tmp/x")).toBe("/tmp/x/.choros/config.json");
 	});
 });

@@ -95,7 +95,7 @@ describe("shell env cache", () => {
 		const zshrcPath = join(tmpDir, ".zshrc");
 		writeFileSync(
 			zshrcPath,
-			'export __SUPERSET_SHELL_ENV_REFRESH_TEST__="first"\n',
+			'export __CHOROS_SHELL_ENV_REFRESH_TEST__="first"\n',
 		);
 
 		const origZDOTDIR = process.env.ZDOTDIR;
@@ -106,18 +106,18 @@ describe("shell env cache", () => {
 
 		try {
 			const cachedEnv = await getShellEnvironment();
-			expect(cachedEnv.__SUPERSET_SHELL_ENV_REFRESH_TEST__).toBe("first");
+			expect(cachedEnv.__CHOROS_SHELL_ENV_REFRESH_TEST__).toBe("first");
 
 			writeFileSync(
 				zshrcPath,
-				'export __SUPERSET_SHELL_ENV_REFRESH_TEST__="second"\n',
+				'export __CHOROS_SHELL_ENV_REFRESH_TEST__="second"\n',
 			);
 
 			const stillCachedEnv = await getShellEnvironment();
-			expect(stillCachedEnv.__SUPERSET_SHELL_ENV_REFRESH_TEST__).toBe("first");
+			expect(stillCachedEnv.__CHOROS_SHELL_ENV_REFRESH_TEST__).toBe("first");
 
 			const refreshedEnv = await getShellEnvironment({ forceRefresh: true });
-			expect(refreshedEnv.__SUPERSET_SHELL_ENV_REFRESH_TEST__).toBe("second");
+			expect(refreshedEnv.__CHOROS_SHELL_ENV_REFRESH_TEST__).toBe("second");
 		} finally {
 			if (origZDOTDIR !== undefined) process.env.ZDOTDIR = origZDOTDIR;
 			else delete process.env.ZDOTDIR;

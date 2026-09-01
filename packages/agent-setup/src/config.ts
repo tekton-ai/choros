@@ -41,7 +41,7 @@ export function getBundledPluginDir(): string {
 		"..",
 		"..",
 		"plugins",
-		"superset",
+		"choros",
 	);
 	return fs.existsSync(path.join(repoPlugin, "skills")) ? repoPlugin : bundled;
 }

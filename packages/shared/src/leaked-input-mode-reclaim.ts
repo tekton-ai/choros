@@ -20,7 +20,7 @@
 const ESC = "\x1b";
 
 /**
- * Choros's app-private prompt marker (`OSC 777;superset-shell-ready`), emitted
+ * Choros's app-private prompt marker (`OSC 777;choros-shell-ready`), emitted
  * by the shell wrappers before every prompt. Its arrival means the shell owns the
  * foreground again. Reclaim keys on this — NOT the co-emitted FinalTerm `OSC
  * 133;A` — because 133;A is also emitted by third-party shell integrations and
@@ -28,7 +28,7 @@ const ESC = "\x1b";
  * clear a live tmux's own modes. Only Choros's wrappers emit 777.
  */
 export const SHELL_READY_OSC_ID = 777;
-export const SHELL_READY_MARKER_PAYLOAD = "superset-shell-ready";
+export const SHELL_READY_MARKER_PAYLOAD = "choros-shell-ready";
 
 /**
  * Kitty keyboard protocol disarm: a stack unwind (`CSI < 255 u` pops more than

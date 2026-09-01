@@ -36,7 +36,7 @@ function getModelContext(): ModelContext | undefined {
 
 const INSTALL_COMMANDS: Record<string, string> = {
 	macos: `Download the desktop app from ${COMPANY.MARKETING_URL}/download`,
-	cli: "brew install superset-sh/tap/choros (or: curl -fsSL https://choros.sh/cli/install.sh | sh)",
+	cli: "brew install choros-sh/tap/choros (or: curl -fsSL https://choros.sh/cli/install.sh | sh)",
 	mcp: `claude mcp add --transport http choros ${MCP_SERVER_URL}`,
 };
 

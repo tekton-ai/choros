@@ -75,7 +75,7 @@ export default function NavigationBar() {
 							<Trans id="docs.nav.website">Website</Trans>
 						</NavLink>
 						<NavLink
-							href="https://github.com/superset-sh/choros"
+							href="https://github.com/choros-sh/choros"
 							external
 							aria-label={t({
 								id: "docs.nav.githubRepo",

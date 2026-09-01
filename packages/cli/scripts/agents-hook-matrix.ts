@@ -59,10 +59,10 @@ function baseEnv(
 	return {
 		...process.env,
 		HOME,
-		SUPERSET_HOME_DIR: SS_HOME,
-		SUPERSET_TERMINAL_ID: `term-${agent}`,
-		SUPERSET_HOST_AGENT_HOOK_URL: HOOK_URL,
-		SUPERSET_DEBUG_HOOKS: "1",
+		CHOROS_HOME_DIR: SS_HOME,
+		CHOROS_TERMINAL_ID: `term-${agent}`,
+		CHOROS_HOST_AGENT_HOOK_URL: HOOK_URL,
+		CHOROS_DEBUG_HOOKS: "1",
 		...extra,
 	};
 }
@@ -288,7 +288,7 @@ const perm = runScript(cursorScript, {
 	agent: "cursor-agent",
 	argv: ["PermissionRequest"],
 	stdin: JSON.stringify({ session_id: "s-cursor" }),
-	env: { SUPERSET_AGENT_ID: "cursor-agent" },
+	env: { CHOROS_AGENT_ID: "cursor-agent" },
 });
 results.push({
 	agent: "cursor-agent",
@@ -300,7 +300,7 @@ runScript(cursorScript, {
 	agent: "cursor-agent",
 	argv: ["Stop"],
 	stdin: JSON.stringify({ session_id: "s-cursor" }),
-	env: { SUPERSET_AGENT_ID: "cursor-agent" },
+	env: { CHOROS_AGENT_ID: "cursor-agent" },
 });
 assertBinding("cursor-agent", "cursor-hook.sh argv=Stop", "Stop", "s-cursor");
 
@@ -310,7 +310,7 @@ runScript(path.join(SS_HOME, "hooks", "gemini-hook.sh"), {
 		hook_event_name: "AfterAgent",
 		session_id: "s-gemini",
 	}),
-	env: { SUPERSET_AGENT_ID: "gemini" },
+	env: { CHOROS_AGENT_ID: "gemini" },
 });
 assertBinding("gemini", "gemini-hook.sh AfterAgent → Stop", "Stop", "s-gemini");
 
@@ -318,7 +318,7 @@ runScript(path.join(SS_HOME, "hooks", "copilot-hook.sh"), {
 	agent: "copilot",
 	argv: ["userPromptSubmitted"],
 	stdin: JSON.stringify({ session_id: "s-copilot" }),
-	env: { SUPERSET_AGENT_ID: "copilot" },
+	env: { CHOROS_AGENT_ID: "copilot" },
 });
 assertBinding(
 	"copilot",
@@ -337,11 +337,11 @@ async function withAgentEnv(
 	const wanted = baseEnv(agent, extra);
 	const keys = new Set([
 		"HOME",
-		"SUPERSET_HOME_DIR",
-		"SUPERSET_TERMINAL_ID",
-		"SUPERSET_HOST_AGENT_HOOK_URL",
-		"SUPERSET_DEBUG_HOOKS",
-		"SUPERSET_AGENT_ID",
+		"CHOROS_HOME_DIR",
+		"CHOROS_TERMINAL_ID",
+		"CHOROS_HOST_AGENT_HOOK_URL",
+		"CHOROS_DEBUG_HOOKS",
+		"CHOROS_AGENT_ID",
 		...Object.keys(extra),
 	]);
 	for (const k of keys) {
@@ -361,7 +361,7 @@ async function withAgentEnv(
 // opencode: provisioned plugin returns an { event } handler; $ is a shell tag.
 await withAgentEnv(
 	"opencode",
-	{ SUPERSET_AGENT_ID: "opencode", SUPERSET_DEBUG: "1" },
+	{ CHOROS_AGENT_ID: "opencode", CHOROS_DEBUG: "1" },
 	async () => {
 		const mod = await import(
 			path.join(SS_HOME, "hooks", "opencode", "plugin", "choros-notify.js")

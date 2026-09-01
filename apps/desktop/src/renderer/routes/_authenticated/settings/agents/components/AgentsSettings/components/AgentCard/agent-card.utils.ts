@@ -38,7 +38,7 @@ export function getPreviewNoPromptCommand(preset: ResolvedAgentConfig): string {
 export function getPreviewTaskCommand(preset: ResolvedAgentConfig): string {
 	return (
 		buildFileCommandFromAgentConfig({
-			filePath: `.superset/task-${SAMPLE_TASK.slug}.md`,
+			filePath: `.choros/task-${SAMPLE_TASK.slug}.md`,
 			config: preset,
 		}) ??
 		i18n._(

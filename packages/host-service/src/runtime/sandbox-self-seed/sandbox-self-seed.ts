@@ -28,15 +28,15 @@ export interface SandboxIdentity {
 export function readSandboxIdentity(
 	env: NodeJS.ProcessEnv = process.env,
 ): SandboxIdentity | null {
-	const workspaceId = env.SUPERSET_SANDBOX_WORKSPACE_ID;
-	const worktreePath = env.SUPERSET_SANDBOX_WORKSPACE_PATH;
+	const workspaceId = env.CHOROS_SANDBOX_WORKSPACE_ID;
+	const worktreePath = env.CHOROS_SANDBOX_WORKSPACE_PATH;
 	if (!workspaceId || !worktreePath) return null;
 	return {
 		workspaceId,
 		worktreePath,
-		workspaceName: env.SUPERSET_SANDBOX_WORKSPACE_NAME || "workspace",
-		projectName: env.SUPERSET_SANDBOX_PROJECT_NAME || "project",
-		branch: env.SUPERSET_SANDBOX_BRANCH || "main",
+		workspaceName: env.CHOROS_SANDBOX_WORKSPACE_NAME || "workspace",
+		projectName: env.CHOROS_SANDBOX_PROJECT_NAME || "project",
+		branch: env.CHOROS_SANDBOX_BRANCH || "main",
 	};
 }
 

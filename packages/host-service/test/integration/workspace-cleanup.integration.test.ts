@@ -37,11 +37,11 @@ describe("workspaceCleanup.destroy integration", () => {
 	let teardownServer: Server | null = null;
 	let teardownTmp: string | null = null;
 	let previousPtyDaemonSocket: string | undefined;
-	let previousSupersetHomeDir: string | undefined;
+	let previousChorosHomeDir: string | undefined;
 
 	beforeEach(async () => {
-		previousPtyDaemonSocket = process.env.SUPERSET_PTY_DAEMON_SOCKET;
-		previousSupersetHomeDir = process.env.SUPERSET_HOME_DIR;
+		previousPtyDaemonSocket = process.env.CHOROS_PTY_DAEMON_SOCKET;
+		previousChorosHomeDir = process.env.CHOROS_HOME_DIR;
 		scenario = await createFeatureWorktreeScenario({
 			hostOptions: { apiOverrides: cloudFlows.workspaceDeleteOk() },
 		});
@@ -52,8 +52,8 @@ describe("workspaceCleanup.destroy integration", () => {
 		await disposeDaemonClient();
 		resetTerminalBaseEnvForTests();
 		__setAccountShellForTesting(undefined);
-		restoreEnv("SUPERSET_PTY_DAEMON_SOCKET", previousPtyDaemonSocket);
-		restoreEnv("SUPERSET_HOME_DIR", previousSupersetHomeDir);
+		restoreEnv("CHOROS_PTY_DAEMON_SOCKET", previousPtyDaemonSocket);
+		restoreEnv("CHOROS_HOME_DIR", previousChorosHomeDir);
 		if (teardownServer) {
 			await teardownServer.close().catch(() => {});
 			teardownServer = null;
@@ -172,8 +172,8 @@ describe("workspaceCleanup.destroy integration", () => {
 		});
 		await teardownServer.listen();
 
-		process.env.SUPERSET_PTY_DAEMON_SOCKET = socketPath;
-		process.env.SUPERSET_HOME_DIR = teardownTmp;
+		process.env.CHOROS_PTY_DAEMON_SOCKET = socketPath;
+		process.env.CHOROS_HOME_DIR = teardownTmp;
 		__setAccountShellForTesting("/bin/bash");
 		initTerminalBaseEnv({
 			HOME: process.env.HOME ?? teardownTmp,
@@ -193,7 +193,7 @@ describe("workspaceCleanup.destroy integration", () => {
 			"-C",
 			scenario.worktreePath,
 			"add",
-			".superset/teardown.sh",
+			".choros/teardown.sh",
 		]);
 		await scenario.repo.git.raw([
 			"-C",

@@ -19,8 +19,8 @@ describe("clearGitHubCachesForWorktree", () => {
 
 		const status: GitHubStatus = {
 			pr: null,
-			repoUrl: "https://github.com/superset-sh/choros",
-			upstreamUrl: "https://github.com/superset-sh/choros",
+			repoUrl: "https://github.com/choros-sh/choros",
+			upstreamUrl: "https://github.com/choros-sh/choros",
 			isFork: false,
 			branchExistsOnRemote: true,
 			lastRefreshed: Date.now(),
@@ -36,19 +36,19 @@ describe("clearGitHubCachesForWorktree", () => {
 
 		setCachedGitHubStatus(worktreePath, status);
 		setCachedRepoContext(worktreePath, {
-			repoUrl: "https://github.com/superset-sh/choros",
-			upstreamUrl: "https://github.com/superset-sh/choros",
+			repoUrl: "https://github.com/choros-sh/choros",
+			upstreamUrl: "https://github.com/choros-sh/choros",
 			isFork: false,
 		});
 
 		const commentsCacheKey = makePullRequestCommentsCacheKey({
 			worktreePath,
-			repoNameWithOwner: "superset-sh/choros",
+			repoNameWithOwner: "choros-sh/choros",
 			pullRequestNumber: 2681,
 		});
 		const otherCommentsCacheKey = makePullRequestCommentsCacheKey({
 			worktreePath: otherWorktreePath,
-			repoNameWithOwner: "superset-sh/choros",
+			repoNameWithOwner: "choros-sh/choros",
 			pullRequestNumber: 2682,
 		});
 
@@ -73,8 +73,8 @@ describe("getCachedGitHubStatusState", () => {
 		const worktreePath = "/tmp/worktrees/review-cache-stale-test";
 		const status: GitHubStatus = {
 			pr: null,
-			repoUrl: "https://github.com/superset-sh/choros",
-			upstreamUrl: "https://github.com/superset-sh/choros",
+			repoUrl: "https://github.com/choros-sh/choros",
+			upstreamUrl: "https://github.com/choros-sh/choros",
 			isFork: false,
 			branchExistsOnRemote: true,
 			lastRefreshed: 1000,

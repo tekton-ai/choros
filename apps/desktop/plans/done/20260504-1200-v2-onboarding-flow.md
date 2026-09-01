@@ -8,11 +8,11 @@ Reference: This plan follows conventions from `AGENTS.md` (root) and the ExecPla
 ## Purpose / Big Picture
 
 
-Today, the Superset desktop app ships v1 by default; v2 is opt-in via a local Zustand store gated by a PostHog feature flag (`FEATURE_FLAGS.V2_CLOUD`). We want to flip this so new users land in v2 by default, walked through a polished first-run onboarding that connects their auth, model providers, GitHub CLI, macOS permissions, and a starting project. Existing v1 users who migrate to v2 see the same flow but with already-completed steps skipped — they don't re-auth, don't re-add providers if one is already configured, and don't pick a project if they already have one.
+Today, the Choros desktop app ships v1 by default; v2 is opt-in via a local Zustand store gated by a PostHog feature flag (`FEATURE_FLAGS.V2_CLOUD`). We want to flip this so new users land in v2 by default, walked through a polished first-run onboarding that connects their auth, model providers, GitHub CLI, macOS permissions, and a starting project. Existing v1 users who migrate to v2 see the same flow but with already-completed steps skipped — they don't re-auth, don't re-add providers if one is already configured, and don't pick a project if they already have one.
 
 After this change, a user can:
 
-- Install Superset desktop fresh (clean local-db + cleared localStorage), open it, and be guided through five steps that end in a working v2 dashboard with a connected provider, the `gh` CLI on PATH, the right macOS permissions granted, and at least one project attached.
+- Install Choros desktop fresh (clean local-db + cleared localStorage), open it, and be guided through five steps that end in a working v2 dashboard with a connected provider, the `gh` CLI on PATH, the right macOS permissions granted, and at least one project attached.
 - Have an existing v1 install switch to v2 default and find themselves in the same flow, but skipping straight past steps they've already satisfied.
 
 You can see it working by running:
@@ -20,7 +20,7 @@ You can see it working by running:
     cd apps/desktop
     bun dev
 
-…then signing out, clearing local-db (`rm -rf ~/Library/Application Support/superset/db.sqlite`), clearing the localStorage entry `v2-local-override-v2`, restarting, and walking through the five steps. Each completed step should persist so a force-close + reopen resumes at the right step.
+…then signing out, clearing local-db (`rm -rf ~/Library/Application Support/choros/db.sqlite`), clearing the localStorage entry `v2-local-override-v2`, restarting, and walking through the five steps. Each completed step should persist so a force-close + reopen resumes at the right step.
 
 
 ## Assumptions
@@ -52,7 +52,7 @@ All initial planning questions have been resolved (see Decision Log entries D-1 
 - [x] (2026-05-04 12:00Z) Drafted ExecPlan skeleton, captured current-state references and open questions.
 - [x] (2026-05-04 12:15Z) Resolved Open Questions 1–4 (see Decision Log D-1 through D-4).
 - [x] (2026-05-04 13:00Z) Milestone 0: GitHub CLI detection spike — `gh` v2.83.0 found at `/opt/homebrew/bin/gh` (Apple Silicon Homebrew). Confirmed need to probe `/opt/homebrew/bin`, `/usr/local/bin`, `/usr/bin`, `/bin` because Finder-launched Electron apps don't inherit the user's interactive shell PATH. Strategy: probe known paths + try inherited PATH. Implementation deferred to M3.
-- [x] (2026-05-04 13:30Z) Milestone 1: Onboarding store + route shell. Created Zustand store at `apps/desktop/src/renderer/stores/onboarding/` (persist key `superset-onboarding-v1`), shared `OnboardingProgress` UI, sub-layout, and 6 step page stubs.
+- [x] (2026-05-04 13:30Z) Milestone 1: Onboarding store + route shell. Created Zustand store at `apps/desktop/src/renderer/stores/onboarding/` (persist key `choros-onboarding-v1`), shared `OnboardingProgress` UI, sub-layout, and 6 step page stubs.
 - [x] (2026-05-04 13:50Z) M1 hotfix: renamed route group `_authenticated/onboarding/` → `_authenticated/setup/` to resolve a `tsr generate` symbol collision with the existing `_onboarding/` v1 group (D-9-revised). URLs are now `/setup/<step>`.
 - [x] (2026-05-04 13:55Z) Settings entry point (slice of M6, D-10): added a "Restart onboarding" row to Settings → Experimental with an AlertDialog confirm. Resets the onboarding store and navigates to `/setup/auth`. Visible only when v2 is enabled. Searchable via new `EXPERIMENTAL_RESTART_ONBOARDING` item id. Typecheck and lint pass.
 - [x] (2026-05-04 14:30Z) M2 wiring: Auth step detects existing Better Auth session via `authClient.useSession()` and auto-advances; otherwise shows GitHub/Google sign-in buttons (mirrors existing `/sign-in/page.tsx`). Providers picker auto-advances when either Anthropic or OpenAI is already authenticated (via `chatServiceTrpc.auth.getAnthropic/OpenAIStatus.useQuery()`); otherwise shows the picker.
@@ -111,7 +111,7 @@ All initial planning questions have been resolved (see Decision Log entries D-1 
 - D-7-revised (2026-05-04 13:00Z): The "type-safe IPC" mentioned in D-7 must be a tRPC procedure, not a request/response channel in `shared/ipc-channels.ts`. Per `apps/desktop/AGENTS.md`, all desktop IPC uses tRPC. Add `system.detectGhCli` to the existing main-process tRPC router tree under `apps/desktop/src/lib/trpc/routers/`. The renderer calls it via `electronTrpc.system.detectGhCli.useQuery()`. Date/Author: 2026-05-04 / discovery during implementation.
 - D-9 (2026-05-04 13:30Z): The new onboarding routes live under `_authenticated/onboarding/` (no underscore prefix on `onboarding`), not `_authenticated/_onboarding/onboarding/`. Rationale: avoids the visually confusing nested `_onboarding/onboarding/` folder structure. The existing `_onboarding/` group keeps its original purpose (v1 welcome / new-project pages — `StartView` host and 3-mode project create). The new flow lives in a sibling `onboarding/` URL segment with its own layout and progress UI. Date/Author: 2026-05-04 / implementation.
 - D-9-revised (2026-05-04 13:50Z): Renamed the new route group from `onboarding/` to `setup/`. URLs are now `/setup/<step>` (e.g., `/setup/auth`). Rationale: TanStack Router's `tsr generate` produces TypeScript identifiers from the route path, and `_authenticated/_onboarding/layout.tsx` (existing v1 group) and `_authenticated/onboarding/layout.tsx` (new v2 group) both produced the symbol `AuthenticatedOnboardingLayoutRoute`, causing a duplicate-declaration build error. Renaming the v2 group to `setup/` produces `AuthenticatedSetupLayoutRoute` — no collision. STEP_ROUTES updated accordingly. Date/Author: 2026-05-04 / discovery during `bun dev`.
-- D-10 (2026-05-04 13:50Z): The "Restart setup" affordance ships in Settings → Experimental (alongside the existing "Try Superset v2" toggle and "v1 → v2 migration" rerun), not in a new Settings → General section. Rationale: matches existing settings IA — Experimental already houses v2-related controls; adding a new top-level General section for one button would be over-engineering. Visibility gated by `isV2CloudEnabled`. Searchable via new `EXPERIMENTAL_RESTART_ONBOARDING` setting item. Date/Author: 2026-05-04 / implementation.
+- D-10 (2026-05-04 13:50Z): The "Restart setup" affordance ships in Settings → Experimental (alongside the existing "Try Choros v2" toggle and "v1 → v2 migration" rerun), not in a new Settings → General section. Rationale: matches existing settings IA — Experimental already houses v2-related controls; adding a new top-level General section for one button would be over-engineering. Visibility gated by `isV2CloudEnabled`. Searchable via new `EXPERIMENTAL_RESTART_ONBOARDING` setting item. Date/Author: 2026-05-04 / implementation.
 - D-11 (2026-05-04 14:15Z): Step 2 (providers) UI designed from Figma node `955:2090` in file `faWpXObsgxN4gF5K1chLa1` ("Connect Claude Code"). The visual is Claude-Code-first — centered logo pill + title + subtitle + orange Connect button on a dark `#151110` background — rather than a side-by-side Anthropic/OpenAI choice. This shifts Step 2's spec from "show two provider cards" to "show Claude-first connect; OpenAI handling TBD". Implemented in `setup/providers/page.tsx` with co-located `ClaudeLogo` SVG (path lifted from `assets/app-icons/preset-icons/claude.svg`). Literal hex colors used (`#151110`, `#201e1c`, `#2a2827`, `#eae8e6`, `#a8a5a3`, Claude orange `#D97757`, button `rgba(255,91,0,0.8)`) — these are brand-specific and not currently in the project's semantic token system. OAuth wiring (real Connect behavior) still pending in M2; for now Connect advances to the next step. Open: how to surface OpenAI (separate sub-page? affordance below Connect? skip-and-add-later?). Date/Author: 2026-05-04 / implementation.
 - D-11-revised (2026-05-04 14:30Z): Step 2 is now a two-tier flow: a light-themed picker page (`/setup/providers`) → a dark-themed provider-specific OAuth page (`/setup/providers/claude-code` or `/setup/providers/codex`). The picker matches a user-supplied screenshot — title "Connect AI Provider", subtitle "Choose how you'd like to connect your provider.", `<Tabs>` for Claude Code vs Codex, three `ProviderOptionCard`s per tab (Pro/Max + API Key + Custom Model), full-width blue Continue button, Back at bottom. Continue navigates to the appropriate provider sub-page based on tab selection. The dark Claude OAuth page (D-11) was moved verbatim from `setup/providers/page.tsx` to `setup/providers/claude-code/page.tsx` and now uses `ClaudeBrandIcon` (orange-bg `#D97757` + white burst, matching the picker's icon) instead of the cream-bg variant. A parallel `setup/providers/codex/page.tsx` mirrors the dark design for Codex. The connection-method selection (oauth/api-key/custom) is captured in local state but not yet routed — only OAuth flow is wired; api-key and custom paths fall through to the same OAuth page as a placeholder until forms are built. New components: `ClaudeBrandIcon`, `CodexBrandIcon`, `ProviderOptionCard` — all co-located under `setup/providers/components/`. Date/Author: 2026-05-04 / implementation.
 
@@ -205,7 +205,7 @@ This milestone establishes the per-user onboarding state and the route skeleton 
 
 Scope:
 
-- Create `apps/desktop/src/renderer/stores/onboarding/onboardingStore.ts` (Zustand + `devtools` + `persist`, persist key `superset-onboarding-v1`). State shape:
+- Create `apps/desktop/src/renderer/stores/onboarding/onboardingStore.ts` (Zustand + `devtools` + `persist`, persist key `choros-onboarding-v1`). State shape:
 
       type OnboardingStep = "auth" | "providers" | "gh-cli" | "permissions" | "project" | "adopt-worktrees";
       interface OnboardingState {
@@ -410,10 +410,10 @@ Smoke test the desktop app:
 Reset to "fresh install" state for repeated verification:
 
     # macOS paths — verify before deleting
-    rm -rf "$HOME/Library/Application Support/superset/db.sqlite"
+    rm -rf "$HOME/Library/Application Support/choros/db.sqlite"
     # In DevTools console of the running Electron renderer:
     localStorage.removeItem("v2-local-override-v2");
-    localStorage.removeItem("superset-onboarding-v1");
+    localStorage.removeItem("choros-onboarding-v1");
 
 Then reload the app window.
 
@@ -487,7 +487,7 @@ All steps in this plan are idempotent.
 
 If a step fails halfway:
 
-- Onboarding store mid-flow: call `reset()` from DevTools or delete `localStorage["superset-onboarding-v1"]`.
+- Onboarding store mid-flow: call `reset()` from DevTools or delete `localStorage["choros-onboarding-v1"]`.
 - Provider key add fails: existing tRPC procs are atomic per provider; retry by re-submitting.
 - `gh` IPC fails: it returns `{installed: false}` rather than throwing, so the UI gracefully shows install instructions.
 - Migration from `optInV2` to `userPreference` fails: keep both fields readable for one release; the new field wins when present.

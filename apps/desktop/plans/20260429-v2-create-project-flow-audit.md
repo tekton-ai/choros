@@ -115,7 +115,7 @@ The v2 "new project" flow has **two parallel implementations**, **no FSM**, **no
 | Cleanup on failure | **no** — orphan clone left on disk | yes — `rm` the dir if `initGitRepo` throws (line 1377) | **no** (uses cloneRepo) |
 | Validate git user.name / user.email | **no** | yes (in `initGitRepo`, throws with message) | **no** |
 | Run `bun install` / detect framework | no | no | no |
-| Seed `.env` / `.superset/setup.json` | no | no | no |
+| Seed `.env` / `.choros/setup.json` | no | no | no |
 | Run any post-clone or template script | no | no | no |
 | Auto-open project (`navigate(replace:true)`) | yes | yes | yes |
 
@@ -124,8 +124,8 @@ The v2 "new project" flow has **two parallel implementations**, **no FSM**, **no
 Compared to a "complete" clone you'd reasonably expect, and compared to the v2 workspace-init pipeline (`utils/workspace-init.ts`):
 
 1. **No install step.** Workspace-init has an explicit `installing` step; project-create has nothing. After clone, project opens without `node_modules`.
-2. **No setup-script execution.** `loadSetupConfig()` / `initialCommands` (used by `workspaces.create`) are not wired into `projects.cloneRepo`. Repos with `.superset/setup.json` are silently ignored at project-create time.
-3. **No `.superset` config or env seeding.** Workspace creation copies `.superset` config into the worktree (`copySupersetConfigToWorktree`); project creation never bootstraps anything in the cloned repo.
+2. **No setup-script execution.** `loadSetupConfig()` / `initialCommands` (used by `workspaces.create`) are not wired into `projects.cloneRepo`. Repos with `.choros/setup.json` are silently ignored at project-create time.
+3. **No `.choros` config or env seeding.** Workspace creation copies `.choros` config into the worktree (`copyChorosConfigToWorktree`); project creation never bootstraps anything in the cloned repo.
 4. **No partial-failure rollback.** `git clone` succeeds → project insert or `ensureMainWorkspace` fails (`projects.ts:1308–1320`) → cloned dir orphaned with no DB row. Re-trying the same URL hits the existing-dir branch and silently re-uses the orphaned dir.
 5. **No git-user preflight.** EmptyRepo blocks if `user.name`/`user.email` are unset; CloneRepo doesn't, so the first commit attempt inside the cloned repo fails on a fresh machine.
 6. **`defaultBranch` captured once at clone time.** No re-sync if remote default changes later.
@@ -168,7 +168,7 @@ There are **two project backends** living side-by-side in v2, and surfaces are s
 Procedures live in `apps/desktop/src/lib/trpc/routers/projects/projects.ts`. Writes the local desktop DB directly. Knows nothing about the host service.
 
 ### Backend B — `client.project.*` (host-service client, `getHostServiceClientByUrl` + `useLocalHostService`)
-The host service is the per-machine local Superset orchestrator (`LocalHostServiceProvider` wraps `_authenticated/layout.tsx:203`). Owns the canonical project model used by v2 cloud features.
+The host service is the per-machine local Choros orchestrator (`LocalHostServiceProvider` wraps `_authenticated/layout.tsx:203`). Owns the canonical project model used by v2 cloud features.
 
 ### Surface table
 

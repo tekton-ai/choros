@@ -4,7 +4,7 @@ import path from "node:path";
 import {
 	buildWrapperScript,
 	createWrapper,
-	isSupersetManagedHookCommand,
+	isChorosManagedHookCommand,
 	writeFileIfChanged,
 } from "./agent-wrappers-common";
 import { getTemplatePath, getV1NotificationsPort } from "./config";
@@ -18,7 +18,7 @@ import { getHooksDir } from "./paths";
 
 export const CURSOR_HOOK_SCRIPT_NAME = "cursor-hook.sh";
 
-const CURSOR_HOOK_SIGNATURE = "# Superset cursor hook";
+const CURSOR_HOOK_SIGNATURE = "# Choros cursor hook";
 const CURSOR_HOOK_VERSION = "v7";
 export const CURSOR_HOOK_MARKER = `${CURSOR_HOOK_SIGNATURE} ${CURSOR_HOOK_VERSION}`;
 
@@ -46,7 +46,7 @@ export function getCursorHookScriptContent(): string {
 }
 
 // Cursor invokes the hook script with the event name as argv; the script
-// path is absolute (per-install), so the outside-Superset guard lives inside
+// path is absolute (per-install), so the outside-Choros guard lives inside
 // the script rather than in the registered command.
 const CURSOR_MANAGED_EVENT_ARGS: Record<string, string> = {
 	sessionStart: "SessionStart",
@@ -73,7 +73,7 @@ function cursorHooksSpec(
 		),
 		cleanEntry: (entry) =>
 			entry.command?.includes(hookScriptPath) ||
-			isSupersetManagedHookCommand(entry.command, CURSOR_HOOK_SCRIPT_NAME)
+			isChorosManagedHookCommand(entry.command, CURSOR_HOOK_SCRIPT_NAME)
 				? null
 				: entry,
 		applyRootDefaults: (root) => {
@@ -109,7 +109,7 @@ export function createCursorAgentWrapper(): void {
 }
 
 /**
- * Removes Superset-managed hook entries from ~/.cursor/hooks.json, preserving
+ * Removes Choros-managed hook entries from ~/.cursor/hooks.json, preserving
  * user hooks. No-op when the file does not exist.
  */
 export function removeCursorManagedHooks(): void {

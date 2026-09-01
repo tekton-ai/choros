@@ -109,7 +109,7 @@ This work targets the **desktop app** (`apps/desktop`) and the **auth package** 
 - **BubbleMenu**: A floating toolbar that appears above/below selected text in a TipTap editor, offering formatting buttons.
 - **TipTap**: A headless rich-text editor framework for React built on ProseMirror.
 - **@dnd-kit**: A drag-and-drop toolkit for React with accessibility support.
-- **Better Auth**: The authentication library used by Superset. `multiSession` is a built-in plugin that allows multiple concurrent sessions.
+- **Better Auth**: The authentication library used by Choros. `multiSession` is a built-in plugin that allows multiple concurrent sessions.
 - **tRPC**: Type-safe RPC framework. In the desktop app, tRPC runs over Electron IPC (via `trpc-electron`).
 - **Zustand**: Lightweight state management library used throughout the app.
 

@@ -16,7 +16,7 @@ describe("buildAgentPromptCommand", () => {
 		});
 
 		expect(command).toContain(
-			"codex --dangerously-bypass-approvals-and-sandbox --dangerously-bypass-hook-trust -- \"$(cat <<'SUPERSET_PROMPT_12345678'",
+			"codex --dangerously-bypass-approvals-and-sandbox --dangerously-bypass-hook-trust -- \"$(cat <<'CHOROS_PROMPT_12345678'",
 		);
 		expect(command).toContain("- Only modified file: runtime.ts");
 	});
@@ -29,7 +29,7 @@ describe("buildAgentPromptCommand", () => {
 		});
 
 		expect(command).toStartWith(
-			"claude --dangerously-skip-permissions \"$(cat <<'SUPERSET_PROMPT_abcdefgh'",
+			"claude --dangerously-skip-permissions \"$(cat <<'CHOROS_PROMPT_abcdefgh'",
 		);
 	});
 
@@ -40,17 +40,17 @@ describe("buildAgentPromptCommand", () => {
 			agent: "amp",
 		});
 
-		expect(command).toStartWith("amp <<'SUPERSET_PROMPT_amp1234'");
+		expect(command).toStartWith("amp <<'CHOROS_PROMPT_amp1234'");
 		expect(command).not.toContain("amp -x");
 	});
 
 	it("uses Amp interactive stdin mode for file launches", () => {
 		const command = buildAgentFileCommand({
-			filePath: ".superset/task-demo.md",
+			filePath: ".choros/task-demo.md",
 			agent: "amp",
 		});
 
-		expect(command).toBe("amp < '.superset/task-demo.md'");
+		expect(command).toBe("amp < '.choros/task-demo.md'");
 	});
 
 	it("uses OMP interactive mode for prompt launches", () => {
@@ -60,7 +60,7 @@ describe("buildAgentPromptCommand", () => {
 			agent: "omp",
 		});
 
-		expect(command).toStartWith("omp \"$(cat <<'SUPERSET_PROMPT_omp1234'");
+		expect(command).toStartWith("omp \"$(cat <<'CHOROS_PROMPT_omp1234'");
 		expect(command).not.toContain("omp -p");
 	});
 
@@ -71,7 +71,7 @@ describe("buildAgentPromptCommand", () => {
 			agent: "pi",
 		});
 
-		expect(command).toStartWith("pi \"$(cat <<'SUPERSET_PROMPT_pi1234'");
+		expect(command).toStartWith("pi \"$(cat <<'CHOROS_PROMPT_pi1234'");
 	});
 });
 
@@ -95,7 +95,7 @@ describe("kimi agent registration", () => {
 			agent: "kimi",
 		});
 
-		expect(command).toStartWith("kimi -p \"$(cat <<'SUPERSET_PROMPT_kimi1234'");
+		expect(command).toStartWith("kimi -p \"$(cat <<'CHOROS_PROMPT_kimi1234'");
 		expect(command).toEndWith('\n)" ; kimi --auto --continue');
 	});
 
@@ -121,7 +121,7 @@ describe("kiro agent registration", () => {
 		});
 
 		expect(command).toStartWith(
-			"kiro-cli chat --trust-all-tools \"$(cat <<'SUPERSET_PROMPT_kiro1234'",
+			"kiro-cli chat --trust-all-tools \"$(cat <<'CHOROS_PROMPT_kiro1234'",
 		);
 		expect(command).toEndWith('\n)"');
 	});
@@ -149,7 +149,7 @@ describe("agy agent registration", () => {
 		});
 
 		expect(command).toStartWith(
-			"agy --mode accept-edits -i \"$(cat <<'SUPERSET_PROMPT_agy1234'",
+			"agy --mode accept-edits -i \"$(cat <<'CHOROS_PROMPT_agy1234'",
 		);
 		expect(command).toEndWith('\n)"');
 	});
@@ -177,7 +177,7 @@ describe("fx agent registration", () => {
 		});
 
 		expect(command).toStartWith(
-			"fx ask --auto \"$(cat <<'SUPERSET_PROMPT_fx1234'",
+			"fx ask --auto \"$(cat <<'CHOROS_PROMPT_fx1234'",
 		);
 		expect(command).toEndWith('\n)" ; fx resume last');
 	});
@@ -205,7 +205,7 @@ describe("hermes agent registration", () => {
 		});
 
 		expect(command).toStartWith(
-			"hermes chat --yolo -q \"$(cat <<'SUPERSET_PROMPT_hermes1234'",
+			"hermes chat --yolo -q \"$(cat <<'CHOROS_PROMPT_hermes1234'",
 		);
 		expect(command).toEndWith('\n)" ; hermes chat --yolo -c');
 	});
@@ -233,7 +233,7 @@ describe("grok agent registration", () => {
 		});
 
 		expect(command).toStartWith(
-			"grok --always-approve \"$(cat <<'SUPERSET_PROMPT_grok1234'",
+			"grok --always-approve \"$(cat <<'CHOROS_PROMPT_grok1234'",
 		);
 		expect(command).toEndWith('\n)"');
 	});

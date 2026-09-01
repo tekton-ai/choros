@@ -52,7 +52,7 @@ async function openBrowser(url: string): Promise<void> {
 }
 
 export function getWebUrl(): string {
-	return env.SUPERSET_WEB_URL;
+	return env.CHOROS_WEB_URL;
 }
 
 function shouldOpenBrowser(): boolean {
@@ -247,7 +247,7 @@ async function exchangeCodeForToken({
 export async function refreshAccessToken(
 	refreshToken: string,
 ): Promise<LoginResult> {
-	const apiUrl = env.SUPERSET_API_URL;
+	const apiUrl = env.CHOROS_API_URL;
 	const response = await fetch(`${apiUrl}/api/auth/oauth2/token`, {
 		method: "POST",
 		headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -285,7 +285,7 @@ export async function login(
 	signal: AbortSignal,
 	callbacks: LoginCallbacks,
 ): Promise<LoginResult> {
-	const apiUrl = env.SUPERSET_API_URL;
+	const apiUrl = env.CHOROS_API_URL;
 	const webUrl = getWebUrl();
 
 	const codeVerifier = generateCodeVerifier();

@@ -6,7 +6,7 @@ import { ipcMain } from "electron";
 import log from "electron-log/main";
 import {
 	ensureChorosHomeDirExists,
-	SUPERSET_HOME_DIR,
+	CHOROS_HOME_DIR,
 } from "../app-environment";
 
 type SQLitePersistence = ReturnType<typeof createNodeSQLitePersistence>;
@@ -138,7 +138,7 @@ function suppressIdleResumeWrites(
 
 export function initTanstackDbPersistence(): void {
 	ensureChorosHomeDirExists();
-	database = new Database(join(SUPERSET_HOME_DIR, "tanstack-db.sqlite"));
+	database = new Database(join(CHOROS_HOME_DIR, "tanstack-db.sqlite"));
 	// Crash durability: WAL keeps the main DB file intact across a kill mid-commit
 	// (auto-update restart / OS crash) because writes go to a -wal file and the
 	// main file is only touched by an atomic checkpoint. Default DELETE journal

@@ -12406,7 +12406,7 @@ msgstr "Trò chuyện với Choros"
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx
 msgid "marketing.contact.otherWays.community"
-msgstr "Với báo lỗi và đề xuất tính năng, cách nhanh nhất là mở issue trên GitHub tại <0>github.com/superset-sh/choros</0>. Cộng đồng của chúng tôi ở <1>Discord</1>, và chúng tôi đăng cập nhật trên <2>X (@choros_sh)</2> và <3>LinkedIn</3>."
+msgstr "Với báo lỗi và đề xuất tính năng, cách nhanh nhất là mở issue trên GitHub tại <0>github.com/choros-sh/choros</0>. Cộng đồng của chúng tôi ở <1>Discord</1>, và chúng tôi đăng cập nhật trên <2>X (@choros_sh)</2> và <3>LinkedIn</3>."
 
 #. js-lingui-explicit-id
 #: ../../apps/marketing/src/app/[lang]/contact/page.tsx

@@ -9,9 +9,9 @@
 
 set -eu
 
-REPO="superset-sh/choros"
-INSTALL_DIR="${SUPERSET_HOME:-$HOME/choros}"
-TAG="${SUPERSET_VERSION:-latest}"
+REPO="choros-sh/choros"
+INSTALL_DIR="${CHOROS_HOME:-$HOME/choros}"
+TAG="${CHOROS_VERSION:-latest}"
 
 BOLD='\033[1m'
 GREEN='\033[32m'

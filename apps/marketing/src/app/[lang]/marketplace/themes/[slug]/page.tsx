@@ -221,7 +221,7 @@ export default async function ThemeDetailPage({ params }: PageProps) {
 		author: { "@type": "Person", name: theme.author },
 		keywords: theme.tags.join(", "),
 		isAccessibleForFree: true,
-		license: "https://github.com/superset-sh/choros",
+		license: "https://github.com/choros-sh/choros",
 	};
 
 	return (

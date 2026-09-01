@@ -14,7 +14,7 @@ import type {
 } from "./git-task-types";
 
 const WORKER_COUNT = Math.max(1, Math.min(4, cpus().length - 1));
-const WORKER_DEBUG = process.env.SUPERSET_WORKER_DEBUG === "1";
+const WORKER_DEBUG = process.env.CHOROS_WORKER_DEBUG === "1";
 
 let gitTaskRunner: WorkerTaskRunner | null = null;
 let didRegisterDisposeHook = false;

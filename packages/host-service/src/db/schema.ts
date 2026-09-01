@@ -213,7 +213,7 @@ export const workspaces = sqliteTable(
 	{
 		id: text().primaryKey(),
 		// Null = a project-less "session" workspace (managed folder under
-		// ~/.superset/sessions, its own standalone git repo).
+		// ~/.choros/sessions, its own standalone git repo).
 		projectId: text("project_id").references(() => projects.id, {
 			onDelete: "cascade",
 		}),

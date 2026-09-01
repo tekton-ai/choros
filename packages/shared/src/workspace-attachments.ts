@@ -13,7 +13,7 @@
  */
 
 /** Worktree-relative directory attachments are written into. */
-export const WORKSPACE_ATTACHMENTS_DIR = ".superset/attachments";
+export const WORKSPACE_ATTACHMENTS_DIR = ".choros/attachments";
 
 /**
  * Reduce an untrusted filename (clipboard, picker, upload) to a shell- and

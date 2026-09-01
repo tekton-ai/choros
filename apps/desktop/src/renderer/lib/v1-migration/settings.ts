@@ -3,7 +3,7 @@ import type { BranchPrefixMode } from "@choros/shared/workspace-launch";
 // Audit result (see plans/20260716-v1-to-v2-auto-migration.md): v1 and v2
 // share the electron-main settings row for user preferences (fonts,
 // notifications, editor, behavior toggles, ...), and the host-wide worktree
-// base dir is seeded from SUPERSET_LEGACY_WORKTREE_BASE_DIR on first host
+// base dir is seeded from CHOROS_LEGACY_WORKTREE_BASE_DIR on first host
 // boot. The only settings that live in a different v2 store are the branch
 // prefix (host-wide) and the per-project worktree-dir / branch-prefix
 // overrides — all in host.db, all keep-v2 on conflict.

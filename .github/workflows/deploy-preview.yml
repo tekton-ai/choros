@@ -13,11 +13,11 @@ concurrency:
 env:
   VERCEL_CLI_VERSION: 50.22.1
   PR_NUMBER: ${{ github.event.pull_request.number }}
-  API_ALIAS: api-pr-${{ github.event.pull_request.number }}-superset.vercel.app
-  WEB_ALIAS: web-pr-${{ github.event.pull_request.number }}-superset.vercel.app
-  MARKETING_ALIAS: marketing-pr-${{ github.event.pull_request.number }}-superset.vercel.app
-  ADMIN_ALIAS: admin-pr-${{ github.event.pull_request.number }}-superset.vercel.app
-  DOCS_ALIAS: docs-pr-${{ github.event.pull_request.number }}-superset.vercel.app
+  API_ALIAS: api-pr-${{ github.event.pull_request.number }}-choros.vercel.app
+  WEB_ALIAS: web-pr-${{ github.event.pull_request.number }}-choros.vercel.app
+  MARKETING_ALIAS: marketing-pr-${{ github.event.pull_request.number }}-choros.vercel.app
+  ADMIN_ALIAS: admin-pr-${{ github.event.pull_request.number }}-choros.vercel.app
+  DOCS_ALIAS: docs-pr-${{ github.event.pull_request.number }}-choros.vercel.app
 
 jobs:
   deploy-database:
@@ -128,7 +128,7 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-          R2_PRIVATE_BUCKET: superset-private-dev
+          R2_PRIVATE_BUCKET: choros-private-dev
           USERCONTENT_URL: ${{ vars.USERCONTENT_URL_DEV }}
           MEDIA_URL: ${{ vars.MEDIA_URL_DEV }}
           USERCONTENT_TOKEN_SECRET: ${{ secrets.USERCONTENT_TOKEN_SECRET_DEV }}

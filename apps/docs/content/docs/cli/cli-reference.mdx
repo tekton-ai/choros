@@ -24,7 +24,7 @@ These flags are accepted by every command:
 | --- | --- | --- |
 | `--json` | | Print the data payload as formatted JSON. |
 | `--quiet` | | One ID per line for arrays; the ID for single objects; JSON fallback otherwise. |
-| `--api-key <key>` | `SUPERSET_API_KEY` | Use an API key instead of stored OAuth login. |
+| `--api-key <key>` | `CHOROS_API_KEY` | Use an API key instead of stored OAuth login. |
 | `--help`, `-h` | | Show help for the current command. |
 | `--version`, `-v` | | Print the version number and exit. |
 
@@ -35,7 +35,7 @@ These flags are accepted by every command:
 ### scripts
 
 Reusable terminal launches. These are called terminal scripts in the app;
-setup, run, and teardown entries in `.superset/config.json` are project
+setup, run, and teardown entries in `.choros/config.json` are project
 lifecycle scripts. The legacy `presets` command name remains an alias.
 
 <Command
@@ -82,12 +82,12 @@ Authentication and session inspection.
 		},
 		{
 			flag: "--api-key <key>",
-			description: "Store a Choros API key (`sk_live_…`) at `~/.superset/config.json` instead of running the OAuth flow.",
+			description: "Store a Choros API key (`sk_live_…`) at `~/.choros/config.json` instead of running the OAuth flow.",
 		},
 	]}
 >
 Authenticate via browser OAuth and store a session token at
-`~/.superset/config.json`.
+`~/.choros/config.json`.
 
 Single-org accounts are selected automatically. With multiple orgs and a
 TTY, the CLI prompts; with multiple orgs and no TTY, you must pass
@@ -100,7 +100,7 @@ choros auth login --organization acme
 
 To sign in with an API key (useful for CI or any environment where the
 OAuth browser flow isn't an option), pass `--api-key`. The CLI validates
-the key, stores it at `~/.superset/config.json`, and clears any prior
+the key, stores it at `~/.choros/config.json`, and clears any prior
 OAuth session.
 
 ```bash
@@ -396,7 +396,7 @@ active one.
 	]}
 	output={`{ id: string; name: string; slug: string }`}
 >
-Set the active organization in `~/.superset/config.json`.
+Set the active organization in `~/.choros/config.json`.
 
 ```bash
 choros organization switch acme
@@ -664,7 +664,7 @@ runs a one-off shell command in the worktree and is independent of
 the [agent effort levels](#agent-effort-levels) below.
 
 Omitting `--project` creates a **session**: a project-less workspace backed
-by a managed folder under `~/.superset/sessions`, initialized as its own git
+by a managed folder under `~/.choros/sessions`, initialized as its own git
 repo. Sessions have no branch semantics, so `--branch`, `--pr`, `--task`,
 `--base-branch`, and `--skip-branch-prefix` are rejected, `--name` is
 optional, and the output has no `alreadyExists` field.
@@ -711,7 +711,7 @@ choros workspaces delete ws_a ws_b ws_c
 <Command
 	name="choros workspaces get [id]"
 	args={[
-		{ name: "id", description: "Workspace ID. Defaults to `$SUPERSET_WORKSPACE_ID` when run inside a workspace." },
+		{ name: "id", description: "Workspace ID. Defaults to `$CHOROS_WORKSPACE_ID` when run inside a workspace." },
 	]}
 	options={[
 		{ flag: "--host <id>", description: "Host the workspace lives on (default: this machine)." },
@@ -1688,5 +1688,5 @@ print one ID per line; single objects print their `id`; everything else
 falls back to JSON.
 
 When `CLAUDE_CODE`, `CLAUDECODE`, `CLAUDE_CODE_ENTRYPOINT`, `CODEX_CLI`,
-`GEMINI_CLI`, `SUPERSET_AGENT`, or `CI` is set to a non-empty value, output
+`GEMINI_CLI`, `CHOROS_AGENT`, or `CI` is set to a non-empty value, output
 defaults to JSON unless `--quiet` is provided.

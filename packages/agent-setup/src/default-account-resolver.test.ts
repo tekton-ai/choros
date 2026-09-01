@@ -25,7 +25,7 @@ function makeHome(pointer: string | null): {
 	home: string;
 	profile: string;
 } {
-	const home = mkdtempSync(join(tmpdir(), "superset-resolver-"));
+	const home = mkdtempSync(join(tmpdir(), "choros-resolver-"));
 	const profile = join(home, "profile");
 	mkdirSync(join(home, "state"), { recursive: true });
 	mkdirSync(profile);
@@ -36,23 +36,23 @@ function makeHome(pointer: string | null): {
 }
 
 describe("buildDefaultAccountResolver", () => {
-	it("adopts the pointer in a Superset terminal with no spawn-time value", () => {
+	it("adopts the pointer in a Choros terminal with no spawn-time value", () => {
 		const { home, profile } = makeHome("");
 		writeFileSync(join(home, "state", "default-claude-config-dir"), profile);
 		expect(
-			resolve({ SUPERSET_TERMINAL_ID: "t1", SUPERSET_HOME_DIR: home }),
+			resolve({ CHOROS_TERMINAL_ID: "t1", CHOROS_HOME_DIR: home }),
 		).toBe(profile);
 	});
 
-	it("re-resolves over a stale Superset-injected value", () => {
+	it("re-resolves over a stale Choros-injected value", () => {
 		const { home, profile } = makeHome(null);
 		writeFileSync(join(home, "state", "default-claude-config-dir"), profile);
 		expect(
 			resolve({
-				SUPERSET_TERMINAL_ID: "t1",
-				SUPERSET_HOME_DIR: home,
+				CHOROS_TERMINAL_ID: "t1",
+				CHOROS_HOME_DIR: home,
 				CLAUDE_CONFIG_DIR: "/tmp/old-spawn-time-default",
-				SUPERSET_DEFAULT_CLAUDE_CONFIG_DIR: "/tmp/old-spawn-time-default",
+				CHOROS_DEFAULT_CLAUDE_CONFIG_DIR: "/tmp/old-spawn-time-default",
 			}),
 		).toBe(profile);
 	});
@@ -61,10 +61,10 @@ describe("buildDefaultAccountResolver", () => {
 		const { home, profile } = makeHome("");
 		expect(
 			resolve({
-				SUPERSET_TERMINAL_ID: "t1",
-				SUPERSET_HOME_DIR: home,
+				CHOROS_TERMINAL_ID: "t1",
+				CHOROS_HOME_DIR: home,
 				CLAUDE_CONFIG_DIR: profile,
-				SUPERSET_DEFAULT_CLAUDE_CONFIG_DIR: profile,
+				CHOROS_DEFAULT_CLAUDE_CONFIG_DIR: profile,
 			}),
 		).toBe("<unset>");
 	});
@@ -74,28 +74,28 @@ describe("buildDefaultAccountResolver", () => {
 		writeFileSync(join(home, "state", "default-claude-config-dir"), profile);
 		expect(
 			resolve({
-				SUPERSET_TERMINAL_ID: "t1",
-				SUPERSET_HOME_DIR: home,
+				CHOROS_TERMINAL_ID: "t1",
+				CHOROS_HOME_DIR: home,
 				CLAUDE_CONFIG_DIR: "/tmp/user-picked-this",
-				SUPERSET_DEFAULT_CLAUDE_CONFIG_DIR: profile,
+				CHOROS_DEFAULT_CLAUDE_CONFIG_DIR: profile,
 			}),
 		).toBe("/tmp/user-picked-this");
 	});
 
-	it("does nothing outside Superset terminals", () => {
+	it("does nothing outside Choros terminals", () => {
 		const { home, profile } = makeHome(null);
 		writeFileSync(join(home, "state", "default-claude-config-dir"), profile);
-		expect(resolve({ SUPERSET_HOME_DIR: home })).toBe("<unset>");
+		expect(resolve({ CHOROS_HOME_DIR: home })).toBe("<unset>");
 	});
 
 	it("does nothing when the pointer file is missing (older host build)", () => {
 		const { home } = makeHome(null);
 		expect(
 			resolve({
-				SUPERSET_TERMINAL_ID: "t1",
-				SUPERSET_HOME_DIR: home,
+				CHOROS_TERMINAL_ID: "t1",
+				CHOROS_HOME_DIR: home,
 				CLAUDE_CONFIG_DIR: "/tmp/spawn-time",
-				SUPERSET_DEFAULT_CLAUDE_CONFIG_DIR: "/tmp/spawn-time",
+				CHOROS_DEFAULT_CLAUDE_CONFIG_DIR: "/tmp/spawn-time",
 			}),
 		).toBe("/tmp/spawn-time");
 	});
@@ -103,7 +103,7 @@ describe("buildDefaultAccountResolver", () => {
 	it("ignores a pointer at a vanished dir instead of booting signed out", () => {
 		const { home } = makeHome("/tmp/deleted-profile-dir-that-is-gone");
 		expect(
-			resolve({ SUPERSET_TERMINAL_ID: "t1", SUPERSET_HOME_DIR: home }),
+			resolve({ CHOROS_TERMINAL_ID: "t1", CHOROS_HOME_DIR: home }),
 		).toBe("<unset>");
 	});
 });

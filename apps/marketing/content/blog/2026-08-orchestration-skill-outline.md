@@ -1,7 +1,7 @@
 # Blog outline: the orchestrator is now an agent
 
 Draft outline for a post on the `choros-orchestration` skill (PR #6088,
-registry: superset-sh/skills). Companion to the 2026-08-02 changelog. This file
+registry: choros-sh/skills). Companion to the 2026-08-02 changelog. This file
 is `.md` so the blog loader ignores it; the real post ships as `.mdx`.
 
 Suggested frontmatter:
@@ -22,8 +22,8 @@ Suggested frontmatter:
 ## 2. What shipped
 
 - The `choros-orchestration` skill. One install, any agent that reads skills
-  becomes a coordinator: `npx skills add superset-sh/skills` (Claude Code can
-  also use the plugin: `/plugin marketplace add superset-sh/choros`).
+  becomes a coordinator: `npx skills add choros-sh/skills` (Claude Code can
+  also use the plugin: `/plugin marketplace add choros-sh/choros`).
 - Coordinator: Claude Code, Codex, others. Workers: any mix of agents Choros
   runs (Claude Code, Codex, Gemini, Grok, Kimi...).
 - Asset: 5-10s recording of a coordinator prompt fanning out to 3 workers,
@@ -66,7 +66,7 @@ Suggested frontmatter:
 
 ## 7. Try it
 
-- Install commands, link to the skill in superset-sh/skills, the changelog
+- Install commands, link to the skill in choros-sh/skills, the changelog
   entry, and docs.choros.sh.
 - Prompt starters: three copy-pasteable coordinator prompts.
 

@@ -23,10 +23,10 @@ function isFishAvailable(): boolean {
 describe("teardown initial command", () => {
 	test("uses exec instead of shell-specific exit status syntax", () => {
 		const command = buildTeardownInitialCommand(
-			"/tmp/worktree/.superset/teardown.sh",
+			"/tmp/worktree/.choros/teardown.sh",
 		);
 
-		expect(command).toBe("exec bash '/tmp/worktree/.superset/teardown.sh'");
+		expect(command).toBe("exec bash '/tmp/worktree/.choros/teardown.sh'");
 		expect(command).not.toContain("$?");
 	});
 
@@ -99,7 +99,7 @@ describe("resolveTeardownCommand", () => {
 	// Reproduces #5486: configured `teardown` commands must run on delete.
 	// Before the fix, teardown never consulted the resolved config and
 	// silently skipped when no teardown.sh script existed.
-	test("runs configured teardown commands from .superset/config.json", () => {
+	test("runs configured teardown commands from .choros/config.json", () => {
 		const sb = makeSandbox();
 		try {
 			writeConfig(sb.repoPath, {
@@ -147,7 +147,7 @@ describe("resolveTeardownCommand", () => {
 		}
 	});
 
-	test("falls back to <repoPath>/.superset/teardown.sh when no teardown is configured", () => {
+	test("falls back to <repoPath>/.choros/teardown.sh when no teardown is configured", () => {
 		const sb = makeSandbox();
 		try {
 			// Config exists but only defines setup — teardown must fall back.

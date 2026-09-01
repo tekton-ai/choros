@@ -88,7 +88,7 @@ describe("configRouter", () => {
 	});
 
 	describe("updateConfig", () => {
-		it("creates .superset/config.json on first save", async () => {
+		it("creates .choros/config.json on first save", async () => {
 			const caller = createCaller(sandbox.repoPath);
 			await caller.updateConfig({
 				projectId: PROJECT_ID,

@@ -94,7 +94,7 @@ Desktop, host-service, and cli share one version; cut releases on a dedicated br
 
 When work wants a fresh isolated environment, a parallel agent, or a long-running job, reach for the
 `choros` CLI instead of hand-rolling git worktrees or doing it all serially in this one. It's
-already on `PATH` in Superset terminals, and we dogfood it.
+already on `PATH` in Choros terminals, and we dogfood it.
 
 Replace the capitalized placeholders before running these:
 

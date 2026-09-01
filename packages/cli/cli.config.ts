@@ -12,22 +12,22 @@ export default defineConfig({
 		"process.env.RELAY_URL": JSON.stringify(
 			process.env.RELAY_URL ?? "https://relay.choros.sh",
 		),
-		"process.env.SUPERSET_API_URL": JSON.stringify(
-			process.env.SUPERSET_API_URL ?? "https://api.choros.sh",
+		"process.env.CHOROS_API_URL": JSON.stringify(
+			process.env.CHOROS_API_URL ?? "https://api.choros.sh",
 		),
-		"process.env.SUPERSET_WEB_URL": JSON.stringify(
-			process.env.SUPERSET_WEB_URL ?? "https://app.choros.sh",
+		"process.env.CHOROS_WEB_URL": JSON.stringify(
+			process.env.CHOROS_WEB_URL ?? "https://app.choros.sh",
 		),
-		"process.env.SUPERSET_VERSION": JSON.stringify(VERSION),
-		"process.env.SUPERSET_CLI_CHANNEL": JSON.stringify(
-			process.env.SUPERSET_CLI_CHANNEL ?? "standalone",
+		"process.env.CHOROS_VERSION": JSON.stringify(VERSION),
+		"process.env.CHOROS_CLI_CHANNEL": JSON.stringify(
+			process.env.CHOROS_CLI_CHANNEL ?? "standalone",
 		),
 	},
 	globals: {
 		json: boolean().desc("Output as JSON (auto-on under CI/agent envs)"),
 		quiet: boolean().desc("Output IDs only"),
 		apiKey: string()
-			.env("SUPERSET_API_KEY")
+			.env("CHOROS_API_KEY")
 			.desc("Use a Choros API key (sk_live_…) instead of OAuth login"),
 	},
 	help: {

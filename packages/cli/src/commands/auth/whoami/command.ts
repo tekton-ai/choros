@@ -12,7 +12,7 @@ export default command({
 		if (ctx.authSource === "oauth") {
 			authLine = "Session";
 		} else if (ctx.authSource === "override") {
-			authLine = "API key (from --api-key flag or SUPERSET_API_KEY env)";
+			authLine = "API key (from --api-key flag or CHOROS_API_KEY env)";
 		} else {
 			authLine = "API key (stored via auth login --api-key)";
 		}

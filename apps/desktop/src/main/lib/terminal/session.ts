@@ -16,7 +16,7 @@ import type { InternalCreateSessionParams, TerminalSession } from "./types";
 
 const DEFAULT_COLS = 80;
 const DEFAULT_ROWS = 24;
-const DEBUG_TERMINAL = process.env.SUPERSET_TERMINAL_DEBUG === "1";
+const DEBUG_TERMINAL = process.env.CHOROS_TERMINAL_DEBUG === "1";
 
 export function createHeadlessTerminal(params: {
 	cols: number;

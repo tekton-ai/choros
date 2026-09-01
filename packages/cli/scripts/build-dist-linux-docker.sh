@@ -37,8 +37,8 @@ docker run --rm --platform "$PLATFORM" \
   -e NODE_ARCH="$NODE_ARCH" \
   -e NODE_VERSION="$NODE_VERSION" \
   -e RELAY_URL="${RELAY_URL:-https://relay.choros.sh}" \
-  -e SUPERSET_API_URL="${SUPERSET_API_URL:-https://api.choros.sh}" \
-  -e SUPERSET_WEB_URL="${SUPERSET_WEB_URL:-https://app.choros.sh}" \
+  -e CHOROS_API_URL="${CHOROS_API_URL:-https://api.choros.sh}" \
+  -e CHOROS_WEB_URL="${CHOROS_WEB_URL:-https://app.choros.sh}" \
   "oven/bun:${BUN_VERSION}" bash -euxc '
     apt-get update -qq
     apt-get install -y --no-install-recommends \
@@ -66,6 +66,6 @@ docker run --rm --platform "$PLATFORM" \
 
     DIST="$(pwd)/dist/choros-${TARGET}"
     bash scripts/smoke-test.sh "$DIST" "$TARGET"
-    SUPERSET_HEADLESS_E2E=1 bash scripts/headless-e2e.sh "$DIST"
+    CHOROS_HEADLESS_E2E=1 bash scripts/headless-e2e.sh "$DIST"
     echo "[docker-build] tarball: $(ls -la "$DIST.tar.gz")"
   '

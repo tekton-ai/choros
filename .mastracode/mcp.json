@@ -1,8 +1,8 @@
 {
 	"mcpServers": {
-		"superset": {
+		"choros": {
 			"command": "npx",
-			"args": ["-y", "mcp-remote", "https://api.superset.sh/api/v2/agent/mcp"]
+			"args": ["-y", "mcp-remote", "https://api.choros.sh/api/v2/agent/mcp"]
 		},
 		"maestro": {
 			"command": "maestro",

@@ -103,8 +103,8 @@ jobs:
       - name: Commit fills
         if: steps.missing.outputs.count != '0'
         run: |
-          git config user.name "superset-i18n[bot]"
-          git config user.email "i18n-bot@superset.sh"
+          git config user.name "choros-i18n[bot]"
+          git config user.email "i18n-bot@choros.sh"
           git add packages/i18n/locales
           if git diff --cached --quiet; then
             echo "Translator produced no accepted fills; leaving the PR red for a human."

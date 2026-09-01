@@ -3,14 +3,14 @@
 
 ## Purpose
 
-When “Terminal persistence” is enabled, Superset should never freeze or spin at startup, even if the user has accumulated dozens of terminal panes over time. The user should be able to switch between recent terminal tabs with near‑instant feedback, without keeping every terminal renderer and stream active.
+When “Terminal persistence” is enabled, Choros should never freeze or spin at startup, even if the user has accumulated dozens of terminal panes over time. The user should be able to switch between recent terminal tabs with near‑instant feedback, without keeping every terminal renderer and stream active.
 
-This work matters because today a user can get their desktop app into a broken state where a large restored terminal set causes 99% CPU usage and an infinite macOS spinner. The goal is to make persistence robust by default and to make failure modes recoverable from within the UI (no manual edits to `~/.superset/app-state.json`).
+This work matters because today a user can get their desktop app into a broken state where a large restored terminal set causes 99% CPU usage and an infinite macOS spinner. The goal is to make persistence robust by default and to make failure modes recoverable from within the UI (no manual edits to `~/.choros/app-state.json`).
 
 
 ## Context
 
-Superset Desktop (Electron) renders terminals in the renderer process using xterm.js. For persistence across app restarts, the Electron main process can delegate terminal ownership to a detached “terminal host daemon” (a Node process) that owns PTYs and maintains a headless xterm emulator for each session. The renderer talks to the main process via tRPC, and the main process talks to the daemon via a Unix domain socket using NDJSON messages.
+Choros Desktop (Electron) renders terminals in the renderer process using xterm.js. For persistence across app restarts, the Electron main process can delegate terminal ownership to a detached “terminal host daemon” (a Node process) that owns PTYs and maintains a headless xterm emulator for each session. The renderer talks to the main process via tRPC, and the main process talks to the daemon via a Unix domain socket using NDJSON messages.
 
 On this branch, the daemon protocol was recently changed to split “control” (RPC) and “stream” (terminal output) sockets (see `apps/desktop/plans/done/20260106-1800-terminal-host-control-stream-sockets.md`). That fix addresses head‑of‑line blocking when one terminal spams output, but it does not address a different failure mode: restoring many sessions at once can still saturate CPU and freeze the UI.
 
@@ -35,7 +35,7 @@ A “workspace” is a worktree-backed project environment shown in the left sid
 
 “Pane status” is a persisted per-pane UI indicator used to surface agent lifecycle state across tabs/workspaces. It lives on `pane.status` and currently supports `idle`, `working`, `permission`, and `review`. The tab strip (`GroupStrip`) and workspace list aggregate pane statuses using shared priority logic in `apps/desktop/src/shared/tabs-types.ts` and render dots via `apps/desktop/src/renderer/screens/main/components/StatusIndicator/StatusIndicator.tsx`.
 
-Separately, Superset Desktop can show macOS desktop notifications for agent lifecycle events (for example “Agent Complete” or “Input Needed”). Those notifications are triggered in the main process (`apps/desktop/src/main/windows/main.ts`) from the same agent lifecycle event stream, and they are not driven by general terminal output.
+Separately, Choros Desktop can show macOS desktop notifications for agent lifecycle events (for example “Agent Complete” or “Input Needed”). Those notifications are triggered in the main process (`apps/desktop/src/main/windows/main.ts`) from the same agent lifecycle event stream, and they are not driven by general terminal output.
 
 An “LRU warm set” is a small, bounded cache of most-recently-used terminal tabs that remain mounted to keep common tab switches fast. It is explicitly not persisted, so it cannot cause startup fan-out after restart.
 
