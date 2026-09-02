@@ -1,0 +1,42 @@
+import { i18n } from "@choros/i18n";
+import { toast } from "@choros/ui/sonner";
+import { msg } from "@lingui/core/macro";
+import { electronTrpc } from "renderer/lib/electron-trpc";
+
+/** Enable relay access with the same mutation + feedback as Settings > Remote Access. */
+export function useEnableRelayAccess() {
+	const utils = electronTrpc.useUtils();
+	const setExpose =
+		electronTrpc.settings.setExposeHostServiceViaRelay.useMutation({
+			onSettled: () => {
+				utils.settings.getExposeHostServiceViaRelay.invalidate();
+			},
+		});
+
+	const enableRelay = () => {
+		toast.promise(setExpose.mutateAsync({ enabled: true }), {
+			loading: i18n._(
+				msg({
+					id: "dashboard.automations.enableRelay.loadingToast",
+					message: "Restarting host services…",
+				}),
+			),
+			success: i18n._(
+				msg({
+					id: "dashboard.automations.enableRelay.successToast",
+					message: "Relay access enabled, connecting to the relay…",
+				}),
+			),
+			error: (err: Error) =>
+				err.message ??
+				i18n._(
+					msg({
+						id: "dashboard.automations.enableRelay.failedToast",
+						message: "Failed to enable relay access",
+					}),
+				),
+		});
+	};
+
+	return { enableRelay, isPending: setExpose.isPending };
+}

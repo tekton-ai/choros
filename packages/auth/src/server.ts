@@ -1,0 +1,1441 @@
+import { apiKey } from "@better-auth/api-key";
+import { expo } from "@better-auth/expo";
+import { oauthProvider } from "@better-auth/oauth-provider";
+import { stripe } from "@better-auth/stripe";
+import { db } from "@choros/db/client";
+import { members, subscriptions } from "@choros/db/schema";
+import type { sessions } from "@choros/db/schema/auth";
+import * as authSchema from "@choros/db/schema/auth";
+import { seedDefaultStatuses } from "@choros/db/seed-default-statuses";
+import { WelcomeEmail } from "@choros/email/emails/activation/00-welcome";
+import { MemberAddedBillingEmail } from "@choros/email/emails/billing/member-added";
+import { MemberRemovedBillingEmail } from "@choros/email/emails/billing/member-removed";
+import { PaymentFailedEmail } from "@choros/email/emails/billing/payment-failed";
+import { SubscriptionCancelledEmail } from "@choros/email/emails/billing/subscription-cancelled";
+import { SubscriptionStartedEmail } from "@choros/email/emails/billing/subscription-started";
+import { OrganizationInvitationEmail } from "@choros/email/emails/team/invitation";
+import { MemberAddedEmail } from "@choros/email/emails/team/member-added";
+import { MemberRemovedEmail } from "@choros/email/emails/team/member-removed";
+import { canInvite, type OrganizationRole } from "@choros/shared/auth";
+import { ACTIVE_SUBSCRIPTION_STATUSES } from "@choros/shared/billing";
+import { getTrustedVercelPreviewOrigins } from "@choros/shared/vercel-preview-origins";
+import { Client } from "@upstash/qstash";
+import { betterAuth } from "better-auth";
+import { drizzleAdapter } from "better-auth/adapters/drizzle";
+import {
+	APIError,
+	createAuthMiddleware,
+	getSessionFromCtx,
+} from "better-auth/api";
+import { bearer, customSession, organization } from "better-auth/plugins";
+import { jwt } from "better-auth/plugins/jwt";
+import { and, asc, count, desc, eq, inArray, ne, sql } from "drizzle-orm";
+import type Stripe from "stripe";
+import { env } from "./env";
+import { acceptInvitationEndpoint } from "./lib/accept-invitation-endpoint";
+import { jwksAdapter } from "./lib/cached-jwks";
+import { generateMagicTokenForInvite } from "./lib/generate-magic-token";
+import { getActivationVariant } from "./lib/lifecycle";
+import { loadCustomSessionData } from "./lib/load-custom-session-data";
+import { invitationRateLimit } from "./lib/rate-limit";
+import { resend } from "./lib/resend";
+import {
+	resolveSessionOrganizationState,
+	type SessionOrganizationContext,
+} from "./lib/resolve-session-organization-state";
+import { stripeClient } from "./stripe";
+import {
+	countBillableSeats,
+	formatPrice,
+	getOrganizationBillingRecipients,
+	getOrganizationOwners,
+} from "./utils";
+import { previewNextInvoice } from "./utils/invoice-preview";
+
+const qstash = new Client({ token: env.QSTASH_TOKEN });
+
+const userOptions = {
+	additionalFields: {
+		onboardedAt: {
+			type: "date",
+			required: false,
+			input: false,
+			fieldName: "onboarded_at",
+		},
+		deletionRequestedAt: {
+			type: "date",
+			required: false,
+			input: false,
+			fieldName: "deletion_requested_at",
+		},
+	},
+} as const;
+
+/** Better-auth endpoints a pending-deletion user may still reach: signing in
+ * (recovery IS sign-in), learning their status, and signing out. Everything
+ * else — org management, billing, api keys, JWT minting — is refused. */
+const PENDING_DELETION_ALLOWED_PATH_PREFIXES = [
+	"/sign-in",
+	"/callback",
+	"/get-session",
+	"/sign-out",
+];
+
+const NOTIFY_SLACK_URL = `${env.NEXT_PUBLIC_API_URL}/api/integrations/stripe/jobs/notify-slack`;
+const desktopDevPort = process.env.DESKTOP_VITE_PORT || "5173";
+const desktopDevOrigins =
+	process.env.NODE_ENV === "development"
+		? [
+				`http://localhost:${desktopDevPort}`,
+				`http://127.0.0.1:${desktopDevPort}`,
+			]
+		: [];
+
+function serializeCancellationDetails(
+	cancellationDetails?: Stripe.Subscription.CancellationDetails | null,
+) {
+	try {
+		if (!cancellationDetails) return undefined;
+
+		return {
+			comment: cancellationDetails.comment,
+			feedback: cancellationDetails.feedback,
+			reason: cancellationDetails.reason,
+		};
+	} catch (error) {
+		console.error(
+			"[stripe/subscription-cancel] Failed to serialize cancellation details:",
+			error,
+		);
+		return undefined;
+	}
+}
+
+export const auth = betterAuth({
+	baseURL: env.NEXT_PUBLIC_API_URL,
+	secret: env.BETTER_AUTH_SECRET,
+	disabledPaths: [],
+	database: drizzleAdapter(db, {
+		provider: "pg",
+		usePlural: true,
+		schema: { ...authSchema, subscriptions },
+	}),
+	trustedOrigins: async (request) => [
+		env.NEXT_PUBLIC_WEB_URL,
+		env.NEXT_PUBLIC_API_URL,
+		env.NEXT_PUBLIC_MARKETING_URL,
+		env.NEXT_PUBLIC_ADMIN_URL,
+		...(env.NEXT_PUBLIC_DESKTOP_URL ? [env.NEXT_PUBLIC_DESKTOP_URL] : []),
+		...getTrustedVercelPreviewOrigins(request?.url ?? env.NEXT_PUBLIC_API_URL),
+		...desktopDevOrigins,
+		"choros://app",
+		"choros://",
+		"https://appleid.apple.com",
+		...(process.env.NODE_ENV === "development"
+			? ["exp://", "exp://**", "exp://192.168.*.*:*/**"]
+			: []),
+	],
+	session: {
+		expiresIn: 60 * 60 * 24 * 30,
+		updateAge: 60 * 60 * 24,
+		storeSessionInDatabase: true,
+		cookieCache: {
+			enabled: true,
+			maxAge: 60 * 5,
+		},
+	},
+	user: userOptions,
+	hooks: {
+		before: createAuthMiddleware(async (ctx) => {
+			if (
+				PENDING_DELETION_ALLOWED_PATH_PREFIXES.some((prefix) =>
+					ctx.path.startsWith(prefix),
+				)
+			) {
+				return;
+			}
+			const session = await getSessionFromCtx(ctx);
+			if (
+				(session?.user as { deletionRequestedAt?: Date | null })
+					?.deletionRequestedAt
+			) {
+				throw new APIError("FORBIDDEN", {
+					message: "Account is pending deletion.",
+				});
+			}
+		}),
+		// Remember the switch on the user, not just on the session that made it.
+		// `sessions.active_organization_id` dies with its session, and the next
+		// session would fall back to the newest membership — which is how people
+		// ended up in an organization they never chose. Better-auth has no
+		// set-active hook, so the route is the choke point; every client reaches
+		// it through `organization.setActive`.
+		//
+		// `ctx.context.returned` rather than `newSession`: the dispatcher hands
+		// after-hooks a shallow copy of the context, so the `setNewSession` the
+		// endpoint called is not visible here. `returned` is the organization
+		// the route settled on, or null when the active organization is cleared.
+		after: createAuthMiddleware(async (ctx) => {
+			if (ctx.path !== "/organization/set-active") return;
+			const returned = ctx.context.returned;
+			if (returned instanceof APIError) return;
+
+			const organizationId =
+				returned && typeof returned === "object" && "id" in returned
+					? String(returned.id)
+					: null;
+			const userId = (await getSessionFromCtx(ctx))?.user?.id;
+			if (!userId) return;
+
+			// The switch itself has already been persisted and the cookie set;
+			// throwing here would report a failure for something that worked.
+			try {
+				await db
+					.update(authSchema.users)
+					.set({ lastActiveOrganizationId: organizationId })
+					.where(eq(authSchema.users.id, userId));
+			} catch (error) {
+				console.error(
+					`[organization/set-active] Failed to remember active organization for ${userId}:`,
+					error,
+				);
+			}
+		}),
+	},
+	advanced: {
+		crossSubDomainCookies: {
+			enabled: true,
+			domain: env.NEXT_PUBLIC_COOKIE_DOMAIN,
+		},
+		database: {
+			generateId: false,
+		},
+	},
+	// Credential sign-IN stays available in production for the App Store
+	// review demo account (see seed-review-account.ts); sign-UP remains
+	// dev/preview-only.
+	emailAndPassword: {
+		enabled: true,
+		disableSignUp:
+			process.env.NODE_ENV !== "development" &&
+			process.env.VERCEL_ENV !== "preview",
+		autoSignIn: true,
+	},
+	socialProviders: {
+		github: {
+			clientId: env.GH_CLIENT_ID,
+			clientSecret: env.GH_CLIENT_SECRET,
+		},
+		google: {
+			clientId: env.GOOGLE_CLIENT_ID,
+			clientSecret: env.GOOGLE_CLIENT_SECRET,
+		},
+		apple: {
+			clientId: env.APPLE_CLIENT_ID,
+			clientSecret: env.APPLE_CLIENT_SECRET,
+			appBundleIdentifier: env.APPLE_APP_BUNDLE_IDENTIFIER,
+		},
+	},
+	databaseHooks: {
+		user: {
+			create: {
+				after: async (user) => {
+					const domain = user.email.split("@")[1]?.toLowerCase();
+					let enrolledOrgId: string | null = null;
+
+					if (domain) {
+						const matchingOrgs = await db.query.organizations.findMany({
+							where: sql`${authSchema.organizations.allowedDomains} @> ARRAY[${domain}]::text[]`,
+						});
+
+						for (const org of matchingOrgs) {
+							try {
+								await auth.api.addMember({
+									body: {
+										organizationId: org.id,
+										userId: user.id,
+										role: "member",
+									},
+								});
+								if (!enrolledOrgId) {
+									enrolledOrgId = org.id;
+								}
+							} catch (error) {
+								console.error(
+									`[auto-enroll] Failed to add user ${user.id} to org ${org.id}:`,
+									error,
+								);
+								// addMember may have created the DB record before a downstream error (e.g. Stripe) — check
+								const memberExists = await db.query.members.findFirst({
+									where: and(
+										eq(authSchema.members.organizationId, org.id),
+										eq(authSchema.members.userId, user.id),
+									),
+								});
+								if (memberExists && !enrolledOrgId) {
+									enrolledOrgId = org.id;
+								}
+							}
+						}
+					}
+
+					if (!enrolledOrgId) {
+						const personalOrg = await auth.api.createOrganization({
+							body: {
+								name: `${user.name}'s Team`,
+								slug: `${user.id.slice(0, 8)}-team`,
+								userId: user.id,
+							},
+						});
+						enrolledOrgId = personalOrg?.id ?? null;
+					}
+
+					if (enrolledOrgId) {
+						await db
+							.update(authSchema.sessions)
+							.set({ activeOrganizationId: enrolledOrgId })
+							.where(eq(authSchema.sessions.userId, user.id));
+					}
+
+					// The welcome email is unconditional in BOTH arms. Gating it is
+					// what invalidated experiment 387868: a6beb048b changed the control
+					// condition mid-flight and the run became unreadable.
+					try {
+						const { error } = await resend.emails.send({
+							from: "Choros <noreply@choros.sh>",
+							replyTo: "founders@choros.sh",
+							to: user.email,
+							subject: "Welcome to Choros",
+							react: WelcomeEmail({
+								userName: user.name,
+								userEmail: user.email,
+							}),
+						});
+						// Resend reports API failures in `error` rather than throwing.
+						if (error) throw new Error(error.message);
+					} catch (error) {
+						console.error(
+							`[lifecycle] Failed to send welcome email to ${user.id}:`,
+							error,
+						);
+					}
+
+					// Only drip enrolment is randomised. Nothing differs between arms
+					// until the first nudge (>=23h after signup), so "not activated at
+					// 22h" stays a pre-treatment covariate and the analysis can restrict
+					// to it without selection bias. Kill switch for the nudges is still
+					// the Resend automation toggle.
+					//
+					// CAUTION: withholding this event withholds it from EVERY consumer,
+					// not just the activation drip. Safe today because activation-drip
+					// is the only automation in sync-automations.ts triggering on
+					// `user.signed_up` — but that script is create-only and Resend can
+					// hold automations it never defined, so check the live account
+					// before trusting that. A second consumer means splitting enrolment
+					// first: emit `user.signed_up` unconditionally and gate an
+					// activation-only event instead, or the control arm silently drops
+					// out of that campaign too.
+					if ((await getActivationVariant(user.id)) === "test") {
+						try {
+							const { error } = await resend.events.send({
+								event: "user.signed_up",
+								email: user.email,
+								payload: { userId: user.id, name: user.name },
+							});
+							if (error) throw new Error(error.message);
+						} catch (error) {
+							console.error(
+								`[lifecycle] Failed to emit signup event for ${user.id}:`,
+								error,
+							);
+						}
+					}
+				},
+			},
+		},
+	},
+	plugins: [
+		apiKey({
+			enableMetadata: true,
+			enableSessionForAPIKeys: true,
+			defaultPrefix: "sk_live_",
+			rateLimit: {
+				enabled: false,
+			},
+		}),
+		jwt({
+			jwks: {
+				keyPairConfig: { alg: "RS256" },
+			},
+			adapter: jwksAdapter(),
+			jwt: {
+				issuer: env.NEXT_PUBLIC_API_URL,
+				audience: env.NEXT_PUBLIC_API_URL,
+				expirationTime: "1h",
+				definePayload: async ({
+					user,
+				}: {
+					user: { id: string; email: string };
+					session: Record<string, unknown>;
+				}) => {
+					const userMemberships = await db.query.members.findMany({
+						where: eq(members.userId, user.id),
+						columns: { organizationId: true },
+					});
+					const organizationIds = [
+						...new Set(userMemberships.map((m) => m.organizationId)),
+					];
+					return { sub: user.id, email: user.email, organizationIds };
+				},
+			},
+		}),
+		oauthProvider({
+			loginPage: `${env.NEXT_PUBLIC_WEB_URL}/sign-in`,
+			consentPage: `${env.NEXT_PUBLIC_WEB_URL}/oauth/consent`,
+			allowDynamicClientRegistration: true,
+			allowUnauthenticatedClientRegistration: true,
+			accessTokenExpiresIn: 60 * 60 * 24 * 7,
+			validAudiences: [
+				env.NEXT_PUBLIC_API_URL,
+				`${env.NEXT_PUBLIC_API_URL}/`,
+				`${env.NEXT_PUBLIC_API_URL}/api/v2/agent/mcp`,
+				`${env.NEXT_PUBLIC_API_URL}/mcp`,
+			],
+			silenceWarnings: {
+				oauthAuthServerConfig: true,
+				openidConfig: true,
+			},
+			postLogin: {
+				// Org selection is handled in the consent page, so never redirect to a separate page
+				page: `${env.NEXT_PUBLIC_WEB_URL}/oauth/consent`,
+				shouldRedirect: () => false,
+				consentReferenceId: async ({ user, session }) => {
+					const { activeOrganizationId } =
+						await resolveSessionOrganizationState({
+							userId: user?.id,
+							session: session as SessionOrganizationContext | undefined,
+						});
+					return activeOrganizationId ?? undefined;
+				},
+			},
+			customAccessTokenClaims: async ({ user, referenceId, metadata }) => {
+				const clientName =
+					metadata && typeof metadata === "object" && "client_name" in metadata
+						? metadata.client_name
+						: undefined;
+				// Mirror the JWT plugin's `definePayload` so OAuth access tokens
+				// carry the user's full membership list. Without this, every
+				// `ctx.organizationIds.includes(...)` check downstream rejects
+				// the token because the claim defaults to `[]`.
+				const memberRows = user?.id
+					? await db.query.members.findMany({
+							where: eq(members.userId, user.id),
+							columns: { organizationId: true },
+						})
+					: [];
+				const organizationIds = [
+					...new Set(memberRows.map((m) => m.organizationId)),
+				];
+				return {
+					organizationId: referenceId ?? undefined,
+					organizationIds,
+					client_name: typeof clientName === "string" ? clientName : undefined,
+				};
+			},
+		}),
+		expo(),
+		organization({
+			creatorRole: "owner",
+			invitationExpiresIn: 60 * 60 * 24 * 7,
+			teams: {
+				enabled: true,
+				maximumTeams: 25,
+				allowRemovingAllTeams: false,
+				defaultTeam: {
+					enabled: true,
+					customCreateDefaultTeam: async (organization) => {
+						const [team] = await db
+							.insert(authSchema.teams)
+							.values({
+								name: "Default Team",
+								slug: "DEFAULT",
+								organizationId: organization.id,
+							})
+							.returning();
+						if (!team) throw new Error("Failed to create default team");
+						return { ...team, updatedAt: team.updatedAt ?? undefined };
+					},
+				},
+			},
+			schema: {
+				team: {
+					additionalFields: {
+						slug: { type: "string", input: true, required: true },
+					},
+				},
+			},
+			sendInvitationEmail: async (data) => {
+				const token = await generateMagicTokenForInvite({
+					invitationId: data.id,
+				});
+
+				const inviteLink = `${env.NEXT_PUBLIC_WEB_URL}/accept-invitation/${data.id}?token=${token}`;
+
+				const existingUser = await db.query.users.findFirst({
+					where: eq(authSchema.users.email, data.email),
+				});
+
+				await resend.emails.send({
+					from: "Choros <noreply@choros.sh>",
+					to: data.email,
+					subject: `${data.inviter.user.name} invited you to join ${data.organization.name}`,
+					react: OrganizationInvitationEmail({
+						organizationName: data.organization.name,
+						inviterName: data.inviter.user.name,
+						inviteLink,
+						role: data.role,
+						inviteeName: existingUser?.name ?? null,
+						inviterEmail: data.inviter.user.email,
+						expiresAt: data.invitation.expiresAt,
+					}),
+				});
+			},
+			organizationHooks: {
+				beforeCreateInvitation: async (data) => {
+					const { inviterId, organizationId, role, teamId } = data.invitation;
+
+					const { success } = await invitationRateLimit.limit(inviterId);
+					if (!success) {
+						throw new Error(
+							"Rate limit exceeded. Max 10 invitations per hour.",
+						);
+					}
+
+					const inviterMember = await db.query.members.findFirst({
+						where: and(
+							eq(members.userId, inviterId),
+							eq(members.organizationId, organizationId),
+						),
+					});
+
+					if (!inviterMember) {
+						throw new Error("Not a member of this organization");
+					}
+
+					if (
+						!canInvite(
+							inviterMember.role as OrganizationRole,
+							role as OrganizationRole,
+						)
+					) {
+						throw new Error("Cannot invite users with this role");
+					}
+
+					if (!teamId) {
+						const oldestTeam = await db.query.teams.findFirst({
+							where: eq(authSchema.teams.organizationId, organizationId),
+							orderBy: asc(authSchema.teams.createdAt),
+							columns: { id: true },
+						});
+						if (oldestTeam) {
+							return {
+								data: { ...data.invitation, teamId: oldestTeam.id },
+							};
+						}
+					}
+				},
+
+				afterCreateOrganization: async ({ organization, user }) => {
+					if (process.env.NODE_ENV !== "development") {
+						const customer = await stripeClient.customers.create({
+							name: organization.name,
+							email: user.email,
+							metadata: {
+								organizationId: organization.id,
+								organizationSlug: organization.slug,
+							},
+						});
+
+						await db
+							.update(authSchema.organizations)
+							.set({ stripeCustomerId: customer.id })
+							.where(eq(authSchema.organizations.id, organization.id));
+					}
+
+					await seedDefaultStatuses(organization.id);
+				},
+
+				beforeRemoveMember: async ({ member, organization }) => {
+					await db
+						.delete(authSchema.teamMembers)
+						.where(
+							and(
+								eq(authSchema.teamMembers.userId, member.userId),
+								inArray(
+									authSchema.teamMembers.teamId,
+									db
+										.select({ id: authSchema.teams.id })
+										.from(authSchema.teams)
+										.where(
+											eq(authSchema.teams.organizationId, organization.id),
+										),
+								),
+							),
+						);
+				},
+
+				beforeRemoveTeamMember: async ({ teamMember, organization }) => {
+					// Invariant: every org member belongs to ≥1 team. Reject the
+					// removal if it would leave this user with zero teams in this
+					// org. Self-leave and admin-removal both flow through this hook.
+					const [otherMemberships] = await db
+						.select({ value: count() })
+						.from(authSchema.teamMembers)
+						.where(
+							and(
+								eq(authSchema.teamMembers.userId, teamMember.userId),
+								eq(authSchema.teamMembers.organizationId, organization.id),
+								ne(authSchema.teamMembers.teamId, teamMember.teamId),
+							),
+						);
+					if ((otherMemberships?.value ?? 0) === 0) {
+						throw new Error("You should be a member of at least one team");
+					}
+				},
+
+				beforeDeleteTeam: async ({ team }) => {
+					// Linear-style: deleting a team would otherwise orphan any
+					// members who were only in this team. Re-home them into the
+					// next-oldest team in the org before the FK cascade fires.
+					const teamMemberRows = await db
+						.select({ userId: authSchema.teamMembers.userId })
+						.from(authSchema.teamMembers)
+						.where(eq(authSchema.teamMembers.teamId, team.id));
+
+					if (teamMemberRows.length === 0) return;
+
+					const memberUserIds = teamMemberRows.map((row) => row.userId);
+
+					const safelyInOtherTeam = await db
+						.select({ userId: authSchema.teamMembers.userId })
+						.from(authSchema.teamMembers)
+						.where(
+							and(
+								inArray(authSchema.teamMembers.userId, memberUserIds),
+								eq(authSchema.teamMembers.organizationId, team.organizationId),
+								ne(authSchema.teamMembers.teamId, team.id),
+							),
+						);
+					const safeUserIds = new Set(safelyInOtherTeam.map((r) => r.userId));
+					const orphanUserIds = memberUserIds.filter(
+						(uid) => !safeUserIds.has(uid),
+					);
+
+					if (orphanUserIds.length === 0) return;
+
+					const nextTeam = await db.query.teams.findFirst({
+						where: and(
+							eq(authSchema.teams.organizationId, team.organizationId),
+							ne(authSchema.teams.id, team.id),
+						),
+						orderBy: asc(authSchema.teams.createdAt),
+						columns: { id: true },
+					});
+					if (!nextTeam) return;
+
+					await db
+						.insert(authSchema.teamMembers)
+						.values(
+							orphanUserIds.map((userId) => ({
+								teamId: nextTeam.id,
+								userId,
+								organizationId: team.organizationId,
+							})),
+						)
+						.onConflictDoNothing();
+				},
+
+				beforeDeleteOrganization: async ({ organization }) => {
+					if (!organization.stripeCustomerId) return;
+
+					const subs = await stripeClient.subscriptions.list({
+						customer: organization.stripeCustomerId,
+						status: "active",
+					});
+					for (const sub of subs.data) {
+						await stripeClient.subscriptions.cancel(sub.id);
+					}
+				},
+
+				afterUpdateOrganization: async ({ organization }) => {
+					if (!organization?.stripeCustomerId) return;
+
+					await stripeClient.customers.update(organization.stripeCustomerId, {
+						name: organization.name,
+					});
+				},
+
+				beforeAddMember: async ({ organization, user }) => {
+					// Domain-allowlisted users bypass the free-plan member limit.
+					// If an admin put the user's domain in allowedDomains, they've
+					// already explicitly opted in to letting those users join.
+					// (allowedDomains isn't on the hook's organization arg because
+					// it isn't declared as a better-auth additionalField — fetch it.)
+					const userDomain = user.email.split("@")[1]?.toLowerCase();
+					if (userDomain) {
+						const orgRow = await db.query.organizations.findFirst({
+							where: eq(authSchema.organizations.id, organization.id),
+							columns: { allowedDomains: true },
+						});
+						if (orgRow?.allowedDomains?.includes(userDomain)) {
+							return;
+						}
+					}
+
+					const subscription = await db.query.subscriptions.findFirst({
+						where: and(
+							eq(subscriptions.referenceId, organization.id),
+							eq(subscriptions.status, "active"),
+						),
+					});
+
+					if (subscription) return;
+
+					// Not countBillableSeats: the free-plan limit is about how many
+					// people are in the organization, not how many seats we bill,
+					// so a member pending deletion still occupies the one slot.
+					const memberCount = await db
+						.select({ count: count() })
+						.from(members)
+						.where(eq(members.organizationId, organization.id));
+
+					const currentCount = memberCount[0]?.count ?? 0;
+
+					if (currentCount >= 1) {
+						throw new Error(
+							"Free plan is limited to 1 user. Upgrade to add more members.",
+						);
+					}
+				},
+
+				afterAddMember: async ({ member, user, organization }) => {
+					// Linear-style: auto-add new org members to the oldest team so
+					// they aren't dropped into an empty teams view. Additional team
+					// memberships are added explicitly by admins.
+					const defaultTeam = await db.query.teams.findFirst({
+						where: eq(authSchema.teams.organizationId, organization.id),
+						orderBy: asc(authSchema.teams.createdAt),
+						columns: { id: true },
+					});
+					if (defaultTeam) {
+						// onConflictDoNothing keeps addMember robust if a stale row
+						// ever exists from a partial earlier run — we never want this
+						// hook to fail a member-add.
+						await db
+							.insert(authSchema.teamMembers)
+							.values({
+								teamId: defaultTeam.id,
+								userId: member.userId,
+								organizationId: organization.id,
+							})
+							.onConflictDoNothing();
+					}
+
+					const subscription = await db.query.subscriptions.findFirst({
+						where: and(
+							eq(subscriptions.referenceId, organization.id),
+							eq(subscriptions.status, "active"),
+						),
+					});
+
+					// This email is invitation-specific. Auto-enroll and direct addMember
+					// calls should not send the invite-style "you were added" message.
+					const acceptedInvitation = await db.query.invitations.findFirst({
+						where: and(
+							eq(authSchema.invitations.organizationId, organization.id),
+							eq(authSchema.invitations.email, user.email),
+							eq(authSchema.invitations.status, "accepted"),
+						),
+						orderBy: desc(authSchema.invitations.createdAt),
+					});
+
+					if (acceptedInvitation) {
+						await resend.emails.send({
+							from: "Choros <noreply@choros.sh>",
+							to: user.email,
+							subject: `You've been added to ${organization.name}`,
+							react: MemberAddedEmail({
+								memberName: user.name,
+								organizationName: organization.name,
+								role: member.role,
+								addedByName: "A team admin",
+								dashboardLink: env.NEXT_PUBLIC_WEB_URL,
+							}),
+						});
+					}
+
+					if (!subscription?.stripeSubscriptionId) return;
+					if (subscription.plan === "enterprise") return;
+
+					const quantity = Math.max(
+						1,
+						await countBillableSeats(organization.id),
+					);
+
+					const stripeSub = await stripeClient.subscriptions.retrieve(
+						subscription.stripeSubscriptionId,
+					);
+					const itemId = stripeSub.items.data[0]?.id;
+
+					if (itemId) {
+						await stripeClient.subscriptions.update(
+							subscription.stripeSubscriptionId,
+							{
+								items: [{ id: itemId, quantity }],
+								proration_behavior: "create_prorations",
+							},
+						);
+					}
+
+					const recipients = await getOrganizationBillingRecipients(
+						organization.id,
+					);
+					const pricePerSeat = stripeSub.items.data[0]?.price?.unit_amount ?? 0;
+					const currency = stripeSub.items.data[0]?.price?.currency ?? "usd";
+					const newMonthlyTotal = formatPrice(
+						pricePerSeat * quantity,
+						currency,
+					);
+					// unit_amount is per billing period: on an annual price the total
+					// above is yearly, and calling it monthly understates it 12x.
+					const billingInterval =
+						stripeSub.items.data[0]?.price?.recurring?.interval === "year"
+							? ("yearly" as const)
+							: ("monthly" as const);
+
+					// The base total above is not what gets charged: the mid-cycle
+					// catch-up rides on the same invoice. Quote both or quote neither.
+					const customerId =
+						typeof stripeSub.customer === "string"
+							? stripeSub.customer
+							: stripeSub.customer.id;
+					const preview = itemId
+						? await previewNextInvoice(
+								customerId,
+								subscription.stripeSubscriptionId,
+								itemId,
+								"charge",
+							)
+						: null;
+
+					await resend.batch.send(
+						recipients.map((recipient) => ({
+							from: "Choros <noreply@choros.sh>",
+							to: recipient.email,
+							subject: `Billing update: New member added to ${organization.name}`,
+							react: MemberAddedBillingEmail({
+								recipientName: recipient.name,
+								prorationAmount: preview?.prorationAmount ?? null,
+								nextInvoiceTotal: preview?.nextInvoiceTotal ?? null,
+								organizationName: organization.name,
+								newMemberName: user.name ?? "New member",
+								newMemberEmail: user.email,
+								addedByName: "A team admin",
+								newSeatCount: quantity,
+								newMonthlyTotal,
+								billingInterval,
+							}),
+						})),
+					);
+
+					try {
+						await qstash.publishJSON({
+							url: NOTIFY_SLACK_URL,
+							body: {
+								eventType: "seat_added",
+								stripeSubscriptionId: subscription.stripeSubscriptionId,
+								memberName: user.name ?? "New member",
+								previousSeats: quantity - 1,
+								newSeats: quantity,
+							},
+							retries: 3,
+						});
+					} catch (error) {
+						console.error(
+							"[org/after-add-member] Failed to queue Slack notification:",
+							error,
+						);
+					}
+				},
+
+				afterRemoveMember: async ({ user, organization }) => {
+					await resend.emails.send({
+						from: "Choros <noreply@choros.sh>",
+						to: user.email,
+						subject: `You've been removed from ${organization.name}`,
+						react: MemberRemovedEmail({
+							memberName: user.name,
+							organizationName: organization.name,
+							removedByName: "A team admin",
+						}),
+					});
+
+					const subscription = await db.query.subscriptions.findFirst({
+						where: and(
+							eq(subscriptions.referenceId, organization.id),
+							eq(subscriptions.status, "active"),
+						),
+					});
+
+					if (!subscription?.stripeSubscriptionId) return;
+					if (subscription.plan === "enterprise") return;
+
+					const quantity = Math.max(
+						1,
+						await countBillableSeats(organization.id),
+					);
+
+					const stripeSub = await stripeClient.subscriptions.retrieve(
+						subscription.stripeSubscriptionId,
+					);
+					const itemId = stripeSub.items.data[0]?.id;
+
+					if (itemId) {
+						await stripeClient.subscriptions.update(
+							subscription.stripeSubscriptionId,
+							{
+								items: [{ id: itemId, quantity }],
+								proration_behavior: "create_prorations",
+							},
+						);
+					}
+
+					const recipients = await getOrganizationBillingRecipients(
+						organization.id,
+					);
+					const pricePerSeat = stripeSub.items.data[0]?.price?.unit_amount ?? 0;
+					const currency = stripeSub.items.data[0]?.price?.currency ?? "usd";
+					const newMonthlyTotal = formatPrice(
+						pricePerSeat * quantity,
+						currency,
+					);
+					// unit_amount is per billing period: on an annual price the total
+					// above is yearly, and calling it monthly understates it 12x.
+					const billingInterval =
+						stripeSub.items.data[0]?.price?.recurring?.interval === "year"
+							? ("yearly" as const)
+							: ("monthly" as const);
+
+					const customerId =
+						typeof stripeSub.customer === "string"
+							? stripeSub.customer
+							: stripeSub.customer.id;
+					const preview = itemId
+						? await previewNextInvoice(
+								customerId,
+								subscription.stripeSubscriptionId,
+								itemId,
+								"credit",
+							)
+						: null;
+
+					await resend.batch.send(
+						recipients.map((recipient) => ({
+							from: "Choros <noreply@choros.sh>",
+							to: recipient.email,
+							subject: `Billing update: Member removed from ${organization.name}`,
+							react: MemberRemovedBillingEmail({
+								recipientName: recipient.name,
+								prorationAmount: preview?.prorationAmount ?? null,
+								nextInvoiceTotal: preview?.nextInvoiceTotal ?? null,
+								organizationName: organization.name,
+								removedMemberName: user.name ?? "Former member",
+								removedMemberEmail: user.email,
+								removedByName: "A team admin",
+								newSeatCount: quantity,
+								newMonthlyTotal,
+								billingInterval,
+							}),
+						})),
+					);
+
+					try {
+						await qstash.publishJSON({
+							url: NOTIFY_SLACK_URL,
+							body: {
+								eventType: "seat_removed",
+								stripeSubscriptionId: subscription.stripeSubscriptionId,
+								memberName: user.name ?? "Former member",
+								previousSeats: quantity + 1,
+								newSeats: quantity,
+							},
+							retries: 3,
+						});
+					} catch (error) {
+						console.error(
+							"[org/after-remove-member] Failed to queue Slack notification:",
+							error,
+						);
+					}
+				},
+			},
+		}),
+		bearer(),
+		customSession(
+			async ({ user, session: baseSession }) => {
+				const session = baseSession as typeof sessions.$inferSelect;
+				const userId = session.userId ?? user.id;
+
+				// Memberships, the active organization's plan and the user's own
+				// flags in one statement. This runs on every authenticated request
+				// in the product, so each extra round trip here is a region-crossing
+				// hop the whole fleet pays for.
+				const data = await loadCustomSessionData({
+					userId,
+					activeOrganizationId: session.activeOrganizationId ?? null,
+				});
+
+				const { activeOrganizationId, allMemberships, membership } =
+					await resolveSessionOrganizationState(
+						{ userId, session },
+						{
+							listMemberships: async () => data.memberships,
+							getLastActiveOrganization: async () =>
+								data.lastActiveOrganizationId,
+						},
+					);
+
+				const organizationIds = [
+					...new Set(allMemberships.map((m) => m.organizationId)),
+				];
+
+				// Same statuses the rest of the app gates on — this is the value
+				// the paywall falls back to when the activePlan query can't be
+				// reached, so an "active"-only read here would strand trialing
+				// and past_due organizations on a cold start.
+				let plan: string | null = null;
+				if (activeOrganizationId === data.planOrganizationId) {
+					plan = data.plan;
+				} else if (activeOrganizationId) {
+					// A concurrent request moved the session's active organization
+					// after the query above ran, so the plan it found belongs to the
+					// wrong one. Rare enough to be worth a second read rather than
+					// serialising the common path behind it.
+					const subscription = await db.query.subscriptions.findFirst({
+						where: and(
+							eq(subscriptions.referenceId, activeOrganizationId),
+							inArray(subscriptions.status, ACTIVE_SUBSCRIPTION_STATUSES),
+						),
+					});
+					plan = subscription?.plan ?? null;
+				}
+
+				return {
+					user: {
+						...user,
+						onboardedAt: data.onboardedAt,
+						deletionRequestedAt: data.deletionRequestedAt,
+					},
+					session: {
+						...session,
+						activeOrganizationId,
+						organizationIds,
+						role: membership?.role,
+						plan,
+					},
+				};
+			},
+			{ user: userOptions },
+		),
+		stripe({
+			stripeClient,
+			stripeWebhookSecret: env.STRIPE_WEBHOOK_SECRET,
+			createCustomerOnSignUp: false,
+
+			subscription: {
+				enabled: true,
+				plans: [
+					{
+						name: "pro",
+						priceId: env.STRIPE_PRO_MONTHLY_PRICE_ID,
+						annualDiscountPriceId: env.STRIPE_PRO_YEARLY_PRICE_ID,
+					},
+					{
+						name: "enterprise",
+						priceId: env.STRIPE_ENTERPRISE_YEARLY_PRICE_ID,
+					},
+				],
+
+				authorizeReference: async ({ user, referenceId, action }) => {
+					const member = await db.query.members.findFirst({
+						where: and(
+							eq(members.userId, user.id),
+							eq(members.organizationId, referenceId),
+						),
+					});
+
+					if (!member) return false;
+
+					if (
+						action === "upgrade-subscription" ||
+						action === "cancel-subscription" ||
+						action === "restore-subscription"
+					) {
+						const subscription = await db.query.subscriptions.findFirst({
+							where: and(
+								eq(subscriptions.referenceId, referenceId),
+								eq(subscriptions.status, "active"),
+							),
+						});
+						if (subscription?.plan === "enterprise") return false;
+					}
+
+					switch (action) {
+						case "upgrade-subscription":
+						case "cancel-subscription":
+						case "restore-subscription":
+							return member.role === "owner";
+						case "list-subscription":
+							return member.role === "owner" || member.role === "admin";
+						default:
+							return false;
+					}
+				},
+
+				getCheckoutSessionParams: async (
+					{ user, plan, subscription },
+					_request,
+					ctx,
+				) => {
+					if (plan.name === "enterprise") {
+						throw new Error(
+							"Enterprise subscriptions are managed by admins. Contact support@choros.sh.",
+						);
+					}
+
+					const org = await db.query.organizations.findFirst({
+						where: eq(
+							authSchema.organizations.id,
+							subscription?.referenceId ?? "",
+						),
+					});
+
+					const annual = Boolean(
+						(ctx?.body as { annual?: boolean } | undefined)?.annual,
+					);
+
+					return {
+						params: {
+							customer: org?.stripeCustomerId ?? undefined,
+							allow_promotion_codes: !annual,
+							billing_address_collection: "required",
+							metadata: {
+								organizationId: org?.id ?? "",
+								initiatedByUserId: user.id,
+							},
+						},
+					};
+				},
+
+				onSubscriptionComplete: async ({
+					subscription,
+					stripeSubscription,
+					plan,
+				}) => {
+					const org = await db.query.organizations.findFirst({
+						where: eq(authSchema.organizations.id, subscription.referenceId),
+					});
+
+					if (!org) return;
+
+					if (plan.name === "enterprise") return;
+
+					const owners = await getOrganizationOwners(subscription.referenceId);
+
+					const interval = stripeSubscription.items.data[0]?.price?.recurring
+						?.interval as "month" | "year" | undefined;
+					const billingInterval = interval === "year" ? "yearly" : "monthly";
+
+					const pricePerSeat =
+						stripeSubscription.items.data[0]?.price?.unit_amount ?? 0;
+					const currency =
+						stripeSubscription.items.data[0]?.price?.currency ?? "usd";
+					const amount = formatPrice(pricePerSeat, currency);
+
+					await resend.batch.send(
+						owners.map((owner) => ({
+							from: "Choros <noreply@choros.sh>",
+							to: owner.email,
+							subject: `Welcome to Choros ${plan.name}!`,
+							react: SubscriptionStartedEmail({
+								ownerName: owner.name,
+								organizationName: org.name,
+								planName: plan.name,
+								billingInterval,
+								amount,
+								seatCount: subscription.seats ?? 1,
+							}),
+						})),
+					);
+
+					try {
+						await qstash.publishJSON({
+							url: NOTIFY_SLACK_URL,
+							body: {
+								eventType: "subscription_started",
+								stripeSubscriptionId: stripeSubscription.id,
+							},
+							retries: 3,
+						});
+					} catch (error) {
+						console.error(
+							"[stripe/subscription-complete] Failed to queue Slack notification:",
+							error,
+						);
+					}
+				},
+
+				onSubscriptionCancel: async ({
+					subscription,
+					stripeSubscription,
+					cancellationDetails,
+				}) => {
+					const org = await db.query.organizations.findFirst({
+						where: eq(authSchema.organizations.id, subscription.referenceId),
+					});
+
+					if (!org?.stripeCustomerId) return;
+
+					const recipients = await getOrganizationBillingRecipients(
+						subscription.referenceId,
+					);
+					const accessEndsAt = subscription.periodEnd ?? new Date();
+
+					const portalSession =
+						await stripeClient.billingPortal.sessions.create({
+							customer: org.stripeCustomerId,
+							return_url: env.NEXT_PUBLIC_WEB_URL,
+						});
+
+					await resend.batch.send(
+						recipients.map((recipient) => ({
+							from: "Choros <noreply@choros.sh>",
+							to: recipient.email,
+							subject: `Your ${subscription.plan} subscription has been cancelled`,
+							react: SubscriptionCancelledEmail({
+								recipientName: recipient.name,
+								organizationName: org.name,
+								planName: subscription.plan,
+								accessEndsAt,
+								billingPortalUrl:
+									recipient.role === "owner" ? portalSession.url : undefined,
+							}),
+						})),
+					);
+
+					try {
+						await qstash.publishJSON({
+							url: NOTIFY_SLACK_URL,
+							body: {
+								eventType: "subscription_cancelled",
+								stripeSubscriptionId: stripeSubscription.id,
+								cancellationDetails: serializeCancellationDetails(
+									cancellationDetails ??
+										stripeSubscription.cancellation_details,
+								),
+							},
+							retries: 3,
+							// portal collects the cancellation survey after cancel confirms; give it time
+							delay: 120,
+						});
+					} catch (error) {
+						console.error(
+							"[stripe/subscription-cancel] Failed to queue Slack notification:",
+							error,
+						);
+					}
+				},
+
+				onEvent: async (event: Stripe.Event) => {
+					if (event.type === "invoice.payment_failed") {
+						const invoice = event.data.object as Stripe.Invoice;
+
+						const customerId =
+							typeof invoice.customer === "string"
+								? invoice.customer
+								: invoice.customer?.id;
+
+						if (!customerId) return;
+
+						const org = await db.query.organizations.findFirst({
+							where: eq(authSchema.organizations.stripeCustomerId, customerId),
+						});
+
+						if (!org?.stripeCustomerId) return;
+
+						const subscription = await db.query.subscriptions.findFirst({
+							where: eq(subscriptions.referenceId, org.id),
+						});
+
+						const recipients = await getOrganizationBillingRecipients(org.id);
+						const amount = formatPrice(invoice.amount_due, invoice.currency);
+
+						const portalSession =
+							await stripeClient.billingPortal.sessions.create({
+								customer: org.stripeCustomerId,
+								return_url: env.NEXT_PUBLIC_WEB_URL,
+							});
+
+						await resend.batch.send(
+							recipients.map((recipient) => ({
+								from: "Choros <noreply@choros.sh>",
+								to: recipient.email,
+								subject: `Payment failed for ${org.name}`,
+								react: PaymentFailedEmail({
+									recipientName: recipient.name,
+									organizationName: org.name,
+									planName: subscription?.plan ?? "Pro",
+									amount,
+									billingPortalUrl:
+										recipient.role === "owner" ? portalSession.url : undefined,
+								}),
+							})),
+						);
+
+						const stripeSubId =
+							subscription?.stripeSubscriptionId ??
+							(invoice.parent?.subscription_details?.subscription as
+								| string
+								| undefined);
+
+						if (stripeSubId) {
+							try {
+								await qstash.publishJSON({
+									url: NOTIFY_SLACK_URL,
+									body: {
+										eventType: "payment_failed",
+										stripeSubscriptionId: stripeSubId,
+										amountCents: invoice.amount_due,
+										currency: invoice.currency,
+									},
+									retries: 3,
+								});
+							} catch (error) {
+								console.error(
+									"[stripe/payment-failed] Failed to queue Slack notification:",
+									error,
+								);
+							}
+						}
+					}
+
+					if (event.type === "invoice.paid") {
+						const invoice = event.data.object as Stripe.Invoice;
+
+						const stripeSubId = invoice.parent?.subscription_details
+							?.subscription as string | undefined;
+
+						if (stripeSubId) {
+							try {
+								await qstash.publishJSON({
+									url: NOTIFY_SLACK_URL,
+									body: {
+										eventType: "payment_succeeded",
+										stripeSubscriptionId: stripeSubId,
+										amountCents: invoice.amount_paid,
+										currency: invoice.currency,
+										periodStart: invoice.period_start ?? 0,
+										periodEnd: invoice.period_end ?? 0,
+									},
+									retries: 3,
+								});
+							} catch (error) {
+								console.error(
+									"[stripe/payment-succeeded] Failed to queue Slack notification:",
+									error,
+								);
+							}
+						}
+					}
+
+					if (event.type === "customer.subscription.updated") {
+						const stripeSubscription = event.data.object as Stripe.Subscription;
+						const previousAttributes = event.data.previous_attributes as
+							| Partial<Stripe.Subscription>
+							| undefined;
+
+						const previousPriceId =
+							previousAttributes?.items?.data?.[0]?.price?.id;
+						const currentPriceId = stripeSubscription.items.data[0]?.price?.id;
+
+						if (!previousPriceId || previousPriceId === currentPriceId) return;
+
+						const previousInterval =
+							previousAttributes?.items?.data?.[0]?.price?.recurring
+								?.interval === "year"
+								? "yearly"
+								: "monthly";
+
+						try {
+							await qstash.publishJSON({
+								url: NOTIFY_SLACK_URL,
+								body: {
+									eventType: "plan_changed",
+									stripeSubscriptionId: stripeSubscription.id,
+									previousInterval,
+								},
+								retries: 3,
+							});
+						} catch (error) {
+							console.error(
+								"[stripe/plan-changed] Failed to queue Slack notification:",
+								error,
+							);
+						}
+					}
+				},
+			},
+		}),
+		acceptInvitationEndpoint,
+	],
+});
+
+export type Session = typeof auth.$Infer.Session;
+export type User = typeof auth.$Infer.Session.user;
+
+/**
+ * Mints a short-lived JWT signed with the same JWKS key the Better Auth JWT
+ * plugin uses for session-derived tokens. Used by headless service code
+ * (e.g. the automations dispatcher) that needs to act on behalf of a user
+ * without holding their session cookie.
+ *
+ * The resulting token is accepted by anything that verifies via the public
+ * JWKS endpoint (the relay and any other downstream service), because it is
+ * signed with the same RS256 key pair.
+ */
+export async function mintUserJwt(args: {
+	userId: string;
+	email?: string;
+	organizationIds: string[];
+	scope?: string;
+	runId?: string;
+	/** Token lifetime in seconds. Default 300 (5 minutes). */
+	ttlSeconds?: number;
+}): Promise<string> {
+	const exp = Math.floor(Date.now() / 1000) + (args.ttlSeconds ?? 300);
+
+	const response = await auth.api.signJWT({
+		body: {
+			payload: {
+				sub: args.userId,
+				email: args.email,
+				organizationIds: args.organizationIds,
+				scope: args.scope,
+				runId: args.runId,
+				exp,
+			},
+		},
+	});
+
+	return response.token;
+}

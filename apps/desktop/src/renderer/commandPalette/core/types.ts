@@ -1,0 +1,61 @@
+import type { ExternalApp } from "@choros/local-db";
+import type { MessageDescriptor } from "@lingui/core";
+import type { ElementType } from "react";
+import type { HotkeyId } from "renderer/hotkeys/registry";
+import type { HostServiceAvailabilityStatus } from "renderer/lib/host-service-unavailable";
+
+export type SectionId =
+	| "workspace"
+	| "actions"
+	| "navigation"
+	| "add-project"
+	| "dev";
+
+export interface CommandContext {
+	route: {
+		pathname: string;
+		params: Record<string, string>;
+	};
+	workspace: {
+		id: string;
+		name: string;
+		projectId?: string;
+		workspaceType?: "main" | "worktree" | "session";
+		hostId?: string;
+		preferredOpenInApp?: ExternalApp;
+	} | null;
+	activeHostUrl: string | null;
+	activeOrganizationId: string | null;
+	activeOrganizationName: string | null;
+	hostServiceStatus: HostServiceAvailabilityStatus;
+	localMachineId: string | null;
+	notificationSoundsMuted: boolean;
+	isV2CloudEnabled: boolean;
+	navigate: (path: string) => void;
+	focusedView?: "editor" | "terminal" | "git" | "issues" | "files" | "chat";
+}
+
+export interface Command {
+	id: string;
+	title: MessageDescriptor;
+	section: SectionId;
+	icon?: ElementType<{ className?: string }>;
+	iconUrl?: string;
+	keywords?: string[];
+	hotkeyId?: HotkeyId;
+	when?: (context: CommandContext) => boolean;
+	run?: (context: CommandContext) => void | Promise<void>;
+	children?: Command[] | ((context: CommandContext) => Command[]);
+	renderFrame?: () => React.ReactNode;
+}
+
+export interface CommandProvider {
+	id: string;
+	provide: (context: CommandContext) => Command[];
+}
+
+export interface CommandSection {
+	id: SectionId;
+	label: MessageDescriptor;
+	commands: Command[];
+}

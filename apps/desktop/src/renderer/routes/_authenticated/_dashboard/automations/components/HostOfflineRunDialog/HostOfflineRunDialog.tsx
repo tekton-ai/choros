@@ -1,0 +1,146 @@
+import { Button } from "@choros/ui/button";
+import {
+	Dialog,
+	DialogClose,
+	DialogContent,
+	DialogDescription,
+	DialogFooter,
+	DialogHeader,
+	DialogTitle,
+} from "@choros/ui/dialog";
+import { Trans, useLingui } from "@lingui/react/macro";
+import { Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { LuTriangleAlert } from "react-icons/lu";
+import { GATED_FEATURES, usePaywall } from "renderer/components/Paywall";
+import { ExposeViaRelayConfirmDialog } from "renderer/routes/_authenticated/components/ExposeViaRelayConfirmDialog";
+import { useEnableRelayAccess } from "../../hooks/useEnableRelayAccess";
+import { useRelayHostTarget } from "../../hooks/useRelayHostTarget";
+
+interface HostOfflineRunDialogProps {
+	hostId: string | null;
+	open: boolean;
+	onOpenChange: (open: boolean) => void;
+}
+
+/**
+ * Shown when "Run now" is skipped because the target host isn't connected to
+ * the relay. For the local device it offers enabling relay access in place
+ * (same typed confirmation as Settings > Remote Access).
+ */
+export function HostOfflineRunDialog({
+	hostId,
+	open,
+	onOpenChange,
+}: HostOfflineRunDialogProps) {
+	const { t } = useLingui();
+	const { isLocal, remoteHost } = useRelayHostTarget(hostId);
+	const { gateFeature } = usePaywall();
+	const [confirmOpen, setConfirmOpen] = useState(false);
+	const { enableRelay, isPending } = useEnableRelayAccess();
+
+	const handleConfirm = () => {
+		setConfirmOpen(false);
+		onOpenChange(false);
+		enableRelay();
+	};
+
+	return (
+		<Dialog open={open} onOpenChange={onOpenChange}>
+			<DialogContent className="sm:max-w-[440px]">
+				<DialogHeader>
+					<DialogTitle className="flex items-center gap-2">
+						<LuTriangleAlert
+							className="size-4 shrink-0 text-warning"
+							aria-hidden="true"
+						/>
+						<Trans id="dashboard.automations.hostOfflineDialog.title">
+							Target host is offline
+						</Trans>
+					</DialogTitle>
+					<DialogDescription asChild>
+						<div className="select-text cursor-text space-y-2 pt-1 text-sm leading-relaxed">
+							{isLocal ? (
+								<p>
+									<Trans id="dashboard.automations.hostOfflineDialog.localBody">
+										The run was skipped because this device isn't connected to
+										the Choros relay. Automations go through the relay even when
+										they run on this device. Enable relay access, then run it
+										again.
+									</Trans>
+								</p>
+							) : (
+								<p>
+									<Trans id="dashboard.automations.hostOfflineDialog.remoteBody">
+										The run was skipped because{" "}
+										<span className="font-medium text-foreground">
+											{remoteHost?.name ??
+												t({
+													id: "dashboard.automations.hostOfflineDialog.targetHostFallback",
+													message: "the target host",
+												})}
+										</span>{" "}
+										isn't connected to the Choros relay. Make sure relay access
+										is on in Settings &gt; Remote Access on that device, then
+										run it again.
+									</Trans>
+								</p>
+							)}
+						</div>
+					</DialogDescription>
+				</DialogHeader>
+
+				<DialogFooter>
+					<DialogClose asChild>
+						<Button variant="ghost">
+							{isLocal ? (
+								<Trans id="dashboard.automations.hostOfflineDialog.cancel">
+									Cancel
+								</Trans>
+							) : (
+								<Trans id="dashboard.automations.hostOfflineDialog.close">
+									Close
+								</Trans>
+							)}
+						</Button>
+					</DialogClose>
+					{isLocal ? (
+						<Button
+							disabled={isPending}
+							onClick={() =>
+								gateFeature(GATED_FEATURES.REMOTE_ACCESS, () =>
+									setConfirmOpen(true),
+								)
+							}
+						>
+							<Trans id="dashboard.automations.hostOfflineDialog.enableRelay">
+								Enable relay access…
+							</Trans>
+						</Button>
+					) : (
+						hostId && (
+							<Button asChild>
+								<Link
+									to="/settings/hosts/$hostId"
+									params={{ hostId }}
+									onClick={() => onOpenChange(false)}
+								>
+									<Trans id="dashboard.automations.hostOfflineDialog.hostSettings">
+										Host settings
+									</Trans>
+								</Link>
+							</Button>
+						)
+					)}
+				</DialogFooter>
+
+				<ExposeViaRelayConfirmDialog
+					open={confirmOpen}
+					targetEnabled
+					onOpenChange={setConfirmOpen}
+					onConfirm={handleConfirm}
+				/>
+			</DialogContent>
+		</Dialog>
+	);
+}

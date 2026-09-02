@@ -1,0 +1,62 @@
+import {
+	AlertDialog,
+	AlertDialogAction,
+	AlertDialogDescription,
+	AlertDialogFooter,
+	AlertDialogHeader,
+	AlertDialogTitle,
+	EnterEnabledAlertDialogContent,
+} from "@choros/ui/alert-dialog";
+import { Button } from "@choros/ui/button";
+import { Trans, useLingui } from "@lingui/react/macro";
+
+interface DiscardConfirmDialogProps {
+	open: boolean;
+	onOpenChange: (open: boolean) => void;
+	title: string;
+	description: string;
+	confirmLabel?: string;
+	onConfirm: () => void;
+}
+
+export function DiscardConfirmDialog({
+	open,
+	onOpenChange,
+	title,
+	description,
+	confirmLabel,
+	onConfirm,
+}: DiscardConfirmDialogProps) {
+	const { t } = useLingui();
+	const resolvedConfirmLabel =
+		confirmLabel ??
+		t({ id: "workspace.discardConfirmDialog.confirm", message: "Discard" });
+	return (
+		<AlertDialog open={open} onOpenChange={onOpenChange}>
+			<EnterEnabledAlertDialogContent className="max-w-[360px] gap-0 p-0">
+				<AlertDialogHeader className="px-4 pt-4 pb-2">
+					<AlertDialogTitle className="font-medium">{title}</AlertDialogTitle>
+					<AlertDialogDescription>{description}</AlertDialogDescription>
+				</AlertDialogHeader>
+				<AlertDialogFooter className="flex-row justify-end gap-2 px-4 pt-2 pb-4">
+					<Button
+						variant="ghost"
+						size="sm"
+						className="h-7 px-3 text-xs"
+						onClick={() => onOpenChange(false)}
+					>
+						<Trans id="workspace.discardConfirmDialog.cancel">Cancel</Trans>
+					</Button>
+					<AlertDialogAction
+						variant="destructive"
+						size="sm"
+						className="h-7 px-3 text-xs"
+						onClick={onConfirm}
+					>
+						{resolvedConfirmLabel}
+					</AlertDialogAction>
+				</AlertDialogFooter>
+			</EnterEnabledAlertDialogContent>
+		</AlertDialog>
+	);
+}

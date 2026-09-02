@@ -1,0 +1,129 @@
+import { ContextMenuItem, ContextMenuSeparator } from "@choros/ui/context-menu";
+import {
+	DropdownMenuItem,
+	DropdownMenuSeparator,
+} from "@choros/ui/dropdown-menu";
+import { Trans } from "@lingui/react/macro";
+import type { ReactNode } from "react";
+import { LuClock, LuPause, LuPencil, LuPlay, LuTrash2 } from "react-icons/lu";
+
+interface AutomationActionsMenuItemsProps {
+	kind: "context" | "dropdown";
+	isOwner: boolean;
+	enabled: boolean;
+	onEdit: () => void;
+	onRunNow: () => void;
+	onToggleEnabled: () => void;
+	onHistory: () => void;
+	onDelete: () => void;
+}
+
+export function AutomationActionsMenuItems({
+	kind,
+	isOwner,
+	enabled,
+	onEdit,
+	onRunNow,
+	onToggleEnabled,
+	onHistory,
+	onDelete,
+}: AutomationActionsMenuItemsProps) {
+	const renderItem = ({
+		children,
+		destructive = false,
+		onSelect,
+	}: {
+		children: ReactNode;
+		destructive?: boolean;
+		onSelect: () => void;
+	}) => {
+		const Item = kind === "context" ? ContextMenuItem : DropdownMenuItem;
+		return (
+			<Item
+				onSelect={onSelect}
+				variant={destructive ? "destructive" : "default"}
+			>
+				{children}
+			</Item>
+		);
+	};
+
+	return (
+		<>
+			{renderItem({
+				onSelect: onEdit,
+				children: (
+					<>
+						<LuPencil className="size-4" />
+						{isOwner ? (
+							<Trans id="dashboard.automations.actionsMenu.edit">Edit</Trans>
+						) : (
+							<Trans id="dashboard.automations.actionsMenu.view">View</Trans>
+						)}
+					</>
+				),
+			})}
+			{isOwner && (
+				<>
+					{renderItem({
+						onSelect: onRunNow,
+						children: (
+							<>
+								<LuPlay className="size-4" />
+								<Trans id="dashboard.automations.actionsMenu.runNow">
+									Run now
+								</Trans>
+							</>
+						),
+					})}
+					{renderItem({
+						onSelect: onToggleEnabled,
+						children: enabled ? (
+							<>
+								<LuPause className="size-4" />
+								<Trans id="dashboard.automations.actionsMenu.pause">
+									Pause
+								</Trans>
+							</>
+						) : (
+							<>
+								<LuPlay className="size-4" />
+								<Trans id="dashboard.automations.actionsMenu.resume">
+									Resume
+								</Trans>
+							</>
+						),
+					})}
+					{renderItem({
+						onSelect: onHistory,
+						children: (
+							<>
+								<LuClock className="size-4" />
+								<Trans id="dashboard.automations.actionsMenu.promptHistory">
+									Prompt history
+								</Trans>
+							</>
+						),
+					})}
+					{kind === "context" ? (
+						<ContextMenuSeparator />
+					) : (
+						<DropdownMenuSeparator />
+					)}
+					{renderItem({
+						destructive: true,
+						onSelect: onDelete,
+						children: (
+							<>
+								<LuTrash2 className="size-4" />
+								<Trans id="dashboard.automations.actionsMenu.delete">
+									Delete
+								</Trans>
+							</>
+						),
+					})}
+				</>
+			)}
+		</>
+	);
+}

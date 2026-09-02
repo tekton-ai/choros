@@ -1,0 +1,99 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { sections } from "@/app/(docs)/components/Sidebar/components/SidebarContent";
+import { getPageImage, source } from "@/lib/source";
+import { getMDXComponents } from "@/mdx-components";
+import {
+	DocsBody,
+	DocsDescription,
+	DocsPage,
+	DocsTitle,
+} from "./components/DocsPageLayout";
+import { LLMCopyButton, ViewOptions } from "./components/PageActions";
+
+export default async function Page(props: PageProps<"/[[...slug]]">) {
+	const params = await props.params;
+	const page = source.getPage(params.slug);
+	if (!page) notFound();
+
+	const MDX = page.data.body;
+	const section = sections.find((s) =>
+		s.items.some((item) => item.href === page.url),
+	);
+	const markdownUrl = page.url === "/" ? "/index.mdx" : `${page.url}.mdx`;
+
+	return (
+		<DocsPage
+			toc={page.data.toc}
+			full={page.data.full}
+			tableOfContent={{
+				header: <div className="w-10 h-4"></div>,
+			}}
+			editOnGithub={{
+				owner: "choros-sh",
+				repo: "choros",
+				path: `apps/docs/content/docs/${page.path}`,
+			}}
+		>
+			{section ? (
+				<p className="-mb-4 text-xs font-semibold uppercase tracking-wider text-brand-dark dark:text-brand-light">
+					{section.title}
+				</p>
+			) : null}
+			<DocsTitle>
+				<span className="inline-flex flex-wrap items-center gap-x-3 gap-y-1">
+					<span>{page.data.title}</span>
+					{page.data.pro ? (
+						<span className="rounded-sm border border-primary/30 bg-primary/10 px-2 py-0.5 text-xs font-medium uppercase tracking-wide text-primary align-middle">
+							Pro
+						</span>
+					) : null}
+				</span>
+			</DocsTitle>
+			<DocsDescription>{page.data.description}</DocsDescription>
+			<div className="flex flex-row gap-2 items-center border-b pb-3">
+				<LLMCopyButton markdownUrl={markdownUrl} />
+				<ViewOptions
+					markdownUrl={markdownUrl}
+					githubUrl={`https://github.com/choros-sh/choros/blob/main/apps/docs/content/docs/${page.path}`}
+				/>
+			</div>
+			<DocsBody>
+				<MDX components={getMDXComponents()} />
+			</DocsBody>
+		</DocsPage>
+	);
+}
+
+export async function generateStaticParams() {
+	return source.generateParams();
+}
+
+export async function generateMetadata(
+	props: PageProps<"/[[...slug]]">,
+): Promise<Metadata> {
+	const params = await props.params;
+	const page = source.getPage(params.slug);
+	if (!page) notFound();
+
+	const pageImage = getPageImage(page).url;
+
+	return {
+		title: page.data.title,
+		description: page.data.description,
+		alternates: {
+			canonical: page.url,
+		},
+		openGraph: {
+			title: page.data.title,
+			description: page.data.description,
+			images: [pageImage],
+		},
+		twitter: {
+			card: "summary_large_image",
+			title: page.data.title,
+			description: page.data.description,
+			images: [pageImage],
+		},
+	};
+}

@@ -1,0 +1,187 @@
+import {
+	CommandEmpty,
+	CommandGroup,
+	CommandItem,
+	CommandList,
+	CommandSeparator,
+} from "@choros/ui/command";
+import { Trans, useLingui } from "@lingui/react/macro";
+import { ThemeSwatch } from "renderer/components/ThemeSwatch";
+import {
+	SYSTEM_THEME_ID,
+	useSetTheme,
+	useSystemDarkThemeId,
+	useSystemLightThemeId,
+	useThemeId,
+	useThemeStore,
+} from "renderer/stores";
+import {
+	builtInThemes,
+	darkTheme as defaultDarkTheme,
+	lightTheme as defaultLightTheme,
+	type Theme,
+} from "shared/themes";
+import { useFrameStackStore } from "../../core/frames";
+import { useCommandPaletteQuery } from "../CommandPalette/CommandPalette";
+
+function matchesQuery(haystack: string, query: string): boolean {
+	if (!query) return true;
+	return haystack.toLowerCase().includes(query.toLowerCase().trim());
+}
+
+export function ThemeFrame() {
+	const { i18n } = useLingui();
+	const activeThemeId = useThemeId();
+	const setTheme = useSetTheme();
+	const customThemes = useThemeStore((state) => state.customThemes);
+	const systemLightThemeId = useSystemLightThemeId();
+	const systemDarkThemeId = useSystemDarkThemeId();
+	const setOpen = useFrameStackStore((s) => s.setOpen);
+	const query = useCommandPaletteQuery();
+
+	const allThemes = [...builtInThemes, ...customThemes];
+	const lightThemes = allThemes.filter((t) => t.type === "light");
+	const darkThemes = allThemes.filter((t) => t.type === "dark");
+	const customLight = lightThemes.filter((t) => t.isCustom);
+	const customDark = darkThemes.filter((t) => t.isCustom);
+
+	const systemLightTheme =
+		allThemes.find((t) => t.id === systemLightThemeId) ??
+		builtInThemes.find((t) => t.id === "light") ??
+		defaultLightTheme;
+	const systemDarkTheme =
+		allThemes.find((t) => t.id === systemDarkThemeId) ??
+		builtInThemes.find((t) => t.id === "dark") ??
+		defaultDarkTheme;
+
+	const pickTheme = (themeId: string) => {
+		setTheme(themeId);
+		setOpen(false);
+	};
+
+	const systemLabel = i18n._({
+		id: "commandPalette.themes.system",
+		message: "System",
+	});
+	const lightHeading = i18n._({
+		id: "commandPalette.themes.light",
+		message: "Light",
+	});
+	const darkHeading = i18n._({
+		id: "commandPalette.themes.dark",
+		message: "Dark",
+	});
+	const customHeading = i18n._({
+		id: "commandPalette.themes.custom",
+		message: "Custom",
+	});
+
+	const showSystem = matchesQuery(`${systemLabel} ${SYSTEM_THEME_ID}`, query);
+
+	const visibleLight = filterThemes(
+		lightThemes.filter((t) => !t.isCustom),
+		lightHeading,
+		query,
+	);
+	const visibleDark = filterThemes(
+		darkThemes.filter((t) => !t.isCustom),
+		darkHeading,
+		query,
+	);
+	const visibleCustom = filterThemes(
+		[...customLight, ...customDark],
+		customHeading,
+		query,
+	);
+	const hasThemeGroup =
+		visibleLight.length > 0 ||
+		visibleDark.length > 0 ||
+		visibleCustom.length > 0;
+
+	return (
+		<CommandList>
+			<CommandEmpty>
+				<Trans id="commandPalette.themes.empty">No themes found.</Trans>
+			</CommandEmpty>
+
+			{showSystem && (
+				<CommandGroup>
+					<CommandItem
+						value={`system ${SYSTEM_THEME_ID}`}
+						onSelect={() => pickTheme(SYSTEM_THEME_ID)}
+					>
+						<div className="flex shrink-0 -space-x-1">
+							<ThemeSwatch theme={systemLightTheme} />
+							<ThemeSwatch theme={systemDarkTheme} />
+						</div>
+						<span>{systemLabel}</span>
+						{activeThemeId === SYSTEM_THEME_ID ? (
+							<span className="ml-auto text-xs text-muted-foreground">✓</span>
+						) : null}
+					</CommandItem>
+				</CommandGroup>
+			)}
+
+			{showSystem && hasThemeGroup && <CommandSeparator />}
+
+			<ThemeGroup
+				heading={lightHeading}
+				themes={visibleLight}
+				activeId={activeThemeId}
+				onSelect={pickTheme}
+			/>
+
+			<ThemeGroup
+				heading={darkHeading}
+				themes={visibleDark}
+				activeId={activeThemeId}
+				onSelect={pickTheme}
+			/>
+
+			<ThemeGroup
+				heading={customHeading}
+				themes={visibleCustom}
+				activeId={activeThemeId}
+				onSelect={pickTheme}
+			/>
+		</CommandList>
+	);
+}
+
+function filterThemes(
+	themes: Theme[],
+	heading: string,
+	query: string,
+): Theme[] {
+	return themes.filter((theme) =>
+		matchesQuery(`${heading} ${theme.name} ${theme.id}`, query),
+	);
+}
+
+interface ThemeGroupProps {
+	heading: string;
+	themes: Theme[];
+	activeId: string;
+	onSelect: (themeId: string) => void;
+}
+
+function ThemeGroup({ heading, themes, activeId, onSelect }: ThemeGroupProps) {
+	if (themes.length === 0) return null;
+	return (
+		<CommandGroup heading={heading}>
+			{themes.map((theme) => (
+				<CommandItem
+					key={`${heading}:${theme.id}`}
+					value={`${heading} ${theme.name} ${theme.id}`}
+					onSelect={() => onSelect(theme.id)}
+				>
+					<ThemeSwatch theme={theme} />
+					<span>{theme.name}</span>
+					{theme.id === activeId ? (
+						<span className="ml-auto text-xs text-muted-foreground">✓</span>
+					) : null}
+				</CommandItem>
+			))}
+		</CommandGroup>
+	);
+}

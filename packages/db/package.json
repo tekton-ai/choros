@@ -1,0 +1,62 @@
+{
+	"name": "@choros/db",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./src/index.ts",
+			"default": "./src/index.ts"
+		},
+		"./client": {
+			"types": "./src/client.ts",
+			"default": "./src/client.ts"
+		},
+		"./enums": {
+			"types": "./src/schema/enums.ts",
+			"default": "./src/schema/enums.ts"
+		},
+		"./schema": {
+			"types": "./src/schema/index.ts",
+			"default": "./src/schema/index.ts"
+		},
+		"./schema/auth": {
+			"types": "./src/schema/auth.ts",
+			"default": "./src/schema/auth.ts"
+		},
+		"./seed-default-statuses": {
+			"types": "./src/seed-default-statuses.ts",
+			"default": "./src/seed-default-statuses.ts"
+		},
+		"./task-list-query": {
+			"types": "./src/task-list-query.ts",
+			"default": "./src/task-list-query.ts"
+		},
+		"./utils": {
+			"types": "./src/utils/index.ts",
+			"default": "./src/utils/index.ts"
+		}
+	},
+	"scripts": {
+		"clean": "git clean -xdf .cache .turbo dist node_modules",
+		"push": "drizzle-kit push",
+		"migrate": "drizzle-kit migrate",
+		"studio": "drizzle-kit studio",
+		"typecheck": "tsc --noEmit --emitDeclarationOnly false"
+	},
+	"dependencies": {
+		"@choros/shared": "workspace:*",
+		"@neondatabase/serverless": "1.0.2",
+		"@t3-oss/env-core": "0.13.11",
+		"dotenv": "17.3.1",
+		"drizzle-orm": "0.45.2",
+		"zod": "4.4.3"
+	},
+	"devDependencies": {
+		"@choros/typescript": "workspace:*",
+		"@types/node": "24.12.0",
+		"bun-types": "1.3.14",
+		"drizzle-kit": "0.31.8",
+		"typescript": "6.0.3"
+	}
+}

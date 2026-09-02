@@ -1,0 +1,188 @@
+import { join } from "node:path";
+import { withSentryConfig } from "@sentry/nextjs";
+import { config as dotenvConfig } from "dotenv";
+import type { NextConfig } from "next";
+
+// Load .env from monorepo root during development
+if (process.env.NODE_ENV !== "production") {
+	dotenvConfig({
+		path: join(process.cwd(), "../../.env"),
+		override: true,
+		quiet: true,
+	});
+}
+
+const isProduction = process.env.NODE_ENV === "production";
+const apiOrigin = process.env.NEXT_PUBLIC_API_URL
+	? new URL(process.env.NEXT_PUBLIC_API_URL).origin
+	: null;
+// The web app reaches host-services through the relay — a WebSocket for the
+// terminal stream and HTTP for host tRPC. In dev the blanket `ws:`/`wss:`
+// below covers the socket; prod needs the relay origins listed explicitly so
+// `connect-src` blocks neither. The hard-coded prod fallback keeps the header
+// correct even if RELAY_URL isn't plumbed into the build env.
+const relayWsOrigin = process.env.RELAY_URL
+	? new URL(process.env.RELAY_URL).origin.replace(/^http/, "ws")
+	: isProduction
+		? "wss://relay.choros.sh"
+		: null;
+const relayHttpOrigin = process.env.RELAY_URL
+	? new URL(process.env.RELAY_URL).origin
+	: isProduction
+		? "https://relay.choros.sh"
+		: null;
+// Failover relay origin. Env-driven so it flips with the domain at cutover;
+// prod default stays choros.sh until RELAY_BACKUP_URL is set (e.g. boid.so).
+const relayBackupHttpOrigin = process.env.RELAY_BACKUP_URL
+	? new URL(process.env.RELAY_BACKUP_URL).origin
+	: isProduction
+		? "https://relay-backup.choros.sh"
+		: null;
+const relayBackupWsOrigin = relayBackupHttpOrigin
+	? relayBackupHttpOrigin.replace(/^http/, "ws")
+	: null;
+// Published pages are framed from their own origin, one subdomain per page.
+// An unset GitHub Actions var arrives as an empty string, which `??`
+// does not catch — and `new URL("")` throws before Next even loads.
+const usercontentUrl = new URL(
+	process.env.USERCONTENT_URL ||
+		(isProduction
+			? "https://frame.chorosusercontent.com"
+			: "http://frame.usercontent.localhost:8787"),
+);
+const usercontentFrameSource = `${usercontentUrl.protocol}//*.${usercontentUrl.host}`;
+
+const contentSecurityPolicy = [
+	"default-src 'self'",
+	"base-uri 'self'",
+	[
+		"connect-src 'self'",
+		apiOrigin,
+		relayWsOrigin,
+		relayHttpOrigin,
+		relayBackupWsOrigin,
+		relayBackupHttpOrigin,
+		// The Durable Objects relay a user can be routed to via
+		// relay-url-override; the runtime relay comes from that flag while
+		// this header is built at compile time, so it must be listed
+		// explicitly. Removable once relay2 answers on relay.choros.sh.
+		"https://choros-relay2.avi-6ac.workers.dev",
+		"wss://choros-relay2.avi-6ac.workers.dev",
+		"https://*.ingest.sentry.io",
+		"https://*.sentry.io",
+		"https://us.i.posthog.com",
+		"https://us-assets.i.posthog.com",
+		"https://us.posthog.com",
+		!isProduction && "ws:",
+		!isProduction && "wss:",
+	]
+		.filter(Boolean)
+		.join(" "),
+	"font-src 'self' data: https://fonts.gstatic.com",
+	"form-action 'self'",
+	"frame-ancestors 'none'",
+	`frame-src ${usercontentFrameSource}`,
+	"img-src 'self' data: blob: https:",
+	"object-src 'none'",
+	[
+		// wasm-unsafe-eval: WebAssembly.instantiate only — NOT eval()/Function.
+		// Without it Chrome blocks wasm under script-src (WEB-2K, /oauth/consent).
+		"script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'",
+		!isProduction && "'unsafe-eval'",
+	]
+		.filter(Boolean)
+		.join(" "),
+	"style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+	"worker-src 'self' blob:",
+].join("; ");
+
+const securityHeaders: Array<{ key: string; value: string }> = [
+	...(isProduction
+		? [
+				{
+					key: "Strict-Transport-Security",
+					value: "max-age=31536000; includeSubDomains",
+				},
+			]
+		: []),
+	{
+		key: "Content-Security-Policy",
+		value: contentSecurityPolicy,
+	},
+	{
+		key: "Permissions-Policy",
+		value: "camera=(), geolocation=(), microphone=()",
+	},
+	{
+		key: "Referrer-Policy",
+		value: "strict-origin-when-cross-origin",
+	},
+	{
+		key: "X-Content-Type-Options",
+		value: "nosniff",
+	},
+	{
+		key: "X-Frame-Options",
+		value: "DENY",
+	},
+];
+
+const config: NextConfig = {
+	reactCompiler: true,
+	typescript: { ignoreBuildErrors: true },
+
+	// Compiles @lingui/react/macro at build time. Version must stay in
+	// lockstep with Next's swc_core ABI — see plans/20260826-i18n-strategy.md.
+	experimental: {
+		swcPlugins: [["@lingui/swc-plugin", {}]],
+	},
+
+	images: {
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "*.public.blob.vercel-storage.com",
+			},
+		],
+	},
+
+	async rewrites() {
+		return [
+			{
+				source: "/ingest/static/:path*",
+				destination: "https://us-assets.i.posthog.com/static/:path*",
+			},
+			{
+				source: "/ingest/:path*",
+				destination: "https://us.i.posthog.com/:path*",
+			},
+			{
+				source: "/ingest/decide",
+				destination: "https://us.i.posthog.com/decide",
+			},
+		];
+	},
+
+	async headers() {
+		return [
+			{
+				source: "/(.*)",
+				headers: securityHeaders,
+			},
+		];
+	},
+
+	skipTrailingSlashRedirect: true,
+};
+
+export default withSentryConfig(config, {
+	org: "choros-sh",
+	project: "web",
+	applicationKey: "choros-web",
+	silent: !process.env.CI,
+	authToken: process.env.SENTRY_AUTH_TOKEN,
+	widenClientFileUpload: true,
+	tunnelRoute: "/monitoring",
+	disableLogger: true,
+	automaticVercelMonitors: true,
+});

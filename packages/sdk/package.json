@@ -1,0 +1,45 @@
+{
+	"name": "@choros/sdk",
+	"version": "0.0.1-alpha.12",
+	"description": "TypeScript SDK for the Choros API",
+	"homepage": "https://choros.sh",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/choros-sh/choros.git",
+		"directory": "packages/sdk"
+	},
+	"bugs": {
+		"url": "https://github.com/choros-sh/choros/issues"
+	},
+	"keywords": [
+		"choros",
+		"coding-agents",
+		"agent-orchestration",
+		"git-worktree",
+		"mcp",
+		"sdk"
+	],
+	"private": true,
+	"type": "module",
+	"license": "Apache-2.0",
+	"exports": {
+		".": {
+			"types": "./src/index.ts",
+			"default": "./src/index.ts"
+		}
+	},
+	"publishConfig": {
+		"name": "@choros_sh/sdk",
+		"access": "public"
+	},
+	"scripts": {
+		"clean": "git clean -xdf .cache .turbo dist node_modules",
+		"typecheck": "tsc --noEmit --emitDeclarationOnly false",
+		"build": "bun run scripts/build.ts"
+	},
+	"devDependencies": {
+		"@choros/typescript": "workspace:*",
+		"bun-types": "1.3.14",
+		"typescript": "6.0.3"
+	}
+}

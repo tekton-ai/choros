@@ -1,0 +1,298 @@
+import { resolve } from "node:path";
+import { sentryVitePlugin } from "@sentry/vite-plugin";
+import tailwindcss from "@tailwindcss/vite";
+import { tanstackRouter } from "@tanstack/router-plugin/vite";
+import reactPlugin from "@vitejs/plugin-react";
+import { codeInspectorPlugin } from "code-inspector-plugin";
+import { config } from "dotenv";
+import { defineConfig, externalizeDepsPlugin } from "electron-vite";
+import injectProcessEnvPlugin from "rollup-plugin-inject-process-env";
+import tsconfigPathsPlugin from "vite-tsconfig-paths";
+import { dependencies, resources, version } from "./package.json";
+import { mainExternalizedDependencies } from "./runtime-dependencies";
+import {
+	copyResourcesPlugin,
+	defineEnv,
+	devPath,
+	htmlEnvTransformPlugin,
+} from "./vite/helpers";
+
+// override: true ensures .env values take precedence over inherited env vars
+config({ path: resolve(__dirname, "../../.env"), override: true, quiet: true });
+
+const DEV_SERVER_PORT = Number(process.env.DESKTOP_VITE_PORT);
+
+// Validate required env vars at build time using the Zod schema (single source of truth)
+await import("./src/main/env.main");
+
+const tsconfigPaths = tsconfigPathsPlugin({
+	projects: [resolve("tsconfig.json")],
+});
+
+const workspaceDependencies = Object.keys(dependencies).filter((dependency) =>
+	dependency.startsWith("@choros/"),
+);
+
+// Sentry plugin for uploading sourcemaps (only in CI with auth token)
+const sentryPlugin = process.env.SENTRY_AUTH_TOKEN
+	? sentryVitePlugin({
+			org: "choros-sh",
+			project: "desktop",
+			authToken: process.env.SENTRY_AUTH_TOKEN,
+			release: { name: version },
+		})
+	: null;
+
+// host-service runs as a child process reporting to its own Sentry project,
+// and sourcemap lookup is per-project — its bundles must also be uploaded
+// there or host-service stacks stay unsymbolicated. Debug IDs are derived
+// from file content, so the double injection with sentryPlugin is identical.
+const hostServiceSentryPlugin = process.env.SENTRY_AUTH_TOKEN
+	? sentryVitePlugin({
+			org: "choros-sh",
+			project: "host-service",
+			authToken: process.env.SENTRY_AUTH_TOKEN,
+			release: { name: version },
+			sourcemaps: {
+				assets: ["**/host-service.js*", "**/host-worker.js*"],
+			},
+		})
+	: null;
+
+export default defineConfig({
+	main: {
+		plugins: [tsconfigPaths, copyResourcesPlugin()],
+
+		define: {
+			"process.env.NODE_ENV": defineEnv(process.env.NODE_ENV, "production"),
+			"process.env.SKIP_ENV_VALIDATION": defineEnv(
+				process.env.SKIP_ENV_VALIDATION,
+				"",
+			),
+			"process.env.NEXT_PUBLIC_API_URL": defineEnv(
+				process.env.NEXT_PUBLIC_API_URL,
+				"https://api.choros.sh",
+			),
+			"process.env.NEXT_PUBLIC_STREAMS_URL": defineEnv(
+				process.env.NEXT_PUBLIC_STREAMS_URL,
+				"https://streams.choros.sh",
+			),
+			"process.env.NEXT_PUBLIC_WEB_URL": defineEnv(
+				process.env.NEXT_PUBLIC_WEB_URL,
+				"https://app.choros.sh",
+			),
+			"process.env.NEXT_PUBLIC_MARKETING_URL": defineEnv(
+				process.env.NEXT_PUBLIC_MARKETING_URL,
+				"https://choros.sh",
+			),
+			"process.env.NEXT_PUBLIC_DOCS_URL": defineEnv(
+				process.env.NEXT_PUBLIC_DOCS_URL,
+				"https://docs.choros.sh",
+			),
+			"process.env.NEXT_PUBLIC_ROOT_DOMAIN": defineEnv(
+				process.env.NEXT_PUBLIC_ROOT_DOMAIN,
+				"choros.sh",
+			),
+			"process.env.SENTRY_DSN_DESKTOP": defineEnv(
+				process.env.SENTRY_DSN_DESKTOP,
+			),
+			"process.env.SENTRY_DSN_HOST_SERVICE": defineEnv(
+				process.env.SENTRY_DSN_HOST_SERVICE,
+			),
+			"process.env.RELAY_URL": defineEnv(process.env.RELAY_URL),
+			// Must match renderer for analytics in main process
+			"process.env.NEXT_PUBLIC_POSTHOG_KEY": defineEnv(
+				process.env.NEXT_PUBLIC_POSTHOG_KEY,
+			),
+			"process.env.NEXT_PUBLIC_POSTHOG_HOST": defineEnv(
+				process.env.NEXT_PUBLIC_POSTHOG_HOST,
+			),
+			"process.env.STREAMS_URL": defineEnv(
+				process.env.STREAMS_URL,
+				"https://choros-stream.fly.dev",
+			),
+			"process.env.DESKTOP_VITE_PORT": defineEnv(process.env.DESKTOP_VITE_PORT),
+			"process.env.DESKTOP_NOTIFICATIONS_PORT": defineEnv(
+				process.env.DESKTOP_NOTIFICATIONS_PORT,
+			),
+			"process.env.CHOROS_WORKSPACE_NAME": defineEnv(
+				process.env.CHOROS_WORKSPACE_NAME,
+			),
+		},
+
+		build: {
+			sourcemap: true,
+			rollupOptions: {
+				input: {
+					index: resolve("src/main/index.ts"),
+					// Terminal host daemon process - runs separately for terminal persistence
+					"terminal-host": resolve("src/main/terminal-host/index.ts"),
+					// PTY subprocess - spawned by terminal-host for each terminal
+					"pty-subprocess": resolve("src/main/terminal-host/pty-subprocess.ts"),
+					// Worker-thread entrypoint for heavy git/status computations
+					"git-task-worker": resolve("src/main/git-task-worker.ts"),
+					// Workspace service - local HTTP/tRPC server per org
+					"host-service": resolve("src/main/host-service/index.ts"),
+					// pty-daemon - long-lived per-org Unix-socket server that owns PTYs.
+					// Spawned by PtyDaemonCoordinator; survives host-service restarts.
+					"pty-daemon": resolve("src/main/pty-daemon/index.ts"),
+					// host-service worker thread — emitted side-by-side with
+					// host-service.js so the pool's script resolution finds it.
+					"host-worker": resolve("src/main/host-worker/index.ts"),
+				},
+				output: {
+					dir: resolve(devPath, "main"),
+				},
+				external: ["electron", ...mainExternalizedDependencies],
+				plugins: [sentryPlugin, hostServiceSentryPlugin].filter(Boolean),
+			},
+		},
+		resolve: {
+			alias: {
+				// @xterm/headless 6.0.0 has a packaging bug: `module` field points to
+				// non-existent `lib/xterm.mjs`. Force Vite to use the CJS entry instead.
+				"@xterm/headless": "@xterm/headless/lib-headless/xterm-headless.js",
+			},
+		},
+	},
+
+	preload: {
+		plugins: [
+			tsconfigPaths,
+			externalizeDepsPlugin({
+				exclude: [
+					"trpc-electron",
+					"@sentry/electron",
+					...workspaceDependencies,
+				],
+			}),
+		],
+
+		define: {
+			"process.env.NODE_ENV": defineEnv(process.env.NODE_ENV, "production"),
+			"process.env.SKIP_ENV_VALIDATION": defineEnv(
+				process.env.SKIP_ENV_VALIDATION,
+				"",
+			),
+			__APP_VERSION__: defineEnv(version),
+		},
+
+		build: {
+			outDir: resolve(devPath, "preload"),
+			rollupOptions: {
+				input: {
+					index: resolve("src/preload/index.ts"),
+				},
+			},
+		},
+	},
+
+	renderer: {
+		define: {
+			"process.env.NODE_ENV": defineEnv(process.env.NODE_ENV),
+			"process.env.SKIP_ENV_VALIDATION": defineEnv(
+				process.env.SKIP_ENV_VALIDATION,
+				"",
+			),
+			"process.platform": defineEnv(process.platform),
+			"process.env.NEXT_PUBLIC_API_URL": defineEnv(
+				process.env.NEXT_PUBLIC_API_URL,
+				"https://api.choros.sh",
+			),
+			"process.env.NEXT_PUBLIC_WEB_URL": defineEnv(
+				process.env.NEXT_PUBLIC_WEB_URL,
+				"https://app.choros.sh",
+			),
+			"process.env.NEXT_PUBLIC_MARKETING_URL": defineEnv(
+				process.env.NEXT_PUBLIC_MARKETING_URL,
+				"https://choros.sh",
+			),
+			"process.env.NEXT_PUBLIC_DOCS_URL": defineEnv(
+				process.env.NEXT_PUBLIC_DOCS_URL,
+				"https://docs.choros.sh",
+			),
+			"process.env.NEXT_PUBLIC_ROOT_DOMAIN": defineEnv(
+				process.env.NEXT_PUBLIC_ROOT_DOMAIN,
+				"choros.sh",
+			),
+			"import.meta.env.DEV_SERVER_PORT": defineEnv(String(DEV_SERVER_PORT)),
+			"import.meta.env.NEXT_PUBLIC_POSTHOG_KEY": defineEnv(
+				process.env.NEXT_PUBLIC_POSTHOG_KEY,
+			),
+			"import.meta.env.NEXT_PUBLIC_POSTHOG_HOST": defineEnv(
+				process.env.NEXT_PUBLIC_POSTHOG_HOST,
+			),
+			"import.meta.env.SENTRY_DSN_DESKTOP": defineEnv(
+				process.env.SENTRY_DSN_DESKTOP,
+			),
+			"process.env.RELAY_URL": defineEnv(process.env.RELAY_URL),
+			"process.env.STREAMS_URL": defineEnv(
+				process.env.STREAMS_URL,
+				"https://choros-stream.fly.dev",
+			),
+			"process.env.DESKTOP_VITE_PORT": defineEnv(process.env.DESKTOP_VITE_PORT),
+			"process.env.DESKTOP_NOTIFICATIONS_PORT": defineEnv(
+				process.env.DESKTOP_NOTIFICATIONS_PORT,
+			),
+			"process.env.CHOROS_WORKSPACE_NAME": defineEnv(
+				process.env.CHOROS_WORKSPACE_NAME,
+			),
+		},
+
+		server: {
+			port: DEV_SERVER_PORT,
+			strictPort: false,
+		},
+
+		plugins: [
+			tanstackRouter({
+				target: "react",
+				routesDirectory: resolve("src/renderer/routes"),
+				generatedRouteTree: resolve("src/renderer/routeTree.gen.ts"),
+				indexToken: "page",
+				routeToken: "layout",
+				autoCodeSplitting: true,
+				routeFileIgnorePattern:
+					"^(?!(__root|page|layout)\\.tsx$).*\\.(tsx?|jsx?)$",
+			}),
+			tsconfigPaths,
+			tailwindcss(),
+			codeInspectorPlugin({
+				bundler: "vite",
+				hotKeys: ["altKey"],
+				hideConsole: true,
+				port: Number(process.env.CODE_INSPECTOR_PORT) || undefined,
+			}),
+			reactPlugin({
+				// Compiles @lingui/react/macro (Trans, useLingui) at build time.
+				babel: { plugins: ["@lingui/babel-plugin-lingui-macro"] },
+			}),
+			htmlEnvTransformPlugin(),
+		],
+
+		worker: {
+			format: "es",
+		},
+
+		publicDir: resolve(resources, "public"),
+
+		build: {
+			sourcemap: true,
+			outDir: resolve(devPath, "renderer"),
+
+			rollupOptions: {
+				plugins: [
+					injectProcessEnvPlugin({
+						NODE_ENV: "production",
+						platform: process.platform,
+					}),
+					sentryPlugin,
+				].filter(Boolean),
+
+				input: {
+					index: resolve("src/renderer/index.html"),
+				},
+			},
+		},
+	},
+});

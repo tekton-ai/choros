@@ -1,0 +1,33 @@
+import type { RouterOutputs } from "@choros/trpc";
+import type { CommentThread } from "@choros/ui/page-comments";
+
+type ServerThread = RouterOutputs["pageComment"]["list"][number];
+
+export function toThreads(rows: ServerThread[]): CommentThread[] {
+	return rows.flatMap((row) =>
+		row.anchor
+			? [
+					{
+						id: row.id,
+						anchor: {
+							path: row.anchor.path,
+							tag: row.anchor.tag,
+							text: row.anchorText ?? "",
+							offsetX: row.anchor.offsetX,
+							offsetY: row.anchor.offsetY,
+						},
+						resolved: row.resolved,
+						version: row.version,
+						comments: row.comments.map((comment) => ({
+							id: comment.id,
+							body: comment.body,
+							authorName: comment.authorName,
+							authorImage: comment.authorImage,
+							authorKind: comment.authorKind,
+							createdAt: comment.createdAt.getTime(),
+						})),
+					},
+				]
+			: [],
+	);
+}

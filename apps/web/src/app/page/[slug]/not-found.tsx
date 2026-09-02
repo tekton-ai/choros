@@ -1,0 +1,32 @@
+import { Button } from "@choros/ui/button";
+import { Pixel404 } from "@choros/ui/pixel-404";
+import Link from "next/link";
+import { MessageScreen } from "@/components/MessageScreen";
+import { i18n } from "@/lib/i18n-server";
+
+export default function PageNotFound() {
+	return (
+		<MessageScreen
+			graphic={<Pixel404 className="max-w-[260px] text-foreground" />}
+			title={i18n._({
+				id: "web.pageNotFound.title",
+				message: "This page isn't here",
+			})}
+			description={i18n._({
+				id: "web.pageNotFound.description",
+				message:
+					"The link may be wrong, the page may have been deleted, or you may not have access to it.",
+			})}
+			action={
+				<Button asChild size="sm" variant="outline">
+					<Link href="/">
+						{i18n._({
+							id: "web.pageNotFound.goToChoros",
+							message: "Go to Choros",
+						})}
+					</Link>
+				</Button>
+			}
+		/>
+	);
+}

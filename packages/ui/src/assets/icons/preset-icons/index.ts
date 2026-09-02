@@ -1,0 +1,111 @@
+import ampIcon from "./amp.svg";
+import antigravityIcon from "./antigravity.svg";
+import chorosIcon from "./choros.svg";
+import claudeIcon from "./claude.svg";
+import codexIcon from "./codex.svg";
+import codexWhiteIcon from "./codex-white.svg";
+import copilotIcon from "./copilot.svg";
+import copilotWhiteIcon from "./copilot-white.svg";
+import cursorAgentIcon from "./cursor.svg";
+import droidIcon from "./droid.svg";
+import droidWhiteIcon from "./droid-white.svg";
+import fxIcon from "./fx.svg";
+import fxWhiteIcon from "./fx-white.svg";
+import geminiIcon from "./gemini.svg";
+import grokIcon from "./grok.svg";
+import grokWhiteIcon from "./grok-white.svg";
+import hermesIcon from "./hermes.svg";
+import hermesWhiteIcon from "./hermes-white.svg";
+import kimiIcon from "./kimi.svg";
+import kimiWhiteIcon from "./kimi-white.svg";
+import kiroIcon from "./kiro.svg";
+import mastracodeIcon from "./mastracode.svg";
+import mastracodeWhiteIcon from "./mastracode-white.svg";
+import opencodeIcon from "./opencode.svg";
+import opencodeWhiteIcon from "./opencode-white.svg";
+import piIcon from "./pi.svg";
+import piWhiteIcon from "./pi-white.svg";
+import polygraphIcon from "./polygraph.svg";
+import polygraphWhiteIcon from "./polygraph-white.svg";
+import vibeIcon from "./vibe.svg";
+
+export interface PresetIconSet {
+	light: string;
+	dark: string;
+}
+
+export const PRESET_ICONS: Record<string, PresetIconSet> = {
+	amp: { light: ampIcon, dark: ampIcon },
+	// Keyed by agent id: the Antigravity CLI binary is `agy`.
+	agy: { light: antigravityIcon, dark: antigravityIcon },
+	claude: { light: claudeIcon, dark: claudeIcon },
+	codex: { light: codexIcon, dark: codexWhiteIcon },
+	copilot: { light: copilotIcon, dark: copilotWhiteIcon },
+	fx: { light: fxIcon, dark: fxWhiteIcon },
+	gemini: { light: geminiIcon, dark: geminiIcon },
+	grok: { light: grokIcon, dark: grokWhiteIcon },
+	hermes: { light: hermesIcon, dark: hermesWhiteIcon },
+	kimi: { light: kimiIcon, dark: kimiWhiteIcon },
+	kiro: { light: kiroIcon, dark: kiroIcon },
+	omp: { light: piIcon, dark: piWhiteIcon },
+	pi: { light: piIcon, dark: piWhiteIcon },
+	polygraph: { light: polygraphIcon, dark: polygraphWhiteIcon },
+	choros: { light: chorosIcon, dark: chorosIcon },
+	"cursor-agent": { light: cursorAgentIcon, dark: cursorAgentIcon },
+	"cursor-composer": { light: cursorAgentIcon, dark: cursorAgentIcon },
+	droid: { light: droidIcon, dark: droidWhiteIcon },
+	mastracode: { light: mastracodeIcon, dark: mastracodeWhiteIcon },
+	opencode: { light: opencodeIcon, dark: opencodeWhiteIcon },
+	vibe: { light: vibeIcon, dark: vibeIcon },
+};
+
+/** True when a value is an inline `data:` image URI rather than a preset key. */
+export function isDataImageUri(value: string): boolean {
+	return value.startsWith("data:image/");
+}
+
+export function getPresetIcon(
+	presetName: string,
+	isDark: boolean,
+): string | undefined {
+	// A user-uploaded icon is stored as a `data:` URI rather than a preset key.
+	// Return it as-is (before normalizing — base64 is case-sensitive) so every
+	// icon render site handles uploaded images without extra branching.
+	if (isDataImageUri(presetName)) return presetName;
+	const normalizedName = presetName.toLowerCase().trim();
+	const iconSet = PRESET_ICONS[normalizedName];
+	if (!iconSet) return undefined;
+	return isDark ? iconSet.dark : iconSet.light;
+}
+
+export {
+	ampIcon,
+	antigravityIcon,
+	claudeIcon,
+	chorosIcon,
+	codexIcon,
+	codexWhiteIcon,
+	copilotIcon,
+	copilotWhiteIcon,
+	cursorAgentIcon,
+	droidIcon,
+	droidWhiteIcon,
+	fxIcon,
+	fxWhiteIcon,
+	geminiIcon,
+	grokIcon,
+	grokWhiteIcon,
+	hermesIcon,
+	hermesWhiteIcon,
+	kimiIcon,
+	kimiWhiteIcon,
+	kiroIcon,
+	mastracodeIcon,
+	mastracodeWhiteIcon,
+	opencodeIcon,
+	opencodeWhiteIcon,
+	piIcon,
+	piWhiteIcon,
+	polygraphIcon,
+	polygraphWhiteIcon,
+};

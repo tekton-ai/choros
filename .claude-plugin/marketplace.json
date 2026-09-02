@@ -1,0 +1,14 @@
+{
+	"name": "choros",
+	"owner": {
+		"name": "Choros",
+		"url": "https://choros.sh"
+	},
+	"plugins": [
+		{
+			"name": "choros",
+			"source": "./plugins/choros",
+			"description": "Use Choros to spawn agents, create workspaces, manage tasks, and schedule automations from Claude Code."
+		}
+	]
+}

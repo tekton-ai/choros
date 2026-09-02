@@ -1,0 +1,90 @@
+import {
+	AlertDialog,
+	AlertDialogContent,
+	AlertDialogDescription,
+	AlertDialogFooter,
+	AlertDialogHeader,
+	AlertDialogTitle,
+} from "@choros/ui/alert-dialog";
+import { Button } from "@choros/ui/button";
+import { Trans } from "@lingui/react/macro";
+import { useGitInitDialogStore } from "renderer/stores/git-init-dialog";
+
+export function InitGitDialog() {
+	const { isOpen, isPending, paths, onConfirm, onCancel } =
+		useGitInitDialogStore();
+
+	const isSingle = paths.length === 1;
+
+	return (
+		<AlertDialog
+			open={isOpen}
+			onOpenChange={(open) => {
+				if (!open && !isPending) onCancel?.();
+			}}
+		>
+			<AlertDialogContent>
+				<AlertDialogHeader>
+					<AlertDialogTitle>
+						<Trans id="app.initGitDialog.title">
+							Initialize Git Repository?
+						</Trans>
+					</AlertDialogTitle>
+					<AlertDialogDescription asChild>
+						<div className="space-y-2">
+							{isSingle ? (
+								<p>
+									<Trans id="app.initGitDialog.singleQuestion">
+										<span className="font-medium text-foreground">
+											{paths[0]?.split("/").pop()}
+										</span>{" "}
+										is not a git repository. Would you like to initialize one?
+									</Trans>
+								</p>
+							) : (
+								<>
+									<p>
+										<Trans id="app.initGitDialog.multiQuestion">
+											The following folders are not git repositories. Would you
+											like to initialize them?
+										</Trans>
+									</p>
+									<ul className="list-disc pl-4 space-y-1">
+										{paths.map((p) => (
+											<li key={p}>
+												<span className="font-medium text-foreground">
+													{p.split("/").pop()}
+												</span>
+												<span className="text-xs ml-1 text-muted-foreground">
+													{p}
+												</span>
+											</li>
+										))}
+									</ul>
+								</>
+							)}
+						</div>
+					</AlertDialogDescription>
+				</AlertDialogHeader>
+				<AlertDialogFooter>
+					<Button
+						variant="outline"
+						disabled={isPending}
+						onClick={() => onCancel?.()}
+					>
+						<Trans id="app.initGitDialog.cancel">Cancel</Trans>
+					</Button>
+					<Button disabled={isPending} onClick={() => onConfirm?.()}>
+						{isPending ? (
+							<Trans id="app.initGitDialog.confirmPending">
+								Initializing...
+							</Trans>
+						) : (
+							<Trans id="app.initGitDialog.confirm">Initialize Git</Trans>
+						)}
+					</Button>
+				</AlertDialogFooter>
+			</AlertDialogContent>
+		</AlertDialog>
+	);
+}

@@ -1,0 +1,116 @@
+import { getPresetById } from "@choros/shared/host-agent-presets";
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from "@choros/ui/dropdown-menu";
+import { getPresetIcon } from "@choros/ui/icons/preset-icons";
+import { Trans, useLingui } from "@lingui/react/macro";
+import { useNavigate } from "@tanstack/react-router";
+import { HiCheck } from "react-icons/hi2";
+import { LuCpu, LuSettings } from "react-icons/lu";
+import { useIsDarkTheme } from "renderer/assets/app-icons/preset-icons";
+import { PickerTrigger } from "renderer/components/PickerTrigger";
+import { useHostUrl } from "renderer/hooks/host-service/useHostTargetUrl";
+import { useV2AgentChoices } from "renderer/hooks/useV2AgentChoices";
+import {
+	matchAgentChoice,
+	portableAgentValue,
+} from "../../utils/agentIdentity";
+
+interface AgentPickerProps {
+	hostId: string | null | undefined;
+	value: string;
+	onChange: (next: string) => void;
+	className?: string;
+	/**
+	 * Disables opening via the Radix trigger itself. A button disabled only
+	 * through an enclosing <fieldset> still receives pointerdown in Chrome —
+	 * the event that opens a DropdownMenu.
+	 */
+	disabled?: boolean;
+}
+
+export function AgentPicker({
+	hostId,
+	value,
+	onChange,
+	className,
+	disabled,
+}: AgentPickerProps) {
+	const { t } = useLingui();
+	const navigate = useNavigate();
+	const hostUrl = useHostUrl(hostId);
+	const { agents } = useV2AgentChoices(hostUrl);
+	const isDark = useIsDarkTheme();
+	const hostMatch = matchAgentChoice(agents, value);
+	const presetMatch = hostMatch ? null : getPresetById(value);
+	const selectedLabel =
+		hostMatch?.label ?? presetMatch?.label ?? (value ? value : null);
+	const selectedIconKey = hostMatch?.iconId ?? presetMatch?.presetId ?? value;
+	const selectedIcon = selectedIconKey
+		? getPresetIcon(selectedIconKey, isDark)
+		: null;
+
+	return (
+		<DropdownMenu>
+			<DropdownMenuTrigger asChild disabled={disabled}>
+				<PickerTrigger
+					className={className}
+					icon={
+						selectedIcon ? (
+							<img
+								src={selectedIcon}
+								alt=""
+								className="size-3.5 shrink-0 object-contain"
+							/>
+						) : (
+							<LuCpu className="size-4 shrink-0" />
+						)
+					}
+					label={
+						selectedLabel ??
+						t({
+							id: "dashboard.automations.agentPicker.selectAgent",
+							message: "Select agent",
+						})
+					}
+				/>
+			</DropdownMenuTrigger>
+			<DropdownMenuContent align="start" className="w-56">
+				{agents.map((agent) => {
+					const icon = getPresetIcon(agent.iconId ?? agent.id, isDark);
+					return (
+						<DropdownMenuItem
+							key={agent.id}
+							onSelect={() => onChange(portableAgentValue(agents, agent))}
+						>
+							{icon ? (
+								<img
+									src={icon}
+									alt=""
+									className="size-3.5 shrink-0 object-contain"
+								/>
+							) : (
+								<LuCpu className="size-4 shrink-0" />
+							)}
+							<span className="flex-1 truncate">{agent.label}</span>
+							{hostMatch?.id === agent.id && <HiCheck className="size-4" />}
+						</DropdownMenuItem>
+					);
+				})}
+				<DropdownMenuSeparator />
+				<DropdownMenuItem onSelect={() => navigate({ to: "/settings/agents" })}>
+					<LuSettings className="size-4 shrink-0" />
+					<span className="flex-1">
+						<Trans id="dashboard.automations.agentPicker.configureAgents">
+							Configure agents…
+						</Trans>
+					</span>
+				</DropdownMenuItem>
+			</DropdownMenuContent>
+		</DropdownMenu>
+	);
+}

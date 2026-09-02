@@ -1,0 +1,17 @@
+{
+	"ports": [
+		{ "port": 3000, "label": "Web" },
+		{ "port": 3001, "label": "API" },
+		{ "port": 3002, "label": "Marketing" },
+		{ "port": 3003, "label": "Admin" },
+		{ "port": 3004, "label": "Docs" },
+		{ "port": 3005, "label": "Desktop Vite" },
+		{ "port": 3006, "label": "Notifications" },
+		{ "port": 3007, "label": "Streams" },
+		{ "port": 3014, "label": "Usercontent Worker" },
+		{ "port": 3014, "label": "Postgres" },
+		{ "port": 3015, "label": "Neon Proxy" },
+		{ "port": 3016, "label": "Redis" },
+		{ "port": 3017, "label": "Redis HTTP (SRH)" }
+	]
+}

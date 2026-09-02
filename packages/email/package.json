@@ -1,0 +1,39 @@
+{
+	"name": "@choros/email",
+	"version": "0.1.0",
+	"devDependencies": {
+		"@choros/typescript": "workspace:*",
+		"@react-email/preview-server": "5.0.7",
+		"@types/node": "24.12.0",
+		"@types/react": "19.2.14",
+		"@types/tailwindcss": "3.1.0",
+		"react-email": "5.0.7",
+		"typescript": "6.0.3"
+	},
+	"exports": {
+		"./emails/marketing/DownloadLinkEmail": "./src/emails/marketing/DownloadLinkEmail/index.ts",
+		"./emails/*": "./src/emails/*.tsx"
+	},
+	"private": true,
+	"scripts": {
+		"clean": "git clean -xdf .cache .turbo dist node_modules",
+		"dev": "NEXT_PUBLIC_MARKETING_URL=$(grep NEXT_PUBLIC_MARKETING_URL ../../.env | cut -d '=' -f2) email dev --dir src/emails",
+		"export": "email export --dir src/emails",
+		"sync:automations": "bun scripts/sync-automations.ts",
+		"typecheck": "tsc --noEmit"
+	},
+	"type": "module",
+	"dependencies": {
+		"@choros/db": "workspace:*",
+		"@react-email/components": "1.0.1",
+		"@react-email/tailwind": "2.0.3",
+		"@t3-oss/env-core": "0.13.11",
+		"date-fns": "4.1.0",
+		"drizzle-orm": "0.45.2",
+		"react": "19.2.3",
+		"react-dom": "19.2.3",
+		"resend": "6.18.0",
+		"tailwindcss": "4.2.2",
+		"zod": "4.4.3"
+	}
+}

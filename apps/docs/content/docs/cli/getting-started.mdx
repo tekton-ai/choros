@@ -1,0 +1,203 @@
+---
+title: Getting Started
+description: Install the Choros CLI, sign in, and run your first commands.
+---
+
+<Callout type="warn">
+The CLI is currently in Beta. Commands and flags are still evolving. Make sure you're on the latest version of the CLI if you run into issues.
+</Callout>
+
+The Choros CLI (`choros`) is a single static binary that drives the same
+backend as the desktop app. Use it to manage workspaces, tasks, automations,
+and the local host server from your terminal or from CI.
+
+<YouTubeVideo id="8g-l5kYEGBc" title="Choros CLI + Skills Demo" thumbnail="/images/cli-skills-demo.jpg" />
+
+## Install
+
+### Desktop app
+
+The desktop app includes the Choros CLI. When the app launches, it writes
+an app-managed shim at `~/.choros/bin/choros`, and Choros terminals
+prepend `~/.choros/bin` to `PATH` automatically.
+
+To use the bundled CLI from a normal shell, add the directory to your shell
+profile:
+
+```bash
+export PATH="$HOME/.choros/bin:$PATH"
+```
+
+### Standalone install
+
+```bash
+curl -fsSL https://choros.sh/cli/install.sh | sh
+```
+
+The script auto-detects your platform (macOS on Apple Silicon or Intel, Linux on
+x64 or arm64), installs Choros under `~/choros` by default, and adds
+`~/choros/bin` to your shell `PATH`.
+
+### Homebrew
+
+```bash
+brew install choros-sh/tap/choros
+```
+
+## Sign in
+
+```bash
+choros auth login
+```
+
+The CLI starts a loopback callback server on `127.0.0.1:51789` (or `51790`
+through `51793` if earlier ports are busy), opens your browser to the
+consent page, and stores a session token at `~/.choros/config.json`.
+
+If you belong to multiple organizations, you'll be prompted to pick one. To
+skip the prompt and pick directly:
+
+```bash
+choros auth login --organization acme
+```
+
+For CI or other non-interactive environments (where there's no browser to
+complete the OAuth flow), use an API key instead. You can either store it
+once with `auth login --api-key`:
+
+```bash
+choros auth login --api-key sk_live_…
+choros auth whoami
+```
+
+…or set `CHOROS_API_KEY` per-invocation without writing anything to disk:
+
+```bash
+export CHOROS_API_KEY=sk_live_…
+choros auth whoami
+```
+
+API keys are issued from the **Settings → API Keys** page in the desktop app.
+
+## Verify your session
+
+```bash
+choros auth whoami
+```
+
+```text
+Signed in as Satya Patel (you@example.com)
+Organization: Acme
+Auth: Session (expires in 32 min)
+```
+
+## Explore interactively
+
+Bare `choros` in a terminal opens an interactive command browser:
+arrow-key through the commands, read their flags, and fill in required
+inputs with guided prompts. The confirmation screen shows the exact
+command before running it. `choros --help` prints the same catalog as
+static, grouped help. Agents and CI always get static help; the browser
+never opens there.
+
+![The interactive command browser](/images/cli-command-browser.png)
+
+## Run your first commands
+
+List the projects in your organization:
+
+```bash
+choros projects list
+```
+
+If your repo isn't there yet, register it on this machine. Clone from a
+Git URL or import an existing checkout:
+
+```bash
+# Clone from a URL
+choros projects create --name "my-app" --local \
+  --clone https://github.com/org/my-app.git \
+  --parent-dir ~/code
+
+# Or register an existing local checkout
+choros projects create --name "my-app" --local --import ~/code/my-app
+```
+
+If the project already exists in your org but isn't on this machine,
+attach to it instead of creating a duplicate:
+
+```bash
+choros projects setup <id-from-projects-list> --local --parent-dir ~/code
+```
+
+Then create a workspace against it:
+
+```bash
+choros workspaces create \
+  --project prj_… \
+  --name "fix-login-bug" \
+  --branch fix/login-bug \
+  --local
+```
+
+Trigger an automation immediately:
+
+```bash
+choros automations list
+choros automations run aut_…
+choros automations logs aut_…
+```
+
+## Output modes
+
+Every command prints a TTY-friendly view by default. Two flags switch the
+shape of the output for scripting:
+
+| Flag | Output |
+| --- | --- |
+| `--json` | The data payload as formatted JSON. No envelope. |
+| `--quiet` | One ID per line for arrays of objects with `id`; the ID for single objects; JSON otherwise. |
+
+```bash
+choros tasks list --status in_progress --json | jq '.[].title'
+choros workspaces list --quiet | xargs -L1 choros workspaces delete
+```
+
+When the CLI detects an agent or CI environment (`CLAUDE_CODE`,
+`CLAUDECODE`, `CLAUDE_CODE_ENTRYPOINT`, `CODEX_CLI`, `GEMINI_CLI`,
+`CHOROS_AGENT`, or `CI` set to a non-empty value), it defaults to JSON
+output unless you pass `--quiet`.
+
+## Local vs. remote hosts
+
+Commands that touch a host accept `--host <id>` to pick which host handles
+the request, or `--local` for this machine. Local-targeted calls go
+straight to the host server over loopback (offline-friendly); remote
+calls route through the cloud API and the relay.
+
+```bash
+choros hosts list
+choros workspaces list              # this machine
+choros workspaces list --host h_…  # another host
+```
+
+Every host-scoped command targets exactly one host. Reads
+(`workspaces list`, `projects list`) default to this machine; mutating
+host commands (`projects create`, `projects setup`, `workspaces create`)
+require an explicit `--host` or `--local`; there's no default. There is
+no org-wide listing; the desktop app is the cross-host view.
+
+## Where state lives
+
+```text
+~/.choros/config.json                            # auth, active organization
+~/.choros/host/<organizationId>/manifest.json    # host server endpoint + token
+~/.choros/host/<organizationId>/host.db          # local host server DB
+```
+
+`CHOROS_HOME_DIR` relocates the whole tree, matching the desktop app.
+
+## Next steps
+
+Continue to the [CLI reference](/cli/cli-reference) for every command,
+flag, and output shape.

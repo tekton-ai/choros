@@ -1,0 +1,734 @@
+import type { ProgressAddon } from "@xterm/addon-progress";
+import type { SearchAddon } from "@xterm/addon-search";
+import { DEFAULT_TERMINAL_PARKED_RUNTIME_CAP } from "shared/constants";
+import type { TerminalAppearance } from "./appearance";
+import { runWhenParserIdle } from "./parser-idle-gate";
+import type { ImagePasteOverride } from "./terminal-image-paste-fallback";
+import {
+	type LinkHoverInfo,
+	type TerminalLinkHandlers,
+	TerminalLinkManager,
+} from "./terminal-link-manager";
+import {
+	attachToContainer,
+	clearPersistedRuntimeState,
+	createRuntime,
+	detachFromContainer,
+	disposeRuntime,
+	type TerminalRuntime,
+	tryPersistRuntimeState,
+	updateRuntimeAppearance,
+} from "./terminal-runtime";
+import {
+	normalizeParkedRuntimeCap,
+	selectRuntimesToEvict,
+} from "./terminal-runtime-eviction";
+import {
+	loadPersistedSeqAnchor,
+	persistSeqAnchor,
+} from "./terminal-seq-anchor";
+import {
+	type ConnectionState,
+	clearLogs,
+	connect,
+	createTransport,
+	disposeTransport,
+	getPersistableSeqAnchor,
+	park,
+	reconnect,
+	sendDispose,
+	sendInput,
+	sendResize,
+	setVisible,
+	type TerminalLogEntry,
+	type TerminalTransport,
+} from "./terminal-ws-transport";
+import type { TerminalFailureClassification } from "./terminalConnectionDiagnostics";
+
+interface RegistryEntry {
+	terminalId: string;
+	instanceId: string;
+	runtime: TerminalRuntime | null;
+	transport: TerminalTransport;
+	linkManager: TerminalLinkManager | null;
+	/** Stored until linkManager is created (mount called after setLinkHandlers). */
+	pendingLinkHandlers: TerminalLinkHandlers | null;
+	/** Survives runtime eviction/rebuild (the override outlives any one xterm). */
+	imagePasteOverride: ImagePasteOverride | null;
+	/** Stops the alternate/normal buffer observer installed with the runtime. */
+	disposeBufferChangeListener: (() => void) | null;
+	/** Monotonic use counter; bumped on mount/detach, drives parked-LRU eviction. */
+	lastUsedAt: number;
+}
+
+class TerminalRuntimeRegistryImpl {
+	private entries = new Map<string, RegistryEntry>();
+	private entryKeysByTerminalId = new Map<string, Set<string>>();
+	private useSeq = 0;
+	private pendingEviction: ReturnType<typeof setTimeout> | null = null;
+	private persistFailureWarnedTerminalIds = new Set<string>();
+	/**
+	 * Cap on parked (hidden) xterm runtimes. Each live runtime holds its full
+	 * scrollback and a WebGL context (~55–70 MB RSS measured), so parked
+	 * instances beyond this are released — buffer persisted to localStorage,
+	 * PTY untouched — and rebuilt from the persisted buffer on next mount.
+	 * User-configurable via settings.setTerminalParkedRuntimeCap. (SUPER-1545)
+	 */
+	private parkedRuntimeCap = DEFAULT_TERMINAL_PARKED_RUNTIME_CAP;
+
+	setParkedRuntimeCap(cap: number) {
+		const normalized = normalizeParkedRuntimeCap(cap);
+		if (normalized === null) return;
+		this.parkedRuntimeCap = normalized;
+		this.scheduleParkedEviction();
+	}
+
+	private getEntryKey(terminalId: string, instanceId = terminalId): string {
+		return `${terminalId}\u0000${instanceId}`;
+	}
+
+	private getOrCreateEntry(
+		terminalId: string,
+		instanceId = terminalId,
+	): RegistryEntry {
+		const key = this.getEntryKey(terminalId, instanceId);
+		let entry = this.entries.get(key);
+		if (entry) return entry;
+
+		entry = {
+			terminalId,
+			instanceId,
+			runtime: null,
+			// A destroyed PTY (exit / session-gone) has nothing left to restore —
+			// drop the persisted scrollback the moment the server says so.
+			transport: createTransport({
+				onSessionEnded: () => clearPersistedRuntimeState(terminalId),
+			}),
+			linkManager: null,
+			pendingLinkHandlers: null,
+			imagePasteOverride: null,
+			disposeBufferChangeListener: null,
+			lastUsedAt: 0,
+		};
+
+		this.entries.set(key, entry);
+		let keys = this.entryKeysByTerminalId.get(terminalId);
+		if (!keys) {
+			keys = new Set();
+			this.entryKeysByTerminalId.set(terminalId, keys);
+		}
+		keys.add(key);
+		return entry;
+	}
+
+	private getEntry(
+		terminalId: string,
+		instanceId?: string,
+	): RegistryEntry | null {
+		if (instanceId) {
+			return this.entries.get(this.getEntryKey(terminalId, instanceId)) ?? null;
+		}
+		return this.getPrimaryEntry(terminalId);
+	}
+
+	private getPrimaryEntry(terminalId: string): RegistryEntry | null {
+		const defaultEntry = this.entries.get(this.getEntryKey(terminalId));
+		if (defaultEntry) return defaultEntry;
+
+		const keys = this.entryKeysByTerminalId.get(terminalId);
+		const firstKey = keys?.values().next().value;
+		return firstKey ? (this.entries.get(firstKey) ?? null) : null;
+	}
+
+	private getEntries(terminalId: string): RegistryEntry[] {
+		const keys = this.entryKeysByTerminalId.get(terminalId);
+		if (!keys) return [];
+		return Array.from(keys)
+			.map((key) => this.entries.get(key))
+			.filter((entry): entry is RegistryEntry => Boolean(entry));
+	}
+
+	private deleteEntry(entry: RegistryEntry) {
+		const key = this.getEntryKey(entry.terminalId, entry.instanceId);
+		this.entries.delete(key);
+		const keys = this.entryKeysByTerminalId.get(entry.terminalId);
+		if (!keys) return;
+		keys.delete(key);
+		if (keys.size === 0) {
+			this.entryKeysByTerminalId.delete(entry.terminalId);
+		}
+	}
+
+	private serializeExistingRuntime(
+		terminalId: string,
+		excludedInstanceId: string,
+	): string | undefined {
+		for (const entry of this.getEntries(terminalId)) {
+			if (entry.instanceId === excludedInstanceId || !entry.runtime) continue;
+			try {
+				return entry.runtime.serializeAddon.serialize({ scrollback: 1000 });
+			} catch {
+				return undefined;
+			}
+		}
+		return undefined;
+	}
+
+	/**
+	 * Ensure the xterm runtime exists and attach it to `container`.
+	 * Synchronous. DOM-only — the WebSocket transport is untouched.
+	 *
+	 * Matches VSCode's pattern (`TerminalInstance.attachToElement`) and
+	 * Tabby's (`XTermFrontend.attach`): the terminal renders immediately
+	 * with a blank cursor, the backend pipe catches up via `connect()` once
+	 * the caller has confirmed the server session exists. Decoupling the
+	 * DOM from the transport is what lets a terminal survive workspace
+	 * switches without an in-flight WebSocket being opened against a
+	 * nonexistent session.
+	 */
+	mount(
+		terminalId: string,
+		container: HTMLDivElement,
+		appearance: TerminalAppearance,
+		instanceId = terminalId,
+	) {
+		const entry = this.getOrCreateEntry(terminalId, instanceId);
+		entry.lastUsedAt = ++this.useSeq;
+
+		if (!entry.runtime) {
+			entry.runtime = createRuntime(terminalId, appearance, {
+				initialBuffer: this.serializeExistingRuntime(terminalId, instanceId),
+			});
+			// Pair the transport's stream position with what the fresh xterm
+			// actually contains: the persisted anchor belongs to the persisted
+			// snapshot only; sibling-seeded content has no known position.
+			if (!entry.transport._hasReceivedBytes) {
+				entry.transport._xtermHadContent =
+					entry.runtime.initialContent !== "none";
+				if (
+					entry.transport.seqAnchor === null &&
+					entry.runtime.initialContent === "restored"
+				) {
+					entry.transport.seqAnchor = loadPersistedSeqAnchor(terminalId);
+				}
+			}
+			entry.runtime.imagePasteOverride = entry.imagePasteOverride;
+			this.observeBufferChanges(entry);
+			entry.linkManager = new TerminalLinkManager(entry.runtime.terminal);
+			if (entry.pendingLinkHandlers) {
+				entry.linkManager.setHandlers(entry.pendingLinkHandlers);
+				entry.pendingLinkHandlers = null;
+			}
+		} else {
+			updateRuntimeAppearance(entry.runtime, appearance);
+		}
+
+		const { runtime, transport } = entry;
+		setVisible(transport, true);
+		attachToContainer(
+			runtime,
+			container,
+			() => {
+				sendResize(transport, runtime.terminal.cols, runtime.terminal.rows);
+			},
+			{ focus: false },
+		);
+	}
+
+	private observeBufferChanges(entry: RegistryEntry) {
+		entry.disposeBufferChangeListener?.();
+		entry.disposeBufferChangeListener = null;
+		const runtime = entry.runtime;
+		if (!runtime) return;
+
+		const subscription = runtime.terminal.buffer.onBufferChange(() => {
+			// Exempt alternate-screen TUIs may put the registry over cap. As soon as
+			// a parked TUI returns to its normal buffer, reconsider it for eviction.
+			if (entry.runtime?.container === null) {
+				this.scheduleParkedEviction();
+			}
+		});
+		entry.disposeBufferChangeListener = () => subscription.dispose();
+	}
+
+	/**
+	 * Open (or re-use) the WebSocket transport for this terminal.
+	 * The server session must already exist; the WebSocket route only attaches
+	 * this xterm instance to the terminal id.
+	 *
+	 * Idempotent: no-op if already connected/connecting to the same URL.
+	 */
+	connect(terminalId: string, wsUrl: string, instanceId = terminalId) {
+		const entry = this.getEntry(terminalId, instanceId);
+		if (!entry?.runtime) return;
+		connect(entry.transport, entry.runtime.terminal, wsUrl);
+	}
+
+	/**
+	 * Swap the transport onto a new URL when it's already been brought up
+	 * once. Used by effects watching `websocketUrl` — they fire on initial
+	 * mount when the transport is still `"disconnected"` and the mount effect
+	 * owns the initial connect.
+	 *
+	 * Skipped states: `"disconnected"` (never opened; caller should use
+	 * `connect()` from the mount path). Allowed states: `"connecting"` (connect()
+	 * cleanly aborts the in-flight socket), `"open"` (standard swap), and
+	 * `"closed"` (previously live and mid-auto-reconnect — swap the URL so the
+	 * reconnect targets the new endpoint).
+	 */
+	reconnect(terminalId: string, wsUrl: string, instanceId = terminalId) {
+		const entry = this.getEntry(terminalId, instanceId);
+		if (!entry?.runtime) return;
+		if (entry.transport.connectionState === "disconnected") return;
+		if (entry.transport.currentUrl === wsUrl) return;
+		connect(entry.transport, entry.runtime.terminal, wsUrl);
+	}
+
+	/**
+	 * Manually re-dial after the transport stopped trying (access denied, fatal
+	 * server error, PTY exit). reconnect() clears the terminated flag and forces
+	 * an immediate dial, restarting a dead loop.
+	 */
+	retryConnect(terminalId: string, instanceId = terminalId) {
+		const entry = this.getEntry(terminalId, instanceId);
+		if (!entry?.runtime) return;
+		reconnect(entry.transport);
+	}
+
+	/**
+	 * Set link handler callbacks for a terminal. Safe to call before or after
+	 * mount(). If the runtime already exists, link providers are re-registered.
+	 */
+	setLinkHandlers(
+		terminalId: string,
+		handlers: TerminalLinkHandlers,
+		instanceId = terminalId,
+	) {
+		const entry = this.getOrCreateEntry(terminalId, instanceId);
+		if (entry.linkManager) {
+			entry.linkManager.setHandlers(handlers);
+		} else {
+			entry.pendingLinkHandlers = handlers;
+		}
+	}
+
+	/**
+	 * Set (or clear, with null) the image-paste override for a terminal. Safe
+	 * to call before or after mount(); survives runtime eviction/rebuild.
+	 */
+	setImagePasteOverride(
+		terminalId: string,
+		override: ImagePasteOverride | null,
+		instanceId = terminalId,
+	) {
+		const entry = this.getOrCreateEntry(terminalId, instanceId);
+		entry.imagePasteOverride = override;
+		if (entry.runtime) {
+			entry.runtime.imagePasteOverride = override;
+		}
+	}
+
+	/**
+	 * Park the wrapper in the hidden body-level container. Runtime and
+	 * transport stay alive; DOM is moved off the React-controlled tree so
+	 * it survives the parent unmount without re-entering xterm.open().
+	 */
+	detach(terminalId: string, instanceId = terminalId) {
+		const entry = this.getEntry(terminalId, instanceId);
+		if (!entry?.runtime) return;
+
+		entry.lastUsedAt = ++this.useSeq;
+		// A parked pane keeps its socket, but it is no longer showing anything —
+		// stop its dims from constraining the clients that are.
+		setVisible(entry.transport, false);
+		// Land any frame-pending output in xterm before the buffer snapshot,
+		// so the persisted snapshot matches the persisted stream position.
+		entry.transport._writeCoalescer?.flushSync();
+		const snapshotPersisted = detachFromContainer(entry.runtime);
+		// The anchor is only meaningful paired with the snapshot it was counted
+		// against: skip it when the snapshot write failed, and when the parser
+		// still holds unrendered bytes the anchor already counted (the snapshot
+		// would restore short and catch-up would never refill the gap). No
+		// anchor degrades to the safe reanchor path.
+		persistSeqAnchor(
+			terminalId,
+			snapshotPersisted && entry.runtime.gate.pending === 0
+				? getPersistableSeqAnchor(entry.transport)
+				: null,
+		);
+		// detachFromContainer persists unconditionally; a dead session's snapshot
+		// must not outlive the PTY.
+		if (entry.transport.sessionEnded) {
+			clearPersistedRuntimeState(terminalId);
+		}
+		// Snapshot and anchor are on disk — close the socket. A parked pane no
+		// longer parses hidden output or joins reconnect storms; remount's
+		// connect() re-dials and the host replays from the anchor.
+		park(entry.transport);
+		this.scheduleParkedEviction();
+	}
+
+	/**
+	 * Deferred so a workspace switch (detach batch, then mount batch in the
+	 * next effect pass) re-adopts parked runtimes before eviction counts them.
+	 */
+	private scheduleParkedEviction() {
+		if (this.pendingEviction !== null) return;
+		this.pendingEviction = setTimeout(() => {
+			this.pendingEviction = null;
+			this.evictExcessParkedRuntimes();
+		}, 0);
+	}
+
+	private evictExcessParkedRuntimes() {
+		const parkedEntries = Array.from(this.entries.values()).filter(
+			(entry) => entry.runtime?.container === null,
+		);
+
+		// A pane can detach before the animation-frame output batch has reached
+		// xterm. Flush it, then wait for xterm's parser callback before checking
+		// alternate-screen mode or serializing the buffer.
+		for (const entry of parkedEntries) {
+			entry.transport._writeCoalescer?.flushSync();
+		}
+		const parsingEntries = parkedEntries.filter(
+			(entry) => (entry.runtime?.gate.pending ?? 0) > 0,
+		);
+		if (parsingEntries.length > 0) {
+			for (const entry of parsingEntries) {
+				const gate = entry.runtime?.gate;
+				if (gate) {
+					runWhenParserIdle(gate, () => this.scheduleParkedEviction());
+				}
+			}
+			return;
+		}
+
+		const victims = selectRuntimesToEvict(
+			this.entries.values(),
+			this.parkedRuntimeCap,
+			// Alternate-screen TUIs restore as a garbled static snapshot — never evict them.
+			(entry) => entry.runtime?.terminal.buffer.active.type === "alternate",
+		);
+		for (const entry of victims) {
+			if (entry.transport.sessionEnded) {
+				this.disposeEntry(entry, { persistedState: "clear" });
+				continue;
+			}
+			if (!entry.runtime || !tryPersistRuntimeState(entry.runtime)) {
+				this.warnPersistFailureOnce(entry.terminalId);
+				continue;
+			}
+			persistSeqAnchor(
+				entry.terminalId,
+				getPersistableSeqAnchor(entry.transport),
+			);
+			this.clearPersistFailureWarning(entry.terminalId);
+			// tryPersistRuntimeState already wrote the snapshot. Preserve it while
+			// disposing instead of serializing and writing the same buffer twice.
+			this.disposeEntry(entry, { persistedState: "preserve" });
+		}
+	}
+
+	updateAppearance(
+		terminalId: string,
+		appearance: TerminalAppearance,
+		instanceId = terminalId,
+	) {
+		const entry = this.getEntry(terminalId, instanceId);
+		if (!entry?.runtime) return;
+
+		// The refit may defer until the parser drains; the callback reports it.
+		const transport = entry.transport;
+		updateRuntimeAppearance(entry.runtime, appearance, () => {
+			const runtime = entry.runtime;
+			if (!runtime) return;
+			sendResize(transport, runtime.terminal.cols, runtime.terminal.rows);
+		});
+	}
+
+	/** Apply settings changes to every live runtime, including parked runtimes. */
+	updateAllAppearances(appearance: TerminalAppearance) {
+		for (const entry of this.entries.values()) {
+			if (!entry.runtime) continue;
+			updateRuntimeAppearance(entry.runtime, appearance, () => {
+				const runtime = entry.runtime;
+				if (!runtime) return;
+				sendResize(
+					entry.transport,
+					runtime.terminal.cols,
+					runtime.terminal.rows,
+				);
+			});
+		}
+	}
+
+	private disposeEntry(
+		entry: RegistryEntry,
+		options: { persistedState?: "clear" | "preserve" } = {},
+	) {
+		entry.disposeBufferChangeListener?.();
+		entry.disposeBufferChangeListener = null;
+		entry.linkManager?.dispose();
+		disposeTransport(entry.transport);
+		if (entry.runtime) {
+			disposeRuntime(entry.runtime, options);
+		}
+		this.deleteEntry(entry);
+	}
+
+	/**
+	 * Release the renderer-side terminal runtime only. This detaches the xterm
+	 * view and closes the WebSocket, but it does not tell host-service to kill
+	 * the underlying PTY. Use this for pane/sidebar lifecycle cleanup.
+	 */
+	release(terminalId: string, instanceId?: string) {
+		const entries = instanceId
+			? [this.getEntry(terminalId, instanceId)].filter(
+					(entry): entry is RegistryEntry => Boolean(entry),
+				)
+			: this.getEntries(terminalId);
+		for (const entry of entries) {
+			if (entry.transport.sessionEnded) {
+				this.disposeEntry(entry, { persistedState: "clear" });
+				continue;
+			}
+			// Land frame-pending output first so snapshot and anchor agree.
+			entry.transport._writeCoalescer?.flushSync();
+			if (entry.runtime && !tryPersistRuntimeState(entry.runtime)) {
+				this.warnPersistFailureOnce(entry.terminalId);
+				continue;
+			}
+			// Anchor only when the snapshot can actually contain every counted
+			// byte — a busy parser means the serialize ran short of the count.
+			persistSeqAnchor(
+				entry.terminalId,
+				(entry.runtime?.gate.pending ?? 0) === 0
+					? getPersistableSeqAnchor(entry.transport)
+					: null,
+			);
+			this.clearPersistFailureWarning(entry.terminalId);
+			// Persistence succeeded before any runtime or transport cleanup began.
+			this.disposeEntry(entry, { persistedState: "preserve" });
+		}
+	}
+
+	private warnPersistFailureOnce(terminalId: string) {
+		// HMR can preserve a registry instance created before this field existed.
+		this.persistFailureWarnedTerminalIds ??= new Set<string>();
+		if (this.persistFailureWarnedTerminalIds.has(terminalId)) return;
+		this.persistFailureWarnedTerminalIds.add(terminalId);
+		console.warn(
+			`[terminal-registry] state persist failed for ${terminalId}; keeping runtime alive (localStorage quota?)`,
+		);
+	}
+
+	private clearPersistFailureWarning(terminalId: string) {
+		this.persistFailureWarnedTerminalIds?.delete(terminalId);
+	}
+
+	/**
+	 * Kill the host-service terminal session and remove all renderer-side state.
+	 * This is destructive and should only be used from explicit kill actions.
+	 */
+	dispose(terminalId: string) {
+		for (const entry of this.getEntries(terminalId)) {
+			sendDispose(entry.transport);
+			this.disposeEntry(entry);
+		}
+		// Eviction deletes the live registry entry but deliberately leaves its
+		// snapshot behind. Closing that pane must still clear the orphaned keys.
+		clearPersistedRuntimeState(terminalId);
+	}
+
+	getSelection(terminalId: string, instanceId?: string): string {
+		const entry = this.getEntry(terminalId, instanceId);
+		return entry?.runtime?.terminal.getSelection() ?? "";
+	}
+
+	clear(terminalId: string, instanceId?: string): void {
+		const entry = this.getEntry(terminalId, instanceId);
+		entry?.runtime?.terminal.clear();
+	}
+
+	scrollToBottom(terminalId: string, instanceId?: string): void {
+		const entry = this.getEntry(terminalId, instanceId);
+		entry?.runtime?.terminal.scrollToBottom();
+	}
+
+	paste(terminalId: string, text: string, instanceId?: string): void {
+		const entry = this.getEntry(terminalId, instanceId);
+		entry?.runtime?.terminal.paste(text);
+	}
+
+	/** Send raw input to the terminal via the WebSocket transport (bypasses xterm). */
+	writeInput(terminalId: string, data: string, instanceId?: string): void {
+		const entry = this.getEntry(terminalId, instanceId);
+		if (!entry) return;
+		sendInput(entry.transport, data);
+	}
+
+	findNext(terminalId: string, query: string, instanceId?: string): boolean {
+		const entry = this.getEntry(terminalId, instanceId);
+		return entry?.runtime?.searchAddon?.findNext(query) ?? false;
+	}
+
+	findPrevious(
+		terminalId: string,
+		query: string,
+		instanceId?: string,
+	): boolean {
+		const entry = this.getEntry(terminalId, instanceId);
+		return entry?.runtime?.searchAddon?.findPrevious(query) ?? false;
+	}
+
+	clearSearch(terminalId: string, instanceId?: string): void {
+		const entry = this.getEntry(terminalId, instanceId);
+		entry?.runtime?.searchAddon?.clearDecorations();
+	}
+
+	getTerminal(terminalId: string, instanceId?: string) {
+		return this.getEntry(terminalId, instanceId)?.runtime?.terminal ?? null;
+	}
+
+	getDimensions(
+		terminalId: string,
+		instanceId?: string,
+	): { cols: number; rows: number } | null {
+		const terminal = this.getTerminal(terminalId, instanceId);
+		return terminal ? { cols: terminal.cols, rows: terminal.rows } : null;
+	}
+
+	getSearchAddon(terminalId: string, instanceId?: string): SearchAddon | null {
+		return this.getEntry(terminalId, instanceId)?.runtime?.searchAddon ?? null;
+	}
+
+	getProgressAddon(
+		terminalId: string,
+		instanceId?: string,
+	): ProgressAddon | null {
+		return (
+			this.getEntry(terminalId, instanceId)?.runtime?.progressAddon ?? null
+		);
+	}
+
+	getAllTerminalIds(): Set<string> {
+		return new Set(this.entryKeysByTerminalId.keys());
+	}
+
+	has(terminalId: string): boolean {
+		return this.entryKeysByTerminalId.has(terminalId);
+	}
+
+	getConnectionState(terminalId: string, instanceId?: string): ConnectionState {
+		return (
+			this.getEntry(terminalId, instanceId)?.transport.connectionState ??
+			"disconnected"
+		);
+	}
+
+	getTitle(terminalId: string, instanceId?: string): string | null | undefined {
+		return this.getEntry(terminalId, instanceId)?.transport.title;
+	}
+
+	getLogs(
+		terminalId: string,
+		instanceId?: string,
+	): readonly TerminalLogEntry[] {
+		return this.getEntry(terminalId, instanceId)?.transport.logs ?? EMPTY_LOGS;
+	}
+
+	/**
+	 * Why the connection is down, once the transport has stopped retrying.
+	 * Null while healthy or still auto-reconnecting. Changes are announced
+	 * through the state and log listeners (diagnosis flips always accompany a
+	 * state change or a log push).
+	 */
+	getConnectionDiagnosis(
+		terminalId: string,
+		instanceId?: string,
+	): TerminalFailureClassification | null {
+		return (
+			this.getEntry(terminalId, instanceId)?.transport.lastDiagnosis ?? null
+		);
+	}
+
+	/**
+	 * True when the transport has stopped retrying for good (access denied,
+	 * fatal server error, PTY exit). A diagnosis without this still means the
+	 * socket is auto-retrying — e.g. a wedged daemon that will self-heal.
+	 */
+	isConnectionTerminated(terminalId: string, instanceId?: string): boolean {
+		return (
+			this.getEntry(terminalId, instanceId)?.transport._terminated ?? false
+		);
+	}
+
+	clearLogs(terminalId: string, instanceId?: string): void {
+		const entry = this.getEntry(terminalId, instanceId);
+		if (!entry) return;
+		clearLogs(entry.transport);
+	}
+
+	onStateChange(
+		terminalId: string,
+		listener: () => void,
+		instanceId = terminalId,
+	): () => void {
+		const entry = this.getOrCreateEntry(terminalId, instanceId);
+		entry.transport.stateListeners.add(listener);
+		return () => {
+			entry.transport.stateListeners.delete(listener);
+		};
+	}
+
+	onTitleChange(
+		terminalId: string,
+		listener: () => void,
+		instanceId = terminalId,
+	): () => void {
+		const entry = this.getOrCreateEntry(terminalId, instanceId);
+		entry.transport.titleListeners.add(listener);
+		return () => {
+			entry.transport.titleListeners.delete(listener);
+		};
+	}
+
+	onLogsChange(
+		terminalId: string,
+		listener: () => void,
+		instanceId = terminalId,
+	): () => void {
+		const entry = this.getOrCreateEntry(terminalId, instanceId);
+		entry.transport.logListeners.add(listener);
+		return () => {
+			entry.transport.logListeners.delete(listener);
+		};
+	}
+}
+
+// Stable empty reference so useSyncExternalStore on a missing entry doesn't
+// thrash from getSnapshot returning a fresh array each call.
+const EMPTY_LOGS: readonly TerminalLogEntry[] = Object.freeze(
+	[],
+) as readonly [];
+
+// In dev, preserve the singleton across Vite HMR so active WebSocket
+// connections and xterm instances aren't orphaned on module re-evaluation.
+// import.meta.hot is undefined in production so this is a plain `new` call.
+export const terminalRuntimeRegistry: TerminalRuntimeRegistryImpl =
+	(import.meta.hot?.data?.registry as
+		| TerminalRuntimeRegistryImpl
+		| undefined) ?? new TerminalRuntimeRegistryImpl();
+
+if (import.meta.hot) {
+	import.meta.hot.data.registry = terminalRuntimeRegistry;
+}
+
+export type {
+	ConnectionState,
+	LinkHoverInfo,
+	TerminalFailureClassification,
+	TerminalLinkHandlers,
+	TerminalLogEntry,
+};

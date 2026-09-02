@@ -1,0 +1,67 @@
+import type { TaskPriority } from "@choros/db/enums";
+import { useLingui } from "@lingui/react/macro";
+import type { ReactNode } from "react";
+import { ALL_PRIORITIES } from "../../utils/sorting";
+import { PriorityIcon } from "./PriorityIcon";
+
+interface MenuItemProps {
+	children: ReactNode;
+	onSelect: () => void;
+	className?: string;
+}
+
+interface PriorityMenuItemsProps {
+	currentPriority: TaskPriority;
+	statusType?: string;
+	onSelect: (priority: TaskPriority) => void;
+	MenuItem: React.ComponentType<MenuItemProps>;
+}
+
+export function PriorityMenuItems({
+	currentPriority,
+	statusType,
+	onSelect,
+	MenuItem,
+}: PriorityMenuItemsProps) {
+	const { t } = useLingui();
+	const priorityLabels: Record<TaskPriority, string> = {
+		none: t({
+			id: "dashboard.tasks.priorityMenuItems.priorityNone",
+			message: "No priority",
+		}),
+		urgent: t({
+			id: "dashboard.tasks.priorityMenuItems.priorityUrgent",
+			message: "Urgent",
+		}),
+		high: t({
+			id: "dashboard.tasks.priorityMenuItems.priorityHigh",
+			message: "High",
+		}),
+		medium: t({
+			id: "dashboard.tasks.priorityMenuItems.priorityMedium",
+			message: "Medium",
+		}),
+		low: t({
+			id: "dashboard.tasks.priorityMenuItems.priorityLow",
+			message: "Low",
+		}),
+	};
+	return (
+		<>
+			{ALL_PRIORITIES.map((priority) => {
+				const isSelected = priority === currentPriority;
+				return (
+					<MenuItem
+						key={priority}
+						onSelect={() => onSelect(priority)}
+						className="flex items-center gap-3 px-3 py-2"
+					>
+						<PriorityIcon priority={priority} statusType={statusType} />
+						<span className="text-sm flex-1">{priorityLabels[priority]}</span>
+						{isSelected && <span className="text-sm">✓</span>}
+					</MenuItem>
+				);
+			})}
+		</>
+	);
+}

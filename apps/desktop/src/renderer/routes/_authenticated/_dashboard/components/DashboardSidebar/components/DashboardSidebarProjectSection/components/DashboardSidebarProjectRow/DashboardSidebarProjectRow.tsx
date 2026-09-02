@@ -1,0 +1,134 @@
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { cn } from "@choros/ui/utils";
+import { Trans, useLingui } from "@lingui/react/macro";
+import { type ComponentPropsWithoutRef, forwardRef } from "react";
+import { HiChevronRight, HiMiniPlus } from "react-icons/hi2";
+import { ProjectThumbnail } from "renderer/routes/_authenticated/components/ProjectThumbnail";
+import { RenameInput } from "renderer/screens/main/components/WorkspaceSidebar/RenameInput";
+
+interface DashboardSidebarProjectRowProps
+	extends ComponentPropsWithoutRef<"div"> {
+	projectName: string;
+	iconUrl: string | null;
+	projectColor: string | null;
+	isCollapsed: boolean;
+	isRenaming: boolean;
+	renameValue: string;
+	onRenameValueChange: (value: string) => void;
+	onSubmitRename: () => void;
+	onCancelRename: () => void;
+	onStartRename: () => void;
+	onToggleCollapse: () => void;
+	onNewWorkspace: () => void;
+}
+
+export const DashboardSidebarProjectRow = forwardRef<
+	HTMLDivElement,
+	DashboardSidebarProjectRowProps
+>(
+	(
+		{
+			projectName,
+			iconUrl,
+			projectColor,
+			isCollapsed,
+			isRenaming,
+			renameValue,
+			onRenameValueChange,
+			onSubmitRename,
+			onCancelRename,
+			onStartRename,
+			onToggleCollapse,
+			onNewWorkspace,
+			className,
+			...props
+		},
+		ref,
+	) => {
+		const { t } = useLingui();
+		return (
+			// biome-ignore lint/a11y/noStaticElementInteractions: The header acts as a single toggle target in view mode while preserving nested inline controls.
+			<div
+				ref={ref}
+				role={isRenaming ? undefined : "button"}
+				tabIndex={isRenaming ? undefined : 0}
+				onClick={isRenaming ? undefined : onToggleCollapse}
+				onDoubleClick={isRenaming ? undefined : onStartRename}
+				onKeyDown={
+					isRenaming
+						? undefined
+						: (event) => {
+								if (event.key === "Enter" || event.key === " ") {
+									event.preventDefault();
+									onToggleCollapse();
+								}
+							}
+				}
+				className={cn(
+					"group mx-2 flex h-7 items-center rounded-md pl-2 pr-1 text-[13px] font-medium",
+					"hover:bg-fill-hover transition-colors",
+					className,
+				)}
+				{...props}
+			>
+				<div className="flex min-w-0 flex-1 items-center gap-2">
+					<div className="flex size-4 shrink-0 items-center justify-center">
+						<ProjectThumbnail
+							projectName={projectName}
+							iconUrl={iconUrl}
+							color={projectColor}
+							className="size-4 group-hover:hidden"
+						/>
+						<HiChevronRight
+							className={cn(
+								"hidden size-4 text-muted-foreground transition-transform group-hover:block",
+								!isCollapsed && "rotate-90",
+							)}
+						/>
+					</div>
+					{isRenaming ? (
+						<RenameInput
+							value={renameValue}
+							onChange={onRenameValueChange}
+							onSubmit={onSubmitRename}
+							onCancel={onCancelRename}
+							className="-ml-1 h-6 min-w-0 flex-1 bg-transparent border-none px-1 py-0 text-sm font-medium outline-none"
+						/>
+					) : (
+						<span className="truncate">{projectName}</span>
+					)}
+				</div>
+
+				{!isRenaming && (
+					<div className="ml-1 flex size-6 shrink-0 items-center justify-center">
+						<Tooltip delayDuration={500}>
+							<TooltipTrigger asChild>
+								<button
+									type="button"
+									onClick={(event) => {
+										event.stopPropagation();
+										onNewWorkspace();
+									}}
+									onKeyDown={(event) => event.stopPropagation()}
+									onContextMenu={(event) => event.stopPropagation()}
+									aria-label={t({
+										id: "dashboard.sidebar.projectRow.newWorkspaceAriaLabel",
+										message: "New workspace",
+									})}
+									className="hidden size-full items-center justify-center rounded transition-colors hover:bg-fill-hover group-hover:flex group-has-[:focus]:flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+								>
+									<HiMiniPlus className="size-4 text-muted-foreground" />
+								</button>
+							</TooltipTrigger>
+							<TooltipContent side="bottom">
+								<Trans id="dashboard.sidebar.projectRow.newWorkspace">
+									New workspace
+								</Trans>
+							</TooltipContent>
+						</Tooltip>
+					</div>
+				)}
+			</div>
+		);
+	},
+);

@@ -1,0 +1,31 @@
+"use client";
+
+import { apiKeyClient } from "@better-auth/api-key/client";
+import { oauthProviderClient } from "@better-auth/oauth-provider/client";
+import { stripeClient } from "@better-auth/stripe/client";
+import type { auth } from "@choros/auth/server";
+import {
+	customSessionClient,
+	organizationClient,
+} from "better-auth/client/plugins";
+import { createAuthClient } from "better-auth/react";
+
+export const authClient = createAuthClient({
+	baseURL: process.env.NEXT_PUBLIC_API_URL,
+	plugins: [
+		organizationClient({
+			teams: { enabled: true },
+			schema: {
+				team: {
+					additionalFields: {
+						slug: { type: "string", input: true, required: true },
+					},
+				},
+			},
+		}),
+		customSessionClient<typeof auth>(),
+		stripeClient({ subscription: true }),
+		apiKeyClient(),
+		oauthProviderClient(),
+	],
+});

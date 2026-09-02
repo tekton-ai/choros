@@ -1,0 +1,407 @@
+import { sql } from "drizzle-orm";
+import {
+	boolean,
+	index,
+	integer,
+	jsonb,
+	pgSchema,
+	text,
+	timestamp,
+	uniqueIndex,
+	uuid,
+} from "drizzle-orm/pg-core";
+
+export const authSchema = pgSchema("auth");
+
+export const users = authSchema.table(
+	"users",
+	{
+		id: uuid("id").primaryKey().defaultRandom(),
+		name: text("name").notNull(),
+		email: text("email").notNull().unique(),
+		emailVerified: boolean("email_verified").default(false).notNull(),
+		image: text("image"),
+		organizationIds: uuid("organization_ids").array().default([]).notNull(),
+		// The organization this user last switched to, so a new session resumes
+		// where they left off. `sessions.active_organization_id` only remembers
+		// it for the life of one session; without this a fresh session falls
+		// back to the newest membership, which silently moves people between
+		// organizations. Not a foreign key, matching the session column —
+		// membership is re-checked on read, so a stale id is harmless.
+		lastActiveOrganizationId: uuid("last_active_organization_id"),
+		onboardedAt: timestamp("onboarded_at"),
+		// BCP 47 tag of the user's preferred UI language; null = auto-detect.
+		// Written by clients (desktop write-through, later web/mobile); read by
+		// web SSR and async surfaces like email, which cannot see a device
+		// setting. plans/20260826-i18n-strategy.md §4.
+		locale: text("locale"),
+		deletionRequestedAt: timestamp("deletion_requested_at"),
+		// Set when the account is deleted. The row is kept and its PII scrubbed
+		// rather than removed, because tasks, integrations and automations belong
+		// to the organization and ON DELETE CASCADE would take them too.
+		deletedAt: timestamp("deleted_at"),
+		createdAt: timestamp("created_at").defaultNow().notNull(),
+		updatedAt: timestamp("updated_at")
+			.defaultNow()
+			.$onUpdate(() => new Date())
+			.notNull(),
+	},
+	(table) => [
+		index("users_organization_ids_idx").using("gin", table.organizationIds),
+	],
+);
+
+export type SelectUser = typeof users.$inferSelect;
+export type InsertUser = typeof users.$inferInsert;
+
+export const sessions = authSchema.table(
+	"sessions",
+	{
+		id: uuid("id").primaryKey().defaultRandom(),
+		expiresAt: timestamp("expires_at").notNull(),
+		token: text("token").notNull().unique(),
+		createdAt: timestamp("created_at").defaultNow().notNull(),
+		updatedAt: timestamp("updated_at")
+			.$onUpdate(() => new Date())
+			.notNull(),
+		ipAddress: text("ip_address"),
+		userAgent: text("user_agent"),
+		userId: uuid("user_id")
+			.notNull()
+			.references(() => users.id, { onDelete: "cascade" }),
+		activeOrganizationId: uuid("active_organization_id"),
+		activeTeamId: uuid("active_team_id"),
+	},
+	(table) => [index("sessions_user_id_idx").on(table.userId)],
+);
+
+export const accounts = authSchema.table(
+	"accounts",
+	{
+		id: uuid("id").primaryKey().defaultRandom(),
+		accountId: text("account_id").notNull(),
+		providerId: text("provider_id").notNull(),
+		userId: uuid("user_id")
+			.notNull()
+			.references(() => users.id, { onDelete: "cascade" }),
+		accessToken: text("access_token"),
+		refreshToken: text("refresh_token"),
+		idToken: text("id_token"),
+		accessTokenExpiresAt: timestamp("access_token_expires_at"),
+		refreshTokenExpiresAt: timestamp("refresh_token_expires_at"),
+		scope: text("scope"),
+		password: text("password"),
+		createdAt: timestamp("created_at").defaultNow().notNull(),
+		updatedAt: timestamp("updated_at")
+			.$onUpdate(() => new Date())
+			.notNull(),
+	},
+	(table) => [index("accounts_user_id_idx").on(table.userId)],
+);
+
+export const verifications = authSchema.table(
+	"verifications",
+	{
+		id: uuid("id").primaryKey().defaultRandom(),
+		identifier: text("identifier").notNull(),
+		value: text("value").notNull(),
+		expiresAt: timestamp("expires_at").notNull(),
+		createdAt: timestamp("created_at").defaultNow().notNull(),
+		updatedAt: timestamp("updated_at")
+			.defaultNow()
+			.$onUpdate(() => new Date())
+			.notNull(),
+	},
+	(table) => [index("verifications_identifier_idx").on(table.identifier)],
+);
+
+export const organizations = authSchema.table(
+	"organizations",
+	{
+		id: uuid("id").primaryKey().defaultRandom(),
+		name: text("name").notNull(),
+		slug: text("slug").notNull().unique(),
+		logo: text("logo"),
+		createdAt: timestamp("created_at").defaultNow().notNull(),
+		metadata: text("metadata"),
+		stripeCustomerId: text("stripe_customer_id"),
+		allowedDomains: text("allowed_domains").array().default([]).notNull(),
+	},
+	(table) => [
+		uniqueIndex("organizations_slug_idx").on(table.slug),
+		index("organizations_allowed_domains_idx").using(
+			"gin",
+			table.allowedDomains,
+		),
+	],
+);
+
+export type SelectOrganization = typeof organizations.$inferSelect;
+export type InsertOrganization = typeof organizations.$inferInsert;
+
+export const members = authSchema.table(
+	"members",
+	{
+		id: uuid("id").primaryKey().defaultRandom(),
+		organizationId: uuid("organization_id")
+			.notNull()
+			.references(() => organizations.id, { onDelete: "cascade" }),
+		userId: uuid("user_id")
+			.notNull()
+			.references(() => users.id, { onDelete: "cascade" }),
+		role: text("role").default("member").notNull(),
+		createdAt: timestamp("created_at").defaultNow().notNull(),
+	},
+	(table) => [
+		index("members_organization_id_idx").on(table.organizationId),
+		index("members_user_id_idx").on(table.userId),
+	],
+);
+
+export type SelectMember = typeof members.$inferSelect;
+export type InsertMember = typeof members.$inferInsert;
+
+export const teams = authSchema.table(
+	"teams",
+	{
+		id: uuid("id").primaryKey().defaultRandom(),
+		name: text("name").notNull(),
+		slug: text("slug").notNull(),
+		organizationId: uuid("organization_id")
+			.notNull()
+			.references(() => organizations.id, { onDelete: "cascade" }),
+		createdAt: timestamp("created_at").defaultNow().notNull(),
+		updatedAt: timestamp("updated_at")
+			.defaultNow()
+			.$onUpdate(() => new Date()),
+	},
+	(table) => [
+		index("teams_organization_id_idx").on(table.organizationId),
+		uniqueIndex("teams_org_slug_unique").on(table.organizationId, table.slug),
+	],
+);
+
+export type SelectTeam = typeof teams.$inferSelect;
+export type InsertTeam = typeof teams.$inferInsert;
+
+export const teamMembers = authSchema.table(
+	"team_members",
+	{
+		id: uuid("id").primaryKey().defaultRandom(),
+		teamId: uuid("team_id")
+			.notNull()
+			.references(() => teams.id, { onDelete: "cascade" }),
+		userId: uuid("user_id")
+			.notNull()
+			.references(() => users.id, { onDelete: "cascade" }),
+		// Denormalized from teams.organization_id so Electric can shape-filter
+		// by org with a simple WHERE. Populated by a BEFORE INSERT trigger
+		// (see 0049 migration) so neither better-auth's API nor app code needs
+		// to remember to set it.
+		organizationId: uuid("organization_id")
+			.notNull()
+			.references(() => organizations.id, { onDelete: "cascade" }),
+		createdAt: timestamp("created_at").defaultNow(),
+	},
+	(table) => [
+		index("team_members_team_id_idx").on(table.teamId),
+		index("team_members_user_id_idx").on(table.userId),
+		index("team_members_organization_id_idx").on(table.organizationId),
+		uniqueIndex("team_members_team_user_unique").on(table.teamId, table.userId),
+	],
+);
+
+export type SelectTeamMember = typeof teamMembers.$inferSelect;
+export type InsertTeamMember = typeof teamMembers.$inferInsert;
+
+export const invitations = authSchema.table(
+	"invitations",
+	{
+		id: uuid("id").primaryKey().defaultRandom(),
+		organizationId: uuid("organization_id")
+			.notNull()
+			.references(() => organizations.id, { onDelete: "cascade" }),
+		email: text("email").notNull(),
+		role: text("role"),
+		status: text("status").default("pending").notNull(),
+		expiresAt: timestamp("expires_at").notNull(),
+		createdAt: timestamp("created_at").defaultNow().notNull(),
+		inviterId: uuid("inviter_id")
+			.notNull()
+			.references(() => users.id, { onDelete: "cascade" }),
+		teamId: uuid("team_id").references(() => teams.id, {
+			onDelete: "set null",
+		}),
+	},
+	(table) => [
+		index("invitations_organization_id_idx").on(table.organizationId),
+		index("invitations_email_idx").on(table.email),
+	],
+);
+
+export type SelectInvitation = typeof invitations.$inferSelect;
+export type InsertInvitation = typeof invitations.$inferInsert;
+
+export const oauthClients = authSchema.table("oauth_clients", {
+	id: uuid("id").primaryKey().defaultRandom(),
+	clientId: text("client_id").notNull().unique(),
+	clientSecret: text("client_secret"),
+	disabled: boolean("disabled").default(false),
+	skipConsent: boolean("skip_consent"),
+	enableEndSession: boolean("enable_end_session"),
+	scopes: text("scopes").array(),
+	userId: uuid("user_id").references(() => users.id, { onDelete: "cascade" }),
+	createdAt: timestamp("created_at"),
+	updatedAt: timestamp("updated_at"),
+	name: text("name"),
+	uri: text("uri"),
+	icon: text("icon"),
+	contacts: text("contacts").array(),
+	tos: text("tos"),
+	policy: text("policy"),
+	softwareId: text("software_id"),
+	softwareVersion: text("software_version"),
+	softwareStatement: text("software_statement"),
+	redirectUris: text("redirect_uris").array().notNull(),
+	postLogoutRedirectUris: text("post_logout_redirect_uris").array(),
+	tokenEndpointAuthMethod: text("token_endpoint_auth_method"),
+	grantTypes: text("grant_types").array(),
+	responseTypes: text("response_types").array(),
+	public: boolean("public"),
+	type: text("type"),
+	requirePKCE: boolean("require_pkce"),
+	subjectType: text("subject_type"),
+	referenceId: text("reference_id"),
+	metadata: jsonb("metadata"),
+});
+
+export const oauthRefreshTokens = authSchema.table("oauth_refresh_tokens", {
+	id: uuid("id").primaryKey().defaultRandom(),
+	token: text("token").notNull(),
+	clientId: text("client_id")
+		.notNull()
+		.references(() => oauthClients.clientId, { onDelete: "cascade" }),
+	sessionId: uuid("session_id").references(() => sessions.id, {
+		onDelete: "set null",
+	}),
+	userId: uuid("user_id")
+		.notNull()
+		.references(() => users.id, { onDelete: "cascade" }),
+	referenceId: text("reference_id"),
+	expiresAt: timestamp("expires_at"),
+	createdAt: timestamp("created_at"),
+	revoked: timestamp("revoked"),
+	authTime: timestamp("auth_time"),
+	scopes: text("scopes").array().notNull(),
+});
+
+export const oauthAccessTokens = authSchema.table("oauth_access_tokens", {
+	id: uuid("id").primaryKey().defaultRandom(),
+	token: text("token").unique(),
+	clientId: text("client_id")
+		.notNull()
+		.references(() => oauthClients.clientId, { onDelete: "cascade" }),
+	sessionId: uuid("session_id").references(() => sessions.id, {
+		onDelete: "set null",
+	}),
+	userId: uuid("user_id").references(() => users.id, { onDelete: "cascade" }),
+	referenceId: text("reference_id"),
+	refreshId: uuid("refresh_id").references(() => oauthRefreshTokens.id, {
+		onDelete: "cascade",
+	}),
+	expiresAt: timestamp("expires_at"),
+	createdAt: timestamp("created_at"),
+	scopes: text("scopes").array().notNull(),
+});
+
+export const oauthConsents = authSchema.table("oauth_consents", {
+	id: uuid("id").primaryKey().defaultRandom(),
+	clientId: text("client_id")
+		.notNull()
+		.references(() => oauthClients.clientId, { onDelete: "cascade" }),
+	userId: uuid("user_id").references(() => users.id, { onDelete: "cascade" }),
+	referenceId: text("reference_id"),
+	scopes: text("scopes").array().notNull(),
+	createdAt: timestamp("created_at"),
+	updatedAt: timestamp("updated_at"),
+});
+
+export const apikeys = authSchema.table(
+	"apikeys",
+	{
+		id: uuid("id").primaryKey().defaultRandom(),
+		configId: text("config_id").default("default").notNull(),
+		name: text("name"),
+		start: text("start"),
+		referenceId: text("reference_id").notNull(),
+		prefix: text("prefix"),
+		key: text("key").notNull(),
+		refillInterval: integer("refill_interval"),
+		refillAmount: integer("refill_amount"),
+		lastRefillAt: timestamp("last_refill_at"),
+		enabled: boolean("enabled").default(true),
+		rateLimitEnabled: boolean("rate_limit_enabled").default(true),
+		rateLimitTimeWindow: integer("rate_limit_time_window").default(86400000),
+		rateLimitMax: integer("rate_limit_max").default(10),
+		requestCount: integer("request_count").default(0),
+		remaining: integer("remaining"),
+		lastRequest: timestamp("last_request"),
+		expiresAt: timestamp("expires_at"),
+		createdAt: timestamp("created_at").notNull().defaultNow(),
+		updatedAt: timestamp("updated_at")
+			.notNull()
+			.defaultNow()
+			.$onUpdate(() => new Date()),
+		permissions: text("permissions"),
+		metadata: text("metadata"),
+		// Derived from metadata so Electric's shape WHERE clause can reference a
+		// real column (`organization_id = $1`) instead of a `LIKE` over JSON text.
+		// See https://electric.ax/docs/sync/guides/shapes#optimized-where-clauses —
+		// only direct column references qualify as optimized predicates; JSON
+		// operators do not. The CASE guards against NULL/empty/non-JSON metadata
+		// and against malformed UUID strings so the STORED expression never raises.
+		organizationId: uuid("organization_id").generatedAlwaysAs(
+			sql`CASE
+				WHEN metadata IS NULL OR metadata = '' THEN NULL
+				WHEN NOT (metadata IS JSON OBJECT) THEN NULL
+				WHEN (metadata::jsonb->>'organizationId') ~* '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
+					THEN (metadata::jsonb->>'organizationId')::uuid
+				ELSE NULL
+			END`,
+		),
+	},
+	(table) => [
+		index("apikeys_configId_idx").on(table.configId),
+		index("apikeys_referenceId_idx").on(table.referenceId),
+		index("apikeys_key_idx").on(table.key),
+		index("apikeys_organization_id_idx").on(table.organizationId),
+		index("apikeys_metadata_trgm_idx").using(
+			"gin",
+			sql`${table.metadata} gin_trgm_ops`,
+		),
+	],
+);
+
+export type SelectApikey = typeof apikeys.$inferSelect;
+export type InsertApikey = typeof apikeys.$inferInsert;
+
+export const deviceCodes = authSchema.table("device_codes", {
+	id: uuid("id").primaryKey().defaultRandom(),
+	deviceCode: text("device_code").notNull(),
+	userCode: text("user_code").notNull(),
+	userId: text("user_id"),
+	expiresAt: timestamp("expires_at").notNull(),
+	status: text("status").notNull(),
+	lastPolledAt: timestamp("last_polled_at"),
+	pollingInterval: integer("polling_interval"),
+	clientId: text("client_id"),
+	scope: text("scope"),
+});
+
+export const jwkss = authSchema.table("jwkss", {
+	id: uuid("id").primaryKey().defaultRandom(),
+	publicKey: text("public_key").notNull(),
+	privateKey: text("private_key").notNull(),
+	createdAt: timestamp("created_at").defaultNow().notNull(),
+	expiresAt: timestamp("expires_at"),
+});

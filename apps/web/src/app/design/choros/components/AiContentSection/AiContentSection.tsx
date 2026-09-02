@@ -1,0 +1,309 @@
+"use client";
+
+import { i18n } from "@choros/i18n";
+import {
+	Artifact,
+	ArtifactActions,
+	ArtifactClose,
+	ArtifactDescription,
+	ArtifactHeader,
+	ArtifactTitle,
+} from "@choros/ui/ai-elements/artifact";
+import {
+	Checkpoint,
+	CheckpointIcon,
+	CheckpointTrigger,
+} from "@choros/ui/ai-elements/checkpoint";
+import { CodeBlock } from "@choros/ui/ai-elements/code-block";
+import {
+	Context,
+	ContextContent,
+	ContextContentBody,
+	ContextContentHeader,
+	ContextTrigger,
+} from "@choros/ui/ai-elements/context";
+import {
+	InlineCitation,
+	InlineCitationCard,
+	InlineCitationCardBody,
+	InlineCitationCardTrigger,
+	InlineCitationText,
+} from "@choros/ui/ai-elements/inline-citation";
+import {
+	Source,
+	Sources,
+	SourcesContent,
+	SourcesTrigger,
+} from "@choros/ui/ai-elements/sources";
+import { Button } from "@choros/ui/button";
+import { Trans } from "@lingui/react/macro";
+import { DownloadIcon } from "lucide-react";
+
+import { ComponentCard } from "../../../components/ComponentCard";
+import { ShowcaseSection } from "../../../components/ShowcaseSection";
+
+const EXAMPLE_CODE = `export function Workspace({ branch }: WorkspaceProps) {
+	const session = useAgentSession(branch);
+	return <Terminal session={session} />;
+}`;
+
+const NOT_DEMOED = [
+	"bash-tool",
+	"canvas",
+	"clickable-file-path",
+	"confirmation",
+	"connection",
+	"controls",
+	"edge",
+	"exploring-group",
+	"file-diff-tool",
+	"image",
+	"model-selector",
+	"node",
+	"open-in-chat",
+	"panel",
+	"prompt-input",
+	"queue",
+	"read-file-tool",
+	"show-code",
+	"text-selection-popover",
+	"thinking-toggle",
+	"tool",
+	"tool-call",
+	"tool-call-row",
+	"tool-interrupted",
+	"toolbar",
+	"user-question-tool",
+	"web-fetch-tool",
+	"web-preview",
+	"web-search-tool",
+];
+
+export function AiContentSection() {
+	return (
+		<ShowcaseSection
+			id="ai-content"
+			index="05"
+			title={i18n._({
+				id: "web.design.aiContentSection.aiContent",
+				message: "AI · Content",
+			})}
+			description={i18n._({
+				id: "web.design.aiContentSection.renderedOutputCodeSourcesCitations",
+				message: "Rendered output: code, sources, citations, context",
+			})}
+		>
+			<ComponentCard
+				title={i18n._({
+					id: "web.design.aiContentSection.codeBlock",
+					message: "Code Block",
+				})}
+				importPath="@choros/ui/ai-elements/code-block"
+				description={i18n._({
+					id: "web.design.aiContentSection.shikiHighlightedWithOptionalLine",
+					message: "Shiki-highlighted, with optional line numbers",
+				})}
+				span
+				bleed
+			>
+				<CodeBlock
+					code={EXAMPLE_CODE}
+					language="tsx"
+					showLineNumbers
+					className="rounded-none border-0"
+				/>
+			</ComponentCard>
+
+			<ComponentCard
+				title={i18n._({
+					id: "web.design.aiContentSection.sources",
+					message: "Sources",
+				})}
+				importPath="@choros/ui/ai-elements/sources"
+			>
+				<Sources className="w-full">
+					<SourcesTrigger count={3} />
+					<SourcesContent>
+						<Source
+							href="#ai-content"
+							title={i18n._({
+								id: "web.design.aiContentSection.radixTooltipDocs",
+								message: "Radix Tooltip docs",
+							})}
+						/>
+						<Source
+							href="#ai-content"
+							title={i18n._({
+								id: "web.design.aiContentSection.tailwindV4ThemeReference",
+								message: "Tailwind v4 theme reference",
+							})}
+						/>
+						<Source
+							href="#ai-content"
+							title={i18n._({
+								id: "web.design.aiContentSection.shadcnUiTooltipRecipe",
+								message: "shadcn/ui tooltip recipe",
+							})}
+						/>
+					</SourcesContent>
+				</Sources>
+			</ComponentCard>
+
+			<ComponentCard
+				title={i18n._({
+					id: "web.design.aiContentSection.inlineCitation",
+					message: "Inline Citation",
+				})}
+				importPath="@choros/ui/ai-elements/inline-citation"
+			>
+				<p className="max-w-sm text-sm text-muted-foreground">
+					<InlineCitation>
+						<InlineCitationText>
+							<Trans id="web.design.aiContentSection.radixRotatesTheTooltipArrow">
+								Radix rotates the tooltip arrow wrapper per side,
+							</Trans>
+						</InlineCitationText>
+						<InlineCitationCard>
+							<InlineCitationCardTrigger
+								sources={["https://www.radix-ui.com/primitives"]}
+							/>
+							<InlineCitationCardBody>
+								<div className="p-3 text-sm">
+									<p className="font-medium">
+										<Trans id="web.design.aiContentSection.radixPrimitives">
+											Radix Primitives
+										</Trans>
+									</p>
+									<p className="mt-1 text-muted-foreground">
+										<Trans id="web.design.aiContentSection.popperBasedPositioningPlacesAnd">
+											Popper-based positioning places and rotates arrow elements
+											automatically.
+										</Trans>
+									</p>
+								</div>
+							</InlineCitationCardBody>
+						</InlineCitationCard>
+					</InlineCitation>{" "}
+					<Trans id="web.design.aiContentSection.soABorderOnTwo">
+						so a border on two edges of the rotated square always faces outward.
+					</Trans>
+				</p>
+			</ComponentCard>
+
+			<ComponentCard
+				title={i18n._({
+					id: "web.design.aiContentSection.context",
+					message: "Context",
+				})}
+				importPath="@choros/ui/ai-elements/context"
+				description={i18n._({
+					id: "web.design.aiContentSection.tokenBudgetIndicatorHoverThe",
+					message: "Token budget indicator — hover the percentage",
+				})}
+			>
+				<Context usedTokens={87_400} maxTokens={200_000}>
+					<ContextTrigger />
+					<ContextContent>
+						<ContextContentHeader />
+						<ContextContentBody>
+							<p className="text-xs text-muted-foreground">
+								<Trans id="web.design.aiContentSection.874kOf200kTokens">
+									87.4K of 200K tokens used in this session.
+								</Trans>
+							</p>
+						</ContextContentBody>
+					</ContextContent>
+				</Context>
+			</ComponentCard>
+
+			<ComponentCard
+				title={i18n._({
+					id: "web.design.aiContentSection.checkpoint",
+					message: "Checkpoint",
+				})}
+				importPath="@choros/ui/ai-elements/checkpoint"
+			>
+				<Checkpoint className="w-full">
+					<CheckpointIcon />
+					<CheckpointTrigger tooltip="Restore the conversation to this point">
+						<Trans id="web.design.aiContentSection.checkpointBeforeTooltipRefactor">
+							Checkpoint · before tooltip refactor
+						</Trans>
+					</CheckpointTrigger>
+				</Checkpoint>
+			</ComponentCard>
+
+			<ComponentCard
+				title={i18n._({
+					id: "web.design.aiContentSection.artifact",
+					message: "Artifact",
+				})}
+				importPath="@choros/ui/ai-elements/artifact"
+				span
+				bleed
+			>
+				<Artifact className="rounded-none border-0">
+					<ArtifactHeader>
+						<div>
+							<ArtifactTitle>
+								<Trans id="web.design.aiContentSection.tooltipRefactorDiff">
+									tooltip-refactor.diff
+								</Trans>
+							</ArtifactTitle>
+							<ArtifactDescription>
+								<Trans id="web.design.aiContentSection.45Files82172">
+									45 files · +82 −172
+								</Trans>
+							</ArtifactDescription>
+						</div>
+						<ArtifactActions>
+							<Button
+								variant="ghost"
+								size="icon-sm"
+								aria-label={i18n._({
+									id: "web.design.aiContentSection.download",
+									message: "Download",
+								})}
+							>
+								<DownloadIcon />
+							</Button>
+							<ArtifactClose />
+						</ArtifactActions>
+					</ArtifactHeader>
+					<div className="p-4 font-mono text-xs text-muted-foreground">
+						<Trans id="web.design.aiContentSection.classnameRoundedSmBorderBorder">
+							- className="rounded-sm border border-border bg-background …"
+						</Trans>
+						<br />+ {`<TooltipContent side="bottom">`}
+					</div>
+				</Artifact>
+			</ComponentCard>
+
+			<ComponentCard
+				title={i18n._({
+					id: "web.design.aiContentSection.notDemoedHere",
+					message: "Not demoed here",
+				})}
+				importPath="@choros/ui/ai-elements/*"
+				copyable={false}
+				description={i18n._({
+					id: "web.design.aiContentSection.needLiveChatToolCall",
+					message:
+						"Need live chat/tool-call state (ToolUIPart, streams) or an app shell",
+				})}
+				span
+			>
+				<div className="flex flex-wrap gap-1.5">
+					{NOT_DEMOED.map((module) => (
+						<code
+							key={module}
+							className="rounded-md border bg-muted/40 px-2 py-0.5 font-mono text-[11px] text-muted-foreground"
+						>
+							{module}
+						</code>
+					))}
+				</div>
+			</ComponentCard>
+		</ShowcaseSection>
+	);
+}

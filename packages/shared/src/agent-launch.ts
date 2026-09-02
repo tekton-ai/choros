@@ -1,0 +1,246 @@
+import { z } from "zod";
+import { BUILTIN_AGENT_IDS, BUILTIN_AGENT_LABELS } from "./agent-catalog";
+import {
+	AGENT_TYPES,
+	type AgentType,
+	buildAgentFileCommand,
+	type TaskInput,
+} from "./agent-command";
+import {
+	DEFAULT_TERMINAL_TASK_PROMPT_TEMPLATE,
+	renderTaskPromptTemplate,
+} from "./agent-prompt-template";
+
+export const STARTABLE_AGENT_TYPES = BUILTIN_AGENT_IDS;
+
+export type StartableAgentType = (typeof STARTABLE_AGENT_TYPES)[number];
+
+export const STARTABLE_AGENT_LABELS = BUILTIN_AGENT_LABELS;
+
+export const AGENT_LAUNCH_STATUS = [
+	"queued",
+	"launching",
+	"running",
+	"failed",
+] as const;
+
+export type AgentLaunchStatus = (typeof AGENT_LAUNCH_STATUS)[number];
+
+export const AGENT_LAUNCH_SOURCE = [
+	"new-workspace",
+	"open-in-workspace",
+	"workspace-init",
+	"command-watcher",
+	"mcp",
+	"unknown",
+] as const;
+
+export type AgentLaunchSource = (typeof AGENT_LAUNCH_SOURCE)[number];
+
+const launchSourceSchema = z.enum(AGENT_LAUNCH_SOURCE);
+
+const baseAgentLaunchSchema = z.object({
+	workspaceId: z.string().min(1),
+	idempotencyKey: z.string().min(1).optional(),
+	agentType: z.string().min(1).optional(),
+	source: launchSourceSchema.optional(),
+});
+
+export const terminalLaunchConfigSchema = z.object({
+	command: z.string().min(1),
+	name: z.string().min(1).optional(),
+	paneId: z.string().min(1).optional(),
+	/** Run the command in the pane identified by `paneId` instead of splitting a new pane off it. */
+	reuseExistingPane: z.boolean().optional(),
+	taskPromptContent: z.string().min(1).optional(),
+	taskPromptFileName: z.string().min(1).optional(),
+	autoExecute: z.boolean().optional(),
+	initialFiles: z
+		.array(
+			z.object({
+				data: z.string(),
+				mediaType: z.string(),
+				filename: z.string().optional(),
+			}),
+		)
+		.optional(),
+});
+
+export const terminalAgentLaunchRequestSchema = baseAgentLaunchSchema.extend({
+	kind: z.literal("terminal"),
+	terminal: terminalLaunchConfigSchema,
+});
+
+export const agentLaunchRequestSchema = terminalAgentLaunchRequestSchema;
+
+export type AgentLaunchRequest = z.infer<typeof agentLaunchRequestSchema>;
+
+export const agentLaunchResultSchema = z.object({
+	workspaceId: z.string().min(1),
+	tabId: z.string().min(1).nullable().optional(),
+	paneId: z.string().min(1).nullable().optional(),
+	sessionId: z.string().uuid().nullable().optional(),
+	status: z.enum(AGENT_LAUNCH_STATUS),
+	error: z.string().nullable().optional(),
+});
+
+export type AgentLaunchResult = z.infer<typeof agentLaunchResultSchema>;
+
+const legacyAgentLaunchRequestSchema = z.object({
+	workspaceId: z.string().min(1),
+	command: z.string().min(1).optional(),
+	name: z.string().min(1).optional(),
+	paneId: z.string().min(1).optional(),
+	idempotencyKey: z.string().min(1).optional(),
+	agentType: z.string().min(1).optional(),
+	source: launchSourceSchema.optional(),
+});
+
+export type LegacyAgentLaunchRequest = z.infer<
+	typeof legacyAgentLaunchRequestSchema
+>;
+
+export function isTerminalAgentType(agent: string): agent is AgentType {
+	return (AGENT_TYPES as readonly string[]).includes(agent);
+}
+
+function normalizeLegacyLaunchRequest(
+	legacy: LegacyAgentLaunchRequest,
+): AgentLaunchRequest {
+	if (!legacy.command) {
+		throw new Error("Invalid launch request: missing terminal command");
+	}
+
+	return {
+		kind: "terminal",
+		workspaceId: legacy.workspaceId,
+		idempotencyKey: legacy.idempotencyKey,
+		agentType: legacy.agentType,
+		source: legacy.source,
+		terminal: {
+			command: legacy.command,
+			name: legacy.name,
+			paneId: legacy.paneId,
+		},
+	};
+}
+
+/**
+ * Accepts both canonical launch requests and legacy command params. This keeps
+ * MCP and desktop callers backwards compatible during rollout.
+ */
+export function normalizeAgentLaunchRequest(
+	request: unknown,
+): AgentLaunchRequest {
+	const parsed = agentLaunchRequestSchema.safeParse(request);
+	if (parsed.success) {
+		return parsed.data;
+	}
+
+	const legacy = legacyAgentLaunchRequestSchema.parse(request);
+	return agentLaunchRequestSchema.parse(normalizeLegacyLaunchRequest(legacy));
+}
+
+export interface SetupPaneLaunch {
+	request: AgentLaunchRequest;
+	/**
+	 * True when the request runs the setup commands and the agent as one
+	 * chained command in the setup pane itself. The launch then owns attaching
+	 * that pane, and the caller must not run the setup commands separately.
+	 */
+	chained: boolean;
+}
+
+/**
+ * Targets an agent launch at the workspace-setup pane. A terminal request
+ * that does not already target a pane either chains behind the setup commands
+ * in the setup pane itself — so the agent starts only after setup succeeds,
+ * in one terminal instead of two — or splits a new pane off it. Chaining
+ * requires `waitForSetup`, setup commands and an auto-executing launch.
+ * Requests already targeting a pane pass through unchanged.
+ */
+export function buildSetupPaneLaunchRequest({
+	request,
+	setupCommands,
+	setupPaneId,
+	waitForSetup,
+}: {
+	request: AgentLaunchRequest;
+	setupCommands: string[] | null | undefined;
+	setupPaneId: string;
+	waitForSetup: boolean;
+}): SetupPaneLaunch {
+	if (request.kind !== "terminal" || request.terminal.paneId) {
+		return { request, chained: false };
+	}
+
+	const chainedCommands =
+		waitForSetup &&
+		request.terminal.autoExecute !== false &&
+		setupCommands?.length
+			? setupCommands
+			: null;
+
+	if (!chainedCommands) {
+		return {
+			request: {
+				...request,
+				terminal: { ...request.terminal, paneId: setupPaneId },
+			},
+			chained: false,
+		};
+	}
+
+	return {
+		request: {
+			...request,
+			terminal: {
+				...request.terminal,
+				paneId: setupPaneId,
+				reuseExistingPane: true,
+				command: [...chainedCommands, request.terminal.command].join(" && "),
+			},
+		},
+		chained: true,
+	};
+}
+
+/**
+ * Builds an AgentLaunchRequest for a task, used when creating workspaces
+ * from the issues tab, task sidebar, or batch run popover.
+ */
+export function buildTaskLaunchRequest({
+	task,
+	workspaceId,
+	agentType,
+	source,
+	autoExecute,
+}: {
+	task: TaskInput;
+	workspaceId: string;
+	agentType: StartableAgentType;
+	source: AgentLaunchSource;
+	autoExecute?: boolean;
+}): AgentLaunchRequest {
+	const prompt = renderTaskPromptTemplate(
+		DEFAULT_TERMINAL_TASK_PROMPT_TEMPLATE,
+		task,
+	);
+	const taskPromptFileName = `task-${task.slug}.md`;
+	return {
+		kind: "terminal",
+		workspaceId,
+		agentType,
+		source,
+		terminal: {
+			command: buildAgentFileCommand({
+				filePath: `.choros/${taskPromptFileName}`,
+				agent: agentType,
+			}),
+			name: task.slug,
+			taskPromptContent: prompt,
+			taskPromptFileName,
+			autoExecute,
+		},
+	};
+}

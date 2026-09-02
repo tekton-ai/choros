@@ -1,0 +1,140 @@
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { cn } from "@choros/ui/utils";
+import {
+	SortableContext,
+	verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
+import { Plural } from "@lingui/react/macro";
+import { AnimatePresence, motion } from "framer-motion";
+import { type ComponentPropsWithoutRef, forwardRef, useMemo } from "react";
+import { ProjectThumbnail } from "renderer/routes/_authenticated/components/ProjectThumbnail";
+import {
+	parseId,
+	useDashboardSidebarDnd,
+} from "../../../../hooks/useSidebarDnd";
+import { SortableCollapsedWorkspaceItem } from "./components/SortableCollapsedWorkspaceItem";
+
+interface DashboardSidebarCollapsedProjectContentProps
+	extends ComponentPropsWithoutRef<"div"> {
+	projectId: string;
+	projectName: string;
+	iconUrl: string | null;
+	projectColor: string | null;
+	isCollapsed: boolean;
+	totalWorkspaceCount: number;
+	workspaceShortcutLabels: Map<string, string>;
+	onWorkspaceHover: (workspaceId: string) => void | Promise<void>;
+	onToggleCollapse: () => void;
+}
+
+export const DashboardSidebarCollapsedProjectContent = forwardRef<
+	HTMLDivElement,
+	DashboardSidebarCollapsedProjectContentProps
+>(
+	(
+		{
+			projectId,
+			projectName,
+			iconUrl,
+			projectColor,
+			isCollapsed,
+			totalWorkspaceCount,
+			workspaceShortcutLabels,
+			onWorkspaceHover,
+			onToggleCollapse,
+			className,
+			...props
+		},
+		ref,
+	) => {
+		const { projectItems, workspacesById } = useDashboardSidebarDnd();
+		const flatItems = projectItems[projectId];
+
+		// Sections aren't rendered in the collapsed rail — only workspace icons
+		// are sortable; the drop commit still persists cross-section moves.
+		const workspaceItems = useMemo(
+			() => (flatItems ?? []).filter((id) => parseId(id)?.type === "workspace"),
+			[flatItems],
+		);
+
+		return (
+			<div
+				ref={ref}
+				className={cn("flex flex-col items-center py-1", className)}
+				{...props}
+			>
+				<Tooltip delayDuration={300}>
+					<TooltipTrigger asChild>
+						<button
+							type="button"
+							onClick={onToggleCollapse}
+							className={cn(
+								"flex items-center justify-center size-8 rounded-md",
+								"hover:bg-fill-hover transition-colors",
+							)}
+						>
+							<ProjectThumbnail
+								projectName={projectName}
+								iconUrl={iconUrl}
+								color={projectColor}
+								className="size-4 text-[10px]"
+							/>
+						</button>
+					</TooltipTrigger>
+					<TooltipContent side="right" className="flex flex-col gap-0.5">
+						<span className="font-medium">{projectName}</span>
+						<span className="text-xs text-muted-foreground">
+							<Plural
+								id="dashboard.sidebar.collapsedProject.workspaceCount"
+								value={totalWorkspaceCount}
+								one="# workspace"
+								other="# workspaces"
+							/>
+						</span>
+					</TooltipContent>
+				</Tooltip>
+
+				<AnimatePresence initial={false}>
+					{!isCollapsed && (
+						<motion.div
+							initial={{ height: 0, opacity: 0 }}
+							animate={{ height: "auto", opacity: 1 }}
+							exit={{ height: 0, opacity: 0 }}
+							transition={{ duration: 0.15, ease: "easeOut" }}
+							className="overflow-hidden w-full"
+						>
+							<div className="flex w-full flex-col gap-1 pt-1">
+								<SortableContext
+									items={workspaceItems}
+									strategy={verticalListSortingStrategy}
+								>
+									{workspaceItems.map((id) => {
+										const parsed = parseId(id);
+										if (!parsed) return null;
+										const workspace = workspacesById.get(parsed.realId);
+										if (!workspace) return null;
+										return (
+											<SortableCollapsedWorkspaceItem
+												key={String(id)}
+												sortableId={String(id)}
+												workspace={workspace}
+												onHoverCardOpen={onWorkspaceHover}
+												shortcutLabel={workspaceShortcutLabels.get(
+													parsed.realId,
+												)}
+												disabled={
+													workspace.type === "main" &&
+													workspace.hostType === "local-device"
+												}
+											/>
+										);
+									})}
+								</SortableContext>
+							</div>
+						</motion.div>
+					)}
+				</AnimatePresence>
+			</div>
+		);
+	},
+);
