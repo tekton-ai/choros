@@ -1,1 +1,0 @@
-export { WrongOrganization } from "./WrongOrganization";

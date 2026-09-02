@@ -1,1 +1,0 @@
-export { GatesSummary } from "./GatesSummary";

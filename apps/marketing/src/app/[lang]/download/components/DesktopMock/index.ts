@@ -1,1 +1,0 @@
-export { DesktopMock } from "./DesktopMock";

@@ -1,1 +1,0 @@
-export { PageCommentsShell } from "./PageCommentsShell";
