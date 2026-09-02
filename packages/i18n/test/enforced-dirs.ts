@@ -55,10 +55,6 @@ export const ENFORCED_DIRS: readonly string[] = [
 	"apps/desktop/src/renderer/react-query",
 	"apps/desktop/src/renderer/routes/create-organization",
 	"apps/desktop/src/renderer/routes/sign-in",
-	// batch 5: the Expo mobile app (routing, screens, shared components)
-	"apps/mobile/app",
-	"apps/mobile/screens",
-	"apps/mobile/components",
 	// batch 5: the shared composer package. `packages/ui/src` is converted too
 	// but stays out: its `open-in-chat` provider logos carry brand names
 	// ("GitHub", "OpenAI", …) as SVG <title> text, which the glossary keeps
