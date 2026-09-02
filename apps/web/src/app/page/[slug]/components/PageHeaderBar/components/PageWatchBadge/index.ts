@@ -1,1 +1,0 @@
-export { PageWatchBadge } from "./PageWatchBadge";

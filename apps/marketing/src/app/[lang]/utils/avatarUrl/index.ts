@@ -1,1 +1,0 @@
-export { avatarUrl } from "./avatarUrl";

@@ -1,1 +1,0 @@
-export { scrollToElement } from "./scrollToElement";

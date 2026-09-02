@@ -1,1 +1,0 @@
-export { ChorosSection } from "./ChorosSection";

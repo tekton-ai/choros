@@ -1,1 +1,0 @@
-export { StatsBody } from "./StatsBody";

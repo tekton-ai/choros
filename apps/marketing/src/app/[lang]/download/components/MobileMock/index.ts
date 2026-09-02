@@ -1,1 +1,0 @@
-export { MobileMock } from "./MobileMock";

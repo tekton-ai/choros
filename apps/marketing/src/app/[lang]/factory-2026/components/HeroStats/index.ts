@@ -1,1 +1,0 @@
-export { HeroStats } from "./HeroStats";

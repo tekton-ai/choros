@@ -1,1 +1,0 @@
-export { PillTabs } from "./PillTabs";

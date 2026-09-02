@@ -1,1 +1,0 @@
-export { GateScorecard } from "./GateScorecard";

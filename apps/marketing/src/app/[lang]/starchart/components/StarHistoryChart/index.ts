@@ -1,1 +1,0 @@
-export { StarHistoryChart } from "./StarHistoryChart";
