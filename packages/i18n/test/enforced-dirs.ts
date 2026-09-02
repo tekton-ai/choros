@@ -4,7 +4,6 @@
 // regression, the same ratchet contract as the no-*-blocking tests.
 export const ENFORCED_DIRS: readonly string[] = [
 	"packages/i18n/src",
-	"apps/web/src/app/account-pending-deletion",
 	// automations is temporarily un-enforced: the trigger-fidelity work
 	// rewrote most of its copy, and converting the new strings is deferred to
 	// a dedicated i18n pass. Re-add once that lands.
@@ -63,10 +62,4 @@ export const ENFORCED_DIRS: readonly string[] = [
 	// batch 5: marketing routes that are fully converted. The component
 	// directories stay out — their mockups deliberately render fake CLI output
 	// and brand names, which the scanner cannot tell from real copy.
-	"apps/marketing/src/app/[lang]/contact",
-	"apps/marketing/src/app/[lang]/enterprise",
-	"apps/marketing/src/app/[lang]/mcp-install",
-	"apps/marketing/src/app/[lang]/pricing",
-	"apps/marketing/src/app/[lang]/roadmap",
-	"apps/marketing/src/app/[lang]/stats",
 ];
