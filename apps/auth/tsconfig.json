@@ -1,0 +1,8 @@
+{
+	"extends": "@choros/typescript/base.json",
+	"compilerOptions": {
+		"moduleResolution": "bundler",
+		"noEmit": true
+	},
+	"include": ["src/**/*.ts"]
+}

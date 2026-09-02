@@ -1,0 +1,35 @@
+name = "choros-auth"
+main = "src/index.ts"
+compatibility_date = "2026-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Public URL of THIS Worker. Used to build the /auth/desktop/success
+# redirect target that better-auth hands to GitHub/Google as callbackURL.
+# On workers.dev the default is `<script-name>.<account>.workers.dev`; if
+# you attach a custom domain (recommended for prod), point AUTH_SELF_URL
+# at that instead.
+[vars]
+AUTH_SELF_URL = "https://choros-auth.PLACEHOLDER.workers.dev"
+
+# Secrets — set with `wrangler secret put <NAME>` (do NOT commit values).
+# See README.md for the full list and where each one comes from.
+#
+#   GH_CLIENT_ID
+#   GH_CLIENT_SECRET
+#   GOOGLE_CLIENT_ID
+#   GOOGLE_CLIENT_SECRET
+#   BETTER_AUTH_SECRET
+#   DATABASE_URL
+#   KV_REST_API_URL
+#   KV_REST_API_TOKEN
+#   RESEND_API_KEY
+#   STRIPE_SECRET_KEY
+#   STRIPE_WEBHOOK_SECRET
+
+# Custom domain (uncomment after DNS + zone are set up in Cloudflare):
+# routes = [{ pattern = "auth.choros.sh", custom_domain = true }]
+
+# Observability — free tier keeps 3 days of logs. Turn this on so you can
+# inspect the OAuth kickoff/callback chain if it misbehaves in prod.
+[observability]
+enabled = true
