@@ -66,11 +66,10 @@ The **daemon** and the core "channel" of the architecture. A Hono-based HTTP + W
 - Git operations (status / diff / commit / push) via `simple-git`
 - Chat streaming (relays agent responses)
 - Agent hook handler (records agent lifecycle events)
-- MCP endpoint (`packages/mcp` wraps it as a Model Context Protocol server so external agents can drive Choros)
 
-Runs as a subprocess of Electron main. Listens on a dynamic `localhost:$HOST_SERVICE_PORT`. The manifest is written to `~/Library/Application Support/Choros/host/<org>/manifest.json` so `packages/host-client`, the CLI, or external MCP consumers can discover and connect.
+Runs as a subprocess of Electron main. Listens on a dynamic `localhost:$HOST_SERVICE_PORT`. The manifest is written to `~/Library/Application Support/Choros/host/<org>/manifest.json` so `packages/host-client` and the CLI can discover and connect.
 
-**`packages/host-client`** is the TypeScript SDK for talking to a running host-service — the renderer, the CLI, and MCP integrations all consume it.
+**`packages/host-client`** is the TypeScript SDK for talking to a running host-service — the renderer and the CLI both consume it.
 
 ### 4. pty-daemon (`packages/pty-daemon`)
 
@@ -91,13 +90,11 @@ apps/
 packages/
 ├── host-service/                  Hono daemon (the channel)
 ├── host-client/                   SDK to talk to host-service
-├── mcp/                           MCP protocol wrapper over host-service
 ├── pty-daemon/                    PTY supervisor process
 ├── agent-setup/                   Registers hooks into agent CLI configs
 │                                    (~/.claude/settings.json, ~/.factory/…)
 ├── chat-runtime/                  LLM streaming, tool-calling loop
-├── chat-ui/                       React components for chat surfaces
-├── chat/                          High-level chat orchestration
+├── chat/                          High-level chat orchestration and React chat surfaces
 ├── provider-auth/                 Anthropic/OpenAI/GitHub key management
 ├── cli/                           `choros` CLI binary; drives host-service
 ├── cli-framework/                 CLI base (commands, output, prompts)
@@ -113,7 +110,6 @@ packages/
 ├── trpc/                          tRPC router type (consumed for types only)
 ├── auth/                          better-auth types (client-side only)
 ├── db/                            Drizzle schema (types only, no runtime)
-├── email/                         Email helpers (currently unused)
 └── macos-process-metrics/         macOS-specific CPU/mem readouts
 ```
 
@@ -125,7 +121,6 @@ packages/
 | Renderer | host-service | HTTP + WebSocket on `localhost:$HOST_SERVICE_PORT` | tRPC over HTTP; WS for chat streams / event subscriptions |
 | host-service | pty-daemon | Unix socket at `~/Library/Application Support/Choros/pty/<org>.sock` | JSON RPC (spawn / write / resize / stop) |
 | CLI (`choros`) | host-service | HTTP on `localhost:$HOST_SERVICE_PORT` | Same tRPC surface as renderer |
-| External MCP client | host-service | HTTP on `localhost:$HOST_SERVICE_PORT` via `packages/mcp` | MCP protocol wrapping tRPC methods |
 | Agent CLI (Claude / codex / …) | Main notifications server | HTTP POST to `http://127.0.0.1:$CHOROS_AGENT_HOOK_PORT/hook/complete` | JSON hook event (SessionStart / Stop / PostToolUse / …) |
 
 ## Filesystem layout at runtime
@@ -140,7 +135,7 @@ packages/
 ├── pty/
 │   └── <org-uuid>.sock            pty-daemon Unix socket
 ├── plugins/
-│   └── mcp-ledger.json            Installed MCP server tracking (`packages/mcp`)
+│   └── mcp-ledger.json            Installed MCP server tracking
 ├── hooks/
 │   └── notify.sh                  Agent lifecycle hook script (rewritten on boot)
 ├── bin/
@@ -165,9 +160,8 @@ The `CHOROS_*` env var set is the runtime protocol between the Electron main pro
 | Terminal spawn / stream | `packages/host-service/src/terminal/` + `packages/pty-daemon/src/` |
 | Agent CLI integration (new agent) | `packages/agent-setup/src/agent-wrappers-<name>.ts` + entry in `packages/shared/src/builtin-terminal-agents.ts`. See [`agent-tooling.md`](./agent-tooling.md). |
 | LLM streaming / tool-use loop | `packages/chat-runtime/` |
-| Chat UI components | `packages/chat-ui/` + `apps/desktop/src/renderer/routes/…/chat` |
+| Chat UI surfaces | `packages/chat/` + `apps/desktop/src/renderer/routes/…/chat` |
 | CLI commands (`choros ws …`) | `packages/cli/src/commands/` |
-| MCP tool surface | `packages/mcp/src/tools/` |
 | Bundled skills for agents | `plugins/choros/skills/` — see [`skill-preload-feature.md`](./skill-preload-feature.md) |
 | Project path resolution | `packages/host-service/src/projects/` — see [`design/v2-host-project-paths.md`](./design/v2-host-project-paths.md) |
 | Project create / import flow | See [`design/v2-project-create-import.md`](./design/v2-project-create-import.md) |

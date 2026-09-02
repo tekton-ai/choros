@@ -1,1 +1,0 @@
-export { DetailRow } from "./DetailRow";

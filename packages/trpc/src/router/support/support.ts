@@ -1,11 +1,5 @@
 import { db } from "@choros/db/client";
-import {
-	organizations,
-	submittedPrompts,
-	subscriptions,
-	users,
-} from "@choros/db/schema";
-import { FeedbackReportEmail } from "@choros/email/emails/feedback-report";
+import { submittedPrompts, subscriptions } from "@choros/db/schema";
 import { ACTIVE_SUBSCRIPTION_STATUSES } from "@choros/shared/billing";
 import { COMPANY } from "@choros/shared/constants";
 import { Ratelimit } from "@upstash/ratelimit";
@@ -226,29 +220,16 @@ export const supportRouter = createTRPCRouter({
 
 			// Identity is derived server-side from the authenticated session so
 			// reports arrive attributed and can't be spoofed by the client.
-			const [orgRow, subscriptionRow, userRow] = await Promise.all([
-				organizationId
-					? db.query.organizations.findFirst({
-							where: eq(organizations.id, organizationId),
-							columns: { name: true, createdAt: true },
-						})
-					: Promise.resolve(undefined),
-				organizationId
-					? db.query.subscriptions.findFirst({
-							where: and(
-								eq(subscriptions.referenceId, organizationId),
-								inArray(subscriptions.status, ACTIVE_SUBSCRIPTION_STATUSES),
-							),
-							columns: { plan: true, status: true },
-						})
-					: Promise.resolve(undefined),
-				db.query.users.findFirst({
-					where: eq(users.id, user.id),
-					columns: { createdAt: true },
-				}),
-			]);
+			const subscriptionRow = organizationId
+				? await db.query.subscriptions.findFirst({
+						where: and(
+							eq(subscriptions.referenceId, organizationId),
+							inArray(subscriptions.status, ACTIVE_SUBSCRIPTION_STATUSES),
+						),
+						columns: { plan: true, status: true },
+					})
+				: undefined;
 
-			const safeName = user.name ? sanitizeEmailBodyLine(user.name) : "";
 			const planLabel = subscriptionRow
 				? `${subscriptionRow.plan} (${subscriptionRow.status})`
 				: "free (no active subscription)";
@@ -274,24 +255,7 @@ export const supportRouter = createTRPCRouter({
 					replyTo: user.email,
 					subject: `[Feedback: ${input.type}] ${safeTitle}`,
 					attachments,
-					react: FeedbackReportEmail({
-						type: input.type,
-						title: safeTitle,
-						body: input.body,
-						userName: safeName || undefined,
-						userEmail: user.email,
-						userId: user.id,
-						accountCreated: userRow?.createdAt?.toISOString(),
-						organizationName: orgRow
-							? sanitizeEmailBodyLine(orgRow.name)
-							: undefined,
-						organizationId: organizationId ?? undefined,
-						plan: planLabel,
-						appVersion: input.appVersion
-							? sanitizeEmailBodyLine(input.appVersion)
-							: undefined,
-						os: input.os ? sanitizeEmailBodyLine(input.os) : undefined,
-					}),
+					text: `[Feedback ${input.type}] ${safeTitle}\n\n${input.body}`,
 				});
 				if (error) throw error;
 			} catch (error) {

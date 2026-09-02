@@ -13,7 +13,6 @@ Everything else links to those:
 | --- | --- |
 | `.claude/commands` | `../.agents/commands` |
 | `.claude/skills` | `../.agents/skills` |
-| `.cursor/commands` | `../.agents/commands` |
 | `.codex/commands`, `.codex/prompts` | `../.agents/commands` |
 
 ## Per-tool notes
@@ -21,7 +20,6 @@ Everything else links to those:
 - **Codex** layers trusted repo settings from `.codex/config.toml`; launch it normally from the repo
   instead of replacing `CODEX_HOME`. It discovers `.agents/skills/` automatically; invoke one
   explicitly with `$<skill-name>`.
-- **OpenCode** uses `opencode.json`.
 - **Mistral Vibe** reads `AGENTS.md` + `.agents/skills/` natively (trust via `--trust`; no
   `.agents/commands` support). Configure via `.vibe/config.toml`; MCP servers are `[[mcp_servers]]`
   TOML entries.

@@ -82,7 +82,6 @@
 		"@blaxel/core": "0.3.11",
 		"@choros/auth": "workspace:*",
 		"@choros/db": "workspace:*",
-		"@choros/email": "workspace:*",
 		"@choros/shared": "workspace:*",
 		"@googleapis/calendar": "16.0.0",
 		"@googleapis/gmail": "18.0.0",
