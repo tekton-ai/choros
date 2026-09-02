@@ -5,7 +5,7 @@
 The v2 architecture has **no per-host project path mapping**. When a workspace is created on a host, the system either:
 
 1. Finds the project in the host-service local SQLite and reuses its `repoPath`
-2. Or auto-clones to a hardcoded path: `~/.superset/repos/{projectId}`
+2. Or auto-clones to a hardcoded path: `~/.choros/repos/{projectId}`
 
 A user who already has `~/work/my-project` checked out locally gets a **duplicate clone**. There's no way to say "use my existing checkout."
 
@@ -24,7 +24,7 @@ A user who already has `~/work/my-project` checked out locally gets a **duplicat
 |------|---------|
 | `packages/db/src/schema/schema.ts` (L380-547) | Cloud schema: `v2_projects`, `v2_hosts`, `v2_workspaces` |
 | `packages/host-service/src/db/schema.ts` | Host-service local SQLite: `projects` (has `repoPath`), `workspaces` |
-| `packages/host-service/src/trpc/router/workspace/workspace.ts` | Workspace creation — auto-clones to `~/.superset/repos/{projectId}` if missing |
+| `packages/host-service/src/trpc/router/workspace/workspace.ts` | Workspace creation — auto-clones to `~/.choros/repos/{projectId}` if missing |
 | `packages/host-service/src/trpc/router/project/project.ts` | Project removal (local cleanup) |
 | `packages/trpc/src/router/v2-project/v2-project.ts` | Cloud v2 project CRUD |
 | `packages/trpc/src/router/v2-workspace/v2-workspace.ts` | Cloud v2 workspace CRUD |
@@ -127,7 +127,7 @@ Changes to `workspace.create` are **deferred** — other workspace create update
 ```
 workspace.create(projectId, name, branch)
   → local project exists? → YES → create worktree from repoPath
-                           → NO  → auto-clone to ~/.superset/repos/{projectId}
+                           → NO  → auto-clone to ~/.choros/repos/{projectId}
                                     → insert local project row
                                     → create worktree
 ```
@@ -162,7 +162,7 @@ The normal flow is: user selects project, fills branch/name, submits. If `worksp
 │    ✓ Matches github.com/org/my-project  │
 │                                         │
 │  ○ Clone repository                     │
-│    [~/.superset/repos        ] [Browse] │
+│    [~/.choros/repos        ] [Browse] │
 │                                         │
 │           [Set Up & Create]             │
 └─────────────────────────────────────────┘

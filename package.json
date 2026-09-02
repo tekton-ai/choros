@@ -22,12 +22,7 @@
 	"private": true,
 	"scripts": {
 		"predev": "bun scripts/check-dev-ports.ts",
-		"dev": "turbo run dev --filter=@choros/api --filter=@choros/web --filter=@choros/desktop --filter=//",
-		"dev:all": "turbo dev --concurrency=15",
-		"predev:desktop": "bun scripts/check-dev-ports.ts",
-		"dev:desktop": "turbo run dev --filter=@choros/api --filter=@choros/desktop --filter=//",
-		"dev:docs": "turbo dev --filter=@choros/docs",
-		"dev:marketing": "turbo dev --filter=@choros/marketing --filter=@choros/docs",
+		"dev": "turbo run dev --filter=@choros/desktop --filter=//",
 		"cli:dev": "bun scripts/dev-cli.ts",
 		"dev:skills": "bun scripts/sync-dev-skills.ts",
 		"build": "turbo build --filter=@choros/desktop",
