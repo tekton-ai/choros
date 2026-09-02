@@ -200,12 +200,6 @@ export const FEATURE_FLAGS = {
 	 */
 	CHAT_V3: "chat-v3",
 	/**
-	 * Shows the cloud-workspace option in the create picker. The API gates
-	 * these to @choros.sh accounts independently, so the flag controls
-	 * visibility rather than access.
-	 */
-	CLOUD_WORKSPACES: "cloud-workspaces",
-	/**
 	 * Shows the Plugins page in the v2 dashboard sidebar. Audience is a
 	 * release condition on the flag (email contains @choros.sh, plus an
 	 * override for the local dev account, which is not on that domain) so

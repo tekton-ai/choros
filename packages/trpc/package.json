@@ -20,10 +20,6 @@
 			"types": "./src/lib/integrations/*/index.ts",
 			"default": "./src/lib/integrations/*/index.ts"
 		},
-		"./cloud-workspace-provision": {
-			"types": "./src/router/cloud-workspace/provision.ts",
-			"default": "./src/router/cloud-workspace/provision.ts"
-		},
 		"./automation-dispatch": {
 			"types": "./src/router/automation/dispatch.ts",
 			"default": "./src/router/automation/dispatch.ts"
@@ -51,7 +47,6 @@
 		"@aws-sdk/client-s3": "3.899.0",
 		"@aws-sdk/s3-request-presigner": "3.899.0",
 		"@azure/msal-node": "5.5.0",
-		"@blaxel/core": "0.3.11",
 		"@choros/auth": "workspace:*",
 		"@choros/db": "workspace:*",
 		"@choros/shared": "workspace:*",
