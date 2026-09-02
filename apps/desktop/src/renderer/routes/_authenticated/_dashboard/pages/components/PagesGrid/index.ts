@@ -1,1 +1,0 @@
-export { PagesGrid } from "./PagesGrid";

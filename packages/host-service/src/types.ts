@@ -4,7 +4,6 @@ import type { Octokit } from "@octokit/rest";
 import type { TRPCClient } from "@trpc/client";
 import type { HostDb } from "./db";
 import type { EventBus } from "./events";
-import type { PageWatchManager } from "./page-watch/index.ts";
 import type { WorkspaceFilesystemManager } from "./runtime/filesystem";
 import type { GitCredentialProvider, GitFactory } from "./runtime/git";
 import type { PullRequestRuntimeManager } from "./runtime/pull-requests";
@@ -17,7 +16,6 @@ export interface HostServiceRuntime {
 	auth: ChatService;
 	filesystem: WorkspaceFilesystemManager;
 	pullRequests: PullRequestRuntimeManager;
-	pageWatch: PageWatchManager;
 }
 
 export interface HostServiceContext {

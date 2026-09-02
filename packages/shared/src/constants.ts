@@ -213,7 +213,6 @@ export const FEATURE_FLAGS = {
 	 * desktop-local; the flag controls visibility, not capability.
 	 */
 	PLUGINS: "plugins",
-	PAGES: "pages",
 } as const;
 
 /**

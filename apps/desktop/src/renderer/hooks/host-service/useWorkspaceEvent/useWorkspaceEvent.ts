@@ -2,7 +2,6 @@ import type {
 	AgentBindingsChangedPayload,
 	AgentLifecyclePayload,
 	GitChangedPayload,
-	PageWatchChangedPayload,
 	PortChangedPayload,
 	TerminalLifecyclePayload,
 } from "@choros/workspace-client";
@@ -52,20 +51,13 @@ export function useWorkspaceEvent(
 	enabled?: boolean,
 ): void;
 export function useWorkspaceEvent(
-	type: "page-watch:changed",
-	workspaceId: string,
-	callback: (payload: PageWatchChangedPayload) => void,
-	enabled?: boolean,
-): void;
-export function useWorkspaceEvent(
 	type:
 		| "git:changed"
 		| "fs:events"
 		| "agent:lifecycle"
 		| "agent:bindings-changed"
 		| "terminal:lifecycle"
-		| "port:changed"
-		| "page-watch:changed",
+		| "port:changed",
 	workspaceId: string,
 	callback:
 		| ((event: FsWatchEvent) => void)
@@ -73,8 +65,7 @@ export function useWorkspaceEvent(
 		| ((payload: AgentLifecyclePayload) => void)
 		| ((payload: AgentBindingsChangedPayload) => void)
 		| ((payload: TerminalLifecyclePayload) => void)
-		| ((payload: PortChangedPayload) => void)
-		| ((payload: PageWatchChangedPayload) => void),
+		| ((payload: PortChangedPayload) => void),
 	enabled = true,
 ): void {
 	const hostUrl = useWorkspaceHostUrl(workspaceId);
@@ -131,15 +122,6 @@ export function useWorkspaceEvent(
 				workspaceId,
 				(_wid, payload) => {
 					(handler as (payload: PortChangedPayload) => void)(payload);
-				},
-			);
-			cleanups.push(removeListener);
-		} else if (type === "page-watch:changed") {
-			const removeListener = bus.on(
-				"page-watch:changed",
-				workspaceId,
-				(_wid, payload) => {
-					(handler as (payload: PageWatchChangedPayload) => void)(payload);
 				},
 			);
 			cleanups.push(removeListener);

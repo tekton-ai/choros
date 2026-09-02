@@ -8,14 +8,6 @@
 			"types": "./src/index.ts",
 			"default": "./src/index.ts"
 		},
-		"./page-schema": {
-			"types": "./src/router/page/schema.ts",
-			"default": "./src/router/page/schema.ts"
-		},
-		"./page-thumbnail": {
-			"types": "./src/router/page/thumbnail.ts",
-			"default": "./src/router/page/thumbnail.ts"
-		},
 		"./file-sweep": {
 			"types": "./src/lib/files/sweep.ts",
 			"default": "./src/lib/files/sweep.ts"

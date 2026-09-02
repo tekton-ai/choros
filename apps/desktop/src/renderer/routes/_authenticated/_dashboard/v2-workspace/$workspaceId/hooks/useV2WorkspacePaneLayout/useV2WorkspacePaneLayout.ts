@@ -1,8 +1,6 @@
 import { createWorkspaceStore, type WorkspaceState } from "@choros/panes";
-import { FEATURE_FLAGS } from "@choros/shared/constants";
 import { eq } from "@tanstack/db";
 import { useLiveQuery } from "@tanstack/react-db";
-import { useFeatureFlagEnabled } from "posthog-js/react";
 import { useEffect, useMemo, useRef } from "react";
 import { useWorkspace } from "renderer/routes/_authenticated/_dashboard/v2-workspace/providers/WorkspaceProvider";
 import { useCollections } from "renderer/routes/_authenticated/providers/CollectionsProvider";
@@ -76,11 +74,6 @@ export function useV2WorkspacePaneLayout() {
 		);
 	const localWorkspaceState =
 		localWorkspaceRows.find((row) => row.workspaceId === workspaceId) ?? null;
-	const isPagesEnabled = useFeatureFlagEnabled(FEATURE_FLAGS.PAGES);
-	const unavailableKinds = useMemo(
-		() => (isPagesEnabled === false ? ["page"] : []),
-		[isPagesEnabled],
-	);
 
 	const persistedPaneLayout = useMemo(
 		() =>
@@ -90,9 +83,9 @@ export function useV2WorkspacePaneLayout() {
 							| WorkspaceState<PaneViewerData>
 							| undefined) ?? EMPTY_STATE)
 					: EMPTY_STATE,
-				unavailableKinds,
+				[],
 			),
-		[localWorkspaceState, workspaceId, unavailableKinds],
+		[localWorkspaceState, workspaceId],
 	);
 
 	useEffect(() => {

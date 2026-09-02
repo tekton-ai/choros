@@ -10,7 +10,6 @@ import { createApiClient } from "./api";
 import { createChatV3Mount, registerChatV3Routes } from "./chat-v3";
 import { createDb, type HostDb } from "./db";
 import { EventBus, GitWatcher, registerEventBusRoute } from "./events";
-import { agentIsBusy, PageWatchManager } from "./page-watch/index.ts";
 import { registerForwardMuxRoute } from "./ports/forward-mux-route";
 import { portManager } from "./ports/port-manager";
 import type { ApiAuthProvider } from "./providers/auth";
@@ -27,11 +26,7 @@ import {
 	readSandboxIdentity,
 	runSandboxSelfSeed,
 } from "./runtime/sandbox-self-seed";
-import {
-	isLiveTerminalSession,
-	registerWorkspaceTerminalRoute,
-	writeFramedInputToSession,
-} from "./terminal/terminal";
+import { registerWorkspaceTerminalRoute } from "./terminal/terminal";
 import {
 	SqliteTerminalAgentBindingPersistence,
 	TerminalAgentStore,
@@ -198,42 +193,10 @@ export function createApp(options: CreateAppOptions): CreateAppResult {
 	}
 	const terminalAgentStore = new TerminalAgentStore(terminalAgentPersistence);
 
-	const pageWatch = new PageWatchManager({
-		api: {
-			listThreads: (pageId) => api.pageComment.list.query({ pageId }),
-			setWatch: async (pageId, agentId) => {
-				await api.page.setWatch.mutate({ id: pageId, agentId });
-			},
-			clearWatch: async (pageId) => {
-				await api.page.clearWatch.mutate({ id: pageId });
-			},
-		},
-		sendToTerminal: async ({ workspaceId, terminalId, text }) => {
-			const result = await writeFramedInputToSession({
-				terminalId,
-				workspaceId,
-				text,
-				submit: true,
-				db,
-				eventBus,
-			});
-			if ("error" in result) throw new Error(result.error);
-		},
-		isTerminalAlive: isLiveTerminalSession,
-		isAgentBusy: (terminalId) =>
-			agentIsBusy(terminalAgentStore.get(terminalId)?.lastEventType),
-		hasAgent: (terminalId) => {
-			const binding = terminalAgentStore.get(terminalId);
-			return binding !== undefined && binding.endedAt === undefined;
-		},
-	});
-	pageWatch.subscribeToTerminalEvents(eventBus);
-
 	const runtime = {
 		auth: chatService,
 		filesystem,
 		pullRequests: pullRequestRuntime,
-		pageWatch,
 	};
 
 	// Startup sweeps run in the background so they don't block server
@@ -367,11 +330,6 @@ export function createApp(options: CreateAppOptions): CreateAppResult {
 			pullRequestRuntime.stop();
 		} catch (err) {
 			console.warn("[host-service] pullRequestRuntime.stop failed:", err);
-		}
-		try {
-			pageWatch.stop();
-		} catch (err) {
-			console.warn("[host-service] pageWatch.stop failed:", err);
 		}
 		try {
 			await chatV3.dispose();

@@ -11,8 +11,6 @@ import { cloudWorkspaceRouter } from "./router/cloud-workspace";
 import { hostRouter } from "./router/host";
 import { integrationRouter } from "./router/integration";
 import { organizationRouter } from "./router/organization";
-import { pageRouter } from "./router/page";
-import { pageCommentRouter } from "./router/page-comment";
 import { taskRouter } from "./router/task";
 import { teamRouter } from "./router/team";
 import { userRouter } from "./router/user";
@@ -33,8 +31,6 @@ export const appRouter = createTRPCRouter({
 	host: hostRouter,
 	integration: integrationRouter,
 	organization: organizationRouter,
-	page: pageRouter,
-	pageComment: pageCommentRouter,
 	task: taskRouter,
 	team: teamRouter,
 	user: userRouter,

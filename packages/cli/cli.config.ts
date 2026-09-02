@@ -40,7 +40,6 @@ export default defineConfig({
 				commands: ["workspaces", "agents", "terminals", "scripts"],
 			},
 			{ title: "Tasks & automations", commands: ["tasks", "automations"] },
-			{ title: "Pages", commands: ["pages"] },
 			{
 				title: "Hosts & projects",
 				commands: ["hosts", "projects", "start", "status", "stop"],

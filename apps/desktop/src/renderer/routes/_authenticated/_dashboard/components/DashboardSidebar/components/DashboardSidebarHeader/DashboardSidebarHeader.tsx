@@ -14,14 +14,7 @@ import { useFeatureFlagEnabled } from "posthog-js/react";
 import { useRef } from "react";
 import { GoGitPullRequest } from "react-icons/go";
 import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
-import {
-	LuClock,
-	LuFileText,
-	LuLayers,
-	LuPlus,
-	LuPuzzle,
-	LuSearch,
-} from "react-icons/lu";
+import { LuClock, LuLayers, LuPlus, LuPuzzle, LuSearch } from "react-icons/lu";
 import {
 	VscFolderOpened,
 	VscGithubAlt,
@@ -156,7 +149,6 @@ export function DashboardSidebarHeader({
 	});
 	const isAutomationsOpen = !!matchRoute({ to: "/automations", fuzzy: true });
 	const isPluginsOpen = !!matchRoute({ to: "/plugins", fuzzy: true });
-	const isPagesOpen = !!matchRoute({ to: "/pages", fuzzy: true });
 	// `?? false`: the hook returns undefined until PostHog flags resolve.
 	// Dev builds bypass the flag — the local dev account isn't in the
 	// @choros.sh release condition.
@@ -206,12 +198,6 @@ export function DashboardSidebarHeader({
 				}),
 			});
 		});
-	};
-
-	const isPagesEnabled = useFeatureFlagEnabled(FEATURE_FLAGS.PAGES) ?? false;
-
-	const handlePagesClick = () => {
-		navigate({ to: "/pages" });
 	};
 
 	const handlePluginsClick = () => {
@@ -412,33 +398,6 @@ export function DashboardSidebarHeader({
 							</Trans>
 						</TooltipContent>
 					</Tooltip>
-
-					{isPagesEnabled && (
-						<Tooltip delayDuration={300}>
-							<TooltipTrigger asChild>
-								<button
-									type="button"
-									onClick={handlePagesClick}
-									aria-label={t({
-										id: "dashboard.sidebar.header.pagesRailAriaLabel",
-										message: "Pages",
-									})}
-									aria-current={isPagesOpen ? "page" : undefined}
-									className={cn(
-										"flex size-7 items-center justify-center rounded-md transition-colors",
-										isPagesOpen
-											? "bg-fill-selected text-muted-foreground"
-											: "text-muted-foreground hover:bg-fill-hover",
-									)}
-								>
-									<LuFileText className="size-3.5" strokeWidth={1.5} />
-								</button>
-							</TooltipTrigger>
-							<TooltipContent side="right">
-								<Trans id="dashboard.sidebar.header.pagesTooltip">Pages</Trans>
-							</TooltipContent>
-						</Tooltip>
-					)}
 
 					{isPluginsEnabled && (
 						<Tooltip delayDuration={300}>
@@ -689,32 +648,6 @@ export function DashboardSidebarHeader({
 					</Trans>
 				</span>
 			</button>
-
-			{isPagesEnabled && (
-				<button
-					type="button"
-					onClick={handlePagesClick}
-					aria-label={t({
-						id: "dashboard.sidebar.header.pagesAriaLabel",
-						message: "Pages",
-					})}
-					aria-current={isPagesOpen ? "page" : undefined}
-					className={cn(
-						"flex h-7 w-full items-center gap-2 rounded-md px-2 text-[13px] font-medium transition-colors",
-						isPagesOpen
-							? "bg-fill-selected text-foreground"
-							: "text-muted-foreground hover:bg-fill-hover hover:text-foreground",
-					)}
-				>
-					<LuFileText
-						className="size-4 shrink-0 text-muted-foreground"
-						strokeWidth={1.5}
-					/>
-					<span className="flex-1 text-left">
-						<Trans id="dashboard.sidebar.header.pages">Pages</Trans>
-					</span>
-				</button>
-			)}
 
 			{isPluginsEnabled && (
 				<button
