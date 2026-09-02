@@ -22,7 +22,6 @@ export const ENFORCED_DIRS: readonly string[] = [
 	"apps/desktop/src/renderer/routes/_authenticated/settings/api-keys",
 	"apps/desktop/src/renderer/routes/_authenticated/settings/appearance",
 	"apps/desktop/src/renderer/routes/_authenticated/settings/behavior",
-	"apps/desktop/src/renderer/routes/_authenticated/settings/billing",
 	"apps/desktop/src/renderer/routes/_authenticated/settings/browser",
 	"apps/desktop/src/renderer/routes/_authenticated/settings/components",
 	"apps/desktop/src/renderer/routes/_authenticated/settings/experimental",

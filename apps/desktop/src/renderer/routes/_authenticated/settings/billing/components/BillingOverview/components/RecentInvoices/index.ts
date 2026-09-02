@@ -1,1 +1,0 @@
-export { RecentInvoices } from "./RecentInvoices";
