@@ -14,7 +14,6 @@ import {
 import { toast } from "@choros/ui/sonner";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { useNavigate } from "@tanstack/react-router";
-import { useState } from "react";
 import { FiUsers } from "react-icons/fi";
 import {
 	HiCheck,
@@ -31,7 +30,6 @@ import { cloudTrpc } from "renderer/lib/cloud-trpc";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { useCollections } from "renderer/routes/_authenticated/providers/CollectionsProvider";
 import { HelpSubMenu } from "./components/HelpSubMenu";
-import { SubmitPromptDialog } from "./components/SubmitPromptDialog";
 
 export function OrganizationDropdown({
 	variant = "topbar",
@@ -43,7 +41,6 @@ export function OrganizationDropdown({
 	const collections = useCollections();
 	const signOut = useSignOut();
 	const navigate = useNavigate();
-	const [submitPromptOpen, setSubmitPromptOpen] = useState(false);
 	const openNewWindow = electronTrpc.window.openNew.useMutation({
 		onError: (error) =>
 			toast.error(
@@ -153,105 +150,99 @@ export function OrganizationDropdown({
 	const contentAlign = variant === "topbar" ? "end" : "start";
 
 	return (
-		<>
-			<DropdownMenu>
-				<DropdownMenuTrigger asChild>{triggerButton}</DropdownMenuTrigger>
-				<DropdownMenuContent
-					align={contentAlign}
-					className={
-						variant === "expanded"
-							? "w-[var(--radix-dropdown-menu-trigger-width)] min-w-56"
-							: "w-56"
-					}
+		<DropdownMenu>
+			<DropdownMenuTrigger asChild>{triggerButton}</DropdownMenuTrigger>
+			<DropdownMenuContent
+				align={contentAlign}
+				className={
+					variant === "expanded"
+						? "w-[var(--radix-dropdown-menu-trigger-width)] min-w-56"
+						: "w-56"
+				}
+			>
+				{/* Organization */}
+				<DropdownMenuItem
+					onSelect={() => navigate({ to: "/settings/organization" })}
 				>
-					{/* Organization */}
-					<DropdownMenuItem
-						onSelect={() => navigate({ to: "/settings/organization" })}
-					>
-						<FiUsers className="h-4 w-4" />
-						<span>
-							<Trans id="dashboard.topBar.orgDropdown.manageMembers">
-								Manage members
-							</Trans>
-						</span>
-					</DropdownMenuItem>
-					{organizations && organizations.length > 0 && (
-						<DropdownMenuSub>
-							<DropdownMenuSubTrigger className="gap-2">
-								<HiOutlineArrowsRightLeft className="h-4 w-4" />
+					<FiUsers className="h-4 w-4" />
+					<span>
+						<Trans id="dashboard.topBar.orgDropdown.manageMembers">
+							Manage members
+						</Trans>
+					</span>
+				</DropdownMenuItem>
+				{organizations && organizations.length > 0 && (
+					<DropdownMenuSub>
+						<DropdownMenuSubTrigger className="gap-2">
+							<HiOutlineArrowsRightLeft className="h-4 w-4" />
+							<span>
+								<Trans id="dashboard.topBar.orgDropdown.switchOrganization">
+									Switch organization
+								</Trans>
+							</span>
+						</DropdownMenuSubTrigger>
+						<DropdownMenuSubContent>
+							{userEmail && (
+								<DropdownMenuLabel className="font-normal text-muted-foreground text-xs">
+									{userEmail}
+								</DropdownMenuLabel>
+							)}
+							{organizations.map((organization) => (
+								<DropdownMenuItem
+									key={organization.id}
+									onSelect={() =>
+										collections.switchOrganization(organization.id)
+									}
+									className="gap-2"
+								>
+									<Avatar
+										size="xs"
+										fullName={organization.name}
+										image={organization.logo}
+										className="rounded-md"
+									/>
+									<span className="flex-1 truncate">{organization.name}</span>
+									{organization.id === activeOrganization?.id && (
+										<HiCheck className="h-4 w-4 text-primary" />
+									)}
+								</DropdownMenuItem>
+							))}
+							<DropdownMenuSeparator />
+							<DropdownMenuItem
+								onSelect={() => navigate({ to: "/create-organization" })}
+							>
+								<HiOutlinePlus className="h-4 w-4" />
 								<span>
-									<Trans id="dashboard.topBar.orgDropdown.switchOrganization">
-										Switch organization
+									<Trans id="dashboard.topBar.orgDropdown.createOrganization">
+										Create organization
 									</Trans>
 								</span>
-							</DropdownMenuSubTrigger>
-							<DropdownMenuSubContent>
-								{userEmail && (
-									<DropdownMenuLabel className="font-normal text-muted-foreground text-xs">
-										{userEmail}
-									</DropdownMenuLabel>
-								)}
-								{organizations.map((organization) => (
-									<DropdownMenuItem
-										key={organization.id}
-										onSelect={() =>
-											collections.switchOrganization(organization.id)
-										}
-										className="gap-2"
-									>
-										<Avatar
-											size="xs"
-											fullName={organization.name}
-											image={organization.logo}
-											className="rounded-md"
-										/>
-										<span className="flex-1 truncate">{organization.name}</span>
-										{organization.id === activeOrganization?.id && (
-											<HiCheck className="h-4 w-4 text-primary" />
-										)}
-									</DropdownMenuItem>
-								))}
-								<DropdownMenuSeparator />
-								<DropdownMenuItem
-									onSelect={() => navigate({ to: "/create-organization" })}
-								>
-									<HiOutlinePlus className="h-4 w-4" />
-									<span>
-										<Trans id="dashboard.topBar.orgDropdown.createOrganization">
-											Create organization
-										</Trans>
-									</span>
-								</DropdownMenuItem>
-							</DropdownMenuSubContent>
-						</DropdownMenuSub>
-					)}
+							</DropdownMenuItem>
+						</DropdownMenuSubContent>
+					</DropdownMenuSub>
+				)}
 
-					<DropdownMenuItem onSelect={() => openNewWindow.mutate()}>
-						<HiOutlineWindow className="h-4 w-4" />
-						<span>
-							<Trans id="dashboard.topBar.orgDropdown.newWindow">
-								New window
-							</Trans>
-						</span>
-					</DropdownMenuItem>
+				<DropdownMenuItem onSelect={() => openNewWindow.mutate()}>
+					<HiOutlineWindow className="h-4 w-4" />
+					<span>
+						<Trans id="dashboard.topBar.orgDropdown.newWindow">
+							New window
+						</Trans>
+					</span>
+				</DropdownMenuItem>
 
-					<HelpSubMenu onSubmitPrompt={() => setSubmitPromptOpen(true)} />
+				<HelpSubMenu />
 
-					<DropdownMenuSeparator />
+				<DropdownMenuSeparator />
 
-					{/* Account */}
-					<DropdownMenuItem onSelect={handleSignOut} className="gap-2">
-						<HiOutlineArrowRightOnRectangle className="h-4 w-4" />
-						<span>
-							<Trans id="dashboard.topBar.orgDropdown.logOut">Log out</Trans>
-						</span>
-					</DropdownMenuItem>
-				</DropdownMenuContent>
-			</DropdownMenu>
-			<SubmitPromptDialog
-				open={submitPromptOpen}
-				onOpenChange={setSubmitPromptOpen}
-			/>
-		</>
+				{/* Account */}
+				<DropdownMenuItem onSelect={handleSignOut} className="gap-2">
+					<HiOutlineArrowRightOnRectangle className="h-4 w-4" />
+					<span>
+						<Trans id="dashboard.topBar.orgDropdown.logOut">Log out</Trans>
+					</span>
+				</DropdownMenuItem>
+			</DropdownMenuContent>
+		</DropdownMenu>
 	);
 }

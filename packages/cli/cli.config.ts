@@ -47,7 +47,7 @@ export default defineConfig({
 			},
 			{
 				title: "Account & app",
-				commands: ["auth", "organization", "settings", "update", "feedback"],
+				commands: ["auth", "organization", "settings", "update"],
 			},
 		],
 		examples: [

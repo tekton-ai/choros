@@ -16,15 +16,11 @@ import {
 	HiOutlineQuestionMarkCircle,
 } from "react-icons/hi2";
 import { IoBugOutline } from "react-icons/io5";
-import { LuKeyboard, LuMegaphone } from "react-icons/lu";
+import { LuKeyboard } from "react-icons/lu";
 import { useHotkeyDisplay } from "renderer/hotkeys";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 
-interface HelpSubMenuProps {
-	onSubmitPrompt: () => void;
-}
-
-export function HelpSubMenu({ onSubmitPrompt }: HelpSubMenuProps) {
+export function HelpSubMenu() {
 	const navigate = useNavigate();
 	const shortcutsHotkey = useHotkeyDisplay("SHOW_HOTKEYS").text;
 	const openUrlMutation = electronTrpc.external.openUrl.useMutation();
@@ -42,12 +38,6 @@ export function HelpSubMenu({ onSubmitPrompt }: HelpSubMenuProps) {
 				</span>
 			</DropdownMenuSubTrigger>
 			<DropdownMenuSubContent className="w-56">
-				<DropdownMenuItem onSelect={onSubmitPrompt}>
-					<LuMegaphone className="h-4 w-4" />
-					<Trans id="dashboard.topBar.helpMenu.submitPrompt">
-						Submit a prompt
-					</Trans>
-				</DropdownMenuItem>
 				<DropdownMenuItem onSelect={() => openExternal(COMPANY.DOCS_URL)}>
 					<HiOutlineBookOpen className="h-4 w-4" />
 					<Trans id="dashboard.topBar.helpMenu.documentation">
