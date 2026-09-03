@@ -8,7 +8,6 @@ import { z } from "zod";
 // imports us transitively) but have no fs and no __dirname; the env values
 // they need arrive as bindings/secrets rather than through a dotfile.
 try {
-	// biome-ignore lint/correctness/noUndeclaredVariables: dev-only Node runtime probe
 	const dir = typeof __dirname !== "undefined" ? __dirname : ".";
 	config({ path: path.resolve(dir, "../../../.env"), quiet: true });
 } catch {}
