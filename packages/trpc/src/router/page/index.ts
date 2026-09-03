@@ -1,1 +1,0 @@
-export { pageRouter } from "./page";

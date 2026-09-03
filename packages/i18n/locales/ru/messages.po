@@ -215,111 +215,6 @@ msgid "auth.signIn.welcomeTitle"
 msgstr "Добро пожаловать в Choros"
 
 #. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ComposerBody/ComposerBody.tsx
-msgid "chatUi.composer.dictate"
-msgstr "Диктовать"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ComposerBody/ComposerBody.tsx
-msgid "chatUi.composer.discardRecording"
-msgstr "Удалить запись"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ComposerBody/ComposerBody.tsx
-msgid "chatUi.composer.dropToAttach"
-msgstr "Перетащите, чтобы прикрепить"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ComposerBody/ComposerBody.tsx
-msgid "chatUi.composer.retryDictation"
-msgstr "Повторить диктовку"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ComposerBody/ComposerBody.tsx
-msgid "chatUi.composer.sendMessage"
-msgstr "Отправить сообщение"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ComposerBody/ComposerBody.tsx
-msgid "chatUi.composer.stopDictation"
-msgstr "Остановить диктовку"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ComposerBody/ComposerBody.tsx
-msgid "chatUi.composer.stopResponse"
-msgstr "Остановить ответ"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/ComposerDropZone/ComposerDropZone.tsx
-msgid "chatUi.composerDropZone.label"
-msgstr "Перетащите файлы, чтобы прикрепить"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ContextButton/ContextButton.tsx
-msgid "chatUi.contextButton.label"
-msgstr "Добавить файлы, приложения и другое"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ContextButton/ContextButton.tsx
-msgid "chatUi.contextButton.title"
-msgstr "Добавить файлы, приложения и другое (@)"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/hooks/useDictation/useDictation.ts
-msgid "chatUi.dictation.micBusy"
-msgstr "Закройте другие приложения, использующие микрофон"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/hooks/useDictation/useDictation.ts
-msgid "chatUi.dictation.micMissing"
-msgstr "Подключите микрофон, чтобы использовать диктовку"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/hooks/useDictation/useDictation.ts
-msgid "chatUi.dictation.micPermission"
-msgstr "Разрешите доступ к микрофону, чтобы использовать диктовку"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/hooks/useDictation/useDictation.ts
-msgid "chatUi.dictation.network"
-msgstr "Проверьте соединение и повторите"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/hooks/useDictation/useDictation.ts
-msgid "chatUi.dictation.startFailed"
-msgstr "Не удалось запустить диктовку"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/hooks/useDictation/useDictation.ts
-msgid "chatUi.dictation.transcribeFailed"
-msgstr "Не удалось расшифровать аудио"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/hooks/useDictation/useDictation.ts
-msgid "chatUi.dictation.unsupported"
-msgstr "Диктовка недоступна на этом устройстве"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/MentionMenu/MentionMenu.tsx
-msgid "chatUi.mentionMenu.loading"
-msgstr "Загрузка…"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/PromptInput.tsx
-msgid "chatUi.promptInput.placeholder"
-msgstr "Сделайте что угодно"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/AttachmentPills/components/RemoveButton/RemoveButton.tsx
-msgid "chatUi.removeButton.label"
-msgstr "Удалить вложение"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/ScrollToBottomButton/ScrollToBottomButton.tsx
-msgid "chatUi.scrollToBottom.label"
-msgstr "Прокрутить вниз"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/clickPolicy/actionLabel.ts
 msgid "clickPolicy.action.none"
 msgstr "Ничего не делать"
@@ -767,11 +662,6 @@ msgstr "Поведение"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/commandPalette/modules/settings/commands.ts
-msgid "commandPalette.settingsTab.billing"
-msgstr "Оплата"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/commandPalette/modules/settings/commands.ts
 msgid "commandPalette.settingsTab.experimental"
 msgstr "Экспериментальные"
 
@@ -1127,26 +1017,6 @@ msgid "components.emojiSuggestionList.noEmojiFound"
 msgstr "Эмодзи не найдены"
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/FeaturePreview.tsx
-msgid "components.featurePreview.comingSoon"
-msgstr "(Скоро)"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/FeaturePreview.tsx
-msgid "components.featurePreview.proBadge"
-msgstr "PRO"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeatureSidebar/FeatureSidebar.tsx
-msgid "components.featureSidebar.comingSoon"
-msgstr "(Скоро)"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeatureSidebar/FeatureSidebar.tsx
-msgid "components.featureSidebar.title"
-msgstr "Возможности Pro"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/FileEditPane/FileEditPane.tsx
 msgid "components.fileEditPane.frontMatterHint"
 msgstr "Front matter скрыт — переключитесь на Markdown, чтобы его изменить"
@@ -1374,51 +1244,6 @@ msgid "components.issueLinkCommand.showClosed"
 msgstr "Показать закрытые"
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.cancel"
-msgstr "Отмена"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.description"
-msgstr "Публикует количество токенов и названия моделей — никогда названия репозиториев, пути к файлам или промпты. Выйти можно в любой момент, это удалит всё опубликованное."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.handleHint"
-msgstr "Показывается публично рядом с вашим именем."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.handleLabel"
-msgstr "Ник"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.handlePlaceholder"
-msgstr "выберите имя для рейтинга"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.join"
-msgstr "Присоединиться"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.joining"
-msgstr "Присоединение…"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.readingUsage"
-msgstr "Чтение локальной статистики…"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.title"
-msgstr "Присоединиться к рейтингу"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/NewWorkspaceModal/components/PromptGroup/components/LinkedGitHubIssuePill/LinkedGitHubIssuePill.tsx
 msgid "components.linkedGithubIssuePill.githubSource"
 msgstr "GitHub"
@@ -1477,21 +1302,6 @@ msgstr "Отвязать PR"
 #: ../../apps/desktop/src/renderer/components/MarkdownEditor/MarkdownEditor.tsx
 msgid "components.markdownEditor.placeholder"
 msgstr "Добавьте описание..."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/MobileAppDemo/MobileAppDemo.tsx
-msgid "components.mobileAppDemo.agentName"
-msgstr "Choros Agent"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/MobileAppDemo/MobileAppDemo.tsx
-msgid "components.mobileAppDemo.messagePlaceholder"
-msgstr "Сообщение..."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/MobileAppDemo/MobileAppDemo.tsx
-msgid "components.mobileAppDemo.online"
-msgstr "● В сети"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/NewWorkspaceModal/NewWorkspaceModal.tsx
@@ -1625,11 +1435,6 @@ msgid "components.openInExternalDropdown.vscode"
 msgstr "VS Code"
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/Paywall.tsx
-msgid "components.paywall.cancel"
-msgstr "Отмена"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/constants.ts
 msgid "components.paywall.mobileApp.description"
 msgstr "Следите за рабочими областями и управляйте задачами на ходу. Продолжайте диалоги откуда угодно."
@@ -1678,11 +1483,6 @@ msgstr "Пригласите команду в общие рабочие обл�
 #: ../../apps/desktop/src/renderer/components/Paywall/constants.ts
 msgid "components.paywall.teamCollaboration.title"
 msgstr "Совместная работа"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/Paywall.tsx
-msgid "components.paywall.upgradeCta"
-msgstr "Получить Choros Pro"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/UpdatesPill/components/PreUpdateConfirmPopover/PreUpdateConfirmPopover.tsx
@@ -2018,65 +1818,6 @@ msgid "components.promptGroupAdvancedOptions.title"
 msgstr "Дополнительные параметры"
 
 #. js-lingui-explicit-id
-#. placeholder {0}: formatTokens(preview.tokens)
-#. placeholder {1}: preview.providers.join(" and ")
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/components/RankTeaser/RankTeaser.tsx
-msgid "components.rankTeaser.basedOn"
-msgstr "На основе {0} токенов за последние 30 дней, учитывая {1}."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/components/RankTeaser/RankTeaser.tsx
-msgid "components.rankTeaser.firstOnBoard"
-msgstr "Вы были бы одним из первых в рейтинге."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/components/RankTeaser/RankTeaser.tsx
-msgid "components.rankTeaser.noUsage"
-msgstr "На этой машине пока нет данных об использовании Claude или Codex. Присоединяйтесь — вы появитесь, как только поработаете с агентом."
-
-#. js-lingui-explicit-id
-#. placeholder {0}: preview.rank
-#. placeholder {1}: preview.total
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/components/RankTeaser/RankTeaser.tsx
-msgid "components.rankTeaser.projectedRank"
-msgstr "Вы были бы <0>#{0}</0> из {1}."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/RemoteAccessDemo/RemoteAccessDemo.tsx
-msgid "components.remoteAccessDemo.latency"
-msgstr "Задержка"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/RemoteAccessDemo/RemoteAccessDemo.tsx
-msgid "components.remoteAccessDemo.latencyValue"
-msgstr "42ms"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/RemoteAccessDemo/RemoteAccessDemo.tsx
-msgid "components.remoteAccessDemo.live"
-msgstr "онлайн"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/RemoteAccessDemo/RemoteAccessDemo.tsx
-msgid "components.remoteAccessDemo.remote"
-msgstr "Удалённый"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/RemoteAccessDemo/RemoteAccessDemo.tsx
-msgid "components.remoteAccessDemo.thisMac"
-msgstr "Этот Mac"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/RemoteAccessDemo/RemoteAccessDemo.tsx
-msgid "components.remoteAccessDemo.tunnelEstablished"
-msgstr "Туннель установлен"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/RemoteAccessDemo/RemoteAccessDemo.tsx
-msgid "components.remoteAccessDemo.windowTitle"
-msgstr "Удалённый доступ"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/RemotePathPicker/RemotePathPicker.tsx
 msgid "components.remotePathPicker.cancel"
 msgstr "Отмена"
@@ -2131,21 +1872,6 @@ msgstr "Скопировать адрес ссылки"
 #: ../../apps/desktop/src/renderer/components/MarkdownRenderer/components/SelectionContextMenu/SelectionContextMenu.tsx
 msgid "components.selectionContextMenu.selectAll"
 msgstr "Выделить всё"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/SlackIntegrationDemo/SlackIntegrationDemo.tsx
-msgid "components.slackIntegrationDemo.channelName"
-msgstr "#engineering"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/SlackIntegrationDemo/SlackIntegrationDemo.tsx
-msgid "components.slackIntegrationDemo.live"
-msgstr "Вживую"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/SlackIntegrationDemo/SlackIntegrationDemo.tsx
-msgid "components.slackIntegrationDemo.taskSynced"
-msgstr "Задача синхронизирована с Linear"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/MarkdownEditor/components/SlashCommand/SlashCommand.tsx
@@ -2237,32 +1963,6 @@ msgstr "Закрыть"
 #: ../../apps/desktop/src/renderer/components/StarNagToast/StarNagToast.tsx
 msgid "components.starNagToast.title"
 msgstr "Всё готово!"
-
-#. js-lingui-explicit-id
-#. placeholder {0}: TASKS.length
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/TasksDemo/TasksDemo.tsx
-msgid "components.tasksDemo.taskCount"
-msgstr "{0, plural, one {# задача} few {# задачи} many {# задач} other {# задачи}}"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/TasksDemo/TasksDemo.tsx
-msgid "components.tasksDemo.windowTitle"
-msgstr "Мои задачи"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/TeamCollaborationDemo/TeamCollaborationDemo.tsx
-msgid "components.teamCollaborationDemo.onlineNow"
-msgstr "Сейчас в сети"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/TeamCollaborationDemo/TeamCollaborationDemo.tsx
-msgid "components.teamCollaborationDemo.recentActivity"
-msgstr "Недавняя активность"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/TeamCollaborationDemo/TeamCollaborationDemo.tsx
-msgid "components.teamCollaborationDemo.windowTitle"
-msgstr "Команда"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/ThemeSwatch/ThemeSwatch.tsx
@@ -4268,16 +3968,6 @@ msgstr "Создать новую рабочую область"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/DashboardNewWorkspaceForm/components/DevicePicker/DevicePicker.tsx
-msgid "dashboard.newWorkspaceModal.devicePicker.cloud"
-msgstr "Облако"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/DashboardNewWorkspaceForm/components/DevicePicker/DevicePicker.tsx
-msgid "dashboard.newWorkspaceModal.devicePicker.cloudSelected"
-msgstr "Облако"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/DashboardNewWorkspaceForm/components/DevicePicker/DevicePicker.tsx
 msgid "dashboard.newWorkspaceModal.devicePicker.localDevice"
 msgstr "Локальное устройство"
 
@@ -4935,16 +4625,6 @@ msgstr "Не удалось загрузить вложение ({0}): {1}"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/DashboardNewWorkspaceForm/PromptGroup/hooks/useSubmitWorkspace/useSubmitWorkspace.ts
-msgid "dashboard.newWorkspaceModal.submit.cloudCreateFailed"
-msgstr "Не удалось создать облачную рабочую область"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/DashboardNewWorkspaceForm/PromptGroup/hooks/useSubmitWorkspace/useSubmitWorkspace.ts
-msgid "dashboard.newWorkspaceModal.submit.cloudRequiresProject"
-msgstr "Для облачных рабочих областей нужен проект"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/DashboardNewWorkspaceForm/PromptGroup/hooks/useSubmitWorkspace/useSubmitWorkspace.ts
 msgid "dashboard.newWorkspaceModal.submit.noActiveHost"
 msgstr "Нет активного хоста"
 
@@ -4997,132 +4677,6 @@ msgstr "Показывать только открытые"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/OpenClosedFilter/OpenClosedFilter.tsx
 msgid "dashboard.openClosedFilter.state"
 msgstr "Состояние"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/$slug/components/PageDetailView/PageDetailView.tsx
-msgid "dashboard.pages.detail.backToPages"
-msgstr "К страницам"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/PagesGrid.tsx
-msgid "dashboard.pages.grid.emptyDescription"
-msgstr "Опубликуйте страницу из агента или CLI, и она появится здесь."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/PagesGrid.tsx
-msgid "dashboard.pages.grid.emptyFilteredDescription"
-msgstr "Попробуйте другой запрос или фильтр."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/PagesGrid.tsx
-msgid "dashboard.pages.grid.emptyFilteredTitle"
-msgstr "Нет подходящих страниц"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/PagesGrid.tsx
-msgid "dashboard.pages.grid.emptyTitle"
-msgstr "Страниц пока нет"
-
-#. js-lingui-explicit-id
-#. placeholder {0}: page.title
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.actionsFor"
-msgstr "Действия для {0}"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.copyLink"
-msgstr "Скопировать ссылку"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.copyLinkFailed"
-msgstr "Не удалось скопировать ссылку"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.created"
-msgstr "Создана"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.delete"
-msgstr "Удалить"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.edited"
-msgstr "Изменено"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.linkCopied"
-msgstr "Ссылка скопирована"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.pin"
-msgstr "Закрепить"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.unpin"
-msgstr "Открепить"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesView/PagesView.tsx
-msgid "dashboard.pages.pageDeleted"
-msgstr "Страница удалена"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesView/PagesView.tsx
-msgid "dashboard.pages.searchPlaceholder"
-msgstr "Поиск страниц"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesView/PagesView.tsx
-msgid "dashboard.pages.tabs.all"
-msgstr "Все"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesView/PagesView.tsx
-msgid "dashboard.pages.tabs.mine"
-msgstr "Только мои"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesView/PagesView.tsx
-msgid "dashboard.pages.tabs.pinned"
-msgstr "Закреплённые"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesView/PagesView.tsx
-msgid "dashboard.pages.tabs.team"
-msgstr "Команда"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesView/PagesView.tsx
-msgid "dashboard.pages.title"
-msgstr "Страницы"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/PageViewer/PageViewer.tsx
-msgid "dashboard.pageViewer.pageMissingDescription"
-msgstr "Возможно, она удалена или принадлежит другой организации."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/PageViewer/PageViewer.tsx
-msgid "dashboard.pageViewer.pageMissingTitle"
-msgstr "Этой страницы больше нет"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/PageViewer/PageViewer.tsx
-msgid "dashboard.pageViewer.pageOpenFailedTitle"
-msgstr "Не удалось открыть эту страницу"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/PageViewer/PageViewer.tsx
-msgid "dashboard.pageViewer.youFallback"
-msgstr "Вы"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/components/PluginsView/components/PluginCard/PluginCard.tsx
@@ -7203,26 +6757,6 @@ msgstr "Открыть проекты"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarHeader/DashboardSidebarHeader.tsx
-msgid "dashboard.sidebar.header.pages"
-msgstr "Страницы"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarHeader/DashboardSidebarHeader.tsx
-msgid "dashboard.sidebar.header.pagesAriaLabel"
-msgstr "Страницы"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarHeader/DashboardSidebarHeader.tsx
-msgid "dashboard.sidebar.header.pagesRailAriaLabel"
-msgstr "Страницы"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarHeader/DashboardSidebarHeader.tsx
-msgid "dashboard.sidebar.header.pagesTooltip"
-msgstr "Страницы"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarHeader/DashboardSidebarHeader.tsx
 msgid "dashboard.sidebar.header.plugins"
 msgstr "Плагины"
 
@@ -7569,11 +7103,6 @@ msgstr "Запрошены изменения"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarWorkspaceItem/components/DashboardSidebarWorkspaceHoverCardContent/components/ReviewStatus/ReviewStatus.tsx
 msgid "dashboard.sidebar.reviewStatus.reviewPending"
 msgstr "Ревью ожидается"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarCloudSection/DashboardSidebarCloudSection.tsx
-msgid "dashboard.sidebar.sectionCloud"
-msgstr "Облако"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarSection/components/DashboardSidebarSectionContextMenu/components/SectionActionsMenuItems/SectionActionsMenuItems.tsx
@@ -9218,11 +8747,6 @@ msgid "dashboard.topBar.helpMenu.reportIssue"
 msgstr "Сообщить о проблеме"
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/HelpSubMenu/HelpSubMenu.tsx
-msgid "dashboard.topBar.helpMenu.submitPrompt"
-msgstr "Отправить промпт"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/TopBar.tsx
 msgid "dashboard.topBar.offline"
 msgstr "Офлайн"
@@ -9574,56 +9098,6 @@ msgstr "Остановить"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/WorkspaceRunButton/WorkspaceRunButton.tsx
 msgid "dashboard.topBar.runButton.stopAriaLabel"
 msgstr "Остановить команду запуска рабочей области"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.description"
-msgstr "Попросите кодового агента сделать то, что вы хотите увидеть в Choros. Если промпт нам понравится, мы его запустим и объединим результат."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.nameLabel"
-msgstr "Ваше имя <0>(если возьмём ваш промпт, укажем вас в changelog)</0>"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.namePlaceholder"
-msgstr "Иван Иванов"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.promptLabel"
-msgstr "Промпт"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.promptPlaceholder"
-msgstr "Опишите, что вы хотели бы увидеть…"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.submit"
-msgstr "Отправить промпт"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.submitFailed"
-msgstr "Не удалось отправить промпт. Повторите."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.submitted"
-msgstr "Промпт отправлен — спасибо!"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.submitting"
-msgstr "Отправка…"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.title"
-msgstr "Отправить промпт"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/UsageSeverityBadge/UsageSeverityBadge.tsx
@@ -12043,41 +11517,6 @@ msgid "settings.account.emailLabel"
 msgstr "Email"
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/components/LeaderboardSection/LeaderboardSection.tsx
-msgid "settings.account.leaderboard.leaveCancel"
-msgstr "Отмена"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/components/LeaderboardSection/LeaderboardSection.tsx
-msgid "settings.account.leaderboard.leaveConfirm"
-msgstr "Выйти и удалить"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/components/LeaderboardSection/LeaderboardSection.tsx
-msgid "settings.account.leaderboard.leaveDescription"
-msgstr "Всё опубликованное удаляется, а не скрывается. Вы можете вернуться позже, и данные соберутся заново из расшифровок, оставшихся на этой машине — потеряется только прошлое место в рейтинге."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/components/LeaderboardSection/LeaderboardSection.tsx
-msgid "settings.account.leaderboard.leaveTitle"
-msgstr "Выйти из рейтинга?"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/components/LeaderboardSection/LeaderboardSection.tsx
-msgid "settings.account.leaderboard.optInHint"
-msgstr "Сравните своё использование агентов с другими инженерами. Только количество токенов и названия моделей — без названий репозиториев, путей к файлам и промптов."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/components/LeaderboardSection/LeaderboardSection.tsx
-msgid "settings.account.leaderboard.publishingAs"
-msgstr "Публикуется как <0>{handle}</0>. Только количество токенов и названия моделей — без названий репозиториев, путей к файлам и промптов."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/components/LeaderboardSection/LeaderboardSection.tsx
-msgid "settings.account.leaderboard.title"
-msgstr "Публичный рейтинг"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/AccountSettings.tsx
 msgid "settings.account.loadError"
 msgstr "Не удалось загрузить данные пользователя"
@@ -13307,558 +12746,6 @@ msgid "settings.behavior.title"
 msgstr "Общие"
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.addTaxId"
-msgstr "Добавить налоговый номер"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/BillingOverview.tsx
-msgid "settings.billing.allPlansLink"
-msgstr "Все тарифы"
-
-#. js-lingui-explicit-id
-#. placeholder {0}: capitalizeFirst(paymentMethod.brand)
-#. placeholder {1}: paymentMethod.last4
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.cardEndingIn"
-msgstr "{0}, оканчивается на {1}"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.detailsTitle"
-msgstr "Платёжные данные"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.editDetails"
-msgstr "Изменить"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.editPaymentMethod"
-msgstr "Изменить"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.editTaxId"
-msgstr "Изменить"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/RecentInvoices/RecentInvoices.tsx
-msgid "settings.billing.invoicePayNow"
-msgstr "Оплатить"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/RecentInvoices/RecentInvoices.tsx
-msgid "settings.billing.invoicesTitle"
-msgstr "Недавние счета"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/RecentInvoices/RecentInvoices.tsx
-msgid "settings.billing.invoiceUncollectible"
-msgstr "Безнадёжный"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/RecentInvoices/RecentInvoices.tsx
-msgid "settings.billing.invoiceUnpaid"
-msgstr "Не оплачен"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/RecentInvoices/RecentInvoices.tsx
-msgid "settings.billing.invoiceView"
-msgstr "Просмотреть"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.linkByStripe"
-msgstr "Link от Stripe"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.noNameOnFile"
-msgstr "Имя не указано"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.noPaymentMethodOnFile"
-msgstr "Способ оплаты не указан"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.noTaxIdOnFile"
-msgstr "Налоговый номер не указан"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/PaymentFailedBanner/PaymentFailedBanner.tsx
-msgid "settings.billing.paymentFailed.label"
-msgstr "Платёж не прошёл."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/PaymentFailedBanner/PaymentFailedBanner.tsx
-msgid "settings.billing.paymentFailed.member"
-msgstr "Не удалось списать средства со способа оплаты этой организации. Попросите владельца обновить его."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/PaymentFailedBanner/PaymentFailedBanner.tsx
-msgid "settings.billing.paymentFailed.memberAmount"
-msgstr "Не удалось списать {amountDue} со способа оплаты этой организации. Попросите владельца обновить его."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/PaymentFailedBanner/PaymentFailedBanner.tsx
-msgid "settings.billing.paymentFailed.owner"
-msgstr "Не удалось списать средства с вашего способа оплаты. Обновите его, чтобы сохранить тариф."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/PaymentFailedBanner/PaymentFailedBanner.tsx
-msgid "settings.billing.paymentFailed.ownerAmount"
-msgstr "Не удалось списать {amountDue}. Обновите способ оплаты, чтобы сохранить тариф."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/PaymentFailedBanner/PaymentFailedBanner.tsx
-msgid "settings.billing.paymentFailed.payNow"
-msgstr "Оплатить"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.paymentMethodLabel"
-msgstr "Способ оплаты"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/CurrentPlanCard/CurrentPlanCard.tsx
-msgid "settings.billing.plan.cancelButton"
-msgstr "Отменить тариф"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/CurrentPlanCard/CurrentPlanCard.tsx
-msgid "settings.billing.plan.cancelingButton"
-msgstr "Отмена..."
-
-#. js-lingui-explicit-id
-#. placeholder {0}: format(new Date(cancelAt), "MMMM d, yyyy")
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/CurrentPlanCard/CurrentPlanCard.tsx
-msgid "settings.billing.plan.cancelsOn"
-msgstr "Отменяется {0} — в конце оплаченного периода переход на бесплатный тариф."
-
-#. js-lingui-explicit-id
-#. placeholder {0}: i18n._(plan.name)
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/CurrentPlanCard/CurrentPlanCard.tsx
-msgid "settings.billing.plan.currentPlanName"
-msgstr "Тариф {0}"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/CurrentPlanCard/CurrentPlanCard.tsx
-msgid "settings.billing.plan.managedByAdmin"
-msgstr "Управляется администратором вашей организации."
-
-#. js-lingui-explicit-id
-#. placeholder {0}: format(new Date(periodEnd), "MMMM d, yyyy")
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/CurrentPlanCard/CurrentPlanCard.tsx
-msgid "settings.billing.plan.renewsOn"
-msgstr "Продлевается {0}."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/CurrentPlanCard/CurrentPlanCard.tsx
-msgid "settings.billing.plan.restoreButton"
-msgstr "Восстановить тариф"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/CurrentPlanCard/CurrentPlanCard.tsx
-msgid "settings.billing.plan.restoringButton"
-msgstr "Восстановление..."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/constants.ts
-msgid "settings.billing.planEnterpriseDescription"
-msgstr "Для организаций с повышенными требованиями"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/constants.ts
-msgid "settings.billing.planEnterpriseName"
-msgstr "Enterprise"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/constants.ts
-msgid "settings.billing.planFreeDescription"
-msgstr "Для тех, кто начинает в одиночку"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/constants.ts
-msgid "settings.billing.planFreeName"
-msgstr "Бесплатно"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/constants.ts
-msgid "settings.billing.planProDescription"
-msgstr "Для команд, которым нужно больше"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/constants.ts
-msgid "settings.billing.planProName"
-msgstr "Pro"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/BillingOverview.tsx
-msgid "settings.billing.planRestoredToast"
-msgstr "Тариф восстановлен"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.backToBilling"
-msgstr "Оплата"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.badgeBeta"
-msgstr "Бета"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.badgeComingSoon"
-msgstr "Скоро"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.billedYearlyToggle"
-msgstr "Оплата за год"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardEnterpriseBilling"
-msgstr "Оплата за год"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardEnterpriseName"
-msgstr "Enterprise"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardEnterprisePrice"
-msgstr "Цена по договорённости"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardEnterpriseRequestTrial"
-msgstr "Запросить пробный период"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardFreeBilling"
-msgstr "Бесплатно для всех"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardFreeCurrentPlan"
-msgstr "Текущий тариф"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardFreeName"
-msgstr "Бесплатно"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardFreePrice"
-msgstr "$0"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardFreePriceNote"
-msgstr "за пользователя в месяц"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardProBillingMonthly"
-msgstr "Оплата помесячно"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardProBillingYearly"
-msgstr "Оплата за год"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardProName"
-msgstr "Pro"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardProPriceMonthly"
-msgstr "$20"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardProPriceNote"
-msgstr "за пользователя в месяц"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardProPriceYearly"
-msgstr "$15"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardProUpgrade"
-msgstr "Перейти"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.changeToAnnual"
-msgstr "Перейти на годовую"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.changeToMonthly"
-msgstr "Перейти на месячную"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.changingAction"
-msgstr "Смена..."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.currentPlanAction"
-msgstr "Текущий тариф"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.downgradeToFree"
-msgstr "Перейти на бесплатный"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.downgradingAction"
-msgstr "Переход..."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.includedInEnterprise"
-msgstr "Входит в Enterprise"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.notIncluded"
-msgstr "Не входит"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.planRestoredToast"
-msgstr "Тариф восстановлен"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.restoreAction"
-msgstr "Восстановить тариф"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.restoringAction"
-msgstr "Восстановление..."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowAuditLog"
-msgstr "Журнал аудита"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowAutomations"
-msgstr "Автоматизации"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowCustomContracts"
-msgstr "Индивидуальные договоры"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowDesktopApp"
-msgstr "Десктопное приложение"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowGithubIntegration"
-msgstr "Интеграция с GitHub"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowIpRestrictions"
-msgstr "Ограничения по IP"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowLinearIntegration"
-msgstr "Интеграция с Linear"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowLocalWorkspaces"
-msgstr "Локальные рабочие области"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowMobileApp"
-msgstr "Мобильное приложение"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowPrioritySupport"
-msgstr "Приоритетная поддержка"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowProjects"
-msgstr "Проекты"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowRemoteAccess"
-msgstr "Удалённый доступ"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowScimProvisioning"
-msgstr "Провижининг SCIM"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowSlackIntegration"
-msgstr "Интеграция со Slack"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowSsoSaml"
-msgstr "SSO/SAML"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowTeamCollaboration"
-msgstr "Совместная работа команды"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowTeamMembers"
-msgstr "Участники команды"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowUptimeSla"
-msgstr "SLA по доступности"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowWorkspaces"
-msgstr "Рабочие области"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.sectionFeatures"
-msgstr "Возможности"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.sectionSecurity"
-msgstr "Безопасность"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.sectionSupport"
-msgstr "Поддержка"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.sectionUsage"
-msgstr "Использование"
-
-#. js-lingui-explicit-id
-#. placeholder {0}: cancelAt ? format(new Date(cancelAt), "MMMM d, yyyy") : ""
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.startsOn"
-msgstr "Начинается {0}"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.subtitle"
-msgstr "У вас <0>тариф {currentPlanLabel}</0>. Если есть вопросы или нужна помощь с тарифом, <1>напишите нам<2/></1>."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.tierEnterprise"
-msgstr "Enterprise"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.tierFree"
-msgstr "Бесплатно"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.tierPro"
-msgstr "Pro"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.title"
-msgstr "Тарифы"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.valueOne"
-msgstr "1"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.valueUnlimited"
-msgstr "Без ограничений"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/BillingOverview.tsx
-msgid "settings.billing.planSectionTitle"
-msgstr "Тариф"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.portalOpenFailedToast"
-msgstr "Не удалось открыть портал оплаты"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/BillingOverview.tsx
-msgid "settings.billing.subtitle"
-msgstr "По вопросам оплаты <0>напишите нам</0>."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.taxIdLabel"
-msgstr "Налоговый номер"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/BillingOverview.tsx
-msgid "settings.billing.title"
-msgstr "Оплата"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/UpgradeCard/UpgradeCard.tsx
-msgid "settings.billing.upgrade.hint"
-msgstr "${monthly} за пользователя в месяц. Облачные рабочие области, мобильное приложение, приоритетная поддержка."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/UpgradeCard/UpgradeCard.tsx
-msgid "settings.billing.upgrade.redirectingButton"
-msgstr "Перенаправление..."
-
-#. js-lingui-explicit-id
-#. placeholder {0}: i18n._(plan.name)
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/UpgradeCard/UpgradeCard.tsx
-msgid "settings.billing.upgrade.title"
-msgstr "Перейти на {0}"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/UpgradeCard/UpgradeCard.tsx
-msgid "settings.billing.upgrade.upgradeButton"
-msgstr "Перейти"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/utils/branch-prefix/branch-prefix.ts
 msgid "settings.branchPrefix.modeAuthor"
 msgstr "Имя автора Git"
@@ -13999,11 +12886,6 @@ msgstr "Ключи API"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/components/SettingsSidebar/GeneralSettings.tsx
 msgid "settings.components.generalSettings.appearance"
 msgstr "Внешний вид"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/components/SettingsSidebar/GeneralSettings.tsx
-msgid "settings.components.generalSettings.billing"
-msgstr "Оплата"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/components/SettingsSidebar/GeneralSettings.tsx
@@ -18153,26 +17035,6 @@ msgstr "Использование токенов"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageHistorySection/UsageHistorySection.tsx
 msgid "settings.usage.history.tokenKindsNote"
 msgstr "токены ввода, кеша и вывода"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/LeaderboardPrompt/LeaderboardPrompt.tsx
-msgid "settings.usage.leaderboardPrompt.body"
-msgstr "Публиковать количество токенов и названия моделей в публичном рейтинге. Без названий репозиториев, путей к файлам и промптов. Выйти можно в любой момент."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/LeaderboardPrompt/LeaderboardPrompt.tsx
-msgid "settings.usage.leaderboardPrompt.dismiss"
-msgstr "Закрыть"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/LeaderboardPrompt/LeaderboardPrompt.tsx
-msgid "settings.usage.leaderboardPrompt.seeMyRank"
-msgstr "Посмотреть моё место"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/LeaderboardPrompt/LeaderboardPrompt.tsx
-msgid "settings.usage.leaderboardPrompt.title"
-msgstr "Сравните это с остальными"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageHistorySection/components/UsageMetricTiles/UsageMetricTiles.tsx
@@ -22521,62 +21383,6 @@ msgid "workspace.missingWorktree.title"
 msgstr "Worktree отсутствует"
 
 #. js-lingui-explicit-id
-#. placeholder {0}: formatDistanceToNowStrict(binding.lastEventAt, { addSuffix: true, })
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/components/PageWatcherMenu/PageWatcherMenu.tsx
-msgid "workspace.pagePane.agentActiveSinceWatch"
-msgstr "активен {0}"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/components/PageWatcherMenu/PageWatcherMenu.tsx
-msgid "workspace.pagePane.noAgentsRunningWatch"
-msgstr "Здесь нет запущенных агентов"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/components/PageWatcherMenu/PageWatcherMenu.tsx
-msgid "workspace.pagePane.notWatchingLabel"
-msgstr "Эту страницу никто не отслеживает"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/PagePaneHeaderExtras.tsx
-msgid "workspace.pagePane.sharePageAria"
-msgstr "Поделиться страницей"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/PagePaneHeaderExtras.tsx
-msgid "workspace.pagePane.sharePageTitle"
-msgstr "Поделиться страницей"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/components/PageWatcherMenu/PageWatcherMenu.tsx
-msgid "workspace.pagePane.stopWatchFailedToast"
-msgstr "Не удалось прекратить отслеживание"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/components/PageWatcherMenu/PageWatcherMenu.tsx
-msgid "workspace.pagePane.stopWatching"
-msgstr "Прекратить отслеживание"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/utils/pagePaneLabel/pagePaneLabel.ts
-msgid "workspace.pagePane.untitledPage"
-msgstr "Страница без названия"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/components/PageWatcherMenu/PageWatcherMenu.tsx
-msgid "workspace.pagePane.watcherAria"
-msgstr "Выберите, какой агент отслеживает комментарии на этой странице"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/components/PageWatcherMenu/PageWatcherMenu.tsx
-msgid "workspace.pagePane.watchFailedToast"
-msgstr "Не удалось начать отслеживание этой страницы"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/components/PageWatcherMenu/PageWatcherMenu.tsx
-msgid "workspace.pagePane.watchingLabel"
-msgstr "Комментарии отправляются этому агенту"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/useDefaultPaneActions/useDefaultPaneActions.tsx
 msgid "workspace.paneActions.splitPane"
 msgstr "Разделённая панель"
@@ -22665,11 +21471,6 @@ msgstr "Закрыть diff"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/usePaneRegistry.tsx
 msgid "workspace.paneRegistry.closeFile"
 msgstr "Закрыть файл"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/usePaneRegistry.tsx
-msgid "workspace.paneRegistry.closePage"
-msgstr "Закрыть страницу"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/usePaneRegistry.tsx
@@ -23167,56 +21968,6 @@ msgstr "Остановить команду запуска рабочей обл
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/components/WorkspaceSidebar/WorkspaceSidebar.tsx
 msgid "workspace.sidebar.filesTab"
 msgstr "Файлы"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningFailedBody"
-msgstr "Создание не удалось, песочница снесена. Ничего не работает, и эту рабочую область нельзя открыть — создайте новую, чтобы попробовать снова."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningFailedTitle"
-msgstr "Не удалось запустить облачную рабочую область"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningFailedUntitled"
-msgstr "Рабочая область без названия"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningRemoveWorkspace"
-msgstr "Удалить рабочую область"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningRemoving"
-msgstr "Удаление…"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningStepConnect"
-msgstr "Подключение к рабочей области"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningStepSandbox"
-msgstr "Создание песочницы"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningStuckBody"
-msgstr "Это занимает больше времени, чем обычно. Возможно, песочница ещё скачивает образ — процесс идёт, открыто это окно или нет."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningTitle"
-msgstr "Запуск облачной рабочей области"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningUntitled"
-msgstr "Рабочая область без названия"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/WorkspaceCreateErrorState/WorkspaceCreateErrorState.tsx
@@ -23870,17 +22621,6 @@ msgstr "Терминал удалён"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/TerminalPane/components/TerminalPaneHeaderExtras/components/TerminalConnectionIndicator/TerminalConnectionIndicator.tsx
 msgid "workspace.terminalPane.viewLog"
 msgstr "Смотреть лог"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/TerminalPane/components/TerminalPaneHeaderExtras/components/TerminalPageWatchChip/TerminalPageWatchChip.tsx
-msgid "workspace.terminalPane.watchingAria"
-msgstr "Страницы, за комментариями на которых следит этот агент"
-
-#. js-lingui-explicit-id
-#. placeholder {0}: mine.length
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/TerminalPane/components/TerminalPaneHeaderExtras/components/TerminalPageWatchChip/TerminalPageWatchChip.tsx
-msgid "workspace.terminalPane.watchingPageCount"
-msgstr "{0, plural, one {Следит за комментариями на # странице} few {Следит за комментариями на # страницах} many {Следит за комментариями на # страницах} other {Следит за комментариями на # страницах}}"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/TerminalPane/components/TerminalSessionDropdown/TerminalSessionDropdown.tsx

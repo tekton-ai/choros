@@ -31,10 +31,11 @@ const root = repoRoot();
 
 // Ports the dev:desktop stack actually binds, read from .env so this stays
 // accurate if the base moves. Names → default (base-relative) fallbacks.
-// ONLY ports each dev:desktop stack binds *exclusively* and that hard-fail on
-// conflict.
+// ONLY ports each dev:desktop stack binds *exclusively* and that hard-fail
+// on conflict. API_PORT used to guard the (now-retired) apps/api Next.js
+// server; scripts/auth-dev-server.ts binds the same port when running, and
+// that's the intended local API host — no conflict to detect.
 const PORT_VARS: Record<string, number> = {
-	API_PORT: 3961,
 	DESKTOP_VITE_PORT: 3965,
 	DESKTOP_NOTIFICATIONS_PORT: 3966,
 };

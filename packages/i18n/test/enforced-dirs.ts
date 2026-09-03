@@ -9,7 +9,6 @@ export const ENFORCED_DIRS: readonly string[] = [
 	// a dedicated i18n pass. Re-add once that lands.
 	"apps/desktop/src/renderer/routes/_authenticated/_dashboard/components",
 	"apps/desktop/src/renderer/routes/_authenticated/_dashboard/new-workspace",
-	"apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages",
 	"apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins",
 	"apps/desktop/src/renderer/routes/_authenticated/_dashboard/project",
 	"apps/desktop/src/renderer/routes/_authenticated/_dashboard/pull-requests",
@@ -23,7 +22,6 @@ export const ENFORCED_DIRS: readonly string[] = [
 	"apps/desktop/src/renderer/routes/_authenticated/settings/api-keys",
 	"apps/desktop/src/renderer/routes/_authenticated/settings/appearance",
 	"apps/desktop/src/renderer/routes/_authenticated/settings/behavior",
-	"apps/desktop/src/renderer/routes/_authenticated/settings/billing",
 	"apps/desktop/src/renderer/routes/_authenticated/settings/browser",
 	"apps/desktop/src/renderer/routes/_authenticated/settings/components",
 	"apps/desktop/src/renderer/routes/_authenticated/settings/experimental",
@@ -54,11 +52,6 @@ export const ENFORCED_DIRS: readonly string[] = [
 	"apps/desktop/src/renderer/react-query",
 	"apps/desktop/src/renderer/routes/create-organization",
 	"apps/desktop/src/renderer/routes/sign-in",
-	// batch 5: the shared composer package. `packages/ui/src` is converted too
-	// but stays out: its `open-in-chat` provider logos carry brand names
-	// ("GitHub", "OpenAI", …) as SVG <title> text, which the glossary keeps
-	// untranslated and this scan cannot tell apart from prose.
-	"packages/chat-ui/src",
 	// batch 5: marketing routes that are fully converted. The component
 	// directories stay out — their mockups deliberately render fake CLI output
 	// and brand names, which the scanner cannot tell from real copy.

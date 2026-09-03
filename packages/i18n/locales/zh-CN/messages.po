@@ -215,111 +215,6 @@ msgid "auth.signIn.welcomeTitle"
 msgstr "欢迎使用Choros"
 
 #. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ComposerBody/ComposerBody.tsx
-msgid "chatUi.composer.dictate"
-msgstr "语音输入"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ComposerBody/ComposerBody.tsx
-msgid "chatUi.composer.discardRecording"
-msgstr "放弃录音"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ComposerBody/ComposerBody.tsx
-msgid "chatUi.composer.dropToAttach"
-msgstr "拖放以添加附件"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ComposerBody/ComposerBody.tsx
-msgid "chatUi.composer.retryDictation"
-msgstr "重试语音输入"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ComposerBody/ComposerBody.tsx
-msgid "chatUi.composer.sendMessage"
-msgstr "发送消息"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ComposerBody/ComposerBody.tsx
-msgid "chatUi.composer.stopDictation"
-msgstr "停止语音输入"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ComposerBody/ComposerBody.tsx
-msgid "chatUi.composer.stopResponse"
-msgstr "停止回复"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/ComposerDropZone/ComposerDropZone.tsx
-msgid "chatUi.composerDropZone.label"
-msgstr "拖放文件以添加附件"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ContextButton/ContextButton.tsx
-msgid "chatUi.contextButton.label"
-msgstr "添加文件、应用等"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ContextButton/ContextButton.tsx
-msgid "chatUi.contextButton.title"
-msgstr "添加文件、应用等（@）"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/hooks/useDictation/useDictation.ts
-msgid "chatUi.dictation.micBusy"
-msgstr "请关闭其他正在使用麦克风的应用"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/hooks/useDictation/useDictation.ts
-msgid "chatUi.dictation.micMissing"
-msgstr "请连接麦克风以使用语音输入"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/hooks/useDictation/useDictation.ts
-msgid "chatUi.dictation.micPermission"
-msgstr "请允许麦克风访问以使用语音输入"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/hooks/useDictation/useDictation.ts
-msgid "chatUi.dictation.network"
-msgstr "请检查网络连接后重试"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/hooks/useDictation/useDictation.ts
-msgid "chatUi.dictation.startFailed"
-msgstr "无法开始语音输入"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/hooks/useDictation/useDictation.ts
-msgid "chatUi.dictation.transcribeFailed"
-msgstr "无法转写音频"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/hooks/useDictation/useDictation.ts
-msgid "chatUi.dictation.unsupported"
-msgstr "此设备不支持语音输入"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/MentionMenu/MentionMenu.tsx
-msgid "chatUi.mentionMenu.loading"
-msgstr "正在加载…"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/PromptInput.tsx
-msgid "chatUi.promptInput.placeholder"
-msgstr "做任何事"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/AttachmentPills/components/RemoveButton/RemoveButton.tsx
-msgid "chatUi.removeButton.label"
-msgstr "移除附件"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/ScrollToBottomButton/ScrollToBottomButton.tsx
-msgid "chatUi.scrollToBottom.label"
-msgstr "滚动到底部"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/clickPolicy/actionLabel.ts
 msgid "clickPolicy.action.none"
 msgstr "不执行任何操作"
@@ -767,11 +662,6 @@ msgstr "行为"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/commandPalette/modules/settings/commands.ts
-msgid "commandPalette.settingsTab.billing"
-msgstr "账单"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/commandPalette/modules/settings/commands.ts
 msgid "commandPalette.settingsTab.experimental"
 msgstr "实验功能"
 
@@ -1127,26 +1017,6 @@ msgid "components.emojiSuggestionList.noEmojiFound"
 msgstr "未找到表情"
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/FeaturePreview.tsx
-msgid "components.featurePreview.comingSoon"
-msgstr "（即将推出）"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/FeaturePreview.tsx
-msgid "components.featurePreview.proBadge"
-msgstr "PRO"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeatureSidebar/FeatureSidebar.tsx
-msgid "components.featureSidebar.comingSoon"
-msgstr "（即将推出）"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeatureSidebar/FeatureSidebar.tsx
-msgid "components.featureSidebar.title"
-msgstr "Pro功能"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/FileEditPane/FileEditPane.tsx
 msgid "components.fileEditPane.frontMatterHint"
 msgstr "已隐藏front matter，切换到Markdown可编辑"
@@ -1374,51 +1244,6 @@ msgid "components.issueLinkCommand.showClosed"
 msgstr "显示已关闭"
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.cancel"
-msgstr "取消"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.description"
-msgstr "会公开你的token数量和模型名称，绝不会公开仓库名、文件路径或提示词。你可以随时退出，退出会删除你发布过的所有内容。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.handleHint"
-msgstr "会与你的名字一起公开显示。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.handleLabel"
-msgstr "昵称"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.handlePlaceholder"
-msgstr "给榜单上的自己取个名字"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.join"
-msgstr "加入"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.joining"
-msgstr "正在加入…"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.readingUsage"
-msgstr "正在读取本地用量…"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.title"
-msgstr "加入排行榜"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/NewWorkspaceModal/components/PromptGroup/components/LinkedGitHubIssuePill/LinkedGitHubIssuePill.tsx
 msgid "components.linkedGithubIssuePill.githubSource"
 msgstr "GitHub"
@@ -1477,21 +1302,6 @@ msgstr "移除关联的PR"
 #: ../../apps/desktop/src/renderer/components/MarkdownEditor/MarkdownEditor.tsx
 msgid "components.markdownEditor.placeholder"
 msgstr "添加描述..."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/MobileAppDemo/MobileAppDemo.tsx
-msgid "components.mobileAppDemo.agentName"
-msgstr "Choros智能体"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/MobileAppDemo/MobileAppDemo.tsx
-msgid "components.mobileAppDemo.messagePlaceholder"
-msgstr "消息..."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/MobileAppDemo/MobileAppDemo.tsx
-msgid "components.mobileAppDemo.online"
-msgstr "● 在线"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/NewWorkspaceModal/NewWorkspaceModal.tsx
@@ -1625,11 +1435,6 @@ msgid "components.openInExternalDropdown.vscode"
 msgstr "VS Code"
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/Paywall.tsx
-msgid "components.paywall.cancel"
-msgstr "取消"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/constants.ts
 msgid "components.paywall.mobileApp.description"
 msgstr "随时随地监控工作区、管理任务，在任何地方继续对话。"
@@ -1678,11 +1483,6 @@ msgstr "邀请团队加入共享工作区。查看实时更新、同步配置，
 #: ../../apps/desktop/src/renderer/components/Paywall/constants.ts
 msgid "components.paywall.teamCollaboration.title"
 msgstr "团队协作"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/Paywall.tsx
-msgid "components.paywall.upgradeCta"
-msgstr "获取Choros Pro"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/UpdatesPill/components/PreUpdateConfirmPopover/PreUpdateConfirmPopover.tsx
@@ -2018,65 +1818,6 @@ msgid "components.promptGroupAdvancedOptions.title"
 msgstr "高级选项"
 
 #. js-lingui-explicit-id
-#. placeholder {0}: formatTokens(preview.tokens)
-#. placeholder {1}: preview.providers.join(" and ")
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/components/RankTeaser/RankTeaser.tsx
-msgid "components.rankTeaser.basedOn"
-msgstr "基于最近30天的{0}个token，统计{1}。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/components/RankTeaser/RankTeaser.tsx
-msgid "components.rankTeaser.firstOnBoard"
-msgstr "你会是最早上榜的人之一。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/components/RankTeaser/RankTeaser.tsx
-msgid "components.rankTeaser.noUsage"
-msgstr "这台机器上还没有发现Claude或Codex的用量。现在加入，用过智能体后你就会出现在榜单上。"
-
-#. js-lingui-explicit-id
-#. placeholder {0}: preview.rank
-#. placeholder {1}: preview.total
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/components/RankTeaser/RankTeaser.tsx
-msgid "components.rankTeaser.projectedRank"
-msgstr "你将位列<0>#{0}</0>，共{1}人。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/RemoteAccessDemo/RemoteAccessDemo.tsx
-msgid "components.remoteAccessDemo.latency"
-msgstr "延迟"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/RemoteAccessDemo/RemoteAccessDemo.tsx
-msgid "components.remoteAccessDemo.latencyValue"
-msgstr "42ms"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/RemoteAccessDemo/RemoteAccessDemo.tsx
-msgid "components.remoteAccessDemo.live"
-msgstr "实时"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/RemoteAccessDemo/RemoteAccessDemo.tsx
-msgid "components.remoteAccessDemo.remote"
-msgstr "远程"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/RemoteAccessDemo/RemoteAccessDemo.tsx
-msgid "components.remoteAccessDemo.thisMac"
-msgstr "这台Mac"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/RemoteAccessDemo/RemoteAccessDemo.tsx
-msgid "components.remoteAccessDemo.tunnelEstablished"
-msgstr "隧道已建立"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/RemoteAccessDemo/RemoteAccessDemo.tsx
-msgid "components.remoteAccessDemo.windowTitle"
-msgstr "远程访问"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/RemotePathPicker/RemotePathPicker.tsx
 msgid "components.remotePathPicker.cancel"
 msgstr "取消"
@@ -2131,21 +1872,6 @@ msgstr "复制链接地址"
 #: ../../apps/desktop/src/renderer/components/MarkdownRenderer/components/SelectionContextMenu/SelectionContextMenu.tsx
 msgid "components.selectionContextMenu.selectAll"
 msgstr "全选"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/SlackIntegrationDemo/SlackIntegrationDemo.tsx
-msgid "components.slackIntegrationDemo.channelName"
-msgstr "#engineering"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/SlackIntegrationDemo/SlackIntegrationDemo.tsx
-msgid "components.slackIntegrationDemo.live"
-msgstr "实时"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/SlackIntegrationDemo/SlackIntegrationDemo.tsx
-msgid "components.slackIntegrationDemo.taskSynced"
-msgstr "任务已同步到Linear"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/MarkdownEditor/components/SlashCommand/SlashCommand.tsx
@@ -2237,32 +1963,6 @@ msgstr "忽略"
 #: ../../apps/desktop/src/renderer/components/StarNagToast/StarNagToast.tsx
 msgid "components.starNagToast.title"
 msgstr "一切就绪！"
-
-#. js-lingui-explicit-id
-#. placeholder {0}: TASKS.length
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/TasksDemo/TasksDemo.tsx
-msgid "components.tasksDemo.taskCount"
-msgstr "{0, plural, one {#个任务} other {#个任务}}"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/TasksDemo/TasksDemo.tsx
-msgid "components.tasksDemo.windowTitle"
-msgstr "我的任务"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/TeamCollaborationDemo/TeamCollaborationDemo.tsx
-msgid "components.teamCollaborationDemo.onlineNow"
-msgstr "当前在线"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/TeamCollaborationDemo/TeamCollaborationDemo.tsx
-msgid "components.teamCollaborationDemo.recentActivity"
-msgstr "最近动态"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/TeamCollaborationDemo/TeamCollaborationDemo.tsx
-msgid "components.teamCollaborationDemo.windowTitle"
-msgstr "团队"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/ThemeSwatch/ThemeSwatch.tsx
@@ -4268,16 +3968,6 @@ msgstr "创建新工作区"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/DashboardNewWorkspaceForm/components/DevicePicker/DevicePicker.tsx
-msgid "dashboard.newWorkspaceModal.devicePicker.cloud"
-msgstr "云端"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/DashboardNewWorkspaceForm/components/DevicePicker/DevicePicker.tsx
-msgid "dashboard.newWorkspaceModal.devicePicker.cloudSelected"
-msgstr "云端"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/DashboardNewWorkspaceForm/components/DevicePicker/DevicePicker.tsx
 msgid "dashboard.newWorkspaceModal.devicePicker.localDevice"
 msgstr "本地设备"
 
@@ -4935,16 +4625,6 @@ msgstr "附件上传失败（{0}）：{1}"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/DashboardNewWorkspaceForm/PromptGroup/hooks/useSubmitWorkspace/useSubmitWorkspace.ts
-msgid "dashboard.newWorkspaceModal.submit.cloudCreateFailed"
-msgstr "无法创建云端工作区"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/DashboardNewWorkspaceForm/PromptGroup/hooks/useSubmitWorkspace/useSubmitWorkspace.ts
-msgid "dashboard.newWorkspaceModal.submit.cloudRequiresProject"
-msgstr "云端工作区需要一个项目"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/DashboardNewWorkspaceForm/PromptGroup/hooks/useSubmitWorkspace/useSubmitWorkspace.ts
 msgid "dashboard.newWorkspaceModal.submit.noActiveHost"
 msgstr "没有活动主机"
 
@@ -4997,132 +4677,6 @@ msgstr "只显示打开的条目"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/OpenClosedFilter/OpenClosedFilter.tsx
 msgid "dashboard.openClosedFilter.state"
 msgstr "状态"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/$slug/components/PageDetailView/PageDetailView.tsx
-msgid "dashboard.pages.detail.backToPages"
-msgstr "返回页面"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/PagesGrid.tsx
-msgid "dashboard.pages.grid.emptyDescription"
-msgstr "从智能体或CLI发布一个页面，它就会出现在这里。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/PagesGrid.tsx
-msgid "dashboard.pages.grid.emptyFilteredDescription"
-msgstr "换个搜索词或筛选条件试试。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/PagesGrid.tsx
-msgid "dashboard.pages.grid.emptyFilteredTitle"
-msgstr "没有匹配的页面"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/PagesGrid.tsx
-msgid "dashboard.pages.grid.emptyTitle"
-msgstr "还没有页面"
-
-#. js-lingui-explicit-id
-#. placeholder {0}: page.title
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.actionsFor"
-msgstr "{0}的操作"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.copyLink"
-msgstr "复制链接"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.copyLinkFailed"
-msgstr "无法复制链接"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.created"
-msgstr "创建于"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.delete"
-msgstr "删除"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.edited"
-msgstr "编辑于"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.linkCopied"
-msgstr "链接已复制"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.pin"
-msgstr "置顶"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.unpin"
-msgstr "取消置顶"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesView/PagesView.tsx
-msgid "dashboard.pages.pageDeleted"
-msgstr "页面已删除"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesView/PagesView.tsx
-msgid "dashboard.pages.searchPlaceholder"
-msgstr "搜索页面"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesView/PagesView.tsx
-msgid "dashboard.pages.tabs.all"
-msgstr "全部"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesView/PagesView.tsx
-msgid "dashboard.pages.tabs.mine"
-msgstr "仅我的"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesView/PagesView.tsx
-msgid "dashboard.pages.tabs.pinned"
-msgstr "已置顶"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesView/PagesView.tsx
-msgid "dashboard.pages.tabs.team"
-msgstr "团队"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesView/PagesView.tsx
-msgid "dashboard.pages.title"
-msgstr "页面"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/PageViewer/PageViewer.tsx
-msgid "dashboard.pageViewer.pageMissingDescription"
-msgstr "它可能已被删除，或属于另一个组织。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/PageViewer/PageViewer.tsx
-msgid "dashboard.pageViewer.pageMissingTitle"
-msgstr "这个页面已不存在"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/PageViewer/PageViewer.tsx
-msgid "dashboard.pageViewer.pageOpenFailedTitle"
-msgstr "无法打开这个页面"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/PageViewer/PageViewer.tsx
-msgid "dashboard.pageViewer.youFallback"
-msgstr "你"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/components/PluginsView/components/PluginCard/PluginCard.tsx
@@ -7203,26 +6757,6 @@ msgstr "打开项目"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarHeader/DashboardSidebarHeader.tsx
-msgid "dashboard.sidebar.header.pages"
-msgstr "页面"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarHeader/DashboardSidebarHeader.tsx
-msgid "dashboard.sidebar.header.pagesAriaLabel"
-msgstr "页面"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarHeader/DashboardSidebarHeader.tsx
-msgid "dashboard.sidebar.header.pagesRailAriaLabel"
-msgstr "页面"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarHeader/DashboardSidebarHeader.tsx
-msgid "dashboard.sidebar.header.pagesTooltip"
-msgstr "页面"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarHeader/DashboardSidebarHeader.tsx
 msgid "dashboard.sidebar.header.plugins"
 msgstr "插件"
 
@@ -7569,11 +7103,6 @@ msgstr "需要修改"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarWorkspaceItem/components/DashboardSidebarWorkspaceHoverCardContent/components/ReviewStatus/ReviewStatus.tsx
 msgid "dashboard.sidebar.reviewStatus.reviewPending"
 msgstr "待审查"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarCloudSection/DashboardSidebarCloudSection.tsx
-msgid "dashboard.sidebar.sectionCloud"
-msgstr "云端"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarSection/components/DashboardSidebarSectionContextMenu/components/SectionActionsMenuItems/SectionActionsMenuItems.tsx
@@ -9218,11 +8747,6 @@ msgid "dashboard.topBar.helpMenu.reportIssue"
 msgstr "报告问题"
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/HelpSubMenu/HelpSubMenu.tsx
-msgid "dashboard.topBar.helpMenu.submitPrompt"
-msgstr "提交提示词"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/TopBar.tsx
 msgid "dashboard.topBar.offline"
 msgstr "离线"
@@ -9574,56 +9098,6 @@ msgstr "停止"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/WorkspaceRunButton/WorkspaceRunButton.tsx
 msgid "dashboard.topBar.runButton.stopAriaLabel"
 msgstr "停止工作区运行命令"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.description"
-msgstr "用提示词让编码智能体实现你想在Choros中看到的功能。如果我们喜欢你的提示词，就会运行它并合并结果。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.nameLabel"
-msgstr "你的名字 <0>（若我们采用你的提示词，会在更新日志中署名致谢）</0>"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.namePlaceholder"
-msgstr "张三"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.promptLabel"
-msgstr "提示词"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.promptPlaceholder"
-msgstr "描述你希望实现的功能…"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.submit"
-msgstr "提交提示词"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.submitFailed"
-msgstr "无法提交提示词。请重试。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.submitted"
-msgstr "提示词已提交，谢谢！"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.submitting"
-msgstr "正在提交…"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.title"
-msgstr "提交提示词"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/UsageSeverityBadge/UsageSeverityBadge.tsx
@@ -12043,41 +11517,6 @@ msgid "settings.account.emailLabel"
 msgstr "邮箱"
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/components/LeaderboardSection/LeaderboardSection.tsx
-msgid "settings.account.leaderboard.leaveCancel"
-msgstr "取消"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/components/LeaderboardSection/LeaderboardSection.tsx
-msgid "settings.account.leaderboard.leaveConfirm"
-msgstr "退出并删除"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/components/LeaderboardSection/LeaderboardSection.tsx
-msgid "settings.account.leaderboard.leaveDescription"
-msgstr "你发布过的所有内容都会被删除，而不是隐藏。你之后可以重新加入，届时会根据此机器上仍保留的记录重新生成，只有过往排名会丢失。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/components/LeaderboardSection/LeaderboardSection.tsx
-msgid "settings.account.leaderboard.leaveTitle"
-msgstr "退出排行榜？"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/components/LeaderboardSection/LeaderboardSection.tsx
-msgid "settings.account.leaderboard.optInHint"
-msgstr "把你的智能体用量与其他工程师排名比较。仅包含token数量和模型名称，不含仓库名、文件路径或提示词。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/components/LeaderboardSection/LeaderboardSection.tsx
-msgid "settings.account.leaderboard.publishingAs"
-msgstr "以<0>{handle}</0>的身份发布。仅包含token数量和模型名称，不含仓库名、文件路径或提示词。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/components/LeaderboardSection/LeaderboardSection.tsx
-msgid "settings.account.leaderboard.title"
-msgstr "公开排行榜"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/AccountSettings.tsx
 msgid "settings.account.loadError"
 msgstr "无法加载用户信息"
@@ -13307,558 +12746,6 @@ msgid "settings.behavior.title"
 msgstr "通用"
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.addTaxId"
-msgstr "添加税号"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/BillingOverview.tsx
-msgid "settings.billing.allPlansLink"
-msgstr "全部方案"
-
-#. js-lingui-explicit-id
-#. placeholder {0}: capitalizeFirst(paymentMethod.brand)
-#. placeholder {1}: paymentMethod.last4
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.cardEndingIn"
-msgstr "{0}，尾号{1}"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.detailsTitle"
-msgstr "账单信息"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.editDetails"
-msgstr "编辑"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.editPaymentMethod"
-msgstr "编辑"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.editTaxId"
-msgstr "编辑"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/RecentInvoices/RecentInvoices.tsx
-msgid "settings.billing.invoicePayNow"
-msgstr "立即支付"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/RecentInvoices/RecentInvoices.tsx
-msgid "settings.billing.invoicesTitle"
-msgstr "最近的账单"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/RecentInvoices/RecentInvoices.tsx
-msgid "settings.billing.invoiceUncollectible"
-msgstr "无法收款"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/RecentInvoices/RecentInvoices.tsx
-msgid "settings.billing.invoiceUnpaid"
-msgstr "未支付"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/RecentInvoices/RecentInvoices.tsx
-msgid "settings.billing.invoiceView"
-msgstr "查看"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.linkByStripe"
-msgstr "Link by Stripe"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.noNameOnFile"
-msgstr "未登记姓名"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.noPaymentMethodOnFile"
-msgstr "未登记支付方式"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.noTaxIdOnFile"
-msgstr "未登记税务标识"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/PaymentFailedBanner/PaymentFailedBanner.tsx
-msgid "settings.billing.paymentFailed.label"
-msgstr "支付失败。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/PaymentFailedBanner/PaymentFailedBanner.tsx
-msgid "settings.billing.paymentFailed.member"
-msgstr "我们无法从此组织的支付方式扣款。请让所有者更新它。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/PaymentFailedBanner/PaymentFailedBanner.tsx
-msgid "settings.billing.paymentFailed.memberAmount"
-msgstr "我们无法从此组织的支付方式扣取{amountDue}。请让所有者更新它。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/PaymentFailedBanner/PaymentFailedBanner.tsx
-msgid "settings.billing.paymentFailed.owner"
-msgstr "我们无法从你的支付方式扣款。请更新支付方式以保留此方案。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/PaymentFailedBanner/PaymentFailedBanner.tsx
-msgid "settings.billing.paymentFailed.ownerAmount"
-msgstr "我们无法扣取{amountDue}。请更新支付方式以保留此方案。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/PaymentFailedBanner/PaymentFailedBanner.tsx
-msgid "settings.billing.paymentFailed.payNow"
-msgstr "立即支付"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.paymentMethodLabel"
-msgstr "支付方式"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/CurrentPlanCard/CurrentPlanCard.tsx
-msgid "settings.billing.plan.cancelButton"
-msgstr "取消方案"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/CurrentPlanCard/CurrentPlanCard.tsx
-msgid "settings.billing.plan.cancelingButton"
-msgstr "正在取消..."
-
-#. js-lingui-explicit-id
-#. placeholder {0}: format(new Date(cancelAt), "MMMM d, yyyy")
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/CurrentPlanCard/CurrentPlanCard.tsx
-msgid "settings.billing.plan.cancelsOn"
-msgstr "将于{0}取消，在计费周期结束时降级为免费版。"
-
-#. js-lingui-explicit-id
-#. placeholder {0}: i18n._(plan.name)
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/CurrentPlanCard/CurrentPlanCard.tsx
-msgid "settings.billing.plan.currentPlanName"
-msgstr "{0}方案"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/CurrentPlanCard/CurrentPlanCard.tsx
-msgid "settings.billing.plan.managedByAdmin"
-msgstr "由你所在组织的管理员管理。"
-
-#. js-lingui-explicit-id
-#. placeholder {0}: format(new Date(periodEnd), "MMMM d, yyyy")
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/CurrentPlanCard/CurrentPlanCard.tsx
-msgid "settings.billing.plan.renewsOn"
-msgstr "将于{0}续订。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/CurrentPlanCard/CurrentPlanCard.tsx
-msgid "settings.billing.plan.restoreButton"
-msgstr "恢复方案"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/CurrentPlanCard/CurrentPlanCard.tsx
-msgid "settings.billing.plan.restoringButton"
-msgstr "正在恢复..."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/constants.ts
-msgid "settings.billing.planEnterpriseDescription"
-msgstr "面向有进阶需求的组织"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/constants.ts
-msgid "settings.billing.planEnterpriseName"
-msgstr "企业版"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/constants.ts
-msgid "settings.billing.planFreeDescription"
-msgstr "面向刚开始使用的个人"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/constants.ts
-msgid "settings.billing.planFreeName"
-msgstr "免费版"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/constants.ts
-msgid "settings.billing.planProDescription"
-msgstr "面向需要更强能力的团队"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/constants.ts
-msgid "settings.billing.planProName"
-msgstr "专业版"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/BillingOverview.tsx
-msgid "settings.billing.planRestoredToast"
-msgstr "方案已恢复"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.backToBilling"
-msgstr "账单"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.badgeBeta"
-msgstr "Beta"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.badgeComingSoon"
-msgstr "即将推出"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.billedYearlyToggle"
-msgstr "按年计费"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardEnterpriseBilling"
-msgstr "按年计费"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardEnterpriseName"
-msgstr "企业版"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardEnterprisePrice"
-msgstr "定制定价"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardEnterpriseRequestTrial"
-msgstr "申请试用"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardFreeBilling"
-msgstr "对所有人免费"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardFreeCurrentPlan"
-msgstr "当前方案"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardFreeName"
-msgstr "免费版"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardFreePrice"
-msgstr "$0"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardFreePriceNote"
-msgstr "每用户/月"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardProBillingMonthly"
-msgstr "按月计费"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardProBillingYearly"
-msgstr "按年计费"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardProName"
-msgstr "专业版"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardProPriceMonthly"
-msgstr "$20"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardProPriceNote"
-msgstr "每用户/月"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardProPriceYearly"
-msgstr "$15"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardProUpgrade"
-msgstr "升级"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.changeToAnnual"
-msgstr "改为按年"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.changeToMonthly"
-msgstr "改为按月"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.changingAction"
-msgstr "正在更改..."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.currentPlanAction"
-msgstr "当前方案"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.downgradeToFree"
-msgstr "降级为免费版"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.downgradingAction"
-msgstr "正在降级..."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.includedInEnterprise"
-msgstr "企业版包含"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.notIncluded"
-msgstr "不包含"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.planRestoredToast"
-msgstr "方案已恢复"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.restoreAction"
-msgstr "恢复方案"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.restoringAction"
-msgstr "正在恢复..."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowAuditLog"
-msgstr "审计日志"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowAutomations"
-msgstr "自动化"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowCustomContracts"
-msgstr "定制合同"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowDesktopApp"
-msgstr "桌面应用"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowGithubIntegration"
-msgstr "GitHub集成"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowIpRestrictions"
-msgstr "IP限制"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowLinearIntegration"
-msgstr "Linear集成"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowLocalWorkspaces"
-msgstr "本地工作区"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowMobileApp"
-msgstr "移动应用"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowPrioritySupport"
-msgstr "优先支持"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowProjects"
-msgstr "项目"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowRemoteAccess"
-msgstr "远程访问"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowScimProvisioning"
-msgstr "SCIM配置"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowSlackIntegration"
-msgstr "Slack集成"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowSsoSaml"
-msgstr "SSO/SAML"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowTeamCollaboration"
-msgstr "团队协作"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowTeamMembers"
-msgstr "团队成员"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowUptimeSla"
-msgstr "可用性SLA"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowWorkspaces"
-msgstr "工作区"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.sectionFeatures"
-msgstr "功能"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.sectionSecurity"
-msgstr "安全"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.sectionSupport"
-msgstr "支持"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.sectionUsage"
-msgstr "用量"
-
-#. js-lingui-explicit-id
-#. placeholder {0}: cancelAt ? format(new Date(cancelAt), "MMMM d, yyyy") : ""
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.startsOn"
-msgstr "{0}开始"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.subtitle"
-msgstr "你当前使用的是<0>{currentPlanLabel}方案</0>。如有任何疑问，或希望就方案获得进一步支持，请<1>联系我们<2/></1>。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.tierEnterprise"
-msgstr "企业版"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.tierFree"
-msgstr "免费版"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.tierPro"
-msgstr "专业版"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.title"
-msgstr "方案"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.valueOne"
-msgstr "1"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.valueUnlimited"
-msgstr "无限制"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/BillingOverview.tsx
-msgid "settings.billing.planSectionTitle"
-msgstr "方案"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.portalOpenFailedToast"
-msgstr "打开账单门户失败"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/BillingOverview.tsx
-msgid "settings.billing.subtitle"
-msgstr "如有账单相关问题，请<0>联系我们</0>。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.taxIdLabel"
-msgstr "税号"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/BillingOverview.tsx
-msgid "settings.billing.title"
-msgstr "账单"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/UpgradeCard/UpgradeCard.tsx
-msgid "settings.billing.upgrade.hint"
-msgstr "${monthly}每用户/月。包含云端工作区、移动端和优先支持。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/UpgradeCard/UpgradeCard.tsx
-msgid "settings.billing.upgrade.redirectingButton"
-msgstr "正在跳转..."
-
-#. js-lingui-explicit-id
-#. placeholder {0}: i18n._(plan.name)
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/UpgradeCard/UpgradeCard.tsx
-msgid "settings.billing.upgrade.title"
-msgstr "升级到{0}"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/UpgradeCard/UpgradeCard.tsx
-msgid "settings.billing.upgrade.upgradeButton"
-msgstr "升级"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/utils/branch-prefix/branch-prefix.ts
 msgid "settings.branchPrefix.modeAuthor"
 msgstr "Git作者名"
@@ -13999,11 +12886,6 @@ msgstr "API密钥"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/components/SettingsSidebar/GeneralSettings.tsx
 msgid "settings.components.generalSettings.appearance"
 msgstr "外观"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/components/SettingsSidebar/GeneralSettings.tsx
-msgid "settings.components.generalSettings.billing"
-msgstr "账单"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/components/SettingsSidebar/GeneralSettings.tsx
@@ -18153,26 +17035,6 @@ msgstr "Token用量"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageHistorySection/UsageHistorySection.tsx
 msgid "settings.usage.history.tokenKindsNote"
 msgstr "输入、缓存和输出token"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/LeaderboardPrompt/LeaderboardPrompt.tsx
-msgid "settings.usage.leaderboardPrompt.body"
-msgstr "将token数量和模型名称发布到公开排行榜。不包含仓库名、文件路径或提示词。随时可以退出。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/LeaderboardPrompt/LeaderboardPrompt.tsx
-msgid "settings.usage.leaderboardPrompt.dismiss"
-msgstr "忽略"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/LeaderboardPrompt/LeaderboardPrompt.tsx
-msgid "settings.usage.leaderboardPrompt.seeMyRank"
-msgstr "查看我的排名"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/LeaderboardPrompt/LeaderboardPrompt.tsx
-msgid "settings.usage.leaderboardPrompt.title"
-msgstr "和其他人比一比"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageHistorySection/components/UsageMetricTiles/UsageMetricTiles.tsx
@@ -22521,62 +21383,6 @@ msgid "workspace.missingWorktree.title"
 msgstr "worktree缺失"
 
 #. js-lingui-explicit-id
-#. placeholder {0}: formatDistanceToNowStrict(binding.lastEventAt, { addSuffix: true, })
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/components/PageWatcherMenu/PageWatcherMenu.tsx
-msgid "workspace.pagePane.agentActiveSinceWatch"
-msgstr "活跃{0}"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/components/PageWatcherMenu/PageWatcherMenu.tsx
-msgid "workspace.pagePane.noAgentsRunningWatch"
-msgstr "这里没有运行中的智能体"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/components/PageWatcherMenu/PageWatcherMenu.tsx
-msgid "workspace.pagePane.notWatchingLabel"
-msgstr "没有智能体在关注此页面"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/PagePaneHeaderExtras.tsx
-msgid "workspace.pagePane.sharePageAria"
-msgstr "分享页面"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/PagePaneHeaderExtras.tsx
-msgid "workspace.pagePane.sharePageTitle"
-msgstr "分享页面"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/components/PageWatcherMenu/PageWatcherMenu.tsx
-msgid "workspace.pagePane.stopWatchFailedToast"
-msgstr "无法停止关注"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/components/PageWatcherMenu/PageWatcherMenu.tsx
-msgid "workspace.pagePane.stopWatching"
-msgstr "停止关注"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/utils/pagePaneLabel/pagePaneLabel.ts
-msgid "workspace.pagePane.untitledPage"
-msgstr "未命名页面"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/components/PageWatcherMenu/PageWatcherMenu.tsx
-msgid "workspace.pagePane.watcherAria"
-msgstr "选择由哪个智能体关注此页面的评论"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/components/PageWatcherMenu/PageWatcherMenu.tsx
-msgid "workspace.pagePane.watchFailedToast"
-msgstr "无法关注此页面"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/components/PageWatcherMenu/PageWatcherMenu.tsx
-msgid "workspace.pagePane.watchingLabel"
-msgstr "评论将发送给此智能体"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/useDefaultPaneActions/useDefaultPaneActions.tsx
 msgid "workspace.paneActions.splitPane"
 msgstr "拆分窗格"
@@ -22665,11 +21471,6 @@ msgstr "关闭差异"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/usePaneRegistry.tsx
 msgid "workspace.paneRegistry.closeFile"
 msgstr "关闭文件"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/usePaneRegistry.tsx
-msgid "workspace.paneRegistry.closePage"
-msgstr "关闭页面"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/usePaneRegistry.tsx
@@ -23167,56 +21968,6 @@ msgstr "停止工作区运行命令"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/components/WorkspaceSidebar/WorkspaceSidebar.tsx
 msgid "workspace.sidebar.filesTab"
 msgstr "文件"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningFailedBody"
-msgstr "预配失败，沙箱已被销毁。当前没有任何进程在运行，此工作区也无法打开 — 请新建一个再试。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningFailedTitle"
-msgstr "无法启动云端工作区"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningFailedUntitled"
-msgstr "未命名工作区"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningRemoveWorkspace"
-msgstr "移除工作区"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningRemoving"
-msgstr "正在移除…"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningStepConnect"
-msgstr "正在连接到工作区"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningStepSandbox"
-msgstr "正在创建沙箱"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningStuckBody"
-msgstr "这比平时耗时更久。沙箱可能仍在拉取镜像 — 无论此窗口是否打开，它都会继续。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningTitle"
-msgstr "正在启动云端工作区"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningUntitled"
-msgstr "未命名工作区"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/WorkspaceCreateErrorState/WorkspaceCreateErrorState.tsx
@@ -23870,17 +22621,6 @@ msgstr "终端已移除"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/TerminalPane/components/TerminalPaneHeaderExtras/components/TerminalConnectionIndicator/TerminalConnectionIndicator.tsx
 msgid "workspace.terminalPane.viewLog"
 msgstr "查看日志"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/TerminalPane/components/TerminalPaneHeaderExtras/components/TerminalPageWatchChip/TerminalPageWatchChip.tsx
-msgid "workspace.terminalPane.watchingAria"
-msgstr "此智能体正在关注这些页面的评论"
-
-#. js-lingui-explicit-id
-#. placeholder {0}: mine.length
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/TerminalPane/components/TerminalPaneHeaderExtras/components/TerminalPageWatchChip/TerminalPageWatchChip.tsx
-msgid "workspace.terminalPane.watchingPageCount"
-msgstr "{0, plural, one {正在关注#个页面的评论} other {正在关注#个页面的评论}}"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/TerminalPane/components/TerminalSessionDropdown/TerminalSessionDropdown.tsx

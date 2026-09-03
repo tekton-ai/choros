@@ -8,14 +8,6 @@
 			"types": "./src/index.ts",
 			"default": "./src/index.ts"
 		},
-		"./page-schema": {
-			"types": "./src/router/page/schema.ts",
-			"default": "./src/router/page/schema.ts"
-		},
-		"./page-thumbnail": {
-			"types": "./src/router/page/thumbnail.ts",
-			"default": "./src/router/page/thumbnail.ts"
-		},
 		"./file-sweep": {
 			"types": "./src/lib/files/sweep.ts",
 			"default": "./src/lib/files/sweep.ts"
@@ -24,33 +16,9 @@
 			"types": "./src/lib/r2.ts",
 			"default": "./src/lib/r2.ts"
 		},
-		"./leaderboard-queries": {
-			"types": "./src/router/leaderboard/queries.ts",
-			"default": "./src/router/leaderboard/queries.ts"
-		},
-		"./leaderboard-schema": {
-			"types": "./src/router/leaderboard/schema.ts",
-			"default": "./src/router/leaderboard/schema.ts"
-		},
-		"./leaderboard-periods": {
-			"types": "./src/router/leaderboard/periods.ts",
-			"default": "./src/router/leaderboard/periods.ts"
-		},
-		"./leaderboard-tier": {
-			"types": "./src/router/leaderboard/tier.ts",
-			"default": "./src/router/leaderboard/tier.ts"
-		},
-		"./leaderboard-types": {
-			"types": "./src/router/leaderboard/types.ts",
-			"default": "./src/router/leaderboard/types.ts"
-		},
 		"./integrations/*": {
 			"types": "./src/lib/integrations/*/index.ts",
 			"default": "./src/lib/integrations/*/index.ts"
-		},
-		"./cloud-workspace-provision": {
-			"types": "./src/router/cloud-workspace/provision.ts",
-			"default": "./src/router/cloud-workspace/provision.ts"
 		},
 		"./automation-dispatch": {
 			"types": "./src/router/automation/dispatch.ts",
@@ -79,10 +47,8 @@
 		"@aws-sdk/client-s3": "3.899.0",
 		"@aws-sdk/s3-request-presigner": "3.899.0",
 		"@azure/msal-node": "5.5.0",
-		"@blaxel/core": "0.3.11",
 		"@choros/auth": "workspace:*",
 		"@choros/db": "workspace:*",
-		"@choros/email": "workspace:*",
 		"@choros/shared": "workspace:*",
 		"@googleapis/calendar": "16.0.0",
 		"@googleapis/gmail": "18.0.0",

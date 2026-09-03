@@ -1,1 +1,0 @@
-export { RankTeaser } from "./RankTeaser";

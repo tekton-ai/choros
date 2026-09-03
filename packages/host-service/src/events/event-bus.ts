@@ -247,15 +247,6 @@ export class EventBus {
 		return () => this.terminalLifecycleListeners.delete(listener);
 	}
 
-	broadcastPageWatchChanged(
-		message: Omit<
-			Extract<ServerMessage, { type: "page-watch:changed" }>,
-			"type"
-		>,
-	): void {
-		this.broadcast({ type: "page-watch:changed", ...message });
-	}
-
 	/**
 	 * Fan out workspace lifecycle changes (create/rename/delete) from the
 	 * host-owned workspaces table. Broadcast to all clients — list consumers

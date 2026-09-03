@@ -1,1 +1,0 @@
-export { LeaderboardSection } from "./LeaderboardSection";

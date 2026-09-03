@@ -1,1 +1,0 @@
-export { parseChorosPageUrl } from "./parseChorosPageUrl";

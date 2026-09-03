@@ -215,111 +215,6 @@ msgid "auth.signIn.welcomeTitle"
 msgstr "Ti diamo il benvenuto in Choros"
 
 #. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ComposerBody/ComposerBody.tsx
-msgid "chatUi.composer.dictate"
-msgstr "Detta"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ComposerBody/ComposerBody.tsx
-msgid "chatUi.composer.discardRecording"
-msgstr "Scarta la registrazione"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ComposerBody/ComposerBody.tsx
-msgid "chatUi.composer.dropToAttach"
-msgstr "Rilascia per allegare"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ComposerBody/ComposerBody.tsx
-msgid "chatUi.composer.retryDictation"
-msgstr "Riprova la dettatura"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ComposerBody/ComposerBody.tsx
-msgid "chatUi.composer.sendMessage"
-msgstr "Invia messaggio"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ComposerBody/ComposerBody.tsx
-msgid "chatUi.composer.stopDictation"
-msgstr "Interrompi la dettatura"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ComposerBody/ComposerBody.tsx
-msgid "chatUi.composer.stopResponse"
-msgstr "Interrompi la risposta"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/ComposerDropZone/ComposerDropZone.tsx
-msgid "chatUi.composerDropZone.label"
-msgstr "Rilascia i file per allegarli"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ContextButton/ContextButton.tsx
-msgid "chatUi.contextButton.label"
-msgstr "Aggiungi file, app e altro"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/ContextButton/ContextButton.tsx
-msgid "chatUi.contextButton.title"
-msgstr "Aggiungi file, app e altro (@)"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/hooks/useDictation/useDictation.ts
-msgid "chatUi.dictation.micBusy"
-msgstr "Chiudi le altre app che usano il microfono"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/hooks/useDictation/useDictation.ts
-msgid "chatUi.dictation.micMissing"
-msgstr "Collega un microfono per usare la dettatura"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/hooks/useDictation/useDictation.ts
-msgid "chatUi.dictation.micPermission"
-msgstr "Consenti l'accesso al microfono per usare la dettatura"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/hooks/useDictation/useDictation.ts
-msgid "chatUi.dictation.network"
-msgstr "Controlla la connessione e riprova"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/hooks/useDictation/useDictation.ts
-msgid "chatUi.dictation.startFailed"
-msgstr "Impossibile avviare la dettatura"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/hooks/useDictation/useDictation.ts
-msgid "chatUi.dictation.transcribeFailed"
-msgstr "Impossibile trascrivere l'audio"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/hooks/useDictation/useDictation.ts
-msgid "chatUi.dictation.unsupported"
-msgstr "La dettatura non è disponibile su questo dispositivo"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/MentionMenu/MentionMenu.tsx
-msgid "chatUi.mentionMenu.loading"
-msgstr "Caricamento…"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/PromptInput.tsx
-msgid "chatUi.promptInput.placeholder"
-msgstr "Fai qualsiasi cosa"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/PromptInput/components/AttachmentPills/components/RemoveButton/RemoveButton.tsx
-msgid "chatUi.removeButton.label"
-msgstr "Rimuovi allegato"
-
-#. js-lingui-explicit-id
-#: ../chat-ui/src/components/ScrollToBottomButton/ScrollToBottomButton.tsx
-msgid "chatUi.scrollToBottom.label"
-msgstr "Vai in fondo"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/clickPolicy/actionLabel.ts
 msgid "clickPolicy.action.none"
 msgstr "Non fare nulla"
@@ -767,11 +662,6 @@ msgstr "Comportamento"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/commandPalette/modules/settings/commands.ts
-msgid "commandPalette.settingsTab.billing"
-msgstr "Fatturazione"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/commandPalette/modules/settings/commands.ts
 msgid "commandPalette.settingsTab.experimental"
 msgstr "Sperimentale"
 
@@ -1127,26 +1017,6 @@ msgid "components.emojiSuggestionList.noEmojiFound"
 msgstr "Nessuna emoji trovata"
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/FeaturePreview.tsx
-msgid "components.featurePreview.comingSoon"
-msgstr "(In arrivo)"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/FeaturePreview.tsx
-msgid "components.featurePreview.proBadge"
-msgstr "PRO"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeatureSidebar/FeatureSidebar.tsx
-msgid "components.featureSidebar.comingSoon"
-msgstr "(In arrivo)"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeatureSidebar/FeatureSidebar.tsx
-msgid "components.featureSidebar.title"
-msgstr "Funzioni Pro"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/FileEditPane/FileEditPane.tsx
 msgid "components.fileEditPane.frontMatterHint"
 msgstr "Front matter nascosto — passa a Markdown per modificarlo"
@@ -1374,51 +1244,6 @@ msgid "components.issueLinkCommand.showClosed"
 msgstr "Mostra chiuse"
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.cancel"
-msgstr "Annulla"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.description"
-msgstr "Pubblica i tuoi conteggi di token e i nomi dei modelli, mai i nomi dei repository, i percorsi dei file o i prompt. Puoi uscire in qualsiasi momento, il che elimina tutto ciò che hai pubblicato."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.handleHint"
-msgstr "Mostrato pubblicamente accanto al tuo nome."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.handleLabel"
-msgstr "Handle"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.handlePlaceholder"
-msgstr "scegli un nome per la classifica"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.join"
-msgstr "Unisciti"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.joining"
-msgstr "Iscrizione…"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.readingUsage"
-msgstr "Lettura dell'utilizzo locale…"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/LeaderboardJoinDialog.tsx
-msgid "components.leaderboardJoinDialog.title"
-msgstr "Unisciti alla classifica"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/NewWorkspaceModal/components/PromptGroup/components/LinkedGitHubIssuePill/LinkedGitHubIssuePill.tsx
 msgid "components.linkedGithubIssuePill.githubSource"
 msgstr "GitHub"
@@ -1477,21 +1302,6 @@ msgstr "Rimuovi la PR collegata"
 #: ../../apps/desktop/src/renderer/components/MarkdownEditor/MarkdownEditor.tsx
 msgid "components.markdownEditor.placeholder"
 msgstr "Aggiungi una descrizione..."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/MobileAppDemo/MobileAppDemo.tsx
-msgid "components.mobileAppDemo.agentName"
-msgstr "Choros Agent"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/MobileAppDemo/MobileAppDemo.tsx
-msgid "components.mobileAppDemo.messagePlaceholder"
-msgstr "Messaggio..."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/MobileAppDemo/MobileAppDemo.tsx
-msgid "components.mobileAppDemo.online"
-msgstr "● Online"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/NewWorkspaceModal/NewWorkspaceModal.tsx
@@ -1625,11 +1435,6 @@ msgid "components.openInExternalDropdown.vscode"
 msgstr "VS Code"
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/Paywall.tsx
-msgid "components.paywall.cancel"
-msgstr "Annulla"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/Paywall/constants.ts
 msgid "components.paywall.mobileApp.description"
 msgstr "Monitora i workspace e gestisci i task in mobilità. Continua le conversazioni da ovunque."
@@ -1678,11 +1483,6 @@ msgstr "Invita il tuo team nei workspace condivisi. Guarda gli aggiornamenti in 
 #: ../../apps/desktop/src/renderer/components/Paywall/constants.ts
 msgid "components.paywall.teamCollaboration.title"
 msgstr "Collaborazione di team"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/Paywall.tsx
-msgid "components.paywall.upgradeCta"
-msgstr "Passa a Choros Pro"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/UpdatesPill/components/PreUpdateConfirmPopover/PreUpdateConfirmPopover.tsx
@@ -2018,65 +1818,6 @@ msgid "components.promptGroupAdvancedOptions.title"
 msgstr "Opzioni avanzate"
 
 #. js-lingui-explicit-id
-#. placeholder {0}: formatTokens(preview.tokens)
-#. placeholder {1}: preview.providers.join(" and ")
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/components/RankTeaser/RankTeaser.tsx
-msgid "components.rankTeaser.basedOn"
-msgstr "In base a {0} token negli ultimi 30 giorni, contando {1}."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/components/RankTeaser/RankTeaser.tsx
-msgid "components.rankTeaser.firstOnBoard"
-msgstr "Saresti tra i primi in classifica."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/components/RankTeaser/RankTeaser.tsx
-msgid "components.rankTeaser.noUsage"
-msgstr "Nessun utilizzo di Claude o Codex trovato su questa macchina. Unisciti ora e comparirai dopo aver usato un agente."
-
-#. js-lingui-explicit-id
-#. placeholder {0}: preview.rank
-#. placeholder {1}: preview.total
-#: ../../apps/desktop/src/renderer/components/LeaderboardJoinDialog/components/RankTeaser/RankTeaser.tsx
-msgid "components.rankTeaser.projectedRank"
-msgstr "Saresti <0>#{0}</0> su {1}."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/RemoteAccessDemo/RemoteAccessDemo.tsx
-msgid "components.remoteAccessDemo.latency"
-msgstr "Latenza"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/RemoteAccessDemo/RemoteAccessDemo.tsx
-msgid "components.remoteAccessDemo.latencyValue"
-msgstr "42ms"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/RemoteAccessDemo/RemoteAccessDemo.tsx
-msgid "components.remoteAccessDemo.live"
-msgstr "live"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/RemoteAccessDemo/RemoteAccessDemo.tsx
-msgid "components.remoteAccessDemo.remote"
-msgstr "Remoto"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/RemoteAccessDemo/RemoteAccessDemo.tsx
-msgid "components.remoteAccessDemo.thisMac"
-msgstr "Questo Mac"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/RemoteAccessDemo/RemoteAccessDemo.tsx
-msgid "components.remoteAccessDemo.tunnelEstablished"
-msgstr "Tunnel stabilito"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/RemoteAccessDemo/RemoteAccessDemo.tsx
-msgid "components.remoteAccessDemo.windowTitle"
-msgstr "Accesso remoto"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/RemotePathPicker/RemotePathPicker.tsx
 msgid "components.remotePathPicker.cancel"
 msgstr "Annulla"
@@ -2131,21 +1872,6 @@ msgstr "Copia l'indirizzo del link"
 #: ../../apps/desktop/src/renderer/components/MarkdownRenderer/components/SelectionContextMenu/SelectionContextMenu.tsx
 msgid "components.selectionContextMenu.selectAll"
 msgstr "Seleziona tutto"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/SlackIntegrationDemo/SlackIntegrationDemo.tsx
-msgid "components.slackIntegrationDemo.channelName"
-msgstr "#engineering"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/SlackIntegrationDemo/SlackIntegrationDemo.tsx
-msgid "components.slackIntegrationDemo.live"
-msgstr "Live"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/SlackIntegrationDemo/SlackIntegrationDemo.tsx
-msgid "components.slackIntegrationDemo.taskSynced"
-msgstr "Task sincronizzato con Linear"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/MarkdownEditor/components/SlashCommand/SlashCommand.tsx
@@ -2237,32 +1963,6 @@ msgstr "Chiudi"
 #: ../../apps/desktop/src/renderer/components/StarNagToast/StarNagToast.tsx
 msgid "components.starNagToast.title"
 msgstr "È tutto pronto!"
-
-#. js-lingui-explicit-id
-#. placeholder {0}: TASKS.length
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/TasksDemo/TasksDemo.tsx
-msgid "components.tasksDemo.taskCount"
-msgstr "{0, plural, one {# task} other {# task}}"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/TasksDemo/TasksDemo.tsx
-msgid "components.tasksDemo.windowTitle"
-msgstr "I miei task"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/TeamCollaborationDemo/TeamCollaborationDemo.tsx
-msgid "components.teamCollaborationDemo.onlineNow"
-msgstr "Online ora"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/TeamCollaborationDemo/TeamCollaborationDemo.tsx
-msgid "components.teamCollaborationDemo.recentActivity"
-msgstr "Attività recente"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/components/Paywall/components/FeaturePreview/components/TeamCollaborationDemo/TeamCollaborationDemo.tsx
-msgid "components.teamCollaborationDemo.windowTitle"
-msgstr "Team"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/components/ThemeSwatch/ThemeSwatch.tsx
@@ -4268,16 +3968,6 @@ msgstr "Crea un nuovo workspace"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/DashboardNewWorkspaceForm/components/DevicePicker/DevicePicker.tsx
-msgid "dashboard.newWorkspaceModal.devicePicker.cloud"
-msgstr "Cloud"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/DashboardNewWorkspaceForm/components/DevicePicker/DevicePicker.tsx
-msgid "dashboard.newWorkspaceModal.devicePicker.cloudSelected"
-msgstr "Cloud"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/DashboardNewWorkspaceForm/components/DevicePicker/DevicePicker.tsx
 msgid "dashboard.newWorkspaceModal.devicePicker.localDevice"
 msgstr "Dispositivo locale"
 
@@ -4935,16 +4625,6 @@ msgstr "Caricamento dell'allegato non riuscito ({0}): {1}"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/DashboardNewWorkspaceForm/PromptGroup/hooks/useSubmitWorkspace/useSubmitWorkspace.ts
-msgid "dashboard.newWorkspaceModal.submit.cloudCreateFailed"
-msgstr "Impossibile creare il workspace cloud"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/DashboardNewWorkspaceForm/PromptGroup/hooks/useSubmitWorkspace/useSubmitWorkspace.ts
-msgid "dashboard.newWorkspaceModal.submit.cloudRequiresProject"
-msgstr "I workspace cloud richiedono un progetto"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/DashboardNewWorkspaceForm/PromptGroup/hooks/useSubmitWorkspace/useSubmitWorkspace.ts
 msgid "dashboard.newWorkspaceModal.submit.noActiveHost"
 msgstr "Nessun host attivo"
 
@@ -4997,132 +4677,6 @@ msgstr "Mostra gli elementi aperti"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/OpenClosedFilter/OpenClosedFilter.tsx
 msgid "dashboard.openClosedFilter.state"
 msgstr "Stato"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/$slug/components/PageDetailView/PageDetailView.tsx
-msgid "dashboard.pages.detail.backToPages"
-msgstr "Torna alle pagine"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/PagesGrid.tsx
-msgid "dashboard.pages.grid.emptyDescription"
-msgstr "Pubblica una pagina da un agente o dalla CLI e comparirà qui."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/PagesGrid.tsx
-msgid "dashboard.pages.grid.emptyFilteredDescription"
-msgstr "Prova con un'altra ricerca o un altro filtro."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/PagesGrid.tsx
-msgid "dashboard.pages.grid.emptyFilteredTitle"
-msgstr "Nessuna pagina corrisponde"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/PagesGrid.tsx
-msgid "dashboard.pages.grid.emptyTitle"
-msgstr "Ancora nessuna pagina"
-
-#. js-lingui-explicit-id
-#. placeholder {0}: page.title
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.actionsFor"
-msgstr "Azioni per {0}"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.copyLink"
-msgstr "Copia il link"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.copyLinkFailed"
-msgstr "Impossibile copiare il link"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.created"
-msgstr "Creata"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.delete"
-msgstr "Elimina"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.edited"
-msgstr "Modificata"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.linkCopied"
-msgstr "Link copiato"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.pin"
-msgstr "Fissa"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesGrid/components/PageCard/PageCard.tsx
-msgid "dashboard.pages.pageCard.unpin"
-msgstr "Rimuovi dai fissati"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesView/PagesView.tsx
-msgid "dashboard.pages.pageDeleted"
-msgstr "Pagina eliminata"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesView/PagesView.tsx
-msgid "dashboard.pages.searchPlaceholder"
-msgstr "Cerca pagine"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesView/PagesView.tsx
-msgid "dashboard.pages.tabs.all"
-msgstr "Tutte"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesView/PagesView.tsx
-msgid "dashboard.pages.tabs.mine"
-msgstr "Solo io"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesView/PagesView.tsx
-msgid "dashboard.pages.tabs.pinned"
-msgstr "Fissate"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesView/PagesView.tsx
-msgid "dashboard.pages.tabs.team"
-msgstr "Team"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/pages/components/PagesView/PagesView.tsx
-msgid "dashboard.pages.title"
-msgstr "Pagine"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/PageViewer/PageViewer.tsx
-msgid "dashboard.pageViewer.pageMissingDescription"
-msgstr "Potrebbe essere stata eliminata oppure appartiene a un'altra organizzazione."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/PageViewer/PageViewer.tsx
-msgid "dashboard.pageViewer.pageMissingTitle"
-msgstr "Questa pagina non esiste più"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/PageViewer/PageViewer.tsx
-msgid "dashboard.pageViewer.pageOpenFailedTitle"
-msgstr "Impossibile aprire questa pagina"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/PageViewer/PageViewer.tsx
-msgid "dashboard.pageViewer.youFallback"
-msgstr "Tu"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins/components/PluginsView/components/PluginCard/PluginCard.tsx
@@ -7203,26 +6757,6 @@ msgstr "Apri Progetti"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarHeader/DashboardSidebarHeader.tsx
-msgid "dashboard.sidebar.header.pages"
-msgstr "Pagine"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarHeader/DashboardSidebarHeader.tsx
-msgid "dashboard.sidebar.header.pagesAriaLabel"
-msgstr "Pagine"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarHeader/DashboardSidebarHeader.tsx
-msgid "dashboard.sidebar.header.pagesRailAriaLabel"
-msgstr "Pagine"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarHeader/DashboardSidebarHeader.tsx
-msgid "dashboard.sidebar.header.pagesTooltip"
-msgstr "Pagine"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarHeader/DashboardSidebarHeader.tsx
 msgid "dashboard.sidebar.header.plugins"
 msgstr "Plugin"
 
@@ -7569,11 +7103,6 @@ msgstr "Modifiche richieste"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarWorkspaceItem/components/DashboardSidebarWorkspaceHoverCardContent/components/ReviewStatus/ReviewStatus.tsx
 msgid "dashboard.sidebar.reviewStatus.reviewPending"
 msgstr "Revisione in sospeso"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarCloudSection/DashboardSidebarCloudSection.tsx
-msgid "dashboard.sidebar.sectionCloud"
-msgstr "Cloud"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/DashboardSidebar/components/DashboardSidebarSection/components/DashboardSidebarSectionContextMenu/components/SectionActionsMenuItems/SectionActionsMenuItems.tsx
@@ -9218,11 +8747,6 @@ msgid "dashboard.topBar.helpMenu.reportIssue"
 msgstr "Segnala un problema"
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/HelpSubMenu/HelpSubMenu.tsx
-msgid "dashboard.topBar.helpMenu.submitPrompt"
-msgstr "Invia un prompt"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/TopBar.tsx
 msgid "dashboard.topBar.offline"
 msgstr "Offline"
@@ -9574,56 +9098,6 @@ msgstr "Arresta"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/WorkspaceRunButton/WorkspaceRunButton.tsx
 msgid "dashboard.topBar.runButton.stopAriaLabel"
 msgstr "Arresta il comando di esecuzione del workspace"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.description"
-msgstr "Chiedi a un agente di programmazione di costruire quello che vorresti vedere in Choros. Se il tuo prompt ci piace, lo eseguiamo e uniamo il risultato."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.nameLabel"
-msgstr "Il tuo nome <0>(se usiamo il tuo prompt, ti citeremo nel changelog)</0>"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.namePlaceholder"
-msgstr "Mario Rossi"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.promptLabel"
-msgstr "Prompt"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.promptPlaceholder"
-msgstr "Descrivi cosa vorresti vedere realizzato…"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.submit"
-msgstr "Invia il prompt"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.submitFailed"
-msgstr "Impossibile inviare il prompt. Riprova."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.submitted"
-msgstr "Prompt inviato — grazie!"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.submitting"
-msgstr "Invio…"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/OrganizationDropdown/components/SubmitPromptDialog/SubmitPromptDialog.tsx
-msgid "dashboard.topBar.submitPromptDialog.title"
-msgstr "Invia un prompt"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/TopBar/components/ResourceConsumption/components/UsageSeverityBadge/UsageSeverityBadge.tsx
@@ -12043,41 +11517,6 @@ msgid "settings.account.emailLabel"
 msgstr "Email"
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/components/LeaderboardSection/LeaderboardSection.tsx
-msgid "settings.account.leaderboard.leaveCancel"
-msgstr "Annulla"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/components/LeaderboardSection/LeaderboardSection.tsx
-msgid "settings.account.leaderboard.leaveConfirm"
-msgstr "Esci ed elimina"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/components/LeaderboardSection/LeaderboardSection.tsx
-msgid "settings.account.leaderboard.leaveDescription"
-msgstr "Tutto ciò che hai pubblicato viene eliminato, non nascosto. Puoi rientrare più tardi e verrà ricostruito dalle trascrizioni ancora presenti su questa macchina — perdi solo la tua posizione passata."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/components/LeaderboardSection/LeaderboardSection.tsx
-msgid "settings.account.leaderboard.leaveTitle"
-msgstr "Uscire dalla classifica?"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/components/LeaderboardSection/LeaderboardSection.tsx
-msgid "settings.account.leaderboard.optInHint"
-msgstr "Confronta il tuo utilizzo degli agenti con quello di altri ingegneri. Solo conteggi di token e nomi dei modelli, nessun nome di repository, percorso di file o prompt."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/components/LeaderboardSection/LeaderboardSection.tsx
-msgid "settings.account.leaderboard.publishingAs"
-msgstr "Pubblichi come <0>{handle}</0>. Solo conteggi di token e nomi dei modelli, nessun nome di repository, percorso di file o prompt."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/components/LeaderboardSection/LeaderboardSection.tsx
-msgid "settings.account.leaderboard.title"
-msgstr "Classifica pubblica"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/account/components/AccountSettings/AccountSettings.tsx
 msgid "settings.account.loadError"
 msgstr "Impossibile caricare le informazioni utente"
@@ -13307,558 +12746,6 @@ msgid "settings.behavior.title"
 msgstr "Generali"
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.addTaxId"
-msgstr "Aggiungi il codice fiscale"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/BillingOverview.tsx
-msgid "settings.billing.allPlansLink"
-msgstr "Tutti i piani"
-
-#. js-lingui-explicit-id
-#. placeholder {0}: capitalizeFirst(paymentMethod.brand)
-#. placeholder {1}: paymentMethod.last4
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.cardEndingIn"
-msgstr "{0} che termina con {1}"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.detailsTitle"
-msgstr "Dettagli di fatturazione"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.editDetails"
-msgstr "Modifica"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.editPaymentMethod"
-msgstr "Modifica"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.editTaxId"
-msgstr "Modifica"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/RecentInvoices/RecentInvoices.tsx
-msgid "settings.billing.invoicePayNow"
-msgstr "Paga ora"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/RecentInvoices/RecentInvoices.tsx
-msgid "settings.billing.invoicesTitle"
-msgstr "Fatture recenti"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/RecentInvoices/RecentInvoices.tsx
-msgid "settings.billing.invoiceUncollectible"
-msgstr "Non esigibile"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/RecentInvoices/RecentInvoices.tsx
-msgid "settings.billing.invoiceUnpaid"
-msgstr "Non pagata"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/RecentInvoices/RecentInvoices.tsx
-msgid "settings.billing.invoiceView"
-msgstr "Visualizza"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.linkByStripe"
-msgstr "Link by Stripe"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.noNameOnFile"
-msgstr "Nessun nome registrato"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.noPaymentMethodOnFile"
-msgstr "Nessun metodo di pagamento registrato"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.noTaxIdOnFile"
-msgstr "Nessun codice fiscale registrato"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/PaymentFailedBanner/PaymentFailedBanner.tsx
-msgid "settings.billing.paymentFailed.label"
-msgstr "Pagamento non riuscito."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/PaymentFailedBanner/PaymentFailedBanner.tsx
-msgid "settings.billing.paymentFailed.member"
-msgstr "Non siamo riusciti ad addebitare il metodo di pagamento di questa organizzazione. Chiedi a un proprietario di aggiornarlo."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/PaymentFailedBanner/PaymentFailedBanner.tsx
-msgid "settings.billing.paymentFailed.memberAmount"
-msgstr "Non siamo riusciti ad addebitare {amountDue} sul metodo di pagamento di questa organizzazione. Chiedi a un proprietario di aggiornarlo."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/PaymentFailedBanner/PaymentFailedBanner.tsx
-msgid "settings.billing.paymentFailed.owner"
-msgstr "Non siamo riusciti ad addebitare il tuo metodo di pagamento. Aggiornalo per mantenere questo piano."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/PaymentFailedBanner/PaymentFailedBanner.tsx
-msgid "settings.billing.paymentFailed.ownerAmount"
-msgstr "Non siamo riusciti ad addebitare {amountDue}. Aggiorna il metodo di pagamento per mantenere questo piano."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/PaymentFailedBanner/PaymentFailedBanner.tsx
-msgid "settings.billing.paymentFailed.payNow"
-msgstr "Paga ora"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.paymentMethodLabel"
-msgstr "Metodo di pagamento"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/CurrentPlanCard/CurrentPlanCard.tsx
-msgid "settings.billing.plan.cancelButton"
-msgstr "Disdici il piano"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/CurrentPlanCard/CurrentPlanCard.tsx
-msgid "settings.billing.plan.cancelingButton"
-msgstr "Disdetta in corso..."
-
-#. js-lingui-explicit-id
-#. placeholder {0}: format(new Date(cancelAt), "MMMM d, yyyy")
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/CurrentPlanCard/CurrentPlanCard.tsx
-msgid "settings.billing.plan.cancelsOn"
-msgstr "Si disdice il {0} — passa a Free alla fine del periodo di fatturazione."
-
-#. js-lingui-explicit-id
-#. placeholder {0}: i18n._(plan.name)
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/CurrentPlanCard/CurrentPlanCard.tsx
-msgid "settings.billing.plan.currentPlanName"
-msgstr "Piano {0}"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/CurrentPlanCard/CurrentPlanCard.tsx
-msgid "settings.billing.plan.managedByAdmin"
-msgstr "Gestito dall'amministratore della tua organizzazione."
-
-#. js-lingui-explicit-id
-#. placeholder {0}: format(new Date(periodEnd), "MMMM d, yyyy")
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/CurrentPlanCard/CurrentPlanCard.tsx
-msgid "settings.billing.plan.renewsOn"
-msgstr "Si rinnova il {0}."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/CurrentPlanCard/CurrentPlanCard.tsx
-msgid "settings.billing.plan.restoreButton"
-msgstr "Ripristina il piano"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/CurrentPlanCard/CurrentPlanCard.tsx
-msgid "settings.billing.plan.restoringButton"
-msgstr "Ripristino in corso..."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/constants.ts
-msgid "settings.billing.planEnterpriseDescription"
-msgstr "Per organizzazioni con esigenze avanzate"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/constants.ts
-msgid "settings.billing.planEnterpriseName"
-msgstr "Enterprise"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/constants.ts
-msgid "settings.billing.planFreeDescription"
-msgstr "Per chi inizia da solo"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/constants.ts
-msgid "settings.billing.planFreeName"
-msgstr "Free"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/constants.ts
-msgid "settings.billing.planProDescription"
-msgstr "Per i team che hanno bisogno di più potenza"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/constants.ts
-msgid "settings.billing.planProName"
-msgstr "Pro"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/BillingOverview.tsx
-msgid "settings.billing.planRestoredToast"
-msgstr "Piano ripristinato"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.backToBilling"
-msgstr "Fatturazione"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.badgeBeta"
-msgstr "Beta"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.badgeComingSoon"
-msgstr "In arrivo"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.billedYearlyToggle"
-msgstr "Fatturazione annuale"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardEnterpriseBilling"
-msgstr "Fatturazione annuale"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardEnterpriseName"
-msgstr "Enterprise"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardEnterprisePrice"
-msgstr "Prezzo personalizzato"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardEnterpriseRequestTrial"
-msgstr "Richiedi una prova"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardFreeBilling"
-msgstr "Gratis per tutti"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardFreeCurrentPlan"
-msgstr "Piano attuale"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardFreeName"
-msgstr "Free"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardFreePrice"
-msgstr "$0"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardFreePriceNote"
-msgstr "per utente/mese"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardProBillingMonthly"
-msgstr "Fatturazione mensile"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardProBillingYearly"
-msgstr "Fatturazione annuale"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardProName"
-msgstr "Pro"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardProPriceMonthly"
-msgstr "$20"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardProPriceNote"
-msgstr "per utente/mese"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardProPriceYearly"
-msgstr "$15"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.cardProUpgrade"
-msgstr "Passa a Pro"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.changeToAnnual"
-msgstr "Passa all'annuale"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.changeToMonthly"
-msgstr "Passa al mensile"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.changingAction"
-msgstr "Modifica in corso..."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.currentPlanAction"
-msgstr "Piano attuale"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.downgradeToFree"
-msgstr "Torna a Free"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.downgradingAction"
-msgstr "Passaggio in corso..."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.includedInEnterprise"
-msgstr "Incluso in Enterprise"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.notIncluded"
-msgstr "Non incluso"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.planRestoredToast"
-msgstr "Piano ripristinato"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.restoreAction"
-msgstr "Ripristina il piano"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.restoringAction"
-msgstr "Ripristino in corso..."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowAuditLog"
-msgstr "Log di audit"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowAutomations"
-msgstr "Automazioni"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowCustomContracts"
-msgstr "Contratti personalizzati"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowDesktopApp"
-msgstr "App desktop"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowGithubIntegration"
-msgstr "Integrazione GitHub"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowIpRestrictions"
-msgstr "Restrizioni IP"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowLinearIntegration"
-msgstr "Integrazione Linear"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowLocalWorkspaces"
-msgstr "Workspace locali"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowMobileApp"
-msgstr "App mobile"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowPrioritySupport"
-msgstr "Supporto prioritario"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowProjects"
-msgstr "Progetti"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowRemoteAccess"
-msgstr "Accesso remoto"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowScimProvisioning"
-msgstr "Provisioning SCIM"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowSlackIntegration"
-msgstr "Integrazione Slack"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowSsoSaml"
-msgstr "SSO/SAML"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowTeamCollaboration"
-msgstr "Collaborazione di team"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowTeamMembers"
-msgstr "Membri del team"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowUptimeSla"
-msgstr "SLA di uptime"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.rowWorkspaces"
-msgstr "Workspace"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.sectionFeatures"
-msgstr "Funzioni"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.sectionSecurity"
-msgstr "Sicurezza"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.sectionSupport"
-msgstr "Supporto"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.sectionUsage"
-msgstr "Utilizzo"
-
-#. js-lingui-explicit-id
-#. placeholder {0}: cancelAt ? format(new Date(cancelAt), "MMMM d, yyyy") : ""
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.startsOn"
-msgstr "Inizia il {0}"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.subtitle"
-msgstr "Sei sul <0>piano {currentPlanLabel}</0>. Se hai domande o vuoi ulteriore supporto sul tuo piano, <1>contattaci<2/></1>."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.tierEnterprise"
-msgstr "Enterprise"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.tierFree"
-msgstr "Free"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.tierPro"
-msgstr "Pro"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.title"
-msgstr "Piani"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.valueOne"
-msgstr "1"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/plans/page.tsx
-msgid "settings.billing.plans.valueUnlimited"
-msgstr "Illimitati"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/BillingOverview.tsx
-msgid "settings.billing.planSectionTitle"
-msgstr "Piano"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.portalOpenFailedToast"
-msgstr "Apertura del portale di fatturazione non riuscita"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/BillingOverview.tsx
-msgid "settings.billing.subtitle"
-msgstr "Per domande sulla fatturazione, <0>contattaci</0>."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/BillingDetails/BillingDetails.tsx
-msgid "settings.billing.taxIdLabel"
-msgstr "Codice fiscale"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/BillingOverview.tsx
-msgid "settings.billing.title"
-msgstr "Fatturazione"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/UpgradeCard/UpgradeCard.tsx
-msgid "settings.billing.upgrade.hint"
-msgstr "${monthly} per utente/mese. Workspace cloud, mobile, supporto prioritario."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/UpgradeCard/UpgradeCard.tsx
-msgid "settings.billing.upgrade.redirectingButton"
-msgstr "Reindirizzamento..."
-
-#. js-lingui-explicit-id
-#. placeholder {0}: i18n._(plan.name)
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/UpgradeCard/UpgradeCard.tsx
-msgid "settings.billing.upgrade.title"
-msgstr "Passa a {0}"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/billing/components/BillingOverview/components/UpgradeCard/UpgradeCard.tsx
-msgid "settings.billing.upgrade.upgradeButton"
-msgstr "Effettua l'upgrade"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/utils/branch-prefix/branch-prefix.ts
 msgid "settings.branchPrefix.modeAuthor"
 msgstr "Nome autore Git"
@@ -13999,11 +12886,6 @@ msgstr "Chiavi API"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/components/SettingsSidebar/GeneralSettings.tsx
 msgid "settings.components.generalSettings.appearance"
 msgstr "Aspetto"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/components/SettingsSidebar/GeneralSettings.tsx
-msgid "settings.components.generalSettings.billing"
-msgstr "Fatturazione"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/components/SettingsSidebar/GeneralSettings.tsx
@@ -18153,26 +17035,6 @@ msgstr "Utilizzo dei token"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageHistorySection/UsageHistorySection.tsx
 msgid "settings.usage.history.tokenKindsNote"
 msgstr "token di input, cache e output"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/LeaderboardPrompt/LeaderboardPrompt.tsx
-msgid "settings.usage.leaderboardPrompt.body"
-msgstr "Pubblica i conteggi di token e i nomi dei modelli nella classifica pubblica. Nessun nome di repository, percorso di file o prompt. Puoi uscire in qualsiasi momento."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/LeaderboardPrompt/LeaderboardPrompt.tsx
-msgid "settings.usage.leaderboardPrompt.dismiss"
-msgstr "Chiudi"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/LeaderboardPrompt/LeaderboardPrompt.tsx
-msgid "settings.usage.leaderboardPrompt.seeMyRank"
-msgstr "Vedi la mia posizione"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/LeaderboardPrompt/LeaderboardPrompt.tsx
-msgid "settings.usage.leaderboardPrompt.title"
-msgstr "Confronta questo con tutti gli altri"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/UsageHistorySection/components/UsageMetricTiles/UsageMetricTiles.tsx
@@ -22521,62 +21383,6 @@ msgid "workspace.missingWorktree.title"
 msgstr "Worktree mancante"
 
 #. js-lingui-explicit-id
-#. placeholder {0}: formatDistanceToNowStrict(binding.lastEventAt, { addSuffix: true, })
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/components/PageWatcherMenu/PageWatcherMenu.tsx
-msgid "workspace.pagePane.agentActiveSinceWatch"
-msgstr "attivo {0}"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/components/PageWatcherMenu/PageWatcherMenu.tsx
-msgid "workspace.pagePane.noAgentsRunningWatch"
-msgstr "Nessun agente in esecuzione qui"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/components/PageWatcherMenu/PageWatcherMenu.tsx
-msgid "workspace.pagePane.notWatchingLabel"
-msgstr "Niente sta osservando questa pagina"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/PagePaneHeaderExtras.tsx
-msgid "workspace.pagePane.sharePageAria"
-msgstr "Condividi la pagina"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/PagePaneHeaderExtras.tsx
-msgid "workspace.pagePane.sharePageTitle"
-msgstr "Condividi la pagina"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/components/PageWatcherMenu/PageWatcherMenu.tsx
-msgid "workspace.pagePane.stopWatchFailedToast"
-msgstr "Impossibile smettere di osservare"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/components/PageWatcherMenu/PageWatcherMenu.tsx
-msgid "workspace.pagePane.stopWatching"
-msgstr "Smetti di osservare"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/utils/pagePaneLabel/pagePaneLabel.ts
-msgid "workspace.pagePane.untitledPage"
-msgstr "Pagina senza titolo"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/components/PageWatcherMenu/PageWatcherMenu.tsx
-msgid "workspace.pagePane.watcherAria"
-msgstr "Scegli quale agente osserva i commenti di questa pagina"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/components/PageWatcherMenu/PageWatcherMenu.tsx
-msgid "workspace.pagePane.watchFailedToast"
-msgstr "Impossibile osservare questa pagina"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PagePaneHeaderExtras/components/PageWatcherMenu/PageWatcherMenu.tsx
-msgid "workspace.pagePane.watchingLabel"
-msgstr "I commenti vanno a questo agente"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/useDefaultPaneActions/useDefaultPaneActions.tsx
 msgid "workspace.paneActions.splitPane"
 msgstr "Pannello diviso"
@@ -22665,11 +21471,6 @@ msgstr "Chiudi il diff"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/usePaneRegistry.tsx
 msgid "workspace.paneRegistry.closeFile"
 msgstr "Chiudi il file"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/usePaneRegistry.tsx
-msgid "workspace.paneRegistry.closePage"
-msgstr "Chiudi la pagina"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/usePaneRegistry.tsx
@@ -23167,56 +21968,6 @@ msgstr "Arresta il comando di esecuzione del workspace"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/components/WorkspaceSidebar/WorkspaceSidebar.tsx
 msgid "workspace.sidebar.filesTab"
 msgstr "File"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningFailedBody"
-msgstr "Il provisioning non è riuscito e la sandbox è stata smontata. Non è in esecuzione nulla e questo workspace non può essere aperto — creane uno nuovo per riprovare."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningFailedTitle"
-msgstr "Impossibile avviare il workspace cloud"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningFailedUntitled"
-msgstr "Workspace senza titolo"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningRemoveWorkspace"
-msgstr "Rimuovi il workspace"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningRemoving"
-msgstr "Rimozione…"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningStepConnect"
-msgstr "Connessione al workspace"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningStepSandbox"
-msgstr "Creazione della sandbox"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningStuckBody"
-msgstr "Ci sta mettendo più del solito. La sandbox potrebbe ancora scaricare la sua immagine — continua sia che questa finestra resti aperta sia che venga chiusa."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningTitle"
-msgstr "Avvio del workspace cloud"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/CloudWorkspaceProvisioningState/CloudWorkspaceProvisioningState.tsx
-msgid "workspace.states.cloudProvisioningUntitled"
-msgstr "Workspace senza titolo"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/components/WorkspaceCreateErrorState/WorkspaceCreateErrorState.tsx
@@ -23870,17 +22621,6 @@ msgstr "Terminale rimosso"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/TerminalPane/components/TerminalPaneHeaderExtras/components/TerminalConnectionIndicator/TerminalConnectionIndicator.tsx
 msgid "workspace.terminalPane.viewLog"
 msgstr "Vedi il log"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/TerminalPane/components/TerminalPaneHeaderExtras/components/TerminalPageWatchChip/TerminalPageWatchChip.tsx
-msgid "workspace.terminalPane.watchingAria"
-msgstr "Pagine che questo agente osserva per i commenti"
-
-#. js-lingui-explicit-id
-#. placeholder {0}: mine.length
-#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/TerminalPane/components/TerminalPaneHeaderExtras/components/TerminalPageWatchChip/TerminalPageWatchChip.tsx
-msgid "workspace.terminalPane.watchingPageCount"
-msgstr "{0, plural, one {Osservando # pagina per i commenti} other {Osservando # pagine per i commenti}}"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/TerminalPane/components/TerminalSessionDropdown/TerminalSessionDropdown.tsx

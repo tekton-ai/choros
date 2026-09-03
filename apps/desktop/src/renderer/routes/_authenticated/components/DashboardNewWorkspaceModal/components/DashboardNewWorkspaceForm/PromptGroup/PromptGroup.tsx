@@ -49,7 +49,6 @@ import { useNewWorkspacePromptContext } from "renderer/stores/new-workspace-prom
 import { useV2WorkspaceCreateDefaultsStore } from "renderer/stores/v2-workspace-create-defaults";
 import { useDashboardNewWorkspaceDraft } from "../../../DashboardNewWorkspaceDraftContext";
 import { DevicePicker } from "../components/DevicePicker";
-import { CLOUD_HOST_ID } from "../components/DevicePicker/DevicePicker";
 import { useWorkspaceHostOptions } from "../components/DevicePicker/hooks/useWorkspaceHostOptions";
 import { AttachmentButtons } from "./components/AttachmentButtons";
 import { CompareBaseBranchPicker } from "./components/CompareBaseBranchPicker";
@@ -347,7 +346,6 @@ export function PromptGroup({
 		const selectedHostId = draft.hostId ?? machineId;
 		// A cloud workspace is provisioned on submit, so there is no host whose
 		// readiness could block it.
-		if (selectedHostId === CLOUD_HOST_ID) return null;
 		if (!selectedHostId)
 			return t({
 				id: "dashboard.newWorkspaceModal.promptGroup.blockerNoActiveHost",

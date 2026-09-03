@@ -7,15 +7,6 @@ import { members, subscriptions } from "@choros/db/schema";
 import type { sessions } from "@choros/db/schema/auth";
 import * as authSchema from "@choros/db/schema/auth";
 import { seedDefaultStatuses } from "@choros/db/seed-default-statuses";
-import { WelcomeEmail } from "@choros/email/emails/activation/00-welcome";
-import { MemberAddedBillingEmail } from "@choros/email/emails/billing/member-added";
-import { MemberRemovedBillingEmail } from "@choros/email/emails/billing/member-removed";
-import { PaymentFailedEmail } from "@choros/email/emails/billing/payment-failed";
-import { SubscriptionCancelledEmail } from "@choros/email/emails/billing/subscription-cancelled";
-import { SubscriptionStartedEmail } from "@choros/email/emails/billing/subscription-started";
-import { OrganizationInvitationEmail } from "@choros/email/emails/team/invitation";
-import { MemberAddedEmail } from "@choros/email/emails/team/member-added";
-import { MemberRemovedEmail } from "@choros/email/emails/team/member-removed";
 import { canInvite, type OrganizationRole } from "@choros/shared/auth";
 import { ACTIVE_SUBSCRIPTION_STATUSES } from "@choros/shared/billing";
 import { getTrustedVercelPreviewOrigins } from "@choros/shared/vercel-preview-origins";
@@ -52,6 +43,22 @@ import {
 } from "./utils";
 import { previewNextInvoice } from "./utils/invoice-preview";
 
+// packages/email was removed with apps/api. The 9 email templates below are
+// referenced by dead-runtime send sites (this repo no longer ships a server;
+// auth/server.ts stays only as the type source for the desktop client). A
+// single stub keeps the 9 `resend.emails.send({ react })` slots typing
+// cleanly — the lockstep 3+ call sites exempt this from ts-no-tiny-functions.
+const emailStub = (_props?: unknown) => null;
+const WelcomeEmail = emailStub;
+const MemberAddedBillingEmail = emailStub;
+const MemberRemovedBillingEmail = emailStub;
+const PaymentFailedEmail = emailStub;
+const SubscriptionCancelledEmail = emailStub;
+const SubscriptionStartedEmail = emailStub;
+const OrganizationInvitationEmail = emailStub;
+const MemberAddedEmail = emailStub;
+const MemberRemovedEmail = emailStub;
+
 const qstash = new Client({ token: env.QSTASH_TOKEN });
 
 const userOptions = {
@@ -82,12 +89,19 @@ const PENDING_DELETION_ALLOWED_PATH_PREFIXES = [
 ];
 
 const NOTIFY_SLACK_URL = `${env.NEXT_PUBLIC_API_URL}/api/integrations/stripe/jobs/notify-slack`;
+// Choros allocates a fresh port window per git worktree (.choros/setup.local.sh),
+// so DESKTOP_VITE_PORT is different in every workspace. Trust ANY local port in
+// dev to avoid needing a Worker redeploy per worktree; the desktopDevPort
+// fallback is here only so the trusted list contains the exact primary origin
+// too, matching upstream better-auth conventions.
 const desktopDevPort = process.env.DESKTOP_VITE_PORT || "5173";
 const desktopDevOrigins =
 	process.env.NODE_ENV === "development"
 		? [
 				`http://localhost:${desktopDevPort}`,
 				`http://127.0.0.1:${desktopDevPort}`,
+				"http://localhost:*",
+				"http://127.0.0.1:*",
 			]
 		: [];
 

@@ -7,7 +7,6 @@ import {
 	BuildingIcon,
 	ChartBarIcon,
 	CpuIcon,
-	CreditCardIcon,
 	FolderIcon,
 	GitBranchIcon,
 	KeyboardIcon,
@@ -173,15 +172,6 @@ const TABS: SettingsTab[] = [
 		path: "/settings/usage",
 		icon: ChartBarIcon,
 		keywords: ["tokens", "cost", "quota", "cpu", "memory", "resources"],
-	},
-	{
-		id: "billing",
-		title: msg({
-			id: "commandPalette.settingsTab.billing",
-			message: "Billing",
-		}),
-		path: "/settings/billing",
-		icon: CreditCardIcon,
 	},
 	{
 		id: "security",

@@ -1,8 +1,5 @@
-export type {
-	SandboxAccessValue,
-	SandboxTarget,
-} from "./SandboxAccessProvider";
 export {
 	SandboxAccessProvider,
+	type SandboxAccessTarget,
 	useSandboxAccess,
 } from "./SandboxAccessProvider";

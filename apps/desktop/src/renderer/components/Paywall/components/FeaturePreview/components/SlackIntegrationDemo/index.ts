@@ -1,1 +1,0 @@
-export { SlackIntegrationDemo } from "./SlackIntegrationDemo";

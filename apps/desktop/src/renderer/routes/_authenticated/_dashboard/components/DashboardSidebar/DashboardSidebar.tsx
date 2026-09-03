@@ -24,7 +24,6 @@ import { useDashboardSidebarState } from "renderer/routes/_authenticated/hooks/u
 import { useLocalHostService } from "renderer/routes/_authenticated/providers/LocalHostServiceProvider";
 import { useSidebarSectionsCollapseStore } from "renderer/stores/sidebar-sections-collapse";
 import { DashboardSidebarBulkActions } from "./components/DashboardSidebarBulkActions";
-import { DashboardSidebarCloudSection } from "./components/DashboardSidebarCloudSection";
 import { DashboardSidebarHeader } from "./components/DashboardSidebarHeader";
 import { DashboardSidebarHoverCardOverlay } from "./components/DashboardSidebarHoverCardOverlay";
 import { DashboardSidebarPinnedSection } from "./components/DashboardSidebarPinnedSection";
@@ -300,10 +299,6 @@ export function DashboardSidebar({
 												onWorkspaceHover={refreshWorkspacePullRequest}
 											/>
 										)}
-										<DashboardSidebarCloudSection
-											isCollapsed={isCollapsed}
-											onWorkspaceHover={refreshWorkspacePullRequest}
-										/>
 										<DashboardSidebarSessionsSection
 											sessionWorkspaces={sessionWorkspaces}
 											tagGroups={sessionTagGroups}

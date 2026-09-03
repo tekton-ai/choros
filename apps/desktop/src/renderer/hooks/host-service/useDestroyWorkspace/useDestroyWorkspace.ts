@@ -4,9 +4,6 @@ import type {
 } from "@choros/host-service";
 import { TRPCClientError } from "@trpc/client";
 import { useCallback } from "react";
-import { useCloudWorkspaces } from "renderer/hooks/useCloudWorkspaces";
-import { apiTrpcClient } from "renderer/lib/api-trpc-client";
-import { cloudTrpc } from "renderer/lib/cloud-trpc";
 import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";
 import { useLocalHostService } from "renderer/routes/_authenticated/providers/LocalHostServiceProvider";
 import {
@@ -28,7 +25,6 @@ export interface DestroyWorkspaceSuccess {
 	success: boolean;
 	worktreeRemoved: boolean;
 	branchDeleted: boolean;
-	cloudDeleted: boolean;
 	warnings: string[];
 }
 
@@ -129,61 +125,23 @@ export function useDestroyWorkspace(workspaceId: string): UseDestroyWorkspace {
 		? "ready"
 		: hostTarget.status;
 
-	// The cloud row decides this, not whether we currently hold an address for
-	// it: a workspace still provisioning, or one whose sandbox stopped
-	// answering, is no less a cloud workspace — and deleting it anywhere but at
-	// the API would leave the sandbox running.
-	const { workspaces: cloudWorkspaces } = useCloudWorkspaces();
-	const isSandbox = cloudWorkspaces.some((row) => row.id === workspaceId);
-	const utils = cloudTrpc.useUtils();
-
 	const destroy = useCallback(
 		async (
 			input: DestroyWorkspaceInput = {},
 		): Promise<DestroyWorkspaceSuccess> => {
-			// Destroying a cloud workspace at its host would delete the row
-			// inside a sandbox that then keeps running — and billing — with the
-			// cloud row still listing it. The sandbox is the thing to destroy,
-			// and only the API can do that.
-			if (isSandbox) {
-				await apiTrpcClient.cloudWorkspace.delete.mutate({ id: workspaceId });
-				await utils.cloudWorkspace.list.invalidate();
-				return {
-					success: true,
-					// The whole machine goes away, so there is no worktree or branch
-					// left behind to report on.
-					worktreeRemoved: true,
-					branchDeleted: false,
-					cloudDeleted: true,
-					warnings: [],
-				};
-			}
 			return destroyWorkspaceAtHost(
 				{ workspaceId, hostUrl, hostStatus },
 				input,
 			);
 		},
-		[hostUrl, hostStatus, isSandbox, utils, workspaceId],
+		[hostUrl, hostStatus, workspaceId],
 	);
 
-	const inspect = useCallback(async (): Promise<DestroyWorkspacePreview> => {
-		// A sandbox's own answer here is always "no". Its checkout *is* the repo,
-		// so `worktreePath === repoPath` and the row is `type='main'` — both
-		// signals host-service uses to refuse deleting a main workspace, which
-		// is right for a machine someone owns and wrong for a cloud workspace,
-		// where deleting is how you dispose of the sandbox. The uncommitted-work
-		// warning is host-side too, so it is lost with it; the dialog's copy
-		// carries the consequence instead.
-		if (isSandbox) {
-			return {
-				canDelete: true,
-				reason: null,
-				hasChanges: false,
-				hasUnpushedCommits: false,
-			};
-		}
-		return inspectWorkspaceAtHost({ workspaceId, hostUrl, hostStatus });
-	}, [hostUrl, hostStatus, isSandbox, workspaceId]);
+	const inspect = useCallback(
+		async (): Promise<DestroyWorkspacePreview> =>
+			inspectWorkspaceAtHost({ workspaceId, hostUrl, hostStatus }),
+		[hostUrl, hostStatus, workspaceId],
+	);
 
 	return { hostTarget, destroy, inspect };
 }

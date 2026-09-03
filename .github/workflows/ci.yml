@@ -6,6 +6,13 @@ on:
   pull_request:
     types: [opened, synchronize]
 
+# One run per PR/branch. A newer commit makes the older result obsolete, so
+# stop paying for both instead of letting them race to completion.
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+
 jobs:
   sherif:
     name: Sherif
@@ -180,7 +187,10 @@ jobs:
           NODE_OPTIONS: "--max-old-space-size=6144"
         run: bun run typecheck
 
+  # Packaging is expensive and does not add a merge-time signal beyond the
+  # PR's lint, tests, and typecheck. Build the distributable once after merge.
   build:
+    if: github.event_name == 'push'
     name: Build
     runs-on: ubuntu-latest
     steps:
@@ -214,10 +224,14 @@ jobs:
           RELAY_URL: ${{ secrets.RELAY_URL }}
         run: bun turbo run build --filter=@choros/desktop
 
+  # Release workflows retain the four-platform matrix. Routine main builds
+  # cover the two primary distributions without paying for Intel macOS and
+  # Linux ARM on every commit.
   build-cli:
+    if: github.event_name == 'push'
     name: Build CLI
     uses: ./.github/workflows/build-cli.yml
     with:
-      targets: '[{"os":"ubuntu-latest","target":"linux-x64"},{"os":"macos-14","target":"darwin-arm64"},{"os":"macos-15-intel","target":"darwin-x64"},{"os":"ubuntu-24.04-arm","target":"linux-arm64"}]'
+      targets: '[{"os":"ubuntu-latest","target":"linux-x64"},{"os":"macos-14","target":"darwin-arm64"}]'
       upload: false
     secrets: inherit

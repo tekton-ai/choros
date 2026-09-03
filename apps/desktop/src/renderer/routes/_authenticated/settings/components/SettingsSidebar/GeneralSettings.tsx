@@ -12,7 +12,6 @@ import {
 	HiOutlineCommandLine,
 	HiOutlineComputerDesktop,
 	HiOutlineCpuChip,
-	HiOutlineCreditCard,
 	HiOutlineFolder,
 	HiOutlineGlobeAlt,
 	HiOutlineKey,
@@ -53,7 +52,6 @@ type SettingsRoute =
 	| "/settings/models"
 	| "/settings/experimental"
 	| "/settings/integrations"
-	| "/settings/billing"
 	| "/settings/api-keys"
 	| "/settings/security"
 	| "/settings/permissions"
@@ -254,15 +252,6 @@ const SECTION_GROUPS: SectionGroup[] = [
 					message: "Integrations",
 				}),
 				icon: <HiOutlinePuzzlePiece className="h-4 w-4" />,
-			},
-			{
-				id: "/settings/billing",
-				section: "billing",
-				label: msg({
-					id: "settings.components.generalSettings.billing",
-					message: "Billing",
-				}),
-				icon: <HiOutlineCreditCard className="h-4 w-4" />,
 			},
 			{
 				id: "/settings/api-keys",

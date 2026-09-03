@@ -28,8 +28,6 @@ import { InitGitDialog } from "renderer/react-query/projects/InitGitDialog";
 import { DaemonAutoUpdateFailureDialog } from "renderer/routes/_authenticated/components/DaemonAutoUpdateFailureDialog";
 import { DashboardNewWorkspaceModal } from "renderer/routes/_authenticated/components/DashboardNewWorkspaceModal";
 import { DiffThemeSync } from "renderer/routes/_authenticated/components/DiffThemeSync";
-import { LeaderboardAutoPublish } from "renderer/routes/_authenticated/components/LeaderboardAutoPublish";
-import { LeaderboardFirstRunDialog } from "renderer/routes/_authenticated/components/LeaderboardFirstRunDialog";
 import { PendingDeletionScreen } from "renderer/routes/_authenticated/components/PendingDeletionScreen";
 import { StarNagObserver } from "renderer/routes/_authenticated/components/StarNagObserver";
 import {
@@ -60,7 +58,6 @@ import { createPierreWorker } from "./lib/pierreWorker";
 import { CollectionsProvider } from "./providers/CollectionsProvider";
 import { HostWorkspacesProvider } from "./providers/HostWorkspacesProvider";
 import { LocalHostServiceProvider } from "./providers/LocalHostServiceProvider";
-import { SandboxAccessProvider } from "./providers/SandboxAccessProvider";
 
 export const Route = createFileRoute("/_authenticated")({
 	component: AuthenticatedLayout,
@@ -294,45 +291,41 @@ function AuthenticatedLayout() {
 				<LocalHostServiceProvider>
 					{/* Above the workspace fan-out: it needs sandbox addresses to
 					    include them as hosts. */}
-					<SandboxAccessProvider>
-						<HostWorkspacesProvider>
-							<WorkerPoolContextProvider
-								poolOptions={{ workerFactory: createPierreWorker, poolSize: 8 }}
-								highlighterOptions={{ preferredHighlighter: "shiki-wasm" }}
-							>
-								<DiffThemeSync />
-								<AgentHooks />
-								<FileMenuListener />
-								<V2NotificationController />
-								<DockBadgeController />
-								<StarNagObserver />
-								<LeaderboardAutoPublish />
-								<LeaderboardFirstRunDialog />
-								<DaemonAutoUpdateFailureDialog />
-								<Outlet />
-								<V1ImportModal />
-								{isV2CloudEnabled ? (
-									<>
-										<V1MigrationContinuity />
-										<V2FlipWelcome />
-									</>
-								) : (
-									<V1FlipNotice />
-								)}
-								<V1AutoMigration />
-								<WorkspaceInitEffects />
-								{isV2CloudEnabled ? (
-									<DashboardNewWorkspaceModal />
-								) : (
-									<NewWorkspaceModal />
-								)}
-								<InitGitDialog />
-								<GitInitConfirmDialog />
-								<TeardownLogsDialog />
-								<Paywall />
-							</WorkerPoolContextProvider>
-						</HostWorkspacesProvider>
-					</SandboxAccessProvider>
+					<HostWorkspacesProvider>
+						<WorkerPoolContextProvider
+							poolOptions={{ workerFactory: createPierreWorker, poolSize: 8 }}
+							highlighterOptions={{ preferredHighlighter: "shiki-wasm" }}
+						>
+							<DiffThemeSync />
+							<AgentHooks />
+							<FileMenuListener />
+							<V2NotificationController />
+							<DockBadgeController />
+							<StarNagObserver />
+							<DaemonAutoUpdateFailureDialog />
+							<Outlet />
+							<V1ImportModal />
+							{isV2CloudEnabled ? (
+								<>
+									<V1MigrationContinuity />
+									<V2FlipWelcome />
+								</>
+							) : (
+								<V1FlipNotice />
+							)}
+							<V1AutoMigration />
+							<WorkspaceInitEffects />
+							{isV2CloudEnabled ? (
+								<DashboardNewWorkspaceModal />
+							) : (
+								<NewWorkspaceModal />
+							)}
+							<InitGitDialog />
+							<GitInitConfirmDialog />
+							<TeardownLogsDialog />
+							<Paywall />
+						</WorkerPoolContextProvider>
+					</HostWorkspacesProvider>
 				</LocalHostServiceProvider>
 			</CollectionsProvider>
 		</DndProvider>

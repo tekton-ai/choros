@@ -1,0 +1,22 @@
+{
+	"name": "@choros/auth-server",
+	"version": "0.0.1",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "NODE_ENV=development wrangler dev",
+		"deploy": "NODE_ENV=development wrangler deploy"
+	},
+	"dependencies": {
+		"@choros/auth": "workspace:*",
+		"@choros/db": "workspace:*",
+		"hono": "4.12.34"
+	},
+	"devDependencies": {
+		"@choros/typescript": "workspace:*",
+		"@cloudflare/workers-types": "5.20260826.1",
+		"@types/node": "24.12.0",
+		"typescript": "6.0.3",
+		"wrangler": "3.101.0"
+	}
+}

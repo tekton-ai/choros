@@ -1,11 +1,9 @@
 import type { RendererContext } from "@choros/panes";
-import { FEATURE_FLAGS } from "@choros/shared/constants";
 import { toast } from "@choros/ui/sonner";
 import { cn } from "@choros/ui/utils";
 import { workspaceTrpc } from "@choros/workspace-client";
 import { useLingui } from "@lingui/react/macro";
 import "@xterm/xterm/css/xterm.css";
-import { useFeatureFlagEnabled } from "posthog-js/react";
 import {
 	useCallback,
 	useEffect,
@@ -14,7 +12,6 @@ import {
 	useState,
 	useSyncExternalStore,
 } from "react";
-import { env } from "renderer/env.renderer";
 import { useHotkey } from "renderer/hotkeys";
 import {
 	actionLabel,
@@ -36,7 +33,6 @@ import type {
 	PaneViewerData,
 	TerminalPaneData,
 } from "renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/types";
-import { openPagePaneInStore } from "renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/utils/openPagePaneInStore";
 import { openUrlInV2Workspace } from "renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/utils/openUrlInV2Workspace";
 import { useWorkspaceWsUrl } from "renderer/routes/_authenticated/_dashboard/v2-workspace/providers/WorkspaceTrpcProvider/WorkspaceTrpcProvider";
 import { useHostWorkspaces } from "renderer/routes/_authenticated/providers/HostWorkspacesProvider";
@@ -60,7 +56,6 @@ import {
 } from "./richInputOpenStore";
 import { PasteUploadLimitError, uploadPastedFiles } from "./uploadPastedFiles";
 import { shellEscapePaths } from "./utils";
-import { parseChorosPageUrl } from "./utils/parseChorosPageUrl";
 
 interface TerminalPaneProps {
 	ctx: RendererContext<PaneViewerData>;
@@ -79,7 +74,6 @@ export function TerminalPane({
 	const filePolicy = useTerminalFilePolicy();
 	const urlPolicy = useTerminalUrlPolicy();
 	const folderPolicy = useTerminalFolderPolicy();
-	const isPagesEnabled = useFeatureFlagEnabled(FEATURE_FLAGS.PAGES) ?? false;
 	const {
 		hoveredLink,
 		onHover: onLinkHover,
@@ -334,13 +328,6 @@ export function TerminalPane({
 						});
 						return;
 					}
-					const pageSlug = isPagesEnabled
-						? parseChorosPageUrl(url, env.NEXT_PUBLIC_WEB_URL)
-						: null;
-					if (pageSlug) {
-						openPagePaneInStore(ctx.store, { slug: pageSlug });
-						return;
-					}
 					openUrlInV2Workspace({
 						store: ctx.store,
 						target: action === "newTab" ? "new-tab" : "current-tab",
@@ -367,7 +354,6 @@ export function TerminalPane({
 		filePolicy,
 		urlPolicy,
 		folderPolicy,
-		isPagesEnabled,
 	]);
 
 	// --- Remote image paste ---

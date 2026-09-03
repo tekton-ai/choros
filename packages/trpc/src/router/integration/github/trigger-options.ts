@@ -2,8 +2,23 @@ import { db } from "@choros/db/client";
 import { githubInstallations, githubRepositories } from "@choros/db/schema";
 import { findProviderIdentity } from "@choros/db/utils";
 import { desc, eq } from "drizzle-orm";
-import { installationOctokit } from "../../../lib/blaxel/clone-token";
 import type { TriggerOptionSource } from "../trigger-options";
+
+// Cloud sandbox provisioning was removed; this stub keeps the dead-runtime
+// GitHub trigger router compiling until the integration router itself is
+// retired. It throws on call so a live caller surfaces the removal rather
+// than silently querying with a broken Octokit.
+type OctokitLike = {
+	request: (
+		route: string,
+		params?: Record<string, unknown>,
+	) => Promise<{ data: GithubAccount[] }>;
+};
+function installationOctokit(_installationId: unknown): OctokitLike {
+	throw new Error(
+		"installationOctokit removed with cloud sandbox provisioning",
+	);
+}
 
 /** The synced repositories of the organization's installation, newest first. */
 export async function listGithubRepositories(organizationId: string) {

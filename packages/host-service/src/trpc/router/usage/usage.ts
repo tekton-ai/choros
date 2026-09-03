@@ -5,10 +5,7 @@ import { provisionCodexProfile } from "@choros/agent-setup";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { projects, workspaces } from "../../../db/schema";
-import {
-	leaderboardPayloadTask,
-	usageHistoryTask,
-} from "../../../workers/tasks/usage";
+import { usageHistoryTask } from "../../../workers/tasks/usage";
 import { protectedProcedure, queryProcedure, router } from "../../index";
 import { offLoop } from "../../off-loop";
 import { provisionClaudeAccount } from "./account-provisioning";
@@ -20,7 +17,6 @@ import {
 	setDefaultAccountSelection,
 } from "./default-account";
 import { fetchGrokAccounts } from "./grok-quota";
-import { countAgentPrsByDay } from "./history/agent-prs";
 import { removeClaudeProfile, removeCodexHome } from "./profile-remove";
 import { discoverClaudeProfiles, discoverCodexHomes } from "./profiles";
 import type { UsageAccount } from "./types";
@@ -318,31 +314,6 @@ export const usageRouter = router({
 				}),
 			}),
 		),
-
-	leaderboardPayload: queryProcedure
-		.meta({ timeoutMs: 120_000 })
-		.input(z.object({ days: z.number().int().min(1).max(90) }))
-		.query(
-			offLoop({
-				task: leaderboardPayloadTask,
-				prepare: ({ ctx, input }) => {
-					const nowMs = Date.now();
-					return {
-						days: input.days,
-						nowMs,
-						agentPrsByDay: countAgentPrsByDay(
-							ctx.db,
-							input.days,
-							new Date(nowMs),
-						),
-					};
-				},
-				options: ({ input }) => ({
-					dedupeKey: `usage-leaderboard-payload:${input.days}`,
-					timeoutMs: 110_000,
-				}),
-			}),
-		),
 });
 
 export type {
@@ -351,10 +322,6 @@ export type {
 	UsageModelBreakdown,
 	UsageProjectBreakdown,
 } from "./history/aggregate";
-export type {
-	LeaderboardDay,
-	LeaderboardPayload,
-} from "./history/leaderboard-days";
 export type {
 	ModelProvider,
 	QuotaCapableAgent,

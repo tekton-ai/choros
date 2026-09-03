@@ -51,14 +51,18 @@ Re-run the script any time to refresh the workspace. To tear the local DB stack 
 ./.choros/teardown.local.sh
 ```
 
-### Signing in
+### Signing in (dev)
 
-After `bun run dev`, open the web app and click the **"Sign in as dev"** button on the sign-in page (also available in the desktop sign-in screen). Or use the credentials directly:
+`apps/api` (the Next.js server that used to broker sign-in) was retired from
+this repo, so the desktop client has no auth endpoint to talk to on
+`localhost:3001`. Development bypasses sign-in via the `SKIP_ENV_VALIDATION`
+flag — `.env.local.example` ships it set. With that on the desktop app skips
+the sign-in page entirely and hands the renderer a synthetic session backed
+by `MOCK_ORG_ID`, landing you directly on `/workspace`.
 
-- Email: `admin@local.test`
-- Password: `chorosdev`
-
-The dev sign-in button and email/password auth are gated on `NODE_ENV=development`. They don't ship in production.
+If you point `NEXT_PUBLIC_API_URL` at a real Choros API server, unset
+`SKIP_ENV_VALIDATION` and the normal better-auth flow (GitHub / Google /
+dev email+password) takes over.
 
 ## Manual setup (advanced)
 

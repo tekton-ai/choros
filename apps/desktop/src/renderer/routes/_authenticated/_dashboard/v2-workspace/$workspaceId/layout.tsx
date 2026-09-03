@@ -2,15 +2,12 @@ import { eq } from "@tanstack/db";
 import { useLiveQuery } from "@tanstack/react-db";
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef } from "react";
-import { useCloudWorkspaces } from "renderer/hooks/useCloudWorkspaces";
 import { useV2UserPreferences } from "renderer/hooks/useV2UserPreferences";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { useDashboardSidebarState } from "renderer/routes/_authenticated/hooks/useDashboardSidebarState";
 import { useCollections } from "renderer/routes/_authenticated/providers/CollectionsProvider";
 import { useHostWorkspaces } from "renderer/routes/_authenticated/providers/HostWorkspacesProvider";
-import { useSandboxAccess } from "renderer/routes/_authenticated/providers/SandboxAccessProvider";
 import { useWorkspaceTransactionsStore } from "renderer/stores/workspace-creates";
-import { CloudWorkspaceProvisioningState } from "../components/CloudWorkspaceProvisioningState";
 import { StateScreenShell } from "../components/StateScreenShell";
 import { WorkspaceCreateErrorState } from "../components/WorkspaceCreateErrorState";
 import { WorkspaceCreatingState } from "../components/WorkspaceCreatingState";
@@ -65,18 +62,6 @@ function V2WorkspaceLayout() {
 				: null,
 		[hostWorkspaces, workspaceId],
 	);
-	// A sandbox joins the fan-out as its own host, so a cloud workspace is
-	// found the same way as any other — but it has no v2_hosts row for the
-	// remote version gate to check.
-	const { targets: sandboxes } = useSandboxAccess();
-	const isCloud = sandboxes.some(
-		(sandbox) => sandbox.workspaceId === workspaceId,
-	);
-	// The cloud row exists from the moment the workspace is created, which is
-	// well before there is a sandbox to serve it.
-	const { workspaces: cloudWorkspaces } = useCloudWorkspaces();
-	const cloudWorkspace =
-		cloudWorkspaces.find((row) => row.id === workspaceId) ?? null;
 	const { data: failedEntries } = useLiveQuery(
 		(q) =>
 			q
@@ -96,7 +81,7 @@ function V2WorkspaceLayout() {
 
 	// Sandboxes ship with the app's own host-service build, so the remote
 	// version gate has nothing to check and no host row to check it against.
-	const hostStatus = useRemoteHostStatus(isCloud ? null : workspace);
+	const hostStatus = useRemoteHostStatus(workspace);
 
 	// "Not found" is a verdict, not a cache read: a CLI-created workspace can
 	// trail its own deep link (missed broadcast, second host-service instance,
@@ -113,25 +98,6 @@ function V2WorkspaceLayout() {
 		},
 		cache.refetchAll,
 	);
-
-	// Before "not found": a cloud workspace is navigated to as soon as its row
-	// exists, so for the first seconds of its life there is nothing in the
-	// fan-out to find. The same screen covers a ready sandbox that hasn't been
-	// addressed yet (access minting, host-service booting) — that gap used to
-	// be a blank frame, and letting it reach the host-unreachable takeover
-	// would tell the user their machine is down while it is simply starting.
-	if (!workspace && cloudWorkspace) {
-		return (
-			<StateScreenShell>
-				<CloudWorkspaceProvisioningState
-					workspaceId={cloudWorkspace.id}
-					name={cloudWorkspace.name}
-					branch={cloudWorkspace.branch}
-					status={cloudWorkspace.status}
-				/>
-			</StateScreenShell>
-		);
-	}
 
 	if (!workspace) {
 		if (failedEntry) {
@@ -164,21 +130,19 @@ function V2WorkspaceLayout() {
 		);
 	}
 
-	if (!isCloud) {
-		if (hostStatus.status === "incompatible") {
-			return (
-				<StateScreenShell>
-					<WorkspaceHostIncompatibleState
-						hostName={hostStatus.hostName}
-						hostVersion={hostStatus.hostVersion}
-						minVersion={hostStatus.minVersion}
-					/>
-				</StateScreenShell>
-			);
-		}
-		if (hostStatus.status === "loading") {
-			return <StateScreenShell>{null}</StateScreenShell>;
-		}
+	if (hostStatus.status === "incompatible") {
+		return (
+			<StateScreenShell>
+				<WorkspaceHostIncompatibleState
+					hostName={hostStatus.hostName}
+					hostVersion={hostStatus.hostVersion}
+					minVersion={hostStatus.minVersion}
+				/>
+			</StateScreenShell>
+		);
+	}
+	if (hostStatus.status === "loading") {
+		return <StateScreenShell>{null}</StateScreenShell>;
 	}
 
 	return (
