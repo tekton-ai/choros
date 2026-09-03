@@ -3,8 +3,15 @@ import { createEnv } from "@t3-oss/env-core";
 import { config } from "dotenv";
 import { z } from "zod";
 
-// Load .env from monorepo root
-config({ path: path.resolve(__dirname, "../../../.env"), quiet: true });
+// Load .env from monorepo root — only in Node/Bun where __dirname exists and
+// a filesystem is reachable. Cloudflare Workers reach here too (packages/auth
+// imports us transitively) but have no fs and no __dirname; the env values
+// they need arrive as bindings/secrets rather than through a dotfile.
+try {
+	// biome-ignore lint/correctness/noUndeclaredVariables: dev-only Node runtime probe
+	const dir = typeof __dirname !== "undefined" ? __dirname : ".";
+	config({ path: path.resolve(dir, "../../../.env"), quiet: true });
+} catch {}
 
 export const env = createEnv({
 	server: {

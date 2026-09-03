@@ -89,12 +89,19 @@ const PENDING_DELETION_ALLOWED_PATH_PREFIXES = [
 ];
 
 const NOTIFY_SLACK_URL = `${env.NEXT_PUBLIC_API_URL}/api/integrations/stripe/jobs/notify-slack`;
+// Choros allocates a fresh port window per git worktree (.choros/setup.local.sh),
+// so DESKTOP_VITE_PORT is different in every workspace. Trust ANY local port in
+// dev to avoid needing a Worker redeploy per worktree; the desktopDevPort
+// fallback is here only so the trusted list contains the exact primary origin
+// too, matching upstream better-auth conventions.
 const desktopDevPort = process.env.DESKTOP_VITE_PORT || "5173";
 const desktopDevOrigins =
 	process.env.NODE_ENV === "development"
 		? [
 				`http://localhost:${desktopDevPort}`,
 				`http://127.0.0.1:${desktopDevPort}`,
+				"http://localhost:*",
+				"http://127.0.0.1:*",
 			]
 		: [];
 

@@ -4,8 +4,8 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"dev": "wrangler dev",
-		"deploy": "wrangler deploy"
+		"dev": "NODE_ENV=development wrangler dev",
+		"deploy": "NODE_ENV=development wrangler deploy"
 	},
 	"dependencies": {
 		"@choros/auth": "workspace:*",

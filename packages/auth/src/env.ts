@@ -3,7 +3,11 @@ import { createEnv } from "@t3-oss/env-core";
 import { config } from "dotenv";
 import { z } from "zod";
 
-config({ path: path.resolve(process.cwd(), "../../../.env"), quiet: true });
+// Node/Bun dev only — Workers have no filesystem to read a dotfile; their
+// env comes from bindings/secrets. Fail silent so the module still loads.
+try {
+	config({ path: path.resolve(process.cwd(), "../../../.env"), quiet: true });
+} catch {}
 
 export const env = createEnv({
 	server: {
