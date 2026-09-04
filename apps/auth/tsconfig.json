@@ -1,6 +1,7 @@
 {
 	"extends": "@choros/typescript/base.json",
 	"compilerOptions": {
+		"types": ["bun"],
 		"moduleResolution": "bundler",
 		"noEmit": true
 	},

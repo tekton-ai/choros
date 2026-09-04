@@ -17,10 +17,10 @@
 
 import * as os from "node:os";
 import packageJson from "../package.json" with { type: "json" };
-import { drainPendingKills } from "./Pty/index.ts";
 import type { HandoffMessage } from "./protocol/index.ts";
-import { Server } from "./Server/index.ts";
-import { clearSnapshot, readSnapshot } from "./SessionStore/index.ts";
+import { drainPendingKills } from "./pty/index.ts";
+import { Server } from "./server/index.ts";
+import { clearSnapshot, readSnapshot } from "./session-store/index.ts";
 import { probeTrustdHealthy } from "./trustd-probe.ts";
 
 const DAEMON_VERSION: string = packageJson.version;

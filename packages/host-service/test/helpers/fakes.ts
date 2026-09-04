@@ -2,7 +2,7 @@ import type { ApiAuthProvider } from "../../src/providers/auth";
 import {
 	localCredentialRemedy,
 	type TokenSource,
-} from "../../src/providers/git/LocalGitCredentialProvider/credential-remedy";
+} from "../../src/providers/git/local-git-credential-provider/credential-remedy";
 import type { HostAuthProvider } from "../../src/providers/host-auth";
 import type {
 	CredentialProblem,

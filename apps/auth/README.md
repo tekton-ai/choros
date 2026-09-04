@@ -130,6 +130,15 @@ curl -I 'https://choros-auth.<your-account>.workers.dev/api/auth/desktop/connect
 
 # Same for Google.
 curl -I '.../api/auth/desktop/connect?provider=google&state=x&protocol=choros'
+
+# With a desktop bearer session, a valid event should return 204.
+# The server derives userId from the session; never put userId in the body.
+curl -i -X POST 'https://choros-auth.<your-account>.workers.dev/api/usage/events' \
+  -H 'Authorization: Bearer <desktop-session-token>' \
+  -H 'Content-Type: application/json' \
+  --data '{"id":"01991f5d-6ad0-7f62-a5f1-2cb897cc78ba","event":"desktop_opened","occurredAt":"2026-09-03T08:00:00.000Z","appVersion":"0.1.0","platform":"darwin-arm64","schemaVersion":1}'
+
+# Supplying userId or any other unknown field should return 400.
 ```
 
 ## Step 7 — point desktop at it

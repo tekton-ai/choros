@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const DIR = fileURLToPath(new URL(".", import.meta.url));
+const DIR = fileURLToPath(new URL("./", import.meta.url));
 
 export const CLAUDE_FIXTURES = [
 	"text-reply",

@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import { TRPCClientError } from "@trpc/client";
-import { createTestHost, type TestHost } from "../helpers/createTestHost";
+import { createTestHost, type TestHost } from "../helpers/create-test-host";
 
 describe("auth (provider OAuth/API key) router with stub ChatService", () => {
 	let host: TestHost;

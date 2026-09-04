@@ -19,7 +19,7 @@ import type { NodeWebSocket } from "@hono/node-ws";
 import { trpcServer } from "@hono/trpc-server";
 import type { Hono, MiddlewareHandler } from "hono";
 import type { HostDb } from "../db";
-import { createResolveCwd } from "./resolveCwd";
+import { createResolveCwd } from "./resolve-cwd";
 
 export const CHAT_V3_TRPC_PATH = "/chat-v3/trpc";
 export const CHAT_V3_STREAM_PATH = "/chat-v3/sessions/:sessionId/stream";

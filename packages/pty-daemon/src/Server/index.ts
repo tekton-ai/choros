@@ -1,1 +1,1 @@
-export { Server, type ServerOptions } from "./Server.ts";
+export { Server, type ServerOptions } from "./server.ts";

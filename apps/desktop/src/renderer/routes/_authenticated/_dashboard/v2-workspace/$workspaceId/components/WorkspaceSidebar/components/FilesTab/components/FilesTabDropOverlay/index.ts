@@ -1,1 +1,0 @@
-export { FilesTabDropOverlay } from "./FilesTabDropOverlay";

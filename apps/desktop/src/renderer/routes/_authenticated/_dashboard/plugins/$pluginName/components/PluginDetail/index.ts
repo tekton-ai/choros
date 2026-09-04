@@ -1,1 +1,0 @@
-export { PluginDetail } from "./PluginDetail";

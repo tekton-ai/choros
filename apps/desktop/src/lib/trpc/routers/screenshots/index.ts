@@ -5,10 +5,6 @@ import { publicProcedure, router } from "../..";
 
 export const createScreenshotsRouter = () => {
 	return router({
-		list: publicProcedure.query(() => {
-			return screenshotManager.list();
-		}),
-
 		onChanged: publicProcedure.subscription(() => {
 			return observable<ReturnType<typeof screenshotManager.list>>((emit) => {
 				const push = () => emit.next(screenshotManager.list());

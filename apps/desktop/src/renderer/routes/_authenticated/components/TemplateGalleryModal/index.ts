@@ -1,1 +1,0 @@
-export { TemplateGalleryModal } from "./TemplateGalleryModal";

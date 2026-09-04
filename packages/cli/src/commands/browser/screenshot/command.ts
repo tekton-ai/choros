@@ -7,7 +7,6 @@ export default command({
 	description: "Capture a PNG screenshot of a browser pane",
 	options: {
 		workspace: string().required().desc("Workspace ID"),
-		host: string().desc("Host the workspace lives on (default: this machine)"),
 		pane: string().required().desc("Pane ID (from `choros browser list`)"),
 		out: string().desc("Write PNG to this path instead of printing base64"),
 	},

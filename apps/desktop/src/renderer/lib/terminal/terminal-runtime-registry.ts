@@ -3,6 +3,7 @@ import type { SearchAddon } from "@xterm/addon-search";
 import { DEFAULT_TERMINAL_PARKED_RUNTIME_CAP } from "shared/constants";
 import type { TerminalAppearance } from "./appearance";
 import { runWhenParserIdle } from "./parser-idle-gate";
+import type { TerminalFailureClassification } from "./terminal-connection-diagnostics";
 import type { ImagePasteOverride } from "./terminal-image-paste-fallback";
 import {
 	type LinkHoverInfo,
@@ -43,7 +44,6 @@ import {
 	type TerminalLogEntry,
 	type TerminalTransport,
 } from "./terminal-ws-transport";
-import type { TerminalFailureClassification } from "./terminalConnectionDiagnostics";
 
 interface RegistryEntry {
 	terminalId: string;

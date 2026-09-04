@@ -1,0 +1,45 @@
+import { resolveAgentLaunchPresetId } from "@choros/shared/agent-models";
+import { useMemo } from "react";
+import type { AgentSelectAgent } from "renderer/components/agent-select";
+import { useV2AgentConfigs } from "renderer/hooks/use-v2-agent-configs";
+
+interface UseV2AgentChoicesResult {
+	agents: AgentSelectAgent[];
+	isFetched: boolean;
+}
+
+const CHOROS_AGENT: AgentSelectAgent = {
+	id: "choros",
+	label: "Choros",
+	iconId: "choros",
+};
+
+// Choros chat isn't in the host's `host_agent_configs` table — it's
+// chat-v3's entry point, so it rides the same flag as the rest of chat-v3.
+// Append after the host's terminal rows so the user's preferred terminal
+// agents stay on top.
+export function useV2AgentChoices(
+	hostUrl: string | null,
+): UseV2AgentChoicesResult {
+	const query = useV2AgentConfigs(hostUrl);
+
+	const agents = useMemo<AgentSelectAgent[]>(() => {
+		const terminalAgents: AgentSelectAgent[] = (query.data ?? []).map(
+			(config) => ({
+				id: config.id,
+				label: config.label,
+				// Prefer the user's icon override (built-in key or uploaded data
+				// URI); fall back to the preset-implied icon.
+				iconId: config.iconId ?? config.presetId,
+				presetId: config.presetId,
+				launchPresetId: resolveAgentLaunchPresetId(
+					config.presetId,
+					config.command,
+				),
+			}),
+		);
+		return [...terminalAgents, CHOROS_AGENT];
+	}, [query.data]);
+
+	return { agents, isFetched: query.isFetched };
+}

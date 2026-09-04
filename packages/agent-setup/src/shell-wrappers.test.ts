@@ -322,6 +322,11 @@ echo wrapper
 		mkdirSync(systemBinDir, { recursive: true });
 
 		writeFileSync(
+			path.join(homeDir, ".bash_profile"),
+			`export PATH="${systemBinDir}:/usr/bin:/bin"\n`,
+		);
+
+		writeFileSync(
 			path.join(systemBinDir, "claude"),
 			`#!/usr/bin/env bash
 echo system
@@ -359,6 +364,11 @@ echo system
 		mkdirSync(homeDir, { recursive: true });
 		mkdirSync(systemBinDir, { recursive: true });
 		mkdirSync(wrapperBinDir, { recursive: true });
+
+		writeFileSync(
+			path.join(homeDir, ".bash_profile"),
+			`export PATH="${systemBinDir}:/usr/bin:/bin"\n`,
+		);
 
 		writeFileSync(
 			path.join(systemBinDir, "claude"),

@@ -7,66 +7,43 @@ import {
 	useLocation,
 	useNavigate,
 } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { DndProvider } from "react-dnd";
-import { HiOutlineWifi } from "react-icons/hi2";
-import { NewWorkspaceModal } from "renderer/components/NewWorkspaceModal";
-import { Paywall } from "renderer/components/Paywall";
-import { Redirect } from "renderer/components/Redirect";
+import { Redirect } from "renderer/components/redirect";
 import { env } from "renderer/env.renderer";
-import { useDelayElapsed } from "renderer/hooks/useDelayElapsed";
-import { useIsV2CloudEnabled } from "renderer/hooks/useIsV2CloudEnabled";
-import { useOnlineStatus } from "renderer/hooks/useOnlineStatus";
-import { useSettingsExternalChangeListener } from "renderer/hooks/useSettingsExternalChangeListener";
-import { useSignOut } from "renderer/hooks/useSignOut";
+import { useDelayElapsed } from "renderer/hooks/use-delay-elapsed";
+import { useOnlineStatus } from "renderer/hooks/use-online-status";
+import { useSettingsExternalChangeListener } from "renderer/hooks/use-settings-external-change-listener";
+import { useSignOut } from "renderer/hooks/use-sign-out";
 import { authClient, getAuthToken } from "renderer/lib/auth-client";
+import { canEnterLocalProduct } from "renderer/lib/auth-state";
 import { dragDropManager } from "renderer/lib/dnd";
 import { electronTrpc } from "renderer/lib/electron-trpc";
+import { isOnboardingComplete } from "renderer/lib/onboarding-state";
 import { terminalRuntimeRegistry } from "renderer/lib/terminal/terminal-runtime-registry";
-import { showWorkspaceAutoNameWarningToast } from "renderer/lib/workspaces/showWorkspaceAutoNameWarningToast";
-import { InitGitDialog } from "renderer/react-query/projects/InitGitDialog";
-import { DaemonAutoUpdateFailureDialog } from "renderer/routes/_authenticated/components/DaemonAutoUpdateFailureDialog";
-import { DashboardNewWorkspaceModal } from "renderer/routes/_authenticated/components/DashboardNewWorkspaceModal";
-import { DiffThemeSync } from "renderer/routes/_authenticated/components/DiffThemeSync";
-import { PendingDeletionScreen } from "renderer/routes/_authenticated/components/PendingDeletionScreen";
-import { StarNagObserver } from "renderer/routes/_authenticated/components/StarNagObserver";
-import {
-	V1AutoMigration,
-	V1MigrationContinuity,
-} from "renderer/routes/_authenticated/components/V1AutoMigration";
-import {
-	V1FlipNotice,
-	V2FlipWelcome,
-} from "renderer/routes/_authenticated/components/V1FlipNotice";
-import { V1ImportModal } from "renderer/routes/_authenticated/components/V1ImportModal";
-import { WorkspaceInitEffects } from "renderer/screens/main/components/WorkspaceInitEffects";
+import { DaemonAutoUpdateFailureDialog } from "renderer/routes/_authenticated/components/daemon-auto-update-failure-dialog";
+import { DashboardNewWorkspaceModal } from "renderer/routes/_authenticated/components/dashboard-new-workspace-modal";
+import { DiffThemeSync } from "renderer/routes/_authenticated/components/diff-theme-sync";
+import { StarNagObserver } from "renderer/routes/_authenticated/components/star-nag-observer";
 import { useSettingsStore } from "renderer/stores/settings-state";
-import { useTabsStore } from "renderer/stores/tabs/store";
-import { useAgentHookListener } from "renderer/stores/tabs/useAgentHookListener";
-import { setPaneWorkspaceRunState } from "renderer/stores/tabs/workspace-run";
-import { useWorkspaceInitStore } from "renderer/stores/workspace-init";
-import { MOCK_ORG_ID, NOTIFICATION_EVENTS } from "shared/constants";
-import { AgentHooks } from "./components/AgentHooks";
-import { DockBadgeController } from "./components/DockBadgeController";
-import { FileMenuListener } from "./components/FileMenuListener";
-import { GitInitConfirmDialog } from "./components/GitInitConfirmDialog";
-import { GlobalBrowserLifecycle } from "./components/GlobalBrowserLifecycle";
-import { TeardownLogsDialog } from "./components/TeardownLogsDialog";
-import { V2NotificationController } from "./components/V2NotificationController";
-import { WindowTitle } from "./components/WindowTitle";
-import { createPierreWorker } from "./lib/pierreWorker";
-import { CollectionsProvider } from "./providers/CollectionsProvider";
-import { HostWorkspacesProvider } from "./providers/HostWorkspacesProvider";
-import { LocalHostServiceProvider } from "./providers/LocalHostServiceProvider";
+import { NOTIFICATION_EVENTS } from "shared/constants";
+import { AgentHooks } from "./components/agent-hooks";
+import { DockBadgeController } from "./components/dock-badge-controller";
+import { FileMenuListener } from "./components/file-menu-listener";
+import { GlobalBrowserLifecycle } from "./components/global-browser-lifecycle";
+import { TeardownLogsDialog } from "./components/teardown-logs-dialog";
+import { V2NotificationController } from "./components/v2-notification-controller";
+import { WindowTitle } from "./components/window-title";
+import { createPierreWorker } from "./lib/pierre-worker";
+import { CollectionsProvider } from "./providers/collections-provider";
+import { HostWorkspacesProvider } from "./providers/host-workspaces-provider";
+import { LocalHostServiceProvider } from "./providers/local-host-service-provider";
 
 export const Route = createFileRoute("/_authenticated")({
 	component: AuthenticatedLayout,
 });
 
 const signInRedirect = <Redirect to="/sign-in" replace />;
-const createOrganizationRedirect = (
-	<Redirect to="/create-organization" replace />
-);
 const onboardingRedirect = <Redirect to="/onboarding" replace />;
 
 const SESSION_PENDING_TIMEOUT_MS = 15_000;
@@ -83,16 +60,14 @@ function AuthenticatedLayout() {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const setOriginRoute = useSettingsStore((s) => s.setOriginRoute);
-	const utils = electronTrpc.useUtils();
-	const shownWorkspaceInitWarningsRef = useRef(new Set<string>());
-	const isV2CloudEnabled = useIsV2CloudEnabled();
 
-	const isSignedIn = env.SKIP_ENV_VALIDATION || !!session?.user;
-	const activeOrganizationId = env.SKIP_ENV_VALIDATION
-		? MOCK_ORG_ID
-		: session?.session?.activeOrganizationId;
-
+	const isSignedIn = canEnterLocalProduct({
+		hasSession: !!session?.user,
+		hasStoredToken: hasLocalToken,
+		skipValidation: env.SKIP_ENV_VALIDATION,
+	});
 	const isAuthPending =
+		isOnline &&
 		(isPending || (isRefetching && !session?.user && hasLocalToken)) &&
 		!env.SKIP_ENV_VALIDATION;
 	const authPendingTimedOut = useDelayElapsed(
@@ -102,7 +77,6 @@ function AuthenticatedLayout() {
 	const signOut = useSignOut();
 	const [isSigningOut, setIsSigningOut] = useState(false);
 
-	useAgentHookListener();
 	useSettingsExternalChangeListener();
 
 	// Seed the parked-terminal eviction cap from settings (SUPER-1545).
@@ -122,31 +96,11 @@ function AuthenticatedLayout() {
 				event.data
 			) {
 				localStorage.setItem("lastViewedWorkspaceId", event.data.workspaceId);
-				const source = event.data.source;
 				void navigate({
 					to: "/v2-workspace/$workspaceId",
 					params: { workspaceId: event.data.workspaceId },
-					search: {
-						terminalId: source.id,
-						focusRequestId: crypto.randomUUID(),
-					},
 				});
 				return;
-			}
-
-			if (
-				event.type !== NOTIFICATION_EVENTS.TERMINAL_EXIT ||
-				!event.data?.paneId
-			) {
-				return;
-			}
-			const pane = useTabsStore.getState().panes[event.data.paneId];
-			if (pane?.workspaceRun?.state === "running") {
-				const nextState =
-					event.data.reason === "killed"
-						? "stopped-by-user"
-						: "stopped-by-exit";
-				setPaneWorkspaceRunState(event.data.paneId, nextState);
 			}
 		},
 	});
@@ -157,42 +111,12 @@ function AuthenticatedLayout() {
 		}
 	}, [location.pathname, setOriginRoute]);
 
-	// Workspace initialization progress subscription
-	const updateInitProgress = useWorkspaceInitStore((s) => s.updateProgress);
-	electronTrpc.workspaces.onInitProgress.useSubscription(undefined, {
-		onData: (progress) => {
-			updateInitProgress(progress);
-			if (
-				progress.warning &&
-				!shownWorkspaceInitWarningsRef.current.has(progress.workspaceId)
-			) {
-				shownWorkspaceInitWarningsRef.current.add(progress.workspaceId);
-				showWorkspaceAutoNameWarningToast({
-					description: progress.warning,
-					onOpenModelAuthSettings: () => {
-						void navigate({ to: "/settings/models" });
-					},
-				});
-			}
-			if (progress.step === "ready" || progress.step === "failed") {
-				// Invalidate both the grouped list AND the specific workspace
-				utils.workspaces.getAllGrouped.invalidate();
-				utils.workspaces.get.invalidate({ id: progress.workspaceId });
-			}
-		},
-		onError: (error) => {
-			console.error("[workspace-init-subscription] Subscription error:", error);
-		},
-	});
-
 	// Menu navigation subscription
 	electronTrpc.menu.subscribe.useSubscription(undefined, {
 		onData: (event) => {
 			if (event.type === "open-settings") {
 				const section = event.data.section || "account";
 				navigate({ to: `/settings/${section}` as "/settings/account" });
-			} else if (event.type === "open-workspace") {
-				navigate({ to: `/workspace/${event.data.workspaceId}` });
 			}
 		},
 	});
@@ -240,46 +164,11 @@ function AuthenticatedLayout() {
 		);
 	}
 
-	if (!isSignedIn && hasLocalToken && !isOnline) {
-		return (
-			<div className="relative flex h-screen w-screen flex-col items-center justify-center gap-4 bg-background">
-				<div className="drag absolute inset-x-0 top-0 h-12" />
-				<HiOutlineWifi className="size-12 text-muted-foreground" />
-				<div className="text-center">
-					<h2 className="text-lg font-medium">You're offline</h2>
-					<p className="text-sm text-muted-foreground">
-						Connect to the internet to continue
-					</p>
-				</div>
-				<Button variant="outline" size="sm" onClick={() => refetch()}>
-					Retry
-				</Button>
-			</div>
-		);
-	}
-
 	if (!isSignedIn) {
 		return signInRedirect;
 	}
 
-	if (session?.user?.deletionRequestedAt) {
-		return (
-			<PendingDeletionScreen
-				deletionRequestedAt={session.user.deletionRequestedAt}
-				onReactivated={() => void refetch()}
-			/>
-		);
-	}
-
-	if (!activeOrganizationId) {
-		return createOrganizationRedirect;
-	}
-
-	if (
-		session?.user &&
-		!session.user.onboardedAt &&
-		!location.pathname.startsWith("/onboarding")
-	) {
+	if (!isOnboardingComplete() && !location.pathname.startsWith("/onboarding")) {
 		return onboardingRedirect;
 	}
 
@@ -289,8 +178,6 @@ function AuthenticatedLayout() {
 				<WindowTitle />
 				<GlobalBrowserLifecycle />
 				<LocalHostServiceProvider>
-					{/* Above the workspace fan-out: it needs sandbox addresses to
-					    include them as hosts. */}
 					<HostWorkspacesProvider>
 						<WorkerPoolContextProvider
 							poolOptions={{ workerFactory: createPierreWorker, poolSize: 8 }}
@@ -304,26 +191,8 @@ function AuthenticatedLayout() {
 							<StarNagObserver />
 							<DaemonAutoUpdateFailureDialog />
 							<Outlet />
-							<V1ImportModal />
-							{isV2CloudEnabled ? (
-								<>
-									<V1MigrationContinuity />
-									<V2FlipWelcome />
-								</>
-							) : (
-								<V1FlipNotice />
-							)}
-							<V1AutoMigration />
-							<WorkspaceInitEffects />
-							{isV2CloudEnabled ? (
-								<DashboardNewWorkspaceModal />
-							) : (
-								<NewWorkspaceModal />
-							)}
-							<InitGitDialog />
-							<GitInitConfirmDialog />
+							<DashboardNewWorkspaceModal />
 							<TeardownLogsDialog />
-							<Paywall />
 						</WorkerPoolContextProvider>
 					</HostWorkspacesProvider>
 				</LocalHostServiceProvider>

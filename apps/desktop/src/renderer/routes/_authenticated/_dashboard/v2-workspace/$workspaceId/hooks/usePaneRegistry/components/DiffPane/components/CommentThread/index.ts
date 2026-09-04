@@ -1,1 +1,0 @@
-export { CommentThread } from "./CommentThread";

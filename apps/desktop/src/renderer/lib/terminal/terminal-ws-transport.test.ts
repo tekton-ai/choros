@@ -105,12 +105,9 @@ class FakeRelaySocket {
 	}
 }
 
-// bun's mock.module is process-global and leaks to every later test file in the
-// whole desktop run, so a partial stub breaks unrelated tests that import the
-// module's other named exports. Preserve the real exports and override only
-// createRelaySocket. (auth-client / posthog are deliberately NOT mocked: with a
-// faked socket getToken/ensureFreshJwt never runs, and posthog.capture before
-// init is a harmless no-op — the real modules load fine, as the prior test did.)
+// bun's mock.module is process-global and leaks to later test files, so preserve
+// every real export and override only createRelaySocket. With a faked socket,
+// the token callback never runs.
 mock.module("@choros/workspace-client/relay-socket", () => ({
 	...relaySocketModule,
 	createRelaySocket: (options: Record<string, unknown>) =>

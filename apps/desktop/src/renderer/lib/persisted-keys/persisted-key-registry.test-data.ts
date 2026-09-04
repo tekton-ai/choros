@@ -7,7 +7,12 @@ export const PERSISTED_KEY_REGISTRY: ReadonlyArray<
 	readonly [file: string, keys: readonly string[]]
 > = [
 	[
-		"src/renderer/routes/_authenticated/providers/CollectionsProvider/collections.ts",
+		"src/renderer/components/usage-reporter/usage-reporter.tsx",
+		["choros:last-authenticated-user-id", "choros:usage-launch:*"],
+	],
+	["src/renderer/lib/onboarding-state.ts", ["choros:onboarding-complete-v1"]],
+	[
+		"src/renderer/routes/_authenticated/providers/collections-provider/collections.ts",
 		[
 			"v2-workspace-local-state-*",
 			"v2-sidebar-projects-*",
@@ -18,7 +23,7 @@ export const PERSISTED_KEY_REGISTRY: ReadonlyArray<
 		],
 	],
 	[
-		"src/renderer/routes/_authenticated/providers/CollectionsProvider/withQuotaGuard.ts",
+		"src/renderer/routes/_authenticated/providers/collections-provider/with-quota-guard.ts",
 		[],
 	],
 	[
@@ -35,30 +40,19 @@ export const PERSISTED_KEY_REGISTRY: ReadonlyArray<
 		["<store>:version", "<store>:pending", "<store>:pending:updatedAt"],
 	],
 	[
-		"src/renderer/lib/v1-migration/completion.ts",
-		[
-			"v1-migration-complete-*",
-			"v1-migration-continuity-pending-*",
-			"v1-migration-welcome-pending-*",
-			"v1-migration-followup-pending-*",
-		],
-	],
-	["src/renderer/lib/posthog.ts", ["ph_*_posthog", "__ph_opt_in_out_*"]],
-	[
 		"src/renderer/lib/persistent-hash-history/persistent-hash-history.ts",
 		["router-history"],
 	],
 	[
-		"src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/state/paneScrollStateCache/paneScrollStateCache.ts",
+		"src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/state/pane-scroll-state-cache/pane-scroll-state-cache.ts",
 		["v2-pane-scroll-state-v1"],
 	],
 	[
-		"src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/ChatV3Pane/components/Composer/Composer.tsx",
+		"src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/use-pane-registry/components/chat-v3-pane/components/composer/composer.tsx",
 		["chat-v3-draft:*"],
 	],
 	["src/renderer/stores/changes/store.ts", ["changes-store"]],
 	["src/renderer/stores/prompt-history.ts", ["prompt-history"]],
-	["src/renderer/stores/tabs/store.ts", ["tabs-storage"]],
 	[
 		"src/renderer/stores/theme/store.ts",
 		["theme-storage", "theme-terminal", "theme-id", "theme-type"],
@@ -86,7 +80,6 @@ export const PERSISTED_KEY_REGISTRY: ReadonlyArray<
 		"src/renderer/stores/last-active-v2-workspace.ts",
 		["last-active-v2-workspace"],
 	],
-	["src/renderer/stores/v2-local-override.ts", ["v2-local-override-v2"]],
 	[
 		"src/renderer/stores/v2-workspace-create-defaults.ts",
 		["v2-workspace-create-defaults"],
@@ -104,15 +97,11 @@ export const PERSISTED_KEY_REGISTRY: ReadonlyArray<
 		["terminal-close-confirm-v1"],
 	],
 	[
-		"src/renderer/stores/automation-failures/store.ts",
-		["automation-failures-v1"],
-	],
-	[
 		"src/renderer/stores/app-version-history/store.ts",
 		["app-version-history-v1"],
 	],
 	[
-		"src/renderer/stores/createDismissalsStore/createDismissalsStore.ts",
+		"src/renderer/stores/create-dismissals-store/create-dismissals-store.ts",
 		[
 			"desktop-notice-dismissals-v1",
 			"v2-setup-card-dismissals-v1",
@@ -121,45 +110,40 @@ export const PERSISTED_KEY_REGISTRY: ReadonlyArray<
 	],
 	["src/renderer/stores/workspace-agents-row.ts", ["workspace-agents-row"]],
 	[
-		"src/renderer/routes/_authenticated/settings/usage/utils/usageLastSection/usageLastSection.ts",
+		"src/renderer/routes/_authenticated/settings/usage/utils/usage-last-section/usage-last-section.ts",
 		["usage-last-section-v1"],
 	],
 	["src/renderer/stores/inline-workspace-ports.ts", ["inline-workspace-ports"]],
-	["src/renderer/hotkeys/stores/hotkeyOverridesStore.ts", ["hotkey-overrides"]],
 	[
-		"src/renderer/hotkeys/stores/keyboardPreferencesStore.ts",
+		"src/renderer/hotkeys/stores/hotkey-overrides-store.ts",
+		["hotkey-overrides"],
+	],
+	[
+		"src/renderer/hotkeys/stores/keyboard-preferences-store.ts",
 		["keyboard-preferences"],
 	],
 	[
-		"src/renderer/routes/_authenticated/_dashboard/tasks/stores/tasks-filter-state.ts",
-		["tasks-filter-state"],
-	],
-	[
-		"src/renderer/routes/_authenticated/_dashboard/pull-requests/stores/pullRequestsFilterStore/pullRequestsFilterStore.ts",
+		"src/renderer/routes/_authenticated/_dashboard/pull-requests/stores/pull-requests-filter-store/pull-requests-filter-store.ts",
 		["pull-requests-filter-state"],
 	],
 	[
-		"src/renderer/routes/_authenticated/_dashboard/pull-requests/stores/pullRequestsSplitViewStore/pullRequestsSplitViewStore.ts",
+		"src/renderer/routes/_authenticated/_dashboard/pull-requests/stores/pull-requests-split-view-store/pull-requests-split-view-store.ts",
 		["pull-requests-split-view-state"],
 	],
 	[
-		"src/renderer/components/PostHogUserIdentifier/PostHogUserIdentifier.tsx",
-		["active_organization_id"],
-	],
-	[
-		"src/renderer/hooks/useAgentModelPreference/useAgentModelPreference.ts",
+		"src/renderer/hooks/use-agent-model-preference/use-agent-model-preference.ts",
 		["lastSelectedV2WorkspaceCreateModelByPreset"],
 	],
 	[
-		"src/renderer/hooks/useAgentEffortPreference/useAgentEffortPreference.ts",
+		"src/renderer/hooks/use-agent-effort-preference/use-agent-effort-preference.ts",
 		["lastSelectedV2WorkspaceCreateEffortByPreset"],
 	],
 	[
-		"src/renderer/hooks/useAgentModePreference/useAgentModePreference.ts",
+		"src/renderer/hooks/use-agent-mode-preference/use-agent-mode-preference.ts",
 		["lastSelectedV2WorkspaceCreateModeByPreset"],
 	],
 	[
-		"src/renderer/hooks/useAgentLaunchPreferences/useAgentLaunchPreferences.ts",
+		"src/renderer/hooks/use-agent-launch-preferences/use-agent-launch-preferences.ts",
 		[
 			"lastSelectedV2WorkspaceCreateAgent",
 			"lastOpenedInProjectId",
@@ -169,46 +153,22 @@ export const PERSISTED_KEY_REGISTRY: ReadonlyArray<
 	],
 	["src/renderer/routes/_authenticated/layout.tsx", ["lastViewedWorkspaceId"]],
 	[
-		"src/renderer/routes/_authenticated/_dashboard/utils/workspace-navigation.ts",
-		["lastViewedWorkspaceId"],
-	],
-	[
-		"src/renderer/routes/_authenticated/_dashboard/automations/$automationId/components/PreviousRunsList/PreviousRunsList.tsx",
-		["lastViewedWorkspaceId"],
-	],
-	[
-		"src/renderer/routes/_authenticated/_dashboard/automations/components/AutomationRow/AutomationRow.tsx",
-		["lastViewedWorkspaceId"],
-	],
-	[
-		"src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/TerminalPane/richInputOpenStore.ts",
+		"src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/use-pane-registry/components/terminal-pane/rich-input-open-store.ts",
 		["choros.terminalRichInputOpen"],
 	],
 	[
-		"src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/AgentCommentComposer/hooks/useDiffCommentTarget/useDiffCommentTarget.ts",
+		"src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/use-pane-registry/components/agent-comment-composer/hooks/use-diff-comment-target/use-diff-comment-target.ts",
 		[
 			"lastSelectedDiffCommentNewAgentConfigId",
 			"lastSelectedDiffCommentPlacement",
 		],
 	],
 	[
-		"src/renderer/routes/_authenticated/_dashboard/tasks/$taskId/components/PropertiesSidebar/components/OpenInWorkspaceV2/OpenInWorkspaceV2.tsx",
-		["lastSelectedV2TaskAgent"],
-	],
-	[
-		"src/renderer/routes/_authenticated/_dashboard/tasks/components/TasksView/components/TasksTopBar/components/RunIssuesInWorkspacePopover/RunIssuesInWorkspacePopover.tsx",
-		["lastSelectedV2IssueBatchAgent"],
-	],
-	[
-		"src/renderer/routes/_authenticated/_dashboard/tasks/components/TasksView/components/TasksTopBar/components/RunInWorkspacePopoverV2/RunInWorkspacePopoverV2.tsx",
-		["lastSelectedV2TaskBatchAgent"],
-	],
-	[
-		"src/renderer/routes/_authenticated/components/DaemonAutoUpdateFailureDialog/DaemonAutoUpdateFailureDialog.tsx",
+		"src/renderer/routes/_authenticated/components/daemon-auto-update-failure-dialog/daemon-auto-update-failure-dialog.tsx",
 		["daemon-update-dismissed-failure-*"],
 	],
 	[
-		"src/renderer/routes/_authenticated/hooks/useDevSeedV2Sidebar/useDevSeedV2Sidebar.ts",
+		"src/renderer/routes/_authenticated/hooks/use-dev-seed-v2-sidebar/use-dev-seed-v2-sidebar.ts",
 		["choros:dev:v2-sidebar-seeded"],
 	],
 	["src/renderer/routes/sign-in/page.tsx", ["choros-last-auth-method"]],

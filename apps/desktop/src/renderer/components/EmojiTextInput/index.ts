@@ -1,1 +1,0 @@
-export { EmojiTextInput } from "./EmojiTextInput";

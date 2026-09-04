@@ -9,19 +9,18 @@
  *
  * For main process env vars, use src/main/env.main.ts instead.
  */
+
 import { z } from "zod/v4";
+import { DEFAULT_AUTH_SERVICE_URL } from "../../auth-service-url";
 
 const envSchema = z.object({
 	NODE_ENV: z
 		.enum(["development", "production", "test"])
 		.default("development"),
-	NEXT_PUBLIC_API_URL: z.url().default("https://api.choros.sh"),
+	NEXT_PUBLIC_API_URL: z.url().default(DEFAULT_AUTH_SERVICE_URL),
 	NEXT_PUBLIC_WEB_URL: z.url().default("https://app.choros.sh"),
 	NEXT_PUBLIC_MARKETING_URL: z.url().default("https://choros.sh"),
-	NEXT_PUBLIC_POSTHOG_KEY: z.string().optional(),
-	NEXT_PUBLIC_POSTHOG_HOST: z.string().default("https://us.i.posthog.com"),
 	SENTRY_DSN_DESKTOP: z.string().optional(),
-	RELAY_URL: z.url().default("https://relay.choros.sh"),
 });
 
 /**
@@ -36,14 +35,7 @@ const rawEnv = {
 	NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
 	NEXT_PUBLIC_WEB_URL: process.env.NEXT_PUBLIC_WEB_URL,
 	NEXT_PUBLIC_MARKETING_URL: process.env.NEXT_PUBLIC_MARKETING_URL,
-	NEXT_PUBLIC_POSTHOG_KEY: import.meta.env.NEXT_PUBLIC_POSTHOG_KEY as
-		| string
-		| undefined,
-	NEXT_PUBLIC_POSTHOG_HOST: import.meta.env.NEXT_PUBLIC_POSTHOG_HOST as
-		| string
-		| undefined,
 	SENTRY_DSN_DESKTOP: import.meta.env.SENTRY_DSN_DESKTOP as string | undefined,
-	RELAY_URL: process.env.RELAY_URL,
 };
 
 // Only allow skipping validation in development (never in production)

@@ -6,7 +6,6 @@ export default command({
 	description: "Open a URL in a workspace browser pane and return its pane id",
 	options: {
 		workspace: string().required().desc("Workspace ID"),
-		host: string().desc("Host the workspace lives on (default: this machine)"),
 		url: string().required().desc("URL to open"),
 		target: string().desc("`current-tab` (default) or `new-tab`"),
 	},

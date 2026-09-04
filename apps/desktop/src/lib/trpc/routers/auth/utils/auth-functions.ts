@@ -14,23 +14,17 @@ import { decrypt, encrypt } from "./crypto-storage";
 interface StoredAuth {
 	token: string;
 	expiresAt: string;
-	organizationIds?: string[];
-	organizationIdsRevision?: number;
 }
 
 interface LoadedAuth {
 	token: string | null;
 	expiresAt: string | null;
-	organizationIds: string[] | null;
-	organizationIdsRevision: number;
 }
 
 const TOKEN_FILE_NAME = "auth-token.enc";
 const EMPTY_LOADED_AUTH: LoadedAuth = {
 	token: null,
 	expiresAt: null,
-	organizationIds: null,
-	organizationIdsRevision: 0,
 };
 
 type InspectedTokenStorage =
@@ -86,18 +80,6 @@ function parseStoredAuth(data: Buffer): StoredAuth {
 	return {
 		token: candidate.token,
 		expiresAt: candidate.expiresAt,
-		organizationIds: Array.isArray(candidate.organizationIds)
-			? candidate.organizationIds.filter(
-					(value): value is string =>
-						typeof value === "string" && value.length > 0,
-				)
-			: undefined,
-		organizationIdsRevision:
-			typeof candidate.organizationIdsRevision === "number" &&
-			Number.isSafeInteger(candidate.organizationIdsRevision) &&
-			candidate.organizationIdsRevision >= 0
-				? candidate.organizationIdsRevision
-				: undefined,
 	};
 }
 
@@ -219,7 +201,6 @@ function serializeAuthWrite<Result>(
  *
  * Events:
  * - "token-saved": { token, expiresAt } - New token saved (OAuth callback)
- * - "organization-ids-saved": { token, organizationIds } - Membership cached
  * - "token-cleared": (no data) - Token deleted (sign-out)
  */
 export const authEvents = new EventEmitter();
@@ -241,8 +222,6 @@ export async function loadToken(): Promise<LoadedAuth> {
 		return {
 			token: storedAuth.token,
 			expiresAt: storedAuth.expiresAt,
-			organizationIds: storedAuth.organizationIds ?? null,
-			organizationIdsRevision: storedAuth.organizationIdsRevision ?? 0,
 		};
 	} catch (error) {
 		console.error("[auth] Failed to inspect auth token storage", error);
@@ -278,50 +257,6 @@ export async function clearToken(): Promise<void> {
 			await quarantineInvalidTokenStorage(tokenFile, inspected.reason);
 		}
 		authEvents.emit("token-cleared");
-	});
-}
-
-/** Cache the last membership confirmed by the authenticated session. */
-export async function saveOrganizationIds({
-	token,
-	organizationIds,
-	expectedRevision,
-}: {
-	token: string;
-	organizationIds: string[];
-	expectedRevision: number;
-}): Promise<
-	| { status: "saved"; revision: number }
-	| { status: "conflict"; revision: number }
-	| { status: "token-mismatch"; revision: number }
-> {
-	return await serializeAuthWrite(async () => {
-		const storedAuth = await readStoredAuth();
-		if (!storedAuth || storedAuth.token !== token) {
-			return { status: "token-mismatch" as const, revision: 0 };
-		}
-
-		const currentRevision = storedAuth.organizationIdsRevision ?? 0;
-		if (expectedRevision !== currentRevision) {
-			return { status: "conflict" as const, revision: currentRevision };
-		}
-		if (currentRevision === Number.MAX_SAFE_INTEGER) {
-			throw new Error("Organization membership revision exhausted");
-		}
-
-		const normalizedIds = [...new Set(organizationIds)].sort();
-		const revision = currentRevision + 1;
-		await writeStoredAuth({
-			token: storedAuth.token,
-			expiresAt: storedAuth.expiresAt,
-			organizationIds: normalizedIds,
-			organizationIdsRevision: revision,
-		});
-		authEvents.emit("organization-ids-saved", {
-			token: storedAuth.token,
-			organizationIds: normalizedIds,
-		});
-		return { status: "saved" as const, revision };
 	});
 }
 

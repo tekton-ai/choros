@@ -1,1 +1,0 @@
-export { StarNagObserver } from "./StarNagObserver";

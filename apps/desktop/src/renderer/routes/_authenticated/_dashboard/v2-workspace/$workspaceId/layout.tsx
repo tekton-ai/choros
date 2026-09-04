@@ -2,20 +2,19 @@ import { eq } from "@tanstack/db";
 import { useLiveQuery } from "@tanstack/react-db";
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef } from "react";
-import { useV2UserPreferences } from "renderer/hooks/useV2UserPreferences";
+import { useV2UserPreferences } from "renderer/hooks/use-v2-user-preferences";
 import { electronTrpc } from "renderer/lib/electron-trpc";
-import { useDashboardSidebarState } from "renderer/routes/_authenticated/hooks/useDashboardSidebarState";
-import { useCollections } from "renderer/routes/_authenticated/providers/CollectionsProvider";
-import { useHostWorkspaces } from "renderer/routes/_authenticated/providers/HostWorkspacesProvider";
+import { useDashboardSidebarState } from "renderer/routes/_authenticated/hooks/use-dashboard-sidebar-state";
+import { useCollections } from "renderer/routes/_authenticated/providers/collections-provider";
+import { useHostWorkspaces } from "renderer/routes/_authenticated/providers/host-workspaces-provider";
 import { useWorkspaceTransactionsStore } from "renderer/stores/workspace-creates";
-import { StateScreenShell } from "../components/StateScreenShell";
-import { WorkspaceCreateErrorState } from "../components/WorkspaceCreateErrorState";
-import { WorkspaceCreatingState } from "../components/WorkspaceCreatingState";
-import { WorkspaceHostIncompatibleState } from "../components/WorkspaceHostIncompatibleState";
-import { WorkspaceNotFoundState } from "../components/WorkspaceNotFoundState";
-import { useRemoteHostStatus } from "../hooks/useRemoteHostStatus";
-import { useWorkspaceMissVerdict } from "../hooks/useWorkspaceMissVerdict";
-import { WorkspaceProvider } from "../providers/WorkspaceProvider";
+import { StateScreenShell } from "../components/state-screen-shell";
+import { WorkspaceCreateErrorState } from "../components/workspace-create-error-state";
+import { WorkspaceCreatingState } from "../components/workspace-creating-state";
+import { WorkspaceNotFoundState } from "../components/workspace-not-found-state";
+import { useRemoteHostStatus } from "../hooks/use-remote-host-status";
+import { useWorkspaceMissVerdict } from "../hooks/use-workspace-miss-verdict";
+import { WorkspaceProvider } from "../providers/workspace-provider";
 
 export const Route = createFileRoute(
 	"/_authenticated/_dashboard/v2-workspace/$workspaceId",
@@ -130,17 +129,6 @@ function V2WorkspaceLayout() {
 		);
 	}
 
-	if (hostStatus.status === "incompatible") {
-		return (
-			<StateScreenShell>
-				<WorkspaceHostIncompatibleState
-					hostName={hostStatus.hostName}
-					hostVersion={hostStatus.hostVersion}
-					minVersion={hostStatus.minVersion}
-				/>
-			</StateScreenShell>
-		);
-	}
 	if (hostStatus.status === "loading") {
 		return <StateScreenShell>{null}</StateScreenShell>;
 	}

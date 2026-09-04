@@ -1,1 +1,0 @@
-export { TabRenameInput } from "./TabRenameInput";

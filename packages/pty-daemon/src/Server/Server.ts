@@ -13,7 +13,6 @@ import {
 	handleSubscribe,
 	handleUnsubscribe,
 } from "../handlers/index.ts";
-import { adoptFromFd } from "../Pty/index.ts";
 import {
 	type ClientMessage,
 	encodeFrame,
@@ -23,12 +22,13 @@ import {
 	type ServerMessage,
 	SUPPORTED_PROTOCOL_VERSIONS,
 } from "../protocol/index.ts";
-import type { HandoffSnapshot, Session } from "../SessionStore/index.ts";
+import { adoptFromFd } from "../pty/index.ts";
+import type { HandoffSnapshot, Session } from "../session-store/index.ts";
 import {
 	SessionStore,
 	serializeSessions,
 	writeSnapshot,
-} from "../SessionStore/index.ts";
+} from "../session-store/index.ts";
 
 export interface ServerOptions {
 	socketPath: string;

@@ -10,20 +10,17 @@ const pendingScript = (
 	cwd: "",
 	commands: ["echo a"],
 	cliImportPending: true,
-	cliTargetOrganizationId: "org-a",
 	...overrides,
 });
 
 describe("clearImportedCliTerminalScripts", () => {
-	test("keeps the row for v1 but drops the import markers", () => {
+	test("keeps the source row but drops the one-shot import marker", () => {
 		const regular = pendingScript({
 			id: "regular",
 			cliImportPending: undefined,
-			cliTargetOrganizationId: undefined,
 		});
 		const result = clearImportedCliTerminalScripts({
 			scripts: [pendingScript(), regular],
-			organizationId: "org-a",
 			ids: ["script-a"],
 		});
 
@@ -34,22 +31,10 @@ describe("clearImportedCliTerminalScripts", () => {
 		]);
 	});
 
-	test("preserves pending scripts for another organization", () => {
-		const script = pendingScript();
-		const result = clearImportedCliTerminalScripts({
-			scripts: [script],
-			organizationId: "org-b",
-			ids: [script.id],
-		});
-
-		expect(result).toEqual({ scripts: [script], changed: false });
-	});
-
 	test("ignores ids that are not pending", () => {
 		const script = pendingScript({ cliImportPending: undefined });
 		const result = clearImportedCliTerminalScripts({
 			scripts: [script],
-			organizationId: "org-a",
 			ids: [script.id],
 		});
 

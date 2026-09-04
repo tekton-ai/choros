@@ -1,2 +1,2 @@
-export type { AlertAction, AlertActionVariant, AlertOptions } from "./Alert";
-export { Alerter, alert } from "./Alert";
+export type { AlertAction, AlertActionVariant, AlertOptions } from "./alert";
+export { Alerter, alert } from "./alert";

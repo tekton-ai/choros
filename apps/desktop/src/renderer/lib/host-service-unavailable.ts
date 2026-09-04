@@ -10,8 +10,6 @@ export type HostServiceAvailabilityStatus =
 	| "unknown";
 
 export interface HostServiceUnavailableContext {
-	activeOrganizationId?: string | null;
-	activeOrganizationName?: string | null;
 	hostServiceStatus?: HostServiceAvailabilityStatus | null;
 	machineId?: string | null;
 }
@@ -134,23 +132,6 @@ function shortId(id: string): string {
 	return id.length > 8 ? id.slice(0, 8) : id;
 }
 
-function formatOrganization(context: HostServiceUnavailableContext): string {
-	if (context.activeOrganizationName) {
-		return `"${context.activeOrganizationName}"`;
-	}
-	if (context.activeOrganizationId) {
-		return i18n._({
-			id: "hostServiceUnavailable.organizationById",
-			message: "organization {id}",
-			values: { id: shortId(context.activeOrganizationId) },
-		});
-	}
-	return i18n._({
-		id: "hostServiceUnavailable.activeOrganization",
-		message: "the active organization",
-	});
-}
-
 function formatDevice(context: HostServiceUnavailableContext): string {
 	return context.machineId
 		? i18n._({
@@ -223,23 +204,7 @@ export function getHostServiceUnavailableMessage(
 		? i18n._(ACTION_MESSAGES[options.action])
 		: null;
 
-	if (!context.activeOrganizationId) {
-		return action
-			? i18n._({
-					id: "hostServiceUnavailable.noOrganization.withAction",
-					message:
-						"Cannot {action}: no active organization is selected. Select an organization or sign in again.",
-					values: { action },
-				})
-			: i18n._({
-					id: "hostServiceUnavailable.noOrganization",
-					message:
-						"No active organization is selected. Select an organization or sign in again.",
-				});
-	}
-
 	const status = context.hostServiceStatus ?? "unknown";
-	const organization = formatOrganization(context);
 	const device = formatDevice(context);
 	const statusText = statusLabel(status);
 	const recovery = getRecoveryText(status);
@@ -251,14 +216,14 @@ export function getHostServiceUnavailableMessage(
 		? i18n._({
 				id: "hostServiceUnavailable.message.withAction",
 				message:
-					"Cannot {action}: the local host service is unavailable for {organization} on {device}. Status: {status}. {recovery}",
-				values: { action, organization, device, status: statusText, recovery },
+					"Cannot {action}: the local host service is unavailable on {device}. Status: {status}. {recovery}",
+				values: { action, device, status: statusText, recovery },
 			})
 		: i18n._({
 				id: "hostServiceUnavailable.message",
 				message:
-					"The local host service is unavailable for {organization} on {device}. Status: {status}. {recovery}",
-				values: { organization, device, status: statusText, recovery },
+					"The local host service is unavailable on {device}. Status: {status}. {recovery}",
+				values: { device, status: statusText, recovery },
 			});
 }
 

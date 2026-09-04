@@ -127,7 +127,7 @@ describe("buffer-helpers", () => {
 		it("should convert ranges for ascii characters", () => {
 			const lines = createBufferLineArray([
 				{ text: "AA http://t", width: 11 },
-				{ text: ".com/f/", width: 8 },
+				{ text: ".com/f", width: 8 },
 			]);
 			const result = convertLinkRangeToBuffer(
 				lines,
@@ -218,7 +218,7 @@ describe("buffer-helpers", () => {
 		it("should convert ranges for wide characters inside the link", () => {
 			const lines = createBufferLineArray([
 				{ text: "AA http://t", width: 11 },
-				{ text: ".com/文/", width: 8 },
+				{ text: ".com/文", width: 8 },
 			]);
 			const result = convertLinkRangeToBuffer(
 				lines,
@@ -286,7 +286,7 @@ describe("buffer-helpers", () => {
 			const lines = createBufferLineArray([
 				{ text: "AAAAAAAAAAA", width: 11 },
 				{ text: "AA http://t", width: 11 },
-				{ text: ".com/f/", width: 8 },
+				{ text: ".com/f", width: 8 },
 			]);
 			const result = convertLinkRangeToBuffer(
 				lines,
@@ -386,7 +386,7 @@ describe("buffer-helpers", () => {
 			const lines = createBufferLineArray([
 				{ text: "AAAAAAAAAAA", width: 11 },
 				{ text: "AA http://t", width: 11 },
-				{ text: ".com/文/", width: 8 },
+				{ text: ".com/文", width: 8 },
 			]);
 			const result = convertLinkRangeToBuffer(
 				lines,

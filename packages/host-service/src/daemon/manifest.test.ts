@@ -1,142 +1,57 @@
-import { afterEach, beforeEach, describe, expect, test } from "bun:test";
-import * as fs from "node:fs";
-import * as os from "node:os";
-import * as path from "node:path";
+import { afterAll, beforeEach, describe, expect, test } from "bun:test";
+import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import {
-	assertIsolatedDaemonNamespaceInTests,
-	type PtyDaemonManifest,
+	listPtyDaemonManifests,
+	ptyDaemonManifestDir,
 	readPtyDaemonManifest,
 	removePtyDaemonManifest,
 	writePtyDaemonManifest,
-} from "./manifest.ts";
+} from "./manifest";
 
-const TEST_HOME = path.join(
-	os.tmpdir(),
-	`pty-daemon-manifest-test-${process.pid}`,
-);
-const TEST_ORG = "org-manifest-test";
+const originalHome = process.env.CHOROS_HOME_DIR;
+const testHome = mkdtempSync(join(tmpdir(), "choros-daemon-manifest-"));
+process.env.CHOROS_HOME_DIR = testHome;
 
-beforeEach(() => {
-	process.env.CHOROS_HOME_DIR = TEST_HOME;
-	fs.mkdirSync(TEST_HOME, { recursive: true });
+beforeEach(() => removePtyDaemonManifest());
+afterAll(() => {
+	if (originalHome === undefined) delete process.env.CHOROS_HOME_DIR;
+	else process.env.CHOROS_HOME_DIR = originalHome;
+	rmSync(testHome, { recursive: true, force: true });
 });
 
-afterEach(() => {
-	removePtyDaemonManifest(TEST_ORG);
-	fs.rmSync(TEST_HOME, { recursive: true, force: true });
-	process.env.CHOROS_HOME_DIR = undefined;
-});
-
-function baseManifest(): PtyDaemonManifest {
-	return {
-		pid: 12345,
-		socketPath: "/tmp/test.sock",
-		protocolVersions: [1],
-		startedAt: 1700000000000,
-		organizationId: TEST_ORG,
-	};
-}
-
-describe("PtyDaemonManifest", () => {
-	test("write + read round-trips required fields", () => {
-		writePtyDaemonManifest(baseManifest());
-		expect(readPtyDaemonManifest(TEST_ORG)).toEqual(baseManifest());
-	});
-
-	test("write + read round-trips Phase 2 handoff fields", () => {
-		const manifest: PtyDaemonManifest = {
-			...baseManifest(),
-			handoffInProgress: true,
-			handoffSnapshotPath: "/tmp/handoff-snapshot.json",
-			handoffSuccessorPid: 99999,
+describe("singleton pty-daemon manifest", () => {
+	test("round-trips the single daemon record", () => {
+		const manifest = {
+			pid: 1234,
+			socketPath: "/tmp/choros-test.sock",
+			protocolVersions: [1],
+			startedAt: 1_700_000_000_000,
 		};
 		writePtyDaemonManifest(manifest);
-		expect(readPtyDaemonManifest(TEST_ORG)).toEqual(manifest);
+		expect(readPtyDaemonManifest()).toEqual(manifest);
+		expect(listPtyDaemonManifests()).toEqual([manifest]);
 	});
 
-	test("read tolerates extra unknown fields (forward-compat)", () => {
-		const dir = path.join(TEST_HOME, "host", TEST_ORG);
-		fs.mkdirSync(dir, { recursive: true });
-		fs.writeFileSync(
-			path.join(dir, "pty-daemon-manifest.json"),
-			JSON.stringify({ ...baseManifest(), futureField: "something" }),
+	test("rejects malformed content", () => {
+		writeFileSync(
+			join(ptyDaemonManifestDir(), "pty-daemon-manifest.json"),
+			"{}",
 		);
-		const out = readPtyDaemonManifest(TEST_ORG);
-		expect(out).not.toBeNull();
-		expect(out?.pid).toBe(12345);
+		expect(readPtyDaemonManifest()).toBeNull();
 	});
 
-	test("read drops malformed handoff fields silently", () => {
-		const dir = path.join(TEST_HOME, "host", TEST_ORG);
-		fs.mkdirSync(dir, { recursive: true });
-		fs.writeFileSync(
-			path.join(dir, "pty-daemon-manifest.json"),
-			JSON.stringify({
-				...baseManifest(),
-				handoffInProgress: "not-a-boolean",
-				handoffSuccessorPid: "not-a-number",
-			}),
-		);
-		const out = readPtyDaemonManifest(TEST_ORG);
-		expect(out).not.toBeNull();
-		expect(out?.handoffInProgress).toBeUndefined();
-		expect(out?.handoffSuccessorPid).toBeUndefined();
-	});
-
-	test("read returns null when required fields are missing", () => {
-		const dir = path.join(TEST_HOME, "host", TEST_ORG);
-		fs.mkdirSync(dir, { recursive: true });
-		fs.writeFileSync(
-			path.join(dir, "pty-daemon-manifest.json"),
-			JSON.stringify({ pid: 1 }),
-		);
-		expect(readPtyDaemonManifest(TEST_ORG)).toBeNull();
-	});
-});
-
-describe("assertIsolatedDaemonNamespaceInTests", () => {
-	test("throws for test-runner contexts on the default home", () => {
-		expect(() =>
-			assertIsolatedDaemonNamespaceInTests({ NODE_ENV: "test" }),
-		).toThrow(/isolated temp dir/);
-		expect(() =>
-			assertIsolatedDaemonNamespaceInTests({
-				NODE_TEST_CONTEXT: "child-v8",
-			} as NodeJS.ProcessEnv),
-		).toThrow(/isolated temp dir/);
-		expect(() =>
-			assertIsolatedDaemonNamespaceInTests({
-				NODE_ENV: "test",
-				CHOROS_HOME_DIR: path.join(os.homedir(), ".choros"),
-			}),
-		).toThrow(/isolated temp dir/);
-		// Aliases of the default home must not slip past the guard.
-		expect(() =>
-			assertIsolatedDaemonNamespaceInTests({
-				NODE_ENV: "test",
-				CHOROS_HOME_DIR: `${path.join(os.homedir(), ".choros")}${path.sep}`,
-			}),
-		).toThrow(/isolated temp dir/);
-		expect(() =>
-			assertIsolatedDaemonNamespaceInTests({
-				NODE_ENV: "test",
-				CHOROS_HOME_DIR: path.join(os.homedir(), "somewhere", "..", ".choros"),
-			}),
-		).toThrow(/isolated temp dir/);
-	});
-
-	test("passes with an isolated home, and outside test runners", () => {
-		expect(() =>
-			assertIsolatedDaemonNamespaceInTests({
-				NODE_ENV: "test",
-				CHOROS_HOME_DIR: "/tmp/isolated-home",
-			}),
-		).not.toThrow();
-		expect(() =>
-			assertIsolatedDaemonNamespaceInTests({ NODE_ENV: "production" }),
-		).not.toThrow();
-		expect(() =>
-			assertIsolatedDaemonNamespaceInTests({ NODE_ENV: "development" }),
-		).not.toThrow();
+	test("removes the singleton manifest idempotently", () => {
+		writePtyDaemonManifest({
+			pid: 1234,
+			socketPath: "/tmp/choros-test.sock",
+			protocolVersions: [1],
+			startedAt: Date.now(),
+		});
+		removePtyDaemonManifest();
+		removePtyDaemonManifest();
+		expect(readPtyDaemonManifest()).toBeNull();
+		expect(listPtyDaemonManifests()).toEqual([]);
 	});
 });

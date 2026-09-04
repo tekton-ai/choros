@@ -11,7 +11,7 @@ import {
 	sessionState,
 	userMessage,
 } from "../../testing/fixtures";
-import { createBunChatDb, createTestRuntime } from "../../testing/testRuntime";
+import { createBunChatDb, createTestRuntime } from "../../testing/test-runtime";
 
 const SESSION = "session-1";
 

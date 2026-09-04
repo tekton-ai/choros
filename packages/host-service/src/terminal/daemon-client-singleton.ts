@@ -10,21 +10,7 @@
 // failure model.
 
 import { getSupervisor, waitForDaemonReady } from "../daemon/index.ts";
-import { DaemonClient } from "./DaemonClient/index.ts";
-
-// Read org id directly from process.env rather than importing the validated
-// `env` module — this singleton is eagerly loaded by the trpc terminal
-// router, so importing `env` here makes every test that boots the router
-// crash at import time when the production env vars aren't set.
-function getOrganizationId(): string {
-	const id = process.env.ORGANIZATION_ID;
-	if (!id) {
-		throw new Error(
-			"ORGANIZATION_ID is not set; pty-daemon cannot be addressed.",
-		);
-	}
-	return id;
-}
+import { DaemonClient } from "./daemon-client/index.ts";
 
 let cached: DaemonClient | null = null;
 let connecting: Promise<DaemonClient> | null = null;
@@ -51,8 +37,8 @@ async function ptyDaemonSocketPath(): Promise<string> {
 	const testOverride = process.env.CHOROS_PTY_DAEMON_SOCKET;
 	if (testOverride) return testOverride;
 
-	await waitForDaemonReady(getOrganizationId());
-	const sockPath = getSupervisor().getSocketPath(getOrganizationId());
+	await waitForDaemonReady();
+	const sockPath = getSupervisor().getSocketPath();
 	if (!sockPath) {
 		throw new Error(
 			"pty-daemon is not available: supervisor returned no socket path. " +

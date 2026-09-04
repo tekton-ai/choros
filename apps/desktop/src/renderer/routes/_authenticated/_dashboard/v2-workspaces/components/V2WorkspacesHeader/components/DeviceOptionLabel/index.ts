@@ -1,1 +1,0 @@
-export { DeviceOptionLabel } from "./DeviceOptionLabel";

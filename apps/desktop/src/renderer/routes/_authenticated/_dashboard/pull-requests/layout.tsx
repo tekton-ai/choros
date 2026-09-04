@@ -1,18 +1,18 @@
 import { cn } from "@choros/ui/utils";
 import { createFileRoute, Outlet, useParams } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { resolveProjectFilterParams } from "renderer/routes/_authenticated/_dashboard/components/ProjectFilter/project-filter-utils";
-import { parsePositiveIntegerParam } from "renderer/routes/_authenticated/_dashboard/utils/parsePositiveIntegerParam";
-import { ResizablePanel } from "renderer/screens/main/components/ResizablePanel";
+import { resolveProjectFilterParams } from "renderer/routes/_authenticated/_dashboard/components/project-filter/project-filter-utils";
+import { parsePositiveIntegerParam } from "renderer/routes/_authenticated/_dashboard/utils/parse-positive-integer-param";
+import { ResizablePanel } from "renderer/screens/main/components/resizable-panel";
 import { useWorkspaceSidebarStore } from "renderer/stores/workspace-sidebar-state";
-import { PullRequestListToggle } from "./components/PullRequestListToggle";
-import { PullRequestsView } from "./components/PullRequestsView";
+import { PullRequestListToggle } from "./components/pull-request-list-toggle";
+import { PullRequestsView } from "./components/pull-requests-view";
 import {
 	DEFAULT_PULL_REQUESTS_LIST_WIDTH,
 	MAX_PULL_REQUESTS_LIST_WIDTH,
 	MIN_PULL_REQUESTS_LIST_WIDTH,
 	usePullRequestsSplitViewStore,
-} from "./stores/pullRequestsSplitViewStore";
+} from "./stores/pull-requests-split-view-store";
 
 // The list panel keeps its own persisted width regardless of window size, so
 // on a narrower window it can eat a disproportionate share and leave the

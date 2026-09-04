@@ -5,9 +5,6 @@
  */
 
 export const env = {
-	RELAY_URL: process.env.RELAY_URL || "https://relay.choros.sh",
-	CHOROS_API_URL: process.env.CHOROS_API_URL || "https://api.choros.sh",
-	CHOROS_WEB_URL: process.env.CHOROS_WEB_URL || "https://app.choros.sh",
 	VERSION: process.env.CHOROS_VERSION || "0.0.0-dev",
 };
 

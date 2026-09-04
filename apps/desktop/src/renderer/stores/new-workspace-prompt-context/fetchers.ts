@@ -1,4 +1,3 @@
-import { apiTrpcClient } from "renderer/lib/api-trpc-client";
 import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";
 import type { PromptContextBody } from "./store";
 
@@ -36,22 +35,6 @@ export async function fetchGitHubIssueBody(args: {
 		return text ? { text } : null;
 	} catch (err) {
 		console.error("[promptContext] fetchGitHubIssueBody failed", { args, err });
-		return null;
-	}
-}
-
-export async function fetchInternalTaskBody(args: {
-	taskId: string;
-}): Promise<PromptContextBody | null> {
-	try {
-		const result = await apiTrpcClient.task.byId.query(args.taskId);
-		const text = (result?.description ?? "").trim();
-		return text ? { text } : null;
-	} catch (err) {
-		console.error("[promptContext] fetchInternalTaskBody failed", {
-			args,
-			err,
-		});
 		return null;
 	}
 }

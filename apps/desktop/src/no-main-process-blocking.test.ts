@@ -48,36 +48,20 @@ const RULES: Rule[] = [
 	{
 		name: "sync recursive fs (rmSync/cpSync)",
 		pattern: /\b(rmSync|cpSync)\b/,
-		allowedCounts: {
-			// Workspace-setup copy, cold path.
-			"lib/trpc/routers/workspaces/utils/setup.ts": 2,
-		},
+		allowedCounts: {},
 		advice:
 			"rmSync/cpSync walk the whole tree on the Electron main process — a large copy or delete stalls every electronTrpc response for seconds. Prefer `await rm/cp` from node:fs/promises: same result, but the walk runs on libuv's thread pool while main keeps serving.",
 	},
 	{
 		name: "in-process git client construction",
 		pattern: /\b(simpleGit|getSimpleGitWithShellPath)\b/,
-		allowedCounts: {
-			// The factory module itself — permanent entry.
-			"lib/trpc/routers/workspaces/utils/git-client.ts": 4,
-			// Legacy on-main git spawners — shrink these counts by porting reads
-			// to worker task types (changes/workers/git-task-types.ts).
-			"lib/trpc/routers/changes/git-operations.ts": 2,
-			"lib/trpc/routers/changes/security/git-commands.ts": 2,
-			"lib/trpc/routers/changes/staging.ts": 2,
-			"lib/trpc/routers/projects/projects.ts": 6,
-			"lib/trpc/routers/workspaces/utils/base-branch-config.ts": 4,
-			"lib/trpc/routers/workspaces/utils/git.ts": 21,
-		},
+		allowedCounts: {},
 		advice:
-			"simple-git is async, but a client constructed here still pays the spawn syscall + stdout drain on the Electron main process — cost scales linearly with call volume (branch polls, sidebar rows). Async isn't enough for git; route it off-process: add a task type to changes/workers/git-task-types.ts and run it via runGitTask.",
+			"simple-git is async, but a client constructed on Electron main still pays the spawn syscall and stdout drain there. Route git work through host-service instead.",
 	},
 ];
 
-// Prefix, not dirname-suffix: nested subdirectories of the worker dir are
-// worker code too.
-const EXEMPT_DIR_PREFIXES = ["lib/trpc/routers/changes/workers/"];
+const EXEMPT_DIR_PREFIXES: string[] = [];
 const EXEMPT_FILE_PATTERNS = [/\.test\.tsx?$/, /(^|\/)test-helpers\.ts$/];
 
 /**

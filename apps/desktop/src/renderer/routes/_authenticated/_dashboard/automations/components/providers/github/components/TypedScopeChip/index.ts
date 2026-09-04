@@ -1,1 +1,0 @@
-export { TypedScopeChip } from "./TypedScopeChip";

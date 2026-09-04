@@ -1,1 +1,0 @@
-export { TerminalCopiedIndicator } from "./TerminalCopiedIndicator";

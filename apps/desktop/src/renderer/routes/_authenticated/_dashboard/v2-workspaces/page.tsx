@@ -1,9 +1,9 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
-import { V2WorkspacesBoard } from "./components/V2WorkspacesBoard";
-import { V2WorkspacesHeader } from "./components/V2WorkspacesHeader";
-import { V2WorkspacesList } from "./components/V2WorkspacesList";
-import { useAccessibleV2Workspaces } from "./hooks/useAccessibleV2Workspaces";
+import { V2WorkspacesBoard } from "./components/v2-workspaces-board";
+import { V2WorkspacesHeader } from "./components/v2-workspaces-header";
+import { V2WorkspacesList } from "./components/v2-workspaces-list";
+import { useAccessibleV2Workspaces } from "./hooks/use-accessible-v2-workspaces";
 import {
 	DEVICE_FILTER_THIS_DEVICE,
 	useV2WorkspacesFilterStore,
@@ -16,7 +16,7 @@ import {
 	type V2WorkspacesPinFilter,
 	type V2WorkspacesPrStateFilter,
 	type V2WorkspacesViewMode,
-} from "./stores/v2WorkspacesFilterStore";
+} from "./stores/v2-workspaces-filter-store";
 
 export type V2WorkspacesSearch = {
 	q?: string;

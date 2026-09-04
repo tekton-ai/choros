@@ -4,7 +4,7 @@
 // coverage lives in DaemonSupervisor.node-test.ts.
 
 import { afterEach, beforeEach, describe, expect, mock, test } from "bun:test";
-import { DaemonSupervisor } from "./DaemonSupervisor.ts";
+import { DaemonSupervisor } from "./daemon-supervisor.ts";
 import {
 	__resetSupervisorForTesting,
 	getSupervisor,
@@ -49,17 +49,16 @@ describe("fire-and-track bootstrap", () => {
 			ensureMock as typeof sup.ensure;
 
 		const t0 = Date.now();
-		startDaemonBootstrap("org-fnt");
+		startDaemonBootstrap();
 		const elapsed = Date.now() - t0;
 		// Should return immediately, not after the ensure delay.
 		expect(elapsed).toBeLessThan(20);
 		expect(ensureMock).toHaveBeenCalledTimes(1);
-		expect(ensureMock).toHaveBeenCalledWith("org-fnt");
+		expect(ensureMock).toHaveBeenCalledWith();
 
 		// Now await readiness — should complete after ensure resolves.
-		await waitForDaemonReady("org-fnt");
-		// Readiness re-ensures (ensure is an idempotent map lookup when the
-		// daemon is alive) so a daemon that died post-bootstrap gets revived.
+		await waitForDaemonReady();
+		// Readiness re-ensures so a daemon that died post-bootstrap is revived.
 		expect(ensureMock).toHaveBeenCalledTimes(2);
 	});
 
@@ -72,9 +71,9 @@ describe("fire-and-track bootstrap", () => {
 		(sup as unknown as { ensure: typeof sup.ensure }).ensure =
 			ensureMock as typeof sup.ensure;
 
-		startDaemonBootstrap("org-idempotent");
-		startDaemonBootstrap("org-idempotent");
-		startDaemonBootstrap("org-idempotent");
+		startDaemonBootstrap();
+		startDaemonBootstrap();
+		startDaemonBootstrap();
 		expect(ensureMock).toHaveBeenCalledTimes(1);
 	});
 
@@ -86,7 +85,7 @@ describe("fire-and-track bootstrap", () => {
 		(sup as unknown as { ensure: typeof sup.ensure }).ensure =
 			ensureMock as typeof sup.ensure;
 
-		await waitForDaemonReady("org-lazy");
+		await waitForDaemonReady();
 		// Once for the kicked-off bootstrap, once for the readiness re-check.
 		expect(ensureMock).toHaveBeenCalledTimes(2);
 	});
@@ -99,13 +98,13 @@ describe("fire-and-track bootstrap", () => {
 		(sup as unknown as { ensure: typeof sup.ensure }).ensure =
 			ensureMock as typeof sup.ensure;
 
-		await waitForDaemonReady("org-revive");
+		await waitForDaemonReady();
 		const callsAfterFirst = ensureMock.mock.calls.length;
 		// The bootstrap promise stays resolved forever, so if the daemon dies
 		// later (adopted-daemon death, crash circuit) only a fresh ensure()
 		// can revive it. Each wait must go through ensure, not just the
 		// stale bootstrap promise.
-		await waitForDaemonReady("org-revive");
+		await waitForDaemonReady();
 		expect(ensureMock.mock.calls.length).toBe(callsAfterFirst + 1);
 	});
 
@@ -123,13 +122,13 @@ describe("fire-and-track bootstrap", () => {
 			ensureMock as typeof sup.ensure;
 
 		// First wait surfaces the failure.
-		await expect(waitForDaemonReady("org-retry")).rejects.toThrow(
+		await expect(waitForDaemonReady()).rejects.toThrow(
 			"simulated spawn failure",
 		);
 		// Second wait kicks off a new bootstrap (the failed promise was
 		// cleared) and succeeds: one ensure for the bootstrap, one for the
 		// readiness re-check.
-		await waitForDaemonReady("org-retry");
+		await waitForDaemonReady();
 		expect(ensureMock).toHaveBeenCalledTimes(3);
 	});
 });

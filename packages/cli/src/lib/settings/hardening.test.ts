@@ -33,15 +33,14 @@ describe("state-dependent failure hardening", () => {
 
 	test("host settings fail fast with a hint when the service port is dead", async () => {
 		// live pid (this process) + dead endpoint = stale-manifest scenario
-		const orgDir = join(home.dir, "host", "org-1");
-		mkdirSync(orgDir, { recursive: true });
+		const hostDir = join(home.dir, "host");
+		mkdirSync(hostDir, { recursive: true });
 		writeFileSync(
-			join(orgDir, "manifest.json"),
+			join(hostDir, "manifest.json"),
 			JSON.stringify({
 				pid: process.pid,
 				endpoint: "http://127.0.0.1:9",
 				authToken: "token",
-				organizationId: "org-1",
 			}),
 		);
 		const started = performance.now();

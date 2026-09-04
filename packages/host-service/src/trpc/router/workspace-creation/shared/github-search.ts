@@ -116,7 +116,12 @@ export function collectChunkResults<T>(settled: PromiseSettledResult<T>[]): {
 		// would hide why the rest is missing and would flap between polls.
 		if (isGithubRateLimitError(failure)) throw failure;
 	}
-	if (results.length === 0 && failures.length > 0) throw failures[0];
+	const actionableFailures = failures.filter(
+		(failure) => !isGithubSearchScopeUnavailable(failure),
+	);
+	if (results.length === 0 && actionableFailures.length > 0) {
+		throw actionableFailures[0];
+	}
 	return { results, failures };
 }
 
@@ -252,6 +257,18 @@ export function githubRequestError(
 		});
 	}
 	return error;
+}
+
+/** GitHub returns 422 when a search query names only missing or inaccessible repos. */
+export function isGithubSearchScopeUnavailable(error: unknown): boolean {
+	const status =
+		isRecord(error) && typeof error.status === "number" ? error.status : null;
+	if (status !== null && status !== 422) return false;
+	const text = errorText(error);
+	return (
+		/validation failed/i.test(text) &&
+		/(?:listed users and )?repositories cannot be searched/i.test(text)
+	);
 }
 
 /**

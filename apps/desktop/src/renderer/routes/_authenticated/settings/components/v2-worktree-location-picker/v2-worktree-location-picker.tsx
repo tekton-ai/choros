@@ -1,0 +1,153 @@
+import { Button } from "@choros/ui/button";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { Trans, useLingui } from "@lingui/react/macro";
+import { useState } from "react";
+import { LuFolderOpen, LuRotateCcw } from "react-icons/lu";
+import { RemotePathPicker } from "renderer/components/remote-path-picker";
+import { electronTrpc } from "renderer/lib/electron-trpc";
+
+interface V2WorktreeLocationPickerProps {
+	currentPath: string | null | undefined;
+	fallbackPath: string | null | undefined;
+	hostUrl: string | null;
+	hostName: string;
+	isRemoteTarget: boolean;
+	disabled?: boolean;
+	browseTitle?: string;
+	browseDescription?: string;
+	onSelect: (path: string) => void | Promise<void>;
+	onReset: () => void | Promise<void>;
+}
+
+export function V2WorktreeLocationPicker({
+	currentPath,
+	fallbackPath,
+	hostUrl,
+	hostName,
+	isRemoteTarget,
+	disabled,
+	browseTitle,
+	browseDescription,
+	onSelect,
+	onReset,
+}: V2WorktreeLocationPickerProps) {
+	const { t } = useLingui();
+	const selectDirectory = electronTrpc.window.selectDirectory.useMutation();
+	const [remoteBrowseOpen, setRemoteBrowseOpen] = useState(false);
+	const resolvedBrowseTitle =
+		browseTitle ??
+		t({
+			id: "settings.components.v2WorktreeLocationPicker.browseTitle",
+			message: "Select worktree location",
+		});
+
+	const displayPath =
+		currentPath ??
+		fallbackPath ??
+		t({
+			id: "settings.components.v2WorktreeLocationPicker.hostUnavailable",
+			message: "Host unavailable",
+		});
+	const isBusy = disabled || selectDirectory.isPending;
+
+	const handleBrowse = async () => {
+		if (isBusy) return;
+		if (isRemoteTarget) {
+			setRemoteBrowseOpen(true);
+			return;
+		}
+		const result = await selectDirectory.mutateAsync({
+			title: resolvedBrowseTitle,
+			defaultPath: currentPath ?? fallbackPath ?? undefined,
+		});
+		if (!result.canceled && result.path) {
+			await onSelect(result.path);
+		}
+	};
+
+	return (
+		<>
+			<div className="flex w-[28rem] max-w-full items-center gap-2">
+				<div className="flex h-9 min-w-0 flex-1 items-center overflow-x-auto whitespace-nowrap rounded-md border bg-transparent px-3 dark:bg-input/30">
+					<span
+						className="font-mono text-sm text-foreground"
+						title={displayPath}
+					>
+						{displayPath}
+					</span>
+				</div>
+				<Tooltip>
+					<TooltipTrigger asChild>
+						<Button
+							type="button"
+							variant="outline"
+							size="icon"
+							className="size-9 shrink-0"
+							onClick={handleBrowse}
+							disabled={isBusy || !hostUrl}
+							aria-label={t({
+								id: "settings.components.v2WorktreeLocationPicker.changeAriaLabel",
+								message: "Change worktree location",
+							})}
+						>
+							<LuFolderOpen className="size-4" />
+						</Button>
+					</TooltipTrigger>
+					<TooltipContent>
+						<Trans id="settings.components.v2WorktreeLocationPicker.changeLocation">
+							Change location
+						</Trans>
+					</TooltipContent>
+				</Tooltip>
+				{currentPath ? (
+					<Tooltip>
+						<TooltipTrigger asChild>
+							<Button
+								type="button"
+								variant="outline"
+								size="icon"
+								className="size-9 shrink-0"
+								onClick={onReset}
+								disabled={disabled}
+								aria-label={t({
+									id: "settings.components.v2WorktreeLocationPicker.resetAriaLabel",
+									message: "Reset worktree location",
+								})}
+							>
+								<LuRotateCcw className="size-4" />
+							</Button>
+						</TooltipTrigger>
+						<TooltipContent>
+							<Trans id="settings.components.v2WorktreeLocationPicker.resetLocation">
+								Reset location
+							</Trans>
+						</TooltipContent>
+					</Tooltip>
+				) : null}
+			</div>
+
+			<RemotePathPicker
+				open={remoteBrowseOpen}
+				onOpenChange={setRemoteBrowseOpen}
+				hostUrl={hostUrl}
+				hostName={hostName}
+				initialPath={currentPath ?? fallbackPath}
+				title={resolvedBrowseTitle}
+				description={
+					browseDescription ??
+					t({
+						id: "settings.components.v2WorktreeLocationPicker.browseDescription",
+						message: `Pick the worktree folder on ${hostName}.`,
+					})
+				}
+				confirmLabel={t({
+					id: "settings.components.v2WorktreeLocationPicker.confirmLabel",
+					message: "Use this folder",
+				})}
+				onPick={(path) => {
+					void onSelect(path);
+				}}
+			/>
+		</>
+	);
+}

@@ -13,13 +13,13 @@ import type {
 	PaneRegistry,
 	RendererContext,
 } from "../../../../../../types";
-import { PaneHeaderActions } from "../../../../../PaneHeaderActions";
-import { TAB_DRAG_TYPE } from "../../../TabBar/components/TabItem";
+import { PaneHeaderActions } from "../../../../../pane-header-actions";
+import { TAB_DRAG_TYPE } from "../../../tab-bar/components/tab-item";
 import { PANE_MIN_SIZE_CLASS_NAME } from "../../constants";
-import { DropZoneOverlay } from "./components/DropZoneOverlay";
-import { PaneContent } from "./components/PaneContent";
-import { PaneContextMenu } from "./components/PaneContextMenu";
-import { PANE_DRAG_TYPE, PaneHeader } from "./components/PaneHeader";
+import { DropZoneOverlay } from "./components/drop-zone-overlay";
+import { PaneContent } from "./components/pane-content";
+import { PaneContextMenu } from "./components/pane-context-menu";
+import { PANE_DRAG_TYPE, PaneHeader } from "./components/pane-header";
 
 type PaneDropItem = { paneId: string } | { tabId: string; index: number };
 

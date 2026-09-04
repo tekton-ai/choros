@@ -10,4 +10,4 @@ export {
 	isTerminalReservedEvent,
 	matchesChord,
 	resolveHotkeyFromEvent,
-} from "./resolveHotkeyFromEvent";
+} from "./resolve-hotkey-from-event";

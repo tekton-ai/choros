@@ -1,1 +1,0 @@
-export { DashboardSidebarWorkspaceIcon } from "./DashboardSidebarWorkspaceIcon";

@@ -6,7 +6,7 @@ import {
 } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
-import { CheckResourcesHotkeyMount } from "renderer/commandPalette";
+import { CheckResourcesHotkeyMount } from "renderer/command-palette";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import {
 	type SettingsSection,
@@ -14,13 +14,13 @@ import {
 	useSettingsOriginRoute,
 	useSettingsSearchQuery,
 } from "renderer/stores/settings-state";
-import { NavigationControls } from "../_dashboard/components/NavigationControls";
-import { SearchResultsBanner } from "./components/SearchResultsBanner";
+import { NavigationControls } from "../_dashboard/components/navigation-controls";
+import { SearchResultsBanner } from "./components/search-results-banner";
 import {
 	FULL_WIDTH_SECTION_PATHS,
 	SettingsSidebar,
-} from "./components/SettingsSidebar";
-import { useScrollReset } from "./hooks/useScrollReset";
+} from "./components/settings-sidebar";
+import { useScrollReset } from "./hooks/use-scroll-reset";
 import {
 	getMatchCountBySection,
 	searchSettings,
@@ -43,14 +43,7 @@ const SECTION_ORDER: SettingsSection[] = [
 	"links",
 	"browser",
 	"models",
-	"organization",
-	"teams",
 	"project",
-	"integrations",
-	"apikeys",
-	"security",
-	"permissions",
-	"hosts",
 	"experimental",
 ];
 
@@ -61,8 +54,6 @@ const SECTION_ORDER: SettingsSection[] = [
  */
 const SECTION_PATHS: Partial<Record<SettingsSection, string>> = {
 	account: "/settings/account",
-	organization: "/settings/organization",
-	teams: "/settings/teams",
 	appearance: "/settings/appearance",
 	ringtones: "/settings/ringtones",
 	usage: "/settings/usage",
@@ -75,11 +66,6 @@ const SECTION_PATHS: Partial<Record<SettingsSection, string>> = {
 	browser: "/settings/browser",
 	models: "/settings/models",
 	experimental: "/settings/experimental",
-	integrations: "/settings/integrations",
-	apikeys: "/settings/api-keys",
-	security: "/settings/security",
-	permissions: "/settings/permissions",
-	hosts: "/settings/hosts",
 	project: "/settings/projects",
 };
 

@@ -5,7 +5,7 @@ import {
 } from "../../../lib/settings/test-helpers";
 import { default as getCommand } from "../get/command";
 import { default as resetCommand } from "../reset/command";
-import { default as setCommand } from "../set/command";
+import { default as setCommand } from "./command";
 
 const home = withTempChorosHome("choros-cli-settings-cmd-");
 

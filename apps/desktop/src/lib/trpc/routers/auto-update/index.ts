@@ -4,7 +4,6 @@ import {
 	autoUpdateEmitter,
 	checkForUpdates,
 	checkForUpdatesInteractive,
-	dismissUpdate,
 	getUpdateStatus,
 	installUpdate,
 	simulateDownloading,
@@ -31,10 +30,6 @@ export const createAutoUpdateRouter = () => {
 			});
 		}),
 
-		getStatus: publicProcedure.query(() => {
-			return getUpdateStatus();
-		}),
-
 		check: publicProcedure.mutation(() => {
 			checkForUpdates();
 		}),
@@ -45,10 +40,6 @@ export const createAutoUpdateRouter = () => {
 
 		install: publicProcedure.mutation(() => {
 			installUpdate();
-		}),
-
-		dismiss: publicProcedure.mutation(() => {
-			dismissUpdate();
 		}),
 
 		simulateReady: publicProcedure.mutation(() => {

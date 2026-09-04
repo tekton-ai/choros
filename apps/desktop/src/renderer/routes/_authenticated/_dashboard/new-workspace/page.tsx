@@ -1,7 +1,7 @@
 import { PromptInputProvider } from "@choros/ui/ai-elements/prompt-input";
 import { createFileRoute } from "@tanstack/react-router";
-import { NewWorkspaceScreen } from "renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen";
-import { DashboardNewWorkspaceDraftProvider } from "renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/DashboardNewWorkspaceDraftContext";
+import { NewWorkspaceScreen } from "renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen";
+import { DashboardNewWorkspaceDraftProvider } from "renderer/routes/_authenticated/components/dashboard-new-workspace-modal/dashboard-new-workspace-draft-context";
 import { newWorkspaceAttachmentsStore } from "renderer/stores/new-workspace-attachments";
 
 export const Route = createFileRoute(

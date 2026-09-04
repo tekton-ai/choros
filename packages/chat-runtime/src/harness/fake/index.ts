@@ -1,2 +1,2 @@
-export type { FakeHarnessScript, ScriptedEvent } from "./fakeHarness";
-export { FakeHarness } from "./fakeHarness";
+export type { FakeHarnessScript, ScriptedEvent } from "./fake-harness";
+export { FakeHarness } from "./fake-harness";

@@ -223,7 +223,7 @@ function collectBareRequireSpecifiers(filePath: string): string[] {
 	visit(sourceFile);
 
 	return specifiers.filter(
-		(specifier) => !specifier.startsWith(".") && !specifier.startsWith("/"),
+		(specifier) => !specifier.startsWith("./") && !specifier.startsWith("/"),
 	);
 }
 

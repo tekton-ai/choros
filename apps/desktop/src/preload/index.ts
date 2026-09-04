@@ -20,6 +20,8 @@ const API = {
 	username: process.env.USER,
 	appVersion: __APP_VERSION__,
 	platform: process.platform,
+	arch: process.arch,
+	launchId: process.env.CHOROS_APP_LAUNCH_ID ?? `${process.ppid}`,
 };
 
 // Store mapping of user listeners to wrapped listeners for proper cleanup

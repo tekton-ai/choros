@@ -244,6 +244,22 @@ describe("collectChunkResults", () => {
 		expect(failures).toHaveLength(1);
 	});
 
+	test("treats an entirely inaccessible repository scope as an empty result", async () => {
+		const settled = await Promise.allSettled([
+			Promise.reject(
+				Object.assign(
+					new Error(
+						"Validation Failed: The listed users and repositories cannot be searched either because the resources do not exist or you do not have permission to view them.",
+					),
+					{ status: 422 },
+				),
+			),
+		]);
+		const { results, failures } = collectChunkResults(settled);
+		expect(results).toEqual([]);
+		expect(failures).toHaveLength(1);
+	});
+
 	test("surfaces the failure when every chunk failed", async () => {
 		const settled = await Promise.allSettled([
 			Promise.reject(new Error("Connect Timeout Error")),

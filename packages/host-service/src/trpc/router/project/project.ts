@@ -1,9 +1,6 @@
 import { existsSync } from "node:fs";
 import { basename, resolve as resolvePath } from "node:path";
-import {
-	type ParsedGitHubRemote,
-	parseGitHubRemote,
-} from "@choros/shared/github-remote";
+import { parseGitHubRemote } from "@choros/shared/github-remote";
 import { BRANCH_PREFIX_MODES } from "@choros/shared/workspace-launch";
 import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";
@@ -17,7 +14,6 @@ import {
 	updateLocalProject,
 	upsertTagSetting,
 } from "../../../projects/local-project-store";
-import { createUserSimpleGit } from "../../../runtime/git/simple-git";
 import { deleteLocalWorkspace } from "../../../workspaces/local-workspace-store";
 import { machineOnlyProcedure, protectedProcedure, router } from "../../index";
 import {
@@ -33,7 +29,6 @@ import {
 	createFromTemplate,
 } from "./handlers";
 import { ensureMainWorkspace } from "./utils/ensure-main-workspace";
-import { getGitHubRemotes } from "./utils/git-remote";
 import { persistLocalProject } from "./utils/persist-project";
 import {
 	cloneRepoInto,
@@ -488,73 +483,7 @@ export const projectRouter = router({
 				return { candidates: [], cloudErrors: [] };
 			}
 
-			// walkAllRemotes branch — v1→v2 importer, no local row: discover
-			// linkable cloud candidates across every GitHub remote.
-			const allRemotes = await getGitHubRemotes(createUserSimpleGit(gitRoot));
-
-			const urlsToQuery = new Map<string, ParsedGitHubRemote>();
-			for (const parsed of allRemotes.values()) {
-				urlsToQuery.set(parsed.url.toLowerCase(), parsed);
-			}
-			if (expectedParsed) {
-				urlsToQuery.set(expectedParsed.url.toLowerCase(), expectedParsed);
-			}
-
-			const byId = new Map<string, FindByPathCandidate>();
-
-			// Cloud lookup for every URL we know about. This is the last
-			// consumer of the cloud v2_projects table; it dies with the v1
-			// importer (the only caller that sets walkAllRemotes).
-			const cloudErrors: { url: string; message: string }[] = [];
-			for (const parsed of urlsToQuery.values()) {
-				try {
-					const { candidates } =
-						await ctx.api.v2Project.findByGitHubRemote.query({
-							organizationId: ctx.organizationId,
-							repoCloneUrl: parsed.url,
-						});
-					for (const c of candidates) {
-						const existing = byId.get(c.id);
-						if (existing) {
-							// Same project reachable via two remote URLs; keep one
-							// candidate and merge the match flag.
-							existing.matchesExpected =
-								existing.matchesExpected || matches(parsed.url);
-							existing.repoCloneUrl = existing.repoCloneUrl ?? parsed.url;
-						} else {
-							byId.set(c.id, {
-								id: c.id,
-								name: c.name,
-								repoCloneUrl: parsed.url,
-								source: "remote",
-								matchesExpected: matches(parsed.url),
-							});
-						}
-					}
-				} catch (err) {
-					const message = err instanceof Error ? err.message : String(err);
-					cloudErrors.push({ url: parsed.url, message });
-					console.warn(
-						"[project.findByPath] cloud findByGitHubRemote failed for",
-						parsed.url,
-						err,
-					);
-				}
-			}
-
-			// Sort: matchesExpected first, then alphabetic.
-			const candidates = Array.from(byId.values()).sort((a, b) => {
-				if (a.matchesExpected !== b.matchesExpected) {
-					return a.matchesExpected ? -1 : 1;
-				}
-				return a.name.localeCompare(b.name);
-			});
-
-			// Caller surfaces this when there are no candidates and at least
-			// one cloud query failed — so users see a clear "couldn't reach
-			// cloud" instead of a misleading "Import" (which would create a
-			// duplicate v2 project).
-			return { candidates, cloudErrors };
+			return { candidates: [], cloudErrors: [] };
 		}),
 
 	create: machineOnlyProcedure

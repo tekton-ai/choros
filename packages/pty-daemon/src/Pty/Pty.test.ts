@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { spawn } from "./Pty.ts";
+import { spawn } from "./pty.ts";
 
 // node-pty's runtime requires Node (Bun's tty.ReadStream handling is
 // incompatible with the master fd setup). The daemon ships running under

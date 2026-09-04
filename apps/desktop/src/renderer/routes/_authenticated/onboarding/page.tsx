@@ -9,13 +9,16 @@ import { type ReactNode, useState } from "react";
 import { HiArrowUpRight } from "react-icons/hi2";
 import { SiGithub, SiOpenai } from "react-icons/si";
 import { electronTrpc } from "renderer/lib/electron-trpc";
-import { GhAuthDialog, type GhAuthDialogMode } from "./components/GhAuthDialog";
-import { OnboardingLanguageRow } from "./components/OnboardingLanguageRow";
+import {
+	GhAuthDialog,
+	type GhAuthDialogMode,
+} from "./components/gh-auth-dialog";
+import { OnboardingLanguageRow } from "./components/onboarding-language-row";
 import {
 	type Provider,
 	ProviderConnectModal,
-} from "./components/ProviderConnectModal";
-import { ClaudeLogo } from "./providers/components/ClaudeLogo";
+} from "./components/provider-connect-modal";
+import { ClaudeLogo } from "./providers/components/claude-logo";
 
 export const Route = createFileRoute("/_authenticated/onboarding/")({
 	component: OnboardingDashboardPage,

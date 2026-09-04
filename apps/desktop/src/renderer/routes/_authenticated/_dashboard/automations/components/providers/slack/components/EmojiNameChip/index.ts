@@ -1,1 +1,0 @@
-export { EmojiNameChip } from "./EmojiNameChip";

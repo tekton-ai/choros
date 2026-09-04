@@ -1,5 +1,5 @@
-export { useEventBus } from "./hooks/useEventBus";
-export { useGitChangeEvents } from "./hooks/useGitChangeEvents";
+export { useEventBus } from "./hooks/use-event-bus";
+export { useGitChangeEvents } from "./hooks/use-git-change-events";
 export {
 	type AgentBindingsChangedPayload,
 	type AgentIdentity,
@@ -17,16 +17,16 @@ export {
 	type WorkspaceChangedPayload,
 	type WorkspaceCreateSettledPayload,
 	type WorkspaceSnapshotPayload,
-} from "./lib/eventBus";
+} from "./lib/event-bus";
 export {
 	primeRelayAffinity,
 	type RelayAffinityProbe,
-} from "./lib/primeRelayAffinity";
+} from "./lib/prime-relay-affinity";
 export {
 	createRelaySocket,
 	type RelaySocket,
 	type RelaySocketOptions,
-} from "./lib/relaySocket";
+} from "./lib/relay-socket";
 export {
 	useMaybeWorkspaceClient,
 	useWorkspaceClient,
@@ -34,5 +34,5 @@ export {
 	useWorkspaceWsUrl,
 	type WorkspaceClientContextValue,
 	WorkspaceClientProvider,
-} from "./providers/WorkspaceClientProvider";
+} from "./providers/workspace-client-provider";
 export { workspaceTrpc } from "./workspace-trpc";

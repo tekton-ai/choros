@@ -5,7 +5,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import simpleGit from "simple-git";
 import { projects } from "../../src/db/schema";
-import { createTestHost, type TestHost } from "../helpers/createTestHost";
+import { createTestHost, type TestHost } from "../helpers/create-test-host";
 
 /**
  * Real temp git working tree with a remote, plus a `projects` row pointing

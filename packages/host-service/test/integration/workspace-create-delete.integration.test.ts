@@ -14,7 +14,7 @@ import { TRPCClientError } from "@trpc/client";
 import { eq } from "drizzle-orm";
 import { workspaces } from "../../src/db/schema";
 import { cloudFlows, cloudOk } from "../helpers/cloud-fakes";
-import { createTestHost } from "../helpers/createTestHost";
+import { createTestHost } from "../helpers/create-test-host";
 import { createGitFixture } from "../helpers/git-fixture";
 import {
 	createBasicScenario,

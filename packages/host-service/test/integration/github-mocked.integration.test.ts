@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, test } from "bun:test";
-import { createTestHost, type TestHost } from "../helpers/createTestHost";
+import { createTestHost, type TestHost } from "../helpers/create-test-host";
 
 describe("github router with mocked Octokit", () => {
 	let host: TestHost;

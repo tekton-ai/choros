@@ -1,7 +1,7 @@
 import type { Envelope } from "@choros/chat/protocol";
 import type { HarnessAdapter } from "../../harness";
 import type { ChatJournal } from "../../journal";
-import { LiveSession } from "../liveSession";
+import { LiveSession } from "../live-session";
 
 export type HarnessFactoryOptions = {
 	sessionId: string;

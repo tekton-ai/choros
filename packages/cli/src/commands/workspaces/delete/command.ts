@@ -1,33 +1,13 @@
-import { boolean, CLIError, positional, string } from "@choros/cli-framework";
-import { getHostId } from "@choros/shared/host-info";
+import { positional } from "@choros/cli-framework";
 import { command } from "../../../lib/command";
-import { resolveHostFilter, resolveHostTarget } from "../../../lib/host-target";
+import { resolveHostTarget } from "../../../lib/host-target";
 
 export default command({
 	description: "Delete workspaces by ID on a host (default: this machine)",
 	args: [positional("ids").required().variadic().desc("Workspace IDs")],
-	options: {
-		host: string().desc("Host the workspaces live on"),
-		local: boolean().desc("Target this machine (the default)"),
-	},
-	run: async ({ ctx, args, options }) => {
+	run: async ({ args }) => {
 		const ids = args.ids as string[];
-		const organizationId = ctx.config.organizationId;
-		if (!organizationId) {
-			throw new CLIError("No active organization", "Run: choros auth login");
-		}
-
-		const hostId =
-			resolveHostFilter({
-				host: options.host ?? undefined,
-				local: options.local ?? undefined,
-			}) ?? getHostId();
-		const target = await resolveHostTarget({
-			requestedHostId: hostId,
-			organizationId,
-			userJwt: ctx.bearer,
-			api: ctx.api,
-		});
+		const target = await resolveHostTarget();
 
 		const deleted: string[] = [];
 		const warnings: string[] = [];

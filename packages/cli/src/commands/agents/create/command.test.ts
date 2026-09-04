@@ -66,14 +66,10 @@ function invoke(
 	overrides: Record<string, unknown> = { prompt: "Review this diff" },
 ) {
 	return createAgentCommand.run({
-		ctx: {
-			config: { organizationId: "org-1" },
-			bearer: "bearer",
-		} as never,
+		ctx: {},
 		args: {} as never,
 		options: {
 			workspace: "00000000-0000-4000-8000-000000000001",
-			host: "host-1",
 			agent: "codex",
 			effort,
 			...overrides,

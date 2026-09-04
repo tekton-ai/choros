@@ -8,14 +8,13 @@ export default command({
 		positional("id").desc("Workspace ID (defaults to $CHOROS_WORKSPACE_ID)"),
 	],
 	options: {
-		host: string().desc("Host the workspace lives on (default: this machine)"),
 		field: string()
 			.alias("f")
 			.desc(
 				"Print a single field's raw value (e.g. name, branch, worktreePath)",
 			),
 	},
-	run: async ({ ctx, args, options }) => {
+	run: async ({ args, options }) => {
 		const id =
 			(args.id as string | undefined) ?? process.env.CHOROS_WORKSPACE_ID;
 		if (!id) {
@@ -25,38 +24,16 @@ export default command({
 			);
 		}
 
-		const organizationId = ctx.config.organizationId;
-		if (!organizationId) {
-			throw new CLIError("No active organization", "Run: choros auth login");
-		}
-
-		// The row carries its host-served project name; the host id is
-		// enriched with its cloud name for display only.
-		const [{ hostId, workspace }, hosts] = await Promise.all([
-			findWorkspaceOnHost(
-				{
-					organizationId,
-					userJwt: ctx.bearer,
-					api: ctx.api,
-					hostId: options.host ?? undefined,
-				},
-				id,
-			),
-			ctx.api.host.list
-				.query({ organizationId })
-				.catch(() => [] as Array<{ id: string; name: string }>),
-		]);
+		const { hostId, workspace } = await findWorkspaceOnHost(id);
 		if (!workspace) {
 			throw new CLIError(
 				`Workspace not found on host ${hostId}: ${id}`,
-				"Pass --host <id> if it lives on another machine. List with: choros workspaces list",
+				"List local workspaces with: choros workspaces list",
 			);
 		}
 
 		const projectName = workspace.projectName ?? workspace.projectId;
-		const hostName =
-			hosts.find((host) => host.id === workspace.hostId)?.name ??
-			workspace.hostId;
+		const hostName = workspace.hostId;
 
 		const detail = {
 			id: workspace.id,
@@ -67,7 +44,6 @@ export default command({
 			projectName,
 			hostId: workspace.hostId,
 			hostName,
-			taskId: workspace.taskId,
 			worktreePath: workspace.worktreePath,
 			worktreeExists: workspace.worktreeExists,
 			createdAt: workspace.createdAt,

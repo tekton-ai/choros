@@ -96,7 +96,6 @@
 			"includes": [
 				"apps/desktop/src/main/lib/terminal-host/client.ts",
 				"packages/provider-auth/src/server/auth/anthropic/anthropic.ts",
-				"packages/host-service/src/providers/model-providers/LocalModelProvider/utils/resolveAnthropicCredential.ts",
 				"packages/pty-daemon/src/process-tree.ts",
 				"packages/shared/src/host-info.ts"
 			],
@@ -121,7 +120,7 @@
 									"@superset/workspace-fs/server": "Renderer code must stay browser-compatible. Import Node filesystem helpers from the desktop server/host layer instead.",
 									"@tanstack/react-router": {
 										"importNames": ["Navigate"],
-										"message": "<Navigate> re-navigates whenever its props object identity changes — inline usage loops into React error #185 (#5729, SUPER-1814). Use Redirect from renderer/components/Redirect, or `beforeLoad: () => { throw redirect(...) }` for static targets."
+										"message": "<Navigate> re-navigates whenever its props object identity changes — inline usage loops into React error #185 (#5729, SUPER-1814). Use Redirect from renderer/components/redirect, or `beforeLoad: () => { throw redirect(...) }` for static targets."
 									}
 								},
 								"patterns": [

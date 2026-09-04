@@ -3,7 +3,7 @@ export {
 	type DaemonSupervisorOptions,
 	listDaemonSessions,
 	probeDaemonVersion,
-} from "./DaemonSupervisor.ts";
+} from "./daemon-supervisor.ts";
 export { EXPECTED_DAEMON_VERSION } from "./expected-version.ts";
 export {
 	__resetSupervisorForTesting,

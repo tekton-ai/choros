@@ -12,10 +12,6 @@
 			"types": "./src/client.ts",
 			"default": "./src/client.ts"
 		},
-		"./enums": {
-			"types": "./src/schema/enums.ts",
-			"default": "./src/schema/enums.ts"
-		},
 		"./schema": {
 			"types": "./src/schema/index.ts",
 			"default": "./src/schema/index.ts"
@@ -23,18 +19,6 @@
 		"./schema/auth": {
 			"types": "./src/schema/auth.ts",
 			"default": "./src/schema/auth.ts"
-		},
-		"./seed-default-statuses": {
-			"types": "./src/seed-default-statuses.ts",
-			"default": "./src/seed-default-statuses.ts"
-		},
-		"./task-list-query": {
-			"types": "./src/task-list-query.ts",
-			"default": "./src/task-list-query.ts"
-		},
-		"./utils": {
-			"types": "./src/utils/index.ts",
-			"default": "./src/utils/index.ts"
 		}
 	},
 	"scripts": {
@@ -45,7 +29,6 @@
 		"typecheck": "tsc --noEmit --emitDeclarationOnly false"
 	},
 	"dependencies": {
-		"@choros/shared": "workspace:*",
 		"@neondatabase/serverless": "1.0.2",
 		"@t3-oss/env-core": "0.13.11",
 		"dotenv": "17.3.1",

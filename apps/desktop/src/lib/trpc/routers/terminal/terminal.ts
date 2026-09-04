@@ -1,29 +1,21 @@
-import { workspaces, worktrees } from "@choros/local-db";
 import { TRPCError } from "@trpc/server";
 import { observable } from "@trpc/server/observable";
-import { eq } from "drizzle-orm";
 import { appState } from "main/lib/app-state";
-import { localDb } from "main/lib/local-db";
-import { restartDaemon as restartDaemonShared } from "main/lib/terminal";
 import {
 	isTerminalAttachCanceledError,
 	TERMINAL_ATTACH_CANCELED_MESSAGE,
 	TERMINAL_SESSION_KILLED_MESSAGE,
 	TerminalKilledError,
 } from "main/lib/terminal/errors";
-import {
-	getTerminalHostClient,
-	TerminalHostClientDisposedError,
-} from "main/lib/terminal-host/client";
+import { TerminalHostClientDisposedError } from "main/lib/terminal-host/client";
 import { getWorkspaceRuntimeRegistry } from "main/lib/workspace-runtime";
 import { z } from "zod";
 import { publicProcedure, router } from "../..";
-import { assertWorkspaceUsable } from "../workspaces/utils/usability";
 import { resolveTerminalThemeType } from "./theme-type";
-import { getWorkspaceTerminalContext, resolveCwd } from "./utils";
+import { resolveCwd } from "./utils";
 
 const DEBUG_TERMINAL = process.env.CHOROS_TERMINAL_DEBUG === "1";
-const logger = console;
+const _logger = console;
 let createOrAttachCallCounter = 0;
 
 const SAFE_ID = z
@@ -57,7 +49,7 @@ const terminalProcedure = publicProcedure.use(async ({ next }) => {
 
 /**
  * Terminal router using daemon-backed terminal runtime
- * Sessions are keyed by paneId and linked to workspaces for cwd resolution
+ * Sessions are keyed by paneId.
  *
  * Environment variables set for terminal sessions:
  * - PATH: Prepends ~/.choros/bin so wrapper scripts intercept agent commands
@@ -115,12 +107,8 @@ export const createTerminalRouter = () => {
 					themeType,
 				} = input;
 
-				const { workspace, workspacePath, rootPath } =
-					getWorkspaceTerminalContext(workspaceId);
-				if (workspace?.type === "worktree") {
-					assertWorkspaceUsable(workspaceId, workspacePath);
-				}
-				const cwd = resolveCwd(cwdOverride, workspacePath);
+				const cwd = resolveCwd(cwdOverride, undefined);
+				const workspacePath = cwd;
 
 				if (DEBUG_TERMINAL) {
 					console.log("[Terminal Router] createOrAttach called:", {
@@ -146,9 +134,9 @@ export const createTerminalRouter = () => {
 						joinPending,
 						tabId,
 						workspaceId,
-						workspaceName: workspace?.name,
+						workspaceName: undefined,
 						workspacePath,
-						rootPath,
+						rootPath: undefined,
 						cwd,
 						cols,
 						rows,
@@ -222,18 +210,6 @@ export const createTerminalRouter = () => {
 				}
 			}),
 
-		cancelCreateOrAttach: terminalProcedure
-			.input(
-				z.object({
-					paneId: SAFE_ID,
-					requestId: z.string().min(1),
-				}),
-			)
-			.mutation(({ input }) => {
-				terminal.cancelCreateOrAttach(input);
-				return { success: true };
-			}),
-
 		write: terminalProcedure
 			.input(
 				z.object({
@@ -275,12 +251,6 @@ export const createTerminalRouter = () => {
 				}
 			}),
 
-		ackColdRestore: terminalProcedure
-			.input(z.object({ paneId: z.string() }))
-			.mutation(({ input }) => {
-				terminal.ackColdRestore(input.paneId);
-			}),
-
 		resize: terminalProcedure
 			.input(
 				z.object({
@@ -294,17 +264,6 @@ export const createTerminalRouter = () => {
 				terminal.resize(input);
 			}),
 
-		signal: terminalProcedure
-			.input(
-				z.object({
-					paneId: z.string(),
-					signal: z.string().optional(),
-				}),
-			)
-			.mutation(async ({ input }) => {
-				terminal.signal(input);
-			}),
-
 		kill: terminalProcedure
 			.input(
 				z.object({
@@ -313,166 +272,6 @@ export const createTerminalRouter = () => {
 			)
 			.mutation(async ({ input }) => {
 				await terminal.kill(input);
-			}),
-
-		detach: terminalProcedure
-			.input(
-				z.object({
-					paneId: z.string(),
-				}),
-			)
-			.mutation(async ({ input }) => {
-				terminal.detach(input);
-			}),
-
-		clearScrollback: terminalProcedure
-			.input(
-				z.object({
-					paneId: z.string(),
-				}),
-			)
-			.mutation(async ({ input }) => {
-				await terminal.clearScrollback(input);
-			}),
-
-		listDaemonSessions: terminalProcedure.query(async () => {
-			const { sessions } = await terminal.management.listSessions();
-			return { sessions };
-		}),
-
-		killAllDaemonSessions: terminalProcedure.mutation(async () => {
-			const client = getTerminalHostClient();
-			const before = await terminal.management.listSessions();
-			const beforeIds = before.sessions.map((s) => s.sessionId);
-			console.log(
-				"[killAllDaemonSessions] Before kill:",
-				beforeIds.length,
-				"sessions",
-				beforeIds,
-			);
-
-			if (beforeIds.length > 0) {
-				const results = await Promise.allSettled(
-					beforeIds.map((paneId) => terminal.kill({ paneId })),
-				);
-				for (const [index, result] of results.entries()) {
-					if (result.status === "rejected") {
-						const paneId = beforeIds[index];
-						logger.error(
-							`[killAllDaemonSessions] terminal.kill failed for paneId=${paneId}`,
-							{
-								paneId,
-								reason: result.reason,
-							},
-						);
-					}
-				}
-			}
-
-			// Poll until sessions are actually dead
-			const MAX_RETRIES = 10;
-			const RETRY_DELAY_MS = 100;
-			let remainingCount = before.sessions.length;
-			let afterIds: string[] = [];
-
-			for (let i = 0; i < MAX_RETRIES && remainingCount > 0; i++) {
-				await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY_MS));
-				const after = await client.listSessions();
-				afterIds = after.sessions
-					.filter((s) => s.isAlive)
-					.map((s) => s.sessionId);
-				remainingCount = afterIds.length;
-
-				if (remainingCount > 0) {
-					console.log(
-						`[killAllDaemonSessions] Retry ${i + 1}/${MAX_RETRIES}: ${remainingCount} sessions still alive`,
-						afterIds,
-					);
-				}
-			}
-
-			const killedCount = before.sessions.length - remainingCount;
-			console.log(
-				"[killAllDaemonSessions] Complete:",
-				killedCount,
-				"killed,",
-				remainingCount,
-				"remaining",
-				remainingCount > 0 ? afterIds : [],
-			);
-
-			return { killedCount, remainingCount };
-		}),
-
-		killDaemonSessionsForWorkspace: terminalProcedure
-			.input(z.object({ workspaceId: z.string() }))
-			.mutation(async ({ input }) => {
-				const { sessions } = await terminal.management.listSessions();
-				const toKill = sessions.filter(
-					(session) => session.workspaceId === input.workspaceId,
-				);
-
-				if (toKill.length > 0) {
-					const paneIds = toKill.map((session) => session.sessionId);
-					const results = await Promise.allSettled(
-						paneIds.map((paneId) => terminal.kill({ paneId })),
-					);
-					for (const [index, result] of results.entries()) {
-						if (result.status === "rejected") {
-							const paneId = paneIds[index];
-							logger.error(
-								`[killDaemonSessionsForWorkspace] terminal.kill failed for paneId=${paneId}`,
-								{
-									paneId,
-									workspaceId: input.workspaceId,
-									reason: result.reason,
-								},
-							);
-						}
-					}
-				}
-
-				return { killedCount: toKill.length };
-			}),
-
-		clearTerminalHistory: terminalProcedure.mutation(async () => {
-			await terminal.management.resetHistoryPersistence();
-			return { success: true };
-		}),
-
-		/** Restart daemon to recover from stuck state. Kills all sessions. */
-		restartDaemon: terminalProcedure.mutation(async () => {
-			return restartDaemonShared();
-		}),
-
-		getSession: terminalProcedure
-			.input(z.string())
-			.query(async ({ input: paneId }) => {
-				return terminal.getSession(paneId);
-			}),
-
-		getWorkspaceCwd: terminalProcedure
-			.input(z.string())
-			.query(({ input: workspaceId }) => {
-				const workspace = localDb
-					.select()
-					.from(workspaces)
-					.where(eq(workspaces.id, workspaceId))
-					.get();
-				if (!workspace) {
-					return null;
-				}
-
-				if (!workspace.worktreeId) {
-					return null;
-				}
-
-				const worktree = localDb
-					.select()
-					.from(worktrees)
-					.where(eq(worktrees.id, workspace.worktreeId))
-					.get();
-				return worktree?.path ?? null;
 			}),
 
 		stream: terminalProcedure

@@ -80,7 +80,7 @@ function createTestContext(db: HostDb, api: unknown): HostServiceContext {
 	} as unknown as HostServiceContext;
 }
 
-describe("findByPath walkAllRemotes (v1 importer)", () => {
+describe("findByPath local-only lookup", () => {
 	it("returns the local row as authoritative without consulting the cloud", async () => {
 		const db = createTestDb();
 		const { api, calls } = createRecordingApiStub();
@@ -112,7 +112,7 @@ describe("findByPath walkAllRemotes (v1 importer)", () => {
 		expect(calls).toHaveLength(0);
 	});
 
-	it("still walks cloud remotes when no local row exists", async () => {
+	it("does not consult cloud remotes when no local row exists", async () => {
 		const db = createTestDb();
 		const { api, calls } = createRecordingApiStub();
 		const ctx = createTestContext(db, api);
@@ -126,7 +126,7 @@ describe("findByPath walkAllRemotes (v1 importer)", () => {
 		});
 
 		expect(result.candidates).toHaveLength(0);
-		expect(calls).toContain("v2Project.findByGitHubRemote");
+		expect(calls).toHaveLength(0);
 	});
 });
 

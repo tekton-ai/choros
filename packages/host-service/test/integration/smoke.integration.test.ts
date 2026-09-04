@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import { TRPCClientError } from "@trpc/client";
-import { createTestHost, type TestHost } from "../helpers/createTestHost";
+import { createTestHost, type TestHost } from "../helpers/create-test-host";
 
 describe("host-service smoke", () => {
 	let host: TestHost;
@@ -15,20 +15,12 @@ describe("host-service smoke", () => {
 
 	test("health.check returns ok without auth", async () => {
 		const result = await host.unauthenticatedTrpc.health.check.query();
-		expect(result).toEqual({
-			status: "ok",
-			cloudRegistered: false,
-			registrationError: null,
-		});
+		expect(result).toEqual({ status: "ok" });
 	});
 
 	test("health.check returns ok with auth", async () => {
 		const result = await host.trpc.health.check.query();
-		expect(result).toEqual({
-			status: "ok",
-			cloudRegistered: false,
-			registrationError: null,
-		});
+		expect(result).toEqual({ status: "ok" });
 	});
 
 	test("protected procedure rejects requests without bearer token", async () => {
@@ -37,29 +29,13 @@ describe("host-service smoke", () => {
 		).rejects.toBeInstanceOf(TRPCClientError);
 	});
 
-	test("host.info round-trips through fake cloud api", async () => {
-		const orgId = "00000000-0000-0000-0000-0000000000aa";
-		host = await replaceHost(host, {
-			organizationId: orgId,
-			apiOverrides: {
-				"organization.getByIdFromJwt.query": (input) => {
-					expect(input).toEqual({ id: orgId });
-					return { id: orgId, name: "Test Org", slug: "test-org" };
-				},
-			},
-		});
-
+	test("host.info returns local runtime identity", async () => {
 		const info = await host.trpc.host.info.query();
-		expect(info.organization).toEqual({
-			id: orgId,
-			name: "Test Org",
-			slug: "test-org",
-		});
+		expect(typeof info.hostId).toBe("string");
+		expect(typeof info.hostName).toBe("string");
+		expect(typeof info.version).toBe("string");
 		expect(info.platform).toEqual(process.platform);
 		expect(typeof info.uptime).toBe("number");
-		expect(host.apiCalls.map((c) => c.path)).toContain(
-			"organization.getByIdFromJwt.query",
-		);
 	});
 
 	test("CORS preflight allows configured origin and rejects others", async () => {
@@ -99,11 +75,3 @@ describe("host-service smoke", () => {
 		expect(res.status).toBe(401);
 	});
 });
-
-async function replaceHost(
-	current: TestHost,
-	options: Parameters<typeof createTestHost>[0],
-): Promise<TestHost> {
-	await current.dispose();
-	return createTestHost(options);
-}

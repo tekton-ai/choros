@@ -1,1 +1,0 @@
-export { createPierreWorker } from "./pierreWorker";

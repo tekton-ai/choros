@@ -1,1 +1,0 @@
-export { useTerminalInterruptClear } from "./useTerminalInterruptClear";

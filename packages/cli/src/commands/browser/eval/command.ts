@@ -6,7 +6,6 @@ export default command({
 	description: "Evaluate JavaScript in a browser pane and return the result",
 	options: {
 		workspace: string().required().desc("Workspace ID"),
-		host: string().desc("Host the workspace lives on (default: this machine)"),
 		pane: string().required().desc("Pane ID (from `choros browser list`)"),
 		code: string().required().desc("JavaScript expression to evaluate"),
 	},

@@ -1,3 +1,4 @@
+import { randomUUID } from "node:crypto";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import {
@@ -10,14 +11,11 @@ import { i18n, initI18nAsync } from "@choros/i18n";
 import { settings } from "@choros/local-db";
 import { app, dialog, Notification, net, protocol, session } from "electron";
 import { makeAppSetup } from "lib/electron-app/factories/app/setup";
+import { applyShellEnvToProcess } from "lib/shell-env";
 import {
-	authEvents,
 	handleAuthCallback,
-	loadToken,
 	parseAuthDeepLink,
 } from "lib/trpc/routers/auth/utils/auth-functions";
-import { applyShellEnvToProcess } from "lib/trpc/routers/workspaces/utils/shell-env";
-import { env as mainEnv } from "main/env.main";
 import {
 	DEFAULT_CONFIRM_ON_QUIT,
 	PLATFORM,
@@ -42,7 +40,6 @@ import {
 	shutdownTanstackDbPersistence,
 } from "./lib/persistence/persistence";
 import { syncInstalledPluginMcpServers } from "./lib/plugin-installs";
-import { portForwardManager } from "./lib/port-forward";
 import { ensureProjectIconsDir, getProjectIconPath } from "./lib/project-icons";
 import { runQuitCleanup } from "./lib/quit-sequence";
 import { initSentry } from "./lib/sentry";
@@ -64,6 +61,8 @@ import {
 	persistOpenWindows,
 	restoreWindows,
 } from "./windows/main";
+
+process.env.CHOROS_APP_LAUNCH_ID = randomUUID();
 
 console.log("[main] Local database ready:", !!localDb);
 const IS_DEV = process.env.NODE_ENV === "development";
@@ -272,9 +271,6 @@ app.on("before-quit", async (event) => {
 	}
 
 	isQuitting = true;
-	// Local port-forward listeners hold no state worth draining; drop them so
-	// nothing keeps 127.0.0.1:<port> bound after the app is gone.
-	portForwardManager.stopAll();
 	// Snapshot all open windows (bounds + org) before they close, so relaunch
 	// restores them. markAppQuitting() stops per-window close handlers from
 	// shrinking the set as windows close one-by-one.
@@ -496,51 +492,9 @@ if (!gotTheLock) {
 		downloadManager.start();
 
 		const hostServiceCoordinator = getHostServiceCoordinator();
-		hostServiceCoordinator.setConfigProvider(async () => {
-			const { token } = await loadToken();
-			if (!token) return null;
-			return { authToken: token, cloudApiUrl: mainEnv.NEXT_PUBLIC_API_URL };
+		void hostServiceCoordinator.start().catch((error) => {
+			console.error("[main] host-service start failed:", error);
 		});
-
-		// The authenticated session's cached membership is the source of truth.
-		// Host data on disk can outlive membership and must never resurrect an
-		// obsolete service. This cache keeps subsequent launches offline-capable.
-		let authGeneration = 0;
-		const reconcileHostServices = async (providedAuth?: {
-			token: string;
-			organizationIds: string[];
-		}) => {
-			const generation = authGeneration;
-			try {
-				const storedAuth = providedAuth ?? (await loadToken());
-				if (generation !== authGeneration) return;
-				if (!storedAuth.token || !storedAuth.organizationIds) return;
-				await hostServiceCoordinator.reconcile(storedAuth.organizationIds, {
-					authToken: storedAuth.token,
-					cloudApiUrl: mainEnv.NEXT_PUBLIC_API_URL,
-				});
-			} catch (error) {
-				console.error("[main] host-service reconcile failed:", error);
-			}
-		};
-		void reconcileHostServices();
-		// A new token can belong to a different account. Stop immediately and wait
-		// for that account's session membership before starting anything.
-		authEvents.on("token-saved", () => {
-			authGeneration++;
-			hostServiceCoordinator.stopAll();
-		});
-		authEvents.on("token-cleared", () => {
-			authGeneration++;
-			hostServiceCoordinator.stopAll();
-		});
-		authEvents.on(
-			"organization-ids-saved",
-			(data: { token: string; organizationIds: string[] }) => {
-				authGeneration++;
-				void reconcileHostServices(data);
-			},
-		);
 
 		try {
 			// The vite build copies @choros/agent-setup's templates (plus the
@@ -574,11 +528,7 @@ if (!gotTheLock) {
 		}
 
 		if (IS_DEV) {
-			hostServiceCoordinator.enableDevReload(async () => {
-				const { token } = await loadToken();
-				if (!token) return null;
-				return { authToken: token, cloudApiUrl: mainEnv.NEXT_PUBLIC_API_URL };
-			});
+			hostServiceCoordinator.enableDevReload();
 		}
 
 		initAppServices();

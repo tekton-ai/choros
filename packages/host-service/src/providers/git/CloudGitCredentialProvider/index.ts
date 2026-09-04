@@ -1,1 +1,0 @@
-export { CloudGitCredentialProvider } from "./CloudGitCredentialProvider";

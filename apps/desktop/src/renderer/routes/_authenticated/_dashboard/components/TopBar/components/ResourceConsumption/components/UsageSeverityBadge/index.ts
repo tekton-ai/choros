@@ -1,1 +1,0 @@
-export { UsageSeverityBadge } from "./UsageSeverityBadge";

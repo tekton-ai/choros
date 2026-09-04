@@ -1,6 +1,6 @@
 import { createFileRoute, Outlet, useParams } from "@tanstack/react-router";
-import { useScrollReset } from "../hooks/useScrollReset";
-import { ProjectsSettingsSidebar } from "./components/ProjectsSettingsSidebar";
+import { useScrollReset } from "../hooks/use-scroll-reset";
+import { ProjectsSettingsSidebar } from "./components/projects-settings-sidebar";
 
 export const Route = createFileRoute("/_authenticated/settings/projects")({
 	component: ProjectsSettingsLayout,

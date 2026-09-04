@@ -6,13 +6,13 @@ import { join } from "node:path";
 import type { FakeHarnessScript } from "../../harness/fake";
 import type { ChatRuntime } from "../../index";
 import { agentMessage, turn } from "../../testing/fixtures";
-import { createTestRuntime } from "../../testing/testRuntime";
+import { createTestRuntime } from "../../testing/test-runtime";
 import {
 	FAKE_HARNESS,
 	fakeHarnessRegistry,
 	journalEnvelopes,
 	waitFor,
-} from "../../testing/testUtils";
+} from "../../testing/test-utils";
 import { createChatCallerFactory, createChatRouter } from "./router";
 
 const SCRIPT: FakeHarnessScript = {

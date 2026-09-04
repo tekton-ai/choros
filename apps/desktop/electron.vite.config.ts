@@ -8,6 +8,10 @@ import { config } from "dotenv";
 import { defineConfig, externalizeDepsPlugin } from "electron-vite";
 import injectProcessEnvPlugin from "rollup-plugin-inject-process-env";
 import tsconfigPathsPlugin from "vite-tsconfig-paths";
+import {
+	DEFAULT_AUTH_SERVICE_URL,
+	resolveAuthServiceUrl,
+} from "./auth-service-url";
 import { dependencies, resources, version } from "./package.json";
 import { mainExternalizedDependencies } from "./runtime-dependencies";
 import {
@@ -19,6 +23,10 @@ import {
 
 // override: true ensures .env values take precedence over inherited env vars
 config({ path: resolve(__dirname, "../../.env"), override: true, quiet: true });
+
+process.env.NEXT_PUBLIC_API_URL = resolveAuthServiceUrl(
+	process.env.NEXT_PUBLIC_API_URL,
+);
 
 const DEV_SERVER_PORT = Number(process.env.DESKTOP_VITE_PORT);
 
@@ -71,7 +79,7 @@ export default defineConfig({
 			),
 			"process.env.NEXT_PUBLIC_API_URL": defineEnv(
 				process.env.NEXT_PUBLIC_API_URL,
-				"https://api.choros.sh",
+				DEFAULT_AUTH_SERVICE_URL,
 			),
 			"process.env.NEXT_PUBLIC_STREAMS_URL": defineEnv(
 				process.env.NEXT_PUBLIC_STREAMS_URL,
@@ -129,8 +137,6 @@ export default defineConfig({
 					"terminal-host": resolve("src/main/terminal-host/index.ts"),
 					// PTY subprocess - spawned by terminal-host for each terminal
 					"pty-subprocess": resolve("src/main/terminal-host/pty-subprocess.ts"),
-					// Worker-thread entrypoint for heavy git/status computations
-					"git-task-worker": resolve("src/main/git-task-worker.ts"),
 					// Workspace service - local HTTP/tRPC server per org
 					"host-service": resolve("src/main/host-service/index.ts"),
 					// pty-daemon - long-lived per-org Unix-socket server that owns PTYs.
@@ -197,7 +203,7 @@ export default defineConfig({
 			"process.platform": defineEnv(process.platform),
 			"process.env.NEXT_PUBLIC_API_URL": defineEnv(
 				process.env.NEXT_PUBLIC_API_URL,
-				"https://api.choros.sh",
+				DEFAULT_AUTH_SERVICE_URL,
 			),
 			"process.env.NEXT_PUBLIC_WEB_URL": defineEnv(
 				process.env.NEXT_PUBLIC_WEB_URL,
@@ -248,7 +254,7 @@ export default defineConfig({
 			tanstackRouter({
 				target: "react",
 				routesDirectory: resolve("src/renderer/routes"),
-				generatedRouteTree: resolve("src/renderer/routeTree.gen.ts"),
+				generatedRouteTree: resolve("src/renderer/route-tree.gen.ts"),
 				indexToken: "page",
 				routeToken: "layout",
 				autoCodeSplitting: true,

@@ -11,7 +11,7 @@ import {
 	getHostWorkerPool,
 	type HostWorkerPool,
 } from "../workers/host-worker-pool";
-import type { WorkerTaskOptions } from "../workers/WorkerTaskRunner";
+import type { WorkerTaskOptions } from "../workers/worker-task-runner";
 
 export interface OffLoopArgs<TInput> {
 	ctx: HostServiceContext;

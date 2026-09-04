@@ -1,1 +1,0 @@
-export { DashboardSidebarGroupHeader } from "./DashboardSidebarGroupHeader";

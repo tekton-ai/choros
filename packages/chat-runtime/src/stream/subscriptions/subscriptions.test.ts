@@ -6,14 +6,14 @@ import { isDeltaEnvelope, isDurableEnvelope } from "@choros/chat/protocol";
 import type { FakeHarnessScript } from "../../harness/fake";
 import type { ChatRuntime } from "../../index";
 import { agentMessage, turn } from "../../testing/fixtures";
-import { createTestRuntime } from "../../testing/testRuntime";
+import { createTestRuntime } from "../../testing/test-runtime";
 import {
 	createManualSchedule,
 	createRecordingSink,
 	FAKE_HARNESS,
 	fakeHarnessRegistry,
 	waitFor,
-} from "../../testing/testUtils";
+} from "../../testing/test-utils";
 
 const STREAMING_TURN: FakeHarnessScript = {
 	turns: [

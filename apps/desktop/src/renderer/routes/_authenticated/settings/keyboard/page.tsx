@@ -29,7 +29,7 @@ import {
 	useKeyboardPreferencesStore,
 	useRecordHotkeys,
 } from "renderer/hotkeys";
-import { HighlightText } from "renderer/routes/_authenticated/settings/components/HighlightText";
+import { HighlightText } from "renderer/routes/_authenticated/settings/components/highlight-text";
 import { useSettingsSearchQuery } from "renderer/stores/settings-state";
 
 const CATEGORY_ORDER: HotkeyCategory[] = [

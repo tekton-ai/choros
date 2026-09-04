@@ -8,8 +8,6 @@ import {
 	nativeImage,
 	Tray,
 } from "electron";
-import { loadToken } from "lib/trpc/routers/auth/utils/auth-functions";
-import { env } from "main/env.main";
 import { focusMainWindow, quitApp } from "main/index";
 import { checkForUpdatesInteractive } from "main/lib/auto-updater";
 import {
@@ -88,32 +86,28 @@ function openSettings(): void {
 }
 
 interface HostInfo {
-	organizationName: string;
+	hostName: string;
 	version: string;
 }
 
-async function fetchHostInfo(organizationId: string): Promise<HostInfo | null> {
-	const connection = getHostServiceCoordinator().getConnection(organizationId);
+async function fetchHostInfo(): Promise<HostInfo | null> {
+	const connection = getHostServiceCoordinator().getConnection();
 	if (!connection) return null;
-
 	const controller = new AbortController();
-	const timeout = setTimeout(() => controller.abort(), 2000);
+	const timeout = setTimeout(() => controller.abort(), 2_000);
 	try {
-		const res = await fetch(
+		const response = await fetch(
 			`http://127.0.0.1:${connection.port}/trpc/host.info`,
 			{
 				headers: { Authorization: `Bearer ${connection.secret}` },
 				signal: controller.signal,
 			},
 		);
-		if (!res.ok) return null;
-		const data = await res.json();
+		if (!response.ok) return null;
+		const data = await response.json();
 		const info = data?.result?.data?.json;
-		if (!info?.organization?.name) return null;
-		return {
-			organizationName: info.organization.name,
-			version: info.version ?? "",
-		};
+		if (!info?.hostName) return null;
+		return { hostName: info.hostName, version: info.version ?? "" };
 	} catch {
 		return null;
 	} finally {
@@ -121,7 +115,6 @@ async function fetchHostInfo(organizationId: string): Promise<HostInfo | null> {
 	}
 }
 
-/** Host-service run state as the user reads it in the tray, not the wire value. */
 function statusLabel(status: HostServiceStatus): string {
 	switch (status) {
 		case "starting":
@@ -143,111 +136,53 @@ function statusLabel(status: HostServiceStatus): string {
 }
 
 function buildHostServiceSubmenu(
-	orgIds: string[],
-	infos: Map<string, HostInfo>,
+	status: HostServiceStatus,
+	info: HostInfo | null,
 ): MenuItemConstructorOptions[] {
 	const coordinator = getHostServiceCoordinator();
-	const menuItems: MenuItemConstructorOptions[] = [];
-
-	if (orgIds.length === 0) {
-		menuItems.push({
-			label: i18n._({
-				id: "tray.noActiveServices",
-				message: "No active services",
-			}),
+	const versionSuffix = info?.version ? ` (v${info.version})` : "";
+	return [
+		{
+			label:
+				info?.hostName ??
+				i18n._({ id: "tray.hostService.local", message: "This device" }),
 			enabled: false,
-		});
-		return menuItems;
-	}
-
-	let isFirst = true;
-	for (const orgId of orgIds) {
-		if (!isFirst) {
-			menuItems.push({ type: "separator" });
-		}
-		isFirst = false;
-
-		const status = coordinator.getProcessStatus(orgId);
-		const info = infos.get(orgId);
-		const isRunning = status === "running";
-		const label =
-			info?.organizationName ??
-			i18n._({
-				id: "tray.hostService.unnamedOrganization",
-				message: "Organization {id}",
-				values: { id: orgId.slice(0, 8) },
-			});
-		const versionSuffix = info?.version ? ` (v${info.version})` : "";
-
-		menuItems.push({ label, enabled: false });
-		menuItems.push({
-			label: `  ${statusLabel(status)}${versionSuffix}`,
-			enabled: false,
-		});
-		menuItems.push({
-			// Enabled in "stopped" too — that's the state where users most need
-			// restart to work (host-service crashed or never came up). Disabled
-			// only while a start is in flight, to avoid racing the pending start.
+		},
+		{ label: `  ${statusLabel(status)}${versionSuffix}`, enabled: false },
+		{
 			label: `  ${i18n._({ id: "tray.hostService.restart", message: "Restart" })}`,
 			enabled: status !== "starting",
 			click: () => {
-				void (async () => {
-					try {
-						const { token } = await loadToken();
-						if (!token) return;
-						await coordinator.restart(orgId, {
-							authToken: token,
-							cloudApiUrl: env.NEXT_PUBLIC_API_URL,
-						});
-					} catch (error) {
-						console.error(
-							`[Tray] Failed to restart host-service for ${orgId}:`,
-							error,
-						);
-					}
-					void updateTrayMenu();
-				})();
+				void coordinator
+					.restart()
+					.catch((error) =>
+						console.error("[Tray] Failed to restart host-service:", error),
+					)
+					.finally(() => void updateTrayMenu());
 			},
-		});
-		menuItems.push({
+		},
+		{
 			label: `  ${i18n._({ id: "tray.hostService.stop", message: "Stop" })}`,
-			enabled: isRunning,
+			enabled: status === "running",
 			click: () => {
-				coordinator.stop(orgId);
+				coordinator.stop();
 				void updateTrayMenu();
 			},
-		});
-	}
-
-	return menuItems;
+		},
+	];
 }
 
 async function updateTrayMenu(): Promise<void> {
 	if (!tray) return;
-
 	const coordinator = getHostServiceCoordinator();
-	const orgIds = coordinator.getActiveOrganizationIds();
-
-	const infoEntries = await Promise.all(
-		orgIds.map(async (orgId) => [orgId, await fetchHostInfo(orgId)] as const),
-	);
-	const infos = new Map<string, HostInfo>();
-	for (const [orgId, info] of infoEntries) {
-		if (info) infos.set(orgId, info);
-	}
-
+	const status = coordinator.getProcessStatus();
+	const info = status === "running" ? await fetchHostInfo() : null;
 	if (!tray) return;
-
-	const hasActive = orgIds.length > 0;
-	const hostServiceLabel = hasActive
-		? i18n._({
-				id: "tray.hostService.withCount",
-				message: "Host Service ({count})",
-				values: { count: orgIds.length },
-			})
-		: i18n._({ id: "tray.hostService", message: "Host Service" });
-
-	const hostServiceSubmenu = buildHostServiceSubmenu(orgIds, infos);
+	const hostServiceLabel = i18n._({
+		id: "tray.hostService",
+		message: "Host Service",
+	});
+	const hostServiceSubmenu = buildHostServiceSubmenu(status, info);
 
 	const menu = Menu.buildFromTemplate([
 		{

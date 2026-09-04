@@ -14,7 +14,7 @@ import {
 	indexResolvedAgentConfigs,
 	resolveAgentConfigs,
 } from "@choros/shared/agent-settings";
-import { buildLaunchSpec } from "../src/shared/context/buildLaunchSpec";
+import { buildLaunchSpec } from "../src/shared/context/build-launch-spec";
 import { buildLaunchContext } from "../src/shared/context/composer";
 import { defaultContributorRegistry } from "../src/shared/context/contributors";
 import type { LaunchSource, ResolveCtx } from "../src/shared/context/types";

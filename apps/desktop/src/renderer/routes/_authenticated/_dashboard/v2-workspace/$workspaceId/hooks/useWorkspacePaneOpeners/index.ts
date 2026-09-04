@@ -1,1 +1,0 @@
-export { useWorkspacePaneOpeners } from "./useWorkspacePaneOpeners";

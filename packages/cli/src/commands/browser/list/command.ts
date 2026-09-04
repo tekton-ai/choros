@@ -6,7 +6,6 @@ export default command({
 	description: "List the browser panes open in a workspace",
 	options: {
 		workspace: string().required().desc("Workspace ID"),
-		host: string().desc("Host the workspace lives on (default: this machine)"),
 	},
 	run: async ({ ctx, options }) => {
 		const { client } = await resolveBrowserTarget(ctx, options);

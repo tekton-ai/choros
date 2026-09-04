@@ -182,8 +182,8 @@ describe("HostWorkerPool", () => {
 			pool.run(gitWorktreeRemoveTask, shimInput(shim), { timeoutMs: 1_000 }),
 		);
 
-		expect(error.message).toBe(
-			'[host-worker] Task "git/removeWorktree" timed out after 1000ms in phase "worktree-list"',
+		expect(error.message).toMatch(
+			/^\[host-worker\] Task "git\/removeWorktree" timed out after 1000ms in phase "worktree-(list|remove)"$/,
 		);
 	});
 

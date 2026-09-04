@@ -76,7 +76,7 @@ describe("resolveCwd", () => {
 		});
 
 		test("handles . as current directory", () => {
-			expect(resolveCwd(".", worktreePath)).toBe(worktreePath);
+			expect(resolveCwd("./", worktreePath)).toBe(worktreePath);
 		});
 
 		test("falls back to homedir when worktreePath is undefined", () => {

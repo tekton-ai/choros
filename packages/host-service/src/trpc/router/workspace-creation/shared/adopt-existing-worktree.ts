@@ -77,9 +77,6 @@ export async function adoptExistingWorktree(
 	const store: WorkspaceStoreContext = {
 		db: ctx.db,
 		eventBus: ctx.eventBus,
-		api: ctx.api,
-		organizationId: ctx.organizationId,
-		clientMachineId: ctx.clientMachineId,
 	};
 
 	if (existingWorkspaceId) {
@@ -99,7 +96,7 @@ export async function adoptExistingWorktree(
 					branch,
 				}) ?? existing;
 			return {
-				workspace: toCloudShape(updated, ctx.organizationId),
+				workspace: toCloudShape(updated),
 				alreadyExists: true,
 			};
 		}
@@ -113,7 +110,7 @@ export async function adoptExistingWorktree(
 			tags,
 		});
 		return {
-			workspace: toCloudShape(inserted, ctx.organizationId),
+			workspace: toCloudShape(inserted),
 			alreadyExists: true,
 		};
 	}
@@ -131,7 +128,7 @@ export async function adoptExistingWorktree(
 	if (existingByBranch && existingByBranch.worktreePath === worktreePath) {
 		await recordBaseBranch(git, branch, baseBranch);
 		return {
-			workspace: toCloudShape(existingByBranch, ctx.organizationId),
+			workspace: toCloudShape(existingByBranch),
 			alreadyExists: true,
 		};
 	}
@@ -158,7 +155,7 @@ export async function adoptExistingWorktree(
 		await recordBaseBranch(git, branch, baseBranch);
 		if (updated) {
 			return {
-				workspace: toCloudShape(updated, ctx.organizationId),
+				workspace: toCloudShape(updated),
 				alreadyExists: true,
 			};
 		}
@@ -194,7 +191,7 @@ export async function adoptExistingWorktree(
 	}
 
 	return {
-		workspace: toCloudShape(inserted, ctx.organizationId),
+		workspace: toCloudShape(inserted),
 		alreadyExists: false,
 	};
 }

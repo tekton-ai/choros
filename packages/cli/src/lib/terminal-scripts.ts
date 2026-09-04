@@ -3,7 +3,6 @@ import type { ExecutionMode, TerminalPreset } from "@choros/local-db";
 import { updateSettingsAtomically } from "./settings";
 
 export interface CreateTerminalScriptInput {
-	organizationId: string;
 	name: string;
 	description?: string;
 	cwd?: string;
@@ -47,7 +46,6 @@ export function createTerminalScript(
 		useAsWorkspaceRun: input.useAsWorkspaceRun || undefined,
 		executionMode: input.executionMode ?? "new-tab",
 		cliImportPending: true,
-		cliTargetOrganizationId: input.organizationId,
 	};
 
 	return updateSettingsAtomically((row) => ({

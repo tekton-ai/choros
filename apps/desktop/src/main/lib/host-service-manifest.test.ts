@@ -10,7 +10,6 @@ function manifest(pid: number): HostServiceManifest {
 		endpoint: "http://127.0.0.1:55555",
 		authToken: "holder-secret",
 		startedAt: 0,
-		organizationId: "org-1",
 	};
 }
 

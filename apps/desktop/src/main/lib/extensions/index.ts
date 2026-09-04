@@ -116,7 +116,7 @@ function resolveWebviewExtensionPath(): string | null {
 		: [
 				path.join(process.cwd(), "src/resources/browser-extension"),
 				path.join(process.cwd(), "dist/resources/browser-extension"),
-				path.resolve(__dirname, "../../../../src/resources/browser-extension"),
+				path.resolve(__dirname, "../../../resources/browser-extension"),
 				path.resolve(__dirname, "../../../resources/browser-extension"),
 			];
 

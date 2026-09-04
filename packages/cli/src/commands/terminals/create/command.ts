@@ -1,5 +1,4 @@
 import { CLIError, string } from "@choros/cli-framework";
-import { getHostId } from "@choros/shared/host-info";
 import { command } from "../../../lib/command";
 import { resolveHostTarget } from "../../../lib/host-target";
 import { findWorkspaceOnHost } from "../../../lib/host-workspaces";
@@ -8,7 +7,6 @@ export default command({
 	description: "Create a terminal session in an existing workspace",
 	options: {
 		workspace: string().required().desc("Workspace ID"),
-		host: string().desc("Host the workspace lives on (default: this machine)"),
 		command: string().desc(
 			"Shell command to run in the terminal. Omit to open an interactive shell",
 		),
@@ -16,30 +14,16 @@ export default command({
 			"Working directory for the terminal (defaults to the worktree)",
 		),
 	},
-	run: async ({ ctx, options }) => {
-		const organizationId = ctx.config.organizationId;
-		if (!organizationId) {
-			throw new CLIError("No active organization", "Run: choros auth login");
-		}
-
-		const hostId = options.host ?? getHostId();
-		const { workspace } = await findWorkspaceOnHost(
-			{ organizationId, userJwt: ctx.bearer, api: ctx.api, hostId },
-			options.workspace,
-		);
+	run: async ({ options }) => {
+		const { hostId, workspace } = await findWorkspaceOnHost(options.workspace);
 		if (!workspace) {
 			throw new CLIError(
 				`Workspace not found on host ${hostId}: ${options.workspace}`,
-				"Pass --host <id> if it lives on another machine",
+				"List local workspaces with: choros workspaces list",
 			);
 		}
 
-		const target = await resolveHostTarget({
-			requestedHostId: hostId,
-			organizationId,
-			userJwt: ctx.bearer,
-			api: ctx.api,
-		});
+		const target = await resolveHostTarget();
 
 		const result = await target.client.terminal.createSession.mutate({
 			workspaceId: options.workspace,

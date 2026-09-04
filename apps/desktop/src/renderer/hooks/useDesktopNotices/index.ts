@@ -1,1 +1,0 @@
-export { useDesktopNotices } from "./useDesktopNotices";

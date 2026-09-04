@@ -214,57 +214,6 @@ describe("notificationsRouter.hook", () => {
 		expect(binding?.agentSessionId).toBe("session-abc");
 	});
 
-	it("nudges the linked task to In Progress once per task on Start events", async () => {
-		// Unique per test: the once-per-process dedup set is module-level.
-		const taskId = "task-nudge-once";
-		const { ctx, taskStart } = createContext("workspace-1", { taskId });
-		const caller = notificationsRouter.createCaller(ctx);
-
-		await caller.hook({ terminalId: "terminal-1", eventType: "Start" });
-		await caller.hook({ terminalId: "terminal-1", eventType: "Start" });
-
-		expect(taskStart).toHaveBeenCalledTimes(1);
-		expect(taskStart.mock.calls[0]?.[0]).toEqual({ id: taskId });
-	});
-
-	it("retries the nudge on a later Start event after a failed call", async () => {
-		const taskId = "task-nudge-retry";
-		const { ctx, taskStart } = createContext("workspace-1", { taskId });
-		taskStart.mockImplementationOnce(() =>
-			Promise.reject(new Error("cloud unreachable")),
-		);
-		const caller = notificationsRouter.createCaller(ctx);
-
-		await caller.hook({ terminalId: "terminal-1", eventType: "Start" });
-		// let the rejection handler clear the dedup entry
-		await new Promise((resolve) => setTimeout(resolve, 0));
-		await caller.hook({ terminalId: "terminal-1", eventType: "Start" });
-
-		expect(taskStart).toHaveBeenCalledTimes(2);
-	});
-
-	it("does not nudge the task when the workspace has no linked task", async () => {
-		const { ctx, taskStart } = createContext("workspace-1", { taskId: null });
-
-		await notificationsRouter
-			.createCaller(ctx)
-			.hook({ terminalId: "terminal-1", eventType: "Start" });
-
-		expect(taskStart).not.toHaveBeenCalled();
-	});
-
-	it("does not nudge the task on non-Start events", async () => {
-		const { ctx, taskStart } = createContext("workspace-1", {
-			taskId: "task-nudge-stop",
-		});
-
-		await notificationsRouter
-			.createCaller(ctx)
-			.hook({ terminalId: "terminal-1", eventType: "Stop" });
-
-		expect(taskStart).not.toHaveBeenCalled();
-	});
-
 	it("drops agent identity entirely when agentId is missing", async () => {
 		const { ctx, broadcastAgentLifecycle } = createContext("workspace-1");
 

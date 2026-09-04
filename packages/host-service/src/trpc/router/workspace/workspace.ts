@@ -72,7 +72,7 @@ export const workspaceRouter = router({
 				rows.map((row) => row.id),
 			);
 			return rows.map((row) => ({
-				...toCloudShape(row, ctx.organizationId),
+				...toCloudShape(row),
 				tags: tagsByWorkspaceId.get(row.id) ?? [],
 				worktreePath: row.worktreePath,
 				// Tombstones' worktrees are gone by definition; stat-checking an
@@ -132,7 +132,7 @@ export const workspaceRouter = router({
 			if (input.tags !== undefined) patch.tags = input.tags;
 			if (Object.keys(patch).length === 0) {
 				return {
-					...toCloudShape(current, ctx.organizationId),
+					...toCloudShape(current),
 					tags: getWorkspaceTags(ctx.db, current.id),
 				};
 			}
@@ -147,19 +147,8 @@ export const workspaceRouter = router({
 					message: "Workspace not found",
 				});
 			}
-			// Linking a task to a workspace starts work on it — move it to
-			// In Progress. Best-effort cloud call; the update never blocks.
-			if (typeof input.taskId === "string") {
-				const taskId = input.taskId;
-				void ctx.api.task.start.mutate({ id: taskId }).catch((err) => {
-					console.warn(
-						`[workspace.update] failed to mark task ${taskId} as started:`,
-						err,
-					);
-				});
-			}
 			return {
-				...toCloudShape(updated, ctx.organizationId),
+				...toCloudShape(updated),
 				tags: getWorkspaceTags(ctx.db, updated.id),
 			};
 		}),

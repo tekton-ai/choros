@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import { randomUUID } from "node:crypto";
 import { TRPCClientError } from "@trpc/client";
-import { createTestHost, type TestHost } from "../helpers/createTestHost";
+import { createTestHost, type TestHost } from "../helpers/create-test-host";
 
 describe("workspaceCreation create/checkout input validation", () => {
 	let host: TestHost;

@@ -1,1 +1,1 @@
-export { Pixel404 } from "./Pixel404";
+export { Pixel404 } from "./pixel404";

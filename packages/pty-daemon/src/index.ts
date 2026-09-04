@@ -5,18 +5,18 @@
 
 import packageJson from "../package.json" with { type: "json" };
 
-export { drainPendingKills } from "./Pty/index.ts";
-export { Server, type ServerOptions } from "./Server/index.ts";
+export { drainPendingKills } from "./pty/index.ts";
+export { Server, type ServerOptions } from "./server/index.ts";
 export type {
 	HandoffSnapshot,
 	SerializedSession,
 	Session,
-} from "./SessionStore/index.ts";
+} from "./session-store/index.ts";
 export {
 	clearSnapshot,
 	readSnapshot,
 	writeSnapshot,
-} from "./SessionStore/index.ts";
+} from "./session-store/index.ts";
 
 /**
  * Daemon binary version. Inlined from package.json by the bundler so

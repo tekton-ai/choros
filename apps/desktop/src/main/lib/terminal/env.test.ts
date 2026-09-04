@@ -225,12 +225,10 @@ describe("env", () => {
 			it("should exclude NEXT_PUBLIC_* vars", () => {
 				const env = {
 					NEXT_PUBLIC_API_URL: "https://api.example.com",
-					NEXT_PUBLIC_POSTHOG_KEY: "phkey",
 					PATH: "/usr/bin",
 				};
 				const result = buildSafeEnv(env);
 				expect(result.NEXT_PUBLIC_API_URL).toBeUndefined();
-				expect(result.NEXT_PUBLIC_POSTHOG_KEY).toBeUndefined();
 			});
 
 			it("should exclude TURBO_* vars", () => {

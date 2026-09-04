@@ -1,1 +1,0 @@
-export { WindowTitle } from "./WindowTitle";

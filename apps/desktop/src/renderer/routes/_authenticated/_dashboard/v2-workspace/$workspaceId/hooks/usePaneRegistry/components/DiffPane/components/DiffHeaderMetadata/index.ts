@@ -1,1 +1,0 @@
-export { DiffHeaderMetadata } from "./DiffHeaderMetadata";

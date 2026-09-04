@@ -37,29 +37,6 @@ export const createBrowserRouter = () => {
 				return { success: true };
 			}),
 
-		navigate: publicProcedure
-			.input(z.object({ paneId: z.string(), url: z.string() }))
-			.mutation(({ input }) => {
-				browserManager.navigate(input.paneId, input.url);
-				return { success: true };
-			}),
-
-		goBack: publicProcedure
-			.input(z.object({ paneId: z.string() }))
-			.mutation(({ input }) => {
-				const wc = browserManager.getWebContents(input.paneId);
-				if (wc?.canGoBack()) wc.goBack();
-				return { success: true };
-			}),
-
-		goForward: publicProcedure
-			.input(z.object({ paneId: z.string() }))
-			.mutation(({ input }) => {
-				const wc = browserManager.getWebContents(input.paneId);
-				if (wc?.canGoForward()) wc.goForward();
-				return { success: true };
-			}),
-
 		reload: publicProcedure
 			.input(z.object({ paneId: z.string(), hard: z.boolean().optional() }))
 			.mutation(({ input }) => {
@@ -79,16 +56,6 @@ export const createBrowserRouter = () => {
 				const { image, url } = await browserManager.screenshot(input.paneId);
 				const saved = screenshotManager.save(image, url);
 				return { base64: saved.base64, id: saved.id };
-			}),
-
-		evaluateJS: publicProcedure
-			.input(z.object({ paneId: z.string(), code: z.string() }))
-			.mutation(async ({ input }) => {
-				const result = await browserManager.evaluateJS(
-					input.paneId,
-					input.code,
-				);
-				return { result };
 			}),
 
 		// --- Design mode (element picker) ---
@@ -112,13 +79,6 @@ export const createBrowserRouter = () => {
 				return browserManager.awaitDesignSelection(input.paneId, input.opId);
 			}),
 
-		designModeCancel: publicProcedure
-			.input(z.object({ paneId: z.string() }))
-			.mutation(({ input }) => {
-				browserManager.cancelDesignSelection(input.paneId);
-				return { success: true };
-			}),
-
 		designModeScreenshot: publicProcedure
 			.input(
 				z.object({
@@ -137,34 +97,6 @@ export const createBrowserRouter = () => {
 					input.rect,
 				);
 				return { screenshot };
-			}),
-
-		getConsoleLogs: publicProcedure
-			.input(z.object({ paneId: z.string() }))
-			.query(({ input }) => {
-				return browserManager.getConsoleLogs(input.paneId);
-			}),
-
-		consoleStream: publicProcedure
-			.input(z.object({ paneId: z.string() }))
-			.subscription(({ input }) => {
-				return observable<{
-					level: string;
-					message: string;
-					timestamp: number;
-				}>((emit) => {
-					const handler = (entry: {
-						level: string;
-						message: string;
-						timestamp: number;
-					}) => {
-						emit.next(entry);
-					};
-					browserManager.on(`console:${input.paneId}`, handler);
-					return () => {
-						browserManager.off(`console:${input.paneId}`, handler);
-					};
-				});
 			}),
 
 		onNewWindow: publicProcedure
@@ -287,20 +219,6 @@ export const createBrowserRouter = () => {
 			.mutation(({ input }) => {
 				browserManager.openDevTools(input.paneId);
 				return { success: true };
-			}),
-
-		getPageInfo: publicProcedure
-			.input(z.object({ paneId: z.string() }))
-			.query(({ input }) => {
-				const wc = browserManager.getWebContents(input.paneId);
-				if (!wc) return null;
-				return {
-					url: wc.getURL(),
-					title: wc.getTitle(),
-					canGoBack: wc.canGoBack(),
-					canGoForward: wc.canGoForward(),
-					isLoading: wc.isLoading(),
-				};
 			}),
 
 		clearBrowsingData: publicProcedure

@@ -1,1 +1,0 @@
-export { useFileTreeScrollFade } from "./useFileTreeScrollFade";

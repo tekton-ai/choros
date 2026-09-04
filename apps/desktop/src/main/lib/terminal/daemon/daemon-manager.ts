@@ -1,8 +1,6 @@
 import { EventEmitter } from "node:events";
-import { workspaces } from "@choros/local-db";
-import { track } from "main/lib/analytics";
+
 import { appState } from "main/lib/app-state";
-import { localDb } from "main/lib/local-db";
 import { HistoryReader, truncateUtf8ToLastBytes } from "../../terminal-history";
 import {
 	disposeTerminalHostClient,
@@ -105,31 +103,8 @@ export class DaemonTerminalManager extends EventEmitter {
 				`[DaemonTerminalManager] Found ${response.sessions.length} sessions from previous run`,
 			);
 
-			const validWorkspaceIds = new Set(
-				localDb
-					.select({ id: workspaces.id })
-					.from(workspaces)
-					.all()
-					.map((w) => w.id),
-			);
-
-			let orphanedCount = 0;
-			for (const session of response.sessions) {
-				if (!validWorkspaceIds.has(session.workspaceId)) {
-					console.log(
-						`[DaemonTerminalManager] Killing orphaned session ${session.sessionId} (workspace deleted)`,
-					);
-					await this.client.kill({ sessionId: session.sessionId });
-					orphanedCount++;
-				}
-			}
-
-			// Cache the daemon session inventory so createOrAttach can fast-path
-			// existing sessions without touching disk (cold restore check only
-			// applies when the daemon does not have a session).
 			const preservedSessions = response.sessions.filter(
-				(session) =>
-					validWorkspaceIds.has(session.workspaceId) && session.isAlive,
+				(session) => session.isAlive,
 			);
 			this.daemonAliveSessionIds = new Set(
 				preservedSessions.map((session) => session.sessionId),
@@ -145,7 +120,7 @@ export class DaemonTerminalManager extends EventEmitter {
 				);
 			}
 
-			const preservedCount = response.sessions.length - orphanedCount;
+			const preservedCount = preservedSessions.length;
 			if (preservedCount > 0) {
 				console.log(
 					`[DaemonTerminalManager] Preserving ${preservedCount} sessions for reattach`,
@@ -232,12 +207,6 @@ export class DaemonTerminalManager extends EventEmitter {
 
 		this.client.on("disconnected", () => {
 			console.warn("[DaemonTerminalManager] Disconnected from daemon");
-			const activeSessionCount = Array.from(this.sessions.values()).filter(
-				(s) => s.isAlive,
-			).length;
-			track("terminal_daemon_disconnected", {
-				active_session_count: activeSessionCount,
-			});
 			this.daemonAliveSessionIds.clear();
 			this.daemonSessionIdsHydrated = false;
 			for (const [paneId, session] of this.sessions.entries()) {

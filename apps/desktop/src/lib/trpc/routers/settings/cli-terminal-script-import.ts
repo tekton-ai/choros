@@ -1,28 +1,14 @@
 import type { TerminalPreset } from "@choros/local-db";
 
-export function isPendingCliTerminalScript(
-	script: TerminalPreset,
-	organizationId: string,
-): boolean {
-	return (
-		script.cliImportPending === true &&
-		script.cliTargetOrganizationId === organizationId
-	);
+export function isPendingCliTerminalScript(script: TerminalPreset): boolean {
+	return script.cliImportPending === true;
 }
 
-/**
- * Clear the one-shot CLI import markers once v2 has copied the scripts. The
- * rows stay in the legacy store (v1 keeps showing them, same as presets
- * brought over by the v1 import modal); only the marker goes, so a script
- * deleted in v2 is never re-imported.
- */
 export function clearImportedCliTerminalScripts({
 	scripts,
-	organizationId,
 	ids,
 }: {
 	scripts: TerminalPreset[];
-	organizationId: string;
 	ids: readonly string[];
 }): { scripts: TerminalPreset[]; changed: boolean } {
 	const acknowledgedIds = new Set(ids);
@@ -30,15 +16,12 @@ export function clearImportedCliTerminalScripts({
 	const nextScripts = scripts.map((script) => {
 		if (
 			!acknowledgedIds.has(script.id) ||
-			!isPendingCliTerminalScript(script, organizationId)
-		)
+			!isPendingCliTerminalScript(script)
+		) {
 			return script;
+		}
 		changed = true;
-		const {
-			cliImportPending: _pending,
-			cliTargetOrganizationId: _target,
-			...rest
-		} = script;
+		const { cliImportPending: _pending, ...rest } = script;
 		return rest;
 	});
 	return { scripts: nextScripts, changed };

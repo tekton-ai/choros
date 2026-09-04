@@ -1,17 +1,9 @@
-import { afterEach, beforeEach, describe, expect, mock, test } from "bun:test";
+import { beforeEach, describe, expect, mock, test } from "bun:test";
 import { readSettingsRow } from "../../../lib/settings";
 import {
 	createLocalSettingsDb,
 	withTempChorosHome,
 } from "../../../lib/settings/test-helpers";
-
-let activeOrganizationId: string | undefined = "org-a";
-
-const realConfig = await import("../../../lib/config");
-mock.module("../../../lib/config", () => ({
-	...realConfig,
-	readConfig: () => ({ organizationId: activeOrganizationId }),
-}));
 
 mock.module("../../../lib/settings/notify", () => ({
 	notifyDesktopSettingsChanged: async () => false,
@@ -21,7 +13,6 @@ const { default: addScriptCommand } = await import("./command");
 const { default: scriptsMeta } = await import("../meta");
 
 const home = withTempChorosHome("choros-cli-script-command-");
-let previousOrgOverride: string | undefined;
 
 function invoke(overrides: Record<string, unknown> = {}) {
 	return addScriptCommand.run({
@@ -37,16 +28,7 @@ function invoke(overrides: Record<string, unknown> = {}) {
 }
 
 beforeEach(() => {
-	previousOrgOverride = process.env.CHOROS_ORGANIZATION_ID;
-	delete process.env.CHOROS_ORGANIZATION_ID;
-	activeOrganizationId = "org-a";
 	createLocalSettingsDb(home.dir);
-});
-
-afterEach(() => {
-	if (previousOrgOverride === undefined)
-		delete process.env.CHOROS_ORGANIZATION_ID;
-	else process.env.CHOROS_ORGANIZATION_ID = previousOrgOverride;
 });
 
 describe("scripts add", () => {
@@ -76,21 +58,6 @@ describe("scripts add", () => {
 			/Invalid project UUID/,
 		);
 		expect(readSettingsRow()).toBeUndefined();
-	});
-
-	test("requires an active organization", async () => {
-		activeOrganizationId = undefined;
-		await expect(invoke()).rejects.toThrow(/No active organization/);
-		expect(readSettingsRow()).toBeUndefined();
-	});
-
-	test("honors the CHOROS_ORGANIZATION_ID override like other commands", async () => {
-		activeOrganizationId = undefined;
-		process.env.CHOROS_ORGANIZATION_ID = "org-env";
-		await invoke();
-		expect(
-			readSettingsRow()?.terminalPresets?.[0]?.cliTargetOrganizationId,
-		).toBe("org-env");
 	});
 
 	test("keeps presets as a compatibility alias", () => {

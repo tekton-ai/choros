@@ -6,8 +6,8 @@
 
 import { strict as assert } from "node:assert";
 import { after, test } from "node:test";
-import { type Pty, spawn as spawnPty } from "../src/Pty/Pty.ts";
 import { hasRunningForegroundProcess } from "../src/process-tree.ts";
+import { type Pty, spawn as spawnPty } from "../src/pty/pty.ts";
 
 const ptys: Pty[] = [];
 

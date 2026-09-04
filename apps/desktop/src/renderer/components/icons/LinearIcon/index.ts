@@ -1,1 +1,0 @@
-export { LinearIcon } from "./LinearIcon";

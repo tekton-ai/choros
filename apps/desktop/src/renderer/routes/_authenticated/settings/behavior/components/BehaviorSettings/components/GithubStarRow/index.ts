@@ -1,1 +1,0 @@
-export { GithubStarRow } from "./GithubStarRow";

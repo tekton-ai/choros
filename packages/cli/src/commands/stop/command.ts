@@ -7,20 +7,12 @@ import {
 } from "../../lib/host/manifest";
 
 export default command({
-	description: "Stop the host service daemon",
-	run: async ({ ctx }) => {
-		const organization = await ctx.api.user.myOrganization.query();
-		if (!organization)
-			throw new CLIError("No active organization", "Run: choros auth login");
-
-		const manifest = readManifest(organization.id);
+	description: "Stop the local host service daemon",
+	run: async () => {
+		const manifest = readManifest();
 		if (!manifest) {
-			return {
-				data: { running: false },
-				message: `No host service running for ${organization.name}`,
-			};
+			return { data: { running: false }, message: "No host service running" };
 		}
-
 		if (isProcessAlive(manifest.pid)) {
 			try {
 				process.kill(manifest.pid, "SIGTERM");
@@ -31,25 +23,16 @@ export default command({
 					}`,
 				);
 			}
-
 			const deadline = Date.now() + 10_000;
-			while (Date.now() < deadline) {
-				if (!isProcessAlive(manifest.pid)) break;
-				await new Promise((r) => setTimeout(r, 100));
+			while (Date.now() < deadline && isProcessAlive(manifest.pid)) {
+				await new Promise((resolve) => setTimeout(resolve, 100));
 			}
-
-			if (isProcessAlive(manifest.pid)) {
-				try {
-					process.kill(manifest.pid, "SIGKILL");
-				} catch {}
-			}
+			if (isProcessAlive(manifest.pid)) process.kill(manifest.pid, "SIGKILL");
 		}
-
-		removeManifest(organization.id);
-
+		removeManifest();
 		return {
-			data: { pid: manifest.pid, organizationId: organization.id },
-			message: `Stopped host service for ${organization.name}`,
+			data: { pid: manifest.pid },
+			message: "Stopped local host service",
 		};
 	},
 });

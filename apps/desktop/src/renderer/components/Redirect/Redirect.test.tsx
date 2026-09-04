@@ -23,7 +23,7 @@ const {
 	RouterProvider,
 } = await import("@tanstack/react-router");
 const React = await import("react");
-const { Redirect: TypedRedirect } = await import("./Redirect");
+const { Redirect: TypedRedirect } = await import("./redirect");
 
 // The real Redirect types `to` against the app's registered route tree; this
 // test drives a synthetic router with routes that don't exist there, so widen

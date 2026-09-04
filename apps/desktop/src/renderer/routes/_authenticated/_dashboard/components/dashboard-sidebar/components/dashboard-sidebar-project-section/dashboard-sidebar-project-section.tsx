@@ -1,0 +1,166 @@
+import type {
+	DraggableAttributes,
+	DraggableSyntheticListeners,
+} from "@dnd-kit/core";
+import { AnimatePresence, motion } from "framer-motion";
+import { useMemo } from "react";
+import type { DashboardSidebarProject } from "../../types";
+import { getProjectChildrenWorkspaces } from "../../utils/project-children";
+import { DashboardSidebarCollapsedProjectContent } from "./components/dashboard-sidebar-collapsed-project-content";
+import { DashboardSidebarExpandedProjectContent } from "./components/dashboard-sidebar-expanded-project-content";
+import { DashboardSidebarProjectContextMenu } from "./components/dashboard-sidebar-project-context-menu";
+import { DashboardSidebarProjectRow } from "./components/dashboard-sidebar-project-row";
+import { ImportWorktreesDialog } from "./components/import-worktrees-dialog";
+import { useDashboardSidebarProjectSectionActions } from "./hooks/use-dashboard-sidebar-project-section-actions";
+
+interface DashboardSidebarProjectSectionProps {
+	project: DashboardSidebarProject;
+	isSidebarCollapsed?: boolean;
+	isDraggingProject?: boolean;
+	workspaceShortcutLabels: Map<string, string>;
+	onWorkspaceHover: (workspaceId: string) => void | Promise<void>;
+	onToggleCollapse: (projectId: string) => void;
+	dragHandleListeners?: DraggableSyntheticListeners;
+	dragHandleAttributes?: DraggableAttributes;
+}
+
+export function DashboardSidebarProjectSection({
+	project,
+	isSidebarCollapsed = false,
+	isDraggingProject = false,
+	workspaceShortcutLabels,
+	onWorkspaceHover,
+	onToggleCollapse,
+	dragHandleListeners,
+	dragHandleAttributes,
+}: DashboardSidebarProjectSectionProps) {
+	const flattenedCollapsedWorkspaces = useMemo(
+		() => getProjectChildrenWorkspaces(project.children),
+		[project.children],
+	);
+
+	const {
+		cancelRename,
+		confirmImportWorktrees,
+		confirmRemoveFromSidebar,
+		deleteSection,
+		handleImportWorktrees,
+		handleNewSection,
+		handleNewWorkspace,
+		handleOpenInFinder,
+		handleOpenWorkItems,
+		handleOpenSettings,
+		importableWorktrees,
+		isImportingWorktrees,
+		isRenaming,
+		renameSection,
+		renameValue,
+		setImportableWorktrees,
+		setRenameValue,
+		startRename,
+		submitRename,
+		toggleSectionCollapsed,
+	} = useDashboardSidebarProjectSectionActions({
+		project,
+	});
+
+	const totalWorkspaceCount = flattenedCollapsedWorkspaces.length;
+
+	// Rendered only while open so the checkbox state resets per invocation.
+	const importWorktreesDialog = importableWorktrees && (
+		<ImportWorktreesDialog
+			open
+			worktrees={importableWorktrees}
+			isImporting={isImportingWorktrees}
+			onOpenChange={(open) => {
+				if (!open) setImportableWorktrees(null);
+			}}
+			onConfirm={confirmImportWorktrees}
+		/>
+	);
+
+	if (isSidebarCollapsed) {
+		return (
+			<DashboardSidebarProjectContextMenu
+				projectId={project.id}
+				onCreateSection={handleNewSection}
+				onImportWorktrees={handleImportWorktrees}
+				onOpenInFinder={handleOpenInFinder}
+				onOpenWorkItems={handleOpenWorkItems}
+				onOpenSettings={handleOpenSettings}
+				onRemoveFromSidebar={confirmRemoveFromSidebar}
+				onRename={startRename}
+			>
+				<div className="mt-1 first:mt-0">
+					<DashboardSidebarCollapsedProjectContent
+						projectId={project.id}
+						projectName={project.name}
+						iconUrl={project.iconUrl}
+						projectColor={project.color}
+						isCollapsed={project.isCollapsed}
+						totalWorkspaceCount={totalWorkspaceCount}
+						workspaceShortcutLabels={workspaceShortcutLabels}
+						onWorkspaceHover={onWorkspaceHover}
+						onToggleCollapse={() => onToggleCollapse(project.id)}
+					/>
+					{importWorktreesDialog}
+				</div>
+			</DashboardSidebarProjectContextMenu>
+		);
+	}
+
+	return (
+		<div className="mt-1 first:mt-0">
+			<DashboardSidebarProjectContextMenu
+				projectId={project.id}
+				onCreateSection={handleNewSection}
+				onImportWorktrees={handleImportWorktrees}
+				onOpenInFinder={handleOpenInFinder}
+				onOpenWorkItems={handleOpenWorkItems}
+				onOpenSettings={handleOpenSettings}
+				onRemoveFromSidebar={confirmRemoveFromSidebar}
+				onRename={startRename}
+			>
+				<DashboardSidebarProjectRow
+					projectName={project.name}
+					iconUrl={project.iconUrl}
+					projectColor={project.color}
+					isCollapsed={project.isCollapsed}
+					isRenaming={isRenaming}
+					renameValue={renameValue}
+					onRenameValueChange={setRenameValue}
+					onSubmitRename={submitRename}
+					onCancelRename={cancelRename}
+					onStartRename={startRename}
+					onToggleCollapse={() => onToggleCollapse(project.id)}
+					onNewWorkspace={handleNewWorkspace}
+					{...(dragHandleAttributes ?? {})}
+					{...(dragHandleListeners ?? {})}
+				/>
+			</DashboardSidebarProjectContextMenu>
+
+			<AnimatePresence initial={false}>
+				{!isDraggingProject && (
+					<motion.div
+						initial={{ height: 0, opacity: 0 }}
+						animate={{ height: "auto", opacity: 1 }}
+						exit={{ height: 0, opacity: 0 }}
+						transition={{ duration: 0.15, ease: "easeOut" }}
+						className="overflow-hidden"
+					>
+						<DashboardSidebarExpandedProjectContent
+							projectId={project.id}
+							isCollapsed={project.isCollapsed}
+							workspaceShortcutLabels={workspaceShortcutLabels}
+							onWorkspaceHover={onWorkspaceHover}
+							onDeleteSection={deleteSection}
+							onRenameSection={renameSection}
+							onToggleSectionCollapse={toggleSectionCollapsed}
+						/>
+					</motion.div>
+				)}
+			</AnimatePresence>
+			{importWorktreesDialog}
+		</div>
+	);
+}

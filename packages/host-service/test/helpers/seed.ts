@@ -5,7 +5,7 @@ import {
 	terminalSessions,
 	workspaces,
 } from "../../src/db/schema";
-import type { TestHost } from "./createTestHost";
+import type { TestHost } from "./create-test-host";
 
 /**
  * Focused DB-seed helpers. Tests express *what* they need ("a project at

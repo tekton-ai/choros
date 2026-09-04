@@ -552,7 +552,7 @@ describe("cloneRepoInto", () => {
 	});
 
 	test("throws when the URL normalizes to '..'", async () => {
-		await expect(cloneRepoInto("../", parentDir)).rejects.toThrow(
+		await expect(cloneRepoInto("..", parentDir)).rejects.toThrow(
 			/Could not derive repository name/,
 		);
 	});

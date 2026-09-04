@@ -53,7 +53,6 @@ const RULES: Rule[] = [
 			// sites to worker tasks (workers/tasks/git.ts).
 			"trpc/router/git/git.ts": 2,
 			"trpc/router/git/utils/git-helpers.ts": 2,
-			"trpc/router/project/project.ts": 2,
 			"trpc/router/project/utils/resolve-repo.ts": 10,
 			"trpc/router/workspace-creation/shared/project-helpers.ts": 3,
 		},

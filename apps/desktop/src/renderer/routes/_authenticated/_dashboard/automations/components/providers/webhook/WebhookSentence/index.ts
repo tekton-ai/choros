@@ -1,1 +1,0 @@
-export { WebhookSentence } from "./WebhookSentence";

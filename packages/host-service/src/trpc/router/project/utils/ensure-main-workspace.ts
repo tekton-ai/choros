@@ -10,10 +10,7 @@ import {
 export type EnsureMainWorkspaceContext = Pick<
 	HostServiceContext,
 	"db" | "git" | "eventBus"
-> &
-	Partial<
-		Pick<HostServiceContext, "api" | "organizationId" | "clientMachineId">
-	>;
+>;
 
 async function getCurrentBranchName(
 	git: Awaited<ReturnType<EnsureMainWorkspaceContext["git"]>>,
@@ -79,9 +76,6 @@ export async function ensureMainWorkspaceStrict(
 	const store = {
 		db: ctx.db,
 		eventBus: ctx.eventBus,
-		api: ctx.api,
-		organizationId: ctx.organizationId,
-		clientMachineId: ctx.clientMachineId,
 	};
 
 	const existing = ctx.db.query.workspaces

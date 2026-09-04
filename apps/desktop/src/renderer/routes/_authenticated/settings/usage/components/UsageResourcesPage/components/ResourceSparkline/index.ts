@@ -1,1 +1,0 @@
-export { ResourceSparkline } from "./ResourceSparkline";

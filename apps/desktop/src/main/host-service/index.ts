@@ -11,7 +11,6 @@ import {
 	initSentry,
 	installProcessSafetyNet,
 	installUpgradeSocketGuard,
-	JwtApiAuthProvider,
 	LocalGitCredentialProvider,
 	PskHostAuthProvider,
 	resolveBrowserBridgeFromEnv,
@@ -21,9 +20,7 @@ import {
 	initTerminalBaseEnv,
 	resolveTerminalBaseEnv,
 } from "@choros/host-service/terminal-env";
-import { connectRelay } from "@choros/host-service/tunnel";
 import { serve } from "@hono/node-server";
-import { loadToken } from "lib/trpc/routers/auth/utils/auth-functions";
 import {
 	type HostServiceManifest,
 	isProcessAlive,
@@ -41,7 +38,7 @@ const MANIFEST_RECLAIM_INTERVAL_MS = 15_000;
 type Server = ReturnType<typeof serve>;
 
 async function main(): Promise<void> {
-	initSentry({ organizationId: env.ORGANIZATION_ID });
+	initSentry();
 
 	// Install the parent watchdog before any awaits so a crash during
 	// startup can still reap this child. `serverRef` is filled in once
@@ -93,23 +90,9 @@ async function main(): Promise<void> {
 	const terminalBaseEnv = await resolveTerminalBaseEnv();
 	initTerminalBaseEnv(terminalBaseEnv);
 
-	const authProvider = new JwtApiAuthProvider({
-		// Read fresh from disk every time we need to mint a new JWT, so that
-		// re-logins in the desktop renderer (which rewrites auth-token.enc)
-		// are picked up without restarting the host-service child. Falls back
-		// to the boot-time token if the file is missing for any reason.
-		getSessionToken: async () => {
-			const { token } = await loadToken();
-			return token ?? env.AUTH_TOKEN;
-		},
-		apiUrl: env.CHOROS_API_URL,
-	});
-
-	const { app, injectWebSocket, api, db } = createApp({
+	const { app, injectWebSocket, db } = createApp({
 		config: {
-			organizationId: env.ORGANIZATION_ID,
 			dbPath: env.HOST_DB_PATH,
-			cloudApiUrl: env.CHOROS_API_URL,
 			migrationsFolder: env.HOST_MIGRATIONS_FOLDER,
 			allowedOrigins: [
 				`http://localhost:${env.DESKTOP_VITE_PORT}`,
@@ -118,7 +101,6 @@ async function main(): Promise<void> {
 			browserBridge: resolveBrowserBridgeFromEnv(env),
 		},
 		providers: {
-			auth: authProvider,
 			hostAuth: new PskHostAuthProvider(env.HOST_SERVICE_SECRET),
 			credentials: new LocalGitCredentialProvider(),
 		},
@@ -135,39 +117,20 @@ async function main(): Promise<void> {
 			// Orphan reaping + port detection for terminals no renderer has attached.
 			startTerminalReaper(db);
 
-			if (env.ORGANIZATION_ID) {
-				const manifest: HostServiceManifest = {
-					pid: process.pid,
-					endpoint: `http://127.0.0.1:${info.port}`,
-					authToken: env.HOST_SERVICE_SECRET,
-					startedAt,
-					organizationId: env.ORGANIZATION_ID,
-				};
-				void claimManifest(manifest).catch((error) => {
-					console.error("[host-service] Failed to write manifest:", error);
-				});
-				// Yielding at boot must not be permanent: when the holder later
-				// quits (removing its manifest) or dies, re-claim so the CLI's
-				// routing table always names a live instance.
-				manifestReclaimTimer = setInterval(() => {
-					if (readManifest(manifest.organizationId)?.pid === process.pid) {
-						return;
-					}
-					void claimManifest(manifest).catch(() => {});
-				}, MANIFEST_RECLAIM_INTERVAL_MS);
-				manifestReclaimTimer.unref();
-			}
-
-			if (env.RELAY_URL && env.ORGANIZATION_ID) {
-				void connectRelay({
-					api,
-					relayUrl: env.RELAY_URL,
-					localPort: info.port,
-					organizationId: env.ORGANIZATION_ID,
-					authProvider,
-					hostServiceSecret: env.HOST_SERVICE_SECRET,
-				});
-			}
+			const manifest: HostServiceManifest = {
+				pid: process.pid,
+				endpoint: `http://127.0.0.1:${info.port}`,
+				authToken: env.HOST_SERVICE_SECRET,
+				startedAt,
+			};
+			void claimManifest(manifest).catch((error) => {
+				console.error("[host-service] Failed to write manifest:", error);
+			});
+			manifestReclaimTimer = setInterval(() => {
+				if (readManifest()?.pid === process.pid) return;
+				void claimManifest(manifest).catch(() => {});
+			}, MANIFEST_RECLAIM_INTERVAL_MS);
+			manifestReclaimTimer.unref();
 		},
 	);
 	serverRef.current = server;
@@ -189,7 +152,7 @@ function isParentAlive(parentPid: number): boolean {
 const MANIFEST_HOLDER_PROBE_TIMEOUT_MS = 2_500;
 
 async function claimManifest(manifest: HostServiceManifest): Promise<void> {
-	const existing = readManifest(manifest.organizationId);
+	const existing = readManifest();
 	const yieldToHolder = await shouldYieldManifest(existing, process.pid, {
 		isAlive: isProcessAlive,
 		probeHealthy: (endpoint, authToken) =>
@@ -197,7 +160,7 @@ async function claimManifest(manifest: HostServiceManifest): Promise<void> {
 	});
 	if (yieldToHolder) {
 		console.warn(
-			`[host-service] manifest for ${manifest.organizationId} held by live pid ${existing?.pid} at ${existing?.endpoint}; not claiming`,
+			`[host-service] manifest held by live pid ${existing?.pid} at ${existing?.endpoint}; not claiming`,
 		);
 		return;
 	}

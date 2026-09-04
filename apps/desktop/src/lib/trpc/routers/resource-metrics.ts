@@ -10,7 +10,7 @@ const getSnapshotInputSchema = z
 	.object({
 		mode: z.enum(["interactive", "idle"]).optional(),
 		force: z.boolean().optional(),
-		surface: z.enum(["v1", "v2"]).optional(),
+		surface: z.literal("v2").optional(),
 		organizationId: z.string().optional(),
 	})
 	.optional();

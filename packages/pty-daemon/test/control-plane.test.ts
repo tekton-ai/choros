@@ -13,7 +13,7 @@ import * as os from "node:os";
 import * as path from "node:path";
 import { after, before, describe, test } from "node:test";
 import { encodeFrame } from "../src/protocol/index.ts";
-import { Server } from "../src/Server/index.ts";
+import { Server } from "../src/server/index.ts";
 import {
 	accumulatedOutputAsString,
 	connect,

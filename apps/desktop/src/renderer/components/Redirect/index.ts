@@ -1,1 +1,1 @@
-export { Redirect } from "./Redirect";
+export { Redirect } from "./redirect";

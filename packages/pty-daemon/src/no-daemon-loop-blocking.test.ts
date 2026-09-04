@@ -38,7 +38,7 @@ const RULES: Rule[] = [
 		pattern: /\b(execSync|spawnSync|execFileSync)\b/,
 		allowedCounts: {
 			// Shell probe + shutdown diagnostics; cold paths.
-			"Pty/Pty.ts": 2,
+			"pty/pty.ts": 2,
 			// Kill-chain ps reads — bounded by PS_TIMEOUT_MS; the hot polling
 			// path uses readProcessTableAsync instead.
 			"process-tree.ts": 3,

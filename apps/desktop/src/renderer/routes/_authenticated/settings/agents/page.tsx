@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { AgentsSettingsPage } from "./components/AgentsSettingsPage";
+import { AgentsSettingsPage } from "./components/agents-settings-page";
 
 export type AgentsSettingsSearch = {
 	/**

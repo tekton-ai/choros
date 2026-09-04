@@ -1,5 +1,5 @@
-export type { LiveSessionOptions, PromptResult } from "./liveSession";
-export { LiveSession } from "./liveSession";
+export type { LiveSessionOptions, PromptResult } from "./live-session";
+export { LiveSession } from "./live-session";
 export type {
 	HarnessFactory,
 	HarnessFactoryOptions,

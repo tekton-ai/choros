@@ -5,7 +5,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { TRPCClientError } from "@trpc/client";
 import { projects } from "../../src/db/schema";
-import { createTestHost, type TestHost } from "../helpers/createTestHost";
+import { createTestHost, type TestHost } from "../helpers/create-test-host";
 import { createGitFixture, type GitFixture } from "../helpers/git-fixture";
 
 describe("project.setup error paths", () => {
@@ -49,10 +49,6 @@ describe("project.setup error paths", () => {
 				mode: { kind: "import", repoPath: repo.repoPath },
 			}),
 		).rejects.toThrow(/not set up on this host/i);
-
-		expect(
-			host.apiCalls.filter((c) => c.path.startsWith("v2Project.")),
-		).toEqual([]);
 	});
 
 	test("rejects re-pointing existing project to a different path without allowRelocate", async () => {
@@ -102,7 +98,7 @@ describe("project.setup with caller-supplied origin (cross-host local-first)", (
 		repo = undefined;
 	});
 
-	test("import with origin never consults the cloud and applies the origin name", async () => {
+	test("import with origin applies the supplied name", async () => {
 		// No apiOverrides: any cloud call throws "unmocked procedure".
 		host = await createTestHost();
 		repo = await createGitFixture();
@@ -121,12 +117,9 @@ describe("project.setup with caller-supplied origin (cross-host local-first)", (
 			.all()
 			.find((p) => p.id === projectId);
 		expect(row?.name).toBe("From Host B");
-		expect(
-			host.apiCalls.filter((c) => c.path.startsWith("v2Project.")),
-		).toEqual([]);
 	});
 
-	test("clone with an unparseable origin repoCloneUrl fails without cloud calls", async () => {
+	test("clone rejects an unparseable origin repoCloneUrl", async () => {
 		host = await createTestHost();
 
 		await expect(
@@ -136,9 +129,6 @@ describe("project.setup with caller-supplied origin (cross-host local-first)", (
 				mode: { kind: "clone", parentDir: "/tmp/parent-does-not-matter" },
 			}),
 		).rejects.toThrow(/Could not parse GitHub remote/i);
-		expect(
-			host.apiCalls.filter((c) => c.path.startsWith("v2Project.")),
-		).toEqual([]);
 	});
 });
 
@@ -149,7 +139,7 @@ describe("project.create empty mode is fully local", () => {
 		if (host) await host.dispose();
 	});
 
-	test("creates repo dir, named row, and main workspace with zero cloud calls", async () => {
+	test("creates a repo directory, named row, and main workspace", async () => {
 		host = await createTestHost();
 		const parentDir = mkdtempSync(join(tmpdir(), "empty-mode-parent-"));
 		// initEmptyRepo makes an initial commit; CI runners have no global
@@ -180,9 +170,6 @@ describe("project.create empty mode is fully local", () => {
 				.find((p) => p.id === created.projectId);
 			expect(row?.name).toBe("Fresh Local");
 			expect(row?.updatedAt).toBeGreaterThan(0);
-			expect(
-				host.apiCalls.filter((c) => c.path.startsWith("v2Project.")),
-			).toEqual([]);
 		} finally {
 			for (const [key, value] of Object.entries(savedEnv)) {
 				if (value === undefined) delete process.env[key];

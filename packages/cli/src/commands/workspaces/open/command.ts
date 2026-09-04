@@ -1,5 +1,5 @@
 import { spawn } from "node:child_process";
-import { boolean, CLIError, positional, string } from "@choros/cli-framework";
+import { boolean, CLIError, positional } from "@choros/cli-framework";
 import { command } from "../../../lib/command";
 import { findWorkspaceOnHost } from "../../../lib/host-workspaces";
 
@@ -25,31 +25,18 @@ export default command({
 	description: "Open a workspace in the Choros desktop app",
 	args: [positional("id").required().desc("Workspace ID")],
 	options: {
-		host: string().desc("Host the workspace lives on (default: this machine)"),
 		print: boolean().desc(
 			"Print the deep link URL instead of opening the desktop app",
 		),
 	},
-	run: async ({ ctx, args, options }) => {
+	run: async ({ args, options }) => {
 		const id = args.id as string;
-		const organizationId = ctx.config.organizationId;
-		if (!organizationId) {
-			throw new CLIError("No active organization", "Run: choros auth login");
-		}
 
-		const { hostId, workspace } = await findWorkspaceOnHost(
-			{
-				organizationId,
-				userJwt: ctx.bearer,
-				api: ctx.api,
-				hostId: options.host ?? undefined,
-			},
-			id,
-		);
+		const { hostId, workspace } = await findWorkspaceOnHost(id);
 		if (!workspace) {
 			throw new CLIError(
 				`Workspace not found on host ${hostId}: ${id}`,
-				"Pass --host <id> if it lives on another machine. List with: choros workspaces list",
+				"List local workspaces with: choros workspaces list",
 			);
 		}
 

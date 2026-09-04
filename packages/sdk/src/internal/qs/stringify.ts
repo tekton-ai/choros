@@ -185,7 +185,7 @@ function inner_stringify(
         typeof generateArrayPrefix === 'function' ?
           generateArrayPrefix(adjusted_prefix, encoded_key)
         : adjusted_prefix
-      : adjusted_prefix + (allowDots ? '.' + encoded_key : '[' + encoded_key + ']');
+			: adjusted_prefix + (allowDots ? "." + encoded_key : "[" + encoded_key + "]");
 
     sideChannel.set(object, step);
     const valueSideChannel = new WeakMap();

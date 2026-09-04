@@ -1,7 +1,6 @@
 import { boolean, CLIError, string } from "@choros/cli-framework";
 import { EXECUTION_MODES } from "@choros/local-db";
 import { command } from "../../../lib/command";
-import { readConfig, resolveOrganizationId } from "../../../lib/config";
 import { notifyDesktopSettingsChanged } from "../../../lib/settings/notify";
 import { createTerminalScript } from "../../../lib/terminal-scripts";
 
@@ -29,10 +28,6 @@ export default command({
 	},
 	skipMiddleware: true,
 	run: async ({ options }) => {
-		const organizationId = resolveOrganizationId(readConfig());
-		if (!organizationId) {
-			throw new CLIError("No active organization", "Run: choros auth login");
-		}
 		const invalidProjectId = options.project?.find(
 			(projectId) => !UUID_PATTERN.test(projectId),
 		);
@@ -44,7 +39,6 @@ export default command({
 		}
 
 		const script = createTerminalScript({
-			organizationId,
 			name: options.name,
 			description: options.description,
 			cwd: options.cwd,
@@ -55,11 +49,7 @@ export default command({
 			executionMode: options.executionMode ?? "new-tab",
 		});
 		const refreshed = await notifyDesktopSettingsChanged();
-		const {
-			cliImportPending: _,
-			cliTargetOrganizationId: __,
-			...publicScript
-		} = script;
+		const { cliImportPending: _, ...publicScript } = script;
 
 		const workspaceRunNote = options.workspaceRun
 			? " Run precedence is: matching project script, project lifecycle Run command, then global script; the first matching script wins."
@@ -70,7 +60,7 @@ export default command({
 			message: `Added terminal script ${script.name} (${script.id}). ${
 				refreshed
 					? "The running desktop app refreshed immediately."
-					: "It will import when the desktop app opens or refocuses with this organization active."
+					: "It will import when the desktop app opens or refocuses."
 			}${workspaceRunNote}`,
 		};
 	},

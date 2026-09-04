@@ -5,11 +5,11 @@ export {
 	type UseWorkspaceCreatesApi,
 	useWorkspaceCreates,
 	type WorkspacesCreateInput,
-} from "./useWorkspaceCreates";
+} from "./use-workspace-creates";
 export {
 	type TrackableWorkspaceTransactionState,
 	useWorkspaceTransactionsStore,
 	type WorkspaceTransactionSnapshot,
 	type WorkspaceTransactionState,
 	type WorkspaceTransactionType,
-} from "./workspaceTransactions";
+} from "./workspace-transactions";

@@ -10,17 +10,6 @@ import { join } from "node:path";
 import { getHostId } from "@choros/shared/host-info";
 import { isProcessAlive, manifestDir } from "./host-service-manifest";
 
-/**
- * Cross-instance spawn lock for a per-org host-service.
- *
- * Multiple Choros app instances share one `$CHOROS_HOME_DIR`, so their
- * in-process `pendingStarts` maps can't stop two instances from spawning the
- * same org's host-service at once. This atomic exclusive-create lockfile
- * single-flights the spawn+health-check critical section across processes.
- *
- * The lock records the *app instance's* pid (Electron main), not the child's —
- * its liveness tracks the spawner so a crashed instance's lock can be stolen.
- */
 export interface SpawnLock {
 	ownerPid: number;
 	machineId: string;
@@ -31,14 +20,13 @@ export interface SpawnLockHandle {
 	release(): void;
 }
 
-function lockPath(organizationId: string): string {
-	return join(manifestDir(organizationId), "spawn.lock");
+function lockPath(): string {
+	return join(manifestDir(), "spawn.lock");
 }
 
-export function readSpawnLock(organizationId: string): SpawnLock | null {
+export function readSpawnLock(): SpawnLock | null {
 	try {
-		const raw = readFileSync(lockPath(organizationId), "utf-8");
-		const data = JSON.parse(raw);
+		const data = JSON.parse(readFileSync(lockPath(), "utf-8"));
 		if (
 			typeof data.ownerPid !== "number" ||
 			typeof data.machineId !== "string" ||
@@ -52,73 +40,61 @@ export function readSpawnLock(organizationId: string): SpawnLock | null {
 	}
 }
 
-function removeLock(organizationId: string): void {
+function removeLock(): void {
 	try {
-		unlinkSync(lockPath(organizationId));
+		unlinkSync(lockPath());
 	} catch {
-		// Already gone — fine.
+		// Already gone.
 	}
 }
 
-function tryCreateLock(organizationId: string): SpawnLockHandle | null {
-	const path = lockPath(organizationId);
+function tryCreateLock(): SpawnLockHandle | null {
 	try {
-		mkdirSync(manifestDir(organizationId), { recursive: true, mode: 0o700 });
+		mkdirSync(manifestDir(), { recursive: true, mode: 0o700 });
 	} catch {
-		// Best-effort; openSync below surfaces a real failure.
+		// openSync below surfaces a real failure.
 	}
 
 	let fd: number;
 	try {
-		// "wx" = O_CREAT | O_EXCL: atomic exclusive create on POSIX and Windows.
-		fd = openSync(path, "wx", 0o600);
+		fd = openSync(lockPath(), "wx", 0o600);
 	} catch {
 		return null;
 	}
 
 	try {
-		const lock: SpawnLock = {
-			ownerPid: process.pid,
-			machineId: getHostId(),
-			acquiredAt: Date.now(),
-		};
-		writeSync(fd, JSON.stringify(lock));
+		writeSync(
+			fd,
+			JSON.stringify({
+				ownerPid: process.pid,
+				machineId: getHostId(),
+				acquiredAt: Date.now(),
+			} satisfies SpawnLock),
+		);
 	} finally {
 		try {
-			// Best-effort close; the lock's existence, not the fd, is what matters.
 			closeSync(fd);
 		} catch {}
 	}
 
-	return {
-		release() {
-			removeLock(organizationId);
-		},
-	};
+	return { release: removeLock };
 }
 
-/**
- * Acquire the per-org spawn lock, stealing it when the current holder has
- * crashed or wedged. Returns a handle on success, or `null` when a live
- * instance is legitimately mid-spawn (the caller should wait and retry).
- */
-export function acquireSpawnLock(
-	organizationId: string,
-	{ staleMs }: { staleMs: number },
-): SpawnLockHandle | null {
-	const handle = tryCreateLock(organizationId);
+export function acquireSpawnLock({
+	staleMs,
+}: {
+	staleMs: number;
+}): SpawnLockHandle | null {
+	const handle = tryCreateLock();
 	if (handle) return handle;
 
-	// Lock exists — decide whether the holder is dead/wedged and stealable.
-	const existing = readSpawnLock(organizationId);
+	const existing = readSpawnLock();
 	const stealable =
-		!existing || // garbage / partial write
-		!isProcessAlive(existing.ownerPid) || // owner crashed mid-spawn
-		Date.now() - existing.acquiredAt > staleMs; // owner wedged
-
+		!existing ||
+		!isProcessAlive(existing.ownerPid) ||
+		Date.now() - existing.acquiredAt > staleMs;
 	if (!stealable) return null;
 
-	removeLock(organizationId);
-	// One retry after stealing; if a third party grabbed it first, back off.
-	return tryCreateLock(organizationId);
+	removeLock();
+	return tryCreateLock();
 }

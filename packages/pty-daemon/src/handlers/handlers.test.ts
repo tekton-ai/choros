@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, test } from "bun:test";
-import type { Pty, SpawnOptions } from "../Pty/index.ts";
 import type { ServerMessage } from "../protocol/index.ts";
-import { SessionStore } from "../SessionStore/index.ts";
+import type { Pty, SpawnOptions } from "../pty/index.ts";
+import { SessionStore } from "../session-store/index.ts";
 import type { Conn, HandlerCtx } from "./handlers.ts";
 import {
 	handleClose,

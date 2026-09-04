@@ -1,1 +1,0 @@
-export { DevicePicker } from "./DevicePicker";

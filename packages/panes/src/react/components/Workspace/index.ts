@@ -1,3 +1,3 @@
-export { resolveTabTitle } from "./utils/resolveTabTitle";
-export { useTabTitle } from "./utils/useTabTitle";
-export { Workspace } from "./Workspace";
+export { resolveTabTitle } from "./utils/resolve-tab-title";
+export { useTabTitle } from "./utils/use-tab-title";
+export { Workspace } from "./workspace";
