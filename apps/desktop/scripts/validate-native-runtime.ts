@@ -222,9 +222,7 @@ function collectBareRequireSpecifiers(filePath: string): string[] {
 
 	visit(sourceFile);
 
-	return specifiers.filter(
-		(specifier) => !specifier.startsWith("./") && !specifier.startsWith("/"),
-	);
+	return specifiers.filter((specifier) => !specifier.startsWith("."));
 }
 
 function validateOnlyExpectedExternalRequires(): void {
