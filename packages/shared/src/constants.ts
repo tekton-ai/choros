@@ -13,19 +13,20 @@ export const PROTOCOL_SCHEMES = {
 } as const;
 
 // Company
-// Root domain flips the whole brand at cutover. Default is a placeholder for
-// the tekton-ai/choros fork; NEXT_PUBLIC_ROOT_DOMAIN overrides at build time.
+// Public pages are built from apps/site and published by GitHub Pages.
+// NEXT_PUBLIC_ROOT_DOMAIN and NEXT_PUBLIC_MARKETING_URL remain build-time
+// overrides for deployments with a custom domain.
 // GitHub / social identities are external and hand-updated on rebrand.
-const ROOT_DOMAIN = process.env.NEXT_PUBLIC_ROOT_DOMAIN || "choros.dev";
+const ROOT_DOMAIN = process.env.NEXT_PUBLIC_ROOT_DOMAIN || "tekton-ai.top";
 const MARKETING_URL =
-	process.env.NEXT_PUBLIC_MARKETING_URL || `https://${ROOT_DOMAIN}`;
+	process.env.NEXT_PUBLIC_MARKETING_URL || "https://tekton-ai.github.io/choros";
 
 export const COMPANY = {
 	NAME: "Choros",
 	DOMAIN: ROOT_DOMAIN,
 	EMAIL_DOMAIN: `@${ROOT_DOMAIN}`,
 	GITHUB_URL: "https://github.com/tekton-ai/choros",
-	DOCS_URL: process.env.NEXT_PUBLIC_DOCS_URL || `https://docs.${ROOT_DOMAIN}`,
+	DOCS_URL: process.env.NEXT_PUBLIC_DOCS_URL || `${MARKETING_URL}/docs`,
 	MARKETING_URL,
 	TERMS_URL: `${MARKETING_URL}/terms`,
 	PRIVACY_URL: `${MARKETING_URL}/privacy`,
@@ -39,8 +40,8 @@ export const COMPANY = {
 	REPORT_ISSUE_URL: "https://github.com/tekton-ai/choros/issues/new",
 	DISCORD_URL: "https://discord.gg/cZeD9WYcV7",
 	APP_STORE_URL: "https://apps.apple.com/app/id6788926383",
-	STATUS_URL: `https://status.${ROOT_DOMAIN}`,
-	TRUST_URL: `https://trust.${ROOT_DOMAIN}`,
+	STATUS_URL: `${MARKETING_URL}/status`,
+	TRUST_URL: `${MARKETING_URL}/privacy`,
 	JOIN_US_URL: `${MARKETING_URL}/join-us`,
 	/** The formal YC listing; product surfaces link here. `JOIN_US_URL` is our own marketing page. */
 	CAREERS_URL: "https://www.ycombinator.com/companies/choros/jobs",

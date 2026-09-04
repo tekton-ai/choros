@@ -36,9 +36,6 @@ docker run --rm --platform "$PLATFORM" \
   -e TARGET="$TARGET" \
   -e NODE_ARCH="$NODE_ARCH" \
   -e NODE_VERSION="$NODE_VERSION" \
-  -e RELAY_URL="${RELAY_URL:-https://relay.choros.sh}" \
-  -e CHOROS_API_URL="${CHOROS_API_URL:-https://api.choros.sh}" \
-  -e CHOROS_WEB_URL="${CHOROS_WEB_URL:-https://app.choros.sh}" \
   "oven/bun:${BUN_VERSION}" bash -euxc '
     apt-get update -qq
     apt-get install -y --no-install-recommends \

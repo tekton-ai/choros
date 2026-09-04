@@ -129,7 +129,7 @@ function OnboardingDashboardPage() {
 					type="button"
 					onClick={() =>
 						window.open(
-							"https://docs.choros.sh/providers",
+							"https://tekton-ai.github.io/choros/docs/providers",
 							"_blank",
 							"noopener,noreferrer",
 						)

@@ -65,10 +65,6 @@ jobs:
 
       - name: Build distribution
         working-directory: packages/cli
-        env:
-          RELAY_URL: ${{ secrets.RELAY_URL }}
-          CHOROS_API_URL: ${{ vars.CHOROS_API_URL }}
-          CHOROS_WEB_URL: ${{ vars.CHOROS_WEB_URL }}
         run: bun run build:dist --target=${{ matrix.target }}
 
       - name: Smoke test binary

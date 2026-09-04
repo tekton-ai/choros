@@ -1,0 +1,7 @@
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Minified xterm FourKeyMap identifiers are code, not credentials"
+regexTarget = "match"
+regexes = ['''[et]\.FourKeyMap=''']

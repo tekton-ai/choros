@@ -21,7 +21,7 @@ VALUES (
   'warning',
   'immediate',
   '1.99.0',
-  E'### Heads up: v2.0 has breaking changes\n\nCloud mirrors need re-linking once after you update. [Details](https://choros.sh/changelog)',
+  E'### Heads up: v2.0 has breaking changes\n\nCloud mirrors need re-linking once after you update. [Details](https://tekton-ai.github.io/choros/changelog)',
   'Update now',
   'install-update',
   true,

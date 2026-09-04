@@ -15,39 +15,21 @@ iteration.
 
 1. A Cloudflare account (free tier is enough).
 2. `wrangler` CLI: `bun install -g wrangler`, then `wrangler login`.
-3. A running Neon Postgres — you already have one wired into the repo's
-   `.env` for local dev; production wants a separate branch/project.
-4. An Upstash Redis with the HTTP REST API enabled (used for rate-limit and
-   invite magic-tokens).
-5. GitHub OAuth App — see below.
-6. Google Cloud OAuth 2.0 Client — see below.
+3. A running Neon Postgres — local development already wires one through
+   `.env`; production should use a separate branch/project.
+4. A GitHub OAuth App — see below.
+5. A Google Cloud OAuth 2.0 Client — see below.
 
-## Step 1 — pick your public URL
+## Step 1 — use the Worker URL
 
-Two options:
-
-**Free workers.dev subdomain** (fastest to try):
+The production auth origin is the Worker deployment URL:
 
 ```
-https://choros-auth.<your-cf-account>.workers.dev
+https://choros.xchunzhao.workers.dev
 ```
 
-You get this the first time you `wrangler deploy` — Cloudflare tells you the
-URL. Edit `wrangler.toml`'s `AUTH_SELF_URL` to match (the OAuth `callbackURL`
-we hand to GitHub/Google is built from this — it MUST match the URL the
-browser actually reaches this Worker at).
-
-**Custom domain** (recommended for prod):
-
-Add your zone to Cloudflare, point it at the Worker with a Custom Domain in
-the dashboard, and set:
-
-```toml
-routes = [{ pattern = "auth.choros.sh", custom_domain = true }]
-
-[vars]
-AUTH_SELF_URL = "https://auth.choros.sh"
-```
+`AUTH_SELF_URL` and `NEXT_PUBLIC_API_URL` must match this origin. Public pages
+are separate: `apps/site` builds the GitHub Pages site.
 
 ## Step 2 — GitHub OAuth App
 
@@ -55,7 +37,7 @@ AUTH_SELF_URL = "https://auth.choros.sh"
 Developer settings (recommended for prod):
 
 - Application name: `Choros`
-- Homepage URL: `https://choros.sh` (or wherever your marketing site lives)
+- Homepage URL: `https://tekton-ai.github.io/choros/`
 - Authorization callback URL: `${AUTH_SELF_URL}/api/auth/callback/github`
 
 Register → copy Client ID → generate Client Secret. Same App can serve dev
@@ -92,18 +74,6 @@ wrangler secret put BETTER_AUTH_SECRET   # openssl rand -base64 32
 # Neon Postgres — the production URL, NOT your local dev DB.
 wrangler secret put DATABASE_URL
 
-# Upstash Redis HTTP.
-wrangler secret put KV_REST_API_URL
-wrangler secret put KV_REST_API_TOKEN
-
-# Resend for transactional email. Sign-up welcome / org invites go through
-# this; the auth server won't boot cleanly without one.
-wrangler secret put RESEND_API_KEY
-
-# Stripe — only needed if you actually run billing. Fake keys work for now
-# because packages/auth/src/server.ts's Stripe plugin lazy-inits.
-wrangler secret put STRIPE_SECRET_KEY
-wrangler secret put STRIPE_WEBHOOK_SECRET
 ```
 
 Verify what's set: `wrangler secret list`.

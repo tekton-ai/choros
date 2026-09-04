@@ -151,17 +151,6 @@ app.post("/api/usage/events", (c) =>
 	}),
 );
 
-app.get("/", (c) =>
-	c.text(
-		`Choros auth server\n\n` +
-			`Endpoints:\n` +
-			`  /api/auth/*                 — better-auth handler\n` +
-			`  /api/auth/desktop/connect   — desktop OAuth initiator\n` +
-			`  /auth/desktop/success      — post-OAuth landing\n` +
-			`  /api/usage/events          — authenticated desktop-open event\n`,
-	),
-);
-
 // Registered LAST so the desktop-specific routes above win — Hono matches
 // in registration order, and better-auth's handler would 404 on anything
 // it doesn't know about (like /api/auth/desktop/connect).

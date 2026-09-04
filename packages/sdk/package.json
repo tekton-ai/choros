@@ -2,14 +2,14 @@
 	"name": "@choros/sdk",
 	"version": "0.0.1-alpha.12",
 	"description": "TypeScript SDK for the Choros API",
-	"homepage": "https://choros.sh",
+	"homepage": "https://tekton-ai.github.io/choros/",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/choros-sh/choros.git",
+		"url": "git+https://github.com/tekton-ai/choros.git",
 		"directory": "packages/sdk"
 	},
 	"bugs": {
-		"url": "https://github.com/choros-sh/choros/issues"
+		"url": "https://github.com/tekton-ai/choros/issues"
 	},
 	"keywords": [
 		"choros",

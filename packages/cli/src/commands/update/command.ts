@@ -140,7 +140,7 @@ export default command({
 		if (isDesktopBundled()) {
 			throw new CLIError(
 				"This CLI is bundled with the Choros desktop app and updates together with the app.",
-				"For a standalone CLI that updates in place: curl -fsSL https://choros.sh/cli/install.sh | sh",
+				"Standalone CLI distribution is not currently published; use the CLI bundled with Choros desktop.",
 			);
 		}
 

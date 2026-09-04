@@ -124,11 +124,7 @@ Type "# Your agent runs this whole loop too."
 Sleep 600ms
 Enter
 Sleep 300ms
-Type "# Drop it into any coding agent:"
-Sleep 400ms
-Enter
-Sleep 300ms
-Type "#   npx skills add https://choros.sh"
+Type "# Documentation: https://tekton-ai.github.io/choros/docs"
 Sleep 700ms
 Enter
 Sleep 250ms

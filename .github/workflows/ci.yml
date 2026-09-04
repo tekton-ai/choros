@@ -131,8 +131,6 @@ jobs:
         run: bun install --frozen --ignore-scripts
 
       - name: Test
-        env:
-          RELAY_URL: ${{ secrets.RELAY_URL }}
         run: bun run test
 
       # The terminal launch-protection suites (src/terminal/*.node-test.ts)
@@ -220,8 +218,6 @@ jobs:
         run: bun run install:deps
 
       - name: Build Desktop
-        env:
-          RELAY_URL: ${{ secrets.RELAY_URL }}
         run: bun turbo run build --filter=@choros/desktop
 
   # Release workflows retain the four-platform matrix. Routine main builds

@@ -1,8 +1,6 @@
 # Choros TypeScript SDK
 
-Typed wrapper around the Choros API. Follows the [`choros` CLI](https://docs.choros.sh/docs/cli/getting-started) — same procedures, same shapes.
-
-Full docs: **<https://docs.choros.sh/docs/sdk/getting-started>**
+Typed wrapper around the Choros API. See the [Choros documentation](https://tekton-ai.github.io/choros/docs) for the supported product surface.
 
 ## Install
 

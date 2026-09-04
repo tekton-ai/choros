@@ -18,8 +18,10 @@ const envSchema = z.object({
 		.enum(["development", "production", "test"])
 		.default("development"),
 	NEXT_PUBLIC_API_URL: z.url().default(DEFAULT_AUTH_SERVICE_URL),
-	NEXT_PUBLIC_WEB_URL: z.url().default("https://app.choros.sh"),
-	NEXT_PUBLIC_MARKETING_URL: z.url().default("https://choros.sh"),
+	NEXT_PUBLIC_WEB_URL: z.url().default("https://tekton-ai.github.io/choros"),
+	NEXT_PUBLIC_MARKETING_URL: z
+		.url()
+		.default("https://tekton-ai.github.io/choros"),
 	SENTRY_DSN_DESKTOP: z.string().optional(),
 });
 

@@ -51,7 +51,11 @@ export const navigationProvider: CommandProvider = {
 				icon: BookOpenIcon,
 				keywords: ["docs", "help"],
 				run: () => {
-					window.open("https://docs.choros.sh", "_blank", "noreferrer");
+					window.open(
+						"https://tekton-ai.github.io/choros/docs",
+						"_blank",
+						"noreferrer",
+					);
 				},
 			},
 		];

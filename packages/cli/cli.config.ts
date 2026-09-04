@@ -9,15 +9,6 @@ export default defineConfig({
 	commandsDir: "./src/commands",
 	outfile: "./dist/choros",
 	define: {
-		"process.env.RELAY_URL": JSON.stringify(
-			process.env.RELAY_URL ?? "https://relay.choros.sh",
-		),
-		"process.env.CHOROS_API_URL": JSON.stringify(
-			process.env.CHOROS_API_URL ?? "https://api.choros.sh",
-		),
-		"process.env.CHOROS_WEB_URL": JSON.stringify(
-			process.env.CHOROS_WEB_URL ?? "https://app.choros.sh",
-		),
 		"process.env.CHOROS_VERSION": JSON.stringify(VERSION),
 		"process.env.CHOROS_CLI_CHANNEL": JSON.stringify(
 			process.env.CHOROS_CLI_CHANNEL ?? "standalone",
@@ -32,7 +23,7 @@ export default defineConfig({
 	},
 	help: {
 		tagline: "Command your fleet of coding agents from any shell.",
-		docsUrl: "https://docs.choros.sh/cli",
+		docsUrl: "https://tekton-ai.github.io/choros/docs/cli",
 		tip: "Agents in Choros terminals already have `choros` on PATH — tell them to use it.",
 		sections: [
 			{

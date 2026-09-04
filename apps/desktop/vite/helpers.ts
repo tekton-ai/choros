@@ -84,19 +84,11 @@ export function htmlEnvTransformPlugin(): Plugin {
 	return {
 		name: "html-env-transform",
 		transformIndexHtml(html) {
-			return html
-				.replace(
-					/%NEXT_PUBLIC_API_URL%/g,
-					process.env.NEXT_PUBLIC_API_URL || "https://api.choros.sh",
-				)
-				.replace(
-					/%NEXT_PUBLIC_STREAMS_URL%/g,
-					process.env.NEXT_PUBLIC_STREAMS_URL || "https://streams.choros.sh",
-				)
-				.replace(
-					/%RELAY_URL%/g,
-					process.env.RELAY_URL || "https://relay.choros.sh",
-				);
+			return html.replace(
+				/%NEXT_PUBLIC_API_URL%/g,
+				process.env.NEXT_PUBLIC_API_URL ||
+					"https://choros.xchunzhao.workers.dev",
+			);
 		},
 	};
 }

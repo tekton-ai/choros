@@ -81,43 +81,27 @@ export default defineConfig({
 				process.env.NEXT_PUBLIC_API_URL,
 				DEFAULT_AUTH_SERVICE_URL,
 			),
-			"process.env.NEXT_PUBLIC_STREAMS_URL": defineEnv(
-				process.env.NEXT_PUBLIC_STREAMS_URL,
-				"https://streams.choros.sh",
-			),
 			"process.env.NEXT_PUBLIC_WEB_URL": defineEnv(
 				process.env.NEXT_PUBLIC_WEB_URL,
-				"https://app.choros.sh",
+				"https://tekton-ai.github.io/choros",
 			),
 			"process.env.NEXT_PUBLIC_MARKETING_URL": defineEnv(
 				process.env.NEXT_PUBLIC_MARKETING_URL,
-				"https://choros.sh",
+				"https://tekton-ai.github.io/choros",
 			),
 			"process.env.NEXT_PUBLIC_DOCS_URL": defineEnv(
 				process.env.NEXT_PUBLIC_DOCS_URL,
-				"https://docs.choros.sh",
+				"https://tekton-ai.github.io/choros/docs",
 			),
 			"process.env.NEXT_PUBLIC_ROOT_DOMAIN": defineEnv(
 				process.env.NEXT_PUBLIC_ROOT_DOMAIN,
-				"choros.sh",
+				"tekton-ai.top",
 			),
 			"process.env.SENTRY_DSN_DESKTOP": defineEnv(
 				process.env.SENTRY_DSN_DESKTOP,
 			),
 			"process.env.SENTRY_DSN_HOST_SERVICE": defineEnv(
 				process.env.SENTRY_DSN_HOST_SERVICE,
-			),
-			"process.env.RELAY_URL": defineEnv(process.env.RELAY_URL),
-			// Must match renderer for analytics in main process
-			"process.env.NEXT_PUBLIC_POSTHOG_KEY": defineEnv(
-				process.env.NEXT_PUBLIC_POSTHOG_KEY,
-			),
-			"process.env.NEXT_PUBLIC_POSTHOG_HOST": defineEnv(
-				process.env.NEXT_PUBLIC_POSTHOG_HOST,
-			),
-			"process.env.STREAMS_URL": defineEnv(
-				process.env.STREAMS_URL,
-				"https://choros-stream.fly.dev",
 			),
 			"process.env.DESKTOP_VITE_PORT": defineEnv(process.env.DESKTOP_VITE_PORT),
 			"process.env.DESKTOP_NOTIFICATIONS_PORT": defineEnv(
@@ -207,34 +191,23 @@ export default defineConfig({
 			),
 			"process.env.NEXT_PUBLIC_WEB_URL": defineEnv(
 				process.env.NEXT_PUBLIC_WEB_URL,
-				"https://app.choros.sh",
+				"https://tekton-ai.github.io/choros",
 			),
 			"process.env.NEXT_PUBLIC_MARKETING_URL": defineEnv(
 				process.env.NEXT_PUBLIC_MARKETING_URL,
-				"https://choros.sh",
+				"https://tekton-ai.github.io/choros",
 			),
 			"process.env.NEXT_PUBLIC_DOCS_URL": defineEnv(
 				process.env.NEXT_PUBLIC_DOCS_URL,
-				"https://docs.choros.sh",
+				"https://tekton-ai.github.io/choros/docs",
 			),
 			"process.env.NEXT_PUBLIC_ROOT_DOMAIN": defineEnv(
 				process.env.NEXT_PUBLIC_ROOT_DOMAIN,
-				"choros.sh",
+				"tekton-ai.top",
 			),
 			"import.meta.env.DEV_SERVER_PORT": defineEnv(String(DEV_SERVER_PORT)),
-			"import.meta.env.NEXT_PUBLIC_POSTHOG_KEY": defineEnv(
-				process.env.NEXT_PUBLIC_POSTHOG_KEY,
-			),
-			"import.meta.env.NEXT_PUBLIC_POSTHOG_HOST": defineEnv(
-				process.env.NEXT_PUBLIC_POSTHOG_HOST,
-			),
 			"import.meta.env.SENTRY_DSN_DESKTOP": defineEnv(
 				process.env.SENTRY_DSN_DESKTOP,
-			),
-			"process.env.RELAY_URL": defineEnv(process.env.RELAY_URL),
-			"process.env.STREAMS_URL": defineEnv(
-				process.env.STREAMS_URL,
-				"https://choros-stream.fly.dev",
 			),
 			"process.env.DESKTOP_VITE_PORT": defineEnv(process.env.DESKTOP_VITE_PORT),
 			"process.env.DESKTOP_NOTIFICATIONS_PORT": defineEnv(

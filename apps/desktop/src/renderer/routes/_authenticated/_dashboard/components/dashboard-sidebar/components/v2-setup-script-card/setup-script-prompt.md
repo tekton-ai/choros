@@ -1,4 +1,4 @@
-Set up [Choros workspace setup & teardown scripts](https://docs.choros.sh/setup-teardown-scripts) for this project.
+Set up [Choros workspace setup & teardown scripts](https://tekton-ai.github.io/choros/docs/setup-teardown-scripts) for this project.
 
 ## Goal
 

@@ -4,13 +4,10 @@ Choros (χορός, "coordinated chorus") — an agent-first coding platform. On
 workspace for Claude Code, Codex, and any coding agent, run in parallel across
 isolated git worktrees.
 
-**Latest release:** [`desktop-v0.1.0`](https://github.com/tekton-ai/choros/releases/tag/desktop-v0.1.0)
-— macOS (arm64 / x64) and Linux (x86_64) desktop app.
-
 ## What's in this repo
 
-A Turborepo monorepo. One shipping surface (`apps/desktop`); everything else
-is a package that the desktop app or the `choros` CLI links against.
+A Turborepo monorepo. The customer-facing surfaces are the Electron desktop
+app, its narrow authentication Worker, and the static product site.
 
 ```
                      ┌─────────────────────────┐
@@ -38,7 +35,9 @@ Full picture — process topology, IPC channels, on-disk layout — in
 
 | Path | What it is |
 |---|---|
-| `apps/desktop` | The Electron desktop app (main + renderer). The only shipping surface. |
+| `apps/desktop` | The Electron desktop app (main + renderer). |
+| `apps/auth` | Cloudflare Worker for GitHub/Google OAuth, desktop sessions, and minimal usage events. |
+| `apps/site` | Static product pages and documentation published through GitHub Pages. |
 
 ### Packages
 
@@ -56,9 +55,8 @@ Full picture — process topology, IPC channels, on-disk layout — in
 | `packages/ui` | Shared React primitives (shadcn/ui + custom). |
 | `packages/panes` | Split-view pane layout engine. |
 | `packages/i18n` | Lingui-based translations. |
-| `packages/db`, `packages/local-db` | Drizzle schemas (per-org + renderer settings). |
-| `packages/auth` | better-auth types (client-side only). |
-| `packages/trpc` | tRPC router types shared across surfaces. |
+| `packages/db`, `packages/local-db` | Drizzle schemas for the narrow auth service and local desktop settings. |
+| `packages/auth` | Better Auth server and client configuration. |
 | `packages/shared` | Constants and types used everywhere. |
 | `packages/workspace-client`, `packages/workspace-fs` | Workspace RPC client and filesystem watcher. |
 | `packages/port-scanner` | Detects dev-server ports for the browser pane. |
@@ -73,7 +71,7 @@ Set up a workspace (isolated git worktree) via the installed Choros desktop
 app, then in its terminal:
 
 ```bash
-./.choros/setup.local.sh    # once per worktree — Postgres + Redis in Docker, migrations, dev seed
+./.choros/setup.local.sh    # once per worktree — local dependencies, migrations, dev seed
 bun run dev                 # main dev loop (desktop + host-service)
 ```
 
