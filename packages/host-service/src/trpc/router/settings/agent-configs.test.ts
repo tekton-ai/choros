@@ -1,0 +1,633 @@
+import { Database } from "bun:sqlite";
+import { describe, expect, it } from "bun:test";
+import { resolve } from "node:path";
+import {
+	getDefaultSeedPresets,
+	getPresetById,
+} from "@choros/shared/host-agent-presets";
+import { eq } from "drizzle-orm";
+import { drizzle } from "drizzle-orm/bun-sqlite";
+import { migrate } from "drizzle-orm/bun-sqlite/migrator";
+import * as schema from "../../../db/schema";
+import type { HostServiceContext } from "../../../types";
+import { agentConfigsRouter } from "./agent-configs";
+
+function presetBody(presetId: string) {
+	const preset = getPresetById(presetId);
+	if (!preset) throw new Error(`unknown test preset ${presetId}`);
+	const { description: _description, ...rest } = preset;
+	return rest;
+}
+
+const MIGRATIONS_FOLDER = resolve(import.meta.dir, "../../../../drizzle");
+
+function createTestDb() {
+	const sqlite = new Database(":memory:");
+	const db = drizzle(sqlite, { schema });
+	migrate(db, { migrationsFolder: MIGRATIONS_FOLDER });
+	return db;
+}
+
+function createCaller() {
+	return createCallerWithDb().caller;
+}
+
+/** For tests that need to reach past the router and edit rows directly. */
+function createCallerWithDb() {
+	const db = createTestDb();
+	const ctx = { db, isAuthenticated: true } as unknown as HostServiceContext;
+	return { caller: agentConfigsRouter.createCaller(ctx), db };
+}
+
+async function listFirst(
+	caller: ReturnType<typeof agentConfigsRouter.createCaller>,
+) {
+	const rows = await caller.list();
+	const first = rows[0];
+	if (!first) throw new Error("expected seeded rows but list was empty");
+	return first;
+}
+
+const DEFAULT_PRESET_IDS = getDefaultSeedPresets().map((p) => p.presetId);
+const DEFAULT_PRESET_ORDERS = DEFAULT_PRESET_IDS.map((_, i) => i);
+
+describe("agentConfigsRouter", () => {
+	describe("list()", () => {
+		it("seeds bundled defaults on first call", async () => {
+			const caller = createCaller();
+
+			const result = await caller.list();
+
+			expect(result.map((row) => row.presetId)).toEqual(DEFAULT_PRESET_IDS);
+			expect(result.map((row) => row.order)).toEqual(DEFAULT_PRESET_ORDERS);
+		});
+
+		it("does not seed Choros", async () => {
+			const caller = createCaller();
+			const result = await caller.list();
+			expect(result.find((row) => row.presetId === "choros")).toBeUndefined();
+		});
+
+		it("seeds Claude with its most permissive flag", async () => {
+			const caller = createCaller();
+			const result = await caller.list();
+			const claude = result.find((row) => row.presetId === "claude");
+
+			expect(claude?.args).toEqual(["--dangerously-skip-permissions"]);
+		});
+
+		it("seeds Codex with its most permissive flags", async () => {
+			const caller = createCaller();
+			const result = await caller.list();
+			const codex = result.find((row) => row.presetId === "codex");
+
+			expect(codex?.args).toContain(
+				"--dangerously-bypass-approvals-and-sandbox",
+			);
+			expect(codex?.args).toEqual([
+				"--dangerously-bypass-approvals-and-sandbox",
+				"--dangerously-bypass-hook-trust",
+			]);
+			expect(codex?.args).not.toContain("--sandbox");
+			expect(codex?.args).not.toContain("--ask-for-approval");
+		});
+
+		it("seeds resume args for agents with an id-based resume", async () => {
+			const caller = createCaller();
+			const result = await caller.list();
+
+			const claude = result.find((row) => row.presetId === "claude");
+			expect(claude?.resumeArgs).toEqual(["--resume"]);
+
+			const amp = result.find((row) => row.presetId === "amp");
+			expect(amp?.resumeArgs).toEqual(["threads", "continue"]);
+
+			const codex = result.find((row) => row.presetId === "codex");
+			expect(codex?.resumeArgs).toEqual(["resume"]);
+		});
+
+		it("seeds native fork args for every harness whose CLI has them", async () => {
+			const caller = createCaller();
+			const result = await caller.list();
+
+			const claude = result.find((row) => row.presetId === "claude");
+			expect(claude?.forkArgs).toEqual([
+				"--resume",
+				"{sessionId}",
+				"--fork-session",
+			]);
+
+			const codex = result.find((row) => row.presetId === "codex");
+			expect(codex?.forkArgs).toEqual(["fork", "{sessionId}"]);
+
+			// Each of these mirrors the harness's own documented syntax, checked
+			// against the installed binaries: the flags are accepted and only the
+			// session id is rejected.
+			const opencode = result.find((row) => row.presetId === "opencode");
+			expect(opencode?.forkArgs).toEqual([
+				"--session",
+				"{sessionId}",
+				"--fork",
+			]);
+
+			const pi = result.find((row) => row.presetId === "pi");
+			expect(pi?.forkArgs).toEqual(["--fork", "{sessionId}"]);
+
+			const grok = result.find((row) => row.presetId === "grok");
+			expect(grok?.forkArgs).toEqual([
+				"--resume",
+				"{sessionId}",
+				"--fork-session",
+			]);
+
+			const droid = result.find((row) => row.presetId === "droid");
+			expect(droid?.forkArgs).toEqual(["--fork", "{sessionId}"]);
+
+			// No fork in their CLIs, so the menu item stays disabled rather than
+			// launching something that quietly starts fresh.
+			for (const presetId of ["amp", "gemini", "copilot", "cursor-agent"]) {
+				const row = result.find((item) => item.presetId === presetId);
+				expect(row?.forkArgs).toEqual([]);
+			}
+		});
+
+		it("backfills fork args onto an install seeded before the preset had them", async () => {
+			const { caller, db } = createCallerWithDb();
+			const seeded = await caller.list();
+			const opencode = seeded.find((row) => row.presetId === "opencode");
+			// Simulate the pre-existing install: the row was seeded when the
+			// preset had no fork support.
+			db.update(schema.hostAgentConfigs)
+				.set({ forkArgsJson: "[]" })
+				.where(eq(schema.hostAgentConfigs.id, opencode?.id ?? ""))
+				.run();
+
+			const after = await caller.list();
+			expect(
+				after.find((row) => row.presetId === "opencode")?.forkArgs,
+			).toEqual(["--session", "{sessionId}", "--fork"]);
+		});
+
+		it("leaves a customised agent's fork args alone", async () => {
+			const { caller, db } = createCallerWithDb();
+			const seeded = await caller.list();
+			const opencode = seeded.find((row) => row.presetId === "opencode");
+			// Cleared fork args on a row whose launch command the user edited:
+			// their row, their settings.
+			db.update(schema.hostAgentConfigs)
+				.set({ forkArgsJson: "[]", command: "opencode --my-flag" })
+				.where(eq(schema.hostAgentConfigs.id, opencode?.id ?? ""))
+				.run();
+
+			const after = await caller.list();
+			expect(
+				after.find((row) => row.presetId === "opencode")?.forkArgs,
+			).toEqual([]);
+		});
+
+		it("returns existing rows on subsequent calls without re-seeding", async () => {
+			const caller = createCaller();
+			const first = await caller.list();
+			const second = await caller.list();
+			expect(second.map((row) => row.id)).toEqual(first.map((row) => row.id));
+		});
+
+		it("returns rows in displayOrder", async () => {
+			const caller = createCaller();
+			const seeded = await caller.list();
+			await caller.reorder({
+				ids: [...seeded.map((row) => row.id)].reverse(),
+			});
+
+			const reordered = await caller.list();
+			expect(reordered.map((row) => row.presetId)).toEqual(
+				[...DEFAULT_PRESET_IDS].reverse(),
+			);
+			expect(reordered.map((row) => row.order)).toEqual(DEFAULT_PRESET_ORDERS);
+		});
+	});
+
+	describe("add()", () => {
+		it("inserts a row with the supplied launch shape and next order", async () => {
+			const caller = createCaller();
+			await caller.list();
+
+			const created = await caller.add(presetBody("omp"));
+
+			expect(created.presetId).toBe("omp");
+			expect(created.command).toBe("omp");
+			expect(created.promptTransport).toBe("argv");
+			expect(created.order).toBe(DEFAULT_PRESET_IDS.length);
+			const all = await caller.list();
+			expect(all).toHaveLength(DEFAULT_PRESET_IDS.length + 1);
+			expect(new Set(all.map((row) => row.id)).size).toBe(
+				DEFAULT_PRESET_IDS.length + 1,
+			);
+		});
+
+		it("allows duplicate presetId tags with distinct ids", async () => {
+			const caller = createCaller();
+			await caller.list();
+
+			const a = await caller.add(presetBody("claude"));
+			const b = await caller.add(presetBody("claude"));
+
+			expect(a.id).not.toBe(b.id);
+			const claudes = (await caller.list()).filter(
+				(row) => row.presetId === "claude",
+			);
+			expect(claudes).toHaveLength(3);
+		});
+
+		it("accepts a fully custom row and defaults presetId to 'custom'", async () => {
+			const caller = createCaller();
+			await caller.list();
+
+			const created = await caller.add({
+				label: "My Agent",
+				command: "my-agent",
+				args: ["--flag"],
+				promptTransport: "argv",
+				promptArgs: [],
+				env: { FOO: "bar" },
+			});
+
+			expect(created.presetId).toBe("custom");
+			expect(created.label).toBe("My Agent");
+			expect(created.command).toBe("my-agent");
+			expect(created.args).toEqual(["--flag"]);
+			expect(created.env).toEqual({ FOO: "bar" });
+			// Omitted session capabilities default to unsupported.
+			expect(created.resumeArgs).toEqual([]);
+			expect(created.forkArgs).toEqual([]);
+		});
+
+		it("stores supplied resumeArgs", async () => {
+			const caller = createCaller();
+			await caller.list();
+
+			const created = await caller.add({
+				label: "Resumable",
+				command: "resumable",
+				args: [],
+				promptTransport: "argv",
+				promptArgs: [],
+				resumeArgs: ["--resume"],
+				env: {},
+			});
+
+			expect(created.resumeArgs).toEqual(["--resume"]);
+		});
+
+		it("preserves an arbitrary presetId tag verbatim", async () => {
+			const caller = createCaller();
+			await caller.list();
+
+			const created = await caller.add({
+				label: "Bespoke",
+				command: "bespoke",
+				args: [],
+				promptTransport: "argv",
+				promptArgs: [],
+				env: {},
+				presetId: "my-bespoke-tag",
+			});
+
+			expect(created.presetId).toBe("my-bespoke-tag");
+		});
+
+		it("defaults iconId to null and stores a supplied iconId", async () => {
+			const caller = createCaller();
+			await caller.list();
+
+			const withoutIcon = await caller.add({
+				label: "No Icon",
+				command: "no-icon",
+				args: [],
+				promptTransport: "argv",
+				promptArgs: [],
+				env: {},
+			});
+			expect(withoutIcon.iconId).toBeNull();
+
+			const withIcon = await caller.add({
+				label: "Iconic",
+				command: "iconic",
+				args: [],
+				promptTransport: "argv",
+				promptArgs: [],
+				env: {},
+				presetId: "custom",
+				iconId: "claude",
+			});
+			expect(withIcon.iconId).toBe("claude");
+		});
+
+		it("stores an uploaded data-URI icon", async () => {
+			const caller = createCaller();
+			await caller.list();
+
+			const dataUrl = "data:image/png;base64,iVBORw0KGgoAAAANS";
+			const created = await caller.add({
+				label: "Uploaded",
+				command: "uploaded",
+				args: [],
+				promptTransport: "argv",
+				promptArgs: [],
+				env: {},
+				iconId: dataUrl,
+			});
+
+			expect(created.iconId).toBe(dataUrl);
+		});
+
+		it("rejects an oversized iconId", async () => {
+			const caller = createCaller();
+			await caller.list();
+
+			await expect(
+				caller.add({
+					label: "Too Big",
+					command: "too-big",
+					args: [],
+					promptTransport: "argv",
+					promptArgs: [],
+					env: {},
+					iconId: `data:image/png;base64,${"A".repeat(256 * 1024)}`,
+				}),
+			).rejects.toThrow();
+		});
+
+		it("seeds bundled defaults with a null iconId", async () => {
+			const caller = createCaller();
+			const rows = await caller.list();
+			expect(rows.every((row) => row.iconId === null)).toBe(true);
+		});
+
+		it("rejects empty label or command", async () => {
+			const caller = createCaller();
+			await expect(
+				caller.add({
+					label: "",
+					command: "x",
+					args: [],
+					promptTransport: "argv",
+					promptArgs: [],
+					env: {},
+				}),
+			).rejects.toThrow();
+			await expect(
+				caller.add({
+					label: "x",
+					command: "",
+					args: [],
+					promptTransport: "argv",
+					promptArgs: [],
+					env: {},
+				}),
+			).rejects.toThrow();
+		});
+	});
+
+	describe("update()", () => {
+		it("persists label, command, args, promptTransport, promptArgs, resumeArgs, env", async () => {
+			const caller = createCaller();
+			const first = await listFirst(caller);
+
+			const updated = await caller.update({
+				id: first.id,
+				patch: {
+					label: "Custom Claude",
+					command: "claude-yolo",
+					args: ["--mode", "fast"],
+					promptTransport: "stdin",
+					promptArgs: ["-X"],
+					resumeArgs: ["--continue-session"],
+					env: { ANTHROPIC_API_KEY: "test" },
+				},
+			});
+
+			expect(updated.label).toBe("Custom Claude");
+			expect(updated.command).toBe("claude-yolo");
+			expect(updated.args).toEqual(["--mode", "fast"]);
+			expect(updated.promptTransport).toBe("stdin");
+			expect(updated.promptArgs).toEqual(["-X"]);
+			expect(updated.resumeArgs).toEqual(["--continue-session"]);
+			expect(updated.env).toEqual({ ANTHROPIC_API_KEY: "test" });
+		});
+
+		it("sets and clears iconId", async () => {
+			const caller = createCaller();
+			const created = await caller.add({
+				label: "Custom",
+				command: "custom",
+				args: [],
+				promptTransport: "argv",
+				promptArgs: [],
+				env: {},
+			});
+			expect(created.iconId).toBeNull();
+
+			const set = await caller.update({
+				id: created.id,
+				patch: { iconId: "codex" },
+			});
+			expect(set.iconId).toBe("codex");
+
+			const cleared = await caller.update({
+				id: created.id,
+				patch: { iconId: null },
+			});
+			expect(cleared.iconId).toBeNull();
+		});
+
+		it("rejects invalid promptTransport", async () => {
+			const caller = createCaller();
+			const first = await listFirst(caller);
+			await expect(
+				caller.update({
+					id: first.id,
+					// biome-ignore lint/suspicious/noExplicitAny: testing invalid input
+					patch: { promptTransport: "file" as any },
+				}),
+			).rejects.toThrow();
+		});
+
+		it("rejects an empty patch", async () => {
+			const caller = createCaller();
+			const first = await listFirst(caller);
+			await expect(
+				caller.update({ id: first.id, patch: {} }),
+			).rejects.toThrow();
+		});
+
+		it("rejects update for missing id", async () => {
+			const caller = createCaller();
+			await expect(
+				caller.update({ id: "does-not-exist", patch: { label: "x" } }),
+			).rejects.toThrow();
+		});
+
+		it("rejects whitespace-only label and command", async () => {
+			const caller = createCaller();
+			const first = await listFirst(caller);
+			await expect(
+				caller.update({ id: first.id, patch: { label: "   " } }),
+			).rejects.toThrow();
+			await expect(
+				caller.update({ id: first.id, patch: { command: "   " } }),
+			).rejects.toThrow();
+		});
+
+		it("trims label and command on save", async () => {
+			const caller = createCaller();
+			const first = await listFirst(caller);
+			const result = await caller.update({
+				id: first.id,
+				patch: { label: "  Trimmed  ", command: "  trimmed-cmd  " },
+			});
+			expect(result.label).toBe("Trimmed");
+			expect(result.command).toBe("trimmed-cmd");
+		});
+	});
+
+	describe("remove()", () => {
+		it("deletes a config by id", async () => {
+			const caller = createCaller();
+			const first = await listFirst(caller);
+
+			const result = await caller.remove({ id: first.id });
+
+			expect(result.success).toBe(true);
+			const remaining = await caller.list();
+			expect(remaining.find((row) => row.id === first.id)).toBeUndefined();
+		});
+
+		it("throws NOT_FOUND for an unknown id", async () => {
+			const caller = createCaller();
+			await caller.list();
+			await expect(caller.remove({ id: "does-not-exist" })).rejects.toThrow(
+				/not found/i,
+			);
+		});
+	});
+
+	describe("restoreDefault()", () => {
+		it("repairs a malformed built-in config without replacing its row", async () => {
+			const caller = createCaller();
+			const configs = await caller.list();
+			const codex = configs.find((row) => row.presetId === "codex");
+			expect(codex).toBeDefined();
+			if (!codex) return;
+
+			await caller.update({
+				id: codex.id,
+				patch: {
+					label: "Broken Codex",
+					command: "codex",
+					args: [
+						"-c",
+						"model_reasoning_summary=detailed",
+						" ",
+						"--dangerously-bypass-approvals-and-sandbox",
+					],
+					promptTransport: "stdin",
+					promptArgs: ["--prompt"],
+					resumeArgs: ["--wrong-resume"],
+					env: { CODEX_HOME: "/tmp/old-codex" },
+					iconId: "claude",
+				},
+			});
+
+			const restored = await caller.restoreDefault({ id: codex.id });
+			const preset = getPresetById("codex");
+			expect(preset).toBeDefined();
+			if (!preset) return;
+
+			expect(restored).toMatchObject({
+				id: codex.id,
+				presetId: "codex",
+				iconId: null,
+				label: preset.label,
+				command: preset.command,
+				args: preset.args,
+				promptTransport: preset.promptTransport,
+				promptArgs: preset.promptArgs,
+				resumeArgs: preset.resumeArgs,
+				env: preset.env,
+				order: codex.order,
+			});
+		});
+
+		it("rejects custom agents and unknown ids", async () => {
+			const caller = createCaller();
+			const custom = await caller.add({
+				label: "Custom",
+				command: "custom",
+				args: [],
+				promptTransport: "argv",
+				promptArgs: [],
+				env: {},
+			});
+
+			await expect(caller.restoreDefault({ id: custom.id })).rejects.toThrow(
+				/no bundled default/i,
+			);
+			await expect(
+				caller.restoreDefault({ id: "does-not-exist" }),
+			).rejects.toThrow(/not found/i);
+		});
+	});
+
+	describe("reorder()", () => {
+		it("persists the submitted id order", async () => {
+			const caller = createCaller();
+			const seeded = await caller.list();
+			const reversed = [...seeded.map((row) => row.id)].reverse();
+
+			const result = await caller.reorder({ ids: reversed });
+
+			expect(result.map((row) => row.id)).toEqual(reversed);
+			expect(result.map((row) => row.order)).toEqual(DEFAULT_PRESET_ORDERS);
+		});
+
+		it("rejects when ids do not match existing configs", async () => {
+			const caller = createCaller();
+			const seeded = await caller.list();
+
+			await expect(
+				caller.reorder({
+					ids: [...seeded.slice(0, 2).map((row) => row.id)],
+				}),
+			).rejects.toThrow();
+		});
+
+		it("rejects duplicate ids", async () => {
+			const caller = createCaller();
+			const first = await listFirst(caller);
+			await expect(
+				caller.reorder({ ids: [first.id, first.id] }),
+			).rejects.toThrow();
+		});
+	});
+
+	describe("resetToDefaults()", () => {
+		it("replaces current configs with bundled defaults", async () => {
+			const caller = createCaller();
+			const seedFirst = await listFirst(caller);
+			await caller.update({
+				id: seedFirst.id,
+				patch: { label: "Renamed" },
+			});
+			await caller.add(presetBody("omp"));
+
+			const result = await caller.resetToDefaults();
+
+			expect(result.map((row) => row.presetId)).toEqual(DEFAULT_PRESET_IDS);
+			expect(result.find((row) => row.label === "Renamed")).toBeUndefined();
+			// `omp` is in defaults now, so reset re-seeds exactly one — the
+			// extra row added above is dropped.
+			expect(result.filter((row) => row.presetId === "omp")).toHaveLength(1);
+		});
+	});
+});

@@ -1,0 +1,134 @@
+// Tests for the daemon supervisor singleton + bootstrap helpers.
+// We don't spawn a real daemon here — the singleton is just plumbing
+// (DI for the supervisor, fire-and-track promise stash). Real-spawn
+// coverage lives in DaemonSupervisor.node-test.ts.
+
+import { afterEach, beforeEach, describe, expect, mock, test } from "bun:test";
+import { DaemonSupervisor } from "./daemon-supervisor.ts";
+import {
+	__resetSupervisorForTesting,
+	getSupervisor,
+	startDaemonBootstrap,
+	waitForDaemonReady,
+} from "./singleton.ts";
+
+beforeEach(() => {
+	__resetSupervisorForTesting();
+});
+
+afterEach(() => {
+	__resetSupervisorForTesting();
+});
+
+describe("getSupervisor", () => {
+	test("returns the same instance across calls", () => {
+		const a = getSupervisor("/nonexistent");
+		const b = getSupervisor("/different");
+		// Singleton — second arg is ignored after first construction.
+		expect(b).toBe(a);
+	});
+
+	test("constructs with the provided scriptPath on first call", () => {
+		const sup = getSupervisor("/some/path/pty-daemon.js");
+		// We can't read scriptPath via public API, but we can confirm the
+		// supervisor was constructed (not null) and uses the path when it
+		// tries to spawn — `existsSync` check throws "script not found".
+		expect(sup).toBeInstanceOf(DaemonSupervisor);
+	});
+});
+
+describe("fire-and-track bootstrap", () => {
+	test("startDaemonBootstrap kicks off ensure without awaiting", async () => {
+		const sup = getSupervisor("/nonexistent");
+		const ensureMock = mock(async () => {
+			// Long-running ensure that we control via a manual settle.
+			await new Promise((r) => setTimeout(r, 50));
+			return {} as Awaited<ReturnType<typeof sup.ensure>>;
+		});
+		(sup as unknown as { ensure: typeof sup.ensure }).ensure =
+			ensureMock as typeof sup.ensure;
+
+		const t0 = Date.now();
+		startDaemonBootstrap();
+		const elapsed = Date.now() - t0;
+		// Should return immediately, not after the ensure delay.
+		expect(elapsed).toBeLessThan(20);
+		expect(ensureMock).toHaveBeenCalledTimes(1);
+		expect(ensureMock).toHaveBeenCalledWith();
+
+		// Now await readiness — should complete after ensure resolves.
+		await waitForDaemonReady();
+		// Readiness re-ensures so a daemon that died post-bootstrap is revived.
+		expect(ensureMock).toHaveBeenCalledTimes(2);
+	});
+
+	test("startDaemonBootstrap is idempotent", () => {
+		const sup = getSupervisor("/nonexistent");
+		const ensureMock = mock(async () => {
+			await new Promise((r) => setTimeout(r, 100));
+			return {} as Awaited<ReturnType<typeof sup.ensure>>;
+		});
+		(sup as unknown as { ensure: typeof sup.ensure }).ensure =
+			ensureMock as typeof sup.ensure;
+
+		startDaemonBootstrap();
+		startDaemonBootstrap();
+		startDaemonBootstrap();
+		expect(ensureMock).toHaveBeenCalledTimes(1);
+	});
+
+	test("waitForDaemonReady kicks off bootstrap if none in flight", async () => {
+		const sup = getSupervisor("/nonexistent");
+		const ensureMock = mock(async () => {
+			return {} as Awaited<ReturnType<typeof sup.ensure>>;
+		});
+		(sup as unknown as { ensure: typeof sup.ensure }).ensure =
+			ensureMock as typeof sup.ensure;
+
+		await waitForDaemonReady();
+		// Once for the kicked-off bootstrap, once for the readiness re-check.
+		expect(ensureMock).toHaveBeenCalledTimes(2);
+	});
+
+	test("waitForDaemonReady re-ensures after a successful bootstrap", async () => {
+		const sup = getSupervisor("/nonexistent");
+		const ensureMock = mock(async () => {
+			return {} as Awaited<ReturnType<typeof sup.ensure>>;
+		});
+		(sup as unknown as { ensure: typeof sup.ensure }).ensure =
+			ensureMock as typeof sup.ensure;
+
+		await waitForDaemonReady();
+		const callsAfterFirst = ensureMock.mock.calls.length;
+		// The bootstrap promise stays resolved forever, so if the daemon dies
+		// later (adopted-daemon death, crash circuit) only a fresh ensure()
+		// can revive it. Each wait must go through ensure, not just the
+		// stale bootstrap promise.
+		await waitForDaemonReady();
+		expect(ensureMock.mock.calls.length).toBe(callsAfterFirst + 1);
+	});
+
+	test("a failed bootstrap is retryable", async () => {
+		const sup = getSupervisor("/nonexistent");
+		let failNext = true;
+		const ensureMock = mock(async () => {
+			if (failNext) {
+				failNext = false;
+				throw new Error("simulated spawn failure");
+			}
+			return {} as Awaited<ReturnType<typeof sup.ensure>>;
+		});
+		(sup as unknown as { ensure: typeof sup.ensure }).ensure =
+			ensureMock as typeof sup.ensure;
+
+		// First wait surfaces the failure.
+		await expect(waitForDaemonReady()).rejects.toThrow(
+			"simulated spawn failure",
+		);
+		// Second wait kicks off a new bootstrap (the failed promise was
+		// cleared) and succeeds: one ensure for the bootstrap, one for the
+		// readiness re-check.
+		await waitForDaemonReady();
+		expect(ensureMock).toHaveBeenCalledTimes(3);
+	});
+});

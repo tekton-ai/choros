@@ -1,0 +1,62 @@
+import { parseGitHubRemote } from "@choros/shared/github-remote";
+import { Button } from "@choros/ui/button";
+import { Input } from "@choros/ui/input";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
+import { Trans, useLingui } from "@lingui/react/macro";
+import { FaGithub } from "react-icons/fa";
+import { electronTrpc } from "renderer/lib/electron-trpc";
+
+interface RepositorySectionProps {
+	repoUrl: string | null;
+}
+
+/**
+ * Read-only: the repository URL is derived from the repo's git remote by
+ * the host and re-resolved on every import/setup — edit the remote in git
+ * to change it.
+ */
+export function RepositorySection({ repoUrl }: RepositorySectionProps) {
+	const { t } = useLingui();
+	const openUrl = electronTrpc.external.openUrl.useMutation();
+	const parsed = repoUrl ? parseGitHubRemote(repoUrl) : null;
+
+	return (
+		<div className="relative w-96">
+			<Input
+				id="project-repo"
+				value={repoUrl ?? ""}
+				readOnly
+				disabled
+				placeholder={t({
+					id: "settings.project.repository.noRemotePlaceholder",
+					message: "No git remote detected",
+				})}
+				className="w-full font-mono text-sm pr-9"
+			/>
+			{parsed && (
+				<Tooltip>
+					<TooltipTrigger asChild>
+						<Button
+							type="button"
+							variant="ghost"
+							size="icon"
+							className="absolute right-1 top-1 size-7 text-muted-foreground hover:text-foreground"
+							onClick={() => openUrl.mutate(parsed.url)}
+							aria-label={t({
+								id: "settings.project.repository.openInGitHub",
+								message: "Open in GitHub",
+							})}
+						>
+							<FaGithub className="size-4" />
+						</Button>
+					</TooltipTrigger>
+					<TooltipContent>
+						<Trans id="settings.project.repository.openInGitHub">
+							Open in GitHub
+						</Trans>
+					</TooltipContent>
+				</Tooltip>
+			)}
+		</div>
+	);
+}

@@ -1,0 +1,153 @@
+import fs from "node:fs/promises";
+import { homedir } from "node:os";
+import { i18n } from "@choros/i18n";
+import { dialog } from "electron";
+import { menuEmitter } from "main/lib/menu-events";
+import { getOrg } from "main/lib/window-registry/window-registry";
+import { getImageMimeType } from "shared/file-types";
+import { z } from "zod";
+import { publicProcedure, router } from "..";
+
+export const createWindowRouter = () => {
+	return router({
+		minimize: publicProcedure.mutation(({ ctx }) => {
+			const window = ctx.senderWindow;
+			if (!window) return { success: false };
+			window.minimize();
+			return { success: true };
+		}),
+
+		maximize: publicProcedure.mutation(({ ctx }) => {
+			const window = ctx.senderWindow;
+			if (!window) return { success: false, isMaximized: false };
+			if (window.isMaximized()) {
+				window.unmaximize();
+			} else {
+				window.maximize();
+			}
+			return { success: true, isMaximized: window.isMaximized() };
+		}),
+
+		close: publicProcedure.mutation(({ ctx }) => {
+			const window = ctx.senderWindow;
+			if (!window) return { success: false };
+			window.close();
+			return { success: true };
+		}),
+
+		/** Open a new platform window on the same org as the calling window. */
+		openNew: publicProcedure.mutation(({ ctx }) => {
+			// Resolve the caller's org here (deterministic) rather than letting the
+			// menu handler infer it from focus, which can shift before the handler runs.
+			const orgId = ctx.senderWindow ? getOrg(ctx.senderWindow.id) : null;
+			menuEmitter.emit("new-window", { orgId });
+			return { success: true };
+		}),
+
+		getPlatform: publicProcedure.query(() => {
+			return process.platform;
+		}),
+
+		getZoomFactor: publicProcedure.query(({ ctx }) => {
+			const window = ctx.senderWindow;
+			if (!window) return 1;
+			return window.webContents.getZoomFactor();
+		}),
+
+		getHomeDir: publicProcedure.query(() => {
+			return homedir();
+		}),
+
+		getDirectoryStatus: publicProcedure
+			.input(
+				z.object({
+					path: z.string(),
+				}),
+			)
+			.query(async ({ input }) => {
+				try {
+					const stats = await fs.stat(input.path);
+					return {
+						exists: true,
+						isDirectory: stats.isDirectory(),
+					};
+				} catch {
+					return {
+						exists: false,
+						isDirectory: false,
+					};
+				}
+			}),
+
+		selectDirectory: publicProcedure
+			.input(
+				z
+					.object({
+						title: z.string().optional(),
+						defaultPath: z.string().optional(),
+					})
+					.optional(),
+			)
+			.mutation(async ({ ctx, input }) => {
+				const window = ctx.senderWindow;
+				if (!window) {
+					return { canceled: true, path: null };
+				}
+
+				const result = await dialog.showOpenDialog(window, {
+					properties: ["openDirectory", "createDirectory"],
+					title:
+						input?.title ??
+						i18n._({
+							id: "desktop.lib.dialog.selectDirectory.title",
+							message: "Select Directory",
+						}),
+					defaultPath: input?.defaultPath ?? undefined,
+				});
+
+				if (result.canceled || result.filePaths.length === 0) {
+					return { canceled: true, path: null };
+				}
+
+				return { canceled: false, path: result.filePaths[0] };
+			}),
+
+		selectImageFile: publicProcedure.mutation(async ({ ctx }) => {
+			const window = ctx.senderWindow;
+			if (!window) {
+				return { canceled: true, dataUrl: null };
+			}
+
+			const result = await dialog.showOpenDialog(window, {
+				properties: ["openFile"],
+				title: i18n._({
+					id: "desktop.lib.dialog.selectOrganizationLogo.title",
+					message: "Select Organization Logo",
+				}),
+				filters: [
+					{
+						name: i18n._({
+							id: "desktop.lib.dialog.filter.images",
+							message: "Images",
+						}),
+						extensions: ["png", "jpg", "jpeg", "webp"],
+					},
+				],
+			});
+
+			if (result.canceled || result.filePaths.length === 0) {
+				return { canceled: true, dataUrl: null };
+			}
+
+			const filePath = result.filePaths[0];
+			const buffer = await fs.readFile(filePath);
+			const mimeType = getImageMimeType(filePath) ?? "image/png";
+			const base64 = buffer.toString("base64");
+			const dataUrl = `data:${mimeType};base64,${base64}`;
+
+			return { canceled: false, dataUrl };
+		}),
+	});
+};
+
+export type WindowRouter = ReturnType<typeof createWindowRouter>;

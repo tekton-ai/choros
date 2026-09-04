@@ -1,0 +1,391 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1766444030452,
+      "tag": "0000_initial_schema",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1766773809299,
+      "tag": "0001_add_synced_tables",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1766776955487,
+      "tag": "0002_add_active_organization_id",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1766932805546,
+      "tag": "0003_add_confirm_on_quit_setting",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1767166138761,
+      "tag": "0004_add_terminal_link_behavior_setting",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1767166547886,
+      "tag": "0005_add_navigation_style",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1767230000000,
+      "tag": "0006_add_unique_branch_workspace_index",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "6",
+      "when": 1767350000000,
+      "tag": "0007_add_workspace_is_unread",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "6",
+      "when": 1767548339097,
+      "tag": "0008_add_group_tabs_position",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "6",
+      "when": 1767652257969,
+      "tag": "0009_add_github_owner_to_projects",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "6",
+      "when": 1768004449114,
+      "tag": "0010_add_workspace_deleting_at",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "6",
+      "when": 1768790828810,
+      "tag": "0011_add_terminal_persistence",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "6",
+      "when": 1768799848274,
+      "tag": "0012_add_persist_terminal",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "6",
+      "when": 1769500000000,
+      "tag": "0013_add_auto_apply_default_preset",
+      "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "6",
+      "when": 1769579643564,
+      "tag": "0014_add_branch_prefix_config",
+      "breakpoints": true
+    },
+    {
+      "idx": 15,
+      "version": "6",
+      "when": 1769649140217,
+      "tag": "0015_add_notification_sounds_muted",
+      "breakpoints": true
+    },
+    {
+      "idx": 16,
+      "version": "6",
+      "when": 1769672464844,
+      "tag": "0016_add_telemetry_enabled",
+      "breakpoints": true
+    },
+    {
+      "idx": 17,
+      "version": "6",
+      "when": 1770103994672,
+      "tag": "0017_add_is_unnamed_to_workspaces",
+      "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "6",
+      "when": 1770414833599,
+      "tag": "0018_add_delete_local_branch_setting",
+      "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "6",
+      "when": 1770438863796,
+      "tag": "0019_add_hide_image_to_projects",
+      "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "6",
+      "when": 1770754481921,
+      "tag": "0020_add_file_open_mode_setting",
+      "breakpoints": true
+    },
+    {
+      "idx": 21,
+      "version": "6",
+      "when": 1770783531923,
+      "tag": "0021_add_image_project",
+      "breakpoints": true
+    },
+    {
+      "idx": 22,
+      "version": "6",
+      "when": 1770786023683,
+      "tag": "0022_add_port_config",
+      "breakpoints": true
+    },
+    {
+      "idx": 23,
+      "version": "6",
+      "when": 1770879851897,
+      "tag": "0023_add_show_presets_bar_setting",
+      "breakpoints": true
+    },
+    {
+      "idx": 24,
+      "version": "6",
+      "when": 1770884219595,
+      "tag": "0024_generate_migration",
+      "breakpoints": true
+    },
+    {
+      "idx": 25,
+      "version": "6",
+      "when": 1771046337924,
+      "tag": "0025_add_neon_project_id",
+      "breakpoints": true
+    },
+    {
+      "idx": 26,
+      "version": "6",
+      "when": 1771214717763,
+      "tag": "0026_browser_history",
+      "breakpoints": true
+    },
+    {
+      "idx": 27,
+      "version": "6",
+      "when": 1771524526706,
+      "tag": "0027_per_project_default_app",
+      "breakpoints": true
+    },
+    {
+      "idx": 28,
+      "version": "6",
+      "when": 1771539756028,
+      "tag": "0028_add_show_resource_monitor_setting",
+      "breakpoints": true
+    },
+    {
+      "idx": 29,
+      "version": "6",
+      "when": 1771547603399,
+      "tag": "0029_add_workspace_base_branch",
+      "breakpoints": true
+    },
+    {
+      "idx": 30,
+      "version": "6",
+      "when": 1771569145144,
+      "tag": "0030_shallow_the_leader",
+      "breakpoints": true
+    },
+    {
+      "idx": 31,
+      "version": "6",
+      "when": 1771797962833,
+      "tag": "0031_add_open_links_in_app_setting",
+      "breakpoints": true
+    },
+    {
+      "idx": 32,
+      "version": "6",
+      "when": 1771876417139,
+      "tag": "0032_migrate_workspace_ids_to_uuid_v4",
+      "breakpoints": true
+    },
+    {
+      "idx": 33,
+      "version": "6",
+      "when": 1771887719788,
+      "tag": "0033_nosy_overlord",
+      "breakpoints": true
+    },
+    {
+      "idx": 34,
+      "version": "6",
+      "when": 1771977629901,
+      "tag": "0034_add_use_compact_terminal_add_button_setting",
+      "breakpoints": true
+    },
+    {
+      "idx": 35,
+      "version": "6",
+      "when": 1772841491441,
+      "tag": "0035_add_workspace_sections",
+      "breakpoints": true
+    },
+    {
+      "idx": 36,
+      "version": "6",
+      "when": 1773592336317,
+      "tag": "0036_add_agent_settings",
+      "breakpoints": true
+    },
+    {
+      "idx": 37,
+      "version": "6",
+      "when": 1773824260645,
+      "tag": "0037_add_created_by_choros_to_worktrees",
+      "breakpoints": true
+    },
+    {
+      "idx": 38,
+      "version": "6",
+      "when": 1774995017185,
+      "tag": "0038_quick_star_brand",
+      "breakpoints": true
+    },
+    {
+      "idx": 39,
+      "version": "6",
+      "when": 1775765690176,
+      "tag": "0039_add_expose_host_service_via_relay_setting",
+      "breakpoints": true
+    },
+    {
+      "idx": 40,
+      "version": "6",
+      "when": 1776796221146,
+      "tag": "0040_agent_preset_permissions_migrated_at",
+      "breakpoints": true
+    },
+    {
+      "idx": 41,
+      "version": "6",
+      "when": 1776928440569,
+      "tag": "0041_v1_migration_state",
+      "breakpoints": true
+    },
+    {
+      "idx": 42,
+      "version": "6",
+      "when": 1784326143765,
+      "tag": "0042_overconfident_cloak",
+      "breakpoints": true
+    },
+    {
+      "idx": 43,
+      "version": "6",
+      "when": 1784479232424,
+      "tag": "0043_appearance_typography_controls",
+      "breakpoints": true
+    },
+    {
+      "idx": 44,
+      "version": "6",
+      "when": 1784905852439,
+      "tag": "0044_add_wait_for_setup_before_agent_setting",
+      "breakpoints": true
+    },
+    {
+      "idx": 45,
+      "version": "6",
+      "when": 1785347262454,
+      "tag": "0045_add_disabled_agent_hooks_setting",
+      "breakpoints": true
+    },
+    {
+      "idx": 46,
+      "version": "6",
+      "when": 1786597239253,
+      "tag": "0046_drop_dead_persist_terminal_column",
+      "breakpoints": true
+    },
+    {
+      "idx": 47,
+      "version": "6",
+      "when": 1786655483726,
+      "tag": "0047_restore_persist_terminal_column",
+      "breakpoints": true
+    },
+    {
+      "idx": 48,
+      "version": "6",
+      "when": 1787182989255,
+      "tag": "0048_burly_vargas",
+      "breakpoints": true
+    },
+    {
+      "idx": 49,
+      "version": "6",
+      "when": 1787260502122,
+      "tag": "0049_breezy_caretaker",
+      "breakpoints": true
+    },
+    {
+      "idx": 50,
+      "version": "6",
+      "when": 1787595622839,
+      "tag": "0050_add_disabled_skills_setting",
+      "breakpoints": true
+    },
+    {
+      "idx": 51,
+      "version": "6",
+      "when": 1787696314712,
+      "tag": "0051_add_downloads",
+      "breakpoints": true
+    },
+    {
+      "idx": 52,
+      "version": "6",
+      "when": 1787733523610,
+      "tag": "0052_add_screenshots",
+      "breakpoints": true
+    },
+    {
+      "idx": 53,
+      "version": "6",
+      "when": 1787876925673,
+      "tag": "0053_burly_moondragon",
+      "breakpoints": true
+    },
+    {
+      "idx": 54,
+      "version": "6",
+      "when": 1787935829941,
+      "tag": "0054_add_terminal_copy_on_select_setting",
+      "breakpoints": true
+    }
+  ]
+}

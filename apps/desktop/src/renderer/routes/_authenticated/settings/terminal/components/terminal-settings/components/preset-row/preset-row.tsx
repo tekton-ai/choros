@@ -1,0 +1,254 @@
+import type { HostAgentConfig } from "@choros/host-service/settings";
+import { normalizeExecutionMode } from "@choros/local-db";
+import { Badge } from "@choros/ui/badge";
+import { cn } from "@choros/ui/utils";
+import { Trans, useLingui } from "@lingui/react/macro";
+import { Eye, EyeOff } from "lucide-react";
+import { useEffect, useRef } from "react";
+import { useDrag, useDrop } from "react-dnd";
+import { HiMiniCommandLine } from "react-icons/hi2";
+import { LuGripVertical } from "react-icons/lu";
+import { useIsDarkTheme } from "renderer/assets/app-icons/preset-icons";
+import { resolvePresetLaunchCommands } from "renderer/lib/agent-launch-command";
+import { resolveV2PresetIcon } from "renderer/lib/preset-icon";
+import type { TerminalPreset } from "renderer/routes/_authenticated/settings/presets/types";
+import {
+	getPresetProjectTargetLabel,
+	type PresetProjectOption,
+} from "../presets-section/preset-project-options";
+import { getPresetModeLabel } from "./preset-row.utils";
+
+interface PresetWithAgent extends TerminalPreset {
+	agentId?: string;
+}
+
+const PRESET_TYPE = "TERMINAL_PRESET";
+
+interface PresetRowProps {
+	preset: TerminalPreset;
+	rowIndex: number;
+	projectOptionsById: ReadonlyMap<string, PresetProjectOption>;
+	/**
+	 * v2 host-agent configs. When the preset's `agentId` matches a config,
+	 * its `iconId` override or fallback `presetId` is used to resolve the icon.
+	 * Older v2 rows that still store `presetId` in `agentId` resolve via the
+	 * `presetId` fallback. Omitted by v1 callers — no v1 row has `agentId`.
+	 */
+	agents?: HostAgentConfig[];
+	onEdit: (presetId: string) => void;
+	onLocalReorder: (fromIndex: number, toIndex: number) => void;
+	onPersistReorder: (presetId: string, targetIndex: number) => void;
+	onToggleVisibility: (presetId: string, visible: boolean) => void;
+}
+
+export function PresetRow({
+	preset,
+	rowIndex,
+	projectOptionsById,
+	agents,
+	onEdit,
+	onLocalReorder,
+	onPersistReorder,
+	onToggleVisibility,
+}: PresetRowProps) {
+	const { t } = useLingui();
+	const rowRef = useRef<HTMLDivElement>(null);
+	const dragHandleRef = useRef<HTMLButtonElement>(null);
+
+	const [{ isDragging }, drag, preview] = useDrag(
+		() => ({
+			type: PRESET_TYPE,
+			item: { id: preset.id, index: rowIndex, originalIndex: rowIndex },
+			collect: (monitor) => ({
+				isDragging: monitor.isDragging(),
+			}),
+		}),
+		[preset.id, rowIndex],
+	);
+
+	const [, drop] = useDrop({
+		accept: PRESET_TYPE,
+		hover: (item: { id: string; index: number; originalIndex: number }) => {
+			if (item.index !== rowIndex) {
+				onLocalReorder(item.index, rowIndex);
+				item.index = rowIndex;
+			}
+		},
+		drop: (item: { id: string; index: number; originalIndex: number }) => {
+			if (item.originalIndex !== item.index) {
+				onPersistReorder(item.id, item.index);
+			}
+		},
+	});
+
+	useEffect(() => {
+		preview(drop(rowRef));
+		drag(dragHandleRef);
+	}, [preview, drop, drag]);
+
+	const isDark = useIsDarkTheme();
+	const presetIcon = resolveV2PresetIcon(
+		preset as PresetWithAgent,
+		agents,
+		isDark,
+	);
+	const commands = resolvePresetLaunchCommands(
+		preset as PresetWithAgent,
+		agents,
+	);
+
+	const isWorkspaceCreation = !!preset.applyOnWorkspaceCreated;
+	const isWorkspaceRun = !!preset.useAsWorkspaceRun;
+	const isNewTab = !!preset.applyOnNewTab;
+	const isVisibleInBar = preset.pinnedToBar !== false;
+	const modeValue = normalizeExecutionMode(preset.executionMode);
+	const modeLabel = getPresetModeLabel(modeValue, commands.length);
+	const firstCommand =
+		commands.find((cmd) => cmd.trim().length > 0)?.trim() ??
+		t({
+			id: "settings.terminal.presetRow.emptyCommand",
+			message: "Empty command",
+		});
+	const commandSummary =
+		commands.length > 1
+			? `${firstCommand}  +${commands.length - 1}`
+			: firstCommand;
+	const appliesToLabel = getPresetProjectTargetLabel(
+		preset.projectIds,
+		projectOptionsById,
+	);
+
+	return (
+		// biome-ignore lint/a11y/useSemanticElements: div needed to avoid invalid nested <button> elements
+		<div
+			role="button"
+			tabIndex={0}
+			ref={rowRef}
+			onClick={() => onEdit(preset.id)}
+			onKeyDown={(e) => {
+				if (e.target !== e.currentTarget) return;
+				if (e.key === "Enter" || e.key === " ") {
+					e.preventDefault();
+					onEdit(preset.id);
+				}
+			}}
+			className={cn(
+				"group flex items-center gap-3 p-3 cursor-pointer transition-colors hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset",
+				isDragging && "opacity-30",
+			)}
+		>
+			<div className="flex size-7 shrink-0 items-center justify-center rounded-md border border-border bg-background">
+				{presetIcon ? (
+					<img src={presetIcon} alt="" className="size-4 object-contain" />
+				) : (
+					<HiMiniCommandLine className="size-4 text-muted-foreground" />
+				)}
+			</div>
+
+			<div className="min-w-0 flex-1">
+				<div className="flex items-center gap-2 min-w-0">
+					<span className="text-sm font-medium truncate">
+						{preset.name.trim() ||
+							t({
+								id: "settings.terminal.presetRow.untitledScript",
+								message: "Untitled script",
+							})}
+					</span>
+					{isWorkspaceCreation && (
+						<Badge
+							variant="secondary"
+							className="text-[10px] h-4 px-1.5 shrink-0"
+						>
+							<Trans id="settings.terminal.presetRow.badgeWorkspace">
+								Workspace
+							</Trans>
+						</Badge>
+					)}
+					{isWorkspaceRun && (
+						<Badge
+							variant="secondary"
+							className="text-[10px] h-4 px-1.5 shrink-0"
+						>
+							<Trans id="settings.terminal.presetRow.badgeRun">Run</Trans>
+						</Badge>
+					)}
+					{isNewTab && (
+						<Badge
+							variant="secondary"
+							className="text-[10px] h-4 px-1.5 shrink-0"
+						>
+							<Trans id="settings.terminal.presetRow.badgeTab">Tab</Trans>
+						</Badge>
+					)}
+				</div>
+				<div className="text-xs font-mono text-muted-foreground truncate">
+					{commandSummary}
+				</div>
+			</div>
+
+			<div className="shrink-0 hidden md:block text-xs text-muted-foreground truncate max-w-[18rem]">
+				{appliesToLabel} · {modeLabel}
+			</div>
+
+			<button
+				type="button"
+				className={cn(
+					"shrink-0 p-1.5 rounded transition-colors",
+					isVisibleInBar
+						? "text-muted-foreground/60 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 hover:bg-accent hover:text-foreground"
+						: "text-muted-foreground/40 hover:bg-accent hover:text-foreground",
+				)}
+				onClick={(e) => {
+					e.stopPropagation();
+					onToggleVisibility(preset.id, !isVisibleInBar);
+				}}
+				title={
+					isVisibleInBar
+						? t({
+								id: "settings.terminal.presetRow.hideFromBar",
+								message: "Hide from bar",
+							})
+						: t({
+								id: "settings.terminal.presetRow.showInBar",
+								message: "Show in bar",
+							})
+				}
+				aria-label={
+					isVisibleInBar
+						? t({
+								id: "settings.terminal.presetRow.hideFromBar",
+								message: "Hide from bar",
+							})
+						: t({
+								id: "settings.terminal.presetRow.showInBar",
+								message: "Show in bar",
+							})
+				}
+				aria-pressed={isVisibleInBar}
+			>
+				{isVisibleInBar ? (
+					<Eye className="size-4" />
+				) : (
+					<EyeOff className="size-4" />
+				)}
+			</button>
+
+			<button
+				type="button"
+				ref={dragHandleRef}
+				onClick={(e) => e.stopPropagation()}
+				className={cn(
+					"shrink-0 flex items-center justify-center text-muted-foreground/60 hover:text-foreground hover:bg-accent rounded p-1 -m-1 cursor-grab active:cursor-grabbing bg-transparent border-0 transition-opacity",
+					"opacity-0 group-hover:opacity-100 group-focus-within:opacity-100",
+					isDragging && "opacity-100",
+				)}
+				aria-label={t({
+					id: "settings.terminal.presetRow.dragToReorder",
+					message: "Drag to reorder",
+				})}
+			>
+				<LuGripVertical className="size-4" />
+			</button>
+		</div>
+	);
+}

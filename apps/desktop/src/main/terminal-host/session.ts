@@ -1,0 +1,1201 @@
+/**
+ * Terminal Host Session
+ *
+ * A session owns:
+ * - A PTY subprocess (isolates blocking writes from main daemon)
+ * - A HeadlessEmulator instance for state tracking
+ * - A set of attached clients
+ * - Output capture to disk
+ */
+
+import { type ChildProcess, spawn } from "node:child_process";
+import type { Socket } from "node:net";
+import * as path from "node:path";
+import {
+	getCommandShellArgs,
+	getShellArgs,
+} from "@choros/agent-setup/shell-wrappers";
+import {
+	createScanState,
+	SHELLS_WITH_READY_MARKER,
+	type ShellReadyScanState,
+	scanForShellReady,
+} from "@choros/shared/shell-ready-scanner";
+import { DEFAULT_TERMINAL_SCROLLBACK } from "shared/constants";
+import { raceWithAbort, throwIfAborted } from "../lib/terminal/abort";
+import { buildSafeEnv } from "../lib/terminal/env";
+import { isTerminalAttachCanceledError } from "../lib/terminal/errors";
+import { HeadlessEmulator } from "../lib/terminal-host/headless-emulator";
+import type {
+	CreateOrAttachRequest,
+	IpcEvent,
+	SessionMeta,
+	TerminalDataEvent,
+	TerminalErrorEvent,
+	TerminalExitEvent,
+	TerminalSnapshot,
+} from "../lib/terminal-host/types";
+import { treeKillAsync } from "../lib/tree-kill";
+import {
+	createFrameHeader,
+	PtySubprocessFrameDecoder,
+	PtySubprocessIpcType,
+} from "./pty-subprocess-ipc";
+
+// =============================================================================
+// Constants
+// =============================================================================
+
+/**
+ * Timeout for flushing emulator writes during attach.
+ * Prevents indefinite hang when continuous output (e.g., tail -f) keeps the queue non-empty.
+ */
+const ATTACH_FLUSH_TIMEOUT_MS = 500;
+
+/**
+ * Maximum bytes allowed in subprocess stdin queue.
+ * Prevents OOM if subprocess stdin is backpressured (e.g., slow PTY consumer).
+ * 2MB is generous - typical large paste is ~50KB.
+ */
+const MAX_SUBPROCESS_STDIN_QUEUE_BYTES = 2_000_000;
+
+/**
+ * Emulator backlog high-water mark.
+ * Once crossed, pause reading PTY output until the headless emulator catches up.
+ *
+ * This keeps PTY -> daemon -> renderer backpressure end-to-end instead of
+ * letting Session accumulate unbounded terminal output in memory.
+ */
+const EMULATOR_WRITE_QUEUE_HIGH_WATERMARK_BYTES = 1_000_000;
+
+/**
+ * Emulator backlog low-water mark for resuming PTY reads after a pause.
+ * Kept well below the high-water mark to avoid pause/resume thrash.
+ */
+const EMULATOR_WRITE_QUEUE_LOW_WATERMARK_BYTES = 250_000;
+
+/**
+ * How long to wait for the shell-ready marker before unblocking writes.
+ * 15s covers heavy setups like Nix-based devenv via direnv. On timeout,
+ * buffered writes flush immediately (same behavior as before this feature).
+ */
+const SHELL_READY_TIMEOUT_MS = 15_000;
+
+/**
+ * Shell readiness lifecycle:
+ * - `pending`     — shell is initializing; escape sequences dropped, other writes pass through
+ * - `ready`       — marker detected; writes pass through
+ * - `timed_out`   — marker never arrived within timeout; writes pass through
+ * - `unsupported` — shell has no marker (sh, ksh); writes pass through from the start
+ */
+type ShellReadyState = "pending" | "ready" | "timed_out" | "unsupported";
+
+type SpawnProcess = (
+	command: string,
+	args: readonly string[],
+	options: Parameters<typeof spawn>[2],
+) => ChildProcess;
+
+// =============================================================================
+// Types
+// =============================================================================
+
+export interface SessionOptions {
+	sessionId: string;
+	workspaceId: string;
+	paneId: string;
+	tabId: string;
+	cols: number;
+	rows: number;
+	cwd: string;
+	env?: Record<string, string>;
+	shell?: string;
+	workspaceName?: string;
+	workspacePath?: string;
+	rootPath?: string;
+	command?: string;
+	scrollbackLines?: number;
+	spawnProcess?: SpawnProcess;
+}
+
+export interface AttachedClient {
+	socket: Socket;
+	attachedAt: number;
+	attachToken: symbol;
+}
+
+// =============================================================================
+// Session Class
+// =============================================================================
+
+export class Session {
+	readonly sessionId: string;
+	readonly workspaceId: string;
+	readonly paneId: string;
+	readonly tabId: string;
+	readonly shell: string;
+	readonly command?: string;
+	readonly createdAt: Date;
+	private readonly spawnProcess: SpawnProcess;
+
+	private subprocess: ChildProcess | null = null;
+	private subprocessReady = false;
+	private emulator: HeadlessEmulator;
+	private attachedClients: Map<Socket, AttachedClient> = new Map();
+	private clientSocketsWaitingForDrain: Set<Socket> = new Set();
+	private subprocessStdoutPaused = false;
+	private lastAttachedAt: Date;
+	private exitCode: number | null = null;
+	private disposed = false;
+	private terminatingAt: number | null = null;
+	private subprocessDecoder: PtySubprocessFrameDecoder | null = null;
+	private subprocessStdinQueue: Buffer[] = [];
+	private subprocessStdinQueuedBytes = 0;
+	private subprocessStdinDrainArmed = false;
+	private ptyPid: number | null = null;
+	private emulatorWriteBackpressured = false;
+
+	// Promise that resolves when PTY is ready to accept writes
+	private ptyReadyPromise: Promise<void>;
+	private ptyReadyResolve: (() => void) | null = null;
+
+	// Shell readiness — tracks the shell's init lifecycle. User input and
+	// preset commands pass through regardless; only stale xterm terminal-query
+	// responses (DA/DSR) are filtered while `pending`.
+	// See ShellReadyState for lifecycle docs.
+	private shellReadyState: ShellReadyState;
+	private shellReadyTimeoutId: ReturnType<typeof setTimeout> | null = null;
+	// OSC 133;A scanner state — shared with v2 host-service via @choros/shared
+	private scanState: ShellReadyScanState = createScanState();
+
+	private emulatorWriteQueue: string[] = [];
+	private emulatorWriteQueuedBytes = 0;
+	private emulatorWriteScheduled = false;
+	private emulatorFlushWaiters: Array<() => void> = [];
+
+	// Snapshot boundary tracking for concurrent attaches.
+	private emulatorWriteProcessedItems = 0;
+	private nextSnapshotBoundaryWaiterId = 1;
+	private snapshotBoundaryWaiters: Array<{
+		id: number;
+		targetProcessedItems: number;
+		resolve: () => void;
+	}> = [];
+
+	// Callbacks
+	private onSessionExit?: (
+		sessionId: string,
+		exitCode: number,
+		signal?: number,
+	) => void;
+
+	constructor(options: SessionOptions) {
+		this.sessionId = options.sessionId;
+		this.workspaceId = options.workspaceId;
+		this.paneId = options.paneId;
+		this.tabId = options.tabId;
+		this.shell = options.shell || this.getDefaultShell();
+		this.command = options.command;
+		this.createdAt = new Date();
+		this.lastAttachedAt = new Date();
+		this.spawnProcess = options.spawnProcess ?? spawn;
+
+		// Initialize PTY ready promise
+		this.ptyReadyPromise = new Promise((resolve) => {
+			this.ptyReadyResolve = resolve;
+		});
+
+		// zsh/bash/fish get shell-ready markers via our wrappers in
+		// shell-wrappers.ts. Other shells skip the gating entirely.
+		const shellName = this.shell.split("/").pop() || this.shell;
+		this.shellReadyState = SHELLS_WITH_READY_MARKER.has(shellName)
+			? "pending"
+			: "unsupported";
+
+		// Create headless emulator
+		this.emulator = new HeadlessEmulator({
+			cols: options.cols,
+			rows: options.rows,
+			scrollback: options.scrollbackLines ?? DEFAULT_TERMINAL_SCROLLBACK,
+		});
+
+		// Set initial CWD
+		this.emulator.setCwd(options.cwd);
+
+		// The headless emulator responds to terminal queries (e.g. DA1,
+		// DSR). These responses must be forwarded to the subprocess
+		// regardless of whether renderer clients are attached, because
+		// shells like fish send DA1 at startup and wait up to 10 seconds
+		// for a reply before disabling optional features.
+		// Unlike renderer-generated responses (which go through write()
+		// and are correctly dropped during init to avoid appearing as
+		// typed text), headless emulator responses are written directly
+		// to the PTY and consumed by the shell as protocol data.
+		this.emulator.onData((data) => {
+			if (this.subprocess && this.subprocessReady) {
+				this.sendWriteToSubprocess(data);
+			}
+		});
+	}
+
+	/**
+	 * Spawn the PTY process via subprocess
+	 */
+	spawn(options: {
+		cwd: string;
+		cols: number;
+		rows: number;
+		env?: Record<string, string>;
+	}): void {
+		if (this.subprocess) {
+			throw new Error("PTY already spawned");
+		}
+
+		const { cwd, cols, rows, env } = options;
+
+		// In normal flow, caller provides a prebuilt terminal env.
+		// Fall back to process.env only if env was omitted.
+		const envSource = env ?? (process.env as Record<string, string>);
+		const processEnv = buildSafeEnv(envSource);
+		processEnv.TERM = "xterm-256color";
+
+		const shellArgs = this.command
+			? getCommandShellArgs(this.shell, this.command)
+			: getShellArgs(this.shell);
+		const subprocessPath = path.join(__dirname, "pty-subprocess.js");
+
+		// Spawn subprocess with filtered env to prevent leaking NODE_ENV etc.
+		const electronPath = process.execPath;
+		this.subprocess = this.spawnProcess(electronPath, [subprocessPath], {
+			stdio: ["pipe", "pipe", "inherit"],
+			env: { ...processEnv, ELECTRON_RUN_AS_NODE: "1" },
+		});
+
+		// Read framed messages from subprocess stdout
+		if (this.subprocess.stdout) {
+			this.subprocessDecoder = new PtySubprocessFrameDecoder();
+			this.subprocess.stdout.on("data", (chunk: Buffer) => {
+				try {
+					const frames = this.subprocessDecoder?.push(chunk) ?? [];
+					for (const frame of frames) {
+						this.handleSubprocessFrame(frame.type, frame.payload);
+					}
+				} catch (error) {
+					console.error(
+						`[Session ${this.sessionId}] Failed to parse subprocess frames:`,
+						error,
+					);
+				}
+			});
+		}
+
+		// Handle subprocess exit
+		this.subprocess.on("exit", (code) => {
+			console.log(
+				`[Session ${this.sessionId}] Subprocess exited with code ${code}`,
+			);
+			this.handleSubprocessExit(code ?? -1);
+		});
+
+		this.subprocess.on("error", (error) => {
+			console.error(`[Session ${this.sessionId}] Subprocess error:`, error);
+			this.handleSubprocessExit(-1);
+		});
+
+		// If the marker never arrives (broken wrapper, unsupported config),
+		// the timeout unblocks writes so the session degrades gracefully.
+		if (this.shellReadyState === "pending") {
+			this.shellReadyTimeoutId = setTimeout(() => {
+				this.resolveShellReady("timed_out");
+			}, SHELL_READY_TIMEOUT_MS);
+		}
+
+		// Store pending spawn config
+		this.pendingSpawn = {
+			shell: this.shell,
+			args: shellArgs,
+			cwd,
+			cols,
+			rows,
+			env: processEnv,
+		};
+
+		// Command is now passed via shell args (e.g., bash -lc "command"),
+		// so the PTY process exits when the command finishes.
+	}
+
+	private pendingSpawn: {
+		shell: string;
+		args: string[];
+		cwd: string;
+		cols: number;
+		rows: number;
+		env: Record<string, string>;
+	} | null = null;
+
+	/**
+	 * Handle frames from the PTY subprocess
+	 */
+	private handleSubprocessFrame(
+		type: PtySubprocessIpcType,
+		payload: Buffer,
+	): void {
+		switch (type) {
+			case PtySubprocessIpcType.Ready:
+				this.subprocessReady = true;
+				if (this.pendingSpawn) {
+					this.sendSpawnToSubprocess(this.pendingSpawn);
+					this.pendingSpawn = null;
+				}
+				break;
+
+			case PtySubprocessIpcType.Spawned:
+				this.ptyPid = payload.length >= 4 ? payload.readUInt32LE(0) : null;
+				// Resolve the ready promise so callers can await PTY readiness
+				if (this.ptyReadyResolve) {
+					this.ptyReadyResolve();
+					this.ptyReadyResolve = null;
+				}
+				break;
+
+			case PtySubprocessIpcType.Data: {
+				if (payload.length === 0) break;
+
+				// Scan for OSC 133;A (shell ready) and strip from output.
+				// scanForShellReady operates on bytes — the OSC marker is pure
+				// ASCII, so byte-level matching is identical to char-level
+				// matching, and we avoid `payload.toString("utf8")` per chunk
+				// (which mangles multi-byte codepoints split across chunks).
+				let bytes: Uint8Array = payload;
+				if (this.shellReadyState === "pending") {
+					const result = scanForShellReady(this.scanState, payload);
+					bytes = result.output;
+					if (result.matched) {
+						this.resolveShellReady("ready");
+					}
+				}
+
+				if (bytes.length === 0) break;
+				// v1's emulator + IPC consumers want a string. UTF-8 decode the
+				// stripped bytes here. Boundary mangling is still possible at
+				// chunk edges (v1 has no per-session StringDecoder), but v1 is
+				// sunset — the v2 daemon-backed path is the supported one and
+				// it's clean end-to-end.
+				const data = Buffer.from(
+					bytes.buffer,
+					bytes.byteOffset,
+					bytes.byteLength,
+				).toString("utf8");
+
+				this.enqueueEmulatorWrite(data);
+
+				this.broadcastEvent("data", {
+					type: "data",
+					data,
+				} satisfies TerminalDataEvent);
+				break;
+			}
+
+			case PtySubprocessIpcType.Exit: {
+				const exitCode = payload.length >= 4 ? payload.readInt32LE(0) : 0;
+				const signal = payload.length >= 8 ? payload.readInt32LE(4) : 0;
+				this.exitCode = exitCode;
+
+				this.broadcastEvent("exit", {
+					type: "exit",
+					exitCode,
+					signal: signal !== 0 ? signal : undefined,
+				} satisfies TerminalExitEvent);
+
+				this.onSessionExit?.(
+					this.sessionId,
+					exitCode,
+					signal !== 0 ? signal : undefined,
+				);
+				break;
+			}
+
+			case PtySubprocessIpcType.Error: {
+				const errorMessage =
+					payload.length > 0
+						? payload.toString("utf8")
+						: "Unknown subprocess error";
+
+				console.error(
+					`[Session ${this.sessionId}] Subprocess error:`,
+					errorMessage,
+				);
+
+				this.broadcastEvent("error", {
+					type: "error",
+					error: errorMessage,
+					code: errorMessage.includes("Write queue full")
+						? "WRITE_QUEUE_FULL"
+						: "SUBPROCESS_ERROR",
+				} satisfies TerminalErrorEvent);
+				break;
+			}
+		}
+	}
+
+	/**
+	 * Handle subprocess exiting
+	 */
+	private handleSubprocessExit(exitCode: number): void {
+		if (this.exitCode === null) {
+			this.exitCode = exitCode;
+
+			this.broadcastEvent("exit", {
+				type: "exit",
+				exitCode,
+			} satisfies TerminalExitEvent);
+
+			this.onSessionExit?.(this.sessionId, exitCode);
+		}
+
+		// Ensure waiters don't hang forever if the subprocess exits before sending Spawned.
+		// Callers must still check isAlive before writing.
+		if (this.ptyReadyResolve) {
+			this.ptyReadyResolve();
+			this.ptyReadyResolve = null;
+		}
+		this.resolveShellReady("timed_out");
+
+		this.resetProcessState();
+	}
+
+	/**
+	 * Flush queued frames to subprocess stdin, respecting stream backpressure.
+	 */
+	private flushSubprocessStdinQueue(): void {
+		if (!this.subprocess?.stdin || this.disposed) return;
+
+		while (this.subprocessStdinQueue.length > 0) {
+			const buf = this.subprocessStdinQueue[0];
+			// write() buffers the chunk even when it returns false, so the chunk
+			// must leave our queue either way — re-sending it after 'drain'
+			// duplicates bytes and misaligns the frame stream (#6153).
+			const canWrite = this.subprocess.stdin.write(buf);
+			this.subprocessStdinQueue.shift();
+			this.subprocessStdinQueuedBytes -= buf.length;
+
+			if (!canWrite) {
+				if (!this.subprocessStdinDrainArmed) {
+					this.subprocessStdinDrainArmed = true;
+					this.subprocess.stdin.once("drain", () => {
+						this.subprocessStdinDrainArmed = false;
+						this.flushSubprocessStdinQueue();
+					});
+				}
+				return;
+			}
+		}
+	}
+
+	/**
+	 * Send a frame to the subprocess.
+	 * Returns false if write buffer is full (caller should handle).
+	 */
+	private sendFrameToSubprocess(
+		type: PtySubprocessIpcType,
+		payload?: Buffer,
+	): boolean {
+		if (!this.subprocess?.stdin || this.disposed) return false;
+
+		const payloadBuffer = payload ?? Buffer.alloc(0);
+		const frameSize = 5 + payloadBuffer.length; // 5-byte header + payload
+
+		// Check queue limit to prevent OOM under backpressure
+		if (
+			this.subprocessStdinQueuedBytes + frameSize >
+			MAX_SUBPROCESS_STDIN_QUEUE_BYTES
+		) {
+			console.warn(
+				`[Session ${this.sessionId}] stdin queue full (${this.subprocessStdinQueuedBytes} bytes), dropping frame`,
+			);
+			this.broadcastEvent("error", {
+				type: "error",
+				error: "Write queue full - input dropped",
+				code: "WRITE_QUEUE_FULL",
+			} satisfies TerminalErrorEvent);
+			return false;
+		}
+
+		const header = createFrameHeader(type, payloadBuffer.length);
+
+		this.subprocessStdinQueue.push(header);
+		this.subprocessStdinQueuedBytes += header.length;
+
+		if (payloadBuffer.length > 0) {
+			this.subprocessStdinQueue.push(payloadBuffer);
+			this.subprocessStdinQueuedBytes += payloadBuffer.length;
+		}
+
+		const wasBackpressured = this.subprocessStdinDrainArmed;
+		this.flushSubprocessStdinQueue();
+
+		if (this.subprocessStdinDrainArmed && !wasBackpressured) {
+			console.warn(
+				`[Session ${this.sessionId}] stdin buffer full, write may be delayed`,
+			);
+		}
+
+		return !this.subprocessStdinDrainArmed;
+	}
+
+	private sendSpawnToSubprocess(payload: {
+		shell: string;
+		args: string[];
+		cwd: string;
+		cols: number;
+		rows: number;
+		env: Record<string, string>;
+	}): boolean {
+		return this.sendFrameToSubprocess(
+			PtySubprocessIpcType.Spawn,
+			Buffer.from(JSON.stringify(payload), "utf8"),
+		);
+	}
+
+	private sendWriteToSubprocess(data: string): boolean {
+		// Chunk large writes to avoid allocating/queuing massive single frames.
+		const MAX_CHUNK_CHARS = 8192;
+		let ok = true;
+
+		for (let offset = 0; offset < data.length; offset += MAX_CHUNK_CHARS) {
+			const part = data.slice(offset, offset + MAX_CHUNK_CHARS);
+			ok =
+				this.sendFrameToSubprocess(
+					PtySubprocessIpcType.Write,
+					Buffer.from(part, "utf8"),
+				) && ok;
+		}
+
+		return ok;
+	}
+
+	private sendResizeToSubprocess(cols: number, rows: number): boolean {
+		const payload = Buffer.allocUnsafe(8);
+		payload.writeUInt32LE(cols, 0);
+		payload.writeUInt32LE(rows, 4);
+		return this.sendFrameToSubprocess(PtySubprocessIpcType.Resize, payload);
+	}
+
+	private sendKillToSubprocess(signal?: string): boolean {
+		const payload = signal ? Buffer.from(signal, "utf8") : undefined;
+		return this.sendFrameToSubprocess(PtySubprocessIpcType.Kill, payload);
+	}
+
+	private sendSignalToSubprocess(signal: string): boolean {
+		const payload = Buffer.from(signal, "utf8");
+		return this.sendFrameToSubprocess(PtySubprocessIpcType.Signal, payload);
+	}
+
+	private sendDisposeToSubprocess(): boolean {
+		return this.sendFrameToSubprocess(PtySubprocessIpcType.Dispose);
+	}
+
+	private enqueueEmulatorWrite(data: string): void {
+		this.emulatorWriteQueue.push(data);
+		this.emulatorWriteQueuedBytes += Buffer.byteLength(data, "utf8");
+		this.maybePauseSubprocessStdoutForEmulatorBackpressure();
+		this.scheduleEmulatorWrite();
+	}
+
+	private scheduleEmulatorWrite(): void {
+		if (this.emulatorWriteScheduled || this.disposed) return;
+		this.emulatorWriteScheduled = true;
+		setImmediate(() => {
+			this.processEmulatorWriteQueue();
+		});
+	}
+
+	private processEmulatorWriteQueue(): void {
+		if (this.disposed) {
+			this.emulatorWriteQueue = [];
+			this.emulatorWriteQueuedBytes = 0;
+			this.emulatorWriteProcessedItems = 0;
+			this.nextSnapshotBoundaryWaiterId = 1;
+			this.emulatorWriteScheduled = false;
+			this.resolveAllSnapshotBoundaryWaiters();
+			const waiters = this.emulatorFlushWaiters;
+			this.emulatorFlushWaiters = [];
+			for (const resolve of waiters) resolve();
+			return;
+		}
+
+		const start = performance.now();
+		const hasClients = this.attachedClients.size > 0;
+		const backlogBytes = this.emulatorWriteQueuedBytes;
+
+		// Keep the daemon responsive while still ensuring the emulator catches up eventually.
+		const baseBudgetMs = hasClients ? 5 : 25;
+		const budgetMs =
+			backlogBytes > 1024 * 1024 ? Math.max(baseBudgetMs, 25) : baseBudgetMs;
+		const MAX_CHUNK_CHARS = 8192;
+
+		while (this.emulatorWriteQueue.length > 0) {
+			if (performance.now() - start > budgetMs) break;
+
+			let chunk = this.emulatorWriteQueue[0];
+			if (chunk.length > MAX_CHUNK_CHARS) {
+				let splitAt = MAX_CHUNK_CHARS;
+				const prev = chunk.charCodeAt(splitAt - 1);
+				const next = chunk.charCodeAt(splitAt);
+				if (
+					prev >= 0xd800 &&
+					prev <= 0xdbff &&
+					next >= 0xdc00 &&
+					next <= 0xdfff
+				) {
+					splitAt--;
+				}
+				this.emulatorWriteQueue[0] = chunk.slice(splitAt);
+				chunk = chunk.slice(0, splitAt);
+			} else {
+				this.emulatorWriteQueue.shift();
+				this.emulatorWriteProcessedItems++;
+				this.resolveReachedSnapshotBoundaryWaiters();
+			}
+
+			this.emulatorWriteQueuedBytes -= Buffer.byteLength(chunk, "utf8");
+			this.emulator.write(chunk);
+		}
+
+		this.maybeResumeSubprocessStdoutForEmulatorBackpressure();
+
+		if (this.emulatorWriteQueue.length > 0) {
+			setImmediate(() => {
+				this.processEmulatorWriteQueue();
+			});
+			return;
+		}
+
+		this.emulatorWriteScheduled = false;
+		this.resolveReachedSnapshotBoundaryWaiters();
+
+		const waiters = this.emulatorFlushWaiters;
+		this.emulatorFlushWaiters = [];
+		for (const resolve of waiters) resolve();
+	}
+
+	private resolveReachedSnapshotBoundaryWaiters(): void {
+		if (this.snapshotBoundaryWaiters.length === 0) return;
+
+		const remainingWaiters: typeof this.snapshotBoundaryWaiters = [];
+		for (const waiter of this.snapshotBoundaryWaiters) {
+			if (this.emulatorWriteProcessedItems >= waiter.targetProcessedItems) {
+				waiter.resolve();
+			} else {
+				remainingWaiters.push(waiter);
+			}
+		}
+		this.snapshotBoundaryWaiters = remainingWaiters;
+	}
+
+	private resolveAllSnapshotBoundaryWaiters(): void {
+		if (this.snapshotBoundaryWaiters.length === 0) return;
+		const waiters = this.snapshotBoundaryWaiters;
+		this.snapshotBoundaryWaiters = [];
+		for (const waiter of waiters) waiter.resolve();
+	}
+
+	/**
+	 * Flush emulator writes up to current queue position (snapshot boundary).
+	 * Unlike flushEmulatorWrites, this captures a consistent point-in-time state
+	 * even with continuous output - we only wait for data received BEFORE this call.
+	 */
+	private async flushToSnapshotBoundary(timeoutMs: number): Promise<boolean> {
+		if (this.emulatorWriteQueue.length === 0) {
+			return true; // Already flushed
+		}
+
+		const targetProcessedItems =
+			this.emulatorWriteProcessedItems + this.emulatorWriteQueue.length;
+
+		const waiterId = this.nextSnapshotBoundaryWaiterId++;
+		let reachedBoundary = false;
+
+		const boundaryPromise = new Promise<void>((resolve) => {
+			this.snapshotBoundaryWaiters.push({
+				id: waiterId,
+				targetProcessedItems,
+				resolve: () => {
+					reachedBoundary = true;
+					resolve();
+				},
+			});
+			this.scheduleEmulatorWrite();
+			this.resolveReachedSnapshotBoundaryWaiters();
+		});
+
+		const timeoutPromise = new Promise<void>((resolve) =>
+			setTimeout(resolve, timeoutMs),
+		);
+
+		await Promise.race([boundaryPromise, timeoutPromise]);
+
+		if (!reachedBoundary) {
+			this.snapshotBoundaryWaiters = this.snapshotBoundaryWaiters.filter(
+				(waiter) => waiter.id !== waiterId,
+			);
+		}
+
+		return reachedBoundary;
+	}
+
+	/**
+	 * Check if session is alive (PTY running)
+	 */
+	get isAlive(): boolean {
+		return this.subprocess !== null && this.exitCode === null;
+	}
+
+	/**
+	 * Get the PTY process ID for port scanning.
+	 * Returns null if PTY not yet spawned or has exited.
+	 */
+	get pid(): number | null {
+		return this.ptyPid;
+	}
+
+	/**
+	 * Check if session is in the process of terminating.
+	 * A terminating session has received a kill signal but hasn't exited yet.
+	 */
+	get isTerminating(): boolean {
+		return this.terminatingAt !== null;
+	}
+
+	/**
+	 * Check if session can be attached to.
+	 * A session is attachable if it's alive and not terminating.
+	 * This prevents race conditions where createOrAttach is called
+	 * immediately after kill but before the PTY has actually exited.
+	 */
+	get isAttachable(): boolean {
+		return this.isAlive && !this.isTerminating;
+	}
+
+	/**
+	 * Wait for PTY to be ready to accept writes.
+	 * Returns immediately if already ready, or waits for Spawned event.
+	 */
+	waitForReady(): Promise<void> {
+		return this.ptyReadyPromise;
+	}
+
+	/**
+	 * Get number of attached clients
+	 */
+	get clientCount(): number {
+		return this.attachedClients.size;
+	}
+
+	/**
+	 * Attach a client to this session
+	 */
+	async attach(
+		socket: Socket,
+		signal?: AbortSignal,
+	): Promise<TerminalSnapshot> {
+		if (this.disposed) {
+			throw new Error("Session disposed");
+		}
+		throwIfAborted(signal);
+
+		const attachedClient: AttachedClient = {
+			socket,
+			attachedAt: Date.now(),
+			attachToken: Symbol("attach"),
+		};
+		this.attachedClients.set(socket, attachedClient);
+		this.lastAttachedAt = new Date();
+
+		// Use snapshot boundary flush for consistent state with continuous output.
+		// This ensures we capture all data received BEFORE attach was called,
+		// even if new data continues to arrive during the flush.
+		try {
+			const reachedBoundary = await raceWithAbort(
+				this.flushToSnapshotBoundary(ATTACH_FLUSH_TIMEOUT_MS),
+				signal,
+			);
+
+			if (!reachedBoundary) {
+				console.warn(
+					`[Session ${this.sessionId}] Attach flush timeout after ${ATTACH_FLUSH_TIMEOUT_MS}ms`,
+				);
+			}
+
+			await raceWithAbort(this.emulator.flush(), signal);
+			throwIfAborted(signal);
+			return this.emulator.getSnapshot();
+		} catch (error) {
+			if (isTerminalAttachCanceledError(error)) {
+				this.detachAttachedClient(socket, attachedClient);
+				throw error;
+			}
+			throw error;
+		}
+	}
+
+	/**
+	 * Detach a client from this session
+	 */
+	detach(socket: Socket): void {
+		this.detachAttachedClient(socket);
+	}
+
+	private detachAttachedClient(
+		socket: Socket,
+		attachedClient?: AttachedClient,
+	): void {
+		const currentClient = this.attachedClients.get(socket);
+		if (attachedClient && currentClient !== attachedClient) {
+			return;
+		}
+		this.attachedClients.delete(socket);
+		this.clientSocketsWaitingForDrain.delete(socket);
+		this.updateSubprocessStdoutFlow();
+	}
+
+	/**
+	 * Write data to the PTY's stdin.
+	 *
+	 * Escape-sequence responses (`\x1b`-prefixed) are dropped while the shell
+	 * is still initializing — these are stale DA/DSR replies from the
+	 * renderer's xterm to terminal queries the shell sent during startup. If
+	 * forwarded, they appear as typed text like `?62;4;9;22c` at the shell
+	 * prompt. The headless emulator answers those queries directly (see
+	 * constructor), so dropping the renderer's duplicate is safe.
+	 *
+	 * All other data — user keystrokes and preset commands alike — passes
+	 * through immediately. Buffering here previously froze workspaces when
+	 * shell init commands (e.g. fnm's `use-on-cd` hook) opened an interactive
+	 * prompt before the OSC 133;A marker fired. See #3478.
+	 */
+	write(data: string): void {
+		if (!this.subprocess || !this.subprocessReady) {
+			throw new Error("PTY not spawned");
+		}
+		if (this.shellReadyState === "pending" && data.startsWith("\x1b")) {
+			return;
+		}
+		this.sendWriteToSubprocess(data);
+	}
+
+	/**
+	 * Resize PTY and emulator
+	 */
+	resize(cols: number, rows: number): void {
+		if (this.subprocess && this.subprocessReady) {
+			this.sendResizeToSubprocess(cols, rows);
+		}
+		this.emulator.resize(cols, rows);
+	}
+
+	/**
+	 * Clear scrollback buffer
+	 */
+	clearScrollback(): void {
+		this.emulator.clear();
+	}
+
+	/**
+	 * Get session snapshot
+	 */
+	getSnapshot(): TerminalSnapshot {
+		return this.emulator.getSnapshot();
+	}
+
+	/**
+	 * Get session metadata
+	 */
+	getMeta(): SessionMeta {
+		const dims = this.emulator.getDimensions();
+		return {
+			sessionId: this.sessionId,
+			workspaceId: this.workspaceId,
+			paneId: this.paneId,
+			cwd: this.emulator.getCwd() || "",
+			cols: dims.cols,
+			rows: dims.rows,
+			createdAt: this.createdAt.toISOString(),
+			lastAttachedAt: this.lastAttachedAt.toISOString(),
+			shell: this.shell,
+		};
+	}
+
+	/**
+	 * Send a signal to the PTY process without marking the session as terminating.
+	 * Used for signals like SIGINT (Ctrl+C) where the process should continue running.
+	 */
+	sendSignal(signal: string): void {
+		if (this.terminatingAt !== null || this.disposed) {
+			return;
+		}
+
+		if (this.subprocess && this.subprocessReady) {
+			this.sendSignalToSubprocess(signal);
+		}
+	}
+
+	/**
+	 * Kill the PTY process.
+	 * Marks the session as terminating immediately (idempotent).
+	 * The actual PTY termination is async - use isTerminating to check state.
+	 */
+	kill(signal: string = "SIGHUP"): void {
+		// Idempotent: if already terminating, don't send another signal
+		if (this.terminatingAt !== null) {
+			return;
+		}
+
+		// Mark as terminating immediately to prevent race conditions
+		this.terminatingAt = Date.now();
+
+		if (this.subprocess && this.subprocessReady) {
+			this.sendKillToSubprocess(signal);
+			return;
+		}
+
+		// If the subprocess isn't ready yet, fall back to killing the subprocess itself
+		// so session termination is reliable (differentiation isn't meaningful pre-spawn).
+		try {
+			this.subprocess?.kill(signal as NodeJS.Signals);
+		} catch {
+			// Process may already be dead
+		}
+	}
+
+	/** Callers that don't need to wait can fire-and-forget. */
+	dispose(): Promise<void> {
+		if (this.disposed) return Promise.resolve();
+		this.disposed = true;
+
+		const pidsToKill = this.collectProcessPids();
+
+		if (this.subprocess) {
+			this.sendDisposeToSubprocess();
+		}
+
+		this.resetProcessState();
+		this.emulator.dispose();
+		this.attachedClients.clear();
+		this.clientSocketsWaitingForDrain.clear();
+
+		if (pidsToKill.length === 0) return Promise.resolve();
+
+		// Must await: treeKill enumerates descendants via ps/pgrep before signaling
+		return Promise.all(
+			pidsToKill.map((pid) => treeKillAsync(pid, "SIGKILL")),
+		).then(() => {});
+	}
+
+	/** Includes PTY PID as safety net in case the shell was reparented after subprocess exit. */
+	private collectProcessPids(): number[] {
+		const pids: number[] = [];
+		if (this.subprocess?.pid) pids.push(this.subprocess.pid);
+		if (this.ptyPid) pids.push(this.ptyPid);
+		return pids;
+	}
+
+	private resetProcessState(): void {
+		this.subprocess = null;
+		this.subprocessReady = false;
+		this.subprocessDecoder = null;
+		const shellName = this.shell.split("/").pop() || this.shell;
+		this.shellReadyState = SHELLS_WITH_READY_MARKER.has(shellName)
+			? "pending"
+			: "unsupported";
+		if (this.shellReadyTimeoutId) {
+			clearTimeout(this.shellReadyTimeoutId);
+			this.shellReadyTimeoutId = null;
+		}
+		this.scanState = createScanState();
+		this.subprocessStdinQueue = [];
+		this.subprocessStdinQueuedBytes = 0;
+		this.subprocessStdinDrainArmed = false;
+		this.subprocessStdoutPaused = false;
+		this.emulatorWriteBackpressured = false;
+
+		this.emulatorWriteQueue = [];
+		this.emulatorWriteQueuedBytes = 0;
+		this.emulatorWriteProcessedItems = 0;
+		this.nextSnapshotBoundaryWaiterId = 1;
+		this.emulatorWriteScheduled = false;
+		this.resolveAllSnapshotBoundaryWaiters();
+		const waiters = this.emulatorFlushWaiters;
+		this.emulatorFlushWaiters = [];
+		for (const resolve of waiters) resolve();
+	}
+
+	/**
+	 * Set exit callback
+	 */
+	onExit(
+		callback: (sessionId: string, exitCode: number, signal?: number) => void,
+	): void {
+		this.onSessionExit = callback;
+	}
+
+	// ===========================================================================
+	// Private Methods
+	// ===========================================================================
+
+	/**
+	 * Transition out of `pending`. Flushes any partially-matched marker
+	 * bytes as terminal output (they weren't a real marker). Idempotent.
+	 */
+	private resolveShellReady(state: "ready" | "timed_out"): void {
+		if (this.shellReadyState !== "pending") return;
+		this.shellReadyState = state;
+		if (this.shellReadyTimeoutId) {
+			clearTimeout(this.shellReadyTimeoutId);
+			this.shellReadyTimeoutId = null;
+		}
+		// Flush held marker bytes — they weren't part of a full marker.
+		// heldBytes is `number[]` after the byte-scanner refactor; decode to a
+		// utf-8 string for v1's emulator/event surface, which is string-based.
+		if (this.scanState.heldBytes.length > 0) {
+			const flushed = Buffer.from(this.scanState.heldBytes).toString("utf8");
+			this.enqueueEmulatorWrite(flushed);
+			this.broadcastEvent("data", {
+				type: "data",
+				data: flushed,
+			} satisfies TerminalDataEvent);
+			this.scanState.heldBytes.length = 0;
+		}
+		this.scanState.matchPos = 0;
+	}
+
+	/**
+	 * Broadcast an event to all attached clients with backpressure awareness.
+	 */
+	private broadcastEvent(
+		eventType: string,
+		payload: TerminalDataEvent | TerminalExitEvent | TerminalErrorEvent,
+	): void {
+		const event: IpcEvent = {
+			type: "event",
+			event: eventType,
+			sessionId: this.sessionId,
+			payload,
+		};
+
+		const message = `${JSON.stringify(event)}\n`;
+
+		for (const { socket } of this.attachedClients.values()) {
+			try {
+				const canWrite = socket.write(message);
+				if (!canWrite) {
+					this.handleClientBackpressure(socket);
+				}
+			} catch {
+				this.attachedClients.delete(socket);
+				this.clientSocketsWaitingForDrain.delete(socket);
+				this.updateSubprocessStdoutFlow();
+			}
+		}
+	}
+
+	private handleClientBackpressure(socket: Socket): void {
+		if (this.clientSocketsWaitingForDrain.has(socket)) return;
+		this.clientSocketsWaitingForDrain.add(socket);
+		this.updateSubprocessStdoutFlow();
+
+		const clearBackpressure = () => {
+			socket.off("drain", clearBackpressure);
+			socket.off("close", clearBackpressure);
+			socket.off("error", clearBackpressure);
+			this.clientSocketsWaitingForDrain.delete(socket);
+			this.updateSubprocessStdoutFlow();
+		};
+
+		socket.once("drain", clearBackpressure);
+		socket.once("close", clearBackpressure);
+		socket.once("error", clearBackpressure);
+	}
+
+	private maybePauseSubprocessStdoutForEmulatorBackpressure(): void {
+		if (this.emulatorWriteBackpressured) return;
+		if (
+			this.emulatorWriteQueuedBytes < EMULATOR_WRITE_QUEUE_HIGH_WATERMARK_BYTES
+		) {
+			return;
+		}
+
+		this.emulatorWriteBackpressured = true;
+		console.warn(
+			`[Session ${this.sessionId}] Emulator backlog reached ${this.emulatorWriteQueuedBytes} bytes, pausing PTY reads`,
+		);
+		this.updateSubprocessStdoutFlow();
+	}
+
+	private maybeResumeSubprocessStdoutForEmulatorBackpressure(): void {
+		if (!this.emulatorWriteBackpressured) return;
+		if (
+			this.emulatorWriteQueuedBytes > EMULATOR_WRITE_QUEUE_LOW_WATERMARK_BYTES
+		) {
+			return;
+		}
+
+		this.emulatorWriteBackpressured = false;
+		this.updateSubprocessStdoutFlow();
+	}
+
+	private updateSubprocessStdoutFlow(): void {
+		const stdout = this.subprocess?.stdout;
+		if (!stdout) return;
+
+		const shouldPause =
+			this.clientSocketsWaitingForDrain.size > 0 ||
+			this.emulatorWriteBackpressured;
+
+		if (shouldPause) {
+			if (this.subprocessStdoutPaused) return;
+			this.subprocessStdoutPaused = true;
+			stdout.pause();
+			return;
+		}
+
+		if (!this.subprocessStdoutPaused) return;
+		this.subprocessStdoutPaused = false;
+		stdout.resume();
+	}
+
+	/**
+	 * Get default shell for the platform
+	 */
+	private getDefaultShell(): string {
+		if (process.platform === "win32") {
+			return process.env.COMSPEC || "cmd.exe";
+		}
+		return process.env.SHELL || "/bin/zsh";
+	}
+}
+
+// =============================================================================
+// Factory Functions
+// =============================================================================
+
+/**
+ * Create a new session from request parameters
+ */
+export function createSession(request: CreateOrAttachRequest): Session {
+	return new Session({
+		sessionId: request.sessionId,
+		workspaceId: request.workspaceId,
+		paneId: request.paneId,
+		tabId: request.tabId,
+		cols: request.cols,
+		rows: request.rows,
+		cwd: request.cwd || process.env.HOME || "/",
+		env: request.env,
+		shell: request.shell,
+		workspaceName: request.workspaceName,
+		workspacePath: request.workspacePath,
+		rootPath: request.rootPath,
+		command: request.command,
+	});
+}

@@ -1,0 +1,108 @@
+# Developing Choros
+
+This guide is for developing Choros from source. If you just want to use it, build the desktop app locally per the section below.
+
+## Prerequisites
+
+| Tool | Install |
+|:-----|:--------|
+| [Bun](https://bun.sh/) v1.3.14+ (pinned in `.bun-version`) | `curl -fsSL https://bun.sh/install \| bash` |
+| [Docker](https://docs.docker.com/get-docker/) | Docker Desktop or OrbStack |
+| `jq` | `brew install jq` |
+| Git 2.20+ and [`gh`](https://cli.github.com/) | `brew install gh` |
+
+macOS is the primary supported platform. Windows / Linux are untested.
+
+## Run it from a Choros workspace
+
+```bash
+git clone https://github.com/tekton-ai/choros.git
+```
+
+Add the clone to the installed Choros desktop app and create a workspace for your change. Choros creates that workspace as an isolated git worktree. In the new
+workspace terminal, run:
+
+```bash
+./.choros/setup.local.sh
+bun run dev
+```
+
+Run `setup.local.sh` separately in every new worktree before `bun run dev`. The
+setup and workspace-specific app identity allow the development desktop app to
+run alongside the installed Choros app and development apps from other
+worktrees.
+
+**You do not need a Neon account, Stripe keys, or any other third-party
+credentials.** `.env.local.example` ships fake placeholders that pass env
+validation, and `setup.local.sh` runs everything against a local Docker stack.
+
+### What `setup.local.sh` does
+
+1. Copies `.env.local.example` → `.env`
+2. Allocates a per-workspace port range so multiple worktrees don't collide
+3. Brings up Postgres + neon-proxy + Redis (behind an HTTP shim, for the relay) via `docker compose` (project-scoped to this worktree)
+4. Runs `bun install` and `bun run db:migrate`
+5. Seeds a `Local Admin` dev account via `bun run db:seed-dev`
+6. Writes a gitignored `.choros/config.local.json` overlay so subsequent worktrees automatically use this setup
+
+Re-run the script any time to refresh the workspace. To tear the local DB stack down:
+
+```bash
+./.choros/teardown.local.sh
+```
+
+### Signing in (dev)
+
+`apps/api` (the Next.js server that used to broker sign-in) was retired from
+this repo, so the desktop client has no auth endpoint to talk to on
+`localhost:3001`. Development bypasses sign-in via the `SKIP_ENV_VALIDATION`
+flag — `.env.local.example` ships it set. With that on the desktop app skips
+the sign-in page entirely and hands the renderer a synthetic session backed
+by `MOCK_ORG_ID`, landing you directly on `/workspace`.
+
+If you point `NEXT_PUBLIC_API_URL` at a real Choros API server, unset
+`SKIP_ENV_VALIDATION` and the normal better-auth flow (GitHub / Google /
+dev email+password) takes over.
+
+## Manual setup (advanced)
+
+If you need to point at real Neon / third-party services instead of the local Docker stack:
+
+```bash
+cp .env.example .env             # fill in real Neon, Stripe, etc. credentials
+bun install
+bun run dev
+```
+
+## Building the desktop app
+
+```bash
+bun run build
+open apps/desktop/release
+```
+
+## Common commands
+
+```bash
+bun dev                # Start the api, web, and desktop dev servers
+bun run dev:all        # Start every dev server in the monorepo
+bun test               # Run tests
+bun run lint:fix       # Fix lint + format
+bun run typecheck      # Type-check all packages
+bun run build          # Build the desktop app
+```
+
+See [`AGENTS.md`](./AGENTS.md) for repo structure, monorepo conventions, and database/migration workflow.
+
+## Troubleshooting
+
+- **Dev desktop exits while the installed app is running**: launch development
+  from a Choros workspace instead of the repository's main checkout, run
+  `./.choros/setup.local.sh` in that worktree, then run `bun run dev` again.
+- **Port collision**: `setup.local.sh` allocates a fresh port window per worktree. If you ran the script before this change landed, re-run it to migrate.
+- **DB connection errors after pulling main**: re-run `./.choros/setup.local.sh`; it's idempotent and will apply any new migrations.
+- **Stuck Docker stack**: `./.choros/teardown.local.sh` then re-run setup.
+
+## Contributing
+
+See [`CONTRIBUTING.md`](./CONTRIBUTING.md) for the PR process and code-of-conduct expectations.

@@ -1,0 +1,5 @@
+{
+	"setup": ["./.choros/setup.sh"],
+	"teardown": ["./.choros/teardown.sh"],
+	"run": ["bun dev"]
+}

@@ -1,0 +1,107 @@
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from "@choros/ui/select";
+import { Trans, useLingui } from "@lingui/react/macro";
+import { HiOutlineComputerDesktop, HiOutlineServer } from "react-icons/hi2";
+
+export interface HostSelectOption {
+	id: string;
+	name: string;
+	isLocal: boolean;
+	isOnline: boolean;
+}
+
+interface HostSelectProps {
+	value: string;
+	options: HostSelectOption[];
+	onValueChange: (id: string) => void;
+	align?: "start" | "end";
+	className?: string;
+}
+
+export function HostSelect({
+	value,
+	options,
+	onValueChange,
+	align = "end",
+	className,
+}: HostSelectProps) {
+	const { t } = useLingui();
+	const selected = options.find((option) => option.id === value);
+
+	return (
+		<Select value={value} onValueChange={onValueChange}>
+			<SelectTrigger
+				size="sm"
+				className={`h-8 gap-1.5 px-2 text-foreground ${className ?? ""}`}
+			>
+				<SelectValue>
+					<span className="flex items-center gap-1.5">
+						<span className="truncate">
+							{selected?.isLocal ? (
+								<Trans id="settings.components.hostSelect.thisDeviceValue">
+									This device
+								</Trans>
+							) : (
+								(selected?.name ?? value)
+							)}
+						</span>
+						{selected && !selected.isLocal && (
+							<span
+								title={
+									selected.isOnline
+										? t({
+												id: "settings.components.hostSelect.onlineTitle",
+												message: "Online",
+											})
+										: t({
+												id: "settings.components.hostSelect.offlineTitle",
+												message: "Offline",
+											})
+								}
+								className={
+									selected.isOnline
+										? "size-1.5 shrink-0 rounded-full bg-emerald-500"
+										: "size-1.5 shrink-0 rounded-full bg-muted-foreground/60"
+								}
+							/>
+						)}
+					</span>
+				</SelectValue>
+			</SelectTrigger>
+			<SelectContent align={align}>
+				{options.map((option) => (
+					<SelectItem key={option.id} value={option.id}>
+						<span className="flex items-center gap-2">
+							{option.isLocal ? (
+								<HiOutlineComputerDesktop className="size-4 text-muted-foreground" />
+							) : (
+								<HiOutlineServer className="size-4 text-muted-foreground" />
+							)}
+							<span className="truncate">
+								{option.isLocal ? (
+									<Trans id="settings.components.hostSelect.thisDeviceOption">
+										This device
+									</Trans>
+								) : (
+									option.name
+								)}
+							</span>
+							{!option.isLocal && !option.isOnline && (
+								<span className="text-xs text-muted-foreground">
+									<Trans id="settings.components.hostSelect.offline">
+										offline
+									</Trans>
+								</span>
+							)}
+						</span>
+					</SelectItem>
+				))}
+			</SelectContent>
+		</Select>
+	);
+}

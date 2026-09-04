@@ -1,0 +1,294 @@
+import { errorMessage, rawErrorMessage } from "@choros/i18n/errors";
+import { Button } from "@choros/ui/button";
+import { Card } from "@choros/ui/card";
+import { Input } from "@choros/ui/input";
+import { toast } from "@choros/ui/sonner";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { type FormEvent, type ReactNode, useState } from "react";
+import {
+	LuFolderOpen,
+	LuFolderPlus,
+	LuGitBranch,
+	LuLayoutTemplate,
+} from "react-icons/lu";
+import { showStarNagOnboardingToast } from "renderer/components/star-nag-toast";
+
+import { electronTrpc } from "renderer/lib/electron-trpc";
+import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";
+import { markOnboardingComplete } from "renderer/lib/onboarding-state";
+import { useFinalizeProjectSetup } from "renderer/react-query/projects";
+import { useFolderFirstImport } from "renderer/routes/_authenticated/_dashboard/components/add-repository-modals/hooks/use-folder-first-import";
+import { EmptyProjectModal } from "renderer/routes/_authenticated/components/empty-project-modal";
+import { TemplateGalleryModal } from "renderer/routes/_authenticated/components/template-gallery-modal";
+import { useLocalHostService } from "renderer/routes/_authenticated/providers/local-host-service-provider";
+import { useOpenNewWorkspaceModal } from "renderer/stores/new-workspace-modal";
+import { GhAuthDialog } from "../components/gh-auth-dialog";
+
+export const Route = createFileRoute("/_authenticated/onboarding/project/")({
+	component: OnboardingProjectPage,
+});
+
+interface CloneError {
+	message: string;
+	needsGhAuth: boolean;
+}
+
+const GH_AUTH_FAILURE_PATTERNS = [
+	"Repository not found",
+	"Authentication failed",
+	"could not read Username",
+];
+
+function toCloneError(err: unknown): CloneError {
+	const message = errorMessage(err, "Failed to clone repository");
+	const raw = rawErrorMessage(err);
+	if (raw.includes("Permission denied (publickey)")) {
+		return {
+			message:
+				"SSH authentication failed — sign in to GitHub CLI and use the HTTPS URL instead.",
+			needsGhAuth: true,
+		};
+	}
+	if (GH_AUTH_FAILURE_PATTERNS.some((pattern) => raw.includes(pattern))) {
+		return {
+			message:
+				"Couldn't access this repository — if it's private, sign in to GitHub CLI first.",
+			needsGhAuth: true,
+		};
+	}
+	return { message, needsGhAuth: false };
+}
+
+function OnboardingProjectPage() {
+	const navigate = useNavigate();
+	const { waitForHostReady } = useLocalHostService();
+	const openNewWorkspaceModal = useOpenNewWorkspaceModal();
+	const { data: homeDir } = electronTrpc.window.getHomeDir.useQuery();
+	const cloneTargetDir = homeDir ? `${homeDir}/.choros/projects` : null;
+	const [url, setUrl] = useState("");
+	const [busy, setBusy] = useState(false);
+	const [cloneError, setCloneError] = useState<CloneError | null>(null);
+	const [ghAuthOpen, setGhAuthOpen] = useState(false);
+	const [emptyProjectOpen, setEmptyProjectOpen] = useState(false);
+	const [templateOpen, setTemplateOpen] = useState(false);
+
+	const folderImport = useFolderFirstImport({
+		onError: (message) => toast.error(message),
+	});
+	const finalizeSetup = useFinalizeProjectSetup();
+
+	// Onboarding is machine-local: it describes this installation, not the login account.
+	const finish = async (projectId: string) => {
+		markOnboardingComplete();
+		// Fires at most once, and only if the user isn't already muted/in
+		// cooldown — see useStarNagStore.isEligible().
+		showStarNagOnboardingToast();
+		await navigate({ to: "/v2-workspaces", replace: true });
+		openNewWorkspaceModal(projectId);
+	};
+
+	const handleOpenFolder = async () => {
+		setBusy(true);
+		try {
+			const result = await folderImport.start();
+			if (result) await finish(result.projectId);
+		} finally {
+			setBusy(false);
+		}
+	};
+
+	const handleClone = async (e: FormEvent) => {
+		e.preventDefault();
+		const trimmed = url.trim();
+		if (!trimmed || !cloneTargetDir) return;
+		setBusy(true);
+		setCloneError(null);
+		try {
+			const activeHostUrl = await waitForHostReady();
+			if (!activeHostUrl) {
+				setCloneError({
+					message: "Local host service isn't ready yet. Please try again.",
+					needsGhAuth: false,
+				});
+				return;
+			}
+			const hostService = getHostServiceClientByUrl(activeHostUrl);
+			let created: Awaited<
+				ReturnType<typeof hostService.project.create.mutate>
+			>;
+			try {
+				created = await hostService.project.create.mutate({
+					name: repoNameFromUrl(trimmed),
+					mode: { kind: "clone", parentDir: cloneTargetDir, url: trimmed },
+				});
+			} catch (err) {
+				setCloneError(toCloneError(err));
+				return;
+			}
+			finalizeSetup(activeHostUrl, created);
+			await finish(created.projectId);
+		} catch (err) {
+			// Non-clone failures (setup, navigation) get the raw message, no gh advice.
+			setCloneError({
+				message:
+					err instanceof Error
+						? err.message
+						: "Something went wrong. Please try again.",
+				needsGhAuth: false,
+			});
+		} finally {
+			setBusy(false);
+		}
+	};
+
+	return (
+		<div className="flex flex-col gap-3">
+			<Card className="flex-row items-center gap-4 p-5">
+				<ProjectIcon icon={<LuFolderPlus className="size-4.5" />} />
+				<div className="min-w-0 flex-1">
+					<p className="text-sm font-medium text-foreground">
+						Create a new project
+					</p>
+					<p className="text-xs text-muted-foreground">
+						Start from scratch in a new folder.
+					</p>
+				</div>
+				<Button
+					variant="outline"
+					size="sm"
+					onClick={() => setEmptyProjectOpen(true)}
+					disabled={busy}
+				>
+					Create
+				</Button>
+			</Card>
+
+			<Card className="flex-row items-center gap-4 p-5">
+				<ProjectIcon icon={<LuFolderOpen className="size-4.5" />} />
+				<div className="min-w-0 flex-1">
+					<p className="text-sm font-medium text-foreground">Open a folder</p>
+					<p className="text-xs text-muted-foreground">
+						Choose any local directory, git repo or not.
+					</p>
+				</div>
+				<Button
+					variant="outline"
+					size="sm"
+					onClick={handleOpenFolder}
+					disabled={busy}
+				>
+					Browse…
+				</Button>
+			</Card>
+
+			<Card className="gap-4 p-5">
+				<div className="flex items-center gap-4">
+					<ProjectIcon icon={<LuGitBranch className="size-4.5" />} />
+					<div className="min-w-0 flex-1">
+						<p className="text-sm font-medium text-foreground">Clone a repo</p>
+						<p className="text-xs text-muted-foreground">
+							Paste an HTTPS or SSH URL.
+						</p>
+					</div>
+				</div>
+				<form onSubmit={handleClone} className="flex items-center gap-2">
+					<Input
+						type="text"
+						placeholder="https://github.com/org/repo.git"
+						value={url}
+						onChange={(e) => {
+							setUrl(e.target.value);
+							if (cloneError) setCloneError(null);
+						}}
+						disabled={busy}
+						className="flex-1"
+					/>
+					<Button
+						type="submit"
+						disabled={!url.trim() || busy || !cloneTargetDir}
+					>
+						{busy ? "Cloning…" : "Clone"}
+					</Button>
+				</form>
+				{cloneError && (
+					<div role="alert" className="flex flex-col items-start gap-2">
+						<p className="select-text cursor-text break-words text-xs text-destructive">
+							{cloneError.message}
+						</p>
+						{cloneError.needsGhAuth && (
+							<Button
+								type="button"
+								variant="outline"
+								size="sm"
+								onClick={() => setGhAuthOpen(true)}
+							>
+								Sign in to GitHub CLI
+							</Button>
+						)}
+					</div>
+				)}
+			</Card>
+
+			<Card className="flex-row items-center gap-4 p-5">
+				<ProjectIcon icon={<LuLayoutTemplate className="size-4.5" />} />
+				<div className="min-w-0 flex-1">
+					<p className="text-sm font-medium text-foreground">
+						Start from a template
+					</p>
+					<p className="text-xs text-muted-foreground">
+						Scaffold a new project from a starter like gstack.
+					</p>
+				</div>
+				<Button
+					variant="outline"
+					size="sm"
+					onClick={() => setTemplateOpen(true)}
+					disabled={busy}
+				>
+					Browse…
+				</Button>
+			</Card>
+
+			<TemplateGalleryModal
+				open={templateOpen}
+				onOpenChange={setTemplateOpen}
+				onCreated={(result) => {
+					setTemplateOpen(false);
+					finish(result.projectId);
+				}}
+			/>
+			<EmptyProjectModal
+				open={emptyProjectOpen}
+				onOpenChange={setEmptyProjectOpen}
+				onSuccess={(result) => {
+					setEmptyProjectOpen(false);
+					finish(result.projectId);
+				}}
+			/>
+			<GhAuthDialog
+				open={ghAuthOpen}
+				mode="auth"
+				onOpenChange={setGhAuthOpen}
+				onExit={() => setGhAuthOpen(false)}
+			/>
+		</div>
+	);
+}
+
+function repoNameFromUrl(url: string): string {
+	const lastSegment = url
+		.trim()
+		.replace(/\.git$/, "")
+		.replace(/[/:]+$/, "")
+		.split(/[/:]/)
+		.pop();
+	return lastSegment || "repo";
+}
+
+function ProjectIcon({ icon }: { icon: ReactNode }) {
+	return (
+		<div className="flex size-9 shrink-0 items-center justify-center rounded-md bg-muted text-muted-foreground">
+			{icon}
+		</div>
+	);
+}

@@ -1,0 +1,10 @@
+{
+	"extends": "@choros/typescript/internal-package.json",
+	"compilerOptions": {
+		"paths": {
+			"@/*": ["./src/*"]
+		}
+	},
+	"include": ["src", "drizzle.config.ts"],
+	"exclude": ["node_modules"]
+}

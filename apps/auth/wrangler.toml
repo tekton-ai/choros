@@ -1,0 +1,28 @@
+name = "choros"
+main = "src/index.ts"
+compatibility_date = "2026-09-03"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+
+# The Worker is the narrow public backend for desktop OAuth and usage events.
+# Static pages are built from apps/site and published by GitHub Pages.
+[vars]
+AUTH_SELF_URL = "https://choros.xchunzhao.workers.dev"
+NEXT_PUBLIC_API_URL = "https://choros.xchunzhao.workers.dev"
+
+# Secrets — set with `wrangler secret put <NAME>` (do NOT commit values).
+# Required for the Worker to boot / OAuth to succeed:
+#
+#   GH_CLIENT_ID
+#   GH_CLIENT_SECRET
+#   GOOGLE_CLIENT_ID
+#   GOOGLE_CLIENT_SECRET
+#   BETTER_AUTH_SECRET       (openssl rand -base64 32)
+#   DATABASE_URL             (Neon pooled connection string)
+#
+# No other service credentials are required by the current auth server.
+
+# Observability — free tier keeps 3 days of logs. Turn this on so you can
+# inspect the OAuth kickoff/callback chain if it misbehaves in prod.
+[observability]
+enabled = true

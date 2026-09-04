@@ -1,0 +1,87 @@
+import { Button } from "@choros/ui/button";
+import { Label } from "@choros/ui/label";
+import { Trans, useLingui } from "@lingui/react/macro";
+import { electronTrpc } from "renderer/lib/electron-trpc";
+
+interface WorktreeLocationPickerProps {
+	currentPath: string | null | undefined;
+	defaultPathLabel: string;
+	dialogTitle?: string;
+	defaultBrowsePath?: string | null;
+	disabled?: boolean;
+	onSelect: (path: string) => void;
+	onReset: () => void;
+}
+
+export function useDefaultWorktreePath() {
+	const { data: homeDir } = electronTrpc.window.getHomeDir.useQuery();
+	return homeDir ? `${homeDir}/.choros/worktrees` : "~/.choros/worktrees";
+}
+
+export function WorktreeLocationPicker({
+	currentPath,
+	defaultPathLabel,
+	dialogTitle,
+	defaultBrowsePath,
+	disabled,
+	onSelect,
+	onReset,
+}: WorktreeLocationPickerProps) {
+	const { t } = useLingui();
+	const selectDirectory = electronTrpc.window.selectDirectory.useMutation();
+	const resolvedDialogTitle =
+		dialogTitle ??
+		t({
+			id: "settings.components.worktreeLocationPicker.dialogTitle",
+			message: "Select worktree location",
+		});
+
+	const handleBrowse = async () => {
+		const result = await selectDirectory.mutateAsync({
+			title: resolvedDialogTitle,
+			defaultPath: defaultBrowsePath ?? undefined,
+		});
+		if (!result.canceled && result.path) {
+			onSelect(result.path);
+		}
+	};
+
+	return (
+		<div className="flex items-center justify-between">
+			<div className="space-y-0.5">
+				<Label className="text-sm font-medium">
+					<Trans id="settings.components.worktreeLocationPicker.directory">
+						Directory
+					</Trans>
+				</Label>
+				<code className="text-xs bg-muted px-1.5 py-0.5 rounded text-foreground block mt-1">
+					{currentPath ?? defaultPathLabel}
+				</code>
+			</div>
+			<div className="flex items-center gap-2">
+				<Button
+					variant="outline"
+					size="sm"
+					onClick={handleBrowse}
+					disabled={disabled || selectDirectory.isPending}
+				>
+					<Trans id="settings.components.worktreeLocationPicker.browse">
+						Browse...
+					</Trans>
+				</Button>
+				{currentPath && (
+					<Button
+						variant="outline"
+						size="sm"
+						onClick={onReset}
+						disabled={disabled}
+					>
+						<Trans id="settings.components.worktreeLocationPicker.reset">
+							Reset
+						</Trans>
+					</Button>
+				)}
+			</div>
+		</div>
+	);
+}

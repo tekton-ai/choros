@@ -1,0 +1,91 @@
+import { toast } from "@choros/ui/sonner";
+import { useLingui } from "@lingui/react/macro";
+import { EmptyProjectModal } from "renderer/routes/_authenticated/components/empty-project-modal";
+import { TemplateGalleryModal } from "renderer/routes/_authenticated/components/template-gallery-modal";
+import {
+	useAddRepositoryModalActive,
+	useCloseAddRepositoryModal,
+	useResolveNewProjectModal,
+} from "renderer/stores/add-repository-modal";
+import { NewProjectModal } from "./components/new-project-modal";
+
+export function AddRepositoryModals() {
+	const { t } = useLingui();
+	const active = useAddRepositoryModalActive();
+	const close = useCloseAddRepositoryModal();
+	const resolveNewProject = useResolveNewProjectModal();
+
+	return (
+		<>
+			<EmptyProjectModal
+				open={active.kind === "empty-project"}
+				onOpenChange={(open) => {
+					if (!open) close();
+				}}
+				onSuccess={(result) => {
+					toast.success(
+						t({
+							id: "dashboard.addRepositoryModals.emptyProjectCreated",
+							message: "Project created.",
+						}),
+					);
+					resolveNewProject({ projectId: result.projectId });
+				}}
+				onError={(message) =>
+					toast.error(
+						t({
+							id: "dashboard.addRepositoryModals.emptyProjectCreateFailed",
+							message: `Create failed: ${message}`,
+						}),
+					)
+				}
+			/>
+			<NewProjectModal
+				open={active.kind === "new-project"}
+				onOpenChange={(open) => {
+					if (!open) close();
+				}}
+				onSuccess={(result) => {
+					toast.success(
+						t({
+							id: "dashboard.addRepositoryModals.newProjectCreated",
+							message: "Project created.",
+						}),
+					);
+					resolveNewProject({ projectId: result.projectId });
+				}}
+				onError={(message) =>
+					toast.error(
+						t({
+							id: "dashboard.addRepositoryModals.newProjectCreateFailed",
+							message: `Create failed: ${message}`,
+						}),
+					)
+				}
+			/>
+			<TemplateGalleryModal
+				open={active.kind === "template-gallery"}
+				onOpenChange={(open) => {
+					if (!open) close();
+				}}
+				onCreated={(result) => {
+					toast.success(
+						t({
+							id: "dashboard.addRepositoryModals.templateProjectCreated",
+							message: "Project created.",
+						}),
+					);
+					resolveNewProject({ projectId: result.projectId });
+				}}
+				onError={(message) =>
+					toast.error(
+						t({
+							id: "dashboard.addRepositoryModals.templateProjectCreateFailed",
+							message: `Create failed: ${message}`,
+						}),
+					)
+				}
+			/>
+		</>
+	);
+}
