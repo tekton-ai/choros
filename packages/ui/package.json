@@ -14,7 +14,7 @@
 		"./ai-elements/*": "./src/components/ai-elements/*.tsx",
 		"./chat-history-sidebar": "./src/components/chat-history-sidebar/index.ts",
 		"./page-comments": "./src/components/page-comments/index.ts",
-		"./pixel-404": "./src/components/pixel404/index.ts",
+		"./pixel-404": "./src/components/pixel-404/index.ts",
 		"./mesh-gradient": "./src/components/mesh-gradient.tsx",
 		"./icons/preset-icons": "./src/assets/icons/preset-icons/index.ts",
 		"./icons/preset-icons/*": "./src/assets/icons/preset-icons/*.svg",

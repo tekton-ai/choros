@@ -1,5 +1,5 @@
 import { I18nProvider } from "@choros/i18n/react";
-import { Alerter } from "@choros/ui/atoms/Alert";
+import { Alerter } from "@choros/ui/atoms/alert";
 import type { ReactNode } from "react";
 import { ThemedToaster } from "renderer/components/themed-toaster";
 import { UsageReporter } from "renderer/components/usage-reporter";
