@@ -2,7 +2,7 @@ export {
 	resolveTabTitle,
 	useTabTitle,
 	Workspace,
-} from "./components/Workspace";
+} from "./components/workspace";
 export type {
 	ContextMenuActionConfig,
 	PaneActionConfig,

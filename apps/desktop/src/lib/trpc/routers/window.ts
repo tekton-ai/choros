@@ -3,7 +3,7 @@ import { homedir } from "node:os";
 import { i18n } from "@choros/i18n";
 import { dialog } from "electron";
 import { menuEmitter } from "main/lib/menu-events";
-import { getOrg, setOrg } from "main/lib/window-registry/window-registry";
+import { getOrg } from "main/lib/window-registry/window-registry";
 import { getImageMimeType } from "shared/file-types";
 import { z } from "zod";
 import { publicProcedure, router } from "..";
@@ -35,12 +35,6 @@ export const createWindowRouter = () => {
 			return { success: true };
 		}),
 
-		isMaximized: publicProcedure.query(({ ctx }) => {
-			const window = ctx.senderWindow;
-			if (!window) return false;
-			return window.isMaximized();
-		}),
-
 		/** Open a new platform window on the same org as the calling window. */
 		openNew: publicProcedure.mutation(({ ctx }) => {
 			// Resolve the caller's org here (deterministic) rather than letting the
@@ -50,30 +44,10 @@ export const createWindowRouter = () => {
 			return { success: true };
 		}),
 
-		/** The organization this window currently shows (per-window). */
-		getActiveOrg: publicProcedure.query(({ ctx }) => {
-			return ctx.senderWindow ? getOrg(ctx.senderWindow.id) : null;
-		}),
-
-		/** Set the organization for the calling window (window-local switch). */
-		setActiveOrg: publicProcedure
-			.input(z.object({ organizationId: z.string() }))
-			.mutation(({ ctx, input }) => {
-				if (!ctx.senderWindow) {
-					return { success: false };
-				}
-				setOrg({
-					windowId: ctx.senderWindow.id,
-					orgId: input.organizationId,
-				});
-				return { success: true };
-			}),
-
 		getPlatform: publicProcedure.query(() => {
 			return process.platform;
 		}),
 
-		// Authoritative page-zoom factor (1 = 100%); see useZoomFactor.
 		getZoomFactor: publicProcedure.query(({ ctx }) => {
 			const window = ctx.senderWindow;
 			if (!window) return 1;

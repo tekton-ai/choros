@@ -83,7 +83,7 @@ export const createSession = protectedProcedure
 			const existing = getLocalWorkspace(ctx.db, input.id);
 			if (existing) {
 				return {
-					workspace: toCloudShape(existing, ctx.organizationId),
+					workspace: toCloudShape(existing),
 					terminals: [],
 					agents: [],
 				};
@@ -170,7 +170,7 @@ export const createSession = protectedProcedure
 				const winner = getLocalWorkspace(ctx.db, input.id);
 				if (winner) {
 					return {
-						workspace: toCloudShape(winner, ctx.organizationId),
+						workspace: toCloudShape(winner),
 						terminals: [],
 						agents: [],
 					};
@@ -208,7 +208,7 @@ export const createSession = protectedProcedure
 		}
 
 		return {
-			workspace: toCloudShape(row, ctx.organizationId),
+			workspace: toCloudShape(row),
 			terminals: terminalsResult,
 			agents: agentsResult,
 		};

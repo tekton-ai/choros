@@ -1,17 +1,12 @@
-import { existsSync } from "node:fs";
 import { homedir } from "node:os";
 import path from "node:path";
-import { workspaces, worktrees } from "@choros/local-db";
 import BetterSqlite3 from "better-sqlite3";
-import { and, desc, eq, isNull } from "drizzle-orm";
 import { getWorkspaceName as getEnvWorkspaceName } from "shared/env.shared";
 import { deriveWorkspaceNameFromWorktreeSegments } from "shared/worktree-id";
 import { getWorkspaceNameFromHostDbs } from "./host-db-workspace-name";
-import { localDb } from "./local-db";
 
 const IS_DEV = process.env.NODE_ENV === "development";
 const WORKTREE_BASE = path.resolve(homedir(), ".choros/worktrees");
-const PROD_LOCAL_DB_PATH = path.join(homedir(), ".choros", "local.db");
 
 function getWorktreeSegmentsFromCwd(cwd: string): string[] | undefined {
 	const cwdRelative = path.relative(WORKTREE_BASE, cwd);
@@ -38,66 +33,6 @@ function getWorktreePathFromSegments(segments: string[]): string | undefined {
 	return path.join(WORKTREE_BASE, ...segments.slice(0, endIndex));
 }
 
-function getWorkspaceNameForPathFromCurrentDb(
-	worktreePath: string,
-): string | undefined {
-	try {
-		const rows = localDb
-			.select({ name: workspaces.name })
-			.from(workspaces)
-			.innerJoin(worktrees, eq(workspaces.worktreeId, worktrees.id))
-			.where(
-				and(eq(worktrees.path, worktreePath), isNull(workspaces.deletingAt)),
-			)
-			.orderBy(desc(workspaces.lastOpenedAt))
-			.all();
-		const name = rows[0]?.name?.trim();
-		return name ? name : undefined;
-	} catch (error) {
-		console.warn(
-			"[dev-workspace-name] Failed to resolve workspace name from current DB:",
-			error,
-		);
-		return undefined;
-	}
-}
-
-function getWorkspaceNameForPathFromProdDb(
-	worktreePath: string,
-): string | undefined {
-	if (!existsSync(PROD_LOCAL_DB_PATH)) return undefined;
-
-	try {
-		const prodDb = new BetterSqlite3(PROD_LOCAL_DB_PATH, {
-			readonly: true,
-			fileMustExist: true,
-		});
-		try {
-			const row = prodDb
-				.prepare(
-					`SELECT w.name as name
-					 FROM workspaces w
-					 INNER JOIN worktrees wt ON w.worktree_id = wt.id
-					 WHERE wt.path = ?
-					   AND w.deleting_at IS NULL
-					 ORDER BY w.last_opened_at DESC
-					 LIMIT 1`,
-				)
-				.get(worktreePath) as { name?: string } | undefined;
-			const name = row?.name?.trim();
-			return name ? name : undefined;
-		} finally {
-			prodDb.close();
-		}
-	} catch (error) {
-		console.warn(
-			"[dev-workspace-name] Failed to resolve workspace name from prod DB:",
-			error,
-		);
-		return undefined;
-	}
-}
-
 export function resolveDevWorkspaceName(
 	cwd = process.cwd(),
 ): string | undefined {
@@ -109,16 +44,13 @@ export function resolveDevWorkspaceName(
 	const workspaceNameFromPath =
 		deriveWorkspaceNameFromWorktreeSegments(segments);
 	const worktreePath = getWorktreePathFromSegments(segments);
-	// v2 workspaces (and their AI/manual renames) live in host.db; the
-	// local.db lookups below serve worktrees created by the v1 desktop.
+	// V2 workspaces (and their AI/manual renames) live in host.db.
 	const workspaceNameFromDb = worktreePath
-		? (getWorkspaceNameFromHostDbs(
+		? getWorkspaceNameFromHostDbs(
 				worktreePath,
 				(dbPath) =>
 					new BetterSqlite3(dbPath, { readonly: true, fileMustExist: true }),
-			) ??
-			getWorkspaceNameForPathFromCurrentDb(worktreePath) ??
-			getWorkspaceNameForPathFromProdDb(worktreePath))
+			)
 		: undefined;
 
 	return workspaceNameFromDb ?? workspaceNameFromPath ?? getEnvWorkspaceName();

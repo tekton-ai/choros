@@ -19,7 +19,7 @@ import {
 import {
 	WorkerTaskAbortedError,
 	WorkerTaskError,
-} from "../../../workers/WorkerTaskRunner";
+} from "../../../workers/worker-task-runner";
 
 /**
  * Pool-infrastructure failure (timeout, queue rejection, abort) — the git

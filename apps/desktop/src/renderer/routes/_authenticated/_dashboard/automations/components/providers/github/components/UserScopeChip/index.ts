@@ -1,1 +1,0 @@
-export { UserScopeChip } from "./UserScopeChip";

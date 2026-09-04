@@ -1,5 +1,5 @@
 import { createFileRoute, Outlet, useLocation } from "@tanstack/react-router";
-import { useScrollReset } from "renderer/routes/_authenticated/settings/hooks/useScrollReset";
+import { useScrollReset } from "renderer/routes/_authenticated/settings/hooks/use-scroll-reset";
 
 export const Route = createFileRoute("/_authenticated/_dashboard/plugins")({
 	component: PluginsLayout,

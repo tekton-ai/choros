@@ -1,2 +1,2 @@
-export * from "./sessionClient";
-export * from "./subscribeToSession";
+export * from "./session-client";
+export * from "./subscribe-to-session";

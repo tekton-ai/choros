@@ -1,9 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { join } from "node:path";
 import { i18n } from "@choros/i18n";
-import { workspaces, worktrees } from "@choros/local-db";
 import * as Sentry from "@sentry/electron/main";
-import { eq } from "drizzle-orm";
 import type { BrowserWindow } from "electron";
 import { app, Notification, nativeTheme } from "electron";
 import log from "electron-log/main";
@@ -11,7 +9,6 @@ import { createWindow } from "lib/electron-app/factories/windows/create";
 import { createTrpcContext } from "lib/trpc/context";
 import { createAppRouter } from "lib/trpc/routers";
 import { resolveDevWorkspaceName } from "main/lib/dev-workspace-name";
-import { localDb } from "main/lib/local-db";
 import { isExpectedRendererExit } from "main/lib/renderer-exit";
 import { NOTIFICATION_EVENTS, PLATFORM } from "shared/constants";
 import { env } from "shared/env.shared";
@@ -36,9 +33,7 @@ import {
 import {
 	extractWorkspaceIdFromUrl,
 	getNotificationTitle,
-	getWorkspaceName,
 } from "../lib/notifications/utils";
-import { recordV1TerminalExit } from "../lib/notifications/v1-agent-sessions";
 import {
 	getAllWindows,
 	getFocusedOrLastWindow,
@@ -73,28 +68,6 @@ function fallbackWorkspaceName(): string {
 		id: "main.notification.fallbackWorkspace",
 		message: "Workspace",
 	});
-}
-
-function getWorkspaceNameFromDb(workspaceId: string | undefined): string {
-	if (!workspaceId) return fallbackWorkspaceName();
-	try {
-		const workspace = localDb
-			.select()
-			.from(workspaces)
-			.where(eq(workspaces.id, workspaceId))
-			.get();
-		const worktree = workspace?.worktreeId
-			? localDb
-					.select()
-					.from(worktrees)
-					.where(eq(worktrees.id, workspace.worktreeId))
-					.get()
-			: undefined;
-		return getWorkspaceName({ workspace, worktree });
-	} catch (error) {
-		console.error("[notifications] Failed to get workspace name:", error);
-		return fallbackWorkspaceName();
-	}
 }
 
 // invalidate() alone may not rebuild corrupted GPU layers — a tiny resize
@@ -222,7 +195,7 @@ function startSharedServices(): void {
 				tabsState: appState.data?.tabsState,
 			};
 		},
-		getWorkspaceName: getWorkspaceNameFromDb,
+		getWorkspaceName: fallbackWorkspaceName,
 		getNotificationTitle: (event) =>
 			getNotificationTitle({
 				tabId: event.tabId,
@@ -240,32 +213,6 @@ function startSharedServices(): void {
 		NOTIFICATION_EVENTS.AGENT_LIFECYCLE,
 		agentLifecycleHandler,
 	);
-
-	// Forward low-volume terminal lifecycle events to the renderer via the
-	// existing notifications subscription. Used only for correctness (e.g.
-	// clearing stuck agent lifecycle statuses when terminal panes aren't
-	// mounted).
-	getWorkspaceRuntimeRegistry()
-		.getDefault()
-		.terminal.on(
-			"terminalExit",
-			(event: {
-				paneId: string;
-				exitCode: number;
-				signal?: number;
-				reason?: "killed" | "exited" | "error";
-			}) => {
-				// A goodbye hook just before this death was the agent's SIGHUP
-				// death gasp — keep the session resumable across migration.
-				recordV1TerminalExit(event.paneId);
-				notificationsEmitter.emit(NOTIFICATION_EVENTS.TERMINAL_EXIT, {
-					paneId: event.paneId,
-					exitCode: event.exitCode,
-					signal: event.signal,
-					reason: event.reason,
-				});
-			},
-		);
 }
 
 function stopSharedServices(): void {

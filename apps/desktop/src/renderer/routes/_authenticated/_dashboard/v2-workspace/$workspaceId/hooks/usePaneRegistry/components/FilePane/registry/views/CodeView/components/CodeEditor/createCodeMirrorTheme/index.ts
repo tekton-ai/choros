@@ -1,1 +1,0 @@
-export { createCodeMirrorTheme } from "./createCodeMirrorTheme";

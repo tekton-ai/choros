@@ -1,1 +1,0 @@
-export { GitHubStarPill } from "./GitHubStarPill";

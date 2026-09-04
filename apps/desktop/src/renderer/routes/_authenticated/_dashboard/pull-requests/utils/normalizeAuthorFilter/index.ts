@@ -1,1 +1,0 @@
-export { normalizeAuthorFilter } from "./normalizeAuthorFilter";

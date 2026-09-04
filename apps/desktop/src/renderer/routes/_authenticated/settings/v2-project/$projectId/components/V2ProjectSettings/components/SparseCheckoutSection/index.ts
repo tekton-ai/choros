@@ -1,1 +1,0 @@
-export { SparseCheckoutSection } from "./SparseCheckoutSection";

@@ -1,3 +1,3 @@
 export * from "./fixtures";
-export * from "./testRuntime";
-export * from "./testUtils";
+export * from "./test-runtime";
+export * from "./test-utils";

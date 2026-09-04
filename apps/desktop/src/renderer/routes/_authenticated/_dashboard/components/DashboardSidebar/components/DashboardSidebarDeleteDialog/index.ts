@@ -1,1 +1,0 @@
-export { DashboardSidebarDeleteDialog } from "./DashboardSidebarDeleteDialog";

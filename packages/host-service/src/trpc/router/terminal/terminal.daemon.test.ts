@@ -1,8 +1,7 @@
 // Tests for the `terminal.daemon` tRPC procedures.
 //
-// We exercise the wiring (procedure → supervisor delegation, env.ORGANIZATION_ID
-// resolution) against a stubbed singleton supervisor, not a real spawn.
-// Real spawn coverage is in src/daemon/DaemonSupervisor.node-test.ts.
+// We exercise the wiring against a stubbed singleton supervisor, not a real
+// spawn. Real spawn coverage is in src/daemon/DaemonSupervisor.node-test.ts.
 
 import { beforeEach, describe, expect, mock, test } from "bun:test";
 // We need to control what `getSupervisor()` returns AND what
@@ -12,15 +11,11 @@ import { beforeEach, describe, expect, mock, test } from "bun:test";
 // care about.
 import { __resetSupervisorForTesting, getSupervisor } from "../../../daemon";
 
-// Make env.ORGANIZATION_ID resolvable. The env module reads from
-// process.env at module load via @t3-oss/env-core, so we must set
-// the var BEFORE importing.
 process.env.ORGANIZATION_ID = "00000000-0000-4000-8000-000000000000";
 process.env.HOST_SERVICE_SECRET = "test-secret";
 process.env.HOST_DB_PATH = "/tmp/test-host.db";
 process.env.HOST_MIGRATIONS_FOLDER = "/tmp/test-migrations";
 process.env.AUTH_TOKEN = "test-auth-token";
-process.env.CHOROS_API_URL = "https://cloud.example.com";
 
 const { appRouter } = await import("../router.ts");
 
@@ -62,9 +57,7 @@ describe("terminal.daemon tRPC procedures", () => {
 		const result = await caller.terminal.daemon.getUpdateStatus();
 
 		expect(getUpdateStatusMock).toHaveBeenCalledTimes(1);
-		expect(getUpdateStatusMock).toHaveBeenCalledWith(
-			"00000000-0000-4000-8000-000000000000",
-		);
+		expect(getUpdateStatusMock).toHaveBeenCalledWith();
 		expect(result).toEqual({
 			pending: true,
 			running: "0.0.9",
@@ -116,12 +109,10 @@ describe("terminal.daemon tRPC procedures", () => {
 		const result = await caller.terminal.daemon.restart();
 
 		expect(result).toEqual({ success: true });
-		expect(restartMock).toHaveBeenCalledWith(
-			"00000000-0000-4000-8000-000000000000",
-		);
+		expect(restartMock).toHaveBeenCalledWith();
 	});
 
-	test("update delegates to supervisor.update with the org id", async () => {
+	test("update delegates to the singleton supervisor", async () => {
 		const sup = getSupervisor("/nonexistent");
 		const ensureMock = mock(
 			async () => ({}) as Awaited<ReturnType<typeof sup.ensure>>,
@@ -139,9 +130,7 @@ describe("terminal.daemon tRPC procedures", () => {
 		const result = await caller.terminal.daemon.update();
 
 		expect(result).toEqual({ ok: true, successorPid: 99999 });
-		expect(updateMock).toHaveBeenCalledWith(
-			"00000000-0000-4000-8000-000000000000",
-		);
+		expect(updateMock).toHaveBeenCalledWith();
 	});
 
 	test("update surfaces failure result without throwing", async () => {

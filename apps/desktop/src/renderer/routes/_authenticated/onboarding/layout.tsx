@@ -6,12 +6,12 @@ import {
 	useNavigate,
 } from "@tanstack/react-router";
 import { useMemo } from "react";
-import { createChatServiceIpcClient } from "renderer/components/ProviderAuth/provider-auth-client";
-import { Redirect } from "renderer/components/Redirect";
-import { authClient } from "renderer/lib/auth-client";
+import { createChatServiceIpcClient } from "renderer/components/provider-auth/provider-auth-client";
+import { Redirect } from "renderer/components/redirect";
 import { electronTrpc } from "renderer/lib/electron-trpc";
-import { electronQueryClient } from "renderer/providers/ElectronTRPCProvider";
-import { OnboardingNavigation } from "./components/OnboardingNavigation";
+import { isOnboardingComplete } from "renderer/lib/onboarding-state";
+import { electronQueryClient } from "renderer/providers/electron-trpc-provider";
+import { OnboardingNavigation } from "./components/onboarding-navigation";
 
 export const Route = createFileRoute("/_authenticated/onboarding")({
 	component: OnboardingFlowLayout,
@@ -35,17 +35,13 @@ const STEPS = [
 ] as const;
 
 function OnboardingFlowLayout() {
-	const { data: session, isPending } = authClient.useSession();
 	const { data: platform } = electronTrpc.window.getPlatform.useQuery();
 	const isMac = platform === undefined || platform === "darwin";
 	const chatClient = useMemo(() => createChatServiceIpcClient(), []);
 	const location = useLocation();
 	const navigate = useNavigate();
 
-	if (isPending) return null;
-	if (session?.user?.onboardedAt) {
-		return rootRedirect;
-	}
+	if (isOnboardingComplete()) return rootRedirect;
 
 	const currentStepIdx = STEPS.findIndex((s) => s.match(location.pathname));
 	const isOnMainStep = currentStepIdx >= 0;

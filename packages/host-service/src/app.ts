@@ -6,13 +6,11 @@ import { TRPCError } from "@trpc/server";
 import type { MiddlewareHandler } from "hono";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
-import { createApiClient } from "./api";
 import { createChatV3Mount, registerChatV3Routes } from "./chat-v3";
 import { createDb, type HostDb } from "./db";
 import { EventBus, GitWatcher, registerEventBusRoute } from "./events";
 import { registerForwardMuxRoute } from "./ports/forward-mux-route";
 import { portManager } from "./ports/port-manager";
-import type { ApiAuthProvider } from "./providers/auth";
 import type { HostAuthProvider } from "./providers/host-auth";
 import { runArchivedWorkspaceReconcile } from "./runtime/archived-workspace-reconcile";
 import { registerBrowserCdpRoute } from "./runtime/browser-bridge/browser-cdp-route";
@@ -22,10 +20,6 @@ import { createGitEnvResolver, createGitFactory } from "./runtime/git";
 import { runMainWorkspaceSweep } from "./runtime/main-workspace-sweep";
 import { runProjectBackfill } from "./runtime/project-backfill";
 import { PullRequestRuntimeManager } from "./runtime/pull-requests";
-import {
-	readSandboxIdentity,
-	runSandboxSelfSeed,
-} from "./runtime/sandbox-self-seed";
 import { registerWorkspaceTerminalRoute } from "./terminal/terminal";
 import {
 	SqliteTerminalAgentBindingPersistence,
@@ -37,22 +31,19 @@ import {
 	execGh as defaultExecGh,
 	type ExecGh,
 } from "./trpc/router/workspace-creation/utils/exec-gh";
-import type { ApiClient, BrowserBridgeConfig } from "./types";
+import type { BrowserBridgeConfig } from "./types";
 import { getHostWorkerPool } from "./workers/host-worker-pool";
 import { gitWorkspaceRefsTask } from "./workers/tasks/git";
 
 export interface CreateAppOptions {
 	config: {
-		organizationId: string;
 		dbPath: string;
-		cloudApiUrl: string;
 		migrationsFolder: string;
 		allowedOrigins: string[];
 		/** Loopback surface for driving desktop browser panes; desktop-only. */
 		browserBridge?: BrowserBridgeConfig;
 	};
 	providers: {
-		auth: ApiAuthProvider;
 		hostAuth: HostAuthProvider;
 		credentials: GitCredentialProvider;
 	};
@@ -60,11 +51,10 @@ export interface CreateAppOptions {
 	 * Test-harness override hooks. Production never sets these — `createApp`
 	 * builds each subsystem itself when omitted. `db` is overridden so tests
 	 * can swap in `bun:sqlite` (better-sqlite3 isn't loadable under Bun;
-	 * prod uses it on bundled Node). `api`, `github`, and `chatService` are
-	 * overridden to keep tests off the network and out of provider-auth storage.
+	 * prod uses it on bundled Node). `github` and `chatService` are overridden
+	 * to keep tests off the network and out of provider-auth storage.
 	 */
 	db?: HostDb;
-	api?: ApiClient;
 	github?: () => Promise<Octokit>;
 	execGh?: ExecGh;
 	chatService?: ChatService;
@@ -73,7 +63,6 @@ export interface CreateAppOptions {
 export interface CreateAppResult {
 	app: Hono;
 	injectWebSocket: ReturnType<typeof createNodeWebSocket>["injectWebSocket"];
-	api: ApiClient;
 	db: HostDb;
 	eventBus: EventBus;
 	dispose: () => Promise<void>;
@@ -82,15 +71,7 @@ export interface CreateAppResult {
 export function createApp(options: CreateAppOptions): CreateAppResult {
 	const { config, providers } = options;
 
-	const api =
-		options.api ??
-		createApiClient(config.cloudApiUrl, providers.auth, config.organizationId);
 	const db = options.db ?? createDb(config.dbPath, config.migrationsFolder);
-	// A sandbox is provisioned for exactly one workspace, and the env says
-	// which. Seeding it here rather than from the API keeps the schema in one
-	// place and leaves provisioning with nothing to orchestrate.
-	const sandboxIdentity = readSandboxIdentity();
-	if (sandboxIdentity) runSandboxSelfSeed(db, sandboxIdentity);
 	const git = createGitFactory(providers.credentials);
 	const github =
 		options.github ??
@@ -235,12 +216,10 @@ export function createApp(options: CreateAppOptions): CreateAppResult {
 			credentials: providers.credentials,
 			github,
 			execGh,
-			api,
 			db,
 			runtime,
 			eventBus,
 			terminalAgentStore,
-			organizationId: config.organizationId,
 			isAuthenticated: true,
 		}).catch((err) => {
 			console.warn("[host-service] archived-workspace reconcile failed:", err);
@@ -306,12 +285,10 @@ export function createApp(options: CreateAppOptions): CreateAppResult {
 					credentials: providers.credentials,
 					github,
 					execGh,
-					api,
 					db,
 					runtime,
 					eventBus,
 					terminalAgentStore,
-					organizationId: config.organizationId,
 					isAuthenticated,
 					clientMachineId:
 						c.req.header("x-choros-client-machine-id") ?? undefined,
@@ -355,5 +332,5 @@ export function createApp(options: CreateAppOptions): CreateAppResult {
 		}
 	};
 
-	return { app, injectWebSocket, api, db, eventBus, dispose };
+	return { app, injectWebSocket, db, eventBus, dispose };
 }

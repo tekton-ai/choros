@@ -1,1 +1,0 @@
-export { PullRequestsView } from "./PullRequestsView";

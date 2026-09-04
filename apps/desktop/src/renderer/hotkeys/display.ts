@@ -4,7 +4,7 @@
  */
 
 import type { HotkeyDisplay, Platform } from "./types";
-import { normalizeToken } from "./utils/resolveHotkeyFromEvent";
+import { normalizeToken } from "./utils/resolve-hotkey-from-event";
 
 const MODIFIER_DISPLAY: Record<Platform, Record<string, string>> = {
 	mac: { meta: "⌘", ctrl: "⌃", alt: "⌥", shift: "⇧" },

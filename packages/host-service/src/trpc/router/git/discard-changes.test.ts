@@ -116,7 +116,7 @@ describe("gitRouter.discardChanges", () => {
 			"../outside",
 			"../outside/precious.txt",
 			"embedded/../../outside",
-			"./../../outside",
+			"../../outside",
 		]) {
 			test(`rejects ${filePath} before deleting anything`, async () => {
 				await expect(

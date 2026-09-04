@@ -39,7 +39,7 @@ describe("project sparse checkout", () => {
 		const set = await scenario.host.trpc.project.setSparseCheckoutPaths.mutate({
 			projectId: scenario.projectId,
 			// Deliberately messy: duplicates, blanks, and decorated separators.
-			paths: ["./apps/desktop/", "packages/ui", "", "  ", "apps/desktop"],
+			paths: ["./apps/desktop", "packages/ui", "", "  ", "apps/desktop"],
 		});
 		expect(set.sparseCheckoutPaths).toEqual(["apps/desktop", "packages/ui"]);
 

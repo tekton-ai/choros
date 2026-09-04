@@ -502,7 +502,7 @@ async function main(): Promise<void> {
 	console.log(`[build-dist] creating ${tarball}`);
 	// Tar from inside the staging dir so contents extract directly to the
 	// install target (no top-level choros-<target>/ wrapper).
-	await exec("tar", ["-czf", tarball, "-C", stagingRoot, "."]);
+	await exec("tar", ["-czf", tarball, "-C", stagingRoot, "./"]);
 
 	console.log(`[build-dist] done: ${tarball}`);
 }

@@ -5,7 +5,7 @@ import { strict as assert } from "node:assert";
 import { execFileSync } from "node:child_process";
 import * as fs from "node:fs";
 import { test } from "node:test";
-import { adoptFromFd, spawn } from "../src/Pty/index.ts";
+import { adoptFromFd, spawn } from "../src/pty/index.ts";
 
 const META = {
 	shell: "/bin/sh",

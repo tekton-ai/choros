@@ -1,1 +1,0 @@
-export { AnimatedStarButton } from "./AnimatedStarButton";

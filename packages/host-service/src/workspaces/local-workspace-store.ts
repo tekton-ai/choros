@@ -1,7 +1,4 @@
 import { randomUUID } from "node:crypto";
-import hostServicePackageJson from "@choros/host-service/package.json" with {
-	type: "json",
-};
 import { getHostId } from "@choros/shared/host-info";
 import { normalizeWorkspaceTags } from "@choros/shared/workspace-tags";
 import { eq, inArray } from "drizzle-orm";
@@ -9,55 +6,14 @@ import type { HostDb } from "../db";
 import { workspaces, workspaceTags } from "../db/schema";
 import type { EventBus } from "../events";
 import type { WorkspaceSnapshot } from "../events/types";
-import type { ApiClient } from "../types";
 
 export type HostWorkspaceRow = typeof workspaces.$inferSelect;
 
-/**
- * `api`/`organizationId`/`clientMachineId` mirror `HostServiceContext` field
- * names so a full request context satisfies this interface as-is. When `api`
- * is absent the store still works but skips telemetry.
- */
+/** Minimal dependencies shared by local workspace mutation helpers. */
 export interface WorkspaceStoreContext {
 	db: HostDb;
 	eventBus: EventBus;
-	api?: ApiClient;
-	organizationId?: string;
 	clientMachineId?: string;
-}
-
-/**
- * Workspaces have no cloud mirror since local-first (#5731), so the host
- * relays workspace lifecycle events through `analytics.captureEvent`.
- */
-function trackWorkspaceEvent(
-	ctx: WorkspaceStoreContext,
-	event: "workspace_created" | "workspace_deleted",
-	row: HostWorkspaceRow,
-): void {
-	if (!ctx.api) return;
-	const clientMachineId = ctx.clientMachineId ?? getHostId();
-	try {
-		void ctx.api.analytics.captureEvent
-			.mutate({
-				source: "host_service",
-				event,
-				properties: {
-					workspace_id: row.id,
-					project_id: row.projectId,
-					organization_id: ctx.organizationId ?? null,
-					host_id: getHostId(),
-					branch: row.branch,
-					type: row.type,
-					host_kind: clientMachineId === getHostId() ? "local" : "remote",
-					client_machine_id: clientMachineId,
-					host_service_version: hostServicePackageJson.version,
-				},
-			})
-			.catch(() => {});
-	} catch {
-		// Telemetry must never fail the workspace operation.
-	}
 }
 
 /**
@@ -67,7 +23,6 @@ function trackWorkspaceEvent(
  */
 export interface CloudShapedWorkspace {
 	id: string;
-	organizationId: string;
 	/** Null for project-less "session" workspaces. */
 	projectId: string | null;
 	hostId: string;
@@ -134,13 +89,9 @@ export function getWorkspaceTagsByWorkspaceId(
 	return byWorkspace;
 }
 
-export function toCloudShape(
-	row: HostWorkspaceRow,
-	organizationId: string,
-): CloudShapedWorkspace {
+export function toCloudShape(row: HostWorkspaceRow): CloudShapedWorkspace {
 	return {
 		id: row.id,
-		organizationId,
 		projectId: row.projectId,
 		hostId: getHostId(),
 		// Rows that predate local ownership have an empty name until the
@@ -210,7 +161,6 @@ export function insertLocalWorkspace(
 	const row = getLocalWorkspace(ctx.db, id);
 	if (!row) throw new Error(`Workspace insert readback failed: ${id}`);
 	emitWorkspaceChanged(ctx, "created", row);
-	trackWorkspaceEvent(ctx, "workspace_created", row);
 	return row;
 }
 
@@ -282,7 +232,6 @@ export function deleteLocalWorkspace(
 			workspace: null,
 			occurredAt: Date.now(),
 		});
-		trackWorkspaceEvent(ctx, "workspace_deleted", existing);
 	}
 }
 
@@ -317,18 +266,7 @@ export function archiveLocalWorkspace(
 		workspace: null,
 		occurredAt: Date.now(),
 	});
-	// Telemetry deliberately NOT emitted here: the destroy can still fail
-	// and un-archive. The pipeline calls trackWorkspaceDeleted once the
-	// physical cleanup actually commits.
-}
-
-/** Emit the deletion telemetry event — called by the destroy pipeline
- * after physical cleanup succeeds, so failed/retried destroys count once. */
-export function trackWorkspaceDeleted(
-	ctx: WorkspaceStoreContext,
-	row: HostWorkspaceRow,
-): void {
-	trackWorkspaceEvent(ctx, "workspace_deleted", row);
+	// Physical cleanup completes in the workspace-cleanup pipeline.
 }
 
 /**

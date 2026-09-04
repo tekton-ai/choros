@@ -29,7 +29,7 @@ export async function readSettingValue(
 	def: SettingDefinition,
 ): Promise<SettingReading> {
 	if (def.store === "hostService") {
-		return hostReading(await readHostGitSettings(), def.key as HostGitKey);
+		return hostReading(await readHostGitSettings(), def.key);
 	}
 	const row = readSettingsRow();
 	const stored = (row?.[def.key] ?? null) as SettingValue | null;
@@ -57,7 +57,7 @@ export async function readAllSettings(
 			readings.set(
 				def.key,
 				host
-					? hostReading(host, def.key as HostGitKey)
+					? hostReading(host, def.key)
 					: { value: null, isSet: false, note: hostError },
 			);
 		} else {
@@ -77,12 +77,7 @@ export async function writeSettingValue(
 	value: SettingValue | null,
 ): Promise<boolean> {
 	if (def.store === "hostService") {
-		await writeHostGitSetting(def.key as HostGitKey, value as string | null);
-		// Keep the legacy local.db columns in sync for v1 surfaces; the host
-		// service row above is what the current UI reads.
-		try {
-			writeSetting(def.key, value);
-		} catch {}
+		await writeHostGitSetting(def.key, value as string | null);
 	} else {
 		writeSetting(def.key, value);
 	}

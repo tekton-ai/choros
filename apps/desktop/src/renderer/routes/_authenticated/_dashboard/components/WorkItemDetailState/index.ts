@@ -1,1 +1,0 @@
-export { WorkItemDetailState } from "./WorkItemDetailState";

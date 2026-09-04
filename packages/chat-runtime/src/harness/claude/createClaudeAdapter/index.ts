@@ -1,1 +1,0 @@
-export { createClaudeAdapter } from "./createClaudeAdapter";

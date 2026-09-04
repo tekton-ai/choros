@@ -51,7 +51,7 @@ import {
 	DaemonClient,
 	type Signal as DaemonSignal,
 	DaemonUnavailableError,
-} from "./DaemonClient/index.ts";
+} from "./daemon-client/index.ts";
 import {
 	getDaemonClient,
 	onDaemonDisconnect,
@@ -643,9 +643,7 @@ const sessions = new Map<string, TerminalSession>();
  * the client singleton so a rebuilt connection isn't required.
  */
 async function listDaemonAliveSessionIds(): Promise<Set<string> | null> {
-	const organizationId = process.env.ORGANIZATION_ID;
-	if (!organizationId) return null;
-	const list = await getSupervisor().listSessions(organizationId);
+	const list = await getSupervisor().listSessions();
 	if (list === null) return null;
 	return new Set(list.filter((info) => info.alive).map((info) => info.id));
 }
@@ -2325,10 +2323,7 @@ function reachableDaemonSocketPath(): string | null {
 	const explicitSocket = process.env.CHOROS_PTY_DAEMON_SOCKET;
 	if (explicitSocket) return explicitSocket;
 
-	const organizationId = process.env.ORGANIZATION_ID;
-	if (!organizationId) return null;
-
-	const manifest = readPtyDaemonManifest(organizationId);
+	const manifest = readPtyDaemonManifest();
 	if (!manifest || !isProcessAlive(manifest.pid)) return null;
 	return manifest.socketPath;
 }
@@ -2704,7 +2699,6 @@ export async function createTerminalSessionInternal({
 			baseEnv,
 			shell,
 			chorosHomeDir,
-			organizationId: process.env.ORGANIZATION_ID || "",
 			themeType,
 			cwd,
 			terminalId,

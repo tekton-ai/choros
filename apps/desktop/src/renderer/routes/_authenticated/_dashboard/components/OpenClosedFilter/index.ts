@@ -1,1 +1,0 @@
-export { OpenClosedFilter } from "./OpenClosedFilter";

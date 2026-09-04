@@ -24,9 +24,12 @@ import {
 export type SettingValue = string | number | boolean;
 
 export type SettingsColumn = Exclude<keyof InsertSettings, "id"> & string;
+export type HostSettingsColumn =
+	| "branchPrefixMode"
+	| "branchPrefixCustom"
+	| "worktreeBaseDir";
 
-export interface SettingDefinition {
-	key: SettingsColumn;
+interface SettingDefinitionBase {
 	type: "boolean" | "string" | "number" | "enum";
 	section: string;
 	description: string;
@@ -39,15 +42,15 @@ export interface SettingDefinition {
 	step?: number;
 	integer?: boolean;
 	maxLength?: number;
-	/** What the desktop app uses when the setting is unset (null in local.db). */
+	/** What the owning store uses when the setting is unset. */
 	defaultValue: SettingValue | null;
-	/**
-	 * Where the setting lives. Git settings are host-wide: the v2 UI reads
-	 * them from the host service's host_settings table, so the CLI writes
-	 * there (and mirrors to the legacy local.db columns).
-	 */
-	store?: "localDb" | "hostService";
 }
+
+export type SettingDefinition = SettingDefinitionBase &
+	(
+		| { key: SettingsColumn; store?: "localDb" }
+		| { key: HostSettingsColumn; store: "hostService" }
+	);
 
 const EDITOR_APPS = EXTERNAL_APPS.filter(
 	(app) => !NON_EDITOR_APPS.includes(app),
@@ -86,13 +89,6 @@ export const SETTINGS: SettingDefinition[] = [
 		section: "behavior",
 		description: "Show the CPU/memory resource monitor",
 		defaultValue: true,
-	},
-	{
-		key: "openLinksInApp",
-		type: "boolean",
-		section: "behavior",
-		description: "Open http(s) links in an in-app browser pane",
-		defaultValue: false,
 	},
 	{
 		key: "browserHomepageUrl",
@@ -195,27 +191,6 @@ export const SETTINGS: SettingDefinition[] = [
 		section: "terminal",
 		description: "Copy selected terminal text to the clipboard right away",
 		defaultValue: false,
-	},
-	{
-		key: "showPresetsBar",
-		type: "boolean",
-		section: "terminal",
-		description: "Show the terminal scripts bar",
-		defaultValue: true,
-	},
-	{
-		key: "useCompactTerminalAddButton",
-		type: "boolean",
-		section: "terminal",
-		description: "Use the compact new-terminal button",
-		defaultValue: true,
-	},
-	{
-		key: "autoApplyDefaultPreset",
-		type: "boolean",
-		section: "terminal",
-		description: "Apply the default terminal script to new workspaces",
-		defaultValue: true,
 	},
 	{
 		key: "waitForSetupBeforeAgent",
@@ -351,8 +326,6 @@ export const SETTINGS: SettingDefinition[] = [
  * here — a new desktop column fails the test until someone decides.
  */
 export const EXCLUDED_SETTINGS_COLUMNS: Record<string, string> = {
-	lastActiveWorkspaceId: "internal navigation state, not a preference",
-	activeOrganizationId: "internal session state, managed by sign-in",
 	terminalPresets: "structured JSON; use the app UI or choros agents",
 	terminalPresetsInitialized: "internal seeding flag",
 	agentPresetOverrides: "structured JSON; use choros agents",
@@ -361,10 +334,6 @@ export const EXCLUDED_SETTINGS_COLUMNS: Record<string, string> = {
 	disabledAgentHooks: "agent-id list; use the app UI",
 	disabledSkills: "skill-name list; use the app's Plugins page",
 	installedPlugins: "structured install records; use the app's Plugins page",
-	terminalPersistence: "dead column; nothing reads it, retained for rollback",
-	deleteLocalBranch: "v2 reads renderer localStorage, unreachable externally",
-	exposeHostServiceViaRelay:
-		"security-sensitive; app gates it behind plan check + confirm dialog",
 };
 
 export function getSettingDefinition(key: string): SettingDefinition {

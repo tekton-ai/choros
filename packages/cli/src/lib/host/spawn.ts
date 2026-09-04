@@ -7,25 +7,19 @@ import {
 	MAX_HOST_LOG_BYTES,
 	openRotatingLogFd,
 } from "@choros/shared/rotating-log";
-import type { ApiClient } from "../api-client";
 import { CHOROS_HOME_DIR } from "../config";
-import { env, isDesktopBundled } from "../env";
+import { isDesktopBundled } from "../env";
 import {
 	ensureManifestDir,
 	type HostServiceManifest,
 	hostDbPath,
 	writeManifest,
 } from "./manifest";
-import { getRelayUrl } from "./relay-url";
 
 const HEALTH_POLL_INTERVAL_MS = 200;
 const HEALTH_POLL_TIMEOUT_MS = 10_000;
 
 export interface SpawnHostOptions {
-	organizationId: string;
-	sessionToken: string;
-	authConfigPath?: string;
-	api: ApiClient;
 	port?: number;
 	daemon: boolean;
 }
@@ -40,13 +34,12 @@ async function findFreePort(): Promise<number> {
 	return new Promise((resolve, reject) => {
 		const server = createServer();
 		server.listen(0, "127.0.0.1", () => {
-			const addr = server.address();
-			if (addr && typeof addr === "object") {
-				const { port } = addr;
-				server.close(() => resolve(port));
-			} else {
+			const address = server.address();
+			if (!address || typeof address === "string") {
 				server.close(() => reject(new Error("Could not get port")));
+				return;
 			}
+			server.close(() => resolve(address.port));
 		});
 		server.on("error", reject);
 	});
@@ -56,43 +49,29 @@ async function pollHealth(port: number, secret: string): Promise<boolean> {
 	const deadline = Date.now() + HEALTH_POLL_TIMEOUT_MS;
 	while (Date.now() < deadline) {
 		try {
-			const controller = new AbortController();
-			const timeout = setTimeout(() => controller.abort(), 2_000);
-			const res = await fetch(`http://127.0.0.1:${port}/trpc/health.check`, {
-				signal: controller.signal,
-				headers: { Authorization: `Bearer ${secret}` },
-			});
-			clearTimeout(timeout);
-			if (res.ok) return true;
-		} catch {
-			// not ready
-		}
-		await new Promise((r) => setTimeout(r, HEALTH_POLL_INTERVAL_MS));
+			const response = await fetch(
+				`http://127.0.0.1:${port}/trpc/health.check`,
+				{ headers: { Authorization: `Bearer ${secret}` } },
+			);
+			if (response.ok) return true;
+		} catch {}
+		await new Promise((resolve) =>
+			setTimeout(resolve, HEALTH_POLL_INTERVAL_MS),
+		);
 	}
 	return false;
 }
 
-/**
- * Resolve the sibling `choros-host` wrapper binary.
- *
- * When running as a compiled binary, it's a sibling file in the same bin/
- * directory as the current executable. In dev (`bun run dev`), allow
- * override via CHOROS_HOST_BIN env var.
- */
 function resolveHostBinary(): string {
 	if (process.env.CHOROS_HOST_BIN) return process.env.CHOROS_HOST_BIN;
-	const cliBin = process.execPath;
-	return join(dirname(cliBin), "choros-host");
+	return join(dirname(process.execPath), "choros-host");
 }
 
 function resolveMigrationsFolder(): string {
 	if (process.env.HOST_MIGRATIONS_FOLDER) {
 		return process.env.HOST_MIGRATIONS_FOLDER;
 	}
-	// Compiled layout: <bundle>/bin/choros → <bundle>/share/migrations
-	const cliBin = process.execPath;
-	const bundleRoot = dirname(dirname(cliBin));
-	return join(bundleRoot, "share", "migrations");
+	return join(dirname(dirname(process.execPath)), "share", "migrations");
 }
 
 export async function spawnHostService(
@@ -102,25 +81,18 @@ export async function spawnHostService(
 	if (!existsSync(hostBin)) {
 		if (isDesktopBundled()) {
 			throw new Error(
-				"`choros start` is not available in the CLI bundled with the Choros desktop app; the app runs the host service itself. For headless use, install the standalone CLI: curl -fsSL https://choros.sh/cli/install.sh | sh",
+				"`choros start` is unavailable in the desktop-bundled CLI because the app owns the host service.",
 			);
 		}
 		throw new Error(
 			`choros-host binary not found at ${hostBin}. Set CHOROS_HOST_BIN to override.`,
 		);
 	}
-
 	const port = options.port ?? (await findFreePort());
 	const secret = randomBytes(32).toString("hex");
-	const migrationsFolder = resolveMigrationsFolder();
-	const relayUrl = await getRelayUrl(options.api);
-
-	// Daemon output goes to the same per-org host-service.log the desktop
-	// writes — with stdio ignored, a failed cloud registration was logged
-	// nowhere on CLI-only installs (issue #6415).
 	const logFd = options.daemon
 		? openRotatingLogFd(
-				join(ensureManifestDir(options.organizationId), "host-service.log"),
+				join(ensureManifestDir(), "host-service.log"),
 				MAX_HOST_LOG_BYTES,
 			)
 		: -1;
@@ -133,56 +105,29 @@ export async function spawnHostService(
 		detached: options.daemon,
 		env: {
 			...process.env,
-			ORGANIZATION_ID: options.organizationId,
-			AUTH_TOKEN: options.sessionToken,
-			...(options.authConfigPath
-				? { CHOROS_AUTH_CONFIG_PATH: options.authConfigPath }
-				: {}),
-			CHOROS_API_URL: env.CHOROS_API_URL,
-			RELAY_URL: relayUrl,
 			PORT: String(port),
 			HOST_SERVICE_PORT: String(port),
 			HOST_SERVICE_SECRET: secret,
-			HOST_DB_PATH: hostDbPath(options.organizationId),
-			HOST_MIGRATIONS_FOLDER: migrationsFolder,
-			// The desktop injects this into hosts it spawns
-			// (host-service-coordinator.ts); without it the host's PTYs get no
-			// CHOROS_HOME_DIR and every managed agent hook self-disables on
-			// its own guard (#6254).
+			HOST_DB_PATH: hostDbPath(),
+			HOST_MIGRATIONS_FOLDER: resolveMigrationsFolder(),
 			CHOROS_HOME_DIR,
 		},
 	});
-
-	if (logFd !== -1) {
-		try {
-			closeSync(logFd);
-		} catch {}
-	}
-
-	if (!child.pid) {
-		throw new Error("Failed to spawn host-service");
-	}
-
-	const healthy = await pollHealth(port, secret);
-	if (!healthy) {
+	if (logFd !== -1) closeSync(logFd);
+	if (!child.pid) throw new Error("Failed to spawn host-service");
+	if (!(await pollHealth(port, secret))) {
 		child.kill("SIGTERM");
 		throw new Error(
 			`Host service failed to start within ${HEALTH_POLL_TIMEOUT_MS}ms`,
 		);
 	}
-
 	const manifest: HostServiceManifest = {
 		pid: child.pid,
 		endpoint: `http://127.0.0.1:${port}`,
 		authToken: secret,
 		startedAt: Date.now(),
-		organizationId: options.organizationId,
 	};
 	writeManifest(manifest);
-
-	if (options.daemon) {
-		child.unref();
-	}
-
+	if (options.daemon) child.unref();
 	return { pid: child.pid, port, secret };
 }

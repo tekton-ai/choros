@@ -1,0 +1,297 @@
+import { Extension } from "@tiptap/core";
+import { Blockquote } from "@tiptap/extension-blockquote";
+import { Bold } from "@tiptap/extension-bold";
+import { BulletList } from "@tiptap/extension-bullet-list";
+import { Code } from "@tiptap/extension-code";
+import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
+import { Document } from "@tiptap/extension-document";
+import { HardBreak } from "@tiptap/extension-hard-break";
+import { Heading } from "@tiptap/extension-heading";
+import { History } from "@tiptap/extension-history";
+import { HorizontalRule } from "@tiptap/extension-horizontal-rule";
+import Image from "@tiptap/extension-image";
+import { Italic } from "@tiptap/extension-italic";
+import Link from "@tiptap/extension-link";
+import { ListItem } from "@tiptap/extension-list-item";
+import { OrderedList } from "@tiptap/extension-ordered-list";
+import { Paragraph } from "@tiptap/extension-paragraph";
+import { Strike } from "@tiptap/extension-strike";
+import { Table } from "@tiptap/extension-table";
+import { TableCell } from "@tiptap/extension-table-cell";
+import { TableHeader } from "@tiptap/extension-table-header";
+import { TableRow } from "@tiptap/extension-table-row";
+import TaskItem from "@tiptap/extension-task-item";
+import TaskList from "@tiptap/extension-task-list";
+import { Text } from "@tiptap/extension-text";
+import { Underline } from "@tiptap/extension-underline";
+import type { Fragment, Slice } from "@tiptap/pm/model";
+import { Plugin, PluginKey } from "@tiptap/pm/state";
+import type { EditorView } from "@tiptap/pm/view";
+import { ReactNodeViewRenderer } from "@tiptap/react";
+import { common, createLowlight } from "lowlight";
+import type { MutableRefObject } from "react";
+import { Markdown } from "tiptap-markdown";
+import { EditableCodeBlockView } from "./components/editable-code-block-view";
+import { ReadOnlyCodeBlockView } from "./components/read-only-code-block-view";
+import { ReadOnlySafeImageView } from "./components/read-only-safe-image-view";
+import {
+	serializeMarkdownTable,
+	serializeSelectionForClipboard,
+	sliceToPlainText,
+} from "./serialize-markdown-table";
+
+const lowlight = createLowlight(common);
+const ENABLE_RAW_MARKDOWN_HTML = false;
+
+// tiptap-markdown's MarkdownTightLists only tracks tightness for
+// bulletList/orderedList, so task lists always serialize loose (blank lines
+// between items). taskList reuses bulletList's renderList serializer, which
+// honors a `tight` node attribute — mirror the same attribute here.
+const TaskListTightness = Extension.create({
+	name: "taskListTightness",
+	addGlobalAttributes() {
+		return [
+			{
+				types: ["taskList"],
+				attributes: {
+					tight: {
+						default: true,
+						parseHTML: (element) =>
+							element.getAttribute("data-tight") === "true" ||
+							!element.querySelector("p"),
+						renderHTML: (attributes) => ({
+							"data-tight": attributes.tight ? "true" : null,
+						}),
+					},
+				},
+			},
+		];
+	},
+});
+
+const SafeImage = Image.extend({
+	// @tiptap/core's default attribute parser coerces numeric/boolean-looking
+	// strings (fromString), so ![123](x.png) loads alt: 123 and the markdown
+	// serializer throws on .replace. Read these verbatim instead.
+	addAttributes() {
+		return {
+			...this.parent?.(),
+			src: {
+				default: null,
+				parseHTML: (element) => element.getAttribute("src"),
+			},
+			alt: {
+				default: null,
+				parseHTML: (element) => element.getAttribute("alt"),
+			},
+			title: {
+				default: null,
+				parseHTML: (element) => element.getAttribute("title"),
+			},
+		};
+	},
+	addNodeView() {
+		return ReactNodeViewRenderer(ReadOnlySafeImageView);
+	},
+});
+
+const ReadOnlyCodeBlock = CodeBlockLowlight.extend({
+	addNodeView() {
+		return ReactNodeViewRenderer(ReadOnlyCodeBlockView);
+	},
+});
+
+const EditableCodeBlock = CodeBlockLowlight.extend({
+	addNodeView() {
+		return ReactNodeViewRenderer(EditableCodeBlockView);
+	},
+});
+
+const EditorHotkeys = Extension.create<{
+	onSaveRef: MutableRefObject<(() => void) | undefined>;
+}>({
+	name: "editorHotkeys",
+
+	addKeyboardShortcuts() {
+		return {
+			"Mod-s": () => {
+				if (!this.editor.isEditable) {
+					return false;
+				}
+
+				this.options.onSaveRef.current?.();
+				return true;
+			},
+			Tab: ({ editor }) => {
+				if (!editor.isEditable) {
+					return false;
+				}
+
+				if (editor.commands.sinkListItem("listItem")) {
+					return true;
+				}
+
+				if (editor.commands.sinkListItem("taskItem")) {
+					return true;
+				}
+
+				return false;
+			},
+			"Shift-Tab": ({ editor }) => {
+				if (!editor.isEditable) {
+					return false;
+				}
+
+				if (editor.commands.liftListItem("listItem")) {
+					return true;
+				}
+
+				if (editor.commands.liftListItem("taskItem")) {
+					return true;
+				}
+
+				return false;
+			},
+		};
+	},
+});
+
+/**
+ * Chooses the clipboard text/plain for a copied selection: a whole-table
+ * CellSelection becomes a GFM table, cell-text/partial selections become plain
+ * text, and everything else stays markdown. Higher priority than tiptap-markdown's
+ * Markdown extension (priority 50) so this serializer is consulted first.
+ */
+const TableClipboardMarkdown = Extension.create({
+	name: "tableClipboardMarkdown",
+	priority: 1000,
+	addProseMirrorPlugins() {
+		const editor = this.editor;
+		return [
+			new Plugin({
+				key: new PluginKey("tableClipboardMarkdown"),
+				props: {
+					clipboardTextSerializer: (slice: Slice, view: EditorView) => {
+						const markdownStorage = (
+							editor.storage as {
+								markdown?: {
+									serializer?: { serialize: (content: Fragment) => string };
+								};
+							}
+						).markdown;
+						const serializer = markdownStorage?.serializer;
+						if (!serializer) {
+							return sliceToPlainText(slice);
+						}
+						return serializeSelectionForClipboard(
+							view.state.selection,
+							slice,
+							(content) => serializer.serialize(content),
+						);
+					},
+				},
+			}),
+		];
+	},
+});
+
+interface CreateMarkdownExtensionsOptions {
+	editable: boolean;
+	onSaveRef: MutableRefObject<(() => void) | undefined>;
+}
+
+export function createMarkdownExtensions({
+	editable,
+	onSaveRef,
+}: CreateMarkdownExtensionsOptions) {
+	return [
+		Document,
+		Text,
+		Paragraph,
+		Heading.configure({ levels: [1, 2, 3, 4, 5, 6] }),
+		Bold,
+		Italic,
+		Strike,
+		Underline,
+		Code.configure({
+			HTMLAttributes: {
+				class: "rounded bg-muted px-1.5 py-0.5 font-mono text-sm",
+			},
+		}),
+		(editable ? EditableCodeBlock : ReadOnlyCodeBlock).configure({
+			lowlight,
+			HTMLAttributes: editable
+				? {
+						class:
+							"my-3 overflow-x-auto rounded-md bg-muted p-3 font-mono text-sm",
+					}
+				: undefined,
+		}),
+		BulletList,
+		OrderedList,
+		ListItem,
+		TaskList.configure({
+			HTMLAttributes: { class: "list-none pl-0" },
+		}),
+		TaskItem.configure({
+			nested: true,
+			HTMLAttributes: { class: "list-none flex items-start gap-2" },
+		}),
+		Blockquote,
+		HorizontalRule,
+		HardBreak,
+		History,
+		Link.configure({
+			openOnClick: !editable,
+			HTMLAttributes: {
+				class:
+					"text-primary underline underline-offset-2 hover:text-primary/80",
+				target: "_blank",
+				rel: "noopener noreferrer",
+			},
+		}),
+		SafeImage,
+		// Individual table nodes (not TableKit) so a GFM markdown serializer can be
+		// attached to the `table` node's `storage.markdown`, replacing
+		// tiptap-markdown's built-in serializer that emits `[table]`. The
+		// CellSelection editing plugins live on the `Table` node, so rendering,
+		// parsing, and selection are unchanged.
+		Table.extend({
+			addStorage() {
+				return {
+					...this.parent?.(),
+					markdown: { serialize: serializeMarkdownTable },
+				};
+			},
+		}).configure({
+			resizable: false,
+			renderWrapper: true,
+			cellMinWidth: 192,
+			HTMLAttributes: {
+				class: "markdown-table my-4 min-w-full border-collapse",
+			},
+		}),
+		TableRow,
+		TableHeader.configure({
+			HTMLAttributes: {
+				class: "bg-muted px-4 py-2 text-left text-sm font-semibold align-top",
+			},
+		}),
+		TableCell.configure({
+			HTMLAttributes: {
+				class: "border-t border-border px-4 py-2 text-sm align-top",
+			},
+		}),
+		Markdown.configure({
+			// Keep raw HTML disabled until the TipTap path has an explicit sanitizer.
+			html: ENABLE_RAW_MARKDOWN_HTML,
+			transformPastedText: true,
+			transformCopiedText: true,
+		}),
+		TableClipboardMarkdown,
+		TaskListTightness,
+		EditorHotkeys.configure({
+			onSaveRef,
+		}),
+	];
+}

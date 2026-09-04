@@ -7,11 +7,7 @@ import { isSupportedLocale } from "@choros/i18n/locales";
 import {
 	type AgentCustomDefinition,
 	type AgentPresetOverrideEnvelope,
-	BRANCH_PREFIX_MODES,
-	EXECUTION_MODES,
-	EXTERNAL_APPS,
 	FILE_OPEN_MODES,
-	NON_EDITOR_APPS,
 	settings,
 	TERMINAL_LINK_BEHAVIORS,
 	type TerminalPreset,
@@ -29,41 +25,29 @@ import {
 	type AgentDefinitionId,
 	applyCustomAgentDefinitionPatch,
 	createOverrideEnvelopeWithPatch,
-	deleteCustomAgentDefinition,
 	getAgentDefinitionById,
 	getCustomAgentDefinitionById,
 	readAgentPresetOverrides,
 	resetAgentPresetOverride,
-	resetAllAgentPresetOverrides,
 	resolveAgentConfigs,
 	upsertCustomAgentDefinition,
 } from "@choros/shared/agent-settings";
 import { NOTIFICATION_VOLUME_LIMITS } from "@choros/shared/settings-constraints";
 import { TRPCError } from "@trpc/server";
-import { app } from "electron";
-import { env } from "main/env.main";
-import { exitImmediately } from "main/index";
 import { hasCustomRingtone } from "main/lib/custom-ringtones";
-import { getHostServiceCoordinator } from "main/lib/host-service-coordinator";
 import { applyAppLanguage } from "main/lib/language";
 import { localDb } from "main/lib/local-db";
 import {
-	DEFAULT_AUTO_APPLY_DEFAULT_PRESET,
 	DEFAULT_CONFIRM_ON_QUIT,
-	DEFAULT_EXPOSE_HOST_SERVICE_VIA_RELAY,
 	DEFAULT_FILE_OPEN_MODE,
-	DEFAULT_OPEN_LINKS_IN_APP,
-	DEFAULT_SHOW_PRESETS_BAR,
 	DEFAULT_SHOW_RESOURCE_MONITOR,
 	DEFAULT_TERMINAL_COPY_ON_SELECT,
 	DEFAULT_TERMINAL_LINK_BEHAVIOR,
 	DEFAULT_TERMINAL_PARKED_RUNTIME_CAP,
-	DEFAULT_USE_COMPACT_TERMINAL_ADD_BUTTON,
 	DEFAULT_WAIT_FOR_SETUP_BEFORE_AGENT,
 	MAX_TERMINAL_PARKED_RUNTIME_CAP,
 	MIN_TERMINAL_PARKED_RUNTIME_CAP,
 } from "shared/constants";
-import { normalizePresetProjectIds } from "shared/preset-project-targeting";
 import {
 	CUSTOM_RINGTONE_ID,
 	DEFAULT_RINGTONE_ID,
@@ -71,12 +55,8 @@ import {
 } from "shared/ringtones";
 import { z } from "zod";
 import { publicProcedure, router } from "../..";
-import { loadToken } from "../auth/utils/auth-functions";
-import { getGitAuthorName, getGitHubUsername } from "../workspaces/utils/git";
 import {
-	createCustomAgentInputSchema,
 	normalizeAgentPresetPatch,
-	normalizeCreateCustomAgentInput,
 	normalizeCustomAgentPatch,
 	updateAgentPresetInputSchema,
 	updateCustomAgentInputSchema,
@@ -244,7 +224,7 @@ const DEFAULT_PRESETS: Omit<TerminalPreset, "id">[] =
 		commands: AGENT_PRESET_COMMANDS[name],
 	}));
 
-function initializeDefaultPresets() {
+function _initializeDefaultPresets() {
 	const row = getSettings();
 	if (row.terminalPresetsInitialized) return row.terminalPresets ?? [];
 
@@ -278,27 +258,11 @@ export function getPresetsForTrigger(
 
 export const createSettingsRouter = () => {
 	return router({
-		getTerminalPresets: publicProcedure.query(() => {
-			const row = getSettings();
-			if (!row.terminalPresetsInitialized) {
-				return initializeDefaultPresets();
-			}
-			return getNormalizedTerminalPresets();
-		}),
-		getPendingCliTerminalScripts: publicProcedure
-			.input(z.object({ organizationId: z.string().min(1) }))
-			.query(({ input }) =>
-				getNormalizedTerminalPresets().filter((script) =>
-					isPendingCliTerminalScript(script, input.organizationId),
-				),
-			),
+		getPendingCliTerminalScripts: publicProcedure.query(() =>
+			getNormalizedTerminalPresets().filter(isPendingCliTerminalScript),
+		),
 		acknowledgeCliTerminalScripts: publicProcedure
-			.input(
-				z.object({
-					organizationId: z.string().min(1),
-					ids: z.array(z.string()).min(1),
-				}),
-			)
+			.input(z.object({ ids: z.array(z.string()).min(1) }))
 			.mutation(({ input }) =>
 				// Immediate transaction: a concurrent `choros scripts add` must not
 				// land between this read and write or its row would be dropped.
@@ -306,7 +270,6 @@ export const createSettingsRouter = () => {
 					() => {
 						const result = clearImportedCliTerminalScripts({
 							scripts: getNormalizedTerminalPresets(),
-							organizationId: input.organizationId,
 							ids: input.ids,
 						});
 						if (result.changed) saveTerminalPresets(result.scripts);
@@ -316,26 +279,6 @@ export const createSettingsRouter = () => {
 				),
 			),
 		getAgentPresets: publicProcedure.query(() => getResolvedAgentPresets()),
-		createCustomAgent: publicProcedure
-			.input(createCustomAgentInputSchema)
-			.mutation(({ input }) => {
-				const definition = {
-					id: `custom:${crypto.randomUUID()}` as const,
-					kind: "terminal" as const,
-					...normalizeCreateCustomAgentInput(input),
-				};
-				const nextDefinitions = upsertCustomAgentDefinition({
-					currentDefinitions: readRawAgentCustomDefinitions(),
-					definition,
-				});
-
-				saveAgentCustomDefinitions(nextDefinitions);
-				clearCustomAgentPresetOverride(definition.id);
-
-				return getResolvedAgentPresets().find(
-					(preset) => preset.id === definition.id,
-				);
-			}),
 		updateCustomAgent: publicProcedure
 			.input(updateCustomAgentInputSchema)
 			.mutation(({ input }) => {
@@ -364,35 +307,6 @@ export const createSettingsRouter = () => {
 				return getResolvedAgentPresets().find(
 					(preset) => preset.id === input.id,
 				);
-			}),
-		deleteCustomAgent: publicProcedure
-			.input(z.object({ id: z.string().regex(/^custom:/) }))
-			.mutation(({ input }) => {
-				const existingDefinition = getCustomAgentDefinitionById({
-					customDefinitions: readRawAgentCustomDefinitions(),
-					id: input.id as `custom:${string}`,
-				});
-				if (!existingDefinition) {
-					throw new TRPCError({
-						code: "NOT_FOUND",
-						message: `Custom agent ${input.id} not found`,
-					});
-				}
-
-				saveAgentCustomDefinitions(
-					deleteCustomAgentDefinition({
-						currentDefinitions: readRawAgentCustomDefinitions(),
-						id: input.id as `custom:${string}`,
-					}),
-				);
-				saveAgentPresetOverrides(
-					resetAgentPresetOverride({
-						currentOverrides: readRawAgentPresetOverrides(),
-						id: input.id as AgentDefinitionId,
-					}),
-				);
-
-				return { success: true };
 			}),
 		updateAgentPreset: publicProcedure
 			.input(updateAgentPresetInputSchema)
@@ -440,181 +354,6 @@ export const createSettingsRouter = () => {
 				saveAgentPresetOverrides(nextOverrides);
 				return { success: true };
 			}),
-		resetAllAgentPresets: publicProcedure.mutation(() => {
-			saveAgentPresetOverrides(resetAllAgentPresetOverrides());
-			return { success: true };
-		}),
-		createTerminalPreset: publicProcedure
-			.input(
-				z.object({
-					name: z.string(),
-					description: z.string().optional(),
-					cwd: z.string(),
-					commands: z.array(z.string()),
-					projectIds: z.array(z.string()).nullable().optional(),
-					pinnedToBar: z.boolean().optional(),
-					useAsWorkspaceRun: z.boolean().optional(),
-					executionMode: z.enum(EXECUTION_MODES).optional(),
-				}),
-			)
-			.mutation(({ input }) => {
-				const preset: TerminalPreset = {
-					id: crypto.randomUUID(),
-					...input,
-					projectIds: normalizePresetProjectIds(input.projectIds),
-					executionMode: input.executionMode ?? "new-tab",
-				};
-
-				const presets = getNormalizedTerminalPresets();
-				presets.push(preset);
-
-				saveTerminalPresets(presets);
-
-				return preset;
-			}),
-
-		updateTerminalPreset: publicProcedure
-			.input(
-				z.object({
-					id: z.string(),
-					patch: z.object({
-						name: z.string().optional(),
-						description: z.string().optional(),
-						cwd: z.string().optional(),
-						commands: z.array(z.string()).optional(),
-						projectIds: z.array(z.string()).nullable().optional(),
-						pinnedToBar: z.boolean().optional(),
-						useAsWorkspaceRun: z.boolean().optional(),
-						executionMode: z.enum(EXECUTION_MODES).optional(),
-					}),
-				}),
-			)
-			.mutation(({ input }) => {
-				const presets = getNormalizedTerminalPresets();
-				const preset = presets.find((p) => p.id === input.id);
-
-				if (!preset) {
-					throw new TRPCError({
-						code: "NOT_FOUND",
-						message: `Terminal script ${input.id} not found`,
-					});
-				}
-
-				if (input.patch.name !== undefined) preset.name = input.patch.name;
-				if (input.patch.description !== undefined)
-					preset.description = input.patch.description;
-				if (input.patch.cwd !== undefined) preset.cwd = input.patch.cwd;
-				if (input.patch.commands !== undefined)
-					preset.commands = input.patch.commands;
-				if (input.patch.projectIds !== undefined)
-					preset.projectIds = normalizePresetProjectIds(input.patch.projectIds);
-				if (input.patch.pinnedToBar !== undefined)
-					preset.pinnedToBar = input.patch.pinnedToBar;
-				if (input.patch.useAsWorkspaceRun !== undefined)
-					preset.useAsWorkspaceRun = input.patch.useAsWorkspaceRun;
-				if (input.patch.executionMode !== undefined)
-					preset.executionMode = input.patch.executionMode;
-
-				saveTerminalPresets(presets);
-
-				return { success: true };
-			}),
-
-		deleteTerminalPreset: publicProcedure
-			.input(z.object({ id: z.string() }))
-			.mutation(({ input }) => {
-				const presets = getNormalizedTerminalPresets();
-				const filteredPresets = presets.filter((p) => p.id !== input.id);
-
-				saveTerminalPresets(filteredPresets);
-
-				return { success: true };
-			}),
-
-		setPresetAutoApply: publicProcedure
-			.input(
-				z.object({
-					id: z.string(),
-					field: z.enum(["applyOnWorkspaceCreated", "applyOnNewTab"]),
-					enabled: z.boolean(),
-				}),
-			)
-			.mutation(({ input }) => {
-				const presets = getNormalizedTerminalPresets();
-
-				const updatedPresets = presets.map((p) => {
-					if (p.id !== input.id) return p;
-
-					return {
-						...p,
-						[input.field]: input.enabled ? true : undefined,
-					};
-				});
-
-				saveTerminalPresets(updatedPresets);
-
-				return { success: true };
-			}),
-
-		reorderTerminalPresets: publicProcedure
-			.input(
-				z.object({
-					presetId: z.string(),
-					targetIndex: z.number().int().min(0),
-				}),
-			)
-			.mutation(({ input }) => {
-				const presets = getNormalizedTerminalPresets();
-
-				const currentIndex = presets.findIndex((p) => p.id === input.presetId);
-				if (currentIndex === -1) {
-					throw new TRPCError({
-						code: "NOT_FOUND",
-						message: "Preset not found",
-					});
-				}
-
-				if (input.targetIndex < 0 || input.targetIndex >= presets.length) {
-					throw new TRPCError({
-						code: "BAD_REQUEST",
-						message: "Invalid target index for reordering presets",
-					});
-				}
-
-				const [removed] = presets.splice(currentIndex, 1);
-				presets.splice(input.targetIndex, 0, removed);
-
-				saveTerminalPresets(presets);
-
-				return { success: true };
-			}),
-
-		getWorkspaceCreationPresets: publicProcedure
-			.input(
-				z
-					.object({
-						projectId: z.string().nullable().optional(),
-					})
-					.optional(),
-			)
-			.query(({ input }) =>
-				getPresetsForTrigger(
-					"applyOnWorkspaceCreated",
-					input?.projectId ?? null,
-				),
-			),
-
-		getNewTabPresets: publicProcedure
-			.input(
-				z
-					.object({
-						projectId: z.string().nullable().optional(),
-					})
-					.optional(),
-			)
-			.query(({ input }) =>
-				getPresetsForTrigger("applyOnNewTab", input?.projectId ?? null),
-			),
 
 		// App display language: "auto"/null = follow the system language.
 		getLanguage: publicProcedure.query(() => {
@@ -718,85 +457,6 @@ export const createSettingsRouter = () => {
 				return { success: true };
 			}),
 
-		getExposeHostServiceViaRelay: publicProcedure.query(() => {
-			const row = getSettings();
-			return (
-				row.exposeHostServiceViaRelay ?? DEFAULT_EXPOSE_HOST_SERVICE_VIA_RELAY
-			);
-		}),
-
-		setExposeHostServiceViaRelay: publicProcedure
-			.input(z.object({ enabled: z.boolean() }))
-			.mutation(async ({ input }) => {
-				localDb
-					.insert(settings)
-					.values({ id: 1, exposeHostServiceViaRelay: input.enabled })
-					.onConflictDoUpdate({
-						target: settings.id,
-						set: { exposeHostServiceViaRelay: input.enabled },
-					})
-					.run();
-
-				// Restart active host-service children so they pick up the new
-				// RELAY_URL from buildEnv(). No-op if the user isn't signed in.
-				const { token } = await loadToken();
-				if (!token) {
-					return { restartedOrgCount: 0 };
-				}
-
-				const coordinator = getHostServiceCoordinator();
-				const restartedOrgCount = coordinator.getActiveOrganizationIds().length;
-				await coordinator.restartAll({
-					authToken: token,
-					cloudApiUrl: env.NEXT_PUBLIC_API_URL,
-				});
-
-				return { restartedOrgCount };
-			}),
-
-		getShowPresetsBar: publicProcedure.query(() => {
-			const row = getSettings();
-			return row.showPresetsBar ?? DEFAULT_SHOW_PRESETS_BAR;
-		}),
-
-		setShowPresetsBar: publicProcedure
-			.input(z.object({ enabled: z.boolean() }))
-			.mutation(({ input }) => {
-				localDb
-					.insert(settings)
-					.values({ id: 1, showPresetsBar: input.enabled })
-					.onConflictDoUpdate({
-						target: settings.id,
-						set: { showPresetsBar: input.enabled },
-					})
-					.run();
-
-				return { success: true };
-			}),
-
-		getUseCompactTerminalAddButton: publicProcedure.query(() => {
-			const row = getSettings();
-			return (
-				row.useCompactTerminalAddButton ??
-				DEFAULT_USE_COMPACT_TERMINAL_ADD_BUTTON
-			);
-		}),
-
-		setUseCompactTerminalAddButton: publicProcedure
-			.input(z.object({ enabled: z.boolean() }))
-			.mutation(({ input }) => {
-				localDb
-					.insert(settings)
-					.values({ id: 1, useCompactTerminalAddButton: input.enabled })
-					.onConflictDoUpdate({
-						target: settings.id,
-						set: { useCompactTerminalAddButton: input.enabled },
-					})
-					.run();
-
-				return { success: true };
-			}),
-
 		getTerminalLinkBehavior: publicProcedure.query(() => {
 			const row = getSettings();
 			return row.terminalLinkBehavior ?? DEFAULT_TERMINAL_LINK_BEHAVIOR;
@@ -837,26 +497,6 @@ export const createSettingsRouter = () => {
 				return { success: true };
 			}),
 
-		getAutoApplyDefaultPreset: publicProcedure.query(() => {
-			const row = getSettings();
-			return row.autoApplyDefaultPreset ?? DEFAULT_AUTO_APPLY_DEFAULT_PRESET;
-		}),
-
-		setAutoApplyDefaultPreset: publicProcedure
-			.input(z.object({ enabled: z.boolean() }))
-			.mutation(({ input }) => {
-				localDb
-					.insert(settings)
-					.values({ id: 1, autoApplyDefaultPreset: input.enabled })
-					.onConflictDoUpdate({
-						target: settings.id,
-						set: { autoApplyDefaultPreset: input.enabled },
-					})
-					.run();
-
-				return { success: true };
-			}),
-
 		getWaitForSetupBeforeAgent: publicProcedure.query(() => {
 			const row = getSettings();
 			return row.waitForSetupBeforeAgent ?? DEFAULT_WAIT_FOR_SETUP_BEFORE_AGENT;
@@ -871,77 +511,6 @@ export const createSettingsRouter = () => {
 					.onConflictDoUpdate({
 						target: settings.id,
 						set: { waitForSetupBeforeAgent: input.enabled },
-					})
-					.run();
-
-				return { success: true };
-			}),
-
-		restartApp: publicProcedure.mutation(() => {
-			app.relaunch();
-			exitImmediately();
-			return { success: true };
-		}),
-
-		getBranchPrefix: publicProcedure.query(() => {
-			const row = getSettings();
-			return {
-				mode: row.branchPrefixMode ?? "none",
-				customPrefix: row.branchPrefixCustom ?? null,
-			};
-		}),
-
-		setBranchPrefix: publicProcedure
-			.input(
-				z.object({
-					mode: z.enum(BRANCH_PREFIX_MODES),
-					customPrefix: z.string().nullable().optional(),
-				}),
-			)
-			.mutation(({ input }) => {
-				localDb
-					.insert(settings)
-					.values({
-						id: 1,
-						branchPrefixMode: input.mode,
-						branchPrefixCustom: input.customPrefix ?? null,
-					})
-					.onConflictDoUpdate({
-						target: settings.id,
-						set: {
-							branchPrefixMode: input.mode,
-							branchPrefixCustom: input.customPrefix ?? null,
-						},
-					})
-					.run();
-
-				return { success: true };
-			}),
-
-		getGitInfo: publicProcedure.query(async () => {
-			const githubUsername = await getGitHubUsername();
-			const authorName = await getGitAuthorName();
-			return {
-				githubUsername,
-				authorName,
-				authorPrefix: authorName?.toLowerCase().replace(/\s+/g, "-") ?? null,
-			};
-		}),
-
-		getDeleteLocalBranch: publicProcedure.query(() => {
-			const row = getSettings();
-			return row.deleteLocalBranch ?? false;
-		}),
-
-		setDeleteLocalBranch: publicProcedure
-			.input(z.object({ enabled: z.boolean() }))
-			.mutation(({ input }) => {
-				localDb
-					.insert(settings)
-					.values({ id: 1, deleteLocalBranch: input.enabled })
-					.onConflictDoUpdate({
-						target: settings.id,
-						set: { deleteLocalBranch: input.enabled },
 					})
 					.run();
 
@@ -1107,46 +676,6 @@ export const createSettingsRouter = () => {
 				return { success: true };
 			}),
 
-		getWorktreeBaseDir: publicProcedure.query(() => {
-			const row = getSettings();
-			return row.worktreeBaseDir ?? null;
-		}),
-
-		setWorktreeBaseDir: publicProcedure
-			.input(z.object({ path: z.string().nullable() }))
-			.mutation(({ input }) => {
-				localDb
-					.insert(settings)
-					.values({ id: 1, worktreeBaseDir: input.path })
-					.onConflictDoUpdate({
-						target: settings.id,
-						set: { worktreeBaseDir: input.path },
-					})
-					.run();
-
-				return { success: true };
-			}),
-
-		getOpenLinksInApp: publicProcedure.query(() => {
-			const row = getSettings();
-			return row.openLinksInApp ?? DEFAULT_OPEN_LINKS_IN_APP;
-		}),
-
-		setOpenLinksInApp: publicProcedure
-			.input(z.object({ enabled: z.boolean() }))
-			.mutation(({ input }) => {
-				localDb
-					.insert(settings)
-					.values({ id: 1, openLinksInApp: input.enabled })
-					.onConflictDoUpdate({
-						target: settings.id,
-						set: { openLinksInApp: input.enabled },
-					})
-					.run();
-
-				return { success: true };
-			}),
-
 		getBrowserHomepageUrl: publicProcedure.query(() => {
 			const row = getSettings();
 			return row.browserHomepageUrl ?? null;
@@ -1173,30 +702,6 @@ export const createSettingsRouter = () => {
 			const row = getSettings();
 			return row.defaultEditor ?? null;
 		}),
-
-		setDefaultEditor: publicProcedure
-			.input(
-				z.object({
-					editor: z
-						.enum(EXTERNAL_APPS)
-						.nullable()
-						.refine((val) => val === null || !NON_EDITOR_APPS.includes(val), {
-							message: "Non-editor apps cannot be set as the global default",
-						}),
-				}),
-			)
-			.mutation(({ input }) => {
-				localDb
-					.insert(settings)
-					.values({ id: 1, defaultEditor: input.editor })
-					.onConflictDoUpdate({
-						target: settings.id,
-						set: { defaultEditor: input.editor },
-					})
-					.run();
-
-				return { success: true };
-			}),
 
 		/**
 		 * Re-runs wrapper/settings/hook setup for one agent. Safety net for
@@ -1258,17 +763,6 @@ export const createSettingsRouter = () => {
 					? setupSingleAgent(input.agentId)
 					: teardownSingleAgent(input.agentId);
 				return { ran };
-			}),
-
-		// TODO: remove telemetry procedures once telemetry_enabled column is dropped
-		getTelemetryEnabled: publicProcedure.query(() => {
-			return true;
-		}),
-
-		setTelemetryEnabled: publicProcedure
-			.input(z.object({ enabled: z.boolean() }))
-			.mutation(() => {
-				return { success: true };
 			}),
 	});
 };

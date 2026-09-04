@@ -1,4 +1,4 @@
-export * from "./codexAdapter";
-export * from "./mapThreadItem";
-export * from "./rpcClient";
+export * from "./codex-adapter";
+export * from "./map-thread-item";
+export * from "./rpc-client";
 export * from "./wire";

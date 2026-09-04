@@ -1,6 +1,6 @@
 name = "choros"
 main = "src/index.ts"
-compatibility_date = "2026-01-01"
+compatibility_date = "2026-09-03"
 compatibility_flags = ["nodejs_compat"]
 
 # Public URL of THIS Worker — the /auth/desktop/success redirect target
@@ -30,7 +30,6 @@ NEXT_PUBLIC_POSTHOG_HOST = "https://us.i.posthog.com"
 # time; setting NODE_ENV in [vars] does NOT help):
 #   • trustedOrigins gains http://localhost:5173 / 127.0.0.1:5173 for the vite
 #     desktop dev server, plus exp:// for Expo mobile
-#   • email/password sign-up stays enabled
 #   • organization.afterCreate skips the Stripe customer creation call
 # When we split dev vs prod Workers, drop the NODE_ENV=development wrapper on
 # the prod side.

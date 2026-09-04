@@ -199,7 +199,7 @@ const TRAILING_PUNCTUATION = /[.,;:!?]+$/;
 function looksLikePath(str: string): boolean {
 	return (
 		str.includes("/") ||
-		str.startsWith(".") ||
+		str.startsWith("./") ||
 		str.startsWith("~") ||
 		str.startsWith("/")
 	);
@@ -255,7 +255,7 @@ function stripTrailingPunctuation(path: string): string {
 	const beforePunct = path.slice(0, -punct.length);
 
 	// Don't strip if it looks like a file extension (e.g., "file.ts")
-	if (punct === "." || punct.startsWith(".")) {
+	if (punct === "./" || punct.startsWith("./")) {
 		const extMatch = beforePunct.match(/\.[a-zA-Z0-9]{1,10}$/);
 		if (extMatch) {
 			return beforePunct;

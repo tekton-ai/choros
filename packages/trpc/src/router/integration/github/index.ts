@@ -1,1 +1,0 @@
-export { githubRouter } from "./github";

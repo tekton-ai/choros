@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, test } from "bun:test";
 import { randomUUID } from "node:crypto";
 import { TRPCClientError } from "@trpc/client";
-import { createTestHost } from "../helpers/createTestHost";
+import { createTestHost } from "../helpers/create-test-host";
 import { createGitFixture } from "../helpers/git-fixture";
 import { createProjectScenario } from "../helpers/scenarios";
 import { seedProject } from "../helpers/seed";
@@ -114,7 +114,7 @@ describe("project router integration", () => {
 		expect(result).toEqual({ conflict: null });
 	});
 
-	test("findByPath returns local match without hitting cloud api", async () => {
+	test("findByPath returns a local match", async () => {
 		const host = await createTestHost();
 		const repo = await createGitFixture();
 		dispose = async () => {
@@ -132,11 +132,6 @@ describe("project router integration", () => {
 		});
 		expect(result.candidates).toHaveLength(1);
 		expect(result.candidates[0]).toMatchObject({ id, name: "local-name" });
-		expect(
-			host.apiCalls.some(
-				(c) => c.path === "v2Project.findByGitHubRemote.query",
-			),
-		).toBe(false);
 	});
 
 	test("findByPath returns empty candidates when repo has no parsed remote and no local project", async () => {
@@ -166,10 +161,5 @@ describe("project router integration", () => {
 			repoPath: repo.repoPath,
 		});
 		expect(result.candidates).toEqual([]);
-		expect(
-			host.apiCalls.some(
-				(c) => c.path === "v2Project.findByGitHubRemote.query",
-			),
-		).toBe(false);
 	});
 });

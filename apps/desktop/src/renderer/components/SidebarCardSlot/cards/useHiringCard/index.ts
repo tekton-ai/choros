@@ -1,1 +1,0 @@
-export { useHiringCard } from "./useHiringCard";

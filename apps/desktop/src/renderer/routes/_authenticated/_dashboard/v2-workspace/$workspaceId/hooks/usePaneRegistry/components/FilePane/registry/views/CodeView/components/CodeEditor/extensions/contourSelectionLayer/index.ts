@@ -1,1 +1,0 @@
-export { contourSelectionLayer } from "./contourSelectionLayer";

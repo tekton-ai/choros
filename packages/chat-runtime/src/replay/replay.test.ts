@@ -4,7 +4,7 @@ import { chatJournal } from "../db";
 import type { ChatRuntime } from "../index";
 import { ChatJournal } from "../journal";
 import { agentMessage } from "../testing/fixtures";
-import { createTestRuntime } from "../testing/testRuntime";
+import { createTestRuntime } from "../testing/test-runtime";
 import { readPage, readSince } from "./replay";
 
 const SESSION = "session-1";

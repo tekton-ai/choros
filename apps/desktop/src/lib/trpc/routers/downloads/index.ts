@@ -5,10 +5,6 @@ import { publicProcedure, router } from "../..";
 
 export const createDownloadsRouter = () => {
 	return router({
-		list: publicProcedure.query(() => {
-			return downloadManager.list();
-		}),
-
 		// Streams the full list on every change (new download, progress tick,
 		// completion) — simpler than diffing for a list capped at 200 rows.
 		onChanged: publicProcedure.subscription(() => {

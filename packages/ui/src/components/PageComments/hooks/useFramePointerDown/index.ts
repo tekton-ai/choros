@@ -1,1 +1,0 @@
-export { useFramePointerDown } from "./useFramePointerDown";

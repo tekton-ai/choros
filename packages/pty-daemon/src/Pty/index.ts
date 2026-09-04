@@ -4,5 +4,5 @@ export type {
 	PtyOnData,
 	PtyOnExit,
 	SpawnOptions,
-} from "./Pty.ts";
-export { adoptFromFd, drainPendingKills, spawn } from "./Pty.ts";
+} from "./pty.ts";
+export { adoptFromFd, drainPendingKills, spawn } from "./pty.ts";

@@ -12,14 +12,14 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { Redirect } from "renderer/components/Redirect";
+import { Redirect } from "renderer/components/redirect";
 import { env } from "renderer/env.renderer";
-import { useDelayElapsed } from "renderer/hooks/useDelayElapsed";
-import { track } from "renderer/lib/analytics";
+import { useDelayElapsed } from "renderer/hooks/use-delay-elapsed";
+
 import { setAuthToken } from "renderer/lib/auth-client";
 import { electronTrpc } from "renderer/lib/electron-trpc";
-import { ChorosLogo } from "./components/ChorosLogo";
-import { useSessionRecovery } from "./hooks/useSessionRecovery";
+import { ChorosLogo } from "./components/choros-logo";
+import { useSessionRecovery } from "./hooks/use-session-recovery";
 
 export const Route = createFileRoute("/sign-in/")({
 	component: SignInPage,
@@ -27,7 +27,7 @@ export const Route = createFileRoute("/sign-in/")({
 
 const LAST_USED_METHOD_KEY = "choros-last-auth-method";
 
-const workspaceRedirect = <Redirect to="/workspace" replace />;
+const workspaceRedirect = <Redirect to="/v2-workspaces" replace />;
 
 const SESSION_PENDING_TIMEOUT_MS = 15_000;
 
@@ -80,7 +80,6 @@ function SignInPage() {
 	};
 
 	const signIn = (provider: AuthProvider) => {
-		track("auth_started", { provider });
 		rememberLastUsedMethod(provider);
 		signInMutation.mutate({ provider });
 	};
@@ -138,7 +137,7 @@ function SignInPage() {
 			).toISOString();
 			await persistToken.mutateAsync({ token, expiresAt });
 			setAuthToken(token);
-			await navigate({ to: "/workspace", replace: true });
+			await navigate({ to: "/v2-workspaces", replace: true });
 		} catch (error) {
 			setDevError(
 				error instanceof Error ? error.message : "Dev sign-in failed",

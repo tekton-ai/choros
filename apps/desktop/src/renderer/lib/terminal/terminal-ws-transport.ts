@@ -4,8 +4,7 @@ import {
 	type RelaySocket,
 } from "@choros/workspace-client/relay-socket";
 import type { Terminal as XTerm } from "@xterm/xterm";
-import { ensureFreshJwt } from "renderer/lib/auth-client";
-import { posthog } from "renderer/lib/posthog";
+
 import {
 	type AttachRetryState,
 	clearAttachRetryableMessage,
@@ -20,7 +19,7 @@ import {
 import {
 	classifyTerminalFailure,
 	type TerminalFailureClassification,
-} from "./terminalConnectionDiagnostics";
+} from "./terminal-connection-diagnostics";
 import { createWriteCoalescer, type WriteCoalescer } from "./write-coalescer";
 
 export type ConnectionState = "disconnected" | "connecting" | "open" | "closed";
@@ -218,10 +217,7 @@ function isWindowHidden(): boolean {
 // attempt holds the WS open past partysocket's 5s minUptime and retryCount
 // keeps resetting to 0). The socket keeps retrying forever regardless; this
 // only decides when (and whether) the header explains it.
-function maybeSurfaceDiagnosis(
-	transport: TerminalTransport,
-	closeEvent: { code?: unknown; reason?: unknown } | null,
-) {
+function maybeSurfaceDiagnosis(transport: TerminalTransport) {
 	if (transport._terminated) return;
 	// A hidden/minimized window shouldn't accrue an "offline" state nobody is
 	// looking at — its failures may be a suspend artifact. The socket keeps
@@ -244,10 +240,7 @@ function maybeSurfaceDiagnosis(
 	const diagnosis: TerminalFailureClassification = transport._attachRetry
 		.lastMessage
 		? { category: "unknown", message: transport._attachRetry.lastMessage }
-		: classifyTerminalFailure(
-				transport._lastProbe,
-				isRelayHostUrl(transport.currentUrl),
-			);
+		: classifyTerminalFailure(transport._lastProbe, false);
 	transport.lastDiagnosis = diagnosis;
 	if (transport._diagnosisLogged) return;
 	transport._diagnosisLogged = true;
@@ -256,24 +249,6 @@ function maybeSurfaceDiagnosis(
 		"warn",
 		`Terminal disconnected from ${formatWsEndpoint(transport.currentUrl)}. ${diagnosis.message} Still retrying.`,
 	);
-	posthog.capture("terminal_connect_failed", {
-		endpoint: formatWsEndpoint(transport.currentUrl),
-		close_code:
-			closeEvent && typeof closeEvent.code === "number"
-				? closeEvent.code
-				: null,
-		close_reason:
-			closeEvent && typeof closeEvent.reason === "string"
-				? closeEvent.reason || undefined
-				: undefined,
-		preflight_status: transport._lastProbe?.status ?? null,
-		tunnel_region: transport._lastProbe?.region ?? null,
-		reconnect_attempts: effectiveFailureCount(
-			transport._attachRetry,
-			transport._socket?.retryCount ?? 0,
-		),
-		category: diagnosis.category,
-	});
 }
 
 function markSessionEnded(transport: TerminalTransport) {
@@ -484,16 +459,6 @@ function formatWsEndpoint(wsUrl: string | null): string {
 	}
 }
 
-// Relay-routed terminals live under `/hosts/<id>/...`; local ones don't.
-function isRelayHostUrl(wsUrl: string | null): boolean {
-	if (!wsUrl) return false;
-	try {
-		return new URL(wsUrl).pathname.startsWith("/hosts/");
-	} catch {
-		return false;
-	}
-}
-
 function formatCloseDetails(event: {
 	code?: unknown;
 	reason?: unknown;
@@ -626,15 +591,12 @@ export function connect(
 					: "new";
 			return appendQueryParam(current, "seq", seqValue);
 		},
-		getToken: () =>
-			isRelayHostUrl(transport.currentUrl)
-				? ensureFreshJwt()
-				: transport._localToken,
+		getToken: () => transport._localToken,
 		// 403 is a definitive access denial (fresh token), not transient —
 		// createRelaySocket closes the socket; record why so we stop looking.
 		onAccessDenied: () => {
 			transport._terminated = true;
-			const diagnosis = classifyTerminalFailure(transport._lastProbe, true);
+			const diagnosis = classifyTerminalFailure(transport._lastProbe, false);
 			transport.lastDiagnosis = diagnosis;
 			setConnectionState(transport, "closed");
 			pushLog(
@@ -642,13 +604,6 @@ export function connect(
 				"error",
 				`Connection refused for ${formatWsEndpoint(transport.currentUrl)}: ${diagnosis.message} Not retrying.`,
 			);
-			posthog.capture("terminal_connect_failed", {
-				endpoint: formatWsEndpoint(transport.currentUrl),
-				preflight_status: transport._lastProbe?.status ?? null,
-				tunnel_region: transport._lastProbe?.region ?? null,
-				reconnect_attempts: transport._socket?.retryCount ?? 0,
-				category: diagnosis.category,
-			});
 		},
 		onProbe: (probe) => {
 			transport._lastProbe = probe;
@@ -876,7 +831,7 @@ function attachSocketListeners(
 				`WebSocket closed while connected to ${formatWsEndpoint(transport.currentUrl)} (${formatCloseDetails(closeEvent)}). Reconnecting (attempt ${effectiveFailureCount(transport._attachRetry, transport._socket?.retryCount ?? 0)}/${DIAGNOSE_AFTER_ATTEMPTS})...`,
 			);
 		}
-		maybeSurfaceDiagnosis(transport, closeEvent);
+		maybeSurfaceDiagnosis(transport);
 	});
 
 	socket.addEventListener("error", () => {
@@ -900,7 +855,7 @@ function attachSocketListeners(
 		}
 		// Dial failures (host unreachable, upgrade rejected) surface ONLY as error
 		// + a synthetic close, so drive the diagnosis from here too.
-		maybeSurfaceDiagnosis(transport, null);
+		maybeSurfaceDiagnosis(transport);
 	});
 
 	transport._onDataDisposable?.dispose();

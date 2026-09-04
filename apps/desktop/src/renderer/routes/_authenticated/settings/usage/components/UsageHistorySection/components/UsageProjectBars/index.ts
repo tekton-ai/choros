@@ -1,1 +1,0 @@
-export { UsageProjectBars } from "./UsageProjectBars";

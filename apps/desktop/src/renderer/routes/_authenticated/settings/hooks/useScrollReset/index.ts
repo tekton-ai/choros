@@ -1,1 +1,0 @@
-export { useScrollReset } from "./useScrollReset";

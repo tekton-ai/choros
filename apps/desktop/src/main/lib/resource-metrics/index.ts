@@ -193,7 +193,7 @@ export async function collectResourceMetrics(
 	options: CollectResourceMetricsOptions = {},
 ): Promise<ResourceMetricsSnapshot> {
 	const mode = options.mode ?? "interactive";
-	const surface = options.surface ?? "v1";
+	const surface = options.surface ?? "v2";
 	const maxAgeMs = getSnapshotMaxAge(mode);
 	const cacheKey = `${surface}:${options.organizationId ?? "all"}`;
 
@@ -211,10 +211,7 @@ export async function collectResourceMetrics(
 		return inflightCollection;
 	}
 
-	const collection = collectResourceMetricsNow({
-		surface,
-		organizationId: options.organizationId,
-	})
+	const collection = collectResourceMetricsNow()
 		.catch((error) => {
 			console.warn(
 				"[resource-metrics] Failed to collect resource metrics; returning a safe fallback snapshot",
@@ -254,17 +251,8 @@ async function enrichSnapshotCpu(
 	}
 }
 
-async function collectResourceMetricsNow({
-	surface,
-	organizationId,
-}: {
-	surface: ResourceMetricsSurface;
-	organizationId?: string;
-}): Promise<ResourceMetricsSnapshot> {
-	const workspaceSessionMap = await collectWorkspaceSessionMap({
-		surface,
-		organizationId,
-	});
+async function collectResourceMetricsNow(): Promise<ResourceMetricsSnapshot> {
+	const workspaceSessionMap = await collectWorkspaceSessionMap();
 	const allEntries = [...workspaceSessionMap.values()].flat();
 
 	// Single atomic snapshot: tree structure + resource data from one `ps`
@@ -338,10 +326,7 @@ async function collectResourceMetricsNow({
 
 	for (const [workspaceId, entries] of workspaceSessionMap) {
 		if (!workspaceMetaCache.has(workspaceId)) {
-			workspaceMetaCache.set(
-				workspaceId,
-				getWorkspaceMetadata(surface, workspaceId),
-			);
+			workspaceMetaCache.set(workspaceId, getWorkspaceMetadata(workspaceId));
 		}
 
 		const sessionMetrics: SessionMetrics[] = [];

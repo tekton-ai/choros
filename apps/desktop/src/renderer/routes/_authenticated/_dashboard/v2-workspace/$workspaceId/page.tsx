@@ -1,65 +1,59 @@
 import { Workspace } from "@choros/panes";
-import { FEATURE_FLAGS } from "@choros/shared/constants";
 import { workspaceTrpc } from "@choros/workspace-client";
 import { createFileRoute } from "@tanstack/react-router";
-import { useFeatureFlagEnabled } from "posthog-js/react";
 import { useCallback, useState } from "react";
 import { createPortal } from "react-dom";
-import { useQuickOpenStore } from "renderer/commandPalette/ui/QuickOpen/quickOpenStore";
-import { ZoomStable } from "renderer/components/ZoomStable";
-import { useV2UserPreferences } from "renderer/hooks/useV2UserPreferences";
-import { useZoomFactor } from "renderer/hooks/useZoomFactor";
+import { useQuickOpenStore } from "renderer/command-palette/ui/quick-open/quick-open-store";
+import { ZoomStable } from "renderer/components/zoom-stable";
+import { useV2UserPreferences } from "renderer/hooks/use-v2-user-preferences";
+import { useZoomFactor } from "renderer/hooks/use-zoom-factor";
 import { useHotkey } from "renderer/hotkeys";
 import { electronTrpc } from "renderer/lib/electron-trpc";
-import { NavigationControls } from "renderer/routes/_authenticated/_dashboard/components/NavigationControls";
-import { SidebarToggle } from "renderer/routes/_authenticated/_dashboard/components/SidebarToggle";
-import { RightSidebarToggle } from "renderer/routes/_authenticated/_dashboard/components/TopBar/components/RightSidebarToggle";
-import { TopBarPortsDropdown } from "renderer/routes/_authenticated/_dashboard/components/TopBar/components/TopBarPortsDropdown";
-import { WindowControls } from "renderer/routes/_authenticated/_dashboard/components/TopBar/components/WindowControls";
-import { CommandPalette } from "renderer/screens/main/components/CommandPalette";
-import { ResizablePanel } from "renderer/screens/main/components/ResizablePanel";
+import { NavigationControls } from "renderer/routes/_authenticated/_dashboard/components/navigation-controls";
+import { SidebarToggle } from "renderer/routes/_authenticated/_dashboard/components/sidebar-toggle";
+import { RightSidebarToggle } from "renderer/routes/_authenticated/_dashboard/components/top-bar/components/right-sidebar-toggle";
+import { TopBarPortsDropdown } from "renderer/routes/_authenticated/_dashboard/components/top-bar/components/top-bar-ports-dropdown";
+import { WindowControls } from "renderer/routes/_authenticated/_dashboard/components/top-bar/components/window-controls";
+import { CommandPalette } from "renderer/screens/main/components/command-palette";
+import { ResizablePanel } from "renderer/screens/main/components/resizable-panel";
 import { getV2NotificationSourcesForTab } from "renderer/stores/v2-notifications";
 import {
 	COLLAPSED_WORKSPACE_SIDEBAR_WIDTH,
 	useWorkspaceSidebarStore,
 } from "renderer/stores/workspace-sidebar-state";
-import { StateScreenShell } from "../components/StateScreenShell";
-import { useWorkspace } from "../providers/WorkspaceProvider";
-import { AddTabMenu } from "./components/AddTabMenu";
-import { BackgroundTerminalsButton } from "./components/BackgroundTerminalsButton";
-import { V2NotificationStatusIndicator } from "./components/V2NotificationStatusIndicator";
-import { V2PresetsBar } from "./components/V2PresetsBar";
-import { V2WorkspaceRunButton } from "./components/V2WorkspaceRunButton";
-import { WorkspaceEmptyState } from "./components/WorkspaceEmptyState";
-import { WorkspaceMissingWorktreeState } from "./components/WorkspaceMissingWorktreeState";
-import { WorkspaceSidebar } from "./components/WorkspaceSidebar";
-import { useAutoAdoptBackgroundSessions } from "./hooks/useAutoAdoptBackgroundSessions";
-import { useBrowserShellInteractionPassthrough } from "./hooks/useBrowserShellInteractionPassthrough";
-import { useClearActivePaneAttention } from "./hooks/useClearActivePaneAttention";
-import { useConsumeAutomationRunLink } from "./hooks/useConsumeAutomationRunLink";
-import { useConsumeOpenUrlRequest } from "./hooks/useConsumeOpenUrlRequest";
-import { useCreatePendingMigratedTerminals } from "./hooks/useCreatePendingMigratedTerminals";
-import { useDefaultContextMenuActions } from "./hooks/useDefaultContextMenuActions";
-import { useDefaultPaneActions } from "./hooks/useDefaultPaneActions";
-import { usePaneRegistry } from "./hooks/usePaneRegistry";
-import { renderBrowserTabIcon } from "./hooks/usePaneRegistry/components/BrowserPane";
-import { useSlotElement } from "./hooks/useSlotElement";
-import { useTabCloseGuard } from "./hooks/useTabCloseGuard";
-import { useV2PresetExecution } from "./hooks/useV2PresetExecution";
-import { useV2TerminalLauncher } from "./hooks/useV2TerminalLauncher";
-import { useV2WorkspacePaneLayout } from "./hooks/useV2WorkspacePaneLayout";
-import { useV2WorkspaceRun } from "./hooks/useV2WorkspaceRun";
-import { useWorkspaceFileNavigation } from "./hooks/useWorkspaceFileNavigation";
-import { useWorkspaceHotkeys } from "./hooks/useWorkspaceHotkeys";
-import { useWorkspacePaneOpeners } from "./hooks/useWorkspacePaneOpeners";
-import { WorkspaceGitStatusProvider } from "./providers/WorkspaceGitStatusProvider";
-import { FileDocumentStoreProvider } from "./state/fileDocumentStore";
+import { StateScreenShell } from "../components/state-screen-shell";
+import { useWorkspace } from "../providers/workspace-provider";
+import { AddTabMenu } from "./components/add-tab-menu";
+import { BackgroundTerminalsButton } from "./components/background-terminals-button";
+import { V2NotificationStatusIndicator } from "./components/v2-notification-status-indicator";
+import { V2PresetsBar } from "./components/v2-presets-bar";
+import { V2WorkspaceRunButton } from "./components/v2-workspace-run-button";
+import { WorkspaceEmptyState } from "./components/workspace-empty-state";
+import { WorkspaceMissingWorktreeState } from "./components/workspace-missing-worktree-state";
+import { WorkspaceSidebar } from "./components/workspace-sidebar";
+import { useAutoAdoptBackgroundSessions } from "./hooks/use-auto-adopt-background-sessions";
+import { useBrowserShellInteractionPassthrough } from "./hooks/use-browser-shell-interaction-passthrough";
+import { useClearActivePaneAttention } from "./hooks/use-clear-active-pane-attention";
+import { useConsumeOpenUrlRequest } from "./hooks/use-consume-open-url-request";
+import { useDefaultContextMenuActions } from "./hooks/use-default-context-menu-actions";
+import { useDefaultPaneActions } from "./hooks/use-default-pane-actions";
+import { usePaneRegistry } from "./hooks/use-pane-registry";
+import { renderBrowserTabIcon } from "./hooks/use-pane-registry/components/browser-pane";
+import { useSlotElement } from "./hooks/use-slot-element";
+import { useTabCloseGuard } from "./hooks/use-tab-close-guard";
+import { useV2PresetExecution } from "./hooks/use-v2-preset-execution";
+import { useV2TerminalLauncher } from "./hooks/use-v2-terminal-launcher";
+import { useV2WorkspacePaneLayout } from "./hooks/use-v2-workspace-pane-layout";
+import { useV2WorkspaceRun } from "./hooks/use-v2-workspace-run";
+import { useWorkspaceFileNavigation } from "./hooks/use-workspace-file-navigation";
+import { useWorkspaceHotkeys } from "./hooks/use-workspace-hotkeys";
+import { useWorkspacePaneOpeners } from "./hooks/use-workspace-pane-openers";
+import { WorkspaceGitStatusProvider } from "./providers/workspace-git-status-provider";
+import { FileDocumentStoreProvider } from "./state/file-document-store";
 import type { PaneViewerData } from "./types";
-import type { V2WorkspaceUrlOpenTarget } from "./utils/openUrlInV2Workspace";
+import type { V2WorkspaceUrlOpenTarget } from "./utils/open-url-in-v2-workspace";
 
 interface WorkspaceSearch {
-	terminalId?: string;
-	focusRequestId?: string;
 	openUrl?: string;
 	openUrlTarget?: V2WorkspaceUrlOpenTarget;
 	openUrlRequestId?: string;
@@ -81,8 +75,6 @@ export const Route = createFileRoute(
 )({
 	component: V2WorkspacePage,
 	validateSearch: (raw: Record<string, unknown>): WorkspaceSearch => ({
-		terminalId: parseNonEmptyString(raw.terminalId),
-		focusRequestId: parseNonEmptyString(raw.focusRequestId),
 		openUrl: parseNonEmptyString(raw.openUrl),
 		openUrlTarget: parseOpenUrlTarget(raw.openUrlTarget),
 		openUrlRequestId: parseNonEmptyString(raw.openUrlRequestId),
@@ -119,13 +111,7 @@ function V2WorkspacePage() {
 }
 
 function V2WorkspaceContent() {
-	const {
-		terminalId,
-		focusRequestId,
-		openUrl,
-		openUrlTarget,
-		openUrlRequestId,
-	} = Route.useSearch();
+	const { openUrl, openUrlTarget, openUrlRequestId } = Route.useSearch();
 	const { workspace } = useWorkspace();
 	const workspaceId = workspace.id;
 
@@ -156,13 +142,6 @@ function V2WorkspaceContent() {
 		matchedPresets,
 		resolvePresetCommands,
 	});
-	useConsumeAutomationRunLink({
-		store,
-		workspaceId,
-		terminalId,
-		focusRequestId,
-	});
-	useCreatePendingMigratedTerminals({ workspaceId, isLayoutReady });
 	useAutoAdoptBackgroundSessions({ store, workspaceId, isLayoutReady });
 	useConsumeOpenUrlRequest({
 		store,
@@ -206,8 +185,6 @@ function V2WorkspaceContent() {
 		newTabPresets,
 		executePreset,
 	});
-
-	const isChatV3Enabled = useFeatureFlagEnabled(FEATURE_FLAGS.CHAT_V3) ?? false;
 
 	const quickOpenOpen = useQuickOpenStore(
 		(s) => s.open && s.target?.workspaceId === workspaceId,
@@ -330,7 +307,7 @@ function V2WorkspaceContent() {
 							renderAddTabMenu={() => (
 								<AddTabMenu
 									onAddTerminal={addTerminalTab}
-									onAddChatV3={isChatV3Enabled ? addChatV3Tab : undefined}
+									onAddChatV3={addChatV3Tab}
 									onAddBrowser={addBrowserTab}
 									showPresetsBar={showPresetsBar}
 									onToggleShowPresetsBar={setShowPresetsBar}
@@ -386,7 +363,7 @@ function V2WorkspaceContent() {
 							renderEmptyState={() => (
 								<WorkspaceEmptyState
 									onOpenBrowser={addBrowserTab}
-									onOpenChatV3={isChatV3Enabled ? addChatV3Tab : undefined}
+									onOpenChatV3={addChatV3Tab}
 									onOpenQuickOpen={handleQuickOpen}
 									onOpenTerminal={addTerminalTab}
 								/>
@@ -428,7 +405,6 @@ function V2WorkspaceContent() {
 				open={quickOpenOpen}
 				onOpenChange={handleQuickOpenChange}
 				onSelectFile={handleQuickOpenSelectFile}
-				variant="v2"
 				recentlyViewedFiles={recentFiles}
 				openFilePaths={openFilePaths}
 			/>

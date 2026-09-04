@@ -15,7 +15,7 @@ import {
 	workspaceCleanupRouter,
 } from "../src/trpc/router/workspace-cleanup/workspace-cleanup";
 import type { HostServiceContext } from "../src/types";
-import { WorkerTaskError } from "../src/workers/WorkerTaskRunner";
+import { WorkerTaskError } from "../src/workers/worker-task-runner";
 
 type WorkspaceRow = {
 	id: string;

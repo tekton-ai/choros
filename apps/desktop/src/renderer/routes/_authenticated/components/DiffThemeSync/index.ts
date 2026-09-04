@@ -1,1 +1,0 @@
-export { DiffThemeSync } from "./DiffThemeSync";

@@ -1,1 +1,0 @@
-export { getBaseName } from "./pathBasename";

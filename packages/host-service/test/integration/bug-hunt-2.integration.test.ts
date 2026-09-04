@@ -15,7 +15,7 @@ import {
 import { dirname, join } from "node:path";
 import { eq } from "drizzle-orm";
 import { projects, workspaces } from "../../src/db/schema";
-import { createTestHost, type TestHost } from "../helpers/createTestHost";
+import { createTestHost, type TestHost } from "../helpers/create-test-host";
 import { createGitFixture, type GitFixture } from "../helpers/git-fixture";
 
 describe("bug-hunt-2: symlink and additional sandbox probes", () => {

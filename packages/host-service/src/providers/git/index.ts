@@ -1,2 +1,2 @@
-export { CloudGitCredentialProvider } from "./CloudGitCredentialProvider";
-export { LocalGitCredentialProvider } from "./LocalGitCredentialProvider";
+export { CloudGitCredentialProvider } from "./cloud-git-credential-provider";
+export { LocalGitCredentialProvider } from "./local-git-credential-provider";

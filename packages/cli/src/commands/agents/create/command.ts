@@ -1,5 +1,4 @@
 import { CLIError, number, string } from "@choros/cli-framework";
-import { getHostId } from "@choros/shared/host-info";
 import { TERMINAL_HANDOFF_MAX_CHARS } from "@choros/shared/terminal-session-handoff";
 import { command } from "../../../lib/command";
 import { resolveHostTarget } from "../../../lib/host-target";
@@ -11,7 +10,6 @@ export default command({
 	description: "Create an agent session in an existing workspace",
 	options: {
 		workspace: string().required().desc("Workspace ID"),
-		host: string().desc("Host the workspace lives on (default: this machine)"),
 		agent: string()
 			.required()
 			.desc(
@@ -48,12 +46,7 @@ export default command({
 				"Local file path to upload as an attachment to the host. Repeatable",
 			),
 	},
-	run: async ({ ctx, options }) => {
-		const organizationId = ctx.config.organizationId;
-		if (!organizationId) {
-			throw new CLIError("No active organization", "Run: choros auth login");
-		}
-
+	run: async ({ options }) => {
 		const sessionOperations = [
 			options.resumeSession && "--resume-session",
 			options.forkSession && "--fork-session",
@@ -85,24 +78,15 @@ export default command({
 			);
 		}
 
-		const hostId = options.host ?? getHostId();
-		const { workspace } = await findWorkspaceOnHost(
-			{ organizationId, userJwt: ctx.bearer, api: ctx.api, hostId },
-			options.workspace,
-		);
+		const { hostId, workspace } = await findWorkspaceOnHost(options.workspace);
 		if (!workspace) {
 			throw new CLIError(
 				`Workspace not found on host ${hostId}: ${options.workspace}`,
-				"Pass --host <id> if it lives on another machine",
+				"List local workspaces with: choros workspaces list",
 			);
 		}
 
-		const target = await resolveHostTarget({
-			requestedHostId: hostId,
-			organizationId,
-			userJwt: ctx.bearer,
-			api: ctx.api,
-		});
+		const target = await resolveHostTarget();
 
 		const prompt = options.fromTerminal
 			? await buildHandoffPromptFromTerminal(target.client, {

@@ -3,7 +3,7 @@ import {
 	createTestHost,
 	type TestHost,
 	type TestHostOptions,
-} from "./createTestHost";
+} from "./create-test-host";
 import { createGitFixture, type GitFixture } from "./git-fixture";
 import { seedProject, seedWorkspace } from "./seed";
 

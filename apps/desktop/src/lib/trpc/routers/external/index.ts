@@ -1,20 +1,12 @@
 import fs from "node:fs";
 import nodePath from "node:path";
-import {
-	EXTERNAL_APPS,
-	NON_EDITOR_APPS,
-	projects,
-	settings,
-} from "@choros/local-db";
+import { EXTERNAL_APPS, NON_EDITOR_APPS, settings } from "@choros/local-db";
 import { TRPCError } from "@trpc/server";
-import { eq } from "drizzle-orm";
 import { app, clipboard, shell } from "electron";
 import { localDb } from "main/lib/local-db";
 import { externalUrlLogLabel, isSafeExternalUrl } from "main/lib/safe-url";
 import { z } from "zod";
 import { publicProcedure, router } from "../..";
-import { getWorkspace } from "../workspaces/utils/db-helpers";
-import { getWorkspacePath } from "../workspaces/utils/worktree";
 import {
 	type ExternalApp,
 	getAppCommand,
@@ -61,16 +53,8 @@ function ensureGlobalDefaultEditor(app: ExternalApp) {
 	}
 }
 
-/** Resolves the default editor from project setting, then global setting. */
-export function resolveDefaultEditor(projectId?: string): ExternalApp | null {
-	if (projectId) {
-		const project = localDb
-			.select()
-			.from(projects)
-			.where(eq(projects.id, projectId))
-			.get();
-		if (project?.defaultApp) return project.defaultApp;
-	}
+/** Resolves the global default editor. */
+export function resolveDefaultEditor(): ExternalApp | null {
 	const row = localDb.select().from(settings).get();
 	return row?.defaultEditor ?? null;
 }
@@ -210,15 +194,6 @@ export const createExternalRouter = () => {
 				}
 				await openPathInApp(input.path, input.app);
 
-				// Persist defaults only after successful launch
-				if (input.projectId) {
-					localDb
-						.update(projects)
-						.set({ defaultApp: input.app })
-						.where(eq(projects.id, input.projectId))
-						.run();
-				}
-
 				// Auto-set global default editor on first successful use (best-effort)
 				try {
 					ensureGlobalDefaultEditor(input.app);
@@ -238,46 +213,6 @@ export const createExternalRouter = () => {
 			clipboard.writeText(input);
 		}),
 
-		resolvePath: publicProcedure
-			.input(
-				z.object({
-					path: z.string(),
-					/** Absolute workspace worktree path — relative `path`s are resolved against this. */
-					worktreePath: z.string().optional(),
-				}),
-			)
-			.query(({ input }) =>
-				withResolveGuard(() => resolvePath(input.path, input.worktreePath)),
-			),
-
-		statPath: publicProcedure
-			.input(
-				z.object({
-					path: z.string(),
-					workspaceId: z.string().optional(),
-				}),
-			)
-			.mutation(({ input }) =>
-				withResolveGuard(async () => {
-					const workspace = input.workspaceId
-						? getWorkspace(input.workspaceId)
-						: null;
-					const cwd = workspace
-						? (getWorkspacePath(workspace) ?? undefined)
-						: undefined;
-					const resolved = resolvePath(input.path, cwd);
-					try {
-						const stats = await fs.promises.stat(resolved);
-						return {
-							isDirectory: stats.isDirectory(),
-							resolvedPath: resolved,
-						};
-					} catch {
-						return null;
-					}
-				}),
-			),
-
 		openFileInEditor: publicProcedure
 			.input(
 				z.object({
@@ -293,20 +228,14 @@ export const createExternalRouter = () => {
 					 */
 					worktreePath: z.string().optional(),
 					projectId: z.string().optional(),
-					/**
-					 * Explicit app override from the caller (e.g. the v2 CMD+O
-					 * choice stored client-side in tanstack-db). When provided,
-					 * bypasses the server-side `resolveDefaultEditor` lookup —
-					 * which only knows about v1 localDb tables and would
-					 * otherwise return a stale global default for v2 projects.
-					 */
+					/** Explicit app override from the caller's v2 project preferences. */
 					app: ExternalAppSchema.optional(),
 				}),
 			)
 			.mutation(({ input }) =>
 				withResolveGuard(async () => {
 					const filePath = resolvePath(input.path, input.worktreePath);
-					const app = input.app ?? resolveDefaultEditor(input.projectId);
+					const app = input.app ?? resolveDefaultEditor();
 
 					if (!app) {
 						// No preferred editor configured yet.

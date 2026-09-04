@@ -1,1 +1,0 @@
-export { SelectChip } from "./SelectChip";

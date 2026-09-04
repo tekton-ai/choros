@@ -43,11 +43,11 @@ function stripComments(src: string): string {
 // Files in the daemon ↔ host wire data path. If any of these grow a base64
 // or per-chunk-utf8 hop, the canary fires.
 const DATA_PATH_FILES = [
-	"packages/pty-daemon/src/Server/Server.ts",
+	"packages/pty-daemon/src/server/server.ts",
 	"packages/pty-daemon/src/handlers/handlers.ts",
 	"packages/pty-daemon/src/protocol/messages.ts",
 	"packages/pty-daemon/src/protocol/framing.ts",
-	"packages/host-service/src/terminal/DaemonClient/DaemonClient.ts",
+	"packages/host-service/src/terminal/daemon-client/daemon-client.ts",
 ];
 
 describe("data path is base64-free", () => {

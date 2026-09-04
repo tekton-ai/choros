@@ -11,7 +11,7 @@ import { strict as assert } from "node:assert";
 import * as os from "node:os";
 import * as path from "node:path";
 import { after, before, test } from "node:test";
-import { Server } from "../src/Server/index.ts";
+import { Server } from "../src/server/index.ts";
 import { connectAndHello, payloadAsString } from "./helpers/client.ts";
 
 const sockPath = path.join(os.tmpdir(), `pty-daemon-flow-${process.pid}.sock`);

@@ -4,7 +4,7 @@ initSentry();
 
 import { createRouter, RouterProvider } from "@tanstack/react-router";
 import ReactDom from "react-dom/client";
-import { BootErrorBoundary } from "./components/BootErrorBoundary";
+import { BootErrorBoundary } from "./components/boot-error-boundary";
 import {
 	cleanupBootErrorHandling,
 	initBootErrorHandling,
@@ -14,11 +14,10 @@ import {
 } from "./lib/boot-errors";
 import { sweepDeadPersistedKeys } from "./lib/persisted-keys";
 import { persistentHistory } from "./lib/persistent-hash-history";
-import { posthog } from "./lib/posthog";
 import { pruneExpiredTerminalState } from "./lib/terminal/terminal-buffer-gc";
-import { electronQueryClient } from "./providers/ElectronTRPCProvider";
+import { electronQueryClient } from "./providers/electron-trpc-provider";
+import { routeTree } from "./route-tree.gen";
 import { NotFound } from "./routes/not-found";
-import { routeTree } from "./routeTree.gen";
 
 import "./globals.css";
 import "./styles/bundled-fonts.css";
@@ -42,13 +41,6 @@ const router = createRouter({
 	},
 });
 
-const unsubscribe = router.subscribe("onResolved", (event) => {
-	posthog.capture("$pageview", {
-		$current_url: event.toLocation.pathname,
-		$pathname: event.toLocation.pathname,
-	});
-});
-
 const handleDeepLink = (path: string) => {
 	console.log("[deep-link] Navigating to:", path);
 	router.navigate({ to: path });
@@ -64,7 +56,6 @@ if (ipcRenderer) {
 
 if (import.meta.hot) {
 	import.meta.hot.dispose(() => {
-		unsubscribe();
 		if (ipcRenderer) {
 			ipcRenderer.off("deep-link-navigate", handleDeepLink);
 		}

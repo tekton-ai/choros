@@ -1,22 +1,17 @@
 import { boolean, CLIError, number, string } from "@choros/cli-framework";
 import { command } from "../../../lib/command";
-import { requireHostTarget, resolveHostTarget } from "../../../lib/host-target";
+import { resolveHostTarget } from "../../../lib/host-target";
 import { uploadAttachments } from "../../../lib/upload-attachments";
 
 export default command({
 	description: "Create a workspace on a host",
 	options: {
-		host: string().desc("Target host machineId"),
-		local: boolean().desc("Target this machine"),
 		project: string().desc(
 			"Project ID. Omit to create a project-less session (a managed scratch folder)",
 		),
 		name: string().desc("Workspace name"),
-		branch: string().desc("Git branch (required unless --pr or --task is set)"),
+		branch: string().desc("Git branch (required unless --pr is set)"),
 		pr: number().desc("PR number — checks out the verified PR head"),
-		task: string().desc(
-			"Task ID to link. When --branch is omitted, the task's provider branch name (e.g. Linear's) is used verbatim",
-		),
 		baseBranch: string().desc(
 			"Branch to fork from when `branch` does not exist (defaults to project default)",
 		),
@@ -46,12 +41,7 @@ export default command({
 				"Workspace tag. Repeatable. Each tag files the workspace into a sidebar folder of the same name",
 			),
 	},
-	run: async ({ ctx, options }) => {
-		const organizationId = ctx.config.organizationId;
-		if (!organizationId) {
-			throw new CLIError("No active organization", "Run: choros auth login");
-		}
-
+	run: async ({ options }) => {
 		const projectId = options.project;
 		const isSession = projectId === undefined;
 		if (isSession) {
@@ -59,7 +49,6 @@ export default command({
 				["--branch", options.branch],
 				["--pr", options.pr],
 				["--base-branch", options.baseBranch],
-				["--task", options.task],
 				["--skip-branch-prefix", options.skipBranchPrefix || undefined],
 				["--tag", options.tag?.length ? options.tag : undefined],
 			] as const) {
@@ -77,10 +66,10 @@ export default command({
 					"Use --branch <name> or --pr <number>",
 				);
 			}
-			if (!options.branch && !options.pr && !options.task) {
+			if (!options.branch && !options.pr) {
 				throw new CLIError(
-					"Specify --branch, --pr, or --task",
-					"Use --branch <name>, --pr <number>, or --task <id>",
+					"Specify --branch or --pr",
+					"Use --branch <name> or --pr <number>",
 				);
 			}
 		}
@@ -110,17 +99,7 @@ export default command({
 			);
 		}
 
-		const hostId = requireHostTarget({
-			host: options.host ?? undefined,
-			local: options.local ?? undefined,
-		});
-
-		const target = await resolveHostTarget({
-			requestedHostId: hostId,
-			organizationId,
-			userJwt: ctx.bearer,
-			api: ctx.api,
-		});
+		const target = await resolveHostTarget();
 
 		if (!isSession && !options.name) {
 			throw new CLIError("--name is required when --project is set");
@@ -162,7 +141,6 @@ export default command({
 			name: options.name,
 			branch: options.branch,
 			pr: options.pr,
-			taskId: options.task,
 			baseBranch: options.baseBranch,
 			skipBranchPrefix: options.skipBranchPrefix ?? undefined,
 			agents,

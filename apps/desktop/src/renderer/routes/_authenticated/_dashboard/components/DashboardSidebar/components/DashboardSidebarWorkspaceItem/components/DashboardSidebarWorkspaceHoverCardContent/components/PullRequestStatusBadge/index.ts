@@ -1,1 +1,0 @@
-export { PullRequestStatusBadge } from "./PullRequestStatusBadge";

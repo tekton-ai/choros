@@ -2,10 +2,15 @@ export type {
 	ClaudeAdapterOptions,
 	ClaudeQuery,
 	ClaudeSession,
-} from "./claudeAdapter";
-export { ClaudeAdapter } from "./claudeAdapter";
-export { createClaudeAdapter } from "./createClaudeAdapter";
-export type { ToolOutcome, ToolUse } from "./mapToolUse";
-export { contentFor, locationsFor, titleFor, toolKindFor } from "./mapToolUse";
-export type { ClaudeTranslatorOptions } from "./translateStream";
-export { ClaudeTranslator, HARNESS_ID } from "./translateStream";
+} from "./claude-adapter";
+export { ClaudeAdapter } from "./claude-adapter";
+export { createClaudeAdapter } from "./create-claude-adapter";
+export type { ToolOutcome, ToolUse } from "./map-tool-use";
+export {
+	contentFor,
+	locationsFor,
+	titleFor,
+	toolKindFor,
+} from "./map-tool-use";
+export type { ClaudeTranslatorOptions } from "./translate-stream";
+export { ClaudeTranslator, HARNESS_ID } from "./translate-stream";

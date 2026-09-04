@@ -1,1 +1,0 @@
-export { slackRouter } from "./slack";

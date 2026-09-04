@@ -1,8 +1,3 @@
-import {
-	spawn as defaultSpawn,
-	type Pty,
-	type SpawnOptions,
-} from "../Pty/index.ts";
 import type {
 	CloseMessage,
 	InputMessage,
@@ -15,7 +10,12 @@ import type {
 	SubscribeMessage,
 	UnsubscribeMessage,
 } from "../protocol/index.ts";
-import type { Session, SessionStore } from "../SessionStore/index.ts";
+import {
+	spawn as defaultSpawn,
+	type Pty,
+	type SpawnOptions,
+} from "../pty/index.ts";
+import type { Session, SessionStore } from "../session-store/index.ts";
 
 /**
  * Per-connection state owned by the Server. Handlers receive a Conn ref to

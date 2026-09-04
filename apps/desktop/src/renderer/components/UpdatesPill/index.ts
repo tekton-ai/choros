@@ -1,1 +1,0 @@
-export { UpdatesPill } from "./UpdatesPill";

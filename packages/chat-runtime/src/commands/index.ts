@@ -1,4 +1,4 @@
-export { CommandDedupe, DEFAULT_DEDUPE_CAPACITY } from "./commandDedupe";
+export { CommandDedupe, DEFAULT_DEDUPE_CAPACITY } from "./command-dedupe";
 export type {
 	ChatCommands,
 	CommandsOptions,

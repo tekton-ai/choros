@@ -1,9 +1,8 @@
 import type { AgentIdentity } from "@choros/shared/agent-identity";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
-import { terminalSessions, workspaces } from "../../../db/schema";
+import { terminalSessions } from "../../../db/schema";
 import { mapEventType } from "../../../events";
-import type { HostServiceContext } from "../../../types";
 import { publicProcedure, router } from "../../index";
 
 // Hook scripts emit "" for unset env vars; we coerce to undefined so the
@@ -41,36 +40,6 @@ function normalizeAgentIdentity(
 			? { definitionId: definitionId as AgentIdentity["definitionId"] }
 			: {}),
 	};
-}
-
-// Tasks already nudged to "started" this process. `Start` fires on every
-// agent turn and tool use, so gate the cloud call to once per task per
-// process — `task.start` is idempotent and forward-only server-side, so a
-// duplicate after a restart is harmless.
-const startedTaskIds = new Set<string>();
-
-function markLinkedTaskStarted(
-	ctx: HostServiceContext,
-	workspaceId: string,
-): void {
-	const workspace = ctx.db.query.workspaces
-		.findFirst({
-			where: eq(workspaces.id, workspaceId),
-			columns: { taskId: true },
-		})
-		.sync();
-	const taskId = workspace?.taskId;
-	if (!taskId || startedTaskIds.has(taskId)) return;
-	startedTaskIds.add(taskId);
-	void ctx.api.task.start.mutate({ id: taskId }).catch((err) => {
-		// Let a later Start event retry — calls are event-driven (one per
-		// agent turn/tool use at most), so a cloud outage can't tight-loop.
-		startedTaskIds.delete(taskId);
-		console.warn(
-			`[notifications.hook] failed to mark task ${taskId} as started:`,
-			err,
-		);
-	});
 }
 
 export const notificationsRouter = router({
@@ -126,9 +95,6 @@ export const notificationsRouter = router({
 
 		// An agent began working in this workspace — nudge the linked task
 		// to In Progress.
-		if (eventType === "Start") {
-			markLinkedTaskStarted(ctx, terminalSession.originWorkspaceId);
-		}
 
 		return { success: true, ignored: false as const };
 	}),

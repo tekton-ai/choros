@@ -16,7 +16,6 @@ beforeEach(() => {
 describe("createTerminalScript", () => {
 	test("appends a legacy-compatible terminal preset", () => {
 		const script = createTerminalScript({
-			organizationId: "org-a",
 			name: " Dev server ",
 			commands: [" bun run dev ", " bun run worker "],
 			projectIds: ["project-a", "project-a", "project-b"],
@@ -34,7 +33,6 @@ describe("createTerminalScript", () => {
 			useAsWorkspaceRun: undefined,
 			executionMode: "split-pane",
 			cliImportPending: true,
-			cliTargetOrganizationId: "org-a",
 		});
 		expect(readSettingsRow()?.terminalPresets).toEqual([script]);
 	});
@@ -52,7 +50,6 @@ describe("createTerminalScript", () => {
 		});
 
 		createTerminalScript({
-			organizationId: "org-a",
 			name: "New",
 			commands: ["echo new"],
 			pinnedToBar: false,

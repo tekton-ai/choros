@@ -17,8 +17,8 @@
 import { strict as assert } from "node:assert";
 import { spawnSync } from "node:child_process";
 import { after, describe, test } from "node:test";
-import { spawn } from "../src/Pty/index.ts";
 import type { SessionMeta } from "../src/protocol/index.ts";
+import { spawn } from "../src/pty/index.ts";
 
 interface PsRow {
 	pid: number;

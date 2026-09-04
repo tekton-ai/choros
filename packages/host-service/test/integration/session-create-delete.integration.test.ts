@@ -13,7 +13,7 @@ import { basename, dirname, join } from "node:path";
 import { eq } from "drizzle-orm";
 import { workspaces } from "../../src/db/schema";
 import { defaultSessionsRoot } from "../../src/trpc/router/workspace-creation/shared/session-paths";
-import { createTestHost, type TestHost } from "../helpers/createTestHost";
+import { createTestHost, type TestHost } from "../helpers/create-test-host";
 
 /**
  * Session workspaces: project-less rows whose worktreePath is a standalone

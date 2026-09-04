@@ -1,1 +1,0 @@
-export { SortableSectionHeader } from "./SortableSectionHeader";

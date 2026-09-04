@@ -31,28 +31,28 @@ import { useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { LuCheck, LuChevronRight, LuGitBranch, LuPencil } from "react-icons/lu";
 import { VscChevronDown, VscGitMerge } from "react-icons/vsc";
-import { MarkdownRenderer } from "renderer/components/MarkdownRenderer";
-import { useHostUrl } from "renderer/hooks/host-service/useHostTargetUrl";
-import { useCopyToClipboard } from "renderer/hooks/useCopyToClipboard";
-import { formatRelativeTime } from "renderer/lib/formatRelativeTime";
+import { MarkdownRenderer } from "renderer/components/markdown-renderer";
+import { useHostUrl } from "renderer/hooks/host-service/use-host-target-url";
+import { useCopyToClipboard } from "renderer/hooks/use-copy-to-clipboard";
+import { formatRelativeTime } from "renderer/lib/format-relative-time";
 import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";
-import { WorkItemDetailState } from "renderer/routes/_authenticated/_dashboard/components/WorkItemDetailState";
-import { useProjectHost } from "renderer/routes/_authenticated/_dashboard/hooks/useProjectHost";
-import { PullRequestChecksSection } from "renderer/routes/_authenticated/_dashboard/pull-requests/components/PullRequestChecksSection";
-import { PullRequestListToggle } from "renderer/routes/_authenticated/_dashboard/pull-requests/components/PullRequestListToggle";
-import { parsePositiveIntegerParam } from "renderer/routes/_authenticated/_dashboard/utils/parsePositiveIntegerParam";
+import { WorkItemDetailState } from "renderer/routes/_authenticated/_dashboard/components/work-item-detail-state";
+import { useProjectHost } from "renderer/routes/_authenticated/_dashboard/hooks/use-project-host";
+import { PullRequestChecksSection } from "renderer/routes/_authenticated/_dashboard/pull-requests/components/pull-request-checks-section";
+import { PullRequestListToggle } from "renderer/routes/_authenticated/_dashboard/pull-requests/components/pull-request-list-toggle";
+import { parsePositiveIntegerParam } from "renderer/routes/_authenticated/_dashboard/utils/parse-positive-integer-param";
 import {
 	normalizePRState,
 	PRIcon,
 	type PRState,
-} from "renderer/screens/main/components/PRIcon";
+} from "renderer/screens/main/components/pr-icon";
 import {
 	type LinkedPR,
 	useNewWorkspaceDraftStore,
 } from "renderer/stores/new-workspace-draft";
 import { useOpenNewWorkspaceModal } from "renderer/stores/new-workspace-modal";
 import { Route as PullRequestsLayoutRoute } from "../layout";
-import { PullRequestCodeTab } from "./components/PullRequestCodeTab";
+import { PullRequestCodeTab } from "./components/pull-request-code-tab";
 
 export const Route = createFileRoute(
 	"/_authenticated/_dashboard/pull-requests/$prNumber/",

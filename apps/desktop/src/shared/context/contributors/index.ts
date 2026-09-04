@@ -1,9 +1,9 @@
 import type { ContributorRegistry } from "../types";
 import { attachmentContributor } from "./attachment";
-import { githubIssueContributor } from "./githubIssue";
-import { githubPrContributor } from "./githubPr";
-import { internalTaskContributor } from "./internalTask";
-import { userPromptContributor } from "./userPrompt";
+import { githubIssueContributor } from "./github-issue";
+import { githubPrContributor } from "./github-pr";
+import { internalTaskContributor } from "./internal-task";
+import { userPromptContributor } from "./user-prompt";
 
 export const defaultContributorRegistry: ContributorRegistry = {
 	"user-prompt": userPromptContributor,

@@ -5,4 +5,4 @@ export {
 	createChatV3Mount,
 	registerChatV3Routes,
 } from "./mount";
-export { ChatWorkspaceNotFoundError, createResolveCwd } from "./resolveCwd";
+export { ChatWorkspaceNotFoundError, createResolveCwd } from "./resolve-cwd";

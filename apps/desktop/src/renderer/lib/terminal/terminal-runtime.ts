@@ -29,10 +29,10 @@ import {
 	type ImagePasteOverride,
 	installImagePasteFallback,
 } from "./terminal-image-paste-fallback";
+import { installInputModeReclaimer } from "./terminal-input-mode-reclaimer";
 import { installTerminalKeyEventHandler } from "./terminal-key-event-handler";
 import { getTerminalParkingContainer } from "./terminal-parking";
 import { persistSeqAnchor } from "./terminal-seq-anchor";
-import { installInputModeReclaimer } from "./terminalInputModeReclaimer";
 
 const SERIALIZE_SCROLLBACK = 1000;
 const STORAGE_KEY_PREFIX = TERMINAL_BUFFER_KEY_PREFIX;

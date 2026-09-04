@@ -3,65 +3,16 @@ import hostServicePackageJson from "@choros/host-service/package.json" with {
 	type: "json",
 };
 import { getHostId, getHostName } from "@choros/shared/host-info";
-import { TRPCError } from "@trpc/server";
-import type { ApiClient } from "../../../types";
 import { protectedProcedure, router } from "../../index";
-import { rethrowCloudUnreachable } from "./cloud-api-error";
 
-// Auto-derived from this package's package.json so callers can report exactly
-// which bundled host-service build is currently serving requests.
 const HOST_SERVICE_VERSION: string = hostServicePackageJson.version;
 
-const ORGANIZATION_CACHE_TTL_MS = 60 * 60 * 1000;
-
-let cachedOrganization: {
-	data: { id: string; name: string; slug: string };
-	cachedAt: number;
-} | null = null;
-
-async function getOrganization(
-	api: ApiClient,
-	organizationId: string,
-): Promise<{ id: string; name: string; slug: string }> {
-	if (
-		cachedOrganization &&
-		cachedOrganization.data.id === organizationId &&
-		Date.now() - cachedOrganization.cachedAt < ORGANIZATION_CACHE_TTL_MS
-	) {
-		return cachedOrganization.data;
-	}
-
-	let organization: { id: string; name: string; slug: string } | null;
-	try {
-		organization = await api.organization.getByIdFromJwt.query({
-			id: organizationId,
-		});
-	} catch (error) {
-		rethrowCloudUnreachable(error);
-		throw error;
-	}
-	if (!organization) {
-		throw new TRPCError({
-			code: "PRECONDITION_FAILED",
-			message: "Organization not found or not accessible from JWT",
-		});
-	}
-
-	cachedOrganization = { data: organization, cachedAt: Date.now() };
-	return organization;
-}
-
 export const hostRouter = router({
-	info: protectedProcedure.query(async ({ ctx }) => {
-		const organization = await getOrganization(ctx.api, ctx.organizationId);
-
-		return {
-			hostId: getHostId(),
-			hostName: getHostName(),
-			version: HOST_SERVICE_VERSION,
-			organization,
-			platform: os.platform(),
-			uptime: process.uptime(),
-		};
-	}),
+	info: protectedProcedure.query(() => ({
+		hostId: getHostId(),
+		hostName: getHostName(),
+		version: HOST_SERVICE_VERSION,
+		platform: os.platform(),
+		uptime: process.uptime(),
+	})),
 });

@@ -17,7 +17,7 @@ import type {
 	PaneRegistry,
 	RendererContext,
 } from "../../../../types";
-import { Pane } from "./components/Pane";
+import { Pane } from "./components/pane";
 import {
 	PANE_MIN_SIZE_CLASS_NAME,
 	RESIZE_HANDLE_BASE_Z_INDEX,

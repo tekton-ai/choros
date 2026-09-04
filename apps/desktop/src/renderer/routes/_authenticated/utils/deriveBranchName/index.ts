@@ -1,1 +1,0 @@
-export { deriveBranchName } from "./deriveBranchName";

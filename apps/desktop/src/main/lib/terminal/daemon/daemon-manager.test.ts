@@ -171,10 +171,6 @@ mock.module("../../terminal-host/client", () => ({
 	disposeTerminalHostClient: () => {},
 }));
 
-mock.module("main/lib/analytics", () => ({
-	track: () => {},
-}));
-
 mock.module("../env", () => ({
 	buildTerminalEnv: () => ({}),
 	getDefaultShell: () => "/bin/zsh",

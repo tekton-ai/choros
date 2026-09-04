@@ -22,7 +22,7 @@ import {
 	WorkerTaskError,
 	type WorkerTaskOptions,
 	WorkerTaskRunner,
-} from "./WorkerTaskRunner.ts";
+} from "./worker-task-runner.ts";
 
 // min(4, cpus−1) matches gitStatusRefreshLimiter, +2 headroom so occasional
 // non-limiter tasks (getCommitFiles) can't occupy every worker ahead of

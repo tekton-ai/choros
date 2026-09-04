@@ -8,8 +8,8 @@ import * as fs from "node:fs";
 import * as os from "node:os";
 import * as path from "node:path";
 import { after, before, test } from "node:test";
-import { adoptFromFd, spawn as spawnPty } from "../src/Pty/Pty.ts";
-import { Server } from "../src/Server/index.ts";
+import { adoptFromFd, spawn as spawnPty } from "../src/pty/pty.ts";
+import { Server } from "../src/server/index.ts";
 import { connect, connectAndHello, payloadAsString } from "./helpers/client.ts";
 
 const sockPath = path.join(os.tmpdir(), `pty-daemon-smoke-${process.pid}.sock`);

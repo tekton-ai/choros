@@ -1,6 +1,5 @@
 export {
 	findWorkspaceOnHost,
 	type HostWorkspaceRow,
-	type HostWorkspacesOptions,
 	listWorkspacesOnHost,
-} from "./workspacesOnHost";
+} from "./workspaces-on-host";

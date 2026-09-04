@@ -6,7 +6,6 @@ export default command({
 	description: "Navigate an existing browser pane to a URL",
 	options: {
 		workspace: string().required().desc("Workspace ID"),
-		host: string().desc("Host the workspace lives on (default: this machine)"),
 		pane: string().required().desc("Pane ID (from `choros browser list`)"),
 		url: string().required().desc("URL to navigate to"),
 	},

@@ -1,72 +1,30 @@
 import { observable } from "@trpc/server/observable";
-import { env } from "main/env.main";
 import {
 	getHostServiceCoordinator,
 	type HostServiceStatusEvent,
-	isSafeOrganizationId,
 } from "main/lib/host-service-coordinator";
-import { z } from "zod";
 import { publicProcedure, router } from "../..";
-import { loadToken } from "../auth/utils/auth-functions";
-import { requireOrganizationMemberToken } from "./organization-membership";
 
-const orgInput = z.object({
-	organizationId: z.string().refine(isSafeOrganizationId, {
-		message: "Invalid organization ID",
-	}),
-});
-
-export const createHostServiceCoordinatorRouter = () => {
-	return router({
-		getConnection: publicProcedure.input(orgInput).query(({ input }) => {
-			const coordinator = getHostServiceCoordinator();
-			return coordinator.getConnection(input.organizationId);
-		}),
-
-		// All running local host connections, across every org — used to broadcast
-		// workspace-session disposal so a non-active-org workspace's terminals are
-		// cleaned up regardless of which org is currently active.
-		getConnections: publicProcedure.query(() => {
-			const coordinator = getHostServiceCoordinator();
-			return coordinator.getConnections();
-		}),
-
-		getProcessStatus: publicProcedure.input(orgInput).query(({ input }) => {
-			const coordinator = getHostServiceCoordinator();
-			return { status: coordinator.getProcessStatus(input.organizationId) };
-		}),
-
-		restart: publicProcedure.input(orgInput).mutation(async ({ input }) => {
-			const coordinator = getHostServiceCoordinator();
-			const token = requireOrganizationMemberToken(
-				await loadToken(),
-				input.organizationId,
-			);
-			return coordinator.restart(input.organizationId, {
-				authToken: token,
-				cloudApiUrl: env.NEXT_PUBLIC_API_URL,
-			});
-		}),
-
-		reset: publicProcedure.input(orgInput).mutation(async ({ input }) => {
-			const coordinator = getHostServiceCoordinator();
-			const token = requireOrganizationMemberToken(
-				await loadToken(),
-				input.organizationId,
-			);
-			return coordinator.reset(input.organizationId, {
-				authToken: token,
-				cloudApiUrl: env.NEXT_PUBLIC_API_URL,
-			});
-		}),
-
-		onStatusChange: publicProcedure.subscription(() => {
-			return observable<HostServiceStatusEvent>((emit) => {
+export const createHostServiceCoordinatorRouter = () =>
+	router({
+		getConnection: publicProcedure.query(() =>
+			getHostServiceCoordinator().getConnection(),
+		),
+		getConnections: publicProcedure.query(() =>
+			getHostServiceCoordinator().getConnections(),
+		),
+		getProcessStatus: publicProcedure.query(() => ({
+			status: getHostServiceCoordinator().getProcessStatus(),
+		})),
+		restart: publicProcedure.mutation(() =>
+			getHostServiceCoordinator().restart(),
+		),
+		onStatusChange: publicProcedure.subscription(() =>
+			observable<HostServiceStatusEvent>((emit) => {
 				const coordinator = getHostServiceCoordinator();
 				const handler = (event: HostServiceStatusEvent) => emit.next(event);
 				coordinator.on("status-changed", handler);
 				return () => coordinator.off("status-changed", handler);
-			});
-		}),
+			}),
+		),
 	});
-};

@@ -1,1 +1,0 @@
-export { usePaymentFailedCard } from "./usePaymentFailedCard";

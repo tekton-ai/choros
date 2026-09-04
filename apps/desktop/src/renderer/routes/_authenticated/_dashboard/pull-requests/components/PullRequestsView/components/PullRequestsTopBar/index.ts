@@ -1,1 +1,0 @@
-export { PullRequestsTopBar } from "./PullRequestsTopBar";

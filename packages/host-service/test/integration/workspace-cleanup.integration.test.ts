@@ -23,7 +23,7 @@ import {
 import { __resetSessionsForTesting } from "../../src/terminal/terminal";
 import { __setAccountShellForTesting } from "../../src/terminal/user-shell";
 import { cloudFlows } from "../helpers/cloud-fakes";
-import { createTestHost } from "../helpers/createTestHost";
+import { createTestHost } from "../helpers/create-test-host";
 import { createGitFixture } from "../helpers/git-fixture";
 import {
 	createBasicScenario,

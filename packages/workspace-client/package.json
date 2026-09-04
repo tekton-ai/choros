@@ -9,8 +9,8 @@
 			"default": "./src/index.ts"
 		},
 		"./relay-socket": {
-			"types": "./src/lib/relaySocket/index.ts",
-			"default": "./src/lib/relaySocket/index.ts"
+			"types": "./src/lib/relay-socket/index.ts",
+			"default": "./src/lib/relay-socket/index.ts"
 		}
 	},
 	"scripts": {

@@ -23,9 +23,11 @@
 
 import { auth } from "@choros/auth/server";
 import { db } from "@choros/db/client";
+import { usageEvents } from "@choros/db/schema";
 import { sessions } from "@choros/db/schema/auth";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
+import { handleUsageEvent } from "./usage";
 
 type Env = {
 	AUTH_SELF_URL: string; // e.g. https://auth.choros.sh
@@ -35,6 +37,13 @@ const app = new Hono<{ Bindings: Env }>();
 
 app.use(
 	"/api/auth/*",
+	cors({
+		origin: (origin) => origin ?? "*",
+		credentials: true,
+	}),
+);
+app.use(
+	"/api/usage/*",
 	cors({
 		origin: (origin) => origin ?? "*",
 		credentials: true,
@@ -100,9 +109,8 @@ app.get("/auth/desktop/success", async (c) => {
 	const session = await auth.api.getSession({ headers: c.req.raw.headers });
 	if (!session) return c.text("Authentication failed", 401);
 
-	// Independent desktop session with its own bearer token so the desktop
-	// app's activeOrganizationId can diverge from the browser's cookie
-	// session (matches production behaviour).
+	// Independent bearer session for the desktop app. Product data remains local;
+	// this session only authenticates the account and usage-event write.
 	const tokenBytes = new Uint8Array(32);
 	crypto.getRandomValues(tokenBytes);
 	const token = base64urlEncode(tokenBytes);
@@ -112,13 +120,6 @@ app.get("/auth/desktop/success", async (c) => {
 		token,
 		userId: session.user.id,
 		expiresAt,
-		userAgent: c.req.header("user-agent") ?? "Choros Desktop App",
-		ipAddress:
-			c.req.header("cf-connecting-ip") ??
-			c.req.header("x-forwarded-for")?.split(",")[0] ??
-			c.req.header("x-real-ip") ??
-			undefined,
-		activeOrganizationId: session.session.activeOrganizationId,
 		updatedAt: new Date(),
 	});
 
@@ -137,13 +138,27 @@ app.get("/auth/desktop/success", async (c) => {
 	);
 });
 
+app.post("/api/usage/events", (c) =>
+	handleUsageEvent(c.req.raw, {
+		getUserId: async (headers) =>
+			(await auth.api.getSession({ headers }))?.user.id ?? null,
+		insertEvent: async (event) => {
+			await db
+				.insert(usageEvents)
+				.values(event)
+				.onConflictDoNothing({ target: usageEvents.id });
+		},
+	}),
+);
+
 app.get("/", (c) =>
 	c.text(
 		`Choros auth server\n\n` +
 			`Endpoints:\n` +
 			`  /api/auth/*                 — better-auth handler\n` +
 			`  /api/auth/desktop/connect   — desktop OAuth initiator\n` +
-			`  /auth/desktop/success       — post-OAuth landing\n`,
+			`  /auth/desktop/success      — post-OAuth landing\n` +
+			`  /api/usage/events          — authenticated desktop-open event\n`,
 	),
 );
 

@@ -14,69 +14,69 @@ app/
 ├── dashboard/
 │   ├── page.tsx
 │   ├── components/
-│   │   └── MetricsChart/
-│   │       ├── MetricsChart.tsx
-│   │       ├── MetricsChart.test.tsx      # Tests co-located
+│   │   └── metrics-chart/
+│   │       ├── metrics-chart.tsx
+│   │       ├── metrics-chart.test.tsx
 │   │       ├── index.ts
 │   │       └── constants.ts
-│   ├── hooks/                             # Hooks used only in dashboard
-│   │   └── useMetrics/
-│   │       ├── useMetrics.ts
-│   │       ├── useMetrics.test.ts
+│   ├── hooks/
+│   │   └── use-metrics/
+│   │       ├── use-metrics.ts
+│   │       ├── use-metrics.test.ts
 │   │       └── index.ts
-│   ├── utils/                             # Utils used only in dashboard
-│   │   └── formatData/
-│   │       ├── formatData.ts
-│   │       ├── formatData.test.ts
+│   ├── utils/
+│   │   └── format-data/
+│   │       ├── format-data.ts
+│   │       ├── format-data.test.ts
 │   │       └── index.ts
-│   ├── stores/                            # Stores used only in dashboard
-│   │   └── dashboardStore/
-│   │       ├── dashboardStore.ts
+│   ├── stores/
+│   │   └── dashboard-store/
+│   │       ├── dashboard-store.ts
 │   │       └── index.ts
-│   └── providers/                         # Providers for dashboard context
-│       └── DashboardProvider/
-│           ├── DashboardProvider.tsx
+│   └── providers/
+│       └── dashboard-provider/
+│           ├── dashboard-provider.tsx
 │           └── index.ts
 └── components/
-    ├── Sidebar/
-    │   ├── Sidebar.tsx
-    │   ├── Sidebar.test.tsx               # Tests co-located
+    ├── sidebar/
+    │   ├── sidebar.tsx
+    │   ├── sidebar.test.tsx
     │   ├── index.ts
-    │   ├── components/                    # Used 2+ times IN Sidebar
-    │   │   └── SidebarButton/             # Shared by SidebarNav + SidebarFooter
-    │   │       ├── SidebarButton.tsx
-    │   │       ├── SidebarButton.test.tsx
+    │   ├── components/
+    │   │   └── sidebar-button/
+    │   │       ├── sidebar-button.tsx
+    │   │       ├── sidebar-button.test.tsx
     │   │       └── index.ts
-    │   ├── SidebarNav/
-    │   │   ├── SidebarNav.tsx
+    │   ├── sidebar-nav/
+    │   │   ├── sidebar-nav.tsx
     │   │   └── index.ts
-    │   └── SidebarFooter/
-    │       ├── SidebarFooter.tsx
+    │   └── sidebar-footer/
+    │       ├── sidebar-footer.tsx
     │       └── index.ts
-    └── HeroSection/
-        ├── HeroSection.tsx
-        ├── HeroSection.test.tsx           # Tests co-located
+    └── hero-section/
+        ├── hero-section.tsx
+        ├── hero-section.test.tsx
         ├── index.ts
-        └── components/                    # Used ONLY by HeroSection
-            └── HeroCanvas/
-                ├── HeroCanvas.tsx
-                ├── HeroCanvas.test.tsx
-                ├── HeroCanvas.stories.tsx
+        └── components/
+            └── hero-canvas/
+                ├── hero-canvas.tsx
+                ├── hero-canvas.test.tsx
+                ├── hero-canvas.stories.tsx
                 ├── index.ts
                 └── config.ts
 
-components/                                # Used in 2+ pages (last resort)
-└── Header/
+components/
+└── header/
 ```
 
-1. **One folder per component**: `ComponentName/ComponentName.tsx` + `index.ts` for barrel export
-2. **Co-locate by usage**: If used once, nest under parent's `components/`. If used 2+ times, promote to **highest shared parent's** `components/` (or `components/` as last resort)
-3. **One component per file**: No multi-component files
-4. **Co-locate dependencies**: Utils, hooks, constants, config, tests, stories live next to the file using them
+1. **Code and directory names use kebab-case**: every code filename and every directory name uses lowercase words separated by hyphens (`metrics-chart.tsx`, `use-metrics/`). Documentation filenames have no naming restriction.
+2. **Preserve tool-required syntax**: leading route/dot markers and standardized sentinel names may remain when a framework requires them (for example `_authenticated/`, `$workspaceId/`, `.github/ISSUE_TEMPLATE/`, locale tags, and generated migration paths). Do not use this exception for ordinary project-owned names.
+3. **One folder per component**: `component-name/component-name.tsx` + `index.ts` for the barrel export.
+4. **Co-locate by usage**: If used once, nest under the parent's `components/`. If used 2+ times, promote to the **highest shared parent's** `components/` (or root `components/` as a last resort).
+5. **One component per file**: No multi-component files.
+6. **Co-locate dependencies**: Utils, hooks, constants, config, tests, and stories live next to the file using them.
 
-### Exception: shadcn/ui Components
-
-The `src/components/ui/` and `src/components/ai-elements` directories contain shadcn/ui components. These use **kebab-case single files** (e.g., `button.tsx`, `base-node.tsx`) instead of the folder structure above. This is intentional—shadcn CLI expects this format for updates via `bunx shadcn@latest add`.
+The shadcn directories `src/components/ui/` and `src/components/ai-elements/` already follow the same kebab-case filename rule; keep their single-file layout so the shadcn CLI can update them.
 
 ## Database
 

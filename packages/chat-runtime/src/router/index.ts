@@ -5,5 +5,5 @@ export type {
 	ChatRouterOutputs,
 } from "./router";
 export { createChatCallerFactory, createChatRouter } from "./router";
-export type { WsSinkSocket } from "./wsSink";
-export { createWsSink } from "./wsSink";
+export type { WsSinkSocket } from "./ws-sink";
+export { createWsSink } from "./ws-sink";

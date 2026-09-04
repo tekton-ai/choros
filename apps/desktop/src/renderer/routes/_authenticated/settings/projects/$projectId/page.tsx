@@ -1,11 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo } from "react";
-import { useHostProjects } from "renderer/hooks/host-projects/useHostProjects";
+import { useHostProjects } from "renderer/hooks/host-projects/use-host-projects";
 import { NotFound } from "renderer/routes/not-found";
-import { useSettingsSearchQuery } from "renderer/stores/settings-state";
-import { ProjectSettings } from "../../project/$projectId/components/ProjectSettings";
-import { getMatchingItemsForSection } from "../../utils/settings-search";
-import { V2ProjectSettings } from "../../v2-project/$projectId/components/V2ProjectSettings";
+import { V2ProjectSettings } from "../../v2-project/$projectId/components/v2-project-settings";
 
 export const Route = createFileRoute(
 	"/_authenticated/settings/projects/$projectId/",
@@ -16,8 +12,6 @@ export const Route = createFileRoute(
 		search: Record<string, unknown>,
 	): { hostId?: string; focus?: string } => ({
 		hostId: typeof search.hostId === "string" ? search.hostId : undefined,
-		// One-shot deep-link target: scroll to and focus a specific field
-		// (e.g. "naming-instructions" from the new-workspace project picker).
 		focus: typeof search.focus === "string" ? search.focus : undefined,
 	}),
 });
@@ -25,32 +19,16 @@ export const Route = createFileRoute(
 function ProjectDetailPage() {
 	const { projectId } = Route.useParams();
 	const { hostId, focus } = Route.useSearch();
-	const searchQuery = useSettingsSearchQuery();
-
-	const { projects: hostProjects, isReady } = useHostProjects();
-	const v2Match = useMemo(
-		() => hostProjects.filter((project) => project.projectKey === projectId),
-		[hostProjects, projectId],
-	);
-
-	const visibleItems = useMemo(() => {
-		if (!searchQuery) return null;
-		return getMatchingItemsForSection(searchQuery, "project").map(
-			(item) => item.id,
-		);
-	}, [searchQuery]);
-
-	if (v2Match.length > 0) {
-		return (
-			<V2ProjectSettings
-				projectId={projectId}
-				hostId={hostId ?? null}
-				focusField={focus ?? null}
-			/>
-		);
-	}
-	// Cache-first rule: no match + hosts not settled = loading, not the v1
-	// fallback — otherwise every v2 project flashes the legacy settings page.
+	const { projects, isReady } = useHostProjects();
 	if (!isReady) return null;
-	return <ProjectSettings projectId={projectId} visibleItems={visibleItems} />;
+	if (!projects.some((project) => project.projectKey === projectId)) {
+		return <NotFound />;
+	}
+	return (
+		<V2ProjectSettings
+			projectId={projectId}
+			hostId={hostId ?? null}
+			focusField={focus ?? null}
+		/>
+	);
 }

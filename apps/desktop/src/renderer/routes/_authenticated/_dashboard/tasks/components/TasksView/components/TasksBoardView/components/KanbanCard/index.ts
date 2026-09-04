@@ -1,1 +1,0 @@
-export { KanbanCard } from "./KanbanCard";

@@ -6,7 +6,7 @@ import { workspaces } from "../../src/db/schema";
 import { GitWatcher } from "../../src/events/git-watcher";
 import { WorkspaceFilesystemManager } from "../../src/runtime/filesystem";
 import { PullRequestRuntimeManager } from "../../src/runtime/pull-requests/pull-requests";
-import { createTestHost, type TestHost } from "../helpers/createTestHost";
+import { createTestHost, type TestHost } from "../helpers/create-test-host";
 import { createGitFixture, type GitFixture } from "../helpers/git-fixture";
 import { seedProject, seedWorkspace } from "../helpers/seed";
 

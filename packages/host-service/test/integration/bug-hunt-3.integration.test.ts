@@ -8,7 +8,7 @@ import { randomUUID } from "node:crypto";
 import { existsSync, rmSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { projects } from "../../src/db/schema";
-import { createTestHost, type TestHost } from "../helpers/createTestHost";
+import { createTestHost, type TestHost } from "../helpers/create-test-host";
 import { createGitFixture, type GitFixture } from "../helpers/git-fixture";
 
 describe("bug-hunt-3: branch-name path traversal in workspace.create", () => {

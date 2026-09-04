@@ -85,7 +85,7 @@ export function collectWorktreeBatchPaths(
 		// Defensive: ignore anything inside .git/ — the dedicated .git watcher
 		// handles those and the worktree fs watcher's default ignore patterns
 		// already exclude it, but a rare leak shouldn't pollute the paths list.
-		if (relative === ".git" || relative.startsWith(".git/")) return null;
+		if (relative === ".git" || relative.startsWith(".git")) return null;
 		return relative;
 	};
 

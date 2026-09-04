@@ -488,7 +488,6 @@ describe("buildV2TerminalEnv", () => {
 		},
 		shell: "/bin/zsh",
 		chorosHomeDir: "/Users/test/.choros",
-		organizationId: "org-1",
 		cwd: "/tmp/workspace",
 		terminalId: "term-1",
 		workspaceId: "ws-1",
@@ -508,7 +507,6 @@ describe("buildV2TerminalEnv", () => {
 			COLORTERM: "truecolor",
 			PWD: "/tmp/workspace",
 			CHOROS_TERMINAL_ID: "term-1",
-			CHOROS_ORGANIZATION_ID: "org-1",
 			CHOROS_WORKSPACE_ID: "ws-1",
 			CHOROS_WORKSPACE_PATH: "/tmp/workspace",
 			CHOROS_ROOT_PATH: "/tmp/repo",
@@ -622,7 +620,6 @@ describe("v2 env contract boundary", () => {
 			},
 			shell: "/bin/zsh",
 			chorosHomeDir: "/Users/test/.choros",
-			organizationId: "org-abc",
 			cwd: "/tmp/ws",
 			terminalId: "t-1",
 			workspaceId: "w-1",
@@ -637,7 +634,7 @@ describe("v2 env contract boundary", () => {
 		expect(env.HOST_SERVICE_SECRET).toBeUndefined();
 		expect(env.AUTH_TOKEN).toBeUndefined();
 		expect(env.ORGANIZATION_ID).toBeUndefined();
-		expect(env.CHOROS_ORGANIZATION_ID).toBe("org-abc");
+		expect(env.CHOROS_ORGANIZATION_ID).toBeUndefined();
 		expect(env.NODE_ENV).toBeUndefined();
 		expect(env.VITE_SECRET).toBeUndefined();
 		expect(env.npm_package_name).toBeUndefined();

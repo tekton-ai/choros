@@ -14,22 +14,20 @@ import path from "node:path";
 let testRoot = "";
 const isProcessAliveMock = mock((_pid: number) => true);
 
+// Dynamic import is intentional: mocks must be installed before this module loads.
 const realManifest = await import("./host-service-manifest");
 mock.module("./host-service-manifest", () => ({
 	...realManifest,
 	isProcessAlive: isProcessAliveMock,
-	manifestDir: (orgId: string) => path.join(testRoot, orgId),
+	manifestDir: () => testRoot,
 }));
-
 mock.module("@choros/shared/host-info", () => ({
 	getHostId: () => "host-1",
 	getHostName: () => "host",
 }));
-
 const { acquireSpawnLock, readSpawnLock } = await import("./host-service-lock");
 
-const ORG = "org-1";
-const lockFile = () => path.join(testRoot, ORG, "spawn.lock");
+const lockFile = () => path.join(testRoot, "spawn.lock");
 
 describe("acquireSpawnLock", () => {
 	beforeEach(() => {
@@ -37,43 +35,32 @@ describe("acquireSpawnLock", () => {
 		isProcessAliveMock.mockClear();
 		isProcessAliveMock.mockImplementation(() => true);
 	});
-
 	afterEach(() => {
-		if (testRoot) {
-			fs.rmSync(testRoot, { recursive: true, force: true });
-			testRoot = "";
-		}
+		if (testRoot) fs.rmSync(testRoot, { recursive: true, force: true });
+		testRoot = "";
 	});
 
-	test("creates the lock file and records the owning pid", () => {
-		const handle = acquireSpawnLock(ORG, { staleMs: 30_000 });
+	test("creates the singleton lock and records its owner", () => {
+		const handle = acquireSpawnLock({ staleMs: 30_000 });
 		expect(handle).not.toBeNull();
-
-		const lock = readSpawnLock(ORG);
-		expect(lock?.ownerPid).toBe(process.pid);
-		expect(lock?.machineId).toBe("host-1");
+		expect(readSpawnLock()?.ownerPid).toBe(process.pid);
+		expect(readSpawnLock()?.machineId).toBe("host-1");
 		expect(fs.existsSync(lockFile())).toBe(true);
 	});
 
-	test("second acquire returns null while a live holder keeps the lock", () => {
-		const first = acquireSpawnLock(ORG, { staleMs: 30_000 });
-		expect(first).not.toBeNull();
-
-		const second = acquireSpawnLock(ORG, { staleMs: 30_000 });
-		expect(second).toBeNull();
+	test("rejects a second live holder", () => {
+		expect(acquireSpawnLock({ staleMs: 30_000 })).not.toBeNull();
+		expect(acquireSpawnLock({ staleMs: 30_000 })).toBeNull();
 	});
 
-	test("release removes the file and lets the next caller acquire", () => {
-		const first = acquireSpawnLock(ORG, { staleMs: 30_000 });
+	test("release lets the next caller acquire", () => {
+		const first = acquireSpawnLock({ staleMs: 30_000 });
 		first?.release();
 		expect(fs.existsSync(lockFile())).toBe(false);
-
-		const second = acquireSpawnLock(ORG, { staleMs: 30_000 });
-		expect(second).not.toBeNull();
+		expect(acquireSpawnLock({ staleMs: 30_000 })).not.toBeNull();
 	});
 
-	test("steals the lock when the holder's pid is dead", () => {
-		fs.mkdirSync(path.join(testRoot, ORG), { recursive: true });
+	test("steals a dead holder", () => {
 		fs.writeFileSync(
 			lockFile(),
 			JSON.stringify({
@@ -83,15 +70,11 @@ describe("acquireSpawnLock", () => {
 			}),
 		);
 		isProcessAliveMock.mockImplementation(() => false);
-
-		const handle = acquireSpawnLock(ORG, { staleMs: 30_000 });
-
-		expect(handle).not.toBeNull();
-		expect(readSpawnLock(ORG)?.ownerPid).toBe(process.pid);
+		expect(acquireSpawnLock({ staleMs: 30_000 })).not.toBeNull();
+		expect(readSpawnLock()?.ownerPid).toBe(process.pid);
 	});
 
-	test("steals the lock when it is older than staleMs even if the pid is alive", () => {
-		fs.mkdirSync(path.join(testRoot, ORG), { recursive: true });
+	test("steals a stale or malformed lock", () => {
 		fs.writeFileSync(
 			lockFile(),
 			JSON.stringify({
@@ -100,25 +83,12 @@ describe("acquireSpawnLock", () => {
 				acquiredAt: Date.now() - 60_000,
 			}),
 		);
-		isProcessAliveMock.mockImplementation(() => true);
-
-		const handle = acquireSpawnLock(ORG, { staleMs: 30_000 });
-
-		expect(handle).not.toBeNull();
-		expect(readSpawnLock(ORG)?.ownerPid).toBe(process.pid);
-	});
-
-	test("steals a garbage/partial lock file", () => {
-		fs.mkdirSync(path.join(testRoot, ORG), { recursive: true });
+		expect(acquireSpawnLock({ staleMs: 30_000 })).not.toBeNull();
+		readSpawnLock();
+		fs.rmSync(lockFile(), { force: true });
 		fs.writeFileSync(lockFile(), "{ not valid json");
-
-		const handle = acquireSpawnLock(ORG, { staleMs: 30_000 });
-
-		expect(handle).not.toBeNull();
-		expect(readSpawnLock(ORG)?.ownerPid).toBe(process.pid);
+		expect(acquireSpawnLock({ staleMs: 30_000 })).not.toBeNull();
 	});
 });
 
-afterAll(() => {
-	mock.restore();
-});
+afterAll(() => mock.restore());

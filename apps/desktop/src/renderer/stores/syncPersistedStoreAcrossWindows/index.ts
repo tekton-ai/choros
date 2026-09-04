@@ -1,1 +1,0 @@
-export { syncPersistedStoreAcrossWindows } from "./syncPersistedStoreAcrossWindows";

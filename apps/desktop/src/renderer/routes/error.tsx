@@ -8,7 +8,7 @@ import {
 	HiExclamationTriangle,
 	HiOutlineClipboard,
 } from "react-icons/hi2";
-import { useCopyToClipboard } from "renderer/hooks/useCopyToClipboard";
+import { useCopyToClipboard } from "renderer/hooks/use-copy-to-clipboard";
 
 const IS_DEV = process.env.NODE_ENV === "development";
 const ERROR_DETAILS_ID = "error-details";

@@ -20,14 +20,14 @@ import type * as net from "node:net";
 import * as os from "node:os";
 import * as path from "node:path";
 import { after, before, test } from "node:test";
+import { encodeFrame } from "../src/protocol/index.ts";
 import type {
 	Pty,
 	PtyOnData,
 	PtyOnExit,
 	SpawnOptions,
-} from "../src/Pty/index.ts";
-import { encodeFrame } from "../src/protocol/index.ts";
-import { Server } from "../src/Server/index.ts";
+} from "../src/pty/index.ts";
+import { Server } from "../src/server/index.ts";
 import {
 	connectAndHello,
 	type DaemonClient,

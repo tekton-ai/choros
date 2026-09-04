@@ -1,6 +1,6 @@
 import { createFileRoute, Outlet, useLocation } from "@tanstack/react-router";
-import { useScrollReset } from "renderer/routes/_authenticated/settings/hooks/useScrollReset";
-import { UsageSectionToggle } from "./components/UsageSectionToggle";
+import { useScrollReset } from "renderer/routes/_authenticated/settings/hooks/use-scroll-reset";
+import { UsageSectionToggle } from "./components/usage-section-toggle";
 
 export const Route = createFileRoute("/_authenticated/settings/usage")({
 	component: UsageLayout,

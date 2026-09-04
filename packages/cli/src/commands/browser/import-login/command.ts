@@ -7,7 +7,6 @@ export default command({
 		"Import logins (cookies) from a system browser into a browser pane's session",
 	options: {
 		workspace: string().required().desc("Workspace ID"),
-		host: string().desc("Host the workspace lives on (default: this machine)"),
 		pane: string().required().desc("Pane ID (from `choros browser list`)"),
 		from: string().desc(
 			"Source browser to import from, e.g. 'Comet', 'Chrome' (matches the browser name)",

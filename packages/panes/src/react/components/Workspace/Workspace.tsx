@@ -4,10 +4,10 @@ import { useDragLayer } from "react-dnd";
 import { useStore } from "zustand";
 import type { Pane } from "../../../types";
 import type { WorkspaceProps } from "../../types";
-import { Tab } from "./components/Tab";
-import { TabBar } from "./components/TabBar";
-import { TAB_DRAG_TYPE } from "./components/TabBar/components/TabItem";
-import { useWorkspaceInteractionState } from "./hooks/useWorkspaceInteractionState";
+import { Tab } from "./components/tab";
+import { TabBar } from "./components/tab-bar";
+import { TAB_DRAG_TYPE } from "./components/tab-bar/components/tab-item";
+import { useWorkspaceInteractionState } from "./hooks/use-workspace-interaction-state";
 
 export function Workspace<TData>({
 	store,

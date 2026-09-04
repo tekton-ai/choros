@@ -179,7 +179,6 @@ interface BuildV2TerminalEnvParams {
 	baseEnv: Record<string, string>;
 	shell: string;
 	chorosHomeDir: string;
-	organizationId: string;
 	themeType?: "dark" | "light";
 	cwd: string;
 	terminalId: string;
@@ -209,7 +208,6 @@ export function buildV2TerminalEnv(
 		baseEnv,
 		shell,
 		chorosHomeDir,
-		organizationId,
 		themeType,
 		cwd,
 		terminalId,
@@ -253,9 +251,6 @@ export function buildV2TerminalEnv(
 	// the org-specific host-service that owns the workspace. This is routing
 	// metadata, not a credential; the CLI still uses its own authenticated
 	// session, but no longer consults that session's unrelated active-org choice.
-	if (organizationId) {
-		env.CHOROS_ORGANIZATION_ID = organizationId;
-	}
 	env.CHOROS_WORKSPACE_ID = workspaceId;
 	env.CHOROS_WORKSPACE_PATH = workspacePath;
 	env.CHOROS_ROOT_PATH = rootPath;

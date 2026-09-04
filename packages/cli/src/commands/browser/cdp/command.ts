@@ -7,7 +7,6 @@ export default command({
 		"Print a raw CDP WebSocket endpoint for a pane (for browser-use / Playwright-class tools)",
 	options: {
 		workspace: string().required().desc("Workspace ID"),
-		host: string().desc("Host the workspace lives on (default: this machine)"),
 		pane: string().required().desc("Pane ID (from `choros browser list`)"),
 	},
 	run: async ({ ctx, options }) => {

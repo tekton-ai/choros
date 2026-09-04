@@ -68,49 +68,23 @@ async function createTerminalSessionFromInput({
 	};
 }
 
-// Daemon control surface — sibling to the per-workspace terminal ops above.
-// Org-scoped (one daemon per host-service); org id comes from request ctx
-// rather than env so this module can be imported in tests where env vars
-// aren't set.
-// Supervisor lives in this same process so calls go through the in-process
-// singleton, not over the wire.
+// Daemon control surface. One daemon is shared by this machine-local host.
 const daemonRouter = router({
-	getUpdateStatus: protectedProcedure.query(({ ctx }) =>
-		getSupervisor().getUpdateStatus(ctx.organizationId),
+	getUpdateStatus: protectedProcedure.query(() =>
+		getSupervisor().getUpdateStatus(),
 	),
-
-	/**
-	 * Whether the daemon is still answering, and for how long it hasn't.
-	 * Deliberately does not `waitForDaemonReady` — this is polled by the
-	 * terminal UI to decide whether a stall is worth surfacing, so it has to
-	 * answer immediately rather than block on the thing that may be wedged.
-	 */
-	getHealth: protectedProcedure.query(({ ctx }) =>
-		getSupervisor().getHealth(ctx.organizationId),
-	),
-
-	listSessions: protectedProcedure.query(async ({ ctx }) => {
-		// Wait for the bootstrap so the supervisor has a socket path.
-		await waitForDaemonReady(ctx.organizationId);
-		return getSupervisor().listSessions(ctx.organizationId);
+	getHealth: protectedProcedure.query(() => getSupervisor().getHealth()),
+	listSessions: protectedProcedure.query(async () => {
+		await waitForDaemonReady();
+		return getSupervisor().listSessions();
 	}),
-
-	restart: protectedProcedure.mutation(async ({ ctx }) => {
-		await waitForDaemonReady(ctx.organizationId);
-		return getSupervisor().restart(ctx.organizationId);
+	restart: protectedProcedure.mutation(async () => {
+		await waitForDaemonReady();
+		return getSupervisor().restart();
 	}),
-
-	/**
-	 * Phase 2: hand off live PTYs to a successor daemon binary.
-	 *
-	 * Sessions survive on success — the kernel master fds are inherited by
-	 * the new daemon process via stdio. The renderer surfaces this as the
-	 * "Update" path (vs `restart` which kills sessions). On failure, the
-	 * UI offers force-restart as a fallback.
-	 */
-	update: protectedProcedure.mutation(async ({ ctx }) => {
-		await waitForDaemonReady(ctx.organizationId);
-		return getSupervisor().update(ctx.organizationId);
+	update: protectedProcedure.mutation(async () => {
+		await waitForDaemonReady();
+		return getSupervisor().update();
 	}),
 });
 

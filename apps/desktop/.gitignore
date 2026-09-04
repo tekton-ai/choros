@@ -26,7 +26,7 @@ yarn-error.log*
 electron.vite.config.*.mjs
 
 # TanStack Router generated file
-routeTree.gen.ts
+route-tree.gen.ts
 
 # Generated file icons (material-icon-theme)
 src/resources/public/file-icons/

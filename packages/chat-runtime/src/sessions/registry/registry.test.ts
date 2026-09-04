@@ -2,7 +2,7 @@ import { describe, expect, test } from "bun:test";
 import { randomUUID } from "node:crypto";
 import type { AdapterEvent, HarnessAdapter } from "../../harness";
 import { FakeHarness } from "../../harness/fake";
-import { createTestRuntime } from "../../testing/testRuntime";
+import { createTestRuntime } from "../../testing/test-runtime";
 import type { HarnessRegistry } from "./registry";
 
 const HARNESS = "registry-fake";

@@ -1,4 +1,4 @@
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { CLIError } from "@choros/cli-framework";
 import type { AppRouter as HostServiceRouter } from "@choros/host-service/trpc";
@@ -15,7 +15,6 @@ interface HostServiceManifest {
 	pid: number;
 	endpoint: string;
 	authToken: string;
-	organizationId: string;
 }
 
 function isProcessAlive(pid: number): boolean {
@@ -33,38 +32,21 @@ const NOT_RUNNING = new CLIError(
 	"Launch the Choros desktop app or run: choros start",
 );
 
-/** Find a live host-service manifest, preferring the configured org. */
 function findManifest(): HostServiceManifest {
-	const home = getChorosHomeDir();
-	const orgIds: string[] = [];
+	const path = join(getChorosHomeDir(), "host", "manifest.json");
+	if (!existsSync(path)) throw NOT_RUNNING;
 	try {
-		const config = JSON.parse(
-			readFileSync(join(home, "config.json"), "utf-8"),
-		) as { organizationId?: string };
-		if (config.organizationId) orgIds.push(config.organizationId);
-	} catch {}
-	const hostDir = join(home, "host");
-	if (existsSync(hostDir)) {
-		for (const entry of readdirSync(hostDir)) {
-			if (!orgIds.includes(entry)) orgIds.push(entry);
+		const manifest = JSON.parse(
+			readFileSync(path, "utf-8"),
+		) as HostServiceManifest;
+		if (
+			manifest.endpoint &&
+			manifest.authToken &&
+			isProcessAlive(manifest.pid)
+		) {
+			return manifest;
 		}
-	}
-	for (const orgId of orgIds) {
-		const path = join(hostDir, orgId, "manifest.json");
-		if (!existsSync(path)) continue;
-		try {
-			const manifest = JSON.parse(
-				readFileSync(path, "utf-8"),
-			) as HostServiceManifest;
-			if (
-				manifest.endpoint &&
-				manifest.authToken &&
-				isProcessAlive(manifest.pid)
-			) {
-				return manifest;
-			}
-		} catch {}
-	}
+	} catch {}
 	throw NOT_RUNNING;
 }
 

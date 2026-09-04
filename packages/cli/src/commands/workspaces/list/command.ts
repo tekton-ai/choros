@@ -1,14 +1,11 @@
-import { boolean, CLIError, string, table } from "@choros/cli-framework";
+import { CLIError, string, table } from "@choros/cli-framework";
 import { normalizeWorkspaceTag } from "@choros/shared/workspace-tags";
 import { command } from "../../../lib/command";
-import { resolveHostFilter } from "../../../lib/host-target";
 import { listWorkspacesOnHost } from "../../../lib/host-workspaces";
 
 export default command({
 	description: "List workspaces on a host (default: this machine)",
 	options: {
-		host: string().desc("List workspaces on a specific host (machineId)"),
-		local: boolean().desc("List workspaces on this machine (the default)"),
 		project: string().desc("Filter by project name (case-insensitive) or id"),
 		search: string()
 			.alias("s")
@@ -22,21 +19,8 @@ export default command({
 			["NAME", "BRANCH", "PROJECT", "TAGS", "ID"],
 			[30, 30, 24, 20, 36],
 		),
-	run: async ({ ctx, options }) => {
-		const organizationId = ctx.config.organizationId;
-		if (!organizationId) {
-			throw new CLIError("No active organization", "Run: choros auth login");
-		}
-
-		const { workspaces } = await listWorkspacesOnHost({
-			organizationId,
-			userJwt: ctx.bearer,
-			api: ctx.api,
-			hostId: resolveHostFilter({
-				host: options.host ?? undefined,
-				local: options.local ?? undefined,
-			}),
-		});
+	run: async ({ options }) => {
+		const { workspaces } = await listWorkspacesOnHost();
 
 		const projectInput = options.project?.toLowerCase();
 		const search = options.search?.toLowerCase();

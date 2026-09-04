@@ -1,0 +1,143 @@
+import { toast } from "@choros/ui/sonner";
+import { cn } from "@choros/ui/utils";
+import { useLingui } from "@lingui/react/macro";
+import { LuCopy, LuExternalLink, LuLoaderCircle, LuX } from "react-icons/lu";
+import { useCopyToClipboard } from "renderer/hooks/use-copy-to-clipboard";
+import { useDashboardSidebarPortKill } from "renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/hooks/use-dashboard-sidebar-port-kill";
+import type { DashboardSidebarPort } from "renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/hooks/use-dashboard-sidebar-ports-data";
+import { usePortOpenActions } from "renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/hooks/use-port-open-actions";
+import { formatPortRowLabel } from "renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/utils/format-port-row-label";
+import { STROKE_WIDTH } from "renderer/screens/main/components/workspace-sidebar/constants";
+
+interface TopBarPortRowProps {
+	port: DashboardSidebarPort;
+	// Close the dropdown after an action that moves focus elsewhere (opening
+	// the port or jumping to its workspace).
+	onNavigate: () => void;
+}
+
+/**
+ * One port in the top-bar dropdown: a fixed mono port column, the label and
+ * process, and a hover-revealed action cluster (open / copy / close).
+ */
+export function TopBarPortRow({ port, onNavigate }: TopBarPortRowProps) {
+	const { t } = useLingui();
+	const { isPending, killPort } = useDashboardSidebarPortKill();
+	const { canOpenInBrowser, portUrl, openExternal, openPrimary } =
+		usePortOpenActions(port);
+	const { copyToClipboard } = useCopyToClipboard();
+	const address = formatPortRowLabel(port);
+
+	const description = [port.label, port.processName]
+		.filter(Boolean)
+		.join(" · ");
+
+	const handleOpen = () => {
+		openPrimary();
+		onNavigate();
+	};
+
+	const handleOpenExternal = () => {
+		openExternal();
+		onNavigate();
+	};
+
+	// Only offered when `portUrl` reaches this machine: a local port, or a
+	// remote one the main process forwards.
+	const handleCopy = async () => {
+		try {
+			await copyToClipboard(portUrl);
+			toast.success(
+				t({
+					id: "dashboard.topBar.ports.copiedUrl",
+					message: `Copied ${portUrl.replace(/^https?:\/\//, "")}`,
+				}),
+			);
+		} catch {
+			toast.error(
+				t({
+					id: "dashboard.topBar.ports.copyFailed",
+					message: "Failed to copy to clipboard",
+				}),
+			);
+		}
+	};
+
+	const handleClose = () => {
+		if (isPending) return;
+		void killPort(port);
+	};
+
+	return (
+		<div
+			className={cn(
+				"group/port relative rounded-md transition-colors hover:bg-fill-hover",
+				isPending && "opacity-60",
+			)}
+		>
+			<button
+				type="button"
+				onClick={handleOpen}
+				disabled={isPending}
+				className="grid w-full grid-cols-[3.5rem_minmax(0,1fr)] items-center gap-2 rounded-md px-2 py-1.5 text-left focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+			>
+				<span className="font-medium font-mono text-foreground text-xs tabular-nums">
+					:{port.port}
+				</span>
+				<span
+					className="truncate text-[11px] text-muted-foreground"
+					title={address.title}
+				>
+					{description ? `${description} · ${address.text}` : address.text}
+				</span>
+			</button>
+			<div className="absolute top-1/2 right-1.5 flex -translate-y-1/2 items-center gap-px rounded-md border border-border bg-popover/95 p-px opacity-0 transition-opacity focus-within:opacity-100 group-hover/port:opacity-100">
+				{canOpenInBrowser && (
+					<button
+						type="button"
+						aria-label={t({
+							id: "dashboard.topBar.ports.openExternalAriaLabel",
+							message: `Open localhost:${port.port} in external browser`,
+						})}
+						onClick={handleOpenExternal}
+						className="rounded p-1 text-muted-foreground hover:bg-fill-hover hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+					>
+						<LuExternalLink className="size-3" strokeWidth={STROKE_WIDTH} />
+					</button>
+				)}
+				{canOpenInBrowser && (
+					<button
+						type="button"
+						aria-label={t({
+							id: "dashboard.topBar.ports.copyAriaLabel",
+							message: `Copy localhost:${port.port}`,
+						})}
+						onClick={() => void handleCopy()}
+						className="rounded p-1 text-muted-foreground hover:bg-fill-hover hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+					>
+						<LuCopy className="size-3" strokeWidth={STROKE_WIDTH} />
+					</button>
+				)}
+				<button
+					type="button"
+					aria-label={t({
+						id: "dashboard.topBar.ports.closePortAriaLabel",
+						message: `Close port ${port.port}`,
+					})}
+					onClick={handleClose}
+					disabled={isPending}
+					className="rounded p-1 text-muted-foreground hover:bg-destructive/10 hover:text-destructive focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+				>
+					{isPending ? (
+						<LuLoaderCircle
+							className="size-3 animate-spin"
+							strokeWidth={STROKE_WIDTH}
+						/>
+					) : (
+						<LuX className="size-3" strokeWidth={STROKE_WIDTH} />
+					)}
+				</button>
+			</div>
+		</div>
+	);
+}

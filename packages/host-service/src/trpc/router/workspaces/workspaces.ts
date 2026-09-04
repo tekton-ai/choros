@@ -1,9 +1,6 @@
 import { mkdirSync } from "node:fs";
 import { dirname } from "node:path";
-import {
-	generateFriendlyBranchName,
-	sanitizeUserBranchName,
-} from "@choros/shared/workspace-launch";
+import { generateFriendlyBranchName } from "@choros/shared/workspace-launch";
 import { workspaceTagsInputSchema } from "@choros/shared/workspace-tags";
 import { TRPCError } from "@trpc/server";
 import { and, eq, isNull } from "drizzle-orm";
@@ -183,7 +180,7 @@ function findExistingWorkspaceByBranch(
 			),
 		})
 		.sync();
-	return local ? toCloudShape(local, ctx.organizationId) : null;
+	return local ? toCloudShape(local) : null;
 }
 
 interface PrMetadata {
@@ -448,28 +445,6 @@ async function recordBaseBranchConfig(args: {
 }
 
 /**
- * Best-effort cloud lookup of the linked task's provider branch name
- * (Linear's branchName, synced into tasks.branch). Bounded so an offline
- * host never stalls workspace creation.
- */
-async function fetchLinkedTaskBranch(
-	ctx: HostServiceContext,
-	taskId: string,
-): Promise<string | undefined> {
-	try {
-		const task = await Promise.race([
-			ctx.api.task.byId.query(taskId),
-			new Promise<null>((resolve) => setTimeout(() => resolve(null), 2_000)),
-		]);
-		const branch = task?.branch?.trim();
-		return branch ? sanitizeUserBranchName(branch) || undefined : undefined;
-	} catch (err) {
-		console.warn("[workspaces.create] linked task branch lookup failed:", err);
-		return undefined;
-	}
-}
-
-/**
  * Fully local registration: the host mints the id and commits the local
  * row — the authoritative and only record; workspaces have no cloud mirror.
  */
@@ -505,23 +480,7 @@ async function registerLocalWorkspace(args: {
 		});
 	}
 
-	void ctx.api.v2Workspace.trackCreated
-		.mutate({
-			workspaceId: localRow.id,
-			organizationId: ctx.organizationId,
-			projectId: args.projectId,
-			branch: args.branch,
-			type: "worktree",
-			hostId: ctx.clientMachineId,
-		})
-		.catch((err) => {
-			console.warn(
-				`[workspaces.create] failed to report workspace creation for ${localRow.id}:`,
-				err,
-			);
-		});
-
-	return toCloudShape(localRow, ctx.organizationId);
+	return toCloudShape(localRow);
 }
 
 export const workspacesRouter = router({
@@ -845,16 +804,8 @@ export const workspacesRouter = router({
 					"[workspaces.create]",
 				);
 			} else {
-				// A linked task can supply the branch when the caller didn't
-				// pick one (CLI/MCP/automation creates from a task — desktop
-				// surfaces resolve it client-side). Provider branch names are
-				// used exactly, like an explicit skipBranchPrefix create.
-				const taskBranch =
-					!input.branch && input.taskId
-						? await fetchLinkedTaskBranch(ctx, input.taskId)
-						: undefined;
-				const skipBranchPrefix = input.skipBranchPrefix || !!taskBranch;
-				const typedBranch = input.branch?.trim() || taskBranch;
+				const skipBranchPrefix = input.skipBranchPrefix;
+				const typedBranch = input.branch?.trim();
 				let plan: BranchSourcePlan;
 
 				if (typedBranch) {
@@ -1210,23 +1161,6 @@ export const workspacesRouter = router({
 				terminalsResult.push({
 					terminalId: commandResult.terminal.id,
 					label: commandResult.terminal.label,
-				});
-			}
-
-			// Work is starting on the linked task — move it to In Progress.
-			// Best-effort cloud call; creation never blocks on it. A reused
-			// workspace keeps its own task link, so only nudge when this call
-			// actually linked the requested task.
-			if (
-				input.taskId &&
-				(!alreadyExists || workspaceRow.taskId === input.taskId)
-			) {
-				const taskId = input.taskId;
-				void ctx.api.task.start.mutate({ id: taskId }).catch((err) => {
-					console.warn(
-						`[workspaces.create] failed to mark task ${taskId} as started:`,
-						err,
-					);
 				});
 			}
 

@@ -13,7 +13,6 @@ import type { HostServiceContext } from "../../../types";
 import type { GitTaskEnv } from "../../../workers/tasks/git";
 import {
 	archiveLocalWorkspace,
-	trackWorkspaceDeleted,
 	unarchiveLocalWorkspace,
 } from "../../../workspaces/local-workspace-store";
 import type {
@@ -343,9 +342,6 @@ async function runDestroy(
 			project,
 			warnings,
 		});
-		// Telemetry at the true commit: a failed destroy un-archives below and
-		// must not count, and a retried destroy must count exactly once.
-		if (marked && local) trackWorkspaceDeleted(ctx, local);
 		return result;
 	} catch (err) {
 		if (marked) unarchiveLocalWorkspace(ctx, input.workspaceId);

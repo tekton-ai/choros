@@ -1,1 +1,0 @@
-export { buildPierreGitStatus } from "./buildPierreGitStatus";

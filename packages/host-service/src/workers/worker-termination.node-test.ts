@@ -11,7 +11,7 @@ import * as fs from "node:fs";
 import * as os from "node:os";
 import * as path from "node:path";
 import { afterEach, describe, test } from "node:test";
-import { WorkerTaskRunner } from "./WorkerTaskRunner.ts";
+import { WorkerTaskRunner } from "./worker-task-runner.ts";
 
 const SPAWNING_WORKER = path.resolve(
 	import.meta.dirname,

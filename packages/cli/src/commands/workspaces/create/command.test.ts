@@ -39,13 +39,9 @@ function invoke(
 	} = {},
 ) {
 	return createWorkspaceCommand.run({
-		ctx: {
-			config: { organizationId: "org-1" },
-			bearer: "bearer",
-		} as never,
+		ctx: {},
 		args: {} as never,
 		options: {
-			local: true,
 			project: "project-1",
 			name: "agent-effort",
 			branch: "agent/effort",

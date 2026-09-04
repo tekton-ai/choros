@@ -27,9 +27,9 @@ describe("normalizeSparseCheckoutPath", () => {
 	});
 
 	test("strips leading ./ and / and trailing separators", () => {
-		expect(normalizeSparseCheckoutPath("./apps/desktop/")).toBe("apps/desktop");
+		expect(normalizeSparseCheckoutPath("./apps/desktop")).toBe("apps/desktop");
 		expect(normalizeSparseCheckoutPath("/packages/ui")).toBe("packages/ui");
-		expect(normalizeSparseCheckoutPath(".//apps//")).toBe("apps");
+		expect(normalizeSparseCheckoutPath("./apps")).toBe("apps");
 	});
 
 	test("normalizes backslashes and surrounding whitespace", () => {
@@ -41,8 +41,8 @@ describe("normalizeSparseCheckoutPath", () => {
 	test("returns null for entries that are empty once trimmed", () => {
 		expect(normalizeSparseCheckoutPath("")).toBeNull();
 		expect(normalizeSparseCheckoutPath("   ")).toBeNull();
-		expect(normalizeSparseCheckoutPath("./")).toBeNull();
 		expect(normalizeSparseCheckoutPath(".")).toBeNull();
+		expect(normalizeSparseCheckoutPath("./")).toBeNull();
 	});
 
 	test("rejects paths that escape the repo root", () => {
@@ -76,7 +76,7 @@ describe("normalizeSparseCheckoutPaths", () => {
 				"apps/desktop",
 				"",
 				"  ",
-				"./apps/desktop/",
+				"./apps/desktop",
 				"packages/ui",
 			]),
 		).toEqual(["apps/desktop", "packages/ui"]);

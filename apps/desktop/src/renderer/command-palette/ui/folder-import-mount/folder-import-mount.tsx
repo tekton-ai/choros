@@ -1,0 +1,65 @@
+import { toast } from "@choros/ui/sonner";
+import { useLingui } from "@lingui/react/macro";
+import { useNavigate } from "@tanstack/react-router";
+import { useEffect, useRef } from "react";
+import { useFolderFirstImport } from "renderer/routes/_authenticated/_dashboard/components/add-repository-modals/hooks/use-folder-first-import";
+import { useFolderImportIntent } from "renderer/stores/folder-import-intent";
+
+export function FolderImportMount() {
+	const { t } = useLingui();
+	const tick = useFolderImportIntent((s) => s.tick);
+	const navigate = useNavigate();
+	const folderImport = useFolderFirstImport({
+		onError: (message) => {
+			toast.error(
+				t({
+					id: "commandPalette.folderImport.failedWithMessage",
+					message: `Import failed: ${message}`,
+				}),
+			);
+		},
+		onMultipleProjects: ({ candidates }) => {
+			toast.error(
+				t({
+					id: "commandPalette.folderImport.failed",
+					message: "Import failed",
+				}),
+				{
+					description: t({
+						id: "commandPalette.folderImport.multipleProjects",
+						message: `Multiple projects use this repository (${candidates.length}). Choose the project in settings to set it up on this device.`,
+					}),
+					action: {
+						label: t({
+							id: "commandPalette.folderImport.openProjects",
+							message: "Open Projects",
+						}),
+						onClick: () => navigate({ to: "/settings/projects" }),
+					},
+				},
+			);
+		},
+	});
+	const folderImportRef = useRef(folderImport);
+	folderImportRef.current = folderImport;
+	// Seed with the mount-time tick so a remount doesn't replay an import
+	// triggered earlier in the session.
+	const lastTickRef = useRef(tick);
+
+	useEffect(() => {
+		if (tick === lastTickRef.current) return;
+		lastTickRef.current = tick;
+		void folderImportRef.current.start().then((result) => {
+			if (result) {
+				toast.success(
+					t({
+						id: "commandPalette.folderImport.ready",
+						message: "Project ready — open it from the sidebar.",
+					}),
+				);
+			}
+		});
+	}, [tick, t]);
+
+	return null;
+}
