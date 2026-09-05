@@ -31,6 +31,7 @@ import { GoIssueOpened } from "react-icons/go";
 import { LuGitPullRequest } from "react-icons/lu";
 import { AgentModelSelect } from "renderer/components/agent-model-select";
 import { AgentSelect } from "renderer/components/agent-select";
+import { ChorosLogo } from "renderer/components/choros-logo";
 import { GitHubStarPill } from "renderer/components/github-star-pill";
 import { MarkdownEditor } from "renderer/components/markdown-editor";
 import { useHostProjects } from "renderer/hooks/host-projects/use-host-projects";
@@ -40,10 +41,8 @@ import { useAgentLaunchPreferences } from "renderer/hooks/use-agent-launch-prefe
 import { useAgentModePreference } from "renderer/hooks/use-agent-mode-preference";
 import { useAgentModelPreference } from "renderer/hooks/use-agent-model-preference";
 import { useV2AgentChoices } from "renderer/hooks/use-v2-agent-choices";
-
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { showHostServiceUnavailableToast } from "renderer/lib/host-service-unavailable";
-import { ChorosIcon } from "renderer/routes/_authenticated/onboarding/providers/components/choros-icon";
 import { useHostWorkspaces } from "renderer/routes/_authenticated/providers/host-workspaces-provider";
 import { useLocalHostService } from "renderer/routes/_authenticated/providers/local-host-service-provider";
 import { newWorkspaceAttachmentPaths } from "renderer/stores/new-workspace-attachments";
@@ -710,7 +709,7 @@ export function NewWorkspaceScreen({
 				</PromptHistoryCommand>
 			</div>
 			<div className="flex flex-1 flex-col items-center justify-center gap-8">
-				<ChorosIcon className="h-10 w-auto text-muted-foreground/70" />
+				<ChorosLogo markOnly className="h-10 w-auto text-muted-foreground/70" />
 				<h1 className="text-center text-3xl font-medium text-foreground/90">
 					<Trans id="dashboard.newWorkspaceModal.newWorkspaceScreen.heading">
 						What should we build next?

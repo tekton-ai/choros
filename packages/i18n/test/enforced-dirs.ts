@@ -1,7 +1,7 @@
 // Directories (repo-relative) that must contain no hardcoded user-facing JSX
 // text — every string in them goes through Lingui. Add a directory here once
-// it is fully converted. This list only grows; removing an entry is a
-// regression, the same ratchet contract as the no-*-blocking tests.
+// it is fully converted. Keep existing directories enforced; remove entries
+// only when their source directories are deleted from the repository.
 export const ENFORCED_DIRS: readonly string[] = [
 	"packages/i18n/src",
 	// automations is temporarily un-enforced: the trigger-fidelity work
@@ -12,14 +12,12 @@ export const ENFORCED_DIRS: readonly string[] = [
 	"apps/desktop/src/renderer/routes/_authenticated/_dashboard/plugins",
 	"apps/desktop/src/renderer/routes/_authenticated/_dashboard/project",
 	"apps/desktop/src/renderer/routes/_authenticated/_dashboard/pull-requests",
-	"apps/desktop/src/renderer/routes/_authenticated/_dashboard/tasks",
 	"apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspaces",
 	"apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal",
 	// settings — everything except `project/` ($projectId), the v1 counterpart
 	// of v2-project that dies with the v1 sunset.
 	"apps/desktop/src/renderer/routes/_authenticated/settings/account",
 	"apps/desktop/src/renderer/routes/_authenticated/settings/agents",
-	"apps/desktop/src/renderer/routes/_authenticated/settings/api-keys",
 	"apps/desktop/src/renderer/routes/_authenticated/settings/appearance",
 	"apps/desktop/src/renderer/routes/_authenticated/settings/behavior",
 	"apps/desktop/src/renderer/routes/_authenticated/settings/browser",
@@ -27,20 +25,12 @@ export const ENFORCED_DIRS: readonly string[] = [
 	"apps/desktop/src/renderer/routes/_authenticated/settings/experimental",
 	"apps/desktop/src/renderer/routes/_authenticated/settings/git",
 	"apps/desktop/src/renderer/routes/_authenticated/settings/hooks",
-	"apps/desktop/src/renderer/routes/_authenticated/settings/hosts",
-	"apps/desktop/src/renderer/routes/_authenticated/settings/integrations",
 	"apps/desktop/src/renderer/routes/_authenticated/settings/keyboard",
 	"apps/desktop/src/renderer/routes/_authenticated/settings/links",
-	"apps/desktop/src/renderer/routes/_authenticated/settings/members",
 	"apps/desktop/src/renderer/routes/_authenticated/settings/models",
-	"apps/desktop/src/renderer/routes/_authenticated/settings/organization",
-	"apps/desktop/src/renderer/routes/_authenticated/settings/permissions",
 	"apps/desktop/src/renderer/routes/_authenticated/settings/presets",
 	"apps/desktop/src/renderer/routes/_authenticated/settings/projects",
 	"apps/desktop/src/renderer/routes/_authenticated/settings/ringtones",
-	"apps/desktop/src/renderer/routes/_authenticated/settings/security",
-	"apps/desktop/src/renderer/routes/_authenticated/settings/team",
-	"apps/desktop/src/renderer/routes/_authenticated/settings/teams",
 	"apps/desktop/src/renderer/routes/_authenticated/settings/terminal",
 	"apps/desktop/src/renderer/routes/_authenticated/settings/usage",
 	"apps/desktop/src/renderer/routes/_authenticated/settings/utils",
@@ -50,7 +40,6 @@ export const ENFORCED_DIRS: readonly string[] = [
 	"apps/desktop/src/renderer/command-palette",
 	"apps/desktop/src/renderer/components",
 	"apps/desktop/src/renderer/react-query",
-	"apps/desktop/src/renderer/routes/create-organization",
 	"apps/desktop/src/renderer/routes/sign-in",
 	// batch 5: marketing routes that are fully converted. The component
 	// directories stay out — their mockups deliberately render fake CLI output

@@ -23,6 +23,17 @@ const TEST_BASH_DIR = path.join(TEST_ROOT, "choros", "bash");
 const TEST_OPENCODE_CONFIG_DIR = path.join(TEST_HOOKS_DIR, "opencode");
 const TEST_OPENCODE_PLUGIN_DIR = path.join(TEST_OPENCODE_CONFIG_DIR, "plugin");
 let mockedHomeDir = path.join(TEST_ROOT, "home");
+let originalChorosHomeDir: string | undefined;
+
+beforeEach(() => {
+	originalChorosHomeDir = process.env.CHOROS_HOME_DIR;
+	process.env.CHOROS_HOME_DIR = path.join(TEST_ROOT, "choros");
+});
+
+afterEach(() => {
+	if (originalChorosHomeDir === undefined) delete process.env.CHOROS_HOME_DIR;
+	else process.env.CHOROS_HOME_DIR = originalChorosHomeDir;
+});
 
 mock.module("./notify-hook", () => ({
 	NOTIFY_SCRIPT_NAME: "notify.sh",
@@ -33,7 +44,9 @@ mock.module("./notify-hook", () => ({
 }));
 
 mock.module("./paths", () => ({
-	resolveChorosHomeDir: () => path.join(TEST_ROOT, "choros"),
+	// Bun shares module mocks across files. Honor each test's isolated home.
+	resolveChorosHomeDir: () =>
+		process.env.CHOROS_HOME_DIR?.trim() || path.join(TEST_ROOT, "choros"),
 	getBinDir: () => TEST_BIN_DIR,
 	getHooksDir: () => TEST_HOOKS_DIR,
 	getZshDir: () => TEST_ZSH_DIR,

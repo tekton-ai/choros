@@ -1,0 +1,97 @@
+import { cn } from "@choros/ui/utils";
+import { Trans } from "@lingui/react/macro";
+import { useId } from "react";
+
+interface ChorosLogoProps {
+	className?: string;
+	gradient?: boolean;
+	markOnly?: boolean;
+}
+
+export function ChorosLogo({
+	className,
+	gradient = false,
+	markOnly = false,
+}: ChorosLogoProps) {
+	const reactId = useId();
+	const gradientId = `choros-logo-gradient-${reactId}`;
+
+	return (
+		<svg
+			width={markOnly ? 256 : 470}
+			height={markOnly ? 256 : 128}
+			viewBox={markOnly ? "0 0 256 256" : "0 0 470 128"}
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			className={cn("text-foreground", className)}
+			aria-label="Choros"
+		>
+			<title>
+				<Trans id="auth.signIn.logoTitle">Choros</Trans>
+			</title>
+			{gradient && (
+				<defs>
+					<linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="0%">
+						<stop offset="0%" stopColor="currentColor" stopOpacity="0.35" />
+						<stop offset="45%" stopColor="currentColor" stopOpacity="0.45" />
+						<stop offset="50%" stopColor="currentColor" stopOpacity="1" />
+						<stop offset="55%" stopColor="currentColor" stopOpacity="0.45" />
+						<stop offset="100%" stopColor="currentColor" stopOpacity="0.35" />
+						<animate
+							attributeName="x1"
+							values="-100%;100%;100%"
+							keyTimes="0;0.55;1"
+							dur="1.6s"
+							repeatCount="indefinite"
+						/>
+						<animate
+							attributeName="x2"
+							values="0%;200%;200%"
+							keyTimes="0;0.55;1"
+							dur="1.6s"
+							repeatCount="indefinite"
+						/>
+					</linearGradient>
+				</defs>
+			)}
+			<g
+				transform={markOnly ? undefined : "scale(0.5)"}
+				stroke={gradient ? `url(#${gradientId})` : "currentColor"}
+				strokeWidth="20"
+				strokeLinecap="round"
+			>
+				<path d="M202.71 57.29 A100 100 0 1 0 202.71 198.71" />
+				<path d="M177.23 78.77 A66 66 0 1 0 177.23 177.23" />
+				<path d="M151.69 102.78 A32 32 0 1 0 151.69 153.22" />
+			</g>
+			{!markOnly && (
+				<g fill={gradient ? `url(#${gradientId})` : "currentColor"}>
+					<path
+						transform="translate(151 91) scale(0.088 -0.088)"
+						d="M589 542Q561 580 516 597.5Q471 615 428 615Q373 615 328 595Q283 575 250.5 540Q218 505 200.5 458Q183 411 183 356Q183 298 200 250Q217 202 248.5 167.5Q280 133 324 114Q368 95 423 95Q480 95 524 117.5Q568 140 595 177L696 106Q649 47 581 14.5Q513 -18 422 -18Q339 -18 269.5 9.5Q200 37 150 86.5Q100 136 72 204.5Q44 273 44 356Q44 441 73.5 509.5Q103 578 154.5 626Q206 674 276 700Q346 726 428 726Q462 726 499 719.5Q536 713 570 699.5Q604 686 634 666Q664 646 685 618Z"
+					/>
+					<path
+						transform="translate(210.048 91) scale(0.088 -0.088)"
+						d="M339 494Q386 494 419.5 477.5Q453 461 474.5 434Q496 407 506 372Q516 337 516 300L516 0L396 0L396 264Q396 285 393 307.5Q390 330 380.5 348.5Q371 367 353.5 379Q336 391 307 391Q278 391 257 380Q236 369 222 350.5Q208 332 201 309Q194 286 194 262L194 0L74 0L74 756L194 756L194 413L196 413Q203 428 216.5 442.5Q230 457 248 468.5Q266 480 289 487Q312 494 339 494Z"
+					/>
+					<path
+						transform="translate(259.24 91) scale(0.088 -0.088)"
+						d="M44 242Q44 299 64.5 345.5Q85 392 120 425Q155 458 203 476Q251 494 305 494Q359 494 407 476Q455 458 490 425Q525 392 545.5 345.5Q566 299 566 242Q566 185 545.5 138Q525 91 490 57.5Q455 24 407 5Q359 -14 305 -14Q251 -14 203 5Q155 24 120 57.5Q85 91 64.5 138Q44 185 44 242ZM166 242Q166 214 174.5 186Q183 158 200 136Q217 114 243 100Q269 86 305 86Q341 86 367 100Q393 114 410 136Q427 158 435.5 186Q444 214 444 242Q444 270 435.5 297.5Q427 325 410 347Q393 369 367 382.5Q341 396 305 396Q269 396 243 382.5Q217 369 200 347Q183 325 174.5 297.5Q166 270 166 242Z"
+					/>
+					<path
+						transform="translate(310.72 91) scale(0.088 -0.088)"
+						d="M72 480L187 480L187 400L189 400Q209 442 245 468Q281 494 329 494Q336 494 344 493.5Q352 493 358 491L358 381Q346 384 337.5 385Q329 386 321 386Q280 386 255 371Q230 356 216 335Q202 314 197 292Q192 270 192 257L192 0L72 0Z"
+					/>
+					<path
+						transform="translate(338.96799999999996 91) scale(0.088 -0.088)"
+						d="M44 242Q44 299 64.5 345.5Q85 392 120 425Q155 458 203 476Q251 494 305 494Q359 494 407 476Q455 458 490 425Q525 392 545.5 345.5Q566 299 566 242Q566 185 545.5 138Q525 91 490 57.5Q455 24 407 5Q359 -14 305 -14Q251 -14 203 5Q155 24 120 57.5Q85 91 64.5 138Q44 185 44 242ZM166 242Q166 214 174.5 186Q183 158 200 136Q217 114 243 100Q269 86 305 86Q341 86 367 100Q393 114 410 136Q427 158 435.5 186Q444 214 444 242Q444 270 435.5 297.5Q427 325 410 347Q393 369 367 382.5Q341 396 305 396Q269 396 243 382.5Q217 369 200 347Q183 325 174.5 297.5Q166 270 166 242Z"
+					/>
+					<path
+						transform="translate(390.448 91) scale(0.088 -0.088)"
+						d="M335 352Q319 373 291 388.5Q263 404 230 404Q201 404 177 392Q153 380 153 352Q153 324 179.5 312.5Q206 301 257 289Q284 283 311.5 273Q339 263 361.5 246.5Q384 230 398 205.5Q412 181 412 146Q412 102 395.5 71.5Q379 41 351.5 22Q324 3 287.5 -5.5Q251 -14 212 -14Q156 -14 103 6.5Q50 27 15 65L94 139Q114 113 146 96Q178 79 217 79Q230 79 243.5 82Q257 85 268.5 91.5Q280 98 287 109Q294 120 294 136Q294 166 266.5 179Q239 192 184 205Q157 211 131.5 220.5Q106 230 86 245.5Q66 261 54 284Q42 307 42 341Q42 381 58.5 410Q75 439 102 457.5Q129 476 163 485Q197 494 233 494Q285 494 334.5 476Q384 458 413 421Z"
+					/>
+				</g>
+			)}
+		</svg>
+	);
+}

@@ -1,6 +1,6 @@
 import { type ReactNode, useEffect, useEffectEvent, useState } from "react";
+import { ChorosLogo } from "renderer/components/choros-logo";
 import { authClient, setAuthToken } from "renderer/lib/auth-client";
-import { ChorosLogo } from "renderer/routes/sign-in/components/choros-logo/choros-logo";
 import { electronTrpc } from "../../lib/electron-trpc";
 
 const HYDRATION_TIMEOUT_MS = 15_000;

@@ -30,6 +30,9 @@ afterEach(() => {
 
 describe("shared disabled-agent-hooks state", () => {
 	it("round-trips the disable list through the shared file", () => {
+		expect(getAgentHooksStateFilePath()).toBe(
+			path.join(TEST_HOME, "agent-hooks.json"),
+		);
 		writeSharedDisabledAgentIds(["codex", "claude"]);
 
 		expect(readSharedDisabledAgentIds()).toEqual(["claude", "codex"]);

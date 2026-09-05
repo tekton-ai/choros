@@ -79,7 +79,7 @@ msgid "auth.signIn.lastUsed"
 msgstr "Son kullanılan"
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/sign-in/components/choros-logo/choros-logo.tsx
+#: ../../apps/desktop/src/renderer/components/choros-logo/choros-logo.tsx
 msgid "auth.signIn.logoTitle"
 msgstr "Choros"
 
