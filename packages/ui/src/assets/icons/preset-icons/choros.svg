@@ -1,6 +1,1 @@
-<svg width="182" height="183" viewBox="0 0 182 183" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Choros preset icon — placeholder "C" mark. Same background swatch as
-       the retired Choros wordmark asset; final logotype pending design. -->
-  <rect width="182" height="183" rx="26" fill="#151110"/>
-  <path d="M126 61.5c-9.5-8-21.7-12-35-12-30 0-52 22-52 51s22 51 52 51c13.3 0 25.5-4 35-12l-8-12c-7 6-16.5 10-27 10-21 0-37-16-37-37s16-37 37-37c10.5 0 20 4 27 10z" fill="#F5F5F0"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="182" height="182" viewBox="96 96 832 832" fill="none" role="img"><title>Choros desktop app icon</title><defs><linearGradient id="tile" x1="112" y1="100" x2="910" y2="944" gradientUnits="userSpaceOnUse"><stop stop-color="#232325"/><stop offset=".55" stop-color="#151517"/><stop offset="1" stop-color="#09090B"/></linearGradient><linearGradient id="edge" x1="512" y1="84" x2="512" y2="940" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity=".32"/><stop offset="1" stop-color="white" stop-opacity=".04"/></linearGradient></defs><rect x="96" y="96" width="832" height="832" rx="190" fill="url(#tile)"/><rect x="98" y="98" width="828" height="828" rx="188" stroke="url(#edge)" stroke-width="4"/><g transform="translate(205 205) scale(2.3984375)"><g fill="none" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round"><path d="M202.71 57.29 A100 100 0 1 0 202.71 198.71"/><path d="M177.23 78.77 A66 66 0 1 0 177.23 177.23"/><path d="M151.69 102.78 A32 32 0 1 0 151.69 153.22"/></g></g></svg>

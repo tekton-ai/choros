@@ -12,13 +12,12 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { ChorosLogo } from "renderer/components/choros-logo";
 import { Redirect } from "renderer/components/redirect";
 import { env } from "renderer/env.renderer";
 import { useDelayElapsed } from "renderer/hooks/use-delay-elapsed";
-
 import { setAuthToken } from "renderer/lib/auth-client";
 import { electronTrpc } from "renderer/lib/electron-trpc";
-import { ChorosLogo } from "./components/choros-logo";
 import { useSessionRecovery } from "./hooks/use-session-recovery";
 
 export const Route = createFileRoute("/sign-in/")({

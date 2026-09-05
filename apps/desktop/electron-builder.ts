@@ -16,7 +16,7 @@ const currentYear = new Date().getFullYear();
 const author = pkg.author?.name ?? pkg.author;
 const productName = pkg.productName;
 const macIconPath = join(pkg.resources, "build/icons/icon.icns");
-const linuxIconPath = join(pkg.resources, "build/icons");
+const linuxIconPath = join(pkg.resources, "build/icons/icon.png");
 const winIconPath = join(pkg.resources, "build/icons/icon.ico");
 const dmgBackgroundPath = join(
 	pkg.resources,

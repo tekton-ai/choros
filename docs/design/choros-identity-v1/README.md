@@ -2,7 +2,7 @@
 
 已选定的方向：**黑底白色 C 形线条**。三条弧线代表多个 coding agent 协同，logo 和桌面图标使用同一个标记。
 
-当前为设计素材，尚未替换应用中的旧图标。
+已接入桌面登录页、加载界面、新建工作区、共享预设图标、官网页头，以及桌面打包、Dock、托盘和 macOS 安装器。
 
 ![Choros 黑白 logo 和桌面图标预览](./choros-identity-preview.png)
 
@@ -16,6 +16,10 @@
 - `choros-app-icon.svg` / `.png`：黑色圆角底板、白色标记；PNG 为 1024 × 1024，底板外透明。
 - `choros-app-icon.icns`：macOS 图标，最大 1024 × 1024。
 - `choros-app-icon.ico`：Windows 图标，包含 16、24、32、48、64、128、256 像素版本。
+
+- `choros-app-dev.svg` / `choros-app-canary.svg`：开发版和 canary 图标源文件，使用 DEV / CANARY 标识区分渠道。
+- `choros-installer-background.svg`：macOS 安装窗口背景源文件。
+- `desktop-sign-in-before.png` / `desktop-sign-in-after.png`：同一工作区桌面应用的替换前后截图。
 
 ## 使用说明
 
