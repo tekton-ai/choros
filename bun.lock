@@ -39,7 +39,7 @@
     },
     "apps/desktop": {
       "name": "@choros/desktop",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "dependencies": {
         "@ast-grep/napi": "0.41.1",
         "@choros/agent-setup": "workspace:*",
@@ -367,7 +367,7 @@
     },
     "packages/cli": {
       "name": "@choros/cli",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "dependencies": {
         "@choros/cli-framework": "workspace:*",
         "@choros/host-service": "workspace:*",
@@ -433,7 +433,7 @@
     },
     "packages/host-service": {
       "name": "@choros/host-service",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "dependencies": {
         "@choros/agent-setup": "workspace:*",
         "@choros/chat": "workspace:*",
@@ -585,7 +585,7 @@
     },
     "packages/pty-daemon": {
       "name": "@choros/pty-daemon",
-      "version": "0.3.2",
+      "version": "0.3.3",
       "bin": {
         "pty-daemon": "./src/main.ts",
       },
