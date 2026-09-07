@@ -17,13 +17,20 @@ import { LuFolderOpen, LuLoaderCircle } from "react-icons/lu";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";
 import { showHostServiceUnavailableToast } from "renderer/lib/host-service-unavailable";
-import { useFinalizeProjectSetup } from "renderer/react-query/projects";
+import {
+	type FinalizedProjectSetupResult,
+	type ProjectSetupResult,
+	useFinalizeProjectSetup,
+} from "renderer/react-query/projects";
 import { useLocalHostService } from "renderer/routes/_authenticated/providers/local-host-service-provider";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
+import { useProjectModalRequest } from "../../hooks/use-project-modal-request/use-project-modal-request";
 
 interface NewProjectModalProps {
+	requestId: string;
 	open: boolean;
-	onOpenChange: (open: boolean) => void;
-	onSuccess?: (result: { projectId: string }) => void;
+	onOpenChange: (open: boolean, requestId: string) => void;
+	onSuccess?: (result: FinalizedProjectSetupResult, requestId: string) => void;
 	onError?: (message: string) => void;
 }
 
@@ -38,6 +45,7 @@ function deriveProjectNameFromUrl(url: string): string {
 }
 
 export function NewProjectModal({
+	requestId,
 	open,
 	onOpenChange,
 	onSuccess,
@@ -47,6 +55,8 @@ export function NewProjectModal({
 	const hostService = useLocalHostService();
 	const { activeHostUrl } = hostService;
 	const finalizeSetup = useFinalizeProjectSetup();
+	const { captureSubmission } = useProfiles();
+	const isCurrentRequest = useProjectModalRequest(requestId, open);
 	const selectDirectory = electronTrpc.window.selectDirectory.useMutation();
 	const { data: homeDir } = electronTrpc.window.getHomeDir.useQuery();
 
@@ -76,7 +86,7 @@ export function NewProjectModal({
 	const handleOpenChange = (next: boolean) => {
 		if (!next && working) return;
 		if (!next) reset();
-		onOpenChange(next);
+		onOpenChange(next, requestId);
 	};
 
 	const handleBrowse = async () => {
@@ -88,7 +98,7 @@ export function NewProjectModal({
 				}),
 				defaultPath: parentDir || undefined,
 			});
-			if (!result.canceled && result.path) {
+			if (isCurrentRequest(requestId) && !result.canceled && result.path) {
 				setParentDir(result.path);
 			}
 		} catch (err) {
@@ -97,6 +107,8 @@ export function NewProjectModal({
 	};
 
 	const createFromClone = async () => {
+		if (working) return;
+		const profileContext = captureSubmission();
 		const trimmedUrl = url.trim();
 		const trimmedParent = parentDir.trim();
 		if (!trimmedUrl) {
@@ -118,33 +130,30 @@ export function NewProjectModal({
 			return;
 		}
 
+		if (!activeHostUrl) {
+			showHostServiceUnavailableToast(hostService, {
+				action: "cloneRepository",
+			});
+			return;
+		}
+		const trimmedName = name.trim() || deriveProjectNameFromUrl(trimmedUrl);
+		if (!trimmedName) {
+			toast.error(
+				t({
+					id: "dashboard.newProjectModal.enterProjectName",
+					message: "Please enter a project name",
+				}),
+			);
+			return;
+		}
 		setWorking(true);
+		let result: ProjectSetupResult;
 		try {
-			if (!activeHostUrl) {
-				showHostServiceUnavailableToast(hostService, {
-					action: "cloneRepository",
-				});
-				return;
-			}
-			const trimmedName = name.trim() || deriveProjectNameFromUrl(trimmedUrl);
-			if (!trimmedName) {
-				toast.error(
-					t({
-						id: "dashboard.newProjectModal.enterProjectName",
-						message: "Please enter a project name",
-					}),
-				);
-				return;
-			}
 			const client = getHostServiceClientByUrl(activeHostUrl);
-			const result = await client.project.create.mutate({
+			result = await client.project.create.mutate({
 				name: trimmedName,
 				mode: { kind: "clone", parentDir: trimmedParent, url: trimmedUrl },
 			});
-			finalizeSetup(activeHostUrl, result);
-			onSuccess?.({ projectId: result.projectId });
-			reset();
-			onOpenChange(false);
 		} catch (err) {
 			const raw = rawErrorMessage(err);
 			// Drizzle / pg errors arrive as "Failed query: insert into ..."
@@ -167,8 +176,18 @@ export function NewProjectModal({
 				{ description: message },
 			);
 			onError?.(message);
-		} finally {
-			setWorking(false);
+			if (isCurrentRequest(requestId)) setWorking(false);
+			return;
+		}
+		const finalized = await finalizeSetup(
+			activeHostUrl,
+			result,
+			profileContext,
+		);
+		onSuccess?.(finalized, requestId);
+		if (isCurrentRequest(requestId)) {
+			reset();
+			onOpenChange(false, requestId);
 		}
 	};
 

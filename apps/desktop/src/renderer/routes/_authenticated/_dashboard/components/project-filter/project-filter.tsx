@@ -21,6 +21,7 @@ import {
 import { resolveProjectIconUrl } from "renderer/hooks/host-projects/resolve-project-icon-url";
 import { useHostProjects } from "renderer/hooks/host-projects/use-host-projects";
 import { ProjectThumbnail } from "renderer/routes/_authenticated/components/project-thumbnail";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 
 interface ProjectFilterProps {
 	value: string[];
@@ -42,14 +43,19 @@ export function ProjectFilter({
 
 	// Projects are fully local — identity comes from the host fan-out.
 	const { projects: hostProjects, isReady } = useHostProjects();
+	const { isProjectVisible, isReady: areProfilesReady } = useProfiles();
 	const projects = useMemo(
 		() =>
-			hostProjects.map((project) => ({
-				id: project.projectKey,
-				name: project.name,
-				iconUrl: resolveProjectIconUrl(project),
-			})),
-		[hostProjects],
+			hostProjects
+				.filter(
+					(project) => areProfilesReady && isProjectVisible(project.projectKey),
+				)
+				.map((project) => ({
+					id: project.projectKey,
+					name: project.name,
+					iconUrl: resolveProjectIconUrl(project),
+				})),
+		[areProfilesReady, hostProjects, isProjectVisible],
 	);
 
 	const selectedProjects = useMemo(
@@ -71,7 +77,8 @@ export function ProjectFilter({
 		);
 	};
 	const isAllSelected = value.length === 0;
-	const isLoadingWithoutProjects = !isReady && projects.length === 0;
+	const isLoadingWithoutProjects =
+		(!isReady || !areProfilesReady) && projects.length === 0;
 	const label = isLoadingWithoutProjects
 		? t({
 				id: "dashboard.projectFilter.loadingRepositories",

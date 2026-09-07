@@ -13,8 +13,10 @@ import type { PaneViewerData } from "../../types";
 
 export function useClearActivePaneAttention({
 	store,
+	enabled = true,
 }: {
 	store: StoreApi<WorkspaceStore<PaneViewerData>>;
+	enabled?: boolean;
 }): void {
 	const { workspace } = useWorkspace();
 	const activePane = useStore(store, (state) => {
@@ -33,7 +35,7 @@ export function useClearActivePaneAttention({
 	const bindings = useTerminalAgentBindings(workspace.id);
 
 	useEffect(() => {
-		if (activePaneStatus !== "review") return;
+		if (!enabled || activePaneStatus !== "review") return;
 		for (const source of getV2NotificationSourcesForPane(activePane)) {
 			if (source.type !== "terminal") continue;
 			// Seen marks are host-clock only: mark "seen through the binding's
@@ -43,5 +45,5 @@ export function useClearActivePaneAttention({
 			if (!binding) continue;
 			markTerminalSeen(source.id, binding.lastEventAt);
 		}
-	}, [activePane, activePaneStatus, bindings, markTerminalSeen]);
+	}, [enabled, activePane, activePaneStatus, bindings, markTerminalSeen]);
 }

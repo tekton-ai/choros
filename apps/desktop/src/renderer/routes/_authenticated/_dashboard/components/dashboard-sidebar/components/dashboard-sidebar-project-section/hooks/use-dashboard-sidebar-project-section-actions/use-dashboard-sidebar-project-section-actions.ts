@@ -12,6 +12,7 @@ import { electronTrpcClient } from "renderer/lib/trpc-client";
 import { useDashboardSidebarSectionRename } from "renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-section-rename-context";
 import { useDashboardSidebarState } from "renderer/routes/_authenticated/hooks/use-dashboard-sidebar-state";
 import { useLocalHostService } from "renderer/routes/_authenticated/providers/local-host-service-provider";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 import { useOpenNewWorkspaceModal } from "renderer/stores/new-workspace-modal";
 import { useWorkspaceCreates } from "renderer/stores/workspace-creates";
 import type { DashboardSidebarProject } from "../../../../types";
@@ -43,6 +44,7 @@ export function useDashboardSidebarProjectSectionActions({
 	// the local host and rename the wrong replica.
 	const servingHostUrl = useHostUrl(servingHostId ?? undefined);
 	const { submit } = useWorkspaceCreates();
+	const { captureSubmission, isSubmissionCurrent } = useProfiles();
 	const importingWorktreesRef = useRef(false);
 	// Non-null while the import confirmation dialog is open.
 	const [importableWorktrees, setImportableWorktrees] = useState<
@@ -227,6 +229,7 @@ export function useDashboardSidebarProjectSectionActions({
 	}: {
 		runSetup: boolean;
 	}) => {
+		const profileContext = captureSubmission();
 		const untracked = importableWorktrees;
 		if (importingWorktreesRef.current || !untracked) return;
 		if (!servingHostId) {
@@ -247,6 +250,7 @@ export function useDashboardSidebarProjectSectionActions({
 					(worktree) =>
 						submit({
 							hostId: servingHostId,
+							profileContext,
 							snapshot: {
 								id: crypto.randomUUID(),
 								projectId: project.id,
@@ -279,7 +283,11 @@ export function useDashboardSidebarProjectSectionActions({
 					}),
 				);
 			}
-			setImportableWorktrees(null);
+			if (isSubmissionCurrent(profileContext)) {
+				setImportableWorktrees((current) =>
+					current === untracked ? null : current,
+				);
+			}
 		} finally {
 			importingWorktreesRef.current = false;
 			setIsImportingWorktrees(false);

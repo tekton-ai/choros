@@ -4,6 +4,7 @@ import { useDeletingWorkspacesStore } from "renderer/routes/_authenticated/_dash
 import { navigateToV2Workspace } from "renderer/routes/_authenticated/_dashboard/utils/workspace-navigation";
 import { useCollections } from "renderer/routes/_authenticated/providers/collections-provider";
 import { useHostWorkspaces } from "renderer/routes/_authenticated/providers/host-workspaces-provider";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 import { useTagFolderContext } from "renderer/routes/_authenticated/utils/workspace-tag-folders";
 import { getFlattenedV2WorkspaceIds } from "../../utils/get-flattened-v2-workspace-ids";
 import { resolveWorkspaceRemovalNavigationTarget } from "./navigation-target";
@@ -22,11 +23,16 @@ export function useNavigateAwayFromWorkspace() {
 	const navigate = useNavigate();
 	const matchRoute = useMatchRoute();
 	const collections = useCollections();
-	const { workspaces, isReady } = useHostWorkspaces();
+	const { workspaces } = useHostWorkspaces();
+	const { isWorkspaceVisible } = useProfiles();
+	const visibleWorkspaces = useMemo(
+		() => workspaces.filter(isWorkspaceVisible),
+		[workspaces, isWorkspaceVisible],
+	);
 	const tagFolderContext = useTagFolderContext();
 	const workspaceIds = useMemo(
-		() => new Set(workspaces.map((workspace) => workspace.id)),
-		[workspaces],
+		() => new Set(visibleWorkspaces.map((workspace) => workspace.id)),
+		[visibleWorkspaces],
 	);
 
 	const navigateAwayFromWorkspace = useCallback(
@@ -45,13 +51,12 @@ export function useNavigateAwayFromWorkspace() {
 				removedWorkspaceId: workspaceId,
 				orderedWorkspaceIds: getFlattenedV2WorkspaceIds(
 					collections,
-					workspaces,
+					visibleWorkspaces,
 					tagFolderContext,
 				),
-				// Before the host fan-out settles, an unlisted sibling means
-				// "unknown", not "gone" — prefer navigating to it over home; the
-				// workspace route's own not-found handling covers a true miss.
-				isWorkspaceValid: (id) => !isReady || workspaceIds.has(id),
+				// A persisted sibling with unknown identity cannot be safely
+				// offered as an ordinary, Profile-scoped navigation target.
+				isWorkspaceValid: (id) => workspaceIds.has(id),
 				// Rows mid-destroy stay listed until the archive commit lands
 				// (after teardown) — exclude every in-flight destroy, not just
 				// the caller's own batch. Read at call time for freshness.
@@ -77,11 +82,10 @@ export function useNavigateAwayFromWorkspace() {
 		[
 			collections,
 			workspaceIds,
-			workspaces,
+			visibleWorkspaces,
 			tagFolderContext,
 			matchRoute,
 			navigate,
-			isReady,
 		],
 	);
 

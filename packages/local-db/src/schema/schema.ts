@@ -1,86 +1,18 @@
-import type { InstalledPlugin } from "@choros/shared/plugins";
+import { sql } from "drizzle-orm";
 import {
+	check,
 	index,
 	integer,
-	real,
+	primaryKey,
 	sqliteTable,
 	text,
+	uniqueIndex,
 } from "drizzle-orm/sqlite-core";
 import { v4 as uuidv4 } from "uuid";
 
-import type {
-	AgentCustomDefinition,
-	AgentPresetOverrideEnvelope,
-	ExternalApp,
-	FileOpenMode,
-	TerminalLinkBehavior,
-	TerminalPreset,
-} from "./zod";
+import { createSettingsColumns } from "./settings-columns";
 
-export const settings = sqliteTable("settings", {
-	id: integer("id").primaryKey().default(1),
-	terminalPresets: text("terminal_presets", { mode: "json" }).$type<
-		TerminalPreset[]
-	>(),
-	terminalPresetsInitialized: integer("terminal_presets_initialized", {
-		mode: "boolean",
-	}),
-	agentPresetOverrides: text("agent_preset_overrides", {
-		mode: "json",
-	}).$type<AgentPresetOverrideEnvelope>(),
-	agentCustomDefinitions: text("agent_custom_definitions", {
-		mode: "json",
-	}).$type<AgentCustomDefinition[]>(),
-	agentPresetPermissionsMigratedAt: integer(
-		"agent_preset_permissions_migrated_at",
-	),
-	selectedRingtoneId: text("selected_ringtone_id"),
-	// App display language: "auto" or a supported BCP 47 tag; null = auto.
-	language: text("language"),
-	confirmOnQuit: integer("confirm_on_quit", { mode: "boolean" }),
-	terminalLinkBehavior: text(
-		"terminal_link_behavior",
-	).$type<TerminalLinkBehavior>(),
-	waitForSetupBeforeAgent: integer("wait_for_setup_before_agent", {
-		mode: "boolean",
-	}),
-	notificationSoundsMuted: integer("notification_sounds_muted", {
-		mode: "boolean",
-	}),
-	notificationVolume: integer("notification_volume"),
-	fileOpenMode: text("file_open_mode").$type<FileOpenMode>(),
-	terminalFontFamily: text("terminal_font_family"),
-	terminalFontSize: integer("terminal_font_size"),
-	terminalLineHeight: real("terminal_line_height"),
-	terminalLetterSpacing: real("terminal_letter_spacing"),
-	terminalFontWeight: integer("terminal_font_weight"),
-	terminalLigatures: integer("terminal_ligatures", { mode: "boolean" }),
-	terminalMinimumContrast: real("terminal_minimum_contrast"),
-	terminalCursorStyle: text("terminal_cursor_style").$type<
-		"block" | "bar" | "underline"
-	>(),
-	terminalCursorBlink: integer("terminal_cursor_blink", { mode: "boolean" }),
-	terminalParkedRuntimeCap: integer("terminal_parked_runtime_cap"),
-	terminalCopyOnSelect: integer("terminal_copy_on_select", {
-		mode: "boolean",
-	}),
-	editorFontFamily: text("editor_font_family"),
-	editorFontSize: integer("editor_font_size"),
-	editorLineHeight: real("editor_line_height"),
-	editorLetterSpacing: real("editor_letter_spacing"),
-	editorFontWeight: integer("editor_font_weight"),
-	editorLigatures: integer("editor_ligatures", { mode: "boolean" }),
-	showResourceMonitor: integer("show_resource_monitor", { mode: "boolean" }),
-	browserHomepageUrl: text("browser_homepage_url"),
-	defaultEditor: text("default_editor").$type<ExternalApp>(),
-	disabledAgentHooks: text("disabled_agent_hooks", { mode: "json" }).$type<
-		string[]
-	>(),
-	installedPlugins: text("installed_plugins", { mode: "json" }).$type<
-		InstalledPlugin[]
-	>(),
-	disabledSkills: text("disabled_skills", { mode: "json" }).$type<string[]>(),
-});
+export const settings = sqliteTable("settings", createSettingsColumns());
 
 export type InsertSettings = typeof settings.$inferInsert;
 export type SelectSettings = typeof settings.$inferSelect;
@@ -170,3 +102,92 @@ export const screenshots = sqliteTable(
 
 export type InsertScreenshot = typeof screenshots.$inferInsert;
 export type SelectScreenshot = typeof screenshots.$inferSelect;
+
+export const profiles = sqliteTable(
+	"profiles",
+	{
+		id: text("id").primaryKey(),
+		name: text("name").notNull(),
+		nameKey: text("name_key").notNull(),
+		sortOrder: integer("sort_order").notNull(),
+		isDefault: integer("is_default", { mode: "boolean" }).notNull(),
+		createdAt: integer("created_at").notNull(),
+		updatedAt: integer("updated_at").notNull(),
+	},
+	(table) => [
+		uniqueIndex("profiles_name_key_unique").on(table.nameKey),
+		uniqueIndex("profiles_default_unique")
+			.on(table.isDefault)
+			.where(sql`${table.isDefault} = 1`),
+		check(
+			"profiles_default_identity",
+			sql`(${table.isDefault} = 1 AND ${table.id} = 'default') OR (${table.isDefault} = 0 AND ${table.id} <> 'default')`,
+		),
+		check("profiles_sort_order_valid", sql`${table.sortOrder} >= 0`),
+	],
+);
+
+export const profileMemberships = sqliteTable(
+	"profile_memberships",
+	{
+		profileId: text("profile_id")
+			.notNull()
+			.references(() => profiles.id),
+		kind: text("kind", { enum: ["project", "session"] }).notNull(),
+		projectKey: text("project_key"),
+		hostId: text("host_id"),
+		workspaceId: text("workspace_id"),
+	},
+	(table) => [
+		uniqueIndex("profile_memberships_project_unique")
+			.on(table.projectKey)
+			.where(sql`${table.kind} = 'project'`),
+		uniqueIndex("profile_memberships_session_unique")
+			.on(table.hostId, table.workspaceId)
+			.where(sql`${table.kind} = 'session'`),
+		index("profile_memberships_profile_idx").on(table.profileId),
+		check(
+			"profile_memberships_nondefault",
+			sql`${table.profileId} <> 'default'`,
+		),
+		check(
+			"profile_memberships_shape",
+			sql`(${table.kind} = 'project' AND ${table.projectKey} IS NOT NULL AND length(${table.projectKey}) > 0 AND ${table.hostId} IS NULL AND ${table.workspaceId} IS NULL) OR (${table.kind} = 'session' AND ${table.projectKey} IS NULL AND ${table.hostId} IS NOT NULL AND length(${table.hostId}) > 0 AND ${table.workspaceId} IS NOT NULL AND length(${table.workspaceId}) > 0)`,
+		),
+	],
+);
+
+export const profileWorkspaceVisits = sqliteTable(
+	"profile_workspace_visits",
+	{
+		profileId: text("profile_id")
+			.notNull()
+			.references(() => profiles.id),
+		hostId: text("host_id").notNull(),
+		workspaceId: text("workspace_id").notNull(),
+		visitedAt: integer("visited_at").notNull(),
+	},
+	(table) => [
+		primaryKey({ columns: [table.profileId, table.hostId, table.workspaceId] }),
+		index("profile_workspace_visits_recent_idx").on(
+			table.profileId,
+			table.visitedAt,
+		),
+		check("profile_workspace_visits_time_valid", sql`${table.visitedAt} >= 0`),
+	],
+);
+
+export const profileRegistryState = sqliteTable(
+	"profile_registry_state",
+	{
+		id: integer("id").primaryKey(),
+		revision: integer("revision").notNull(),
+		selectedProfileId: text("selected_profile_id")
+			.notNull()
+			.references(() => profiles.id),
+	},
+	(table) => [
+		check("profile_registry_state_singleton", sql`${table.id} = 1`),
+		check("profile_registry_state_revision_valid", sql`${table.revision} >= 0`),
+	],
+);

@@ -5,6 +5,7 @@ import { AlertCircle, GitBranch } from "lucide-react";
 import { useCollections } from "renderer/routes/_authenticated/providers/collections-provider";
 import type { FailedWorkspaceCreateRow } from "renderer/routes/_authenticated/providers/collections-provider/dashboard-sidebar-local";
 import { useWorkspaceCreates } from "renderer/stores/workspace-creates";
+import { useWorkspaceCreateNavigation } from "renderer/stores/workspace-creates/use-workspace-create-navigation";
 
 interface WorkspaceCreateErrorStateProps {
 	entry: FailedWorkspaceCreateRow;
@@ -17,23 +18,23 @@ export function WorkspaceCreateErrorState({
 	const navigate = useNavigate();
 	const collections = useCollections();
 	const { submit } = useWorkspaceCreates();
+	const beginNavigation = useWorkspaceCreateNavigation();
 
 	const name = entry.input.name;
 	const branch = "branch" in entry.input ? entry.input.branch : undefined;
 
 	const handleRetry = () => {
-		const { workspaceId, completed } = submit({
+		const navigation = beginNavigation();
+		const handle = submit({
 			hostId: entry.hostId,
+			profileContext: navigation.profileContext,
 			snapshot: entry.input,
 		});
-		void completed.then((outcome) => {
-			if (outcome.ok && outcome.workspaceId !== workspaceId) {
-				void navigate({
-					to: "/v2-workspace/$workspaceId",
-					params: { workspaceId: outcome.workspaceId },
-					replace: true,
-				});
-			}
+		void navigation.follow(handle, undefined, true).catch((error) => {
+			console.error(
+				"[WorkspaceCreateErrorState] failed to open workspace",
+				error,
+			);
 		});
 	};
 

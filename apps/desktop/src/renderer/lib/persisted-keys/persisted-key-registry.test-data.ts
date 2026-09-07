@@ -77,10 +77,6 @@ export const PERSISTED_KEY_REGISTRY: ReadonlyArray<
 		["sidebar-workspaces-collapse"],
 	],
 	[
-		"src/renderer/stores/last-active-v2-workspace.ts",
-		["last-active-v2-workspace"],
-	],
-	[
 		"src/renderer/stores/v2-workspace-create-defaults.ts",
 		["v2-workspace-create-defaults"],
 	],
@@ -151,7 +147,6 @@ export const PERSISTED_KEY_REGISTRY: ReadonlyArray<
 			"agentAutoRun",
 		],
 	],
-	["src/renderer/routes/_authenticated/layout.tsx", ["lastViewedWorkspaceId"]],
 	[
 		"src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/use-pane-registry/components/terminal-pane/rich-input-open-store.ts",
 		["choros.terminalRichInputOpen"],

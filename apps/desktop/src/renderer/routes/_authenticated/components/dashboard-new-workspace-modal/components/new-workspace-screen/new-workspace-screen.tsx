@@ -45,6 +45,7 @@ import { electronTrpc } from "renderer/lib/electron-trpc";
 import { showHostServiceUnavailableToast } from "renderer/lib/host-service-unavailable";
 import { useHostWorkspaces } from "renderer/routes/_authenticated/providers/host-workspaces-provider";
 import { useLocalHostService } from "renderer/routes/_authenticated/providers/local-host-service-provider";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 import { newWorkspaceAttachmentPaths } from "renderer/stores/new-workspace-attachments";
 import { useNewWorkspacePromptContext } from "renderer/stores/new-workspace-prompt-context";
 import {
@@ -83,6 +84,7 @@ import {
 	PILL_BUTTON_CLASS,
 	type WorkspaceCreateAgent,
 } from "../dashboard-new-workspace-form/prompt-group/types";
+import { useProfileProjectSelection } from "../dashboard-new-workspace-modal-content/hooks/use-profile-project-selection/use-profile-project-selection";
 import { useSelectedHostProjectIds } from "../dashboard-new-workspace-modal-content/hooks/use-selected-host-project-ids";
 import { SymmetricResizeHandles } from "../symmetric-resize-handles";
 import { AttachmentCard } from "./components/attachment-card";
@@ -213,11 +215,15 @@ export function NewWorkspaceScreen({
 	// ── Projects ─────────────────────────────────────────────────────
 	const { projects: hostProjects, isReady: areProjectsReady } =
 		useHostProjects();
+	const { isProjectVisible } = useProfiles();
 	const setUpProjectIds = useSelectedHostProjectIds(draft.hostId);
 	const projects = useMemo(
 		() =>
 			hostProjects
-				.filter((project) => Boolean(project.projectKey))
+				.filter(
+					(project) =>
+						Boolean(project.projectKey) && isProjectVisible(project.projectKey),
+				)
 				.map((project) => ({
 					id: project.projectKey,
 					name: project.name,
@@ -231,62 +237,16 @@ export function NewWorkspaceScreen({
 							? null
 							: !setUpProjectIds.has(project.projectKey),
 				})),
-		[hostProjects, setUpProjectIds],
+		[hostProjects, isProjectVisible, setUpProjectIds],
 	);
 
-	// Apply the URL preselection exactly once (ref-guarded like the control
-	// modal) — re-applying on every draft change would snap the picker back
-	// and make switching projects impossible.
-	const appliedPreSelectionRef = useRef<string | null>(null);
-	const appliedSessionPreselectionRef = useRef(false);
-	// Re-arm per intent so a second session-open cycle on a reused screen
-	// instance applies again.
-	useEffect(() => {
-		if (!preSelectedSession) appliedSessionPreselectionRef.current = false;
-	}, [preSelectedSession]);
-	useEffect(() => {
-		if (!preSelectedProjectId) appliedPreSelectionRef.current = null;
-	}, [preSelectedProjectId]);
-	useEffect(() => {
-		if (!isOpen || !areProjectsReady) return;
-		if (preSelectedSession && !appliedSessionPreselectionRef.current) {
-			appliedSessionPreselectionRef.current = true;
-			selectSession();
-			return;
-		}
-		const isValid = (id: string | null | undefined) =>
-			Boolean(id && projects.some((project) => project.id === id));
-		if (
-			preSelectedProjectId &&
-			preSelectedProjectId !== appliedPreSelectionRef.current &&
-			isValid(preSelectedProjectId)
-		) {
-			appliedPreSelectionRef.current = preSelectedProjectId;
-			selectProject(preSelectedProjectId);
-			return;
-		}
-		// An explicit "No project" (session) choice must survive project-list
-		// updates — never auto-select over it.
-		if (draft.isSession) return;
-		if (isValid(draft.selectedProjectId)) return;
-		const { lastProjectId } = useV2WorkspaceCreateDefaultsStore.getState();
-		updateDraft({
-			selectedProjectId: isValid(lastProjectId)
-				? lastProjectId
-				: (projects[0]?.id ?? null),
-		});
-	}, [
+	const targetSelectionRequired = useProfileProjectSelection({
 		isOpen,
-		areProjectsReady,
 		preSelectedProjectId,
 		preSelectedSession,
-		draft.selectedProjectId,
-		draft.isSession,
 		projects,
-		selectProject,
-		selectSession,
-		updateDraft,
-	]);
+		areProjectsReady,
+	});
 
 	const storedComposerWidth = useNewWorkspaceWidthStore(
 		(state) => state.screenWidth,
@@ -325,7 +285,10 @@ export function NewWorkspaceScreen({
 				});
 	}, [resetKey, placeholderRoll, t]);
 
-	const projectId = draft.selectedProjectId;
+	const projectId =
+		draft.selectedProjectId && isProjectVisible(draft.selectedProjectId)
+			? draft.selectedProjectId
+			: null;
 	const selectedProject = projects.find((project) => project.id === projectId);
 	const needsSetup = selectedProject?.needsSetup === true;
 	const isPromptEmpty = !draft.prompt.trim();
@@ -999,6 +962,14 @@ export function NewWorkspaceScreen({
 									selectProject(selectedProjectId);
 								}}
 							/>
+							{targetSelectionRequired && (
+								<output className="text-xs text-muted-foreground">
+									<Trans id="profiles.creation.selectTarget">
+										Select a project in this profile or choose No project. Your
+										draft has been kept.
+									</Trans>
+								</output>
+							)}
 							{draft.linkedPR ? (
 								<span className="flex items-center gap-1 text-xs text-muted-foreground">
 									<LuGitPullRequest className="size-3 shrink-0" />

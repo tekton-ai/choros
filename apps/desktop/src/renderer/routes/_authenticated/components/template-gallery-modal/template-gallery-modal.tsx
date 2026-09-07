@@ -11,15 +11,22 @@ import { useState } from "react";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";
 import { showHostServiceUnavailableToast } from "renderer/lib/host-service-unavailable";
-import { useFinalizeProjectSetup } from "renderer/react-query/projects";
+import {
+	type FinalizedProjectSetupResult,
+	type ProjectSetupResult,
+	useFinalizeProjectSetup,
+} from "renderer/react-query/projects";
+import { useProjectModalRequest } from "renderer/routes/_authenticated/_dashboard/components/add-repository-modals/hooks/use-project-modal-request/use-project-modal-request";
 import { useLocalHostService } from "renderer/routes/_authenticated/providers/local-host-service-provider";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 import { TemplateCard } from "./components/template-card";
 import { PROJECT_TEMPLATES, type ProjectTemplate } from "./templates";
 
 interface TemplateGalleryModalProps {
+	requestId: string;
 	open: boolean;
-	onOpenChange: (open: boolean) => void;
-	onCreated: (result: { projectId: string }) => void;
+	onOpenChange: (open: boolean, requestId: string) => void;
+	onCreated: (result: FinalizedProjectSetupResult, requestId: string) => void;
 	onError?: (message: string) => void;
 }
 
@@ -34,6 +41,7 @@ function deriveProjectNameFromUrl(url: string): string {
 }
 
 export function TemplateGalleryModal({
+	requestId,
 	open,
 	onOpenChange,
 	onCreated,
@@ -42,47 +50,57 @@ export function TemplateGalleryModal({
 	const hostService = useLocalHostService();
 	const { activeHostUrl } = hostService;
 	const finalizeSetup = useFinalizeProjectSetup();
+	const { captureSubmission } = useProfiles();
+	const isCurrentRequest = useProjectModalRequest(requestId, open);
 	const { data: homeDir } = electronTrpc.window.getHomeDir.useQuery();
 	const parentDir = homeDir ? `${homeDir}/.choros/projects` : null;
 	const [cloningId, setCloningId] = useState<string | null>(null);
 
 	const handleSelect = async (template: ProjectTemplate) => {
 		if (!template.repo || cloningId) return;
+		const profileContext = captureSubmission();
 		if (!parentDir) {
 			const message = "Projects directory not ready yet.";
 			if (onError) onError(message);
 			else toast.error("Could not create project", { description: message });
 			return;
 		}
+		if (!activeHostUrl) {
+			showHostServiceUnavailableToast(hostService, {
+				action: "createProject",
+			});
+			return;
+		}
 		setCloningId(template.id);
-		let createdProjectId: string | null = null;
+		let result: ProjectSetupResult;
 		try {
-			if (!activeHostUrl) {
-				showHostServiceUnavailableToast(hostService, {
-					action: "createProject",
-				});
-				return;
-			}
 			const client = getHostServiceClientByUrl(activeHostUrl);
-			const result = await client.project.create.mutate({
+			result = await client.project.create.mutate({
 				name: deriveProjectNameFromUrl(template.repo),
 				mode: { kind: "template", parentDir, url: template.repo },
 			});
-			finalizeSetup(activeHostUrl, result);
-			createdProjectId = result.projectId;
 		} catch (err) {
 			const message = errorMessage(err);
 			if (onError) onError(message);
 			else toast.error("Could not create project", { description: message });
-		} finally {
-			setCloningId(null);
+			if (isCurrentRequest(requestId)) setCloningId(null);
+			return;
 		}
-		if (createdProjectId) onCreated({ projectId: createdProjectId });
+		const finalized = await finalizeSetup(
+			activeHostUrl,
+			result,
+			profileContext,
+		);
+		onCreated(finalized, requestId);
+		if (isCurrentRequest(requestId)) {
+			setCloningId(null);
+			onOpenChange(false, requestId);
+		}
 	};
 
 	const handleOpenChange = (next: boolean) => {
 		if (!next && cloningId) return;
-		onOpenChange(next);
+		onOpenChange(next, requestId);
 	};
 
 	return (

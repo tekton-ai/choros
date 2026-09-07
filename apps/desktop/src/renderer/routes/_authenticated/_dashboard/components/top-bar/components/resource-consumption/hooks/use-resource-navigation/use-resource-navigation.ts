@@ -1,6 +1,5 @@
-import { useNavigate } from "@tanstack/react-router";
 import { useCallback } from "react";
-import { navigateToV2Workspace } from "renderer/routes/_authenticated/_dashboard/utils/workspace-navigation";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 import type { SessionMetrics } from "../../types";
 
 interface UseResourceNavigationOptions {
@@ -11,7 +10,7 @@ interface UseResourceNavigationOptions {
 export function useResourceNavigation({
 	onNavigate,
 }: UseResourceNavigationOptions) {
-	const navigate = useNavigate();
+	const { openWorkspace } = useProfiles();
 	const getPaneName = useCallback(
 		(session: SessionMetrics): string =>
 			session.title ?? `Terminal ${session.sessionId.slice(0, 8)}`,
@@ -19,10 +18,10 @@ export function useResourceNavigation({
 	);
 	const navigateToWorkspace = useCallback(
 		(workspaceId: string) => {
-			void navigateToV2Workspace(workspaceId, navigate);
+			void openWorkspace(workspaceId);
 			onNavigate();
 		},
-		[navigate, onNavigate],
+		[openWorkspace, onNavigate],
 	);
 	const navigateToPane = (_workspaceId: string, _paneId: string) =>
 		navigateToWorkspace(_workspaceId);

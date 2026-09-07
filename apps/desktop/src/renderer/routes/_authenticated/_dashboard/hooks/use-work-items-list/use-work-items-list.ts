@@ -8,7 +8,7 @@ import {
 	groupProjectTargetsByHost,
 	type HostQueryTarget,
 	type ProjectQueryTarget,
-} from "renderer/routes/_authenticated/_dashboard/hooks/use-project-query-targets";
+} from "renderer/routes/_authenticated/_dashboard/hooks/use-project-query-targets/project-query-scope";
 import { getRepositoryMismatchLabel } from "renderer/routes/_authenticated/_dashboard/utils/get-repository-mismatch-label";
 import { mergePaginatedProjectRows } from "renderer/routes/_authenticated/_dashboard/utils/merge-paginated-project-rows";
 

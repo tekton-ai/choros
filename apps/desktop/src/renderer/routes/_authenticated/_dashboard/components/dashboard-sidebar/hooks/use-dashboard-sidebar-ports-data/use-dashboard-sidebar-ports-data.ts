@@ -7,6 +7,7 @@ import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";
 import { useVisibleSidebarWorkspaceIds } from "renderer/routes/_authenticated/hooks/use-visible-sidebar-workspace-ids";
 import { useHostWorkspaces } from "renderer/routes/_authenticated/providers/host-workspaces-provider";
 import { useLocalHostService } from "renderer/routes/_authenticated/providers/local-host-service-provider";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 import {
 	applyPortEventsToHostPortsResult,
 	type DashboardSidebarPortGroup,
@@ -30,6 +31,7 @@ export function useDashboardSidebarPortsData(enabled = true): {
 	portLoadErrors: DashboardSidebarPortsLoadError[];
 } {
 	const queryClient = useQueryClient();
+	const { isWorkspaceVisible } = useProfiles();
 	const { activeHostUrl, machineId } = useLocalHostService();
 	const visibleWorkspaceIds = useVisibleSidebarWorkspaceIds();
 
@@ -142,13 +144,25 @@ export function useDashboardSidebarPortsData(enabled = true): {
 		};
 	}, [hostsToQuery, queryClient]);
 
+	// Presentation only: keep the existing Host queries and event subscriptions
+	// mounted for the original sidebar eligibility across Profile switches.
+	const profileWorkspaceIds = useMemo(
+		() =>
+			new Set(
+				allWorkspaces
+					.filter(isWorkspaceVisible)
+					.map((workspace) => workspace.id),
+			),
+		[allWorkspaces, isWorkspaceVisible],
+	);
+
 	const workspacePortGroups = useMemo(
 		() =>
 			groupDashboardSidebarPorts({
 				hostPortResults: queries.map((query) => query.data),
 				workspaces,
-			}),
-		[queries, workspaces],
+			}).filter((group) => profileWorkspaceIds.has(group.workspaceId)),
+		[queries, workspaces, profileWorkspaceIds],
 	);
 
 	const totalPortCount = workspacePortGroups.reduce(

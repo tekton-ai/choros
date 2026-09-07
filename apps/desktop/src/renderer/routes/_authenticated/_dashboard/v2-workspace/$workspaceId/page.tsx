@@ -1,7 +1,7 @@
 import { Workspace } from "@choros/panes";
 import { workspaceTrpc } from "@choros/workspace-client";
 import { createFileRoute } from "@tanstack/react-router";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { useQuickOpenStore } from "renderer/command-palette/ui/quick-open/quick-open-store";
 import { ZoomStable } from "renderer/components/zoom-stable";
@@ -14,6 +14,7 @@ import { SidebarToggle } from "renderer/routes/_authenticated/_dashboard/compone
 import { RightSidebarToggle } from "renderer/routes/_authenticated/_dashboard/components/top-bar/components/right-sidebar-toggle";
 import { TopBarPortsDropdown } from "renderer/routes/_authenticated/_dashboard/components/top-bar/components/top-bar-ports-dropdown";
 import { WindowControls } from "renderer/routes/_authenticated/_dashboard/components/top-bar/components/window-controls";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 import { CommandPalette } from "renderer/screens/main/components/command-palette";
 import { ResizablePanel } from "renderer/screens/main/components/resizable-panel";
 import { getV2NotificationSourcesForTab } from "renderer/stores/v2-notifications";
@@ -39,6 +40,7 @@ import { useDefaultContextMenuActions } from "./hooks/use-default-context-menu-a
 import { useDefaultPaneActions } from "./hooks/use-default-pane-actions";
 import { usePaneRegistry } from "./hooks/use-pane-registry";
 import { renderBrowserTabIcon } from "./hooks/use-pane-registry/components/browser-pane";
+import { useProfileWorkspaceOpened } from "./hooks/use-profile-workspace-opened/use-profile-workspace-opened";
 import { useSlotElement } from "./hooks/use-slot-element";
 import { useTabCloseGuard } from "./hooks/use-tab-close-guard";
 import { useV2PresetExecution } from "./hooks/use-v2-preset-execution";
@@ -82,6 +84,7 @@ export const Route = createFileRoute(
 });
 
 function V2WorkspacePage() {
+	const { reportWorkspaceUnavailable } = useProfiles();
 	const { workspace } = useWorkspace();
 	const workspaceStatusQuery = workspaceTrpc.workspace.get.useQuery(
 		{ id: workspace.id },
@@ -89,6 +92,18 @@ function V2WorkspacePage() {
 			refetchOnWindowFocus: true,
 		},
 	);
+	useEffect(() => {
+		if (
+			workspaceStatusQuery.isError ||
+			workspaceStatusQuery.data?.worktreeExists === false
+		)
+			reportWorkspaceUnavailable(workspace.id);
+	}, [
+		workspaceStatusQuery.isError,
+		workspaceStatusQuery.data?.worktreeExists,
+		workspace.id,
+		reportWorkspaceUnavailable,
+	]);
 
 	if (workspaceStatusQuery.data?.worktreeExists === false) {
 		return (
@@ -107,10 +122,21 @@ function V2WorkspacePage() {
 		);
 	}
 
-	return <V2WorkspaceContent />;
+	return (
+		<V2WorkspaceContent
+			isWorkspaceReady={
+				workspaceStatusQuery.isSuccess &&
+				workspaceStatusQuery.data.worktreeExists === true
+			}
+		/>
+	);
 }
 
-function V2WorkspaceContent() {
+function V2WorkspaceContent({
+	isWorkspaceReady,
+}: {
+	isWorkspaceReady: boolean;
+}) {
 	const { openUrl, openUrlTarget, openUrlRequestId } = Route.useSearch();
 	const { workspace } = useWorkspace();
 	const workspaceId = workspace.id;
@@ -125,7 +151,12 @@ function V2WorkspaceContent() {
 	const showPresetsBar = v2UserPreferences.showPresetsBar;
 	const sidebarOpen = v2UserPreferences.rightSidebarOpen;
 	const { store, isLayoutReady } = useV2WorkspacePaneLayout();
-	useClearActivePaneAttention({ store });
+	const canMarkActivePaneSeen = useProfileWorkspaceOpened({
+		store,
+		isLayoutReady,
+		isWorkspaceReady,
+	});
+	useClearActivePaneAttention({ store, enabled: canMarkActivePaneSeen });
 	const launcher = useV2TerminalLauncher();
 	const {
 		matchedPresets,

@@ -8,6 +8,14 @@ const STORAGE_KEY = "router-history";
 const MAX_ENTRIES = 100;
 
 type LocationState = HistoryLocation["state"];
+const NAVIGATION_INTENT = "__desktopNavigationIntent";
+type IntentState = LocationState & { [NAVIGATION_INTENT]?: number };
+
+export function getHistoryNavigationIntent(
+	location: HistoryLocation,
+): number | undefined {
+	return (location.state as IntentState)[NAVIGATION_INTENT];
+}
 
 interface PersistedState {
 	entries: string[];
@@ -16,7 +24,6 @@ interface PersistedState {
 
 export interface HistoryEntry {
 	path: string;
-	timestamp: number;
 }
 
 function loadPersistedState(): PersistedState {
@@ -105,17 +112,39 @@ function parseHref(href: string, state: LocationState): HistoryLocation {
 
 export interface PersistentHashHistory extends RouterHistory {
 	getEntries: () => HistoryEntry[];
+	setNavigationFilter: (filter: (path: string) => boolean) => () => void;
+	getNavigationDelta: (direction: -1 | 1) => number | null;
+	canGoForward: () => boolean;
+	setNavigationIntentValidator: (
+		validator: (intent: number) => boolean,
+	) => () => void;
+	runWithNavigationIntent: <T>(intent: number, callback: () => T) => T;
 }
 
 export function createPersistentHashHistory(): PersistentHashHistory {
 	const persisted = loadPersistedState();
 
 	const entries: string[] = [...persisted.entries];
-	const timestamps: number[] = entries.map(() => Date.now());
 	const states: LocationState[] = entries.map((_entry, i) =>
 		assignKeyAndIndex(i),
 	);
 	let index = persisted.index;
+	let navigationFilter: (path: string) => boolean = () => true;
+	let activeIntent: number | undefined;
+	let validateIntent: (intent: number) => boolean = () => true;
+	const canCommit = (state: IntentState) =>
+		state[NAVIGATION_INTENT] === undefined ||
+		validateIntent(state[NAVIGATION_INTENT]);
+	const getNavigationDelta = (direction: -1 | 1): number | null => {
+		for (
+			let candidate = index + direction;
+			candidate >= 0 && candidate < entries.length;
+			candidate += direction
+		) {
+			if (navigationFilter(entries[candidate] ?? "/")) return candidate - index;
+		}
+		return null;
+	};
 
 	const getLocation = () =>
 		parseHref(entries[index] ?? "/", states[index] ?? assignKeyAndIndex(index));
@@ -130,37 +159,46 @@ export function createPersistentHashHistory(): PersistentHashHistory {
 		getLocation,
 		getLength: () => entries.length,
 		pushState: (path, state) => {
+			if (!canCommit(state)) return;
 			if (index < entries.length - 1) {
 				entries.splice(index + 1);
-				timestamps.splice(index + 1);
 				states.splice(index + 1);
 			}
 			entries.push(path);
-			timestamps.push(Date.now());
 			states.push(state as LocationState);
 			index = entries.length - 1;
 			syncHash(path);
 			persistState(entries, index);
 		},
 		replaceState: (path, state) => {
+			if (!canCommit(state)) return;
 			entries[index] = path;
-			timestamps[index] = Date.now();
 			states[index] = state as LocationState;
 			syncHash(path);
 			persistState(entries, index);
 		},
 		back: () => {
-			index = Math.max(index - 1, 0);
+			index += getNavigationDelta(-1) ?? 0;
 			syncHash(entries[index] ?? "/");
 			persistState(entries, index);
 		},
 		forward: () => {
-			index = Math.min(index + 1, entries.length - 1);
+			index += getNavigationDelta(1) ?? 0;
 			syncHash(entries[index] ?? "/");
 			persistState(entries, index);
 		},
 		go: (n) => {
-			index = Math.min(Math.max(index + n, 0), entries.length - 1);
+			const direction = n < 0 ? -1 : 1;
+			for (
+				let candidate = Math.min(Math.max(index + n, 0), entries.length - 1);
+				candidate >= 0 && candidate < entries.length;
+				candidate += direction
+			) {
+				if (navigationFilter(entries[candidate] ?? "/")) {
+					index = candidate;
+					break;
+				}
+			}
 			syncHash(entries[index] ?? "/");
 			persistState(entries, index);
 		},
@@ -171,13 +209,45 @@ export function createPersistentHashHistory(): PersistentHashHistory {
 			blockers = newBlockers;
 		},
 	});
+	const push = history.push;
+	const replace = history.replace;
+	const withIntent = (state: Parameters<RouterHistory["push"]>[1]) => {
+		const next = { ...state } as IntentState;
+		if (activeIntent === undefined) delete next[NAVIGATION_INTENT];
+		else next[NAVIGATION_INTENT] = activeIntent;
+		return next;
+	};
+	history.push = (path, state, options) =>
+		push(path, withIntent(state), options);
+	history.replace = (path, state, options) =>
+		replace(path, withIntent(state), options);
 
 	return Object.assign(history, {
-		getEntries: (): HistoryEntry[] =>
-			entries.map((path, i) => ({
-				path,
-				timestamp: timestamps[i] ?? 0,
-			})),
+		setNavigationFilter: (filter: (path: string) => boolean) => {
+			navigationFilter = filter;
+			return () => {
+				if (navigationFilter === filter) navigationFilter = () => true;
+			};
+		},
+		setNavigationIntentValidator: (validator: (intent: number) => boolean) => {
+			validateIntent = validator;
+			return () => {
+				if (validateIntent === validator) validateIntent = () => true;
+			};
+		},
+		runWithNavigationIntent: <T>(intent: number, callback: () => T): T => {
+			const previous = activeIntent;
+			activeIntent = intent;
+			try {
+				return callback();
+			} finally {
+				activeIntent = previous;
+			}
+		},
+		getNavigationDelta,
+		canGoBack: () => getNavigationDelta(-1) !== null,
+		canGoForward: () => getNavigationDelta(1) !== null,
+		getEntries: (): HistoryEntry[] => entries.map((path) => ({ path })),
 	});
 }
 

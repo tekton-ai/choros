@@ -347,7 +347,7 @@ describe("createPersistentHashHistory", () => {
 	});
 
 	describe("getEntries", () => {
-		it("returns snapshot of entries with timestamps", () => {
+		it("returns a detached snapshot of history paths", () => {
 			const history = createPersistentHashHistory();
 			history.push("/a");
 			history.push("/b");
@@ -357,7 +357,11 @@ describe("createPersistentHashHistory", () => {
 			expect(entries[0]?.path).toBe("/");
 			expect(entries[1]?.path).toBe("/a");
 			expect(entries[2]?.path).toBe("/b");
-			expect(typeof entries[0]?.timestamp).toBe("number");
+			const first = entries[0];
+			if (!first) throw new Error("History must include its initial entry");
+			first.path = "/modified-snapshot";
+			history.go(-2);
+			expect(history.location.pathname).toBe("/");
 		});
 	});
 
@@ -377,6 +381,98 @@ describe("createPersistentHashHistory", () => {
 
 			history.back();
 			expect(mockReplaceState).toHaveBeenCalledWith(null, "", "#/");
+		});
+	});
+	describe("Profile-scoped navigation", () => {
+		it("skips foreign entries in both directions while preserving global entries and the raw stack", () => {
+			const history = createPersistentHashHistory();
+			history.push("/v2-workspace/a");
+			history.push("/v2-workspace/b");
+			history.push("/settings/appearance");
+			history.push("/v2-workspace/b");
+			history.push("/v2-workspace/a2");
+			history.setNavigationFilter(
+				(path) => !path.startsWith("/v2-workspace/b"),
+			);
+			history.back();
+			expect(history.location.pathname).toBe("/settings/appearance");
+			history.back();
+			expect(history.location.pathname).toBe("/v2-workspace/a");
+			history.forward();
+			expect(history.location.pathname).toBe("/settings/appearance");
+			history.forward();
+			expect(history.location.pathname).toBe("/v2-workspace/a2");
+			expect(history.getEntries().map((entry) => entry.path)).toEqual([
+				"/",
+				"/v2-workspace/a",
+				"/v2-workspace/b",
+				"/settings/appearance",
+				"/v2-workspace/b",
+				"/v2-workspace/a2",
+			]);
+		});
+
+		it("uses live membership after moves and disables directions with no eligible destination", () => {
+			const history = createPersistentHashHistory();
+			history.push("/v2-workspace/a");
+			history.push("/v2-workspace/b");
+			let visible = "/v2-workspace/a";
+			history.setNavigationFilter((path) => path === visible);
+			expect(history.canGoBack()).toBe(true);
+			history.back();
+			expect(history.location.pathname).toBe("/v2-workspace/a");
+			expect(history.canGoBack()).toBe(false);
+			expect(history.canGoForward()).toBe(false);
+			visible = "/v2-workspace/b";
+			expect(history.canGoForward()).toBe(true);
+			history.forward();
+			expect(history.location.pathname).toBe("/v2-workspace/b");
+			expect(history.canGoBack()).toBe(false);
+		});
+
+		it("does not commit an obsolete intent after an asynchronous navigation blocker releases", async () => {
+			const descriptor = Object.getOwnPropertyDescriptor(
+				globalThis,
+				"document",
+			);
+			Object.defineProperty(globalThis, "document", {
+				value: {},
+				configurable: true,
+			});
+			try {
+				const history = createPersistentHashHistory();
+				let generation = 1;
+				history.setNavigationIntentValidator((intent) => intent === generation);
+				let release!: (blocked: boolean) => void;
+				const blocker = new Promise<boolean>((resolve) => {
+					release = resolve;
+				});
+				const unblock = history.block({ blockerFn: () => blocker });
+				const notified = new Promise<void>((resolve) => {
+					const unsubscribe = history.subscribe(() => {
+						unsubscribe();
+						resolve();
+					});
+				});
+				history.runWithNavigationIntent(1, () => history.push("/obsolete"));
+				generation = 2;
+				release(false);
+				await notified;
+				expect(history.location.pathname).toBe("/");
+				expect(history.canGoBack()).toBe(false);
+				unblock();
+				history.runWithNavigationIntent(2, () => history.push("/current"));
+				expect(history.location.pathname).toBe("/current");
+				generation = 3;
+				// Normal route updates cannot accidentally inherit an old
+				// creation/restore intent from their previous history state.
+				history.push("/ordinary", history.location.state);
+				expect(history.location.pathname).toBe("/ordinary");
+			} finally {
+				if (descriptor)
+					Object.defineProperty(globalThis, "document", descriptor);
+				else Reflect.deleteProperty(globalThis, "document");
+			}
 		});
 	});
 });

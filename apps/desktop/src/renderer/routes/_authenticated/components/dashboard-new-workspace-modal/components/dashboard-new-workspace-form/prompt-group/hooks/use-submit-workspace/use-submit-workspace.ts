@@ -1,11 +1,11 @@
 import { toast } from "@choros/ui/sonner";
 import { useLingui } from "@lingui/react/macro";
-import { useMatchRoute, useNavigate } from "@tanstack/react-router";
 import { useCallback } from "react";
 import { useLocalHostService } from "renderer/routes/_authenticated/providers/local-host-service-provider";
 import type { NewWorkspacePromptContextApi } from "renderer/stores/new-workspace-prompt-context";
 import { usePromptHistoryStore } from "renderer/stores/prompt-history";
 import { useWorkspaceCreates } from "renderer/stores/workspace-creates";
+import { useWorkspaceCreateNavigation } from "renderer/stores/workspace-creates/use-workspace-create-navigation";
 import { useDashboardNewWorkspaceDraft } from "../../../../../dashboard-new-workspace-draft-context";
 import type { WorkspaceCreateAgent } from "../../types";
 import type { UseUploadAttachmentsApi } from "../use-upload-attachments";
@@ -27,8 +27,7 @@ export function useSubmitWorkspace(
 	promptContext: NewWorkspacePromptContextApi,
 ) {
 	const { t } = useLingui();
-	const navigate = useNavigate();
-	const matchRoute = useMatchRoute();
+	const beginNavigation = useWorkspaceCreateNavigation();
 	const { closeAndResetDraft, draft } = useDashboardNewWorkspaceDraft();
 	const { submit } = useWorkspaceCreates();
 	const { machineId } = useLocalHostService();
@@ -36,6 +35,7 @@ export function useSubmitWorkspace(
 	const isSession = draft.isSession;
 
 	const submitWorkspace = useCallback(async () => {
+		const navigation = beginNavigation();
 		if (!projectId && !isSession) {
 			toast.error(
 				t({
@@ -163,49 +163,20 @@ export function useSubmitWorkspace(
 			usePromptHistoryStore.getState().recordPrompt(trimmedPrompt);
 		}
 
-		closeAndResetDraft();
-		const { completed } = submit({ hostId, snapshot });
-		void navigate({
-			to: "/v2-workspace/$workspaceId",
-			params: { workspaceId },
-		}).catch((error) => {
-			console.error("[useSubmitWorkspace] failed to open workspace", error);
+		const handle = submit({
+			hostId,
+			snapshot,
+			profileContext: navigation.profileContext,
 		});
-
-		const isViewingOptimisticWorkspace = () => {
-			const workspaceMatch = matchRoute({
-				to: "/v2-workspace/$workspaceId",
-			});
-			return (
-				workspaceMatch !== false && workspaceMatch.workspaceId === workspaceId
-			);
-		};
-
-		void completed.then((outcome) => {
-			if (!outcome.ok) return;
-
-			// The server can resolve the optimistic workspace to a different
-			// canonical id; follow it only if we're still on the optimistic route.
-			if (outcome.workspaceId === workspaceId) return;
-			if (!isViewingOptimisticWorkspace()) return;
-			void navigate({
-				to: "/v2-workspace/$workspaceId",
-				params: { workspaceId: outcome.workspaceId },
-				replace: true,
-			}).catch((error) => {
-				console.error(
-					"[useSubmitWorkspace] failed to redirect workspace",
-					error,
-				);
-			});
+		void navigation.follow(handle, closeAndResetDraft).catch((error) => {
+			console.error("[useSubmitWorkspace] failed to open workspace", error);
 		});
 	}, [
 		closeAndResetDraft,
 		draft,
 		isSession,
-		matchRoute,
+		beginNavigation,
 		machineId,
-		navigate,
 		projectId,
 		promptContext,
 		selectedAgent,

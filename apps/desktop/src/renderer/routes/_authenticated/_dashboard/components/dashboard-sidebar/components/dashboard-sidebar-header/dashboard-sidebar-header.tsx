@@ -33,6 +33,7 @@ import {
 	usePullRequestsFilterStore,
 } from "renderer/routes/_authenticated/_dashboard/pull-requests/stores/pull-requests-filter-store";
 import { useHostWorkspaces } from "renderer/routes/_authenticated/providers/host-workspaces-provider";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 import { STROKE_WIDTH_THICK } from "renderer/screens/main/components/workspace-sidebar/constants";
 import {
 	useOpenEmptyProjectModal,
@@ -40,6 +41,8 @@ import {
 	useOpenTemplateGalleryModal,
 } from "renderer/stores/add-repository-modal";
 import { useOpenNewWorkspaceModal } from "renderer/stores/new-workspace-modal";
+
+import { ProfileSwitcher } from "./components/profile-switcher";
 
 interface DashboardSidebarHeaderProps {
 	isCollapsed?: boolean;
@@ -49,6 +52,7 @@ export function DashboardSidebarHeader({
 	isCollapsed = false,
 }: DashboardSidebarHeaderProps) {
 	const { t } = useLingui();
+	const { isProjectVisible } = useProfiles();
 	const openModal = useOpenNewWorkspaceModal();
 	const openEmptyProject = useOpenEmptyProjectModal();
 	const openNewProject = useOpenNewProjectModal();
@@ -125,11 +129,15 @@ export function DashboardSidebarHeader({
 	const onV2WorkspaceRoute = v2WorkspaceMatch !== false;
 	// Pre-select the viewed workspace's project in the new-workspace modal.
 	const { workspaces: hostWorkspaces } = useHostWorkspaces();
-	const activeProjectId =
+	const routeProjectId =
 		v2WorkspaceMatch !== false
 			? (hostWorkspaces.find(
 					(workspace) => workspace.id === v2WorkspaceMatch.workspaceId,
 				)?.projectId ?? undefined)
+			: undefined;
+	const activeProjectId =
+		routeProjectId && isProjectVisible(routeProjectId)
+			? routeProjectId
 			: undefined;
 	const isPullRequestsOpen = !!matchRoute({
 		to: "/pull-requests",
@@ -159,7 +167,7 @@ export function DashboardSidebarHeader({
 			to: "/pull-requests",
 			search: pullRequestsSearchFromFilters({
 				search: lastPullRequestsSearch,
-				projectFilters: lastPullRequestsProjectFilters,
+				projectFilters: lastPullRequestsProjectFilters.filter(isProjectVisible),
 				authorFilter: lastPullRequestsAuthorFilter,
 				reviewFilter: lastPullRequestsReviewFilter,
 				includeClosed: lastPullRequestsIncludeClosed,
@@ -187,6 +195,7 @@ export function DashboardSidebarHeader({
 				{/* Mirrors the expanded header's nav container so the buttons keep
 				    the same padding, order, and vertical rhythm when collapsed. */}
 				<div className="flex flex-col items-center gap-1 px-2 pt-3 pb-2">
+					<ProfileSwitcher isCollapsed />
 					<Tooltip delayDuration={300}>
 						<TooltipTrigger asChild>
 							<button
@@ -401,6 +410,8 @@ export function DashboardSidebarHeader({
 				</ZoomStable>
 				<div className="drag h-full min-w-0 flex-1" />
 			</div>
+
+			<ProfileSwitcher />
 
 			<button
 				type="button"

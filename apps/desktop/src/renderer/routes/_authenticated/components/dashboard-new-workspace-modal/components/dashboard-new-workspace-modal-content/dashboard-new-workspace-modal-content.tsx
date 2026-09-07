@@ -1,9 +1,12 @@
+import { Trans } from "@lingui/react/macro";
 import { useEffect, useMemo, useRef } from "react";
 import { resolveProjectIconUrl } from "renderer/hooks/host-projects/resolve-project-icon-url";
 import { useHostProjects } from "renderer/hooks/host-projects/use-host-projects";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 import { useV2WorkspaceCreateDefaultsStore } from "renderer/stores/v2-workspace-create-defaults";
 import { useDashboardNewWorkspaceDraft } from "../../dashboard-new-workspace-draft-context";
 import { PromptGroup } from "../dashboard-new-workspace-form/prompt-group";
+import { useProfileProjectSelection } from "./hooks/use-profile-project-selection/use-profile-project-selection";
 import { useSelectedHostProjectIds } from "./hooks/use-selected-host-project-ids";
 
 interface DashboardNewWorkspaceModalContentProps {
@@ -32,33 +35,32 @@ export function DashboardNewWorkspaceModalContent({
 	);
 	const { projects: hostProjects, isReady: areProjectsReady } =
 		useHostProjects();
+	const { isProjectVisible } = useProfiles();
 
 	const setUpProjectIds = useSelectedHostProjectIds(draft.hostId);
 
 	const recentProjects = useMemo(
 		() =>
-			hostProjects.map((project) => ({
-				id: project.projectKey,
-				name: project.name,
-				githubOwner: project.repoOwner,
-				githubRepoName: project.repoName,
-				iconUrl: resolveProjectIconUrl(project),
-				needsSetup:
-					setUpProjectIds === null
-						? null
-						: !setUpProjectIds.has(project.projectKey),
-			})),
-		[hostProjects, setUpProjectIds],
+			hostProjects
+				.filter((project) => isProjectVisible(project.projectKey))
+				.map((project) => ({
+					id: project.projectKey,
+					name: project.name,
+					githubOwner: project.repoOwner,
+					githubRepoName: project.repoName,
+					iconUrl: resolveProjectIconUrl(project),
+					needsSetup:
+						setUpProjectIds === null
+							? null
+							: !setUpProjectIds.has(project.projectKey),
+				})),
+		[hostProjects, isProjectVisible, setUpProjectIds],
 	);
-	const appliedPreSelectionRef = useRef<string | null>(null);
 	const appliedHostIdRef = useRef(false);
-	const hasInitializedSelectionRef = useRef(false);
 
 	useEffect(() => {
 		if (!isOpen) {
-			appliedPreSelectionRef.current = null;
 			appliedHostIdRef.current = false;
-			hasInitializedSelectionRef.current = false;
 			return;
 		}
 		if (appliedHostIdRef.current) return;
@@ -70,70 +72,13 @@ export function DashboardNewWorkspaceModalContent({
 		}
 	}, [isOpen, updateDraft]);
 
-	useEffect(() => {
-		if (!isOpen) return;
-
-		if (preSelectedSession && !hasInitializedSelectionRef.current) {
-			hasInitializedSelectionRef.current = true;
-			selectSession();
-			return;
-		}
-
-		// An explicit project preselection (e.g. a project's "+" button)
-		// overrides a session mode left behind by an earlier dismissal.
-		if (
-			preSelectedProjectId &&
-			preSelectedProjectId !== appliedPreSelectionRef.current
-		) {
-			if (!areProjectsReady) return;
-			const hasPreSelectedProject = recentProjects.some(
-				(project) => project.id === preSelectedProjectId,
-			);
-			if (hasPreSelectedProject) {
-				appliedPreSelectionRef.current = preSelectedProjectId;
-				hasInitializedSelectionRef.current = true;
-				selectProject(preSelectedProjectId);
-				return;
-			}
-		}
-
-		// An explicit "No project" choice must survive project-list updates.
-		if (draft.isSession) return;
-
-		if (!areProjectsReady) return;
-
-		// Only auto-pick a default once. After init, leave the user's selection
-		// alone — including freshly created projects that may not be in the live
-		// query yet (they'll appear momentarily and the picker will show them).
-		if (hasInitializedSelectionRef.current) return;
-
-		const hasSelectedProject = recentProjects.some(
-			(project) => project.id === draft.selectedProjectId,
-		);
-		if (!hasSelectedProject) {
-			const { lastProjectId } = useV2WorkspaceCreateDefaultsStore.getState();
-			const persistedProjectId =
-				lastProjectId &&
-				recentProjects.some((project) => project.id === lastProjectId)
-					? lastProjectId
-					: null;
-			updateDraft({
-				selectedProjectId: persistedProjectId ?? recentProjects[0]?.id ?? null,
-			});
-		}
-		hasInitializedSelectionRef.current = true;
-	}, [
-		draft.selectedProjectId,
-		draft.isSession,
-		areProjectsReady,
+	const targetSelectionRequired = useProfileProjectSelection({
 		isOpen,
 		preSelectedProjectId,
 		preSelectedSession,
-		recentProjects,
-		selectProject,
-		selectSession,
-		updateDraft,
-	]);
+		projects: recentProjects,
+		areProjectsReady,
+	});
 
 	const selectedProject = recentProjects.find(
 		(project) => project.id === draft.selectedProjectId,
@@ -141,8 +86,20 @@ export function DashboardNewWorkspaceModalContent({
 
 	return (
 		<div className="flex-1 overflow-y-auto">
+			{targetSelectionRequired && (
+				<output className="px-4 py-2 text-sm text-muted-foreground">
+					<Trans id="profiles.creation.selectTarget">
+						Select a project in this profile or choose No project. Your draft
+						has been kept.
+					</Trans>
+				</output>
+			)}
 			<PromptGroup
-				projectId={draft.selectedProjectId}
+				projectId={
+					draft.selectedProjectId && isProjectVisible(draft.selectedProjectId)
+						? draft.selectedProjectId
+						: null
+				}
 				selectedProject={selectedProject}
 				recentProjects={recentProjects.filter((project) => Boolean(project.id))}
 				isSessionSelected={draft.isSession}

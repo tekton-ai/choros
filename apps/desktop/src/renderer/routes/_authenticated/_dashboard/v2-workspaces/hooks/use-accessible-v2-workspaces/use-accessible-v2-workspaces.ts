@@ -21,6 +21,7 @@ import { useCollections } from "renderer/routes/_authenticated/providers/collect
 import { isSidebarWorkspaceVisible } from "renderer/routes/_authenticated/providers/collections-provider/dashboard-sidebar-local";
 import { useHostWorkspaces } from "renderer/routes/_authenticated/providers/host-workspaces-provider";
 import { useLocalHostService } from "renderer/routes/_authenticated/providers/local-host-service-provider";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 import { useV2NotificationStore } from "renderer/stores/v2-notifications";
 import { type PaneStatus, pickHigherStatus } from "shared/tabs-types";
 
@@ -225,6 +226,7 @@ export function useAccessibleV2Workspaces(
 	const pinFilter = options.pinFilter ?? "all";
 	const collections = useCollections();
 	const { machineId, activeHostUrl } = useLocalHostService();
+	const { isWorkspaceVisible, isReady: areProfilesReady } = useProfiles();
 
 	// With a specific device filter (the page), rows come from a single
 	// `workspace.list` against that host — no fan-out, so ten idle hosts can't
@@ -305,7 +307,7 @@ export function useAccessibleV2Workspaces(
 					projectName: project?.name ?? null,
 					projectRepoId: null,
 					projectIconUrl: project ? resolveProjectIconUrl(project) : null,
-					hostId: machineId,
+					hostId: workspace.hostId,
 					hostName: t({
 						id: "dashboard.workspaces.hostThisDevice",
 						message: "This device",
@@ -322,14 +324,7 @@ export function useAccessibleV2Workspaces(
 				},
 			];
 		});
-	}, [
-		hostProjects,
-		hostWorkspaces,
-		machineId,
-		sidebarProjectRows,
-		sidebarStateRows,
-		t,
-	]);
+	}, [hostProjects, hostWorkspaces, sidebarProjectRows, sidebarStateRows, t]);
 
 	// The authoritative link lives in host.db (`workspace.pullRequestId`), not
 	// any collection. With host-scoped rows this derives a single target ("All
@@ -517,8 +512,10 @@ export function useAccessibleV2Workspaces(
 		useStableByWorkspaceId(agentActivityEntries);
 
 	const enriched = useMemo<AccessibleV2Workspace[]>(() => {
+		if (!areProfilesReady) return [];
 		const deduped = new Map<string, AccessibleV2Workspace>();
 		for (const row of rows) {
+			if (!isWorkspaceVisible(row)) continue;
 			if (deduped.has(row.id)) continue;
 			const hostType: V2WorkspaceHostType =
 				row.hostId === machineId ? "local-device" : "remote-device";
@@ -564,6 +561,8 @@ export function useAccessibleV2Workspaces(
 		);
 	}, [
 		rows,
+		areProfilesReady,
+		isWorkspaceVisible,
 		machineId,
 		prByWorkspaceId,
 		agentActivityByWorkspaceId,
@@ -669,7 +668,7 @@ export function useAccessibleV2Workspaces(
 
 	return {
 		all: fullyFiltered,
-		isReady,
+		isReady: isReady && areProfilesReady,
 		hostOptions,
 		projectOptions,
 		hostsById,

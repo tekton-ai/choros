@@ -29,6 +29,7 @@ import {
 	LuX,
 } from "react-icons/lu";
 import { useHotkeyDisplay } from "renderer/hotkeys";
+import { MoveToProfileMenu } from "renderer/routes/_authenticated/components/move-to-profile-menu";
 import { useDashboardSidebarPortKill } from "../../../../hooks/use-dashboard-sidebar-port-kill";
 import { useProjectTagFolderSections } from "../../../../hooks/use-project-tag-folder-sections";
 import { useDashboardSidebarHoverActions } from "../../../../providers/dashboard-sidebar-hover-provider";
@@ -36,6 +37,7 @@ import { useDashboardSidebarWorkspacePorts } from "../../../../providers/dashboa
 
 interface DashboardSidebarWorkspaceContextMenuProps {
 	workspaceId: string;
+	hostId: string;
 	/** Null for project-less session workspaces. */
 	projectId: string | null;
 	/**
@@ -68,6 +70,7 @@ interface DashboardSidebarWorkspaceContextMenuProps {
 
 export function DashboardSidebarWorkspaceContextMenu({
 	workspaceId,
+	hostId,
 	projectId,
 	isSessionWorkspace = false,
 	isInSection,
@@ -127,6 +130,11 @@ export function DashboardSidebarWorkspaceContextMenu({
 					)}
 				</ContextMenuItem>
 				<ContextMenuSeparator />
+				{projectId === null && (
+					<MoveToProfileMenu
+						member={{ kind: "session", hostId, workspaceId }}
+					/>
+				)}
 				{onRename && (
 					<ContextMenuItem onSelect={onRename}>
 						<LuPencil className="size-4 mr-2" />

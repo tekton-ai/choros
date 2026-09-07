@@ -37,6 +37,9 @@ export const DEAD_KEYS: DeadKey[] = [
 	{ key: "chat-preferences", match: "exact" },
 	// "Choros v2 is here" sidebar card; unmounted once v2 became the default
 	{ key: "v2-available-banner-v1", match: "exact" },
+	// Profile visits now live in Desktop SQLite; never synthesize visit times.
+	{ key: "last-active-v2-workspace", match: "exact" },
+	{ key: "lastViewedWorkspaceId", match: "exact" },
 ];
 
 function matchesDeadKey(key: string): boolean {
