@@ -12036,11 +12036,6 @@ msgstr "Scarica Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
-msgid "site.action.exploreWorkflow"
-msgstr "Esplora il flusso di lavoro"
-
-#. js-lingui-explicit-id
-#: ../../apps/site/src/site.ts
 msgid "site.action.getStarted"
 msgstr "Installazione e primi passi"
 
@@ -12087,7 +12082,7 @@ msgstr "macOS · Apple Silicon"
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
 msgid "site.download.appleSiliconDetail"
-msgstr "Per Mac con chip Apple"
+msgstr "Programma di installazione DMG · ARM64"
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
@@ -12107,7 +12102,7 @@ msgstr "macOS · Intel"
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
 msgid "site.download.intelDetail"
-msgstr "Per Mac con processore Intel"
+msgstr "Programma di installazione DMG · x64"
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts

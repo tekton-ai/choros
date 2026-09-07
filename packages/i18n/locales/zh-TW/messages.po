@@ -12036,11 +12036,6 @@ msgstr "下載 Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
-msgid "site.action.exploreWorkflow"
-msgstr "探索工作流程"
-
-#. js-lingui-explicit-id
-#: ../../apps/site/src/site.ts
 msgid "site.action.getStarted"
 msgstr "安裝與入門"
 
@@ -12087,7 +12082,7 @@ msgstr "macOS · Apple Silicon"
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
 msgid "site.download.appleSiliconDetail"
-msgstr "適用於搭載 Apple 晶片的 Mac"
+msgstr "DMG 安裝套件 · ARM64"
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
@@ -12107,7 +12102,7 @@ msgstr "macOS · Intel"
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
 msgid "site.download.intelDetail"
-msgstr "適用於搭載 Intel 處理器的 Mac"
+msgstr "DMG 安裝套件 · x64"
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts

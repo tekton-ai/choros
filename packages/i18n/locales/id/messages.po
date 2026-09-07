@@ -12036,11 +12036,6 @@ msgstr "Unduh Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
-msgid "site.action.exploreWorkflow"
-msgstr "Jelajahi alur kerja"
-
-#. js-lingui-explicit-id
-#: ../../apps/site/src/site.ts
 msgid "site.action.getStarted"
 msgstr "Instalasi dan langkah awal"
 
@@ -12087,7 +12082,7 @@ msgstr "macOS · Apple Silicon"
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
 msgid "site.download.appleSiliconDetail"
-msgstr "Untuk Mac dengan cip Apple"
+msgstr "Penginstal DMG · ARM64"
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
@@ -12107,7 +12102,7 @@ msgstr "macOS · Intel"
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
 msgid "site.download.intelDetail"
-msgstr "Untuk Mac dengan prosesor Intel"
+msgstr "Penginstal DMG · x64"
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts

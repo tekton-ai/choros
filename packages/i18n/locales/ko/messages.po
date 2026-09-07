@@ -12036,11 +12036,6 @@ msgstr "Choros 다운로드"
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
-msgid "site.action.exploreWorkflow"
-msgstr "작업 흐름 살펴보기"
-
-#. js-lingui-explicit-id
-#: ../../apps/site/src/site.ts
 msgid "site.action.getStarted"
 msgstr "설치 및 시작하기"
 
@@ -12087,7 +12082,7 @@ msgstr "macOS · Apple Silicon"
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
 msgid "site.download.appleSiliconDetail"
-msgstr "Apple 칩이 탑재된 Mac용"
+msgstr "DMG 설치 파일 · ARM64"
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
@@ -12107,7 +12102,7 @@ msgstr "macOS · Intel"
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
 msgid "site.download.intelDetail"
-msgstr "Intel 프로세서가 탑재된 Mac용"
+msgstr "DMG 설치 파일 · x64"
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts

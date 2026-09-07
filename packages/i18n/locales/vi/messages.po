@@ -12036,11 +12036,6 @@ msgstr "Tải xuống Choros"
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
-msgid "site.action.exploreWorkflow"
-msgstr "Khám phá quy trình làm việc"
-
-#. js-lingui-explicit-id
-#: ../../apps/site/src/site.ts
 msgid "site.action.getStarted"
 msgstr "Cài đặt và các bước đầu tiên"
 
@@ -12087,7 +12082,7 @@ msgstr "macOS · Apple Silicon"
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
 msgid "site.download.appleSiliconDetail"
-msgstr "Dành cho máy Mac dùng chip Apple"
+msgstr "Bộ cài đặt DMG · ARM64"
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
@@ -12107,7 +12102,7 @@ msgstr "macOS · Intel"
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
 msgid "site.download.intelDetail"
-msgstr "Dành cho máy Mac dùng bộ xử lý Intel"
+msgstr "Bộ cài đặt DMG · x64"
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts

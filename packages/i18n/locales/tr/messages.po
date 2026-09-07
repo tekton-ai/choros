@@ -12036,11 +12036,6 @@ msgstr "Choros'u indirin"
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
-msgid "site.action.exploreWorkflow"
-msgstr "İş akışını keşfedin"
-
-#. js-lingui-explicit-id
-#: ../../apps/site/src/site.ts
 msgid "site.action.getStarted"
 msgstr "Kurulum ve ilk adımlar"
 
@@ -12087,7 +12082,7 @@ msgstr "macOS · Apple Silicon"
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
 msgid "site.download.appleSiliconDetail"
-msgstr "Apple çipli Mac'ler için"
+msgstr "DMG yükleyicisi · ARM64"
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
@@ -12107,7 +12102,7 @@ msgstr "macOS · Intel"
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
 msgid "site.download.intelDetail"
-msgstr "Intel işlemcili Mac'ler için"
+msgstr "DMG yükleyicisi · x64"
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts

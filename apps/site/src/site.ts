@@ -98,12 +98,14 @@ function getPage(pathname: string): SitePage | null {
 	<p class="lede">${Bun.escapeHTML(i18n._({ id: "site.hero.description", message: "Run coding agents in parallel, give each task its own Git worktree, and review the changes. All in one desktop workspace." }))}</p>
 	<div class="actions">
 		<a class="button" href="/#download">${Bun.escapeHTML(i18n._({ id: "site.action.downloadChoros", message: "Download Choros" }))}<span aria-hidden="true">↓</span></a>
-		<a class="text-link" href="/#product">${Bun.escapeHTML(i18n._({ id: "site.action.exploreWorkflow", message: "Explore the workflow" }))}<span aria-hidden="true">↘</span></a>
+		<a class="button button-secondary" href="https://github.com/tekton-ai/choros">${Bun.escapeHTML(i18n._({ id: "site.nav.github", message: "GitHub" }))}<span aria-hidden="true">↗</span></a>
 	</div>
 </section>
 <figure class="product-overview">
 	<div class="product-image">
 		<picture>
+			<source media="(prefers-reduced-motion: reduce) and (max-width: 640px)" srcset="/assets/workspace-overview-mobile.svg?motion=still#still 840w" width="840" height="960">
+			<source media="(prefers-reduced-motion: reduce)" srcset="/assets/workspace-overview.svg?motion=still#still 1920w" width="1920" height="1200">
 			<source media="(max-width: 640px)" srcset="/assets/workspace-overview-mobile.svg 840w" width="840" height="960">
 			<img src="/assets/workspace-overview.svg" srcset="/assets/workspace-overview.svg 1920w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1244px) calc(100vw - 64px), 1180px" width="1920" height="1200" fetchpriority="high" alt="${Bun.escapeHTML(i18n._({ id: "site.image.overview", message: "Workflow illustration: one project branches into independent agent workspaces, then brings their changes together for review." }))}">
 		</picture>
@@ -126,7 +128,9 @@ function getPage(pathname: string): SitePage | null {
 			<a class="text-link" href="/docs/providers">${Bun.escapeHTML(i18n._({ id: "site.action.connectAgents", message: "Connect your agents" }))}<span aria-hidden="true">↗</span></a>
 		</div>
 		<figure class="workflow-image">
+			<picture><source media="(prefers-reduced-motion: reduce)" srcset="/assets/workspace-agents.svg?motion=still#still">
 			<img src="/assets/workspace-agents.svg" width="1200" height="750" loading="lazy" decoding="async" alt="${Bun.escapeHTML(i18n._({ id: "site.image.agents", message: "Illustration of three independent agent tasks progressing in parallel." }))}">
+			</picture>
 		</figure>
 	</article>
 	<article class="workflow-step">
@@ -137,7 +141,9 @@ function getPage(pathname: string): SitePage | null {
 			<a class="text-link" href="/docs/setup-teardown-scripts">${Bun.escapeHTML(i18n._({ id: "site.action.prepareWorkspace", message: "Prepare your workspace" }))}<span aria-hidden="true">↗</span></a>
 		</div>
 		<figure class="workflow-image workspace-detail">
+			<picture><source media="(prefers-reduced-motion: reduce)" srcset="/assets/workspace-overview-mobile.svg?motion=still#still">
 			<img src="/assets/workspace-overview-mobile.svg" width="840" height="960" loading="lazy" decoding="async" alt="${Bun.escapeHTML(i18n._({ id: "site.image.workspaces", message: "Illustration of separate workspaces branching from one project." }))}">
+			</picture>
 		</figure>
 	</article>
 	<article class="workflow-step">
@@ -148,7 +154,9 @@ function getPage(pathname: string): SitePage | null {
 			<a class="text-link" href="/docs">${Bun.escapeHTML(i18n._({ id: "site.action.readDocs", message: "Read the docs" }))}<span aria-hidden="true">↗</span></a>
 		</div>
 		<figure class="workflow-image">
+			<picture><source media="(prefers-reduced-motion: reduce)" srcset="/assets/workspace-changes.svg?motion=still#still">
 			<img src="/assets/workspace-changes.svg" width="1200" height="750" loading="lazy" decoding="async" alt="${Bun.escapeHTML(i18n._({ id: "site.image.changes", message: "Illustration of additions and removals flowing into a code review." }))}">
+			</picture>
 		</figure>
 	</article>
 </section>
@@ -160,10 +168,10 @@ function getPage(pathname: string): SitePage | null {
 	</div>
 	<div class="platform-downloads">
 		<a class="platform-download" href="https://github.com/tekton-ai/choros/releases/latest/download/Choros-arm64.dmg">
-			<span><strong>${Bun.escapeHTML(i18n._({ id: "site.download.appleSilicon", message: "macOS · Apple Silicon" }))}</strong><small>${Bun.escapeHTML(i18n._({ id: "site.download.appleSiliconDetail", message: "For Macs with an Apple chip" }))}</small></span><span class="download-arrow" aria-hidden="true">↓</span>
+			<span><strong>${Bun.escapeHTML(i18n._({ id: "site.download.appleSilicon", message: "macOS · Apple Silicon" }))}</strong><small>${Bun.escapeHTML(i18n._({ id: "site.download.appleSiliconDetail", message: "DMG installer · ARM64" }))}</small></span><span class="download-arrow" aria-hidden="true">↓</span>
 		</a>
 		<a class="platform-download" href="https://github.com/tekton-ai/choros/releases/latest/download/Choros-x64.dmg">
-			<span><strong>${Bun.escapeHTML(i18n._({ id: "site.download.intel", message: "macOS · Intel" }))}</strong><small>${Bun.escapeHTML(i18n._({ id: "site.download.intelDetail", message: "For Macs with an Intel processor" }))}</small></span><span class="download-arrow" aria-hidden="true">↓</span>
+			<span><strong>${Bun.escapeHTML(i18n._({ id: "site.download.intel", message: "macOS · Intel" }))}</strong><small>${Bun.escapeHTML(i18n._({ id: "site.download.intelDetail", message: "DMG installer · x64" }))}</small></span><span class="download-arrow" aria-hidden="true">↓</span>
 		</a>
 		<a class="platform-download" href="https://github.com/tekton-ai/choros/releases/latest/download/Choros-x86_64.AppImage">
 			<span><strong>${Bun.escapeHTML(i18n._({ id: "site.download.linux", message: "Linux · x86_64" }))}</strong><small>${Bun.escapeHTML(i18n._({ id: "site.download.linuxDetail", message: "AppImage for x86_64 desktops" }))}</small></span><span class="download-arrow" aria-hidden="true">↓</span>
@@ -354,6 +362,7 @@ function pageShell(title: string, body: string): string {
 			<a href="/#product">${Bun.escapeHTML(i18n._({ id: "site.nav.product", message: "Product" }))}</a>
 			<a href="/docs">${Bun.escapeHTML(i18n._({ id: "site.nav.docs", message: "Docs" }))}</a>
 			<a href="/changelog">${Bun.escapeHTML(i18n._({ id: "site.nav.changelog", message: "Changelog" }))}</a>
+			<a href="https://github.com/tekton-ai/choros">${Bun.escapeHTML(i18n._({ id: "site.nav.github", message: "GitHub" }))}<span aria-hidden="true">↗</span></a>
 		</nav>
 		<a class="button header-download" href="/#download">${Bun.escapeHTML(i18n._({ id: "site.nav.download", message: "Download" }))}<span aria-hidden="true">↓</span></a>
 	</div>
@@ -415,7 +424,7 @@ main:not(.home){padding-top:88px}
 .button{display:inline-flex;align-items:center;justify-content:center;gap:18px;min-height:50px;padding:13px 21px;border:1px solid var(--ink);border-radius:6px;background:var(--ink);color:var(--paper);font-size:15px;font-weight:600;text-decoration:none;line-height:1.4;transition:background .16s,border-color .16s,transform .16s}
 .button:hover{background:#dddde0;border-color:#dddde0;transform:translateY(-1px)}
 .header-download{min-height:44px;padding:10px 17px;font-size:14px;gap:16px}
-.hero{position:relative;isolation:isolate;padding:96px 0 60px}
+.hero{position:relative;isolation:isolate;overflow:clip;padding:96px 0 60px}
 .hero-mark{position:absolute;width:360px;height:360px;right:0;top:76px;z-index:-1;color:var(--ink);opacity:.035;pointer-events:none}
 .eyebrow{font-family:var(--mono);color:var(--muted);font-size:11px;line-height:1.6;font-weight:500;letter-spacing:.14em;text-transform:uppercase;margin:0}
 .eyebrow a{text-decoration:none}
@@ -545,5 +554,25 @@ main:not(.home){padding-top:88px}
 	.narrow{min-height:540px;padding-bottom:64px}
 }
 @media(max-width:640px){.product-image img{aspect-ratio:7/8}.workspace-detail img{aspect-ratio:7/8;object-position:center}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}.button:hover{transform:none}}
+.button-secondary{background:transparent;border-color:#ffffff35;color:var(--ink)}
+.button-secondary:hover{background:var(--panel);border-color:#ffffff70}
+.hero>.eyebrow,.hero>h1,.hero>.lede,.hero>.actions{animation:hero-enter .8s cubic-bezier(.2,.7,.2,1) backwards}
+.hero>h1{animation-delay:.08s}.hero>.lede{animation-delay:.16s}.hero>.actions{animation-delay:.24s}
+.hero-mark{animation:mark-enter 3.5s cubic-bezier(.16,1,.3,1) both}
+.product-overview{animation:hero-enter 1s .32s cubic-bezier(.2,.7,.2,1) backwards}
+.button>span,.text-link>span{transition:transform .25s cubic-bezier(.2,.7,.2,1)}
+@keyframes hero-enter{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes mark-enter{from{opacity:0;transform:translateX(28px) rotate(-18deg) scale(.9)}to{opacity:.035;transform:translateX(0) rotate(0) scale(1)}}
+@keyframes scroll-enter{from{opacity:.15;transform:translateY(48px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@supports(animation-timeline:view()){
+	.workflow-step,.download>.section-heading,.platform-downloads,.faq>.section-heading,.faq-list{animation:scroll-enter linear both;animation-timeline:view();animation-range:entry 0% cover 25%}
+}
+.workflow-step:focus-within,.platform-downloads:focus-within,.faq-list:focus-within{animation:none;opacity:1;transform:none}
+@media(hover:hover) and (pointer:fine){
+	.workflow-image{transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
+	.workflow-step:hover .workflow-image{transform:translateY(-5px);border-color:#d8ff3e45;box-shadow:0 16px 50px #00000030}
+	.button:hover>span{transform:translateY(2px)}
+	.button-secondary:hover>span,.text-link:hover>span{transform:translate(2px,-2px)}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}.button:hover,.workflow-step:hover .workflow-image,.button>span,.text-link>span{transform:none!important}}
 `;

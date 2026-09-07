@@ -12036,11 +12036,6 @@ msgstr "Chorosをダウンロード"
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
-msgid "site.action.exploreWorkflow"
-msgstr "ワークフローを見る"
-
-#. js-lingui-explicit-id
-#: ../../apps/site/src/site.ts
 msgid "site.action.getStarted"
 msgstr "インストールと使い始めの手順"
 
@@ -12087,7 +12082,7 @@ msgstr "macOS · Apple Silicon"
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
 msgid "site.download.appleSiliconDetail"
-msgstr "Appleチップ搭載のMac向け"
+msgstr "DMGインストーラー · ARM64"
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
@@ -12107,7 +12102,7 @@ msgstr "macOS · Intel"
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
 msgid "site.download.intelDetail"
-msgstr "Intelプロセッサ搭載のMac向け"
+msgstr "DMGインストーラー · x64"
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
