@@ -4,13 +4,17 @@ on:
   push:
     branches: [main]
   pull_request:
-    types: [opened, synchronize]
+    types: [opened, synchronize, reopened, ready_for_review]
+  workflow_call:
 
-# One run per PR/branch. A newer commit makes the older result obsolete, so
-# stop paying for both instead of letting them race to completion.
+# Ordinary PR/main runs supersede older results. Release callers validate their
+# exact tag commit and must not cancel another in-flight release validation.
 concurrency:
-  group: ci-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+
+permissions:
+  contents: read
 
 
 jobs:
@@ -20,6 +24,8 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
 
       - name: Setup Bun
         id: setup-bun
@@ -45,6 +51,8 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
 
       - name: Setup Bun
         id: setup-bun
@@ -77,6 +85,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
         with:
+          persist-credentials: false
           # The i18n audit compares this branch against its merge base to catch
           # translations left behind by an English edit; a shallow clone has no
           # merge base to find.
@@ -114,6 +123,8 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
 
       - name: Setup Bun
         id: setup-bun
@@ -160,6 +171,8 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
 
       - name: Setup Bun
         id: setup-bun
@@ -188,12 +201,14 @@ jobs:
   # Packaging is expensive and does not add a merge-time signal beyond the
   # PR's lint, tests, and typecheck. Build the distributable once after merge.
   build:
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
 
       - name: Setup Bun
         id: setup-bun
@@ -224,7 +239,7 @@ jobs:
   # cover the two primary distributions without paying for Intel macOS and
   # Linux ARM on every commit.
   build-cli:
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     name: Build CLI
     uses: ./.github/workflows/build-cli.yml
     with:

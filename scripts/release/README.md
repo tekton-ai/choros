@@ -60,7 +60,8 @@ not `package.json`.
 
 ## Desktop: draft → publish
 
-Draft by default — nothing reaches users until you publish. Review the draft, then:
+Draft by default — nothing reaches users until you publish. Wait for the release
+workflow to succeed (including all uploads), review the draft, then:
 
 ```bash
 gh release edit desktop-v1.15.0 --draft=false      # publish
@@ -70,8 +71,10 @@ bun run release desktop 1.15.0 --publish [--merge] # auto-publish (+ merge the P
 
 Once published (non-draft), it becomes `/releases/latest`, which the desktop
 auto-updater reads. Publishing (either way) also triggers
-`release-cli-lockstep.yml`, which tags `cli-v<version>` and ships the matching
-standalone CLI — no manual CLI step.
+`release-cli-lockstep.yml`, which verifies the desktop tag's commit, creates or
+reuses the same-SHA `cli-v<version>` tag, and explicitly dispatches the CLI release
+workflow. A tag created with `GITHUB_TOKEN` does not trigger a push workflow.
+An existing tag alone does **not** mean the CLI release succeeded.
 
 ## When the daemon guard blocks
 
@@ -84,16 +87,100 @@ The daemon changed but you're not bumping it → old daemons won't update. Re-ru
 with `--daemon` (for a desktop release you can instead ship the daemon fix via
 `bun run release cli --daemon`).
 
-## Re-cut / clean up a release
+## Validation and safe retries
+
+Both release workflows run the reusable CI checks (**Sherif, Version Sync, Lint,
+Test, Typecheck**) on the caller's exact commit, alongside their build. Publishing
+depends on both jobs succeeding; failed or cancelled validation cannot publish.
+The publisher also resolves annotated/lightweight version tags and requires their
+commit to equal the workflow's `GITHUB_SHA`. Never move a versioned tag to fix a
+failed run.
+
+`github-release.ts` records the exact tag, commit and expected asset SHA-256 hashes
+in a hidden release-body marker, preserving human release notes. Creation starts
+as a draft; CLI publishes only after every asset is verified and stays a
+**prerelease**, so it cannot shadow desktop's `/releases/latest`. Desktop remains
+a draft until a maintainer publishes it. Retrying never turns a published release
+back into a draft or silently replaces conflicting versioned assets.
+
+### Interrupted creation, upload, or rolling update
+
+Prefer retrying **failed jobs on the original run**; successful builds' uploaded
+artifacts remain available to the retried publishing job:
 
 ```bash
-gh release delete cli-v1.14.0-2 --yes --cleanup-tag   # delete release + remote tag
-git tag -d cli-v1.14.0-2                               # delete local tag
-# then re-run the release, or pass --republish (desktop) to recreate the same version
+gh run rerun <release-run-id> --failed
+gh run watch <release-run-id>
 ```
 
-Re-cutting an **older** `cli-v` tag is safe: `release-cli.yml` only moves the
-rolling `cli-latest` pointer (and Homebrew) forward, never backward.
+A lost creation/upload response is recoverable: the existing release is reused,
+verified uploads are retained, empty failed-upload starters are replaced, and
+missing assets are uploaded. For a partial release, missing assets must have the
+original recorded hashes. Rebuilding the same SHA can change timestamps or code
+signatures; do not overwrite an existing asset or remove the provenance marker to
+make a different artifact fit. If the original workflow artifacts have expired,
+recover the original bytes from a trusted retained build, or cut a **new version**
+through the normal release process. Do not repoint or delete the old tag as a retry.
+
+If the versioned release is already complete, an entire workflow rerun is also
+safe: the publisher verifies and retains its existing remote bytes even when a
+rebuild differs. `cli-latest` is then populated from those original release assets,
+not the new local build.
+
+All CLI versions share a non-cancelling concurrency group. `cli-latest` updates
+only after a verified, complete versioned CLI release; it is updated **in place**,
+not deleted/recreated. Before replacing assets, the newer version is durably
+recorded, so even an interrupted update prevents an older rerun from rolling the
+pointer backward. Retry the newer CLI run to finish it. Lookup, download, deletion
+and upload errors fail the job; only an actual HTTP 404 means a resource is absent.
+
+### Lockstep tag exists but dispatch failed
+
+Rerun the failed `Release CLI Lockstep` run with the same `gh run rerun … --failed`
+command. It validates both SHAs and dispatches again if the CLI release or its
+rolling update is absent or incomplete. It is an idempotent no-op only when the
+same-SHA versioned release is complete and published, and a verified `cli-latest`
+has completed at that version or a newer version. Lockstep never edits the pointer:
+all recovery passes through the CLI publisher's separate concurrency group.
+
+For a versioned CLI release that completed but failed while updating `cli-latest`,
+retry the **CLI release run**, or rerun lockstep to dispatch it again. A newer
+pending rolling reservation still blocks older CLI runs from moving the pointer
+backward; retry that newer CLI run to finish its update. A fresh dispatch on an
+existing tag is also available:
+
+```bash
+gh workflow run release-cli.yml --ref cli-v1.15.0
+```
+
+If a CLI-only hotfix already owns the matching version at a different SHA, lockstep
+fails explicitly and preserves it. Cut the next unified desktop/host-service/CLI
+version instead; never move or overwrite the hotfix tag.
+
+### Historical releases
+
+Existing versioned releases without the hidden provenance marker are not
+automatically adopted: tag identity alone cannot establish the source of old
+uploaded bytes. Leave those releases/tags intact and use a fresh version with this
+workflow; do not fabricate metadata or use `--republish` as failure recovery.
+A legacy `cli-latest` can be migrated only when its readable `version.txt`, matching
+version tag, and pointer SHA agree. Missing/ambiguous ownership fails closed for
+manual inspection. Historical runs/tags still execute their historical workflow;
+these guards apply to commits that contain the updated workflows and helper.
+
+### Local recovery checks
+
+The behavior suite uses an in-memory GitHub boundary, never live mutations or
+credentials:
+
+```bash
+bun test scripts/release/github-release.test.ts
+bun run typecheck:release
+```
+
+It exercises lost create/upload responses, missing original artifacts, preserving
+published assets/notes, annotated and conflicting tags, redispatch after failure,
+non-404 API errors, interrupted rolling updates, and forward-only version ordering.
 
 ## Agent / non-interactive
 

@@ -1,7 +1,11 @@
-name: ✨ Feature request
+name: Feature request
 description: Suggest an improvement or new capability
 labels: [enhancement]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Search [existing issues](https://github.com/tekton-ai/choros/issues) before posting. Keep this request focused on one problem; discuss larger changes here before implementing them. Small fixes can go directly to a PR; see [Contributing](https://github.com/tekton-ai/choros/blob/main/CONTRIBUTING.md).
   - type: textarea
     id: problem
     attributes:
