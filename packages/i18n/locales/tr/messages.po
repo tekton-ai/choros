@@ -12015,6 +12015,321 @@ msgid "shared.schedule.weeklyAt"
 msgstr "Her hafta saat {time}"
 
 #. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.allReleases"
+msgstr "Tüm sürümler"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.chooseDownload"
+msgstr "İndireceğiniz sürümü seçin"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.connectAgents"
+msgstr "Ajanlarınızı bağlayın"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.downloadChoros"
+msgstr "Choros'u indirin"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.exploreWorkflow"
+msgstr "İş akışını keşfedin"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.getStarted"
+msgstr "Kurulum ve ilk adımlar"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.prepareWorkspace"
+msgstr "Çalışma alanınızı hazırlayın"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.privacyNotice"
+msgstr "Gizlilik bildirimini okuyun"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.providerGuide"
+msgstr "Sağlayıcı rehberini okuyun"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.readDocs"
+msgstr "Belgeleri okuyun"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.skipToContent"
+msgstr "İçeriğe atla"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.viewFullWorkspace"
+msgstr "İllüstrasyonun tamamını görüntüleyin"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.workspaceGuide"
+msgstr "Çalışma alanı rehberini okuyun"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.appleSilicon"
+msgstr "macOS · Apple Silicon"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.appleSiliconDetail"
+msgstr "Apple çipli Mac'ler için"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.description"
+msgstr "Geliştirme iş akışınız için bir masaüstü uygulaması. Bilgisayarınıza uygun sürümü seçin."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.eyebrow"
+msgstr "Bir sonraki fikrinize yer açın"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.intel"
+msgstr "macOS · Intel"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.intelDetail"
+msgstr "Intel işlemcili Mac'ler için"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.linux"
+msgstr "Linux · x86_64"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.linuxDetail"
+msgstr "x86_64 masaüstü sistemler için AppImage"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.agentsAnswer"
+msgstr "Choros ayarlarında bulunan kodlama ajanları arasından seçim yapın. Her ajan kendi sağlayıcı hesabını ve kimlik bilgilerini kullanır; Choros ise çalışmalarını aynı çalışma alanında bir araya getirir."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.agentsQuestion"
+msgstr "Hangi kodlama ajanlarını kullanabilirim?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.dataAnswer"
+msgstr "Projeler ve çalışma alanı dosyaları, Choros'un çalıştığı bilgisayarda yönetilir. Bir kodlama ajanı sağlayıcısına gönderilen içerik, o sağlayıcıdaki hesabınız kapsamında ve sağlayıcının politikalarına göre işlenir. Hassas kodları paylaşmadan önce sağlayıcı ayarlarınızı gözden geçirin."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.dataQuestion"
+msgstr "Kodum nereye gidiyor?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.eyebrow"
+msgstr "Başlamadan önce"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.platformsAnswer"
+msgstr "Masaüstü uygulaması şu anda Apple Silicon veya Intel tabanlı macOS ve Linux x86_64 için indirilebilir. Telefonunuzdan belgeleri inceleyebilir ve bilgisayarınız için indireceğiniz sürümü seçebilirsiniz."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.platformsQuestion"
+msgstr "Hangi platformlar için indirebilirim?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.repositoriesAnswer"
+msgstr "Evet. Mevcut Git deponuz ve geliştirme araçlarınızla çalışın. Çalışma alanı kurulum betikleri, her yeni worktree için bağımlılıkları yükleyebilir ve yerel yapılandırmayı hazırlayabilir."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.repositoriesQuestion"
+msgstr "Mevcut bir depoyu kullanabilir miyim?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.title"
+msgstr "Bilmenizde fayda olan birkaç şey."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.footer.credit"
+msgstr "Choros / Tekton AI"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.footer.description"
+msgstr "Sıradaki işleriniz için sade bir alan."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.description"
+msgstr "Kodlama ajanlarını paralel çalıştırın, her göreve ayrı bir Git worktree'si ayırın ve değişiklikleri inceleyin. Hepsi tek bir masaüstü çalışma alanında."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.eyebrow"
+msgstr "Kodlama ajanları için çalışma alanı"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.title"
+msgstr "Sizin ajanlarınız. Tek, sade bir çalışma alanı."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.home.title"
+msgstr "Kodlama ajanlarınız için tek, sade bir çalışma alanı"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.agents"
+msgstr "Birbirinden bağımsız üç ajan görevinin paralel ilerleyişini gösteren illüstrasyon."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.changes"
+msgstr "Eklenen ve silinen kodların bir kod incelemesinde bir araya gelişini gösteren illüstrasyon."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.overview"
+msgstr "İş akışı illüstrasyonu: Tek bir proje, bağımsız ajan çalışma alanlarına ayrılır; ardından bu alanlardaki değişiklikler inceleme için bir araya getirilir."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.overviewCaption"
+msgstr "Tek proje. Bağımsız çalışma alanları. Ortak görünüm. İş akışının görsel anlatımı."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.workspaces"
+msgstr "Tek bir projeden ayrılan bağımsız çalışma alanlarını gösteren illüstrasyon."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.meta.description"
+msgstr "Choros, kodlama ajanları için bir masaüstü çalışma alanıdır. Görevleri yalıtılmış Git worktree'lerinde paralel çalıştırın, ilerlemeyi takip edin ve kod değişikliklerini tek bir yerden inceleyin."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.changelog"
+msgstr "Değişiklik günlüğü"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.docs"
+msgstr "Belgeler"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.download"
+msgstr "İndir"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.footer"
+msgstr "Alt bilgi gezinme menüsü"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.github"
+msgstr "GitHub"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.home"
+msgstr "Choros ana sayfası"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.legal"
+msgstr "Yasal bilgiler"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.primary"
+msgstr "Ana gezinme menüsü"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.privacy"
+msgstr "Gizlilik"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.product"
+msgstr "Ürün"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.status"
+msgstr "Hizmet durumu"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.terms"
+msgstr "Kullanım koşulları"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.eyebrow"
+msgstr "Daha düzenli bir çalışma biçimi"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.isolationDescription"
+msgstr "Her çalışma alanının kendine ait Git worktree'si, dalı ve dosya bağlamı vardır. Deponuzdaki mevcut araçları ve kurulum komutlarını kullanırken paralel değişiklikleri birbirinden ayrı tutun."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.isolationTitle"
+msgstr "Her göreve kendi alanını ayırın."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.parallelDescription"
+msgstr "Masaüstünüzü terminal pencereleriyle doldurmadan ajanları ayrı görevlerde başlatın. İlerlemeyi kontrol edin, ek talimat gönderin ve sıradaki işe geçin."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.parallelTitle"
+msgstr "İşleri paralel yürütün."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.reviewDescription"
+msgstr "Ajanın çalışmasından doğrudan yaptığı değişikliklere geçin. Çalışma alanınızın yanında kod farklarını okuyun, ayrıntıları kontrol edin ve nelerin birleştirilmeye hazır olduğuna karar verin."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.reviewTitle"
+msgstr "Birleştirmeden önce inceleyin."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.title"
+msgstr "İlk istemden son kod farkına."
+
+#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/stores/workspace-creates/use-workspace-creates.ts
 msgid "stores.workspaceCreates.defaultName"
 msgstr "Yeni çalışma alanı"

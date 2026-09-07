@@ -12015,6 +12015,321 @@ msgid "shared.schedule.weeklyAt"
 msgstr "Wekelijks om {time}"
 
 #. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.allReleases"
+msgstr "Alle versies"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.chooseDownload"
+msgstr "Kies je download"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.connectAgents"
+msgstr "Verbind je agents"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.downloadChoros"
+msgstr "Download Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.exploreWorkflow"
+msgstr "Ontdek de werkwijze"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.getStarted"
+msgstr "Installatie en eerste stappen"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.prepareWorkspace"
+msgstr "Bereid je werkruimte voor"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.privacyNotice"
+msgstr "Lees de privacyverklaring"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.providerGuide"
+msgstr "Lees de handleiding voor providers"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.readDocs"
+msgstr "Lees de documentatie"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.skipToContent"
+msgstr "Ga naar de inhoud"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.viewFullWorkspace"
+msgstr "Bekijk de volledige illustratie"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.workspaceGuide"
+msgstr "Lees de handleiding voor werkruimtes"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.appleSilicon"
+msgstr "macOS · Apple Silicon"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.appleSiliconDetail"
+msgstr "Voor Macs met een Apple-chip"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.description"
+msgstr "Een desktop-app voor je ontwikkelwerk. Kies de versie voor jouw computer."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.eyebrow"
+msgstr "Maak ruimte voor je volgende idee"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.intel"
+msgstr "macOS · Intel"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.intelDetail"
+msgstr "Voor Macs met een Intel-processor"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.linux"
+msgstr "Linux · x86_64"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.linuxDetail"
+msgstr "AppImage voor x86_64-desktops"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.agentsAnswer"
+msgstr "Kies uit de programmeeragents die beschikbaar zijn in de instellingen van Choros. Elke agent gebruikt een eigen account en inloggegevens bij zijn provider; Choros brengt hun werk samen in één werkruimte."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.agentsQuestion"
+msgstr "Welke programmeeragents kan ik gebruiken?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.dataAnswer"
+msgstr "Projecten en bestanden van werkruimtes worden beheerd op de computer waarop Choros draait. Inhoud die je naar de provider van een programmeeragent stuurt, wordt verwerkt via het account bij die provider en volgens diens beleid. Controleer je providerinstellingen voordat je gevoelige code deelt."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.dataQuestion"
+msgstr "Waar gaat mijn code naartoe?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.eyebrow"
+msgstr "Voordat je begint"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.platformsAnswer"
+msgstr "De huidige desktopversies zijn beschikbaar voor macOS op Apple Silicon of Intel, en voor Linux x86_64. Op je telefoon kun je de documentatie bekijken en een download voor je computer kiezen."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.platformsQuestion"
+msgstr "Voor welke platforms kan ik de app downloaden?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.repositoriesAnswer"
+msgstr "Ja. Werk met je bestaande Git-repository en ontwikkeltools. Instelscripts voor werkruimtes kunnen afhankelijkheden installeren en de lokale configuratie voor elke nieuwe worktree voorbereiden."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.repositoriesQuestion"
+msgstr "Kan ik een bestaande repository gebruiken?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.title"
+msgstr "Een paar dingen die handig zijn om te weten."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.footer.credit"
+msgstr "Choros / Tekton AI"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.footer.description"
+msgstr "Een overzichtelijke plek voor het werk dat wacht."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.description"
+msgstr "Laat programmeeragents parallel werken, geef elke taak een eigen Git-worktree en beoordeel de wijzigingen. Alles in één werkruimte op je desktop."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.eyebrow"
+msgstr "De werkruimte voor programmeeragents"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.title"
+msgstr "Je agents. Eén overzichtelijke werkruimte."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.home.title"
+msgstr "Eén overzichtelijke werkruimte voor je programmeeragents"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.agents"
+msgstr "Illustratie van drie onafhankelijke taken waaraan agents parallel werken."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.changes"
+msgstr "Illustratie van toegevoegde en verwijderde code die samenkomen in een codebeoordeling."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.overview"
+msgstr "Illustratie van de werkwijze: één project vertakt zich in onafhankelijke werkruimtes voor agents, waarna hun wijzigingen samenkomen voor beoordeling."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.overviewCaption"
+msgstr "Eén project. Onafhankelijke werkruimtes. Een gedeeld overzicht. De werkwijze in beeld."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.workspaces"
+msgstr "Illustratie van afzonderlijke werkruimtes die zich vanuit één project vertakken."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.meta.description"
+msgstr "Choros is een desktopwerkruimte voor programmeeragents. Voer taken parallel uit in geïsoleerde Git-worktrees, volg de voortgang en beoordeel codewijzigingen op één plek."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.changelog"
+msgstr "Wijzigingenoverzicht"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.docs"
+msgstr "Documentatie"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.download"
+msgstr "Downloaden"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.footer"
+msgstr "Navigatie in de voettekst"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.github"
+msgstr "GitHub"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.home"
+msgstr "Choros-startpagina"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.legal"
+msgstr "Juridische informatie"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.primary"
+msgstr "Hoofdnavigatie"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.privacy"
+msgstr "Privacy"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.product"
+msgstr "Product"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.status"
+msgstr "Status"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.terms"
+msgstr "Voorwaarden"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.eyebrow"
+msgstr "Een overzichtelijkere manier van werken"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.isolationDescription"
+msgstr "Elke werkruimte heeft een eigen Git-worktree, branch en bestandscontext. Houd parallelle wijzigingen gescheiden en blijf de bestaande tools en instelcommando's van je repository gebruiken."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.isolationTitle"
+msgstr "Geef elke taak een eigen plek."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.parallelDescription"
+msgstr "Start agents voor afzonderlijke taken zonder je bureaublad vol terminals te zetten. Bekijk de voortgang, stuur aanvullende instructies en pak de volgende draad op."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.parallelTitle"
+msgstr "Werk parallel."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.reviewDescription"
+msgstr "Ga van het werk van de agent naar de daadwerkelijke wijzigingen. Bekijk de verschillen naast je werkruimte, controleer de details en bepaal wat klaar is om te mergen."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.reviewTitle"
+msgstr "Beoordeel voordat je merget."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.title"
+msgstr "Van de eerste opdracht tot het laatste wijzigingenoverzicht."
+
+#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/stores/workspace-creates/use-workspace-creates.ts
 msgid "stores.workspaceCreates.defaultName"
 msgstr "Nieuwe werkruimte"

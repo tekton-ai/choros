@@ -1,3 +1,7 @@
+import { DEFAULT_LOCALE, i18n, initI18n } from "@choros/i18n";
+
+initI18n(DEFAULT_LOCALE);
+
 const SITE_NAME = "Choros";
 
 const PAGE_PATHS = [
@@ -24,7 +28,41 @@ export const PUBLIC_SITE_ROUTE_PATHS = [
 	...PUBLIC_SITE_REDIRECTS.keys(),
 ] as const;
 
+export const PUBLIC_SITE_ASSETS: ReadonlyMap<string, URL> = new Map([
+	[
+		"/assets/choros-logo-light.svg",
+		new URL("../public/assets/choros-logo-light.svg", import.meta.url),
+	],
+	[
+		"/assets/workspace-overview.svg",
+		new URL("../public/assets/workspace-overview.svg", import.meta.url),
+	],
+	[
+		"/assets/workspace-overview-mobile.svg",
+		new URL("../public/assets/workspace-overview-mobile.svg", import.meta.url),
+	],
+	[
+		"/assets/workspace-agents.svg",
+		new URL("../public/assets/workspace-agents.svg", import.meta.url),
+	],
+	[
+		"/assets/workspace-changes.svg",
+		new URL("../public/assets/workspace-changes.svg", import.meta.url),
+	],
+]);
+
 export function handlePublicSiteRequest(pathname: string): Response {
+	const asset = PUBLIC_SITE_ASSETS.get(pathname);
+	if (asset) {
+		return new Response(Bun.file(asset), {
+			headers: {
+				"Content-Type": "image/svg+xml",
+				"X-Content-Type-Options": "nosniff",
+				"Referrer-Policy": "no-referrer",
+			},
+		});
+	}
+
 	const redirectTarget = PUBLIC_SITE_REDIRECTS.get(pathname);
 	if (redirectTarget) return redirect(redirectTarget);
 
@@ -33,7 +71,7 @@ export function handlePublicSiteRequest(pathname: string): Response {
 		return html(
 			pageShell(
 				"Page not found",
-				`<main class="narrow"><p class="eyebrow">404</p><h1>This path has no page.</h1><p class="lede">Use the documentation index to find the maintained Choros pages.</p><p><a class="button" href="/docs">Open documentation</a></p></main>`,
+				`<main id="main-content" class="narrow" tabindex="-1"><p class="eyebrow">404</p><h1>This path has no page.</h1><p class="lede">Use the documentation index to find the maintained Choros pages.</p><p><a class="button" href="/docs">Open documentation</a></p></main>`,
 			),
 			404,
 		);
@@ -48,29 +86,124 @@ function getPage(pathname: string): SitePage | null {
 	switch (pathname) {
 		case "/":
 			return {
-				title: "Agent work, under command",
-				body: `<main>
-<section class="hero">
-<div><p class="eyebrow">Desktop command center for coding agents</p><h1>Keep parallel work<br><em>legible.</em></h1><p class="lede">Choros gives every agent an isolated workspace, a real terminal, and a place in the same operating picture.</p><div class="actions"><a class="button" href="/docs">Read the docs</a><a class="text-link" href="/changelog">What changed <span aria-hidden="true">→</span></a></div></div>
-<aside class="terminal" aria-label="Example Choros command"><div class="terminal-bar"><span></span><span></span><span></span><b>choros</b></div><pre><code><i>$</i> choros ws create \\
-  --branch fix-auth \\
-  --agent claude \\
-  --prompt "repair sign-in"
-
-<span>workspace ready</span>
-agent running</code></pre></aside>
+				title: i18n._({
+					id: "site.home.title",
+					message: "One clear workspace for your coding agents",
+				}),
+				body: `<main id="main-content" class="home" tabindex="-1">
+<section class="hero" aria-labelledby="hero-title">
+	<svg class="hero-mark" viewBox="0 0 256 256" fill="none" aria-hidden="true" focusable="false"><g stroke="currentColor" stroke-width="20" stroke-linecap="round"><path d="M202.71 57.29 A100 100 0 1 0 202.71 198.71"/><path d="M177.23 78.77 A66 66 0 1 0 177.23 177.23"/><path d="M151.69 102.78 A32 32 0 1 0 151.69 153.22"/></g></svg>
+	<p class="eyebrow">${Bun.escapeHTML(i18n._({ id: "site.hero.eyebrow", message: "The workspace for coding agents" }))}</p>
+	<h1 id="hero-title">${Bun.escapeHTML(i18n._({ id: "site.hero.title", message: "Your agents. One clear workspace." }))}</h1>
+	<p class="lede">${Bun.escapeHTML(i18n._({ id: "site.hero.description", message: "Run coding agents in parallel, give each task its own Git worktree, and review the changes. All in one desktop workspace." }))}</p>
+	<div class="actions">
+		<a class="button" href="/#download">${Bun.escapeHTML(i18n._({ id: "site.action.downloadChoros", message: "Download Choros" }))}<span aria-hidden="true">↓</span></a>
+		<a class="text-link" href="/#product">${Bun.escapeHTML(i18n._({ id: "site.action.exploreWorkflow", message: "Explore the workflow" }))}<span aria-hidden="true">↘</span></a>
+	</div>
 </section>
-<section class="grid" aria-label="Product principles">
-<article><b>01</b><h2>Isolation by default</h2><p>Each workspace gets its own branch, files, terminal, and agent context.</p></article>
-<article><b>02</b><h2>One control surface</h2><p>Read progress, send follow-ups, and move between active work without losing the thread.</p></article>
-<article><b>03</b><h2>Your machine, your tools</h2><p>Projects continue to use their existing package managers, credentials, and development commands.</p></article>
+<figure class="product-overview">
+	<div class="product-image">
+		<picture>
+			<source media="(max-width: 640px)" srcset="/assets/workspace-overview-mobile.svg 840w" width="840" height="960">
+			<img src="/assets/workspace-overview.svg" srcset="/assets/workspace-overview.svg 1920w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1244px) calc(100vw - 64px), 1180px" width="1920" height="1200" fetchpriority="high" alt="${Bun.escapeHTML(i18n._({ id: "site.image.overview", message: "Workflow illustration: one project branches into independent agent workspaces, then brings their changes together for review." }))}">
+		</picture>
+	</div>
+	<figcaption>
+		<span>${Bun.escapeHTML(i18n._({ id: "site.image.overviewCaption", message: "One project. Independent workspaces. A shared view. Workflow illustrated." }))}</span>
+		<a class="text-link" href="/assets/workspace-overview.svg">${Bun.escapeHTML(i18n._({ id: "site.action.viewFullWorkspace", message: "View full illustration" }))}<span aria-hidden="true">↗</span></a>
+	</figcaption>
+</figure>
+<section id="product" class="workflow section" aria-labelledby="workflow-title">
+	<div class="section-heading">
+		<p class="eyebrow">${Bun.escapeHTML(i18n._({ id: "site.workflow.eyebrow", message: "A clearer way to work" }))}</p>
+		<h2 id="workflow-title">${Bun.escapeHTML(i18n._({ id: "site.workflow.title", message: "From first prompt to final diff." }))}</h2>
+	</div>
+	<article class="workflow-step">
+		<div class="workflow-copy">
+			<span class="step-number" aria-hidden="true">01</span>
+			<h3>${Bun.escapeHTML(i18n._({ id: "site.workflow.parallelTitle", message: "Run work in parallel." }))}</h3>
+			<p>${Bun.escapeHTML(i18n._({ id: "site.workflow.parallelDescription", message: "Start agents on separate tasks without turning your desktop into a wall of terminals. Check progress, send a follow-up, and pick up the next thread." }))}</p>
+			<a class="text-link" href="/docs/providers">${Bun.escapeHTML(i18n._({ id: "site.action.connectAgents", message: "Connect your agents" }))}<span aria-hidden="true">↗</span></a>
+		</div>
+		<figure class="workflow-image">
+			<img src="/assets/workspace-agents.svg" width="1200" height="750" loading="lazy" decoding="async" alt="${Bun.escapeHTML(i18n._({ id: "site.image.agents", message: "Illustration of three independent agent tasks progressing in parallel." }))}">
+		</figure>
+	</article>
+	<article class="workflow-step">
+		<div class="workflow-copy">
+			<span class="step-number" aria-hidden="true">02</span>
+			<h3>${Bun.escapeHTML(i18n._({ id: "site.workflow.isolationTitle", message: "Give each task its own space." }))}</h3>
+			<p>${Bun.escapeHTML(i18n._({ id: "site.workflow.isolationDescription", message: "Each workspace has its own Git worktree, branch, and file context. Keep parallel changes separate while using your repository's existing tools and setup commands." }))}</p>
+			<a class="text-link" href="/docs/setup-teardown-scripts">${Bun.escapeHTML(i18n._({ id: "site.action.prepareWorkspace", message: "Prepare your workspace" }))}<span aria-hidden="true">↗</span></a>
+		</div>
+		<figure class="workflow-image workspace-detail">
+			<img src="/assets/workspace-overview-mobile.svg" width="840" height="960" loading="lazy" decoding="async" alt="${Bun.escapeHTML(i18n._({ id: "site.image.workspaces", message: "Illustration of separate workspaces branching from one project." }))}">
+		</figure>
+	</article>
+	<article class="workflow-step">
+		<div class="workflow-copy">
+			<span class="step-number" aria-hidden="true">03</span>
+			<h3>${Bun.escapeHTML(i18n._({ id: "site.workflow.reviewTitle", message: "Review before you merge." }))}</h3>
+			<p>${Bun.escapeHTML(i18n._({ id: "site.workflow.reviewDescription", message: "Move from the agent's work to the actual changes. Read the diff alongside your workspace, check the details, and decide what is ready to merge." }))}</p>
+			<a class="text-link" href="/docs">${Bun.escapeHTML(i18n._({ id: "site.action.readDocs", message: "Read the docs" }))}<span aria-hidden="true">↗</span></a>
+		</div>
+		<figure class="workflow-image">
+			<img src="/assets/workspace-changes.svg" width="1200" height="750" loading="lazy" decoding="async" alt="${Bun.escapeHTML(i18n._({ id: "site.image.changes", message: "Illustration of additions and removals flowing into a code review." }))}">
+		</figure>
+	</article>
+</section>
+<section id="download" class="download section" aria-labelledby="download-title">
+	<div class="section-heading">
+		<p class="eyebrow">${Bun.escapeHTML(i18n._({ id: "site.download.eyebrow", message: "Make room for your next idea" }))}</p>
+		<h2 id="download-title">${Bun.escapeHTML(i18n._({ id: "site.action.downloadChoros", message: "Download Choros" }))}</h2>
+		<p>${Bun.escapeHTML(i18n._({ id: "site.download.description", message: "A desktop app for your development workflow. Choose the build for your machine." }))}</p>
+	</div>
+	<div class="platform-downloads">
+		<a class="platform-download" href="https://github.com/tekton-ai/choros/releases/latest/download/Choros-arm64.dmg">
+			<span><strong>${Bun.escapeHTML(i18n._({ id: "site.download.appleSilicon", message: "macOS · Apple Silicon" }))}</strong><small>${Bun.escapeHTML(i18n._({ id: "site.download.appleSiliconDetail", message: "For Macs with an Apple chip" }))}</small></span><span class="download-arrow" aria-hidden="true">↓</span>
+		</a>
+		<a class="platform-download" href="https://github.com/tekton-ai/choros/releases/latest/download/Choros-x64.dmg">
+			<span><strong>${Bun.escapeHTML(i18n._({ id: "site.download.intel", message: "macOS · Intel" }))}</strong><small>${Bun.escapeHTML(i18n._({ id: "site.download.intelDetail", message: "For Macs with an Intel processor" }))}</small></span><span class="download-arrow" aria-hidden="true">↓</span>
+		</a>
+		<a class="platform-download" href="https://github.com/tekton-ai/choros/releases/latest/download/Choros-x86_64.AppImage">
+			<span><strong>${Bun.escapeHTML(i18n._({ id: "site.download.linux", message: "Linux · x86_64" }))}</strong><small>${Bun.escapeHTML(i18n._({ id: "site.download.linuxDetail", message: "AppImage for x86_64 desktops" }))}</small></span><span class="download-arrow" aria-hidden="true">↓</span>
+		</a>
+	</div>
+	<div class="download-help">
+		<a class="text-link" href="/docs">${Bun.escapeHTML(i18n._({ id: "site.action.getStarted", message: "Installation and first steps" }))}<span aria-hidden="true">→</span></a>
+		<a class="text-link" href="https://github.com/tekton-ai/choros/releases/latest">${Bun.escapeHTML(i18n._({ id: "site.action.allReleases", message: "All releases" }))}<span aria-hidden="true">↗</span></a>
+	</div>
+</section>
+<section class="faq section" aria-labelledby="faq-title">
+	<div class="section-heading">
+		<p class="eyebrow">${Bun.escapeHTML(i18n._({ id: "site.faq.eyebrow", message: "Before you begin" }))}</p>
+		<h2 id="faq-title">${Bun.escapeHTML(i18n._({ id: "site.faq.title", message: "A few things worth knowing." }))}</h2>
+	</div>
+	<div class="faq-list">
+		<details>
+			<summary>${Bun.escapeHTML(i18n._({ id: "site.faq.agentsQuestion", message: "Which coding agents can I use?" }))}<span aria-hidden="true">+</span></summary>
+			<div class="faq-answer"><p>${Bun.escapeHTML(i18n._({ id: "site.faq.agentsAnswer", message: "Choose from the coding agents available in Choros settings. Each agent uses its own provider account and credentials; Choros brings their work into the same workspace." }))}</p><a class="text-link" href="/docs/providers">${Bun.escapeHTML(i18n._({ id: "site.action.providerGuide", message: "Read the provider guide" }))}<span aria-hidden="true">→</span></a></div>
+		</details>
+		<details>
+			<summary>${Bun.escapeHTML(i18n._({ id: "site.faq.repositoriesQuestion", message: "Can I use an existing repository?" }))}<span aria-hidden="true">+</span></summary>
+			<div class="faq-answer"><p>${Bun.escapeHTML(i18n._({ id: "site.faq.repositoriesAnswer", message: "Yes. Work with your existing Git repository and development tools. Workspace setup scripts can install dependencies and prepare local configuration for each new worktree." }))}</p><a class="text-link" href="/docs/setup-teardown-scripts">${Bun.escapeHTML(i18n._({ id: "site.action.workspaceGuide", message: "Read the workspace guide" }))}<span aria-hidden="true">→</span></a></div>
+		</details>
+		<details>
+			<summary>${Bun.escapeHTML(i18n._({ id: "site.faq.dataQuestion", message: "Where does my code go?" }))}<span aria-hidden="true">+</span></summary>
+			<div class="faq-answer"><p>${Bun.escapeHTML(i18n._({ id: "site.faq.dataAnswer", message: "Projects and workspace files are managed on the machine running Choros. Content sent to a coding-agent provider is handled under that provider's account and policies. Review your provider settings before sharing sensitive code." }))}</p><a class="text-link" href="/privacy">${Bun.escapeHTML(i18n._({ id: "site.action.privacyNotice", message: "Read the privacy notice" }))}<span aria-hidden="true">→</span></a></div>
+		</details>
+		<details>
+			<summary>${Bun.escapeHTML(i18n._({ id: "site.faq.platformsQuestion", message: "Which platforms can I download?" }))}<span aria-hidden="true">+</span></summary>
+			<div class="faq-answer"><p>${Bun.escapeHTML(i18n._({ id: "site.faq.platformsAnswer", message: "Current desktop downloads are available for macOS on Apple Silicon or Intel, and Linux x86_64. On a phone, you can browse the docs and choose a download for your desktop computer." }))}</p><a class="text-link" href="/#download">${Bun.escapeHTML(i18n._({ id: "site.action.chooseDownload", message: "Choose your download" }))}<span aria-hidden="true">→</span></a></div>
+		</details>
+	</div>
 </section>
 </main>`,
 			};
 		case "/docs":
 			return {
 				title: "Documentation",
-				body: `<main><p class="eyebrow">Documentation</p><h1>Run the work.<br><em>Keep the context.</em></h1><p class="lede">Start with the workflow you are setting up.</p><section class="link-list">
+				body: `<main id="main-content" tabindex="-1"><p class="eyebrow">Documentation</p><h1>Run the work.<br><em>Keep the context.</em></h1><p class="lede">Start with the workflow you are setting up.</p><section class="link-list">
 <a href="/docs/setup-teardown-scripts"><span>Workspace lifecycle scripts</span><small>Install dependencies, copy local configuration, run, and clean up.</small><b>01</b></a>
 <a href="/docs/providers"><span>Model providers</span><small>Connect the coding agents you already use.</small><b>02</b></a>
 <a href="/docs/cli"><span>Command-line interface</span><small>Create and inspect workspaces without leaving the terminal.</small><b>03</b></a>
@@ -165,7 +298,7 @@ choros terminals read --workspace WORKSPACE_ID \\
 }
 
 function docPage(title: string, intro: string, content: string): string {
-	return `<main class="docs"><p class="eyebrow"><a href="/docs">Documentation</a></p><h1>${title}</h1><p class="lede">${intro}</p><article>${content}</article></main>`;
+	return `<main id="main-content" class="docs" tabindex="-1"><p class="eyebrow"><a href="/docs">Documentation</a></p><h1>${title}</h1><p class="lede">${intro}</p><article>${content}</article></main>`;
 }
 
 function redirect(pathname: string): Response {
@@ -189,11 +322,228 @@ function html(body: string, status = 200): Response {
 }
 
 function pageShell(title: string, body: string): string {
+	const description = i18n._({
+		id: "site.meta.description",
+		message:
+			"Choros is a desktop workspace for coding agents. Run tasks in parallel in isolated Git worktrees, follow progress, and review code changes in one place.",
+	});
+	const homeLabel = Bun.escapeHTML(
+		i18n._({ id: "site.nav.home", message: "Choros home" }),
+	);
 	return `<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#191816"><title>${title} · ${SITE_NAME}</title><style>${styles}</style></head>
-<body><header><a class="brand" href="/" aria-label="Choros home"><svg xmlns="http://www.w3.org/2000/svg" width="470" height="128" viewBox="0 0 470 128" fill="none" aria-hidden="true"><title>Choros</title><g transform="translate(0 0) scale(0.5)"><g fill="none" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round"><path d="M202.71 57.29 A100 100 0 1 0 202.71 198.71"/><path d="M177.23 78.77 A66 66 0 1 0 177.23 177.23"/><path d="M151.69 102.78 A32 32 0 1 0 151.69 153.22"/></g></g><g fill="#FFFFFF"><path transform="translate(151 91) scale(0.088 -0.088)" d="M589 542Q561 580 516 597.5Q471 615 428 615Q373 615 328 595Q283 575 250.5 540Q218 505 200.5 458Q183 411 183 356Q183 298 200 250Q217 202 248.5 167.5Q280 133 324 114Q368 95 423 95Q480 95 524 117.5Q568 140 595 177L696 106Q649 47 581 14.5Q513 -18 422 -18Q339 -18 269.5 9.5Q200 37 150 86.5Q100 136 72 204.5Q44 273 44 356Q44 441 73.5 509.5Q103 578 154.5 626Q206 674 276 700Q346 726 428 726Q462 726 499 719.5Q536 713 570 699.5Q604 686 634 666Q664 646 685 618Z"/><path transform="translate(210.048 91) scale(0.088 -0.088)" d="M339 494Q386 494 419.5 477.5Q453 461 474.5 434Q496 407 506 372Q516 337 516 300L516 0L396 0L396 264Q396 285 393 307.5Q390 330 380.5 348.5Q371 367 353.5 379Q336 391 307 391Q278 391 257 380Q236 369 222 350.5Q208 332 201 309Q194 286 194 262L194 0L74 0L74 756L194 756L194 413L196 413Q203 428 216.5 442.5Q230 457 248 468.5Q266 480 289 487Q312 494 339 494Z"/><path transform="translate(259.24 91) scale(0.088 -0.088)" d="M44 242Q44 299 64.5 345.5Q85 392 120 425Q155 458 203 476Q251 494 305 494Q359 494 407 476Q455 458 490 425Q525 392 545.5 345.5Q566 299 566 242Q566 185 545.5 138Q525 91 490 57.5Q455 24 407 5Q359 -14 305 -14Q251 -14 203 5Q155 24 120 57.5Q85 91 64.5 138Q44 185 44 242ZM166 242Q166 214 174.5 186Q183 158 200 136Q217 114 243 100Q269 86 305 86Q341 86 367 100Q393 114 410 136Q427 158 435.5 186Q444 214 444 242Q444 270 435.5 297.5Q427 325 410 347Q393 369 367 382.5Q341 396 305 396Q269 396 243 382.5Q217 369 200 347Q183 325 174.5 297.5Q166 270 166 242Z"/><path transform="translate(310.72 91) scale(0.088 -0.088)" d="M72 480L187 480L187 400L189 400Q209 442 245 468Q281 494 329 494Q336 494 344 493.5Q352 493 358 491L358 381Q346 384 337.5 385Q329 386 321 386Q280 386 255 371Q230 356 216 335Q202 314 197 292Q192 270 192 257L192 0L72 0Z"/><path transform="translate(338.96799999999996 91) scale(0.088 -0.088)" d="M44 242Q44 299 64.5 345.5Q85 392 120 425Q155 458 203 476Q251 494 305 494Q359 494 407 476Q455 458 490 425Q525 392 545.5 345.5Q566 299 566 242Q566 185 545.5 138Q525 91 490 57.5Q455 24 407 5Q359 -14 305 -14Q251 -14 203 5Q155 24 120 57.5Q85 91 64.5 138Q44 185 44 242ZM166 242Q166 214 174.5 186Q183 158 200 136Q217 114 243 100Q269 86 305 86Q341 86 367 100Q393 114 410 136Q427 158 435.5 186Q444 214 444 242Q444 270 435.5 297.5Q427 325 410 347Q393 369 367 382.5Q341 396 305 396Q269 396 243 382.5Q217 369 200 347Q183 325 174.5 297.5Q166 270 166 242Z"/><path transform="translate(390.448 91) scale(0.088 -0.088)" d="M335 352Q319 373 291 388.5Q263 404 230 404Q201 404 177 392Q153 380 153 352Q153 324 179.5 312.5Q206 301 257 289Q284 283 311.5 273Q339 263 361.5 246.5Q384 230 398 205.5Q412 181 412 146Q412 102 395.5 71.5Q379 41 351.5 22Q324 3 287.5 -5.5Q251 -14 212 -14Q156 -14 103 6.5Q50 27 15 65L94 139Q114 113 146 96Q178 79 217 79Q230 79 243.5 82Q257 85 268.5 91.5Q280 98 287 109Q294 120 294 136Q294 166 266.5 179Q239 192 184 205Q157 211 131.5 220.5Q106 230 86 245.5Q66 261 54 284Q42 307 42 341Q42 381 58.5 410Q75 439 102 457.5Q129 476 163 485Q197 494 233 494Q285 494 334.5 476Q384 458 413 421Z"/></g></svg></a><nav><a href="/docs">Docs</a><a href="/changelog">Changelog</a><a href="/status">Status</a></nav></header>${body}<footer><span>CHOROS / TEKTON AI</span><nav><a href="/terms">Terms</a><a href="/privacy">Privacy</a></nav></footer></body></html>`;
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="theme-color" content="#111113">
+	<meta name="color-scheme" content="dark">
+	<meta name="description" content="${Bun.escapeHTML(description)}">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="${SITE_NAME}">
+	<meta property="og:title" content="${Bun.escapeHTML(title)} · ${SITE_NAME}">
+	<meta property="og:description" content="${Bun.escapeHTML(description)}">
+	<title>${Bun.escapeHTML(title)} · ${SITE_NAME}</title>
+	<style>${styles}</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">${Bun.escapeHTML(i18n._({ id: "site.action.skipToContent", message: "Skip to content" }))}</a>
+<header class="site-header">
+	<div class="header-inner">
+		<a class="brand" href="/" aria-label="${homeLabel}"><img src="/assets/choros-logo-light.svg" width="470" height="128" alt=""></a>
+		<nav class="primary-nav" aria-label="${Bun.escapeHTML(i18n._({ id: "site.nav.primary", message: "Main navigation" }))}">
+			<a href="/#product">${Bun.escapeHTML(i18n._({ id: "site.nav.product", message: "Product" }))}</a>
+			<a href="/docs">${Bun.escapeHTML(i18n._({ id: "site.nav.docs", message: "Docs" }))}</a>
+			<a href="/changelog">${Bun.escapeHTML(i18n._({ id: "site.nav.changelog", message: "Changelog" }))}</a>
+		</nav>
+		<a class="button header-download" href="/#download">${Bun.escapeHTML(i18n._({ id: "site.nav.download", message: "Download" }))}<span aria-hidden="true">↓</span></a>
+	</div>
+</header>
+${body}
+<footer class="site-footer">
+	<div class="footer-top">
+		<div class="footer-identity">
+			<a class="brand" href="/" aria-label="${homeLabel}"><img src="/assets/choros-logo-light.svg" width="470" height="128" alt=""></a>
+			<p>${Bun.escapeHTML(i18n._({ id: "site.footer.description", message: "A clear space for the work ahead." }))}</p>
+		</div>
+		<nav class="footer-nav" aria-label="${Bun.escapeHTML(i18n._({ id: "site.nav.footer", message: "Footer navigation" }))}">
+			<a href="https://github.com/tekton-ai/choros">${Bun.escapeHTML(i18n._({ id: "site.nav.github", message: "GitHub" }))}<span aria-hidden="true">↗</span></a>
+			<a href="/docs">${Bun.escapeHTML(i18n._({ id: "site.nav.docs", message: "Docs" }))}</a>
+			<a href="/changelog">${Bun.escapeHTML(i18n._({ id: "site.nav.changelog", message: "Changelog" }))}</a>
+			<a href="/status">${Bun.escapeHTML(i18n._({ id: "site.nav.status", message: "Status" }))}</a>
+		</nav>
+	</div>
+	<div class="footer-bottom">
+		<span>${Bun.escapeHTML(i18n._({ id: "site.footer.credit", message: "Choros / Tekton AI" }))}</span>
+		<nav aria-label="${Bun.escapeHTML(i18n._({ id: "site.nav.legal", message: "Legal" }))}">
+			<a href="/terms">${Bun.escapeHTML(i18n._({ id: "site.nav.terms", message: "Terms" }))}</a>
+			<a href="/privacy">${Bun.escapeHTML(i18n._({ id: "site.nav.privacy", message: "Privacy" }))}</a>
+		</nav>
+	</div>
+</footer>
+</body>
+</html>`;
 }
 
 const styles = `
-:root{color-scheme:dark;--ink:#f0ece2;--muted:#aaa59b;--line:#3a3833;--paper:#191816;--panel:#22211e;--acid:#d8ff3e;--serif:Georgia,"Times New Roman",serif;--mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace}*{box-sizing:border-box}html{background:var(--paper);color:var(--ink);font-family:var(--mono);scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(circle at 84% 12%,#2d3020 0,transparent 28rem),linear-gradient(#ffffff05 1px,transparent 1px);background-size:auto,100% 5rem}a{color:inherit}header,footer{width:min(1180px,calc(100% - 40px));margin:auto;display:flex;align-items:center;justify-content:space-between}header{height:88px;border-bottom:1px solid var(--line)}header nav,footer nav{display:flex;gap:28px}header nav a,footer a{color:var(--muted);font-size:12px;text-decoration:none;text-transform:uppercase;letter-spacing:.1em}.brand{display:flex;gap:11px;align-items:center;text-decoration:none;font-size:13px;letter-spacing:.18em}.brand svg{display:block;width:132px;height:36px}main{width:min(1180px,calc(100% - 40px));margin:0 auto}.hero{min-height:610px;display:grid;grid-template-columns:1.2fr .8fr;gap:7vw;align-items:center;padding:70px 0}.eyebrow{color:var(--acid);font-size:11px;letter-spacing:.15em;text-transform:uppercase}.eyebrow a{text-decoration:none}h1{font:normal clamp(54px,8vw,112px)/.88 var(--serif);letter-spacing:-.055em;margin:25px 0 30px;max-width:900px}h1 em{color:var(--acid);font-weight:normal}.lede{max-width:690px;color:var(--muted);font:normal clamp(17px,2vw,22px)/1.55 var(--serif)}.actions{display:flex;align-items:center;gap:30px;margin-top:40px}.button{display:inline-block;background:var(--acid);color:#151510;padding:14px 20px;text-decoration:none;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.08em}.text-link{font-size:12px;text-decoration:none}.terminal{border:1px solid #4c4a43;background:#11110f;box-shadow:22px 22px 0 #0e0e0d;transform:rotate(1.3deg)}.terminal-bar{height:40px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:7px;padding:0 13px}.terminal-bar span{width:7px;height:7px;border-radius:50%;background:#57544d}.terminal-bar b{margin-left:auto;color:#77736b;font-size:9px;letter-spacing:.15em}.terminal pre{margin:0;padding:30px;min-height:260px;white-space:pre-wrap;line-height:1.8;color:#d5d0c5}.terminal i,.terminal span{color:var(--acid);font-style:normal}.grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line);margin-bottom:100px}.grid article{min-height:240px;padding:28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.grid b,.link-list b{color:var(--acid);font-size:11px}.grid h2{font:normal 28px/1.1 var(--serif);margin:55px 0 15px}.grid p,.docs article p,.docs li,.docs dd{color:var(--muted);font-size:14px;line-height:1.7}.link-list{margin:70px 0 110px;border-top:1px solid var(--line)}.link-list a{position:relative;display:grid;grid-template-columns:1fr 1fr auto;gap:30px;align-items:center;padding:30px 5px;border-bottom:1px solid var(--line);text-decoration:none;transition:padding .2s,background .2s}.link-list a:hover{padding-left:20px;background:#ffffff05}.link-list span{font:normal 25px var(--serif)}.link-list small{color:var(--muted);line-height:1.5}.docs{max-width:900px;padding:90px 0 120px}.docs h1,.narrow h1{font-size:clamp(48px,7vw,80px)}.docs article{border-top:1px solid var(--line);margin-top:60px;padding-top:25px;max-width:760px}.docs h2{font:normal 30px var(--serif);margin:45px 0 12px}.docs pre{padding:22px;overflow:auto;border:1px solid var(--line);background:#10100f;color:#d7d2c8;line-height:1.6}.docs code{font-family:var(--mono);color:#e5ffa0}.docs dt{margin-top:22px}.docs dd{margin:7px 0 0}.status{display:flex;align-items:center;gap:13px;padding:22px;border:1px solid var(--line);background:var(--panel)}.status span{width:10px;height:10px;border-radius:50%;background:var(--acid);box-shadow:0 0 18px var(--acid)}.narrow{padding:110px 0;min-height:650px}footer{min-height:120px;border-top:1px solid var(--line);color:var(--muted);font-size:10px;letter-spacing:.13em}@media(max-width:760px){header nav{gap:13px}.hero{grid-template-columns:1fr;padding:70px 0 100px}.terminal{transform:none;box-shadow:12px 12px 0 #0e0e0d}.grid{grid-template-columns:1fr}.link-list a{grid-template-columns:1fr auto}.link-list small{grid-column:1/3;grid-row:2}h1{font-size:58px}footer{align-items:flex-start;padding-top:30px}footer nav{gap:14px}}
+:root{color-scheme:dark;--ink:#f5f5f6;--muted:#a5a5ad;--line:#ffffff1a;--paper:#111113;--panel:#19191d;--acid:#d8ff3e;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace}
+*{box-sizing:border-box}
+html{background:var(--paper);color:var(--ink);font-family:var(--sans);scroll-behavior:smooth;scroll-padding-top:112px;-webkit-text-size-adjust:100%}
+body{margin:0;min-width:280px;min-height:100vh;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-underline-offset:4px}
+a,summary{touch-action:manipulation}
+a:focus-visible,summary:focus-visible,main:focus-visible{outline:2px solid var(--acid);outline-offset:5px}
+img{display:block;max-width:100%;height:auto}
+figure{margin:0}
+p{line-height:1.65}
+h1,h2,h3,p{overflow-wrap:break-word}
+h1,h2,h3{font-weight:550}
+h1{font-size:clamp(42px,6.5vw,80px);line-height:1.08;letter-spacing:-.055em;margin:24px 0;max-width:900px;text-wrap:balance}
+h1 em{font-style:normal;color:var(--ink)}
+h2{font-size:clamp(32px,4vw,48px);line-height:1.15;letter-spacing:-.04em;margin:18px 0 0;text-wrap:balance}
+h3{font-size:clamp(26px,2.7vw,34px);line-height:1.2;letter-spacing:-.035em;margin:24px 0 16px;text-wrap:balance}
+main,.header-inner,.site-footer{width:min(1180px,calc(100% - 64px));margin-inline:auto}
+main:not(.home){padding-top:88px}
+.skip-link{position:fixed;top:12px;left:20px;z-index:10;background:var(--ink);color:var(--paper);padding:14px 20px;border-radius:5px;font-weight:600;transform:translateY(-180%)}
+.skip-link:focus{transform:translateY(0)}
+.site-header{position:sticky;top:0;z-index:5;border-bottom:1px solid var(--line);background:#111113f5}
+.header-inner{min-height:84px;display:flex;align-items:center;gap:36px}
+.brand{display:inline-flex;align-items:center;min-height:44px;flex-shrink:0;text-decoration:none}
+.brand img{width:132px;height:auto}
+.primary-nav{display:flex;align-items:center;gap:30px;margin-left:auto}
+.primary-nav a,.footer-nav a,.footer-bottom a{display:inline-flex;align-items:center;gap:8px;min-width:44px;min-height:44px;color:var(--muted);font-size:14px;text-decoration:none;transition:color .16s}
+.primary-nav a:hover,.footer-nav a:hover,.footer-bottom a:hover{color:var(--ink)}
+.button{display:inline-flex;align-items:center;justify-content:center;gap:18px;min-height:50px;padding:13px 21px;border:1px solid var(--ink);border-radius:6px;background:var(--ink);color:var(--paper);font-size:15px;font-weight:600;text-decoration:none;line-height:1.4;transition:background .16s,border-color .16s,transform .16s}
+.button:hover{background:#dddde0;border-color:#dddde0;transform:translateY(-1px)}
+.header-download{min-height:44px;padding:10px 17px;font-size:14px;gap:16px}
+.hero{position:relative;isolation:isolate;padding:96px 0 60px}
+.hero-mark{position:absolute;width:360px;height:360px;right:0;top:76px;z-index:-1;color:var(--ink);opacity:.035;pointer-events:none}
+.eyebrow{font-family:var(--mono);color:var(--muted);font-size:11px;line-height:1.6;font-weight:500;letter-spacing:.14em;text-transform:uppercase;margin:0}
+.eyebrow a{text-decoration:none}
+.hero .eyebrow{display:flex;align-items:center;gap:12px}
+.hero .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--acid);flex:none}
+.hero h1{max-width:850px;margin-top:26px;margin-bottom:26px}
+.lede{max-width:620px;color:var(--muted);font-size:clamp(17px,1.7vw,20px);line-height:1.65;margin:0}
+.actions{display:flex;align-items:center;flex-wrap:wrap;gap:18px 30px;margin-top:32px}
+.text-link{display:inline-flex;align-items:center;justify-content:flex-start;gap:10px;min-height:44px;font-size:14px;font-weight:500;text-decoration:none;line-height:1.5;transition:color .16s}
+.text-link:hover{color:var(--acid)}
+.text-link span{flex-shrink:0}
+.product-image,.workflow-image{overflow:hidden;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.product-image img{width:100%;aspect-ratio:8/5;object-fit:cover}
+.product-overview figcaption{display:flex;align-items:center;justify-content:space-between;gap:8px 24px;padding-top:16px;color:var(--muted);font-size:13px;line-height:1.6}
+.product-overview figcaption .text-link{font-size:13px;flex-shrink:0}
+.section{padding-block:100px}
+.section-heading>p:not(.eyebrow){max-width:520px;font-size:17px;color:var(--muted);margin:22px 0 0}
+.workflow{padding-bottom:48px}
+.workflow .section-heading{padding-bottom:44px}
+.workflow-step{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.45fr);align-items:center;gap:64px;border-top:1px solid var(--line);padding-block:56px}
+.step-number{font:12px var(--mono);color:var(--acid)}
+.workflow-copy p{margin:0;color:var(--muted);font-size:16px;line-height:1.75;max-width:360px}
+.workflow-copy .text-link{margin-top:16px}
+.workflow-image img{width:100%;aspect-ratio:8/5;object-fit:cover;object-position:left center}
+.workspace-detail img{object-fit:contain;object-position:center}
+.download{border-top:1px solid var(--line)}
+.download .section-heading{max-width:700px}
+.platform-downloads{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-block:1px solid var(--line);margin-top:40px}
+.platform-download{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:128px;padding:24px;text-decoration:none;transition:background .16s}
+.platform-download:first-child{padding-left:0}
+.platform-download+.platform-download{border-left:1px solid var(--line)}
+.platform-download:last-child{padding-right:0}
+.platform-download:hover{background:#ffffff04}
+.platform-download strong{display:block;font-size:17px;font-weight:550;line-height:1.5}
+.platform-download small{display:block;font-size:13px;color:var(--muted);line-height:1.6;margin-top:5px}
+.download-arrow{display:grid;place-items:center;width:36px;height:36px;flex-shrink:0;border:1px solid var(--line);border-radius:50%;font-size:18px;transition:border-color .16s,color .16s}
+.platform-download:hover .download-arrow{border-color:var(--acid);color:var(--acid)}
+.download-help{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;margin-top:18px}
+.download-help .text-link{color:var(--muted)}
+.download-help .text-link:hover{color:var(--ink)}
+.faq{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.45fr);gap:64px;border-top:1px solid var(--line)}
+.faq h2{max-width:360px;font-size:clamp(30px,3.2vw,40px);text-wrap:initial}
+.faq-list{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{display:flex;justify-content:space-between;align-items:center;gap:20px;min-height:76px;padding:20px 0;font-size:16px;font-weight:500;line-height:1.5;list-style:none;cursor:pointer}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary>span{font-size:22px;font-weight:400;color:var(--muted);line-height:1;transition:transform .16s;flex-shrink:0}
+.faq details[open] summary>span{transform:rotate(45deg);color:var(--ink)}
+.faq summary:hover{color:var(--acid)}
+.faq-answer{padding:0 32px 22px 0}
+.faq-answer p{margin:0;color:var(--muted);font-size:15px;line-height:1.75}
+.faq-answer .text-link{margin-top:12px}
+.site-footer{border-top:1px solid var(--line)}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:36px;padding:56px 0 40px}
+.footer-identity p{font-size:14px;color:var(--muted);margin:18px 0 0}
+.footer-nav{display:flex;align-items:center;gap:28px}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px 0 28px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+.footer-bottom nav{display:flex;gap:24px}
+.footer-bottom a{font-size:12px}
+.link-list{margin:64px 0 100px;border-top:1px solid var(--line)}
+.link-list a{display:grid;grid-template-columns:1fr 1fr auto;gap:30px;align-items:center;min-height:116px;padding:28px 4px;border-bottom:1px solid var(--line);text-decoration:none;transition:background .16s}
+.link-list a:hover{background:#ffffff04}
+.link-list span{font-size:23px;line-height:1.4;letter-spacing:-.02em}
+.link-list small{font-size:14px;color:var(--muted);line-height:1.6}
+.link-list b{color:var(--acid);font:12px var(--mono)}
+.docs{max-width:900px;padding-bottom:112px}
+.docs h1,.narrow h1{font-size:clamp(40px,6vw,72px)}
+.docs article{border-top:1px solid var(--line);margin-top:52px;padding-top:12px;max-width:760px}
+.docs h2{font-size:28px;margin:36px 0 12px;text-wrap:initial}
+.docs article p,.docs li,.docs dd{color:var(--muted);font-size:16px;line-height:1.75}
+.docs article a{color:var(--ink)}
+.docs pre{max-width:100%;padding:22px;overflow:auto;border:1px solid var(--line);border-radius:6px;background:#0c0c0e;color:var(--ink);font-size:13px;line-height:1.7}
+.docs code{font-family:var(--mono);color:#d5d9c8;overflow-wrap:anywhere}
+.docs pre code{overflow-wrap:normal}
+.docs dt{margin-top:22px}
+.docs dd{margin:7px 0 0}
+.status{display:flex;align-items:center;gap:13px;padding:22px;border:1px solid var(--line);border-radius:6px;background:var(--panel)}
+.status span{width:8px;height:8px;border-radius:50%;background:var(--acid);flex-shrink:0}
+.narrow{padding-bottom:100px;min-height:650px}
+@media(max-width:1000px){.workflow-step,.faq{gap:36px}.platform-download{padding-inline:18px}.platform-download strong{font-size:15px}.download-arrow{width:30px;height:30px}.footer-nav{gap:22px}}
+@media(max-width:767px){
+	html{scroll-padding-top:148px}
+	main,.header-inner,.site-footer{width:calc(100% - 40px)}
+	main:not(.home){padding-top:56px}
+	.header-inner{display:grid;grid-template-columns:1fr auto;gap:0;padding-top:12px;padding-bottom:4px}
+	.brand img{width:120px}
+	.header-download{grid-column:2;grid-row:1}
+	.primary-nav{grid-column:1/-1;grid-row:2;justify-content:space-between;gap:20px;margin:6px 0 0;max-width:340px;width:100%}
+	.primary-nav a{font-size:13px}
+	.hero{padding:60px 0 40px}
+	.hero-mark{width:230px;height:230px;right:0;top:82px;opacity:.025}
+	h1{font-size:clamp(40px,7vw,54px);line-height:1.12;letter-spacing:-.05em}
+	.hero h1{margin-block:22px;max-width:650px}
+	.hero .eyebrow{font-size:10px;letter-spacing:.09em;gap:8px}
+	.lede{font-size:17px}
+	.actions{margin-top:28px;gap:14px 22px}
+	.product-overview figcaption{align-items:flex-start;flex-direction:column;gap:0;padding-top:12px}
+	.section{padding-block:60px}
+	.workflow{padding-bottom:24px}
+	.workflow .section-heading{padding-bottom:32px}
+	.workflow-step{grid-template-columns:1fr;gap:28px;padding-block:36px}
+	.workflow-copy h3{margin-top:16px;max-width:340px}
+	.workflow-copy p{max-width:520px}
+	.workflow-copy .text-link{margin-top:12px}
+	.platform-downloads{grid-template-columns:1fr;margin-top:30px}
+	.platform-download,.platform-download:first-child,.platform-download:last-child{padding:22px 0;min-height:104px}
+	.platform-download+.platform-download{border-left:0;border-top:1px solid var(--line)}
+	.platform-download strong{font-size:17px}
+	.download-arrow{width:36px;height:36px}
+	.download-help{align-items:flex-start;flex-direction:column;gap:0;margin-top:12px}
+	.faq{grid-template-columns:1fr;gap:32px}
+	.faq h2{max-width:400px}
+	.faq summary{min-height:72px}
+	.faq-answer{padding-right:16px}
+	.footer-top{flex-direction:column;gap:24px;padding:40px 0 28px}
+	.footer-nav{flex-wrap:wrap;gap:6px 24px}
+	.footer-bottom{align-items:flex-start;flex-wrap:wrap;gap:4px 20px;padding-block:20px}
+	.footer-bottom>span{min-height:44px;display:flex;align-items:center}
+	.link-list{margin-block:44px 64px}
+	.link-list a{grid-template-columns:minmax(0,1fr) auto;gap:12px 20px;padding-block:24px}
+	.link-list small{grid-column:1/3;grid-row:2}
+	.link-list span{font-size:21px}
+	.docs{padding-bottom:64px}
+	.docs article{margin-top:36px}
+	.docs h2{font-size:25px}
+	.docs pre{padding:16px}
+	.narrow{min-height:540px;padding-bottom:64px}
+}
+@media(max-width:640px){.product-image img{aspect-ratio:7/8}.workspace-detail img{aspect-ratio:7/8;object-position:center}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}.button:hover{transform:none}}
 `;

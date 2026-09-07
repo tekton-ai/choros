@@ -12015,6 +12015,321 @@ msgid "shared.schedule.weeklyAt"
 msgstr "Wöchentlich um {time}"
 
 #. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.allReleases"
+msgstr "Alle Versionen"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.chooseDownload"
+msgstr "Download auswählen"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.connectAgents"
+msgstr "Deine Agenten verbinden"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.downloadChoros"
+msgstr "Choros herunterladen"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.exploreWorkflow"
+msgstr "Den Arbeitsablauf entdecken"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.getStarted"
+msgstr "Installation und erste Schritte"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.prepareWorkspace"
+msgstr "Deinen Arbeitsbereich vorbereiten"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.privacyNotice"
+msgstr "Datenschutzhinweise lesen"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.providerGuide"
+msgstr "Anbieter-Leitfaden lesen"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.readDocs"
+msgstr "Dokumentation lesen"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.skipToContent"
+msgstr "Zum Inhalt springen"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.viewFullWorkspace"
+msgstr "Vollständige Illustration ansehen"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.workspaceGuide"
+msgstr "Leitfaden zu Arbeitsbereichen lesen"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.appleSilicon"
+msgstr "macOS · Apple Silicon"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.appleSiliconDetail"
+msgstr "Für Macs mit Apple-Chip"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.description"
+msgstr "Eine Desktop-App für deinen Entwicklungsalltag. Wähle die passende Version für deinen Rechner."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.eyebrow"
+msgstr "Schaffe Platz für deine nächste Idee"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.intel"
+msgstr "macOS · Intel"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.intelDetail"
+msgstr "Für Macs mit Intel-Prozessor"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.linux"
+msgstr "Linux · x86_64"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.linuxDetail"
+msgstr "AppImage für x86_64-Desktoprechner"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.agentsAnswer"
+msgstr "Wähle aus den Programmieragenten, die in den Choros-Einstellungen verfügbar sind. Jeder Agent verwendet ein eigenes Anbieterkonto mit eigenen Zugangsdaten; Choros bringt ihre Arbeit in einem gemeinsamen Arbeitsbereich zusammen."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.agentsQuestion"
+msgstr "Welche Programmieragenten kann ich verwenden?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.dataAnswer"
+msgstr "Projekte und Dateien deiner Arbeitsbereiche werden auf dem Rechner verwaltet, auf dem Choros läuft. Inhalte, die du an den Anbieter eines Programmieragenten sendest, werden über das jeweilige Anbieterkonto und gemäß dessen Richtlinien verarbeitet. Prüfe deine Anbietereinstellungen, bevor du vertraulichen Code teilst."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.dataQuestion"
+msgstr "Wohin gelangt mein Code?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.eyebrow"
+msgstr "Bevor du loslegst"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.platformsAnswer"
+msgstr "Aktuelle Desktop-Versionen gibt es für macOS auf Apple Silicon oder Intel sowie für Linux x86_64. Auf dem Smartphone kannst du die Dokumentation lesen und einen Download für deinen Computer auswählen."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.platformsQuestion"
+msgstr "Für welche Plattformen gibt es Downloads?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.repositoriesAnswer"
+msgstr "Ja. Arbeite mit deinem vorhandenen Git-Repository und deinen gewohnten Entwicklungswerkzeugen. Einrichtungsskripte für Arbeitsbereiche können Abhängigkeiten installieren und die lokale Konfiguration für jeden neuen Worktree vorbereiten."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.repositoriesQuestion"
+msgstr "Kann ich ein vorhandenes Repository verwenden?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.title"
+msgstr "Ein paar Dinge, die du wissen solltest."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.footer.credit"
+msgstr "Choros / Tekton AI"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.footer.description"
+msgstr "Ein übersichtlicher Raum für alles, was ansteht."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.description"
+msgstr "Lass Programmieragenten parallel arbeiten, gib jeder Aufgabe einen eigenen Git-Worktree und prüfe die Änderungen. Alles in einem einzigen Desktop-Arbeitsbereich."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.eyebrow"
+msgstr "Der Arbeitsbereich für Programmieragenten"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.title"
+msgstr "Deine Agenten. Ein übersichtlicher Arbeitsbereich."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.home.title"
+msgstr "Ein übersichtlicher Arbeitsbereich für deine Programmieragenten"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.agents"
+msgstr "Illustration von drei unabhängigen Agentenaufgaben, die parallel voranschreiten."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.changes"
+msgstr "Illustration von hinzugefügtem und entferntem Code, der in einer Codeprüfung zusammenkommt."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.overview"
+msgstr "Illustration des Arbeitsablaufs: Ein Projekt verzweigt sich in unabhängige Agenten-Arbeitsbereiche, deren Änderungen anschließend zur Prüfung zusammengeführt werden."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.overviewCaption"
+msgstr "Ein Projekt. Unabhängige Arbeitsbereiche. Eine gemeinsame Ansicht. Der Arbeitsablauf als Illustration."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.workspaces"
+msgstr "Illustration separater Arbeitsbereiche, die von einem Projekt abzweigen."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.meta.description"
+msgstr "Choros ist ein Desktop-Arbeitsbereich für Programmieragenten. Führe Aufgaben parallel in isolierten Git-Worktrees aus, verfolge den Fortschritt und prüfe Codeänderungen an einem Ort."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.changelog"
+msgstr "Änderungsprotokoll"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.docs"
+msgstr "Dokumentation"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.download"
+msgstr "Herunterladen"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.footer"
+msgstr "Fußzeilennavigation"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.github"
+msgstr "GitHub"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.home"
+msgstr "Choros-Startseite"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.legal"
+msgstr "Rechtliches"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.primary"
+msgstr "Hauptnavigation"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.privacy"
+msgstr "Datenschutz"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.product"
+msgstr "Produkt"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.status"
+msgstr "Systemstatus"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.terms"
+msgstr "Nutzungsbedingungen"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.eyebrow"
+msgstr "Arbeiten mit mehr Überblick"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.isolationDescription"
+msgstr "Jeder Arbeitsbereich hat einen eigenen Git-Worktree, einen eigenen Branch und einen eigenen Dateikontext. Halte parallele Änderungen getrennt und nutze dabei die vorhandenen Werkzeuge und Einrichtungsbefehle deines Repositorys."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.isolationTitle"
+msgstr "Gib jeder Aufgabe ihren eigenen Raum."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.parallelDescription"
+msgstr "Starte Agenten für unterschiedliche Aufgaben, ohne deinen Desktop mit Terminals zu überladen. Prüfe den Fortschritt, sende eine weitere Anweisung und widme dich der nächsten Aufgabe."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.parallelTitle"
+msgstr "Arbeite parallel."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.reviewDescription"
+msgstr "Wechsle von der Arbeit des Agenten zu den konkreten Änderungen. Lies den Diff neben deinem Arbeitsbereich, prüfe die Details und entscheide, was bereit zum Zusammenführen ist."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.reviewTitle"
+msgstr "Prüfe, bevor du zusammenführst."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.title"
+msgstr "Vom ersten Prompt bis zum letzten Diff."
+
+#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/stores/workspace-creates/use-workspace-creates.ts
 msgid "stores.workspaceCreates.defaultName"
 msgstr "Neuer Arbeitsbereich"

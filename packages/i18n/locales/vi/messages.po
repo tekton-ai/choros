@@ -12015,6 +12015,321 @@ msgid "shared.schedule.weeklyAt"
 msgstr "Hằng tuần lúc {time}"
 
 #. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.allReleases"
+msgstr "Tất cả bản phát hành"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.chooseDownload"
+msgstr "Chọn phiên bản để tải xuống"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.connectAgents"
+msgstr "Kết nối các tác nhân của bạn"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.downloadChoros"
+msgstr "Tải xuống Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.exploreWorkflow"
+msgstr "Khám phá quy trình làm việc"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.getStarted"
+msgstr "Cài đặt và các bước đầu tiên"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.prepareWorkspace"
+msgstr "Chuẩn bị không gian làm việc của bạn"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.privacyNotice"
+msgstr "Đọc thông báo về quyền riêng tư"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.providerGuide"
+msgstr "Đọc hướng dẫn về nhà cung cấp"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.readDocs"
+msgstr "Đọc tài liệu"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.skipToContent"
+msgstr "Chuyển đến nội dung"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.viewFullWorkspace"
+msgstr "Xem toàn bộ hình minh họa"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.workspaceGuide"
+msgstr "Đọc hướng dẫn về không gian làm việc"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.appleSilicon"
+msgstr "macOS · Apple Silicon"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.appleSiliconDetail"
+msgstr "Dành cho máy Mac dùng chip Apple"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.description"
+msgstr "Ứng dụng máy tính dành cho quy trình phát triển phần mềm của bạn. Chọn phiên bản phù hợp với máy của bạn."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.eyebrow"
+msgstr "Dành chỗ cho ý tưởng tiếp theo của bạn"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.intel"
+msgstr "macOS · Intel"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.intelDetail"
+msgstr "Dành cho máy Mac dùng bộ xử lý Intel"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.linux"
+msgstr "Linux · x86_64"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.linuxDetail"
+msgstr "AppImage dành cho máy tính x86_64"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.agentsAnswer"
+msgstr "Chọn trong số các tác nhân lập trình có sẵn trong phần cài đặt Choros. Mỗi tác nhân dùng tài khoản và thông tin xác thực riêng của nhà cung cấp tương ứng; Choros tập hợp công việc của chúng vào cùng một không gian làm việc."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.agentsQuestion"
+msgstr "Tôi có thể dùng những tác nhân lập trình nào?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.dataAnswer"
+msgstr "Các dự án và tệp trong không gian làm việc được quản lý trên máy chạy Choros. Nội dung gửi đến nhà cung cấp tác nhân lập trình được xử lý theo tài khoản của bạn tại nhà cung cấp đó và các chính sách của họ. Hãy kiểm tra cài đặt nhà cung cấp trước khi chia sẻ mã nguồn nhạy cảm."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.dataQuestion"
+msgstr "Mã nguồn của tôi được gửi đi đâu?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.eyebrow"
+msgstr "Trước khi bắt đầu"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.platformsAnswer"
+msgstr "Hiện có bản tải xuống cho macOS dùng Apple Silicon hoặc Intel và Linux x86_64. Trên điện thoại, bạn có thể xem tài liệu và chọn phiên bản để tải xuống cho máy tính của mình."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.platformsQuestion"
+msgstr "Tôi có thể tải ứng dụng cho những nền tảng nào?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.repositoriesAnswer"
+msgstr "Có. Bạn có thể làm việc với kho mã Git và các công cụ phát triển hiện có. Tập lệnh thiết lập không gian làm việc có thể cài đặt các thành phần phụ thuộc và chuẩn bị cấu hình cục bộ cho mỗi worktree mới."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.repositoriesQuestion"
+msgstr "Tôi có thể dùng kho mã hiện có không?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.title"
+msgstr "Một vài điều bạn nên biết."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.footer.credit"
+msgstr "Choros / Tekton AI"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.footer.description"
+msgstr "Một không gian gọn gàng cho công việc phía trước."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.description"
+msgstr "Chạy các tác nhân lập trình song song, dành một Git worktree riêng cho mỗi tác vụ và xem xét các thay đổi. Tất cả trong một không gian làm việc trên máy tính."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.eyebrow"
+msgstr "Không gian làm việc dành cho tác nhân lập trình"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.title"
+msgstr "Các tác nhân của bạn. Một không gian làm việc gọn gàng."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.home.title"
+msgstr "Một không gian làm việc gọn gàng cho các tác nhân lập trình của bạn"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.agents"
+msgstr "Hình minh họa ba tác vụ độc lập của các tác nhân đang được thực hiện song song."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.changes"
+msgstr "Hình minh họa các phần mã được thêm và xóa được tập hợp để xem xét."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.overview"
+msgstr "Hình minh họa quy trình làm việc: một dự án phân nhánh thành các không gian làm việc độc lập của tác nhân, sau đó tập hợp các thay đổi để xem xét."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.overviewCaption"
+msgstr "Một dự án. Các không gian làm việc độc lập. Một góc nhìn chung. Quy trình qua hình minh họa."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.workspaces"
+msgstr "Hình minh họa các không gian làm việc riêng biệt phân nhánh từ một dự án."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.meta.description"
+msgstr "Choros là không gian làm việc trên máy tính dành cho các tác nhân lập trình. Chạy tác vụ song song trong các Git worktree biệt lập, theo dõi tiến độ và xem xét thay đổi mã nguồn tại cùng một nơi."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.changelog"
+msgstr "Nhật ký thay đổi"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.docs"
+msgstr "Tài liệu"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.download"
+msgstr "Tải xuống"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.footer"
+msgstr "Điều hướng ở chân trang"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.github"
+msgstr "GitHub"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.home"
+msgstr "Trang chủ Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.legal"
+msgstr "Pháp lý"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.primary"
+msgstr "Điều hướng chính"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.privacy"
+msgstr "Quyền riêng tư"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.product"
+msgstr "Sản phẩm"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.status"
+msgstr "Trạng thái dịch vụ"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.terms"
+msgstr "Điều khoản sử dụng"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.eyebrow"
+msgstr "Cách làm việc rõ ràng hơn"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.isolationDescription"
+msgstr "Mỗi không gian làm việc có Git worktree, nhánh và ngữ cảnh tệp riêng. Giữ các thay đổi song song tách biệt trong khi vẫn dùng các công cụ và lệnh thiết lập hiện có của kho mã."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.isolationTitle"
+msgstr "Dành cho mỗi tác vụ một không gian riêng."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.parallelDescription"
+msgstr "Khởi chạy các tác nhân cho từng tác vụ riêng mà không khiến màn hình ngập tràn cửa sổ dòng lệnh. Kiểm tra tiến độ, gửi chỉ dẫn bổ sung và chuyển sang công việc tiếp theo."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.parallelTitle"
+msgstr "Thực hiện công việc song song."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.reviewDescription"
+msgstr "Từ công việc của tác nhân, chuyển sang xem các thay đổi thực tế. Đọc bản so sánh mã ngay cạnh không gian làm việc, kiểm tra chi tiết và quyết định phần nào đã sẵn sàng hợp nhất."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.reviewTitle"
+msgstr "Xem xét trước khi hợp nhất."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.title"
+msgstr "Từ câu lệnh đầu tiên đến bản so sánh mã cuối cùng."
+
+#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/stores/workspace-creates/use-workspace-creates.ts
 msgid "stores.workspaceCreates.defaultName"
 msgstr "Workspace mới"

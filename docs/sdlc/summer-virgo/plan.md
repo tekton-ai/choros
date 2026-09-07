@@ -10,7 +10,11 @@ spec: ./spec.md
 
 # Plan — Choros 官网产品化改版
 
-前置条件：`intent.md` 与 `spec.md` 均已记录用户接受。此计划为待接受草案；以下为后续实际实施步骤，不表示页面、截图或验证已经完成。
+前置条件：`intent.md` 与 `spec.md` 均已记录用户接受，本计划亦已接受。
+
+## 执行范围修正（2026-09-07）
+
+用户指出“这个只是做 web，为什么还启动了 electron”，随后明确已手动停止桌面端。此次实施不再启动、检查或排查 Electron，也不修改桌面代码。Agent 已在会话中说明：产品展示改为自有 SVG 工作流示意图，明确标注为 illustration，不冒充产品截图。该修正替代下文所有桌面启动、真实产品截图采集与 WebP 截图验收要求；保留原计划记录以说明曾经扩大范围的原因。最终只验证网页、静态产物和下载路径。
 
 ## Files that change
 
@@ -18,8 +22,8 @@ spec: ./spec.md
 | --- | --- |
 | `apps/site/src/site.ts` | 重做首页、共享页头/页脚和现有 `styles`；保留公开页面及跳转路径。增加受控的 `PUBLIC_SITE_ASSETS` 清单，在现有 `handlePublicSiteRequest` 中返回清单内的图片；新文案使用 Lingui 显式 ID，译文插入 HTML 时转义。 |
 | `apps/site/public/assets/choros-logo-light.svg`（new） | 复制已选定的自有品牌素材，保留原比例与路径；不用参考站素材，不重新设计标志。 |
-| `apps/site/public/assets/workspace-overview.webp`、`workspace-overview-mobile.webp`（new） | 从真实 Choros 演示环境捕获的桌面总览与手机局部版本。图片有确定尺寸，全部素材总量不超过 spec 的 1.5 MiB。 |
-| `apps/site/public/assets/workspace-agents.webp`、`workspace-changes.webp`（new） | 同一真实演示场景的 Agent 进度与改动审查局部；为三段工作流提供具体内容。不得用伪造控件替代实际截图。 |
+| `apps/site/public/assets/workspace-overview.svg`、`workspace-overview-mobile.svg`（new） | 自有工作流示意图及适合手机的布局，明确为说明性图形，不声称是产品实景。 |
+| `apps/site/public/assets/workspace-agents.svg`、`workspace-changes.svg`（new） | 并行任务和改动审查的自有示意图，不包含用户数据或模拟产品控件。 |
 | `apps/site/src/build.ts` | 从同一资源清单复制图片；将现有 `withBasePath` 的纯字符串替换改为 Bun 原生 HTMLRewriter，处理 href、src、受控 srcset；保留 canonical 页面、旧路径静态跳转页、404 与 `.nojekyll` 输出。 |
 | `apps/site/src/site.test.ts` | 保留 HTTP 状态、公开跳转、安全头契约；删除只锁定品牌大小写/标题字串的断言。增加公开图片内容类型/格式以及非白名单资源不能读取文件的行为验证。 |
 | `apps/site/package.json` | 添加 `@choros/i18n` workspace 构建期依赖；不增加 React、Next.js、Tailwind、图片处理库或客户端脚本依赖。 |

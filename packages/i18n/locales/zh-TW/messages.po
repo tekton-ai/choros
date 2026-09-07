@@ -12015,6 +12015,321 @@ msgid "shared.schedule.weeklyAt"
 msgstr "每週{time}"
 
 #. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.allReleases"
+msgstr "所有版本"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.chooseDownload"
+msgstr "選擇下載版本"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.connectAgents"
+msgstr "連接代理程式"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.downloadChoros"
+msgstr "下載 Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.exploreWorkflow"
+msgstr "探索工作流程"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.getStarted"
+msgstr "安裝與入門"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.prepareWorkspace"
+msgstr "準備工作區"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.privacyNotice"
+msgstr "閱讀隱私權聲明"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.providerGuide"
+msgstr "閱讀提供者指南"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.readDocs"
+msgstr "閱讀文件"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.skipToContent"
+msgstr "跳至主要內容"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.viewFullWorkspace"
+msgstr "查看完整示意圖"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.workspaceGuide"
+msgstr "閱讀工作區指南"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.appleSilicon"
+msgstr "macOS · Apple Silicon"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.appleSiliconDetail"
+msgstr "適用於搭載 Apple 晶片的 Mac"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.description"
+msgstr "專為開發工作流程打造的桌面應用程式。選擇適合你電腦的版本。"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.eyebrow"
+msgstr "為下一個點子留出空間"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.intel"
+msgstr "macOS · Intel"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.intelDetail"
+msgstr "適用於搭載 Intel 處理器的 Mac"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.linux"
+msgstr "Linux · x86_64"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.linuxDetail"
+msgstr "適用於 x86_64 桌面系統的 AppImage"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.agentsAnswer"
+msgstr "你可以在 Choros 設定中選擇可用的開發代理程式。每個代理程式使用各自提供者的帳號和認證資訊；Choros 將它們的工作集中在同一個工作區。"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.agentsQuestion"
+msgstr "我可以使用哪些開發代理程式？"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.dataAnswer"
+msgstr "專案和工作區檔案由執行 Choros 的電腦管理。傳送給開發代理程式提供者的內容，會依該提供者的帳號規則和政策處理。分享敏感程式碼前，請先檢查提供者設定。"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.dataQuestion"
+msgstr "我的程式碼會在哪裡處理？"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.eyebrow"
+msgstr "開始之前"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.platformsAnswer"
+msgstr "目前提供適用於 Apple Silicon 或 Intel Mac 的 macOS 桌面版，以及 Linux x86_64 桌面版。你可以在手機上瀏覽文件，並為電腦選擇下載版本。"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.platformsQuestion"
+msgstr "有哪些平台的版本可以下載？"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.repositoriesAnswer"
+msgstr "可以。你可以繼續使用現有的 Git 儲存庫和開發工具。工作區初始化指令碼可以為每個新 worktree 安裝相依套件並準備本機設定。"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.repositoriesQuestion"
+msgstr "可以使用現有的儲存庫嗎？"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.title"
+msgstr "你可能想了解的幾件事。"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.footer.credit"
+msgstr "Choros / Tekton AI"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.footer.description"
+msgstr "為接下來的工作，留一處清晰有序的空間。"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.description"
+msgstr "平行執行開發代理程式，為每項任務分配獨立的 Git worktree，再檢閱程式碼變更。全部都在同一個桌面工作區完成。"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.eyebrow"
+msgstr "開發代理程式的專屬工作區"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.title"
+msgstr "你的代理程式，一個清晰有序的工作區。"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.home.title"
+msgstr "為開發代理程式打造的統一、有序的工作區"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.agents"
+msgstr "示意圖：三個獨立的代理程式任務平行進行。"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.changes"
+msgstr "示意圖：新增與刪除的程式碼匯集至程式碼檢閱階段。"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.overview"
+msgstr "工作流程示意圖：一個專案分出各自獨立的代理程式工作區，再將各工作區的變更匯集起來進行檢閱。"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.overviewCaption"
+msgstr "一個專案，獨立的工作區，共同的檢視畫面。工作流程圖解。"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.workspaces"
+msgstr "示意圖：一個專案分出多個獨立的工作區。"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.meta.description"
+msgstr "Choros 是專為開發代理程式打造的桌面工作區。在相互隔離的 Git worktree 中平行執行任務，並在同一處追蹤進度、檢閱程式碼變更。"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.changelog"
+msgstr "更新紀錄"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.docs"
+msgstr "文件"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.download"
+msgstr "下載"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.footer"
+msgstr "頁尾導覽"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.github"
+msgstr "GitHub"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.home"
+msgstr "Choros 首頁"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.legal"
+msgstr "法律資訊"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.primary"
+msgstr "主要導覽"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.privacy"
+msgstr "隱私權"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.product"
+msgstr "產品"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.status"
+msgstr "服務狀態"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.terms"
+msgstr "使用條款"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.eyebrow"
+msgstr "更清晰有序的工作方式"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.isolationDescription"
+msgstr "每個工作區都有獨立的 Git worktree、分支和檔案脈絡。繼續使用儲存庫現有的工具和初始化指令，同時讓平行任務的變更彼此分離。"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.isolationTitle"
+msgstr "讓每項任務都有自己的空間。"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.parallelDescription"
+msgstr "讓代理程式分別執行不同任務，不必讓終端機視窗占滿桌面。查看進度、傳送補充指示，再接著進行下一項工作。"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.parallelTitle"
+msgstr "讓工作平行進行。"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.reviewDescription"
+msgstr "從代理程式的工作轉向實際的程式碼變更。在工作區旁查看差異、確認細節，決定哪些變更可以合併。"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.reviewTitle"
+msgstr "先檢閱，再合併。"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.title"
+msgstr "從第一則提示詞，到最終的程式碼差異。"
+
+#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/stores/workspace-creates/use-workspace-creates.ts
 msgid "stores.workspaceCreates.defaultName"
 msgstr "新工作區"

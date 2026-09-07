@@ -38,6 +38,7 @@ export default defineConfig({
 			path: "<rootDir>/locales/{locale}/messages",
 			include: [
 				"<rootDir>/../../apps/desktop/src",
+				"<rootDir>/../../apps/site/src",
 				"<rootDir>/../../packages/ui/src",
 				"<rootDir>/../../packages/shared/src",
 				"<rootDir>/src",
