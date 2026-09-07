@@ -12226,6 +12226,11 @@ msgstr "Choros là không gian làm việc trên máy tính dành cho các tác 
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
+msgid "site.motion.enabled"
+msgstr "Bật chuyển động cho sơ đồ"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
 msgid "site.nav.changelog"
 msgstr "Nhật ký thay đổi"
 

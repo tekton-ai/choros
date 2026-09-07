@@ -12226,6 +12226,11 @@ msgstr "Choros — настольная рабочая область для а�
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
+msgid "site.motion.enabled"
+msgstr "Анимировать схемы"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
 msgid "site.nav.changelog"
 msgstr "История изменений"
 

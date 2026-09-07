@@ -12226,6 +12226,11 @@ msgstr "Choros je desktopový pracovní prostor pro programovací agenty. Spouš
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
+msgid "site.motion.enabled"
+msgstr "Animovat diagramy"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
 msgid "site.nav.changelog"
 msgstr "Přehled změn"
 

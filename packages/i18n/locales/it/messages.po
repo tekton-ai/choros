@@ -12226,6 +12226,11 @@ msgstr "Choros è uno spazio di lavoro desktop per gli agenti di programmazione.
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
+msgid "site.motion.enabled"
+msgstr "Anima i diagrammi"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
 msgid "site.nav.changelog"
 msgstr "Registro delle modifiche"
 

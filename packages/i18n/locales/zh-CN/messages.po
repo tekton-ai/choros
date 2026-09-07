@@ -12226,6 +12226,11 @@ msgstr "Choros 是为编程智能体打造的桌面工作区。在相互隔离�
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
+msgid "site.motion.enabled"
+msgstr "播放示意图动画"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
 msgid "site.nav.changelog"
 msgstr "更新日志"
 

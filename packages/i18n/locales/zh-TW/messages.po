@@ -12226,6 +12226,11 @@ msgstr "Choros 是專為開發代理程式打造的桌面工作區。在相互�
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
+msgid "site.motion.enabled"
+msgstr "播放示意圖動畫"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
 msgid "site.nav.changelog"
 msgstr "更新紀錄"
 

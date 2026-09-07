@@ -12226,6 +12226,11 @@ msgstr "Choros adalah ruang kerja desktop untuk agen pemrograman. Jalankan tugas
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
+msgid "site.motion.enabled"
+msgstr "Animasikan diagram"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
 msgid "site.nav.changelog"
 msgstr "Catatan perubahan"
 

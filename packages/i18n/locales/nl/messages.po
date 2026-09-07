@@ -12226,6 +12226,11 @@ msgstr "Choros is een desktopwerkruimte voor programmeeragents. Voer taken paral
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
+msgid "site.motion.enabled"
+msgstr "Diagrammen animeren"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
 msgid "site.nav.changelog"
 msgstr "Wijzigingenoverzicht"
 

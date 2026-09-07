@@ -12226,6 +12226,11 @@ msgstr "Choros is a desktop workspace for coding agents. Run tasks in parallel i
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
+msgid "site.motion.enabled"
+msgstr "Animate diagrams"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
 msgid "site.nav.changelog"
 msgstr "Changelog"
 

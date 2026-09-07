@@ -12226,6 +12226,11 @@ msgstr "Choros ist ein Desktop-Arbeitsbereich für Programmieragenten. Führe Au
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
+msgid "site.motion.enabled"
+msgstr "Diagramme animieren"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
 msgid "site.nav.changelog"
 msgstr "Änderungsprotokoll"
 

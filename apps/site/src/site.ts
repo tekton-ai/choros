@@ -49,6 +49,10 @@ export const PUBLIC_SITE_ASSETS: ReadonlyMap<string, URL> = new Map([
 		"/assets/workspace-changes.svg",
 		new URL("../public/assets/workspace-changes.svg", import.meta.url),
 	],
+	[
+		"/assets/site-motion.js",
+		new URL("../public/assets/site-motion.js", import.meta.url),
+	],
 ]);
 
 export function handlePublicSiteRequest(pathname: string): Response {
@@ -56,7 +60,9 @@ export function handlePublicSiteRequest(pathname: string): Response {
 	if (asset) {
 		return new Response(Bun.file(asset), {
 			headers: {
-				"Content-Type": "image/svg+xml",
+				"Content-Type": pathname.endsWith(".js")
+					? "text/javascript; charset=utf-8"
+					: "image/svg+xml",
 				"X-Content-Type-Options": "nosniff",
 				"Referrer-Policy": "no-referrer",
 			},
@@ -102,17 +108,16 @@ function getPage(pathname: string): SitePage | null {
 	</div>
 </section>
 <figure class="product-overview">
-	<div class="product-image">
+	<div class="product-image" data-motion-scene>
 		<picture>
-			<source media="(prefers-reduced-motion: reduce) and (max-width: 640px)" srcset="/assets/workspace-overview-mobile.svg?motion=still#still 840w" width="840" height="960">
-			<source media="(prefers-reduced-motion: reduce)" srcset="/assets/workspace-overview.svg?motion=still#still 1920w" width="1920" height="1200">
-			<source media="(max-width: 640px)" srcset="/assets/workspace-overview-mobile.svg 840w" width="840" height="960">
-			<img src="/assets/workspace-overview.svg" srcset="/assets/workspace-overview.svg 1920w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1244px) calc(100vw - 64px), 1180px" width="1920" height="1200" fetchpriority="high" alt="${Bun.escapeHTML(i18n._({ id: "site.image.overview", message: "Workflow illustration: one project branches into independent agent workspaces, then brings their changes together for review." }))}">
+			<source media="(max-width: 640px)" srcset="/assets/workspace-overview-mobile.svg?motion=still#still 840w" width="840" height="960">
+			<img src="/assets/workspace-overview.svg?motion=still#still" srcset="/assets/workspace-overview.svg?motion=still#still 1920w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1244px) calc(100vw - 64px), 1180px" width="1920" height="1200" fetchpriority="high" alt="${Bun.escapeHTML(i18n._({ id: "site.image.overview", message: "Workflow illustration: one project branches into independent agent workspaces, then brings their changes together for review." }))}">
 		</picture>
 	</div>
 	<figcaption>
 		<span>${Bun.escapeHTML(i18n._({ id: "site.image.overviewCaption", message: "One project. Independent workspaces. A shared view. Workflow illustrated." }))}</span>
-		<a class="text-link" href="/assets/workspace-overview.svg">${Bun.escapeHTML(i18n._({ id: "site.action.viewFullWorkspace", message: "View full illustration" }))}<span aria-hidden="true">↗</span></a>
+		<label class="motion-control" hidden><input type="checkbox" data-motion-toggle checked>${Bun.escapeHTML(i18n._({ id: "site.motion.enabled", message: "Animate diagrams" }))}</label>
+		<a class="text-link" href="/assets/workspace-overview.svg?motion=still#still">${Bun.escapeHTML(i18n._({ id: "site.action.viewFullWorkspace", message: "View full illustration" }))}<span aria-hidden="true">↗</span></a>
 	</figcaption>
 </figure>
 <section id="product" class="workflow section" aria-labelledby="workflow-title">
@@ -127,10 +132,8 @@ function getPage(pathname: string): SitePage | null {
 			<p>${Bun.escapeHTML(i18n._({ id: "site.workflow.parallelDescription", message: "Start agents on separate tasks without turning your desktop into a wall of terminals. Check progress, send a follow-up, and pick up the next thread." }))}</p>
 			<a class="text-link" href="/docs/providers">${Bun.escapeHTML(i18n._({ id: "site.action.connectAgents", message: "Connect your agents" }))}<span aria-hidden="true">↗</span></a>
 		</div>
-		<figure class="workflow-image">
-			<picture><source media="(prefers-reduced-motion: reduce)" srcset="/assets/workspace-agents.svg?motion=still#still">
-			<img src="/assets/workspace-agents.svg" width="1200" height="750" loading="lazy" decoding="async" alt="${Bun.escapeHTML(i18n._({ id: "site.image.agents", message: "Illustration of three independent agent tasks progressing in parallel." }))}">
-			</picture>
+		<figure class="workflow-image" data-motion-scene>
+			<img src="/assets/workspace-agents.svg?motion=still#still" width="1200" height="750" loading="lazy" decoding="async" alt="${Bun.escapeHTML(i18n._({ id: "site.image.agents", message: "Illustration of three independent agent tasks progressing in parallel." }))}">
 		</figure>
 	</article>
 	<article class="workflow-step">
@@ -140,10 +143,8 @@ function getPage(pathname: string): SitePage | null {
 			<p>${Bun.escapeHTML(i18n._({ id: "site.workflow.isolationDescription", message: "Each workspace has its own Git worktree, branch, and file context. Keep parallel changes separate while using your repository's existing tools and setup commands." }))}</p>
 			<a class="text-link" href="/docs/setup-teardown-scripts">${Bun.escapeHTML(i18n._({ id: "site.action.prepareWorkspace", message: "Prepare your workspace" }))}<span aria-hidden="true">↗</span></a>
 		</div>
-		<figure class="workflow-image workspace-detail">
-			<picture><source media="(prefers-reduced-motion: reduce)" srcset="/assets/workspace-overview-mobile.svg?motion=still#still">
-			<img src="/assets/workspace-overview-mobile.svg" width="840" height="960" loading="lazy" decoding="async" alt="${Bun.escapeHTML(i18n._({ id: "site.image.workspaces", message: "Illustration of separate workspaces branching from one project." }))}">
-			</picture>
+		<figure class="workflow-image workspace-detail" data-motion-scene>
+			<img src="/assets/workspace-overview-mobile.svg?motion=still#still" width="840" height="960" loading="lazy" decoding="async" alt="${Bun.escapeHTML(i18n._({ id: "site.image.workspaces", message: "Illustration of separate workspaces branching from one project." }))}">
 		</figure>
 	</article>
 	<article class="workflow-step">
@@ -153,10 +154,8 @@ function getPage(pathname: string): SitePage | null {
 			<p>${Bun.escapeHTML(i18n._({ id: "site.workflow.reviewDescription", message: "Move from the agent's work to the actual changes. Read the diff alongside your workspace, check the details, and decide what is ready to merge." }))}</p>
 			<a class="text-link" href="/docs">${Bun.escapeHTML(i18n._({ id: "site.action.readDocs", message: "Read the docs" }))}<span aria-hidden="true">↗</span></a>
 		</div>
-		<figure class="workflow-image">
-			<picture><source media="(prefers-reduced-motion: reduce)" srcset="/assets/workspace-changes.svg?motion=still#still">
-			<img src="/assets/workspace-changes.svg" width="1200" height="750" loading="lazy" decoding="async" alt="${Bun.escapeHTML(i18n._({ id: "site.image.changes", message: "Illustration of additions and removals flowing into a code review." }))}">
-			</picture>
+		<figure class="workflow-image" data-motion-scene>
+			<img src="/assets/workspace-changes.svg?motion=still#still" width="1200" height="750" loading="lazy" decoding="async" alt="${Bun.escapeHTML(i18n._({ id: "site.image.changes", message: "Illustration of additions and removals flowing into a code review." }))}">
 		</figure>
 	</article>
 </section>
@@ -206,7 +205,7 @@ function getPage(pathname: string): SitePage | null {
 		</details>
 	</div>
 </section>
-</main>`,
+</main><script src="/assets/site-motion.js" defer></script>`,
 			};
 		case "/docs":
 			return {
@@ -322,7 +321,7 @@ function html(body: string, status = 200): Response {
 		headers: {
 			"Content-Type": "text/html; charset=utf-8",
 			"Content-Security-Policy":
-				"default-src 'none'; style-src 'unsafe-inline'; img-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
+				"default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; img-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
 			"Referrer-Policy": "no-referrer",
 			"X-Content-Type-Options": "nosniff",
 		},
@@ -440,6 +439,9 @@ main:not(.home){padding-top:88px}
 .product-image img{width:100%;aspect-ratio:8/5;object-fit:cover}
 .product-overview figcaption{display:flex;align-items:center;justify-content:space-between;gap:8px 24px;padding-top:16px;color:var(--muted);font-size:13px;line-height:1.6}
 .product-overview figcaption .text-link{font-size:13px;flex-shrink:0}
+.motion-control:not([hidden]){display:inline-flex;align-items:center;gap:9px;min-height:44px;white-space:nowrap;cursor:pointer}
+.motion-control input{accent-color:var(--acid);width:16px;height:16px;margin:0}
+.motion-control input:focus-visible{outline:2px solid var(--acid);outline-offset:4px}
 .section{padding-block:100px}
 .section-heading>p:not(.eyebrow){max-width:520px;font-size:17px;color:var(--muted);margin:22px 0 0}
 .workflow{padding-bottom:48px}

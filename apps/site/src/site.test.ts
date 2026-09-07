@@ -42,6 +42,15 @@ describe("public Choros site", () => {
 		expect((await response.text()).trimStart()).toMatch(/^<svg[\s>]/);
 	});
 
+	test("serves the motion controller with an executable JavaScript MIME type", () => {
+		const response = handlePublicSiteRequest("/assets/site-motion.js");
+		expect(response.status).toBe(200);
+		expect(response.headers.get("content-type")).toBe(
+			"text/javascript; charset=utf-8",
+		);
+		expect(response.headers.get("x-content-type-options")).toBe("nosniff");
+	});
+
 	test.each([
 		"/assets/not-a-file.svg",
 		"/assets/",

@@ -12226,6 +12226,11 @@ msgstr "Choros to obszar roboczy dla agentów programistycznych w aplikacji komp
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
+msgid "site.motion.enabled"
+msgstr "Animuj diagramy"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
 msgid "site.nav.changelog"
 msgstr "Historia zmian"
 

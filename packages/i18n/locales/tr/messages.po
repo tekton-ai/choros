@@ -12226,6 +12226,11 @@ msgstr "Choros, kodlama ajanları için bir masaüstü çalışma alanıdır. G�
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
+msgid "site.motion.enabled"
+msgstr "Diyagramları canlandır"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
 msgid "site.nav.changelog"
 msgstr "Değişiklik günlüğü"
 

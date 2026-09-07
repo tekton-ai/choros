@@ -12226,6 +12226,11 @@ msgstr "Chorosは、コーディングエージェントのためのデスクト
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
+msgid "site.motion.enabled"
+msgstr "図をアニメーション表示"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
 msgid "site.nav.changelog"
 msgstr "変更履歴"
 

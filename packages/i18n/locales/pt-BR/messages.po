@@ -12226,6 +12226,11 @@ msgstr "O Choros é uma área de trabalho para agentes de programação no compu
 
 #. js-lingui-explicit-id
 #: ../../apps/site/src/site.ts
+msgid "site.motion.enabled"
+msgstr "Animar diagramas"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
 msgid "site.nav.changelog"
 msgstr "Histórico de alterações"
 
