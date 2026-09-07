@@ -2,7 +2,7 @@
 artifact: plan
 feature: summer-virgo
 author: agent
-status: draft
+status: accepted
 created: 2026-09-07
 intent: ./intent.md
 spec: ./spec.md
@@ -125,4 +125,4 @@ spec: ./spec.md
 ## Author + Status
 
 - **Author:** agent，依据已接受的 intent/spec、实际代码接口与 Bun 运行探针整理。
-- **Status:** `draft` — 等待用户接受本实施计划；接受后开始修改官网代码、采集产品图并完成上述验证，不再重复意图和规格讨论。
+- **Status:** `accepted` — 用户于 2026-09-07 在收到“接受计划后开始实施”的说明后回复“继续”，授权执行本计划；agent 记录该人类接受决定。现在进入代码实施、产品图采集与真实页面验证。
