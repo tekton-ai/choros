@@ -105,6 +105,7 @@ export const PERSISTED_KEY_REGISTRY: ReadonlyArray<
 		],
 	],
 	["src/renderer/stores/workspace-agents-row.ts", ["workspace-agents-row"]],
+	["src/renderer/stores/work-profiles.ts", ["work-profiles"]],
 	[
 		"src/renderer/routes/_authenticated/settings/usage/utils/usage-last-section/usage-last-section.ts",
 		["usage-last-section-v1"],

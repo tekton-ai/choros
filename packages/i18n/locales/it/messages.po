@@ -9304,6 +9304,16 @@ msgstr "Attendi la configurazione del workspace prima di avviare gli agenti"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
+msgid "settings.experimental.workProfilesHint"
+msgstr "Usa profili separati per i progetti di lavoro e personali e passa dall’uno all’altro secondo le tue esigenze."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
+msgid "settings.experimental.workProfilesLabel"
+msgstr "Profili multipli"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
 msgid "settings.experimental.workspaceAgentsHint"
 msgstr "Mostra gli agenti in esecuzione sotto ogni workspace nella barra laterale, con il loro stato in tempo reale."
 

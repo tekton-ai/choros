@@ -9304,6 +9304,16 @@ msgstr "Před spuštěním agentů počkat na setup pracovního prostoru"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
+msgid "settings.experimental.workProfilesHint"
+msgstr "Používejte samostatné profily pro pracovní a osobní projekty a přepínejte mezi nimi podle potřeby."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
+msgid "settings.experimental.workProfilesLabel"
+msgstr "Více profilů"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
 msgid "settings.experimental.workspaceAgentsHint"
 msgstr "Zobrazovat běžící agenty pod každým pracovním prostorem v postranním panelu, včetně jejich aktuálního stavu."
 

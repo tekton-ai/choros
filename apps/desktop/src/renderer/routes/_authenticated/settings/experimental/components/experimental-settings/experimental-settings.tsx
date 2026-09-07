@@ -9,6 +9,10 @@ import {
 } from "renderer/stores/inline-workspace-ports";
 import { useSettingsSearchQuery } from "renderer/stores/settings-state";
 import {
+	useWorkProfilesEnabled,
+	useWorkProfilesStore,
+} from "renderer/stores/work-profiles";
+import {
 	useWorkspaceAgentsRowEnabled,
 	useWorkspaceAgentsRowStore,
 } from "renderer/stores/workspace-agents-row";
@@ -36,6 +40,10 @@ export function ExperimentalSettings({
 		SETTING_ITEM_ID.EXPERIMENTAL_WORKSPACE_AGENTS,
 		visibleItems,
 	);
+	const showWorkProfiles = isItemVisible(
+		SETTING_ITEM_ID.EXPERIMENTAL_WORK_PROFILES,
+		visibleItems,
+	);
 	const showWaitForSetupBeforeAgent = isItemVisible(
 		SETTING_ITEM_ID.EXPERIMENTAL_WAIT_FOR_SETUP_BEFORE_AGENT,
 		visibleItems,
@@ -46,6 +54,10 @@ export function ExperimentalSettings({
 	);
 	const workspaceAgentsEnabled = useWorkspaceAgentsRowEnabled();
 	const setWorkspaceAgentsEnabled = useWorkspaceAgentsRowStore(
+		(state) => state.setEnabled,
+	);
+	const workProfilesEnabled = useWorkProfilesEnabled();
+	const setWorkProfilesEnabled = useWorkProfilesStore(
 		(state) => state.setEnabled,
 	);
 
@@ -125,6 +137,36 @@ export function ExperimentalSettings({
 							id="workspace-agents"
 							checked={workspaceAgentsEnabled}
 							onCheckedChange={setWorkspaceAgentsEnabled}
+						/>
+					</div>
+				)}
+				{showWorkProfiles && (
+					<div className="flex items-center justify-between gap-6">
+						<div className="min-w-0 flex-1 space-y-0.5">
+							<Label htmlFor="work-profiles" className="text-sm font-medium">
+								<HighlightText
+									text={t({
+										id: "settings.experimental.workProfilesLabel",
+										message: "Multiple Profiles",
+									})}
+									query={searchQuery}
+								/>
+							</Label>
+							<p className="text-xs text-muted-foreground">
+								<HighlightText
+									text={t({
+										id: "settings.experimental.workProfilesHint",
+										message:
+											"Use separate profiles for work and personal projects, and switch between them as needed.",
+									})}
+									query={searchQuery}
+								/>
+							</p>
+						</div>
+						<Switch
+							id="work-profiles"
+							checked={workProfilesEnabled}
+							onCheckedChange={setWorkProfilesEnabled}
 						/>
 					</div>
 				)}

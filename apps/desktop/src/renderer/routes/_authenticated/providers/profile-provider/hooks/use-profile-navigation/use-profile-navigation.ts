@@ -1,5 +1,11 @@
 import { useLocation, useRouter } from "@tanstack/react-router";
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+	useCallback,
+	useEffect,
+	useLayoutEffect,
+	useRef,
+	useState,
+} from "react";
 import type { HostProjectItem } from "renderer/hooks/host-projects/use-host-projects";
 import type { HostWorkspaceItem } from "renderer/hooks/host-workspaces/use-host-workspaces";
 import {
@@ -29,6 +35,7 @@ export interface ProfileFocusRequest {
 }
 
 interface Options {
+	enabled: boolean;
 	isReady: boolean;
 	activeProfileId: string;
 	workspaces: HostWorkspaceItem[];
@@ -126,6 +133,15 @@ export function useProfileNavigation(options: Options) {
 		return next;
 	}, []);
 
+	const previousEnabled = useRef(options.enabled);
+	useLayoutEffect(() => {
+		if (previousEnabled.current === options.enabled) return;
+		previousEnabled.current = options.enabled;
+		// Mode changes invalidate late restores and creation navigation without
+		// replacing the mounted workspace or rewriting its persistent owner.
+		nextGeneration();
+	}, [options.enabled, nextGeneration]);
+
 	// The history tags only this synchronous call. Its commit guard also runs
 	// after asynchronous route blockers, so an older intent cannot land late.
 	const ownedNavigate = useCallback(
@@ -192,6 +208,7 @@ export function useProfileNavigation(options: Options) {
 	const isRouteVisible = useCallback(
 		(path: string) => {
 			const current = latest.current;
+			if (!current.enabled) return true;
 			const route = parseProfileRoute(path);
 			if (route.kind === "global") return true;
 			if (!current.isReady) return false;
@@ -209,13 +226,14 @@ export function useProfileNavigation(options: Options) {
 		[getWorkspaceRouteOwner],
 	);
 
-	useEffect(
-		() => persistentHistory.setNavigationFilter(isRouteVisible),
-		[isRouteVisible],
-	);
+	useEffect(() => {
+		if (!options.enabled) return;
+		return persistentHistory.setNavigationFilter(isRouteVisible);
+	}, [options.enabled, isRouteVisible]);
 
 	const recover = useCallback(
 		async (profileId: string, path: string, operation: number) => {
+			if (!latest.current.enabled) return;
 			const restore =
 				restoring.current?.operation === operation
 					? restoring.current
@@ -232,7 +250,8 @@ export function useProfileNavigation(options: Options) {
 				profileId,
 				getVisits: () => latest.current.getVisits(profileId),
 				getSnapshot: () => latest.current,
-				isCurrent: () => clock.current.isCurrent(operation),
+				isCurrent: () =>
+					latest.current.enabled && clock.current.isCurrent(operation),
 				onError: () => latest.current.onNavigationError(),
 				excludedWorkspaceIds: restore.excluded,
 			});
@@ -264,6 +283,7 @@ export function useProfileNavigation(options: Options) {
 
 	const reportWorkspaceUnavailable = useCallback(
 		(workspaceId: string) => {
+			if (!latest.current.enabled) return;
 			const restore = restoring.current;
 			if (
 				!restore ||
@@ -288,6 +308,7 @@ export function useProfileNavigation(options: Options) {
 
 	const selectProfile = useCallback(
 		(profileId: string) => {
+			if (!latest.current.enabled) return;
 			if (latest.current.activeProfileId === profileId) return;
 			const operation = nextGeneration();
 			switching.current = operation;
@@ -352,9 +373,12 @@ export function useProfileNavigation(options: Options) {
 			return;
 		const route = parseProfileRoute(request.path);
 		let owner: string | null = null;
-		if (route.kind === "workspace") {
+		if (options.enabled && route.kind === "workspace") {
 			owner = getWorkspaceRouteOwner(route.workspaceId, request.hostId);
-		} else if (route.kind === "project" || route.kind === "pull-request") {
+		} else if (
+			options.enabled &&
+			(route.kind === "project" || route.kind === "pull-request")
+		) {
 			if (
 				route.projectId &&
 				options.projects.some(
@@ -370,7 +394,7 @@ export function useProfileNavigation(options: Options) {
 		// An unknown workspace still reaches the existing bounded CLI miss
 		// verdict. Retain this explicit identity until its delayed row arrives;
 		// an ordinary route or newer intent cancels it synchronously.
-		if (owner || route.kind === "global") {
+		if (!options.enabled || owner || route.kind === "global") {
 			explicit.current = null;
 			setExplicitRequest(null);
 			if (request.source && route.kind === "workspace")
@@ -393,6 +417,7 @@ export function useProfileNavigation(options: Options) {
 
 	useEffect(() => {
 		if (
+			!options.enabled ||
 			!options.isReady ||
 			!initialRouteHandled.current ||
 			explicit.current ||
@@ -460,8 +485,9 @@ export function useProfileNavigation(options: Options) {
 				explicit.current === null &&
 				route.kind === "workspace" &&
 				route.workspaceId === workspace.id &&
-				latest.current.getWorkspaceProfileId(workspace) ===
-					latest.current.activeProfileId
+				(!latest.current.enabled ||
+					latest.current.getWorkspaceProfileId(workspace) ===
+						latest.current.activeProfileId)
 			);
 		},
 		[router, settledRevision, explicitRequest],

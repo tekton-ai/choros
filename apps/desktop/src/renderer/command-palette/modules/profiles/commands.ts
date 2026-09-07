@@ -19,7 +19,7 @@ export const profilesProvider: CommandProvider = {
 			section: "actions",
 			icon: PlusIcon,
 			keywords: ["profile", "create", "work"],
-			when: (context) => context.profile.available,
+			when: (context) => context.profile.enabled && context.profile.available,
 			run: (context) => context.profile.openCreate(),
 		},
 		{
@@ -31,6 +31,7 @@ export const profilesProvider: CommandProvider = {
 			section: "actions",
 			icon: LayersIcon,
 			keywords: ["profile", "rename", "move", "sort"],
+			when: (context) => context.profile.enabled,
 			run: (context) => context.profile.openManager(),
 		},
 		{
@@ -42,6 +43,7 @@ export const profilesProvider: CommandProvider = {
 			section: "actions",
 			icon: ArrowLeftIcon,
 			keywords: ["profile", "switch"],
+			when: (context) => context.profile.enabled,
 			run: (context) => {
 				if (context.profile.previousId) {
 					context.profile.select(context.profile.previousId);
@@ -57,6 +59,7 @@ export const profilesProvider: CommandProvider = {
 			section: "actions",
 			icon: ArrowRightIcon,
 			keywords: ["profile", "switch"],
+			when: (context) => context.profile.enabled,
 			run: (context) => {
 				if (context.profile.nextId) {
 					context.profile.select(context.profile.nextId);
