@@ -12,9 +12,18 @@ on:
         type: string
 
 permissions:
-  contents: write
+  contents: read
+
+concurrency:
+  group: release-desktop-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
+  validation:
+    uses: ./.github/workflows/ci.yml
+    permissions:
+      contents: read
+
   build:
     uses: ./.github/workflows/build-desktop.yml
     with:
@@ -26,9 +35,11 @@ jobs:
 
   release:
     name: Create GitHub Release
-    needs: build
+    needs: [build, validation]
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/desktop-v')
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout code
@@ -36,6 +47,12 @@ jobs:
         with:
           fetch-depth: 0
 
+          persist-credentials: false
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version-file: .bun-version
       - name: Find previous desktop release tag
         id: prev_tag
         run: |
@@ -135,12 +152,8 @@ jobs:
           echo "$NOTES" > release_notes.md
           echo "Release notes generated"
 
-      - name: Create Release
+      - name: Create or resume draft release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release create "${{ github.ref_name }}" \
-            release-artifacts/* \
-            --title "Choros Desktop ${{ github.ref_name }}" \
-            --notes-file release_notes.md \
-            --draft
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: bun scripts/release/github-release.ts desktop

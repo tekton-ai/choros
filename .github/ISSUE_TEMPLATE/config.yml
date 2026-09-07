@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: 💬 Questions & help
-    url: https://discord.gg/cZeD9WYcV7
-    about: Ask questions and get help from the team and community on Discord.
-  - name: 📚 Documentation
-    url: https://tekton-ai.github.io/choros/docs
-    about: Guides for using and configuring Choros.
+  - name: Contributing
+    url: https://github.com/tekton-ai/choros/blob/main/CONTRIBUTING.md
+    about: How to propose a change, set up a workspace, and open a pull request.
+  - name: Documentation
+    url: https://github.com/tekton-ai/choros/blob/main/README.md
+    about: Repository overview and links to development and architecture guides.
