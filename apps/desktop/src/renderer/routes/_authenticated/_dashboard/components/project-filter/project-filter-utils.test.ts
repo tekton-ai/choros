@@ -4,6 +4,7 @@ import {
 	normalizeProjectFilters,
 	parseProjectFilterParam,
 	resolveProjectFilterParams,
+	restrictProjectFilters,
 	serializeProjectFilters,
 } from "./project-filter-utils";
 
@@ -53,5 +54,27 @@ describe("project filter serialization", () => {
 		expect(
 			resolveProjectFilterParams(undefined, undefined, undefined),
 		).toBeUndefined();
+	});
+});
+
+describe("Profile project filters", () => {
+	test("clears foreign selections while preserving the session sentinel", () => {
+		const filters = ["work", "__sessions__", "personal"];
+		expect(
+			restrictProjectFilters(
+				filters,
+				(id) => id === "personal",
+				"__sessions__",
+			),
+		).toEqual(["__sessions__", "personal"]);
+	});
+
+	test("empty or fully foreign filters serialize as the current Profile's all-project view", () => {
+		expect(
+			serializeProjectFilters(
+				restrictProjectFilters(["work"], (id) => id === "personal"),
+			),
+		).toBeUndefined();
+		expect(restrictProjectFilters([], () => false)).toEqual([]);
 	});
 });

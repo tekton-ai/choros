@@ -1,7 +1,6 @@
-import { useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { electronTrpcClient } from "renderer/lib/trpc-client";
-import { navigateToV2Workspace } from "renderer/routes/_authenticated/_dashboard/utils/workspace-navigation";
+import { openExplicitV2Workspace } from "renderer/routes/_authenticated/_dashboard/utils/workspace-navigation";
 
 interface BrowserOpenRequest {
 	workspaceId: string;
@@ -17,21 +16,15 @@ interface BrowserOpenRequest {
  * creates the pane, and its webview registration answers the bridge.
  */
 export function useBrowserOpenRequests() {
-	const navigate = useNavigate();
-
 	useEffect(() => {
 		const subscription = electronTrpcClient.browser.onOpenRequest.subscribe(
 			undefined,
 			{
 				onData: (request: BrowserOpenRequest) => {
-					navigateToV2Workspace(request.workspaceId, navigate, {
-						search: {
-							openUrl: request.url,
-							openUrlTarget: request.target,
-							openUrlRequestId: request.requestId,
-						},
-					}).catch((err) => {
-						console.error("[useBrowserOpenRequests] navigate failed:", err);
+					openExplicitV2Workspace(request.workspaceId, {
+						openUrl: request.url,
+						openUrlTarget: request.target,
+						openUrlRequestId: request.requestId,
 					});
 				},
 			},
@@ -39,5 +32,5 @@ export function useBrowserOpenRequests() {
 		return () => {
 			subscription.unsubscribe();
 		};
-	}, [navigate]);
+	}, []);
 }

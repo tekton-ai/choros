@@ -420,6 +420,32 @@ msgid "commandPalette.openIn.resolvePathFailed"
 msgstr "Çalışma alanı yolu çözümlenemedi: {message}"
 
 #. js-lingui-explicit-id
+#. placeholder {0}: context.profile.name
+#: ../../apps/desktop/src/renderer/command-palette/ui/command-palette/command-palette.tsx
+msgid "commandPalette.profile.current"
+msgstr "Çalışma profili: {0}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/command-palette/modules/profiles/commands.ts
+msgid "commandPalette.profile.manage"
+msgstr "Çalışma profillerini yönet"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/command-palette/modules/profiles/commands.ts
+msgid "commandPalette.profile.new"
+msgstr "Yeni çalışma profili"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/command-palette/modules/profiles/commands.ts
+msgid "commandPalette.profile.next"
+msgstr "Sonraki çalışma profili"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/command-palette/modules/profiles/commands.ts
+msgid "commandPalette.profile.previous"
+msgstr "Önceki çalışma profili"
+
+#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/command-palette/ui/recently-viewed/recently-viewed-frame.tsx
 msgid "commandPalette.recentlyViewed.empty"
 msgstr "Burada henüz bir şey yok."
@@ -428,6 +454,11 @@ msgstr "Burada henüz bir şey yok."
 #: ../../apps/desktop/src/renderer/command-palette/ui/recently-viewed/recently-viewed-frame.tsx
 msgid "commandPalette.recentlyViewed.heading"
 msgstr "Son görüntülenenler"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/command-palette/ui/recently-viewed/recently-viewed-frame.tsx
+msgid "commandPalette.recentlyViewed.session"
+msgstr "Oturum"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/command-palette/ui/recently-viewed/recently-viewed-frame.tsx
@@ -1403,6 +1434,11 @@ msgstr "Proje oluşturuldu."
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/add-repository-modals/add-repository-modals.tsx
 msgid "dashboard.addRepositoryModals.newProjectCreateFailed"
 msgstr "Oluşturulamadı: {message}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/add-repository-modals/add-repository-modals.tsx
+msgid "dashboard.addRepositoryModals.projectReady"
+msgstr "Proje hazır."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/add-repository-modals/add-repository-modals.tsx
@@ -7076,6 +7112,289 @@ msgstr "Dil"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/onboarding/components/onboarding-language-row/onboarding-language-row.tsx
 msgid "onboarding.language.selectAria"
 msgstr "Uygulama görüntüleme dili"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/profile-provider/profile-provider.tsx
+msgid "profiles.actions.recoverAssignment"
+msgstr "Çalışma profili seç"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/profile-provider/profile-provider.tsx
+msgid "profiles.actions.retry"
+msgstr "Yeniden dene"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/stores/workspace-creates/use-workspace-creates.ts
+msgid "profiles.creation.selectProjectAgain"
+msgstr "Bu proje artık gönderilen çalışma profilinde değil. Yeniden bir proje seçin."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/dashboard-new-workspace-modal-content/dashboard-new-workspace-modal-content.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/new-workspace-screen.tsx
+msgid "profiles.creation.selectTarget"
+msgstr "Bu çalışma profilinden bir proje seçin veya “Proje yok” seçeneğini kullanın. Taslağınız korundu."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-delete-dialog/profile-delete-dialog.tsx
+msgid "profiles.delete.cancel"
+msgstr "İptal"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-delete-dialog/profile-delete-dialog.tsx
+msgid "profiles.delete.confirm"
+msgstr "Çalışma profilini sil"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: formatNumber(projects)
+#. placeholder {1}: formatNumber(sessions)
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-delete-dialog/profile-delete-dialog.tsx
+msgid "profiles.delete.counts"
+msgstr "Projeler: {0}; bağımsız oturumlar: {1}. Sayılara şu anda kullanılamayan kayıtlı öğeler de dahildir."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-delete-dialog/profile-delete-dialog.tsx
+msgid "profiles.delete.emptyWarning"
+msgstr "Bu boş çalışma profili silinecek. Projeleriniz ve devam eden çalışmalarınız durdurulmayacak."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-delete-dialog/profile-delete-dialog.tsx
+msgid "profiles.delete.moveAndDelete"
+msgstr "Tümünü varsayılan profile taşı ve sil"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-delete-dialog/profile-delete-dialog.tsx
+msgid "profiles.delete.moveWarning"
+msgstr "Bu çalışma profili silinmeden önce tüm öğeler varsayılan çalışma profili “{defaultName}” içine taşınacak. Projenin çalışma alanları ve bunlarda çalışan içerikler projeyle birlikte taşınır. Terminaller, ajanlar ve geliştirme sunucuları durmayacak."
+
+#. js-lingui-explicit-id
+#. placeholder {0}: profile?.name
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-delete-dialog/profile-delete-dialog.tsx
+msgid "profiles.delete.title"
+msgstr "“{0}” çalışma profili silinsin mi?"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/profile-provider/profile-provider.tsx
+msgid "profiles.errors.createdInDefault"
+msgstr "Çalışmanız oluşturuldu ancak çalışma profili kaydedilemedi. Çalışmanız varsayılan profile ait. Düzenlemeyi tamamlamak için bir çalışma profili seçin."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/profile-provider/profile-provider.tsx
+msgid "profiles.errors.operationFailed"
+msgstr "Çalışma profilleri kaydedilemedi. Çalışmanız değiştirilmedi. Yeniden deneyin."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/profile-provider/profile-provider.tsx
+msgid "profiles.errors.unavailable"
+msgstr "Çalışma profilleri kullanılamıyor. Mevcut çalışmalar varsayılan profilde gösteriliyor. Kayıtlı çalışma profillerinizi geri yüklemek için yeniden deneyin."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.allProfiles"
+msgstr "Tüm çalışma profilleri"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-destination-select/profile-destination-select.tsx
+msgid "profiles.manager.chooseDestination"
+msgstr "Çalışma profili seç"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-profile-row/profile-manager-profile-row.tsx
+msgid "profiles.manager.defaultBadge"
+msgstr "Varsayılan"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: profile.name
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-profile-row/profile-manager-profile-row.tsx
+msgid "profiles.manager.delete"
+msgstr "{0} profilini sil"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.description"
+msgstr "Projeleri ve bağımsız oturumları düzenleyin. Proje çalışma alanları, ait oldukları projenin çalışma profilini devralır. Çalışmaları taşımak onları durdurmaz."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-destination-select/profile-destination-select.tsx
+msgid "profiles.manager.destination"
+msgstr "Hedef çalışma profili"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.hostUnavailable"
+msgstr "Ana makine verileri yükleniyor veya kullanılamıyor. Bilinen ve kayıtlı öğeler gösteriliyor; eksik veriler, çalışma profilinin boş olduğu anlamına gelmez."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-member-row/profile-manager-member-row.tsx
+msgid "profiles.manager.memberProfile"
+msgstr "{name} için çalışma profili"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.membersLabel"
+msgstr "Çalışma profilindeki öğeler"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-member-row/profile-manager-member-row.tsx
+msgid "profiles.manager.memberUnavailable"
+msgstr "Kullanılamıyor — kayıtlı profil ataması korunuyor"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: profile.name
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-profile-row/profile-manager-profile-row.tsx
+msgid "profiles.manager.moveDown"
+msgstr "{0} profilini aşağı taşı"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.moveSelected"
+msgstr "Seçilenleri taşı"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: profile.name
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-profile-row/profile-manager-profile-row.tsx
+msgid "profiles.manager.moveUp"
+msgstr "{0} profilini yukarı taşı"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.new"
+msgstr "Yeni çalışma profili"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.noMembers"
+msgstr "Eşleşen bilinen öğe yok."
+
+#. js-lingui-explicit-id
+#. placeholder {0}: formatNumber(projects)
+#. placeholder {1}: formatNumber(sessions)
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-profile-row/profile-manager-profile-row.tsx
+msgid "profiles.manager.profileCounts"
+msgstr "Projeler: {0} · Oturumlar: {1}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.profilesLabel"
+msgstr "Çalışma profilleri"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-member-row/profile-manager-member-row.tsx
+msgid "profiles.manager.project"
+msgstr "Proje"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.registryUnavailable"
+msgstr "Çalışma profilleri kullanılamıyor. Mevcut çalışmalar varsayılan profilde erişilebilir durumda; yerel depolama yeniden kullanılabilir olana kadar değişiklikler devre dışı."
+
+#. js-lingui-explicit-id
+#. placeholder {0}: profile.name
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-profile-row/profile-manager-profile-row.tsx
+msgid "profiles.manager.rename"
+msgstr "{0} profilini yeniden adlandır"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.search"
+msgstr "Ada, yola veya kimliğe göre proje ve oturum ara"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.selectAll"
+msgstr "Gösterilen tüm öğeleri seç"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: formatNumber(selectedCount)
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.selectedCount"
+msgstr "{0} öğe seçildi"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: item.detail
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-member-row/profile-manager-member-row.tsx
+msgid "profiles.manager.selectMember"
+msgstr "{name} öğesini seç: {0}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-member-row/profile-manager-member-row.tsx
+msgid "profiles.manager.session"
+msgstr "Oturum"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.title"
+msgstr "Çalışma profillerini yönet"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/move-to-profile-menu/move-to-profile-menu.tsx
+msgid "profiles.move.menu"
+msgstr "Çalışma profiline taşı"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.cancel"
+msgstr "İptal"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.create"
+msgstr "Oluştur"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.createTitle"
+msgstr "Yeni çalışma profili"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.description"
+msgstr "Çalışma profilleri yerel çalışmaları düzenler. Hesapları, izinleri veya çalışan süreçleri birbirinden yalıtmaz."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.duplicate"
+msgstr "Bu adda bir çalışma profili zaten var."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.invalid"
+msgstr "1–80 karakter uzunluğunda bir ad girin."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.label"
+msgstr "Ad"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.renameTitle"
+msgstr "Çalışma profilini yeniden adlandır"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.save"
+msgstr "Kaydet"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: profile.name
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.itemLabel"
+msgstr "{0}. İlgilenilmesi gereken çalışma alanları: {formattedProfileCount}."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.label"
+msgstr "Çalışma profili: {name}. İlgilenilmesi gereken çalışma alanları: {formattedCount}."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.manage"
+msgstr "Çalışma profillerini yönet"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.new"
+msgstr "Yeni çalışma profili"
 
 #. js-lingui-explicit-id
 #: src/server-errors.ts

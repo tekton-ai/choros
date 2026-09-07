@@ -12,11 +12,14 @@ import {
 	useCallback,
 	useContext,
 	useMemo,
+	useState,
 } from "react";
 import { electronTrpc } from "renderer/lib/electron-trpc";
+import { ProfileNameDialog } from "renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog";
 import { useCollections } from "renderer/routes/_authenticated/providers/collections-provider";
 import { useHostWorkspaces } from "renderer/routes/_authenticated/providers/host-workspaces-provider";
 import { useLocalHostService } from "renderer/routes/_authenticated/providers/local-host-service-provider";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 import { getV2WorkspaceDisplayName } from "renderer/utils/get-v2-workspace-display-name";
 import type { CommandContext } from "./types";
 
@@ -28,6 +31,20 @@ export function CommandContextProvider({ children }: { children: ReactNode }) {
 	const navigate = useNavigate();
 	const collections = useCollections();
 	const { activeHostUrl, hostServiceStatus, machineId } = useLocalHostService();
+	const {
+		activeProfileId,
+		available,
+		isReady: areProfilesReady,
+		profiles,
+		isWorkspaceVisible,
+		selectProfile,
+		openManager,
+	} = useProfiles();
+	const [createProfileOpen, setCreateProfileOpen] = useState(false);
+	const openCreateProfile = useCallback(() => setCreateProfileOpen(true), []);
+	const activeProfileIndex = profiles.findIndex(
+		(profile) => profile.id === activeProfileId,
+	);
 
 	const navigateTo = useCallback(
 		(path: string) => {
@@ -41,9 +58,9 @@ export function CommandContextProvider({ children }: { children: ReactNode }) {
 
 	const { workspaces: hostWorkspaces } = useHostWorkspaces();
 	const v2Workspace = useMemo(() => {
-		if (!v2WorkspaceId) return null;
+		if (!areProfilesReady || !v2WorkspaceId) return null;
 		const workspace = hostWorkspaces.find((w) => w.id === v2WorkspaceId);
-		if (!workspace) return null;
+		if (!workspace || !isWorkspaceVisible(workspace)) return null;
 		return {
 			id: workspace.id,
 			name: getV2WorkspaceDisplayName(workspace),
@@ -51,7 +68,7 @@ export function CommandContextProvider({ children }: { children: ReactNode }) {
 			type: workspace.type,
 			hostId: workspace.hostId,
 		};
-	}, [hostWorkspaces, v2WorkspaceId]);
+	}, [areProfilesReady, hostWorkspaces, isWorkspaceVisible, v2WorkspaceId]);
 	const projectId = v2Workspace?.projectId ?? null;
 
 	const { data: preferredAppRows = [] } = useLiveQuery(
@@ -72,6 +89,22 @@ export function CommandContextProvider({ children }: { children: ReactNode }) {
 	const context = useMemo<CommandContext>(
 		() => ({
 			route: { pathname: location.pathname, params: {} },
+			profile: {
+				id: activeProfileId,
+				name: profiles[activeProfileIndex]?.name ?? "",
+				available: available && areProfilesReady,
+				previousId:
+					activeProfileIndex > 0
+						? (profiles[activeProfileIndex - 1]?.id ?? null)
+						: null,
+				nextId:
+					activeProfileIndex >= 0
+						? (profiles[activeProfileIndex + 1]?.id ?? null)
+						: null,
+				select: selectProfile,
+				openCreate: openCreateProfile,
+				openManager,
+			},
 			workspace: v2Workspace
 				? {
 						id: v2Workspace.id,
@@ -90,6 +123,14 @@ export function CommandContextProvider({ children }: { children: ReactNode }) {
 		}),
 		[
 			location.pathname,
+			activeProfileId,
+			activeProfileIndex,
+			available,
+			areProfilesReady,
+			profiles,
+			selectProfile,
+			openCreateProfile,
+			openManager,
 			v2Workspace,
 			preferredOpenInApp,
 			activeHostUrl,
@@ -100,7 +141,15 @@ export function CommandContextProvider({ children }: { children: ReactNode }) {
 		],
 	);
 
-	return <Context.Provider value={context}>{children}</Context.Provider>;
+	return (
+		<Context.Provider value={context}>
+			{children}
+			<ProfileNameDialog
+				open={createProfileOpen}
+				onOpenChange={setCreateProfileOpen}
+			/>
+		</Context.Provider>
+	);
 }
 
 export function useCommandContext(): CommandContext {

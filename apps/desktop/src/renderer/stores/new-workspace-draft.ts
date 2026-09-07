@@ -55,6 +55,9 @@ export interface NewWorkspaceDraft {
 
 interface NewWorkspaceDraftState extends NewWorkspaceDraft {
 	resetKey: number;
+	/** A profile switch invalidated the repo target; defaults must not reselect it. */
+	targetSelectionRequired: boolean;
+	clearTarget: () => void;
 	updateDraft: (patch: Partial<NewWorkspaceDraft>) => void;
 	selectProject: (projectId: string) => void;
 	selectSession: () => void;
@@ -88,18 +91,37 @@ export const useNewWorkspaceDraftStore = create<NewWorkspaceDraftState>(
 	(set) => ({
 		...buildInitialDraft(),
 		resetKey: 0,
+		targetSelectionRequired: false,
+		clearTarget: () =>
+			set({
+				selectedProjectId: null,
+				isSession: false,
+				targetSelectionRequired: true,
+				baseBranch: null,
+				baseBranchSource: null,
+				branchName: "",
+				branchNameEdited: false,
+				branchNameFromProvider: false,
+				linkedPR: null,
+				linkedIssues: [],
+			}),
 		updateDraft: (patch) => set((state) => ({ ...state, ...patch })),
 		// The only writers of the selectedProjectId/isSession pair — a project
 		// selection that leaves isSession behind makes submit reject PR
 		// checkouts while the picker shows the project as selected.
 		selectProject: (projectId) =>
-			set({ selectedProjectId: projectId, isSession: false }),
+			set({
+				selectedProjectId: projectId,
+				isSession: false,
+				targetSelectionRequired: false,
+			}),
 		// Sessions can't check out a PR or fork a branch — clear the
 		// repo-scoped inputs instead of failing at submit.
 		selectSession: () =>
 			set({
 				selectedProjectId: null,
 				isSession: true,
+				targetSelectionRequired: false,
 				linkedPR: null,
 				baseBranch: null,
 				baseBranchSource: null,
@@ -133,6 +155,7 @@ export const useNewWorkspaceDraftStore = create<NewWorkspaceDraftState>(
 			set((state) => ({
 				...buildInitialDraft(),
 				hostId: state.hostId,
+				targetSelectionRequired: false,
 				resetKey: state.resetKey + 1,
 			})),
 	}),

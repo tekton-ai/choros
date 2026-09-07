@@ -1,12 +1,13 @@
 import { toast } from "@choros/ui/sonner";
 import { useLingui } from "@lingui/react/macro";
-import { useNavigate } from "@tanstack/react-router";
 import { useCallback } from "react";
 import { useHostProjects } from "renderer/hooks/host-projects/use-host-projects";
 import { useLocalHostService } from "renderer/routes/_authenticated/providers/local-host-service-provider";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 import { useOpenNewWorkspaceModal } from "renderer/stores/new-workspace-modal";
 import { useV2WorkspaceCreateDefaultsStore } from "renderer/stores/v2-workspace-create-defaults";
 import { useWorkspaceCreates } from "renderer/stores/workspace-creates";
+import { useWorkspaceCreateNavigation } from "renderer/stores/workspace-creates/use-workspace-create-navigation";
 
 /**
  * Creates a v2 workspace immediately, skipping the new-workspace modal.
@@ -17,38 +18,47 @@ import { useWorkspaceCreates } from "renderer/stores/workspace-creates";
  */
 export function useQuickCreateWorkspace() {
 	const { t } = useLingui();
-	const navigate = useNavigate();
 	const { machineId } = useLocalHostService();
 	const { projects: hostProjects } = useHostProjects();
 	const { submit } = useWorkspaceCreates();
 	const openNewWorkspaceModal = useOpenNewWorkspaceModal();
+	const { isProjectVisible, isReady } = useProfiles();
+	const beginNavigation = useWorkspaceCreateNavigation();
 
 	return useCallback(
 		(projectIdHint?: string | null) => {
-			const projectId =
-				projectIdHint ??
-				useV2WorkspaceCreateDefaultsStore.getState().lastProjectId ??
-				hostProjects[0]?.id ??
-				null;
+			const navigation = beginNavigation();
+			const visibleProjects = hostProjects.filter(
+				(project) =>
+					isProjectVisible(project.projectKey) &&
+					project.hostReachable &&
+					project.hostIds.includes(machineId),
+			);
+			const projectId = [
+				projectIdHint,
+				useV2WorkspaceCreateDefaultsStore.getState().lastProjectId,
+				visibleProjects[0]?.projectKey,
+			].find(
+				(id) =>
+					id && visibleProjects.some((project) => project.projectKey === id),
+			);
 
-			if (!projectId || !machineId) {
+			if (!isReady || !projectId || !machineId) {
 				openNewWorkspaceModal();
 				return;
 			}
 
 			const workspaceId = crypto.randomUUID();
-			const { completed } = submit({
+			const handle = submit({
 				hostId: machineId,
+				profileContext: navigation.profileContext,
 				snapshot: { id: workspaceId, projectId },
 			});
-			void navigate({
-				to: "/v2-workspace/$workspaceId",
-				params: { workspaceId },
-			}).catch((error) => {
+			void navigation.follow(handle).catch((error) => {
 				console.error("[QuickCreateWorkspace] failed to open workspace", error);
 			});
 			toast.promise(
-				completed.then((outcome) => {
+				handle.completed.then((outcome) => {
 					if (!outcome.ok) throw new Error(outcome.error);
 				}),
 				{
@@ -70,6 +80,15 @@ export function useQuickCreateWorkspace() {
 				},
 			);
 		},
-		[hostProjects, machineId, navigate, openNewWorkspaceModal, submit, t],
+		[
+			hostProjects,
+			machineId,
+			isProjectVisible,
+			isReady,
+			beginNavigation,
+			openNewWorkspaceModal,
+			submit,
+			t,
+		],
 	);
 }

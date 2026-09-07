@@ -1,1 +1,4 @@
-export { persistentHistory } from "./persistent-hash-history";
+export {
+	getHistoryNavigationIntent,
+	persistentHistory,
+} from "./persistent-hash-history";

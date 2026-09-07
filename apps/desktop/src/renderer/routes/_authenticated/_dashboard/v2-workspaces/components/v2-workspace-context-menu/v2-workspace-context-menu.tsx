@@ -20,6 +20,7 @@ import {
 import { useCopyToClipboard } from "renderer/hooks/use-copy-to-clipboard";
 import { navigateToV2Workspace } from "renderer/routes/_authenticated/_dashboard/utils/workspace-navigation";
 import type { AccessibleV2Workspace } from "renderer/routes/_authenticated/_dashboard/v2-workspaces/hooks/use-accessible-v2-workspaces";
+import { MoveToProfileMenu } from "renderer/routes/_authenticated/components/move-to-profile-menu";
 import { useDashboardSidebarState } from "renderer/routes/_authenticated/hooks/use-dashboard-sidebar-state";
 import { useDeleteWorkspaceIntent } from "renderer/stores/delete-workspace-intent";
 
@@ -140,6 +141,15 @@ export function V2WorkspaceContextMenu({
 					</Trans>
 				</ContextMenuItem>
 				<ContextMenuSeparator />
+				{workspace.projectId === null && (
+					<MoveToProfileMenu
+						member={{
+							kind: "session",
+							hostId: workspace.hostId,
+							workspaceId: workspace.id,
+						}}
+					/>
+				)}
 				{workspace.isInSidebar ? (
 					<ContextMenuItem
 						onSelect={removeFromSidebar}

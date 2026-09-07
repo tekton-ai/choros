@@ -420,6 +420,32 @@ msgid "commandPalette.openIn.resolvePathFailed"
 msgstr "Pfad des Arbeitsbereichs konnte nicht aufgelöst werden: {message}"
 
 #. js-lingui-explicit-id
+#. placeholder {0}: context.profile.name
+#: ../../apps/desktop/src/renderer/command-palette/ui/command-palette/command-palette.tsx
+msgid "commandPalette.profile.current"
+msgstr "Arbeitsprofil: {0}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/command-palette/modules/profiles/commands.ts
+msgid "commandPalette.profile.manage"
+msgstr "Arbeitsprofile verwalten"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/command-palette/modules/profiles/commands.ts
+msgid "commandPalette.profile.new"
+msgstr "Neues Arbeitsprofil"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/command-palette/modules/profiles/commands.ts
+msgid "commandPalette.profile.next"
+msgstr "Nächstes Arbeitsprofil"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/command-palette/modules/profiles/commands.ts
+msgid "commandPalette.profile.previous"
+msgstr "Vorheriges Arbeitsprofil"
+
+#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/command-palette/ui/recently-viewed/recently-viewed-frame.tsx
 msgid "commandPalette.recentlyViewed.empty"
 msgstr "Hier ist noch nichts."
@@ -428,6 +454,11 @@ msgstr "Hier ist noch nichts."
 #: ../../apps/desktop/src/renderer/command-palette/ui/recently-viewed/recently-viewed-frame.tsx
 msgid "commandPalette.recentlyViewed.heading"
 msgstr "Zuletzt angesehen"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/command-palette/ui/recently-viewed/recently-viewed-frame.tsx
+msgid "commandPalette.recentlyViewed.session"
+msgstr "Sitzung"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/command-palette/ui/recently-viewed/recently-viewed-frame.tsx
@@ -1403,6 +1434,11 @@ msgstr "Projekt erstellt."
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/add-repository-modals/add-repository-modals.tsx
 msgid "dashboard.addRepositoryModals.newProjectCreateFailed"
 msgstr "Erstellen fehlgeschlagen: {message}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/add-repository-modals/add-repository-modals.tsx
+msgid "dashboard.addRepositoryModals.projectReady"
+msgstr "Projekt bereit."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/add-repository-modals/add-repository-modals.tsx
@@ -7076,6 +7112,289 @@ msgstr "Sprache"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/onboarding/components/onboarding-language-row/onboarding-language-row.tsx
 msgid "onboarding.language.selectAria"
 msgstr "Anzeigesprache der App"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/profile-provider/profile-provider.tsx
+msgid "profiles.actions.recoverAssignment"
+msgstr "Arbeitsprofil auswählen"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/profile-provider/profile-provider.tsx
+msgid "profiles.actions.retry"
+msgstr "Erneut versuchen"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/stores/workspace-creates/use-workspace-creates.ts
+msgid "profiles.creation.selectProjectAgain"
+msgstr "Dieses Projekt gehört nicht mehr zum übermittelten Arbeitsprofil. Wähle erneut ein Projekt aus."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/dashboard-new-workspace-modal-content/dashboard-new-workspace-modal-content.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/new-workspace-screen.tsx
+msgid "profiles.creation.selectTarget"
+msgstr "Wähle ein Projekt in diesem Arbeitsprofil oder „Kein Projekt“. Dein Entwurf wurde beibehalten."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-delete-dialog/profile-delete-dialog.tsx
+msgid "profiles.delete.cancel"
+msgstr "Abbrechen"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-delete-dialog/profile-delete-dialog.tsx
+msgid "profiles.delete.confirm"
+msgstr "Arbeitsprofil löschen"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: formatNumber(projects)
+#. placeholder {1}: formatNumber(sessions)
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-delete-dialog/profile-delete-dialog.tsx
+msgid "profiles.delete.counts"
+msgstr "Projekte: {0}; unabhängige Sitzungen: {1}. Die Zählung umfasst auch gespeicherte Elemente, die derzeit nicht verfügbar sind."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-delete-dialog/profile-delete-dialog.tsx
+msgid "profiles.delete.emptyWarning"
+msgstr "Dieses leere Arbeitsprofil wird gelöscht. Deine Projekte und laufenden Arbeiten werden nicht gestoppt."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-delete-dialog/profile-delete-dialog.tsx
+msgid "profiles.delete.moveAndDelete"
+msgstr "Alles nach Standard verschieben und löschen"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-delete-dialog/profile-delete-dialog.tsx
+msgid "profiles.delete.moveWarning"
+msgstr "Alle zugeordneten Elemente werden in das Standard-Arbeitsprofil „{defaultName}“ verschoben, bevor dieses Arbeitsprofil gelöscht wird. Projektarbeitsbereiche und ihre laufenden Inhalte werden mit dem Projekt verschoben. Terminals, Agenten und Entwicklungsserver werden nicht gestoppt."
+
+#. js-lingui-explicit-id
+#. placeholder {0}: profile?.name
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-delete-dialog/profile-delete-dialog.tsx
+msgid "profiles.delete.title"
+msgstr "Arbeitsprofil „{0}“ löschen?"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/profile-provider/profile-provider.tsx
+msgid "profiles.errors.createdInDefault"
+msgstr "Deine Arbeit wurde erstellt, aber ihr Arbeitsprofil konnte nicht gespeichert werden. Sie gehört zu Standard. Wähle ein Arbeitsprofil, um die Zuordnung abzuschließen."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/profile-provider/profile-provider.tsx
+msgid "profiles.errors.operationFailed"
+msgstr "Arbeitsprofile konnten nicht gespeichert werden. Deine Arbeit wurde nicht verändert. Versuche es erneut."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/profile-provider/profile-provider.tsx
+msgid "profiles.errors.unavailable"
+msgstr "Arbeitsprofile sind nicht verfügbar. Bestehende Arbeit wird in Standard angezeigt. Versuche es erneut, um deine gespeicherten Arbeitsprofile wiederherzustellen."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.allProfiles"
+msgstr "Alle Arbeitsprofile"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-destination-select/profile-destination-select.tsx
+msgid "profiles.manager.chooseDestination"
+msgstr "Arbeitsprofil auswählen"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-profile-row/profile-manager-profile-row.tsx
+msgid "profiles.manager.defaultBadge"
+msgstr "Standard"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: profile.name
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-profile-row/profile-manager-profile-row.tsx
+msgid "profiles.manager.delete"
+msgstr "{0} löschen"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.description"
+msgstr "Organisiere Projekte und unabhängige Sitzungen. Projektarbeitsbereiche übernehmen das Arbeitsprofil ihres Projekts. Beim Verschieben wird die Arbeit nicht gestoppt."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-destination-select/profile-destination-select.tsx
+msgid "profiles.manager.destination"
+msgstr "Zielarbeitsprofil"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.hostUnavailable"
+msgstr "Hostdaten werden geladen oder sind nicht verfügbar. Bekannte und gespeicherte Elemente werden angezeigt. Fehlende Daten bedeuten nicht, dass ein Arbeitsprofil leer ist."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-member-row/profile-manager-member-row.tsx
+msgid "profiles.manager.memberProfile"
+msgstr "Arbeitsprofil für {name}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.membersLabel"
+msgstr "Zugeordnete Elemente"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-member-row/profile-manager-member-row.tsx
+msgid "profiles.manager.memberUnavailable"
+msgstr "Nicht verfügbar — gespeicherte Zuordnung bleibt erhalten"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: profile.name
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-profile-row/profile-manager-profile-row.tsx
+msgid "profiles.manager.moveDown"
+msgstr "{0} nach unten verschieben"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.moveSelected"
+msgstr "Ausgewählte verschieben"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: profile.name
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-profile-row/profile-manager-profile-row.tsx
+msgid "profiles.manager.moveUp"
+msgstr "{0} nach oben verschieben"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.new"
+msgstr "Neues Arbeitsprofil"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.noMembers"
+msgstr "Keine passenden bekannten Elemente."
+
+#. js-lingui-explicit-id
+#. placeholder {0}: formatNumber(projects)
+#. placeholder {1}: formatNumber(sessions)
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-profile-row/profile-manager-profile-row.tsx
+msgid "profiles.manager.profileCounts"
+msgstr "Projekte: {0} · Sitzungen: {1}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.profilesLabel"
+msgstr "Arbeitsprofile"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-member-row/profile-manager-member-row.tsx
+msgid "profiles.manager.project"
+msgstr "Projekt"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.registryUnavailable"
+msgstr "Arbeitsprofile sind nicht verfügbar. Bestehende Arbeit bleibt in Standard zugänglich. Änderungen sind deaktiviert, bis der lokale Speicher wieder verfügbar ist."
+
+#. js-lingui-explicit-id
+#. placeholder {0}: profile.name
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-profile-row/profile-manager-profile-row.tsx
+msgid "profiles.manager.rename"
+msgstr "{0} umbenennen"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.search"
+msgstr "Projekte und Sitzungen nach Name, Pfad oder ID suchen"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.selectAll"
+msgstr "Alle angezeigten Elemente auswählen"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: formatNumber(selectedCount)
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.selectedCount"
+msgstr "{0} ausgewählt"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: item.detail
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-member-row/profile-manager-member-row.tsx
+msgid "profiles.manager.selectMember"
+msgstr "{name} auswählen: {0}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-member-row/profile-manager-member-row.tsx
+msgid "profiles.manager.session"
+msgstr "Sitzung"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.title"
+msgstr "Arbeitsprofile verwalten"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/move-to-profile-menu/move-to-profile-menu.tsx
+msgid "profiles.move.menu"
+msgstr "In Arbeitsprofil verschieben"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.cancel"
+msgstr "Abbrechen"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.create"
+msgstr "Erstellen"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.createTitle"
+msgstr "Neues Arbeitsprofil"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.description"
+msgstr "Arbeitsprofile organisieren lokale Arbeit. Sie trennen keine Konten, Berechtigungen oder laufenden Prozesse voneinander."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.duplicate"
+msgstr "Ein Arbeitsprofil mit diesem Namen existiert bereits."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.invalid"
+msgstr "Gib einen Namen mit 1–80 Zeichen ein."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.label"
+msgstr "Name"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.renameTitle"
+msgstr "Arbeitsprofil umbenennen"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.save"
+msgstr "Speichern"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: profile.name
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.itemLabel"
+msgstr "{0}. Arbeitsbereiche, die Aufmerksamkeit erfordern: {formattedProfileCount}."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.label"
+msgstr "Arbeitsprofil: {name}. Arbeitsbereiche, die Aufmerksamkeit erfordern: {formattedCount}."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.manage"
+msgstr "Arbeitsprofile verwalten"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.new"
+msgstr "Neues Arbeitsprofil"
 
 #. js-lingui-explicit-id
 #: src/server-errors.ts

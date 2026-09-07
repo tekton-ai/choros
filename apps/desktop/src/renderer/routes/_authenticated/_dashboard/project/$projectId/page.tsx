@@ -5,6 +5,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { useHostProjects } from "renderer/hooks/host-projects/use-host-projects";
 import { PullRequestsView } from "renderer/routes/_authenticated/_dashboard/pull-requests/components/pull-requests-view";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 import { ProjectIssues } from "./components/project-issues";
 
 export const Route = createFileRoute(
@@ -16,12 +17,17 @@ export const Route = createFileRoute(
 function ProjectPage() {
 	const { projectId } = Route.useParams();
 	const { projects, isReady } = useHostProjects();
+	const { isReady: areProfilesReady, isProjectVisible } = useProfiles();
 	const project = projects.find(
 		(candidate) => candidate.projectKey === projectId,
 	);
 	const [tab, setTab] = useState<"issues" | "pullRequests">("issues");
 
-	if (!isReady) {
+	if (
+		!isReady ||
+		!areProfilesReady ||
+		(project && !isProjectVisible(projectId))
+	) {
 		return (
 			<div className="flex h-full items-center justify-center">
 				<Spinner />

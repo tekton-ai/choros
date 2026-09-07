@@ -1,6 +1,9 @@
 import { describe, expect, test } from "bun:test";
-import type { ProjectQueryTarget } from "./use-project-query-targets";
-import { groupProjectTargetsByHost } from "./use-project-query-targets";
+import type { ProjectQueryTarget } from "./project-query-scope";
+import {
+	groupProjectTargetsByHost,
+	selectProjectQueryScope,
+} from "./project-query-scope";
 
 const targets: ProjectQueryTarget[] = [
 	{
@@ -60,5 +63,40 @@ describe("groupProjectTargetsByHost", () => {
 		const [withBoth] = groupProjectTargetsByHost(targets.slice(0, 2));
 		const [withOne] = groupProjectTargetsByHost(targets.slice(0, 1));
 		expect(withBoth?.key).not.toBe(withOne?.key);
+	});
+});
+
+describe("Profile project query scope", () => {
+	const projects = [
+		{ projectKey: "work" },
+		{ projectKey: "personal" },
+		{ projectKey: "work-docs" },
+	];
+	const isVisible = (id: string) => id !== "personal";
+
+	test("all-project queries and options exclude foreign projects", () => {
+		const scope = selectProjectQueryScope(projects, [], isVisible);
+		expect(scope.projects.map((project) => project.projectKey)).toEqual([
+			"work",
+			"work-docs",
+		]);
+		expect(scope.selectedProjects.map((project) => project.projectKey)).toEqual(
+			["work", "work-docs"],
+		);
+	});
+
+	test("explicit foreign filters cannot expand request targets", () => {
+		const scope = selectProjectQueryScope(
+			projects,
+			["personal", "work-docs"],
+			isVisible,
+		);
+		expect(scope.selectedProjects.map((project) => project.projectKey)).toEqual(
+			["work-docs"],
+		);
+		expect(
+			selectProjectQueryScope(projects, ["personal"], isVisible)
+				.selectedProjects,
+		).toEqual([]);
 	});
 });

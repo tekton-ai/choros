@@ -1,4 +1,5 @@
 import { i18n } from "@choros/i18n";
+import { toast } from "@choros/ui/sonner";
 import type { WorkspaceCreateSettledPayload } from "@choros/workspace-client";
 import { TRPCClientError } from "@trpc/client";
 import { useCallback } from "react";
@@ -19,24 +20,34 @@ import type {
 } from "renderer/routes/_authenticated/providers/collections-provider/dashboard-sidebar-local";
 import { useHostWorkspaces } from "renderer/routes/_authenticated/providers/host-workspaces-provider";
 import { useLocalHostService } from "renderer/routes/_authenticated/providers/local-host-service-provider";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 import { useStarNagStore } from "renderer/stores/star-nag";
+import {
+	DEFAULT_PROFILE_ID,
+	type ProfileSubmissionContext,
+} from "shared/profiles";
+import {
+	completeWorkspaceCreate,
+	type SubmitOutcome,
+} from "./complete-workspace-create";
 import { useWorkspaceTransactionsStore } from "./workspace-transactions";
 import { writeWorkspacePaneLayout } from "./write-workspace-pane-layout";
 
 export type { WorkspacesCreateInput, WorkspacesCreateSessionInput };
+export type { SubmitOutcome } from "./complete-workspace-create";
 
 export interface SubmitArgs {
 	hostId: string;
 	/** `projectId: null` routes to `workspaces.createSession`. */
 	snapshot: WorkspacesCreateAnyInput;
+	/** Desktop ownership only; never part of the Host input. Omitted means Default. */
+	profileContext?: ProfileSubmissionContext;
 }
-
-export type SubmitOutcome =
-	| { ok: true; workspaceId: string }
-	| { ok: false; error: string };
 
 export interface SubmitHandle {
 	workspaceId: string;
+	/** False when local target validation rejected the submission before Host creation. */
+	started?: boolean;
 	completed: Promise<SubmitOutcome>;
 }
 
@@ -144,6 +155,7 @@ async function createViaEnqueue(
 	hostUrl: string,
 	workspaceId: string,
 	payload: WorkspacesCreateInput,
+	assertProjectScope: () => void,
 ): Promise<CreateOutcome> {
 	const bus = getHostEventBus(hostUrl);
 	const releaseBus = bus.retain();
@@ -165,6 +177,7 @@ async function createViaEnqueue(
 		} catch (error) {
 			if (isMissingProcedureError(error)) {
 				// Legacy host: fall back to the long-held synchronous create.
+				assertProjectScope();
 				const result = await client.workspaces.create.mutate(payload);
 				return result;
 			}
@@ -233,6 +246,8 @@ export function useWorkspaceCreates(): UseWorkspaceCreatesApi {
 	const userId = session?.user?.id ?? null;
 	const collections = useCollections();
 	const { cache: hostWorkspacesCache } = useHostWorkspaces();
+	const { getProjectProfileId, assignCreatedMember, registerPendingMember } =
+		useProfiles();
 	const trackWorkspaceTransaction = useWorkspaceTransactionsStore(
 		(state) => state.track,
 	);
@@ -246,6 +261,35 @@ export function useWorkspaceCreates(): UseWorkspaceCreatesApi {
 			if (!workspaceId) {
 				throw new Error("workspaces.create requires `id`");
 			}
+			const profileContext = args.profileContext ?? {
+				profileId: DEFAULT_PROFILE_ID,
+				requestId: crypto.randomUUID(),
+				generation: -1,
+			};
+			const isProjectInSubmittedProfile = () =>
+				snapshot.projectId === null ||
+				!args.profileContext ||
+				getProjectProfileId(snapshot.projectId) === profileContext.profileId;
+			const invalidProjectMessage = () =>
+				i18n._({
+					id: "profiles.creation.selectProjectAgain",
+					message:
+						"This project is no longer in the submitted profile. Select a project again.",
+				});
+			if (!isProjectInSubmittedProfile()) {
+				const error = invalidProjectMessage();
+				toast.error(error);
+				return {
+					workspaceId,
+					started: false,
+					completed: Promise.resolve({ ok: false, error }),
+				};
+			}
+			const assertProjectScope = () => {
+				if (!isProjectInSubmittedProfile()) {
+					throw new Error(invalidProjectMessage());
+				}
+			};
 
 			const recordFailure = (error: string) => {
 				if (collections.failedWorkspaceCreates.get(workspaceId)) {
@@ -285,6 +329,12 @@ export function useWorkspaceCreates(): UseWorkspaceCreatesApi {
 
 			const isSession = snapshot.projectId === null;
 			const now = new Date();
+			const clearPendingMember = isSession
+				? registerPendingMember(
+						{ kind: "session", hostId: args.hostId, workspaceId },
+						profileContext,
+					)
+				: () => {};
 			// Optimistic entry in the host's cached list; the host's
 			// workspace:changed broadcast replaces it with the real row.
 			hostWorkspacesCache.upsertWorkspace({
@@ -319,7 +369,7 @@ export function useWorkspaceCreates(): UseWorkspaceCreatesApi {
 			// agent behind the setup commands. On a cold cache the hook value is
 			// still undefined — resolve it directly so an early create can't
 			// silently skip the gate (failures fall back to default-off).
-			const createPromise: Promise<CreateOutcome> = (async () => {
+			const create = async (): Promise<CreateOutcome> => {
 				const client = getHostServiceClientByUrl(hostUrl);
 				if (snapshot.projectId === null) {
 					// Sessions have no setup scripts, so no wait-for-setup gate —
@@ -358,12 +408,20 @@ export function useWorkspaceCreates(): UseWorkspaceCreatesApi {
 							.query()
 							.catch(() => false);
 				}
+				// Settings resolution may have yielded while the project was moved.
+				assertProjectScope();
 				const payload: WorkspacesCreateInput =
 					snapshot.agents?.length && waitForSetup
 						? { ...snapshot, waitForSetupBeforeAgents: true }
 						: snapshot;
-				return createViaEnqueue(client, hostUrl, workspaceId, payload);
-			})();
+				return createViaEnqueue(
+					client,
+					hostUrl,
+					workspaceId,
+					payload,
+					assertProjectScope,
+				);
+			};
 
 			writeWorkspacePaneLayout(
 				collections,
@@ -372,8 +430,16 @@ export function useWorkspaceCreates(): UseWorkspaceCreatesApi {
 				[],
 			);
 
-			const completed = createPromise
-				.then<SubmitOutcome>((result) => {
+			const completed = completeWorkspaceCreate({
+				create,
+				hostId: args.hostId,
+				optimisticWorkspaceId: workspaceId,
+				registerPendingMember,
+				profileContext,
+				assignCreatedMember,
+				getProjectProfileId,
+				clearPendingMember,
+				onCreated: (result) => {
 					writeWorkspacePaneLayout(
 						collections,
 						{
@@ -396,19 +462,13 @@ export function useWorkspaceCreates(): UseWorkspaceCreatesApi {
 					) {
 						useStarNagStore.getState().recordWorkspaceCreated();
 					}
-					return {
-						ok: true,
-						workspaceId: result.workspace.id,
-					};
-				})
-				.catch<SubmitOutcome>((error: unknown) => {
-					const message =
-						error instanceof Error ? error.message : String(error);
+				},
+				onFailed: (message) => {
 					hostWorkspacesCache.removeWorkspace(args.hostId, workspaceId);
 					deleteWorkspaceLocalState(workspaceId);
 					recordFailure(message);
-					return { ok: false, error: message };
-				});
+				},
+			});
 
 			// Track against `completed` (not the raw mutation promise) so the
 			// pending-create UI holds until the resolved pane layout — agent and
@@ -434,6 +494,9 @@ export function useWorkspaceCreates(): UseWorkspaceCreatesApi {
 			hostService,
 			trackWorkspaceTransaction,
 			waitForSetupBeforeAgent,
+			getProjectProfileId,
+			assignCreatedMember,
+			registerPendingMember,
 		],
 	);
 

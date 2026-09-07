@@ -420,6 +420,32 @@ msgid "commandPalette.openIn.resolvePathFailed"
 msgstr "Không thể xác định đường dẫn workspace: {message}"
 
 #. js-lingui-explicit-id
+#. placeholder {0}: context.profile.name
+#: ../../apps/desktop/src/renderer/command-palette/ui/command-palette/command-palette.tsx
+msgid "commandPalette.profile.current"
+msgstr "Hồ sơ công việc: {0}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/command-palette/modules/profiles/commands.ts
+msgid "commandPalette.profile.manage"
+msgstr "Quản lý hồ sơ công việc"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/command-palette/modules/profiles/commands.ts
+msgid "commandPalette.profile.new"
+msgstr "Hồ sơ công việc mới"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/command-palette/modules/profiles/commands.ts
+msgid "commandPalette.profile.next"
+msgstr "Hồ sơ công việc tiếp theo"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/command-palette/modules/profiles/commands.ts
+msgid "commandPalette.profile.previous"
+msgstr "Hồ sơ công việc trước"
+
+#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/command-palette/ui/recently-viewed/recently-viewed-frame.tsx
 msgid "commandPalette.recentlyViewed.empty"
 msgstr "Chưa có gì ở đây."
@@ -428,6 +454,11 @@ msgstr "Chưa có gì ở đây."
 #: ../../apps/desktop/src/renderer/command-palette/ui/recently-viewed/recently-viewed-frame.tsx
 msgid "commandPalette.recentlyViewed.heading"
 msgstr "Đã xem gần đây"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/command-palette/ui/recently-viewed/recently-viewed-frame.tsx
+msgid "commandPalette.recentlyViewed.session"
+msgstr "Phiên"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/command-palette/ui/recently-viewed/recently-viewed-frame.tsx
@@ -1403,6 +1434,11 @@ msgstr "Đã tạo dự án."
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/add-repository-modals/add-repository-modals.tsx
 msgid "dashboard.addRepositoryModals.newProjectCreateFailed"
 msgstr "Tạo thất bại: {message}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/add-repository-modals/add-repository-modals.tsx
+msgid "dashboard.addRepositoryModals.projectReady"
+msgstr "Dự án đã sẵn sàng."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/add-repository-modals/add-repository-modals.tsx
@@ -7076,6 +7112,289 @@ msgstr "Ngôn ngữ"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/onboarding/components/onboarding-language-row/onboarding-language-row.tsx
 msgid "onboarding.language.selectAria"
 msgstr "Ngôn ngữ hiển thị của ứng dụng"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/profile-provider/profile-provider.tsx
+msgid "profiles.actions.recoverAssignment"
+msgstr "Chọn hồ sơ công việc"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/profile-provider/profile-provider.tsx
+msgid "profiles.actions.retry"
+msgstr "Thử lại"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/stores/workspace-creates/use-workspace-creates.ts
+msgid "profiles.creation.selectProjectAgain"
+msgstr "Dự án này không còn trong hồ sơ công việc đã gửi. Hãy chọn lại dự án."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/dashboard-new-workspace-modal-content/dashboard-new-workspace-modal-content.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/new-workspace-screen.tsx
+msgid "profiles.creation.selectTarget"
+msgstr "Chọn một dự án trong hồ sơ công việc này hoặc chọn Không có dự án. Bản nháp của bạn đã được giữ lại."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-delete-dialog/profile-delete-dialog.tsx
+msgid "profiles.delete.cancel"
+msgstr "Hủy"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-delete-dialog/profile-delete-dialog.tsx
+msgid "profiles.delete.confirm"
+msgstr "Xóa hồ sơ công việc"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: formatNumber(projects)
+#. placeholder {1}: formatNumber(sessions)
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-delete-dialog/profile-delete-dialog.tsx
+msgid "profiles.delete.counts"
+msgstr "Dự án: {0}; phiên độc lập: {1}. Số lượng bao gồm các thành phần đã lưu nhưng hiện không khả dụng."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-delete-dialog/profile-delete-dialog.tsx
+msgid "profiles.delete.emptyWarning"
+msgstr "Hồ sơ công việc trống này sẽ bị xóa. Các dự án và công việc đang chạy của bạn sẽ không bị dừng."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-delete-dialog/profile-delete-dialog.tsx
+msgid "profiles.delete.moveAndDelete"
+msgstr "Chuyển tất cả sang Mặc định và xóa"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-delete-dialog/profile-delete-dialog.tsx
+msgid "profiles.delete.moveWarning"
+msgstr "Tất cả thành phần sẽ được chuyển sang hồ sơ công việc mặc định “{defaultName}” trước khi hồ sơ công việc này bị xóa. Các workspace của dự án và nội dung đang chạy trong đó sẽ đi theo dự án. Các cửa sổ dòng lệnh, tác nhân và máy chủ phát triển sẽ không bị dừng."
+
+#. js-lingui-explicit-id
+#. placeholder {0}: profile?.name
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-delete-dialog/profile-delete-dialog.tsx
+msgid "profiles.delete.title"
+msgstr "Xóa hồ sơ công việc “{0}”?"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/profile-provider/profile-provider.tsx
+msgid "profiles.errors.createdInDefault"
+msgstr "Công việc của bạn đã được tạo nhưng không thể lưu hồ sơ công việc tương ứng. Công việc này thuộc về Mặc định. Hãy chọn một hồ sơ công việc để hoàn tất việc sắp xếp."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/profile-provider/profile-provider.tsx
+msgid "profiles.errors.operationFailed"
+msgstr "Không thể lưu hồ sơ công việc. Công việc của bạn chưa bị thay đổi. Hãy thử lại."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/profile-provider/profile-provider.tsx
+msgid "profiles.errors.unavailable"
+msgstr "Hồ sơ công việc không khả dụng. Công việc hiện có được hiển thị trong Mặc định. Hãy thử lại để khôi phục các hồ sơ công việc đã lưu."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.allProfiles"
+msgstr "Tất cả hồ sơ công việc"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-destination-select/profile-destination-select.tsx
+msgid "profiles.manager.chooseDestination"
+msgstr "Chọn hồ sơ công việc"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-profile-row/profile-manager-profile-row.tsx
+msgid "profiles.manager.defaultBadge"
+msgstr "Mặc định"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: profile.name
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-profile-row/profile-manager-profile-row.tsx
+msgid "profiles.manager.delete"
+msgstr "Xóa {0}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.description"
+msgstr "Sắp xếp các dự án và phiên độc lập. Các workspace của dự án kế thừa hồ sơ công việc của dự án đó. Di chuyển công việc không làm công việc đó dừng lại."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-destination-select/profile-destination-select.tsx
+msgid "profiles.manager.destination"
+msgstr "Hồ sơ công việc đích"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.hostUnavailable"
+msgstr "Dữ liệu máy chủ đang tải hoặc không khả dụng. Các thành phần đã biết và đã lưu vẫn được hiển thị; thiếu dữ liệu không có nghĩa là hồ sơ công việc trống."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-member-row/profile-manager-member-row.tsx
+msgid "profiles.manager.memberProfile"
+msgstr "Hồ sơ công việc cho {name}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.membersLabel"
+msgstr "Thành phần trong hồ sơ công việc"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-member-row/profile-manager-member-row.tsx
+msgid "profiles.manager.memberUnavailable"
+msgstr "Không khả dụng — vẫn giữ thông tin đã lưu về hồ sơ công việc sở hữu"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: profile.name
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-profile-row/profile-manager-profile-row.tsx
+msgid "profiles.manager.moveDown"
+msgstr "Di chuyển {0} xuống"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.moveSelected"
+msgstr "Di chuyển mục đã chọn"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: profile.name
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-profile-row/profile-manager-profile-row.tsx
+msgid "profiles.manager.moveUp"
+msgstr "Di chuyển {0} lên"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.new"
+msgstr "Hồ sơ công việc mới"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.noMembers"
+msgstr "Không có thành phần đã biết nào phù hợp."
+
+#. js-lingui-explicit-id
+#. placeholder {0}: formatNumber(projects)
+#. placeholder {1}: formatNumber(sessions)
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-profile-row/profile-manager-profile-row.tsx
+msgid "profiles.manager.profileCounts"
+msgstr "Dự án: {0} · Phiên: {1}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.profilesLabel"
+msgstr "Hồ sơ công việc"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-member-row/profile-manager-member-row.tsx
+msgid "profiles.manager.project"
+msgstr "Dự án"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.registryUnavailable"
+msgstr "Hồ sơ công việc không khả dụng. Bạn vẫn có thể truy cập công việc hiện có trong Mặc định; chức năng thay đổi bị vô hiệu hóa cho đến khi bộ nhớ cục bộ được khôi phục."
+
+#. js-lingui-explicit-id
+#. placeholder {0}: profile.name
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-profile-row/profile-manager-profile-row.tsx
+msgid "profiles.manager.rename"
+msgstr "Đổi tên {0}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.search"
+msgstr "Tìm dự án và phiên theo tên, đường dẫn hoặc ID"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.selectAll"
+msgstr "Chọn tất cả thành phần đang hiển thị"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: formatNumber(selectedCount)
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.selectedCount"
+msgstr "Đã chọn {0}"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: item.detail
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-member-row/profile-manager-member-row.tsx
+msgid "profiles.manager.selectMember"
+msgstr "Chọn {name}: {0}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-manager-member-row/profile-manager-member-row.tsx
+msgid "profiles.manager.session"
+msgstr "Phiên"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/profile-manager-dialog.tsx
+msgid "profiles.manager.title"
+msgstr "Quản lý hồ sơ công việc"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/move-to-profile-menu/move-to-profile-menu.tsx
+msgid "profiles.move.menu"
+msgstr "Chuyển sang hồ sơ công việc"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.cancel"
+msgstr "Hủy"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.create"
+msgstr "Tạo"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.createTitle"
+msgstr "Hồ sơ công việc mới"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.description"
+msgstr "Hồ sơ công việc giúp sắp xếp công việc cục bộ. Chúng không tách biệt tài khoản, quyền hay tiến trình đang chạy."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.duplicate"
+msgstr "Đã có hồ sơ công việc mang tên này."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.invalid"
+msgstr "Nhập tên có từ 1–80 ký tự."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.label"
+msgstr "Tên"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.renameTitle"
+msgstr "Đổi tên hồ sơ công việc"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog/profile-name-dialog.tsx
+msgid "profiles.name.save"
+msgstr "Lưu"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: profile.name
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.itemLabel"
+msgstr "{0}. Workspace cần chú ý: {formattedProfileCount}."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.label"
+msgstr "Hồ sơ công việc: {name}. Workspace cần chú ý: {formattedCount}."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.manage"
+msgstr "Quản lý hồ sơ công việc"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.new"
+msgstr "Hồ sơ công việc mới"
 
 #. js-lingui-explicit-id
 #: src/server-errors.ts

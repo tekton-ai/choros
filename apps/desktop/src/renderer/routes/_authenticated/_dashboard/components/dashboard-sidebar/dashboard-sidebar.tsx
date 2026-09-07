@@ -38,15 +38,11 @@ import { useDashboardSidebarDnd } from "./hooks/use-sidebar-dnd";
 import { DashboardSidebarDndProvider } from "./providers/dashboard-sidebar-dnd-provider";
 import { DashboardSidebarHoverProvider } from "./providers/dashboard-sidebar-hover-provider";
 import { DashboardSidebarSelectionProvider } from "./providers/dashboard-sidebar-selection-provider";
-import {
-	DashboardSidebarWorkspaceStatusProvider,
-	type SidebarStatusWorkspaceRef,
-} from "./providers/dashboard-sidebar-workspace-status-provider";
+import { DashboardSidebarWorkspaceStatusProvider } from "./providers/dashboard-sidebar-workspace-status-provider";
 import type {
 	DashboardSidebarProject,
 	DashboardSidebarWorkspace,
 } from "./types";
-import { getProjectChildrenWorkspaces } from "./utils/project-children";
 
 interface DashboardSidebarProps {
 	isCollapsed?: boolean;
@@ -130,6 +126,7 @@ export function DashboardSidebar({
 		sessionWorkspaces,
 		sessionTagGroups,
 		ungroupedSessionWorkspaces,
+		statusWorkspaces,
 		refreshWorkspacePullRequest,
 		toggleProjectCollapsed,
 	} = useDashboardSidebarData();
@@ -194,25 +191,6 @@ export function DashboardSidebar({
 		}
 		return ids;
 	}, [orderedGroups]);
-
-	// Every workspace the sidebar can render (pinned, sessions, project rows) —
-	// the status provider fans out bindings queries and event subscriptions for
-	// these once, instead of per row.
-	const statusWorkspaces = useMemo<SidebarStatusWorkspaceRef[]>(() => {
-		const byId = new Map<string, SidebarStatusWorkspaceRef>();
-		for (const workspace of pinnedWorkspaces) {
-			byId.set(workspace.id, { id: workspace.id, hostId: workspace.hostId });
-		}
-		for (const workspace of sessionWorkspaces) {
-			byId.set(workspace.id, { id: workspace.id, hostId: workspace.hostId });
-		}
-		for (const project of orderedGroups) {
-			for (const workspace of getProjectChildrenWorkspaces(project.children)) {
-				byId.set(workspace.id, { id: workspace.id, hostId: workspace.hostId });
-			}
-		}
-		return [...byId.values()];
-	}, [pinnedWorkspaces, sessionWorkspaces, orderedGroups]);
 
 	const activeV2Project = useMemo(() => {
 		if (!activeV2WorkspaceId) return null;

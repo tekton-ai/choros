@@ -1,5 +1,13 @@
 import { useNavigate } from "@tanstack/react-router";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+	useCallback,
+	useEffect,
+	useLayoutEffect,
+	useMemo,
+	useRef,
+	useState,
+} from "react";
+import { restrictProjectFilters } from "renderer/routes/_authenticated/_dashboard/components/project-filter/project-filter-utils";
 import { useDebouncedSearchNavigation } from "renderer/routes/_authenticated/_dashboard/hooks/use-debounced-search-navigation";
 import { useProjectQueryTargets } from "renderer/routes/_authenticated/_dashboard/hooks/use-project-query-targets";
 import { normalizeAuthorFilter } from "renderer/routes/_authenticated/_dashboard/pull-requests/utils/normalize-author-filter";
@@ -7,6 +15,7 @@ import {
 	normalizePullRequestReviewFilter,
 	type PullRequestReviewFilter,
 } from "renderer/routes/_authenticated/_dashboard/pull-requests/utils/pull-request-review-filter";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 import {
 	pullRequestsSearchFromFilters,
 	usePullRequestsFilterStore,
@@ -39,6 +48,13 @@ export function PullRequestsView({
 }: PullRequestsViewProps) {
 	const navigate = useNavigate();
 	const {
+		generation,
+		isProjectVisible,
+		isReady: areProfilesReady,
+	} = useProfiles();
+	const generationRef = useRef(generation);
+	generationRef.current = generation;
+	const {
 		search: storedSearch,
 		projectFilters: storedProjectFilters,
 		authorFilter: storedAuthorFilter,
@@ -53,7 +69,11 @@ export function PullRequestsView({
 		setMergedOnly: storeSetMergedOnly,
 	} = usePullRequestsFilterStore();
 	const [searchQuery, setSearchQuery] = useState(initialSearch ?? storedSearch);
-	const projectFilters = initialProjects ?? storedProjectFilters;
+	const requestedProjectFilters = initialProjects ?? storedProjectFilters;
+	const projectFilters = useMemo(
+		() => restrictProjectFilters(requestedProjectFilters, isProjectVisible),
+		[requestedProjectFilters, isProjectVisible],
+	);
 	const authorFilter =
 		initialAuthor === undefined
 			? storedAuthorFilter
@@ -70,8 +90,14 @@ export function PullRequestsView({
 		initialState === undefined ? storedMergedOnly : initialState === "merged";
 	// Filter/search changes must not collapse an open detail pane.
 	const navigateTo = useCallback(
-		(search: Record<string, string>) =>
-			selectedPrNumber != null
+		(search: Record<string, string>) => {
+			if (!areProfilesReady || generationRef.current !== generation) return;
+			// The shared Profile navigator owns leaving a foreign detail. A
+			// delayed filter update must not navigate back to that old object.
+			if (selectedPrProjectId && !isProjectVisible(selectedPrProjectId)) {
+				return;
+			}
+			return selectedPrNumber != null
 				? navigate({
 						to: "/pull-requests/$prNumber",
 						params: { prNumber: String(selectedPrNumber) },
@@ -80,8 +106,16 @@ export function PullRequestsView({
 							: search,
 						replace: true,
 					})
-				: navigate({ to: "/pull-requests", search, replace: true }),
-		[navigate, selectedPrNumber, selectedPrProjectId],
+				: navigate({ to: "/pull-requests", search, replace: true });
+		},
+		[
+			areProfilesReady,
+			generation,
+			isProjectVisible,
+			navigate,
+			selectedPrNumber,
+			selectedPrProjectId,
+		],
 	);
 	const {
 		isReady: areProjectsReady,
@@ -140,9 +174,17 @@ export function PullRequestsView({
 		scheduleSearchNavigation: syncSearchToUrl,
 	} = useDebouncedSearchNavigation(navigateSearch);
 
+	// Cancel synchronously with a Profile/navigation change, including when
+	// the chosen filter happened to be valid in both the old and new view.
+	// biome-ignore lint/correctness/useExhaustiveDependencies: navigation generation cancels pending work even when the cancellation callback is stable
+	useLayoutEffect(
+		() => cancelPendingSearchNavigation(),
+		[generation, cancelPendingSearchNavigation],
+	);
 	useEffect(() => {
+		if (!areProfilesReady) return;
 		storeSetProjectFilters(projectFilters);
-	}, [projectFilters, storeSetProjectFilters]);
+	}, [areProfilesReady, projectFilters, storeSetProjectFilters]);
 
 	useEffect(() => {
 		storeSetAuthorFilter(authorFilter);
@@ -182,21 +224,37 @@ export function PullRequestsView({
 	);
 
 	useEffect(() => {
-		if (!areProjectsReady) return;
+		if (!areProfilesReady || !areProjectsReady) return;
 		const availableIds = new Set(projects.map((project) => project.id));
 		const availableFilters = projectFilters.filter((projectId) =>
 			availableIds.has(projectId),
 		);
-		if (availableFilters.length === projectFilters.length) return;
+		if (availableFilters.length === requestedProjectFilters.length) return;
 		cancelPendingSearchNavigation();
-		navigateTo(buildSearch({ projects: availableFilters }));
+		storeSetProjectFilters(availableFilters);
+		// Only replace filters on the current route. Never reconstruct a route
+		// from selectedPrNumber: the Profile navigator may have just left it.
+		void navigate({
+			from: "/pull-requests",
+			search: (previous) => ({
+				...previous,
+				projects: availableFilters.length
+					? availableFilters.join(",")
+					: undefined,
+				...(selectedPrNumber === null ? { project: undefined } : {}),
+			}),
+			replace: true,
+		});
 	}, [
+		areProfilesReady,
 		areProjectsReady,
-		buildSearch,
 		cancelPendingSearchNavigation,
-		navigateTo,
+		navigate,
 		projectFilters,
 		projects,
+		requestedProjectFilters,
+		selectedPrNumber,
+		storeSetProjectFilters,
 	]);
 
 	const handleSearchChange = useCallback(

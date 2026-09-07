@@ -26,13 +26,6 @@ import { homedir } from "node:os";
 import { isAbsolute, relative, resolve, sep } from "node:path";
 import { config } from "dotenv";
 
-// override: true ensures .env values take precedence over inherited env vars
-config({
-	path: resolve(import.meta.dirname, "../../../.env"),
-	override: true,
-	quiet: true,
-});
-
 import { getWorkspaceNameFromHostDbs } from "../src/main/lib/host-db-workspace-name";
 // Import directly — shared/constants.ts would trigger Zod env validation during predev
 import {
@@ -176,6 +169,12 @@ export function resolveWorkspaceIdentity(
 }
 
 export function main() {
+	// override: true ensures .env values take precedence over inherited env vars
+	config({
+		path: resolve(import.meta.dirname, "../../../.env"),
+		override: true,
+		quiet: true,
+	});
 	if (process.platform !== "darwin") {
 		console.log("[patch-dev-protocol] Skipping - not macOS");
 		process.exit(0);

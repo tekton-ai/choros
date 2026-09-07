@@ -16,17 +16,25 @@ import { LuFolderOpen, LuLoaderCircle } from "react-icons/lu";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";
 import { showHostServiceUnavailableToast } from "renderer/lib/host-service-unavailable";
-import { useFinalizeProjectSetup } from "renderer/react-query/projects";
+import {
+	type FinalizedProjectSetupResult,
+	type ProjectSetupResult,
+	useFinalizeProjectSetup,
+} from "renderer/react-query/projects";
+import { useProjectModalRequest } from "renderer/routes/_authenticated/_dashboard/components/add-repository-modals/hooks/use-project-modal-request/use-project-modal-request";
 import { useLocalHostService } from "renderer/routes/_authenticated/providers/local-host-service-provider";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 
 interface EmptyProjectModalProps {
+	requestId: string;
 	open: boolean;
-	onOpenChange: (open: boolean) => void;
-	onSuccess?: (result: { projectId: string }) => void;
+	onOpenChange: (open: boolean, requestId: string) => void;
+	onSuccess?: (result: FinalizedProjectSetupResult, requestId: string) => void;
 	onError?: (message: string) => void;
 }
 
 export function EmptyProjectModal({
+	requestId,
 	open,
 	onOpenChange,
 	onSuccess,
@@ -34,6 +42,8 @@ export function EmptyProjectModal({
 }: EmptyProjectModalProps) {
 	const hostService = useLocalHostService();
 	const finalizeSetup = useFinalizeProjectSetup();
+	const { captureSubmission } = useProfiles();
+	const isCurrentRequest = useProjectModalRequest(requestId, open);
 	const selectDirectory = electronTrpc.window.selectDirectory.useMutation();
 	const { data: homeDir } = electronTrpc.window.getHomeDir.useQuery();
 
@@ -54,7 +64,7 @@ export function EmptyProjectModal({
 	const handleOpenChange = (next: boolean) => {
 		if (!next && working) return;
 		if (!next) reset();
-		onOpenChange(next);
+		onOpenChange(next, requestId);
 	};
 
 	const handleBrowse = async () => {
@@ -63,7 +73,7 @@ export function EmptyProjectModal({
 				title: "Select project location",
 				defaultPath: parentDir || undefined,
 			});
-			if (!result.canceled && result.path) {
+			if (isCurrentRequest(requestId) && !result.canceled && result.path) {
 				setParentDir(result.path);
 			}
 		} catch (err) {
@@ -72,6 +82,8 @@ export function EmptyProjectModal({
 	};
 
 	const createProject = async () => {
+		if (working) return;
+		const profileContext = captureSubmission();
 		const trimmedName = name.trim();
 		const trimmedParent = parentDir.trim();
 		if (!trimmedName) {
@@ -84,24 +96,23 @@ export function EmptyProjectModal({
 		}
 
 		setWorking(true);
+		let result: ProjectSetupResult;
+		let activeHostUrl: string | null = null;
 		try {
-			const activeHostUrl = await hostService.waitForHostReady();
+			activeHostUrl = await hostService.waitForHostReady();
 			if (!activeHostUrl) {
 				showHostServiceUnavailableToast(hostService, {
 					action: "createProject",
 				});
+				if (isCurrentRequest(requestId)) setWorking(false);
 				return;
 			}
 
 			const client = getHostServiceClientByUrl(activeHostUrl);
-			const result = await client.project.create.mutate({
+			result = await client.project.create.mutate({
 				name: trimmedName,
 				mode: { kind: "empty", parentDir: trimmedParent },
 			});
-			finalizeSetup(activeHostUrl, result);
-			onSuccess?.({ projectId: result.projectId });
-			reset();
-			onOpenChange(false);
 		} catch (err) {
 			const raw = rawErrorMessage(err);
 			const isLeakedSql = raw.startsWith("Failed query:");
@@ -114,8 +125,18 @@ export function EmptyProjectModal({
 			} else {
 				toast.error("Could not create project", { description: message });
 			}
-		} finally {
-			setWorking(false);
+			if (isCurrentRequest(requestId)) setWorking(false);
+			return;
+		}
+		const finalized = await finalizeSetup(
+			activeHostUrl,
+			result,
+			profileContext,
+		);
+		onSuccess?.(finalized, requestId);
+		if (isCurrentRequest(requestId)) {
+			reset();
+			onOpenChange(false, requestId);
 		}
 	};
 

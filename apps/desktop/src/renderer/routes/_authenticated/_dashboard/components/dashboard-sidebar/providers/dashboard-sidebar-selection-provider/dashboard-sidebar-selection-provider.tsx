@@ -55,9 +55,28 @@ export function DashboardSidebarSelectionProvider({
 	activeWorkspaceId,
 	children,
 }: DashboardSidebarSelectionProviderProps) {
-	const [selection, setSelection] = useState<WorkspaceSelectionState>(
+	const [storedSelection, setSelection] = useState<WorkspaceSelectionState>(
 		EMPTY_WORKSPACE_SELECTION,
 	);
+	// Derive synchronously as well as pruning stored state below: hidden members
+	// must never reach a bulk action in the render before the effect runs.
+	const selection = useMemo(() => {
+		const selectedIds = storedSelection.selectedIds.filter((id) =>
+			availableWorkspaceIds.has(id),
+		);
+		if (selectedIds.length === storedSelection.selectedIds.length)
+			return storedSelection;
+		if (selectedIds.length === 0) return EMPTY_WORKSPACE_SELECTION;
+		return {
+			...storedSelection,
+			selectedIds,
+			anchorId:
+				storedSelection.anchorId &&
+				availableWorkspaceIds.has(storedSelection.anchorId)
+					? storedSelection.anchorId
+					: selectedIds[0],
+		};
+	}, [storedSelection, availableWorkspaceIds]);
 
 	const clearSelection = useCallback(() => {
 		setSelection(EMPTY_WORKSPACE_SELECTION);
@@ -110,6 +129,7 @@ export function DashboardSidebarSelectionProvider({
 			event: WorkspaceSelectionEvent,
 			options: SelectWorkspaceOptions,
 		): boolean => {
+			if (!availableWorkspaceIds.has(options.workspaceId)) return false;
 			const mode = workspaceSelectionModeFromModifiers(event);
 			if (!mode) {
 				setSelection(EMPTY_WORKSPACE_SELECTION);
@@ -121,13 +141,16 @@ export function DashboardSidebarSelectionProvider({
 			setSelection((current) =>
 				applyWorkspaceSelection(current, {
 					...options,
+					orderedWorkspaceIds: options.orderedWorkspaceIds.filter((id) =>
+						availableWorkspaceIds.has(id),
+					),
 					mode,
 					activeWorkspaceId,
 				}),
 			);
 			return true;
 		},
-		[activeWorkspaceId],
+		[activeWorkspaceId, availableWorkspaceIds],
 	);
 
 	const removeSelectedWorkspaces = useCallback((workspaceIds: string[]) => {

@@ -6,7 +6,7 @@ import {
 } from "@choros/ui/command";
 import { cn } from "@choros/ui/utils";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { useLocation, useNavigate } from "@tanstack/react-router";
+import { useLocation } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { LuGitBranch } from "react-icons/lu";
 import { useHostProjects } from "renderer/hooks/host-projects/use-host-projects";
@@ -15,6 +15,7 @@ import {
 	useRecentlyViewed,
 } from "renderer/routes/_authenticated/_dashboard/components/navigation-controls/components/history-dropdown/hooks/use-recently-viewed";
 import { useHostWorkspaces } from "renderer/routes/_authenticated/providers/host-workspaces-provider";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 import { useFrameStackStore } from "../../core/frames";
 
 export function RecentlyViewedFrame() {
@@ -22,7 +23,7 @@ export function RecentlyViewedFrame() {
 	const recentEntries = useRecentlyViewed(20);
 	const currentPath = useLocation({ select: (loc) => loc.pathname });
 	const setOpen = useFrameStackStore((s) => s.setOpen);
-	const navigate = useNavigate();
+	const { openWorkspace } = useProfiles();
 
 	const { workspaces: hostWorkspaces } = useHostWorkspaces();
 	// Projects are fully local — identity comes from the host fan-out.
@@ -39,22 +40,27 @@ export function RecentlyViewedFrame() {
 		const projectNamesById = new Map(
 			(v2ProjectData ?? []).map((p) => [p.id, p.name]),
 		);
-		// Inner join: drop workspaces whose project isn't synced yet (and
-		// project-less session workspaces).
-		return hostWorkspaces.flatMap((workspace) => {
-			if (workspace.projectId === null) return [];
-			const projectName = projectNamesById.get(workspace.projectId);
-			if (projectName === undefined) return [];
-			return [{ id: workspace.id, projectName, branch: workspace.branch }];
-		});
-	}, [hostWorkspaces, v2ProjectData]);
+		return hostWorkspaces.map((workspace) => ({
+			id: workspace.id,
+			projectName:
+				workspace.projectId === null
+					? i18n._({
+							id: "commandPalette.recentlyViewed.session",
+							message: "Session",
+						})
+					: (projectNamesById.get(workspace.projectId) ??
+						workspace.projectName ??
+						workspace.projectId),
+			branch: workspace.projectId === null ? workspace.name : workspace.branch,
+		}));
+	}, [hostWorkspaces, v2ProjectData, i18n]);
 
 	const filteredEntries = recentEntries.filter((entry) =>
 		v2WorkspaceData.some((workspace) => workspace.id === entry.entityId),
 	);
 
-	const navigateTo = (path: string) => {
-		void navigate({ to: path });
+	const navigateTo = (entry: RecentlyViewedEntry) => {
+		void openWorkspace(entry.entityId, { hostId: entry.hostId });
 		setOpen(false);
 	};
 
@@ -77,7 +83,7 @@ export function RecentlyViewedFrame() {
 						entry={entry}
 						isCurrent={entry.path === currentPath}
 						v2WorkspaceData={v2WorkspaceData}
-						onSelect={() => navigateTo(entry.path)}
+						onSelect={() => navigateTo(entry)}
 					/>
 				))}
 			</CommandGroup>

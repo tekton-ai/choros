@@ -20,6 +20,7 @@ import {
 	LuX,
 } from "react-icons/lu";
 import { useV2UserPreferences } from "renderer/hooks/use-v2-user-preferences";
+import { MoveToProfileMenu } from "renderer/routes/_authenticated/components/move-to-profile-menu";
 
 interface DashboardSidebarProjectContextMenuProps {
 	projectId: string;
@@ -55,6 +56,9 @@ export function DashboardSidebarProjectContextMenu({
 					<Trans id="dashboard.sidebar.projectMenu.rename">Rename</Trans>
 				</ContextMenuItem>
 				<ContextMenuSeparator />
+				<MoveToProfileMenu
+					member={{ kind: "project", projectKey: projectId }}
+				/>
 				<ContextMenuItem onSelect={onOpenWorkItems}>
 					<LuListChecks className="size-4 mr-2" />
 					<Trans id="dashboard.sidebar.projectMenu.issuesAndPullRequests">

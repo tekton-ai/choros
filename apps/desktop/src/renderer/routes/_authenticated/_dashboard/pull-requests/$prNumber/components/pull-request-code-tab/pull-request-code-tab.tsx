@@ -39,6 +39,7 @@ import { normalizeTerminalCommand } from "renderer/lib/terminal/launch-command";
 import { WorkItemDetailState } from "renderer/routes/_authenticated/_dashboard/components/work-item-detail-state";
 import type { AgentTarget } from "renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/use-pane-registry/components/agent-comment-composer/hooks/use-diff-comment-target";
 import { useDiffCodeViewTheme } from "renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/use-pane-registry/components/diff-pane/hooks/use-diff-code-view-theme";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 import { ResizablePanel } from "renderer/screens/main/components/resizable-panel";
 import { useSettings } from "renderer/stores/settings";
 import { useResolvedTheme } from "renderer/stores/theme";
@@ -597,6 +598,8 @@ export function PullRequestCodeTab({
 	});
 	const linkedWorkspaceId = linkedWorkspaceData?.workspaceId ?? null;
 	const { submit: submitWorkspaceCreate } = useWorkspaceCreates();
+	const { captureSubmission, isSubmissionCurrent } = useProfiles();
+	const latestSendRequestId = useRef<string | null>(null);
 
 	// Mirrors DiffPane's split between "send to an existing terminal" and
 	// "create a new agent session", but the PR tab has no fixed workspace to
@@ -613,7 +616,15 @@ export function PullRequestCodeTab({
 			startLine: number;
 			endLine: number;
 			side: AgentPromptFileSide;
+			profileContext: ReturnType<typeof captureSubmission>;
+			submittedComposerVersion: number;
 		}) => {
+			const { profileContext, submittedComposerVersion } = input;
+			const result = {
+				profileContext,
+				submittedComposerVersion,
+				linkedWorkspaceQueryKey,
+			};
 			const text = formatAgentPromptWithFileContext({
 				comment: input.comment,
 				file: {
@@ -634,7 +645,7 @@ export function PullRequestCodeTab({
 					terminalId: input.target.terminalId,
 					data: normalizeTerminalCommand(sanitizePromptForPty(text)),
 				});
-				return;
+				return result;
 			}
 
 			if (linkedWorkspaceId) {
@@ -644,7 +655,7 @@ export function PullRequestCodeTab({
 					agent: input.target.configId,
 					prompt: text,
 				});
-				return;
+				return result;
 			}
 
 			if (!hostId) {
@@ -652,6 +663,7 @@ export function PullRequestCodeTab({
 			}
 			const { completed } = submitWorkspaceCreate({
 				hostId,
+				profileContext,
 				snapshot: {
 					id: crypto.randomUUID(),
 					projectId,
@@ -661,16 +673,25 @@ export function PullRequestCodeTab({
 			});
 			const outcome = await completed;
 			if (!outcome.ok) throw new Error(outcome.error);
+			return result;
 		},
-		onSuccess: () => {
-			void queryClient.invalidateQueries({ queryKey: linkedWorkspaceQueryKey });
+		onSuccess: (result) => {
+			void queryClient.invalidateQueries({
+				queryKey: result.linkedWorkspaceQueryKey,
+			});
 			toast.success(
 				t({
 					id: "dashboard.pullRequests.codeTab.sentToAgent",
 					message: "Sent to agent",
 				}),
 			);
-			closeComposer();
+			if (
+				isSubmissionCurrent(result.profileContext) &&
+				latestSendRequestId.current === result.profileContext.requestId &&
+				composerVersionRef.current === result.submittedComposerVersion
+			) {
+				closeComposer();
+			}
 		},
 		onError: (mutationError) => {
 			toast.error(
@@ -1327,7 +1348,11 @@ export function PullRequestCodeTab({
 										linkedWorkspaceId={linkedWorkspaceId}
 										onCancel={closeComposer}
 										onSubmit={async ({ comment, target }) => {
+											const profileContext = captureSubmission();
+											latestSendRequestId.current = profileContext.requestId;
 											await sendCommentToAgent.mutateAsync({
+												profileContext,
+												submittedComposerVersion: composerVersionRef.current,
 												comment,
 												target,
 												path: metadata.path,

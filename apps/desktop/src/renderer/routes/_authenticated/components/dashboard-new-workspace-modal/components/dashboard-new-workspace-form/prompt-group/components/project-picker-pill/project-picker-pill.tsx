@@ -12,7 +12,7 @@ import { toast } from "@choros/ui/sonner";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { useNavigate } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HiCheck, HiChevronUpDown, HiMiniPlus } from "react-icons/hi2";
 import {
 	LuBox,
@@ -20,12 +20,15 @@ import {
 	LuFolderPlus,
 	LuTriangleAlert,
 } from "react-icons/lu";
+import { useProjectCompletion } from "renderer/react-query/projects/use-finalize-project-setup/use-project-completion";
 import { useFolderFirstImport } from "renderer/routes/_authenticated/_dashboard/components/add-repository-modals/hooks/use-folder-first-import";
 import { ProjectThumbnail } from "renderer/routes/_authenticated/components/project-thumbnail";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 import {
 	useOpenEmptyProjectModal,
 	useOpenNewProjectModal,
 } from "renderer/stores/add-repository-modal";
+import { useNewWorkspaceModalStore } from "renderer/stores/new-workspace-modal";
 import type { ProjectOption } from "../../types";
 import { FormPickerTrigger } from "../form-picker-trigger";
 
@@ -49,6 +52,21 @@ export function ProjectPickerPill({
 	const openEmptyProject = useOpenEmptyProjectModal();
 	const openNewProject = useOpenNewProjectModal();
 	const navigate = useNavigate();
+	const { isProjectVisible } = useProfiles();
+	const { begin, cancel, complete } = useProjectCompletion(onSelectProject);
+	// biome-ignore lint/correctness/useExhaustiveDependencies: selecting another target invalidates the pending project result, even when the cancel callback is stable
+	useEffect(() => {
+		cancel();
+	}, [cancel, selectedProject?.id, isSessionSelected]);
+	useEffect(
+		() =>
+			useNewWorkspaceModalStore.subscribe((state, previous) => {
+				// Dialog content may remain mounted during its close animation.
+				// Cancel synchronously so close/reopen cannot reuse this request.
+				if (state.isOpen !== previous.isOpen) cancel();
+			}),
+		[cancel],
+	);
 	const folderImport = useFolderFirstImport({
 		onError: (message) => {
 			toast.error(
@@ -82,33 +100,41 @@ export function ProjectPickerPill({
 	});
 
 	const handleCreateNewProject = async () => {
+		const request = begin();
 		setOpen(false);
 		const result = await openEmptyProject();
-		if (result) onSelectProject(result.projectId);
+		if (result) complete(request, result);
 	};
 
 	const handleCloneProject = async () => {
+		const request = begin();
 		setOpen(false);
 		const result = await openNewProject();
-		if (result) onSelectProject(result.projectId);
+		if (result) complete(request, result);
 	};
 
 	const handleImportProject = async () => {
+		const request = begin();
 		setOpen(false);
 		const result = await folderImport.start();
-		if (result) {
+		if (result && complete(request, result)) {
 			toast.success(
 				t({
 					id: "dashboard.newWorkspaceModal.projectPicker.importSucceeded",
 					message: "Project imported and selected.",
 				}),
 			);
-			onSelectProject(result.projectId);
 		}
 	};
 
 	return (
-		<Popover open={open} onOpenChange={setOpen}>
+		<Popover
+			open={open}
+			onOpenChange={(next) => {
+				if (next) cancel();
+				setOpen(next);
+			}}
+		>
 			<PopoverTrigger asChild>
 				<FormPickerTrigger className="max-w-[140px]">
 					{selectedProject && (
@@ -158,6 +184,7 @@ export function ProjectPickerPill({
 							<CommandItem
 								value="no-project-session"
 								onSelect={() => {
+									cancel();
 									onSelectProject(null);
 									setOpen(false);
 								}}
@@ -175,37 +202,40 @@ export function ProjectPickerPill({
 								</span>
 								{isSessionSelected && <HiCheck className="size-4 shrink-0" />}
 							</CommandItem>
-							{projects.map((project) => (
-								<CommandItem
-									key={project.id}
-									value={project.name}
-									onSelect={() => {
-										onSelectProject(project.id);
-										setOpen(false);
-									}}
-								>
-									<ProjectThumbnail
-										projectName={project.name}
-										iconUrl={project.iconUrl}
-									/>
-									<span className="flex-1 truncate">{project.name}</span>
-									{project.needsSetup === true && (
-										<Tooltip>
-											<TooltipTrigger asChild>
-												<LuTriangleAlert className="size-3.5 shrink-0 text-amber-500" />
-											</TooltipTrigger>
-											<TooltipContent>
-												<Trans id="dashboard.newWorkspaceModal.projectPicker.needsSetup">
-													Not set up on this host
-												</Trans>
-											</TooltipContent>
-										</Tooltip>
-									)}
-									{project.id === selectedProject?.id && (
-										<HiCheck className="size-4 shrink-0" />
-									)}
-								</CommandItem>
-							))}
+							{projects
+								.filter((project) => isProjectVisible(project.id))
+								.map((project) => (
+									<CommandItem
+										key={project.id}
+										value={project.name}
+										onSelect={() => {
+											cancel();
+											onSelectProject(project.id);
+											setOpen(false);
+										}}
+									>
+										<ProjectThumbnail
+											projectName={project.name}
+											iconUrl={project.iconUrl}
+										/>
+										<span className="flex-1 truncate">{project.name}</span>
+										{project.needsSetup === true && (
+											<Tooltip>
+												<TooltipTrigger asChild>
+													<LuTriangleAlert className="size-3.5 shrink-0 text-amber-500" />
+												</TooltipTrigger>
+												<TooltipContent>
+													<Trans id="dashboard.newWorkspaceModal.projectPicker.needsSetup">
+														Not set up on this host
+													</Trans>
+												</TooltipContent>
+											</Tooltip>
+										)}
+										{project.id === selectedProject?.id && (
+											<HiCheck className="size-4 shrink-0" />
+										)}
+									</CommandItem>
+								))}
 						</CommandGroup>
 					</CommandList>
 					<CommandSeparator alwaysRender />
