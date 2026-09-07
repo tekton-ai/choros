@@ -12334,6 +12334,321 @@ msgid "shared.schedule.weeklyAt"
 msgstr "Týdně v {time}"
 
 #. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.allReleases"
+msgstr "Všechna vydání"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.chooseDownload"
+msgstr "Vybrat verzi ke stažení"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.connectAgents"
+msgstr "Připojit agenty"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.downloadChoros"
+msgstr "Stáhnout Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.getStarted"
+msgstr "Instalace a první kroky"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.prepareWorkspace"
+msgstr "Připravit pracovní prostor"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.privacyNotice"
+msgstr "Přečíst informace o ochraně soukromí"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.providerGuide"
+msgstr "Přečíst průvodce poskytovateli"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.readDocs"
+msgstr "Přečíst dokumentaci"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.skipToContent"
+msgstr "Přejít na obsah"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.viewFullWorkspace"
+msgstr "Zobrazit celou ilustraci"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.workspaceGuide"
+msgstr "Přečíst průvodce pracovními prostory"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.appleSilicon"
+msgstr "macOS · Apple Silicon"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.appleSiliconDetail"
+msgstr "Instalační soubor DMG · ARM64"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.description"
+msgstr "Desktopová aplikace pro váš vývojářský pracovní postup. Vyberte si verzi pro svůj počítač."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.eyebrow"
+msgstr "Udělejte místo svému dalšímu nápadu"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.intel"
+msgstr "macOS · Intel"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.intelDetail"
+msgstr "Instalační soubor DMG · x64"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.linux"
+msgstr "Linux · x86_64"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.linuxDetail"
+msgstr "AppImage pro počítače s architekturou x86_64"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.agentsAnswer"
+msgstr "Vyberte si z programovacích agentů dostupných v nastavení Choros. Každý agent používá vlastní účet a přihlašovací údaje u svého poskytovatele; Choros spojuje jejich práci v jednom pracovním prostoru."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.agentsQuestion"
+msgstr "Které programovací agenty můžu používat?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.dataAnswer"
+msgstr "Projekty a soubory pracovních prostorů se spravují na počítači, na kterém běží Choros. Obsah odeslaný poskytovateli programovacího agenta se zpracovává v rámci účtu u daného poskytovatele a podle jeho zásad. Před sdílením citlivého kódu zkontrolujte nastavení svého poskytovatele."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.dataQuestion"
+msgstr "Kam se posílá můj kód?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.eyebrow"
+msgstr "Než začnete"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.platformsAnswer"
+msgstr "Aktuální desktopové verze jsou ke stažení pro macOS na Apple Silicon nebo Intel a pro Linux x86_64. Na telefonu si můžete prohlížet dokumentaci a vybrat verzi ke stažení pro svůj počítač."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.platformsQuestion"
+msgstr "Pro které platformy je aplikace ke stažení?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.repositoriesAnswer"
+msgstr "Ano. Pracujte se svým stávajícím Git repozitářem a vývojářskými nástroji. Skripty pro přípravu pracovních prostorů mohou nainstalovat závislosti a připravit místní konfiguraci pro každý nový worktree."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.repositoriesQuestion"
+msgstr "Můžu použít stávající repozitář?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.title"
+msgstr "Pár věcí, které je dobré vědět."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.footer.credit"
+msgstr "Choros / Tekton AI"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.footer.description"
+msgstr "Přehledný prostor pro práci, která vás čeká."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.description"
+msgstr "Spouštějte programovací agenty paralelně, dejte každému úkolu vlastní Git worktree a kontrolujte změny. Vše v jednom desktopovém pracovním prostoru."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.eyebrow"
+msgstr "Pracovní prostor pro programovací agenty"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.title"
+msgstr "Vaši agenti. Jeden přehledný pracovní prostor."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.home.title"
+msgstr "Jeden přehledný pracovní prostor pro vaše programovací agenty"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.agents"
+msgstr "Ilustrace tří nezávislých úkolů, na kterých agenti pracují paralelně."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.changes"
+msgstr "Ilustrace přidaného a odebraného kódu, který míří ke kontrole."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.overview"
+msgstr "Ilustrace pracovního postupu: jeden projekt se větví do nezávislých pracovních prostorů agentů a jejich změny se pak shromažďují ke kontrole."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.overviewCaption"
+msgstr "Jeden projekt. Nezávislé pracovní prostory. Společný přehled. Pracovní postup v ilustraci."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.workspaces"
+msgstr "Ilustrace samostatných pracovních prostorů, které se větví z jednoho projektu."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.meta.description"
+msgstr "Choros je desktopový pracovní prostor pro programovací agenty. Spouštějte úkoly paralelně v izolovaných Git worktree, sledujte průběh a kontrolujte změny kódu na jednom místě."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.motion.enabled"
+msgstr "Animovat diagramy"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.changelog"
+msgstr "Přehled změn"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.docs"
+msgstr "Dokumentace"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.download"
+msgstr "Stáhnout"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.footer"
+msgstr "Navigace v zápatí"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.github"
+msgstr "GitHub"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.home"
+msgstr "Úvodní stránka Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.legal"
+msgstr "Právní informace"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.primary"
+msgstr "Hlavní navigace"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.privacy"
+msgstr "Soukromí"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.product"
+msgstr "Produkt"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.status"
+msgstr "Stav služeb"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.terms"
+msgstr "Podmínky používání"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.eyebrow"
+msgstr "Přehlednější způsob práce"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.isolationDescription"
+msgstr "Každý pracovní prostor má vlastní Git worktree, větev a kontext souborů. Udržujte paralelní změny oddělené a přitom používejte stávající nástroje a příkazy pro nastavení svého repozitáře."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.isolationTitle"
+msgstr "Dejte každému úkolu vlastní prostor."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.parallelDescription"
+msgstr "Spouštějte agenty na samostatných úkolech, aniž by se váš počítač zaplnil terminály. Sledujte průběh, pošlete doplňující pokyny a věnujte se dalšímu vláknu."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.parallelTitle"
+msgstr "Pracujte paralelně."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.reviewDescription"
+msgstr "Přejděte od práce agenta ke konkrétním změnám. Prohlédněte si rozdíly vedle svého pracovního prostoru, zkontrolujte podrobnosti a rozhodněte, co je připravené ke sloučení."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.reviewTitle"
+msgstr "Před sloučením zkontrolujte změny."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.title"
+msgstr "Od prvního zadání po finální přehled změn."
+
+#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/stores/workspace-creates/use-workspace-creates.ts
 msgid "stores.workspaceCreates.defaultName"
 msgstr "Nový pracovní prostor"

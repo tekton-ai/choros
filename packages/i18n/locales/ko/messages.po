@@ -12334,6 +12334,321 @@ msgid "shared.schedule.weeklyAt"
 msgstr "매주 {time}"
 
 #. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.allReleases"
+msgstr "모든 릴리스"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.chooseDownload"
+msgstr "다운로드할 버전 선택"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.connectAgents"
+msgstr "에이전트 연결"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.downloadChoros"
+msgstr "Choros 다운로드"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.getStarted"
+msgstr "설치 및 시작하기"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.prepareWorkspace"
+msgstr "워크스페이스 준비"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.privacyNotice"
+msgstr "개인정보 처리 안내 읽기"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.providerGuide"
+msgstr "제공업체 가이드 읽기"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.readDocs"
+msgstr "문서 읽기"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.skipToContent"
+msgstr "본문으로 건너뛰기"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.viewFullWorkspace"
+msgstr "전체 일러스트 보기"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.workspaceGuide"
+msgstr "워크스페이스 가이드 읽기"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.appleSilicon"
+msgstr "macOS · Apple Silicon"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.appleSiliconDetail"
+msgstr "DMG 설치 파일 · ARM64"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.description"
+msgstr "개발 작업 흐름을 위한 데스크톱 앱입니다. 사용 중인 컴퓨터에 맞는 빌드를 선택하세요."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.eyebrow"
+msgstr "다음 아이디어를 위한 공간"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.intel"
+msgstr "macOS · Intel"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.intelDetail"
+msgstr "DMG 설치 파일 · x64"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.linux"
+msgstr "Linux · x86_64"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.linuxDetail"
+msgstr "x86_64 데스크톱용 AppImage"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.agentsAnswer"
+msgstr "Choros 설정에서 사용 가능한 코딩 에이전트를 선택하세요. 각 에이전트는 해당 제공업체의 계정과 인증 정보를 사용하며, Choros는 이들의 작업을 하나의 워크스페이스에 모아 줍니다."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.agentsQuestion"
+msgstr "어떤 코딩 에이전트를 사용할 수 있나요?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.dataAnswer"
+msgstr "프로젝트와 워크스페이스 파일은 Choros가 실행되는 컴퓨터에서 관리됩니다. 코딩 에이전트 제공업체로 전송되는 콘텐츠는 해당 제공업체의 계정과 정책에 따라 처리됩니다. 민감한 코드를 공유하기 전에 제공업체 설정을 확인하세요."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.dataQuestion"
+msgstr "내 코드는 어디에서 처리되나요?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.eyebrow"
+msgstr "시작하기 전에"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.platformsAnswer"
+msgstr "현재 Apple Silicon 또는 Intel 기반 macOS와 Linux x86_64용 데스크톱 앱을 다운로드할 수 있습니다. 휴대폰에서는 문서를 살펴보고 데스크톱 컴퓨터용 다운로드를 선택할 수 있습니다."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.platformsQuestion"
+msgstr "어떤 플랫폼용으로 다운로드할 수 있나요?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.repositoriesAnswer"
+msgstr "네. 기존 Git 리포지토리와 개발 도구를 그대로 사용할 수 있습니다. 워크스페이스 설정 스크립트로 새 worktree마다 의존성을 설치하고 로컬 설정을 준비할 수 있습니다."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.repositoriesQuestion"
+msgstr "기존 리포지토리를 사용할 수 있나요?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.title"
+msgstr "알아두면 좋은 몇 가지."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.footer.credit"
+msgstr "Choros / Tekton AI"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.footer.description"
+msgstr "앞으로의 작업을 위한 깔끔한 공간."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.description"
+msgstr "코딩 에이전트를 병렬로 실행하고, 각 작업에 독립적인 Git worktree를 배정하고, 변경 사항을 검토하세요. 모두 하나의 데스크톱 워크스페이스에서 할 수 있습니다."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.eyebrow"
+msgstr "코딩 에이전트를 위한 워크스페이스"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.title"
+msgstr "당신의 에이전트를 하나의 깔끔한 워크스페이스에."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.home.title"
+msgstr "코딩 에이전트를 위한 하나의 깔끔한 워크스페이스"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.agents"
+msgstr "서로 독립적인 에이전트 작업 세 개가 병렬로 진행되는 모습을 보여 주는 일러스트."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.changes"
+msgstr "추가 및 삭제된 코드가 코드 리뷰로 모이는 모습을 보여 주는 일러스트."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.overview"
+msgstr "작업 흐름 일러스트: 하나의 프로젝트가 독립적인 에이전트 워크스페이스로 나뉘고, 각 워크스페이스의 변경 사항이 검토를 위해 모입니다."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.overviewCaption"
+msgstr "하나의 프로젝트. 독립적인 워크스페이스. 함께 보는 전체 흐름. 그림으로 살펴보는 작업 흐름."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.workspaces"
+msgstr "하나의 프로젝트에서 독립적인 워크스페이스가 나뉘는 모습을 보여 주는 일러스트."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.meta.description"
+msgstr "Choros는 코딩 에이전트를 위한 데스크톱 워크스페이스입니다. 격리된 Git worktree에서 작업을 병렬로 실행하고, 진행 상황을 확인하고, 코드 변경 사항을 한곳에서 검토하세요."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.motion.enabled"
+msgstr "다이어그램 애니메이션"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.changelog"
+msgstr "변경 내역"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.docs"
+msgstr "문서"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.download"
+msgstr "다운로드"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.footer"
+msgstr "바닥글 탐색"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.github"
+msgstr "GitHub"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.home"
+msgstr "Choros 홈"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.legal"
+msgstr "법적 고지"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.primary"
+msgstr "주요 탐색"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.privacy"
+msgstr "개인정보 보호"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.product"
+msgstr "제품"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.status"
+msgstr "서비스 상태"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.terms"
+msgstr "이용 약관"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.eyebrow"
+msgstr "더 명확한 작업 방식"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.isolationDescription"
+msgstr "각 워크스페이스에는 독립적인 Git worktree, 브랜치, 파일 컨텍스트가 있습니다. 리포지토리의 기존 도구와 설정 명령을 그대로 사용하면서 병렬 작업의 변경 사항을 서로 분리해 유지하세요."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.isolationTitle"
+msgstr "각 작업에 독립적인 공간을."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.parallelDescription"
+msgstr "데스크톱을 터미널로 가득 채우지 않고도 에이전트마다 별도의 작업을 시작할 수 있습니다. 진행 상황을 확인하고, 추가 지시를 보내고, 다음 작업을 이어 가세요."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.parallelTitle"
+msgstr "작업을 병렬로 진행하세요."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.reviewDescription"
+msgstr "에이전트의 작업에서 실제 변경 사항으로 시선을 옮겨 보세요. 워크스페이스 옆에서 차이점을 읽고 세부 내용을 확인하며 병합할 준비가 된 변경 사항을 판단하세요."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.reviewTitle"
+msgstr "병합하기 전에 검토하세요."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.title"
+msgstr "첫 프롬프트부터 최종 변경 사항까지."
+
+#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/stores/workspace-creates/use-workspace-creates.ts
 msgid "stores.workspaceCreates.defaultName"
 msgstr "새 워크스페이스"

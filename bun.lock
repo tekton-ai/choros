@@ -285,6 +285,9 @@
     "apps/site": {
       "name": "@choros/site",
       "version": "0.0.1",
+      "dependencies": {
+        "@choros/i18n": "workspace:*",
+      },
       "devDependencies": {
         "@choros/typescript": "workspace:*",
         "@types/bun": "1.3.14",

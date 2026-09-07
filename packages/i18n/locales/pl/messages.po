@@ -12334,6 +12334,321 @@ msgid "shared.schedule.weeklyAt"
 msgstr "Co tydzień o {time}"
 
 #. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.allReleases"
+msgstr "Wszystkie wydania"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.chooseDownload"
+msgstr "Wybierz wersję do pobrania"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.connectAgents"
+msgstr "Połącz swoich agentów"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.downloadChoros"
+msgstr "Pobierz Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.getStarted"
+msgstr "Instalacja i pierwsze kroki"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.prepareWorkspace"
+msgstr "Przygotuj swój obszar roboczy"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.privacyNotice"
+msgstr "Przeczytaj informacje o prywatności"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.providerGuide"
+msgstr "Przeczytaj przewodnik po dostawcach"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.readDocs"
+msgstr "Przeczytaj dokumentację"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.skipToContent"
+msgstr "Przejdź do treści"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.viewFullWorkspace"
+msgstr "Zobacz pełną ilustrację"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.workspaceGuide"
+msgstr "Przeczytaj przewodnik po obszarach roboczych"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.appleSilicon"
+msgstr "macOS · Apple Silicon"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.appleSiliconDetail"
+msgstr "Instalator DMG · ARM64"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.description"
+msgstr "Aplikacja komputerowa dopasowana do Twojej pracy nad kodem. Wybierz wersję dla swojego komputera."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.eyebrow"
+msgstr "Zrób miejsce na kolejny pomysł"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.intel"
+msgstr "macOS · Intel"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.intelDetail"
+msgstr "Instalator DMG · x64"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.linux"
+msgstr "Linux · x86_64"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.linuxDetail"
+msgstr "AppImage dla komputerów x86_64"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.agentsAnswer"
+msgstr "Wybierz spośród agentów programistycznych dostępnych w ustawieniach Choros. Każdy agent korzysta z własnego konta i danych logowania u swojego dostawcy, a Choros łączy ich pracę w jednym obszarze roboczym."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.agentsQuestion"
+msgstr "Z jakich agentów programistycznych mogę korzystać?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.dataAnswer"
+msgstr "Projekty i pliki obszarów roboczych są zarządzane na komputerze, na którym działa Choros. Treści wysyłane do dostawcy agenta programistycznego są przetwarzane w ramach konta u tego dostawcy i zgodnie z jego zasadami. Przed udostępnieniem poufnego kodu sprawdź ustawienia swojego dostawcy."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.dataQuestion"
+msgstr "Dokąd trafia mój kod?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.eyebrow"
+msgstr "Zanim zaczniesz"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.platformsAnswer"
+msgstr "Aktualne wersje aplikacji komputerowej są dostępne do pobrania dla macOS na Apple Silicon lub Intel oraz dla Linux x86_64. Na telefonie możesz przeglądać dokumentację i wybrać wersję do pobrania na swój komputer."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.platformsQuestion"
+msgstr "Na jakie platformy mogę pobrać aplikację?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.repositoriesAnswer"
+msgstr "Tak. Korzystaj ze swojego istniejącego repozytorium Git i narzędzi programistycznych. Skrypty konfiguracji obszaru roboczego mogą instalować zależności i przygotowywać lokalną konfigurację dla każdego nowego worktree."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.repositoriesQuestion"
+msgstr "Czy mogę użyć istniejącego repozytorium?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.title"
+msgstr "Kilka rzeczy, które warto wiedzieć."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.footer.credit"
+msgstr "Choros / Tekton AI"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.footer.description"
+msgstr "Przejrzysta przestrzeń na pracę, która przed Tobą."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.description"
+msgstr "Uruchamiaj agentów programistycznych równolegle, przydziel każdemu zadaniu osobny worktree Git i przeglądaj zmiany. Wszystko w jednym obszarze roboczym na komputerze."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.eyebrow"
+msgstr "Obszar roboczy dla agentów programistycznych"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.title"
+msgstr "Twoi agenci. Jeden przejrzysty obszar roboczy."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.home.title"
+msgstr "Jeden przejrzysty obszar roboczy dla Twoich agentów programistycznych"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.agents"
+msgstr "Ilustracja trzech niezależnych zadań wykonywanych równolegle przez agentów."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.changes"
+msgstr "Ilustracja dodanych i usuniętych fragmentów kodu trafiających do przeglądu."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.overview"
+msgstr "Ilustracja przebiegu pracy: jeden projekt rozgałęzia się na niezależne obszary robocze agentów, a następnie ich zmiany trafiają do wspólnego przeglądu."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.overviewCaption"
+msgstr "Jeden projekt. Niezależne obszary robocze. Wspólny widok. Przebieg pracy na ilustracji."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.workspaces"
+msgstr "Ilustracja osobnych obszarów roboczych rozgałęziających się z jednego projektu."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.meta.description"
+msgstr "Choros to obszar roboczy dla agentów programistycznych w aplikacji komputerowej. Uruchamiaj zadania równolegle w odizolowanych worktree Git, śledź postępy i przeglądaj zmiany w kodzie w jednym miejscu."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.motion.enabled"
+msgstr "Animuj diagramy"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.changelog"
+msgstr "Historia zmian"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.docs"
+msgstr "Dokumentacja"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.download"
+msgstr "Pobierz"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.footer"
+msgstr "Nawigacja w stopce"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.github"
+msgstr "GitHub"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.home"
+msgstr "Strona główna Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.legal"
+msgstr "Informacje prawne"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.primary"
+msgstr "Nawigacja główna"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.privacy"
+msgstr "Prywatność"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.product"
+msgstr "Produkt"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.status"
+msgstr "Status usług"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.terms"
+msgstr "Warunki korzystania"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.eyebrow"
+msgstr "Bardziej przejrzysty sposób pracy"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.isolationDescription"
+msgstr "Każdy obszar roboczy ma własny worktree Git, gałąź i kontekst plików. Oddzielaj równoległe zmiany, korzystając z istniejących narzędzi i poleceń konfiguracji repozytorium."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.isolationTitle"
+msgstr "Daj każdemu zadaniu własną przestrzeń."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.parallelDescription"
+msgstr "Uruchamiaj agentów do osobnych zadań bez zapełniania pulpitu terminalami. Sprawdzaj postępy, wysyłaj dodatkowe instrukcje i przechodź do kolejnego wątku."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.parallelTitle"
+msgstr "Pracuj równolegle."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.reviewDescription"
+msgstr "Przejdź od pracy agenta do konkretnych zmian. Przeglądaj różnice obok swojego obszaru roboczego, sprawdzaj szczegóły i decyduj, co jest gotowe do scalenia."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.reviewTitle"
+msgstr "Sprawdź zmiany przed scaleniem."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.title"
+msgstr "Od pierwszego polecenia do końcowego przeglądu zmian."
+
+#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/stores/workspace-creates/use-workspace-creates.ts
 msgid "stores.workspaceCreates.defaultName"
 msgstr "Nowy obszar roboczy"

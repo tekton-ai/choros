@@ -12334,6 +12334,321 @@ msgid "shared.schedule.weeklyAt"
 msgstr "Mingguan pukul {time}"
 
 #. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.allReleases"
+msgstr "Semua rilis"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.chooseDownload"
+msgstr "Pilih versi yang ingin diunduh"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.connectAgents"
+msgstr "Hubungkan agen Anda"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.downloadChoros"
+msgstr "Unduh Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.getStarted"
+msgstr "Instalasi dan langkah awal"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.prepareWorkspace"
+msgstr "Siapkan ruang kerja Anda"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.privacyNotice"
+msgstr "Baca pemberitahuan privasi"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.providerGuide"
+msgstr "Baca panduan penyedia"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.readDocs"
+msgstr "Baca dokumentasi"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.skipToContent"
+msgstr "Langsung ke konten"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.viewFullWorkspace"
+msgstr "Lihat ilustrasi lengkap"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.action.workspaceGuide"
+msgstr "Baca panduan ruang kerja"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.appleSilicon"
+msgstr "macOS · Apple Silicon"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.appleSiliconDetail"
+msgstr "Penginstal DMG · ARM64"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.description"
+msgstr "Aplikasi desktop untuk alur kerja pengembangan Anda. Pilih versi yang sesuai dengan komputer Anda."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.eyebrow"
+msgstr "Beri ruang untuk ide Anda berikutnya"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.intel"
+msgstr "macOS · Intel"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.intelDetail"
+msgstr "Penginstal DMG · x64"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.linux"
+msgstr "Linux · x86_64"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.download.linuxDetail"
+msgstr "AppImage untuk komputer desktop x86_64"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.agentsAnswer"
+msgstr "Pilih agen pemrograman yang tersedia di pengaturan Choros. Setiap agen menggunakan akun dan kredensial penyedianya masing-masing; Choros menyatukan pekerjaan mereka dalam ruang kerja yang sama."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.agentsQuestion"
+msgstr "Agen pemrograman apa saja yang bisa saya gunakan?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.dataAnswer"
+msgstr "Proyek dan berkas ruang kerja dikelola di komputer yang menjalankan Choros. Konten yang dikirim ke penyedia agen pemrograman diproses melalui akun Anda di penyedia tersebut dan sesuai dengan kebijakannya. Tinjau pengaturan penyedia sebelum membagikan kode sensitif."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.dataQuestion"
+msgstr "Ke mana kode saya dikirim?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.eyebrow"
+msgstr "Sebelum Anda mulai"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.platformsAnswer"
+msgstr "Saat ini, aplikasi desktop tersedia untuk diunduh bagi macOS dengan Apple Silicon atau Intel, serta Linux x86_64. Dari ponsel, Anda dapat membaca dokumentasi dan memilih versi untuk komputer Anda."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.platformsQuestion"
+msgstr "Untuk platform apa saja aplikasi ini tersedia?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.repositoriesAnswer"
+msgstr "Ya. Gunakan repositori Git dan alat pengembangan yang sudah Anda miliki. Skrip penyiapan ruang kerja dapat memasang dependensi dan menyiapkan konfigurasi lokal untuk setiap worktree baru."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.repositoriesQuestion"
+msgstr "Bisakah saya menggunakan repositori yang sudah ada?"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.faq.title"
+msgstr "Beberapa hal yang perlu Anda ketahui."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.footer.credit"
+msgstr "Choros / Tekton AI"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.footer.description"
+msgstr "Ruang yang tertata untuk pekerjaan selanjutnya."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.description"
+msgstr "Jalankan agen pemrograman secara paralel, berikan Git worktree tersendiri untuk setiap tugas, lalu tinjau perubahannya. Semua dalam satu ruang kerja desktop."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.eyebrow"
+msgstr "Ruang kerja untuk agen pemrograman"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.hero.title"
+msgstr "Agen Anda. Satu ruang kerja yang tertata."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.home.title"
+msgstr "Satu ruang kerja yang tertata untuk agen pemrograman Anda"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.agents"
+msgstr "Ilustrasi tiga tugas agen yang berjalan secara mandiri dan paralel."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.changes"
+msgstr "Ilustrasi penambahan dan penghapusan yang disatukan untuk peninjauan kode."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.overview"
+msgstr "Ilustrasi alur kerja: satu proyek bercabang menjadi ruang kerja agen yang mandiri, lalu menyatukan perubahan mereka untuk ditinjau."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.overviewCaption"
+msgstr "Satu proyek. Ruang kerja mandiri. Tampilan bersama. Ilustrasi alur kerja."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.image.workspaces"
+msgstr "Ilustrasi ruang kerja terpisah yang bercabang dari satu proyek."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.meta.description"
+msgstr "Choros adalah ruang kerja desktop untuk agen pemrograman. Jalankan tugas secara paralel dalam Git worktree yang terisolasi, pantau kemajuan, dan tinjau perubahan kode di satu tempat."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.motion.enabled"
+msgstr "Animasikan diagram"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.changelog"
+msgstr "Catatan perubahan"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.docs"
+msgstr "Dokumentasi"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.download"
+msgstr "Unduh"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.footer"
+msgstr "Navigasi bagian bawah halaman"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.github"
+msgstr "GitHub"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.home"
+msgstr "Beranda Choros"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.legal"
+msgstr "Informasi hukum"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.primary"
+msgstr "Navigasi utama"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.privacy"
+msgstr "Privasi"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.product"
+msgstr "Produk"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.status"
+msgstr "Status layanan"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.nav.terms"
+msgstr "Ketentuan penggunaan"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.eyebrow"
+msgstr "Cara kerja yang lebih tertata"
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.isolationDescription"
+msgstr "Setiap ruang kerja memiliki Git worktree, cabang, dan konteks berkasnya sendiri. Pisahkan perubahan yang dikerjakan secara paralel sambil tetap menggunakan alat dan perintah penyiapan yang sudah ada di repositori Anda."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.isolationTitle"
+msgstr "Berikan ruang tersendiri untuk setiap tugas."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.parallelDescription"
+msgstr "Mulai agen pada tugas-tugas terpisah tanpa memenuhi layar Anda dengan jendela terminal. Periksa kemajuan, kirim instruksi lanjutan, lalu beralih ke pekerjaan berikutnya."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.parallelTitle"
+msgstr "Kerjakan tugas secara paralel."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.reviewDescription"
+msgstr "Beralih dari pekerjaan agen ke perubahan yang benar-benar dibuat. Baca perbedaan kode di samping ruang kerja Anda, periksa detailnya, dan tentukan mana yang siap digabungkan."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.reviewTitle"
+msgstr "Tinjau sebelum menggabungkan."
+
+#. js-lingui-explicit-id
+#: ../../apps/site/src/site.ts
+msgid "site.workflow.title"
+msgstr "Dari instruksi pertama hingga perbedaan kode terakhir."
+
+#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/stores/workspace-creates/use-workspace-creates.ts
 msgid "stores.workspaceCreates.defaultName"
 msgstr "Workspace baru"

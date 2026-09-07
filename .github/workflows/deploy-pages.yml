@@ -5,6 +5,12 @@ on:
     branches: [main]
     paths:
       - apps/site/**
+      - packages/i18n/**
+      - package.json
+      - bun.lock
+      - bunfig.toml
+      - lingui.config.ts
+      - patches/**
       - .bun-version
       - .github/workflows/deploy-pages.yml
   workflow_dispatch:
@@ -28,6 +34,9 @@ jobs:
         uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
         with:
           bun-version-file: .bun-version
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile --ignore-scripts
 
       - name: Configure Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
