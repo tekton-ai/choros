@@ -39,7 +39,7 @@
     },
     "apps/desktop": {
       "name": "@choros/desktop",
-      "version": "0.1.2",
+      "version": "0.1.4",
       "dependencies": {
         "@ast-grep/napi": "0.41.1",
         "@choros/agent-setup": "workspace:*",
@@ -371,7 +371,7 @@
     },
     "packages/cli": {
       "name": "@choros/cli",
-      "version": "0.1.2",
+      "version": "0.1.4",
       "dependencies": {
         "@choros/cli-framework": "workspace:*",
         "@choros/host-service": "workspace:*",
@@ -437,7 +437,7 @@
     },
     "packages/host-service": {
       "name": "@choros/host-service",
-      "version": "0.1.2",
+      "version": "0.1.4",
       "dependencies": {
         "@choros/agent-setup": "workspace:*",
         "@choros/chat": "workspace:*",
