@@ -12,6 +12,7 @@ import {
 } from "renderer/routes/_authenticated/providers/collections-provider/dashboard-sidebar-local";
 import { useHostWorkspaces } from "renderer/routes/_authenticated/providers/host-workspaces-provider";
 import { useLocalHostService } from "renderer/routes/_authenticated/providers/local-host-service-provider";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 import {
 	deriveTagFolders,
 	useTagFolderContext,
@@ -32,6 +33,10 @@ import {
 	getDashboardSidebarPullRequestQueryKey,
 	type PullRequestQueryTarget,
 } from "./derive-pull-request-query-targets";
+import {
+	getDashboardSidebarStatusWorkspaces,
+	projectDashboardSidebar,
+} from "./project-dashboard-sidebar";
 import { createPullRequestRefreshGate } from "./pull-request-refresh-cooldown";
 
 const MAIN_WORKSPACE_TAB_ORDER = Number.MIN_SAFE_INTEGER;
@@ -161,6 +166,7 @@ function useStableDashboardSidebarProjects(
 
 export function useDashboardSidebarData() {
 	const collections = useCollections();
+	const { isProjectVisible, isWorkspaceVisible } = useProfiles();
 	const { machineId, activeHostUrl } = useLocalHostService();
 	const { toggleProjectCollapsed } = useDashboardSidebarState();
 	const queryClient = useQueryClient();
@@ -529,7 +535,6 @@ export function useDashboardSidebarData() {
 		[pullRequestsByWorkspaceId, sessionRows],
 	);
 	const sessions = useJsonStable(computedSessions);
-	const sessionWorkspaces = sessions.orderedWorkspaces;
 
 	const computedPinnedWorkspaces = useMemo<DashboardSidebarPinnedWorkspace[]>(
 		() =>
@@ -541,13 +546,31 @@ export function useDashboardSidebarData() {
 		[pinnedRows, pullRequestsByWorkspaceId, sidebarProjects],
 	);
 	const pinnedWorkspaces = useJsonStable(computedPinnedWorkspaces);
+	const projection = useMemo(
+		() =>
+			projectDashboardSidebar({
+				groups,
+				pinnedWorkspaces,
+				sessions,
+				isProjectVisible,
+				isWorkspaceVisible,
+			}),
+		[groups, pinnedWorkspaces, sessions, isProjectVisible, isWorkspaceVisible],
+	);
+	const computedStatusWorkspaces = useMemo(
+		() =>
+			getDashboardSidebarStatusWorkspaces({
+				groups,
+				pinnedWorkspaces,
+				sessions,
+			}),
+		[groups, pinnedWorkspaces, sessions],
+	);
+	const statusWorkspaces = useJsonStable(computedStatusWorkspaces);
 
 	return {
-		groups,
-		pinnedWorkspaces,
-		sessionWorkspaces,
-		sessionTagGroups: sessions.tagGroups,
-		ungroupedSessionWorkspaces: sessions.ungroupedWorkspaces,
+		...projection,
+		statusWorkspaces,
 		refreshWorkspacePullRequest,
 		toggleProjectCollapsed,
 	};

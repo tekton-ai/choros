@@ -6,12 +6,12 @@ import {
 } from "@choros/ui/command";
 import { cn } from "@choros/ui/utils";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { useLocation, useNavigate } from "@tanstack/react-router";
+import { useLocation } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { CgLaptop } from "react-icons/cg";
 import { LuLaptop, LuMonitor } from "react-icons/lu";
-import { navigateToV2Workspace } from "renderer/routes/_authenticated/_dashboard/utils/workspace-navigation";
 import { useAccessibleV2Workspaces } from "renderer/routes/_authenticated/_dashboard/v2-workspaces/hooks/use-accessible-v2-workspaces";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 import { getV2WorkspaceDisplayName } from "renderer/utils/get-v2-workspace-display-name";
 import { useFrameStackStore } from "../../core/frames";
 import { useCommandPaletteQuery } from "../command-palette/command-palette";
@@ -30,7 +30,7 @@ function V2WorkspaceList({ query }: { query: string }) {
 		searchQuery: query,
 	});
 	const currentPath = useLocation({ select: (loc) => loc.pathname });
-	const navigate = useNavigate();
+	const { openWorkspace, isWorkspaceVisible } = useProfiles();
 	const setOpen = useFrameStackStore((s) => s.setOpen);
 
 	const projectGroups = useMemo(() => {
@@ -62,8 +62,9 @@ function V2WorkspaceList({ query }: { query: string }) {
 		}));
 	}, [workspaces, t]);
 
-	const handleSelect = (workspaceId: string) => {
-		void navigateToV2Workspace(workspaceId, navigate);
+	const handleSelect = (workspace: (typeof workspaces)[number]) => {
+		if (!isWorkspaceVisible(workspace)) return;
+		void openWorkspace(workspace.id, { hostId: workspace.hostId });
 		setOpen(false);
 	};
 
@@ -84,7 +85,7 @@ function V2WorkspaceList({ query }: { query: string }) {
 							<CommandItem
 								key={workspace.id}
 								value={`workspace v2 ${workspace.id} ${workspace.projectName} ${displayName} ${workspace.branch} ${workspace.hostName}`}
-								onSelect={() => handleSelect(workspace.id)}
+								onSelect={() => handleSelect(workspace)}
 								className={cn(
 									ROW_CLASS,
 									currentPath === `/v2-workspace/${workspace.id}` &&

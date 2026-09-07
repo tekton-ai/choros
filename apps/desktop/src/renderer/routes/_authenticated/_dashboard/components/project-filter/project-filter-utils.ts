@@ -46,3 +46,16 @@ export function serializeProjectFilters(
 ): string | undefined {
 	return projectFilters.length > 0 ? projectFilters.join(",") : undefined;
 }
+
+/** Preserve non-project sentinels while removing foreign project selections. */
+export function restrictProjectFilters(
+	projectFilters: string[],
+	isProjectVisible: (projectId: string) => boolean,
+	retainedSentinel?: string,
+): string[] {
+	const visible = projectFilters.filter(
+		(projectId) =>
+			projectId === retainedSentinel || isProjectVisible(projectId),
+	);
+	return visible.length === projectFilters.length ? projectFilters : visible;
+}

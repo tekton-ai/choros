@@ -17,6 +17,7 @@ import { persistentHistory } from "./lib/persistent-hash-history";
 import { pruneExpiredTerminalState } from "./lib/terminal/terminal-buffer-gc";
 import { electronQueryClient } from "./providers/electron-trpc-provider";
 import { routeTree } from "./route-tree.gen";
+import { requestProfileTarget } from "./routes/_authenticated/components/profile-navigation-controller/profile-navigation-bridge";
 import { NotFound } from "./routes/not-found";
 
 import "./globals.css";
@@ -41,10 +42,7 @@ const router = createRouter({
 	},
 });
 
-const handleDeepLink = (path: string) => {
-	console.log("[deep-link] Navigating to:", path);
-	router.navigate({ to: path });
-};
+const handleDeepLink = (path: string) => requestProfileTarget(path);
 const ipcRenderer = window.ipcRenderer as typeof window.ipcRenderer | undefined;
 if (ipcRenderer) {
 	ipcRenderer.on("deep-link-navigate", handleDeepLink);

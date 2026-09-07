@@ -5,7 +5,6 @@ import * as schema from "@choros/local-db";
 
 import Database from "better-sqlite3";
 import { drizzle } from "drizzle-orm/better-sqlite3";
-import { migrate } from "drizzle-orm/better-sqlite3/migrator";
 import { app } from "electron";
 import { validate as uuidValidate, version as uuidVersion } from "uuid";
 import { env } from "../../env.main";
@@ -14,6 +13,7 @@ import {
 	CHOROS_SENSITIVE_FILE_MODE,
 	ensureChorosHomeDirExists,
 } from "../app-environment";
+import { runMigrations } from "./run-migrations";
 
 const DB_PATH = join(CHOROS_HOME_DIR, "local.db");
 
@@ -75,7 +75,8 @@ function getMigrationsDirectory(): string {
 
 const migrationsFolder = getMigrationsDirectory();
 
-const sqlite = new Database(DB_PATH);
+export const localSqlite = new Database(DB_PATH);
+const sqlite = localSqlite;
 try {
 	chmodSync(DB_PATH, CHOROS_SENSITIVE_FILE_MODE);
 } catch {
@@ -95,12 +96,11 @@ console.log(`[local-db] Running migrations from: ${migrationsFolder}`);
 
 export const localDb = drizzle(sqlite, { schema });
 
-try {
-	migrate(localDb, { migrationsFolder });
-} catch (error) {
-	console.error("[local-db] Migration failed:", error);
+export const localDbMigrationResult = runMigrations(sqlite, migrationsFolder);
+if (localDbMigrationResult.ok) {
+	console.log("[local-db] Migrations complete");
+} else {
+	console.error("[local-db] Migration failed:", localDbMigrationResult.code);
 }
-
-console.log("[local-db] Migrations complete");
 
 export type LocalDb = typeof localDb;

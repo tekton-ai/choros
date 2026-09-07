@@ -1,11 +1,14 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
+import { restrictProjectFilters } from "renderer/routes/_authenticated/_dashboard/components/project-filter/project-filter-utils";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 import { V2WorkspacesBoard } from "./components/v2-workspaces-board";
 import { V2WorkspacesHeader } from "./components/v2-workspaces-header";
 import { V2WorkspacesList } from "./components/v2-workspaces-list";
 import { useAccessibleV2Workspaces } from "./hooks/use-accessible-v2-workspaces";
 import {
 	DEVICE_FILTER_THIS_DEVICE,
+	PROJECT_FILTER_SESSIONS,
 	useV2WorkspacesFilterStore,
 	V2_WORKSPACES_AGENT_STATUS_FILTERS,
 	V2_WORKSPACES_ARCHIVED_WINDOWS,
@@ -81,12 +84,13 @@ export const Route = createFileRoute(
 function V2WorkspacesPage() {
 	const search = Route.useSearch();
 	const navigate = useNavigate({ from: Route.fullPath });
+	const { isProjectVisible, isReady: areProfilesReady } = useProfiles();
 
 	const searchQuery = useV2WorkspacesFilterStore((state) => state.searchQuery);
 	const deviceFilter = useV2WorkspacesFilterStore(
 		(state) => state.deviceFilter,
 	);
-	const projectFilters = useV2WorkspacesFilterStore(
+	const storedProjectFilters = useV2WorkspacesFilterStore(
 		(state) => state.projectFilters,
 	);
 	const prStateFilters = useV2WorkspacesFilterStore(
@@ -99,6 +103,17 @@ function V2WorkspacesPage() {
 	const viewMode = useV2WorkspacesFilterStore((state) => state.viewMode);
 	const archivedWindow = useV2WorkspacesFilterStore(
 		(state) => state.archivedWindow,
+	);
+	const projectFilters = useMemo(
+		() =>
+			areProfilesReady
+				? restrictProjectFilters(
+						storedProjectFilters,
+						isProjectVisible,
+						PROJECT_FILTER_SESSIONS,
+					)
+				: storedProjectFilters,
+		[areProfilesReady, isProjectVisible, storedProjectFilters],
 	);
 
 	// URL → store, once per mount, and only for params the URL actually
@@ -138,6 +153,10 @@ function V2WorkspacesPage() {
 	}
 
 	useEffect(() => {
+		if (!areProfilesReady) return;
+		if (projectFilters !== storedProjectFilters) {
+			useV2WorkspacesFilterStore.setState({ projectFilters });
+		}
 		const syncUrl = navigate({
 			search: {
 				q: searchQuery || undefined,
@@ -159,6 +178,8 @@ function V2WorkspacesPage() {
 		});
 	}, [
 		navigate,
+		areProfilesReady,
+		storedProjectFilters,
 		searchQuery,
 		deviceFilter,
 		projectFilters,

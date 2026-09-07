@@ -1,9 +1,9 @@
 import { toast } from "@choros/ui/sonner";
 import { useLingui } from "@lingui/react/macro";
-import { useNavigate } from "@tanstack/react-router";
 import { useCallback, useState } from "react";
 import { useLocalHostService } from "renderer/routes/_authenticated/providers/local-host-service-provider";
 import { useWorkspaceCreates } from "renderer/stores/workspace-creates";
+import { useWorkspaceCreateNavigation } from "renderer/stores/workspace-creates/use-workspace-create-navigation";
 import type { BaseBranchSource } from "../../../../../dashboard-new-workspace-draft-context";
 import {
 	type BranchFilter,
@@ -41,7 +41,7 @@ export function useBranchPickerController(args: UseBranchPickerControllerArgs) {
 	} = args;
 
 	const { t } = useLingui();
-	const navigate = useNavigate();
+	const beginNavigation = useWorkspaceCreateNavigation();
 	const { machineId } = useLocalHostService();
 	const { submit } = useWorkspaceCreates();
 
@@ -76,6 +76,7 @@ export function useBranchPickerController(args: UseBranchPickerControllerArgs) {
 	// a failed create surfaces on the workspace route's error state.
 	const onOpenWorkspace = useCallback(
 		(target: OpenWorkspaceTarget) => {
+			const navigation = beginNavigation();
 			if (!projectId) {
 				toast.error(
 					t({
@@ -97,9 +98,9 @@ export function useBranchPickerController(args: UseBranchPickerControllerArgs) {
 			const branchName = target.branchName;
 			const snapshotId = crypto.randomUUID();
 			const workspaceName = resolveActionWorkspaceName(branchName);
-			closeModal();
-			const { workspaceId, completed } = submit({
+			const handle = submit({
 				hostId: resolvedHostId,
+				profileContext: navigation.profileContext,
 				snapshot: {
 					id: snapshotId,
 					projectId,
@@ -108,18 +109,11 @@ export function useBranchPickerController(args: UseBranchPickerControllerArgs) {
 					...(target.worktreePath ? { worktreePath: target.worktreePath } : {}),
 				},
 			});
-			void navigate({
-				to: "/v2-workspace/$workspaceId",
-				params: { workspaceId },
-			});
-			void completed.then((outcome) => {
-				if (outcome.ok && outcome.workspaceId !== workspaceId) {
-					void navigate({
-						to: "/v2-workspace/$workspaceId",
-						params: { workspaceId: outcome.workspaceId },
-						replace: true,
-					});
-				}
+			void navigation.follow(handle, closeModal).catch((error) => {
+				console.error(
+					"[useBranchPickerController] failed to open workspace",
+					error,
+				);
 			});
 		},
 		[
@@ -128,7 +122,7 @@ export function useBranchPickerController(args: UseBranchPickerControllerArgs) {
 			resolveActionWorkspaceName,
 			submit,
 			closeModal,
-			navigate,
+			beginNavigation,
 			t,
 		],
 	);

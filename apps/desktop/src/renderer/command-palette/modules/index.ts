@@ -3,12 +3,14 @@ import { actionsProvider } from "./actions/commands";
 import { addProjectProvider } from "./add-project/commands";
 import { navigationProvider } from "./navigation/commands";
 import { openInProvider } from "./open-in/commands";
+import { profilesProvider } from "./profiles/commands";
 import { workspaceProvider } from "./workspace/commands";
 
 export function registerAllModules(): () => void {
 	const unregisters = [
 		registerProvider(workspaceProvider),
 		registerProvider(actionsProvider),
+		registerProvider(profilesProvider),
 		registerProvider(openInProvider),
 		registerProvider(navigationProvider),
 		registerProvider(addProjectProvider),

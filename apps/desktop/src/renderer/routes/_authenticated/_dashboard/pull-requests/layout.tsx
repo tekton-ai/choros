@@ -1,12 +1,23 @@
 import { cn } from "@choros/ui/utils";
-import { createFileRoute, Outlet, useParams } from "@tanstack/react-router";
+import {
+	createFileRoute,
+	Outlet,
+	useNavigate,
+	useParams,
+} from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { resolveProjectFilterParams } from "renderer/routes/_authenticated/_dashboard/components/project-filter/project-filter-utils";
+import {
+	resolveProjectFilterParams,
+	restrictProjectFilters,
+	serializeProjectFilters,
+} from "renderer/routes/_authenticated/_dashboard/components/project-filter/project-filter-utils";
 import { parsePositiveIntegerParam } from "renderer/routes/_authenticated/_dashboard/utils/parse-positive-integer-param";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 import { ResizablePanel } from "renderer/screens/main/components/resizable-panel";
 import { useWorkspaceSidebarStore } from "renderer/stores/workspace-sidebar-state";
 import { PullRequestListToggle } from "./components/pull-request-list-toggle";
 import { PullRequestsView } from "./components/pull-requests-view";
+import { usePullRequestsFilterStore } from "./stores/pull-requests-filter-store";
 import {
 	DEFAULT_PULL_REQUESTS_LIST_WIDTH,
 	MAX_PULL_REQUESTS_LIST_WIDTH,
@@ -60,6 +71,14 @@ export const Route = createFileRoute(
 function PullRequestsLayout() {
 	const { search, project, projects, author, review, state } =
 		Route.useSearch();
+	const navigate = useNavigate();
+	const { isReady: areProfilesReady, isProjectVisible } = useProfiles();
+	const storedProjectFilters = usePullRequestsFilterStore(
+		(store) => store.projectFilters,
+	);
+	const setProjectFilters = usePullRequestsFilterStore(
+		(store) => store.setProjectFilters,
+	);
 	const params = useParams({ strict: false }) as { prNumber?: string };
 	const selectedPrNumber = params.prNumber
 		? parsePositiveIntegerParam(params.prNumber)
@@ -81,9 +100,42 @@ function PullRequestsLayout() {
 	);
 	// Stable identity: effects downstream key off this array.
 	const initialProjects = useMemo(
-		() => resolveProjectFilterParams(projects, project, undefined),
-		[projects, project],
+		() =>
+			resolveProjectFilterParams(
+				projects,
+				params.prNumber === undefined ? project : undefined,
+				undefined,
+			),
+		[projects, project, params.prNumber],
 	);
+
+	// The view normally owns filter hydration. Its collapsed pane is
+	// unmounted, so keep Profile-only cleanup active here in that case.
+	useEffect(() => {
+		if (!isListCollapsed || !areProfilesReady) return;
+		const requested = initialProjects ?? storedProjectFilters;
+		const visible = restrictProjectFilters(requested, isProjectVisible);
+		setProjectFilters(visible);
+		if (visible === requested || initialProjects === undefined) return;
+		void navigate({
+			from: "/pull-requests",
+			search: (previous) => ({
+				...previous,
+				projects: serializeProjectFilters(visible),
+				...(params.prNumber === undefined ? { project: undefined } : {}),
+			}),
+			replace: true,
+		});
+	}, [
+		areProfilesReady,
+		initialProjects,
+		isListCollapsed,
+		isProjectVisible,
+		navigate,
+		params.prNumber,
+		setProjectFilters,
+		storedProjectFilters,
+	]);
 
 	const rootRef = useRef<HTMLDivElement>(null);
 	const [containerWidth, setContainerWidth] = useState<number | null>(null);

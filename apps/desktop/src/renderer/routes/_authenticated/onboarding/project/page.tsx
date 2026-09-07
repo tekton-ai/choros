@@ -17,11 +17,13 @@ import { electronTrpc } from "renderer/lib/electron-trpc";
 import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";
 import { markOnboardingComplete } from "renderer/lib/onboarding-state";
 import { useFinalizeProjectSetup } from "renderer/react-query/projects";
+import { useProjectCompletion } from "renderer/react-query/projects/use-finalize-project-setup/use-project-completion";
 import { useFolderFirstImport } from "renderer/routes/_authenticated/_dashboard/components/add-repository-modals/hooks/use-folder-first-import";
 import { EmptyProjectModal } from "renderer/routes/_authenticated/components/empty-project-modal";
 import { TemplateGalleryModal } from "renderer/routes/_authenticated/components/template-gallery-modal";
 import { useLocalHostService } from "renderer/routes/_authenticated/providers/local-host-service-provider";
 import { useOpenNewWorkspaceModal } from "renderer/stores/new-workspace-modal";
+import type { ProfileSubmissionContext } from "shared/profiles";
 import { GhAuthDialog } from "../components/gh-auth-dialog";
 
 export const Route = createFileRoute("/_authenticated/onboarding/project/")({
@@ -66,11 +68,14 @@ function OnboardingProjectPage() {
 	const { data: homeDir } = electronTrpc.window.getHomeDir.useQuery();
 	const cloneTargetDir = homeDir ? `${homeDir}/.choros/projects` : null;
 	const [url, setUrl] = useState("");
-	const [busy, setBusy] = useState(false);
+	const [busyRequestId, setBusyRequestId] = useState<string | null>(null);
+	const busy = busyRequestId !== null;
 	const [cloneError, setCloneError] = useState<CloneError | null>(null);
 	const [ghAuthOpen, setGhAuthOpen] = useState(false);
-	const [emptyProjectOpen, setEmptyProjectOpen] = useState(false);
-	const [templateOpen, setTemplateOpen] = useState(false);
+	const [emptyProjectRequest, setEmptyProjectRequest] =
+		useState<ProfileSubmissionContext | null>(null);
+	const [templateRequest, setTemplateRequest] =
+		useState<ProfileSubmissionContext | null>(null);
 
 	const folderImport = useFolderFirstImport({
 		onError: (message) => toast.error(message),
@@ -78,38 +83,46 @@ function OnboardingProjectPage() {
 	const finalizeSetup = useFinalizeProjectSetup();
 
 	// Onboarding is machine-local: it describes this installation, not the login account.
-	const finish = async (projectId: string) => {
+	const finish = (projectId: string) => {
 		markOnboardingComplete();
 		// Fires at most once, and only if the user isn't already muted/in
 		// cooldown — see useStarNagStore.isEligible().
 		showStarNagOnboardingToast();
-		await navigate({ to: "/v2-workspaces", replace: true });
 		openNewWorkspaceModal(projectId);
+		void navigate({ to: "/v2-workspaces", replace: true });
 	};
+	const { begin, cancel, complete, isPending } = useProjectCompletion(finish);
 
 	const handleOpenFolder = async () => {
-		setBusy(true);
+		const request = begin();
+		setBusyRequestId(request.requestId);
 		try {
 			const result = await folderImport.start();
-			if (result) await finish(result.projectId);
+			if (result) complete(request, result);
 		} finally {
-			setBusy(false);
+			setBusyRequestId((current) =>
+				current === request.requestId ? null : current,
+			);
 		}
 	};
 
 	const handleClone = async (e: FormEvent) => {
 		e.preventDefault();
 		const trimmed = url.trim();
-		if (!trimmed || !cloneTargetDir) return;
-		setBusy(true);
+		if (!trimmed || !cloneTargetDir || busy) return;
+		const request = begin();
+		setBusyRequestId(request.requestId);
 		setCloneError(null);
+		let result: Awaited<ReturnType<typeof finalizeSetup>> | null = null;
 		try {
 			const activeHostUrl = await waitForHostReady();
 			if (!activeHostUrl) {
-				setCloneError({
-					message: "Local host service isn't ready yet. Please try again.",
-					needsGhAuth: false,
-				});
+				if (isPending(request)) {
+					setCloneError({
+						message: "Local host service isn't ready yet. Please try again.",
+						needsGhAuth: false,
+					});
+				}
 				return;
 			}
 			const hostService = getHostServiceClientByUrl(activeHostUrl);
@@ -122,23 +135,17 @@ function OnboardingProjectPage() {
 					mode: { kind: "clone", parentDir: cloneTargetDir, url: trimmed },
 				});
 			} catch (err) {
-				setCloneError(toCloneError(err));
+				if (isPending(request)) setCloneError(toCloneError(err));
 				return;
 			}
-			finalizeSetup(activeHostUrl, created);
-			await finish(created.projectId);
-		} catch (err) {
-			// Non-clone failures (setup, navigation) get the raw message, no gh advice.
-			setCloneError({
-				message:
-					err instanceof Error
-						? err.message
-						: "Something went wrong. Please try again.",
-				needsGhAuth: false,
-			});
+			// Profile recovery is a successful project result, not a clone retry.
+			result = await finalizeSetup(activeHostUrl, created, request);
 		} finally {
-			setBusy(false);
+			setBusyRequestId((current) =>
+				current === request.requestId ? null : current,
+			);
 		}
+		if (result) complete(request, result);
 	};
 
 	return (
@@ -156,7 +163,7 @@ function OnboardingProjectPage() {
 				<Button
 					variant="outline"
 					size="sm"
-					onClick={() => setEmptyProjectOpen(true)}
+					onClick={() => setEmptyProjectRequest(begin())}
 					disabled={busy}
 				>
 					Create
@@ -242,7 +249,7 @@ function OnboardingProjectPage() {
 				<Button
 					variant="outline"
 					size="sm"
-					onClick={() => setTemplateOpen(true)}
+					onClick={() => setTemplateRequest(begin())}
 					disabled={busy}
 				>
 					Browse…
@@ -250,19 +257,41 @@ function OnboardingProjectPage() {
 			</Card>
 
 			<TemplateGalleryModal
-				open={templateOpen}
-				onOpenChange={setTemplateOpen}
-				onCreated={(result) => {
-					setTemplateOpen(false);
-					finish(result.projectId);
+				key={templateRequest?.requestId ?? "closed-template"}
+				requestId={templateRequest?.requestId ?? "closed-template"}
+				open={templateRequest !== null}
+				onOpenChange={(open, requestId) => {
+					if (open) return;
+					setTemplateRequest((current) =>
+						current?.requestId === requestId ? null : current,
+					);
+					if (templateRequest && isPending(templateRequest)) cancel();
+				}}
+				onCreated={(result, requestId) => {
+					if (templateRequest?.requestId !== requestId) return;
+					complete(templateRequest, result);
+					setTemplateRequest((current) =>
+						current?.requestId === requestId ? null : current,
+					);
 				}}
 			/>
 			<EmptyProjectModal
-				open={emptyProjectOpen}
-				onOpenChange={setEmptyProjectOpen}
-				onSuccess={(result) => {
-					setEmptyProjectOpen(false);
-					finish(result.projectId);
+				key={emptyProjectRequest?.requestId ?? "closed-empty"}
+				requestId={emptyProjectRequest?.requestId ?? "closed-empty"}
+				open={emptyProjectRequest !== null}
+				onOpenChange={(open, requestId) => {
+					if (open) return;
+					setEmptyProjectRequest((current) =>
+						current?.requestId === requestId ? null : current,
+					);
+					if (emptyProjectRequest && isPending(emptyProjectRequest)) cancel();
+				}}
+				onSuccess={(result, requestId) => {
+					if (emptyProjectRequest?.requestId !== requestId) return;
+					complete(emptyProjectRequest, result);
+					setEmptyProjectRequest((current) =>
+						current?.requestId === requestId ? null : current,
+					);
 				}}
 			/>
 			<GhAuthDialog

@@ -23,6 +23,8 @@ const UNREACHABLE_GRACE_MS = 10_000;
 const REDIAL_INTERVAL_MS = 5_000;
 
 export interface HostReachability {
+	/** Actual open socket, without the error-screen grace period. */
+	isReachable: boolean;
 	/** Sustained loss of the host connection — safe to take the screen over. */
 	isUnreachable: boolean;
 	/** A dial is in flight right now (auto-backoff or a manual retry). */
@@ -125,6 +127,7 @@ export function useHostReachability(hostUrl: string): HostReachability {
 	}, [isUnreachable, bus]);
 
 	return {
+		isReachable: status.state === "open",
 		isUnreachable,
 		isReconnecting: isDown && status.state !== "closed",
 		detail: describeFailure(status, isRelayHost),

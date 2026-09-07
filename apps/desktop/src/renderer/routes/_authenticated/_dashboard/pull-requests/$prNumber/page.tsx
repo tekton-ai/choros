@@ -41,6 +41,7 @@ import { useProjectHost } from "renderer/routes/_authenticated/_dashboard/hooks/
 import { PullRequestChecksSection } from "renderer/routes/_authenticated/_dashboard/pull-requests/components/pull-request-checks-section";
 import { PullRequestListToggle } from "renderer/routes/_authenticated/_dashboard/pull-requests/components/pull-request-list-toggle";
 import { parsePositiveIntegerParam } from "renderer/routes/_authenticated/_dashboard/utils/parse-positive-integer-param";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 import {
 	normalizePRState,
 	PRIcon,
@@ -140,11 +141,15 @@ function PullRequestDetailPage() {
 	const prNumber = parsePositiveIntegerParam(prNumberRaw);
 	const search = PullRequestsLayoutRoute.useSearch();
 	const projectId = search.project ?? null;
+	const { isReady: areProfilesReady, isProjectVisible } = useProfiles();
 	const {
 		hostId,
 		isReady: areProjectsReady,
 		project,
 	} = useProjectHost(projectId);
+	const isDetailVisible =
+		areProfilesReady &&
+		(!project || projectId === null || isProjectVisible(projectId));
 	const hostUrl = useHostUrl(hostId ?? undefined);
 	const updateDraft = useNewWorkspaceDraftStore((state) => state.updateDraft);
 	const selectProject = useNewWorkspaceDraftStore(
@@ -171,7 +176,12 @@ function PullRequestDetailPage() {
 				prNumber,
 			});
 		},
-		enabled: !!hostUrl && !!project && !!projectId && prNumber !== null,
+		enabled:
+			isDetailVisible &&
+			!!hostUrl &&
+			!!project &&
+			!!projectId &&
+			prNumber !== null,
 		staleTime: 30_000,
 		gcTime: 10 * 60_000,
 	});
@@ -260,7 +270,7 @@ function PullRequestDetailPage() {
 	};
 
 	const handleAddToWorkspace = () => {
-		if (!projectId || !hostId || !data) return;
+		if (!isDetailVisible || !projectId || !hostId || !data) return;
 		const linkedPR: LinkedPR = {
 			prNumber: data.number,
 			title: data.title,
@@ -272,6 +282,10 @@ function PullRequestDetailPage() {
 		updateDraft({ hostId, linkedPR });
 		openModal(projectId);
 	};
+
+	// Route ownership is corrected centrally; never activate a Profile from a
+	// page effect, which would undo an explicit switch while this route exits.
+	if (!isDetailVisible) return null;
 
 	const defaultState = normalizePRState("open", false);
 	const state = data

@@ -26,7 +26,6 @@ import { DashboardNewWorkspaceModal } from "renderer/routes/_authenticated/compo
 import { DiffThemeSync } from "renderer/routes/_authenticated/components/diff-theme-sync";
 import { StarNagObserver } from "renderer/routes/_authenticated/components/star-nag-observer";
 import { useSettingsStore } from "renderer/stores/settings-state";
-import { NOTIFICATION_EVENTS } from "shared/constants";
 import { AgentHooks } from "./components/agent-hooks";
 import { DockBadgeController } from "./components/dock-badge-controller";
 import { FileMenuListener } from "./components/file-menu-listener";
@@ -38,6 +37,7 @@ import { createPierreWorker } from "./lib/pierre-worker";
 import { CollectionsProvider } from "./providers/collections-provider";
 import { HostWorkspacesProvider } from "./providers/host-workspaces-provider";
 import { LocalHostServiceProvider } from "./providers/local-host-service-provider";
+import { ProfileProvider } from "./providers/profile-provider";
 
 export const Route = createFileRoute("/_authenticated")({
 	component: AuthenticatedLayout,
@@ -87,23 +87,6 @@ function AuthenticatedLayout() {
 			terminalRuntimeRegistry.setParkedRuntimeCap(parkedRuntimeCap);
 		}
 	}, [parkedRuntimeCap]);
-
-	// Update workspace-run pane state on terminal exit
-	electronTrpc.notifications.subscribe.useSubscription(undefined, {
-		onData: (event) => {
-			if (
-				event.type === NOTIFICATION_EVENTS.FOCUS_V2_NOTIFICATION_SOURCE &&
-				event.data
-			) {
-				localStorage.setItem("lastViewedWorkspaceId", event.data.workspaceId);
-				void navigate({
-					to: "/v2-workspace/$workspaceId",
-					params: { workspaceId: event.data.workspaceId },
-				});
-				return;
-			}
-		},
-	});
 
 	useEffect(() => {
 		if (!location.pathname.startsWith("/settings")) {
@@ -179,21 +162,23 @@ function AuthenticatedLayout() {
 				<GlobalBrowserLifecycle />
 				<LocalHostServiceProvider>
 					<HostWorkspacesProvider>
-						<WorkerPoolContextProvider
-							poolOptions={{ workerFactory: createPierreWorker, poolSize: 8 }}
-							highlighterOptions={{ preferredHighlighter: "shiki-wasm" }}
-						>
-							<DiffThemeSync />
-							<AgentHooks />
-							<FileMenuListener />
-							<V2NotificationController />
-							<DockBadgeController />
-							<StarNagObserver />
-							<DaemonAutoUpdateFailureDialog />
-							<Outlet />
-							<DashboardNewWorkspaceModal />
-							<TeardownLogsDialog />
-						</WorkerPoolContextProvider>
+						<ProfileProvider>
+							<WorkerPoolContextProvider
+								poolOptions={{ workerFactory: createPierreWorker, poolSize: 8 }}
+								highlighterOptions={{ preferredHighlighter: "shiki-wasm" }}
+							>
+								<DiffThemeSync />
+								<AgentHooks />
+								<FileMenuListener />
+								<V2NotificationController />
+								<DockBadgeController />
+								<StarNagObserver />
+								<DaemonAutoUpdateFailureDialog />
+								<Outlet />
+								<DashboardNewWorkspaceModal />
+								<TeardownLogsDialog />
+							</WorkerPoolContextProvider>
+						</ProfileProvider>
 					</HostWorkspacesProvider>
 				</LocalHostServiceProvider>
 			</CollectionsProvider>

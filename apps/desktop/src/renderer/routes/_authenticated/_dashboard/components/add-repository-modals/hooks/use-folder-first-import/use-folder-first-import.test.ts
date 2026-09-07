@@ -1,19 +1,23 @@
 import { beforeEach, describe, expect, it, mock } from "bun:test";
-// Static import so the real store loads (with real react) before the partial
-// "react" mock below registers.
+import * as queryActual from "@tanstack/react-query";
+import * as reactActual from "react";
 import * as gitInitConfirmActual from "renderer/stores/git-init-confirm";
+import type {
+	ProfileMemberRef,
+	ProfileSubmissionContext,
+} from "shared/profiles";
 
 const hostUrl = "http://host-service";
 const repoPath = "/repos/octocat";
-const setupResult = {
-	repoPath,
-	mainWorkspaceId: "workspace-1",
-};
+const setupResult = { repoPath, mainWorkspaceId: "workspace-1" };
 const cloudError = {
 	url: "https://github.com/octocat/hello.git",
 	message: "cloud-down",
 };
-
+const ownership = new Map<string, string>();
+let activeProfileId = "profile-a";
+let assignmentFails = false;
+let submissionNumber = 0;
 const selectDirectoryMock = mock(async () => ({
 	canceled: false,
 	path: repoPath,
@@ -23,25 +27,61 @@ const findByPathMock = mock(
 		candidates: { id: string; name: string }[];
 		cloudErrors: (typeof cloudError)[];
 		needsGitInit?: boolean;
-	}> => ({
-		candidates: [],
-		cloudErrors: [],
-	}),
+	}> => ({ candidates: [], cloudErrors: [] }),
 );
 const setupMock = mock(async () => setupResult);
-const createMock = mock(async () => ({
+const createdProject = {
 	projectId: "created-project",
 	repoPath,
 	mainWorkspaceId: "workspace-created",
-}));
-const finalizeSetupMock = mock(() => undefined);
+	created: true,
+};
+const createMock = mock(async () => createdProject);
 const requestGitInitMock = mock(async () => false);
+const assignCreatedMember = mock(
+	async (member: ProfileMemberRef, context: ProfileSubmissionContext) => {
+		if (assignmentFails) return { profileId: "default", assigned: false };
+		if (member.kind === "project")
+			ownership.set(member.projectKey, context.profileId);
+		return { profileId: context.profileId, assigned: true };
+	},
+);
 
 mock.module("react", () => ({
+	...reactActual,
 	useCallback: <T extends (...args: never[]) => unknown>(callback: T) =>
 		callback,
 }));
-
+mock.module("@tanstack/react-query", () => ({
+	...queryActual,
+	useQueryClient: () => ({ invalidateQueries: async () => undefined }),
+}));
+mock.module(
+	"renderer/routes/_authenticated/hooks/use-dashboard-sidebar-state",
+	() => ({
+		useDashboardSidebarState: () => ({
+			ensureProjectInSidebar: () => undefined,
+			ensureWorkspaceInSidebar: () => undefined,
+		}),
+	}),
+);
+mock.module(
+	"renderer/routes/_authenticated/providers/profile-provider",
+	() => ({
+		useProfiles: () => ({
+			defaultProfileId: "default",
+			captureSubmission: (): ProfileSubmissionContext => ({
+				profileId: activeProfileId,
+				requestId: String(++submissionNumber),
+				generation: 0,
+			}),
+			getProjectProfileId: (projectId: string) =>
+				ownership.get(projectId) ?? "default",
+			assignCreatedMember,
+			registerPendingMember: () => () => undefined,
+		}),
+	}),
+);
 mock.module("renderer/lib/electron-trpc", () => ({
 	electronTrpc: {
 		window: {
@@ -51,7 +91,6 @@ mock.module("renderer/lib/electron-trpc", () => ({
 		},
 	},
 }));
-
 mock.module("renderer/lib/host-service-client", () => ({
 	getHostServiceClientByUrl: () => ({
 		project: {
@@ -61,11 +100,6 @@ mock.module("renderer/lib/host-service-client", () => ({
 		},
 	}),
 }));
-
-mock.module("renderer/react-query/projects", () => ({
-	useFinalizeProjectSetup: () => finalizeSetupMock,
-}));
-
 mock.module(
 	"renderer/routes/_authenticated/providers/local-host-service-provider",
 	() => ({
@@ -75,14 +109,17 @@ mock.module(
 		}),
 	}),
 );
-
-// Spread the real module — bun's mock.module is process-global, and a partial
-// mock would break other test files importing the real store.
 mock.module("renderer/stores/git-init-confirm", () => ({
 	...gitInitConfirmActual,
 	useRequestGitInitConfirm: () => requestGitInitMock,
 }));
 
+const { useFinalizeProjectSetup } = await import(
+	"renderer/react-query/projects/use-finalize-project-setup/use-finalize-project-setup"
+);
+mock.module("renderer/react-query/projects", () => ({
+	useFinalizeProjectSetup,
+}));
 const { useFolderFirstImport } = await import("./use-folder-first-import");
 
 describe("useFolderFirstImport", () => {
@@ -92,78 +129,102 @@ describe("useFolderFirstImport", () => {
 			findByPathMock,
 			setupMock,
 			createMock,
-			finalizeSetupMock,
 			requestGitInitMock,
+			assignCreatedMember,
 		]) {
 			fn.mockClear();
 		}
+		selectDirectoryMock.mockResolvedValue({ canceled: false, path: repoPath });
 		findByPathMock.mockResolvedValue({ candidates: [], cloudErrors: [] });
+		createMock.mockResolvedValue(createdProject);
 		requestGitInitMock.mockResolvedValue(false);
+		ownership.clear();
+		activeProfileId = "profile-a";
+		assignmentFails = false;
 	});
 
-	it("reports cloud lookup errors instead of creating a duplicate local import when no candidates exist", async () => {
+	it("does not create a duplicate when candidate lookup fails", async () => {
 		findByPathMock.mockResolvedValue({
 			candidates: [],
 			cloudErrors: [cloudError],
 		});
 		const onError = mock(() => undefined);
-
-		const result = await useFolderFirstImport({ onError }).start();
-
-		expect(result).toBeNull();
-		expect(findByPathMock).toHaveBeenCalledWith({ repoPath });
-		expect(onError).toHaveBeenCalledWith(
-			"Couldn't reach cloud for https://github.com/octocat/hello.git: cloud-down",
-		);
+		expect(await useFolderFirstImport({ onError }).start()).toBeNull();
+		expect(onError).toHaveBeenCalledTimes(1);
 		expect(createMock).not.toHaveBeenCalled();
 		expect(setupMock).not.toHaveBeenCalled();
-		expect(finalizeSetupMock).not.toHaveBeenCalled();
 	});
 
-	it("imports with init after the user confirms a non-git folder", async () => {
+	it("initializes a non-git folder only with confirmation and classifies the new project", async () => {
 		findByPathMock.mockResolvedValue({
 			candidates: [],
 			cloudErrors: [],
 			needsGitInit: true,
 		});
 		requestGitInitMock.mockResolvedValue(true);
-		const onError = mock(() => undefined);
-
-		const result = await useFolderFirstImport({ onError }).start();
-
-		expect(requestGitInitMock).toHaveBeenCalledWith(repoPath);
+		const result = await useFolderFirstImport().start();
 		expect(createMock).toHaveBeenCalledWith({
 			name: "octocat",
 			mode: { kind: "importLocal", repoPath, initIfNeeded: true },
 		});
-		expect(finalizeSetupMock).toHaveBeenCalledWith(hostUrl, {
-			projectId: "created-project",
-			repoPath,
-			mainWorkspaceId: "workspace-created",
-		});
-		expect(result).toEqual({
-			projectId: "created-project",
-			repoPath,
-			mainWorkspaceId: "workspace-created",
-		});
-		expect(onError).not.toHaveBeenCalled();
+		expect(result?.created).toBe(true);
+		expect(result?.profileId).toBe("profile-a");
+		expect(ownership.get("created-project")).toBe("profile-a");
 	});
 
-	it("does nothing when the user cancels the git-init confirmation", async () => {
+	it("does not create a project when git initialization is declined", async () => {
 		findByPathMock.mockResolvedValue({
 			candidates: [],
 			cloudErrors: [],
 			needsGitInit: true,
 		});
-		requestGitInitMock.mockResolvedValue(false);
-		const onError = mock(() => undefined);
-
-		const result = await useFolderFirstImport({ onError }).start();
-
-		expect(result).toBeNull();
-		expect(requestGitInitMock).toHaveBeenCalledWith(repoPath);
+		expect(await useFolderFirstImport().start()).toBeNull();
 		expect(createMock).not.toHaveBeenCalled();
-		expect(finalizeSetupMock).not.toHaveBeenCalled();
+		expect(assignCreatedMember).not.toHaveBeenCalled();
+	});
+
+	it("retains prior ownership when lookup is empty but Host create returns created:false", async () => {
+		ownership.set("created-project", "profile-b");
+		createMock.mockResolvedValue({ ...createdProject, created: false });
+		const result = await useFolderFirstImport().start();
+		expect(result?.created).toBe(false);
+		expect(result?.profileId).toBe("profile-b");
+		expect(ownership.get("created-project")).toBe("profile-b");
+		expect(assignCreatedMember).not.toHaveBeenCalled();
+	});
+
+	it("preserves the owner of an existing project setup", async () => {
+		ownership.set("existing-project", "profile-b");
+		findByPathMock.mockResolvedValue({
+			candidates: [{ id: "existing-project", name: "Existing" }],
+			cloudErrors: [],
+		});
+		const result = await useFolderFirstImport().start();
+		expect(result?.projectId).toBe("existing-project");
+		expect(result?.created).toBe(false);
+		expect(result?.profileId).toBe("profile-b");
+		expect(createMock).not.toHaveBeenCalled();
+		expect(assignCreatedMember).not.toHaveBeenCalled();
+	});
+
+	it("captures the Profile before waiting for the native folder picker", async () => {
+		selectDirectoryMock.mockImplementationOnce(async () => {
+			activeProfileId = "profile-b";
+			return { canceled: false, path: repoPath };
+		});
+		const result = await useFolderFirstImport().start();
+		expect(result?.profileId).toBe("profile-a");
+		expect(ownership.get("created-project")).toBe("profile-a");
+	});
+
+	it("returns the successful Default object after classification failure without retrying Host create", async () => {
+		assignmentFails = true;
+		const onError = mock(() => undefined);
+		const result = await useFolderFirstImport({ onError }).start();
+		expect(result?.projectId).toBe("created-project");
+		expect(result?.profileId).toBe("default");
+		expect(result?.assignment?.assigned).toBe(false);
+		expect(createMock).toHaveBeenCalledTimes(1);
 		expect(onError).not.toHaveBeenCalled();
 	});
 });

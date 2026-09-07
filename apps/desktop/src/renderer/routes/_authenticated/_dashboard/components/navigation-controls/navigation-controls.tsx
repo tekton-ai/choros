@@ -1,34 +1,43 @@
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
-import { useLocation, useRouter } from "@tanstack/react-router";
+import { useLocation } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { LuArrowLeft, LuArrowRight } from "react-icons/lu";
 import { HotkeyLabel, useHotkey } from "renderer/hotkeys";
-// Temporarily hidden: import { HistoryDropdown } from "./components/HistoryDropdown";
+import { persistentHistory } from "renderer/lib/persistent-hash-history";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 
 export function NavigationControls() {
-	const router = useRouter();
-	const location = useLocation();
+	useLocation();
+	const { isReady } = useProfiles();
+	// Profile changes update eligibility without changing the raw history cursor.
+	const canGoBack = isReady && persistentHistory.canGoBack();
+	const canGoForward = isReady && persistentHistory.canGoForward();
+	const goBack = () => {
+		if (isReady && persistentHistory.canGoBack()) persistentHistory.back();
+	};
+	const goForward = () => {
+		if (isReady && persistentHistory.canGoForward())
+			persistentHistory.forward();
+	};
 
-	const canGoBack = router.history.canGoBack();
-	const canGoForward = location.state.__TSR_index < router.history.length - 1;
-
-	useHotkey("NAVIGATE_BACK", () => router.history.back());
-	useHotkey("NAVIGATE_FORWARD", () => router.history.forward());
+	useHotkey("NAVIGATE_BACK", goBack);
+	useHotkey("NAVIGATE_FORWARD", goForward);
 
 	useEffect(() => {
 		const handleMouseUp = (event: MouseEvent) => {
+			if (!isReady) return;
 			if (event.button === 3) {
 				event.preventDefault();
-				router.history.back();
+				if (persistentHistory.canGoBack()) persistentHistory.back();
 			} else if (event.button === 4) {
 				event.preventDefault();
-				router.history.forward();
+				if (persistentHistory.canGoForward()) persistentHistory.forward();
 			}
 		};
 
 		window.addEventListener("mouseup", handleMouseUp);
 		return () => window.removeEventListener("mouseup", handleMouseUp);
-	}, [router]);
+	}, [isReady]);
 
 	return (
 		<div className="flex items-center">
@@ -36,7 +45,7 @@ export function NavigationControls() {
 				<TooltipTrigger asChild>
 					<button
 						type="button"
-						onClick={() => router.history.back()}
+						onClick={goBack}
 						disabled={!canGoBack}
 						className="no-drag flex items-center justify-center size-7 rounded-md text-muted-foreground hover:bg-fill-hover transition-colors disabled:opacity-30 disabled:pointer-events-none"
 					>
@@ -52,7 +61,7 @@ export function NavigationControls() {
 				<TooltipTrigger asChild>
 					<button
 						type="button"
-						onClick={() => router.history.forward()}
+						onClick={goForward}
 						disabled={!canGoForward}
 						className="no-drag flex items-center justify-center size-7 rounded-md text-muted-foreground hover:bg-fill-hover transition-colors disabled:opacity-30 disabled:pointer-events-none"
 					>
@@ -63,8 +72,6 @@ export function NavigationControls() {
 					<HotkeyLabel fallbackLabel="Go forward" id="NAVIGATE_FORWARD" />
 				</TooltipContent>
 			</Tooltip>
-
-			{/* Temporarily hidden: <HistoryDropdown /> */}
 		</div>
 	);
 }

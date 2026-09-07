@@ -14,22 +14,31 @@ export function AddRepositoryModals() {
 	const active = useAddRepositoryModalActive();
 	const close = useCloseAddRepositoryModal();
 	const resolveNewProject = useResolveNewProjectModal();
+	if (active.kind === "none") return null;
+	const readyMessage = t({
+		id: "dashboard.addRepositoryModals.projectReady",
+		message: "Project ready.",
+	});
 
 	return (
 		<>
 			<EmptyProjectModal
+				key={`empty-${active.requestId}`}
+				requestId={active.requestId}
 				open={active.kind === "empty-project"}
-				onOpenChange={(open) => {
-					if (!open) close();
+				onOpenChange={(open, requestId) => {
+					if (!open) close(requestId);
 				}}
-				onSuccess={(result) => {
+				onSuccess={(result, requestId) => {
 					toast.success(
-						t({
-							id: "dashboard.addRepositoryModals.emptyProjectCreated",
-							message: "Project created.",
-						}),
+						result.created
+							? t({
+									id: "dashboard.addRepositoryModals.emptyProjectCreated",
+									message: "Project created.",
+								})
+							: readyMessage,
 					);
-					resolveNewProject({ projectId: result.projectId });
+					resolveNewProject(requestId, result);
 				}}
 				onError={(message) =>
 					toast.error(
@@ -41,18 +50,22 @@ export function AddRepositoryModals() {
 				}
 			/>
 			<NewProjectModal
+				key={`clone-${active.requestId}`}
+				requestId={active.requestId}
 				open={active.kind === "new-project"}
-				onOpenChange={(open) => {
-					if (!open) close();
+				onOpenChange={(open, requestId) => {
+					if (!open) close(requestId);
 				}}
-				onSuccess={(result) => {
+				onSuccess={(result, requestId) => {
 					toast.success(
-						t({
-							id: "dashboard.addRepositoryModals.newProjectCreated",
-							message: "Project created.",
-						}),
+						result.created
+							? t({
+									id: "dashboard.addRepositoryModals.newProjectCreated",
+									message: "Project created.",
+								})
+							: readyMessage,
 					);
-					resolveNewProject({ projectId: result.projectId });
+					resolveNewProject(requestId, result);
 				}}
 				onError={(message) =>
 					toast.error(
@@ -64,18 +77,22 @@ export function AddRepositoryModals() {
 				}
 			/>
 			<TemplateGalleryModal
+				key={`template-${active.requestId}`}
+				requestId={active.requestId}
 				open={active.kind === "template-gallery"}
-				onOpenChange={(open) => {
-					if (!open) close();
+				onOpenChange={(open, requestId) => {
+					if (!open) close(requestId);
 				}}
-				onCreated={(result) => {
+				onCreated={(result, requestId) => {
 					toast.success(
-						t({
-							id: "dashboard.addRepositoryModals.templateProjectCreated",
-							message: "Project created.",
-						}),
+						result.created
+							? t({
+									id: "dashboard.addRepositoryModals.templateProjectCreated",
+									message: "Project created.",
+								})
+							: readyMessage,
 					);
-					resolveNewProject({ projectId: result.projectId });
+					resolveNewProject(requestId, result);
 				}}
 				onError={(message) =>
 					toast.error(

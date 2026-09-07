@@ -16,6 +16,16 @@ export interface CommandContext {
 		pathname: string;
 		params: Record<string, string>;
 	};
+	profile: {
+		id: string;
+		name: string;
+		available: boolean;
+		previousId: string | null;
+		nextId: string | null;
+		select: (profileId: string) => void;
+		openCreate: () => void;
+		openManager: () => void;
+	};
 	workspace: {
 		id: string;
 		name: string;

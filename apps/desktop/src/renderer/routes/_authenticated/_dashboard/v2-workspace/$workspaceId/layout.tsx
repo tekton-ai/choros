@@ -7,6 +7,7 @@ import { electronTrpc } from "renderer/lib/electron-trpc";
 import { useDashboardSidebarState } from "renderer/routes/_authenticated/hooks/use-dashboard-sidebar-state";
 import { useCollections } from "renderer/routes/_authenticated/providers/collections-provider";
 import { useHostWorkspaces } from "renderer/routes/_authenticated/providers/host-workspaces-provider";
+import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
 import { useWorkspaceTransactionsStore } from "renderer/stores/workspace-creates";
 import { StateScreenShell } from "../components/state-screen-shell";
 import { WorkspaceCreateErrorState } from "../components/workspace-create-error-state";
@@ -29,6 +30,7 @@ function V2WorkspaceLayout() {
 	// could always reach and this one cannot.
 	const { workspaceId } = Route.useParams();
 	const collections = useCollections();
+	const profiles = useProfiles();
 	const { ensureWorkspaceInSidebar } = useDashboardSidebarState();
 	const pendingTransaction = useWorkspaceTransactionsStore((state) =>
 		workspaceId ? (state.byWorkspaceId[workspaceId] ?? null) : null,
@@ -61,7 +63,7 @@ function V2WorkspaceLayout() {
 				: null,
 		[hostWorkspaces, workspaceId],
 	);
-	const { data: failedEntries } = useLiveQuery(
+	const { data: failedEntries, isReady: failedEntriesReady } = useLiveQuery(
 		(q) =>
 			q
 				.from({ failed: collections.failedWorkspaceCreates })
@@ -72,11 +74,16 @@ function V2WorkspaceLayout() {
 
 	const lastEnsuredWorkspaceIdRef = useRef<string | null>(null);
 	useEffect(() => {
-		if (!workspace || lastEnsuredWorkspaceIdRef.current === workspace.id)
+		if (
+			!profiles.isReady ||
+			!workspace ||
+			!profiles.isWorkspaceVisible(workspace) ||
+			lastEnsuredWorkspaceIdRef.current === workspace.id
+		)
 			return;
 		lastEnsuredWorkspaceIdRef.current = workspace.id;
 		ensureWorkspaceInSidebar(workspace.id, workspace.projectId);
-	}, [ensureWorkspaceInSidebar, workspace]);
+	}, [ensureWorkspaceInSidebar, workspace, profiles]);
 
 	// Sandboxes ship with the app's own host-service build, so the remote
 	// version gate has nothing to check and no host row to check it against.
@@ -97,15 +104,36 @@ function V2WorkspaceLayout() {
 		},
 		cache.refetchAll,
 	);
+	useEffect(() => {
+		if (failedEntry || (!workspace && missConfirmed))
+			profiles.reportWorkspaceUnavailable(workspaceId);
+	}, [
+		failedEntry,
+		workspace,
+		missConfirmed,
+		workspaceId,
+		profiles.reportWorkspaceUnavailable,
+	]);
+
+	if (
+		!profiles.isReady ||
+		!failedEntriesReady ||
+		(failedEntry
+			? !profiles.isRouteVisible(`/v2-workspace/${workspaceId}`)
+			: workspace && !profiles.isWorkspaceVisible(workspace))
+	) {
+		return <StateScreenShell>{null}</StateScreenShell>;
+	}
+
+	if (failedEntry) {
+		return (
+			<StateScreenShell>
+				<WorkspaceCreateErrorState entry={failedEntry} />
+			</StateScreenShell>
+		);
+	}
 
 	if (!workspace) {
-		if (failedEntry) {
-			return (
-				<StateScreenShell>
-					<WorkspaceCreateErrorState entry={failedEntry} />
-				</StateScreenShell>
-			);
-		}
 		if (!missConfirmed) {
 			return <StateScreenShell>{null}</StateScreenShell>;
 		}

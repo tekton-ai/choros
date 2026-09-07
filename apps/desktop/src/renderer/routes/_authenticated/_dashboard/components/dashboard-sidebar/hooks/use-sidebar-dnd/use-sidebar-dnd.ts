@@ -370,48 +370,6 @@ export function useSidebarDnd({
 
 	const activeType = activeId ? typeOf(activeId) : null;
 
-	// Sync from external data when items or their order/membership changes
-	const prevFingerprintRef = useRef("");
-	useEffect(() => {
-		if (activeId || activeIdRef.current) return; // Don't reset during active drag
-		const fingerprint = [
-			pinnedWorkspaces.map((ws) => ws.id).join("|"),
-			sessionWorkspaces.map((ws) => ws.id).join("|"),
-			projects
-				.map(
-					(project) =>
-						`${project.id}:${project.children
-							.map((c) =>
-								c.type === "workspace"
-									? c.workspace.id
-									: `s:${c.section.id}:${c.section.workspaces.map((w) => w.id).join("|")}`,
-							)
-							.join(",")}`,
-				)
-				.join(";"),
-		].join("\n");
-		if (fingerprint !== prevFingerprintRef.current) {
-			prevFingerprintRef.current = fingerprint;
-			commitDragItems({
-				pinned: pinnedWorkspaces.map((ws) => wsId(ws.id)),
-				sessions: sessionWorkspaces.map((ws) => wsId(ws.id)),
-				byProject: Object.fromEntries(
-					projects.map((project) => [
-						project.id,
-						buildFlatItems(project.children),
-					]),
-				),
-				membership: buildMembership(projects),
-			});
-		}
-	}, [
-		projects,
-		pinnedWorkspaces,
-		sessionWorkspaces,
-		activeId,
-		commitDragItems,
-	]);
-
 	// ── Lookups ──────────────────────────────────────────────────────
 
 	const workspacesById = useMemo(() => {
@@ -448,6 +406,78 @@ export function useSidebarDnd({
 		() => new Map(projects.map((project) => [project.id, project])),
 		[projects],
 	);
+	const isCurrentDragVisible = useCallback(
+		(current: SidebarDndItems) => {
+			const visible = (id: UniqueIdentifier) => {
+				const parsed = parseId(id);
+				return parsed?.type === "workspace"
+					? workspacesById.has(parsed.realId)
+					: parsed?.type === "section" && sectionsById.has(parsed.realId);
+			};
+			if (!current.pinned.every(visible) || !current.sessions.every(visible))
+				return false;
+			for (const projectId in current.byProject) {
+				if (
+					!projectIds.has(projectId) ||
+					!current.byProject[projectId].every(visible)
+				)
+					return false;
+			}
+			return true;
+		},
+		[projectIds, workspacesById, sectionsById],
+	);
+
+	// Sync from external data when items or their order/membership changes
+	const prevFingerprintRef = useRef("");
+	useEffect(() => {
+		if (activeId || activeIdRef.current) {
+			if (isCurrentDragVisible(itemsRef.current)) return;
+			// A Profile switch or external move invalidates the drag snapshot.
+			// Drop it before rebuilding; an eventual pointer-up must not write it.
+			clonedRef.current = null;
+			activeIdRef.current = null;
+			setActiveId(null);
+			setOverId(null);
+		}
+		const fingerprint = [
+			pinnedWorkspaces.map((ws) => ws.id).join("|"),
+			sessionWorkspaces.map((ws) => ws.id).join("|"),
+			projects
+				.map(
+					(project) =>
+						`${project.id}:${project.children
+							.map((c) =>
+								c.type === "workspace"
+									? c.workspace.id
+									: `s:${c.section.id}:${c.section.workspaces.map((w) => w.id).join("|")}`,
+							)
+							.join(",")}`,
+				)
+				.join(";"),
+		].join("\n");
+		if (fingerprint !== prevFingerprintRef.current) {
+			prevFingerprintRef.current = fingerprint;
+			commitDragItems({
+				pinned: pinnedWorkspaces.map((ws) => wsId(ws.id)),
+				sessions: sessionWorkspaces.map((ws) => wsId(ws.id)),
+				byProject: Object.fromEntries(
+					projects.map((project) => [
+						project.id,
+						buildFlatItems(project.children),
+					]),
+				),
+				membership: buildMembership(projects),
+			});
+		}
+	}, [
+		projects,
+		pinnedWorkspaces,
+		sessionWorkspaces,
+		activeId,
+		commitDragItems,
+		isCurrentDragVisible,
+	]);
 
 	const collapsedSectionIds = useMemo(() => {
 		const set = new Set<string>();
@@ -781,6 +811,7 @@ export function useSidebarDnd({
 
 	const onDragOver = useCallback(
 		({ active, over }: DragOverEvent) => {
+			if (!isCurrentDragVisible(itemsRef.current)) return;
 			setOverId(over?.id ?? null);
 			if (!over || typeOf(active.id) !== "workspace") return;
 
@@ -837,7 +868,12 @@ export function useSidebarDnd({
 			}
 			commitDragItems({ ...next, membership });
 		},
-		[typeOf, commitDragItems, freezeCollisionsForOneFrame],
+		[
+			typeOf,
+			commitDragItems,
+			freezeCollisionsForOneFrame,
+			isCurrentDragVisible,
+		],
 	);
 
 	const onDragEnd = useCallback(
@@ -848,6 +884,13 @@ export function useSidebarDnd({
 			activeIdRef.current = null;
 			setActiveId(null);
 			setOverId(null);
+			if (
+				!isCurrentDragVisible(itemsRef.current) ||
+				(snapshot && !isCurrentDragVisible(snapshot))
+			) {
+				prevFingerprintRef.current = "";
+				return;
+			}
 
 			const revert = () => {
 				if (snapshot) commitDragItems(snapshot);
@@ -1025,6 +1068,7 @@ export function useSidebarDnd({
 			commitProjectToDb,
 			persistWorkspaceDrop,
 			commitDragItems,
+			isCurrentDragVisible,
 		],
 	);
 
@@ -1050,14 +1094,14 @@ export function useSidebarDnd({
 		document.addEventListener("click", swallowClick, { capture: true });
 		document.addEventListener("mouseup", onMouseUp, { capture: true });
 
-		if (clonedRef.current) {
+		if (clonedRef.current && isCurrentDragVisible(clonedRef.current)) {
 			commitDragItems(clonedRef.current);
 		}
 		activeIdRef.current = null;
 		setActiveId(null);
 		setOverId(null);
 		clonedRef.current = null;
-	}, [commitDragItems]);
+	}, [commitDragItems, isCurrentDragVisible]);
 
 	const contextValue = useMemo<DashboardSidebarDndValue>(
 		() => ({
