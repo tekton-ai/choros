@@ -2,14 +2,14 @@
 artifact: spec
 feature: summer-virgo
 author: agent
-status: draft
+status: accepted
 created: 2026-09-07
 intent: ./intent.md
 ---
 
 # Spec — Choros 官网产品化改版
 
-前置条件：同目录 `intent.md` 已由用户在会话中明确接受，并记录为 `status: accepted`。本规格仍为草案；其接受不由 agent 代为决定。
+前置条件：同目录 `intent.md` 已由用户在会话中明确接受，并记录为 `status: accepted`。用户在收到本规格及“接受后进入实施计划”的说明后回复“继续啊”，确认继续进入 plan；agent 记录该人类审批决定，不代为接受后续实施计划。
 
 ## Requirements & design spec
 
@@ -194,4 +194,4 @@ intent: ./intent.md
 ## Author + Status
 
 - **Author:** agent，依据用户接受的 intent、当前代码/品牌规范和公开发布结果整理。
-- **Status:** `draft` — 等待用户接受此规格；接受后进入 plan，不自动接受实施计划或直接改写官网。
+- **Status:** `accepted` — 用户于 2026-09-07 在本次会话中回复“继续啊”，确认本规格后继续进入 plan；所有截图、发布、国际化与人工审查约束继续有效。实施仍以独立接受 plan 为前提。
