@@ -1,6 +1,7 @@
 import { i18n } from "@choros/i18n";
 import { toast } from "@choros/ui/sonner";
 import { useLiveQuery } from "@tanstack/react-db";
+import { useRouter } from "@tanstack/react-router";
 import {
 	createContext,
 	type ReactNode,
@@ -13,6 +14,7 @@ import {
 } from "react";
 import { useHostProjects } from "renderer/hooks/host-projects/use-host-projects";
 import { electronTrpc } from "renderer/lib/electron-trpc";
+import { useWorkProfilesEnabled } from "renderer/stores/work-profiles";
 import {
 	DEFAULT_PROFILE_ID,
 	type ProfileAssignmentResult,
@@ -35,6 +37,7 @@ import {
 import {
 	createProfileProjection,
 	type ProfileWorkspaceIdentity,
+	parseProfileRoute,
 } from "./utils/profile-projection/profile-projection";
 
 const fallbackProfile: ProfileDefinition = {
@@ -50,6 +53,7 @@ const noMemberships: ProfileMembership[] = [];
 const noVisits: ProfileVisit[] = [];
 
 export interface ProfilesContextValue {
+	enabled: boolean;
 	available: boolean;
 	isReady: boolean;
 	profiles: ProfileDefinition[];
@@ -126,6 +130,7 @@ function reportProfileError(): void {
 // providers exist. Such external creation has implicit Default ownership, not
 // a fabricated persisted registry or a successful custom-profile write.
 const fallbackContext: ProfilesContextValue = {
+	enabled: false,
 	available: false,
 	isReady: false,
 	profiles: fallbackProfiles,
@@ -210,6 +215,10 @@ const fallbackContext: ProfilesContextValue = {
 const ProfilesContext = createContext<ProfilesContextValue>(fallbackContext);
 
 export function ProfileProvider({ children }: { children: ReactNode }) {
+	const enabled = useWorkProfilesEnabled();
+	const enabledRef = useRef(enabled);
+	enabledRef.current = enabled;
+	const router = useRouter();
 	const utils = electronTrpc.useUtils();
 	const collections = useCollections();
 	const { data: failedWorkspaces = [] } = useLiveQuery(
@@ -223,9 +232,12 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
 	);
 	const { workspaces, isReady: workspacesReady } = useHostWorkspaces();
 	const { projects, isReady: projectsReady } = useHostProjects();
+	const workspacesRef = useRef(workspaces);
+	workspacesRef.current = workspaces;
 	const query = electronTrpc.profiles.get.useQuery(undefined, {
+		enabled,
 		refetchOnWindowFocus: true,
-		refetchInterval: 5000,
+		refetchInterval: enabled ? 5000 : false,
 		retry: false,
 	});
 	const [registry, setRegistry] = useState<ProfileRegistry | null>(null);
@@ -234,6 +246,8 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
 	const availableRef = useRef(available);
 	const [isReady, setIsReady] = useState(false);
 	const readyRef = useRef(false);
+	// Keep the unclassified view mounted until activation has a fresh registry.
+	const profilesEnabled = enabled && isReady;
 	const [activeProfileId, setActiveProfileId] = useState(DEFAULT_PROFILE_ID);
 	const activeRef = useRef(activeProfileId);
 	const initialized = useRef(false);
@@ -245,7 +259,9 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
 	const [recoveryMembers, setRecoveryMembers] = useState<ProfileMemberRef[]>(
 		[],
 	);
-	const openManager = useCallback(() => setManagerOpen(true), []);
+	const openManager = useCallback(() => {
+		if (enabledRef.current) setManagerOpen(true);
+	}, []);
 	const clearRecoveryMembers = useCallback(() => setRecoveryMembers([]), []);
 	const selectionQueue = useRef(Promise.resolve());
 	const selectionSequence = useRef(0);
@@ -267,58 +283,87 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
 	projectionRef.current = projection;
 	// biome-ignore lint/correctness/useExhaustiveDependencies: projection changes invalidate consumers while ref reads keep async completions current
 	const getProjectProfileId = useCallback(
-		(key: string) => projectionRef.current.getProjectProfileId(key),
-		[projection],
+		(key: string) =>
+			enabledRef.current && readyRef.current
+				? projectionRef.current.getProjectProfileId(key)
+				: DEFAULT_PROFILE_ID,
+		[projection, profilesEnabled],
 	);
 	// biome-ignore lint/correctness/useExhaustiveDependencies: projection changes invalidate consumers while ref reads keep async completions current
 	const getWorkspaceProfileId = useCallback(
 		(workspace: ProfileWorkspaceIdentity) =>
-			projectionRef.current.getWorkspaceProfileId(workspace),
-		[projection],
+			enabledRef.current && readyRef.current
+				? projectionRef.current.getWorkspaceProfileId(workspace)
+				: DEFAULT_PROFILE_ID,
+		[projection, profilesEnabled],
 	);
 
-	const applyRegistry = useCallback((next: ProfileRegistry) => {
-		if (registryRef.current && next.revision < registryRef.current.revision)
-			return;
-		registryRef.current = next;
-		availableRef.current = true;
-		setRegistry(next);
-		setAvailable(true);
-		readyRef.current = true;
-		setIsReady(true);
-		projectionRef.current = createProfileProjection(
-			next.profiles,
-			next.memberships,
-			new Map(
-				[...pendingRef.current].map(([key, value]) => [key, value.profileId]),
-			),
-		);
-		if (!initialized.current) {
-			initialized.current = true;
-			activeRef.current = next.profiles.some(
-				(profile) => profile.id === next.selectedProfileId,
-			)
-				? next.selectedProfileId
-				: projectionRef.current.defaultProfileId;
-			setActiveProfileId(activeRef.current);
-		} else if (
-			!next.profiles.some((profile) => profile.id === activeRef.current)
-		) {
-			selectRef.current(projectionRef.current.defaultProfileId);
-		}
-	}, []);
+	const applyRegistry = useCallback(
+		(next: ProfileRegistry, activateView = false) => {
+			if (registryRef.current && next.revision < registryRef.current.revision)
+				return;
+			registryRef.current = next;
+			availableRef.current = true;
+			setRegistry(next);
+			setAvailable(true);
+			projectionRef.current = createProfileProjection(
+				next.profiles,
+				next.memberships,
+				new Map(
+					[...pendingRef.current].map(([key, value]) => [key, value.profileId]),
+				),
+			);
+			if (!enabledRef.current) return;
+			if (activateView) {
+				readyRef.current = true;
+				setIsReady(true);
+			}
+			if (!initialized.current && activateView) {
+				initialized.current = true;
+				const route = parseProfileRoute(router.state.location.href);
+				const workspace =
+					route.kind === "workspace"
+						? workspacesRef.current.find((row) => row.id === route.workspaceId)
+						: undefined;
+				const projectId =
+					route.kind === "project" || route.kind === "pull-request"
+						? route.projectId
+						: null;
+				// Enabling must not evict the workspace already mounted in this window.
+				activeRef.current = workspace
+					? projectionRef.current.getWorkspaceProfileId(workspace)
+					: projectId
+						? projectionRef.current.getProjectProfileId(projectId)
+						: next.profiles.some(
+									(profile) => profile.id === next.selectedProfileId,
+								)
+							? next.selectedProfileId
+							: projectionRef.current.defaultProfileId;
+				setActiveProfileId(activeRef.current);
+			} else if (
+				!next.profiles.some((profile) => profile.id === activeRef.current)
+			) {
+				selectRef.current(projectionRef.current.defaultProfileId);
+			}
+		},
+		[router],
+	);
 
 	const markRegistryUnavailable = useCallback(() => {
 		availableRef.current = false;
 		setAvailable(false);
+		if (!enabledRef.current) return;
 		readyRef.current = true;
 		setIsReady(true);
 		projectionRef.current = createProfileProjection(
 			fallbackProfiles,
 			noMemberships,
 		);
-		if (activeRef.current !== DEFAULT_PROFILE_ID)
+		if (activeRef.current !== DEFAULT_PROFILE_ID) {
 			selectRef.current(DEFAULT_PROFILE_ID);
+			activeRef.current = DEFAULT_PROFILE_ID;
+			setActiveProfileId(DEFAULT_PROFILE_ID);
+		}
 	}, []);
 
 	const refreshRegistry = useCallback(async () => {
@@ -330,17 +375,35 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
 	}, [utils, applyRegistry]);
 
 	useEffect(() => {
+		if (!enabled) {
+			readyRef.current = false;
+			initialized.current = false;
+			setIsReady(false);
+			setManagerOpen(false);
+			selectionSequence.current++;
+			toast.dismiss("profiles-assignment");
+			return;
+		}
+		// A cached pre-disable response must not activate stale membership.
+		if (!readyRef.current && query.isFetching) return;
 		if (query.data?.available && !query.isError) {
-			applyRegistry(query.data.registry);
+			applyRegistry(query.data.registry, true);
 			return;
 		}
 		if (!query.data && !query.isError) return;
 		markRegistryUnavailable();
-	}, [query.data, query.isError, applyRegistry, markRegistryUnavailable]);
+	}, [
+		enabled,
+		query.data,
+		query.isError,
+		query.isFetching,
+		applyRegistry,
+		markRegistryUnavailable,
+	]);
 
 	const unavailableShown = useRef(false);
 	useEffect(() => {
-		if (isReady && !available && !unavailableShown.current) {
+		if (enabled && isReady && !available && !unavailableShown.current) {
 			unavailableShown.current = true;
 			toast.error(
 				i18n._({
@@ -359,14 +422,16 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
 					},
 				},
 			);
-		} else if (available) {
+		} else if (!enabled || available) {
 			unavailableShown.current = false;
 			toast.dismiss("profiles-unavailable");
 		}
-	}, [available, isReady, query.refetch]);
+	}, [enabled, available, isReady, query.refetch]);
 
 	electronTrpc.profiles.onChanged.useSubscription(undefined, {
+		enabled,
 		onData: (event) => {
+			if (!enabledRef.current) return;
 			if (event.kind === "visits") {
 				void utils.profiles.visits.invalidate();
 				return;
@@ -378,15 +443,19 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
 
 	const activateProfile = useCallback(
 		(profileId: string) => {
+			if (!enabledRef.current) return;
 			activeRef.current = profileId;
 			setActiveProfileId(profileId);
 			if (!availableRef.current) return;
 			const sequence = ++selectionSequence.current;
 			selectionQueue.current = selectionQueue.current.then(async () => {
+				if (!enabledRef.current || sequence !== selectionSequence.current)
+					return;
 				try {
 					await utils.client.profiles.select.mutate({ profileId });
 				} catch {
-					if (sequence === selectionSequence.current) reportProfileError();
+					if (enabledRef.current && sequence === selectionSequence.current)
+						reportProfileError();
 				}
 			});
 		},
@@ -394,14 +463,15 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
 	);
 	const getVisits = useCallback(
 		async (profileId: string) => {
-			if (!availableRef.current) return noVisits;
+			if (!enabledRef.current || !availableRef.current) return noVisits;
 			return utils.profiles.visits.fetch({ profileId });
 		},
 		[utils],
 	);
 	const navigation = useProfileNavigation({
-		isReady,
-		activeProfileId,
+		enabled: profilesEnabled,
+		isReady: !profilesEnabled || isReady,
+		activeProfileId: profilesEnabled ? activeProfileId : DEFAULT_PROFILE_ID,
 		profiles,
 		defaultProfileId: projection.defaultProfileId,
 		projects,
@@ -418,6 +488,7 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
 	});
 	selectRef.current = navigation.selectProfile;
 	const selectProfile = useCallback((profileId: string) => {
+		if (!enabledRef.current) return;
 		if (
 			profileId !== DEFAULT_PROFILE_ID &&
 			!registryRef.current?.profiles.some((profile) => profile.id === profileId)
@@ -429,24 +500,28 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
 
 	const visitsQuery = electronTrpc.profiles.visits.useQuery(
 		{ profileId: activeProfileId },
-		{ enabled: available && isReady, retry: false },
+		{ enabled: profilesEnabled && available, retry: false },
 	);
 	// biome-ignore lint/correctness/useExhaustiveDependencies: selection and readiness invalidate consumers while ref reads prevent stale asynchronous results
 	const isProjectVisible = useCallback(
 		(key: string) =>
-			readyRef.current && getProjectProfileId(key) === activeRef.current,
-		[getProjectProfileId, activeProfileId, isReady],
+			!enabledRef.current ||
+			!readyRef.current ||
+			getProjectProfileId(key) === activeRef.current,
+		[getProjectProfileId, activeProfileId, profilesEnabled],
 	);
 	// biome-ignore lint/correctness/useExhaustiveDependencies: selection and readiness invalidate consumers while ref reads prevent stale asynchronous results
 	const isWorkspaceVisible = useCallback(
 		(workspace: ProfileWorkspaceIdentity) =>
-			readyRef.current &&
+			!enabledRef.current ||
+			!readyRef.current ||
 			getWorkspaceProfileId(workspace) === activeRef.current,
-		[getWorkspaceProfileId, activeProfileId, isReady],
+		[getWorkspaceProfileId, activeProfileId, profilesEnabled],
 	);
 
 	const mutate = useCallback(
 		async (operation: () => Promise<unknown>) => {
+			if (!enabledRef.current) return false;
 			if (!availableRef.current) {
 				reportProfileError();
 				return false;
@@ -459,7 +534,7 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
 			}
 			// A read failure cannot undo an acknowledged atomic write.
 			try {
-				await refreshRegistry();
+				if (enabledRef.current) await refreshRegistry();
 			} catch {
 				markRegistryUnavailable();
 			}
@@ -469,6 +544,7 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
 	);
 	const createProfile = useCallback(
 		async (name: string) => {
+			if (!enabledRef.current) return null;
 			if (!availableRef.current) {
 				reportProfileError();
 				return null;
@@ -481,7 +557,7 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
 				return null;
 			}
 			try {
-				await refreshRegistry();
+				if (enabledRef.current) await refreshRegistry();
 			} catch {
 				markRegistryUnavailable();
 			}
@@ -636,20 +712,25 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
 					member,
 				]);
 				toast.error(
+					// A failed in-flight assignment is still an error while disabled,
+					// but cannot reopen management until the user opts back in.
 					i18n._({
 						id: "profiles.errors.createdInDefault",
 						message:
 							"Your work was created, but its Profile could not be saved. It belongs to Default. Choose a Profile to finish organizing it.",
 					}),
 					{
+						id: "profiles-assignment",
 						duration: Infinity,
-						action: {
-							label: i18n._({
-								id: "profiles.actions.recoverAssignment",
-								message: "Choose Profile",
-							}),
-							onClick: openManager,
-						},
+						action: enabledRef.current
+							? {
+									label: i18n._({
+										id: "profiles.actions.recoverAssignment",
+										message: "Choose Profile",
+									}),
+									onClick: openManager,
+								}
+							: undefined,
 					},
 				);
 				return { profileId: defaultId, assigned: false };
@@ -672,6 +753,7 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
 	const recordOpenedWorkspace = useCallback(
 		(workspace: ProfileWorkspaceIdentity, openKey: string) => {
 			if (
+				!enabledRef.current ||
 				!availableRef.current ||
 				!navigation.isWorkspaceNavigationCurrent(workspace)
 			)
@@ -696,7 +778,8 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
 				.then(
 					() => utils.profiles.visits.invalidate({ profileId }),
 					() => {
-						if (lastRecordedOpen.current === key) reportProfileError();
+						if (enabledRef.current && lastRecordedOpen.current === key)
+							reportProfileError();
 					},
 				);
 		},
@@ -708,20 +791,22 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
 	);
 
 	const value: ProfilesContextValue = {
-		available,
-		isReady,
-		profiles,
-		memberships,
-		activeProfileId,
+		enabled: profilesEnabled,
+		available: profilesEnabled && available,
+		isReady: !profilesEnabled || isReady,
+		profiles: profilesEnabled ? profiles : fallbackProfiles,
+		memberships: profilesEnabled ? memberships : noMemberships,
+		activeProfileId: profilesEnabled ? activeProfileId : DEFAULT_PROFILE_ID,
 		defaultProfileId: projection.defaultProfileId,
-		visits: available ? (visitsQuery.data ?? noVisits) : noVisits,
+		visits:
+			profilesEnabled && available ? (visitsQuery.data ?? noVisits) : noVisits,
 		...navigation,
 		selectProfile,
 		getProjectProfileId,
 		getWorkspaceProfileId,
 		isProjectVisible,
 		isWorkspaceVisible,
-		managerOpen,
+		managerOpen: profilesEnabled && managerOpen,
 		setManagerOpen,
 		openManager,
 		recoveryMembers,
@@ -739,7 +824,7 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
 		<ProfilesContext.Provider value={value}>
 			{children}
 			<ProfileNavigationController />
-			<ProfileManagerDialog />
+			{profilesEnabled && <ProfileManagerDialog />}
 		</ProfilesContext.Provider>
 	);
 }

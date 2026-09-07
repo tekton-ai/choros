@@ -9304,6 +9304,16 @@ msgstr "Wachten op werkruimte-setup voordat agents starten"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
+msgid "settings.experimental.workProfilesHint"
+msgstr "Gebruik aparte profielen voor werk- en privéprojecten en wissel ertussen wanneer dat nodig is."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
+msgid "settings.experimental.workProfilesLabel"
+msgstr "Meerdere profielen"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
 msgid "settings.experimental.workspaceAgentsHint"
 msgstr "Toon draaiende agents onder elke werkruimte in de zijbalk, met hun actuele status."
 

@@ -9304,6 +9304,16 @@ msgstr "Chờ setup workspace xong rồi mới khởi động agent"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
+msgid "settings.experimental.workProfilesHint"
+msgstr "Sử dụng hồ sơ riêng cho các dự án công việc và cá nhân, rồi chuyển đổi giữa chúng khi cần."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
+msgid "settings.experimental.workProfilesLabel"
+msgstr "Nhiều hồ sơ"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
 msgid "settings.experimental.workspaceAgentsHint"
 msgstr "Hiện các agent đang chạy dưới mỗi workspace ở thanh bên, kèm trạng thái trực tiếp."
 

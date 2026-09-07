@@ -9304,6 +9304,16 @@ msgstr "Tunggu setup workspace sebelum menjalankan agen"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
+msgid "settings.experimental.workProfilesHint"
+msgstr "Gunakan profil terpisah untuk proyek pekerjaan dan pribadi, lalu beralih di antaranya sesuai kebutuhan."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
+msgid "settings.experimental.workProfilesLabel"
+msgstr "Beberapa profil"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
 msgid "settings.experimental.workspaceAgentsHint"
 msgstr "Tampilkan agen yang berjalan di bawah tiap workspace di sidebar, lengkap dengan status langsungnya."
 

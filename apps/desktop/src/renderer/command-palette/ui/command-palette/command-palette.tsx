@@ -156,11 +156,13 @@ export function CommandPalette() {
 						onKeyDown={handleKeyDown}
 						leading={depth > 0 ? backButton : undefined}
 					/>
-					<div className="truncate border-b px-4 py-2 text-xs text-muted-foreground">
-						<Trans id="commandPalette.profile.current">
-							Profile: {context.profile.name}
-						</Trans>
-					</div>
+					{context.profile.enabled && (
+						<div className="truncate border-b px-4 py-2 text-xs text-muted-foreground">
+							<Trans id="commandPalette.profile.current">
+								Profile: {context.profile.name}
+							</Trans>
+						</div>
+					)}
 					<QueryContext.Provider value={query}>
 						{currentFrame ? (
 							<SubPaletteView
