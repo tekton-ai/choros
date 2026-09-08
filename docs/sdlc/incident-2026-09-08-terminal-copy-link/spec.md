@@ -21,6 +21,7 @@ intent: ./intent.md
 - 明确区分自动链接选择与手动选择。拖选、双击选区以及非链接文本的普通 Copy 仍原样复制；不能对任意选区通用去括号。
 - 打开菜单引起的 hover leave 不能丢失已捕获的链接目标；新的上下文菜单、手动选区、pane detach/dispose、滚动/resize/buffer 切换不能复用不相干目标。
 - 复制不重新序列化 URI，保留合法括号、编码、query 和 fragment。原生快捷键 Copy、链接打开策略和文件链接不变。
+- 用户后续指出普通 URL 的高亮多包含右括号：修正检测范围从排他终点到 xterm 包含终点的 off-by-one，不删除 OMP 输出的格式括号，不在剪贴板结果上裁剪。
 
 ### Non-functional requirements
 
@@ -34,7 +35,8 @@ intent: ./intent.md
 
 - `SelectionService._selectWordAtCursor` 优先选中 `currentLink.link.range`，而不是按 wordSeparator 分词。
 - OMP 的括号在显示 span 中，但真实 URI 没有括号。Choros 的 Copy 使用 `terminalRuntimeRegistry.getSelection()`，因此复制了 span 显示文本。
-- `TerminalLinkManager` 保留现有 hover 回调提供的 URI/range，并记录原生 contextmenu 引发的自动链接选择；registry 为现有 Copy 提供上下文专用取值。普通 getSelection 不变。
+- `TerminalLinkManager` 只从现有 hover 回调读取 URI；原生 contextmenu 引发 selection-change 时，用 `getSelectionPosition()` 给该选区记录复制值。所有保存的范围都来自同一个原生选区 API，不再让 provider 额外传递 range。registry 为原有 Copy 转发取值，普通 getSelection 不变。
+- 普通 URL 的解析文本原本已无外围括号；错误在 `calculateLinkRange` 把排他 matchEnd 当成包含终点。只在生成最终范围时减去一个终点单元格，地址字符串本身不变。
 
 ## Policy compliance
 
