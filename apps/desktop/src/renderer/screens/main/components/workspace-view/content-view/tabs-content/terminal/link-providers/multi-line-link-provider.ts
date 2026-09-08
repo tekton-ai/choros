@@ -43,11 +43,7 @@ export abstract class MultiLineLinkProvider implements ILinkProvider {
 	): void;
 
 	/** Optional hooks fired when the mouse enters/leaves a detected link. */
-	protected handleHover?(
-		event: MouseEvent,
-		text: string,
-		range: ILink["range"],
-	): void;
+	protected handleHover?(event: MouseEvent, text: string): void;
 	protected handleLeave?(): void;
 
 	/**
@@ -186,7 +182,7 @@ export abstract class MultiLineLinkProvider implements ILinkProvider {
 						this.handleActivation(event, text, match);
 					},
 					hover: (event: MouseEvent, text: string) => {
-						this.handleHover?.(event, text, range);
+						this.handleHover?.(event, text);
 					},
 					leave: () => {
 						this.handleLeave?.();
@@ -239,6 +235,8 @@ export abstract class MultiLineLinkProvider implements ILinkProvider {
 	): ILink["range"] {
 		const start = this.offsetToPosition(matchIndex, lines, false);
 		const end = this.offsetToPosition(matchEnd, lines, true);
+		// matchEnd is exclusive, while xterm's link range includes its end cell.
+		end.x -= 1;
 
 		return {
 			start,

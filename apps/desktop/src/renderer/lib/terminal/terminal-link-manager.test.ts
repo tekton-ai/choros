@@ -71,14 +71,18 @@ function createMockTerminal() {
 		registeredProviders,
 		disposedProviders,
 		listeners,
-		contextSelect(text?: string, position?: IBufferRange, inside = true) {
+		contextSelect(
+			text?: string,
+			position?: IBufferRange,
+			inside = true,
+			cursor = (position ?? selectionPosition)?.start ?? { x: 0, y: 0 },
+		) {
 			insideTerminal = inside;
 			const nativeRightClick = () => {
 				if (text !== undefined) setSelection(text, position);
 			};
 			// The manager's capture listener runs before xterm's native selection.
 			ownerDocument.addEventListener("contextmenu", nativeRightClick);
-			const cursor = (position ?? selectionPosition)?.start ?? { x: 0, y: 0 };
 			ownerDocument.dispatchEvent(
 				Object.assign(new Event("contextmenu"), {
 					clientX: cursor.x * 10 + 5,
@@ -301,5 +305,25 @@ describe("TerminalLinkManager", () => {
 		);
 		contextSelect();
 		expect(manager.getContextCopyText()).toBe("https://example.com/new");
+	});
+
+	it("does not treat a right-click on blank cells as the previous selected link", () => {
+		const { terminal, contextSelect } = createMockTerminal();
+		const manager = new TerminalLinkManager(terminal);
+		manager.setHandlers({ stat: async () => null, onUrlClick: mock() });
+		terminal.options.linkHandler?.hover?.(
+			{} as MouseEvent,
+			"https://www.baidu.com",
+			{ start: { x: 1, y: 1 }, end: { x: 5, y: 1 } },
+		);
+		contextSelect("baidu", { start: { x: 0, y: 0 }, end: { x: 5, y: 0 } });
+		terminal.options.linkHandler?.leave?.(
+			{} as MouseEvent,
+			"https://www.baidu.com",
+			{ start: { x: 1, y: 1 }, end: { x: 5, y: 1 } },
+		);
+		// xterm can leave the old selection intact when the new word is whitespace.
+		contextSelect(undefined, undefined, true, { x: 60, y: 4 });
+		expect(manager.getContextCopyText()).toBe("baidu");
 	});
 });

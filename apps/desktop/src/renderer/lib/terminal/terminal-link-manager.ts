@@ -49,9 +49,16 @@ interface LinkProviderDisposable {
 	dispose(): void;
 }
 
-interface UrlCopyTarget {
+interface CopySelection {
 	uri: string;
 	range: IBufferRange;
+	reusable: boolean;
+}
+
+interface CopyContext {
+	event: Event;
+	uri: string | null;
+	copy: CopySelection | null;
 }
 
 /**
@@ -67,70 +74,54 @@ export class TerminalLinkManager {
 	private _resolver: TerminalLinkResolver | null = null;
 	private _handlers: TerminalLinkHandlers | null = null;
 	private _oscLinkHandler: ILinkHandler | null = null;
-	private _hoveredUrl: UrlCopyTarget | null = null;
-	private _contextUrl: UrlCopyTarget | null = null;
-	private _automaticUrl: UrlCopyTarget | null = null;
-	private _contextEvent: Event | null = null;
-	private _canRetainAutomaticUrl = false;
+	private _hoveredUrl: string | null = null;
+	private _copySelection: CopySelection | null = null;
+	private _copyContext: CopyContext | null = null;
 
 	/** Context-menu Copy uses a URI only for xterm's right-click link selection. */
 	getContextCopyText(): string {
-		const link = this._contextUrl;
-		if (
-			link &&
-			this._automaticUrl?.uri === link.uri &&
-			this._selectionMatches(link.range) &&
-			this._selectionMatches(this._automaticUrl.range)
-		)
-			return link.uri;
-		return this._terminal.getSelection();
+		const copy = this._copyContext?.copy;
+		return copy &&
+			this._sameSelection(copy.range, this._terminal.getSelectionPosition())
+			? copy.uri
+			: this._terminal.getSelection();
 	}
 
 	resetContextCopy = (): void => {
 		this._hoveredUrl = null;
-		this._contextUrl = null;
-		this._automaticUrl = null;
-		this._contextEvent = null;
-		this._canRetainAutomaticUrl = false;
+		this._copySelection = null;
+		this._copyContext = null;
 	};
 
-	private _selectionMatches(range: IBufferRange): boolean {
-		const selection = this._terminal.getSelectionPosition();
-		if (!selection) return false;
-		const cols = this._terminal.cols;
-		// Link ranges are 1-based/inclusive; selection ranges are 0-based/exclusive.
+	private _sameSelection(
+		a: IBufferRange | undefined,
+		b: IBufferRange | undefined,
+	): boolean {
 		return (
-			selection.start.y * cols + selection.start.x ===
-				(range.start.y - 1) * cols + range.start.x - 1 &&
-			selection.end.y * cols + selection.end.x ===
-				(range.end.y - 1) * cols + range.end.x
+			!!a &&
+			!!b &&
+			a.start.x === b.start.x &&
+			a.start.y === b.start.y &&
+			a.end.x === b.end.x &&
+			a.end.y === b.end.y
 		);
 	}
 
-	private _eventInRange(event: MouseEvent, range: IBufferRange): boolean {
+	private _eventInSelection(event: MouseEvent, range: IBufferRange): boolean {
 		const rect = this._terminal.element
 			?.querySelector(".xterm-screen")
 			?.getBoundingClientRect();
-		if (
-			!rect ||
-			rect.width <= 0 ||
-			rect.height <= 0 ||
-			event.clientX < rect.left ||
-			event.clientX >= rect.right ||
-			event.clientY < rect.top ||
-			event.clientY >= rect.bottom
-		)
-			return false;
-		const cols = this._terminal.cols;
-		const x = Math.floor(((event.clientX - rect.left) * cols) / rect.width);
-		const y =
-			Math.floor(
-				((event.clientY - rect.top) * this._terminal.rows) / rect.height,
-			) + this._terminal.buffer.active.viewportY;
-		const cell = y * cols + x;
+		if (!rect?.width || !rect.height) return false;
+		const x = ((event.clientX - rect.left) * this._terminal.cols) / rect.width;
+		const y = ((event.clientY - rect.top) * this._terminal.rows) / rect.height;
+		const row = Math.floor(y) + this._terminal.buffer.active.viewportY;
 		return (
-			cell >= (range.start.y - 1) * cols + range.start.x - 1 &&
-			cell < (range.end.y - 1) * cols + range.end.x
+			x >= 0 &&
+			x < this._terminal.cols &&
+			y >= 0 &&
+			y < this._terminal.rows &&
+			(row > range.start.y || (row === range.start.y && x >= range.start.x)) &&
+			(row < range.end.y || (row === range.end.y && x < range.end.x))
 		);
 	}
 
@@ -138,30 +129,26 @@ export class TerminalLinkManager {
 		const doc = this._terminal.element?.ownerDocument ?? globalThis.document;
 		if (!doc) return;
 		const capture = (event: MouseEvent) => {
-			const inside = this._terminal.element?.contains(event.target as Node);
-			this._contextEvent = inside ? event : null;
-			this._contextUrl = null;
-			if (!inside) return;
-			// xterm keeps an existing selection on a second right-click inside it.
-			// Its temporary textarea may cover the link, so no new hover is required.
-			const retained = this._automaticUrl;
-			this._contextUrl =
-				this._hoveredUrl ??
-				(retained &&
-				this._canRetainAutomaticUrl &&
-				this._selectionMatches(retained.range) &&
-				this._eventInRange(event, retained.range)
-					? retained
-					: null);
+			this._copyContext = null;
+			if (!this._terminal.element?.contains(event.target as Node)) return;
+			const copy = this._copySelection;
+			if (!copy && !this._hoveredUrl) return;
+			const context: CopyContext = { event, uri: this._hoveredUrl, copy: null };
+			this._copyContext = context;
 			if (
-				retained &&
-				this._contextUrl &&
-				this._selectionMatches(retained.range) &&
-				this._selectionMatches(this._contextUrl.range) &&
-				this._eventInRange(event, this._contextUrl.range)
-			) {
-				this._automaticUrl = this._contextUrl;
-				this._canRetainAutomaticUrl = true;
+				!copy ||
+				!this._sameSelection(
+					copy.range,
+					this._terminal.getSelectionPosition(),
+				) ||
+				!this._eventInSelection(event, copy.range)
+			)
+				return;
+			const uri = context.uri ?? (copy.reusable ? copy.uri : null);
+			if (uri) {
+				copy.uri = uri;
+				copy.reusable = true;
+				context.copy = copy;
 			}
 		};
 		const manualSelection = (event: MouseEvent) => {
@@ -170,10 +157,8 @@ export class TerminalLinkManager {
 				!this._terminal.element?.contains(event.target as Node)
 			)
 				return;
-			this._automaticUrl = null;
-			this._contextUrl = null;
-			this._contextEvent = null;
-			this._canRetainAutomaticUrl = false;
+			this._copySelection = null;
+			this._copyContext = null;
 		};
 		doc.addEventListener("contextmenu", capture, true);
 		doc.addEventListener("mousedown", manualSelection, true);
@@ -185,31 +170,25 @@ export class TerminalLinkManager {
 				},
 			},
 			this._terminal.onSelectionChange(() => {
-				const link = this._contextUrl;
-				// xterm selects the hovered hyperlink synchronously during contextmenu.
-				// eventPhase becomes NONE after dispatch, so later manual selections
-				// cannot acquire the saved URI merely by matching its display range.
-				if (
-					this._contextEvent?.eventPhase &&
-					link &&
-					this._selectionMatches(link.range)
-				) {
-					this._automaticUrl = link;
-					this._canRetainAutomaticUrl = true;
-				} else if (
-					!this._automaticUrl ||
-					!this._selectionMatches(this._automaticUrl.range)
-				) {
-					this._automaticUrl = null;
-					this._contextUrl = null;
-					this._canRetainAutomaticUrl = false;
+				const range = this._terminal.getSelectionPosition();
+				const context = this._copyContext;
+				// xterm creates its link selection synchronously inside contextmenu.
+				// Store that native selection, not the provider's differently based range.
+				if (range && context?.event.eventPhase && context.uri) {
+					this._copySelection = context.copy = {
+						uri: context.uri,
+						range,
+						reusable: true,
+					};
+				} else if (!this._sameSelection(this._copySelection?.range, range)) {
+					this._copySelection = null;
+					if (context) context.copy = null;
 				}
 			}),
 			this._terminal.onWriteParsed(() => {
-				// Keep an already-open menu's snapshot, but require a fresh link on
-				// the next right-click after the TUI has changed its output.
 				this._hoveredUrl = null;
-				this._canRetainAutomaticUrl = false;
+				// The open menu keeps its snapshot; the next one needs a fresh target.
+				if (this._copySelection) this._copySelection.reusable = false;
 			}),
 			this._terminal.onScroll(this.resetContextCopy),
 			this._terminal.onResize(this.resetContextCopy),
@@ -279,12 +258,8 @@ export class TerminalLinkManager {
 			this._hoveredUrl = null;
 			handlers.onLinkLeave?.();
 		};
-		const onUrlHover = (
-			event: MouseEvent,
-			uri: string,
-			range: IBufferRange,
-		) => {
-			this._hoveredUrl = /^https?:\/\//i.test(uri) ? { uri, range } : null;
+		const onUrlHover = (event: MouseEvent, uri: string) => {
+			this._hoveredUrl = /^https?:\/\//i.test(uri) ? uri : null;
 			handlers.onLinkHover?.(event, { kind: "url" });
 		};
 

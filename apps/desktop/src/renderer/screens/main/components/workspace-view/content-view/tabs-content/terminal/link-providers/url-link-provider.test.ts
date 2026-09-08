@@ -44,6 +44,33 @@ function getLinks(
 	});
 }
 
+describe("URL highlight boundaries", () => {
+	it("does not include the enclosing closing parenthesis in the link range", async () => {
+		const text = "baidu (https://www.baidu.com)";
+		const provider = new UrlLinkProvider(
+			createMockTerminal([{ text }]),
+			mock(),
+		);
+		const [link] = await getLinks(provider, 1);
+		expect(text.slice(link.range.start.x - 1, link.range.end.x)).toBe(
+			"https://www.baidu.com",
+		);
+	});
+
+	it("ends at the last cell rather than selecting punctuation on the wrapped row", async () => {
+		const url = "https://example.com";
+		const provider = new UrlLinkProvider(
+			createMockTerminal(
+				[{ text: url }, { text: ")", isWrapped: true }],
+				url.length,
+			),
+			mock(),
+		);
+		const [link] = await getLinks(provider, 1);
+		expect(link.range.end).toEqual({ x: url.length, y: 1 });
+	});
+});
+
 describe("UrlLinkProvider", () => {
 	describe("basic URL detection", () => {
 		it("should detect https URLs", async () => {
