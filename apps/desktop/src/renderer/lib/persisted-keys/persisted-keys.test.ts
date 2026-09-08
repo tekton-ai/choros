@@ -54,6 +54,23 @@ describe("sweepDeadPersistedKeys", () => {
 		expect(storage.getItem("outlit_session")).toBeNull();
 	});
 
+	test.each([
+		false,
+		true,
+	])("retires the old Profiles opt-in value %s without changing other experiments", (enabled) => {
+		const agents = '{"state":{"enabled":true},"version":0}';
+		const ports = '{"state":{"mode":"topbar"},"version":2}';
+		const storage = makeStorage({
+			"work-profiles": JSON.stringify({ state: { enabled }, version: 0 }),
+			"workspace-agents-row": agents,
+			"inline-workspace-ports": ports,
+		});
+		expect(sweepDeadPersistedKeys(storage)).toBe(1);
+		expect(storage.getItem("work-profiles")).toBeNull();
+		expect(storage.getItem("workspace-agents-row")).toBe(agents);
+		expect(storage.getItem("inline-workspace-ports")).toBe(ports);
+	});
+
 	test("an exact dead key does not match keys it merely prefixes", () => {
 		const storage = makeStorage({ "notification-center-store-v2": "{}" });
 		expect(sweepDeadPersistedKeys(storage)).toBe(0);

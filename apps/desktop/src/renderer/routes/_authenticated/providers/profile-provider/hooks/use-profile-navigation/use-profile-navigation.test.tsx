@@ -37,16 +37,12 @@ const workspaces = ["a", "b"].map((owner) => ({
 
 function setup(getVisits: Options["getVisits"] = async () => []) {
 	let navigation!: Navigation;
-	let setEnabled!: (enabled: boolean) => void;
 	let errors = 0;
 	function Harness() {
-		const [enabled, updateEnabled] = React.useState(true);
 		const [activeProfileId, setActiveProfileId] = React.useState("a");
-		setEnabled = updateEnabled;
 		navigation = useProfileNavigation({
-			enabled,
 			isReady: true,
-			activeProfileId: enabled ? activeProfileId : "default",
+			activeProfileId,
 			profiles,
 			defaultProfileId: "default",
 			workspaces,
@@ -93,7 +89,6 @@ function setup(getVisits: Options["getVisits"] = async () => []) {
 		get navigation() {
 			return navigation;
 		},
-		setEnabled: (enabled: boolean) => setEnabled(enabled),
 		get errors() {
 			return errors;
 		},
@@ -105,17 +100,13 @@ afterAll(async () => {
 	if (!alreadyRegistered) await GlobalRegistrator.unregister();
 });
 
-test("disabling allows cross-profile history and notification focus without selecting its owner", async () => {
+test("explicit cross-profile navigation selects its owner and preserves notification focus", async () => {
 	const app = setup();
 	await act(async () => {
 		app.mount();
 		await app.router.latestLoadPromise;
 	});
 	expect(app.navigation.isRouteVisible("/v2-workspace/work-b")).toBe(false);
-	await act(async () => {
-		app.setEnabled(false);
-	});
-	expect(app.navigation.isRouteVisible("/v2-workspace/work-b")).toBe(true);
 	const source = { type: "terminal", id: "terminal-b" };
 	let opened!: Promise<void>;
 	await act(async () => {
@@ -134,25 +125,16 @@ test("disabling allows cross-profile history and notification focus without sele
 			projectId: "project-b",
 		}),
 	).toBe(true);
-	expect(app.navigation.captureSubmission().profileId).toBe("default");
-	await act(async () => {
-		app.router.history.back();
-		await app.router.latestLoadPromise;
-	});
-	expect(app.router.state.location.pathname).toBe("/v2-workspace/work-a");
+	expect(app.navigation.captureSubmission().profileId).toBe("b");
+	expect(app.navigation.isRouteVisible("/v2-workspace/work-a")).toBe(false);
+	expect(app.navigation.isRouteVisible("/v2-workspace/work-b")).toBe(true);
 	expect(app.errors).toBe(0);
 });
 
-test("disabling invalidates a pending restore and creation navigation while keeping the mounted draft", async () => {
-	let finishVisits!: (
-		visits: Awaited<ReturnType<Options["getVisits"]>>,
-	) => void;
-	const app = setup(
-		() =>
-			new Promise((resolve) => {
-				finishVisits = resolve;
-			}),
-	);
+test("a newer explicit target invalidates pending restore and creation navigation without remounting the draft", async () => {
+	const visits =
+		Promise.withResolvers<Awaited<ReturnType<Options["getVisits"]>>>();
+	const app = setup(() => visits.promise);
 	await act(async () => {
 		app.mount();
 		await app.router.latestLoadPromise;
@@ -162,11 +144,13 @@ test("disabling invalidates a pending restore and creation navigation while keep
 	await act(async () => {
 		app.navigation.selectProfile("b");
 	});
+	let opened: Promise<void> | undefined;
 	await act(async () => {
-		app.setEnabled(false);
+		opened = app.navigation.openWorkspace("work-a");
 	});
 	await act(async () => {
-		finishVisits([
+		await opened;
+		visits.resolve([
 			{ profileId: "b", workspaceId: "work-b", hostId: "local", visitedAt: 1 },
 		]);
 		await app.router.latestLoadPromise;
@@ -179,6 +163,7 @@ test("disabling invalidates a pending restore and creation navigation while keep
 	});
 	expect(lateNavigation).toBe(false);
 	expect(app.router.state.location.pathname).toBe("/v2-workspace/work-a");
+	expect(app.navigation.captureSubmission().profileId).toBe("a");
 	expect(document.querySelector("[aria-label=draft]")).toBe(draft);
 	expect(draft?.value).toBe("keep this draft");
 	expect(app.errors).toBe(0);

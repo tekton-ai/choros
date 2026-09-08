@@ -9304,16 +9304,6 @@ msgstr "에이전트를 시작하기 전에 워크스페이스 설정 기다리�
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.workProfilesHint"
-msgstr "업무용 프로젝트와 개인 프로젝트에 각각 다른 프로필을 사용하고 필요에 따라 전환하세요."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.workProfilesLabel"
-msgstr "여러 프로필"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
 msgid "settings.experimental.workspaceAgentsHint"
 msgstr "사이드바의 워크스페이스마다 실행 중인 에이전트와 실시간 상태를 표시합니다."
 

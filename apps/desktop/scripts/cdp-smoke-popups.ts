@@ -18,6 +18,8 @@
  * Dependency-free (Bun WebSocket + fetch).
  */
 
+import { Cdp, type CdpTarget } from "./lib/cdp";
+
 const PORT = process.env.RENDERER_REMOTE_DEBUG_PORT;
 const VITE_PORT = process.env.DESKTOP_VITE_PORT;
 const FIXTURE_PORT = Number(process.env.POPUP_FIXTURE_PORT ?? "8797");
@@ -212,74 +214,6 @@ const POPUP = (q: URLSearchParams) => `<!doctype html><meta charset="utf-8">
   ${q.get("nest") === "1" ? `setTimeout(() => window.open("${ORIGIN}/popup?inner=1", "inner", "width=380,height=380"), 500);` : ""}
   ${q.get("close") === "1" ? "setTimeout(() => window.close(), 800);" : ""}
 </script>`;
-
-interface CdpTarget {
-	id: string;
-	type: string;
-	url: string;
-	webSocketDebuggerUrl?: string;
-}
-
-class Cdp {
-	private id = 0;
-	private pending = new Map<
-		number,
-		{ resolve: (v: unknown) => void; reject: (e: Error) => void }
-	>();
-	private constructor(private ws: WebSocket) {
-		ws.addEventListener("message", (ev) => {
-			const m = JSON.parse(String(ev.data)) as {
-				id?: number;
-				result?: unknown;
-				error?: { message: string };
-			};
-			if (m.id == null) return;
-			const p = this.pending.get(m.id);
-			if (!p) return;
-			this.pending.delete(m.id);
-			m.error ? p.reject(new Error(m.error.message)) : p.resolve(m.result);
-		});
-	}
-	static async connect(url: string): Promise<Cdp> {
-		const ws = new WebSocket(url);
-		await new Promise<void>((res, rej) => {
-			ws.addEventListener("open", () => res(), { once: true });
-			ws.addEventListener("error", () => rej(new Error("ws error")), {
-				once: true,
-			});
-		});
-		return new Cdp(ws);
-	}
-	send<T>(method: string, params: Record<string, unknown> = {}): Promise<T> {
-		const id = ++this.id;
-		return new Promise<T>((resolve, reject) => {
-			this.pending.set(id, {
-				resolve: resolve as (v: unknown) => void,
-				reject,
-			});
-			this.ws.send(JSON.stringify({ id, method, params }));
-			setTimeout(() => {
-				if (this.pending.delete(id)) reject(new Error(`timeout: ${method}`));
-			}, 20_000);
-		});
-	}
-	async eval<T>(expression: string): Promise<T> {
-		const r = await this.send<{
-			result?: { value?: T };
-			exceptionDetails?: { text: string };
-		}>("Runtime.evaluate", {
-			expression,
-			awaitPromise: true,
-			returnByValue: true,
-			userGesture: true,
-		});
-		if (r.exceptionDetails) throw new Error(r.exceptionDetails.text);
-		return r.result?.value as T;
-	}
-	close() {
-		this.ws.close();
-	}
-}
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 const targets = async (): Promise<CdpTarget[]> =>

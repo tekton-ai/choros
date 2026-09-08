@@ -1,5 +1,5 @@
 /**
- * Allowlist of renderer localStorage writers and their live key families.
+ * Allowlist of renderer browser-storage writers and their live key families.
  * CI fails on unregistered or stale writer files. `*` marks a dynamic part.
  * Bounds and deletion requirements live in apps/desktop/AGENTS.md.
  */
@@ -59,6 +59,8 @@ export const PERSISTED_KEY_REGISTRY: ReadonlyArray<
 	],
 	["src/renderer/stores/ringtone/store.ts", ["ringtone-storage"]],
 	["src/renderer/stores/settings.ts", ["settings"]],
+	// Window-session storage only; bounded to one return target per window.
+	["src/renderer/stores/settings-state.ts", ["settings-navigation"]],
 	[
 		"src/renderer/stores/markdown-preferences/store.ts",
 		["markdown-preferences"],
@@ -105,7 +107,6 @@ export const PERSISTED_KEY_REGISTRY: ReadonlyArray<
 		],
 	],
 	["src/renderer/stores/workspace-agents-row.ts", ["workspace-agents-row"]],
-	["src/renderer/stores/work-profiles.ts", ["work-profiles"]],
 	[
 		"src/renderer/routes/_authenticated/settings/usage/utils/usage-last-section/usage-last-section.ts",
 		["usage-last-section-v1"],

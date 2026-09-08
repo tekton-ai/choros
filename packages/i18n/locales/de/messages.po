@@ -9304,16 +9304,6 @@ msgstr "Auf das Arbeitsbereich-Setup warten, bevor Agenten starten"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.workProfilesHint"
-msgstr "Nutze getrennte Profile für berufliche und private Projekte und wechsle nach Bedarf zwischen ihnen."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.workProfilesLabel"
-msgstr "Mehrere Profile"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
 msgid "settings.experimental.workspaceAgentsHint"
 msgstr "Laufende Agenten mit ihrem Live-Status unter jedem Arbeitsbereich in der Seitenleiste anzeigen."
 

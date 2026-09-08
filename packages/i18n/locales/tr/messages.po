@@ -9304,16 +9304,6 @@ msgstr "Ajanları başlatmadan önce çalışma alanı kurulumunu bekle"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.workProfilesHint"
-msgstr "İş ve kişisel projeleriniz için ayrı profiller kullanın ve gerektiğinde aralarında geçiş yapın."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.workProfilesLabel"
-msgstr "Birden fazla profil"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
 msgid "settings.experimental.workspaceAgentsHint"
 msgstr "Kenar çubuğunda her çalışma alanının altında çalışan ajanları canlı durumlarıyla göster."
 

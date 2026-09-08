@@ -130,6 +130,30 @@ Object.defineProperty(globalThis, "localStorage", {
 	configurable: true,
 });
 
+// Window-local persisted navigation must not share the localStorage mock.
+const sessionStorageBacking = new Map<string, string>();
+const mockSessionStorage: Storage = {
+	get length() {
+		return sessionStorageBacking.size;
+	},
+	clear: () => sessionStorageBacking.clear(),
+	getItem: (key: string) => sessionStorageBacking.get(key) ?? null,
+	key: (index: number) =>
+		Array.from(sessionStorageBacking.keys())[index] ?? null,
+	removeItem: (key: string) => {
+		sessionStorageBacking.delete(key);
+	},
+	setItem: (key: string, value: string) => {
+		sessionStorageBacking.set(key, String(value));
+	},
+};
+Object.defineProperty(globalThis, "sessionStorage", {
+	value: mockSessionStorage,
+	writable: true,
+	configurable: true,
+});
+beforeEach(() => sessionStorageBacking.clear());
+
 // =============================================================================
 // Electron Preload Mocks (exposed via contextBridge in real app)
 // =============================================================================

@@ -9304,16 +9304,6 @@ msgstr "启动智能体前等待工作区设置完成"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.workProfilesHint"
-msgstr "用不同的 Profile 区分工作与个人项目，按需切换。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.workProfilesLabel"
-msgstr "多 Profile"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
 msgid "settings.experimental.workspaceAgentsHint"
 msgstr "在侧边栏每个工作区下显示正在运行的智能体及其实时状态。"
 
