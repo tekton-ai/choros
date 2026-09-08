@@ -18,7 +18,7 @@ const targetsSchema = z.array(
 	}),
 );
 
-export interface ProfileE2ERuntime {
+export interface DesktopE2ERuntime {
 	origin: string;
 	artifactDir: string;
 	homeDir: string;
@@ -60,9 +60,14 @@ function reservePort(): ReturnType<typeof Bun.serve> {
 	});
 }
 
-export async function startProfileE2E(): Promise<ProfileE2ERuntime> {
+export async function startDesktopE2E(
+	options: { artifactDir?: string } = {},
+): Promise<DesktopE2ERuntime> {
 	const desktopDir = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
-	const artifactDir = await mkdtemp(join(tmpdir(), "choros-profiles-e2e-"));
+	const artifactDir = options.artifactDir
+		? resolve(options.artifactDir)
+		: await mkdtemp(join(tmpdir(), "choros-desktop-e2e-"));
+	mkdirSync(artifactDir, { recursive: true });
 	const appDir = join(artifactDir, "apps/desktop");
 	mkdirSync(appDir, { recursive: true });
 	// Keep app.getAppPath()-relative development resources and native module
@@ -91,14 +96,14 @@ export async function startProfileE2E(): Promise<ProfileE2ERuntime> {
 	);
 	mkdirSync(appHome, { recursive: true });
 	mkdirSync(join(desktopDir, ".cache"), { recursive: true });
-	const lockPath = join(desktopDir, ".cache/work-profiles-e2e.lock");
+	const lockPath = join(desktopDir, ".cache/desktop-e2e.lock");
 	let lock: number | undefined;
 	let app: ReturnType<typeof Bun.spawn> | undefined;
 	let server: ReturnType<typeof Bun.serve> | undefined;
 	const reservations: ReturnType<typeof Bun.serve>[] = [];
 	let closePromise: Promise<void> | undefined;
 	const commands = new Set<ReturnType<typeof Bun.spawn>>();
-	const workspaceName = `profiles-e2e-${process.pid}`;
+	const workspaceName = `desktop-e2e-${process.pid}`;
 	const env: Record<string, string> = {
 		PATH: process.env.PATH ?? "",
 		HOME: homeDir,
@@ -295,10 +300,10 @@ export async function startProfileE2E(): Promise<ProfileE2ERuntime> {
 			.parse(rendererReservation.port);
 		const cdpPort = z.number().int().positive().parse(cdpReservation.port);
 		const origin = `http://localhost:${rendererPort}`;
-		env.PROFILE_E2E_RENDERER_PORT = String(rendererPort);
-		env.PROFILE_E2E_NOTIFICATIONS_PORT = String(notificationReservation.port);
-		env.PROFILE_E2E_WORKSPACE_NAME = workspaceName;
-		env.PROFILE_E2E_APP_DIR = appDir;
+		env.DESKTOP_E2E_RENDERER_PORT = String(rendererPort);
+		env.DESKTOP_E2E_NOTIFICATIONS_PORT = String(notificationReservation.port);
+		env.DESKTOP_E2E_WORKSPACE_NAME = workspaceName;
+		env.DESKTOP_E2E_APP_DIR = appDir;
 		env.RENDERER_REMOTE_DEBUG_PORT = String(cdpPort);
 		console.log(`E2E artifacts: ${artifactDir}`);
 		await Bun.write(
@@ -336,7 +341,7 @@ export async function startProfileE2E(): Promise<ProfileE2ERuntime> {
 				"electron-vite",
 				"build",
 				"--config",
-				"scripts/work-profiles-e2e/electron.vite.config.ts",
+				"scripts/e2e/electron.vite.config.ts",
 			],
 			join(artifactDir, "build.log"),
 			300_000,

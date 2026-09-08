@@ -3,14 +3,14 @@ import type { UserConfig } from "electron-vite";
 import baseConfig from "../../electron.vite.config";
 
 // Reuse the shipped entry points, aliases, macros and resource copying. Only
-// the local test environment differs; profile/Host/terminal code is not mocked.
+// the local test environment differs; app/Host/terminal code is not mocked.
 const config = baseConfig as UserConfig;
-const rendererPort = process.env.PROFILE_E2E_RENDERER_PORT;
-const notificationsPort = process.env.PROFILE_E2E_NOTIFICATIONS_PORT;
-const workspaceName = process.env.PROFILE_E2E_WORKSPACE_NAME;
-const appDir = process.env.PROFILE_E2E_APP_DIR;
+const rendererPort = process.env.DESKTOP_E2E_RENDERER_PORT;
+const notificationsPort = process.env.DESKTOP_E2E_NOTIFICATIONS_PORT;
+const workspaceName = process.env.DESKTOP_E2E_WORKSPACE_NAME;
+const appDir = process.env.DESKTOP_E2E_APP_DIR;
 if (!rendererPort || !notificationsPort || !workspaceName || !appDir) {
-	throw new Error("Run this config through test:e2e:work-profiles");
+	throw new Error("Run this config through test:e2e");
 }
 
 for (const [target, section] of [

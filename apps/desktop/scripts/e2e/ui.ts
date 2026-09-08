@@ -17,7 +17,7 @@ interface TerminalReadiness {
 	synced: boolean;
 }
 
-export class ProfileUi {
+export class DesktopUi {
 	private readonly terminals = new Map<string, TerminalReadiness>();
 	private constructor(
 		readonly cdp: Cdp,
@@ -60,7 +60,7 @@ export class ProfileUi {
 		const cdp = await Cdp.connect(target.webSocketDebuggerUrl);
 		await cdp.send("Runtime.enable");
 		await cdp.send("Page.enable");
-		const ui = new ProfileUi(cdp, target.id);
+		const ui = new DesktopUi(cdp, target.id);
 		await cdp.send("Network.enable");
 		return ui;
 	}
@@ -73,10 +73,7 @@ export class ProfileUi {
 		);
 	}
 
-	async terminalReady() {
-		const workspaceId = await this.cdp.eval<string>(
-			"location.hash.split('/')[2]?.split('?')[0]",
-		);
+	async terminalReady(workspaceId: string) {
 		await eventually(
 			"renderer terminal attached and replay synced",
 			async () => {
@@ -178,84 +175,7 @@ export class ProfileUi {
 		);
 	}
 
-	async profile(name: string) {
-		await this.click('button[aria-label^="Work Profile:"]');
-		await this.click(`[role="menuitemradio"][title=${JSON.stringify(name)}]`);
-		await this.wait(
-			`document.querySelector('button[aria-label^="Work Profile:"]')?.textContent.trim() === ${JSON.stringify(name)}`,
-			`active Profile ${name}`,
-		);
-		await this.wait(
-			`!document.querySelector('[role="menu"]')`,
-			"profile menu dismissed",
-		);
-	}
-
-	async experiments() {
-		if (
-			!(await this.cdp.eval<boolean>("location.hash.startsWith('#/settings/')"))
-		) {
-			await this.click('button[aria-label="Settings"]');
-		}
-		await this.click('a[href*="settings/experimental"]');
-		await this.wait(
-			"!!document.querySelector('#wait-for-setup-before-agent:not(:disabled)')",
-			"experimental controls ready",
-		);
-	}
-
-	async back() {
-		await this.click("a", "Back");
-		await this.wait(
-			"!!document.querySelector('button[aria-label^=\"Work Profile:\"]') || document.body.innerText.includes('Page Not Found')",
-			"settings return",
-		);
-		if (
-			await this.cdp.eval<boolean>(
-				"document.body.innerText.includes('Page Not Found')",
-			)
-		) {
-			throw new Error(
-				`Settings Back reached Page Not Found: ${await this.cdp.eval<string>("location.hash")}`,
-			);
-		}
-	}
-
-	async workspaceList() {
-		if (await this.cdp.eval<boolean>("location.hash.startsWith('#/settings/')"))
-			await this.back();
-		await this.button("Workspaces");
-		await this.wait(
-			"location.hash === '#/v2-workspaces' && !!document.querySelector('input[placeholder^=\"Search workspaces\"]')",
-			"workspace list ready",
-		);
-	}
-
-	async recoverDashboard() {
-		// Recovery between independent cases never changes the failed result.
-		if (
-			await this.cdp.eval<boolean>(
-				"document.body.innerText.includes('Page Not Found')",
-			)
-		) {
-			await this.click("a", "Go back home");
-		}
-		if (
-			await this.cdp.eval<boolean>("location.hash.startsWith('#/settings/')")
-		) {
-			try {
-				await this.back();
-			} catch {
-				await this.click("a", "Go back home");
-			}
-		}
-		await this.wait(
-			"!!document.querySelector('button[aria-label^=\"Work Profile:\"]')",
-			"dashboard recovered",
-		);
-	}
-
-	async state() {
+	async state(storageKeys: readonly string[] = []) {
 		return this.cdp.eval<{
 			url: string;
 			text: string;
@@ -265,7 +185,7 @@ export class ProfileUi {
 			url: location.href,
 			text: document.body.innerText,
 			switches: Object.fromEntries([...document.querySelectorAll('[role=switch]')].map(e => [e.id,e.getAttribute('aria-checked') === 'true'])),
-			persisted: Object.fromEntries(['inline-workspace-ports','workspace-agents-row'].map(key => [key,localStorage.getItem(key)]))
+			persisted: Object.fromEntries(${JSON.stringify(storageKeys)}.map(key => [key,localStorage.getItem(key)]))
 		})`);
 	}
 

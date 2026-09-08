@@ -28,10 +28,12 @@ spec: ./spec.md
 ### 证明与发布门槛
 
 - 在最新 main 上恢复本地修复后，运行持久化键、Profile 导航、投影、创建、历史和设置的定向回归，以及 Desktop 类型检查。
-- 运行 `test:e2e:work-profiles` 的真实 Electron 流程，覆盖新建 Profile、全部其他实验关闭、Manage/Rename、跨窗口设置同步、返回导航、后台端口与重启。
+- 通过公共入口 `bun run --cwd apps/desktop test:e2e work-profiles` 运行该 feature case，覆盖新建 Profile、全部其他实验关闭、Manage/Rename、跨窗口设置同步、返回导航、后台端口与重启。
 - i18n 提取、严格编译与过期翻译检查必须通过。未提交目录的 Git clean-diff 检查不能冒充已通过；不为了检查而清掉用户改动。
 - 回归使用独立构建、HOME、数据库和 Chromium 数据目录。只有实际执行后的结果可作为本轮证据，不沿用旧分支或旧实验测试的通过声明。
-- 本次只完成代码整合，不创建 release、推送或部署；后续发布仍遵守仓库 runbook。
+- 公共框架位于 `apps/desktop/scripts/e2e/`，负责 Electron 隔离环境、CDP 输入、多窗口生命周期、逐步证据和结果报告；Work Profiles 的准备、导航与断言仅位于 `cases/work-profiles/`。后续功能实现 `DesktopE2ECase` 并在 `cases.ts` 注册，无需修改公共 runner。
+- `test:e2e --list` 列出 case；指定名称只运行所选 case，不带名称运行全部已注册 case，每个 case 使用独立应用和数据目录。
+- 本轮通过 PR 评审代码，不自动创建 release 或部署；后续发布仍遵守仓库 runbook。
 
 ### 历史实验验证证据（2026-09-07，非当前发布规则）
 

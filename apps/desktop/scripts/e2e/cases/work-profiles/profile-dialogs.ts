@@ -1,12 +1,12 @@
 import assert from "node:assert/strict";
 import { join } from "node:path";
-import type { ProfileUi } from "./ui";
+import type { DesktopUi } from "../../ui";
 
 function findDialog(title: string) {
 	return `[...document.querySelectorAll('[role="dialog"]')].find(dialog => dialog.querySelector('[data-slot="dialog-title"]')?.textContent.trim() === ${JSON.stringify(title)})`;
 }
 
-async function dialogSelector(ui: ProfileUi, title: string) {
+async function dialogSelector(ui: DesktopUi, title: string) {
 	await ui.wait(
 		`(${findDialog(title)})?.getAttribute('data-state') === 'open'`,
 		`${title} stays open`,
@@ -28,14 +28,14 @@ async function dialogSelector(ui: ProfileUi, title: string) {
 	return selector;
 }
 
-async function managerStillOpen(ui: ProfileUi, selector: string) {
+async function managerStillOpen(ui: DesktopUi, selector: string) {
 	await ui.wait(
 		`document.querySelector(${JSON.stringify(selector)})?.getAttribute('data-state') === 'open'`,
 		"manager remains open across child dialog transitions",
 	);
 }
 
-async function openManager(ui: ProfileUi) {
+async function openManager(ui: DesktopUi) {
 	await ui.click('button[aria-label^="Work Profile:"]');
 	await ui.click('[role="menuitem"]', "Manage Profiles");
 	// The first click must survive the dropdown's exit/focus restoration. There
@@ -47,7 +47,7 @@ async function openManager(ui: ProfileUi) {
 	return dialogSelector(ui, "Manage Profiles");
 }
 
-async function closeManager(ui: ProfileUi, manager: string) {
+async function closeManager(ui: DesktopUi, manager: string) {
 	await ui.click(`${manager} button[data-slot="dialog-close"]`);
 	await ui.wait(
 		`!(${findDialog("Manage Profiles")})`,
@@ -55,7 +55,7 @@ async function closeManager(ui: ProfileUi, manager: string) {
 	);
 }
 
-export async function verifyManagerFirstClick(ui: ProfileUi) {
+export async function verifyManagerFirstClick(ui: DesktopUi) {
 	for (let opening = 0; opening < 2; opening++) {
 		const manager = await openManager(ui);
 		const search = `${manager} input[aria-label^="Search projects and sessions"]`;
@@ -67,7 +67,7 @@ export async function verifyManagerFirstClick(ui: ProfileUi) {
 }
 
 export async function verifyManagerRename(
-	ui: ProfileUi,
+	ui: DesktopUi,
 	profileName: string,
 	artifactDir: string,
 ) {
