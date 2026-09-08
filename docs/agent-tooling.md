@@ -32,6 +32,30 @@ Everything else links to those:
 Agents other than Claude Code should read the relevant `.agents/skills/*/SKILL.md` when its
 description matches the task.
 
+### Capture work in GitHub
+
+[`capture`](../.agents/skills/capture/SKILL.md) records bugs and feature requests
+as Issues, and open-ended ideas as Discussions. Type labels are `bug`,
+`feature-request`, and `brainstorming`; titles describe the work without type
+prefixes. It reuses `ticket-format` rather than defining a second ticket format.
+
+- **Claude Code:** `/capture 记录这个 bug` via the existing `.claude/skills` symlink.
+- **Codex:** `$capture 记录这个 bug` via native `.agents/skills` discovery.
+- **Other agents:** read `.agents/skills/capture/SKILL.md`, then follow it using
+  ordinary file tools and GitHub CLI (`gh`). No Claude-specific tool or MCP server
+  is required; automatic discovery still depends on the agent.
+
+This is a repo-local skill, not a globally installed command or a bundled product
+feature. Start a new agent session if its skill catalog predates the new file.
+Capture supports draft-only requests, checks visibility and duplicates before
+publication, and reads saved records back before reporting success. A request
+for private material never authorizes publishing it to a public repository.
+
+Portable dry-run cases live in
+[capture/evals/evals.json](../.agents/skills/capture/evals/evals.json). Evaluate
+them without GitHub mutations; fixture repository names and URLs are not real
+publication targets.
+
 ## Provider accounts (multi-login)
 
 The Usage tab can hold several Claude Code / Codex logins and pick which one agents use. A login
