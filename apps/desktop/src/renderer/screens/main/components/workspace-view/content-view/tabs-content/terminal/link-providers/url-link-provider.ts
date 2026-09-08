@@ -1,4 +1,4 @@
-import type { Terminal } from "@xterm/xterm";
+import type { IBufferRange, Terminal } from "@xterm/xterm";
 import {
 	type ContextLine,
 	type LinkMatch,
@@ -313,14 +313,22 @@ export class UrlLinkProvider extends MultiLineLinkProvider {
 	constructor(
 		terminal: Terminal,
 		private readonly onOpen: (event: MouseEvent, uri: string) => void,
-		private readonly onHover?: (event: MouseEvent, uri: string) => void,
+		private readonly onHover?: (
+			event: MouseEvent,
+			uri: string,
+			range: IBufferRange,
+		) => void,
 		private readonly onLeave?: () => void,
 	) {
 		super(terminal);
 	}
 
-	protected handleHover(event: MouseEvent, text: string): void {
-		this.onHover?.(event, text);
+	protected handleHover(
+		event: MouseEvent,
+		text: string,
+		range: IBufferRange,
+	): void {
+		this.onHover?.(event, text, range);
 	}
 
 	protected handleLeave(): void {

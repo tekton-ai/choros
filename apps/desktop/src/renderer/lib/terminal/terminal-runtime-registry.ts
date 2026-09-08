@@ -336,6 +336,7 @@ class TerminalRuntimeRegistryImpl {
 	detach(terminalId: string, instanceId = terminalId) {
 		const entry = this.getEntry(terminalId, instanceId);
 		if (!entry?.runtime) return;
+		entry.linkManager?.resetContextCopy();
 
 		entry.lastUsedAt = ++this.useSeq;
 		// A parked pane keeps its socket, but it is no longer showing anything —
@@ -544,6 +545,15 @@ class TerminalRuntimeRegistryImpl {
 	getSelection(terminalId: string, instanceId?: string): string {
 		const entry = this.getEntry(terminalId, instanceId);
 		return entry?.runtime?.terminal.getSelection() ?? "";
+	}
+
+	getContextCopyText(terminalId: string, instanceId?: string): string {
+		const entry = this.getEntry(terminalId, instanceId);
+		return (
+			entry?.linkManager?.getContextCopyText() ??
+			entry?.runtime?.terminal.getSelection() ??
+			""
+		);
 	}
 
 	clear(terminalId: string, instanceId?: string): void {

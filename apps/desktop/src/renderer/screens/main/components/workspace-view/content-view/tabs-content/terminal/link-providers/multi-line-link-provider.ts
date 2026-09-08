@@ -43,7 +43,11 @@ export abstract class MultiLineLinkProvider implements ILinkProvider {
 	): void;
 
 	/** Optional hooks fired when the mouse enters/leaves a detected link. */
-	protected handleHover?(event: MouseEvent, text: string): void;
+	protected handleHover?(
+		event: MouseEvent,
+		text: string,
+		range: ILink["range"],
+	): void;
 	protected handleLeave?(): void;
 
 	/**
@@ -182,7 +186,7 @@ export abstract class MultiLineLinkProvider implements ILinkProvider {
 						this.handleActivation(event, text, match);
 					},
 					hover: (event: MouseEvent, text: string) => {
-						this.handleHover?.(event, text);
+						this.handleHover?.(event, text, range);
 					},
 					leave: () => {
 						this.handleLeave?.();
