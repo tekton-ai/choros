@@ -19,7 +19,6 @@ export interface CommandContext {
 	profile: {
 		id: string;
 		name: string;
-		enabled: boolean;
 		available: boolean;
 		previousId: string | null;
 		nextId: string | null;

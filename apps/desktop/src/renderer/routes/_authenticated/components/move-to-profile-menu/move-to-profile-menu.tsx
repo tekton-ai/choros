@@ -12,7 +12,6 @@ import type { ProfileMemberRef } from "shared/profiles";
 
 export function MoveToProfileMenu({ member }: { member: ProfileMemberRef }) {
 	const {
-		enabled,
 		available,
 		isReady,
 		profiles,
@@ -20,7 +19,6 @@ export function MoveToProfileMenu({ member }: { member: ProfileMemberRef }) {
 		getWorkspaceProfileId,
 		moveMembers,
 	} = useProfiles();
-	if (!enabled) return null;
 	const currentProfileId =
 		member.kind === "project"
 			? getProjectProfileId(member.projectKey)

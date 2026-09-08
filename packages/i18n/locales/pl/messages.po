@@ -9304,16 +9304,6 @@ msgstr "Czekaj na konfigurację obszaru roboczego przed uruchomieniem agentów"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.workProfilesHint"
-msgstr "Używaj oddzielnych profili do projektów służbowych i osobistych i przełączaj się między nimi w razie potrzeby."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.workProfilesLabel"
-msgstr "Wiele profili"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
 msgid "settings.experimental.workspaceAgentsHint"
 msgstr "Pokazuj działających agentów pod każdym obszarem roboczym na pasku bocznym, wraz z ich statusem na żywo."
 

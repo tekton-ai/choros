@@ -1,7 +1,11 @@
 import { useQueryClient } from "@tanstack/react-query";
+import { useEffect } from "react";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { FONT_SETTINGS_QUERY_KEY } from "renderer/lib/font-settings";
+import { useInlineWorkspacePortsStore } from "renderer/stores/inline-workspace-ports";
+import { syncPersistedStoreAcrossWindows } from "renderer/stores/sync-persisted-store-across-windows";
 import { useThemeStore } from "renderer/stores/theme";
+import { useWorkspaceAgentsRowStore } from "renderer/stores/workspace-agents-row";
 import { NOTIFICATION_EVENTS } from "shared/constants";
 import type { Theme } from "shared/themes";
 
@@ -21,14 +25,26 @@ function isExternalThemeState(value: unknown): value is ExternalThemeState {
 }
 
 /**
- * Applies settings changes made outside the app (the `choros settings`
- * CLI POSTs /settings-changed after writing): re-applies canonical theme
- * state and refetches every settings query, so CLI changes appear live
- * without a window refocus or app restart.
+ * Applies global settings changes from other windows and the `choros settings`
+ * CLI. This authenticated-level hook also stays mounted on Settings routes,
+ * where the dashboard's storage listeners are not available.
  */
 export function useSettingsExternalChangeListener() {
 	const utils = electronTrpc.useUtils();
 	const queryClient = useQueryClient();
+
+	useEffect(() => {
+		const stopPortsSync = syncPersistedStoreAcrossWindows(
+			useInlineWorkspacePortsStore,
+		);
+		const stopAgentsSync = syncPersistedStoreAcrossWindows(
+			useWorkspaceAgentsRowStore,
+		);
+		return () => {
+			stopPortsSync();
+			stopAgentsSync();
+		};
+	}, []);
 
 	electronTrpc.notifications.subscribe.useSubscription(undefined, {
 		onData: (event) => {

@@ -9304,16 +9304,6 @@ msgstr "Esperar a la configuración del espacio de trabajo antes de iniciar los 
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.workProfilesHint"
-msgstr "Usa perfiles separados para tus proyectos de trabajo y personales, y cambia entre ellos cuando lo necesites."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.workProfilesLabel"
-msgstr "Varios perfiles"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
 msgid "settings.experimental.workspaceAgentsHint"
 msgstr "Muestra los agentes en ejecución bajo cada espacio de trabajo en la barra lateral, con su estado en vivo."
 

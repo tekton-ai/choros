@@ -1,5 +1,5 @@
 import { cpSync, existsSync, mkdirSync, rmSync } from "node:fs";
-import { dirname, normalize, resolve } from "node:path";
+import { dirname, normalize, relative, resolve } from "node:path";
 import type { Plugin } from "vite";
 
 import { main, resources } from "../package.json";
@@ -69,9 +69,14 @@ const RESOURCES_TO_COPY = [
 export function copyResourcesPlugin(): Plugin {
 	return {
 		name: "copy-resources",
-		writeBundle() {
+		writeBundle(output) {
+			const defaultRoot = resolve(__dirname, "..", devPath);
+			const outputRoot = output.dir ? resolve(output.dir, "..") : defaultRoot;
 			for (const resource of RESOURCES_TO_COPY) {
-				copyDir(resource);
+				copyDir({
+					src: resource.src,
+					dest: resolve(outputRoot, relative(defaultRoot, resource.dest)),
+				});
 			}
 		},
 	};

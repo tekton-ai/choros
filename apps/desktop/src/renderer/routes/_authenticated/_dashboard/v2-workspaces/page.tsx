@@ -1,4 +1,8 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import {
+	createFileRoute,
+	useNavigate,
+	useRouter,
+} from "@tanstack/react-router";
 import { useEffect, useMemo, useRef } from "react";
 import { restrictProjectFilters } from "renderer/routes/_authenticated/_dashboard/components/project-filter/project-filter-utils";
 import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
@@ -84,6 +88,7 @@ export const Route = createFileRoute(
 function V2WorkspacesPage() {
 	const search = Route.useSearch();
 	const navigate = useNavigate({ from: Route.fullPath });
+	const router = useRouter();
 	const { isProjectVisible, isReady: areProfilesReady } = useProfiles();
 
 	const searchQuery = useV2WorkspacesFilterStore((state) => state.searchQuery);
@@ -154,30 +159,52 @@ function V2WorkspacesPage() {
 
 	useEffect(() => {
 		if (!areProfilesReady) return;
+		// Sibling effects can navigate before this effect runs. Do not let a
+		// leaving list overwrite that navigation with a filter normalization.
+		const pathname = Route.fullPath.replace(/\/$/, "");
+		if (
+			router.state.location.pathname.replace(/\/$/, "") !== pathname ||
+			router.history.location.pathname.replace(/\/$/, "") !== pathname
+		) {
+			return;
+		}
 		if (projectFilters !== storedProjectFilters) {
 			useV2WorkspacesFilterStore.setState({ projectFilters });
 		}
-		const syncUrl = navigate({
-			search: {
-				q: searchQuery || undefined,
-				device:
-					deviceFilter !== DEVICE_FILTER_THIS_DEVICE ? deviceFilter : undefined,
-				projects: projectFilters.length ? projectFilters.join(",") : undefined,
-				pr: prStateFilters.length ? prStateFilters.join(",") : undefined,
-				agent: agentStatusFilters.length
-					? agentStatusFilters.join(",")
-					: undefined,
-				pin: pinFilter !== "all" ? pinFilter : undefined,
-				view: viewMode !== "board" ? viewMode : undefined,
-				archived: archivedWindow !== "none" ? archivedWindow : undefined,
-			},
-			replace: true,
-		});
+		const nextSearch: V2WorkspacesSearch = {
+			q: searchQuery || undefined,
+			device:
+				deviceFilter !== DEVICE_FILTER_THIS_DEVICE ? deviceFilter : undefined,
+			projects: projectFilters.length ? projectFilters.join(",") : undefined,
+			pr: prStateFilters.length ? prStateFilters.join(",") : undefined,
+			agent: agentStatusFilters.length
+				? agentStatusFilters.join(",")
+				: undefined,
+			pin: pinFilter !== "all" ? pinFilter : undefined,
+			view: viewMode !== "board" ? viewMode : undefined,
+			archived: archivedWindow !== "none" ? archivedWindow : undefined,
+		};
+		// A same-URL navigation still reloads the route in TanStack Router.
+		if (
+			search.q === nextSearch.q &&
+			search.device === nextSearch.device &&
+			search.projects === nextSearch.projects &&
+			search.pr === nextSearch.pr &&
+			search.agent === nextSearch.agent &&
+			search.pin === nextSearch.pin &&
+			search.view === nextSearch.view &&
+			search.archived === nextSearch.archived
+		) {
+			return;
+		}
+		const syncUrl = navigate({ search: nextSearch, replace: true });
 		void Promise.resolve(syncUrl).catch((error) => {
 			console.error("[v2-workspaces] filter URL sync failed", error);
 		});
 	}, [
 		navigate,
+		router,
+		search,
 		areProfilesReady,
 		storedProjectFilters,
 		searchQuery,

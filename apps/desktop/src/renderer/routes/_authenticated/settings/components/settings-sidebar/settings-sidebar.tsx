@@ -29,7 +29,7 @@ export function SettingsSidebar() {
 		<div className="w-56 flex flex-col pt-1 pb-3 overflow-hidden border-r border-border bg-sidebar dark:bg-muted/35">
 			{/* Back button */}
 			<Link
-				to={originRoute}
+				{...originRoute}
 				className="flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-1"
 			>
 				<HiArrowLeft className="h-4 w-4" />

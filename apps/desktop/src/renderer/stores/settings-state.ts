@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { devtools } from "zustand/middleware";
+import { createJSONStorage, devtools, persist } from "zustand/middleware";
 
 export type SettingsSection =
 	| "account"
@@ -25,54 +25,67 @@ export type SettingsSection =
 	| "project"
 	| "hosts";
 
+interface SettingsOriginRoute {
+	to: string;
+	search: Record<string, unknown>;
+	hash: string;
+}
+
 interface SettingsState {
 	activeSection: SettingsSection;
 	activeProjectId: string | null;
 	searchQuery: string;
 	isOpen: boolean;
-	originRoute: string;
+	originRoute: SettingsOriginRoute;
 
 	setActiveSection: (section: SettingsSection) => void;
 	setActiveProject: (projectId: string | null) => void;
 	setSearchQuery: (query: string) => void;
 	openSettings: (section?: SettingsSection) => void;
 	closeSettings: () => void;
-	setOriginRoute: (route: string) => void;
+	setOriginRoute: (route: SettingsOriginRoute) => void;
 }
 
 export const useSettingsStore = create<SettingsState>()(
 	devtools(
-		(set) => ({
-			activeSection: "account",
-			activeProjectId: null,
-			searchQuery: "",
-			isOpen: false,
-			originRoute: "/workspace",
+		persist(
+			(set) => ({
+				activeSection: "account",
+				activeProjectId: null,
+				searchQuery: "",
+				isOpen: false,
+				originRoute: { to: "/v2-workspaces", search: {}, hash: "" },
 
-			setActiveSection: (section) => set({ activeSection: section }),
+				setActiveSection: (section) => set({ activeSection: section }),
 
-			setActiveProject: (projectId) =>
-				set({
-					activeProjectId: projectId,
-					activeSection: "project",
-				}),
+				setActiveProject: (projectId) =>
+					set({
+						activeProjectId: projectId,
+						activeSection: "project",
+					}),
 
-			setSearchQuery: (query) => set({ searchQuery: query }),
+				setSearchQuery: (query) => set({ searchQuery: query }),
 
-			openSettings: (section) =>
-				set({
-					isOpen: true,
-					activeSection: section ?? "account",
-				}),
+				openSettings: (section) =>
+					set({
+						isOpen: true,
+						activeSection: section ?? "account",
+					}),
 
-			closeSettings: () =>
-				set({
-					isOpen: false,
-					searchQuery: "",
-				}),
+				closeSettings: () =>
+					set({
+						isOpen: false,
+						searchQuery: "",
+					}),
 
-			setOriginRoute: (route) => set({ originRoute: route }),
-		}),
+				setOriginRoute: (route) => set({ originRoute: route }),
+			}),
+			{
+				name: "settings-navigation",
+				storage: createJSONStorage(() => sessionStorage),
+				partialize: (state) => ({ originRoute: state.originRoute }),
+			},
+		),
 		{ name: "SettingsStore" },
 	),
 );

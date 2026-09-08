@@ -10,73 +10,32 @@ spec: ./spec.md
 
 # 实施计划：工作档案（Work Profiles）
 
-> **本次实验发布计划已获工程接受。** 负责人先接受 [spec](./spec.md) 的默认关闭、关闭后显示全部工作并保留已有分类的修订，再于本次对话中对“确认接受计划并开始实施吗”明确回复“继续”。本次记录该人工接受，允许按下方增量计划实施；不代表验证已经通过。
+> **当前发布决定：默认开放。** 负责人于 2026-09-08 在手动验证后明确要求“从 experimental 里去掉 profiles……可以直接放开了”。本次在最新 `main` 上取消临时实验限制，不自动发布版本。
 >
-> **审批与基线沿革：** 原功能计划基于 `origin/main` 的 `527ec4ea1`，负责人于 2026-09-07 表示“没啥问题继续吧”，并在迁移高风险说明后选择“确认，开始实施”。下方原计划保留为功能基线，不要求本次重建已经存在的 Profile 功能。实验发布以当前工作区源码为准，不改迁移、不删用户数据、不合并旧分支历史。
+> **审批与基线沿革：** 原功能计划基于 `527ec4ea1`，于 2026-09-07 获工程接受及迁移签核；随后接受默认关闭的实验增量（`ed815296b` / #22）。本次以新的人工决定替代该临时限制。旧实验的实际验证记录保留于下方历史章节，不再作为当前实施要求。
 
-## 本次增量：Work Profiles 默认关闭
+## 本次增量：退出实验，默认开放
 
 ### 实施决定与共享契约
 
-1. **一个本地布尔开关。** 新增 `useWorkProfilesStore` / `useWorkProfilesEnabled`，沿用 `workspace-agents-row.ts` 的 Zustand persist 约定，默认 `false`；固定大小的单例键 `work-profiles` 登记到持久化白名单。不根据已有 Profile 数据、版本或用户身份自动启用，不新增远程开关。
-2. **稳定 provider，不替换工作区子树。** 在现有 `ProfileProvider` 中区分 `enabled`、服务 `available` 和界面 `isReady`。关闭时对业务界面立即 ready、不过滤项目/工作区，不以“注册表不可用”解释用户停用；保留内存和 SQLite 中的真实定义、归属及选择。不开第二套带不同 key 的 provider，不重建终端、pane、Host 或 collections。
-3. **关闭分类的读写与纠正，不关闭公共导航。** 关闭时停止 `profiles.get` 查询、轮询和 `onChanged` 订阅，以及 Profile visits 的查询/写入；忽略关闭前迟到查询对当前投影的影响。管理操作不可触发，错误提示清理；通知订阅和导航 bridge 保留。已提交创建的归属结算是明确例外，不能由开关改写此前承诺。
-4. **统一导航显式感知开关。** `useProfileNavigation` 接收 `enabled`；关闭时取消 Profile 历史筛选、自动切档和恢复跳转，保留普通导航、请求代次守卫、CLI 延迟对象查找及通知 pane 定位。模式变化推进已有 generation，使旧异步恢复和创建导航失效；恢复开启时重读注册表，再依据当前真实对象归属应用既有规则，不让旧保存选择把当前对象误报为缺失。
-5. **显示范围和持久归属分开。** 停用时供无分类创建使用的有效 Profile 为 Default，但不调用 `profiles.select` 或批量 `move`，不把所有持久归属变成 Default。重新开启恢复真实归属；已提交的自定义 Profile 创建仍按捕获的上下文完成，Host 只创建一次，不由旧请求重开管理器或强拉导航。
-6. **停用时最近访问不依赖 Profile 注册表。** 复用现有有界 `persistentHistory.getEntries()` 的路径顺序，按真实工作区匹配、去重、排除不可访问项后限量，包含独立会话；通过既有 history 订阅更新。历史路径没有可靠时间戳，不伪造访问时间、不回填 SQLite。`RecentlyViewedEntry.timestamp` 当前没有 UI 消费者，移除该未使用字段；启用时仍由真实 Profile visits 决定排序。不是新建历史持久化系统。
-7. **入口统一受控。** Settings → Experimental 是唯一 opt-in 入口；侧栏展开/收起、命令面板全部 Profile 命令、移动菜单及已打开的创建/管理弹窗均随 `enabled` 关闭。不要仅依赖 `available`，否则用户主动开启后的真实服务故障与停用会混淆。
-
-### 本次涉及文件
-
-沿用下方原计划的简写：`R = apps/desktop/src/renderer`、`A = R/routes/_authenticated`、`B = A/_dashboard`、`S = B/components/dashboard-sidebar`。
-
-| 文件 | 本次变更 |
-|---|---|
-| 新增 `R/stores/work-profiles.ts`；`R/lib/persisted-keys/persisted-key-registry.test-data.ts` | 默认关闭的固定大小实验状态及白名单；不存储 Profile 实体，未来删除开关时按现有 DEAD_KEYS 流程回收键 |
-| `A/settings/experimental/components/experimental-settings/experimental-settings.tsx`；`A/settings/utils/settings-search/settings-search.ts` | 新增 Work Profiles 开关、尚不稳定的说明及搜索条目；沿用 Label/Switch/HighlightText 和 Lingui |
-| `A/providers/profile-provider/profile-provider.tsx` | 暴露 enabled；关闭分类 query/subscription/visits/管理入口；无分类就绪与投影；保留真实数据、捕获的创建归属、重新启用读取与异步结果隔离 |
-| `A/providers/profile-provider/hooks/use-profile-navigation/use-profile-navigation.ts` | 开关代次、无分类导航、历史筛选解绑、停止自动恢复；保留通知 source、显式链接和普通创建导航的现有守卫 |
-| `S/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx` | 两种侧栏布局均按开关挂载 ProfileSwitcher；保留其余侧栏与工作区树 |
-| `A/components/move-to-profile-menu/move-to-profile-menu.tsx` | 停用时不渲染 Profile 移动入口 |
-| `R/command-palette/core/types.ts`、`context-provider.tsx`；`R/command-palette/modules/profiles/commands.ts`；`R/command-palette/ui/command-palette/command-palette.tsx` | 命令上下文携带 enabled，停用时不提供任何 Profile 命令、隐藏当前 Profile 标题，关闭已打开的新建弹窗 |
-| `B/components/navigation-controls/components/history-dropdown/hooks/use-recently-viewed/use-recently-viewed.ts` 及同目录 `use-recently-viewed.utils.ts`、`.utils.test.ts` | 增加无分类的有界历史路径来源；保留开启时真实 visits 路径，移除无消费的 timestamp 字段；防止 session 丢失或限量前未去重/过滤 |
-| 新增 `A/providers/profile-provider/hooks/use-profile-navigation/use-profile-navigation.test.tsx`；现有 persistent-hash-history、profile-projection、workspace-creates、settings-search、persisted-keys 回归 | 真实 React/router 覆盖停用后的跨档历史、通知 source 与迟到恢复/创建导航失效；其余已有断言未因本次开关改变而改写 |
-| `packages/i18n/locales/` | 全部已启用语言的新增文案与生成产物，不手改英文 catalog，不提交无关提取噪声 |
-
-`ProfileNavigationController`、Host 原始数据、Profile SQLite 服务、共享持久 schema 和迁移原则上不改。`useProfiles()` 的创建、详情可见性及筛选消费者需逐一核对：优先在 provider/hook 统一边界满足原接口，不在每个页面复制开关逻辑；若发现必须改变调用契约的实际消费者，在实现前补充此表，不静默扩大范围。
-
-### 工作顺序
-
-1. **状态与 provider 模式。** 加单例开关和白名单，在稳定 provider 内建立无分类投影、就绪和查询边界；确保默认关闭不被缓存注册表或保存的选择自动覆盖。
-2. **导航与进行中的创建。** 依赖步骤 1，在既有导航协调器接入开关代次和无分类路径；核对 workspace/project 创建完成、canonical ID、旧回调及通知 source。先证明关闭分类不会阻止正常工作，再暴露设置入口。
-3. **入口与最近访问。** 依赖步骤 1–2，接 Experimental、搜索、侧栏、菜单、命令及弹窗关闭；补无分类最近访问，不更改其他实验项。
-4. **翻译与验证。** 依赖上述代码完成，统一运行下方定向回归、类型检查、Biome 与 i18n 流程，再用匹配当前工作区的真实 Desktop 验证；不在未通过时宣布完成。
-
-### 风险与控制
-
-| 风险 | 可能性 / 影响 | 控制 |
-|---|---|---|
-| 只隐藏入口，Default 投影仍藏住已有非默认工作 | 高 / 所有普通工作入口 | provider 统一无分类可见性；已有非默认项目和 session 的关闭状态验收 |
-| 切换开关重建运行中的工作区或清空草稿 | 中 / 终端、agent、编辑内容 | 不切换 provider 组件类型/key；以真实持续输出、pane 身份和草稿前后值验证 |
-| 旧查询、恢复或创建回调重新启用分类/跳转 | 高 / 当前导航和创建结果 | 使用现有 generation 失效导航；持久归属按原提交结算，不把停用当归属失败 |
-| 停用后通知、深链接、最近访问失效 | 中 / 用户到达工作区的核心路径 | 保留通知控制器及 source 定位；无分类历史不等待 registry，不造时间戳 |
-| 服务故障与主动停用混淆 | 中 / 错误提示及数据恢复 | enabled 独立于 available；停用不弹故障 toast，重新开启失败仍保留原有恢复提示 |
+1. 删除 Work Profiles 开关、持久化 writer、设置/搜索入口以及 provider、导航、侧栏和命令中的停用分支；不保留恒真开关或兼容别名。
+2. 保持一份稳定的 ProfileProvider 和本地注册表。`available`、`isReady` 继续约束加载、查询失败和写入，不以“默认开放”为由跳过这些安全边界。
+3. 保留上游有用的启用路径改进：启动时采用当前 URL 的真实归属、注册表故障时明确进入 Default、丢弃被新选择取代的排队写入、新建入口的就绪检查。
+4. 将旧 `work-profiles` 键移入既有 DEAD_KEYS；不修改迁移、不删除定义/归属/访问记录，不重新分类用户工作。
+5. 保留真实 React/router 回归，改为验证常态下的跨 Profile 显式打开、通知定位、较新意图使迟到恢复和创建导航失效。删除仅服务于停用模式的分支及测试。
+6. 通过 Lingui 提取清理两条退役开关文案及全部语言的生成产物；Ports、Workspace Agents、Wait for setup 不变。
 
 ### 证明与发布门槛
 
-**下列为验证要求；已执行结果另列于后。** 不改迁移源码，不修改用户业务数据库；故障注入仅操作本次独立临时库。
+- 在最新 main 上恢复本地修复后，运行持久化键、Profile 导航、投影、创建、历史和设置的定向回归，以及 Desktop 类型检查。
+- 通过公共入口 `bun run --cwd apps/desktop test:e2e work-profiles` 运行该 feature case，覆盖新建 Profile、全部其他实验关闭、Manage/Rename、跨窗口设置同步、返回导航、后台端口与重启。
+- i18n 提取、严格编译与过期翻译检查必须通过。未提交目录的 Git clean-diff 检查不能冒充已通过；不为了检查而清掉用户改动。
+- 回归使用独立构建、HOME、数据库和 Chromium 数据目录。只有实际执行后的结果可作为本轮证据，不沿用旧分支或旧实验测试的通过声明。
+- 公共框架位于 `apps/desktop/scripts/e2e/`，负责 Electron 隔离环境、CDP 输入、多窗口生命周期、逐步证据和结果报告；Work Profiles 的准备、导航与断言仅位于 `cases/work-profiles/`。后续功能实现 `DesktopE2ECase` 并在 `cases.ts` 注册，无需修改公共 runner。
+- `test:e2e --list` 列出 case；指定名称只运行所选 case，不带名称运行全部已注册 case，每个 case 使用独立应用和数据目录。
+- 本轮通过 PR 评审代码，不自动创建 release 或部署；后续发布仍遵守仓库 runbook。
 
-- 定向运行 `R/lib/persisted-keys/persisted-keys.test.ts`、settings-search、Profile 投影/导航、workspace-creates 和 persistent-hash-history 的实际相关回归；为“开启后关闭时仍残留过滤”和“创建后关闭时旧导航覆盖当前页面”保留行为回归。开关与 provider 生命周期使用真实集成 smoke；不为源码接线或 mock 回声新增永久测试。
-- 统一运行 `bun run --cwd apps/desktop typecheck`、实际改动文件的 Biome 检查，以及 `bun run --cwd packages/i18n extract`、完成所有启用语言翻译后的 `compile` 和 `check`。不因未改 local-db 而重跑其迁移生成。
-- 用当前工作区的隔离 Desktop 实例和测试数据准备两个 Profile，各有项目、独立会话及已真实打开的工作区。记录工作区路径、renderer 端口、当前路由；不得把另一个已安装版本当验证目标。
-- **默认关闭：** 无开关键但有非默认分类数据；检查全部原有工作可见，侧栏展开/收起、命令搜索、右键菜单均无 Profile 入口。监测至少超过现有 5 秒轮询周期，确认无分类注册表请求/订阅；不把后台 Host 数据查询误算为 Profile 查询。
-- **主动开启：** 通过真实 Settings → Experimental 点击开关，检验搜索可找到设置、分类及管理入口恢复；切至非默认 Profile 后重启，检查开关状态和数据保留。
-- **关闭并重开：** 保留持续输出的终端和未提交草稿，关闭后确认 pane/进程不中断、草稿不变、原路由仍可访问；重新开启后归属与定义不变。关闭前后比较分类数据，不能把无筛选误当已移动到 Default。
-- **核心导航与创建：** 关闭状态实际走侧栏/列表、命令搜索/最近访问、前进后退、深链接和带 source 的通知定位；新建项目/session 属于隐式 Default，已有项目下的新工作区不重分类。将已提交的创建延迟到关闭之后，确认只创建一次、仍归原 Profile且不拉回当前页面。
-- **故障区分：** 关闭时不可用 registry 不阻止普通工作、不弹实验故障；主动开启后不可用仍显示原有明确错误。记录截图、路由、开关存储值和相关请求数；无法进行的真实场景必须明确报告，不能以 mock 通过替代。
-- **发布与退出：** 不在本轮自动发布或推送 canary。功能默认关闭；用户主动开启后可关闭退出实验。若关闭路径自身发生核心功能回归，停止发布并回滚 Desktop 构建，保留数据库；无远程 kill switch、数据库回退或新遥测。
-
-### 本次已执行证据（2026-09-07）
+### 历史实验验证证据（2026-09-07，非当前发布规则）
 
 - **源码检查：** `bun run --cwd apps/desktop typecheck` 通过；实际修改的 TS/TSX 文件 Biome 检查通过。最初因缺少 `@choros/*` workspace 链接而无法解析 tsconfig，执行 `bun install --frozen-lockfile --ignore-scripts` 恢复链接后通过；未改锁文件或用代码规避环境错误。
 - **定向回归：** 7 个文件、66 项通过，0 失败。新增真实 React/router 的跨档历史/通知 source 与迟到恢复/创建导航回归，以及无分类最近访问的 session/去重/过滤边界回归。
@@ -94,7 +53,7 @@ spec: ./spec.md
 
 ## 原功能计划的适用范围
 
-以下原始计划保留已有功能的契约与审查历史。Profile 投影、切换器和管理等描述仅在实验开启时适用；本次停用行为以前述增量及已接受 spec 为准。原有迁移、快照和完整 Profile 功能建设不是此次新增工作。
+以下原始计划保留功能契约与审查历史。Profile 投影、切换器和管理现在默认适用，不再依赖实验状态；迁移、快照和完整功能建设的既有约束保持不变。
 
 ## 先看实施决定
 
@@ -346,5 +305,5 @@ bun run --cwd packages/i18n check
 ## 作者与审批状态
 
 - **作者：** xchunzhao（需求与规格确认）与 agent（源码核对、实施计划整理）。
-- **状态：** `accepted`。xchunzhao 在本次对话中对“确认接受计划并开始实施吗”明确回复“继续”，接受实验发布增量并授权开始实施；agent 仅记录该人工决定。原功能计划及其本地迁移方案的历史接受保持不变。
-- **实施门槛：** 本次实验发布增量已获工程接受并完成实现；上方仅记录实际执行的定向检查和 Desktop 场景，不代替原功能的全部发布审查。未发布、未改迁移源码、未对用户业务库做回退。
+- **状态：** `accepted`。原功能与实验增量的接受保留为历史；负责人于 2026-09-08 在手动验证后明确要求移出 Experimental、默认开放，本轮按这一最新人工决定整合。
+- **实施门槛：** 默认开放由负责人在手动验证后明确批准；本轮需重新验证最新 main 与本地修复的组合。旧实验测试记录不代替本轮证据，且不自动发布、不修改迁移或回退用户业务数据。

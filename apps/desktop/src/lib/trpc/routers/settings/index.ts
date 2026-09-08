@@ -37,6 +37,7 @@ import { TRPCError } from "@trpc/server";
 import { hasCustomRingtone } from "main/lib/custom-ringtones";
 import { applyAppLanguage } from "main/lib/language";
 import { localDb } from "main/lib/local-db";
+import { notificationsEmitter } from "main/lib/notifications/server";
 import {
 	DEFAULT_CONFIRM_ON_QUIT,
 	DEFAULT_FILE_OPEN_MODE,
@@ -47,6 +48,7 @@ import {
 	DEFAULT_WAIT_FOR_SETUP_BEFORE_AGENT,
 	MAX_TERMINAL_PARKED_RUNTIME_CAP,
 	MIN_TERMINAL_PARKED_RUNTIME_CAP,
+	NOTIFICATION_EVENTS,
 } from "shared/constants";
 import {
 	CUSTOM_RINGTONE_ID,
@@ -513,6 +515,10 @@ export const createSettingsRouter = () => {
 						set: { waitForSetupBeforeAgent: input.enabled },
 					})
 					.run();
+				notificationsEmitter.emit(
+					NOTIFICATION_EVENTS.SETTINGS_EXTERNAL_CHANGE,
+					{},
+				);
 
 				return { success: true };
 			}),

@@ -185,7 +185,7 @@ export function ProfileManagerDialog() {
 	const selectedCount = selectedMembers.length;
 	return (
 		<>
-			<Dialog open={managerOpen} onOpenChange={setManagerOpen}>
+			<Dialog modal open={managerOpen} onOpenChange={setManagerOpen}>
 				<DialogContent className="flex max-h-[85vh] flex-col gap-4 sm:max-w-3xl">
 					<DialogHeader>
 						<DialogTitle>

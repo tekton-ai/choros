@@ -40,6 +40,8 @@ export const DEAD_KEYS: DeadKey[] = [
 	// Profile visits now live in Desktop SQLite; never synthesize visit times.
 	{ key: "last-active-v2-workspace", match: "exact" },
 	{ key: "lastViewedWorkspaceId", match: "exact" },
+	// Work Profiles are always available; the former opt-in flag is retired.
+	{ key: "work-profiles", match: "exact" },
 ];
 
 function matchesDeadKey(key: string): boolean {

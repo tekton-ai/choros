@@ -35,7 +35,8 @@
 		"generate:routes": "tsr generate",
 		"pretypecheck": "bun run generate:icons && bun run generate:routes",
 		"typecheck": "tsc --noEmit",
-		"test": "bun test"
+		"test": "bun test",
+		"test:e2e": "bun run scripts/e2e.ts"
 	},
 	"dependencies": {
 		"@ast-grep/napi": "0.41.1",
