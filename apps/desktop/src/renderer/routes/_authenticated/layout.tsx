@@ -90,9 +90,13 @@ function AuthenticatedLayout() {
 
 	useEffect(() => {
 		if (!location.pathname.startsWith("/settings")) {
-			setOriginRoute(location.pathname);
+			setOriginRoute({
+				to: location.pathname,
+				search: location.search,
+				hash: location.hash,
+			});
 		}
-	}, [location.pathname, setOriginRoute]);
+	}, [location.pathname, location.search, location.hash, setOriginRoute]);
 
 	// Menu navigation subscription
 	electronTrpc.menu.subscribe.useSubscription(undefined, {

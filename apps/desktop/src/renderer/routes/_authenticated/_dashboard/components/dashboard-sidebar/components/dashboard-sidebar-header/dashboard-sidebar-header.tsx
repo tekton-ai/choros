@@ -52,7 +52,7 @@ export function DashboardSidebarHeader({
 	isCollapsed = false,
 }: DashboardSidebarHeaderProps) {
 	const { t } = useLingui();
-	const { enabled: areProfilesEnabled, isProjectVisible } = useProfiles();
+	const { isProjectVisible } = useProfiles();
 	const openModal = useOpenNewWorkspaceModal();
 	const openEmptyProject = useOpenEmptyProjectModal();
 	const openNewProject = useOpenNewProjectModal();
@@ -195,7 +195,7 @@ export function DashboardSidebarHeader({
 				{/* Mirrors the expanded header's nav container so the buttons keep
 				    the same padding, order, and vertical rhythm when collapsed. */}
 				<div className="flex flex-col items-center gap-1 px-2 pt-3 pb-2">
-					{areProfilesEnabled && <ProfileSwitcher isCollapsed />}
+					<ProfileSwitcher isCollapsed />
 					<Tooltip delayDuration={300}>
 						<TooltipTrigger asChild>
 							<button
@@ -411,7 +411,7 @@ export function DashboardSidebarHeader({
 				<div className="drag h-full min-w-0 flex-1" />
 			</div>
 
-			{areProfilesEnabled && <ProfileSwitcher />}
+			<ProfileSwitcher />
 
 			<button
 				type="button"

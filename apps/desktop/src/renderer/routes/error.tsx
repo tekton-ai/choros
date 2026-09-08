@@ -1,5 +1,5 @@
+import { i18n } from "@choros/i18n";
 import { Button } from "@choros/ui/button";
-import { Trans, useLingui } from "@lingui/react/macro";
 import type { ErrorComponentProps } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
@@ -14,7 +14,8 @@ const IS_DEV = process.env.NODE_ENV === "development";
 const ERROR_DETAILS_ID = "error-details";
 
 export function ErrorPage({ error, info }: ErrorComponentProps) {
-	const { t } = useLingui();
+	// The root router fallback replaces RootLayout, including its I18nProvider.
+	// Like BootErrorBoundary, translate without depending on that React context.
 	const message =
 		error instanceof Error ? error.message : String(error ?? "Unknown error");
 	const stack = error instanceof Error ? error.stack : undefined;
@@ -47,22 +48,26 @@ export function ErrorPage({ error, info }: ErrorComponentProps) {
 
 					<div className="flex flex-col items-center gap-2 text-center">
 						<h1 className="text-xl font-semibold">
-							<Trans id="app.errorPage.title">Something went wrong</Trans>
+							{i18n._({
+								id: "app.errorPage.title",
+								message: "Something went wrong",
+							})}
 						</h1>
 						<p className="text-sm text-muted-foreground">
-							<Trans id="app.errorPage.description">
-								Choros hit an unexpected error. Reload to try again.
-							</Trans>
+							{i18n._({
+								id: "app.errorPage.description",
+								message: "Choros hit an unexpected error. Reload to try again.",
+							})}
 						</p>
 					</div>
 
 					<div className="flex items-center gap-3">
 						<Button onClick={() => window.location.reload()}>
-							<Trans id="app.errorPage.reload">Reload</Trans>
+							{i18n._({ id: "app.errorPage.reload", message: "Reload" })}
 						</Button>
 						<Button variant="outline" asChild>
 							<Link to="/">
-								<Trans id="app.errorPage.goHome">Go home</Trans>
+								{i18n._({ id: "app.errorPage.goHome", message: "Go home" })}
 							</Link>
 						</Button>
 					</div>
@@ -74,11 +79,15 @@ export function ErrorPage({ error, info }: ErrorComponentProps) {
 						aria-controls={ERROR_DETAILS_ID}
 						className="text-xs text-muted-foreground hover:text-foreground transition-colors"
 					>
-						{showDetails ? (
-							<Trans id="app.errorPage.hideDetails">Hide details</Trans>
-						) : (
-							<Trans id="app.errorPage.showDetails">Show details</Trans>
-						)}
+						{showDetails
+							? i18n._({
+									id: "app.errorPage.hideDetails",
+									message: "Hide details",
+								})
+							: i18n._({
+									id: "app.errorPage.showDetails",
+									message: "Show details",
+								})}
 					</button>
 
 					{showDetails && (
@@ -89,7 +98,7 @@ export function ErrorPage({ error, info }: ErrorComponentProps) {
 									void copyToClipboard(details).catch(() => {});
 								}}
 								className="absolute top-2 right-2 flex items-center justify-center h-6 w-6 bg-background/80 backdrop-blur border border-border rounded hover:bg-accent transition-colors"
-								aria-label={t({
+								aria-label={i18n._({
 									id: "app.errorPage.copyDetails",
 									message: "Copy error details",
 								})}

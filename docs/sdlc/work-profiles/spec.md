@@ -9,34 +9,31 @@ intent: ./intent.md
 
 # 需求规格：工作档案（Work Profiles）
 
-> **实验发布修订：2026-09-07，已由负责人确认。** 用户反馈 Profile 仍有较多问题，要求先放入 Experimental，由用户主动开启。本次仅调整发布与开关边界，不扩展 Profile 能力，也不把实验开关当作已修复现有问题。
+> **默认开放修订：2026-09-08，已由负责人确认。** 在手动验证修复后，负责人明确要求“从 experimental 里去掉 profiles……可以直接放开了”。Work Profiles 不再需要主动开启。
 >
-> **审批沿革：** 本文基于 `527ec4ea1` 的上一版规格已于 2026-09-07 获产品负责人接受，随后实施计划获接受。负责人在本次对话中对“默认关闭、关闭后显示全部工作、保留已有分类”的修订明确回复“可以啊”，本次记录该人工接受。原计划的接受不覆盖新的开关行为；接下来修订并评审实施计划。
+> **审批沿革：** 原功能规格与实施计划已获接受；2026-09-07 曾接受默认关闭的实验发布规则（`ed815296b` / #22）。该临时规则由上述新的人工决定取代，历史审批保留在 Git 与实施计划的历史证据中；本轮不删除用户分类数据，也不自动发布版本。
 
 ## 先看结论与本轮取舍
 
 1. **Profile 是本机工作分类，不是账号或权限隔离。** 项目与独立会话各归属于一个 Profile；项目工作区继承项目归属。
 2. **只有视图切换，没有运行环境切换。** 切换不停止终端、agent 或开发服务器；不同窗口可以同时使用不同 Profile。
-3. **主动开启后，普通工作界面只显示当前 Profile。** 保留设置和插件的全局属性，不新增已开启状态下的日常“所有 Profile”模式；未开启时不应用 Profile 分类。
+3. **普通工作界面只显示当前 Profile。** 保留设置和插件的全局属性，不新增日常“所有 Profile”模式。
 4. **不恢复 main 已删除的功能。** 不增加组织层、V1/V2 开关、Tasks、Automations、Pages 或远程多 Host 管理。
 5. **创建、历史和通知必须一起适配。** 不接受“侧栏看起来隔离了，但快速创建、历史导航或通知仍然串到其他 Profile”的实现。
-6. **Work Profiles 先作为默认关闭的本地实验功能。** 新安装和没有明确开启记录的现有安装均保持关闭，即使本地已有 Profile 数据也不能自动开启；用户在 Settings → Experimental 主动选择。
+6. **Work Profiles 默认提供。** 新安装、升级安装均无需实验开关；旧的开启或关闭记录不再决定功能是否可用。
 
 建议先评审“功能范围”“切换与导航”“创建与归属”三节，再看持久化、安全和验收要求。代码集成说明放在后面，便于工程评审对照。
 
 ## 一、需求与设计
 
-### 实验发布与开关边界
+### 默认开放与升级边界
 
-本节为本次已接受的实验发布规则；下文 Profile 筛选、切换器、管理、故障回退及相关验收默认指**实验已开启**的状态。
-
-- **入口与默认值：** Settings → Experimental 增加可搜索的 Multiple Profiles（多 Profile）开关，默认关闭并持久化用户选择。文案说明可用不同 Profile 区分工作与个人项目、按需切换；不依赖远程 feature flag，不增加账号或权限边界。
-- **关闭不是切回 Default：** 隐藏展开/收起侧栏中的 Profile 切换器、Profile 管理/新建命令及“移至 Profile”菜单。普通工作视图不再按 Profile 筛选，原有归档、权限和用户筛选条件仍然生效；其他 Profile 中的项目和独立会话仍可访问。
-- **关闭时不依赖实验状态：** 不为 Profile 分类轮询、订阅或等待注册表，不触发 Profile 自动切换、跨档跳转或“Profile 不可用”提示。历史、最近访问、通知、深链接和创建入口仍可正常使用，不能因停用实验而失去导航或空白。
-- **数据保留：** 开关关闭不删除或重置 Profile 定义、归属、访问记录或保存的选择，不执行“全部移至 Default”。重新开启后读取原有数据；不能以当前无筛选视图覆盖保存的归属。
-- **创建边界：** 关闭期间新建项目和独立会话没有显式分类，仍按现有规则隐式归 Default；已有项目及其新工作区保留项目归属。切换开关前已提交的创建沿用提交时语义，不能重复创建、改写归属或由迟到回调拉回旧界面。
-- **生效与运行状态：** 当前窗口切换开关后生效，后续启动保留选择。关闭时保留当前工作对象和未提交草稿；重新开启时按真实归属和既有导航规则展示。开关不得停止终端、agent、开发服务器或重建底层工作区运行状态。
-- **明确边界：** 此次是降低默认暴露范围，不修复或掩盖其他 Profile 缺陷；不改数据库迁移，不清理用户数据，不新增同步或远程开关。
+- **统一入口：** 侧栏展开/收起、新建与管理命令、移至 Profile 菜单正常提供；Experimental 及其搜索索引不再包含 Multiple Profiles。
+- **数据保留：** 只回收旧的 `work-profiles` 布尔开关键，不删除或重置 Profile 定义、归属、访问记录或保存的选择，不执行“全部移至 Default”。
+- **安全边界不变：** `available` / `isReady` 仍表示本地注册表健康与加载状态；默认开放不等于忽略加载、存储失败或既有认证要求。
+- **升级后的当前工作：** 当前 URL 已指向工作区或项目时，优先采用该对象的真实归属；不能用旧保存选择把正在显示的工作挤走。
+- **创建和后台工作：** 继续按提交时的 Profile 结算创建；终端、agent、开发服务器、未提交草稿及请求代次保护保持原契约。
+- **其他实验不变：** Ports、Workspace Agents、Wait for setup 仍是独立设置，它们的开关不影响 Profiles 的可用性。
 
 ### 1. 功能范围与对象归属
 
@@ -194,7 +191,7 @@ intent: ./intent.md
 - 不将 Profile 名称或成员标识加入分析数据。若记录运维信息，仅允许匿名计数及成功/失败；保留既有本地文件权限保护。
 - 不新增远程功能开关，不恢复旧 V1/V2 产品切换。
 - 不实现 Tasks、Automations、Pages、组织管理、远程多 Host 管理、Mobile 或 Web 的 Profile 能力。
-- 不新增 Profile 专属账号、凭据、环境变量、插件、设置或资源限制；不新增嵌套 Profile、多重归属或实验已开启时的日常“所有 Profile”模式。停用整个实验后的无分类视图不构成新的 Profile。
+- 不新增 Profile 专属账号、凭据、环境变量、插件、设置或资源限制；不新增嵌套 Profile、多重归属或日常“所有 Profile”模式。
 
 ## 二、与当前代码的集成依据
 
@@ -217,8 +214,8 @@ intent: ./intent.md
 | `apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/navigation-controls/navigation-controls.tsx`；`apps/desktop/src/renderer/lib/persistent-hash-history/persistent-hash-history.ts` | 真正的按钮、快捷键和鼠标历史导航入口；当前 HistoryDropdown 未挂载，改它不能替代历史适配；现有路由历史不会持久化真实访问时间，不能据此伪造 Profile 的历史访问时间 |
 | `apps/desktop/src/renderer/command-palette/ui/recently-viewed/recently-viewed-frame.tsx`；`apps/desktop/src/renderer/stores/last-active-v2-workspace.ts` | 最近访问和当前单一恢复目标需要统一的 Profile 导航语义，包含独立会话 |
 | `apps/desktop/src/renderer/routes/_authenticated/components/v2-notification-controller/v2-notification-controller.tsx`；`apps/desktop/src/renderer/hooks/host-service/use-v2-notification-status/use-v2-notification-status.ts` | 保留后台资格、现有通知和 Dock 计数，不按当前 Profile 缩小订阅 |
-| `apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx`；同 settings 下的 `utils/settings-search/settings-search.ts`；`apps/desktop/src/renderer/stores/workspace-agents-row.ts` | 已有本地实验开关、搜索和持久化模式；Work Profiles 复用同一约定，但默认关闭 |
-| `apps/desktop/src/renderer/routes/_authenticated/providers/profile-provider/profile-provider.tsx`；`apps/desktop/src/renderer/command-palette/modules/profiles/commands.ts`；`apps/desktop/src/renderer/routes/_authenticated/components/move-to-profile-menu/move-to-profile-menu.tsx` | 实验边界不能只有侧栏：provider 已承担注册表读取、投影、创建归属和导航，命令与右键菜单也有独立入口 |
+| `apps/desktop/src/renderer/lib/persisted-keys/persisted-keys.ts` | 按既有 DEAD_KEYS 机制回收退出实验后无读写方的 `work-profiles` 键，不改 Profile 数据库 |
+| `apps/desktop/src/renderer/routes/_authenticated/providers/profile-provider/profile-provider.tsx`；`apps/desktop/src/renderer/command-palette/modules/profiles/commands.ts`；`apps/desktop/src/renderer/routes/_authenticated/components/move-to-profile-menu/move-to-profile-menu.tsx` | provider、命令和菜单均默认提供 Profile 能力；保留注册表健康与就绪检查 |
 | `packages/i18n` | 新文案与所有发布语言沿用现有提取、编译和检查流程 |
 
 路由或符号中仍出现 `v2` 是当前 main 的现有命名，不意味着本功能要重建 V1/V2 模式切换。代码包沿用 `@choros/*`，不重新引入 `@superset/*` 依赖。
@@ -247,15 +244,14 @@ Profile 名称和成员信息留在设备上，不增加云同步、支付数据
 
 ## 四、验收时必须看到的结果
 
-本次实验发布须先满足以下新增标准；其后的原有 Profile 验收表适用于开启状态。
+默认开放须满足以下升级标准；其后的原有 Profile 验收表不再附带实验开启条件。
 
 | 场景 | 可观察的通过标准 |
 |---|---|
-| 未开启与已有数据升级 | 没有显式开启记录时默认关闭；已有非默认归属不会隐藏工作，不出现 Profile 切换器、管理/新建命令或移动菜单 |
-| 主动开启与重启 | 在 Experimental 中可搜索并开启；相关入口与分类恢复，重启保留开启状态 |
-| 关闭与再次开启 | 在非默认 Profile 使用后关闭，原工作对象仍可访问；再次开启保留定义、归属及访问记录，不发生删除或隐式迁移 |
-| 关闭后的核心路径 | 侧栏、列表、搜索、历史、最近访问、通知、深链接和创建都不再受 Profile 分类限制；不轮询/订阅分类注册表，也不弹出停用导致的 Profile 故障提示 |
-| 开关与进行中的工作 | 终端/agent 持续运行，草稿保留；已提交创建只完成一次且遵循原提交归属，迟到回调不覆盖新的导航意图 |
+| 新安装与旧开关升级 | 没有旧键，或旧键曾为 false/true，均默认提供 Profile 入口；只回收旧开关键，不重置分类 |
+| 其他实验关闭 | 关闭 Ports、Workspace Agents、Wait for setup 后，Profile 创建、切换、管理和内容隔离仍可用 |
+| 当前路由与后台工作 | 恢复当前对象的真实归属；保留后台进程、草稿及旧异步请求的代次保护 |
+| 真实存储故障 | 保留 Default 降级与明确错误；不能把默认开放解释为无条件展示全部 Profile 内容或假成功 |
 
 | 场景 | 可观察的通过标准 |
 |---|---|
@@ -275,7 +271,7 @@ Profile 名称和成员信息留在设备上，不增加云同步、支付数据
 
 ## 五、需重点人工评审的风险
 
-- **实验关闭与核心路径（工程负责人）：** Profile 已接入导航和创建，不能只隐藏入口或将当前选择设为 Default；必须证明无分类状态仍可访问全部原有工作，并且开关不重建运行中的工作区子树。
+- **默认开放升级（工程负责人）：** 退役旧开关不能重置分类或丢失现有工作；初始 URL 归属、历史筛选、通知定位和旧请求失效保护必须保留。
 - **本地迁移与降级（技术负责人，高风险）：** 迁移涉及持久数据；必须证明 DDL 与日志整体回滚。没有数据库备份/向下迁移是明确取舍，不能因旧方案曾批准就视为新版已通过。
 - **历史、路由与创建竞态（工程负责人）：** 需要区分主动切换、普通历史和明确深链接；快速切换、后台完成及跨窗口移动不能相互覆盖。不能用多个组件各自补跳转来替代统一行为。
 - **后台订阅成本（技术负责人）：** 保持现有订阅资格和缓存，既不能漏掉非当前 Profile，也不能为每个 Profile 复制观察器。需用实现前后实际数量及提醒场景验证。
@@ -286,4 +282,4 @@ Profile 名称和成员信息留在设备上，不增加云同步、支付数据
 ## 作者与审批状态
 
 - **作者：** xchunzhao（需求确认）与 agent（规格整理）。
-- **状态：** `accepted`。产品负责人 xchunzhao 于 2026-09-07 在本次对话中明确回复“可以啊”，接受实验默认关闭、关闭后显示全部工作并保留已有分类的规格修订；agent 仅记录该人工决定。此次接受不替代新实施计划的工程接受，也不代表应用代码已修改或新开关已验证。
+- **状态：** `accepted`。原功能与临时实验规则的接受记录保留在历史中；负责人于 2026-09-08 在手动验证后明确要求移出 Experimental、默认开放。此处记录该人工决定，不表示已发布或免除重整后的验证。

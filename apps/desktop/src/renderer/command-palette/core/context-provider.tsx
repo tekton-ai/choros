@@ -11,7 +11,6 @@ import {
 	type ReactNode,
 	useCallback,
 	useContext,
-	useEffect,
 	useMemo,
 	useState,
 } from "react";
@@ -34,7 +33,6 @@ export function CommandContextProvider({ children }: { children: ReactNode }) {
 	const { activeHostUrl, hostServiceStatus, machineId } = useLocalHostService();
 	const {
 		activeProfileId,
-		enabled,
 		available,
 		isReady: areProfilesReady,
 		profiles,
@@ -44,11 +42,8 @@ export function CommandContextProvider({ children }: { children: ReactNode }) {
 	} = useProfiles();
 	const [createProfileOpen, setCreateProfileOpen] = useState(false);
 	const openCreateProfile = useCallback(() => {
-		if (enabled && available && areProfilesReady) setCreateProfileOpen(true);
-	}, [enabled, available, areProfilesReady]);
-	useEffect(() => {
-		if (!enabled) setCreateProfileOpen(false);
-	}, [enabled]);
+		if (available && areProfilesReady) setCreateProfileOpen(true);
+	}, [available, areProfilesReady]);
 	const activeProfileIndex = profiles.findIndex(
 		(profile) => profile.id === activeProfileId,
 	);
@@ -65,7 +60,7 @@ export function CommandContextProvider({ children }: { children: ReactNode }) {
 
 	const { workspaces: hostWorkspaces } = useHostWorkspaces();
 	const v2Workspace = useMemo(() => {
-		if ((enabled && !areProfilesReady) || !v2WorkspaceId) return null;
+		if (!areProfilesReady || !v2WorkspaceId) return null;
 		const workspace = hostWorkspaces.find((w) => w.id === v2WorkspaceId);
 		if (!workspace || !isWorkspaceVisible(workspace)) return null;
 		return {
@@ -75,13 +70,7 @@ export function CommandContextProvider({ children }: { children: ReactNode }) {
 			type: workspace.type,
 			hostId: workspace.hostId,
 		};
-	}, [
-		enabled,
-		areProfilesReady,
-		hostWorkspaces,
-		isWorkspaceVisible,
-		v2WorkspaceId,
-	]);
+	}, [areProfilesReady, hostWorkspaces, isWorkspaceVisible, v2WorkspaceId]);
 	const projectId = v2Workspace?.projectId ?? null;
 
 	const { data: preferredAppRows = [] } = useLiveQuery(
@@ -105,7 +94,6 @@ export function CommandContextProvider({ children }: { children: ReactNode }) {
 			profile: {
 				id: activeProfileId,
 				name: profiles[activeProfileIndex]?.name ?? "",
-				enabled,
 				available: available && areProfilesReady,
 				previousId:
 					activeProfileIndex > 0
@@ -139,7 +127,6 @@ export function CommandContextProvider({ children }: { children: ReactNode }) {
 			location.pathname,
 			activeProfileId,
 			activeProfileIndex,
-			enabled,
 			available,
 			areProfilesReady,
 			profiles,
@@ -159,12 +146,10 @@ export function CommandContextProvider({ children }: { children: ReactNode }) {
 	return (
 		<Context.Provider value={context}>
 			{children}
-			{enabled && (
-				<ProfileNameDialog
-					open={createProfileOpen}
-					onOpenChange={setCreateProfileOpen}
-				/>
-			)}
+			<ProfileNameDialog
+				open={createProfileOpen}
+				onOpenChange={setCreateProfileOpen}
+			/>
 		</Context.Provider>
 	);
 }

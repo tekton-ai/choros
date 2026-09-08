@@ -9304,16 +9304,6 @@ msgstr "啟動代理程式前等待工作區設定完成"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.workProfilesHint"
-msgstr "用不同的 Profile 區分工作與個人專案，依需求切換。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.workProfilesLabel"
-msgstr "多 Profile"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
 msgid "settings.experimental.workspaceAgentsHint"
 msgstr "在側邊欄每個工作區下顯示正在執行的代理程式及其即時狀態。"
 

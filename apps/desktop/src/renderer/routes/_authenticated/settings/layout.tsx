@@ -136,7 +136,7 @@ function SettingsLayout() {
 			const segments = location.pathname.split("/").filter(Boolean);
 			event.preventDefault();
 			if (segments.length <= 2) {
-				navigate({ to: originRoute });
+				navigate(originRoute);
 				return;
 			}
 

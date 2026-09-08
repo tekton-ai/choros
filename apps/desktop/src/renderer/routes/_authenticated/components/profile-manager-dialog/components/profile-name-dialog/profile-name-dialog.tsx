@@ -46,7 +46,7 @@ export function ProfileNameDialog({
 		}
 	}, [open, profile?.id, profile?.name]);
 	return (
-		<Dialog open={open} onOpenChange={onOpenChange}>
+		<Dialog modal open={open} onOpenChange={onOpenChange}>
 			<DialogContent className="sm:max-w-md">
 				<form
 					onSubmit={async (event) => {
