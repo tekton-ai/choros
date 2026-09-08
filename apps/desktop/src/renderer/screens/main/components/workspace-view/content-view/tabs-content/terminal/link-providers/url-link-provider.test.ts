@@ -1,5 +1,6 @@
 import { describe, expect, it, mock } from "bun:test";
-import type { IBufferLine, ILink, Terminal } from "@xterm/xterm";
+import { Unicode11Addon } from "@xterm/addon-unicode11";
+import { type IBufferLine, type ILink, Terminal } from "@xterm/xterm";
 import { UrlLinkProvider } from "./url-link-provider";
 
 function createMockLine(text: string, isWrapped = false): IBufferLine {
@@ -7,7 +8,14 @@ function createMockLine(text: string, isWrapped = false): IBufferLine {
 		translateToString: () => text,
 		isWrapped,
 		length: text.length,
-		getCell: mock(() => null),
+		getCell: mock((index: number) =>
+			index >= 0 && index < text.length
+				? {
+						getChars: () => text.charAt(index),
+						getWidth: () => 1,
+					}
+				: undefined,
+		),
 		getCells: mock(() => []),
 	} as unknown as IBufferLine;
 }
@@ -69,6 +77,99 @@ describe("URL highlight boundaries", () => {
 		const [link] = await getLinks(provider, 1);
 		expect(link.range.end).toEqual({ x: url.length, y: 1 });
 	});
+});
+
+describe("Unicode URL ranges", () => {
+	const uri = "https://www.baidu.com";
+	for (const fixture of [
+		{
+			name: "maps the Chinese prefix from the reported screenshot",
+			text: `百度的网址是：${uri}`,
+			uri,
+			cols: 80,
+			start: { x: 15, y: 1 },
+			end: { x: 35, y: 1 },
+		},
+		{
+			name: "accounts for combining characters before a URL",
+			text: `e\u0301 ${uri}`,
+			uri,
+			cols: 80,
+			start: { x: 3, y: 1 },
+			end: { x: 23, y: 1 },
+		},
+		{
+			name: "accounts for surrogate-pair and CJK characters before a URL",
+			text: `\u{20000}中文 ${uri}`,
+			uri,
+			cols: 80,
+			start: { x: 8, y: 1 },
+			end: { x: 28, y: 1 },
+		},
+		{
+			name: "does not include a wide space after a URL",
+			text: `${uri}\u3000tail`,
+			uri,
+			cols: 80,
+			start: { x: 1, y: 1 },
+			end: { x: 21, y: 1 },
+		},
+		{
+			name: "maps a URL after Chinese text across a soft wrap",
+			text: `百度的网址是：${uri}`,
+			uri,
+			cols: 20,
+			start: { x: 15, y: 1 },
+			end: { x: 15, y: 2 },
+		},
+		{
+			name: "includes both cells of wide characters within a URL",
+			text: "https://example.com/路径",
+			uri: "https://example.com/路径",
+			cols: 80,
+			start: { x: 1, y: 1 },
+			end: { x: 24, y: 1 },
+		},
+		{
+			name: "maps combining runs whose text offset exceeds the physical row width",
+			text: `e${"\u0301".repeat(50)}中 ${uri}`,
+			uri,
+			cols: 40,
+			start: { x: 5, y: 1 },
+			end: { x: 25, y: 1 },
+		},
+	]) {
+		it(fixture.name, async () => {
+			const terminal = new Terminal({
+				cols: fixture.cols,
+				rows: 5,
+				allowProposedApi: true,
+			});
+			terminal.loadAddon(new Unicode11Addon());
+			terminal.unicode.activeVersion = "11";
+			try {
+				await new Promise<void>((resolve) =>
+					terminal.write(fixture.text, resolve),
+				);
+				const [link] = await getLinks(new UrlLinkProvider(terminal, mock()), 1);
+				expect(link.range).toEqual({ start: fixture.start, end: fixture.end });
+				let highlighted = "";
+				for (let y = link.range.start.y; y <= link.range.end.y; y++) {
+					highlighted +=
+						terminal.buffer.active
+							.getLine(y - 1)
+							?.translateToString(
+								false,
+								y === link.range.start.y ? link.range.start.x - 1 : 0,
+								y === link.range.end.y ? link.range.end.x : terminal.cols,
+							) ?? "";
+				}
+				expect(highlighted).toBe(fixture.uri);
+			} finally {
+				terminal.dispose();
+			}
+		});
+	}
 });
 
 describe("UrlLinkProvider", () => {
