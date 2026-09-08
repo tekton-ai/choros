@@ -481,7 +481,7 @@ export function usePaneRegistry({
 							},
 							onSelect: (ctx) => {
 								const { terminalId } = ctx.pane.data as TerminalPaneData;
-								const text = terminalRuntimeRegistry.getContextCopyText(
+								const text = terminalRuntimeRegistry.getSelection(
 									terminalId,
 									ctx.pane.id,
 								);

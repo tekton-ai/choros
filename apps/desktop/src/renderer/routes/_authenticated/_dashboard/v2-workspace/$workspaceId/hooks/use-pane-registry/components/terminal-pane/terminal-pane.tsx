@@ -80,9 +80,6 @@ export function TerminalPane({
 	const filePolicy = useTerminalFilePolicy();
 	const urlPolicy = useTerminalUrlPolicy();
 	const folderPolicy = useTerminalFolderPolicy();
-	const { getAction: getFileAction } = filePolicy;
-	const { getAction: getUrlAction } = urlPolicy;
-	const { getIntent: getFolderIntent } = folderPolicy;
 	const {
 		hoveredLink,
 		onHover: onLinkHover,
@@ -291,7 +288,7 @@ export function TerminalPane({
 				},
 				onFileLinkClick: (event, link) => {
 					if (link.isDirectory) {
-						const intent = getFolderIntent(event);
+						const intent = folderPolicy.getIntent(event);
 						if (intent === null) {
 							showHint(event.clientX, event.clientY);
 							return;
@@ -307,7 +304,7 @@ export function TerminalPane({
 						return;
 					}
 
-					const action = getFileAction(event);
+					const action = filePolicy.getAction(event);
 					if (action === null) {
 						showHint(event.clientX, event.clientY);
 						return;
@@ -325,7 +322,7 @@ export function TerminalPane({
 					}
 				},
 				onUrlClick: (event, url) => {
-					const action = getUrlAction(event);
+					const action = urlPolicy.getAction(event);
 					if (action === null) {
 						showHint(event.clientX, event.clientY);
 						return;
@@ -360,9 +357,9 @@ export function TerminalPane({
 		onLinkHover,
 		onLinkLeave,
 		showHint,
-		getFileAction,
-		getUrlAction,
-		getFolderIntent,
+		filePolicy,
+		urlPolicy,
+		folderPolicy,
 	]);
 
 	// --- Remote image paste ---

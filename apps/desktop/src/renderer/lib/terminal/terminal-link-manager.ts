@@ -7,11 +7,7 @@
  *  resolver caching, and priority ordering.
  *--------------------------------------------------------------------------------------------*/
 
-import type {
-	IBufferRange,
-	ILinkHandler,
-	Terminal as XTerm,
-} from "@xterm/xterm";
+import type { ILinkHandler, Terminal as XTerm } from "@xterm/xterm";
 import { UrlLinkProvider } from "../../screens/main/components/workspace-view/content-view/tabs-content/terminal/link-providers";
 import type { DetectedLink } from "./links";
 import {
@@ -49,18 +45,6 @@ interface LinkProviderDisposable {
 	dispose(): void;
 }
 
-interface CopySelection {
-	uri: string;
-	range: IBufferRange;
-	reusable: boolean;
-}
-
-interface CopyContext {
-	event: Event;
-	uri: string | null;
-	copy: CopySelection | null;
-}
-
 /**
  * Manages all link providers for a single terminal instance.
  *
@@ -74,127 +58,6 @@ export class TerminalLinkManager {
 	private _resolver: TerminalLinkResolver | null = null;
 	private _handlers: TerminalLinkHandlers | null = null;
 	private _oscLinkHandler: ILinkHandler | null = null;
-	private _hoveredUrl: string | null = null;
-	private _copySelection: CopySelection | null = null;
-	private _copyContext: CopyContext | null = null;
-
-	/** Context-menu Copy uses a URI only for xterm's right-click link selection. */
-	getContextCopyText(): string {
-		const copy = this._copyContext?.copy;
-		return copy &&
-			this._sameSelection(copy.range, this._terminal.getSelectionPosition())
-			? copy.uri
-			: this._terminal.getSelection();
-	}
-
-	resetContextCopy = (): void => {
-		this._hoveredUrl = null;
-		this._copySelection = null;
-		this._copyContext = null;
-	};
-
-	private _sameSelection(
-		a: IBufferRange | undefined,
-		b: IBufferRange | undefined,
-	): boolean {
-		return (
-			!!a &&
-			!!b &&
-			a.start.x === b.start.x &&
-			a.start.y === b.start.y &&
-			a.end.x === b.end.x &&
-			a.end.y === b.end.y
-		);
-	}
-
-	private _eventInSelection(event: MouseEvent, range: IBufferRange): boolean {
-		const rect = this._terminal.element
-			?.querySelector(".xterm-screen")
-			?.getBoundingClientRect();
-		if (!rect?.width || !rect.height) return false;
-		const x = ((event.clientX - rect.left) * this._terminal.cols) / rect.width;
-		const y = ((event.clientY - rect.top) * this._terminal.rows) / rect.height;
-		const row = Math.floor(y) + this._terminal.buffer.active.viewportY;
-		return (
-			x >= 0 &&
-			x < this._terminal.cols &&
-			y >= 0 &&
-			y < this._terminal.rows &&
-			(row > range.start.y || (row === range.start.y && x >= range.start.x)) &&
-			(row < range.end.y || (row === range.end.y && x < range.end.x))
-		);
-	}
-
-	private _trackContextSelection(): void {
-		const doc = this._terminal.element?.ownerDocument ?? globalThis.document;
-		if (!doc) return;
-		const capture = (event: MouseEvent) => {
-			this._copyContext = null;
-			if (!this._terminal.element?.contains(event.target as Node)) return;
-			const copy = this._copySelection;
-			if (!copy && !this._hoveredUrl) return;
-			const context: CopyContext = { event, uri: this._hoveredUrl, copy: null };
-			this._copyContext = context;
-			if (
-				!copy ||
-				!this._sameSelection(
-					copy.range,
-					this._terminal.getSelectionPosition(),
-				) ||
-				!this._eventInSelection(event, copy.range)
-			)
-				return;
-			const uri = context.uri ?? (copy.reusable ? copy.uri : null);
-			if (uri) {
-				copy.uri = uri;
-				copy.reusable = true;
-				context.copy = copy;
-			}
-		};
-		const manualSelection = (event: MouseEvent) => {
-			if (
-				event.button !== 0 ||
-				!this._terminal.element?.contains(event.target as Node)
-			)
-				return;
-			this._copySelection = null;
-			this._copyContext = null;
-		};
-		doc.addEventListener("contextmenu", capture, true);
-		doc.addEventListener("mousedown", manualSelection, true);
-		this._disposables.push(
-			{
-				dispose: () => {
-					doc.removeEventListener("contextmenu", capture, true);
-					doc.removeEventListener("mousedown", manualSelection, true);
-				},
-			},
-			this._terminal.onSelectionChange(() => {
-				const range = this._terminal.getSelectionPosition();
-				const context = this._copyContext;
-				// xterm creates its link selection synchronously inside contextmenu.
-				// Store that native selection, not the provider's differently based range.
-				if (range && context?.event.eventPhase && context.uri) {
-					this._copySelection = context.copy = {
-						uri: context.uri,
-						range,
-						reusable: true,
-					};
-				} else if (!this._sameSelection(this._copySelection?.range, range)) {
-					this._copySelection = null;
-					if (context) context.copy = null;
-				}
-			}),
-			this._terminal.onWriteParsed(() => {
-				this._hoveredUrl = null;
-				// The open menu keeps its snapshot; the next one needs a fresh target.
-				if (this._copySelection) this._copySelection.reusable = false;
-			}),
-			this._terminal.onScroll(this.resetContextCopy),
-			this._terminal.onResize(this.resetContextCopy),
-			this._terminal.buffer.onBufferChange(this.resetContextCopy),
-		);
-	}
 
 	constructor(private readonly _terminal: XTerm) {}
 
@@ -219,7 +82,6 @@ export class TerminalLinkManager {
 	}
 
 	dispose(): void {
-		this.resetContextCopy();
 		for (const d of this._disposables) d.dispose();
 		this._disposables = [];
 		this._clearOscLinkHandler();
@@ -243,25 +105,14 @@ export class TerminalLinkManager {
 		for (const d of this._disposables) d.dispose();
 		this._disposables = [];
 		this._clearOscLinkHandler();
-		this._trackContextSelection();
 
 		// Reuse resolver to preserve stat cache across re-registrations.
 		if (!this._resolver) {
 			this._resolver = new TerminalLinkResolver(handlers.stat);
 		}
 
-		const onLinkHover = (event: MouseEvent, info: LinkHoverInfo) => {
-			this._hoveredUrl = null;
-			handlers.onLinkHover?.(event, info);
-		};
-		const onLinkLeave = () => {
-			this._hoveredUrl = null;
-			handlers.onLinkLeave?.();
-		};
-		const onUrlHover = (event: MouseEvent, uri: string) => {
-			this._hoveredUrl = /^https?:\/\//i.test(uri) ? uri : null;
-			handlers.onLinkHover?.(event, { kind: "url" });
-		};
+		const onLinkHover = handlers.onLinkHover;
+		const onLinkLeave = handlers.onLinkLeave;
 
 		// 1. File path detector (highest priority)
 		const detector = new LocalLinkDetector(this._resolver);
@@ -269,12 +120,14 @@ export class TerminalLinkManager {
 			this._terminal,
 			detector,
 			handlers.onFileLinkClick,
-			(event, link) =>
-				onLinkHover(event, {
-					kind: "file",
-					isDirectory: link.isDirectory,
-					resolvedPath: link.resolvedPath,
-				}),
+			onLinkHover
+				? (event, link) =>
+						onLinkHover(event, {
+							kind: "file",
+							isDirectory: link.isDirectory,
+							resolvedPath: link.resolvedPath,
+						})
+				: undefined,
 			onLinkLeave,
 		);
 		this._disposables.push(this._terminal.registerLinkProvider(adapter));
@@ -287,7 +140,9 @@ export class TerminalLinkManager {
 				(event, uri) => {
 					onUrlClick(event, uri);
 				},
-				onUrlHover,
+				onLinkHover
+					? (event) => onLinkHover(event, { kind: "url" })
+					: undefined,
 				onLinkLeave,
 			);
 			this._disposables.push(this._terminal.registerLinkProvider(urlProvider));
@@ -300,8 +155,10 @@ export class TerminalLinkManager {
 				activate: (event, uri) => {
 					onUrlClick(event, uri);
 				},
-				hover: onUrlHover,
-				leave: onLinkLeave,
+				hover: onLinkHover
+					? (event) => onLinkHover(event, { kind: "url" })
+					: undefined,
+				leave: onLinkLeave ? () => onLinkLeave() : undefined,
 			};
 			this._terminal.options.linkHandler = this._oscLinkHandler;
 		}
@@ -330,7 +187,9 @@ export class TerminalLinkManager {
 						colEnd: undefined,
 					});
 				},
-				(event) => onLinkHover(event, { kind: "file", isDirectory: false }),
+				onLinkHover
+					? (event) => onLinkHover(event, { kind: "file", isDirectory: false })
+					: undefined,
 				onLinkLeave,
 			);
 			this._disposables.push(this._terminal.registerLinkProvider(wordDetector));
