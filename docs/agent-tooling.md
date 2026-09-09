@@ -56,6 +56,26 @@ Portable dry-run cases live in
 them without GitHub mutations; fixture repository names and URLs are not real
 publication targets.
 
+### Release Choros
+
+[`release`](../.agents/commands/release.md) replaces `/canaryrelease` with the complete
+stable-release flow: publish Desktop and its matching CLI, deploy GitHub Pages,
+then detect the execution host's OS/architecture, download and verify its matching
+installer, and replace the local app with an old-installation backup. macOS uses a DMG
+and bundle exchange; Linux x64 uses an AppImage and atomic file replacement. User data
+is preserved, and the command does not stop Choros or its terminals.
+
+- `/release` releases the latest fetched `origin/main` at the next unused patch version.
+- `/release <version> [commit-or-ref] [--daemon]` selects an explicit version/source.
+- The release tool uses a dedicated release branch and version-bump PR; it does not
+  commit the current workspace's uncommitted changes.
+- Platform selection follows the execution environment, not a previous session's machine.
+  The current CI builds macOS arm64/x64 and Linux x64; Windows and Linux arm64 stop
+  before publishing because no matching desktop artifact is built.
+
+This is a real published release, not an internal canary. See the
+[release runbook](../scripts/release/README.md) for pipeline and retry rules.
+
 ## Provider accounts (multi-login)
 
 The Usage tab can hold several Claude Code / Codex logins and pick which one agents use. A login
