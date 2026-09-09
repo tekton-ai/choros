@@ -61,12 +61,18 @@ publication targets.
 [`release`](../.agents/commands/release.md) replaces `/canaryrelease` with the complete
 stable-release flow: publish Desktop and its matching CLI, deploy GitHub Pages,
 then detect the execution host's OS/architecture, download and verify its matching
-installer, and replace the local app with an old-installation backup. macOS uses a DMG
-and bundle exchange; Linux x64 uses an AppImage and atomic file replacement. User data
-is preserved, and the command does not stop Choros or its terminals.
+installer, and stage a local update with an old-installation backup. macOS uses a DMG
+and bundle exchange; Linux x64 uses an AppImage and atomic file replacement. Replacement
+waits until the old Desktop, host, and other installation consumers have exited. If they
+are active, an independent installer waits without stopping them; the command reports
+**staged/waiting**, not installed. User data is preserved and Choros is not relaunched.
 
 - `/release` releases the latest fetched `origin/main` at the next unused patch version.
 - `/release <version> [commit-or-ref] [--daemon]` selects an explicit version/source.
+- Repeating `/release <existing-version>` resumes the original tag, workflow runs, and
+  bump PR. It never re-enters the new-version release script or deletes/recreates tags.
+- Both `origin` fetch/push destinations and GitHub CLI resolution must identify
+  `tekton-ai/choros`; subsequent GitHub operations are pinned to that repository.
 - The release tool uses a dedicated release branch and version-bump PR; it does not
   commit the current workspace's uncommitted changes.
 - Platform selection follows the execution environment, not a previous session's machine.
