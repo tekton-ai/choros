@@ -1,0 +1,95 @@
+{
+	"skill_name": "capture",
+	"evals": [
+		{
+			"id": 1,
+			"prompt": "先把这个 bug 整理成草稿，不要发布，也不要创建标签。Profile 切换后，侧栏仍显示前一个 Profile 的 workspace；切走再切回才刷新。预期切换后立即只显示当前 Profile 的 workspace。还不知道版本号，不要替我猜。",
+			"expected_output": "Draft-only issue with bug label, descriptive unprefixed title, canonical ticket structure, reported reproduction and expected behavior. Unknown version stays unknown; no GitHub mutation or invented root cause.",
+			"files": [],
+			"assertions": [
+				"Keep the request draft-only and perform no GitHub mutations.",
+				"Use bug on an Issue with no type prefix in its title.",
+				"Use the canonical ticket format and do not invent a version or root cause."
+			]
+		},
+		{
+			"id": 2,
+			"prompt": "帮我在当前 GitHub 仓库记录一个 feature request：希望复制现有 Profile 的配置来创建新 Profile，避免重复填写。成功条件是新 Profile 有独立身份，编辑它不影响原 Profile。这里的内容可以公开。提供的仓库快照：目标为 example/capture-eval，public，已认证，有建 Issue/标签权限，bug 标签存在，feature-request 不存在；相关已开和已关 Issue 都已检查，没有重复项。",
+			"expected_output": "Choose Issue and exact feature-request label; propose creating the missing label without recoloring bug. Capture the user's scenario and independent-profile acceptance conditions without claiming approval or inventing implementation details.",
+			"files": [],
+			"assertions": [
+				"Choose an Issue and the exact feature-request label, not enhancement.",
+				"Treat the missing label as a publication step without modifying existing labels.",
+				"Preserve independent identity and editing isolation as acceptance conditions."
+			]
+		},
+		{
+			"id": 3,
+			"prompt": "把刚才关于 workflow 的脑暴放到当前公开仓库的 Discussion，内容可以公开。只写两部分：对标产品、为什么需要 workflow。参考 Tutti https://github.com/tutti-os/tutti 和 UWF https://github.com/shazhou-ww/united-workforce；目标是减少人工传话，支持标准模板与自定义协作流程，目前没有决定选哪个引擎。提供的仓库快照：example/capture-eval，Discussions 已启用，已有 Ideas 和 Q&A 分类，brainstorming 标签存在，没有相关讨论。",
+			"expected_output": "Choose an Ideas Discussion with brainstorming label, an unprefixed title and exactly the two requested top-level sections. Preserve exploratory status, references and undecided engine choice; do not turn suggestions into a committed roadmap.",
+			"files": [],
+			"assertions": [
+				"Choose an Ideas Discussion with brainstorming and no title prefix.",
+				"Keep exactly the two requested top-level content sections.",
+				"Do not claim that an engine choice or delivery roadmap has been approved."
+			]
+		},
+		{
+			"id": 4,
+			"prompt": "把这轮还不能公开的商业方案保存为 private Discussion。当前只有一个公开仓库 example/capture-eval 可以用，Discussions 没开，也没有 brainstorming 标签。不要把内容公开。",
+			"expected_output": "Block publication before all mutations; explain that Discussion visibility follows its repository, and ask for a private destination or explicitly scoped public authorization. Do not create a label, enable Discussions, change repository visibility, or create a new repository.",
+			"files": [],
+			"assertions": [
+				"Block public publication and every preparatory GitHub mutation.",
+				"Explain repository-inherited visibility and request a private destination or scoped authorization.",
+				"Do not enable Discussions, change repository visibility, or create a repository."
+			]
+		},
+		{
+			"id": 5,
+			"prompt": "帮我记一个 bug：Profile 切换后侧栏显示旧 workspace。提供的最新查询结果：当前仓库 example/capture-eval 的已关闭 Issue #42（https://github.com/example/capture-eval/issues/42）已经完整记录了同一复现步骤和实际/预期表现，本次没有新增信息。",
+			"expected_output": "Reuse the existing issue URL rather than create a duplicate or reopen it automatically. Do not claim that the issue was freshly created, repaired, or independently reproduced.",
+			"files": [],
+			"assertions": [
+				"Return the existing issue URL without creating a duplicate.",
+				"Do not reopen the closed issue automatically.",
+				"Do not claim independent reproduction or a successful new publication."
+			]
+		},
+		{
+			"id": 6,
+			"prompt": "请给这个已有 Discussion 加 brainstorming 标签，并把标题里的 Brainstorming：前缀去掉，其他都不要动。提供的最新快照：example/capture-eval Discussion #7，标题 Brainstorming：工作流探索，正文为 原有正文，分类 Ideas，标签有 design 和 needs-feedback；仓库已有 brainstorming 标签。",
+			"expected_output": "Plan an update of the existing Discussion only: title becomes 工作流探索, brainstorming is added, design and needs-feedback remain, body and category remain unchanged, then read back the requested fields. No new record or replacement of unrelated labels.",
+			"files": [],
+			"assertions": [
+				"Update the existing Discussion title to 工作流探索 without creating another record.",
+				"Preserve design and needs-feedback while adding brainstorming.",
+				"Preserve the body and category and plan read-back verification."
+			]
+		},
+		{
+			"id": 7,
+			"prompt": "只整理草稿，不要发布。Choros 终端里运行的 TUI 对 baidu(https://www.baidu.com) 执行 Copy Link Address：前面复制 baidu，后面复制 (https://www.baidu.com)，预期只有 https://www.baidu.com。每次都这样，暂时只能手动删括号；阻碍复制但还能继续工作。从昨天开始注意到，不知道以前是否正常。已取得本机元数据：choros --version 为 0.1.4；uname -sm 为 Darwin arm64。桌面构建和 TUI 名称/版本未知。不要读取终端输出或日志，也不要截图。",
+			"expected_output": "Concise canonical bug draft with both reported outputs, clean-URL expectation, frequency, impact and workaround. Identify 0.1.4 only as the locally collected CLI version and Darwin arm64 only as local kernel/architecture; desktop and TUI versions and regression status remain unknown. Respect declined sensitive evidence and make no independent reproduction claim.",
+			"files": [],
+			"assertions": [
+				"Preserve both copy failures, expected URL, every-time frequency, non-blocking impact and manual workaround.",
+				"Do not substitute CLI version for desktop/TUI versions or Darwin for a macOS marketing version.",
+				"Do not infer a regression from when the user noticed it or claim independent reproduction.",
+				"Do not read logs/terminal output, capture screenshots, mutate GitHub or require optional evidence before drafting."
+			]
+		},
+		{
+			"id": 8,
+			"prompt": "帮我在当前仓库记录 bug：桌面终端从睡眠唤醒后变成白屏，关掉重开这个终端能恢复，截图可能有帮助。我没提供截图，也还没同意采集或上传日志；终端含私人项目名称和代码。提供的最新仓库快照：example/capture-eval，public，已认证并有权限，bug 标签存在，已检查开/关 Issue，无重复。可用截图工具和本机日志文件，但未知是否有 diagnostics 命令。其他版本和频率未知。",
+			"expected_output": "Prepare a useful text report and offer scoped optional screenshots/diagnostics with a privacy warning and explicit consent before collection/publication. Do not read sensitive output, use unsupported diagnostics flags, or block the text report on optional evidence. Preserve reported workaround and unknown facts.",
+			"files": [],
+			"assertions": [
+				"Treat screenshot might help as interest, not consent to capture or attach sensitive evidence.",
+				"Explain potential disclosure of private project names/code and request explicit evidence consent.",
+				"Do not collect or publish screenshots/logs before consent or invent a diagnostics flag.",
+				"Keep the canonical text report actionable without inventing version/frequency or requiring optional attachments."
+			]
+		}
+	]
+}
