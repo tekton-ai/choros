@@ -1,4 +1,4 @@
-import type { ILink, ILinkProvider, Terminal } from "@xterm/xterm";
+import type { IBufferCell, ILink, ILinkProvider, Terminal } from "@xterm/xterm";
 
 export interface LinkMatch {
 	text: string;
@@ -59,7 +59,8 @@ export abstract class MultiLineLinkProvider implements ILinkProvider {
 		matchEnd: number,
 		context: MatchRangeContext,
 	): ILink["range"][] {
-		return [this.calculateLinkRange(matchIndex, matchEnd, context.lines)];
+		const range = this.calculateLinkRange(matchIndex, matchEnd, context.lines);
+		return range ? [range] : [];
 	}
 
 	protected buildContextLines(lineIndex: number): ContextLine[] {
@@ -198,47 +199,42 @@ export abstract class MultiLineLinkProvider implements ILinkProvider {
 		offset: number,
 		lines: ContextLineWithOffsets[],
 		isEnd: boolean,
-	): { x: number; y: number } {
+	): { x: number; y: number } | null {
 		for (const line of lines) {
-			const isInLine = isEnd
-				? offset <= line.endOffset
-				: offset < line.endOffset ||
-					(offset === line.startOffset && line.text.length === 0);
-			if (!isInLine) {
-				continue;
+			if (isEnd ? offset > line.endOffset : offset >= line.endOffset) continue;
+			const bufferLine = this.terminal.buffer.active.getLine(line.index);
+			if (!bufferLine) return null;
+			let remaining = line.leadingTrim + offset - line.startOffset;
+			if (isEnd && remaining <= 0) continue;
+			let cell: IBufferCell | undefined;
+			// Regex offsets count UTF-16 units; xterm already knows each cell's width.
+			for (let x = 0; x < bufferLine.length; ) {
+				cell = bufferLine.getCell(x, cell);
+				if (!cell) return null;
+				const width = cell.getWidth();
+				if (width === 0) {
+					x++;
+					continue;
+				}
+				const length = cell.getChars().length || 1;
+				if (isEnd ? remaining <= length : remaining < length) {
+					return { x: x + (isEnd ? width : 1), y: line.lineNumber };
+				}
+				remaining -= length;
+				x += width;
 			}
-
-			const localOffset = Math.max(
-				0,
-				Math.min(offset - line.startOffset, line.text.length),
-			);
-			return {
-				x: line.leadingTrim + localOffset + 1,
-				y: line.lineNumber,
-			};
+			return null;
 		}
-
-		const lastLine = lines[lines.length - 1];
-		if (!lastLine) {
-			return { x: 1, y: 1 };
-		}
-		return {
-			x: lastLine.leadingTrim + lastLine.text.length + 1,
-			y: lastLine.lineNumber,
-		};
+		return null;
 	}
 
 	protected calculateLinkRange(
 		matchIndex: number,
 		matchEnd: number,
 		lines: ContextLineWithOffsets[],
-	): ILink["range"] {
+	): ILink["range"] | null {
 		const start = this.offsetToPosition(matchIndex, lines, false);
 		const end = this.offsetToPosition(matchEnd, lines, true);
-
-		return {
-			start,
-			end,
-		};
+		return start && end ? { start, end } : null;
 	}
 }
