@@ -966,14 +966,6 @@ export function NewWorkspaceScreen({
 										selectProject(selectedProjectId);
 									}}
 								/>
-								{targetSelectionRequired && (
-									<output className="text-xs text-muted-foreground">
-										<Trans id="profiles.creation.selectTarget">
-											Select a project in this profile or choose No project.
-											Your draft has been kept.
-										</Trans>
-									</output>
-								)}
 								{draft.linkedPR ? (
 									<span className="flex items-center gap-1 text-xs text-muted-foreground">
 										<LuGitPullRequest className="size-3 shrink-0" />
@@ -999,6 +991,14 @@ export function NewWorkspaceScreen({
 								</Button>
 							)}
 						</div>
+						{targetSelectionRequired && (
+							<output className="mt-2 block text-xs text-muted-foreground">
+								<Trans id="profiles.creation.selectTarget">
+									Select a project in this profile or choose No project. Your
+									draft has been kept.
+								</Trans>
+							</output>
+						)}
 						<SymmetricResizeHandles
 							currentWidth={composerWidth ?? NEW_WORKSPACE_SCREEN_DEFAULT_WIDTH}
 							minWidth={NEW_WORKSPACE_SCREEN_MIN_WIDTH}

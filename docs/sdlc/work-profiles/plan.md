@@ -10,11 +10,86 @@ spec: ./spec.md
 
 # 实施计划：工作档案（Work Profiles）
 
+## 本次增量：整个左侧面板响应触控板手势
+
+**日期：2026-09-14。审批：** 负责人已分别接受 `spec.md` 与本实施计划，并本人将两份文件的 frontmatter 改为 `accepted`。本节替代下方历史计划中“手势仅绑定此控件”的限制；历史功能、默认开放和已有数据契约不变。整栏手势已实现并完成下述自动化验证，未发布版本。
+
+### 修改范围与代码依据
+
+本节 `S` 指 `apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar`，`P` 指 `S/components/dashboard-sidebar-header/components/profile-switcher`。
+
+| 文件 | 本次变化 |
+|---|---|
+| `S/dashboard-sidebar.tsx` | 将包住 Header、列表、卡片和 Footer 的现有根 `div` 替换为下述手势区域组件；保留同一 DOM 层级、样式、children 和展开/收起行为，不只包裹滚动列表。 |
+| 新增 `S/components/dashboard-sidebar-gesture-area/dashboard-sidebar-gesture-area.tsx` 与 `index.ts` | 渲染原根 `div`，挂载唯一原生非 passive 的 wheel 监听器。组件位于现有 `DashboardSidebarDndProvider` 内，读取 `useDashboardSidebarDnd().activeId` 和 `useWorkspaceSidebarStore` 的 `isResizing`，无需新增拖拽状态或持久化字段。 |
+| 将 `P/hooks/use-profile-switch-gesture/profile-switch-gesture.ts` 与 `.test.ts` 移至 `S/utils/profile-switch-gesture/` | 同一份方向、阈值、一次手势一次切换及相邻 Profile 判定供整栏 wheel 和名称控件 pointer 使用。搬迁全部引用，不留旧路径转发文件，不复制算法。 |
+| `P/hooks/use-profile-switch-gesture/use-profile-switch-gesture.ts` | 移除按钮自身的 wheel 监听及其状态；保留 pointer capture、点击抑制、多指取消等现有按钮交互，改用提升后的纯函数。 |
+| `P/profile-switcher.tsx` | 更新共享函数的导入；点击菜单、焦点方向键、触摸/指针手势及可访问名称不变。 |
+| `apps/desktop/scripts/e2e/cases/work-profiles/work-profiles.ts`；新增同目录 `profile-gestures.ts` | 在已有真实 Desktop feature case 内补整栏输入回归，复用其隔离环境和 Profile 创建流程，不改公共 runner 的契约。 |
+
+`useDashboardSidebarDnd` 在 Provider 外调用会抛错，所以不能直接在 `DashboardSidebar` 函数顶层读取拖拽状态；新区域组件只替换原根元素，不新建一套布局或 Profile provider。LSP 引用查询在本轮返回无可用语言服务器，已按源码核对当前入口；实施前若服务可用，使用 LSP 完成引用检查和文件移动。
+
+### 工作顺序与事件契约
+
+1. **记录基线。** 在本工作区对应的真实 Desktop 上，以相同 Profile、鼠标位置和 wheel 输入观察名称按钮能切换、列表/空白区域不能切换；记录截图、当前 Profile、路由及列表 `scrollTop`。不将已有纯函数测试当作整栏 UI 证据。
+2. **提升共享判定并一次迁移监听。** 移动纯函数及回归；移除按钮 wheel，接入整栏唯一 wheel。两处修改在同一变更内完成，不留下按钮与父级重复切换的中间交付。
+3. **保留输入状态机。** 沿用现有方向、`deltaMode` 归一化、横向优势和缩放排除。ref 提供最新的 Profile/拖拽上下文，不逐 wheel 触发 React 渲染；Profile 切换、展开/收起和普通重渲染不能重置当前惯性锁。展开/收起会将侧栏移到不同布局分支，因此当前手势序列以 `Document` 为弱键保留，卸载仍移除全部事件监听；不新增持久化字段。当前 220 ms 空闲重置、40 px 累计阈值保持既有值，不宣称可精确识别 macOS 原生手势阶段。
+4. **先判断事件归属，再处理手势。** 使用根节点原生监听，不借 React portal 冒泡扩展区域。已被子控件消费的事件、菜单/对话框内容和具有自身横向滚动的后代不切换；横向滚动后代即使到边界也不把同一串惯性转交 Profile。被排除的手势在本轮输入内保持失格，不把残余增量留给下次判定。
+5. **保护现有操作。** `activeId !== null`、侧栏正在调整宽度、按键拖动或缩放期间不切换；不得为整栏添加会抢占点击/拖拽的 pointer capture 或 `preventDefault`。只有由 Profile 手势接管的横向 wheel 才取消默认行为；纵向滚动继续交给列表。保留窗口控制区现有 `drag`/`no-drag`，不能为获取事件禁用窗口拖动。
+6. **复用切换入口。** 读取当前 `profiles`、`activeProfileId`、`available`、`isReady`，按最新排序调用 `selectProfile`；无相邻项时不循环。名称按钮通过父级 wheel 处理，键盘和 pointer 仍走既有入口；不修改 Profile 导航、后台进程或存储语义。
+7. **执行下面的证明。** 如真实 Electron 窗口拖动区吞掉 wheel，须明确记录具体未覆盖区域，并寻找保留窗口拖动的实现；不得把失败区域悄悄排除后宣称整栏完成。无法满足已接受规格时停止交付并重新评审，不增加未经批准的全窗口原生手势通道。
+
+### 风险与控制
+
+- **误切与重复切换：中等风险，影响当前窗口导航。** 通过唯一监听、惯性锁、纵向/缩放失格、横向子控件独占和真实 UI 反复输入回归控制；用户仍可通过菜单或键盘切换。
+- **拖拽或调整宽度中切换：中等风险，可能破坏交互中的列表状态。** 消费现有 `activeId`/`isResizing`，不另造全局拖拽状态；同时验证鼠标按下但尚未达到 DnD 激活阈值的输入。
+- **Electron 原生拖动区与系统手势差异：尚未实测。** DOM/CDP wheel 不能证明物理触控板的惯性与系统自然滚动手感；保留系统窗口行为，在真实 Mac 验证，不以单元测试替代。
+- **无效化与资源泄漏：影响重新进入侧栏后的响应次数。** ref 保存当前回调与手势状态，卸载时移除监听，验证路由往返、收起/展开和重新挂载后每次只切一个。
+- **范围限制（整栏手势阶段）：** 不改数据库、权限、Profile 归属、进程生命周期、跨窗口选择、新设置或新动画；不新增遥测和 feature flag，不自动发布。后续由用户追加的展示试用只加入下述局部名称动效，不改变这些业务边界。
+
+### 证明、发布与回滚
+
+- 运行搬迁后的 `profile-switch-gesture.test.ts`，保留惯性/反向输入、纵向/缩放失格、排序和首尾边界回归。确需调整识别策略时，只补能捕获误切的行为断言，不固定实现细节或文案。
+- 执行 `bun run --cwd apps/desktop test:e2e work-profiles`：在 case 内添加第三个 Profile，以检测一次滑动跳过两项；分别在 Header、真实列表行、底部、空白处和收起 rail 发送真实 CDP 鼠标 wheel 输入。直接调用选择函数或 DOM `dispatchEvent` 不算此项通过。
+- 同时断言名称和可见内容/路由归属一致；纵向输入后 `scrollTop` 改变而 Profile 不变；首尾、惯性反向、斜滑、pinch/ctrlKey、菜单、主内容区、横向子控件、列表拖拽和调整宽度均不得误切。覆盖菜单点击、名称按钮 pointer 和方向键仍可使用。
+- 验证切换后的路由恢复、空 Profile、列表已滚动、折叠/展开、侧栏重新挂载；连续左右往返，并在 0.5–1 秒停顿和主线程短暂卡顿下观察。捕获前后截图及控制台错误，特别检查渲染循环和重复触发。
+- 按 `cdp-verification` 核对当前 worktree、renderer URL/端口、活动路由和实际会话；沿用现有隔离 fixture，不用另一工作区或旧发布版代替。真实 Mac 触控板还需验证自然滚动方向、惯性和窗口拖动区；自动化输入只证明事件路径，不冒充手感验收。
+- 最后运行实际修改文件的格式/静态检查及 Desktop 类型检查。无新增用户文案时不改 catalog；若实施新增或改动文案，则执行完整 i18n 检查。记录本轮结果，不能沿用历史通过声明。
+- 本增量不迁移数据、不增加运行依赖；发布仍走既有审批。出现误切时回退本增量代码或 Desktop 构建，恢复原名称按钮 wheel 行为，保留所有 Profile 数据；不通过删库、历史恢复或关闭后台任务回滚。
+
+**当前交付：** 整栏 wheel、共享手势判定迁移及真实 Desktop 回归已完成；名称按钮原 wheel 监听已删除。点击、键盘和按钮 pointer 交互保留，Profile 数据和后台运行语义不变。
+
+### 本次验证记录（2026-09-14）
+
+- **基线：** 本工作区构建的隔离 Electron，renderer `http://localhost:57295`、CDP `57297`。名称按钮横向输入可切换；同一页面在侧栏空白处 `(120, 480)` 输入 `deltaX=-80` 后 Profile 和路由不变。已捕获基线截图 `/tmp/choros-profile-gesture.RcH3ZC/baseline-panel.png`。
+- **最终端到端：** `bun run --cwd apps/desktop test:e2e work-profiles` 退出 0，**28 步通过、0 失败**。最终 renderer `http://localhost:57805`、CDP `57806`，来自本工作区源码、独立 HOME/SQLite/Chromium 目录，沿用现有本地开发登录绕过，不验证认证流程。
+- **实际输入：** 原生 CDP 鼠标 wheel 覆盖 Header、项目行、Footer、空白处、名称按钮和收起 rail；验证三 Profile 下不跳过中间项、首尾不循环、连续反向惯性、纵向/斜向/ctrlKey 排除、菜单/对话框/主内容区排除、鼠标拖拽/调整宽度、按钮方向键及 pointer、工作区恢复和设置页往返。连续往返及 120 ms 主线程卡顿场景通过，各步骤无控制台错误或未捕获异常。
+- **滚动证据：** 先验证原始稀疏布局，再通过真实菜单创建分组形成长列表。竖向输入后 `scrollTop=128`、`scrollHeight=832`、`clientHeight=704`，Profile 仍是 Default、路由仍是 `#/v2-workspaces`；随后横向输入成功切换。已查看收起与长列表截图，数值与画面一致。
+- **合成边界：** 嵌套横向滚动使用临时 DOM 后代 fixture + 真实 wheel 输入，验证子元素实际滚动且同串输入不泄漏为 Profile 切换；fixture 在 finally 中移除。这是后代输入归属检查，不冒充产品现有横向控件的实机旅程。
+- **检查：** 搬迁后的纯手势回归 3 项通过；`bun run --cwd apps/desktop typecheck` 通过；修改的 TS/TSX 文件 Biome 检查通过。未新增或修改用户文案，不改翻译目录；未新增迁移或运行依赖。
+- **最终证据目录：** `/var/folders/n6/fthdn8qj2gg3mdy59y338_2w0000gn/T/choros-desktop-e2e-run-mOhMN2/`；总报告为 `results.json`，`work-profiles/profile-gesture-collapsed.png`、`profile-gesture-scrolled.png` 和 `profile-gesture-scroll.json` 保存关键截图与滚动测量，各步骤另有截图/状态记录。
+- **验证限制：** 未使用物理触控板验收自然滚动、惯性手感或逐点验证原生窗口拖动区的 OS 输入投递；本机没有已安装的 Cua Driver/Peekaboo，未安装或索取系统权限。上述 CDP 证据不能替代这部分人工体验验收。
+- **收尾：** 验证 Electron/Host/PTY 由既有隔离框架收尾；本次两个受监督进程均已退出，浏览器连接已释放，临时基线启动脚本已删除。保留证据和隔离目录，不清除用户日常数据，不自动提交或发布。
+
+### 后续展示试用与验证（2026-09-14）
+
+- **用户要求：** 负责人确认左右滑动可用后，要求让用户明显知道可以滑动、当前在哪个 Profile；随后明确要求“好，那你加一下试试”。本节记录这一展示迭代，不改既有审批字段，也不表示已发布。
+- **展示：** `ProfileSwitcher` 使用固定的名称/位置区及双指提示/前后按钮区；位置计数与待关注数分开。`components/profile-step-button/` 提供目标名称 tooltip、禁用边界和可访问按钮；单 Profile 和收起状态不显示箭头行。
+- **反馈：** `hooks/use-profile-switch-feedback/` 只对名称执行 Web Animation，使用当前 `matchMedia` 偏好并监听变化，开启减少动态效果时取消动画。收起时使用受控 tooltip 短暂显示全名，保留原有悬停、菜单、键盘和输入焦点。没有新增持久化状态、运行依赖或侧栏宽度修改。
+- **自动化：** 最新 `origin/main` 基线为 `84c685e50`。`bun run --cwd apps/desktop test:e2e work-profiles` 最终 **31 步通过、0 失败**；新增 `profile-switcher-ux.ts` 覆盖单 Profile、位置和目标名称、点击/禁用边界、动效方向、实时减少动态效果、收起提示、自动消失及焦点保持。既有整栏手势和后台运行回归全部保留。
+- **实际测量：** 前后切换各采到 23 帧，名称位移最大 6px、动画时长 140ms；减少动态效果下 23 帧均无名称动画、位移为 0。已查看展开和收起提示截图。
+- **语言与静态检查：** 5 条新增文案覆盖全部 17 个启用语言；严格编译、缺译和过期翻译检查通过。完整 `packages/i18n check` 在最后未提交 catalog diff 检查处返回非零，不能记为整条命令通过。Desktop 类型检查和修改代码的 Biome 检查通过。
+- **证据：** 隔离 renderer `http://localhost:59183`、CDP `59184`，沿用既有本地开发登录绕过；报告及截图位于 `/var/folders/n6/fthdn8qj2gg3mdy59y338_2w0000gn/T/choros-desktop-e2e-run-6bEeac/`。`profile-switcher-middle.png`、`profile-switcher-collapsed-feedback.png`、`profile-switcher-motion.json` 位于其中 `work-profiles/`。
+- **本地试用：** 直接通过 Desktop package 启动开发实例，renderer `http://localhost:3965`、CDP `9432`，数据目录 `/Users/xiaochunzhao/.choros-tungsten-soap`，供负责人继续查看。根目录 Turbo 的环境过滤不透传这些隔离变量，因此不以根目录启动命令代替该实例。
+- **输入区换行修复：** `profiles.creation.selectTarget` 的行内提示由 `5e78953ef`（Profiles PR #18）加入；最新热力图 PR #33 未改变 composer 的 `maxWidth` 规则或默认 592px。负责人随后明确要求修复并提供 Superset 的 592px DOM 参考；已将 `NewWorkspaceScreen` 的提示移到选择器工具栏之后，使用独立块级行和 8px 上间距，不改宽度、文案或目标选择/草稿保护逻辑。弹窗版本本来就在独立区域显示，保持不变。
+- **本次布局证明：** 在工作区本地 Desktop（renderer `http://localhost:3965`、CDP `9432`）使用真实点击和拖动验证。修复前提示只得到约 325px，设备按钮约 71px；修复后默认 592px 时提示宽 592px、设备按钮约 96px；最小 520px 时提示宽 520px。两种宽度下提示 top 均比选择器 bottom 低 8px，短标签均未截断；非空测试草稿在 Profile 切换/缩放/选择 No project 后保持，明确选择 No project 后提示消失。已恢复原 Profile、项目、592px 宽度并清除临时测试文字，查看截图 `/tmp/choros-composer-warning-after-592.png`（另有 `-before.png` 与 `-after-520.png`）。
+- **回归与限制：** 新增 `profile-composer-layout.ts` 并接入既有 case，覆盖 592/520px 的几何布局、未截断标签和草稿保留。一次完整 E2E 在首次语言选择超时，另一次在前 21 项通过后于设置页返回超时，随后 10 项因同一错误路由级联失败，均未执行到新增 composer 用例；不沿用此前 31 项通过声明作为本次全套结果。实际行为由上述本地针对性 smoke 验证；Desktop 类型检查、严格 i18n 编译、纯手势回归和修改代码的 Biome 检查通过，无新增 composer 文案或翻译变化。
+
 > **当前发布决定：默认开放。** 负责人于 2026-09-08 在手动验证后明确要求“从 experimental 里去掉 profiles……可以直接放开了”。本次在最新 `main` 上取消临时实验限制，不自动发布版本。
 >
 > **审批与基线沿革：** 原功能计划基于 `527ec4ea1`，于 2026-09-07 获工程接受及迁移签核；随后接受默认关闭的实验增量（`ed815296b` / #22）。本次以新的人工决定替代该临时限制。旧实验的实际验证记录保留于下方历史章节，不再作为当前实施要求。
 
-## 本次增量：退出实验，默认开放
+## 历史增量：退出实验，默认开放
 
 ### 实施决定与共享契约
 
@@ -93,7 +168,7 @@ spec: ./spec.md
 | 新增 `A/providers/profile-provider/profile-provider.tsx`、`index.ts`，及其 `utils/profile-projection/`、`hooks/use-profile-navigation/` | 稳定的窗口 Profile 状态、归属解析、可见项目/工作区投影、统一导航与失效回退。纯策略的行为测试与实现同目录。 |
 | `A/layout.tsx`；新增 `A/components/profile-navigation-controller/` | 在 `HostWorkspacesProvider` 内挂载 ProfileProvider，覆盖创建弹窗、工作界面与通知导航；把通知跳转移到可读 Profile/原始数据的子层。不按 Profile 给 provider 子树换 key。 |
 | `S/hooks/use-dashboard-sidebar-data/use-dashboard-sidebar-data.ts`；`S/dashboard-sidebar.tsx` | 分离原有后台资格集合和当前 Profile 的 groups/pinned/sessions/tags；可见选择、拖放、快捷入口随投影更新，切换时去掉已不可见的批量选择。 |
-| `S/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx`；新增其 `components/profile-switcher/` | 展开分支在窗口控制/导航行之后、新建按钮之前插入；收起 rail 在新建按钮之前保留控件。手势仅绑定此控件，沿用现有缩放、drag、fill 与焦点样式。 |
+| `S/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx`；新增其 `components/profile-switcher/` | 展开分支在窗口控制/导航行之后、新建按钮之前插入；收起 rail 在新建按钮之前保留控件。原计划手势仅绑定控件；2026-09-14 整栏 wheel 增量以本文开头的新计划为准，沿用现有缩放、drag、fill 与焦点样式。 |
 | 新增 `A/components/profile-manager-dialog/`、`A/components/move-to-profile-menu/` | 稳定挂载的管理模态框与共用移动入口；组件各有同名文件和 barrel，子组件/依赖按使用范围就近放置，不挂到移动后会消失的行子树上。 |
 | `S/components/dashboard-sidebar-project-section/components/dashboard-sidebar-project-context-menu/dashboard-sidebar-project-context-menu.tsx`；`S/components/dashboard-sidebar-workspace-item/components/dashboard-sidebar-workspace-context-menu/dashboard-sidebar-workspace-context-menu.tsx`；`B/v2-workspaces/components/v2-workspace-context-menu/v2-workspace-context-menu.tsx` | 覆盖侧栏展开/收起、工作区列表与 board 卡片的菜单；项目和独立会话可移动，项目子工作区不出现独立移动项。 |
 | `S/providers/dashboard-sidebar-workspace-status-provider/dashboard-sidebar-workspace-status-provider.tsx`；`R/hooks/host-service/use-v2-notification-status/use-v2-notification-status.ts` | status provider 输入继续使用未被 Profile 筛掉的原有合格工作区；从已有 attention 来源提取去重工作区并分桶，保留稳定缓存和逐行订阅。 |
@@ -184,7 +259,7 @@ spec: ./spec.md
 
 依赖步骤 3。菜单、方向键、手势与命令面板均调用同一个选择入口，使用同一排序，不循环；仅 Default 时仍显示控件且能创建。
 
-切换器展开/收起只是展示差异：长名截断但完整 tooltip/无障碍名称可读，有焦点和状态播报，支持减少动态效果。横向 wheel 与 pointer/touch 使用同一“一次手势一次切换”判定；排除纵向、pinch/ctrlKey 输入，不占用窗口拖动区域。阈值以真实触控板/缩放验证后确认，不在文档假定已验证的数值。
+切换器展开/收起只是展示差异：长名截断但完整 tooltip/无障碍名称可读，有焦点和状态播报，支持减少动态效果。横向 wheel 与 pointer/touch 使用同一“一次手势一次切换”判定；排除纵向、pinch/ctrlKey 输入，保留窗口拖动行为。2026-09-14 增量将 wheel 扩至整栏，pointer/touch 仍只在名称控件；具体事件归属和验证见本文开头。阈值以真实触控板/缩放验证后确认，不在文档假定已验证的数值。
 
 管理器共享服务校验，项目显示本地路径帮助区分同名；允许搜索、批量移动、重命名、重排。空 Profile 删除也须确认；非空仅可确认移至 Default 后删除，显示项目/session 数量及“运行不中止”的影响。新建 Profile 不自动移动内容或强制切换。Host 暂不可用的显式成员仍参加计数和删除判断。
 
@@ -305,5 +380,5 @@ bun run --cwd packages/i18n check
 ## 作者与审批状态
 
 - **作者：** xchunzhao（需求与规格确认）与 agent（源码核对、实施计划整理）。
-- **状态：** `accepted`。原功能与实验增量的接受保留为历史；负责人于 2026-09-08 在手动验证后明确要求移出 Experimental、默认开放，本轮按这一最新人工决定整合。
-- **实施门槛：** 默认开放由负责人在手动验证后明确批准；本轮需重新验证最新 main 与本地修复的组合。旧实验测试记录不代替本轮证据，且不自动发布、不修改迁移或回退用户业务数据。
+- **状态：** `accepted`。负责人已接受 2026-09-14 整栏手势规格与实施计划，并本人更新审批字段；代码及本轮验证结果见文首。原功能、实验增量及默认开放的接受保留为历史。
+- **交付边界：** 已实现并通过本轮自动化验证；物理触控板体验尚未人工验收。不自动发布、不修改迁移或回退用户业务数据。
