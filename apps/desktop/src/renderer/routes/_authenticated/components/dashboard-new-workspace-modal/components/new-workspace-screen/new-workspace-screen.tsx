@@ -87,6 +87,7 @@ import {
 import { useProfileProjectSelection } from "../dashboard-new-workspace-modal-content/hooks/use-profile-project-selection/use-profile-project-selection";
 import { useSelectedHostProjectIds } from "../dashboard-new-workspace-modal-content/hooks/use-selected-host-project-ids";
 import { SymmetricResizeHandles } from "../symmetric-resize-handles";
+import { ActivityHeatmap } from "./components/activity-heatmap";
 import { AttachmentCard } from "./components/attachment-card";
 import { SamplePromptCards } from "./components/sample-prompt-cards";
 import { SamplePrompts } from "./components/sample-prompts";
@@ -604,7 +605,7 @@ export function NewWorkspaceScreen({
 
 	// ── Render ───────────────────────────────────────────────────────
 	return (
-		<div className="absolute inset-0 z-40 flex flex-col items-center overflow-y-auto bg-background">
+		<div className="absolute inset-0 z-40 flex flex-col items-center overflow-y-auto bg-background pt-16 pb-24">
 			<AnimatePresence>
 				{isDraggingFiles && (
 					<motion.div
@@ -671,344 +672,348 @@ export function NewWorkspaceScreen({
 					</Button>
 				</PromptHistoryCommand>
 			</div>
-			<div className="flex flex-1 flex-col items-center justify-center gap-8">
-				<ChorosLogo markOnly className="h-10 w-auto text-muted-foreground/70" />
-				<h1 className="text-center text-3xl font-medium text-foreground/90">
-					<Trans id="dashboard.newWorkspaceModal.newWorkspaceScreen.heading">
-						What should we build next?
-					</Trans>
-				</h1>
-				<GitHubStarPill surface="new_workspace" reserveSpace />
-			</div>
-			<div className="flex w-full flex-col items-center px-6 pb-8">
-				<div
-					className="relative flex w-full flex-col"
-					style={{
-						maxWidth: composerWidth ?? NEW_WORKSPACE_SCREEN_DEFAULT_WIDTH,
-					}}
-				>
-					<AnimatePresence initial={false}>
-						{isPromptEmpty &&
-							promptCardsVariant !== null &&
-							!samplePromptsPending &&
-							!samplePromptsDismissed && (
-								<motion.div
-									key="sample-prompts"
-									initial={{ opacity: 0, y: 12 }}
-									animate={{ opacity: 1, y: 0 }}
-									exit={{ opacity: 0, transition: { duration: 0 } }}
-									transition={{
-										type: "tween",
-										duration: 0.15,
-										ease: "easeOut",
-									}}
-									// In flow, not absolute: the heading above is the flex-1
-									// spacer, so it absorbs this block's height and the composer
-									// stays put. Positioning it out of flow let tall suggestion
-									// sets overlap the heading instead.
-									className="mb-1"
-								>
-									{promptCardsVariant === "control" ? (
-										<SamplePrompts
-											prompts={samplePrompts}
-											onSelect={applyPrompt}
-											onDismiss={handleDismissSamplePrompts}
-											canDismiss={hasRealWorkspace}
-										/>
-									) : (
-										<SamplePromptCards
-											prompts={samplePrompts}
-											onSelect={applyPrompt}
-											onDismiss={handleDismissSamplePrompts}
-											canDismiss={hasRealWorkspace}
-										/>
-									)}
-								</motion.div>
-							)}
-					</AnimatePresence>
-					<PromptInput
-						onSubmit={handleSubmit}
-						multiple
-						globalDrop
-						maxFiles={5}
-						maxFileSize={10 * 1024 * 1024}
-						onError={(error) => toast.error(error.message)}
-						className="[&>[data-slot=input-group]]:rounded-[13px] [&>[data-slot=input-group]]:border-[0.5px] [&>[data-slot=input-group]]:shadow-none [&>[data-slot=input-group]]:bg-foreground/[0.02]"
+			<div className="my-auto flex w-full shrink-0 flex-col items-center gap-6">
+				<div className="flex flex-col items-center gap-6">
+					<ChorosLogo
+						markOnly
+						className="h-9 w-auto text-muted-foreground/70"
+					/>
+					<h1 className="text-center text-2xl font-medium text-foreground/90">
+						<Trans id="dashboard.newWorkspaceModal.newWorkspaceScreen.heading">
+							What should we build next?
+						</Trans>
+					</h1>
+					<GitHubStarPill surface="new_workspace" reserveSpace />
+				</div>
+				<div className="flex w-full flex-col items-center px-6">
+					<div
+						className="relative flex w-full flex-col"
+						style={{
+							maxWidth: composerWidth ?? NEW_WORKSPACE_SCREEN_DEFAULT_WIDTH,
+						}}
 					>
-						{(draft.linkedPR ||
-							draft.linkedIssues.length > 0 ||
-							visibleFiles.length > 0) && (
-							<div className="flex items-start gap-2 self-stretch overflow-x-auto px-3 pt-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-								{draft.linkedPR && (
-									<div className="shrink-0">
-										<LinkedPRPill
-											prNumber={draft.linkedPR.prNumber}
-											title={draft.linkedPR.title}
-											state={draft.linkedPR.state}
-											onRemove={removeLinkedPR}
-										/>
-									</div>
+						<ActivityHeatmap hostUrl={activeHostUrl} className="mb-4" />
+						<AnimatePresence initial={false}>
+							{isPromptEmpty &&
+								promptCardsVariant !== null &&
+								!samplePromptsPending &&
+								!samplePromptsDismissed && (
+									<motion.div
+										key="sample-prompts"
+										initial={{ opacity: 0, y: 12 }}
+										animate={{ opacity: 1, y: 0 }}
+										exit={{ opacity: 0, transition: { duration: 0 } }}
+										transition={{
+											type: "tween",
+											duration: 0.15,
+											ease: "easeOut",
+										}}
+										// Keep suggestions in flow so they participate in centering
+										// and cannot overlap the heatmap or composer.
+										className="mb-1"
+									>
+										{promptCardsVariant === "control" ? (
+											<SamplePrompts
+												prompts={samplePrompts}
+												onSelect={applyPrompt}
+												onDismiss={handleDismissSamplePrompts}
+												canDismiss={hasRealWorkspace}
+											/>
+										) : (
+											<SamplePromptCards
+												prompts={samplePrompts}
+												onSelect={applyPrompt}
+												onDismiss={handleDismissSamplePrompts}
+												canDismiss={hasRealWorkspace}
+											/>
+										)}
+									</motion.div>
 								)}
-								{draft.linkedIssues
-									.filter(
-										(issue): issue is typeof issue & { number: number } =>
-											issue.source === "github" && issue.number != null,
-									)
-									.map((issue) => (
-										<div key={issue.url ?? issue.slug} className="shrink-0">
-											<LinkedGitHubIssuePill
-												issueNumber={issue.number}
-												title={issue.title}
-												state={issue.state ?? "open"}
-												onRemove={() => removeLinkedIssue(issue.slug)}
+						</AnimatePresence>
+						<PromptInput
+							onSubmit={handleSubmit}
+							multiple
+							globalDrop
+							maxFiles={5}
+							maxFileSize={10 * 1024 * 1024}
+							onError={(error) => toast.error(error.message)}
+							className="[&>[data-slot=input-group]]:rounded-[13px] [&>[data-slot=input-group]]:border-[0.5px] [&>[data-slot=input-group]]:shadow-none [&>[data-slot=input-group]]:bg-foreground/[0.02]"
+						>
+							{(draft.linkedPR ||
+								draft.linkedIssues.length > 0 ||
+								visibleFiles.length > 0) && (
+								<div className="flex items-start gap-2 self-stretch overflow-x-auto px-3 pt-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+									{draft.linkedPR && (
+										<div className="shrink-0">
+											<LinkedPRPill
+												prNumber={draft.linkedPR.prNumber}
+												title={draft.linkedPR.title}
+												state={draft.linkedPR.state}
+												onRemove={removeLinkedPR}
 											/>
 										</div>
-									))}
-								{visibleFiles.map((file) => {
-									const sourcePath = file.filename
-										? newWorkspaceAttachmentPaths.get(file.filename) || null
-										: null;
-									return (
-										<AttachmentCard
-											key={file.id}
-											file={file}
-											hostUrl={launchHostUrl}
-											onRemove={(id) => attachments.remove(id)}
-											onOpenFile={
-												sourcePath
-													? () => openInFinderMutation.mutate(sourcePath)
-													: null
-											}
-										/>
-									);
-								})}
-							</div>
-						)}
-						<MarkdownEditor
-							key={`${resetKey}-${promptSeed}-${placeholderRoll}`}
-							content={draft.prompt}
-							onChange={(markdown) => updateDraft({ prompt: markdown })}
-							onPasteFiles={(files) => attachments.add(files)}
-							onEnterSubmit={handleSubmit}
-							autoFocus={draft.prompt ? "end" : "start"}
-							placeholder={promptPlaceholder}
-							className="flex flex-col min-h-[80px] max-h-[min(50vh,600px)] px-3 pt-3"
-							editorClassName="overflow-y-auto text-sm"
-							features={{
-								slashCommand: false,
-								emoji: false,
-								fileMention: false,
-								bubbleMenu: false,
-							}}
-						/>
-						<PromptInputFooter>
-							<PromptInputTools className="gap-1.5">
-								<AgentSelect<WorkspaceCreateAgent>
-									agents={v2Agents}
-									value={selectedAgent}
-									placeholder={t({
-										id: "dashboard.newWorkspaceModal.newWorkspaceScreen.noAgent",
-										message: "No agent",
-									})}
-									onValueChange={setSelectedAgent}
-									onBeforeConfigureAgents={closeModal}
-									triggerClassName={`${PILL_BUTTON_CLASS} px-1.5 gap-1 text-foreground w-auto max-w-[160px]`}
-									iconClassName="size-3 object-contain"
-									allowNone
-									noneLabel={t({
-										id: "dashboard.newWorkspaceModal.newWorkspaceScreen.noAgent",
-										message: "No agent",
-									})}
-									noneValue="none"
-								/>
-								{modelSupport && (
-									<AgentModelSelect
-										models={modelSupport.models}
-										value={selectedModel}
-										onValueChange={setSelectedModel}
-										defaultLabel={t({
-											id: "dashboard.newWorkspaceModal.newWorkspaceScreen.defaultModel",
-											message: "Default model",
-										})}
-										triggerClassName={`${PILL_BUTTON_CLASS} px-1.5 gap-1 text-foreground w-auto max-w-[160px]`}
-									/>
-								)}
-								{effortSupport && (
-									<AgentModelSelect
-										models={effortOptions}
-										value={selectedEffort}
-										onValueChange={setSelectedEffort}
-										defaultLabel={t({
-											id: "dashboard.newWorkspaceModal.newWorkspaceScreen.defaultEffort",
-											message: "Default effort",
-										})}
-										triggerClassName={`${PILL_BUTTON_CLASS} px-1.5 gap-1 text-foreground w-auto max-w-[160px]`}
-									/>
-								)}
-								{modeSupport && (
-									<AgentModelSelect
-										models={modeSupport.modes}
-										value={selectedMode}
-										onValueChange={setSelectedMode}
-										defaultLabel={t({
-											id: "dashboard.newWorkspaceModal.newWorkspaceScreen.directMode",
-											message: "Direct mode",
-										})}
-										triggerClassName={`${PILL_BUTTON_CLASS} px-1.5 gap-1 text-foreground w-auto max-w-[160px]`}
-									/>
-								)}
-							</PromptInputTools>
-							<div className="flex items-center gap-2">
-								<GitHubIssueLinkCommand
-									onSelect={(issue) =>
-										addLinkedGitHubIssue(
-											issue.issueNumber,
-											issue.title,
-											issue.url,
-											issue.state,
+									)}
+									{draft.linkedIssues
+										.filter(
+											(issue): issue is typeof issue & { number: number } =>
+												issue.source === "github" && issue.number != null,
 										)
-									}
-									projectId={projectId}
-									hostId={draft.hostId}
-									tooltipLabel={t({
-										id: "dashboard.newWorkspaceModal.newWorkspaceScreen.linkGitHubIssue",
-										message: "Link GitHub issue",
+										.map((issue) => (
+											<div key={issue.url ?? issue.slug} className="shrink-0">
+												<LinkedGitHubIssuePill
+													issueNumber={issue.number}
+													title={issue.title}
+													state={issue.state ?? "open"}
+													onRemove={() => removeLinkedIssue(issue.slug)}
+												/>
+											</div>
+										))}
+									{visibleFiles.map((file) => {
+										const sourcePath = file.filename
+											? newWorkspaceAttachmentPaths.get(file.filename) || null
+											: null;
+										return (
+											<AttachmentCard
+												key={file.id}
+												file={file}
+												hostUrl={launchHostUrl}
+												onRemove={(id) => attachments.remove(id)}
+												onOpenFile={
+													sourcePath
+														? () => openInFinderMutation.mutate(sourcePath)
+														: null
+												}
+											/>
+										);
 									})}
-								>
-									<PromptInputButton
-										aria-label={t({
+								</div>
+							)}
+							<MarkdownEditor
+								key={`${resetKey}-${promptSeed}-${placeholderRoll}`}
+								content={draft.prompt}
+								onChange={(markdown) => updateDraft({ prompt: markdown })}
+								onPasteFiles={(files) => attachments.add(files)}
+								onEnterSubmit={handleSubmit}
+								autoFocus={draft.prompt ? "end" : "start"}
+								placeholder={promptPlaceholder}
+								className="flex flex-col min-h-[80px] max-h-[min(50vh,600px)] px-3 pt-3"
+								editorClassName="overflow-y-auto text-sm"
+								features={{
+									slashCommand: false,
+									emoji: false,
+									fileMention: false,
+									bubbleMenu: false,
+								}}
+							/>
+							<PromptInputFooter>
+								<PromptInputTools className="gap-1.5">
+									<AgentSelect<WorkspaceCreateAgent>
+										agents={v2Agents}
+										value={selectedAgent}
+										placeholder={t({
+											id: "dashboard.newWorkspaceModal.newWorkspaceScreen.noAgent",
+											message: "No agent",
+										})}
+										onValueChange={setSelectedAgent}
+										onBeforeConfigureAgents={closeModal}
+										triggerClassName={`${PILL_BUTTON_CLASS} px-1.5 gap-1 text-foreground w-auto max-w-[160px]`}
+										iconClassName="size-3 object-contain"
+										allowNone
+										noneLabel={t({
+											id: "dashboard.newWorkspaceModal.newWorkspaceScreen.noAgent",
+											message: "No agent",
+										})}
+										noneValue="none"
+									/>
+									{modelSupport && (
+										<AgentModelSelect
+											models={modelSupport.models}
+											value={selectedModel}
+											onValueChange={setSelectedModel}
+											defaultLabel={t({
+												id: "dashboard.newWorkspaceModal.newWorkspaceScreen.defaultModel",
+												message: "Default model",
+											})}
+											triggerClassName={`${PILL_BUTTON_CLASS} px-1.5 gap-1 text-foreground w-auto max-w-[160px]`}
+										/>
+									)}
+									{effortSupport && (
+										<AgentModelSelect
+											models={effortOptions}
+											value={selectedEffort}
+											onValueChange={setSelectedEffort}
+											defaultLabel={t({
+												id: "dashboard.newWorkspaceModal.newWorkspaceScreen.defaultEffort",
+												message: "Default effort",
+											})}
+											triggerClassName={`${PILL_BUTTON_CLASS} px-1.5 gap-1 text-foreground w-auto max-w-[160px]`}
+										/>
+									)}
+									{modeSupport && (
+										<AgentModelSelect
+											models={modeSupport.modes}
+											value={selectedMode}
+											onValueChange={setSelectedMode}
+											defaultLabel={t({
+												id: "dashboard.newWorkspaceModal.newWorkspaceScreen.directMode",
+												message: "Direct mode",
+											})}
+											triggerClassName={`${PILL_BUTTON_CLASS} px-1.5 gap-1 text-foreground w-auto max-w-[160px]`}
+										/>
+									)}
+								</PromptInputTools>
+								<div className="flex items-center gap-2">
+									<GitHubIssueLinkCommand
+										onSelect={(issue) =>
+											addLinkedGitHubIssue(
+												issue.issueNumber,
+												issue.title,
+												issue.url,
+												issue.state,
+											)
+										}
+										projectId={projectId}
+										hostId={draft.hostId}
+										tooltipLabel={t({
 											id: "dashboard.newWorkspaceModal.newWorkspaceScreen.linkGitHubIssue",
 											message: "Link GitHub issue",
 										})}
-										className={`${PILL_BUTTON_CLASS} w-[22px]`}
 									>
-										<GoIssueOpened className="size-3.5" />
-									</PromptInputButton>
-								</GitHubIssueLinkCommand>
-								<PRLinkCommand
-									onSelect={setLinkedPR}
-									projectId={projectId}
-									hostId={draft.hostId}
-									tooltipLabel={t({
-										id: "dashboard.newWorkspaceModal.newWorkspaceScreen.linkPullRequest",
-										message: "Link pull request",
-									})}
-								>
-									<PromptInputButton
-										aria-label={t({
+										<PromptInputButton
+											aria-label={t({
+												id: "dashboard.newWorkspaceModal.newWorkspaceScreen.linkGitHubIssue",
+												message: "Link GitHub issue",
+											})}
+											className={`${PILL_BUTTON_CLASS} w-[22px]`}
+										>
+											<GoIssueOpened className="size-3.5" />
+										</PromptInputButton>
+									</GitHubIssueLinkCommand>
+									<PRLinkCommand
+										onSelect={setLinkedPR}
+										projectId={projectId}
+										hostId={draft.hostId}
+										tooltipLabel={t({
 											id: "dashboard.newWorkspaceModal.newWorkspaceScreen.linkPullRequest",
 											message: "Link pull request",
 										})}
-										className={`${PILL_BUTTON_CLASS} w-[22px]`}
 									>
-										<LuGitPullRequest className="size-3.5" />
-									</PromptInputButton>
-								</PRLinkCommand>
-								<Tooltip>
-									<TooltipTrigger asChild>
 										<PromptInputButton
 											aria-label={t({
-												id: "dashboard.newWorkspaceModal.newWorkspaceScreen.addAttachment",
-												message: "Add attachment",
+												id: "dashboard.newWorkspaceModal.newWorkspaceScreen.linkPullRequest",
+												message: "Link pull request",
 											})}
 											className={`${PILL_BUTTON_CLASS} w-[22px]`}
-											onClick={() => attachments.openFileDialog()}
 										>
-											<PaperclipIcon className="size-3.5" />
+											<LuGitPullRequest className="size-3.5" />
 										</PromptInputButton>
-									</TooltipTrigger>
-									<TooltipContent side="bottom">
-										<Trans id="dashboard.newWorkspaceModal.newWorkspaceScreen.addAttachment">
-											Add attachment
-										</Trans>
-									</TooltipContent>
-								</Tooltip>
-								<PromptInputSubmit
-									className="size-[22px] rounded-full border border-transparent bg-foreground/10 shadow-none p-[5px] hover:bg-foreground/20"
-									disabled={needsSetup || isCreating}
-									onClick={(e) => {
-										e.preventDefault();
-										handleSubmit();
+									</PRLinkCommand>
+									<Tooltip>
+										<TooltipTrigger asChild>
+											<PromptInputButton
+												aria-label={t({
+													id: "dashboard.newWorkspaceModal.newWorkspaceScreen.addAttachment",
+													message: "Add attachment",
+												})}
+												className={`${PILL_BUTTON_CLASS} w-[22px]`}
+												onClick={() => attachments.openFileDialog()}
+											>
+												<PaperclipIcon className="size-3.5" />
+											</PromptInputButton>
+										</TooltipTrigger>
+										<TooltipContent side="bottom">
+											<Trans id="dashboard.newWorkspaceModal.newWorkspaceScreen.addAttachment">
+												Add attachment
+											</Trans>
+										</TooltipContent>
+									</Tooltip>
+									<PromptInputSubmit
+										className="size-[22px] rounded-full border border-transparent bg-foreground/10 shadow-none p-[5px] hover:bg-foreground/20"
+										disabled={needsSetup || isCreating}
+										onClick={(e) => {
+											e.preventDefault();
+											handleSubmit();
+										}}
+									>
+										{isCreating ? (
+											<Spinner className="size-3.5 text-muted-foreground" />
+										) : (
+											<ArrowUpIcon className="size-3.5 text-muted-foreground" />
+										)}
+									</PromptInputSubmit>
+								</div>
+							</PromptInputFooter>
+						</PromptInput>
+						<div className="mt-2 flex items-center justify-between gap-2">
+							<div className="flex min-w-0 flex-1 items-center gap-2">
+								<DevicePicker
+									hostId={draft.hostId}
+									onSelectHostId={(next) => {
+										setLastHostId(next);
+										updateDraft({ hostId: next });
 									}}
-								>
-									{isCreating ? (
-										<Spinner className="size-3.5 text-muted-foreground" />
-									) : (
-										<ArrowUpIcon className="size-3.5 text-muted-foreground" />
-									)}
-								</PromptInputSubmit>
+								/>
+								<ProjectPickerPill
+									selectedProject={selectedProject}
+									projects={projects}
+									isSessionSelected={draft.isSession}
+									onSelectProject={(selectedProjectId) => {
+										if (selectedProjectId === null) {
+											selectSession();
+											return;
+										}
+										setLastProjectId(selectedProjectId);
+										selectProject(selectedProjectId);
+									}}
+								/>
+								{targetSelectionRequired && (
+									<output className="text-xs text-muted-foreground">
+										<Trans id="profiles.creation.selectTarget">
+											Select a project in this profile or choose No project.
+											Your draft has been kept.
+										</Trans>
+									</output>
+								)}
+								{draft.linkedPR ? (
+									<span className="flex items-center gap-1 text-xs text-muted-foreground">
+										<LuGitPullRequest className="size-3 shrink-0" />
+										<Trans id="dashboard.newWorkspaceModal.newWorkspaceScreen.basedOffPr">
+											based off PR #{draft.linkedPR.prNumber}
+										</Trans>
+									</span>
+								) : draft.isSession ? null : (
+									<CompareBaseBranchPicker {...pickerProps} />
+								)}
 							</div>
-						</PromptInputFooter>
-					</PromptInput>
-					<div className="mt-2 flex items-center justify-between gap-2">
-						<div className="flex min-w-0 flex-1 items-center gap-2">
-							<DevicePicker
-								hostId={draft.hostId}
-								onSelectHostId={(next) => {
-									setLastHostId(next);
-									updateDraft({ hostId: next });
-								}}
-							/>
-							<ProjectPickerPill
-								selectedProject={selectedProject}
-								projects={projects}
-								isSessionSelected={draft.isSession}
-								onSelectProject={(selectedProjectId) => {
-									if (selectedProjectId === null) {
-										selectSession();
-										return;
-									}
-									setLastProjectId(selectedProjectId);
-									selectProject(selectedProjectId);
-								}}
-							/>
-							{targetSelectionRequired && (
-								<output className="text-xs text-muted-foreground">
-									<Trans id="profiles.creation.selectTarget">
-										Select a project in this profile or choose No project. Your
-										draft has been kept.
+							{needsSetup && (
+								<Button
+									type="button"
+									variant="outline"
+									size="sm"
+									className="h-6 px-2 text-[11px] text-amber-500 hover:text-amber-500"
+									onClick={handleGoToSetup}
+								>
+									<Trans id="dashboard.newWorkspaceModal.newWorkspaceScreen.setUpProject">
+										Set up project…
 									</Trans>
-								</output>
-							)}
-							{draft.linkedPR ? (
-								<span className="flex items-center gap-1 text-xs text-muted-foreground">
-									<LuGitPullRequest className="size-3 shrink-0" />
-									<Trans id="dashboard.newWorkspaceModal.newWorkspaceScreen.basedOffPr">
-										based off PR #{draft.linkedPR.prNumber}
-									</Trans>
-								</span>
-							) : draft.isSession ? null : (
-								<CompareBaseBranchPicker {...pickerProps} />
+								</Button>
 							)}
 						</div>
-						{needsSetup && (
-							<Button
-								type="button"
-								variant="outline"
-								size="sm"
-								className="h-6 px-2 text-[11px] text-amber-500 hover:text-amber-500"
-								onClick={handleGoToSetup}
-							>
-								<Trans id="dashboard.newWorkspaceModal.newWorkspaceScreen.setUpProject">
-									Set up project…
-								</Trans>
-							</Button>
-						)}
+						<SymmetricResizeHandles
+							currentWidth={composerWidth ?? NEW_WORKSPACE_SCREEN_DEFAULT_WIDTH}
+							minWidth={NEW_WORKSPACE_SCREEN_MIN_WIDTH}
+							maxWidth={NEW_WORKSPACE_SCREEN_MAX_WIDTH}
+							onWidthChange={setLiveComposerWidth}
+							onWidthCommit={(width) => {
+								setStoredComposerWidth(width);
+								setLiveComposerWidth(null);
+							}}
+							onReset={() => {
+								setStoredComposerWidth(null);
+								setLiveComposerWidth(null);
+							}}
+						/>
 					</div>
-					<SymmetricResizeHandles
-						currentWidth={composerWidth ?? NEW_WORKSPACE_SCREEN_DEFAULT_WIDTH}
-						minWidth={NEW_WORKSPACE_SCREEN_MIN_WIDTH}
-						maxWidth={NEW_WORKSPACE_SCREEN_MAX_WIDTH}
-						onWidthChange={setLiveComposerWidth}
-						onWidthCommit={(width) => {
-							setStoredComposerWidth(width);
-							setLiveComposerWidth(null);
-						}}
-						onReset={() => {
-							setStoredComposerWidth(null);
-							setLiveComposerWidth(null);
-						}}
-					/>
 				</div>
 			</div>
 		</div>

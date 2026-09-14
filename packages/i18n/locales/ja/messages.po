@@ -14,6 +14,61 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.activeDays"
+msgstr "活動日数"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.currentStreak"
+msgstr "現在の連続日数"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.daysUnit"
+msgstr "日"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/components/heatmap-cell/heatmap-cell.tsx
+msgid "activityHeatmap.futureDate"
+msgstr "今後"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.less"
+msgstr "少ない"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.longestStreak"
+msgstr "最長連続日数"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.more"
+msgstr "多い"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/components/heatmap-cell/heatmap-cell.tsx
+msgid "activityHeatmap.noActivity"
+msgstr "アクティビティなし"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/components/heatmap-cell/heatmap-cell.tsx
+msgid "activityHeatmap.today"
+msgstr "（今日）"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/components/heatmap-cell/heatmap-cell.tsx
+msgid "activityHeatmap.tokensUsed"
+msgstr "{formattedTokens}トークン使用"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.totalTokens"
+msgstr "トークン"
+
+#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/error.tsx
 msgid "app.errorPage.copyDetails"
 msgstr "エラーの詳細をコピー"

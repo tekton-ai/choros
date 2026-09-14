@@ -14,6 +14,61 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.activeDays"
+msgstr "Số ngày hoạt động"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.currentStreak"
+msgstr "Chuỗi hiện tại"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.daysUnit"
+msgstr "ngày"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/components/heatmap-cell/heatmap-cell.tsx
+msgid "activityHeatmap.futureDate"
+msgstr "Sắp tới"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.less"
+msgstr "Ít"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.longestStreak"
+msgstr "Chuỗi dài nhất"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.more"
+msgstr "Nhiều"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/components/heatmap-cell/heatmap-cell.tsx
+msgid "activityHeatmap.noActivity"
+msgstr "Không có hoạt động"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/components/heatmap-cell/heatmap-cell.tsx
+msgid "activityHeatmap.today"
+msgstr "(Hôm nay)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/components/heatmap-cell/heatmap-cell.tsx
+msgid "activityHeatmap.tokensUsed"
+msgstr "Đã dùng {formattedTokens} token"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.totalTokens"
+msgstr "Token"
+
+#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/error.tsx
 msgid "app.errorPage.copyDetails"
 msgstr "Sao chép chi tiết lỗi"

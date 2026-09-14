@@ -14,6 +14,61 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.activeDays"
+msgstr "활동 일수"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.currentStreak"
+msgstr "현재 연속 일수"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.daysUnit"
+msgstr "일"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/components/heatmap-cell/heatmap-cell.tsx
+msgid "activityHeatmap.futureDate"
+msgstr "예정"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.less"
+msgstr "적음"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.longestStreak"
+msgstr "최장 연속 일수"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.more"
+msgstr "많음"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/components/heatmap-cell/heatmap-cell.tsx
+msgid "activityHeatmap.noActivity"
+msgstr "활동 없음"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/components/heatmap-cell/heatmap-cell.tsx
+msgid "activityHeatmap.today"
+msgstr "(오늘)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/components/heatmap-cell/heatmap-cell.tsx
+msgid "activityHeatmap.tokensUsed"
+msgstr "토큰 {formattedTokens}개 사용"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.totalTokens"
+msgstr "토큰"
+
+#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/error.tsx
 msgid "app.errorPage.copyDetails"
 msgstr "오류 상세 정보 복사"

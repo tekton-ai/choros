@@ -14,6 +14,61 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.activeDays"
+msgstr "Aktive Tage"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.currentStreak"
+msgstr "Aktuelle Serie"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.daysUnit"
+msgstr "T"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/components/heatmap-cell/heatmap-cell.tsx
+msgid "activityHeatmap.futureDate"
+msgstr "Zukünftiges Datum"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.less"
+msgstr "Weniger"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.longestStreak"
+msgstr "Längste Serie"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.more"
+msgstr "Mehr"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/components/heatmap-cell/heatmap-cell.tsx
+msgid "activityHeatmap.noActivity"
+msgstr "Keine Aktivität"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/components/heatmap-cell/heatmap-cell.tsx
+msgid "activityHeatmap.today"
+msgstr "(Heute)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/components/heatmap-cell/heatmap-cell.tsx
+msgid "activityHeatmap.tokensUsed"
+msgstr "{formattedTokens} Tokens verwendet"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/components/dashboard-new-workspace-modal/components/new-workspace-screen/components/activity-heatmap/activity-heatmap.tsx
+msgid "activityHeatmap.totalTokens"
+msgstr "Tokens"
+
+#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/error.tsx
 msgid "app.errorPage.copyDetails"
 msgstr "Fehlerdetails kopieren"

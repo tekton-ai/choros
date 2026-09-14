@@ -255,7 +255,7 @@ export const usageRouter = router({
 	 */
 	history: queryProcedure
 		.meta({ timeoutMs: 120_000 })
-		.input(z.object({ days: z.number().int().min(1).max(90) }))
+		.input(z.object({ days: z.number().int().min(1).max(366) }))
 		.query(
 			offLoop({
 				task: usageHistoryTask,
