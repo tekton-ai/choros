@@ -3,7 +3,7 @@ import {
 	advanceProfileGesture,
 	createProfileGesture,
 	type ProfileSwitchDirection,
-} from "./profile-switch-gesture";
+} from "../../../../../../utils/profile-switch-gesture/profile-switch-gesture";
 
 export function useProfileSwitchGesture(
 	onSwitch: (direction: ProfileSwitchDirection) => void,
@@ -19,43 +19,14 @@ export function useProfileSwitchGesture(
 	} | null>(null);
 	const suppressClick = useRef(false);
 	useEffect(() => {
-		const button = ref.current;
-		if (!button) return;
-		let wheelState = createProfileGesture();
-		let lastWheelAt = -Infinity;
-		const wheel = (event: WheelEvent) => {
-			const now = performance.now();
-			if (now - lastWheelAt > 220) wheelState = createProfileGesture();
-			lastWheelAt = now;
-			const scale =
-				event.deltaMode === 1
-					? 16
-					: event.deltaMode === 2
-						? window.innerWidth
-						: 1;
-			const direction = advanceProfileGesture(
-				wheelState,
-				event.deltaX * scale,
-				event.deltaY * scale,
-				event.ctrlKey,
-			);
-			if (
-				!event.ctrlKey &&
-				Math.abs(event.deltaX) > Math.abs(event.deltaY) * 1.5
-			)
-				event.preventDefault();
-			if (direction) onSwitchRef.current(direction);
-		};
 		const additionalPointer = (event: globalThis.PointerEvent) => {
 			if (pointer.current && event.pointerId !== pointer.current.id) {
 				pointer.current.state.locked = true;
 				suppressClick.current = true;
 			}
 		};
-		button.addEventListener("wheel", wheel, { passive: false });
 		window.addEventListener("pointerdown", additionalPointer, true);
 		return () => {
-			button.removeEventListener("wheel", wheel);
 			window.removeEventListener("pointerdown", additionalPointer, true);
 		};
 	}, []);

@@ -492,11 +492,13 @@ msgstr "Nuevo perfil de trabajo"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/command-palette/modules/profiles/commands.ts
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/components/profile-step-button/profile-step-button.tsx
 msgid "commandPalette.profile.next"
 msgstr "Siguiente perfil de trabajo"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/command-palette/modules/profiles/commands.ts
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/components/profile-step-button/profile-step-button.tsx
 msgid "commandPalette.profile.previous"
 msgstr "Perfil de trabajo anterior"
 
@@ -7450,6 +7452,31 @@ msgstr "Gestionar perfiles de trabajo"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
 msgid "profiles.switcher.new"
 msgstr "Nuevo perfil de trabajo"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/components/profile-step-button/profile-step-button.tsx
+msgid "profiles.switcher.nextWithName"
+msgstr "Siguiente perfil de trabajo: {targetName}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.position"
+msgstr "Perfil de trabajo {position}/{total}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/components/profile-step-button/profile-step-button.tsx
+msgid "profiles.switcher.previousWithName"
+msgstr "Perfil de trabajo anterior: {targetName}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.swipeDescription"
+msgstr "Desliza a izquierda o derecha en cualquier parte de la barra lateral izquierda para cambiar de perfil de trabajo."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.swipeHint"
+msgstr "Desliza con dos dedos para cambiar"
 
 #. js-lingui-explicit-id
 #: src/server-errors.ts

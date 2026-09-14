@@ -492,11 +492,13 @@ msgstr "New Profile"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/command-palette/modules/profiles/commands.ts
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/components/profile-step-button/profile-step-button.tsx
 msgid "commandPalette.profile.next"
 msgstr "Next Profile"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/command-palette/modules/profiles/commands.ts
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/components/profile-step-button/profile-step-button.tsx
 msgid "commandPalette.profile.previous"
 msgstr "Previous Profile"
 
@@ -7450,6 +7452,31 @@ msgstr "Manage Profiles"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
 msgid "profiles.switcher.new"
 msgstr "New Profile"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/components/profile-step-button/profile-step-button.tsx
+msgid "profiles.switcher.nextWithName"
+msgstr "Next Profile: {targetName}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.position"
+msgstr "Profile {position}/{total}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/components/profile-step-button/profile-step-button.tsx
+msgid "profiles.switcher.previousWithName"
+msgstr "Previous Profile: {targetName}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.swipeDescription"
+msgstr "Swipe left or right anywhere in the sidebar to switch Profiles."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.swipeHint"
+msgstr "Swipe with two fingers to switch"
 
 #. js-lingui-explicit-id
 #: src/server-errors.ts

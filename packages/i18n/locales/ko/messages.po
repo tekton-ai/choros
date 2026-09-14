@@ -492,11 +492,13 @@ msgstr "새 작업 프로필"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/command-palette/modules/profiles/commands.ts
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/components/profile-step-button/profile-step-button.tsx
 msgid "commandPalette.profile.next"
 msgstr "다음 작업 프로필"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/command-palette/modules/profiles/commands.ts
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/components/profile-step-button/profile-step-button.tsx
 msgid "commandPalette.profile.previous"
 msgstr "이전 작업 프로필"
 
@@ -7450,6 +7452,31 @@ msgstr "작업 프로필 관리"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
 msgid "profiles.switcher.new"
 msgstr "새 작업 프로필"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/components/profile-step-button/profile-step-button.tsx
+msgid "profiles.switcher.nextWithName"
+msgstr "다음 작업 프로필: {targetName}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.position"
+msgstr "작업 프로필 {position}/{total}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/components/profile-step-button/profile-step-button.tsx
+msgid "profiles.switcher.previousWithName"
+msgstr "이전 작업 프로필: {targetName}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.swipeDescription"
+msgstr "왼쪽 사이드바 어디에서나 좌우로 쓸어 넘겨 작업 프로필을 전환하세요."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.swipeHint"
+msgstr "두 손가락으로 쓸어 넘겨 전환"
 
 #. js-lingui-explicit-id
 #: src/server-errors.ts

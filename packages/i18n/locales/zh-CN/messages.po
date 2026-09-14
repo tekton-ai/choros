@@ -492,11 +492,13 @@ msgstr "新建工作档案"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/command-palette/modules/profiles/commands.ts
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/components/profile-step-button/profile-step-button.tsx
 msgid "commandPalette.profile.next"
 msgstr "下一个工作档案"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/command-palette/modules/profiles/commands.ts
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/components/profile-step-button/profile-step-button.tsx
 msgid "commandPalette.profile.previous"
 msgstr "上一个工作档案"
 
@@ -7450,6 +7452,31 @@ msgstr "管理工作档案"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
 msgid "profiles.switcher.new"
 msgstr "新建工作档案"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/components/profile-step-button/profile-step-button.tsx
+msgid "profiles.switcher.nextWithName"
+msgstr "下一个工作档案：{targetName}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.position"
+msgstr "工作档案 {position}/{total}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/components/profile-step-button/profile-step-button.tsx
+msgid "profiles.switcher.previousWithName"
+msgstr "上一个工作档案：{targetName}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.swipeDescription"
+msgstr "在左侧边栏任意位置用双指左右滑动，即可切换工作档案。"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.swipeHint"
+msgstr "双指左右滑动切换"
 
 #. js-lingui-explicit-id
 #: src/server-errors.ts

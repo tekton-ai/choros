@@ -4,10 +4,16 @@ import { startTerminalServer } from "../../fixtures/terminal-server";
 import { type DesktopE2ERuntime, eventually } from "../../runtime";
 import type { DesktopE2ECase, DesktopE2EContext } from "../../types";
 import type { DesktopUi } from "../../ui";
+import { verifyProfileComposerLayout } from "./profile-composer-layout";
 import {
 	verifyManagerFirstClick,
 	verifyManagerRename,
 } from "./profile-dialogs";
+import { verifyProfileGestures } from "./profile-gestures";
+import {
+	verifyProfileSwitcherUx,
+	verifySingleProfileSwitcher,
+} from "./profile-switcher-ux";
 import {
 	backFromSettings,
 	openExperiments,
@@ -168,6 +174,10 @@ async function runWorkProfiles(context: DesktopE2EContext) {
 			await createProject(primary, activeRuntime);
 			await openWorkspaceList(primary);
 			await assertProfile(primary, "Default");
+			await verifySingleProfileSwitcher(primary);
+			await primary.screenshot(
+				join(activeRuntime.artifactDir, "profile-switcher-single.png"),
+			);
 			await createProfile(primary, PROFILE_B);
 			await selectProfile(primary, PROFILE_B);
 			assert.equal(
@@ -451,4 +461,13 @@ async function runWorkProfiles(context: DesktopE2EContext) {
 			await backFromSettings(primary);
 		},
 	);
+	await verifyProfileGestures(
+		context,
+		primary,
+		PROFILE_B,
+		createdSession,
+		PROJECT_A,
+	);
+	await verifyProfileSwitcherUx(context, primary, PROFILE_B);
+	await verifyProfileComposerLayout(context, primary, PROFILE_B, PROJECT_A);
 }

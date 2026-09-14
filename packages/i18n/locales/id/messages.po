@@ -492,11 +492,13 @@ msgstr "Profil kerja baru"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/command-palette/modules/profiles/commands.ts
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/components/profile-step-button/profile-step-button.tsx
 msgid "commandPalette.profile.next"
 msgstr "Profil kerja berikutnya"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/command-palette/modules/profiles/commands.ts
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/components/profile-step-button/profile-step-button.tsx
 msgid "commandPalette.profile.previous"
 msgstr "Profil kerja sebelumnya"
 
@@ -7450,6 +7452,31 @@ msgstr "Kelola profil kerja"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
 msgid "profiles.switcher.new"
 msgstr "Profil kerja baru"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/components/profile-step-button/profile-step-button.tsx
+msgid "profiles.switcher.nextWithName"
+msgstr "Profil kerja berikutnya: {targetName}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.position"
+msgstr "Profil kerja {position}/{total}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/components/profile-step-button/profile-step-button.tsx
+msgid "profiles.switcher.previousWithName"
+msgstr "Profil kerja sebelumnya: {targetName}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.swipeDescription"
+msgstr "Usap ke kiri atau kanan di mana saja pada bilah sisi kiri untuk beralih profil kerja."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
+msgid "profiles.switcher.swipeHint"
+msgstr "Usap dua jari untuk beralih"
 
 #. js-lingui-explicit-id
 #: src/server-errors.ts

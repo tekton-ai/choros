@@ -22,6 +22,7 @@ import { useDashboardSidebarState } from "renderer/routes/_authenticated/hooks/u
 import { useLocalHostService } from "renderer/routes/_authenticated/providers/local-host-service-provider";
 import { useSidebarSectionsCollapseStore } from "renderer/stores/sidebar-sections-collapse";
 import { DashboardSidebarBulkActions } from "./components/dashboard-sidebar-bulk-actions";
+import { DashboardSidebarGestureArea } from "./components/dashboard-sidebar-gesture-area";
 import { DashboardSidebarHeader } from "./components/dashboard-sidebar-header";
 import { DashboardSidebarHoverCardOverlay } from "./components/dashboard-sidebar-hover-card-overlay";
 import { DashboardSidebarPinnedSection } from "./components/dashboard-sidebar-pinned-section";
@@ -259,7 +260,7 @@ export function DashboardSidebar({
 								workspaceShortcutLabels={workspaceShortcutLabels}
 								onReorderProjects={handleReorderProjects}
 							>
-								<div className="flex h-full flex-col border-r border-border bg-sidebar dark:bg-muted/35">
+								<DashboardSidebarGestureArea>
 									<DashboardSidebarHeader isCollapsed={isCollapsed} />
 
 									<OverflowFadeContainer
@@ -359,7 +360,7 @@ export function DashboardSidebar({
 											</TooltipContent>
 										</Tooltip>
 									</div>
-								</div>
+								</DashboardSidebarGestureArea>
 							</DashboardSidebarDndProvider>
 						</DashboardSidebarHoverCardOverlay>
 					</DashboardSidebarWorkspaceStatusProvider>
