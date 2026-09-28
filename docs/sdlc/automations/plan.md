@@ -243,5 +243,22 @@ M1接口稳定后，M4的纯时间计算与M5的页面/CLI展示可以并行开�
 
 - **作者：** agent；依据已接受intent/spec、当前源码与两片只读集成调研整理。
 - **状态：** `accepted`。依据负责人 xchunzhao 在本 session 的明确回复“接受”记录人工决定，允许执行M0及后续实现。风险与证明要求保持不变；没有虚构其他工程或安全签核人。
-- **本轮完成：**记录用户接受spec；核对真实源文件、旧SDK残留、原生操作边界、现有时间工具与验证入口；仅写审批记录和本计划，没有修改功能代码、运行项目检查或启用任务。
+- **起草阶段记录：**记录用户接受spec；核对真实源文件、旧SDK残留、原生操作边界、现有时间工具与验证入口；该阶段仅写审批记录和计划，没有修改功能代码、运行项目检查或启用任务。
 - **实施边界：**按已接受计划开展隔离验证和实现；若只需工程细节调整，在plan内记录；改变已接受产品行为/范围则先更新spec并重新审批。测试使用独立Host数据、临时项目与明确授权的provider能力，不修改旧会话或启用日常定时任务。
+
+## 八、实施记录：M0 原生验证受环境阻塞
+
+2026-09-28，计划接受已记录为 `939b866e6`。工作区基线无未提交改动；已执行 `bun install --frozen-lockfile --ignore-scripts` 安装隔离工作区依赖，未运行仓库setup、迁移、日常Automation或发布操作。
+
+| 探针 | 实际观察 | 结论边界 |
+| --- | --- | --- |
+| Claude SDK 0.3.201 / CLI 2.1.250 | SDK初始化并声明两个受控probe工具，取得session身份；未收到工具调用或最终报告，90秒探针期限触发Abort，探针退出2。 | 工具声明可见，不代表真实模型调用已完成；“aborted by user”来自探针的超时Abort，不是用户取消。 |
+| Codex CLI/app-server 0.153.4 | 导出实际JSON schema；initialize、account/read可用；`requiresOpenaiAuth:false`，使用当前floway配置，无需据“Not logged in”强制OpenAI登录。 | 协议与配置读取已验证；不能把初始化当业务执行成功。 |
+| Codex真实工具回合 | 接纳带两个dynamicTools的临时thread和turn，模型gpt-6-astra；随后持续重连。60秒期限后turn/interrupt收到回执，原turn出现interrupted，server退出0；输入/报告工具均未调用，探针退出2。 | 观察到该未执行工具回合的中断和server退出；尚未验证真实工具、结果、审批、resume或活动工具子树停止。 |
+| 配置的模型网关 | Claude指向localhost:8080；Codex的floway provider指向localhost:5174；两个地址的连接均返回ConnectionRefused。 | 当前阻塞是已配置网关不可达，不是已经证明agent不支持，也不是Codex必须登录。 |
+
+已核对Choros发现的provider配置和默认Codex登录状态；没有擅自切换账号或网关。现有copilot-gateway仓库文档描述的是另一个需要独立初始化/授权的服务，不将其猜作这两个已配置服务并替用户启动。
+
+M0仍未通过；M1–M5依赖原生真实调用证明，暂不开始功能代码或数据库迁移。继续条件是恢复当前已配置的网关，或由用户明确指定另一套已配置且可用的原生provider环境；不要求用户把token/密钥发送给agent。恢复后先重跑两个原生工具/结果探针，再完成审批、fresh/reuse和停止证明，之后按原计划推进。
+
+原始探针输出和无凭据的探针源码保存为本session的 `local://automation-m0-evidence.json`；所有受监督探针均已退出。该记录仅为实际进度与阻塞证据，不表示任何功能验收通过，不改变已接受范围。
