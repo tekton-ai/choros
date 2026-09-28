@@ -2,13 +2,13 @@
 artifact: intent
 feature: automations
 author: xchunzhao-and-agent
-status: draft
+status: accepted
 created: 2026-09-28
 ---
 
 # 需求意图：用自然语言委托一次性与重复执行的工作
 
-> 本轮评审的是用户结果、产品范围和约束，不是数据库设计或引擎选型。本文尚未接受；对话中的方向认可和“继续”不代替本文件及后续 spec、plan 的独立审批。文中的任务示例不构成创建或启用真实任务的指令。
+> 本文的用户结果、产品范围和约束已于 2026-09-28 获产品负责人接受；不代表数据库设计、引擎选型、后续 spec 或 plan 已获批准。文中的任务示例不构成创建或启用真实任务的指令。
 
 ## 要解决的问题（Problem）
 
@@ -27,7 +27,7 @@ created: 2026-09-28
 - [Issue #37：Automations](https://github.com/tekton-ai/choros/issues/37) 提出了定时执行、precheck、运行历史及恢复等需求，目前仍是待实施提案。
 - [Issue #36：Agent Workflow](https://github.com/tekton-ai/choros/issues/36) 及其评论提出共享执行、结果与恢复模型，不是已接受的技术规格。
 - [Discussion #23](https://github.com/tekton-ai/choros/discussions/23) 是 Workflow 动机与候选参考的 brainstorming，不代表已选择 Tutti、UWF 或其他引擎。
-- 本文把自然语言入口和一次性、有限重复工作纳入待评审范围。它不是对 #37 原有范围的静默替换，也不以单任务路径交付冒充两个 Issue 全部完成。
+- 本文把自然语言入口和一次性、有限重复工作纳入已接受的意图范围。它不是对 #37 原有范围的静默替换，也不以单任务路径交付冒充两个 Issue 全部完成。
 
 ## 希望用户得到的结果（Proposed outcome）
 
@@ -129,6 +129,6 @@ created: 2026-09-28
 ## 作者与审批状态（Author + Status）
 
 - **发起人：** xchunzhao；agent 根据本 session 的需求讨论整理。
-- **状态：** `draft`，未接受。用户已要求从自然语言入口、一次性、定时与重复工作的角度继续推进；没有已接受的本功能 intent/spec/plan。
-- **本轮请产品负责人评审：** 自然语言优先的用户旅程、首批一次性与重复工作的范围、候选扩展与授权边界。技术规格和实施计划仍须分别评审。
-- **审批记录：** 当前无。仅由人类负责人按仓库规则接受本文并更新 `status`；agent 不自行标记 accepted。本文件未接受前不生成 spec 或 plan，不实现功能代码。
+- **状态：** `accepted`。产品负责人 xchunzhao 在收到本文件位置、范围摘要与审批说明后，于 2026-09-28 在本 session 明确回复“接受”。agent 仅据此记录人工决定，不自行作出接受判断。
+- **接受范围：** 本文的用户结果、自然语言优先的用户旅程、首批一次性与重复工作的范围、候选扩展与约束。Open questions 转为规格阶段的逐项答复义务；技术规格和实施计划仍须分别评审。
+- **审批记录：** 本次人工接受只允许进入 `spec.md` 草拟，不批准代码实现、真实任务创建、定时启用或 GitHub 发布。后续 spec、plan 均从 `draft` 开始；未完成各自审批前不跨阶段。
