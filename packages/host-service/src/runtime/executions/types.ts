@@ -5,6 +5,7 @@ import type {
 	WorkEvent,
 } from "@choros/shared/automation-contracts";
 import type { HostDb } from "../../db";
+import type { PermissionOption } from "./permission-answer";
 
 export interface PreparedExecution {
 	workspaceId: string;
@@ -55,7 +56,7 @@ export type ExecutionDriverEvent =
 			id: string;
 			kind: "permission" | "question";
 			question: string;
-			options?: Array<{ id: string; label: string }>;
+			options?: PermissionOption[];
 	  }
 	| {
 			type: "ended";

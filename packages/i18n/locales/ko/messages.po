@@ -460,11 +460,6 @@ msgid "automations.error.hostUnavailable"
 msgstr "로컬 Host 서비스를 사용할 수 없습니다."
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/host-automations-provider/host-automations-provider.tsx
-msgid "automations.error.snapshotLimit"
-msgstr "자동화 기록이 너무 많아 하나의 스냅샷으로 불러올 수 없습니다. 조회 범위를 좁힌 후 다시 시도하세요."
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
 msgid "automations.filter.all"
 msgstr "모든 상태"
@@ -488,6 +483,11 @@ msgstr "사용할 수 없는 대상"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
 msgid "automations.loading"
 msgstr "자동화 불러오는 중…"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.loadMore"
+msgstr "더 불러오기"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
@@ -2410,6 +2410,7 @@ msgid "dashboard.historyDropdown.v2WorkspaceKind"
 msgstr "워크스페이스"
 
 #. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/load-more-sentinel/load-more-sentinel.tsx
 msgid "dashboard.loadMoreSentinel.loadingMore"
 msgstr "더 불러오는 중…"

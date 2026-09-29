@@ -460,11 +460,6 @@ msgid "automations.error.hostUnavailable"
 msgstr "本地 Host 服务不可用。"
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/host-automations-provider/host-automations-provider.tsx
-msgid "automations.error.snapshotLimit"
-msgstr "自动化历史记录过多，无法通过单次快照加载。请缩小查看范围后重试。"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
 msgid "automations.filter.all"
 msgstr "所有状态"
@@ -488,6 +483,11 @@ msgstr "不可用的目标"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
 msgid "automations.loading"
 msgstr "正在加载自动化任务…"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.loadMore"
+msgstr "加载更多"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
@@ -2410,6 +2410,7 @@ msgid "dashboard.historyDropdown.v2WorkspaceKind"
 msgstr "工作区"
 
 #. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/load-more-sentinel/load-more-sentinel.tsx
 msgid "dashboard.loadMoreSentinel.loadingMore"
 msgstr "正在加载更多…"

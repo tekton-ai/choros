@@ -53,6 +53,11 @@ import {
 	workCommandReceipts,
 	workEvents,
 } from "../../db/schema";
+import {
+	executablePermissionOptions,
+	InvalidPermissionAnswerError,
+	validatePermissionAnswer,
+} from "../executions/permission-answer";
 import type {
 	AutomationRuntimeOptions,
 	ExecutionDriverEvent,
@@ -82,6 +87,7 @@ export class AutomationRuntimeError extends Error {
 			| "CONFIRMATION_CONSUMED"
 			| "RUN_BUSY"
 			| "INVALID_STATE"
+			| "INVALID_PERMISSION_ANSWER"
 			| "UNSUPPORTED_SCHEDULE",
 		message: string,
 	) {
@@ -236,10 +242,16 @@ export function createAutomationRuntime(
 	const previewSecret = randomBytes(32);
 	const handles = new Map<string, ExecutionDriverHandle>();
 	const abortControllers = new Map<string, AbortController>();
-	const pumping = new Set<string>();
+	const pumping = new Map<string, Promise<void>>();
 	let started = false;
+	let stopped = false;
+	let stopping = false;
 	let timer: ReturnType<typeof setTimeout> | undefined;
 	let ticking: Promise<void> | undefined;
+	let starting: Promise<void> | undefined;
+	let stoppingOperation: Promise<void> | undefined;
+
+	const dispatchBlocked = (): boolean => stopping || stopped;
 
 	function emit(
 		db: Tx | Db,
@@ -429,7 +441,14 @@ export function createAutomationRuntime(
 				executionId: row.executionId,
 				kind: row.kind as ExecutionInput["kind"],
 				question: row.question,
-				options: row.options ? JSON.parse(row.options) : undefined,
+				options:
+					row.kind === "permission"
+						? executablePermissionOptions(
+								row.options ? JSON.parse(row.options) : undefined,
+							)
+						: row.options
+							? JSON.parse(row.options)
+							: undefined,
 				status: row.status as ExecutionInput["status"],
 				version: row.version,
 				answer: row.answer ?? undefined,
@@ -1461,6 +1480,19 @@ export function createAutomationRuntime(
 					"Execution no longer accepts input answers",
 				);
 			}
+			if (question.kind === "permission") {
+				try {
+					validatePermissionAnswer(
+						input.answer,
+						question.options ? JSON.parse(question.options) : undefined,
+					);
+				} catch (error) {
+					if (error instanceof InvalidPermissionAnswerError) {
+						throw new AutomationRuntimeError(error.code, error.message);
+					}
+					throw error;
+				}
+			}
 			executionId = execution.id;
 			runId = execution.runId;
 			const answerClaim = tx
@@ -1644,6 +1676,14 @@ export function createAutomationRuntime(
 			if (
 				!execution ||
 				TERMINAL_STATUSES.includes(execution.status as AutomationRunStatus)
+			)
+				return;
+			const run = getRunRow(tx, execution.runId);
+			if (
+				execution.status === "unknown" &&
+				execution.stage === reason &&
+				run.status === "unknown" &&
+				run.reason === reason
 			)
 				return;
 			tx.update(executionRuns)
@@ -1896,13 +1936,17 @@ export function createAutomationRuntime(
 					}
 					return;
 				}
+				const inputOptions =
+					event.kind === "permission"
+						? executablePermissionOptions(event.options)
+						: event.options;
 				tx.insert(executionInputs)
 					.values({
 						id: event.id,
 						executionId,
 						kind: event.kind,
 						question: event.question,
-						options: event.options ? stableJson(event.options) : null,
+						options: inputOptions ? stableJson(inputOptions) : null,
 						status: "pending",
 						version: 1,
 						createdAt: now(),
@@ -1991,256 +2035,56 @@ export function createAutomationRuntime(
 	}
 
 	function launchPump(executionId: string): void {
-		void pumpExecution(executionId).catch(() => {
-			try {
-				markUnknown(executionId, "runtime_dispatch_failed");
-			} catch {
-				// A database failure cannot be recorded, but must not become an unhandled rejection.
-			}
-		});
+		if (dispatchBlocked() || pumping.has(executionId)) return;
+		const operation = pumpExecution(executionId)
+			.catch(() => {
+				try {
+					markUnknown(executionId, "runtime_dispatch_failed");
+				} catch {
+					// A database failure cannot be recorded, but must not become an unhandled rejection.
+				}
+			})
+			.finally(() => {
+				if (pumping.get(executionId) === operation) pumping.delete(executionId);
+			});
+		pumping.set(executionId, operation);
 	}
 
 	async function pumpExecution(executionId: string): Promise<void> {
-		if (pumping.has(executionId)) return;
-		pumping.add(executionId);
-		try {
-			const execution = options.db
-				.select()
-				.from(executionRuns)
-				.where(eq(executionRuns.id, executionId))
-				.get();
-			if (
-				!execution ||
-				execution.cancelRequestedAt ||
-				execution.status === "unknown" ||
-				TERMINAL_STATUSES.includes(execution.status as AutomationRunStatus)
+		if (dispatchBlocked()) return;
+		const execution = options.db
+			.select()
+			.from(executionRuns)
+			.where(eq(executionRuns.id, executionId))
+			.get();
+		if (
+			!execution ||
+			execution.cancelRequestedAt ||
+			execution.status === "unknown" ||
+			TERMINAL_STATUSES.includes(execution.status as AutomationRunStatus)
+		)
+			return;
+		const definition = definitionFor(
+			options.db,
+			execution.automationId,
+			execution.definitionRevision,
+		);
+		const prepareOperation = options.db
+			.select()
+			.from(executionOperations)
+			.where(
+				and(
+					eq(executionOperations.executionId, executionId),
+					eq(executionOperations.kind, "prepare"),
+				),
 			)
-				return;
-			const definition = definitionFor(
-				options.db,
-				execution.automationId,
-				execution.definitionRevision,
-			);
-			const prepareOperation = options.db
-				.select()
-				.from(executionOperations)
-				.where(
-					and(
-						eq(executionOperations.executionId, executionId),
-						eq(executionOperations.kind, "prepare"),
-					),
-				)
-				.get();
-			if (!prepareOperation) throw new Error("Missing preparation operation");
-			let prepared: Awaited<
-				ReturnType<AutomationRuntimeOptions["prepareExecution"]>
-			>;
-			if (prepareOperation.state === "completed") {
-				const dispatchOperation = options.db
-					.select()
-					.from(executionOperations)
-					.where(
-						and(
-							eq(executionOperations.executionId, executionId),
-							eq(executionOperations.kind, "dispatch"),
-						),
-					)
-					.get();
-				if (!dispatchOperation) throw new Error("Missing dispatch operation");
-				if (dispatchOperation.state !== "pending") {
-					if (dispatchOperation.state === "dispatching")
-						markUnknown(executionId, "provider_dispatch_unconfirmed");
-					return;
-				}
-				const snapshot = parsePreparedSnapshot(prepareOperation.receipt);
-				if (!snapshot) {
-					finalizeExecution(executionId, "failed", "prepared_snapshot_missing");
-					return;
-				}
-				if (!options.restorePreparedExecution) {
-					finalizeExecution(
-						executionId,
-						"failed",
-						"prepared_restore_unavailable",
-					);
-					return;
-				}
-				try {
-					prepared = await options.restorePreparedExecution({
-						executionId,
-						definition,
-						snapshot,
-					});
-				} catch (error) {
-					if (
-						error instanceof ExecutionPreparationError &&
-						error.outcome === "unknown"
-					)
-						markUnknown(executionId, error.stage);
-					else
-						finalizeExecution(
-							executionId,
-							"failed",
-							error instanceof ExecutionPreparationError
-								? error.message
-								: "prepared_restore_failed",
-						);
-					return;
-				}
-			} else if (prepareOperation.state === "pending") {
-				const claimed = options.db.transaction((tx) => {
-					const result = tx
-						.update(executionOperations)
-						.set({ state: "dispatching", updatedAt: now() })
-						.where(
-							and(
-								eq(executionOperations.id, prepareOperation.id),
-								eq(executionOperations.state, "pending"),
-							),
-						)
-						.run();
-					if (result.changes !== 1) return false;
-					tx.update(executionRuns)
-						.set({ stage: "preparing" })
-						.where(eq(executionRuns.id, executionId))
-						.run();
-					return true;
-				});
-				if (!claimed) return;
-				const controller = new AbortController();
-				abortControllers.set(executionId, controller);
-				try {
-					prepared = await options.prepareExecution({
-						executionId,
-						workspaceId: execution.workspaceId ?? "",
-						definition,
-						signal: controller.signal,
-						onStage: async (stage, workspaceId, evidence) => {
-							options.db.transaction((tx) => {
-								const current = tx
-									.select()
-									.from(executionRuns)
-									.where(eq(executionRuns.id, executionId))
-									.get();
-								if (!current) return;
-								if (workspaceId && current.workspaceOccupancy !== workspaceId) {
-									if (activeOccupancy(tx, "__none__", workspaceId))
-										throw new AutomationRuntimeError(
-											"RUN_BUSY",
-											"Workspace already has an active managed execution",
-										);
-								}
-								const previousEvidence = current.preparationEvidence
-									? (JSON.parse(
-											current.preparationEvidence,
-										) as ExecutionStageEvidence[])
-									: [];
-								const nextEvidence = evidence
-									? [
-											...previousEvidence.filter(
-												(item) => item.stage !== stage,
-											),
-											boundedEvidence(stage, evidence),
-										].slice(-10)
-									: previousEvidence;
-								tx.update(executionRuns)
-									.set({
-										stage: current.cancelRequestedAt ? current.stage : stage,
-										workspaceId: workspaceId ?? current.workspaceId,
-										workspaceOccupancy:
-											workspaceId ?? current.workspaceOccupancy,
-										preparationEvidence: nextEvidence.length
-											? stableJson(nextEvidence)
-											: current.preparationEvidence,
-									})
-									.where(eq(executionRuns.id, executionId))
-									.run();
-							});
-						},
-					});
-				} catch (error) {
-					if (controller.signal.aborted) {
-						if (error instanceof ExecutionPreparationError && error.quiescent) {
-							finalizeExecution(
-								executionId,
-								"cancelled",
-								"preparation_cancelled",
-							);
-						} else {
-							markUnknown(executionId, "preparation_stop_unconfirmed");
-						}
-					} else if (error instanceof ExecutionPreparationError) {
-						if (error.outcome === "unknown")
-							markUnknown(executionId, error.stage);
-						else
-							finalizeExecution(
-								executionId,
-								error.outcome === "skipped" ? "skipped" : "failed",
-								error.outcome === "skipped" && error.stage === "precheck"
-									? "precheck_false"
-									: error.message,
-							);
-					} else {
-						finalizeExecution(executionId, "failed", "preparation_failed");
-					}
-					return;
-				} finally {
-					abortControllers.delete(executionId);
-				}
-				options.db.transaction((tx) => {
-					const current = tx
-						.select()
-						.from(executionRuns)
-						.where(eq(executionRuns.id, executionId))
-						.get();
-					if (!current) return;
-					if (current.workspaceOccupancy !== prepared.workspaceId) {
-						if (activeOccupancy(tx, "__none__", prepared.workspaceId))
-							throw new AutomationRuntimeError(
-								"RUN_BUSY",
-								"Workspace already has an active managed execution",
-							);
-					}
-					tx.update(executionRuns)
-						.set({
-							workspaceId: prepared.workspaceId,
-							workspaceOccupancy: prepared.workspaceId,
-							stage: current.cancelRequestedAt ? current.stage : "prepared",
-						})
-						.where(eq(executionRuns.id, executionId))
-						.run();
-					tx.update(executionOperations)
-						.set({
-							state: "completed",
-							receipt: stableJson({
-								workspaceId: prepared.workspaceId,
-								cwd: prepared.cwd,
-								instructions: prepared.instructions,
-							}),
-							updatedAt: now(),
-						})
-						.where(
-							and(
-								eq(executionOperations.id, prepareOperation.id),
-								eq(executionOperations.state, "dispatching"),
-							),
-						)
-						.run();
-				});
-			} else {
-				markUnknown(executionId, "preparation_dispatch_unconfirmed");
-				return;
-			}
-			const latest = options.db
-				.select()
-				.from(executionRuns)
-				.where(eq(executionRuns.id, executionId))
-				.get();
-			if (!latest || latest.cancelRequestedAt) {
-				await cancelExecution(executionId);
-				return;
-			}
-			const dispatch = options.db
+			.get();
+		if (!prepareOperation) throw new Error("Missing preparation operation");
+		let prepared: Awaited<
+			ReturnType<AutomationRuntimeOptions["prepareExecution"]>
+		>;
+		if (prepareOperation.state === "completed") {
+			const dispatchOperation = options.db
 				.select()
 				.from(executionOperations)
 				.where(
@@ -2250,91 +2094,292 @@ export function createAutomationRuntime(
 					),
 				)
 				.get();
-			if (!dispatch) throw new Error("Missing dispatch operation");
-			if (dispatch.state !== "pending") {
-				if (dispatch.state === "dispatching")
+			if (!dispatchOperation) throw new Error("Missing dispatch operation");
+			if (dispatchOperation.state !== "pending") {
+				if (dispatchOperation.state === "dispatching")
 					markUnknown(executionId, "provider_dispatch_unconfirmed");
 				return;
 			}
-			const dispatchClaimed = options.db.transaction((tx) => {
+			const snapshot = parsePreparedSnapshot(prepareOperation.receipt);
+			if (!snapshot) {
+				finalizeExecution(executionId, "failed", "prepared_snapshot_missing");
+				return;
+			}
+			if (!options.restorePreparedExecution) {
+				finalizeExecution(
+					executionId,
+					"failed",
+					"prepared_restore_unavailable",
+				);
+				return;
+			}
+			try {
+				prepared = await options.restorePreparedExecution({
+					executionId,
+					definition,
+					snapshot,
+				});
+			} catch (error) {
+				if (
+					error instanceof ExecutionPreparationError &&
+					error.outcome === "unknown"
+				)
+					markUnknown(executionId, error.stage);
+				else
+					finalizeExecution(
+						executionId,
+						"failed",
+						error instanceof ExecutionPreparationError
+							? error.message
+							: "prepared_restore_failed",
+					);
+				return;
+			}
+			if (dispatchBlocked()) return;
+		} else if (prepareOperation.state === "pending") {
+			if (dispatchBlocked()) return;
+			const claimed = options.db.transaction((tx) => {
 				const result = tx
 					.update(executionOperations)
 					.set({ state: "dispatching", updatedAt: now() })
 					.where(
 						and(
-							eq(executionOperations.id, dispatch.id),
+							eq(executionOperations.id, prepareOperation.id),
 							eq(executionOperations.state, "pending"),
 						),
 					)
 					.run();
 				if (result.changes !== 1) return false;
 				tx.update(executionRuns)
-					.set({ stage: "dispatching" })
+					.set({ stage: "preparing" })
 					.where(eq(executionRuns.id, executionId))
 					.run();
 				return true;
 			});
-			if (!dispatchClaimed) return;
+			if (!claimed) return;
+			const controller = new AbortController();
+			abortControllers.set(executionId, controller);
 			try {
-				const handle = await options.driver.start(
-					{ executionId, operationId: dispatch.id, definition, prepared },
-					(event) => observeExecution(executionId, event),
-				);
-				let keepHandle = false;
-				let cancelAfterStart = false;
-				options.db.transaction((tx) => {
-					const current = tx
-						.select()
-						.from(executionRuns)
-						.where(eq(executionRuns.id, executionId))
-						.get();
-					if (!current) return;
-					tx.update(executionOperations)
-						.set({
-							state: "acknowledged",
-							receipt: stableJson({
-								chatSessionId: handle.chatSessionId,
-								providerSessionId: handle.providerSessionId,
-							}),
-							updatedAt: now(),
-						})
-						.where(eq(executionOperations.id, dispatch.id))
-						.run();
-					if (TERMINAL_STATUSES.includes(current.status as AutomationRunStatus))
-						return;
-					keepHandle = true;
-					cancelAfterStart = current.cancelRequestedAt != null;
-					tx.update(executionRuns)
-						.set({
+				prepared = await options.prepareExecution({
+					executionId,
+					workspaceId: execution.workspaceId ?? "",
+					definition,
+					signal: controller.signal,
+					onStage: async (stage, workspaceId, evidence) => {
+						options.db.transaction((tx) => {
+							const current = tx
+								.select()
+								.from(executionRuns)
+								.where(eq(executionRuns.id, executionId))
+								.get();
+							if (!current) return;
+							if (workspaceId && current.workspaceOccupancy !== workspaceId) {
+								if (activeOccupancy(tx, "__none__", workspaceId))
+									throw new AutomationRuntimeError(
+										"RUN_BUSY",
+										"Workspace already has an active managed execution",
+									);
+							}
+							const previousEvidence = current.preparationEvidence
+								? (JSON.parse(
+										current.preparationEvidence,
+									) as ExecutionStageEvidence[])
+								: [];
+							const nextEvidence = evidence
+								? [
+										...previousEvidence.filter((item) => item.stage !== stage),
+										boundedEvidence(stage, evidence),
+									].slice(-10)
+								: previousEvidence;
+							tx.update(executionRuns)
+								.set({
+									stage: current.cancelRequestedAt ? current.stage : stage,
+									workspaceId: workspaceId ?? current.workspaceId,
+									workspaceOccupancy: workspaceId ?? current.workspaceOccupancy,
+									preparationEvidence: nextEvidence.length
+										? stableJson(nextEvidence)
+										: current.preparationEvidence,
+								})
+								.where(eq(executionRuns.id, executionId))
+								.run();
+						});
+					},
+				});
+			} catch (error) {
+				if (controller.signal.aborted) {
+					if (error instanceof ExecutionPreparationError && error.quiescent) {
+						finalizeExecution(
+							executionId,
+							"cancelled",
+							"preparation_cancelled",
+						);
+					} else {
+						markUnknown(executionId, "preparation_stop_unconfirmed");
+					}
+				} else if (error instanceof ExecutionPreparationError) {
+					if (error.outcome === "unknown")
+						markUnknown(executionId, error.stage);
+					else
+						finalizeExecution(
+							executionId,
+							error.outcome === "skipped" ? "skipped" : "failed",
+							error.outcome === "skipped" && error.stage === "precheck"
+								? "precheck_false"
+								: error.message,
+						);
+				} else {
+					finalizeExecution(executionId, "failed", "preparation_failed");
+				}
+				return;
+			} finally {
+				abortControllers.delete(executionId);
+			}
+			options.db.transaction((tx) => {
+				const current = tx
+					.select()
+					.from(executionRuns)
+					.where(eq(executionRuns.id, executionId))
+					.get();
+				if (!current) return;
+				if (current.workspaceOccupancy !== prepared.workspaceId) {
+					if (activeOccupancy(tx, "__none__", prepared.workspaceId))
+						throw new AutomationRuntimeError(
+							"RUN_BUSY",
+							"Workspace already has an active managed execution",
+						);
+				}
+				tx.update(executionRuns)
+					.set({
+						workspaceId: prepared.workspaceId,
+						workspaceOccupancy: prepared.workspaceId,
+						stage: current.cancelRequestedAt ? current.stage : "prepared",
+					})
+					.where(eq(executionRuns.id, executionId))
+					.run();
+				tx.update(executionOperations)
+					.set({
+						state: "completed",
+						receipt: stableJson({
+							workspaceId: prepared.workspaceId,
+							cwd: prepared.cwd,
+							instructions: prepared.instructions,
+						}),
+						updatedAt: now(),
+					})
+					.where(
+						and(
+							eq(executionOperations.id, prepareOperation.id),
+							eq(executionOperations.state, "dispatching"),
+						),
+					)
+					.run();
+			});
+		} else {
+			markUnknown(executionId, "preparation_dispatch_unconfirmed");
+			return;
+		}
+		if (dispatchBlocked()) return;
+		const latest = options.db
+			.select()
+			.from(executionRuns)
+			.where(eq(executionRuns.id, executionId))
+			.get();
+		if (!latest || latest.cancelRequestedAt) {
+			await cancelExecution(executionId);
+			return;
+		}
+		const dispatch = options.db
+			.select()
+			.from(executionOperations)
+			.where(
+				and(
+					eq(executionOperations.executionId, executionId),
+					eq(executionOperations.kind, "dispatch"),
+				),
+			)
+			.get();
+		if (!dispatch) throw new Error("Missing dispatch operation");
+		if (dispatch.state !== "pending") {
+			if (dispatch.state === "dispatching")
+				markUnknown(executionId, "provider_dispatch_unconfirmed");
+			return;
+		}
+		if (dispatchBlocked()) return;
+		const dispatchClaimed = options.db.transaction((tx) => {
+			const result = tx
+				.update(executionOperations)
+				.set({ state: "dispatching", updatedAt: now() })
+				.where(
+					and(
+						eq(executionOperations.id, dispatch.id),
+						eq(executionOperations.state, "pending"),
+					),
+				)
+				.run();
+			if (result.changes !== 1) return false;
+			tx.update(executionRuns)
+				.set({ stage: "dispatching" })
+				.where(eq(executionRuns.id, executionId))
+				.run();
+			return true;
+		});
+		if (!dispatchClaimed) return;
+		try {
+			const handle = await options.driver.start(
+				{ executionId, operationId: dispatch.id, definition, prepared },
+				(event) => observeExecution(executionId, event),
+			);
+			let keepHandle = false;
+			let cancelAfterStart = false;
+			options.db.transaction((tx) => {
+				const current = tx
+					.select()
+					.from(executionRuns)
+					.where(eq(executionRuns.id, executionId))
+					.get();
+				if (!current) return;
+				tx.update(executionOperations)
+					.set({
+						state: "acknowledged",
+						receipt: stableJson({
 							chatSessionId: handle.chatSessionId,
 							providerSessionId: handle.providerSessionId,
-							status:
-								current.status === "preparing" ? "running" : current.status,
-							stage: current.stage === "dispatching" ? "agent" : current.stage,
-							startedAt: current.startedAt ?? now(),
-						})
-						.where(eq(executionRuns.id, executionId))
-						.run();
-					tx.update(automationRuns)
-						.set({
-							status:
-								current.status === "preparing" ? "running" : current.status,
-							startedAt: current.startedAt ?? now(),
-						})
-						.where(eq(automationRuns.id, current.runId))
-						.run();
-				});
-				if (keepHandle) handles.set(executionId, handle);
-				if (cancelAfterStart) await cancelExecution(executionId);
-			} catch {
-				markUnknown(executionId, "provider_dispatch_unconfirmed");
-			}
-		} finally {
-			pumping.delete(executionId);
+						}),
+						updatedAt: now(),
+					})
+					.where(eq(executionOperations.id, dispatch.id))
+					.run();
+				if (TERMINAL_STATUSES.includes(current.status as AutomationRunStatus))
+					return;
+				keepHandle = true;
+				cancelAfterStart = current.cancelRequestedAt != null;
+				tx.update(executionRuns)
+					.set({
+						chatSessionId: handle.chatSessionId,
+						providerSessionId: handle.providerSessionId,
+						status: current.status === "preparing" ? "running" : current.status,
+						stage: current.stage === "dispatching" ? "agent" : current.stage,
+						startedAt: current.startedAt ?? now(),
+					})
+					.where(eq(executionRuns.id, executionId))
+					.run();
+				tx.update(automationRuns)
+					.set({
+						status: current.status === "preparing" ? "running" : current.status,
+						startedAt: current.startedAt ?? now(),
+					})
+					.where(eq(automationRuns.id, current.runId))
+					.run();
+			});
+			if (keepHandle) handles.set(executionId, handle);
+			if (cancelAfterStart) await cancelExecution(executionId);
+		} catch {
+			markUnknown(executionId, "provider_dispatch_unconfirmed");
 		}
 	}
 
 	async function reconcile(): Promise<void> {
+		if (dispatchBlocked()) return;
 		const active = options.db
 			.select()
 			.from(executionRuns)
@@ -2637,9 +2682,11 @@ export function createAutomationRuntime(
 	}
 
 	async function tick(): Promise<void> {
+		if (dispatchBlocked()) return;
 		if (ticking) return ticking;
 		ticking = (async () => {
 			await reconcile();
+			if (dispatchBlocked()) return;
 			const currentTime = now();
 			const resumable = options.db
 				.select()
@@ -2653,6 +2700,7 @@ export function createAutomationRuntime(
 				)
 				.all();
 			for (const row of resumable) {
+				if (dispatchBlocked()) return;
 				const definition = definitionFor(
 					options.db,
 					row.id,
@@ -2706,6 +2754,7 @@ export function createAutomationRuntime(
 					);
 				});
 			}
+			if (dispatchBlocked()) return;
 			const due = options.db
 				.select({ id: automations.id })
 				.from(automations)
@@ -2718,7 +2767,10 @@ export function createAutomationRuntime(
 				)
 				.orderBy(asc(automations.nextDueAt))
 				.all();
-			for (const row of due) await processDueAutomation(row.id, currentTime);
+			for (const row of due) {
+				if (dispatchBlocked()) return;
+				await processDueAutomation(row.id, currentTime);
+			}
 		})().finally(() => {
 			ticking = undefined;
 		});
@@ -2726,7 +2778,7 @@ export function createAutomationRuntime(
 	}
 
 	function scheduleTimer(): void {
-		if (!started) return;
+		if (!started || dispatchBlocked()) return;
 		timer = setTimeout(async () => {
 			try {
 				await tick();
@@ -2737,19 +2789,53 @@ export function createAutomationRuntime(
 		timer.unref?.();
 	}
 
-	async function start(): Promise<void> {
-		if (started) return;
-		await reconcile();
-		started = true;
-		await tick();
-		scheduleTimer();
+	function start(): Promise<void> {
+		if (stopping) return stoppingOperation ?? Promise.resolve();
+		if (starting) return starting;
+		if (started && !stopped) return Promise.resolve();
+		stopped = false;
+		const work = (async () => {
+			await reconcile();
+			if (stopping || stopped) return;
+			started = true;
+			await tick();
+			scheduleTimer();
+		})();
+		const operation = work.finally(() => {
+			if (starting === operation) starting = undefined;
+		});
+		starting = operation;
+		return operation;
 	}
 
-	async function stop(): Promise<void> {
+	function stop(): Promise<void> {
+		if (stoppingOperation) return stoppingOperation;
+		if (stopped) return Promise.resolve();
+		stopping = true;
 		started = false;
 		clearTimeout(timer);
 		timer = undefined;
-		await options.driver.dispose();
+		const pendingStart = starting;
+		for (const controller of abortControllers.values()) controller.abort();
+		const work = (async () => {
+			await Promise.allSettled(
+				[pendingStart, ticking].filter(
+					(candidate): candidate is Promise<void> => candidate !== undefined,
+				),
+			);
+			for (const controller of abortControllers.values()) controller.abort();
+			while (pumping.size > 0) {
+				await Promise.allSettled([...pumping.values()]);
+			}
+			await options.driver.dispose();
+		})();
+		const operation = work.finally(() => {
+			if (stoppingOperation === operation) stoppingOperation = undefined;
+			stopping = false;
+			stopped = true;
+		});
+		stoppingOperation = operation;
+		return operation;
 	}
 
 	return {

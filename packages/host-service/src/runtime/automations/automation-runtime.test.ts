@@ -1,6 +1,6 @@
 import { Database as BunDatabase } from "bun:sqlite";
 import { afterEach, describe, expect, test } from "bun:test";
-import { mkdtempSync, rmSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { AutomationDefinition } from "@choros/shared/automation-contracts";
@@ -11,17 +11,21 @@ import {
 	automationRuns,
 	automations,
 	automationVersions,
+	executionInputs,
 	executionOperations,
 	executionRuns,
 	type HostDb,
 } from "../../db";
 import * as schema from "../../db/schema";
+import { validatePermissionAnswer } from "../executions/permission-answer";
 import type {
 	ExecutionDriver,
 	ExecutionDriverEvent,
 	ExecutionDriverHandle,
 } from "../executions/types";
 import { ExecutionPreparationError } from "../executions/types";
+import { shellSingleQuote } from "../setup/config";
+import { runManagedScript } from "../setup/managed-script";
 import {
 	type AutomationRuntime,
 	AutomationRuntimeError,
@@ -208,6 +212,55 @@ class InteractiveDriver implements ExecutionDriver {
 	async dispose() {}
 }
 
+class PermissionDriver implements ExecutionDriver {
+	observe?: (event: ExecutionDriverEvent) => Promise<void>;
+	answerCalls = 0;
+
+	async start(
+		_request: Parameters<ExecutionDriver["start"]>[0],
+		observe: (event: ExecutionDriverEvent) => Promise<void>,
+	): Promise<ExecutionDriverHandle> {
+		this.observe = observe;
+		await observe({ type: "started", chatSessionId: "chat-permission" });
+		await observe({
+			type: "input",
+			id: "00000000-0000-4000-8000-000000000098",
+			kind: "permission",
+			question: "Allow this command once?",
+			options: [
+				{ id: "accept", label: "Approve" },
+				{ id: "cancel", label: "Stop" },
+			],
+		});
+		return {
+			chatSessionId: "chat-permission",
+			cancel: async () => ({ quiescent: true }),
+			answerInput: async (_id, answer) => {
+				validatePermissionAnswer(answer, [
+					{ id: "accept", label: "Approve" },
+					{ id: "cancel", label: "Stop" },
+				]);
+				this.answerCalls += 1;
+			},
+		};
+	}
+
+	async inspect() {
+		return { state: "running" as const };
+	}
+
+	async dispose() {}
+}
+
+function processIsAlive(pid: number): boolean {
+	try {
+		process.kill(pid, 0);
+		return true;
+	} catch (error) {
+		return (error as NodeJS.ErrnoException).code !== "ESRCH";
+	}
+}
+
 function runtimeWith(driver: ExecutionDriver): {
 	runtime: AutomationRuntime;
 	db: ReturnType<typeof createDatabase>;
@@ -252,9 +305,17 @@ describe("automation runtime persistence", () => {
 			db: initial.db,
 			driver: new HoldingDriver(),
 			resolveDefinition: async (value) => value,
-			prepareExecution: async () => {
+			prepareExecution: async ({ workspaceId, signal }) => {
 				setupCalls += 1;
-				return new Promise<never>(() => undefined);
+				await new Promise<void>((resolve) =>
+					signal.addEventListener("abort", () => resolve(), { once: true }),
+				);
+				return {
+					workspaceId,
+					cwd: "/tmp/fixture-workspace",
+					env: { PROVIDER_SECRET: "restored-not-persisted" },
+					instructions: definition().instructions,
+				};
 			},
 		});
 		const preview = await firstRuntime.preview({
@@ -486,6 +547,117 @@ describe("automation runtime persistence", () => {
 		db.$client.close();
 	});
 
+	test("keeps listRuns cursors stable across newer head insertions", async () => {
+		const db = createDatabase();
+		const driver = new CompletingDriver();
+		let clock = Date.parse("2026-09-29T00:00:00Z");
+		const runtime = createAutomationRuntime({
+			db,
+			driver,
+			now: () => clock,
+			resolveDefinition: async (value) => value,
+			prepareExecution: async ({ workspaceId }) => ({
+				workspaceId,
+				cwd: "/tmp/fixture-workspace",
+				env: {},
+				instructions: definition().instructions,
+			}),
+		});
+		const preview = await runtime.preview({
+			definition: definition(),
+			intent: "save",
+		});
+		const created = await runtime.create({
+			requestId: "cursor-save",
+			confirmationToken: preview.confirmationToken,
+		});
+		const oldestToNewest: string[] = [];
+		for (let index = 1; index <= 5; index += 1) {
+			clock += 1_000;
+			const run = await runtime.runNow({
+				requestId: `cursor-run-${index}`,
+				id: created.automation.id,
+			});
+			await waitFor(
+				() => runtime.getRun({ id: run.id }).status === "succeeded",
+			);
+			oldestToNewest.push(run.id);
+		}
+		const originalOrder = [...oldestToNewest].reverse();
+		const firstPage = runtime.listRuns({
+			automationId: created.automation.id,
+			limit: 2,
+		});
+		expect(firstPage.items.map((run) => run.id)).toEqual(
+			originalOrder.slice(0, 2),
+		);
+		if (!firstPage.nextCursor) throw new Error("Expected a second page cursor");
+		const secondPage = runtime.listRuns({
+			automationId: created.automation.id,
+			limit: 2,
+			cursor: firstPage.nextCursor,
+		});
+		expect(secondPage.items.map((run) => run.id)).toEqual(
+			originalOrder.slice(2, 4),
+		);
+		if (!secondPage.nextCursor) throw new Error("Expected a tail cursor");
+		const oldTailCursor = secondPage.nextCursor;
+
+		clock += 1_000;
+		const inserted = await runtime.runNow({
+			requestId: "cursor-new-head",
+			id: created.automation.id,
+		});
+		await waitFor(
+			() => runtime.getRun({ id: inserted.id }).status === "succeeded",
+		);
+		expect(
+			runtime
+				.listRuns({
+					automationId: created.automation.id,
+					limit: 2,
+					cursor: oldTailCursor,
+				})
+				.items.map((run) => run.id),
+		).toEqual(originalOrder.slice(4));
+
+		const refreshedFirst = runtime.listRuns({
+			automationId: created.automation.id,
+			limit: 2,
+		});
+		if (!refreshedFirst.nextCursor)
+			throw new Error("Expected refreshed second page cursor");
+		const refreshedSecond = runtime.listRuns({
+			automationId: created.automation.id,
+			limit: 2,
+			cursor: refreshedFirst.nextCursor,
+		});
+		expect(
+			[...refreshedFirst.items, ...refreshedSecond.items].map((run) => run.id),
+		).toEqual([inserted.id, ...originalOrder.slice(0, 3)]);
+		if (!refreshedSecond.nextCursor)
+			throw new Error("Expected refreshed tail cursor");
+		const refreshedTail = runtime.listRuns({
+			automationId: created.automation.id,
+			limit: 2,
+			cursor: refreshedSecond.nextCursor,
+		});
+		expect(refreshedTail.items.map((run) => run.id)).toEqual(
+			originalOrder.slice(3),
+		);
+		expect(
+			new Set(
+				[
+					...refreshedFirst.items,
+					...refreshedSecond.items,
+					...refreshedTail.items,
+				].map((run) => run.id),
+			).size,
+		).toBe(6);
+		await runtime.stop();
+		db.$client.close();
+	});
+
 	test("does not reconcile its own preparation and only releases a cancelled preparation on quiescent evidence", async () => {
 		const db = createDatabase();
 		let preparationEntered = false;
@@ -610,6 +782,277 @@ describe("automation runtime persistence", () => {
 		db.$client.close();
 	});
 
+	test("keeps an invalid permission answer pending so a valid answer can still succeed", async () => {
+		const driver = new PermissionDriver();
+		const { runtime, db } = runtimeWith(driver);
+		const preview = await runtime.preview({
+			definition: definition(),
+			intent: "run",
+		});
+		const created = await runtime.create({
+			requestId: "permission-run",
+			confirmationToken: preview.confirmationToken,
+			runImmediately: true,
+		});
+		const runId = created.run?.id;
+		if (!runId) throw new Error("Expected a run identity");
+		await waitFor(() => runtime.getRun({ id: runId }).status === "waiting");
+		// Persisted requests created before this fix may still contain long-lived
+		// choices. Reading or answering them must not re-enable those grants.
+		db.update(executionInputs)
+			.set({
+				options: JSON.stringify([
+					{ id: "accept", label: "Approve" },
+					{ id: "cancel", label: "Stop" },
+					{ id: "acceptForSession", label: "Approve for session" },
+				]),
+			})
+			.where(eq(executionInputs.id, "00000000-0000-4000-8000-000000000098"))
+			.run();
+		expect(
+			runtime
+				.getRun({ id: runId })
+				.inputs[0]?.options?.map((option) => option.id),
+		).toEqual(["accept", "cancel"]);
+
+		let invalidError: unknown;
+		try {
+			await runtime.answerInput({
+				requestId: "invalid-permission-answer",
+				inputId: "00000000-0000-4000-8000-000000000098",
+				expectedVersion: 1,
+				answer: "acceptForSession",
+			});
+		} catch (error) {
+			invalidError = error;
+		}
+		expect(invalidError).toBeInstanceOf(AutomationRuntimeError);
+		expect((invalidError as AutomationRuntimeError).code).toBe(
+			"INVALID_PERMISSION_ANSWER",
+		);
+		expect(runtime.getRun({ id: runId }).inputs[0]).toMatchObject({
+			status: "pending",
+			version: 1,
+		});
+		expect(driver.answerCalls).toBe(0);
+
+		await runtime.answerInput({
+			requestId: "valid-permission-answer",
+			inputId: "00000000-0000-4000-8000-000000000098",
+			expectedVersion: 1,
+			answer: "accept",
+		});
+		expect(driver.answerCalls).toBe(1);
+		expect(runtime.getRun({ id: runId }).inputs[0]).toMatchObject({
+			status: "answered",
+			version: 2,
+			answer: "accept",
+		});
+		await runtime.stop();
+		db.$client.close();
+	});
+
+	test("does not append duplicate unknown events and preserves occupancy", async () => {
+		const driver = new ScheduledDriver();
+		const { runtime, db } = runtimeWith(driver);
+		const preview = await runtime.preview({
+			definition: definition(),
+			intent: "run",
+		});
+		const created = await runtime.create({
+			requestId: "unknown-run",
+			confirmationToken: preview.confirmationToken,
+			runImmediately: true,
+		});
+		const runId = created.run?.id;
+		const executionId = created.run?.executionId;
+		if (!runId || !executionId)
+			throw new Error("Expected execution identities");
+		await waitFor(() => driver.observe !== undefined);
+
+		await driver.observe?.({
+			type: "unknown",
+			reason: "provider_state_unknown",
+		});
+		await driver.observe?.({
+			type: "unknown",
+			reason: "provider_state_unknown",
+		});
+		const duplicateEvents = runtime
+			.readEvents({ after: 0, limit: 100 })
+			.events.filter((event) => event.type === "execution.unknown");
+		expect(duplicateEvents).toHaveLength(1);
+		const occupied = db
+			.select()
+			.from(executionRuns)
+			.where(eq(executionRuns.id, executionId))
+			.get();
+		expect(occupied?.automationOccupancy).toBe(created.automation.id);
+		expect(occupied?.workspaceOccupancy).toBe(
+			"00000000-0000-4000-8000-000000000001",
+		);
+
+		await driver.observe?.({
+			type: "unknown",
+			reason: "provider_reconcile_failed",
+		});
+		expect(
+			runtime
+				.readEvents({ after: 0, limit: 100 })
+				.events.filter((event) => event.type === "execution.unknown"),
+		).toHaveLength(2);
+		expect(runtime.getRun({ id: runId })).toMatchObject({
+			status: "unknown",
+			reason: "provider_reconcile_failed",
+		});
+		await runtime.stop();
+		db.$client.close();
+	});
+
+	test("shutdown aborts and drains a real long-running preparation process", async () => {
+		if (process.platform === "win32") return;
+		const db = createDatabase();
+		const directory = mkdtempSync(join(tmpdir(), "choros-shutdown-process-"));
+		createdDirectories.push(directory);
+		const pidFile = join(directory, "preparation.pid");
+		const driver = new CompletingDriver();
+		const runtime = createAutomationRuntime({
+			db,
+			driver,
+			resolveDefinition: async (value) => value,
+			prepareExecution: async ({ workspaceId, signal, onStage }) => {
+				const script = `require("node:fs").writeFileSync(${JSON.stringify(pidFile)}, String(process.pid)); setInterval(() => {}, 1000)`;
+				const result = await runManagedScript({
+					command: `${shellSingleQuote(process.execPath)} -e ${shellSingleQuote(script)}`,
+					cwd: directory,
+					env: { PATH: process.env.PATH ?? "" },
+					timeoutSeconds: 60,
+					signal,
+				});
+				await onStage("setup_finished", workspaceId, {
+					stage: "setup",
+					exitCode: result.exitCode,
+					output: result.output,
+					truncated: result.truncated,
+					quiescent: result.quiescent,
+				});
+				if (result.cancelled)
+					throw new ExecutionPreparationError(
+						"setup cancelled",
+						"setup",
+						"failed",
+						result.quiescent,
+					);
+				throw new Error("Long-running preparation exited without cancellation");
+			},
+		});
+		const preview = await runtime.preview({
+			definition: definition(),
+			intent: "run",
+		});
+		const created = await runtime.create({
+			requestId: "shutdown-preparation",
+			confirmationToken: preview.confirmationToken,
+			runImmediately: true,
+		});
+		const runId = created.run?.id;
+		if (!runId) throw new Error("Expected a run identity");
+		await waitFor(() => existsSync(pidFile));
+		const pid = Number(readFileSync(pidFile, "utf8"));
+		expect(processIsAlive(pid)).toBe(true);
+
+		await runtime.stop();
+		expect(processIsAlive(pid)).toBe(false);
+		expect(driver.starts).toBe(0);
+		expect(runtime.getRun({ id: runId })).toMatchObject({
+			status: "cancelled",
+			reason: "preparation_cancelled",
+		});
+
+		db.$client.close();
+	});
+	test("keeps non-quiescent preparation shutdown unknown and occupied", async () => {
+		const db = createDatabase();
+		let preparationEntered = false;
+		const runtime = createAutomationRuntime({
+			db,
+			driver: new CompletingDriver(),
+			resolveDefinition: async (value) => value,
+			prepareExecution: async ({ signal }) => {
+				preparationEntered = true;
+				return await new Promise<never>((_resolve, reject) => {
+					signal.addEventListener(
+						"abort",
+						() =>
+							reject(
+								new ExecutionPreparationError(
+									"process tree may still be active",
+									"setup",
+									"unknown",
+									false,
+								),
+							),
+						{ once: true },
+					);
+				});
+			},
+		});
+		const preview = await runtime.preview({
+			definition: definition(),
+			intent: "run",
+		});
+		const created = await runtime.create({
+			requestId: "shutdown-unconfirmed-preparation",
+			confirmationToken: preview.confirmationToken,
+			runImmediately: true,
+		});
+		const runId = created.run?.id;
+		const executionId = created.run?.executionId;
+		if (!runId || !executionId)
+			throw new Error("Expected execution identities");
+		await waitFor(() => preparationEntered);
+
+		await runtime.stop();
+		expect(runtime.getRun({ id: runId })).toMatchObject({
+			status: "unknown",
+			reason: "preparation_stop_unconfirmed",
+		});
+		const execution = db
+			.select()
+			.from(executionRuns)
+			.where(eq(executionRuns.id, executionId))
+			.get();
+		expect(execution?.automationOccupancy).toBe(created.automation.id);
+		expect(execution?.workspaceOccupancy).not.toBeNull();
+		db.$client.close();
+	});
+	test("a concurrent start cannot cross the shutdown fence, while a later start can resume accepted work", async () => {
+		const driver = new CompletingDriver();
+		const { runtime, db } = runtimeWith(driver);
+		const stopping = runtime.stop();
+		const concurrentStart = runtime.start();
+		await Promise.all([stopping, concurrentStart]);
+		const preview = await runtime.preview({
+			definition: definition(),
+			intent: "run",
+		});
+		const created = await runtime.create({
+			requestId: "accepted-behind-shutdown-fence",
+			confirmationToken: preview.confirmationToken,
+			runImmediately: true,
+		});
+		const runId = created.run?.id;
+		if (!runId) throw new Error("Expected a run identity");
+		await Bun.sleep(10);
+		expect(driver.starts).toBe(0);
+		expect(runtime.getRun({ id: runId }).status).toBe("preparing");
+
+		await runtime.start();
+		await waitFor(() => runtime.getRun({ id: runId }).status === "succeeded");
+		expect(driver.starts).toBe(1);
+		await runtime.stop();
+		db.$client.close();
+	});
 	test("allows only one SQLite claimant for an external operation", () => {
 		const db = createDatabase();
 		const timestamp = 1_000;

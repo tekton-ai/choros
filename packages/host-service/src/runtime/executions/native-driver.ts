@@ -11,6 +11,12 @@ import {
 	requestIdSchema,
 } from "@choros/shared/automation-contracts";
 import { z } from "zod";
+import {
+	type ExecutablePermissionDecision,
+	executablePermissionOptions,
+	type PermissionOption,
+	validatePermissionAnswer,
+} from "./permission-answer";
 import type {
 	ExecutionDriver,
 	ExecutionDriverEvent,
@@ -42,7 +48,7 @@ type PendingInput =
 			kind: "permission";
 			operationId: string;
 			providerRequestId: string;
-			options?: Array<{ id: string; label: string }>;
+			options?: PermissionOption[];
 	  };
 
 type OwnedExecution = {
@@ -211,20 +217,19 @@ export function createNativeExecutionDriver(options: {
 			if (approval.status !== "pending") return;
 			const inputId = randomUUID();
 			const providerRequestId = approval.id;
+			const executableOptions = executablePermissionOptions(
+				approval.options?.map((option) => ({
+					id: option.optionId,
+					label: option.label,
+				})),
+			);
 			const input = getRuntime().operations.recordInput({
 				inputId,
 				operationId,
 				providerRequestId,
 				kind: "permission",
 				question: approval.title,
-				...(approval.options
-					? {
-							options: approval.options.map((option) => ({
-								id: option.optionId,
-								label: option.label,
-							})),
-						}
-					: {}),
+				...(executableOptions ? { options: executableOptions } : {}),
 			});
 			entry.pending.set(inputId, {
 				kind: "permission",
@@ -323,47 +328,12 @@ export function createNativeExecutionDriver(options: {
 
 	const answerPermission = (
 		pending: Extract<PendingInput, { kind: "permission" }>,
-		answer: string,
+		decision: ExecutablePermissionDecision,
 	): void => {
-		const normalized = answer.trim();
-		if (/session|always|amendment/i.test(normalized)) {
-			throw new Error(
-				"session-wide permission is not valid for a bound execution input",
-			);
-		}
-		if (normalized === "accept" || normalized === "allow") {
-			getRuntime().operations.respondToApproval(
-				pending.operationId,
-				pending.providerRequestId,
-				{ type: "accept" },
-			);
-			return;
-		}
-		if (normalized === "decline" || normalized === "deny") {
-			getRuntime().operations.respondToApproval(
-				pending.operationId,
-				pending.providerRequestId,
-				{ type: "decline" },
-			);
-			return;
-		}
-		if (normalized === "cancel") {
-			getRuntime().operations.respondToApproval(
-				pending.operationId,
-				pending.providerRequestId,
-				{ type: "cancel" },
-			);
-			return;
-		}
-		const option = pending.options?.find(
-			(candidate) => candidate.id === normalized,
-		);
-		if (!option)
-			throw new Error("answer does not match an available permission decision");
 		getRuntime().operations.respondToApproval(
 			pending.operationId,
 			pending.providerRequestId,
-			{ type: "option", optionId: option.id },
+			decision,
 		);
 	};
 
@@ -397,10 +367,15 @@ export function createNativeExecutionDriver(options: {
 					`input ${inputId} is not pending for operation ${operationId}`,
 				);
 			}
+			const permissionDecision =
+				pending.kind === "permission"
+					? validatePermissionAnswer(answer, pending.options)
+					: undefined;
 			getRuntime().operations.answerInput(inputId, answer);
 			try {
-				if (pending.kind === "permission") answerPermission(pending, answer);
-				else pending.resolve(answer);
+				if (pending.kind === "permission" && permissionDecision)
+					answerPermission(pending, permissionDecision);
+				else if (pending.kind === "question") pending.resolve(answer);
 				getRuntime().operations.markInputDelivery(inputId, true);
 			} catch (error) {
 				getRuntime().operations.markInputDelivery(inputId, false);

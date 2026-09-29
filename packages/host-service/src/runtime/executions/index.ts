@@ -1,4 +1,13 @@
 export { createNativeExecutionDriver } from "./native-driver";
+export type {
+	ExecutablePermissionDecision,
+	PermissionOption,
+} from "./permission-answer";
+export {
+	executablePermissionOptions,
+	InvalidPermissionAnswerError,
+	validatePermissionAnswer,
+} from "./permission-answer";
 export {
 	createExecutionPreparer,
 	createPreparedExecutionRestorer,

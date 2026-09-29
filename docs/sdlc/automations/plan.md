@@ -341,3 +341,18 @@ M1接口稳定后，M4的纯时间计算与M5的页面/CLI展示可以并行开�
 验证：Host 66 项、时间规则/契约 60 项、原生 chat-runtime 140 项（2 live 项 skip）、skill 与时间文件合计 67 项通过；6 个相关包的类型检查及其 4 个依赖任务通过；全仓库 Lint（3,932 文件）、Sherif、版本一致性、17 种语言 catalog 检查通过。完整 `bun run test` 在本机仍被未修改的 `agent-wrappers-launch-report.test.ts` fast-exit 断言阻断，单独运行同样失败；不把定向通过称为全套通过，Linux CI 以本次推送结果为准。
 
 另启动当前 `automation-pr` 的隔离 Desktop（renderer 63240 / CDP 63241、临时 HOME），实际点击进入 Automation 编辑器，验证 precheck 超时可改为 41、清空命令后隐藏超时、重新输入后恢复 30；截图并取消草稿。仅创建临时项目，没有保存或启用 Automation、没有调用模型。验证实例已停止，用户原 `automation-trial` 保持不动。临时基线代码与 SDK/Host smoke 脚本清理；真实模型联调等上一节限制不变。
+
+## 十五、第二轮 Review 的八项修复（2026-09-29）
+
+负责人明确授权“必要的 fix，不必要的 resolve”。对 `e6391a27b` 上新增的 2 个 P1、5 个 P2 和正文里的 P3 逐项核对，八项均为实际行为缺陷，不按低优先级忽略：
+
+- Host 停止先建立派发屏障、取消准备并等待 tick/pump 排空，再释放 driver；没有静止证据仍保留 unknown/占用。真实长进程在旧 runtime 的 stop 返回后仍存活，受控取消后已清理；修复后的同场景回归确认进程停止且没有 provider 派发。
+- 相同 unknown 状态/原因不再反复写事件；原因变化仍记录。权限答案在 Host 与 native 两侧消费 pending 前校验，禁止长期授权/策略扩张选项，存量未过滤问题也按同一规则投影和校验；非法答案后仍可提交有效答案。
+- Windows 准备脚本用系统 PowerShell/C# 启动挂起的 cmd，先放入 KILL_ON_JOB_CLOSE Job，再恢复执行；查询整个 Job 的活动进程，而非只观察 cmd。取消/超时终止整 Job，无可信回执则不声称静止；账号环境只通过进程环境传递，不写 request 文件。新增仅依赖系统组件/Bun 的 `Windows execution` CI，覆盖父进程先退、子进程 stdio 重定向后继续写、取消、超时及输出边界。Windows 原生行为以该 runner 的实际结果为准，不把本机 macOS 检查当 Windows 证明。
+- Desktop 安排和历史按页读取，活动/待处理独立加载；工作事件按实体更新，插入/重排时按用户已加载页数重新取同一有界窗口及其 opaque cursor，避免边界项被截掉后永远无法再加载。
+- 历史、待处理、徽标、通知和详情跳转按 `run.definition` 确定归属；当前 Automation 定义只用于安排和编辑。`needs_result` 仍属于待处理，但不再显示无效取消，使用既有快照重试。
+- 预览 token 绑定生成它的具体草稿；编辑任意字段后不能确认旧 token，旧异步响应晚到也不能恢复旧确认。
+
+本机验证：Host 73 项及分页回归通过，Host/Desktop 与依赖的类型检查通过；新安全回归在旧 runtime/driver 上 4 项失败、修复后通过。17 种语言补齐 Load more 并严格编译。实际 Desktop 用独立 HOME/Host/SQLite（renderer 63250 / CDP 63251）分别运行修复前后源码：旧版 2,505 条历史报上限错误；新版逐页读到 2,506 条及最旧记录，并确认新头插入后旧第 100 项在下一页仍可找回。旧版历史/徽标/详情误入 Profile B，新版返回快照所属 Default；needs_result 显示重试，点击后新增 revision 1 的 Run，原记录不变，真实 precheck 退出 7 得到 skipped 且无 provider session。旧版表单显示 New 却保存 Old；新版编辑后及延迟旧响应后均无 Confirm，重新预览才保存 Changed late（paused）。
+
+这些是合成历史数据与受控脚本的验证，不是 2,500 次真实模型执行。验证实例已停止，临时基线源码与 shutdown 脚本已清理，修复源码已恢复；用户原试用实例未动。未启用周期任务、未调用真实模型或发布版本。GitHub 新增 P3 位于 review 正文，没有单独可 resolve 的 thread，应以修复回复说明，不 dismiss 整轮 review。

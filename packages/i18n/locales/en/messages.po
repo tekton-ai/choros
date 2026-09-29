@@ -460,11 +460,6 @@ msgid "automations.error.hostUnavailable"
 msgstr "The local Host service is unavailable."
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/host-automations-provider/host-automations-provider.tsx
-msgid "automations.error.snapshotLimit"
-msgstr "Automation history is too large to load in one snapshot. Refine the view and try again."
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
 msgid "automations.filter.all"
 msgstr "All statuses"
@@ -488,6 +483,11 @@ msgstr "Unavailable targets"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
 msgid "automations.loading"
 msgstr "Loading automations…"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.loadMore"
+msgstr "Load more"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
@@ -2410,6 +2410,7 @@ msgid "dashboard.historyDropdown.v2WorkspaceKind"
 msgstr "Workspace"
 
 #. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/load-more-sentinel/load-more-sentinel.tsx
 msgid "dashboard.loadMoreSentinel.loadingMore"
 msgstr "Loading more…"

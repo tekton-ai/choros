@@ -460,11 +460,6 @@ msgid "automations.error.hostUnavailable"
 msgstr "ローカルの Host サービスを利用できません。"
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/host-automations-provider/host-automations-provider.tsx
-msgid "automations.error.snapshotLimit"
-msgstr "オートメーションの履歴が大きすぎるため、1 回のスナップショットでは読み込めません。表示対象を絞り込んで、もう一度お試しください。"
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
 msgid "automations.filter.all"
 msgstr "すべてのステータス"
@@ -488,6 +483,11 @@ msgstr "利用できない対象"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
 msgid "automations.loading"
 msgstr "オートメーションを読み込み中…"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.loadMore"
+msgstr "さらに読み込む"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
@@ -2410,6 +2410,7 @@ msgid "dashboard.historyDropdown.v2WorkspaceKind"
 msgstr "ワークスペース"
 
 #. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/load-more-sentinel/load-more-sentinel.tsx
 msgid "dashboard.loadMoreSentinel.loadingMore"
 msgstr "さらに読み込み中…"

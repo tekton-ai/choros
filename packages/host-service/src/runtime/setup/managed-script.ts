@@ -1,4 +1,5 @@
 import { spawn } from "node:child_process";
+import { runWindowsManagedScript } from "./windows-job-supervisor.ts";
 
 export interface ManagedScriptResult {
 	exitCode: number | null;
@@ -26,17 +27,13 @@ export async function runManagedScript(options: {
 			cancelled: true,
 			quiescent: true,
 		};
-	const windows = process.platform === "win32";
-	const child = spawn(
-		windows ? (process.env.ComSpec ?? "cmd.exe") : "/bin/sh",
-		windows ? ["/d", "/s", "/c", options.command] : ["-c", options.command],
-		{
-			cwd: options.cwd,
-			env: options.env,
-			detached: !windows,
-			stdio: ["ignore", "pipe", "pipe"],
-		},
-	);
+	if (process.platform === "win32") return runWindowsManagedScript(options);
+	const child = spawn("/bin/sh", ["-c", options.command], {
+		cwd: options.cwd,
+		env: options.env,
+		detached: true,
+		stdio: ["ignore", "pipe", "pipe"],
+	});
 	const childPid = child.pid;
 	const chunks: Buffer[] = [];
 	let captured = 0;
@@ -59,9 +56,7 @@ export async function runManagedScript(options: {
 	const signalOwned = (signal: NodeJS.Signals) => {
 		if (!childPid) return;
 		try {
-			if (windows) {
-				if (!closed) child.kill(signal);
-			} else process.kill(-childPid, signal);
+			process.kill(-childPid, signal);
 		} catch (error) {
 			if ((error as NodeJS.ErrnoException).code !== "ESRCH") throw error;
 		}
@@ -99,7 +94,7 @@ export async function runManagedScript(options: {
 			});
 		});
 		let quiescent = closed;
-		if (!windows && childPid) {
+		if (childPid) {
 			const groupAlive = () => {
 				try {
 					process.kill(-childPid, 0);
@@ -115,9 +110,6 @@ export async function runManagedScript(options: {
 					await new Promise((resolve) => setTimeout(resolve, 25));
 				quiescent = !groupAlive();
 			}
-		} else if (windows && (cancelled || timedOut)) {
-			// A child exit alone cannot prove a Windows process subtree has stopped.
-			quiescent = false;
 		}
 		return {
 			exitCode,

@@ -2,7 +2,6 @@ import { formatDateTime } from "@choros/i18n/format";
 import type {
 	Automation,
 	AutomationPreview,
-	AutomationRun,
 } from "@choros/shared/automation-contracts";
 import { describeAutomationSchedule } from "@choros/shared/automation-schedule";
 import { Button } from "@choros/ui/button";
@@ -32,10 +31,6 @@ import { AutomationEditor } from "../automation-editor";
 import { AutomationStatus } from "../automation-status";
 
 type ViewTab = "schedules" | "history" | "attention";
-
-function isPending(run: AutomationRun): boolean {
-	return ["waiting", "needs_result", "unknown"].includes(run.status);
-}
 
 function formatInstant(value: string, timeZone?: string): string {
 	return formatDateTime(new Date(value), {
@@ -98,12 +93,9 @@ export function AutomationsView() {
 				)),
 	);
 	const filteredRuns = data.runs.filter((run) => {
-		const automation = data.automations.find(
-			(row) => row.id === run.automationId,
-		);
-		if (!automation) return false;
-		const owner = ownership.get(automation.id);
-		const inProfile = owner?.profileId === profiles.activeProfileId;
+		const owner = data.ownershipFor(run);
+		const inProfile =
+			!owner.targetAvailable || owner.profileId === profiles.activeProfileId;
 		const matches = run.definition.name
 			.toLocaleLowerCase()
 			.includes(query.toLocaleLowerCase());
@@ -113,7 +105,7 @@ export function AutomationsView() {
 			(statusFilter === "all" || run.status === statusFilter)
 		);
 	});
-	const pendingRuns = data.runs.filter(isPending);
+	const pendingRuns = data.attentionRuns;
 	const invalidTargets = data.automations.filter(
 		(automation) => !ownership.get(automation.id)?.targetAvailable,
 	);
@@ -483,6 +475,23 @@ export function AutomationsView() {
 									</article>
 								);
 							})}
+						{tab === "schedules" && data.hasMoreAutomations && (
+							<div className="flex justify-center py-2">
+								<Button
+									variant="outline"
+									disabled={data.isLoadingMoreAutomations}
+									onClick={() => void data.loadMoreAutomations()}
+								>
+									{data.isLoadingMoreAutomations ? (
+										<Trans id="dashboard.loadMoreSentinel.loadingMore">
+											Loading more…
+										</Trans>
+									) : (
+										<Trans id="automations.loadMore">Load more</Trans>
+									)}
+								</Button>
+							</div>
+						)}
 						{tab === "history" &&
 							filteredRuns.map((run) => (
 								<div
@@ -535,6 +544,23 @@ export function AutomationsView() {
 									)}
 								</div>
 							))}
+						{tab === "history" && data.hasMoreRuns && (
+							<div className="flex justify-center py-2">
+								<Button
+									variant="outline"
+									disabled={data.isLoadingMoreRuns}
+									onClick={() => void data.loadMoreRuns()}
+								>
+									{data.isLoadingMoreRuns ? (
+										<Trans id="dashboard.loadMoreSentinel.loadingMore">
+											Loading more…
+										</Trans>
+									) : (
+										<Trans id="automations.loadMore">Load more</Trans>
+									)}
+								</Button>
+							</div>
+						)}
 						{tab === "attention" && (
 							<>
 								<section className="space-y-3">
@@ -544,12 +570,7 @@ export function AutomationsView() {
 										</Trans>
 									</h2>
 									{pendingRuns.map((run) => {
-										const automation = data.automations.find(
-											(row) => row.id === run.automationId,
-										);
-										const profileId = automation
-											? ownership.get(automation.id)?.profileId
-											: null;
+										const profileId = data.ownershipFor(run).profileId;
 										const profileName = profiles.profiles.find(
 											(profile) => profile.id === profileId,
 										)?.name;
@@ -646,6 +667,7 @@ export function AutomationsView() {
 						)}
 						{!data.isLoading &&
 							tab === "schedules" &&
+							!data.hasMoreAutomations &&
 							filteredAutomations.length === 0 && (
 								<div className="py-16 text-center text-sm text-muted-foreground">
 									<Trans id="automations.emptySchedules">
@@ -655,6 +677,7 @@ export function AutomationsView() {
 							)}
 						{!data.isLoading &&
 							tab === "history" &&
+							!data.hasMoreRuns &&
 							filteredRuns.length === 0 && (
 								<div className="py-16 text-center text-sm text-muted-foreground">
 									<Trans id="automations.emptyHistory">

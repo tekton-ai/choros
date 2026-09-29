@@ -1,5 +1,8 @@
 import { formatDateTime } from "@choros/i18n/format";
-import type { AutomationRun } from "@choros/shared/automation-contracts";
+import type {
+	Automation,
+	AutomationRun,
+} from "@choros/shared/automation-contracts";
 import { Button } from "@choros/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@choros/ui/card";
 import { Textarea } from "@choros/ui/textarea";
@@ -19,14 +22,9 @@ import { AutomationStatus } from "../../../../components/automation-status";
 import { DetailRow } from "./components/detail-row";
 
 function isActive(run: AutomationRun): boolean {
-	return [
-		"preparing",
-		"running",
-		"waiting",
-		"stopping",
-		"unknown",
-		"needs_result",
-	].includes(run.status);
+	return ["preparing", "running", "waiting", "stopping", "unknown"].includes(
+		run.status,
+	);
 }
 
 export function AutomationRunView({ runId }: { runId: string }) {
@@ -40,8 +38,11 @@ export function AutomationRunView({ runId }: { runId: string }) {
 	const [busy, setBusy] = useState(false);
 	const [answers, setAnswers] = useState<Record<string, string>>({});
 	const [editing, setEditing] = useState(false);
-	const automation = data.automations.find(
+	const cachedAutomation = data.automations.find(
 		(candidate) => candidate.id === run?.automationId,
+	);
+	const [automation, setAutomation] = useState<Automation | null>(
+		cachedAutomation ?? null,
 	);
 	const readyProfileId =
 		profiles.available && profiles.isReady ? profiles.activeProfileId : null;
@@ -62,8 +63,7 @@ export function AutomationRunView({ runId }: { runId: string }) {
 		};
 	if (entry.current.profileId === null && readyProfileId !== null)
 		entry.current.profileId = readyProfileId;
-	const ownership =
-		run?.id === runId ? data.ownershipFor(automation ?? run) : null;
+	const ownership = run?.id === runId ? data.ownershipFor(run) : null;
 	const ownerId = ownership?.profileId ?? null;
 	useEffect(() => {
 		if (
@@ -140,6 +140,28 @@ export function AutomationRunView({ runId }: { runId: string }) {
 			cancelled = true;
 		};
 	}, [cachedRun, data.getRun, runId]);
+
+	useEffect(() => {
+		if (!run || run.id !== runId) {
+			setAutomation(null);
+			return;
+		}
+		if (cachedAutomation) {
+			setAutomation(cachedAutomation);
+			return;
+		}
+		let cancelled = false;
+		setAutomation(null);
+		data.getAutomation(run.automationId).then(
+			(result) => {
+				if (!cancelled) setAutomation(result);
+			},
+			() => undefined,
+		);
+		return () => {
+			cancelled = true;
+		};
+	}, [cachedAutomation, data.getAutomation, run, runId]);
 
 	const act = async (operation: () => Promise<AutomationRun>) => {
 		setBusy(true);

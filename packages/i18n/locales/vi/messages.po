@@ -460,11 +460,6 @@ msgid "automations.error.hostUnavailable"
 msgstr "Dịch vụ Host cục bộ không khả dụng."
 
 #. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/host-automations-provider/host-automations-provider.tsx
-msgid "automations.error.snapshotLimit"
-msgstr "Lịch sử tác vụ tự động quá lớn để tải trong một bản chụp. Hãy thu hẹp phạm vi hiển thị rồi thử lại."
-
-#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
 msgid "automations.filter.all"
 msgstr "Tất cả trạng thái"
@@ -488,6 +483,11 @@ msgstr "Đích không khả dụng"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
 msgid "automations.loading"
 msgstr "Đang tải tác vụ tự động…"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.loadMore"
+msgstr "Tải thêm"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
@@ -2410,6 +2410,7 @@ msgid "dashboard.historyDropdown.v2WorkspaceKind"
 msgstr "Workspace"
 
 #. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/load-more-sentinel/load-more-sentinel.tsx
 msgid "dashboard.loadMoreSentinel.loadingMore"
 msgstr "Đang tải thêm…"

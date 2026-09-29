@@ -101,8 +101,16 @@ export function AutomationEditor({
 			? structuredClone(automation.definition)
 			: defaultDefinition(projects[0]?.projectKey, workspaces[0]?.id),
 	);
-	const [preview, setPreview] = useState<AutomationPreview | null>(null);
-	const [action, setAction] = useState<ConfirmAction>("save");
+	const [previewState, setPreview] = useState<{
+		result: AutomationPreview;
+		definition: AutomationDefinition;
+		action: ConfirmAction;
+	} | null>(null);
+	// Bind the token to the exact draft that produced it, including responses
+	// arriving after the user has already changed a field.
+	const preview =
+		previewState?.definition === definition ? previewState.result : null;
+	const action = previewState?.action ?? "save";
 	const [busy, setBusy] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 	const expiresAt = preview?.expiresAt ?? "";
@@ -123,8 +131,7 @@ export function AutomationEditor({
 				expectedVersion: automation?.version,
 				intent: automation ? "save" : nextAction,
 			});
-			setAction(nextAction);
-			setPreview(result);
+			setPreview({ result, definition, action: nextAction });
 		} catch (cause) {
 			setError(cause instanceof Error ? cause.message : String(cause));
 		} finally {

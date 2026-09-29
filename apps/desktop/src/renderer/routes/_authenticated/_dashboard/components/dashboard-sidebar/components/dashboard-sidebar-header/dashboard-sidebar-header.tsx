@@ -157,9 +157,7 @@ export function DashboardSidebarHeader({
 	});
 	const automationData = useAutomations();
 	const automationAttentionCount =
-		automationData.runs.filter((run) =>
-			["waiting", "needs_result", "unknown"].includes(run.status),
-		).length +
+		automationData.attentionRuns.length +
 		automationData.automations.filter(
 			(automation) => !automationData.ownershipFor(automation).targetAvailable,
 		).length;

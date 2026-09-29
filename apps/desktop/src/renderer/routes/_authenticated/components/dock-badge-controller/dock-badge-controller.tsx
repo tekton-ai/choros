@@ -12,9 +12,7 @@ export function DockBadgeController() {
 	const workspaceCount = useV2AttentionWorkspaceCount();
 	const automations = useAutomations();
 	const automationCount =
-		automations.runs.filter((run) =>
-			["waiting", "needs_result", "unknown"].includes(run.status),
-		).length +
+		automations.attentionRuns.length +
 		automations.automations.filter(
 			(automation) => !automations.ownershipFor(automation).targetAvailable,
 		).length;

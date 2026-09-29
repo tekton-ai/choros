@@ -39,15 +39,8 @@ export function ProfileSwitcher({
 	const automations = useAutomations();
 	const attention = useMemo(() => {
 		const combined = new Map(workspaceAttention);
-		const byAutomation = new Map(
-			automations.automations.map((automation) => [automation.id, automation]),
-		);
-		for (const run of automations.runs) {
-			if (!["waiting", "needs_result", "unknown"].includes(run.status))
-				continue;
-			const automation = byAutomation.get(run.automationId);
-			if (!automation) continue;
-			const profileId = automations.ownershipFor(automation).profileId;
+		for (const run of automations.attentionRuns) {
+			const profileId = automations.ownershipFor(run).profileId;
 			if (!profileId) continue;
 			combined.set(profileId, (combined.get(profileId) ?? 0) + 1);
 		}

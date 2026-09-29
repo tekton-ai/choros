@@ -10,6 +10,7 @@ import {
 } from "@choros/chat-runtime/testing";
 import type { AutomationDefinition } from "@choros/shared/automation-contracts";
 import { createNativeExecutionDriver } from "./native-driver";
+import { InvalidPermissionAnswerError } from "./permission-answer";
 import type {
 	ExecutionDriver,
 	ExecutionDriverEvent,
@@ -108,6 +109,125 @@ function runtimeFixture(options?: { report?: (answer: string) => unknown }): {
 	const driver = createNativeExecutionDriver({ runtime });
 	resources.push({ directory, driver, runtime });
 	return { driver, runtime };
+}
+
+function permissionRuntimeFixture(): {
+	runtime: ChatRuntime;
+	state: {
+		input?: {
+			status: "pending" | "answered" | "delivered" | "unconfirmed";
+			answer?: string;
+			options?: Array<{ id: string; label: string }>;
+		};
+		decision?: unknown;
+	};
+} {
+	const state: {
+		input?: {
+			status: "pending" | "answered" | "delivered" | "unconfirmed";
+			answer?: string;
+			options?: Array<{ id: string; label: string }>;
+		};
+		decision?: unknown;
+	} = {};
+	let operation: {
+		state: "running" | "ended";
+		quiescent: boolean;
+		outcome: "interrupted" | undefined;
+		sessionId: string;
+		providerSessionId: string;
+		recovered: boolean;
+		live: boolean;
+	} = {
+		state: "running",
+		quiescent: false,
+		outcome: undefined,
+		sessionId: "chat-permission",
+		providerSessionId: "provider-permission",
+		recovered: false,
+		live: true,
+	};
+	const runtime = {
+		operations: {
+			start: (input: {
+				observer: { onEvent: (event: unknown) => Promise<void> };
+			}) => {
+				queueMicrotask(() => {
+					void input.observer.onEvent({
+						kind: "item",
+						item: {
+							id: "approval-permission",
+							kind: "approval_request",
+							targetItemId: "tool-permission",
+							title: "Allow this command?",
+							startedAtMs: 1,
+							status: "pending",
+							options: [
+								{ optionId: "accept", label: "Approve" },
+								{
+									optionId: "acceptForSession",
+									label: "Approve for this session",
+								},
+								{
+									optionId: "acceptWithExecpolicyAmendment",
+									label: "Approve and always allow this command",
+								},
+								{
+									optionId: "applyNetworkPolicyAmendment",
+									label: "Approve and allow this network access",
+								},
+								{ optionId: "cancel", label: "Stop" },
+							],
+						},
+					});
+				});
+				return operation;
+			},
+			inspect: () => operation,
+			find: () => operation,
+			recordInput: (input: {
+				options?: Array<{ id: string; label: string }>;
+			}) => {
+				state.input = {
+					status: "pending",
+					...(input.options ? { options: input.options } : {}),
+				};
+				return { ...input, status: "pending" };
+			},
+			answerInput: (_inputId: string, answer: string) => {
+				if (!state.input) throw new Error("No pending approval was recorded");
+				state.input = { ...state.input, status: "answered", answer };
+				return state.input;
+			},
+			markInputDelivery: (_inputId: string, delivered: boolean) => {
+				if (!state.input)
+					throw new Error("No approval was recorded for delivery");
+				state.input = {
+					...state.input,
+					status: delivered ? "delivered" : "unconfirmed",
+				};
+				return state.input;
+			},
+			respondToApproval: (
+				_operationId: string,
+				_providerRequestId: string,
+				decision: unknown,
+			) => {
+				state.decision = decision;
+			},
+			stop: async () => {
+				operation = {
+					...operation,
+					state: "ended",
+					quiescent: true,
+					outcome: "interrupted",
+					live: false,
+				};
+				return operation;
+			},
+		},
+	} as unknown as ChatRuntime;
+	return { runtime, state };
 }
 
 async function waitForEvent(
@@ -350,6 +470,44 @@ describe("createNativeExecutionDriver ownership", () => {
 		await recoveredDriver.dispose();
 	});
 
+	test("filters expanding permission options and validates before consuming pending input", async () => {
+		const fixture = permissionRuntimeFixture();
+		const driver = createNativeExecutionDriver({ runtime: fixture.runtime });
+		const operation = identity();
+		const events: ExecutionDriverEvent[] = [];
+		const handle = await driver.start(
+			request(operation, { PROVIDER_SECRET: "permission-secret" }),
+			async (event) => {
+				events.push(event);
+			},
+		);
+		const permission = (await waitForEvent(
+			events,
+			(event) => event.type === "input",
+		)) as Extract<ExecutionDriverEvent, { type: "input" }>;
+		expect(permission.options).toEqual([
+			{ id: "accept", label: "Approve" },
+			{ id: "cancel", label: "Stop" },
+		]);
+
+		let invalidError: unknown;
+		try {
+			await handle.answerInput(permission.id, "acceptForSession");
+		} catch (error) {
+			invalidError = error;
+		}
+		expect(invalidError).toBeInstanceOf(InvalidPermissionAnswerError);
+		expect(fixture.state.input).toMatchObject({ status: "pending" });
+		expect(fixture.state.decision).toBeUndefined();
+
+		await handle.answerInput(permission.id, "accept");
+		expect(fixture.state.input).toMatchObject({
+			status: "delivered",
+			answer: "accept",
+		});
+		expect(fixture.state.decision).toEqual({ type: "accept" });
+		await driver.dispose();
+	});
 	test("reuse validation failures do not retain prepared env or observer callbacks", async () => {
 		const { driver } = runtimeFixture();
 		const refs = await rejectedReuseRefs(driver, identity());
