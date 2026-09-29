@@ -316,3 +316,13 @@ M1接口稳定后，M4的纯时间计算与M5的页面/CLI展示可以并行开�
 验证：21项持久键/设置搜索测试通过，Desktop类型检查和试用编译通过，17种语言零缺译并严格编译。实际试用启动后旧键为null，展开及收起侧栏默认显示Automations，列表和Run详情直接可访问，Experimental不再出现该开关，设置Back可返回原Run。用匹配CLI核对变更前后任务ID、revision/version、暂停状态、已用轮次和原Run状态均未变化。截图 `~/.choros-automation-trial/automation-default-visible.png`。
 
 更新后的试用实例保留在Automation列表；没有发布版本、启用计划或调用真实模型。本次只取消实验门槛，先前讨论的统一Agent选择和UI重设计不因默认开放而被宣称完成。
+
+## 十三、PR 主干集成（2026-09-29）
+
+为避免把原试用分支所基于的旧Profile实验提交带入PR，单独建立 `automation-pr` 提交分支并将本功能12个提交移植到当前 `origin/main`（`61efe5a60`）；原 `automations` 工作区和试用实例不改动。本文此前的提交号是原开发分支的历史证据，PR分支保留对应的审批/实现提交顺序，不重作或虚构审批。
+
+集成保留main的新Profile切换器、默认开放、持久Settings返回目标、Capture/Release文档；移除Automation对已退役 `profiles.enabled` 的引用。冲突中的编译翻译文件由合并PO重新生成，不选取旧产物覆盖main。截图 `evidence/default-visible.png` 来自此前隔离试用，仅含临时项目，未声称重新验证当前main的所有UI。
+
+本分支重跑：Host60项、原生runtime140项（2个live测试skip）、时间规则60项、Desktop设置/Profile36项均通过；相关Host/chat-runtime/CLI/SDK/Desktop类型检查通过；Sherif和0.1.6版本一致性通过；17种语言零缺译、严格编译和陈旧翻译检查通过。Desktop源码扫描测试初次并行运行超过默认5秒，命令行调整为60秒后通过，没有修改产品代码规避或修改断言。全仓库CI仍由PR执行，不将定向结果等同全套通过。
+
+本PR关联但不自动关闭#36/#37；真实provider联调、统一所有已配置Agent选择器和整体UI改进继续明确列为未交付项。不自动合并、发布版本或启用任务。

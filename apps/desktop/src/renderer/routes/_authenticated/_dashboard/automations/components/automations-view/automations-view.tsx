@@ -78,11 +78,9 @@ export function AutomationsView() {
 		() =>
 			data.automations.filter((automation) => {
 				const owner = ownership.get(automation.id);
-				return (
-					!profiles.enabled || owner?.profileId === profiles.activeProfileId
-				);
+				return owner?.profileId === profiles.activeProfileId;
 			}),
-		[data.automations, ownership, profiles.activeProfileId, profiles.enabled],
+		[data.automations, ownership, profiles.activeProfileId],
 	);
 	const filteredAutomations = visibleAutomations.filter(
 		(automation) =>
@@ -105,8 +103,7 @@ export function AutomationsView() {
 		);
 		if (!automation) return false;
 		const owner = ownership.get(automation.id);
-		const inProfile =
-			!profiles.enabled || owner?.profileId === profiles.activeProfileId;
+		const inProfile = owner?.profileId === profiles.activeProfileId;
 		const matches = run.definition.name
 			.toLocaleLowerCase()
 			.includes(query.toLocaleLowerCase());
