@@ -11,6 +11,8 @@ intent: ./intent.md
 
 前置意图已接受，审批提交为 `b3d529727`。产品负责人 xchunzhao 在 Gemini 3.8 Flash 完成端到端设计复核、确认未发现核心设计阻断后，于 2026-09-28 在本 session 明确回复“接受”，接受本规格并允许进入实施计划。本文不是已实现能力，不授权跳过 plan 审批、真实任务创建或定时启用。
 
+**2026-09-29 展示范围增量：**负责人明确要求将 Automation 放入 Experimental。Desktop 的 `Settings → Experimental → Automations` 开关默认关闭；沿用现有本地实验偏好，控制展开/收起侧栏入口及 Automation 列表、详情页面。关闭时访问相关路由转到 Experimental 设置。此开关不是调度暂停或权限边界：不删除安排/历史、不取消在途运行、不暂停已启用的Host日程，也不禁用CLI/SDK/Agent工具；设置文案必须明确说明。暂停工作仍使用任务本身的暂停/取消操作。既有执行契约与后续Agent统一/UI重设计范围不由此改动。
+
 ## 一、需求与设计（Requirements & design spec）
 
 ### 1. 产品结论、支持范围与用语

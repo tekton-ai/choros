@@ -10204,6 +10204,16 @@ msgstr "Redefinir"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
+msgid "settings.experimental.automationsHint"
+msgstr "Mostrar a interface experimental de automações. Desativar oculta suas páginas; os agendamentos existentes, as execuções ativas e o histórico permanecem inalterados. A CLI e as ferramentas dos agentes continuam disponíveis."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
+msgid "settings.experimental.automationsLabel"
+msgstr "Automações"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
 msgid "settings.experimental.inlinePortsHint"
 msgstr "Mostra as portas detectadas em um menu na barra superior em vez de um chip sob cada área de trabalho na barra lateral."
 

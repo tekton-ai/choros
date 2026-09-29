@@ -10204,6 +10204,16 @@ msgstr "Resetten"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
+msgid "settings.experimental.automationsHint"
+msgstr "Toon de experimentele interface voor automatiseringen. Uitschakelen verbergt de pagina’s; bestaande planningen, actieve uitvoeringen en de geschiedenis blijven ongewijzigd. De CLI en agenttools blijven beschikbaar."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
+msgid "settings.experimental.automationsLabel"
+msgstr "Automatiseringen"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
 msgid "settings.experimental.inlinePortsHint"
 msgstr "Toon gedetecteerde poorten als dropdown in de bovenbalk in plaats van als chip onder elke werkruimte in de zijbalk."
 

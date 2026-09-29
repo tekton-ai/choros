@@ -10204,6 +10204,16 @@ msgstr "Zresetuj"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
+msgid "settings.experimental.automationsHint"
+msgstr "Pokaż eksperymentalny interfejs automatyzacji. Wyłączenie ukrywa jego strony; istniejące harmonogramy, aktywne wykonania i historia pozostają bez zmian. CLI i narzędzia agentów nadal są dostępne."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
+msgid "settings.experimental.automationsLabel"
+msgstr "Automatyzacje"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
 msgid "settings.experimental.inlinePortsHint"
 msgstr "Pokazuj wykryte porty jako listę na górnym pasku zamiast chipa pod każdym obszarem roboczym na pasku bocznym."
 

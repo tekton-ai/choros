@@ -10204,6 +10204,16 @@ msgstr "Reset"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
+msgid "settings.experimental.automationsHint"
+msgstr "Tampilkan antarmuka Otomatisasi eksperimental. Menonaktifkannya menyembunyikan halaman; jadwal yang ada, proses aktif, dan riwayat tidak berubah. CLI dan alat agen tetap tersedia."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
+msgid "settings.experimental.automationsLabel"
+msgstr "Otomatisasi"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
 msgid "settings.experimental.inlinePortsHint"
 msgstr "Tampilkan port yang terdeteksi sebagai dropdown di bilah atas, bukan sebagai chip di bawah tiap workspace di sidebar."
 

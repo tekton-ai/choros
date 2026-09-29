@@ -10204,6 +10204,16 @@ msgstr "Đặt lại"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
+msgid "settings.experimental.automationsHint"
+msgstr "Hiển thị giao diện Tự động hóa thử nghiệm. Khi tắt, các trang sẽ bị ẩn; lịch hiện có, tác vụ đang chạy và lịch sử không thay đổi. CLI và công cụ của tác nhân vẫn khả dụng."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
+msgid "settings.experimental.automationsLabel"
+msgstr "Tự động hóa"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
 msgid "settings.experimental.inlinePortsHint"
 msgstr "Hiện các cổng phát hiện được dưới dạng menu thả xuống trên thanh trên cùng thay vì một chip dưới mỗi workspace ở thanh bên."
 

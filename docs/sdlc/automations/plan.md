@@ -298,3 +298,13 @@ M1接口稳定后，M4的纯时间计算与M5的页面/CLI展示可以并行开�
 - 试用启动器位于 `/Users/xiaochunzhao/.choros-automation-trial/Start Automation Trial.command`。独立HOME、Host数据、Electron userData和Agent配置均在同一trial目录，不覆盖安装版或复用日常窗口锁；入口标记为开发试用，不是签名安装包或正式release。使用现有development认证绕过，不声称验证登录。
 - 实际UI新建 `Automation Sandbox` 项目和一个“试用示例（未启用）”：每小时、最多3轮、保存暂停。重新构建后确认预览恰为3个时间；手动触发的受控precheck退出7，显示 `skipped/precheck_false`、原始输出和无provider会话／结果。匹配的编译CLI读取同一Host，确认state=paused、usedRounds=0及相同Skipped历史。
 - 界面留在Automation列表供用户试用；受监督进程名 `automation-trial`。截图 `~/.choros-automation-trial/trial-overview.png`、`trial-run.png` 与 `build-info.json` 保留版本/隔离信息。该示例没有启用定时派发，也没有调用真实模型；真实provider联调仍是单独未验证项。
+
+## 十一、Experimental 入口开关（2026-09-29）
+
+按负责人本轮明确要求，把Desktop Automation界面放入 `Settings → Experimental → Automations`，默认关闭。复用现有Zustand persist实验偏好和设置搜索，新增一个固定大小布尔键并登记持久化白名单；不保存业务实体，也不改Host调度/CLI/SDK/Agent工具的权限或运行状态。
+
+展开与收起侧栏共用开关；列表和Run详情由同一个父路由门控。关闭后访问相关页面转到Experimental设置；Settings的Back/Escape在原页面被禁用时回到工作区列表，初始返回路径也使用当前真实的 `/v2-workspaces`，不落到已退役的 `/workspace`。
+
+验证：22项设置搜索、持久键与返回导航回归通过，Desktop类型检查通过；两条新文案覆盖全部17种语言并严格编译；试用构建完成。实际点击验证默认关闭、设置搜索发现、开启后可进入列表/详情、收起侧栏入口、关闭后两种侧栏均隐藏、从Run详情关闭后Back正常返回工作区。开关前后用编译CLI读取Host，任务ID、revision/version、暂停状态、已用轮次及原Run身份/状态均未变化。没有启用任何计划或调用模型。
+
+试用实例更新后保留在Experimental页且开关关闭，截图为 `~/.choros-automation-trial/experimental-automations.png`。这项只改变功能展示范围，不宣称同时完成此前提出的统一Agent选择和整体UI重设计。

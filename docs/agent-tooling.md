@@ -89,7 +89,7 @@ Automation 的自然语言入口由 `plugins/choros/skills/automate/` 和原生 
 - 支持立即一次、指定时间一次、日历周期、固定间隔和上次结束后重复；有限轮次按计划机会计数。
 - `choros automations preview --definition ./automation.json --intent save --json` 只预览；确认后 `create` 默认保存为暂停，启用需要当前定义的独立 enable 确认。试跑不是创建前提。
 - `list/show/runs/run/retry/pause/resume/cancel/answer/archive/events` 操作同一份持久状态。查看结果不会启动 agent；取消请求不等于执行已经停止。
-- Desktop 的 Automations 页面提供安排、历史、待处理和 Run 详情。Profile 是归属展示，不是 provider 账号或权限隔离。
+- Desktop 的 Automations 页面需先在 `Settings → Experimental → Automations` 主动开启，默认关闭；关闭仅隐藏侧栏入口和页面，不停止Host调度、不取消运行或删除历史，CLI/SDK/Agent工具不受影响。页面提供安排、历史、待处理和 Run 详情。Profile 是归属展示，不是 provider 账号或权限隔离。
 - SDK 使用 `createLocalHostClient({ endpoint, auth })` 的本机 tRPC 接口，不再通过旧云端 `client.automations` 或 organizationId 调度。
 - 后台执行复用 `@choros/chat-runtime` 的 Claude/Codex adapter；模型、网关和鉴权沿用 agent 配置。Automation 不内置另一个模型客户端或通用 Workflow 引擎。
 

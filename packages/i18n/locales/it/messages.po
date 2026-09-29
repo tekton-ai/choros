@@ -10204,6 +10204,16 @@ msgstr "Reimposta"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
+msgid "settings.experimental.automationsHint"
+msgstr "Mostra l’interfaccia sperimentale delle automazioni. Disattivandola, le sue pagine vengono nascoste; le pianificazioni esistenti, le esecuzioni attive e la cronologia restano invariate. La CLI e gli strumenti degli agenti restano disponibili."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
+msgid "settings.experimental.automationsLabel"
+msgstr "Automazioni"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
 msgid "settings.experimental.inlinePortsHint"
 msgstr "Mostra le porte rilevate in un menu a discesa nella barra superiore invece che in un chip sotto ogni workspace nella barra laterale."
 

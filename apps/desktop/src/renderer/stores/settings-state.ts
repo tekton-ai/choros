@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
+import { useAutomationsExperimentEnabled } from "./automations-experiment";
 
 export type SettingsSection =
 	| "account"
@@ -102,5 +103,14 @@ export const useActiveProjectId = () =>
 	useSettingsStore((state) => state.activeProjectId);
 export const useCloseSettings = () =>
 	useSettingsStore((state) => state.closeSettings);
-export const useSettingsOriginRoute = () =>
-	useSettingsStore((state) => state.originRoute);
+export const useSettingsOriginRoute = () => {
+	const originRoute = useSettingsStore((state) => state.originRoute);
+	const automationsEnabled = useAutomationsExperimentEnabled();
+	// Do not send Back/Escape straight into a route the user just disabled.
+	if (
+		!automationsEnabled &&
+		(originRoute === "/automations" || originRoute.startsWith("/automations/"))
+	)
+		return "/v2-workspaces";
+	return originRoute;
+};
