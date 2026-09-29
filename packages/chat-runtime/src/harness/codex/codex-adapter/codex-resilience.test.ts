@@ -128,7 +128,6 @@ describe("codex adapter resilience", () => {
 		await harness.adapter.dispose();
 	});
 
-
 	test("a completed turn makes a pending dynamic Automation approval stale", async () => {
 		let calls = 0;
 		const harness = startAdapter([
@@ -168,7 +167,8 @@ describe("codex adapter resilience", () => {
 				event.item.kind === "approval_request" &&
 				event.item.status === "pending",
 		);
-		if (!pending || pending.kind !== "item") throw new Error("approval missing");
+		if (!pending || pending.kind !== "item")
+			throw new Error("approval missing");
 		harness.receive({
 			method: "turn/completed",
 			params: {
@@ -183,7 +183,9 @@ describe("codex adapter resilience", () => {
 		});
 		await harness.settle();
 		expect(calls).toBe(0);
-		expect(harness.sent.find((frame) => frame.id === "dynamic-1")).toMatchObject({
+		expect(
+			harness.sent.find((frame) => frame.id === "dynamic-1"),
+		).toMatchObject({
 			result: { success: false },
 		});
 		await harness.adapter.dispose();

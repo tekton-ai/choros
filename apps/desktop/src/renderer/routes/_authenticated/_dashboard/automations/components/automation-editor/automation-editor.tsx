@@ -769,15 +769,17 @@ export function AutomationEditor({
 								min={1}
 								max={300}
 								value={definition.precheck.timeoutSeconds}
-								onChange={(event) =>
-									setDefinition({
-										...definition,
-										precheck: {
-											...definition.precheck!,
-											timeoutSeconds: Number(event.target.value),
-										},
-									})
-								}
+								onChange={(event) => {
+									const timeoutSeconds = Number(event.target.value);
+									setDefinition((previous) =>
+										previous.precheck
+											? {
+													...previous,
+													precheck: { ...previous.precheck, timeoutSeconds },
+												}
+											: previous,
+									);
+								}}
 							/>
 						</div>
 					)}

@@ -46,11 +46,11 @@ type PendingInput =
 	  };
 
 type OwnedExecution = {
-	request: ExecutionDriverRequest;
-	observe(event: ExecutionDriverEvent): Promise<void>;
+	requestHash: string;
+	observe?: (event: ExecutionDriverEvent) => Promise<void>;
 	pending: Map<string, PendingInput>;
 	startedObserved: boolean;
-	finalizing: boolean;
+	finalizing?: Promise<{ quiescent: boolean }>;
 };
 
 function stableJson(value: unknown): string {
@@ -83,6 +83,13 @@ export function createNativeExecutionDriver(options: {
 		typeof runtimeOption === "function" ? runtimeOption : () => runtimeOption;
 	const owned = new Map<string, OwnedExecution>();
 
+	const emit = async (
+		entry: OwnedExecution,
+		event: ExecutionDriverEvent,
+	): Promise<void> => {
+		await entry.observe?.(event);
+	};
+
 	const notifyStarted = async (
 		entry: OwnedExecution,
 		chatSessionId: string,
@@ -90,7 +97,7 @@ export function createNativeExecutionDriver(options: {
 	): Promise<void> => {
 		if (entry.startedObserved) return;
 		entry.startedObserved = true;
-		await entry.observe({
+		await emit(entry, {
 			type: "started",
 			chatSessionId,
 			...(providerSessionId ? { providerSessionId } : {}),
@@ -104,34 +111,75 @@ export function createNativeExecutionDriver(options: {
 		}
 	};
 
+	const releaseOwned = (
+		operationId: string,
+		entry: OwnedExecution,
+		reason: string,
+	): void => {
+		if (owned.get(operationId) !== entry) return;
+		settlePending(entry, reason);
+		entry.observe = undefined;
+		owned.delete(operationId);
+	};
+
 	const finalize = async (
 		operationId: string,
 		outcome: ManagedOperationOutcome,
 		reason?: string,
-	): Promise<void> => {
+	): Promise<{ quiescent: boolean }> => {
 		const entry = owned.get(operationId);
-		if (!entry || entry.finalizing) return;
-		entry.finalizing = true;
+		if (!entry) {
+			const current = getRuntime().operations.find(operationId);
+			return {
+				quiescent: current?.state === "ended" && current.quiescent === true,
+			};
+		}
+		if (entry.finalizing) return entry.finalizing;
+
+		const finalizing = (async (): Promise<{ quiescent: boolean }> => {
+			let release = false;
+			try {
+				const stopped = await getRuntime().operations.stop(
+					operationId,
+					outcome,
+				);
+				if (stopped.state !== "ended" || !stopped.quiescent) {
+					await emit(entry, {
+						type: "unknown",
+						reason:
+							stopped.error ??
+							"provider stop could not establish execution quiescence",
+					});
+					return { quiescent: false };
+				}
+				release = true;
+				settlePending(entry, reason ?? "provider turn ended");
+				await emit(entry, {
+					type: "ended",
+					outcome: stopped.outcome ?? outcome,
+					quiescent: true,
+					...(reason ? { reason } : {}),
+				});
+				return { quiescent: true };
+			} catch (error) {
+				if (!release) {
+					const message =
+						error instanceof Error ? error.message : String(error);
+					getRuntime().operations.markUnknown(operationId, message);
+					await emit(entry, { type: "unknown", reason: message });
+				}
+				return { quiescent: release };
+			} finally {
+				if (release) {
+					releaseOwned(operationId, entry, reason ?? "provider turn ended");
+				}
+			}
+		})();
+		entry.finalizing = finalizing;
 		try {
-			const stopped = await getRuntime().operations.stop(operationId, outcome);
-			settlePending(entry, reason ?? "provider turn ended");
-			await entry.observe({
-				type: "ended",
-				outcome: stopped.outcome ?? outcome,
-				quiescent: stopped.quiescent,
-				...(reason ? { reason } : {}),
-			});
-		} catch (error) {
-			getRuntime().operations.markUnknown(
-				operationId,
-				error instanceof Error ? error.message : String(error),
-			);
-			await entry.observe({
-				type: "unknown",
-				reason: error instanceof Error ? error.message : String(error),
-			});
+			return await finalizing;
 		} finally {
-			entry.finalizing = false;
+			if (owned.get(operationId) === entry) entry.finalizing = undefined;
 		}
 	};
 
@@ -151,7 +199,7 @@ export function createNativeExecutionDriver(options: {
 				);
 			}
 			if (event.session.status === "dead") {
-				await entry.observe({
+				await emit(entry, {
 					type: "unknown",
 					reason: "provider session ended without a confirmed transport stop",
 				});
@@ -184,7 +232,7 @@ export function createNativeExecutionDriver(options: {
 				providerRequestId,
 				options: input.options,
 			});
-			await entry.observe({
+			await emit(entry, {
 				type: "input",
 				id: inputId,
 				kind: "permission",
@@ -199,7 +247,7 @@ export function createNativeExecutionDriver(options: {
 			return;
 		}
 		const outcome = event.turn.status;
-		await entry.observe({
+		await emit(entry, {
 			type: "ended",
 			outcome,
 			quiescent: false,
@@ -210,10 +258,7 @@ export function createNativeExecutionDriver(options: {
 		});
 	};
 
-	const executionTools = (
-		operationId: string,
-		entry: OwnedExecution,
-	): HarnessToolDefinition[] => [
+	const executionTools = (operationId: string): HarnessToolDefinition[] => [
 		{
 			name: "report_result",
 			description:
@@ -230,8 +275,10 @@ export function createNativeExecutionDriver(options: {
 					}
 					return { accepted: true, duplicate: true };
 				}
+				const entry = owned.get(operationId);
+				if (!entry) throw new Error("execution is no longer accepting reports");
 				runtime.operations.recordReport(operationId, input.report);
-				await entry.observe({ type: "report", report: input.report });
+				await emit(entry, { type: "report", report: input.report });
 				return { accepted: true, duplicate: false };
 			},
 		},
@@ -242,6 +289,8 @@ export function createNativeExecutionDriver(options: {
 			inputSchema: requestInputSchema,
 			requiresApproval: false,
 			handler: async (rawInput, context) => {
+				const entry = owned.get(operationId);
+				if (!entry) throw new Error("execution is no longer accepting input");
 				const input = requestInputSchema.parse(rawInput);
 				const inputId = randomUUID();
 				const persisted = getRuntime().operations.recordInput({
@@ -260,7 +309,7 @@ export function createNativeExecutionDriver(options: {
 						reject,
 					});
 				});
-				await entry.observe({
+				await emit(entry, {
 					type: "input",
 					id: inputId,
 					kind: "question",
@@ -327,24 +376,18 @@ export function createNativeExecutionDriver(options: {
 		...(providerSessionId ? { providerSessionId } : {}),
 		cancel: async () => {
 			const entry = owned.get(operationId);
-			if (!entry) return { quiescent: false };
+			if (!entry) {
+				const current = getRuntime().operations.find(operationId);
+				return {
+					quiescent: current?.state === "ended" && current.quiescent === true,
+				};
+			}
 			try {
 				await getRuntime().operations.cancelTurn(operationId);
 			} catch {
 				// A missing attachment remains unknown; stop below must not invent one.
 			}
-			const stopped = await getRuntime().operations.stop(
-				operationId,
-				"interrupted",
-			);
-			settlePending(entry, "execution canceled");
-			await entry.observe({
-				type: "ended",
-				outcome: stopped.outcome ?? "interrupted",
-				quiescent: stopped.quiescent,
-				reason: "cancellation requested",
-			});
-			return { quiescent: stopped.quiescent };
+			return finalize(operationId, "interrupted", "cancellation requested");
 		},
 		answerInput: async (inputId, answer) => {
 			const entry = owned.get(operationId);
@@ -370,9 +413,10 @@ export function createNativeExecutionDriver(options: {
 	return {
 		start: async (request, observe) => {
 			const runtime = getRuntime();
+			const requestHash = digest(request);
 			const existingOwned = owned.get(request.operationId);
 			if (existingOwned) {
-				if (digest(existingOwned.request) !== digest(request)) {
+				if (existingOwned.requestHash !== requestHash) {
 					throw new Error(
 						`operation ${request.operationId} was already started with different parameters`,
 					);
@@ -384,14 +428,7 @@ export function createNativeExecutionDriver(options: {
 					current.providerSessionId,
 				);
 			}
-			const entry: OwnedExecution = {
-				request,
-				observe,
-				pending: new Map(),
-				startedObserved: false,
-				finalizing: false,
-			};
-			owned.set(request.operationId, entry);
+
 			let resume: { harnessSessionId: string } | undefined;
 			if (request.definition.executor.sessionMode === "reuse") {
 				const reuseId = request.definition.executor.sessionId;
@@ -420,12 +457,21 @@ export function createNativeExecutionDriver(options: {
 				}
 				resume = { harnessSessionId: prior.providerSessionId };
 			}
+
+			const entry: OwnedExecution = {
+				requestHash,
+				observe,
+				pending: new Map(),
+				startedObserved: false,
+			};
+			owned.set(request.operationId, entry);
+			const operationId = request.operationId;
 			try {
 				const started = runtime.operations.start({
-					operationId: request.operationId,
+					operationId,
 					parameterIdentity: {
 						executionId: request.executionId,
-						operationId: request.operationId,
+						operationId,
 						definition: request.definition,
 						workspaceId: request.prepared.workspaceId,
 						cwd: request.prepared.cwd,
@@ -440,14 +486,14 @@ export function createNativeExecutionDriver(options: {
 					modelId: request.definition.executor.model,
 					resume,
 					env: request.prepared.env,
-					tools: executionTools(request.operationId, entry),
+					tools: executionTools(operationId),
 					prompt: [{ type: "text", text: request.prepared.instructions }],
 					observer: {
-						onEvent: (event) => observeAdapterEvent(request.operationId, event),
+						onEvent: (event) => observeAdapterEvent(operationId, event),
 					},
 				});
 				if (started.recovered && !started.live && started.state !== "ended") {
-					await observe({
+					await emit(entry, {
 						type: "unknown",
 						reason:
 							started.error ?? "provider operation cannot be safely reattached",
@@ -460,13 +506,19 @@ export function createNativeExecutionDriver(options: {
 						started.providerSessionId,
 					);
 				}
+				if (started.state === "ended" && started.quiescent) {
+					releaseOwned(operationId, entry, "provider turn ended");
+				}
 				return createHandle(
 					request.operationId,
 					started.sessionId,
 					started.providerSessionId,
 				);
 			} catch (error) {
-				owned.delete(request.operationId);
+				const current = runtime.operations.find(request.operationId);
+				if (!current || (current.state === "ended" && current.quiescent)) {
+					releaseOwned(operationId, entry, "provider start failed");
+				}
 				throw error;
 			}
 		},
@@ -498,16 +550,21 @@ export function createNativeExecutionDriver(options: {
 		},
 
 		dispose: async () => {
-			for (const operationId of [...owned.keys()]) {
+			for (const [operationId, entry] of [...owned]) {
 				const current = getRuntime().operations.find(operationId);
-				if (!current || current.quiescent) continue;
+				if (!current || (current.state === "ended" && current.quiescent)) {
+					releaseOwned(operationId, entry, "driver disposed");
+					continue;
+				}
 				await finalize(
 					operationId,
 					current.outcome ?? "interrupted",
 					"driver disposed",
 				);
 			}
-			owned.clear();
+			for (const [operationId, entry] of [...owned]) {
+				releaseOwned(operationId, entry, "driver disposed");
+			}
 		},
 	};
 }

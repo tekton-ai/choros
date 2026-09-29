@@ -12,7 +12,10 @@ type Harness = {
 	emit: (message: unknown) => void;
 	interrupts: number;
 	aborted: () => boolean;
-	requestTool(toolName: string, input: Record<string, unknown>): Promise<unknown>;
+	requestTool(
+		toolName: string,
+		input: Record<string, unknown>,
+	): Promise<unknown>;
 };
 
 function messageStart(id: string): unknown {
@@ -35,11 +38,13 @@ function createHarness(): Harness {
 	const pending: unknown[] = [];
 	let waiting: ((result: IteratorResult<unknown>) => void) | null = null;
 	let aborted = false;
-	let canUseTool: ((
-		toolName: string,
-		input: Record<string, unknown>,
-		context: { toolUseID: string },
-	) => Promise<unknown>) | undefined;
+	let canUseTool:
+		| ((
+				toolName: string,
+				input: Record<string, unknown>,
+				context: { toolUseID: string },
+		  ) => Promise<unknown>)
+		| undefined;
 	const state = { interrupts: 0 };
 
 	const stream: ClaudeSession = {
@@ -150,7 +155,8 @@ describe("ClaudeAdapter", () => {
 				status: "pending",
 			},
 		});
-		if (event.done || event.value.kind !== "item") throw new Error("approval missing");
+		if (event.done || event.value.kind !== "item")
+			throw new Error("approval missing");
 		expect("options" in event.value.item).toBe(false);
 		harness.adapter.respondToApproval(event.value.item.id, { type: "accept" });
 		const permissionResult = await permission;

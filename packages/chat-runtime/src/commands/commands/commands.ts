@@ -21,11 +21,11 @@ import {
 import { z } from "zod";
 import type { ChatDb, ChatSessionRow } from "../../db";
 import type { ChatJournal } from "../../journal";
+import type { ManagedChatOperations } from "../../managed-operations";
 import type { ChatSessionStore } from "../../projection";
 import type { PageResult } from "../../replay";
 import { readPage } from "../../replay";
 import type { LiveSessionRegistry, PromptResult } from "../../sessions";
-import type { ManagedChatOperations } from "../../managed-operations";
 
 export const createSessionCommandSchema = createSessionInputSchema
 	.omit({ workspaceId: true })

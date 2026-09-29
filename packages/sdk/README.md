@@ -73,6 +73,16 @@ preview's token and the current `expectedVersion` to
 `automations.setScheduleState`. Do not persist confirmation tokens or treat a
 successful request as proof that an agent finished its work.
 
+The local client exposes the public `automations` and `executions` procedures,
+not Host implementation types. Its published declarations include the shared
+Automation contracts and do not require private `@choros/*` packages. Queries
+use POST so the supported 64 KiB instructions payload does not enter the URL.
+
+For SDK maintainers, run `bun run build && bun run verify:dist` in this package.
+The verification packs the distributable, installs that tarball into an empty
+temporary project, checks it with strict TypeScript/NodeNext, and exercises a
+64 KiB query over HTTP. It does not publish a package or start an agent.
+
 ## Configuration
 
 ```ts

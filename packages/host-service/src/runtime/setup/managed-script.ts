@@ -37,6 +37,7 @@ export async function runManagedScript(options: {
 			stdio: ["ignore", "pipe", "pipe"],
 		},
 	);
+	const childPid = child.pid;
 	const chunks: Buffer[] = [];
 	let captured = 0;
 	let truncated = false;
@@ -56,11 +57,11 @@ export async function runManagedScript(options: {
 	child.stdout.on("data", capture);
 	child.stderr.on("data", capture);
 	const signalOwned = (signal: NodeJS.Signals) => {
-		if (!child.pid) return;
+		if (!childPid) return;
 		try {
 			if (windows) {
 				if (!closed) child.kill(signal);
-			} else process.kill(-child.pid, signal);
+			} else process.kill(-childPid, signal);
 		} catch (error) {
 			if ((error as NodeJS.ErrnoException).code !== "ESRCH") throw error;
 		}
@@ -98,10 +99,10 @@ export async function runManagedScript(options: {
 			});
 		});
 		let quiescent = closed;
-		if (!windows && child.pid) {
+		if (!windows && childPid) {
 			const groupAlive = () => {
 				try {
-					process.kill(-child.pid!, 0);
+					process.kill(-childPid, 0);
 					return true;
 				} catch (error) {
 					return (error as NodeJS.ErrnoException).code !== "ESRCH";

@@ -1103,10 +1103,11 @@ export const workspacesRouter = router({
 			// session is the one the user came for, and every client's tab order
 			// follows creation order, which had been handing the first slot to a
 			// setup shell nobody asked to look at.
-			const earlyAgentsResult = gatedLaunchError
+			const preflightError = gatedLaunchError;
+			const earlyAgentsResult = preflightError
 				? sugarLaunches.map(() => ({
 						ok: false as const,
-						error: gatedLaunchError!,
+						error: preflightError,
 					}))
 				: chainAgent === null && sugarLaunches.length > 0
 					? await dispatchSugarAgents(ctx, workspaceRow.id, sugarLaunches)
@@ -1140,12 +1141,13 @@ export const workspacesRouter = router({
 				}
 			}
 
+			const setupGateError = gatedLaunchError;
 			const [agentsResult, commandResult] = await Promise.all([
 				earlyAgentsResult ??
-					(gatedLaunchError
+					(setupGateError
 						? sugarLaunches.map(() => ({
 								ok: false as const,
-								error: gatedLaunchError!,
+								error: setupGateError,
 							}))
 						: dispatchSugarAgents(
 								ctx,

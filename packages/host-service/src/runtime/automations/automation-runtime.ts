@@ -57,6 +57,7 @@ import type {
 	AutomationRuntimeOptions,
 	ExecutionDriverEvent,
 	ExecutionDriverHandle,
+	PreparedExecutionSnapshot,
 } from "../executions/types";
 import { ExecutionPreparationError } from "../executions/types";
 
@@ -182,6 +183,31 @@ function instant(value: number | null | undefined): string | null {
 
 function parseDefinition(json: string): AutomationDefinition {
 	return automationDefinitionSchema.parse(JSON.parse(json));
+}
+
+function parsePreparedSnapshot(
+	receipt: string | null,
+): PreparedExecutionSnapshot | undefined {
+	if (!receipt) return undefined;
+	try {
+		const value = JSON.parse(receipt) as Record<string, unknown>;
+		if (!value || typeof value.workspaceId !== "string") return undefined;
+		if (value.cwd !== undefined && typeof value.cwd !== "string")
+			return undefined;
+		if (
+			value.instructions !== undefined &&
+			typeof value.instructions !== "string"
+		)
+			return undefined;
+		return {
+			workspaceId: value.workspaceId,
+			cwd: typeof value.cwd === "string" ? value.cwd : undefined,
+			instructions:
+				typeof value.instructions === "string" ? value.instructions : undefined,
+		};
+	} catch {
+		return undefined;
+	}
 }
 
 function occurrenceCursor(occurrence: AutomationOccurrence): number | null {
@@ -1189,7 +1215,7 @@ export function createAutomationRuntime(
 	): AutomationPage<Automation> {
 		const parsed = automationListInputSchema.parse(input);
 		const cursor = decodeCursor(parsed.cursor);
-		const filters: SQL[] = [];
+		const filters: Array<SQL | undefined> = [];
 		if (parsed.state) filters.push(eq(automations.state, parsed.state));
 		if (cursor) {
 			filters.push(
@@ -1199,7 +1225,7 @@ export function createAutomationRuntime(
 						eq(automations.updatedAt, cursor.createdAt),
 						lt(automations.id, cursor.id),
 					),
-				)!,
+				),
 			);
 		}
 		const targetFilters: SQL[] = [];
@@ -1219,7 +1245,7 @@ export function createAutomationRuntime(
 				)})`,
 			);
 		}
-		if (targetFilters.length) filters.push(or(...targetFilters)!);
+		filters.push(or(...targetFilters));
 		const selected = options.db
 			.select(getTableColumns(automations))
 			.from(automations)
@@ -1235,6 +1261,7 @@ export function createAutomationRuntime(
 			.limit(parsed.limit + 1)
 			.all();
 		const pageRows = selected.slice(0, parsed.limit);
+		const lastRow = pageRows.at(-1);
 		const eventCursor =
 			options.db
 				.select({ seq: workEvents.seq })
@@ -1245,8 +1272,8 @@ export function createAutomationRuntime(
 		return {
 			items: pageRows.map(projectAutomation),
 			nextCursor:
-				selected.length > parsed.limit && pageRows.length
-					? encodeCursor(pageRows.at(-1)!.updatedAt, pageRows.at(-1)!.id)
+				selected.length > parsed.limit && lastRow
+					? encodeCursor(lastRow.updatedAt, lastRow.id)
 					: null,
 			cursor: eventCursor,
 		};
@@ -1289,6 +1316,7 @@ export function createAutomationRuntime(
 			.limit(parsed.limit + 1)
 			.all();
 		const pageRows = selected.slice(0, parsed.limit);
+		const lastRow = pageRows.at(-1);
 		const eventCursor =
 			options.db
 				.select({ seq: workEvents.seq })
@@ -1299,8 +1327,8 @@ export function createAutomationRuntime(
 		return {
 			items: pageRows.map(projectRun),
 			nextCursor:
-				selected.length > parsed.limit && pageRows.length
-					? encodeCursor(pageRows.at(-1)!.createdAt, pageRows.at(-1)!.id)
+				selected.length > parsed.limit && lastRow
+					? encodeCursor(lastRow.createdAt, lastRow.id)
 					: null,
 			cursor: eventCursor,
 		};
@@ -2008,8 +2036,57 @@ export function createAutomationRuntime(
 				ReturnType<AutomationRuntimeOptions["prepareExecution"]>
 			>;
 			if (prepareOperation.state === "completed") {
-				markUnknown(executionId, "prepared_environment_unavailable");
-				return;
+				const dispatchOperation = options.db
+					.select()
+					.from(executionOperations)
+					.where(
+						and(
+							eq(executionOperations.executionId, executionId),
+							eq(executionOperations.kind, "dispatch"),
+						),
+					)
+					.get();
+				if (!dispatchOperation) throw new Error("Missing dispatch operation");
+				if (dispatchOperation.state !== "pending") {
+					if (dispatchOperation.state === "dispatching")
+						markUnknown(executionId, "provider_dispatch_unconfirmed");
+					return;
+				}
+				const snapshot = parsePreparedSnapshot(prepareOperation.receipt);
+				if (!snapshot) {
+					finalizeExecution(executionId, "failed", "prepared_snapshot_missing");
+					return;
+				}
+				if (!options.restorePreparedExecution) {
+					finalizeExecution(
+						executionId,
+						"failed",
+						"prepared_restore_unavailable",
+					);
+					return;
+				}
+				try {
+					prepared = await options.restorePreparedExecution({
+						executionId,
+						definition,
+						snapshot,
+					});
+				} catch (error) {
+					if (
+						error instanceof ExecutionPreparationError &&
+						error.outcome === "unknown"
+					)
+						markUnknown(executionId, error.stage);
+					else
+						finalizeExecution(
+							executionId,
+							"failed",
+							error instanceof ExecutionPreparationError
+								? error.message
+								: "prepared_restore_failed",
+						);
+					return;
+				}
 			} else if (prepareOperation.state === "pending") {
 				const claimed = options.db.transaction((tx) => {
 					const result = tx
@@ -2135,7 +2212,11 @@ export function createAutomationRuntime(
 					tx.update(executionOperations)
 						.set({
 							state: "completed",
-							receipt: stableJson({ workspaceId: prepared.workspaceId }),
+							receipt: stableJson({
+								workspaceId: prepared.workspaceId,
+								cwd: prepared.cwd,
+								instructions: prepared.instructions,
+							}),
 							updatedAt: now(),
 						})
 						.where(
@@ -2338,10 +2419,11 @@ export function createAutomationRuntime(
 		)
 			return true;
 		if (!occurrence) return definition.schedule.kind !== "afterCompletion";
+		const occurrenceAt = occurrenceCursor(occurrence);
 		if (
-			occurrence.at &&
+			occurrenceAt !== null &&
 			definition.stop.endsBefore &&
-			Date.parse(occurrence.at) >= Date.parse(definition.stop.endsBefore)
+			occurrenceAt >= Date.parse(definition.stop.endsBefore)
 		)
 			return true;
 		return false;
@@ -2360,15 +2442,31 @@ export function createAutomationRuntime(
 			)
 				return;
 			const definition = definitionFor(options.db, row.id, row.currentRevision);
+			const finishSchedule = () => {
+				options.db.transaction((tx) => {
+					const result = tx
+						.update(automations)
+						.set({
+							state: "finished",
+							nextDueAt: null,
+							updatedAt: currentTime,
+						})
+						.where(
+							and(
+								eq(automations.id, row.id),
+								eq(automations.state, "enabled"),
+								eq(automations.version, row.version),
+							),
+						)
+						.run();
+					if (result.changes === 1) emit(tx, "automation.finished", row.id);
+				});
+			};
 			if (
-				definition.stop.endsBefore &&
-				currentTime >= Date.parse(definition.stop.endsBefore)
+				definition.stop.maxRounds != null &&
+				row.usedRounds >= definition.stop.maxRounds
 			) {
-				options.db
-					.update(automations)
-					.set({ state: "finished", nextDueAt: null, updatedAt: currentTime })
-					.where(eq(automations.id, row.id))
-					.run();
+				finishSchedule();
 				return;
 			}
 			const occurrence = scheduleAfter(
@@ -2377,16 +2475,19 @@ export function createAutomationRuntime(
 				row.lastFinishedAt ?? undefined,
 			);
 			if (!occurrence) {
-				options.db
-					.update(automations)
-					.set({ state: "finished", nextDueAt: null, updatedAt: currentTime })
-					.where(eq(automations.id, row.id))
-					.run();
+				finishSchedule();
 				return;
 			}
 			const dueAt = occurrenceCursor(occurrence);
 			if (dueAt == null) {
 				markAutomationInvalid(id, "dst_gap_cursor_missing");
+				return;
+			}
+			const endsBefore = definition.stop.endsBefore
+				? Date.parse(definition.stop.endsBefore)
+				: undefined;
+			if (endsBefore !== undefined && dueAt >= endsBefore) {
+				finishSchedule();
 				return;
 			}
 			if (dueAt > currentTime) {
@@ -2406,21 +2507,26 @@ export function createAutomationRuntime(
 				definition.stop.maxRounds == null
 					? Number.POSITIVE_INFINITY
 					: definition.stop.maxRounds - (row.usedRounds + 1);
+			const nextCursor = next ? occurrenceCursor(next) : null;
 			const moreDue =
 				remainingAfterCurrent > 0 &&
-				next != null &&
-				occurrenceCursor(next) != null &&
-				occurrenceCursor(next)! <= currentTime;
+				nextCursor !== null &&
+				nextCursor <= currentTime &&
+				(endsBefore === undefined || nextCursor < endsBefore);
 			const outsideWindow =
 				currentTime - dueAt > definition.missedRunWindowSeconds * 1_000;
+			const afterEndBoundary =
+				endsBefore !== undefined && currentTime >= endsBefore;
 			const reason =
 				occurrence.kind === "dst_gap"
 					? "dst_gap"
-					: outsideWindow
-						? "missed_window"
-						: moreDue
-							? "coalesced"
-							: undefined;
+					: afterEndBoundary
+						? "end_boundary"
+						: outsideWindow
+							? "missed_window"
+							: moreDue
+								? "coalesced"
+								: undefined;
 			let acceptedExecutionId: string | undefined;
 			options.db.transaction((tx) => {
 				const locked = requireAutomation(tx, row.id);
@@ -2487,6 +2593,7 @@ export function createAutomationRuntime(
 						? currentTime
 						: locked.lastFinishedAt;
 				if (
+					state !== "finished" &&
 					definition.schedule.kind === "afterCompletion" &&
 					definition.schedule.intervalSeconds === 0 &&
 					finalReason &&
@@ -2511,6 +2618,7 @@ export function createAutomationRuntime(
 						),
 					)
 					.run();
+				if (state === "finished") emit(tx, "automation.finished", row.id);
 			});
 			if (acceptedExecutionId) launchPump(acceptedExecutionId);
 			if (!moreDue) return;

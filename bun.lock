@@ -607,14 +607,16 @@
       "name": "@choros/sdk",
       "version": "0.0.1-alpha.12",
       "dependencies": {
-        "@choros/host-service": "workspace:*",
         "@choros/shared": "workspace:*",
         "@trpc/client": "11.16.0",
+        "@trpc/server": "11.16.0",
         "superjson": "2.2.6",
       },
       "devDependencies": {
         "@choros/typescript": "workspace:*",
         "bun-types": "1.3.14",
+        "rollup": "4.62.3",
+        "rollup-plugin-dts": "6.5.1",
         "typescript": "6.0.3",
       },
     },
@@ -4619,6 +4621,8 @@
 
     "rollup": ["rollup@4.62.3", "https://packagefeedproxy.microsoft.io/npm/rollup/-/rollup-4.62.3.tgz", { "dependencies": { "@types/estree": "1.0.9" }, "optionalDependencies": { "@rollup/rollup-android-arm-eabi": "4.62.3", "@rollup/rollup-android-arm64": "4.62.3", "@rollup/rollup-darwin-arm64": "4.62.3", "@rollup/rollup-darwin-x64": "4.62.3", "@rollup/rollup-freebsd-arm64": "4.62.3", "@rollup/rollup-freebsd-x64": "4.62.3", "@rollup/rollup-linux-arm-gnueabihf": "4.62.3", "@rollup/rollup-linux-arm-musleabihf": "4.62.3", "@rollup/rollup-linux-arm64-gnu": "4.62.3", "@rollup/rollup-linux-arm64-musl": "4.62.3", "@rollup/rollup-linux-loong64-gnu": "4.62.3", "@rollup/rollup-linux-loong64-musl": "4.62.3", "@rollup/rollup-linux-ppc64-gnu": "4.62.3", "@rollup/rollup-linux-ppc64-musl": "4.62.3", "@rollup/rollup-linux-riscv64-gnu": "4.62.3", "@rollup/rollup-linux-riscv64-musl": "4.62.3", "@rollup/rollup-linux-s390x-gnu": "4.62.3", "@rollup/rollup-linux-x64-gnu": "4.62.3", "@rollup/rollup-linux-x64-musl": "4.62.3", "@rollup/rollup-openbsd-x64": "4.62.3", "@rollup/rollup-openharmony-arm64": "4.62.3", "@rollup/rollup-win32-arm64-msvc": "4.62.3", "@rollup/rollup-win32-ia32-msvc": "4.62.3", "@rollup/rollup-win32-x64-gnu": "4.62.3", "@rollup/rollup-win32-x64-msvc": "4.62.3", "fsevents": "~2.3.2" }, "bin": { "rollup": "dist/bin/rollup" } }, "sha512-Gu0c0iH9FzgX1L1t7ByIbbS3Vmdz+6KHm/EsqmmC71gUQ82yvZRkTK6XzrFObSka91WUVdynqp6nsfilzr5k6Q=="],
 
+    "rollup-plugin-dts": ["rollup-plugin-dts@6.5.1", "https://ms-feed-25.pkgs.visualstudio.com/1es-public/_packaging/npm-public/npm/registry/rollup-plugin-dts/-/rollup-plugin-dts-6.5.1.tgz", { "dependencies": { "@jridgewell/remapping": "^2.3.5", "@jridgewell/sourcemap-codec": "^1.5.5", "convert-source-map": "^2.0.0", "magic-string": "^0.30.21" }, "optionalDependencies": { "@babel/code-frame": "^8.0.0" }, "peerDependencies": { "@typescript/typescript6": "^6", "rollup": "^3 || ^4", "typescript": "^4.5 || ^5 || ^6 || ^7" }, "optionalPeers": ["@typescript/typescript6"] }, "sha1-Cf9mDgtLfaRDmSFvr5nmTzIs3Bk="],
+
     "rollup-plugin-inject": ["rollup-plugin-inject@3.0.2", "https://ms-feed-17.pkgs.visualstudio.com/1es-public/_packaging/npm-public/npm/registry/rollup-plugin-inject/-/rollup-plugin-inject-3.0.2.tgz", { "dependencies": { "estree-walker": "^0.6.1", "magic-string": "^0.25.3", "rollup-pluginutils": "^2.8.1" } }, "sha1-5CM4Vb+6bAwSoxL9Zknf+aE+6fQ="],
 
     "rollup-plugin-inject-process-env": ["rollup-plugin-inject-process-env@1.3.1", "https://packagefeedproxy.microsoft.io/npm/rollup-plugin-inject-process-env/-/rollup-plugin-inject-process-env-1.3.1.tgz", { "dependencies": { "magic-string": "^0.25.7" } }, "sha512-kKDoL30IZr0wxbNVJjq+OS92RJSKRbKV6B5eNW4q3mZTFqoWDh6lHy+mPDYuuGuERFNKXkG+AKxvYqC9+DRpKQ=="],
@@ -5979,6 +5983,8 @@
 
     "roarr/sprintf-js": ["sprintf-js@1.1.3", "https://packagefeedproxy.microsoft.io/npm/sprintf-js/-/sprintf-js-1.1.3.tgz", {}, "sha512-Oo+0REFV59/rz3gfJNKQiBlwfHaSESl1pcGyABQsnnIfWOFt6JNj5gCog2U6MLZ//IGYD+nA8nI+mTShREReaA=="],
 
+    "rollup-plugin-dts/@babel/code-frame": ["@babel/code-frame@8.0.6", "https://ms-feed-25.pkgs.visualstudio.com/1es-public/_packaging/npm-public/npm/registry/@babel/code-frame/-/code-frame-8.0.6.tgz", { "dependencies": { "@babel/helper-validator-identifier": "^8.0.6", "js-tokens": "^10.0.0" } }, "sha512-uMHhvmDmwFiLuiozaoRYTZHqMFuu3fem/X9JY78lohAuLoh8LSGGC8JqUzo2cVuBsBxkjMZNk56CE7ock8Xxkw=="],
+
     "rollup-plugin-inject/estree-walker": ["estree-walker@0.6.1", "https://ms-feed-25.pkgs.visualstudio.com/1es-public/_packaging/npm-public/npm/registry/estree-walker/-/estree-walker-0.6.1.tgz", {}, "sha1-UwSRQ/QMbrkYsjZx0f4yGfOhs2I="],
 
     "rollup-plugin-inject/magic-string": ["magic-string@0.25.9", "https://packagefeedproxy.microsoft.io/npm/magic-string/-/magic-string-0.25.9.tgz", { "dependencies": { "sourcemap-codec": "^1.4.8" } }, "sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ=="],
@@ -6670,6 +6676,10 @@
     "prosemirror-markdown/@types/markdown-it/@types/mdurl": ["@types/mdurl@2.0.0", "https://packagefeedproxy.microsoft.io/npm/@types/mdurl/-/mdurl-2.0.0.tgz", {}, "sha512-RGdgjQUZba5p6QEFAVx2OGb8rQDL/cPRG7GiedRzMcJ1tYnUANBncjbSB1NRGwbvjcPeikRABz2nshyPk1bhWg=="],
 
     "readdir-glob/minimatch/brace-expansion": ["brace-expansion@2.1.4", "https://packagefeedproxy.microsoft.io/npm/brace-expansion/-/brace-expansion-2.1.4.tgz", { "dependencies": { "balanced-match": "^1.0.0" } }, "sha512-hGfVzPxthbf3+2yjg/RBs60cB0FhqBS/zvdV/4wn4/BmN0bNMMHPc4V/BbFieqf1TKAGGAHnY4eSjajCl0f2Xg=="],
+
+    "rollup-plugin-dts/@babel/code-frame/@babel/helper-validator-identifier": ["@babel/helper-validator-identifier@8.0.6", "https://ms-feed-25.pkgs.visualstudio.com/1es-public/_packaging/npm-public/npm/registry/@babel/helper-validator-identifier/-/helper-validator-identifier-8.0.6.tgz", {}, "sha512-HYx0YmuchRxRSpnjvcNffnPS8DCauKNmnumIuHG3jnQAVewRA7kfJGwF13ayEpSZs7s4R/oBH4eppuXcAQd5JQ=="],
+
+    "rollup-plugin-dts/@babel/code-frame/js-tokens": ["js-tokens@10.0.0", "https://ms-feed-25.pkgs.visualstudio.com/1es-public/_packaging/npm-public/npm/registry/js-tokens/-/js-tokens-10.0.0.tgz", {}, "sha1-3/51mbSou3/jCv+NAjUjTf+3mDE="],
 
     "shadcn/ora/chalk": ["chalk@5.6.2", "https://packagefeedproxy.microsoft.io/npm/chalk/-/chalk-5.6.2.tgz", {}, "sha512-7NzBL0rN6fMUW+f7A6Io4h40qQlG+xGmtMxfbnH/K7TAtt8JQWVQK+6g0UXKMeVJoyV5EkkNsErQ8pVD3bLHbA=="],
 

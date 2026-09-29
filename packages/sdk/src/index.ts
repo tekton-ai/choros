@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export { type ClientOptions, Choros as default, Choros } from "./client";
-export { APIPromise } from "./core/api-promise";
+export { type ClientOptions, Choros as default, Choros } from "./client.js";
+export { APIPromise } from "./core/api-promise.js";
 export {
 	APIConnectionError,
 	APIConnectionTimeoutError,
@@ -16,15 +16,15 @@ export {
 	RateLimitError,
 	ChorosError,
 	UnprocessableEntityError,
-} from "./core/error";
-export { toFile, type Uploadable } from "./core/uploads";
+} from "./core/error.js";
+export { toFile, type Uploadable } from "./core/uploads.js";
 export {
 	createLocalHostClient,
 	type LocalHostAuth,
 	type LocalHostAuthProvider,
 	type LocalHostClient,
 	type LocalHostClientOptions,
-} from "./local-host/client";
+} from "./local-host/client.js";
 export type {
 	Automation,
 	AutomationCapabilities,
@@ -41,7 +41,7 @@ export type {
 	ExecutionInput,
 	ExecutionReport,
 	WorkEvent,
-} from "@choros/shared/automation-contracts";
+} from "./local-host/client.js";
 
 // Resource classes + their data shapes — bare top-level exports so consumers
 // can `import { type Task } from '@choros_sh/sdk'` without going through
@@ -91,4 +91,4 @@ export {
 	type WorkspaceListParams,
 	type WorkspaceListResponse,
 	Workspaces,
-} from "./resources/index";
+} from "./resources/index.js";

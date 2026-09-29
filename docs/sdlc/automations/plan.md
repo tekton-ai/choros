@@ -326,3 +326,18 @@ M1接口稳定后，M4的纯时间计算与M5的页面/CLI展示可以并行开�
 本分支重跑：Host60项、原生runtime140项（2个live测试skip）、时间规则60项、Desktop设置/Profile36项均通过；相关Host/chat-runtime/CLI/SDK/Desktop类型检查通过；Sherif和0.1.6版本一致性通过；17种语言零缺译、严格编译和陈旧翻译检查通过。Desktop源码扫描测试初次并行运行超过默认5秒，命令行调整为60秒后通过，没有修改产品代码规避或修改断言。全仓库CI仍由PR执行，不将定向结果等同全套通过。
 
 本PR关联但不自动关闭#36/#37；真实provider联调、统一所有已配置Agent选择器和整体UI改进继续明确列为未交付项。不自动合并、发布版本或启用任务。
+
+## 十四、PR Review 修复与复验（2026-09-29）
+
+逐条核对 PR #38 的五项意见：SDK 私有声明泄漏、大查询 GET、原生执行引用不释放、准备完成后恢复中断四项成立；截止后的静默丢历史和缺事件成立，但“仍在补跑窗口即可截止后执行”的修复方向与已接受规格冲突，未采纳。
+
+- SDK 的本机入口只暴露公开 Automation / Execution 契约，不导出 Host 的数据库、进程和 provider context。构建先生成声明，再内联私有共享契约，保留既有 REST SDK 的声明树并规范 NodeNext 相对导入；发布清单声明实际公开类型依赖。`verify:dist` 真正打包并在仓库外空目录安装 tarball，不使用指向工作区的链接，严格类型检查不启用 `skipLibCheck`。
+- 本机 SDK 查询统一 POST。独立 tarball 的 HTTP 传输校验通过；另以构建 SDK 连到真实 Hono Host/SQLite，65,536 字符 instructions 完整通过 preview（POST body 65,973 bytes），没有创建 Automation 或启动 provider。
+- Native driver 终态停止与最后观察回调完成后释放 ownership、待处理输入和 observer，内存只保留请求摘要而非环境对象；持久化回执仍支持重复请求与查询。新回归放回修复前 driver 时 4 项失败，修复后 5 项全部通过。
+- 准备回执保存 workspace/cwd/instructions，不保存 env；重启只重建易失环境并接续明确 pending 的 dispatch，不重做 worktree/setup/precheck。两项 SQLite 关闭再打开的回归在修复前分别出现未派发永久挂起、截止历史为零，修复后通过。
+- 截止后只补 `skipped/end_boundary` 历史、轮次与完成事件，绝不补派发；保留 DST gap、有限轮次及 after-completion 语义。
+- 修复 Lint 的非空断言、显式 any、导入顺序与格式，以及 CI 的时间规则测试类型错误；删除 skill 测试中不属于功能契约的措辞/标点断言，不关闭检查或放宽 Lint 门槛。
+
+验证：Host 66 项、时间规则/契约 60 项、原生 chat-runtime 140 项（2 live 项 skip）、skill 与时间文件合计 67 项通过；6 个相关包的类型检查及其 4 个依赖任务通过；全仓库 Lint（3,932 文件）、Sherif、版本一致性、17 种语言 catalog 检查通过。完整 `bun run test` 在本机仍被未修改的 `agent-wrappers-launch-report.test.ts` fast-exit 断言阻断，单独运行同样失败；不把定向通过称为全套通过，Linux CI 以本次推送结果为准。
+
+另启动当前 `automation-pr` 的隔离 Desktop（renderer 63240 / CDP 63241、临时 HOME），实际点击进入 Automation 编辑器，验证 precheck 超时可改为 41、清空命令后隐藏超时、重新输入后恢复 30；截图并取消草稿。仅创建临时项目，没有保存或启用 Automation、没有调用模型。验证实例已停止，用户原 `automation-trial` 保持不动。临时基线代码与 SDK/Host smoke 脚本清理；真实模型联调等上一节限制不变。

@@ -97,11 +97,14 @@ async function begin(host: TestHost, definition: AutomationDefinitionInput) {
 		definition,
 		intent: "run",
 	});
-	return host.trpc.automations.create.mutate({
+	const created = await host.trpc.automations.create.mutate({
 		requestId: crypto.randomUUID(),
 		confirmationToken: preview.confirmationToken,
 		runImmediately: true,
 	});
+	if (!created.run)
+		throw new Error("An immediate task must return its accepted run");
+	return { ...created, run: created.run };
 }
 
 describe("Automation through real Host, SQLite and managed chat with only provider protocol mocked", () => {
@@ -117,16 +120,16 @@ describe("Automation through real Host, SQLite and managed chat with only provid
 		expect(created.automation.state).toBe("paused");
 		const waiting = await waitRun(
 			host,
-			created.run!.id,
+			created.run.id,
 			(run) => run.status === "waiting",
 		);
 		expect(
 			waiting.preparation?.find((entry) => entry.stage.startsWith("precheck"))
 				?.output,
 		).toBe("precheck-ok");
-		const question = waiting.inputs.find(
-			(input) => input.status === "pending",
-		)!;
+		const question = waiting.inputs.find((input) => input.status === "pending");
+		if (!question)
+			throw new Error("The waiting run must expose a pending question");
 		const request = {
 			requestId: crypto.randomUUID(),
 			inputId: question.id,
@@ -163,7 +166,7 @@ describe("Automation through real Host, SQLite and managed chat with only provid
 		});
 		const skipped = await waitRun(
 			host,
-			created.run!.id,
+			created.run.id,
 			(run) => run.status === "skipped",
 		);
 		expect(skipped.chatSessionId).toBeUndefined();
@@ -181,10 +184,12 @@ describe("Automation through real Host, SQLite and managed chat with only provid
 		const created = await begin(host, definition);
 		const waiting = await waitRun(
 			host,
-			created.run!.id,
+			created.run.id,
 			(run) => run.status === "waiting",
 		);
-		const question = waiting.inputs[0]!;
+		const question = waiting.inputs[0];
+		if (!question)
+			throw new Error("The waiting run must expose a cancellable question");
 		await host.trpc.executions.requestCancel.mutate({
 			requestId: crypto.randomUUID(),
 			runId: waiting.id,
@@ -255,9 +260,12 @@ describe("Automation through real Host, SQLite and managed chat with only provid
 		const firstPage = await host.trpc.automations.listRuns.query({
 			automationId: created.automation.id,
 		});
+		const firstRun = firstPage.items[0];
+		if (!firstRun)
+			throw new Error("The due schedule must create its first run");
 		const first = await waitRun(
 			host,
-			firstPage.items[0]!.id,
+			firstRun.id,
 			(run) => run.status === "waiting",
 		);
 		now += 60000;
@@ -272,10 +280,13 @@ describe("Automation through real Host, SQLite and managed chat with only provid
 		});
 		expect(finishedSchedule.usedRounds).toBe(2);
 		expect(finishedSchedule.nextRunAt).toBeNull();
+		const firstInput = first.inputs[0];
+		if (!firstInput)
+			throw new Error("The scheduled run must expose its pending question");
 		await host.trpc.executions.answerInput.mutate({
 			requestId: crypto.randomUUID(),
-			inputId: first.inputs[0]!.id,
-			expectedVersion: first.inputs[0]!.version,
+			inputId: firstInput.id,
+			expectedVersion: firstInput.version,
 			answer: "scheduled",
 		});
 		await waitRun(host, first.id, (run) => run.status === "succeeded");

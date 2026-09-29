@@ -178,6 +178,7 @@ export function AutomationRunView({ runId }: { runId: string }) {
 			</div>
 		);
 
+	const workspaceId = run.workspaceId;
 	const pendingInputs = run.inputs.filter(
 		(input) => input.status === "pending",
 	);
@@ -221,13 +222,13 @@ export function AutomationRunView({ runId }: { runId: string }) {
 						<Trans id="automations.edit">Edit</Trans>
 					</Button>
 				)}
-				{run.workspaceId && (
+				{workspaceId && (
 					<Button
 						variant="outline"
 						size="sm"
 						onClick={() =>
 							void profiles.openWorkspace(
-								run.workspaceId!,
+								workspaceId,
 								run.chatSessionId
 									? { source: { type: "chat", id: run.chatSessionId } }
 									: undefined,

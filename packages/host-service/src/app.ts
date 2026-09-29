@@ -21,6 +21,7 @@ import { registerBrowserCdpRoute } from "./runtime/browser-bridge/browser-cdp-ro
 import { createNativeExecutionDriver } from "./runtime/executions/native-driver";
 import {
 	createExecutionPreparer,
+	createPreparedExecutionRestorer,
 	resolveAutomationDefinition,
 } from "./runtime/executions/prepare-execution";
 import type { AutomationRuntimeOptions } from "./runtime/executions/types";
@@ -72,7 +73,11 @@ export interface CreateAppOptions {
 	automation?: Partial<
 		Pick<
 			AutomationRuntimeOptions,
-			"driver" | "prepareExecution" | "resolveDefinition" | "now"
+			| "driver"
+			| "prepareExecution"
+			| "restorePreparedExecution"
+			| "resolveDefinition"
+			| "now"
 		>
 	> & { autoStart?: boolean };
 }
@@ -213,6 +218,9 @@ export function createApp(options: CreateAppOptions): CreateAppResult {
 		prepareExecution:
 			options.automation?.prepareExecution ??
 			createExecutionPreparer(executionContext),
+		restorePreparedExecution:
+			options.automation?.restorePreparedExecution ??
+			createPreparedExecutionRestorer(executionContext),
 		resolveDefinition:
 			options.automation?.resolveDefinition ??
 			(async (definition) =>

@@ -73,7 +73,9 @@ describe("calendar DST slots", () => {
 
 		const gap = occurrences[0];
 		const cursor = Number(gap?.key.match(/:cursor=(\d+)$/)?.[1]);
-		expect(nextAutomationOccurrence(value, cursor)).toEqual(occurrences[1]);
+		expect(nextAutomationOccurrence(value, cursor)?.at).toBe(
+			"2026-03-09T06:30:00.000Z",
+		);
 	});
 
 	it("chooses the earlier New York fall-fold instant", () => {

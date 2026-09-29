@@ -1,6 +1,25 @@
-import type { AppRouter as HostServiceRouter } from "@choros/host-service/trpc";
+import type { AutomationClient } from "@choros/shared/automation-contracts";
 import { createTRPCClient, httpBatchLink } from "@trpc/client";
+import type { TRPCDefaultErrorShape, TRPCBuiltRouter, TRPCMutationProcedure, TRPCQueryProcedure } from "@trpc/server";
 import SuperJSON from "superjson";
+
+export type {
+	Automation,
+	AutomationCapabilities,
+	AutomationClient,
+	AutomationDefinition,
+	AutomationDefinitionInput,
+	AutomationOccurrence,
+	AutomationPage,
+	AutomationPreview,
+	AutomationRun,
+	AutomationRunStatus,
+	AutomationSchedule,
+	AutomationState,
+	ExecutionInput,
+	ExecutionReport,
+	WorkEvent,
+} from "@choros/shared/automation-contracts";
 
 export interface LocalHostAuth {
 	/** Bearer token issued by the local Host manifest or another trusted provider. */
@@ -20,9 +39,49 @@ export interface LocalHostClientOptions {
 	auth: LocalHostAuthProvider;
 }
 
-export type LocalHostClient = ReturnType<
-	typeof createTRPCClient<HostServiceRouter>
->;
+type QueryMethod = "capabilities" | "preview" | "get" | "list" | "getRun" | "listRuns" | "readEvents";
+type ExecutionMethod = "requestCancel" | "answerInput";
+type MutationMethod = Exclude<keyof AutomationClient, QueryMethod | ExecutionMethod>;
+type MethodDefinition<Key extends keyof AutomationClient> = {
+	input: Parameters<AutomationClient[Key]>[0];
+	output: Awaited<ReturnType<AutomationClient[Key]>>;
+	meta: object;
+};
+
+// Only the public Automation contract crosses the SDK boundary. The server
+// router's context contains databases, processes and private provider types.
+type AutomationRouter = TRPCBuiltRouter<{
+	ctx: object;
+	meta: object;
+	errorShape: TRPCDefaultErrorShape;
+	transformer: true;
+}, {
+	automations: {
+		[Key in QueryMethod]: TRPCQueryProcedure<MethodDefinition<Key>>;
+	} & {
+		[Key in MutationMethod]: TRPCMutationProcedure<MethodDefinition<Key>>;
+	};
+	executions: {
+		[Key in ExecutionMethod]: TRPCMutationProcedure<MethodDefinition<Key>>;
+	};
+}>;
+
+type RequestOptions = { context?: Record<string, unknown>; signal?: AbortSignal };
+type RequestMethod<Key extends keyof AutomationClient> =
+	undefined extends MethodDefinition<Key>["input"]
+		? (input?: MethodDefinition<Key>["input"], options?: RequestOptions) => Promise<MethodDefinition<Key>["output"]>
+		: (input: MethodDefinition<Key>["input"], options?: RequestOptions) => Promise<MethodDefinition<Key>["output"]>;
+
+export type LocalHostClient = {
+	automations: {
+		[Key in QueryMethod]: { query: RequestMethod<Key> };
+	} & {
+		[Key in MutationMethod]: { mutate: RequestMethod<Key> };
+	};
+	executions: {
+		[Key in ExecutionMethod]: { mutate: RequestMethod<Key> };
+	};
+};
 
 /**
  * Creates a typed client for one explicitly selected local Choros Host.
@@ -36,11 +95,12 @@ export function createLocalHostClient(
 	const endpoint = options.endpoint.replace(/\/+$/, "");
 	const url = endpoint.endsWith("/trpc") ? endpoint : `${endpoint}/trpc`;
 
-	return createTRPCClient<HostServiceRouter>({
+	return createTRPCClient<AutomationRouter>({
 		links: [
 			httpBatchLink({
 				url,
 				transformer: SuperJSON,
+				methodOverride: "POST",
 				headers: async () => {
 					const auth = await options.auth();
 					return {

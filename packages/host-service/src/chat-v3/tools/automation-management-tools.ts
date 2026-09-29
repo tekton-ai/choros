@@ -22,7 +22,7 @@ export type AutomationToolSourceContext = {
 	scopeId: string;
 };
 
-type Tool = HarnessToolDefinition<any>;
+type Tool = HarnessToolDefinition;
 
 function managementTool(
 	name: string,

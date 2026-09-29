@@ -348,6 +348,7 @@ export function AutomationsView() {
 						) : null}
 						{tab === "schedules" &&
 							filteredAutomations.map((automation) => {
+								const lastRun = automation.lastRun;
 								const timeZone =
 									"timeZone" in automation.definition.schedule
 										? automation.definition.schedule.timeZone
@@ -461,17 +462,17 @@ export function AutomationsView() {
 												)}
 											</div>
 										</div>
-										{automation.lastRun && (
+										{lastRun && (
 											<button
 												type="button"
 												className="mt-3 flex w-full items-center gap-2 rounded-md bg-muted/40 px-3 py-2 text-left text-sm hover:bg-muted"
-												onClick={() => openRun(automation.lastRun!.id)}
+												onClick={() => openRun(lastRun.id)}
 											>
-												<AutomationStatus status={automation.lastRun.status} />
+												<AutomationStatus status={lastRun.status} />
 												<span className="truncate">
-													{automation.lastRun.report?.summary ??
-														automation.lastRun.reason ??
-														automation.lastRun.stage ??
+													{lastRun.report?.summary ??
+														lastRun.reason ??
+														lastRun.stage ??
 														t({
 															id: "automations.runNoSummary",
 															message: "Open run details",

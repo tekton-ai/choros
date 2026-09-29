@@ -12,6 +12,19 @@ export interface PreparedExecution {
 	env: Record<string, string>;
 	instructions: string;
 }
+/** Secret-safe state persisted after preparation and before provider dispatch. */
+export interface PreparedExecutionSnapshot {
+	workspaceId: string;
+	/** Absent only on receipts written before prepared snapshots were introduced. */
+	cwd?: string;
+	/** Absent only on receipts written before prepared snapshots were introduced. */
+	instructions?: string;
+}
+export interface RestorePreparationRequest {
+	executionId: string;
+	definition: AutomationDefinition;
+	snapshot: PreparedExecutionSnapshot;
+}
 export interface PreparationRequest {
 	executionId: string;
 	workspaceId: string;
@@ -86,6 +99,9 @@ export interface AutomationRuntimeOptions {
 	db: HostDb;
 	driver: ExecutionDriver;
 	prepareExecution(request: PreparationRequest): Promise<PreparedExecution>;
+	restorePreparedExecution?(
+		request: RestorePreparationRequest,
+	): Promise<PreparedExecution>;
 	resolveDefinition(
 		definition: AutomationDefinition,
 	): Promise<AutomationDefinition>;

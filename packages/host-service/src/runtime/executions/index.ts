@@ -1,6 +1,7 @@
 export { createNativeExecutionDriver } from "./native-driver";
 export {
 	createExecutionPreparer,
+	createPreparedExecutionRestorer,
 	resolveAutomationDefinition,
 } from "./prepare-execution";
 export type {
@@ -12,5 +13,7 @@ export type {
 	ExecutionInspection,
 	PreparationRequest,
 	PreparedExecution,
+	PreparedExecutionSnapshot,
+	RestorePreparationRequest,
 } from "./types";
 export { ExecutionPreparationError } from "./types";

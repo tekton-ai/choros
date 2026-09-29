@@ -31,10 +31,8 @@ import {
 const migrationsFolder = join(import.meta.dir, "../../../drizzle");
 const createdDirectories: string[] = [];
 
-function createDatabase(): HostDb {
-	const directory = mkdtempSync(join(tmpdir(), "choros-automation-runtime-"));
-	createdDirectories.push(directory);
-	const sqlite = new BunDatabase(join(directory, "host.sqlite"), {
+function openDatabase(path: string): HostDb {
+	const sqlite = new BunDatabase(path, {
 		create: true,
 		readwrite: true,
 	});
@@ -43,6 +41,19 @@ function createDatabase(): HostDb {
 	const db = drizzle(sqlite, { schema });
 	migrate(db, { migrationsFolder });
 	return db as unknown as HostDb;
+}
+
+function createDatabase(): HostDb {
+	const directory = mkdtempSync(join(tmpdir(), "choros-automation-runtime-"));
+	createdDirectories.push(directory);
+	return openDatabase(join(directory, "host.sqlite"));
+}
+
+function createReopenableDatabase(): { db: HostDb; path: string } {
+	const directory = mkdtempSync(join(tmpdir(), "choros-automation-runtime-"));
+	createdDirectories.push(directory);
+	const path = join(directory, "host.sqlite");
+	return { db: openDatabase(path), path };
 }
 
 function definition(): AutomationDefinition {
@@ -234,6 +245,98 @@ afterEach(() => {
 });
 
 describe("automation runtime persistence", () => {
+	test("reopens SQLite and dispatches a prepared run without repeating setup", async () => {
+		const initial = createReopenableDatabase();
+		let setupCalls = 0;
+		const firstRuntime = createAutomationRuntime({
+			db: initial.db,
+			driver: new HoldingDriver(),
+			resolveDefinition: async (value) => value,
+			prepareExecution: async () => {
+				setupCalls += 1;
+				return new Promise<never>(() => undefined);
+			},
+		});
+		const preview = await firstRuntime.preview({
+			definition: definition(),
+			intent: "run",
+		});
+		const created = await firstRuntime.create({
+			requestId: "prepared-before-restart",
+			confirmationToken: preview.confirmationToken,
+			runImmediately: true,
+		});
+		const run = created.run;
+		if (!run?.executionId) throw new Error("Expected an accepted execution");
+		const executionId = run.executionId;
+		await waitFor(() => setupCalls === 1);
+		initial.db.transaction((tx) => {
+			tx.update(executionRuns)
+				.set({ stage: "prepared" })
+				.where(eq(executionRuns.id, executionId))
+				.run();
+			tx.update(executionOperations)
+				.set({
+					state: "completed",
+					receipt: JSON.stringify({
+						workspaceId: "00000000-0000-4000-8000-000000000001",
+					}),
+				})
+				.where(
+					and(
+						eq(executionOperations.executionId, executionId),
+						eq(executionOperations.kind, "prepare"),
+					),
+				)
+				.run();
+		});
+		await firstRuntime.stop();
+		initial.db.$client.close();
+
+		const reopened = openDatabase(initial.path);
+		const driver = new CompletingDriver();
+		let restoreCalls = 0;
+		const recoveredRuntime = createAutomationRuntime({
+			db: reopened,
+			driver,
+			resolveDefinition: async (value) => value,
+			prepareExecution: async () => {
+				throw new Error("setup must not run after preparation completed");
+			},
+			restorePreparedExecution: async ({ snapshot }) => {
+				restoreCalls += 1;
+				return {
+					workspaceId: snapshot.workspaceId,
+					cwd: snapshot.cwd ?? "/tmp/fixture-workspace",
+					env: { PROVIDER_SECRET: "restored-not-persisted" },
+					instructions: snapshot.instructions ?? definition().instructions,
+				};
+			},
+		});
+		await recoveredRuntime.tick();
+		await waitFor(
+			() => recoveredRuntime.getRun({ id: run.id }).status === "succeeded",
+		);
+		expect(setupCalls).toBe(1);
+		expect(restoreCalls).toBe(1);
+		expect(driver.starts).toBe(1);
+		expect(driver.seenSecret).toBe("restored-not-persisted");
+		const preparation = reopened
+			.select({ receipt: executionOperations.receipt })
+			.from(executionOperations)
+			.where(
+				and(
+					eq(executionOperations.executionId, executionId),
+					eq(executionOperations.kind, "prepare"),
+				),
+			)
+			.get();
+		expect(preparation?.receipt).not.toContain("PROVIDER_SECRET");
+		expect(preparation?.receipt).not.toContain("restored-not-persisted");
+		await recoveredRuntime.stop();
+		reopened.$client.close();
+	});
+
 	test("previews only remaining finite rounds, including after prior rounds were consumed", async () => {
 		const { runtime, db } = runtimeWith(new HoldingDriver());
 		const startsAt = Date.now() + 60_000;
@@ -316,10 +419,10 @@ describe("automation runtime persistence", () => {
 
 		expect(repeated.automation.id).toBe(first.automation.id);
 		expect(repeated.run?.id).toBe(first.run?.id);
-		await waitFor(
-			() => runtime.getRun({ id: first.run!.id }).status === "succeeded",
-		);
-		const run = runtime.getRun({ id: first.run!.id });
+		const runId = first.run?.id;
+		if (!runId) throw new Error("Expected a run identity");
+		await waitFor(() => runtime.getRun({ id: runId }).status === "succeeded");
+		const run = runtime.getRun({ id: runId });
 		expect(run.preparation).toEqual([
 			{
 				stage: "setup",
@@ -335,6 +438,23 @@ describe("automation runtime persistence", () => {
 			expect(operation.receipt ?? "").not.toContain("must-not-be-persisted");
 			expect(operation.receipt ?? "").not.toContain("PROVIDER_SECRET");
 		}
+		const executionId = run.executionId;
+		if (!executionId) throw new Error("Expected an execution identity");
+		const preparation = db
+			.select({ receipt: executionOperations.receipt })
+			.from(executionOperations)
+			.where(
+				and(
+					eq(executionOperations.executionId, executionId),
+					eq(executionOperations.kind, "prepare"),
+				),
+			)
+			.get();
+		expect(JSON.parse(preparation?.receipt ?? "{}")).toEqual({
+			workspaceId: "00000000-0000-4000-8000-000000000001",
+			cwd: "/tmp/fixture-workspace",
+			instructions: definition().instructions,
+		});
 		await runtime.stop();
 		db.$client.close();
 	});
@@ -406,17 +526,17 @@ describe("automation runtime persistence", () => {
 			confirmationToken: preview.confirmationToken,
 			runImmediately: true,
 		});
+		const runId = created.run?.id;
+		if (!runId) throw new Error("Expected a run identity");
 		await waitFor(() => preparationEntered);
 		await runtime.tick();
-		expect(runtime.getRun({ id: created.run!.id }).status).toBe("preparing");
+		expect(runtime.getRun({ id: runId }).status).toBe("preparing");
 		await runtime.requestCancel({
 			requestId: "cancel-prepare",
-			runId: created.run!.id,
+			runId,
 		});
-		await waitFor(
-			() => runtime.getRun({ id: created.run!.id }).status === "cancelled",
-		);
-		const cancelled = runtime.getRun({ id: created.run!.id });
+		await waitFor(() => runtime.getRun({ id: runId }).status === "cancelled");
+		const cancelled = runtime.getRun({ id: runId });
 		expect(cancelled.preparation?.[0]?.output).toBe("process group stopped");
 		await runtime.stop();
 		db.$client.close();
@@ -434,9 +554,9 @@ describe("automation runtime persistence", () => {
 			confirmationToken: preview.confirmationToken,
 			runImmediately: true,
 		});
-		await waitFor(
-			() => runtime.getRun({ id: created.run!.id }).status === "waiting",
-		);
+		const runId = created.run?.id;
+		if (!runId) throw new Error("Expected a run identity");
+		await waitFor(() => runtime.getRun({ id: runId }).status === "waiting");
 		const answer = runtime.answerInput({
 			requestId: "answer-interactive",
 			inputId: "00000000-0000-4000-8000-000000000099",
@@ -446,11 +566,11 @@ describe("automation runtime persistence", () => {
 		await waitFor(() => driver.answerStarted);
 		await runtime.requestCancel({
 			requestId: "cancel-interactive",
-			runId: created.run!.id,
+			runId,
 		});
 		driver.completeAnswer();
 		await answer;
-		expect(runtime.getRun({ id: created.run!.id }).status).toBe("cancelled");
+		expect(runtime.getRun({ id: runId }).status).toBe("cancelled");
 		await runtime.stop();
 		db.$client.close();
 	});
@@ -467,15 +587,15 @@ describe("automation runtime persistence", () => {
 			confirmationToken: preview.confirmationToken,
 			runImmediately: true,
 		});
-		await waitFor(
-			() => runtime.getRun({ id: created.run!.id }).status === "waiting",
-		);
+		const runId = created.run?.id;
+		if (!runId) throw new Error("Expected a run identity");
+		await waitFor(() => runtime.getRun({ id: runId }).status === "waiting");
 		await driver.observe?.({
 			type: "ended",
 			outcome: "completed",
 			quiescent: true,
 		});
-		expect(runtime.getRun({ id: created.run!.id }).status).toBe("needs_result");
+		expect(runtime.getRun({ id: runId }).status).toBe("needs_result");
 		await driver.observe?.({
 			type: "report",
 			report: {
@@ -485,7 +605,7 @@ describe("automation runtime persistence", () => {
 				verification: { status: "not_run", reason: "fixture" },
 			},
 		});
-		expect(runtime.getRun({ id: created.run!.id }).status).toBe("needs_result");
+		expect(runtime.getRun({ id: runId }).status).toBe("needs_result");
 		await runtime.stop();
 		db.$client.close();
 	});
@@ -617,11 +737,11 @@ describe("automation runtime persistence", () => {
 		db.$client.close();
 	});
 
-	test("does not catch up after the exclusive end boundary", async () => {
-		const db = createDatabase();
+	test("reopens SQLite and records expired rounds without dispatching", async () => {
+		const initial = createReopenableDatabase();
 		let clock = Date.parse("2026-09-28T08:59:00Z");
 		const runtime = createAutomationRuntime({
-			db,
+			db: initial.db,
 			driver: new HoldingDriver(),
 			now: () => clock,
 			resolveDefinition: async (value) => value,
@@ -661,14 +781,48 @@ describe("automation runtime persistence", () => {
 			state: "enabled",
 			confirmationToken: enablePreview.confirmationToken,
 		});
-		clock = Date.parse("2026-09-28T09:45:00Z");
-		await runtime.tick();
-		expect(runtime.get({ id: created.automation.id }).state).toBe("finished");
-		expect(
-			runtime.listRuns({ automationId: created.automation.id }).items,
-		).toHaveLength(0);
 		await runtime.stop();
-		db.$client.close();
+		initial.db.$client.close();
+		clock = Date.parse("2026-09-28T09:45:00Z");
+		const reopened = openDatabase(initial.path);
+		const driver = new CompletingDriver();
+		const recoveredRuntime = createAutomationRuntime({
+			db: reopened,
+			driver,
+			now: () => clock,
+			resolveDefinition: async (value) => value,
+			prepareExecution: async () => {
+				throw new Error("must not dispatch");
+			},
+		});
+		await recoveredRuntime.tick();
+		const recovered = recoveredRuntime.get({ id: created.automation.id });
+		expect(recovered.state).toBe("finished");
+		expect(recovered.usedRounds).toBe(3);
+		const runs = [
+			...recoveredRuntime.listRuns({ automationId: created.automation.id })
+				.items,
+		].sort((left, right) =>
+			(left.plannedAt ?? "").localeCompare(right.plannedAt ?? ""),
+		);
+		expect(runs.map((run) => run.plannedAt)).toEqual([
+			"2026-09-28T09:00:00.000Z",
+			"2026-09-28T09:10:00.000Z",
+			"2026-09-28T09:20:00.000Z",
+		]);
+		expect(runs.map((run) => [run.status, run.reason])).toEqual([
+			["skipped", "end_boundary"],
+			["skipped", "end_boundary"],
+			["skipped", "end_boundary"],
+		]);
+		expect(driver.starts).toBe(0);
+		expect(
+			recoveredRuntime
+				.readEvents({ after: 0, limit: 100 })
+				.events.some((event) => event.type === "automation.finished"),
+		).toBe(true);
+		await recoveredRuntime.stop();
+		reopened.$client.close();
 	});
 
 	test("uses the current after-completion revision when an older active round finishes", async () => {
@@ -1005,7 +1159,7 @@ describe("automation runtime persistence", () => {
 
 	test("manual activity does not leave an enabled after-completion schedule waiting forever", async () => {
 		const db = createDatabase();
-		let clock = Date.parse("2026-09-28T09:00:00Z");
+		const clock = Date.parse("2026-09-28T09:00:00Z");
 		const runtime = createAutomationRuntime({
 			db,
 			driver: new HoldingDriver(),
