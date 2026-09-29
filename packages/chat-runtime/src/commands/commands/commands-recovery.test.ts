@@ -21,7 +21,7 @@ function explodingRegistry(): HarnessRegistry {
 				cancelTurn: () => undefined,
 				respondToApproval: () => undefined,
 				setMode: () => undefined,
-				dispose: async () => undefined,
+				dispose: async () => ({ quiescent: true }),
 			}),
 		],
 	]);

@@ -204,6 +204,27 @@
       "when": 1788045626690,
       "tag": "0028_funny_gideon",
       "breakpoints": true
+    },
+    {
+      "idx": 29,
+      "version": "6",
+      "when": 1790586688990,
+      "tag": "0029_host_automation_runtime",
+      "breakpoints": true
+    },
+    {
+      "idx": 30,
+      "version": "6",
+      "when": 1790586924464,
+      "tag": "0030_automation_preparation_evidence",
+      "breakpoints": true
+    },
+    {
+      "idx": 31,
+      "version": "6",
+      "when": 1790587557385,
+      "tag": "0031_automation_planned_occurrence_unique",
+      "breakpoints": true
     }
   ]
 }

@@ -58,18 +58,6 @@ import {
 	HostAgentConfig,
 	PromptTransport,
 } from "./resources/agents";
-import {
-	Automation,
-	AutomationCreateParams,
-	AutomationListResponse,
-	AutomationLogsParams,
-	AutomationLogsResponse,
-	AutomationRun,
-	AutomationRunDispatched,
-	Automations,
-	AutomationSummary,
-	AutomationUpdateParams,
-} from "./resources/automations";
 import { Host, HostListResponse, Hosts } from "./resources/hosts";
 import * as API from "./resources/index";
 import {
@@ -1194,8 +1182,6 @@ export class Choros {
 	projects: API.Projects = new API.Projects(this);
 	/** Hosts (developer machines): list. */
 	hosts: API.Hosts = new API.Hosts(this);
-	/** Recurring automations: full CRUD plus run/pause/resume/logs/prompt. */
-	automations: API.Automations = new API.Automations(this);
 	/** Agents (per-host terminal-agent rows): list, create. */
 	agents: API.Agents = new API.Agents(this);
 	/** Terminals (per-host PTY sessions): create, list, send (follow-up), read, close. */
@@ -1208,7 +1194,6 @@ Choros.Tasks = Tasks;
 Choros.Workspaces = Workspaces;
 Choros.Projects = Projects;
 Choros.Hosts = Hosts;
-Choros.Automations = Automations;
 Choros.Agents = Agents;
 Choros.Terminals = Terminals;
 Choros.Organization = Organization;
@@ -1257,18 +1242,6 @@ export declare namespace Choros {
 
 	export { Hosts, Host, HostListResponse };
 
-	export {
-		Automations,
-		Automation,
-		AutomationSummary,
-		AutomationListResponse,
-		AutomationCreateParams,
-		AutomationUpdateParams,
-		AutomationRun,
-		AutomationRunDispatched,
-		AutomationLogsParams,
-		AutomationLogsResponse,
-	};
 
 	export {
 		Agents,

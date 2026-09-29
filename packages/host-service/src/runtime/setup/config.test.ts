@@ -109,26 +109,23 @@ describe("loadSetupConfig", () => {
 		});
 	});
 
-	it("returns null when repo config.json is malformed JSON", () => {
+	it("fails closed when repo config.json is malformed JSON", () => {
 		writeRepoConfig(sandbox.repoPath, "{not valid json,,,");
-		const result = load();
-		expect(result).toBeNull();
+		expect(() => load()).toThrow(Error);
 	});
 
-	it("rejects mixed-type arrays and treats config as missing", () => {
+	it("rejects mixed-type arrays instead of treating config as missing", () => {
 		writeRepoConfig(sandbox.repoPath, {
 			setup: [123, "bun install"],
 			teardown: [],
 		});
 
-		const result = load();
-		expect(result).toBeNull();
+		expect(() => load()).toThrow(Error);
 	});
 
 	it("rejects when config root is an array (not an object)", () => {
 		writeRepoConfig(sandbox.repoPath, ["bun install"]);
-		const result = load();
-		expect(result).toBeNull();
+		expect(() => load()).toThrow(Error);
 	});
 
 	it("rejects blank cwd values", () => {
@@ -137,8 +134,7 @@ describe("loadSetupConfig", () => {
 			run: ["bun dev"],
 		});
 
-		const result = load();
-		expect(result).toBeNull();
+		expect(() => load()).toThrow(Error);
 	});
 
 	it("normalizes configured cwd", () => {
@@ -319,15 +315,13 @@ describe("loadSetupConfig", () => {
 		expect(result).toBeNull();
 	});
 
-	it("local overlay with invalid before type is rejected silently", () => {
+	it("rejects invalid local overlays instead of silently using the base", () => {
 		writeRepoConfig(sandbox.repoPath, { setup: ["bun install"] });
 		writeRepoLocalConfig(sandbox.repoPath, {
 			setup: { before: ["ok", 42] },
 		});
 
-		const result = load();
-		// Invalid local overlay parses to null, so base is returned untouched.
-		expect(result?.setup).toEqual(["bun install"]);
+		expect(() => load()).toThrow(Error);
 	});
 
 	it("stacks repo + user override + local overlay in the right order", () => {

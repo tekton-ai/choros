@@ -454,18 +454,49 @@ export interface ParsedRecurrence {
 	nextRunAt: Date;
 }
 
-/** Wall-clock-as-UTC → real UTC in the given zone. */
-export function rruleDateToUtc(rruleDate: Date, timezone: string): Date {
-	const zoned = new TZDate(
-		rruleDate.getUTCFullYear(),
-		rruleDate.getUTCMonth(),
-		rruleDate.getUTCDate(),
-		rruleDate.getUTCHours(),
-		rruleDate.getUTCMinutes(),
-		rruleDate.getUTCSeconds(),
-		timezone,
+export interface RruleCalendarSlot {
+	kind: "instant" | "gap";
+	localTime: string;
+	/** Floating wall-clock value used to advance the compiled recurrence. */
+	wallCursor: Date;
+	/** Real cursor that is strictly beyond this slot, including for gaps. */
+	nextCursorAt: Date;
+	at: Date | null;
+}
+
+export interface CompiledRruleCalendar {
+	nextSlotAfter(after: Date): RruleCalendarSlot | null;
+	slotsAfter(after: Date, count: number): RruleCalendarSlot[];
+	nextInstantAfter(after: Date): Date | null;
+}
+
+function assertTimeZone(timezone: string): void {
+	try {
+		new Intl.DateTimeFormat("en", { timeZone: timezone }).format();
+	} catch {
+		throw new Error(`Invalid IANA time zone: ${timezone}`);
+	}
+}
+
+function sameWallClock(left: Date, right: Date): boolean {
+	return (
+		left.getUTCFullYear() === right.getUTCFullYear() &&
+		left.getUTCMonth() === right.getUTCMonth() &&
+		left.getUTCDate() === right.getUTCDate() &&
+		left.getUTCHours() === right.getUTCHours() &&
+		left.getUTCMinutes() === right.getUTCMinutes() &&
+		left.getUTCSeconds() === right.getUTCSeconds()
 	);
-	return new Date(zoned.getTime());
+}
+
+function formatWallClock(value: Date): string {
+	const year = value.getUTCFullYear().toString().padStart(4, "0");
+	const month = (value.getUTCMonth() + 1).toString().padStart(2, "0");
+	const day = value.getUTCDate().toString().padStart(2, "0");
+	const hour = value.getUTCHours().toString().padStart(2, "0");
+	const minute = value.getUTCMinutes().toString().padStart(2, "0");
+	const second = value.getUTCSeconds().toString().padStart(2, "0");
+	return `${year}-${month}-${day}T${hour}:${minute}:${second}`;
 }
 
 /** Real UTC → wall-clock-as-UTC in the given zone (rrule.js input space). */
@@ -484,24 +515,78 @@ export function utcToRruleDate(realUtc: Date, timezone: string): Date {
 }
 
 /**
- * Serialize a Date into the local wall-clock string format RRule requires
- * (`YYYYMMDDTHHMMSS`), given an IANA timezone.
+ * Resolve a floating wall clock into real instants. A gap has no candidate;
+ * a fold has two, ordered earliest first.
  */
-function formatRRuleLocalDtstart(dtstart: Date, timezone: string): string {
-	const formatter = new Intl.DateTimeFormat("en-CA", {
-		timeZone: timezone,
-		year: "numeric",
-		month: "2-digit",
-		day: "2-digit",
-		hour: "2-digit",
-		minute: "2-digit",
-		second: "2-digit",
-		hour12: false,
-	});
-	const parts = Object.fromEntries(
-		formatter.formatToParts(dtstart).map((p) => [p.type, p.value]),
+function resolveRruleDate(rruleDate: Date, timezone: string): Date[] {
+	const wallTime = rruleDate.getTime();
+	const offsets = new Set<number>();
+	const constructed = new TZDate(
+		rruleDate.getUTCFullYear(),
+		rruleDate.getUTCMonth(),
+		rruleDate.getUTCDate(),
+		rruleDate.getUTCHours(),
+		rruleDate.getUTCMinutes(),
+		rruleDate.getUTCSeconds(),
+		timezone,
 	);
-	return `${parts.year}${parts.month}${parts.day}T${parts.hour}${parts.minute}${parts.second}`;
+	offsets.add(constructed.getTimezoneOffset());
+
+	// Sample both sides of a transition. A week is enough to observe both
+	// offsets while also covering half-hour and historical non-hour changes.
+	const weekMs = 7 * 24 * 60 * 60 * 1000;
+	offsets.add(new TZDate(wallTime - weekMs, timezone).getTimezoneOffset());
+	offsets.add(new TZDate(wallTime, timezone).getTimezoneOffset());
+	offsets.add(new TZDate(wallTime + weekMs, timezone).getTimezoneOffset());
+
+	const candidates: Date[] = [];
+	for (const offset of offsets) {
+		const candidate = new Date(wallTime + offset * 60 * 1000);
+		if (sameWallClock(utcToRruleDate(candidate, timezone), rruleDate)) {
+			candidates.push(candidate);
+		}
+	}
+	return candidates.sort((left, right) => left.getTime() - right.getTime());
+}
+
+function cursorAfterGap(wallCursor: Date, timezone: string): Date {
+	const normalized = new TZDate(
+		wallCursor.getUTCFullYear(),
+		wallCursor.getUTCMonth(),
+		wallCursor.getUTCDate(),
+		wallCursor.getUTCHours(),
+		wallCursor.getUTCMinutes(),
+		wallCursor.getUTCSeconds(),
+		timezone,
+	);
+	let cursor = new Date(normalized.getTime());
+	// TZDate normally normalizes a gap forward. Retain a deterministic fallback
+	// for zones whose transition normalization chooses the earlier side.
+	for (let minutes = 0; minutes <= 48 * 60; minutes++) {
+		if (utcToRruleDate(cursor, timezone).getTime() > wallCursor.getTime()) {
+			return cursor;
+		}
+		cursor = new Date(cursor.getTime() + 60_000);
+	}
+	throw new Error(`Unable to advance nonexistent local time in ${timezone}`);
+}
+
+/** Wall-clock-as-UTC → earliest real UTC instant in the given zone. */
+export function rruleDateToUtc(rruleDate: Date, timezone: string): Date {
+	assertTimeZone(timezone);
+	const candidates = resolveRruleDate(rruleDate, timezone);
+	if (!candidates[0]) {
+		throw new Error(
+			`Local time ${formatWallClock(rruleDate)} does not exist in ${timezone}`,
+		);
+	}
+	return candidates[0];
+}
+
+/** Serialize a real Date as a floating local DTSTART for rrule.js. */
+function formatRRuleLocalDtstart(dtstart: Date, timezone: string): string {
+	const local = utcToRruleDate(dtstart, timezone);
+	return formatWallClock(local).replaceAll("-", "").replaceAll(":", "");
 }
 
 function buildRuleString(
@@ -512,27 +597,83 @@ function buildRuleString(
 	return `DTSTART:${formatRRuleLocalDtstart(dtstart, timezone)}\nRRULE:${rrule}`;
 }
 
-/**
- * The next real-UTC occurrence strictly after `after`, or null when the
- * recurrence is exhausted (UNTIL/COUNT).
- */
+function calendarSlot(wallCursor: Date, timezone: string): RruleCalendarSlot {
+	const candidates = resolveRruleDate(wallCursor, timezone);
+	const at = candidates[0] ?? null;
+	return {
+		kind: at ? "instant" : "gap",
+		localTime: formatWallClock(wallCursor),
+		wallCursor,
+		nextCursorAt: at ?? cursorAfterGap(wallCursor, timezone),
+		at,
+	};
+}
+
+/** Compile once, then iterate calendar slots without rebuilding RRule. */
+export function compileRruleCalendar(args: {
+	rrule: string;
+	dtstart: Date;
+	timezone: string;
+}): CompiledRruleCalendar {
+	assertTimeZone(args.timezone);
+	if (!Number.isFinite(args.dtstart.getTime())) {
+		throw new Error("Invalid recurrence start");
+	}
+	const rule = RRule.fromString(
+		buildRuleString(args.rrule, args.dtstart, args.timezone),
+	);
+
+	const slotsAfter = (after: Date, count: number): RruleCalendarSlot[] => {
+		if (!Number.isFinite(after.getTime()))
+			throw new Error("Invalid recurrence cursor");
+		if (!Number.isInteger(count) || count < 0) {
+			throw new Error("Occurrence count must be a non-negative integer");
+		}
+		const slots: RruleCalendarSlot[] = [];
+		let wallCursor = utcToRruleDate(after, args.timezone);
+		while (slots.length < count) {
+			const nextWall = rule.after(wallCursor, false);
+			if (!nextWall) break;
+			wallCursor = nextWall;
+			const slot = calendarSlot(nextWall, args.timezone);
+			// A later real cursor can map to an earlier wall time during a fold.
+			// The logical slot is its earlier instant and must not replay.
+			if (slot.at && slot.at.getTime() <= after.getTime()) continue;
+			slots.push(slot);
+		}
+		return slots;
+	};
+
+	const nextInstantAfter = (after: Date): Date | null => {
+		let wallCursor = utcToRruleDate(after, args.timezone);
+		for (;;) {
+			const nextWall = rule.after(wallCursor, false);
+			if (!nextWall) return null;
+			wallCursor = nextWall;
+			const slot = calendarSlot(nextWall, args.timezone);
+			if (slot.at && slot.at.getTime() > after.getTime()) return slot.at;
+		}
+	};
+
+	return {
+		nextSlotAfter(after) {
+			return slotsAfter(after, 1)[0] ?? null;
+		},
+		slotsAfter,
+		nextInstantAfter,
+	};
+}
+
+/** Next real-UTC occurrence strictly after `after`; calendar gaps are skipped. */
 export function nextOccurrenceAfter(args: {
 	rrule: string;
 	dtstart: Date;
 	timezone: string;
 	after: Date;
 }): Date | null {
-	const rule = RRule.fromString(
-		buildRuleString(args.rrule, args.dtstart, args.timezone),
-	);
-	const next = rule.after(utcToRruleDate(args.after, args.timezone), false);
-	return next ? rruleDateToUtc(next, args.timezone) : null;
+	return compileRruleCalendar(args).nextInstantAfter(args.after);
 }
 
-/**
- * True when the rule ends (COUNT or UNTIL). Schedules are repeating only —
- * a rule that runs out is refused at save so no trigger ever needs retiring.
- */
 export function hasFiniteRecurrence(rrule: string): boolean {
 	const parts = parseRruleParts(rrule);
 	return parts !== null && ("COUNT" in parts || "UNTIL" in parts);
@@ -560,21 +701,10 @@ export function parseRrule(args: {
 	};
 }
 
-/**
- * True when the string is a parseable RRULE body with at least one future
- * occurrence — mirrors the check `automation.update` runs server-side, so
- * editors can gate saves instead of persisting rules the server will reject.
- */
 export function isValidRrule(rrule: string): boolean {
 	return rruleProblem(rrule) === null;
 }
 
-/**
- * Why a rule can't be saved: `unparseable` (not an RRULE at all) or
- * `exhausted` (well-formed, but COUNT/UNTIL leaves nothing in the future —
- * a run-once schedule that already ran looks exactly like this). Null when
- * the rule is fine.
- */
 export function rruleProblem(
 	rrule: string,
 ): "unparseable" | "exhausted" | null {
@@ -592,7 +722,7 @@ export function rruleProblem(
 	}
 }
 
-/** Next N upcoming occurrences, for the create-modal preview. */
+/** Next N upcoming real instants, skipping nonexistent local slots. */
 export function nextOccurrences(args: {
 	rrule: string;
 	dtstart: Date;
@@ -600,15 +730,11 @@ export function nextOccurrences(args: {
 	count: number;
 	after?: Date;
 }): Date[] {
+	const compiled = compileRruleCalendar(args);
 	const results: Date[] = [];
 	let cursor = args.after ?? new Date();
-	for (let i = 0; i < args.count; i++) {
-		const next = nextOccurrenceAfter({
-			rrule: args.rrule,
-			dtstart: args.dtstart,
-			timezone: args.timezone,
-			after: cursor,
-		});
+	while (results.length < args.count) {
+		const next = compiled.nextInstantAfter(cursor);
 		if (!next) break;
 		results.push(next);
 		cursor = next;

@@ -165,6 +165,27 @@ jobs:
         working-directory: packages/host-service
         run: bun run test:integration:terminal
 
+  windows-execution:
+    name: Windows execution
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - name: Enable long Git paths
+        run: git config --global core.longpaths true
+
+      - name: Check out code
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version-file: .bun-version
+
+      - name: Verify owned Windows process trees
+        run: bun run packages/host-service/scripts/verify-managed-script-windows.ts
+
   typecheck:
     name: Typecheck
     runs-on: ubuntu-latest

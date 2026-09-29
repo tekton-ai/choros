@@ -340,3 +340,188 @@ export const workspacePullRequests = sqliteTable(
 		index("workspace_pull_requests_workspace_idx").on(table.workspaceId),
 	],
 );
+
+export const automations = sqliteTable(
+	"automations",
+	{
+		id: text().primaryKey(),
+		currentRevision: integer("current_revision").notNull(),
+		version: integer().notNull(),
+		state: text().notNull(),
+		nextDueAt: integer("next_due_at"),
+		scheduleCursor: integer("schedule_cursor"),
+		usedRounds: integer("used_rounds").notNull().default(0),
+		resumeAt: integer("resume_at"),
+		lastFinishedAt: integer("last_finished_at"),
+		createdAt: integer("created_at").notNull(),
+		updatedAt: integer("updated_at").notNull(),
+	},
+	(table) => [
+		index("automations_state_due_idx").on(table.state, table.nextDueAt),
+		index("automations_updated_idx").on(table.updatedAt, table.id),
+	],
+);
+
+export const automationVersions = sqliteTable(
+	"automation_versions",
+	{
+		automationId: text("automation_id")
+			.notNull()
+			.references(() => automations.id, { onDelete: "cascade" }),
+		revision: integer().notNull(),
+		definition: text().notNull(),
+		createdAt: integer("created_at").notNull(),
+	},
+	(table) => [primaryKey({ columns: [table.automationId, table.revision] })],
+);
+
+export const automationRuns = sqliteTable(
+	"automation_runs",
+	{
+		id: text().primaryKey(),
+		automationId: text("automation_id")
+			.notNull()
+			.references(() => automations.id, { onDelete: "cascade" }),
+		definitionRevision: integer("definition_revision").notNull(),
+		source: text().notNull(),
+		plannedAt: integer("planned_at"),
+		occurrenceKey: text("occurrence_key"),
+		status: text().notNull(),
+		reason: text(),
+		executionId: text("execution_id"),
+		retryOf: text("retry_of"),
+		createdAt: integer("created_at").notNull(),
+		startedAt: integer("started_at"),
+		finishedAt: integer("finished_at"),
+	},
+	(table) => [
+		uniqueIndex("automation_runs_occurrence_uq").on(
+			table.automationId,
+			table.occurrenceKey,
+		),
+		uniqueIndex("automation_runs_planned_at_uq").on(
+			table.automationId,
+			table.plannedAt,
+		),
+		uniqueIndex("automation_runs_execution_uq").on(table.executionId),
+		index("automation_runs_history_idx").on(
+			table.automationId,
+			table.createdAt,
+			table.id,
+		),
+		index("automation_runs_status_idx").on(table.status, table.createdAt),
+	],
+);
+
+export const executionRuns = sqliteTable(
+	"execution_runs",
+	{
+		id: text().primaryKey(),
+		runId: text("run_id")
+			.notNull()
+			.references(() => automationRuns.id, { onDelete: "cascade" }),
+		automationId: text("automation_id")
+			.notNull()
+			.references(() => automations.id, { onDelete: "cascade" }),
+		definitionRevision: integer("definition_revision").notNull(),
+		status: text().notNull(),
+		stage: text().notNull(),
+		workspaceId: text("workspace_id"),
+		automationOccupancy: text("automation_occupancy"),
+		workspaceOccupancy: text("workspace_occupancy"),
+		chatSessionId: text("chat_session_id"),
+		providerSessionId: text("provider_session_id"),
+		report: text(),
+		preparationEvidence: text("preparation_evidence"),
+		cancelRequestedAt: integer("cancel_requested_at"),
+		createdAt: integer("created_at").notNull(),
+		startedAt: integer("started_at"),
+		finishedAt: integer("finished_at"),
+	},
+	(table) => [
+		uniqueIndex("execution_runs_run_uq").on(table.runId),
+		uniqueIndex("execution_runs_automation_occupancy_uq").on(
+			table.automationOccupancy,
+		),
+		uniqueIndex("execution_runs_workspace_occupancy_uq").on(
+			table.workspaceOccupancy,
+		),
+		index("execution_runs_status_idx").on(table.status, table.createdAt),
+	],
+);
+
+export const executionOperations = sqliteTable(
+	"execution_operations",
+	{
+		id: text().primaryKey(),
+		executionId: text("execution_id")
+			.notNull()
+			.references(() => executionRuns.id, { onDelete: "cascade" }),
+		kind: text().notNull(),
+		state: text().notNull(),
+		parameterDigest: text("parameter_digest").notNull(),
+		receipt: text(),
+		createdAt: integer("created_at").notNull(),
+		updatedAt: integer("updated_at").notNull(),
+	},
+	(table) => [
+		uniqueIndex("execution_operations_kind_uq").on(
+			table.executionId,
+			table.kind,
+		),
+		index("execution_operations_state_idx").on(table.state, table.updatedAt),
+	],
+);
+
+export const executionInputs = sqliteTable(
+	"execution_inputs",
+	{
+		id: text().primaryKey(),
+		executionId: text("execution_id")
+			.notNull()
+			.references(() => executionRuns.id, { onDelete: "cascade" }),
+		kind: text().notNull(),
+		question: text().notNull(),
+		options: text(),
+		status: text().notNull(),
+		version: integer().notNull(),
+		answer: text(),
+		deliveryState: text("delivery_state"),
+		createdAt: integer("created_at").notNull(),
+		answeredAt: integer("answered_at"),
+	},
+	(table) => [
+		index("execution_inputs_pending_idx").on(table.status, table.createdAt),
+	],
+);
+
+export const workCommandReceipts = sqliteTable(
+	"work_command_receipts",
+	{
+		scope: text().notNull(),
+		requestId: text("request_id").notNull(),
+		parameterDigest: text("parameter_digest").notNull(),
+		confirmationDigest: text("confirmation_digest"),
+		result: text().notNull(),
+		createdAt: integer("created_at").notNull(),
+	},
+	(table) => [
+		primaryKey({ columns: [table.scope, table.requestId] }),
+		uniqueIndex("work_command_confirmation_uq").on(table.confirmationDigest),
+	],
+);
+
+export const workEvents = sqliteTable(
+	"work_events",
+	{
+		seq: integer().primaryKey({ autoIncrement: true }),
+		automationId: text("automation_id"),
+		runId: text("run_id"),
+		type: text().notNull(),
+		createdAt: integer("created_at").notNull(),
+	},
+	(table) => [
+		index("work_events_automation_idx").on(table.automationId, table.seq),
+		index("work_events_run_idx").on(table.runId, table.seq),
+	],
+);

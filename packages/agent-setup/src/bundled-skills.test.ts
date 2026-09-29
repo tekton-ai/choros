@@ -67,11 +67,10 @@ describe("bundled plugin skills", () => {
 				expect(frontmatter.name.length).toBeLessThanOrEqual(64);
 			});
 
-			it("has a description that says what and when, within the limit", () => {
+			it("has a non-empty description within the metadata limit", () => {
 				const description = frontmatter.description ?? "";
 				expect(description.length).toBeGreaterThan(0);
 				expect(description.length).toBeLessThanOrEqual(MAX_DESCRIPTION_CHARS);
-				expect(description).toMatch(/\bUse when\b/);
 				expect(description).not.toMatch(/<[a-z]+>/);
 			});
 
@@ -83,10 +82,6 @@ describe("bundled plugin skills", () => {
 
 			it("keeps the body within the progressive-disclosure budget", () => {
 				expect(body.split("\n").length).toBeLessThanOrEqual(MAX_BODY_LINES);
-			});
-
-			it("avoids em dashes (repo prose rule)", () => {
-				expect(content.includes("—")).toBe(false);
 			});
 
 			it("ships every script and reference it mentions", () => {

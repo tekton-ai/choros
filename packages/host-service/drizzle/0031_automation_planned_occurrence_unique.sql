@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX `automation_runs_planned_at_uq` ON `automation_runs` (`automation_id`,`planned_at`);

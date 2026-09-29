@@ -159,6 +159,835 @@ msgid "auth.signIn.welcomeTitle"
 msgstr "Ti diamo il benvenuto in Choros"
 
 #. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.archive"
+msgstr "Archivia"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.archiveConfirm"
+msgstr "Archivia"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.archiveConfirmBody"
+msgstr "Le esecuzioni future verranno interrotte. La cronologia e i file esistenti verranno conservati e l'eventuale esecuzione in corso resterà attiva."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.archiveConfirmTitle"
+msgstr "Archiviare questa automazione?"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.attentionReview"
+msgstr "Esamina questa esecuzione"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.dismiss"
+msgstr "Indietro"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.edit"
+msgstr "Modifica"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.account"
+msgstr "Riferimento all'account"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.at"
+msgstr "Istante (ISO 8601)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.back"
+msgstr "Indietro"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.baseRef"
+msgstr "Riferimento di base"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.cancel"
+msgstr "Annulla"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.confirm"
+msgstr "Conferma"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.confirmTitle"
+msgstr "Conferma questo accordo operativo"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.createTitle"
+msgstr "Nuova automazione"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.dstGap"
+msgstr "Intervallo saltato per il passaggio all'ora legale"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.editTitle"
+msgstr "Modifica automazione"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.effort"
+msgstr "Livello di impegno (facoltativo)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.endsBefore"
+msgstr "Interrompi prima di (ISO 8601)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.existingWorkspace"
+msgstr "Area di lavoro esistente"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.freshSession"
+msgstr "Nuova"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.harness"
+msgstr "Agente"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.instructions"
+msgstr "Istruzioni"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.interval"
+msgstr "Intervallo in secondi"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.maxRounds"
+msgstr "Numero massimo di esecuzioni pianificate"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.missedWindow"
+msgstr "Finestra per le esecuzioni mancate (secondi)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.model"
+msgstr "Modello (facoltativo)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.name"
+msgstr "Nome"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.newWorktree"
+msgstr "Nuovo worktree"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.precheck"
+msgstr "Comando di verifica preliminare (facoltativo)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.precheckTimeout"
+msgstr "Timeout della verifica preliminare (secondi)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.previewEnable"
+msgstr "Anteprima del salvataggio con abilitazione"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.previewExpiry"
+msgstr "L'anteprima scade alle {expiresAt}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.previewRun"
+msgstr "Anteprima ed esecuzione immediata"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.previewSave"
+msgstr "Anteprima del salvataggio in pausa"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.project"
+msgstr "Progetto"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.reuseSession"
+msgstr "Riutilizza la sessione gestita"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.rrule"
+msgstr "RRULE"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.scheduleAfterCompletion"
+msgstr "Dopo il completamento"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.scheduleCalendar"
+msgstr "Ricorrenza di calendario"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.scheduleFixed"
+msgstr "Intervallo fisso"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.scheduleImmediate"
+msgstr "Subito, una sola volta"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.scheduleKind"
+msgstr "Pianificazione"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.scheduleOnce"
+msgstr "A un orario specifico"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.sessionId"
+msgstr "ID sessione"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.sessionMode"
+msgstr "Modalità di sessione"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.setupEveryRun"
+msgstr "Esegui la configurazione ogni volta"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.setupPolicy"
+msgstr "Criterio di configurazione"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.setupPrepared"
+msgstr "Usa l'ambiente preparato"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.setupTimeout"
+msgstr "Timeout della configurazione (secondi)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.startsAt"
+msgstr "Inizio (ISO 8601)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.targetKind"
+msgstr "Tipo di destinazione"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.timeZone"
+msgstr "Fuso orario IANA"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.workspace"
+msgstr "Area di lavoro"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.emptyHistory"
+msgstr "Nessuna cronologia delle esecuzioni in questo Work Profile."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.emptySchedules"
+msgstr "Nessuna automazione in questo Work Profile."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.enable"
+msgstr "Abilita"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.enableConfirm"
+msgstr "Abilita pianificazione"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.enableConfirmTitle"
+msgstr "Conferma l'abilitazione di questa pianificazione"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/host-automations-provider/host-automations-provider.tsx
+msgid "automations.error.hostUnavailable"
+msgstr "Il servizio Host locale non è disponibile."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.filter.all"
+msgstr "Tutti gli stati"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.filter.statusAria"
+msgstr "Filtra per stato"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.invalidTargetBody"
+msgstr "Il progetto o lo spazio di lavoro salvato non è più reperibile. L'avvio di nuove esecuzioni è bloccato."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.invalidTargets"
+msgstr "Destinazioni non disponibili"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.loading"
+msgstr "Caricamento delle automazioni…"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.loadMore"
+msgstr "Carica altro"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.new"
+msgstr "Nuova"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.nextRun"
+msgstr "Prossima: {nextRun}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.noInvalidTargets"
+msgstr "Nessuna destinazione non disponibile."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.noNextRun"
+msgstr "Nessuna prossima esecuzione"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.noPendingRuns"
+msgstr "Nessuna esecuzione richiede una risposta."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/host-automations-provider/host-automations-provider.tsx
+msgid "automations.notification.attentionTitle"
+msgstr "L'automazione richiede attenzione"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/host-automations-provider/host-automations-provider.tsx
+msgid "automations.notification.completeTitle"
+msgstr "Esecuzione dell'automazione completata"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/host-automations-provider/host-automations-provider.tsx
+msgid "automations.notification.failedTitle"
+msgstr "L'esecuzione dell'automazione richiede una verifica"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.pause"
+msgstr "Metti in pausa"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.pendingRuns"
+msgstr "Esecuzioni in attesa in tutti i Work Profile"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.repairTarget"
+msgstr "Modifica destinazione"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.retryLoad"
+msgstr "Riprova"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.retryRun"
+msgstr "Riprova"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.agreement"
+msgstr "Istantanea dell'accordo di lavoro"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.answerAria"
+msgstr "Rispondi a questa richiesta di input"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.answerPlaceholder"
+msgstr "Digita una risposta"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.artifacts"
+msgstr "Artefatti"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.back"
+msgstr "Torna alle automazioni"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.backShort"
+msgstr "Automazioni"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.byteLength"
+msgstr "{byteLength} byte"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.cancel"
+msgstr "Richiedi annullamento"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.chatSessionId"
+msgstr "ID della sessione di chat"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.createdAt"
+msgstr "Data e ora di accettazione"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.definitionRevision"
+msgstr "Revisione della definizione"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.executionId"
+msgstr "ID di esecuzione"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.executor"
+msgstr "Esecutore"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.exitCode"
+msgstr "Codice di uscita: {exitCode}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.finishedAt"
+msgstr "Data e ora di conclusione"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.identities"
+msgstr "Identità di esecuzione"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.inputs"
+msgstr "Domande e autorizzazioni"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.instructions"
+msgstr "Istruzioni"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.loading"
+msgstr "Caricamento dell'esecuzione…"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.missing"
+msgstr "mancante"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.mutable"
+msgstr "modificabile"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.needsResultBody"
+msgstr "L'output disponibile resta visibile qui sotto, ma l'Host non ha inventato un esito positivo."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.needsResultTitle"
+msgstr "Il turno dell'agente si è concluso senza un resoconto valido del risultato"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.noArtifacts"
+msgstr "Non sono stati segnalati artefatti."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.noExitCode"
+msgstr "Nessun codice di uscita"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.noInputs"
+msgstr "Nessuna richiesta di input."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.noPreparationEvidence"
+msgstr "Non sono state registrate evidenze di preparazione."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.noResult"
+msgstr "Non è disponibile un resoconto valido del risultato."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.notAvailable"
+msgstr "Non disponibile"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.notFound"
+msgstr "Esecuzione non trovata."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.notQuiescent"
+msgstr "Lo stato di quiescenza non è stato confermato"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.openSession"
+msgstr "Apri sessione"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.openWorkspace"
+msgstr "Apri spazio di lavoro"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.outputTruncated"
+msgstr "L'output è stato troncato"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.pendingAnnouncement"
+msgstr "Questa esecuzione ha richieste di input in attesa."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.plannedAt"
+msgstr "Data e ora pianificate"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.progress"
+msgstr "Evidenze di preparazione ed esecuzione"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.providerSessionId"
+msgstr "ID della sessione del provider"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.quiescent"
+msgstr "L'Host ha rilevato che l'operazione è in stato di quiescenza"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.reason"
+msgstr "Motivo"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.recordedAnswer"
+msgstr "Risposta registrata:"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.result"
+msgstr "Risultato"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.retry"
+msgstr "Riprova da questa istantanea"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.retryOf"
+msgstr "Nuovo tentativo di"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.source"
+msgstr "Origine dell'attivazione"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.stage"
+msgstr "Fase attuale"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.startedAt"
+msgstr "Data e ora di avvio"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.submitAnswer"
+msgstr "Invia risposta"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.summary"
+msgstr "Riepilogo fornito dall'agente"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.target"
+msgstr "Destinazione"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.unconfirmedInput"
+msgstr "Non è stato possibile recuperare la richiesta originale del fornitore. La risposta salvata non è stata applicata a una nuova richiesta."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.unknownBody"
+msgstr "L'Host non può verificare che il processo gestito si sia arrestato. Questa destinazione rimane occupata; esamina le evidenze o richiedi l'annullamento anziché avviare attività in conflitto."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.unknownTitle"
+msgstr "Lo stato dell'esecuzione è sconosciuto"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.verification"
+msgstr "Verifica riportata dall'agente"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.verificationEvidence"
+msgstr "Evidenze"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.verificationMethod"
+msgstr "Metodo"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.verificationReason"
+msgstr "Motivo"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.verificationStatus"
+msgstr "Stato"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.workspaceId"
+msgstr "ID del workspace"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.runNoSummary"
+msgstr "Apri dettagli dell'esecuzione"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.runNow"
+msgstr "Esegui ora"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.search"
+msgstr "Cerca automazioni"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.searchAria"
+msgstr "Cerca automazioni"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.archived"
+msgstr "Archiviata"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.cancelled"
+msgstr "Annullata"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.enabled"
+msgstr "Abilitata"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.failed"
+msgstr "Non riuscita"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.finished"
+msgstr "Terminata"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.needsResult"
+msgstr "Risultato richiesto"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.paused"
+msgstr "In pausa"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.preparing"
+msgstr "In preparazione"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.running"
+msgstr "In esecuzione"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.skipped"
+msgstr "Saltata"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+msgid "automations.status.stopping"
+msgstr "Arresto in corso"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.succeeded"
+msgstr "Riuscita"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.unknown"
+msgstr "Sconosciuto"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.waiting"
+msgstr "In attesa"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.subtitle"
+msgstr "Pianifica il lavoro, verifica i risultati salvati e intervieni sulle esecuzioni in sospeso."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.tab.attention"
+msgstr "Da verificare"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.tab.history"
+msgstr "Cronologia delle esecuzioni"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.tab.schedules"
+msgstr "Pianificazioni"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.targetUnavailable"
+msgstr "Destinazione non disponibile"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.title"
+msgstr "Automazioni"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.usedRounds"
+msgstr "Cicli pianificati utilizzati: {usedRounds}"
+
+#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/click-policy/action-label.ts
 msgid "clickPolicy.action.none"
 msgstr "Non fare nulla"
@@ -1581,6 +2410,7 @@ msgid "dashboard.historyDropdown.v2WorkspaceKind"
 msgstr "Workspace"
 
 #. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/load-more-sentinel/load-more-sentinel.tsx
 msgid "dashboard.loadMoreSentinel.loadingMore"
 msgstr "Caricamento di altri…"
@@ -4207,6 +5037,26 @@ msgstr "Aggiungi progetto"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx
 msgid "dashboard.sidebar.header.addProjectTooltip"
 msgstr "Aggiungi progetto"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx
+msgid "dashboard.sidebar.header.automations"
+msgstr "Automazioni"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx
+msgid "dashboard.sidebar.header.automationsAriaLabel"
+msgstr "Automazioni"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx
+msgid "dashboard.sidebar.header.automationsRailAriaLabel"
+msgstr "Automazioni"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx
+msgid "dashboard.sidebar.header.automationsTooltip"
+msgstr "Automazioni"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx
@@ -7433,15 +8283,14 @@ msgid "profiles.name.save"
 msgstr "Salva"
 
 #. js-lingui-explicit-id
-#. placeholder {0}: profile.name
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
-msgid "profiles.switcher.itemLabel"
-msgstr "{0}. Workspace che richiedono attenzione: {formattedProfileCount}."
+msgid "profiles.switcher.attentionItemLabel"
+msgstr "{name}. Elementi che richiedono attenzione: {count}."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
-msgid "profiles.switcher.label"
-msgstr "Profilo di lavoro: {name}. Workspace che richiedono attenzione: {formattedCount}."
+msgid "profiles.switcher.attentionLabel"
+msgstr "Work Profile: {name}. Elementi che richiedono attenzione: {count}."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
@@ -12139,6 +12988,36 @@ msgstr "Token"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/usage-workspaces-page/usage-workspaces-page.tsx
 msgid "settings.usage.workspacesPage.workspaceCount"
 msgstr "{0, plural, one {# workspace} other {# workspace}}"
+
+#. js-lingui-explicit-id
+#: ../shared/src/automation-schedule.ts
+msgid "shared.automationSchedule.afterCompletion"
+msgstr "Attendi {seconds} secondi dopo il completamento a partire da {startsAt}"
+
+#. js-lingui-explicit-id
+#: ../shared/src/automation-schedule.ts
+msgid "shared.automationSchedule.afterCompletionContinuous"
+msgstr "Continua dopo il completamento a partire da {startsAt}"
+
+#. js-lingui-explicit-id
+#: ../shared/src/automation-schedule.ts
+msgid "shared.automationSchedule.calendar"
+msgstr "{schedule} ({timeZone})"
+
+#. js-lingui-explicit-id
+#: ../shared/src/automation-schedule.ts
+msgid "shared.automationSchedule.fixedInterval"
+msgstr "Ogni {seconds} secondi a partire da {startsAt}"
+
+#. js-lingui-explicit-id
+#: ../shared/src/automation-schedule.ts
+msgid "shared.automationSchedule.immediate"
+msgstr "Immediatamente"
+
+#. js-lingui-explicit-id
+#: ../shared/src/automation-schedule.ts
+msgid "shared.automationSchedule.once"
+msgstr "Una sola volta: {at} ({timeZone})"
 
 #. js-lingui-explicit-id
 #: ../shared/src/automation-triggers.ts

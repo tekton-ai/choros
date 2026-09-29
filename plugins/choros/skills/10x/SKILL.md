@@ -27,7 +27,7 @@ For each recommendation in order: a two-sentence pitch, then ask (use the ask_us
 
 | Feature | Why it 10x's you | Live setup |
 | --- | --- | --- |
-| Automations | Scheduled agents: triage, changelogs, standups run while you sleep | `superset automations create`, then `superset automations logs` to review runs |
+| Automations | Local one-time and scheduled agent work with persisted run history | Use the automate skill: preview the definition, save it paused, then separately confirm enablement; review with `choros automations runs` |
 | Parallel workspaces | Every task gets an isolated worktree; run several agents at once instead of queueing | `superset workspaces create --project <id>` then `superset agents create --workspace <id> --agent claude --prompt "..."` |
 | PR review workspaces | Check out any PR into its own workspace in one command | `superset workspaces create --pr <number>` |
 | Tasks | A shared queue agents can pick up; track work across sessions | `superset tasks create --title "..."`, `superset tasks update` |

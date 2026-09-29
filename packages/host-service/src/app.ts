@@ -13,7 +13,18 @@ import { registerForwardMuxRoute } from "./ports/forward-mux-route";
 import { portManager } from "./ports/port-manager";
 import type { HostAuthProvider } from "./providers/host-auth";
 import { runArchivedWorkspaceReconcile } from "./runtime/archived-workspace-reconcile";
+import {
+	type AutomationRuntime,
+	createAutomationRuntime,
+} from "./runtime/automations";
 import { registerBrowserCdpRoute } from "./runtime/browser-bridge/browser-cdp-route";
+import { createNativeExecutionDriver } from "./runtime/executions/native-driver";
+import {
+	createExecutionPreparer,
+	createPreparedExecutionRestorer,
+	resolveAutomationDefinition,
+} from "./runtime/executions/prepare-execution";
+import type { AutomationRuntimeOptions } from "./runtime/executions/types";
 import { WorkspaceFilesystemManager } from "./runtime/filesystem";
 import type { GitCredentialProvider } from "./runtime/git";
 import { createGitEnvResolver, createGitFactory } from "./runtime/git";
@@ -31,7 +42,7 @@ import {
 	execGh as defaultExecGh,
 	type ExecGh,
 } from "./trpc/router/workspace-creation/utils/exec-gh";
-import type { BrowserBridgeConfig } from "./types";
+import type { BrowserBridgeConfig, HostServiceContext } from "./types";
 import { getHostWorkerPool } from "./workers/host-worker-pool";
 import { gitWorkspaceRefsTask } from "./workers/tasks/git";
 
@@ -58,6 +69,17 @@ export interface CreateAppOptions {
 	github?: () => Promise<Octokit>;
 	execGh?: ExecGh;
 	chatService?: ChatService;
+	/** Constructor-only protocol fixtures; never exposed through host configuration or RPC. */
+	automation?: Partial<
+		Pick<
+			AutomationRuntimeOptions,
+			| "driver"
+			| "prepareExecution"
+			| "restorePreparedExecution"
+			| "resolveDefinition"
+			| "now"
+		>
+	> & { autoStart?: boolean };
 }
 
 export interface CreateAppResult {
@@ -65,6 +87,7 @@ export interface CreateAppResult {
 	injectWebSocket: ReturnType<typeof createNodeWebSocket>["injectWebSocket"];
 	db: HostDb;
 	eventBus: EventBus;
+	automations: AutomationRuntime;
 	dispose: () => Promise<void>;
 }
 
@@ -129,12 +152,13 @@ export function createApp(options: CreateAppOptions): CreateAppResult {
 	// provider auth storage; the `host.auth.*` router proxies to it.
 	const chatService = options.chatService ?? new ChatService();
 
-	// Chat v3 runtime (plans/chat-v3-pane-mount.md). Registered unconditionally:
-	// the routes sit behind the same auth as every other host route, and the
-	// runtime is built on first request, so chat.db is never created on a host
-	// nobody chats with. Exposure is a client concern — the renderer gates the
-	// pane on the `chat-v3` PostHog flag.
-	const chatV3 = createChatV3Mount({ db, dbPath: config.dbPath });
+	// Native sessions stay lazy; a host with no chat or agent work need not open chat.db.
+	let automationRuntime: AutomationRuntime;
+	const chatV3 = createChatV3Mount({
+		db,
+		dbPath: config.dbPath,
+		getAutomationClient: () => automationRuntime,
+	});
 
 	const app = new Hono();
 	const { injectWebSocket, upgradeWebSocket } = createNodeWebSocket({ app });
@@ -174,11 +198,51 @@ export function createApp(options: CreateAppOptions): CreateAppResult {
 	}
 	const terminalAgentStore = new TerminalAgentStore(terminalAgentPersistence);
 
+	const executionContext = (): HostServiceContext => ({
+		git,
+		credentials: providers.credentials,
+		github,
+		execGh,
+		db,
+		runtime,
+		eventBus,
+		terminalAgentStore,
+		isAuthenticated: true,
+		browserBridge: config.browserBridge,
+	});
+	automationRuntime = createAutomationRuntime({
+		db,
+		driver:
+			options.automation?.driver ??
+			createNativeExecutionDriver({ runtime: chatV3.runtime }),
+		prepareExecution:
+			options.automation?.prepareExecution ??
+			createExecutionPreparer(executionContext),
+		restorePreparedExecution:
+			options.automation?.restorePreparedExecution ??
+			createPreparedExecutionRestorer(executionContext),
+		resolveDefinition:
+			options.automation?.resolveDefinition ??
+			(async (definition) =>
+				resolveAutomationDefinition(executionContext(), definition)),
+		now: options.automation?.now,
+	});
 	const runtime = {
 		auth: chatService,
 		filesystem,
 		pullRequests: pullRequestRuntime,
+		automations: automationRuntime,
 	};
+	let disposing = false;
+	const automationStartup =
+		options.automation?.autoStart !== false
+			? automationRuntime.start().catch((error) => {
+					console.error(
+						"[host-service] automation startup reconciliation failed",
+						error,
+					);
+				})
+			: Promise.resolve();
 
 	// Startup sweeps run in the background so they don't block server
 	// startup. Ordering matters: the project backfill fills identity fields
@@ -191,14 +255,15 @@ export function createApp(options: CreateAppOptions): CreateAppResult {
 	// touched. There is nothing to recover, so the sweeps can only invent:
 	// the main-workspace sweep already added a phantom second workspace here
 	// before bootstrap started seeding `type='main'`.
-	void (async () => {
-		if (process.env.CHOROS_HOST_RUN_MODE === "sandbox") return;
+	const startupReconcile = (async () => {
+		if (disposing || process.env.CHOROS_HOST_RUN_MODE === "sandbox") return;
 		await runProjectBackfill({
 			db,
 			eventBus,
 		}).catch((err) => {
 			console.warn("[host-service] project backfill failed:", err);
 		});
+		if (disposing) return;
 		// Backfill `kind='main'` workspaces for projects already set up before
 		// this column shipped. Idempotent — only does real work the first
 		// time after upgrade.
@@ -209,6 +274,7 @@ export function createApp(options: CreateAppOptions): CreateAppResult {
 		}).catch((err) => {
 			console.warn("[host-service] main-workspace sweep failed:", err);
 		});
+		if (disposing) return;
 		// Finish any delete the previous process crashed out of (archived row
 		// whose worktree still exists).
 		await runArchivedWorkspaceReconcile({
@@ -224,6 +290,7 @@ export function createApp(options: CreateAppOptions): CreateAppResult {
 		}).catch((err) => {
 			console.warn("[host-service] archived-workspace reconcile failed:", err);
 		});
+		if (disposing) return;
 		// Re-share the default account's Claude/Codex config into the selected
 		// provider profiles. Last: it touches no host state the sweeps above
 		// repair, and a slow filesystem must not delay them.
@@ -300,6 +367,8 @@ export function createApp(options: CreateAppOptions): CreateAppResult {
 
 	const ownsDb = options.db === undefined;
 	const dispose = async (): Promise<void> => {
+		disposing = true;
+		await Promise.allSettled([automationStartup, startupReconcile]);
 		// Each step is best-effort and isolated: a throw in one cleanup must
 		// not skip the others, otherwise a flaky `.stop()` could leak the
 		// open SQLite handle for the rest of the process lifetime.
@@ -307,6 +376,11 @@ export function createApp(options: CreateAppOptions): CreateAppResult {
 			pullRequestRuntime.stop();
 		} catch (err) {
 			console.warn("[host-service] pullRequestRuntime.stop failed:", err);
+		}
+		try {
+			await automationRuntime.stop();
+		} catch (err) {
+			console.warn("[host-service] automation runtime stop failed:", err);
 		}
 		try {
 			await chatV3.dispose();
@@ -332,5 +406,12 @@ export function createApp(options: CreateAppOptions): CreateAppResult {
 		}
 	};
 
-	return { app, injectWebSocket, db, eventBus, dispose };
+	return {
+		app,
+		injectWebSocket,
+		db,
+		eventBus,
+		automations: automationRuntime,
+		dispose,
+	};
 }

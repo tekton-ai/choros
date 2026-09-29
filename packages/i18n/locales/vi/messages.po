@@ -159,6 +159,835 @@ msgid "auth.signIn.welcomeTitle"
 msgstr "Chào mừng đến với Choros"
 
 #. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.archive"
+msgstr "Lưu trữ"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.archiveConfirm"
+msgstr "Lưu trữ"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.archiveConfirmBody"
+msgstr "Các lượt chạy trong tương lai sẽ dừng lại. Lịch sử, tệp hiện có và lượt chạy đang hoạt động sẽ được giữ nguyên."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.archiveConfirmTitle"
+msgstr "Lưu trữ tác vụ tự động này?"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.attentionReview"
+msgstr "Xem xét lượt chạy này"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.dismiss"
+msgstr "Quay lại"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.edit"
+msgstr "Chỉnh sửa"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.account"
+msgstr "Tham chiếu tài khoản"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.at"
+msgstr "Thời điểm (ISO 8601)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.back"
+msgstr "Quay lại"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.baseRef"
+msgstr "Tham chiếu cơ sở"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.cancel"
+msgstr "Hủy"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.confirm"
+msgstr "Xác nhận"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.confirmTitle"
+msgstr "Xác nhận thỏa thuận công việc này"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.createTitle"
+msgstr "Tác vụ tự động mới"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.dstGap"
+msgstr "Đã bỏ qua khoảng thời gian không tồn tại do chuyển sang giờ mùa hè"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.editTitle"
+msgstr "Chỉnh sửa tác vụ tự động"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.effort"
+msgstr "Mức độ nỗ lực (tùy chọn)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.endsBefore"
+msgstr "Dừng trước (ISO 8601)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.existingWorkspace"
+msgstr "Không gian làm việc hiện có"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.freshSession"
+msgstr "Phiên mới"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.harness"
+msgstr "Tác nhân"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.instructions"
+msgstr "Hướng dẫn"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.interval"
+msgstr "Khoảng thời gian giữa các lần chạy (giây)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.maxRounds"
+msgstr "Số lượt chạy theo lịch tối đa"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.missedWindow"
+msgstr "Khoảng thời gian cho phép chạy bù (giây)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.model"
+msgstr "Mô hình (tùy chọn)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.name"
+msgstr "Tên"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.newWorktree"
+msgstr "Worktree mới"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.precheck"
+msgstr "Lệnh kiểm tra trước (tùy chọn)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.precheckTimeout"
+msgstr "Thời gian chờ kiểm tra trước tối đa (giây)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.previewEnable"
+msgstr "Xem trước việc lưu và bật"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.previewExpiry"
+msgstr "Bản xem trước hết hạn lúc {expiresAt}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.previewRun"
+msgstr "Xem trước và chạy ngay"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.previewSave"
+msgstr "Xem trước việc lưu ở trạng thái tạm dừng"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.project"
+msgstr "Dự án"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.reuseSession"
+msgstr "Tái sử dụng phiên được quản lý"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.rrule"
+msgstr "RRULE"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.scheduleAfterCompletion"
+msgstr "Sau khi hoàn tất"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.scheduleCalendar"
+msgstr "Lặp lại theo lịch"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.scheduleFixed"
+msgstr "Khoảng thời gian cố định"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.scheduleImmediate"
+msgstr "Chạy ngay một lần"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.scheduleKind"
+msgstr "Lịch chạy"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.scheduleOnce"
+msgstr "Vào thời điểm cụ thể"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.sessionId"
+msgstr "ID phiên"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.sessionMode"
+msgstr "Chế độ phiên"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.setupEveryRun"
+msgstr "Thiết lập mỗi lần chạy"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.setupPolicy"
+msgstr "Chính sách thiết lập"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.setupPrepared"
+msgstr "Dùng môi trường đã chuẩn bị"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.setupTimeout"
+msgstr "Thời gian chờ thiết lập tối đa (giây)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.startsAt"
+msgstr "Bắt đầu lúc (ISO 8601)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.targetKind"
+msgstr "Loại đích"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.timeZone"
+msgstr "Múi giờ IANA"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.workspace"
+msgstr "Không gian làm việc"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.emptyHistory"
+msgstr "Chưa có lịch sử chạy trong Work Profile này."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.emptySchedules"
+msgstr "Chưa có tác vụ tự động hóa nào trong Work Profile này."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.enable"
+msgstr "Bật"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.enableConfirm"
+msgstr "Bật lịch chạy"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.enableConfirmTitle"
+msgstr "Xác nhận bật lịch chạy này"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/host-automations-provider/host-automations-provider.tsx
+msgid "automations.error.hostUnavailable"
+msgstr "Dịch vụ Host cục bộ không khả dụng."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.filter.all"
+msgstr "Tất cả trạng thái"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.filter.statusAria"
+msgstr "Lọc theo trạng thái"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.invalidTargetBody"
+msgstr "Không còn tìm thấy dự án hoặc không gian làm việc đã lưu. Các lần khởi chạy tiếp theo bị chặn."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.invalidTargets"
+msgstr "Đích không khả dụng"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.loading"
+msgstr "Đang tải tác vụ tự động…"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.loadMore"
+msgstr "Tải thêm"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.new"
+msgstr "Tạo mới"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.nextRun"
+msgstr "Lần tiếp theo: {nextRun}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.noInvalidTargets"
+msgstr "Không có đích nào không khả dụng."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.noNextRun"
+msgstr "Không có lượt chạy tiếp theo"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.noPendingRuns"
+msgstr "Không có lượt chạy nào cần phản hồi."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/host-automations-provider/host-automations-provider.tsx
+msgid "automations.notification.attentionTitle"
+msgstr "Tác vụ tự động cần chú ý"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/host-automations-provider/host-automations-provider.tsx
+msgid "automations.notification.completeTitle"
+msgstr "Lượt chạy tự động đã hoàn tất"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/host-automations-provider/host-automations-provider.tsx
+msgid "automations.notification.failedTitle"
+msgstr "Lượt chạy tự động cần xem xét"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.pause"
+msgstr "Tạm dừng"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.pendingRuns"
+msgstr "Các lượt chạy đang chờ phản hồi trên tất cả Work Profile"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.repairTarget"
+msgstr "Chỉnh sửa đích"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.retryLoad"
+msgstr "Thử lại"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.retryRun"
+msgstr "Thử lại"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.agreement"
+msgstr "Bản chụp thỏa thuận công việc"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.answerAria"
+msgstr "Trả lời yêu cầu phản hồi này"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.answerPlaceholder"
+msgstr "Nhập câu trả lời"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.artifacts"
+msgstr "Sản phẩm đầu ra"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.back"
+msgstr "Quay lại Tự động hóa"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.backShort"
+msgstr "Tự động hóa"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.byteLength"
+msgstr "{byteLength} byte"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.cancel"
+msgstr "Yêu cầu hủy"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.chatSessionId"
+msgstr "ID phiên trò chuyện"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.createdAt"
+msgstr "Thời điểm tiếp nhận"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.definitionRevision"
+msgstr "Phiên bản định nghĩa"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.executionId"
+msgstr "ID lần thực thi"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.executor"
+msgstr "Bộ thực thi"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.exitCode"
+msgstr "Mã thoát {exitCode}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.finishedAt"
+msgstr "Thời điểm kết thúc"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.identities"
+msgstr "Thông tin định danh lần thực thi"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.inputs"
+msgstr "Câu hỏi và quyền truy cập"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.instructions"
+msgstr "Chỉ dẫn"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.loading"
+msgstr "Đang tải lượt chạy…"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.missing"
+msgstr "bị thiếu"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.mutable"
+msgstr "có thể thay đổi"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.needsResultBody"
+msgstr "Đầu ra hiện có vẫn hiển thị bên dưới, nhưng Host không tự suy diễn rằng tác vụ đã thành công."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.needsResultTitle"
+msgstr "Lượt xử lý của tác nhân đã kết thúc mà không có báo cáo kết quả hợp lệ"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.noArtifacts"
+msgstr "Không có sản phẩm đầu ra nào được báo cáo."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.noExitCode"
+msgstr "Không có mã thoát"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.noInputs"
+msgstr "Không có yêu cầu phản hồi nào."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.noPreparationEvidence"
+msgstr "Không có bằng chứng nào về quá trình chuẩn bị được ghi nhận."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.noResult"
+msgstr "Không có báo cáo kết quả hợp lệ."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.notAvailable"
+msgstr "Không khả dụng"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.notFound"
+msgstr "Không tìm thấy lượt chạy."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.notQuiescent"
+msgstr "Chưa xác nhận được trạng thái ngừng hoạt động"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.openSession"
+msgstr "Mở phiên"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.openWorkspace"
+msgstr "Mở không gian làm việc"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.outputTruncated"
+msgstr "Đầu ra đã bị cắt bớt"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.pendingAnnouncement"
+msgstr "Lượt chạy này có yêu cầu đang chờ phản hồi."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.plannedAt"
+msgstr "Thời điểm dự kiến"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.progress"
+msgstr "Bằng chứng về quá trình chuẩn bị và thực thi"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.providerSessionId"
+msgstr "ID phiên của nhà cung cấp"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.quiescent"
+msgstr "Host đã ghi nhận thao tác không còn hoạt động"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.reason"
+msgstr "Lý do"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.recordedAnswer"
+msgstr "Câu trả lời đã ghi nhận:"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.result"
+msgstr "Kết quả"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.retry"
+msgstr "Thử lại từ bản chụp trạng thái này"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.retryOf"
+msgstr "Lượt chạy gốc được thử lại"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.source"
+msgstr "Nguồn kích hoạt"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.stage"
+msgstr "Giai đoạn hiện tại"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.startedAt"
+msgstr "Thời điểm bắt đầu"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.submitAnswer"
+msgstr "Gửi câu trả lời"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.summary"
+msgstr "Tóm tắt do tác nhân báo cáo"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.target"
+msgstr "Đích"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.unconfirmedInput"
+msgstr "Không thể khôi phục yêu cầu ban đầu từ nhà cung cấp. Câu trả lời đã lưu không được áp dụng cho yêu cầu mới."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.unknownBody"
+msgstr "Host không thể xác minh rằng tiến trình được quản lý đã dừng. Đích này vẫn đang được sử dụng; hãy xem xét bằng chứng hoặc yêu cầu hủy thay vì bắt đầu công việc có thể gây xung đột."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.unknownTitle"
+msgstr "Chưa xác định được trạng thái thực thi"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.verification"
+msgstr "Thông tin xác minh do tác nhân báo cáo"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.verificationEvidence"
+msgstr "Bằng chứng"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.verificationMethod"
+msgstr "Phương pháp"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.verificationReason"
+msgstr "Lý do"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.verificationStatus"
+msgstr "Trạng thái"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.workspaceId"
+msgstr "ID không gian làm việc"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.runNoSummary"
+msgstr "Mở chi tiết lượt chạy"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.runNow"
+msgstr "Chạy ngay"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.search"
+msgstr "Tìm kiếm tác vụ tự động hóa"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.searchAria"
+msgstr "Tìm kiếm tác vụ tự động hóa"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.archived"
+msgstr "Đã lưu trữ"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.cancelled"
+msgstr "Đã hủy"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.enabled"
+msgstr "Đã bật"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.failed"
+msgstr "Thất bại"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.finished"
+msgstr "Đã kết thúc"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.needsResult"
+msgstr "Cần kết quả"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.paused"
+msgstr "Đã tạm dừng"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.preparing"
+msgstr "Đang chuẩn bị"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.running"
+msgstr "Đang chạy"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.skipped"
+msgstr "Đã bỏ qua"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+msgid "automations.status.stopping"
+msgstr "Đang dừng"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.succeeded"
+msgstr "Thành công"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.unknown"
+msgstr "Không xác định"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.waiting"
+msgstr "Đang chờ"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.subtitle"
+msgstr "Lên lịch công việc, xem lại kết quả được lưu giữ lâu dài và xử lý các lượt chạy đang chờ."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.tab.attention"
+msgstr "Cần chú ý"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.tab.history"
+msgstr "Lịch sử chạy"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.tab.schedules"
+msgstr "Lịch chạy"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.targetUnavailable"
+msgstr "Đích không khả dụng"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.title"
+msgstr "Tác vụ tự động"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.usedRounds"
+msgstr "Đã sử dụng {usedRounds} vòng chạy theo lịch"
+
+#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/click-policy/action-label.ts
 msgid "clickPolicy.action.none"
 msgstr "Không làm gì"
@@ -1581,6 +2410,7 @@ msgid "dashboard.historyDropdown.v2WorkspaceKind"
 msgstr "Workspace"
 
 #. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/load-more-sentinel/load-more-sentinel.tsx
 msgid "dashboard.loadMoreSentinel.loadingMore"
 msgstr "Đang tải thêm…"
@@ -4207,6 +5037,26 @@ msgstr "Thêm dự án"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx
 msgid "dashboard.sidebar.header.addProjectTooltip"
 msgstr "Thêm dự án"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx
+msgid "dashboard.sidebar.header.automations"
+msgstr "Tự động hóa"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx
+msgid "dashboard.sidebar.header.automationsAriaLabel"
+msgstr "Tự động hóa"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx
+msgid "dashboard.sidebar.header.automationsRailAriaLabel"
+msgstr "Tự động hóa"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx
+msgid "dashboard.sidebar.header.automationsTooltip"
+msgstr "Tự động hóa"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx
@@ -7433,15 +8283,14 @@ msgid "profiles.name.save"
 msgstr "Lưu"
 
 #. js-lingui-explicit-id
-#. placeholder {0}: profile.name
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
-msgid "profiles.switcher.itemLabel"
-msgstr "{0}. Workspace cần chú ý: {formattedProfileCount}."
+msgid "profiles.switcher.attentionItemLabel"
+msgstr "{name}. Số mục cần chú ý: {count}."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
-msgid "profiles.switcher.label"
-msgstr "Hồ sơ công việc: {name}. Workspace cần chú ý: {formattedCount}."
+msgid "profiles.switcher.attentionLabel"
+msgstr "Work Profile: {name}. Số mục cần chú ý: {count}."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
@@ -12139,6 +12988,36 @@ msgstr "Token"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/usage-workspaces-page/usage-workspaces-page.tsx
 msgid "settings.usage.workspacesPage.workspaceCount"
 msgstr "{0, plural, one {# workspace} other {# workspace}}"
+
+#. js-lingui-explicit-id
+#: ../shared/src/automation-schedule.ts
+msgid "shared.automationSchedule.afterCompletion"
+msgstr "Chờ {seconds} giây sau khi hoàn tất, kể từ {startsAt}"
+
+#. js-lingui-explicit-id
+#: ../shared/src/automation-schedule.ts
+msgid "shared.automationSchedule.afterCompletionContinuous"
+msgstr "Tiếp tục sau khi hoàn tất, kể từ {startsAt}"
+
+#. js-lingui-explicit-id
+#: ../shared/src/automation-schedule.ts
+msgid "shared.automationSchedule.calendar"
+msgstr "{schedule} ({timeZone})"
+
+#. js-lingui-explicit-id
+#: ../shared/src/automation-schedule.ts
+msgid "shared.automationSchedule.fixedInterval"
+msgstr "Cứ mỗi {seconds} giây, kể từ {startsAt}"
+
+#. js-lingui-explicit-id
+#: ../shared/src/automation-schedule.ts
+msgid "shared.automationSchedule.immediate"
+msgstr "Ngay lập tức"
+
+#. js-lingui-explicit-id
+#: ../shared/src/automation-schedule.ts
+msgid "shared.automationSchedule.once"
+msgstr "Một lần vào {at} ({timeZone})"
 
 #. js-lingui-explicit-id
 #: ../shared/src/automation-triggers.ts

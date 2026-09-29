@@ -11,8 +11,9 @@ import {
 import { Tooltip, TooltipContent, TooltipTrigger } from "@choros/ui/tooltip";
 import { cn } from "@choros/ui/utils";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { LuChevronDown, LuFolder, LuPlus, LuSettings } from "react-icons/lu";
+import { useAutomations } from "renderer/hooks/host-service/use-automations";
 import { useProfileAttentionCounts } from "renderer/hooks/host-service/use-v2-notification-status";
 import { ProfileNameDialog } from "renderer/routes/_authenticated/components/profile-manager-dialog/components/profile-name-dialog";
 import { useProfiles } from "renderer/routes/_authenticated/providers/profile-provider";
@@ -34,7 +35,17 @@ export function ProfileSwitcher({
 		selectProfile,
 		openManager,
 	} = useProfiles();
-	const attention = useProfileAttentionCounts();
+	const workspaceAttention = useProfileAttentionCounts();
+	const automations = useAutomations();
+	const attention = useMemo(() => {
+		const combined = new Map(workspaceAttention);
+		for (const run of automations.attentionRuns) {
+			const profileId = automations.ownershipFor(run).profileId;
+			if (!profileId) continue;
+			combined.set(profileId, (combined.get(profileId) ?? 0) + 1);
+		}
+		return combined;
+	}, [automations, workspaceAttention]);
 	const [open, setOpen] = useState(false);
 	const [creating, setCreating] = useState(false);
 	const [tooltipOpen, setTooltipOpen] = useState(false);
@@ -73,8 +84,8 @@ export function ProfileSwitcher({
 	};
 	const { consumeClick, ...gesture } = useProfileSwitchGesture(selectAdjacent);
 	const accessibleName = t({
-		id: "profiles.switcher.label",
-		message: `Work Profile: ${name}. Workspaces needing attention: ${formattedCount}.`,
+		id: "profiles.switcher.attentionLabel",
+		message: `Work Profile: ${name}. Items needing attention: ${count}.`,
 	});
 	return (
 		<>
@@ -199,6 +210,8 @@ export function ProfileSwitcher({
 								{profiles.map((profile) => {
 									const profileCount = attention.get(profile.id) ?? 0;
 									const formattedProfileCount = formatNumber(profileCount);
+									const name = profile.name;
+									const count = profileCount;
 									return (
 										<DropdownMenuRadioItem
 											key={profile.id}
@@ -207,8 +220,8 @@ export function ProfileSwitcher({
 											title={profile.name}
 											className="gap-2"
 											aria-label={t({
-												id: "profiles.switcher.itemLabel",
-												message: `${profile.name}. Workspaces needing attention: ${formattedProfileCount}.`,
+												id: "profiles.switcher.attentionItemLabel",
+												message: `${name}. Items needing attention: ${count}.`,
 											})}
 										>
 											<span className="min-w-0 flex-1 truncate">

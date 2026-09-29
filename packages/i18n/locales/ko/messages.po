@@ -159,6 +159,835 @@ msgid "auth.signIn.welcomeTitle"
 msgstr "Choros에 오신 것을 환영합니다"
 
 #. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.archive"
+msgstr "보관"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.archiveConfirm"
+msgstr "보관"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.archiveConfirmBody"
+msgstr "앞으로 예정된 실행이 중지됩니다. 기존 기록과 파일, 현재 진행 중인 실행은 유지됩니다."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.archiveConfirmTitle"
+msgstr "이 자동화를 보관할까요?"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.attentionReview"
+msgstr "이 실행 검토"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.dismiss"
+msgstr "뒤로"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.edit"
+msgstr "편집"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.account"
+msgstr "계정 참조"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.at"
+msgstr "실행 시각(ISO 8601)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.back"
+msgstr "뒤로"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.baseRef"
+msgstr "기준 참조"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.cancel"
+msgstr "취소"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.confirm"
+msgstr "확인"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.confirmTitle"
+msgstr "작업 합의 내용 확인"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.createTitle"
+msgstr "새 자동화"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.dstGap"
+msgstr "일광 절약 시간 전환으로 건너뛴 시간 구간"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.editTitle"
+msgstr "자동화 편집"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.effort"
+msgstr "추론 강도(선택 사항)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.endsBefore"
+msgstr "실행 종료 기준 시각(ISO 8601, 해당 시각 제외)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.existingWorkspace"
+msgstr "기존 작업 공간"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.freshSession"
+msgstr "새 세션"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.harness"
+msgstr "에이전트"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.instructions"
+msgstr "지침"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.interval"
+msgstr "실행 간격(초)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.maxRounds"
+msgstr "최대 예약 실행 횟수"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.missedWindow"
+msgstr "누락된 실행의 허용 시간(초)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.model"
+msgstr "모델(선택 사항)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.name"
+msgstr "이름"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.newWorktree"
+msgstr "새 워크트리"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.precheck"
+msgstr "사전 점검 명령(선택 사항)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.precheckTimeout"
+msgstr "사전 점검 제한 시간(초)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.previewEnable"
+msgstr "저장 및 활성화 미리 보기"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.previewExpiry"
+msgstr "미리 보기 만료 시각: {expiresAt}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.previewRun"
+msgstr "미리 보기 후 지금 실행"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.previewSave"
+msgstr "일시 중지 상태로 저장 미리 보기"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.project"
+msgstr "프로젝트"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.reuseSession"
+msgstr "관리되는 세션 재사용"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.rrule"
+msgstr "RRULE"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.scheduleAfterCompletion"
+msgstr "완료 후"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.scheduleCalendar"
+msgstr "달력 기준 반복"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.scheduleFixed"
+msgstr "고정 간격"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.scheduleImmediate"
+msgstr "즉시 한 번 실행"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.scheduleKind"
+msgstr "일정"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.scheduleOnce"
+msgstr "지정한 시각에 실행"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.sessionId"
+msgstr "세션 ID"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.sessionMode"
+msgstr "세션 모드"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.setupEveryRun"
+msgstr "매번 환경 설정 실행"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.setupPolicy"
+msgstr "환경 설정 정책"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.setupPrepared"
+msgstr "준비된 환경 사용"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.setupTimeout"
+msgstr "환경 설정 제한 시간(초)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.startsAt"
+msgstr "시작 시각(ISO 8601)"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.targetKind"
+msgstr "대상 유형"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.timeZone"
+msgstr "IANA 시간대"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.workspace"
+msgstr "작업 공간"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.emptyHistory"
+msgstr "이 Work Profile에 실행 기록이 없습니다."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.emptySchedules"
+msgstr "이 Work Profile에 자동화가 없습니다."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.enable"
+msgstr "활성화"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.enableConfirm"
+msgstr "일정 활성화"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.enableConfirmTitle"
+msgstr "일정 활성화 확인"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/host-automations-provider/host-automations-provider.tsx
+msgid "automations.error.hostUnavailable"
+msgstr "로컬 Host 서비스를 사용할 수 없습니다."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.filter.all"
+msgstr "모든 상태"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.filter.statusAria"
+msgstr "상태별 필터링"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.invalidTargetBody"
+msgstr "저장된 프로젝트 또는 워크스페이스를 더 이상 찾을 수 없습니다. 이후 실행 요청은 차단됩니다."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.invalidTargets"
+msgstr "사용할 수 없는 대상"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.loading"
+msgstr "자동화 불러오는 중…"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.loadMore"
+msgstr "더 불러오기"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.new"
+msgstr "새로 만들기"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.nextRun"
+msgstr "다음 실행: {nextRun}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.noInvalidTargets"
+msgstr "사용할 수 없는 대상이 없습니다."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.noNextRun"
+msgstr "다음 실행 없음"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.noPendingRuns"
+msgstr "응답이 필요한 실행이 없습니다."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/host-automations-provider/host-automations-provider.tsx
+msgid "automations.notification.attentionTitle"
+msgstr "자동화 확인 필요"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/host-automations-provider/host-automations-provider.tsx
+msgid "automations.notification.completeTitle"
+msgstr "자동화 실행 완료"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/host-automations-provider/host-automations-provider.tsx
+msgid "automations.notification.failedTitle"
+msgstr "자동화 실행 검토 필요"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.pause"
+msgstr "일시 중지"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.pendingRuns"
+msgstr "모든 Work Profile의 대기 중인 실행"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.repairTarget"
+msgstr "대상 편집"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.retryLoad"
+msgstr "다시 시도"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.retryRun"
+msgstr "재시도"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.agreement"
+msgstr "작업 합의 내용 스냅샷"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.answerAria"
+msgstr "이 입력 요청에 답변"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.answerPlaceholder"
+msgstr "답변을 입력하세요"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.artifacts"
+msgstr "산출물"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.back"
+msgstr "자동화로 돌아가기"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.backShort"
+msgstr "자동화"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.byteLength"
+msgstr "{byteLength}바이트"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.cancel"
+msgstr "취소 요청"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.chatSessionId"
+msgstr "채팅 세션 ID"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.createdAt"
+msgstr "접수 시각"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.definitionRevision"
+msgstr "정의 리비전"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.executionId"
+msgstr "실행 ID"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.executor"
+msgstr "실행 주체"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.exitCode"
+msgstr "종료 코드 {exitCode}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.finishedAt"
+msgstr "종료 시각"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.identities"
+msgstr "실행 식별 정보"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.inputs"
+msgstr "질문 및 권한"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.instructions"
+msgstr "지침"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.loading"
+msgstr "실행 불러오는 중…"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.missing"
+msgstr "누락됨"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.mutable"
+msgstr "변경 가능"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.needsResultBody"
+msgstr "확인 가능한 출력은 아래에 계속 표시되지만, Host는 임의로 성공 결과를 생성하지 않았습니다."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.needsResultTitle"
+msgstr "유효한 결과 보고 없이 에이전트 턴이 종료되었습니다"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.noArtifacts"
+msgstr "보고된 산출물이 없습니다."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.noExitCode"
+msgstr "종료 코드 없음"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.noInputs"
+msgstr "입력 요청이 없습니다."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.noPreparationEvidence"
+msgstr "기록된 준비 확인 자료가 없습니다."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.noResult"
+msgstr "유효한 결과 보고가 없습니다."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.notAvailable"
+msgstr "사용할 수 없음"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.notFound"
+msgstr "실행을 찾을 수 없습니다."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.notQuiescent"
+msgstr "비활성 상태가 확인되지 않음"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.openSession"
+msgstr "세션 열기"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.openWorkspace"
+msgstr "워크스페이스 열기"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.outputTruncated"
+msgstr "출력 일부가 잘림"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.pendingAnnouncement"
+msgstr "이 실행에 대기 중인 입력 요청이 있습니다."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.plannedAt"
+msgstr "예정 시각"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.progress"
+msgstr "준비 및 실행 확인 자료"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.providerSessionId"
+msgstr "제공자 세션 ID"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.quiescent"
+msgstr "작업이 비활성 상태임을 Host가 확인함"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.reason"
+msgstr "사유"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.recordedAnswer"
+msgstr "기록된 답변:"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.result"
+msgstr "결과"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.retry"
+msgstr "이 스냅샷에서 재시도"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.retryOf"
+msgstr "재시도 원본"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.source"
+msgstr "트리거 출처"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.stage"
+msgstr "현재 단계"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.startedAt"
+msgstr "시작 시각"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.submitAnswer"
+msgstr "답변 제출"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.summary"
+msgstr "에이전트가 보고한 요약"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.target"
+msgstr "대상"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.unconfirmedInput"
+msgstr "제공자의 원래 요청을 복구할 수 없습니다. 저장된 답변은 새 요청에 적용되지 않았습니다."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.unknownBody"
+msgstr "Host가 관리 중인 프로세스의 중지를 확인할 수 없습니다. 이 대상은 계속 점유된 상태로 유지됩니다. 충돌할 수 있는 작업을 시작하는 대신 확인 자료를 검토하거나 취소를 요청하세요."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.unknownTitle"
+msgstr "실행 상태를 알 수 없습니다"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.verification"
+msgstr "에이전트가 보고한 검증 내용"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.verificationEvidence"
+msgstr "근거"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.verificationMethod"
+msgstr "방법"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.verificationReason"
+msgstr "사유"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.verificationStatus"
+msgstr "상태"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.workspaceId"
+msgstr "워크스페이스 ID"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.runNoSummary"
+msgstr "실행 세부 정보 열기"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.runNow"
+msgstr "지금 실행"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.search"
+msgstr "자동화 검색"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.searchAria"
+msgstr "자동화 검색"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.archived"
+msgstr "보관됨"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.cancelled"
+msgstr "취소됨"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.enabled"
+msgstr "활성화됨"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.failed"
+msgstr "실패"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.finished"
+msgstr "종료됨"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.needsResult"
+msgstr "결과 필요"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.paused"
+msgstr "일시 중지됨"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.preparing"
+msgstr "준비 중"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.running"
+msgstr "실행 중"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.skipped"
+msgstr "건너뜀"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+msgid "automations.status.stopping"
+msgstr "중지 중"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.succeeded"
+msgstr "성공"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.unknown"
+msgstr "알 수 없음"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.waiting"
+msgstr "대기 중"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.subtitle"
+msgstr "작업을 예약하고, 보관된 결과를 검토하고, 대기 중인 실행에 대응하세요."
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.tab.attention"
+msgstr "확인 필요"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.tab.history"
+msgstr "실행 기록"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.tab.schedules"
+msgstr "일정"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.targetUnavailable"
+msgstr "대상을 사용할 수 없음"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.title"
+msgstr "자동화"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.usedRounds"
+msgstr "예약 실행 {usedRounds}회 사용"
+
+#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/click-policy/action-label.ts
 msgid "clickPolicy.action.none"
 msgstr "아무 동작 안 함"
@@ -1581,6 +2410,7 @@ msgid "dashboard.historyDropdown.v2WorkspaceKind"
 msgstr "워크스페이스"
 
 #. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/load-more-sentinel/load-more-sentinel.tsx
 msgid "dashboard.loadMoreSentinel.loadingMore"
 msgstr "더 불러오는 중…"
@@ -4207,6 +5037,26 @@ msgstr "프로젝트 추가"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx
 msgid "dashboard.sidebar.header.addProjectTooltip"
 msgstr "프로젝트 추가"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx
+msgid "dashboard.sidebar.header.automations"
+msgstr "자동화"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx
+msgid "dashboard.sidebar.header.automationsAriaLabel"
+msgstr "자동화"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx
+msgid "dashboard.sidebar.header.automationsRailAriaLabel"
+msgstr "자동화"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx
+msgid "dashboard.sidebar.header.automationsTooltip"
+msgstr "자동화"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx
@@ -7433,15 +8283,14 @@ msgid "profiles.name.save"
 msgstr "저장"
 
 #. js-lingui-explicit-id
-#. placeholder {0}: profile.name
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
-msgid "profiles.switcher.itemLabel"
-msgstr "{0}. 주의가 필요한 워크스페이스: {formattedProfileCount}."
+msgid "profiles.switcher.attentionItemLabel"
+msgstr "{name}. 확인이 필요한 항목: {count}개."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
-msgid "profiles.switcher.label"
-msgstr "작업 프로필: {name}. 주의가 필요한 워크스페이스: {formattedCount}."
+msgid "profiles.switcher.attentionLabel"
+msgstr "Work Profile: {name}. 확인이 필요한 항목: {count}개."
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
@@ -12139,6 +12988,36 @@ msgstr "토큰"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/usage-workspaces-page/usage-workspaces-page.tsx
 msgid "settings.usage.workspacesPage.workspaceCount"
 msgstr "{0, plural, one {워크스페이스 #개} other {워크스페이스 #개}}"
+
+#. js-lingui-explicit-id
+#: ../shared/src/automation-schedule.ts
+msgid "shared.automationSchedule.afterCompletion"
+msgstr "{startsAt}부터 완료 후 {seconds}초 대기"
+
+#. js-lingui-explicit-id
+#: ../shared/src/automation-schedule.ts
+msgid "shared.automationSchedule.afterCompletionContinuous"
+msgstr "{startsAt}부터 완료 후 계속 실행"
+
+#. js-lingui-explicit-id
+#: ../shared/src/automation-schedule.ts
+msgid "shared.automationSchedule.calendar"
+msgstr "{schedule} ({timeZone})"
+
+#. js-lingui-explicit-id
+#: ../shared/src/automation-schedule.ts
+msgid "shared.automationSchedule.fixedInterval"
+msgstr "{startsAt}부터 {seconds}초마다 실행"
+
+#. js-lingui-explicit-id
+#: ../shared/src/automation-schedule.ts
+msgid "shared.automationSchedule.immediate"
+msgstr "즉시"
+
+#. js-lingui-explicit-id
+#: ../shared/src/automation-schedule.ts
+msgid "shared.automationSchedule.once"
+msgstr "{at}에 한 번 실행 ({timeZone})"
 
 #. js-lingui-explicit-id
 #: ../shared/src/automation-triggers.ts

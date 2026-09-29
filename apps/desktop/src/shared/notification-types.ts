@@ -23,3 +23,8 @@ export interface V2NotificationSourceFocusTarget {
 	workspaceId: string;
 	source: V2NotificationSource;
 }
+
+export interface AutomationRunNotificationTarget {
+	runId: string;
+	profileId?: string;
+}

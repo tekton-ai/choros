@@ -114,33 +114,29 @@ Methods:
 - <code title="host post /api/trpc/terminal.snapshot">client.terminals.<a href="./src/resources/terminals.ts">read</a>({ hostId, workspaceId, terminalId, maxLines? }) -> TerminalReadResult</code>
 - <code title="host post /api/trpc/terminal.killSession">client.terminals.<a href="./src/resources/terminals.ts">close</a>({ hostId, workspaceId, terminalId }) -> TerminalCloseResult</code>
 
-# Automations
+# Local Host Automations
 
-Types:
+Factory and types:
 
-- <code><a href="./src/resources/automations.ts">Automation</a></code>
-- <code><a href="./src/resources/automations.ts">AutomationSummary</a></code>
-- <code><a href="./src/resources/automations.ts">AutomationListResponse</a></code>
-- <code><a href="./src/resources/automations.ts">AutomationCreateParams</a></code>
-- <code><a href="./src/resources/automations.ts">AutomationUpdateParams</a></code>
-- <code><a href="./src/resources/automations.ts">AutomationRun</a></code>
-- <code><a href="./src/resources/automations.ts">AutomationRunDispatched</a></code>
-- <code><a href="./src/resources/automations.ts">AutomationLogsParams</a></code>
-- <code><a href="./src/resources/automations.ts">AutomationLogsResponse</a></code>
+- <code><a href="./src/local-host/client.ts">createLocalHostClient</a>({ endpoint, auth }) -&gt; LocalHostClient</code>
+- <code><a href="./src/local-host/client.ts">LocalHostAuth</a></code>
+- <code><a href="./src/local-host/client.ts">LocalHostAuthProvider</a></code>
+- <code><a href="../shared/src/automation-contracts.ts">AutomationDefinition</a></code>
+- <code><a href="../shared/src/automation-contracts.ts">Automation</a></code>
+- <code><a href="../shared/src/automation-contracts.ts">AutomationRun</a></code>
+- <code><a href="../shared/src/automation-contracts.ts">AutomationPreview</a></code>
 
-Methods:
+The returned tRPC client is inferred from the local Host router and exposes:
 
-- <code title="get /api/trpc/automation.list">client.automations.<a href="./src/resources/automations.ts">list</a>({ name? }) -> AutomationListResponse</code>
-- <code title="get /api/trpc/automation.get">client.automations.<a href="./src/resources/automations.ts">retrieve</a>(id) -> AutomationSummary</code>
-- <code title="post /api/trpc/automation.create">client.automations.<a href="./src/resources/automations.ts">create</a>({ ...params }) -> Automation</code>
-- <code title="post /api/trpc/automation.update">client.automations.<a href="./src/resources/automations.ts">update</a>({ ...params }) -> Automation</code>
-- <code title="post /api/trpc/automation.delete">client.automations.<a href="./src/resources/automations.ts">delete</a>(id) -> void</code>
-- <code title="post /api/trpc/automation.runNow">client.automations.<a href="./src/resources/automations.ts">run</a>(id) -> AutomationRunDispatched</code>
-- <code title="post /api/trpc/automation.setEnabled">client.automations.<a href="./src/resources/automations.ts">pause</a>(id) -> Automation</code>
-- <code title="post /api/trpc/automation.setEnabled">client.automations.<a href="./src/resources/automations.ts">resume</a>(id) -> Automation</code>
-- <code title="get /api/trpc/automation.listRuns">client.automations.<a href="./src/resources/automations.ts">logs</a>(automationId, { limit? }) -> AutomationLogsResponse</code>
-- <code title="get /api/trpc/automation.getPrompt">client.automations.<a href="./src/resources/automations.ts">getPrompt</a>(id) -> &#123; prompt: string &#125;</code>
-- <code title="post /api/trpc/automation.setPrompt">client.automations.<a href="./src/resources/automations.ts">setPrompt</a>(id, prompt) -> Automation</code>
+- Queries: <code>automations.capabilities</code>, <code>preview</code>, <code>get</code>, <code>list</code>, <code>getRun</code>, <code>listRuns</code>, <code>readEvents</code>
+- Mutations: <code>automations.create</code>, <code>update</code>, <code>setScheduleState</code>, <code>archive</code>, <code>runNow</code>, <code>retryRun</code>
+- Execution mutations: <code>executions.requestCancel</code>, <code>answerInput</code>
+
+This client connects only to the endpoint supplied by the caller. It does not
+select an organization, exchange a cloud API key, or relay Automation calls to
+another Host. Preview tokens are purpose-bound: creation saves paused, and
+enabling requires a separate <code>intent: 'enable'</code> preview and explicit
+<code>setScheduleState</code> mutation.
 
 # Organization
 

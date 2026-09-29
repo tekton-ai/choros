@@ -159,6 +159,835 @@ msgid "auth.signIn.welcomeTitle"
 msgstr "欢迎使用Choros"
 
 #. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.archive"
+msgstr "归档"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.archiveConfirm"
+msgstr "归档"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.archiveConfirmBody"
+msgstr "将不再启动后续运行。现有历史记录、文件和正在进行的运行将予以保留。"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.archiveConfirmTitle"
+msgstr "归档此自动化任务？"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.attentionReview"
+msgstr "查看此运行"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.dismiss"
+msgstr "返回"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.edit"
+msgstr "编辑"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.account"
+msgstr "账户引用"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.at"
+msgstr "运行时间（ISO 8601）"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.back"
+msgstr "返回"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.baseRef"
+msgstr "基准引用"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.cancel"
+msgstr "取消"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.confirm"
+msgstr "确认"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.confirmTitle"
+msgstr "确认此工作约定"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.createTitle"
+msgstr "新建自动化任务"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.dstGap"
+msgstr "已跳过夏令时切换造成的时间空档"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.editTitle"
+msgstr "编辑自动化任务"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.effort"
+msgstr "推理强度（可选）"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.endsBefore"
+msgstr "在此时间前停止（ISO 8601）"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.existingWorkspace"
+msgstr "现有工作区"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.freshSession"
+msgstr "新建会话"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.harness"
+msgstr "智能体"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.instructions"
+msgstr "指令"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.interval"
+msgstr "间隔（秒）"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.maxRounds"
+msgstr "最大计划运行轮数"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.missedWindow"
+msgstr "错过运行的补执行窗口（秒）"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.model"
+msgstr "模型（可选）"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.name"
+msgstr "名称"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.newWorktree"
+msgstr "新建工作树"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.precheck"
+msgstr "预检查命令（可选）"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.precheckTimeout"
+msgstr "预检查超时（秒）"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.previewEnable"
+msgstr "预览保存并启用"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.previewExpiry"
+msgstr "预览将于 {expiresAt} 过期"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.previewRun"
+msgstr "预览并立即运行"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.previewSave"
+msgstr "预览保存为暂停状态"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.project"
+msgstr "项目"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.reuseSession"
+msgstr "复用托管会话"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.rrule"
+msgstr "RRULE"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.scheduleAfterCompletion"
+msgstr "完成后运行"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.scheduleCalendar"
+msgstr "按日历周期重复"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.scheduleFixed"
+msgstr "固定间隔"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.scheduleImmediate"
+msgstr "立即运行一次"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.scheduleKind"
+msgstr "调度方式"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.scheduleOnce"
+msgstr "在指定时间运行"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.sessionId"
+msgstr "会话 ID"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.sessionMode"
+msgstr "会话模式"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.setupEveryRun"
+msgstr "每次运行前配置环境"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.setupPolicy"
+msgstr "环境配置策略"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.setupPrepared"
+msgstr "使用已准备好的环境"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.setupTimeout"
+msgstr "环境配置超时（秒）"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.startsAt"
+msgstr "开始时间（ISO 8601）"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.targetKind"
+msgstr "目标类型"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.timeZone"
+msgstr "IANA 时区"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-editor/automation-editor.tsx
+msgid "automations.editor.workspace"
+msgstr "工作区"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.emptyHistory"
+msgstr "此 Work Profile 中暂无运行历史。"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.emptySchedules"
+msgstr "此 Work Profile 中暂无自动化任务。"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.enable"
+msgstr "启用"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.enableConfirm"
+msgstr "启用运行计划"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.enableConfirmTitle"
+msgstr "确认启用此运行计划"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/host-automations-provider/host-automations-provider.tsx
+msgid "automations.error.hostUnavailable"
+msgstr "本地 Host 服务不可用。"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.filter.all"
+msgstr "所有状态"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.filter.statusAria"
+msgstr "按状态筛选"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.invalidTargetBody"
+msgstr "已保存的项目或工作区已无法找到。后续任务分发已被阻止。"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.invalidTargets"
+msgstr "不可用的目标"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.loading"
+msgstr "正在加载自动化任务…"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.loadMore"
+msgstr "加载更多"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.new"
+msgstr "新建"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.nextRun"
+msgstr "下次运行：{nextRun}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.noInvalidTargets"
+msgstr "没有不可用的目标。"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.noNextRun"
+msgstr "无下次运行"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.noPendingRuns"
+msgstr "没有需要响应的运行。"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/host-automations-provider/host-automations-provider.tsx
+msgid "automations.notification.attentionTitle"
+msgstr "自动化任务需要关注"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/host-automations-provider/host-automations-provider.tsx
+msgid "automations.notification.completeTitle"
+msgstr "自动化运行已完成"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/providers/host-automations-provider/host-automations-provider.tsx
+msgid "automations.notification.failedTitle"
+msgstr "自动化运行需要检查"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.pause"
+msgstr "暂停"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.pendingRuns"
+msgstr "所有 Work Profile 中待处理的运行"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.repairTarget"
+msgstr "编辑目标"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.retryLoad"
+msgstr "重试"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.retryRun"
+msgstr "重试"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.agreement"
+msgstr "工作约定快照"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.answerAria"
+msgstr "回答此输入请求"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.answerPlaceholder"
+msgstr "输入回答"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.artifacts"
+msgstr "产物"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.back"
+msgstr "返回自动化任务"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.backShort"
+msgstr "自动化任务"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.byteLength"
+msgstr "{byteLength} 字节"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.cancel"
+msgstr "请求取消"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.chatSessionId"
+msgstr "聊天会话 ID"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.createdAt"
+msgstr "受理时间"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.definitionRevision"
+msgstr "定义修订版本"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.executionId"
+msgstr "执行 ID"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.executor"
+msgstr "执行器"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.exitCode"
+msgstr "退出码 {exitCode}"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.finishedAt"
+msgstr "结束时间"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.identities"
+msgstr "执行标识"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.inputs"
+msgstr "问题与权限"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.instructions"
+msgstr "指令"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.loading"
+msgstr "正在加载运行…"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.missing"
+msgstr "缺失"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.mutable"
+msgstr "可变"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.needsResultBody"
+msgstr "下方仍显示可用的输出，但 Host 未将其擅自认定为成功结果。"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.needsResultTitle"
+msgstr "智能体回合已结束，但未提供有效的结果报告"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.noArtifacts"
+msgstr "未报告任何产物。"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.noExitCode"
+msgstr "无退出码"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.noInputs"
+msgstr "没有输入请求。"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.noPreparationEvidence"
+msgstr "未记录准备阶段的证据。"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.noResult"
+msgstr "暂无有效的结果报告。"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.notAvailable"
+msgstr "不可用"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.notFound"
+msgstr "未找到该运行。"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.notQuiescent"
+msgstr "尚未确认操作已静止"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.openSession"
+msgstr "打开会话"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.openWorkspace"
+msgstr "打开工作区"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.outputTruncated"
+msgstr "输出已截断"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.pendingAnnouncement"
+msgstr "此运行有待处理的输入请求。"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.plannedAt"
+msgstr "计划时间"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.progress"
+msgstr "准备与执行证据"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.providerSessionId"
+msgstr "提供商会话 ID"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.quiescent"
+msgstr "Host 已观测到操作处于静止状态"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.reason"
+msgstr "原因"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.recordedAnswer"
+msgstr "已记录的回答："
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.result"
+msgstr "结果"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.retry"
+msgstr "从此快照重试"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.retryOf"
+msgstr "重试来源"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.source"
+msgstr "触发来源"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.stage"
+msgstr "当前阶段"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.startedAt"
+msgstr "开始时间"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.submitAnswer"
+msgstr "提交回答"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.summary"
+msgstr "智能体报告的摘要"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.target"
+msgstr "目标"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.unconfirmedInput"
+msgstr "无法恢复原始提供方请求。已保存的回答未应用于新请求。"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.unknownBody"
+msgstr "Host 无法确认受管理的进程已停止。此目标仍被占用；请查看相关证据或请求取消，避免启动相冲突的任务。"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.unknownTitle"
+msgstr "执行状态未知"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.verification"
+msgstr "智能体报告的验证情况"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.verificationEvidence"
+msgstr "证据"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.verificationMethod"
+msgstr "方法"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.verificationReason"
+msgstr "原因"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.verificationStatus"
+msgstr "状态"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/runs/$runId/components/automation-run-view/automation-run-view.tsx
+msgid "automations.run.workspaceId"
+msgstr "工作区 ID"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.runNoSummary"
+msgstr "打开运行详情"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.runNow"
+msgstr "立即运行"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.search"
+msgstr "搜索自动化任务"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.searchAria"
+msgstr "搜索自动化任务"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.archived"
+msgstr "已归档"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.cancelled"
+msgstr "已取消"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.enabled"
+msgstr "已启用"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.failed"
+msgstr "已失败"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.finished"
+msgstr "已结束"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.needsResult"
+msgstr "需要结果"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.paused"
+msgstr "已暂停"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.preparing"
+msgstr "准备中"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.running"
+msgstr "运行中"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.skipped"
+msgstr "已跳过"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+msgid "automations.status.stopping"
+msgstr "停止中"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.succeeded"
+msgstr "已成功"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.unknown"
+msgstr "未知"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automation-status/automation-status.tsx
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.status.waiting"
+msgstr "等待中"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.subtitle"
+msgstr "安排任务，查看持久保存的结果，并处理待响应的运行。"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.tab.attention"
+msgstr "待关注"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.tab.history"
+msgstr "运行历史"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.tab.schedules"
+msgstr "运行计划"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.targetUnavailable"
+msgstr "目标不可用"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.title"
+msgstr "自动化任务"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
+msgid "automations.usedRounds"
+msgstr "已使用 {usedRounds} 个调度轮次"
+
+#. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/lib/click-policy/action-label.ts
 msgid "clickPolicy.action.none"
 msgstr "不执行任何操作"
@@ -1581,6 +2410,7 @@ msgid "dashboard.historyDropdown.v2WorkspaceKind"
 msgstr "工作区"
 
 #. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/automations/components/automations-view/automations-view.tsx
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/load-more-sentinel/load-more-sentinel.tsx
 msgid "dashboard.loadMoreSentinel.loadingMore"
 msgstr "正在加载更多…"
@@ -4207,6 +5037,26 @@ msgstr "添加项目"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx
 msgid "dashboard.sidebar.header.addProjectTooltip"
 msgstr "添加项目"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx
+msgid "dashboard.sidebar.header.automations"
+msgstr "自动化任务"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx
+msgid "dashboard.sidebar.header.automationsAriaLabel"
+msgstr "自动化任务"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx
+msgid "dashboard.sidebar.header.automationsRailAriaLabel"
+msgstr "自动化任务"
+
+#. js-lingui-explicit-id
+#: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx
+msgid "dashboard.sidebar.header.automationsTooltip"
+msgstr "自动化任务"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/dashboard-sidebar-header.tsx
@@ -7433,15 +8283,14 @@ msgid "profiles.name.save"
 msgstr "保存"
 
 #. js-lingui-explicit-id
-#. placeholder {0}: profile.name
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
-msgid "profiles.switcher.itemLabel"
-msgstr "{0}。需要关注的工作区：{formattedProfileCount}。"
+msgid "profiles.switcher.attentionItemLabel"
+msgstr "{name}。需要关注的项目：{count} 项。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
-msgid "profiles.switcher.label"
-msgstr "工作档案：{name}。需要关注的工作区：{formattedCount}。"
+msgid "profiles.switcher.attentionLabel"
+msgstr "Work Profile：{name}。需要关注的项目：{count} 项。"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/_dashboard/components/dashboard-sidebar/components/dashboard-sidebar-header/components/profile-switcher/profile-switcher.tsx
@@ -12139,6 +12988,36 @@ msgstr "Token"
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/usage/components/usage-workspaces-page/usage-workspaces-page.tsx
 msgid "settings.usage.workspacesPage.workspaceCount"
 msgstr "{0, plural, one {#个工作区} other {#个工作区}}"
+
+#. js-lingui-explicit-id
+#: ../shared/src/automation-schedule.ts
+msgid "shared.automationSchedule.afterCompletion"
+msgstr "从 {startsAt} 起，每次完成后等待 {seconds} 秒再执行"
+
+#. js-lingui-explicit-id
+#: ../shared/src/automation-schedule.ts
+msgid "shared.automationSchedule.afterCompletionContinuous"
+msgstr "从 {startsAt} 起，每次完成后立即继续执行"
+
+#. js-lingui-explicit-id
+#: ../shared/src/automation-schedule.ts
+msgid "shared.automationSchedule.calendar"
+msgstr "{schedule}（{timeZone}）"
+
+#. js-lingui-explicit-id
+#: ../shared/src/automation-schedule.ts
+msgid "shared.automationSchedule.fixedInterval"
+msgstr "从 {startsAt} 起，每 {seconds} 秒执行一次"
+
+#. js-lingui-explicit-id
+#: ../shared/src/automation-schedule.ts
+msgid "shared.automationSchedule.immediate"
+msgstr "立即"
+
+#. js-lingui-explicit-id
+#: ../shared/src/automation-schedule.ts
+msgid "shared.automationSchedule.once"
+msgstr "于 {at} 执行一次（{timeZone}）"
 
 #. js-lingui-explicit-id
 #: ../shared/src/automation-triggers.ts

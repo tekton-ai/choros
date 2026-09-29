@@ -57,8 +57,14 @@ export function spawnCodexTransport(
 	child.on("exit", (code, signal) => handlers.onExit(code, signal));
 
 	let exited = false;
+	let settleExit: (() => void) | null = null;
+	const exitObserved = new Promise<void>((resolve) => {
+		settleExit = resolve;
+	});
 	child.on("close", () => {
 		exited = true;
+		settleExit?.();
+		settleExit = null;
 	});
 
 	return {
@@ -68,16 +74,14 @@ export function spawnCodexTransport(
 		close: async () => {
 			if (exited) return;
 			child.stdin.end();
-			await new Promise<void>((resolve) => {
-				const timer = setTimeout(() => {
-					child.kill("SIGKILL");
-					resolve();
-				}, 2000);
-				child.once("close", () => {
-					clearTimeout(timer);
-					resolve();
-				});
-			});
+			const forceKill = setTimeout(() => {
+				if (!exited) child.kill("SIGKILL");
+			}, 2000);
+			try {
+				await exitObserved;
+			} finally {
+				clearTimeout(forceKill);
+			}
 		},
 	};
 }

@@ -42,6 +42,8 @@ export const DEAD_KEYS: DeadKey[] = [
 	{ key: "lastViewedWorkspaceId", match: "exact" },
 	// Work Profiles are always available; the former opt-in flag is retired.
 	{ key: "work-profiles", match: "exact" },
+	// Automations are available by default; retire only the former UI opt-in.
+	{ key: "automations-experiment", match: "exact" },
 ];
 
 function matchesDeadKey(key: string): boolean {

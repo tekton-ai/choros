@@ -38,12 +38,11 @@ function isStringArray(value: unknown): value is string[] {
 function readJson<T>(filePath: string): T | null {
 	if (!existsSync(filePath)) return null;
 	try {
-		return JSON.parse(readFileSync(filePath, "utf-8")) as T;
+		const parsed = JSON.parse(readFileSync(filePath, "utf-8")) as T;
+		if (parsed === null) throw new Error("Configuration must be an object");
+		return parsed;
 	} catch (error) {
-		console.error(
-			`Failed to read JSON at ${filePath}: ${error instanceof Error ? error.message : String(error)}`,
-		);
-		return null;
+		throw new Error(`Invalid configuration at ${filePath}`, { cause: error });
 	}
 }
 
@@ -52,16 +51,15 @@ function validateSetupConfig(
 	source: string,
 ): SetupConfig | null {
 	if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
-		return null;
+		throw new Error(`Invalid setup config at ${source}: expected an object`);
 	}
 	const obj = parsed as Record<string, unknown>;
 	const result: SetupConfig = {};
 	if (obj.cwd !== undefined) {
 		if (typeof obj.cwd !== "string" || obj.cwd.trim().length === 0) {
-			console.error(
+			throw new Error(
 				`Invalid setup config at ${source}: 'cwd' must be a non-empty string`,
 			);
-			return null;
 		}
 		result.cwd = obj.cwd.trim();
 	}
@@ -69,10 +67,9 @@ function validateSetupConfig(
 		const value = obj[key];
 		if (value === undefined) continue;
 		if (!isStringArray(value)) {
-			console.error(
+			throw new Error(
 				`Invalid setup config at ${source}: '${key}' must be an array of strings`,
 			);
-			return null;
 		}
 		result[key] = value;
 	}
@@ -89,7 +86,7 @@ function readLocalConfigAt(filePath: string): LocalSetupConfig | null {
 	const parsed = readJson<unknown>(filePath);
 	if (parsed === null) return null;
 	if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
-		return null;
+		throw new Error(`Invalid local config at ${filePath}: expected an object`);
 	}
 	const obj = parsed as Record<string, unknown>;
 	const result: LocalSetupConfig = {};
@@ -103,16 +100,14 @@ function readLocalConfigAt(filePath: string): LocalSetupConfig | null {
 		if (value && typeof value === "object" && !Array.isArray(value)) {
 			const merge = value as Record<string, unknown>;
 			if (merge.before !== undefined && !isStringArray(merge.before)) {
-				console.error(
+				throw new Error(
 					`Invalid local config at ${filePath}: '${key}.before' must be an array of strings`,
 				);
-				return null;
 			}
 			if (merge.after !== undefined && !isStringArray(merge.after)) {
-				console.error(
+				throw new Error(
 					`Invalid local config at ${filePath}: '${key}.after' must be an array of strings`,
 				);
-				return null;
 			}
 			result[key] = {
 				before: merge.before as string[] | undefined,
@@ -120,10 +115,9 @@ function readLocalConfigAt(filePath: string): LocalSetupConfig | null {
 			};
 			continue;
 		}
-		console.error(
+		throw new Error(
 			`Invalid local config at ${filePath}: '${key}' must be an array or {before,after}`,
 		);
-		return null;
 	}
 	return result;
 }

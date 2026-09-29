@@ -1,5 +1,9 @@
 import type { Envelope } from "@choros/chat/protocol";
-import type { HarnessAdapter } from "../../harness";
+import type {
+	HarnessAdapter,
+	HarnessObserver,
+	HarnessToolDefinition,
+} from "../../harness";
 import type { ChatJournal } from "../../journal";
 import { LiveSession } from "../live-session";
 
@@ -11,6 +15,10 @@ export type HarnessFactoryOptions = {
 	modeId?: string;
 	modelId?: string;
 	resume?: { harnessSessionId: string };
+	env?: Record<string, string>;
+	instructions?: string;
+	tools?: HarnessToolDefinition[];
+	observer?: HarnessObserver;
 };
 
 export type HarnessFactory = (options: HarnessFactoryOptions) => HarnessAdapter;
@@ -23,6 +31,7 @@ export type LiveSessionRegistryOptions = {
 	harnesses: HarnessRegistry;
 	mintId?: () => string;
 	now?: () => number;
+	defaultTools?(options: HarnessFactoryOptions): HarnessToolDefinition[];
 };
 
 export class LiveSessionRegistry {
@@ -58,6 +67,10 @@ export class LiveSessionRegistry {
 				modeId: options.modeId,
 				modelId: options.modelId,
 				resume: options.resume,
+				env: options.env,
+				instructions: options.instructions,
+				tools: options.tools ?? this.options.defaultTools?.(options),
+				observer: options.observer,
 			});
 		} catch (error) {
 			this.live.delete(options.sessionId);
@@ -77,19 +90,24 @@ export class LiveSessionRegistry {
 		return session;
 	}
 
-	async dispose(sessionId: string): Promise<void> {
+	async dispose(sessionId: string): Promise<{ quiescent: boolean }> {
 		const session = this.live.get(sessionId);
-		if (!session) return;
-		this.live.delete(sessionId);
-		await session.dispose();
+		if (!session) return { quiescent: false };
+		const result = await session.dispose();
+		if (this.live.get(sessionId) === session) this.live.delete(sessionId);
+		return result;
 	}
 
 	async disposeAll(): Promise<void> {
 		const sessions = [...this.live.values()];
-		this.live.clear();
 		const results = await Promise.allSettled(
 			sessions.map((session) => session.dispose()),
 		);
+		for (const session of sessions) {
+			if (this.live.get(session.sessionId) === session) {
+				this.live.delete(session.sessionId);
+			}
+		}
 		const failure = results.find((result) => result.status === "rejected");
 		if (failure?.status === "rejected") throw failure.reason;
 	}

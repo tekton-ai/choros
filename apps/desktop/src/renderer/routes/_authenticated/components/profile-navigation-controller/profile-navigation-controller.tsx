@@ -5,7 +5,7 @@ import { useProfiles } from "../../providers/profile-provider";
 import { registerProfileTargetHandler } from "./profile-navigation-bridge";
 
 export function ProfileNavigationController() {
-	const { openTarget, openWorkspace } = useProfiles();
+	const { openTarget, openWorkspace, selectProfile } = useProfiles();
 	useEffect(() => registerProfileTargetHandler(openTarget), [openTarget]);
 	electronTrpc.notifications.subscribe.useSubscription(undefined, {
 		onData: (event) => {
@@ -16,6 +16,13 @@ export function ProfileNavigationController() {
 				void openWorkspace(event.data.workspaceId, {
 					source: event.data.source,
 				});
+			}
+			if (
+				event.type === NOTIFICATION_EVENTS.FOCUS_AUTOMATION_RUN &&
+				event.data
+			) {
+				if (event.data.profileId) selectProfile(event.data.profileId);
+				openTarget(`/automations/runs/${encodeURIComponent(event.data.runId)}`);
 			}
 		},
 	});

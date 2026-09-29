@@ -50,8 +50,8 @@ export default defineConfig({
 				desc: "Peek at what an agent is doing right now",
 			},
 			{
-				cmd: 'choros automations create --name nightly-audit --project <id> --rrule "FREQ=DAILY" --prompt "audit deps"',
-				desc: "Schedule a recurring agent run",
+				cmd: "choros automations preview --definition ./automation.json --intent save",
+				desc: "Preview a local Automation before confirming and saving it",
 			},
 		],
 	},

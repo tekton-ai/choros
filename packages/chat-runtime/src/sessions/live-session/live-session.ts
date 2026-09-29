@@ -49,6 +49,7 @@ export class LiveSession {
 	private currentTurn: Turn | null = null;
 	private pump: Promise<void> | null = null;
 	private stopped = false;
+	private observer: HarnessStartOptions["observer"];
 
 	constructor(private readonly options: LiveSessionOptions) {
 		this.sessionState = { status: "starting", harness: options.harness };
@@ -72,10 +73,11 @@ export class LiveSession {
 
 	start(startOptions: HarnessStartOptions): void {
 		this.emitSession({ status: "starting" });
+		this.observer = startOptions.observer;
 		this.pump = this.run(this.options.adapter.start(startOptions)).catch(
-			(error: unknown) => {
+			async (error: unknown) => {
 				try {
-					this.fail(error);
+					await this.fail(error);
 				} catch {
 					this.stopped = true;
 				}
@@ -104,9 +106,9 @@ export class LiveSession {
 		return { itemId, queued: false };
 	}
 
-	cancelTurn(turnId?: string): void {
+	async cancelTurn(turnId?: string): Promise<void> {
 		if (turnId && this.currentTurn && this.currentTurn.id !== turnId) return;
-		this.options.adapter.cancelTurn();
+		await this.options.adapter.cancelTurn();
 	}
 
 	respondToApproval(
@@ -120,20 +122,21 @@ export class LiveSession {
 		this.options.adapter.setMode(modeId);
 	}
 
-	async dispose(): Promise<void> {
+	async dispose(): Promise<{ quiescent: boolean }> {
 		this.stopped = true;
-		await this.options.adapter.dispose();
+		const result = await this.options.adapter.dispose();
 		await this.pump;
+		return result;
 	}
 
 	private async run(stream: AsyncIterable<AdapterEvent>): Promise<void> {
 		for await (const event of stream) {
 			if (this.stopped) return;
-			this.handle(event);
+			await this.handle(event);
 		}
 	}
 
-	private handle(event: AdapterEvent): void {
+	private async handle(event: AdapterEvent): Promise<void> {
 		switch (event.kind) {
 			case "item":
 				this.appendDurable({
@@ -141,8 +144,8 @@ export class LiveSession {
 					item: event.item,
 					turnId: event.turnId,
 				});
-				return;
-			case "turn": {
+				break;
+			case "turn":
 				this.currentTurn = event.turn;
 				this.appendDurable({ type: "turn", turn: event.turn });
 				if (event.turn.status === "running") {
@@ -150,11 +153,10 @@ export class LiveSession {
 				} else {
 					this.deliverNextQueued();
 				}
-				return;
-			}
+				break;
 			case "session":
 				this.emitSession(event.session);
-				return;
+				break;
 			case "delta":
 				this.options.publish({
 					v: 1,
@@ -162,8 +164,9 @@ export class LiveSession {
 					ts: this.now(),
 					delta: event.delta,
 				});
-				return;
+				break;
 		}
+		await this.observer?.onEvent?.(event);
 	}
 
 	private attributeAwaitingPrompt(turnId: string): void {
@@ -187,18 +190,10 @@ export class LiveSession {
 		}
 	}
 
-	private fail(error: unknown): void {
+	private async fail(error: unknown): Promise<void> {
 		this.stopped = true;
 		const failedAtMs = this.now();
 		const turn = this.currentTurn;
-		if (turn?.status === "running") {
-			this.currentTurn = {
-				...turn,
-				status: "interrupted",
-				completedAtMs: failedAtMs,
-			};
-			this.appendDurable({ type: "turn", turn: this.currentTurn });
-		}
 		this.queue.length = 0;
 		this.awaitingTurn = null;
 		this.appendDurable({
@@ -214,6 +209,10 @@ export class LiveSession {
 			turnId: turn?.id ?? this.mintId(),
 		});
 		this.emitSession({ status: "dead" });
+		await this.observer?.onEvent?.({
+			kind: "session",
+			session: { status: "dead" },
+		});
 	}
 
 	private deliverNextQueued(): void {

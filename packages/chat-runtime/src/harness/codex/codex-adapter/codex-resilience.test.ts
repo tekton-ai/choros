@@ -1,6 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import type { Notice } from "@choros/chat/protocol";
-import type { AdapterEvent } from "../../types";
+import { z } from "zod";
+import type { AdapterEvent, HarnessToolDefinition } from "../../types";
 import { FixturePlayer } from "../fixture-player";
 import { fixtureCwd, loadCodexFixture } from "../fixtures";
 import type { CodexTransportHandlers } from "../rpc-client";
@@ -17,7 +18,7 @@ type Harness = {
 	settle(): Promise<void>;
 };
 
-function startAdapter(): Harness {
+function startAdapter(tools?: HarnessToolDefinition[]): Harness {
 	const sent: Record<string, unknown>[] = [];
 	const events: AdapterEvent[] = [];
 	let handlers: CodexTransportHandlers | null = null;
@@ -60,7 +61,7 @@ function startAdapter(): Harness {
 	});
 
 	void (async () => {
-		for await (const event of adapter.start({ cwd: "/tmp/workspace" })) {
+		for await (const event of adapter.start({ cwd: "/tmp/workspace", tools })) {
 			events.push(event);
 		}
 	})();
@@ -127,6 +128,68 @@ describe("codex adapter resilience", () => {
 		await harness.adapter.dispose();
 	});
 
+	test("a completed turn makes a pending dynamic Automation approval stale", async () => {
+		let calls = 0;
+		const harness = startAdapter([
+			{
+				name: "automations_run_now",
+				description: "run",
+				inputSchema: z.object({ id: z.string() }),
+				handler: async () => {
+					calls += 1;
+					return { ok: true };
+				},
+			},
+		]);
+		await harness.settle();
+		harness.receive({
+			method: "turn/started",
+			params: {
+				threadId: THREAD_ID,
+				turn: { id: TURN_ID, status: "inProgress" },
+			},
+		});
+		harness.receive({
+			id: "dynamic-1",
+			method: "item/tool/call",
+			params: {
+				threadId: THREAD_ID,
+				turnId: TURN_ID,
+				callId: "call-1",
+				tool: "automations_run_now",
+				arguments: { id: "automation-1" },
+			},
+		});
+		await harness.settle();
+		const pending = harness.events.find(
+			(event) =>
+				event.kind === "item" &&
+				event.item.kind === "approval_request" &&
+				event.item.status === "pending",
+		);
+		if (!pending || pending.kind !== "item")
+			throw new Error("approval missing");
+		harness.receive({
+			method: "turn/completed",
+			params: {
+				threadId: THREAD_ID,
+				turn: { id: TURN_ID, status: "interrupted" },
+			},
+		});
+		await harness.settle();
+		harness.adapter.respondToApproval(pending.item.id, {
+			type: "option",
+			optionId: "confirm",
+		});
+		await harness.settle();
+		expect(calls).toBe(0);
+		expect(
+			harness.sent.find((frame) => frame.id === "dynamic-1"),
+		).toMatchObject({
+			result: { success: false },
+		});
+		await harness.adapter.dispose();
+	});
 	test("a stream that keeps arriving after a bad frame still maps items", async () => {
 		const harness = startAdapter();
 		await harness.settle();

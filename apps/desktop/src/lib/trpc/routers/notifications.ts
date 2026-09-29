@@ -11,7 +11,10 @@ import {
 	notificationsEmitter,
 } from "main/lib/notifications/server";
 import { NOTIFICATION_EVENTS } from "shared/constants";
-import type { V2NotificationSourceFocusTarget } from "shared/notification-types";
+import type {
+	AutomationRunNotificationTarget,
+	V2NotificationSourceFocusTarget,
+} from "shared/notification-types";
 import { z } from "zod";
 import { publicProcedure, router } from "..";
 
@@ -32,6 +35,10 @@ type NotificationEvent =
 			data?: V2NotificationSourceFocusTarget;
 	  }
 	| {
+			type: typeof NOTIFICATION_EVENTS.FOCUS_AUTOMATION_RUN;
+			data?: AutomationRunNotificationTarget;
+	  }
+	| {
 			type: typeof NOTIFICATION_EVENTS.TERMINAL_EXIT;
 			data?: TerminalExitNotification;
 	  }
@@ -50,10 +57,16 @@ const showNativeInputSchema = z.object({
 	body: z.string(),
 	silent: z.boolean().default(true),
 	clickTarget: z
-		.object({
-			workspaceId: z.string().min(1),
-			source: v2NotificationSourceSchema,
-		})
+		.union([
+			z.object({
+				workspaceId: z.string().min(1),
+				source: v2NotificationSourceSchema,
+			}),
+			z.object({
+				runId: z.string().uuid(),
+				profileId: z.string().min(1).optional(),
+			}),
+		])
 		.optional(),
 });
 type ShowNativeInput = z.infer<typeof showNativeInputSchema>;
@@ -74,6 +87,7 @@ function focusWindow(getWindow: () => BrowserWindow | null): void {
 function getNativeNotificationKey(input: ShowNativeInput): string {
 	const target = input.clickTarget;
 	if (!target) return `_native_${nativeNotificationCounter++}`;
+	if ("runId" in target) return `automation:${target.runId}`;
 	return `${target.workspaceId}:${target.source.type}:${target.source.id}`;
 }
 
@@ -116,6 +130,13 @@ export const createNotificationsRouter = (
 				notification.on("click", () => {
 					focusWindow(getWindow);
 					if (!input.clickTarget) return;
+					if ("runId" in input.clickTarget) {
+						notificationsEmitter.emit(
+							NOTIFICATION_EVENTS.FOCUS_AUTOMATION_RUN,
+							input.clickTarget,
+						);
+						return;
+					}
 					notificationsEmitter.emit(
 						NOTIFICATION_EVENTS.FOCUS_V2_NOTIFICATION_SOURCE,
 						input.clickTarget,
@@ -152,6 +173,15 @@ export const createNotificationsRouter = (
 					});
 				};
 
+				const onFocusAutomationRun = (
+					data: AutomationRunNotificationTarget,
+				) => {
+					emit.next({
+						type: NOTIFICATION_EVENTS.FOCUS_AUTOMATION_RUN,
+						data,
+					});
+				};
+
 				const onTerminalExit = (data: TerminalExitNotification) => {
 					emit.next({ type: NOTIFICATION_EVENTS.TERMINAL_EXIT, data });
 				};
@@ -173,6 +203,10 @@ export const createNotificationsRouter = (
 					onFocusV2NotificationSource,
 				);
 				notificationsEmitter.on(
+					NOTIFICATION_EVENTS.FOCUS_AUTOMATION_RUN,
+					onFocusAutomationRun,
+				);
+				notificationsEmitter.on(
 					NOTIFICATION_EVENTS.TERMINAL_EXIT,
 					onTerminalExit,
 				);
@@ -190,6 +224,10 @@ export const createNotificationsRouter = (
 					notificationsEmitter.off(
 						NOTIFICATION_EVENTS.FOCUS_V2_NOTIFICATION_SOURCE,
 						onFocusV2NotificationSource,
+					);
+					notificationsEmitter.off(
+						NOTIFICATION_EVENTS.FOCUS_AUTOMATION_RUN,
+						onFocusAutomationRun,
 					);
 					notificationsEmitter.off(
 						NOTIFICATION_EVENTS.TERMINAL_EXIT,

@@ -137,7 +137,7 @@ export class FakeHarness implements HarnessAdapter {
 		this.emit({ kind: "session", session: { modeId } });
 	}
 
-	async dispose(): Promise<void> {
+	async dispose(): Promise<{ quiescent: boolean }> {
 		this.disposed = true;
 		for (const [approvalId, pending] of [...this.pendingApprovals]) {
 			this.pendingApprovals.delete(approvalId);
@@ -145,6 +145,7 @@ export class FakeHarness implements HarnessAdapter {
 		}
 		await this.tail;
 		this.queue.close();
+		return { quiescent: true };
 	}
 
 	private enqueue(events: readonly ScriptedEvent[]): void {

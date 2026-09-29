@@ -82,6 +82,21 @@ are active, an independent installer waits without stopping them; the command re
 This is a real published release, not an internal canary. See the
 [release runbook](../scripts/release/README.md) for pipeline and retry rules.
 
+## Automation（本机执行）
+
+Automation 的自然语言入口由 `plugins/choros/skills/automate/` 和原生 Chat 工具共用本机 Host 契约：
+
+- 支持立即一次、指定时间一次、日历周期、固定间隔和上次结束后重复；有限轮次按计划机会计数。
+- `choros automations preview --definition ./automation.json --intent save --json` 只预览；确认后 `create` 默认保存为暂停，启用需要当前定义的独立 enable 确认。试跑不是创建前提。
+- `list/show/runs/run/retry/pause/resume/cancel/answer/archive/events` 操作同一份持久状态。查看结果不会启动 agent；取消请求不等于执行已经停止。
+- Desktop 的 Automations 入口默认提供，不需要 Experimental 开关；旧版的界面开关偏好会在启动时清理，不影响任务、运行历史或Host调度。页面提供安排、历史、待处理和 Run 详情。Profile 是归属展示，不是 provider 账号或权限隔离。
+- SDK 使用 `createLocalHostClient({ endpoint, auth })` 的本机 tRPC 接口，不再通过旧云端 `client.automations` 或 organizationId 调度。
+- 后台执行复用 `@choros/chat-runtime` 的 Claude/Codex adapter；模型、网关和鉴权沿用 agent 配置。Automation 不内置另一个模型客户端或通用 Workflow 引擎。
+
+开发验证可在 `createApp` 构造参数中注入协议 fixture。`@choros/chat-runtime/testing` 的 `createManagedExecutionFixtureRuntime` 使用真实 ChatRuntime/SQLite，只替代 provider 协议；生产注册表没有 mock 开关或假成功回退。fixture 通过不代表真实 provider 已完成联调。
+
+这些接口需使用含本功能的构建；已安装发行版是否提供命令，以其实际 help 为准。开发 CLI 仍使用下文的同 Host 入口。
+
 ## Provider accounts (multi-login)
 
 The Usage tab can hold several Claude Code / Codex logins and pick which one agents use. A login

@@ -317,3 +317,14 @@ export const serverRequestResolvedSchema = z.looseObject({
 	threadId: z.string(),
 	requestId: requestIdSchema,
 });
+
+export const dynamicToolCallParamsSchema = z.looseObject({
+	threadId: z.string(),
+	turnId: z.string(),
+	callId: z.string(),
+	tool: z.string(),
+	arguments: z.union([z.string(), z.record(z.string(), z.unknown())]),
+});
+export type CodexDynamicToolCallParams = z.infer<
+	typeof dynamicToolCallParamsSchema
+>;

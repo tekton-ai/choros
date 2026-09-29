@@ -12,6 +12,10 @@ type Harness = {
 	emit: (message: unknown) => void;
 	interrupts: number;
 	aborted: () => boolean;
+	requestTool(
+		toolName: string,
+		input: Record<string, unknown>,
+	): Promise<unknown>;
 };
 
 function messageStart(id: string): unknown {
@@ -32,22 +36,33 @@ function result(): unknown {
 
 function createHarness(): Harness {
 	const pending: unknown[] = [];
-	let notify: (() => void) | null = null;
+	let waiting: ((result: IteratorResult<unknown>) => void) | null = null;
 	let aborted = false;
+	let canUseTool:
+		| ((
+				toolName: string,
+				input: Record<string, unknown>,
+				context: { toolUseID: string },
+		  ) => Promise<unknown>)
+		| undefined;
 	const state = { interrupts: 0 };
 
 	const stream: ClaudeSession = {
-		async *[Symbol.asyncIterator]() {
-			while (true) {
-				const next = pending.shift();
-				if (next !== undefined) {
-					yield next;
-					continue;
-				}
-				await new Promise<void>((resolve) => {
-					notify = resolve;
-				});
-			}
+		[Symbol.asyncIterator](): AsyncIterator<unknown> {
+			return {
+				next: () => {
+					const next = pending.shift();
+					if (next !== undefined) {
+						return Promise.resolve({ value: next, done: false });
+					}
+					if (aborted) {
+						return Promise.resolve({ value: undefined, done: true });
+					}
+					return new Promise<IteratorResult<unknown>>((resolve) => {
+						waiting = resolve;
+					});
+				},
+			};
 		},
 		interrupt: async () => {
 			state.interrupts += 1;
@@ -55,8 +70,13 @@ function createHarness(): Harness {
 	};
 
 	const query: ClaudeQuery = ({ options }) => {
+		canUseTool = options.canUseTool as typeof canUseTool;
 		options.abortController?.signal.addEventListener("abort", () => {
 			aborted = true;
+			pending.length = 0;
+			const resolve = waiting;
+			waiting = null;
+			resolve?.({ value: undefined, done: true });
 		});
 		return stream;
 	};
@@ -68,15 +88,19 @@ function createHarness(): Harness {
 		adapter,
 		iterator,
 		emit: (message: unknown) => {
-			pending.push(message);
-			const resume = notify;
-			notify = null;
-			resume?.();
+			const resolve = waiting;
+			waiting = null;
+			if (resolve) resolve({ value: message, done: false });
+			else pending.push(message);
 		},
 		get interrupts() {
 			return state.interrupts;
 		},
 		aborted: () => aborted,
+		requestTool: (toolName, input) => {
+			if (!canUseTool) throw new Error("permission callback unavailable");
+			return canUseTool(toolName, input, { toolUseID: "tool-native" });
+		},
 	};
 }
 
@@ -119,18 +143,35 @@ describe("ClaudeAdapter", () => {
 		).toBe(true);
 	});
 
+	test("native tool approvals keep the provider accept path instead of Automation options", async () => {
+		const harness = createHarness();
+		const permission = harness.requestTool("Bash", { command: "echo hi" });
+		const event = await harness.iterator.next();
+		expect(event.done).toBe(false);
+		expect(event.value).toMatchObject({
+			kind: "item",
+			item: {
+				kind: "approval_request",
+				status: "pending",
+			},
+		});
+		if (event.done || event.value.kind !== "item")
+			throw new Error("approval missing");
+		expect("options" in event.value.item).toBe(false);
+		harness.adapter.respondToApproval(event.value.item.id, { type: "accept" });
+		const permissionResult = await permission;
+		expect(permissionResult).toMatchObject({ behavior: "allow" });
+		await harness.adapter.dispose();
+	});
+
 	test("dispose aborts the underlying session", async () => {
 		const harness = createHarness();
 		harness.adapter.prompt([{ type: "text", text: "first" }]);
 		harness.emit(messageStart("msg_1"));
 		await nextTurn(harness.iterator);
-
 		const disposal = harness.adapter.dispose();
 		expect(harness.aborted()).toBe(true);
 		harness.emit(result());
-		await Promise.race([
-			disposal,
-			new Promise((resolve) => setTimeout(resolve, 50)),
-		]);
+		await disposal;
 	});
 });

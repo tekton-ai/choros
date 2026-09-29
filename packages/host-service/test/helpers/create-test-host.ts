@@ -32,6 +32,7 @@ export interface TestHostOptions {
 	githubFactory?: () => Promise<unknown>;
 	execGh?: (args: string[], options?: unknown) => Promise<unknown>;
 	chatService?: unknown;
+	automation?: CreateAppOptions["automation"];
 }
 
 export interface TestHost {
@@ -41,6 +42,7 @@ export interface TestHost {
 	dispose: () => Promise<void>;
 	psk: string;
 	dbPath: string;
+	automations: CreateAppResult["automations"];
 
 	/** tRPC client that talks to the real Hono app via in-process fetch. */
 	trpc: ReturnType<typeof createTRPCClient<HostAppRouter>>;
@@ -75,9 +77,7 @@ export async function createTestHost(
 	// this. Restored (not deleted) on dispose so nested harnesses keep
 	// their own isolation.
 	const priorHomeDir = process.env.CHOROS_HOME_DIR;
-	if (!priorHomeDir) {
-		process.env.CHOROS_HOME_DIR = dataDir;
-	}
+	process.env.CHOROS_HOME_DIR = dataDir;
 
 	const sqlite = new BunDatabase(dbPath, { create: true, readwrite: true });
 	sqlite.exec("PRAGMA journal_mode = WAL");
@@ -110,6 +110,7 @@ export async function createTestHost(
 					throw new Error("execGh not configured in test");
 				},
 		chatService: options.chatService as CreateAppOptions["chatService"],
+		automation: options.automation,
 	};
 
 	const result = createApp(createOptions);
@@ -151,8 +152,9 @@ export async function createTestHost(
 		try {
 			await result.dispose();
 		} finally {
-			if (!priorHomeDir && process.env.CHOROS_HOME_DIR === dataDir) {
-				delete process.env.CHOROS_HOME_DIR;
+			if (process.env.CHOROS_HOME_DIR === dataDir) {
+				if (priorHomeDir === undefined) delete process.env.CHOROS_HOME_DIR;
+				else process.env.CHOROS_HOME_DIR = priorHomeDir;
 			}
 			try {
 				sqlite.close();
@@ -174,6 +176,7 @@ export async function createTestHost(
 		dispose,
 		psk,
 		dbPath,
+		automations: result.automations,
 		trpc,
 		unauthenticatedTrpc,
 		fetch: fetchApp,
