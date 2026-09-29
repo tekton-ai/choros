@@ -747,6 +747,7 @@ export function createAutomationRuntime(
 	): Promise<AutomationPreview> {
 		const parsed = automationDefinitionSchema.parse(input.definition);
 		assertSupportedSchedule(parsed);
+		let usedRounds = 0;
 		if (input.automationId) {
 			const existing = requireAutomation(options.db, input.automationId);
 			if (input.expectedVersion == null) {
@@ -756,6 +757,7 @@ export function createAutomationRuntime(
 				);
 			}
 			assertVersion(existing, input.expectedVersion);
+			usedRounds = existing.usedRounds;
 		}
 		const resolved = automationDefinitionSchema.parse(
 			await options.resolveDefinition(parsed),
@@ -774,7 +776,13 @@ export function createAutomationRuntime(
 		return {
 			definition: resolved,
 			summary: `${resolved.name} — ${describeAutomationSchedule(resolved)}`,
-			nextOccurrences: previewAutomationOccurrences(resolved, resolvedAt, 5),
+			nextOccurrences: previewAutomationOccurrences(
+				resolved,
+				resolvedAt,
+				resolved.stop.maxRounds == null
+					? 5
+					: Math.max(0, resolved.stop.maxRounds - usedRounds),
+			),
 			confirmationToken: signPreview(payload),
 			expiresAt: new Date(payload.expiresAt).toISOString(),
 			resolvedAt: new Date(resolvedAt).toISOString(),

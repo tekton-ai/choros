@@ -234,6 +234,68 @@ afterEach(() => {
 });
 
 describe("automation runtime persistence", () => {
+	test("previews only remaining finite rounds, including after prior rounds were consumed", async () => {
+		const { runtime, db } = runtimeWith(new HoldingDriver());
+		const startsAt = Date.now() + 60_000;
+		const finite: AutomationDefinition = {
+			...definition(),
+			schedule: {
+				kind: "fixedInterval",
+				startsAt: new Date(startsAt).toISOString(),
+				intervalSeconds: 60,
+				timeZone: "UTC",
+			},
+			stop: { maxRounds: 3 },
+		};
+		try {
+			const preview = await runtime.preview({
+				definition: finite,
+				intent: "save",
+			});
+			expect(preview.nextOccurrences.map((slot) => slot.at)).toEqual(
+				[0, 1, 2].map((round) =>
+					new Date(startsAt + round * 60_000).toISOString(),
+				),
+			);
+			const { automation } = await runtime.create({
+				requestId: "save-finite-preview",
+				confirmationToken: preview.confirmationToken,
+			});
+			db.update(automations)
+				.set({ usedRounds: 1 })
+				.where(eq(automations.id, automation.id))
+				.run();
+			const remaining = await runtime.preview({
+				definition: finite,
+				automationId: automation.id,
+				expectedVersion: automation.version,
+				intent: "enable",
+			});
+			expect(remaining.nextOccurrences.map((slot) => slot.at)).toEqual(
+				[0, 1].map((round) =>
+					new Date(startsAt + round * 60_000).toISOString(),
+				),
+			);
+			db.update(automations)
+				.set({ usedRounds: 3 })
+				.where(eq(automations.id, automation.id))
+				.run();
+			expect(
+				(
+					await runtime.preview({
+						definition: finite,
+						automationId: automation.id,
+						expectedVersion: automation.version,
+						intent: "enable",
+					})
+				).nextOccurrences,
+			).toEqual([]);
+		} finally {
+			await runtime.stop();
+			db.$client.close();
+		}
+	});
+
 	test("returns the original receipt and persists evidence without prepared environment secrets", async () => {
 		const driver = new CompletingDriver();
 		const { runtime, db } = runtimeWith(driver);
