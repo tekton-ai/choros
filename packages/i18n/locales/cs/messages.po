@@ -10204,16 +10204,6 @@ msgstr "Obnovit"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.automationsHint"
-msgstr "Zobrazit experimentální rozhraní automatizací. Vypnutí skryje jeho stránky; stávající plány, aktivní běhy a historie zůstanou beze změny. CLI a nástroje agentů zůstanou dostupné."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.automationsLabel"
-msgstr "Automatizace"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
 msgid "settings.experimental.inlinePortsHint"
 msgstr "Zobrazovat rozpoznané porty jako rozbalovací nabídku v horní liště místo čipu pod každým pracovním prostorem v postranním panelu."
 

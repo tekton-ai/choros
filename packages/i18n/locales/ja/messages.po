@@ -10204,16 +10204,6 @@ msgstr "リセット"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.automationsHint"
-msgstr "実験的な自動化インターフェースを表示します。オフにするとページが非表示になりますが、既存のスケジュール、実行中のタスク、履歴は変更されません。CLI とエージェントツールは引き続き利用できます。"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.automationsLabel"
-msgstr "自動化"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
 msgid "settings.experimental.inlinePortsHint"
 msgstr "検出したポートを、サイドバーの各ワークスペース下のチップではなくトップバーのドロップダウンに表示します。"
 

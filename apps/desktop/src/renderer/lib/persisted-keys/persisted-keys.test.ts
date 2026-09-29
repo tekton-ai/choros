@@ -38,11 +38,12 @@ describe("sweepDeadPersistedKeys", () => {
 			"changes-store": "{}",
 			ph_project_posthog: "{}",
 			outlit_session: "{}",
+			"automations-experiment": '{"state":{"enabled":false},"version":0}',
 		});
 
 		const removed = sweepDeadPersistedKeys(storage);
 
-		expect(removed).toBe(6);
+		expect(removed).toBe(7);
 		expect(storage.getItem("pending-workspaces-org-a")).toBeNull();
 		expect(storage.getItem("pending-workspaces-org-b")).toBeNull();
 		expect(storage.getItem("v1-migration-last-run-at-org-a")).toBeNull();
@@ -52,6 +53,7 @@ describe("sweepDeadPersistedKeys", () => {
 		expect(storage.getItem("changes-store")).toBe("{}");
 		expect(storage.getItem("ph_project_posthog")).toBe("{}");
 		expect(storage.getItem("outlit_session")).toBeNull();
+		expect(storage.getItem("automations-experiment")).toBeNull();
 	});
 
 	test.each([

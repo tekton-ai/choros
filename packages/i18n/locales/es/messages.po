@@ -10204,16 +10204,6 @@ msgstr "Restablecer"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.automationsHint"
-msgstr "Mostrar la interfaz experimental de automatizaciones. Al desactivarla se ocultan sus páginas; las programaciones existentes, las ejecuciones activas y el historial no cambian. La CLI y las herramientas de los agentes siguen disponibles."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.automationsLabel"
-msgstr "Automatizaciones"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
 msgid "settings.experimental.inlinePortsHint"
 msgstr "Muestra los puertos detectados como un menú desplegable en la barra superior en lugar de como una etiqueta bajo cada espacio de trabajo en la barra lateral."
 

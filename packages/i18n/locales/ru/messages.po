@@ -10204,16 +10204,6 @@ msgstr "Сбросить"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.automationsHint"
-msgstr "Показать экспериментальный интерфейс автоматизаций. При отключении его страницы скрываются; существующие расписания, активные запуски и история не меняются. CLI и инструменты агентов остаются доступны."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.automationsLabel"
-msgstr "Автоматизации"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
 msgid "settings.experimental.inlinePortsHint"
 msgstr "Показывать обнаруженные порты выпадающим списком в верхней панели вместо чипа под каждой рабочей областью в боковой панели."
 

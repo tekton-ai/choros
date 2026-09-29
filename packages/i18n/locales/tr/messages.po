@@ -10204,16 +10204,6 @@ msgstr "Sıfırla"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.automationsHint"
-msgstr "Deneysel Otomasyon arayüzünü göster. Kapatıldığında sayfaları gizlenir; mevcut zamanlamalar, etkin çalıştırmalar ve geçmiş değişmez. CLI ve ajan araçları kullanılabilir durumda kalır."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.automationsLabel"
-msgstr "Otomasyonlar"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
 msgid "settings.experimental.inlinePortsHint"
 msgstr "Algılanan portları, kenar çubuğunda her çalışma alanının altındaki bir çip yerine üst çubukta açılır menü olarak göster."
 

@@ -10204,16 +10204,6 @@ msgstr "Réinitialiser"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.automationsHint"
-msgstr "Afficher l’interface expérimentale des automatisations. La désactivation masque ses pages ; les planifications existantes, les exécutions en cours et l’historique restent inchangés. La CLI et les outils des agents restent disponibles."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.automationsLabel"
-msgstr "Automatisations"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
 msgid "settings.experimental.inlinePortsHint"
 msgstr "Afficher les ports détectés dans un menu déroulant de la barre supérieure plutôt que dans une puce sous chaque espace de travail de la barre latérale."
 

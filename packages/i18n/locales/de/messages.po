@@ -10204,16 +10204,6 @@ msgstr "Zurücksetzen"
 
 #. js-lingui-explicit-id
 #: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.automationsHint"
-msgstr "Experimentelle Automatisierungsoberfläche anzeigen. Beim Ausschalten werden ihre Seiten ausgeblendet; bestehende Zeitpläne, aktive Ausführungen und der Verlauf bleiben unverändert. CLI und Agent-Werkzeuge bleiben verfügbar."
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
-msgid "settings.experimental.automationsLabel"
-msgstr "Automatisierungen"
-
-#. js-lingui-explicit-id
-#: ../../apps/desktop/src/renderer/routes/_authenticated/settings/experimental/components/experimental-settings/experimental-settings.tsx
 msgid "settings.experimental.inlinePortsHint"
 msgstr "Erkannte Ports als Dropdown in der oberen Leiste anzeigen statt als Chip unter jedem Arbeitsbereich in der Seitenleiste."
 

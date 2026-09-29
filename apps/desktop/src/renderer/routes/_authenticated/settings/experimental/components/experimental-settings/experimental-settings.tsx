@@ -4,10 +4,6 @@ import { Trans, useLingui } from "@lingui/react/macro";
 
 import { HighlightText } from "renderer/routes/_authenticated/settings/components/highlight-text";
 import {
-	useAutomationsExperimentEnabled,
-	useAutomationsExperimentStore,
-} from "renderer/stores/automations-experiment";
-import {
 	useInlineWorkspacePortsStore,
 	usePortsDisplayMode,
 } from "renderer/stores/inline-workspace-ports";
@@ -32,14 +28,6 @@ export function ExperimentalSettings({
 }: ExperimentalSettingsProps) {
 	const { t } = useLingui();
 	const searchQuery = useSettingsSearchQuery();
-	const showAutomations = isItemVisible(
-		SETTING_ITEM_ID.EXPERIMENTAL_AUTOMATIONS,
-		visibleItems,
-	);
-	const automationsEnabled = useAutomationsExperimentEnabled();
-	const setAutomationsEnabled = useAutomationsExperimentStore(
-		(state) => state.setEnabled,
-	);
 	const showInlineWorkspacePorts = isItemVisible(
 		SETTING_ITEM_ID.EXPERIMENTAL_INLINE_WORKSPACE_PORTS,
 		visibleItems,
@@ -75,39 +63,6 @@ export function ExperimentalSettings({
 			</div>
 
 			<div className="space-y-6">
-				{showAutomations && (
-					<div className="flex items-center justify-between gap-6">
-						<div className="min-w-0 flex-1 space-y-0.5">
-							<Label
-								htmlFor="automations-experiment"
-								className="text-sm font-medium"
-							>
-								<HighlightText
-									text={t({
-										id: "settings.experimental.automationsLabel",
-										message: "Automations",
-									})}
-									query={searchQuery}
-								/>
-							</Label>
-							<p className="text-xs text-muted-foreground">
-								<HighlightText
-									text={t({
-										id: "settings.experimental.automationsHint",
-										message:
-											"Show the experimental Automation interface. Turning this off hides its pages; existing schedules, active runs, and history are unchanged. CLI and agent tools remain available.",
-									})}
-									query={searchQuery}
-								/>
-							</p>
-						</div>
-						<Switch
-							id="automations-experiment"
-							checked={automationsEnabled}
-							onCheckedChange={setAutomationsEnabled}
-						/>
-					</div>
-				)}
 				{showInlineWorkspacePorts && (
 					<div className="flex items-center justify-between gap-6">
 						<div className="min-w-0 flex-1 space-y-0.5">
