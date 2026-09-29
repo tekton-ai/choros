@@ -8,6 +8,27 @@
       "when": 1785962456515,
       "tag": "0000_natural_wolverine",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1790586995477,
+      "tag": "0001_managed_operation_receipts",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1790587507906,
+      "tag": "0002_persistent_command_receipts",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1790590975337,
+      "tag": "0003_managed_reuse_identity",
+      "breakpoints": true
     }
   ]
 }

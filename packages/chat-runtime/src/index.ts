@@ -2,9 +2,11 @@ import type { ChatCommands } from "./commands";
 import { CommandDedupe, createCommands } from "./commands";
 import type { ChatDb, OpenChatDb } from "./db";
 import { createChatDb } from "./db";
+import type { HarnessToolDefinition } from "./harness";
 import { ChatJournal } from "./journal";
+import { ManagedChatOperations } from "./managed-operations";
 import { ChatSessionStore } from "./projection";
-import type { HarnessRegistry } from "./sessions";
+import type { HarnessFactoryOptions, HarnessRegistry } from "./sessions";
 import { LiveSessionRegistry } from "./sessions";
 import type { Schedule, Sink, SubscribeOptions, Subscription } from "./stream";
 import { SubscriptionHub } from "./stream";
@@ -13,6 +15,7 @@ export * from "./commands";
 export * from "./db";
 export * from "./harness";
 export * from "./journal";
+export * from "./managed-operations";
 export * from "./projection";
 export * from "./replay";
 export * from "./router";
@@ -27,6 +30,9 @@ export type ChatRuntimeOptions = {
 	schedule?: Schedule;
 	bootstrapLimit?: number;
 	dedupeCapacity?: number;
+	interactiveTools?: (
+		context: HarnessFactoryOptions,
+	) => HarnessToolDefinition[];
 };
 
 export type ChatRuntime = {
@@ -36,6 +42,7 @@ export type ChatRuntime = {
 	live: LiveSessionRegistry;
 	subscriptions: SubscriptionHub;
 	commands: ChatCommands;
+	operations: ManagedChatOperations;
 	subscribe(
 		sessionId: string,
 		options: SubscribeOptions,
@@ -59,15 +66,17 @@ export function createChatRuntime(options: ChatRuntimeOptions): ChatRuntime {
 		journal,
 		publish: (envelope) => subscriptions.publish(envelope),
 		harnesses: options.harnesses ?? new Map(),
+		defaultTools: options.interactiveTools,
 	});
+	const operations = new ManagedChatOperations({ db, journal, sessions, live });
 	const commands = createCommands({
 		journal,
 		db,
 		sessions,
 		live,
-		dedupe: new CommandDedupe(options.dedupeCapacity),
+		operations,
+		dedupe: new CommandDedupe(options.dedupeCapacity, db),
 	});
-
 	return {
 		journal,
 		sessions,
@@ -75,6 +84,7 @@ export function createChatRuntime(options: ChatRuntimeOptions): ChatRuntime {
 		live,
 		subscriptions,
 		commands,
+		operations,
 		subscribe: (sessionId, subscribeOptions, sink) =>
 			subscriptions.subscribe(sessionId, subscribeOptions, sink),
 		dispose: async () => {

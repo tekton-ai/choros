@@ -21,6 +21,7 @@ const selectOptionSchema = z.looseObject({
 export const sessionStateSchema = z.looseObject({
 	status: sessionStatusSchema,
 	harness: z.string().min(1),
+	harnessSessionId: z.string().min(1).optional(),
 	title: z.string().optional(),
 	modeId: z.string().optional(),
 	modelId: z.string().optional(),

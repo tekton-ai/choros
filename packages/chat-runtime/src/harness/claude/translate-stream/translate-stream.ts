@@ -166,6 +166,7 @@ export class ClaudeTranslator {
 					session: {
 						harness: HARNESS_ID,
 						status: "running",
+						harnessSessionId: asString(envelope.session_id) ?? undefined,
 						...(asString(envelope.model)
 							? { modelId: asString(envelope.model) as string }
 							: {}),

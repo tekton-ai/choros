@@ -3,8 +3,10 @@ import { agentToolingRouter } from "./agent-tooling";
 import { agentsRouter } from "./agents";
 import { attachmentsRouter } from "./attachments";
 import { authRouter } from "./auth";
+import { automationsRouter } from "./automations";
 import { browserRouter } from "./browser/browser";
 import { configRouter } from "./config";
+import { executionsRouter } from "./executions";
 import { filesystemRouter } from "./filesystem";
 import { gitRouter } from "./git";
 import { githubRouter } from "./github";
@@ -29,6 +31,8 @@ export const appRouter = router({
 	agentTooling: agentToolingRouter,
 	attachments: attachmentsRouter,
 	auth: authRouter,
+	automations: automationsRouter,
+	executions: executionsRouter,
 	browser: browserRouter,
 	health: healthRouter,
 	host: hostRouter,

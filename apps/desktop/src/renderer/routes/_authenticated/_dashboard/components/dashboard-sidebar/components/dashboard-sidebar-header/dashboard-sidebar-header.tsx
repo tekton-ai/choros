@@ -11,7 +11,13 @@ import { Trans, useLingui } from "@lingui/react/macro";
 import { useMatchRoute, useNavigate } from "@tanstack/react-router";
 import { useRef } from "react";
 import { GoGitPullRequest } from "react-icons/go";
-import { LuLayers, LuPlus, LuPuzzle, LuSearch } from "react-icons/lu";
+import {
+	LuCalendarClock,
+	LuLayers,
+	LuPlus,
+	LuPuzzle,
+	LuSearch,
+} from "react-icons/lu";
 import {
 	VscFolderOpened,
 	VscGithubAlt,
@@ -21,6 +27,7 @@ import {
 import { useFrameStackStore } from "renderer/command-palette";
 import { SidebarKbdHint } from "renderer/components/sidebar-kbd-hint";
 import { ZoomStable } from "renderer/components/zoom-stable";
+import { useAutomations } from "renderer/hooks/host-service/use-automations";
 import { useZoomFactor } from "renderer/hooks/use-zoom-factor";
 import { useHotkeyDisplay } from "renderer/hotkeys";
 import { electronTrpc } from "renderer/lib/electron-trpc";
@@ -144,6 +151,18 @@ export function DashboardSidebarHeader({
 		fuzzy: true,
 	});
 	const isPluginsOpen = !!matchRoute({ to: "/plugins", fuzzy: true });
+	const isAutomationsOpen = !!matchRoute({
+		to: "/automations",
+		fuzzy: true,
+	});
+	const automationData = useAutomations();
+	const automationAttentionCount =
+		automationData.runs.filter((run) =>
+			["waiting", "needs_result", "unknown"].includes(run.status),
+		).length +
+		automationData.automations.filter(
+			(automation) => !automationData.ownershipFor(automation).targetAvailable,
+		).length;
 	const isPluginsEnabled = true;
 	const {
 		search: lastPullRequestsSearch,
@@ -156,6 +175,10 @@ export function DashboardSidebarHeader({
 
 	const handleWorkspacesClick = () => {
 		navigate({ to: "/v2-workspaces" });
+	};
+
+	const handleAutomationsClick = () => {
+		navigate({ to: "/automations" });
 	};
 
 	const handlePluginsClick = () => {
@@ -257,6 +280,36 @@ export function DashboardSidebarHeader({
 						<TooltipContent side="right">
 							<Trans id="dashboard.sidebar.header.workspacesTooltip">
 								Workspaces
+							</Trans>
+						</TooltipContent>
+					</Tooltip>
+
+					<Tooltip delayDuration={300}>
+						<TooltipTrigger asChild>
+							<button
+								type="button"
+								onClick={handleAutomationsClick}
+								aria-label={t({
+									id: "dashboard.sidebar.header.automationsRailAriaLabel",
+									message: "Automations",
+								})}
+								aria-current={isAutomationsOpen ? "page" : undefined}
+								className={cn(
+									"relative flex size-7 items-center justify-center rounded-md transition-colors",
+									isAutomationsOpen
+										? "bg-fill-selected text-muted-foreground"
+										: "text-muted-foreground hover:bg-fill-hover",
+								)}
+							>
+								<LuCalendarClock className="size-3.5" strokeWidth={1.5} />
+								{automationAttentionCount > 0 && (
+									<span className="absolute top-0.5 right-0.5 size-1.5 rounded-full bg-destructive" />
+								)}
+							</button>
+						</TooltipTrigger>
+						<TooltipContent side="right">
+							<Trans id="dashboard.sidebar.header.automationsTooltip">
+								Automations
 							</Trans>
 						</TooltipContent>
 					</Tooltip>
@@ -464,6 +517,35 @@ export function DashboardSidebarHeader({
 				<span className="flex-1 text-left">
 					<Trans id="dashboard.sidebar.header.workspaces">Workspaces</Trans>
 				</span>
+			</button>
+
+			<button
+				type="button"
+				onClick={handleAutomationsClick}
+				aria-label={t({
+					id: "dashboard.sidebar.header.automationsAriaLabel",
+					message: "Automations",
+				})}
+				aria-current={isAutomationsOpen ? "page" : undefined}
+				className={cn(
+					"flex h-7 w-full items-center gap-2 rounded-md px-2 text-[13px] font-medium transition-colors",
+					isAutomationsOpen
+						? "bg-fill-selected text-foreground"
+						: "text-muted-foreground hover:bg-fill-hover hover:text-foreground",
+				)}
+			>
+				<LuCalendarClock
+					className="size-4 shrink-0 text-muted-foreground"
+					strokeWidth={1.5}
+				/>
+				<span className="flex-1 text-left">
+					<Trans id="dashboard.sidebar.header.automations">Automations</Trans>
+				</span>
+				{automationAttentionCount > 0 && (
+					<span className="rounded-full bg-destructive px-1.5 text-[10px] font-semibold text-destructive-foreground">
+						{automationAttentionCount}
+					</span>
+				)}
 			</button>
 
 			<button

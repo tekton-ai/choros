@@ -1,4 +1,4 @@
 interface:
-  display_name: "Superset Automate"
-  short_description: "Turn a recurring chore into a scheduled Superset automation"
-  default_prompt: "Use $superset-automate to turn this recurring task into a Superset automation."
+  display_name: "Choros Automate"
+  short_description: "Create and confirm a local one-time or recurring Automation"
+  default_prompt: "Use $choros-automate to preview this work, save it paused, and enable it only after I separately confirm the schedule."

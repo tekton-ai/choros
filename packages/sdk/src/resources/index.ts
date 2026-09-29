@@ -7,18 +7,6 @@ export {
 	type HostAgentConfig,
 	type PromptTransport,
 } from "./agents";
-export {
-	type Automation,
-	type AutomationCreateParams,
-	type AutomationListResponse,
-	type AutomationLogsParams,
-	type AutomationLogsResponse,
-	type AutomationRun,
-	type AutomationRunDispatched,
-	Automations,
-	type AutomationSummary,
-	type AutomationUpdateParams,
-} from "./automations";
 export { type Host, type HostListResponse, Hosts } from "./hosts";
 export {
 	type Member,

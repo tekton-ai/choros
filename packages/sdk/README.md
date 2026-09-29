@@ -31,15 +31,47 @@ const [host] = await client.hosts.list();
 if (!host) throw new Error('No hosts registered — run `choros start` on a machine');
 await client.workspaces.list({ hostId: host.id });
 await client.projects.list({ hostId: host.id });
-await client.automations.list();
-
-// Trigger an automation now (off-schedule)
-await client.automations.run('<automation-id>');
 ```
 
 Both `apiKey` and `organizationId` are picked up automatically from `CHOROS_API_KEY` / `CHOROS_ORGANIZATION_ID` environment variables — you can omit them in the constructor.
 
 Find your `organizationId` via `choros organization list` in the CLI, or in the URL of any org dashboard.
+
+## Local Host Automations
+
+Automations live on one explicitly selected local Host. They are not an
+organization-scoped cloud resource and do not use the relay transport. Build a
+typed local client from a Host endpoint and an authentication provider:
+
+```ts
+import { createLocalHostClient } from '@choros_sh/sdk';
+
+const local = createLocalHostClient({
+  endpoint: process.env.CHOROS_HOST_ENDPOINT!,
+  auth: async () => ({
+    token: await loadCurrentHostToken(),
+    clientMachineId: process.env.CHOROS_MACHINE_ID,
+  }),
+});
+
+const preview = await local.automations.preview.query({
+  definition,
+  intent: 'save',
+});
+
+// Show preview.summary to the user and obtain explicit confirmation first.
+const saved = await local.automations.create.mutate({
+  requestId: crypto.randomUUID(),
+  confirmationToken: preview.confirmationToken,
+  runImmediately: false,
+});
+```
+
+Creation saves the Automation paused. Enabling is a separate confirmed call:
+preview the same current definition with `intent: 'enable'`, then pass that
+preview's token and the current `expectedVersion` to
+`automations.setScheduleState`. Do not persist confirmation tokens or treat a
+successful request as proof that an agent finished its work.
 
 ## Configuration
 
@@ -48,7 +80,7 @@ const client = new Choros({
   apiKey: 'sk_live_…',
   organizationId: '…',
   baseURL: 'https://api.choros.sh',     // override for staging / self-hosted
-  relayURL: 'https://relay.choros.sh',  // host-routed ops (workspace create, automation run)
+  relayURL: 'https://relay.choros.sh',  // host-routed workspace/agent operations
   timeout: 60_000,
   maxRetries: 2,
   logLevel: 'warn',                       // 'off' | 'error' | 'warn' | 'info' | 'debug'

@@ -1074,11 +1074,10 @@ export const workspacesRouter = router({
 			// Wait-for-setup gate: chain a single terminal agent behind the setup
 			// commands in the setup terminal, so the agent starts only after setup
 			// succeeds and no second terminal is created. Multi-agent launches keep
-			// the parallel path, mirroring the renderer's v1 gating. Build the agent
-			// command up-front; if it fails (unknown agent, missing attachment) fall
-			// back to the parallel dispatch, which surfaces the error in the agents
-			// result.
+			// the parallel path. A failed launch preflight or setup start must not
+			// bypass a requested setup gate by dispatching the agent independently.
 			let chainAgent: { fullCommand: string; label: string } | null = null;
+			let gatedLaunchError: string | null = null;
 			const soleLaunch = sugarLaunches.length === 1 ? sugarLaunches[0] : null;
 			if (!alreadyExists && input.waitForSetupBeforeAgents && soleLaunch) {
 				try {
@@ -1092,10 +1091,10 @@ export const workspacesRouter = router({
 						mode: soleLaunch.mode,
 					});
 				} catch (err) {
-					console.warn(
-						"[workspaces.create] wait-for-setup chain unavailable, dispatching agent in parallel:",
-						err,
-					);
+					gatedLaunchError =
+						err instanceof Error
+							? err.message
+							: "Agent launch preflight failed";
 				}
 			}
 
@@ -1104,8 +1103,12 @@ export const workspacesRouter = router({
 			// session is the one the user came for, and every client's tab order
 			// follows creation order, which had been handing the first slot to a
 			// setup shell nobody asked to look at.
-			const earlyAgentsResult =
-				chainAgent === null && sugarLaunches.length > 0
+			const earlyAgentsResult = gatedLaunchError
+				? sugarLaunches.map(() => ({
+						ok: false as const,
+						error: gatedLaunchError!,
+					}))
+				: chainAgent === null && sugarLaunches.length > 0
 					? await dispatchSugarAgents(ctx, workspaceRow.id, sugarLaunches)
 					: null;
 
@@ -1119,6 +1122,7 @@ export const workspacesRouter = router({
 					});
 				if (warning) {
 					console.warn(`[workspaces.create] setup warning: ${warning}`);
+					if (chainAgent) gatedLaunchError = warning;
 				}
 				if (terminal) {
 					terminalsResult.push({
@@ -1138,11 +1142,16 @@ export const workspacesRouter = router({
 
 			const [agentsResult, commandResult] = await Promise.all([
 				earlyAgentsResult ??
-					dispatchSugarAgents(
-						ctx,
-						workspaceRow.id,
-						chainedAgentResult ? [] : sugarLaunches,
-					),
+					(gatedLaunchError
+						? sugarLaunches.map(() => ({
+								ok: false as const,
+								error: gatedLaunchError!,
+							}))
+						: dispatchSugarAgents(
+								ctx,
+								workspaceRow.id,
+								chainedAgentResult ? [] : sugarLaunches,
+							)),
 				input.command
 					? startCommandTerminal({
 							ctx,

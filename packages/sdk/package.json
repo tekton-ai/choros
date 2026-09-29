@@ -32,6 +32,12 @@
 		"name": "@choros_sh/sdk",
 		"access": "public"
 	},
+	"dependencies": {
+		"@choros/host-service": "workspace:*",
+		"@choros/shared": "workspace:*",
+		"@trpc/client": "11.16.0",
+		"superjson": "2.2.6"
+	},
 	"scripts": {
 		"clean": "git clean -xdf .cache .turbo dist node_modules",
 		"typecheck": "tsc --noEmit --emitDeclarationOnly false",

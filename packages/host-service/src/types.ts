@@ -2,6 +2,7 @@ import type { ChatService } from "@choros/provider-auth/server";
 import type { Octokit } from "@octokit/rest";
 import type { HostDb } from "./db";
 import type { EventBus } from "./events";
+import type { AutomationRuntime } from "./runtime/automations";
 import type { WorkspaceFilesystemManager } from "./runtime/filesystem";
 import type { GitCredentialProvider, GitFactory } from "./runtime/git";
 import type { PullRequestRuntimeManager } from "./runtime/pull-requests";
@@ -12,6 +13,7 @@ export interface HostServiceRuntime {
 	auth: ChatService;
 	filesystem: WorkspaceFilesystemManager;
 	pullRequests: PullRequestRuntimeManager;
+	automations: AutomationRuntime;
 }
 
 export interface HostServiceContext {

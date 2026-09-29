@@ -1,0 +1,1 @@
+ALTER TABLE `execution_runs` ADD `preparation_evidence` text;

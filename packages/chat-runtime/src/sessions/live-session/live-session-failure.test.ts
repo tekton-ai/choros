@@ -29,7 +29,7 @@ function failingStream(
 		cancelTurn: () => undefined,
 		respondToApproval: () => undefined,
 		setMode: () => undefined,
-		dispose: async () => undefined,
+		dispose: async () => ({ quiescent: false }),
 	};
 }
 
@@ -62,7 +62,7 @@ function statuses(envelopes: DurableEnvelope[]): string[] {
 }
 
 describe("live session adapter failures", () => {
-	test("a rejected pump journals the failure instead of going unhandled", async () => {
+	test("a rejected transport is recorded without inventing a terminal turn", async () => {
 		const runningTurn: AdapterEvent = {
 			kind: "turn",
 			turn: { id: "turn-1", status: "running", startedAtMs: 1 },
@@ -79,7 +79,9 @@ describe("live session adapter failures", () => {
 		const turns = envelopes.flatMap((envelope) =>
 			envelope.event.type === "turn" ? [envelope.event.turn] : [],
 		);
-		expect(turns.at(-1)?.status).toBe("interrupted");
+		expect(turns).toEqual([
+			{ id: "turn-1", status: "running", startedAtMs: 1 },
+		]);
 
 		const notices = envelopes.flatMap((envelope) =>
 			envelope.event.type === "item" && envelope.event.item.kind === "notice"
@@ -104,6 +106,29 @@ describe("live session adapter failures", () => {
 		await expect(runtime.dispose()).resolves.toBeUndefined();
 	});
 
+	test("a resolving dispose without quiescence proof does not confirm stop", async () => {
+		const runtime = createTestRuntime({
+			harnesses: registryFor(failingStream([], "transport lost")),
+		});
+		const operationId = randomUUID();
+		const started = runtime.operations.start({
+			operationId,
+			parameterIdentity: { executionId: randomUUID() },
+			scopeId: "workspace-1",
+			harness: HARNESS,
+			cwd: "/tmp/workspace",
+			tools: [],
+			prompt: [{ type: "text", text: "managed work" }],
+		});
+		await waitFor(() =>
+			statuses(journalEnvelopes(runtime, started.sessionId)).includes("dead"),
+		);
+
+		const stopped = await runtime.operations.stop(operationId);
+		expect(stopped).toMatchObject({ state: "unknown", quiescent: false });
+		expect(stopped.error).toContain("without confirmed execution quiescence");
+		await runtime.dispose();
+	});
 	test("a throwing prompt does not wedge the queue", async () => {
 		const { runtime, sessionId } = startSession(
 			new PromptThrows({ turns: [[]] }),

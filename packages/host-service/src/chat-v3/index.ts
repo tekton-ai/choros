@@ -6,3 +6,5 @@ export {
 	registerChatV3Routes,
 } from "./mount";
 export { ChatWorkspaceNotFoundError, createResolveCwd } from "./resolve-cwd";
+export type { AutomationToolSourceContext } from "./tools";
+export { createAutomationManagementTools } from "./tools";

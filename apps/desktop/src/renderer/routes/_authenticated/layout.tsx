@@ -35,6 +35,7 @@ import { V2NotificationController } from "./components/v2-notification-controlle
 import { WindowTitle } from "./components/window-title";
 import { createPierreWorker } from "./lib/pierre-worker";
 import { CollectionsProvider } from "./providers/collections-provider";
+import { HostAutomationsProvider } from "./providers/host-automations-provider";
 import { HostWorkspacesProvider } from "./providers/host-workspaces-provider";
 import { LocalHostServiceProvider } from "./providers/local-host-service-provider";
 import { ProfileProvider } from "./providers/profile-provider";
@@ -167,21 +168,26 @@ function AuthenticatedLayout() {
 				<LocalHostServiceProvider>
 					<HostWorkspacesProvider>
 						<ProfileProvider>
-							<WorkerPoolContextProvider
-								poolOptions={{ workerFactory: createPierreWorker, poolSize: 8 }}
-								highlighterOptions={{ preferredHighlighter: "shiki-wasm" }}
-							>
-								<DiffThemeSync />
-								<AgentHooks />
-								<FileMenuListener />
-								<V2NotificationController />
-								<DockBadgeController />
-								<StarNagObserver />
-								<DaemonAutoUpdateFailureDialog />
-								<Outlet />
-								<DashboardNewWorkspaceModal />
-								<TeardownLogsDialog />
-							</WorkerPoolContextProvider>
+							<HostAutomationsProvider>
+								<WorkerPoolContextProvider
+									poolOptions={{
+										workerFactory: createPierreWorker,
+										poolSize: 8,
+									}}
+									highlighterOptions={{ preferredHighlighter: "shiki-wasm" }}
+								>
+									<DiffThemeSync />
+									<AgentHooks />
+									<FileMenuListener />
+									<V2NotificationController />
+									<DockBadgeController />
+									<StarNagObserver />
+									<DaemonAutoUpdateFailureDialog />
+									<Outlet />
+									<DashboardNewWorkspaceModal />
+									<TeardownLogsDialog />
+								</WorkerPoolContextProvider>
+							</HostAutomationsProvider>
 						</ProfileProvider>
 					</HostWorkspacesProvider>
 				</LocalHostServiceProvider>

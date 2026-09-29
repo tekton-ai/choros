@@ -15,11 +15,13 @@ import {
 	createWsSink,
 	DEFAULT_MIGRATIONS_FOLDER,
 } from "@choros/chat-runtime";
+import type { AutomationClient } from "@choros/shared/automation-contracts";
 import type { NodeWebSocket } from "@hono/node-ws";
 import { trpcServer } from "@hono/trpc-server";
 import type { Hono, MiddlewareHandler } from "hono";
 import type { HostDb } from "../db";
 import { createResolveCwd } from "./resolve-cwd";
+import { createAutomationManagementTools } from "./tools";
 
 export const CHAT_V3_TRPC_PATH = "/chat-v3/trpc";
 export const CHAT_V3_STREAM_PATH = "/chat-v3/sessions/:sessionId/stream";
@@ -58,8 +60,10 @@ export type ChatV3Mount = {
 export function createChatV3Mount(options: {
 	db: HostDb;
 	dbPath: string;
+	getAutomationClient?: () => AutomationClient;
 }): ChatV3Mount {
 	let built: ChatRuntime | null = null;
+	const getAutomationClient = options.getAutomationClient;
 
 	const runtime = (): ChatRuntime => {
 		if (built) return built;
@@ -67,6 +71,16 @@ export function createChatV3Mount(options: {
 			dataDir: dirname(options.dbPath),
 			migrationsFolder: migrationsFolder(),
 			harnesses: harnessRegistry(),
+			...(getAutomationClient
+				? {
+						interactiveTools: (context) =>
+							createAutomationManagementTools(getAutomationClient(), {
+								kind: "chat",
+								sessionId: context.sessionId,
+								scopeId: context.scopeId,
+							}),
+					}
+				: {}),
 		});
 		return built;
 	};

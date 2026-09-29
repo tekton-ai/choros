@@ -25,6 +25,7 @@ import type { ChatSessionStore } from "../../projection";
 import type { PageResult } from "../../replay";
 import { readPage } from "../../replay";
 import type { LiveSessionRegistry, PromptResult } from "../../sessions";
+import type { ManagedChatOperations } from "../../managed-operations";
 
 export const createSessionCommandSchema = createSessionInputSchema
 	.omit({ workspaceId: true })
@@ -66,12 +67,25 @@ export type CommandsOptions = {
 	db: ChatDb;
 	sessions: ChatSessionStore;
 	live: LiveSessionRegistry;
-	dedupe: { run<T>(commandId: string, execute: () => T): T };
+	operations?: ManagedChatOperations;
+	dedupe: {
+		run<T>(commandId: string, execute: () => T): T;
+		run<T>(commandId: string, parameters: unknown, execute: () => T): T;
+	};
 	mintSessionId?: () => string;
 };
 
 export function createCommands(options: CommandsOptions): ChatCommands {
 	const mintSessionId = options.mintSessionId ?? randomUUID;
+
+	const rejectManagedSession = (sessionId: string): void => {
+		const operation = options.operations?.findBySession(sessionId);
+		if (operation) {
+			throw new Error(
+				`chat session ${sessionId} is owned by managed operation ${operation.operationId}`,
+			);
+		}
+	};
 
 	const listSessions = (input: ListSessionsCommandInput): ChatSessionRow[] => {
 		const parsed = listSessionsCommandSchema.parse(input);
@@ -84,36 +98,41 @@ export function createCommands(options: CommandsOptions): ChatCommands {
 	return {
 		createSession(input) {
 			const parsed = createSessionCommandSchema.parse(input);
-			return options.dedupe.run(`createSession:${parsed.commandId}`, () => {
-				if (!options.live.supports(parsed.harness)) {
-					throw new Error(`unknown harness ${parsed.harness}`);
-				}
-				const sessionId = mintSessionId();
-				const opened = options.journal.open({
-					sessionId,
-					scopeId: parsed.scopeId,
-					harness: parsed.harness,
-				});
-				try {
-					options.live.create({
+			return options.dedupe.run(
+				`createSession:${parsed.commandId}`,
+				parsed,
+				() => {
+					if (!options.live.supports(parsed.harness)) {
+						throw new Error(`unknown harness ${parsed.harness}`);
+					}
+					const sessionId = mintSessionId();
+					const opened = options.journal.open({
 						sessionId,
 						scopeId: parsed.scopeId,
 						harness: parsed.harness,
-						cwd: parsed.cwd,
-						modeId: parsed.modeId,
-						modelId: parsed.modelId,
 					});
-				} catch (error) {
-					options.journal.discard(sessionId);
-					throw error;
-				}
-				return { sessionId, epoch: opened.epoch };
-			});
+					try {
+						options.live.create({
+							sessionId,
+							scopeId: parsed.scopeId,
+							harness: parsed.harness,
+							cwd: parsed.cwd,
+							modeId: parsed.modeId,
+							modelId: parsed.modelId,
+						});
+					} catch (error) {
+						options.journal.discard(sessionId);
+						throw error;
+					}
+					return { sessionId, epoch: opened.epoch };
+				},
+			);
 		},
 
 		prompt(input) {
 			const parsed: PromptInput = promptInputSchema.parse(input);
-			return options.dedupe.run(`prompt:${parsed.commandId}`, () =>
+			rejectManagedSession(parsed.sessionId);
+			return options.dedupe.run(`prompt:${parsed.commandId}`, parsed, () =>
 				options.live
 					.require(parsed.sessionId)
 					.prompt(parsed.content, parsed.clientId),
@@ -122,7 +141,7 @@ export function createCommands(options: CommandsOptions): ChatCommands {
 
 		cancelTurn(input) {
 			const parsed: CancelTurnInput = cancelTurnInputSchema.parse(input);
-			options.dedupe.run(`cancelTurn:${parsed.commandId}`, () => {
+			options.dedupe.run(`cancelTurn:${parsed.commandId}`, parsed, () => {
 				options.live.require(parsed.sessionId).cancelTurn(parsed.turnId);
 			});
 		},
@@ -130,16 +149,21 @@ export function createCommands(options: CommandsOptions): ChatCommands {
 		respondToApproval(input) {
 			const parsed: RespondToApprovalInput =
 				respondToApprovalInputSchema.parse(input);
-			options.dedupe.run(`respondToApproval:${parsed.commandId}`, () => {
-				options.live
-					.require(parsed.sessionId)
-					.respondToApproval(parsed.approvalId, parsed.decision);
-			});
+			options.dedupe.run(
+				`respondToApproval:${parsed.commandId}`,
+				parsed,
+				() => {
+					options.live
+						.require(parsed.sessionId)
+						.respondToApproval(parsed.approvalId, parsed.decision);
+				},
+			);
 		},
 
 		setMode(input) {
 			const parsed: SetModeInput = setModeInputSchema.parse(input);
-			options.dedupe.run(`setMode:${parsed.commandId}`, () => {
+			rejectManagedSession(parsed.sessionId);
+			options.dedupe.run(`setMode:${parsed.commandId}`, parsed, () => {
 				options.live.require(parsed.sessionId).setMode(parsed.modeId);
 			});
 		},

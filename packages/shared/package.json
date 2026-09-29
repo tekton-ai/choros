@@ -20,6 +20,14 @@
 			"types": "./src/automation-triggers.ts",
 			"default": "./src/automation-triggers.ts"
 		},
+		"./automation-contracts": {
+			"types": "./src/automation-contracts.ts",
+			"default": "./src/automation-contracts.ts"
+		},
+		"./automation-schedule": {
+			"types": "./src/automation-schedule.ts",
+			"default": "./src/automation-schedule.ts"
+		},
 		"./constants": {
 			"types": "./src/constants.ts",
 			"default": "./src/constants.ts"

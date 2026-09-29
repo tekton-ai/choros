@@ -28,7 +28,13 @@ const CLAUDE_PLUGIN_DIR_NAME = "choros";
  * allowlist (the chat menu shouldn't mirror every skill); everything else in
  * the bundled plugin is provisioned automatically.
  */
-const COMMAND_SKILLS = ["feedback", "10x", "setup", "doctor"] as const;
+const COMMAND_SKILLS = [
+	"feedback",
+	"10x",
+	"setup",
+	"doctor",
+	"automate",
+] as const;
 
 export interface ManagedSkillsOptions {
 	homeDir?: string;

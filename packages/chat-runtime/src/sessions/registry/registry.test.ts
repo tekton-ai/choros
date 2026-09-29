@@ -24,8 +24,9 @@ function onDispose(after: () => void): HarnessAdapter {
 		respondToApproval: (id, decision) => inner.respondToApproval(id, decision),
 		setMode: (modeId) => inner.setMode(modeId),
 		dispose: async () => {
-			await inner.dispose();
+			const result = await inner.dispose();
 			after();
+			return result;
 		},
 	};
 }
@@ -69,6 +70,7 @@ describe("LiveSessionRegistry", () => {
 				setMode: () => undefined,
 				dispose: async () => {
 					disposed = true;
+					return { quiescent: true };
 				},
 			})),
 		});

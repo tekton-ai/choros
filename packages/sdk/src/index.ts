@@ -18,6 +18,30 @@ export {
 	UnprocessableEntityError,
 } from "./core/error";
 export { toFile, type Uploadable } from "./core/uploads";
+export {
+	createLocalHostClient,
+	type LocalHostAuth,
+	type LocalHostAuthProvider,
+	type LocalHostClient,
+	type LocalHostClientOptions,
+} from "./local-host/client";
+export type {
+	Automation,
+	AutomationCapabilities,
+	AutomationClient,
+	AutomationDefinition,
+	AutomationDefinitionInput,
+	AutomationOccurrence,
+	AutomationPage,
+	AutomationPreview,
+	AutomationRun,
+	AutomationRunStatus,
+	AutomationSchedule,
+	AutomationState,
+	ExecutionInput,
+	ExecutionReport,
+	WorkEvent,
+} from "@choros/shared/automation-contracts";
 
 // Resource classes + their data shapes — bare top-level exports so consumers
 // can `import { type Task } from '@choros_sh/sdk'` without going through
@@ -28,16 +52,6 @@ export {
 	type AgentListParams,
 	type AgentListResponse,
 	Agents,
-	type Automation,
-	type AutomationCreateParams,
-	type AutomationListResponse,
-	type AutomationLogsParams,
-	type AutomationLogsResponse,
-	type AutomationRun,
-	type AutomationRunDispatched,
-	Automations,
-	type AutomationSummary,
-	type AutomationUpdateParams,
 	type Host,
 	type HostAgentConfig,
 	type HostListResponse,

@@ -9,11 +9,13 @@ import type {
 	UserContent,
 } from "@choros/chat/protocol";
 import { isKnownItem } from "@choros/chat/protocol";
+import { z } from "zod";
 import { EventQueue } from "../../event-queue";
 import type {
 	AdapterEvent,
 	HarnessAdapter,
 	HarnessStartOptions,
+	HarnessToolDefinition,
 } from "../../types";
 import { mapThreadItem } from "../map-thread-item";
 import type {
@@ -27,6 +29,7 @@ import { CodexRpcClient, spawnCodexTransport } from "../rpc-client";
 import type { CodexRequestId, CodexThreadItem, CodexTurn } from "../wire";
 import {
 	commandApprovalParamsSchema,
+	dynamicToolCallParamsSchema,
 	errorNotificationSchema,
 	fileChangeApprovalParamsSchema,
 	itemDeltaSchema,
@@ -103,6 +106,13 @@ type PendingApproval = {
 	options: CodexDecisionOption[];
 };
 
+type PendingDynamicApproval = {
+	turnId: string;
+	requestId: CodexRequestId;
+	item: ApprovalRequest;
+	resolve(allowed: boolean): void;
+};
+
 type InFlightItem = {
 	codexItem: CodexThreadItem;
 	turnId: string;
@@ -125,6 +135,10 @@ export class CodexAdapter implements HarnessAdapter {
 	private readonly itemText = new Map<string, string>();
 	private readonly inFlight = new Map<string, InFlightItem>();
 	private readonly pendingApprovals = new Map<string, PendingApproval>();
+	private readonly pendingDynamicApprovals = new Map<
+		string,
+		PendingDynamicApproval
+	>();
 	private readonly settledTurns = new Set<string>();
 	private pendingTurnStart = false;
 	private cancelRequested = false;
@@ -137,6 +151,7 @@ export class CodexAdapter implements HarnessAdapter {
 	private currentTurn: Turn | null = null;
 	private usage: Turn["usage"];
 	private disposed = false;
+	private startOptions: HarnessStartOptions | null = null;
 
 	constructor(private readonly options: CodexAdapterOptions = {}) {}
 
@@ -144,6 +159,7 @@ export class CodexAdapter implements HarnessAdapter {
 		this.cwd = startOptions.cwd;
 		this.modeId = startOptions.modeId ?? DEFAULT_CODEX_MODE;
 		this.modelId = startOptions.modelId;
+		this.startOptions = startOptions;
 		void this.bootstrap(startOptions);
 		return this.queue.iterable();
 	}
@@ -160,6 +176,7 @@ export class CodexAdapter implements HarnessAdapter {
 	cancelTurn(): void {
 		if (!this.client || !this.threadId) return;
 		const turn = this.currentTurn;
+		if (turn?.status === "running") this.staleDynamicApprovals(turn.id);
 		if (turn?.status === "running") {
 			this.interrupt(turn.id);
 			return;
@@ -176,6 +193,33 @@ export class CodexAdapter implements HarnessAdapter {
 
 	respondToApproval(approvalId: string, decision: Decision): void {
 		const pending = this.pendingApprovals.get(approvalId);
+		const dynamic = this.pendingDynamicApprovals.get(approvalId);
+		if (dynamic) {
+			this.pendingDynamicApprovals.delete(approvalId);
+			const normalized =
+				decision.type === "accept_for_session"
+					? ({ type: "accept" } as const)
+					: decision;
+			const allowed =
+				normalized.type === "accept" ||
+				(normalized.type === "option" &&
+					normalized.optionId !== "deny" &&
+					dynamic.item.options?.some(
+						(option) => option.optionId === normalized.optionId,
+					) === true);
+			this.emitItem(
+				{
+					...dynamic.item,
+					status: "answered",
+					decision: normalized,
+					completedAtMs: this.now(),
+				},
+				dynamic.turnId,
+			);
+			dynamic.resolve(allowed);
+			if (normalized.type === "cancel") this.cancelTurn();
+			return;
+		}
 		if (!pending || !this.client) return;
 		this.pendingApprovals.delete(approvalId);
 		this.client.respond(pending.requestId, {
@@ -197,12 +241,14 @@ export class CodexAdapter implements HarnessAdapter {
 		this.emitSession({ modeId });
 	}
 
-	async dispose(): Promise<void> {
-		if (this.disposed) return;
+	async dispose(): Promise<{ quiescent: boolean }> {
+		if (this.disposed) return { quiescent: false };
 		this.disposed = true;
 		this.stalePendingApprovals();
+		this.staleDynamicApprovals();
 		await this.client?.close();
 		this.queue.close();
+		return { quiescent: false };
 	}
 
 	private async bootstrap(startOptions: HarnessStartOptions): Promise<void> {
@@ -216,12 +262,23 @@ export class CodexAdapter implements HarnessAdapter {
 							command: this.options.command,
 							args: this.options.args,
 							cwd: startOptions.cwd,
-							env: this.options.env,
+							env: startOptions.env ?? this.options.env,
 						},
 						handlers,
 					),
 				onNotification: (notification) => this.handleNotification(notification),
-				onServerRequest: (request) => this.handleServerRequest(request),
+				onServerRequest: (request) => {
+					void this.handleServerRequest(request).catch((error: unknown) => {
+						this.client?.respondWithError(
+							request.id,
+							"unhandled by choros chat runtime",
+						);
+						this.emitNotice(
+							"error",
+							`codex ${request.method} failed: ${error instanceof Error ? error.message : String(error)}`,
+						);
+					});
+				},
 				onDispatchError: (error, method) =>
 					this.emitNotice(
 						"error",
@@ -245,17 +302,25 @@ export class CodexAdapter implements HarnessAdapter {
 				return;
 			}
 
+			const dynamicTools = (startOptions.tools ?? []).map((definition) => ({
+				type: "function" as const,
+				name: definition.name,
+				description: definition.description,
+				inputSchema: this.jsonSchemaFor(definition.inputSchema),
+			}));
 			const policy = codexTurnPolicy(this.modeId);
 			const response = startOptions.resume
 				? await client.request("thread/resume", {
 						threadId: startOptions.resume.harnessSessionId,
 						cwd: startOptions.cwd,
 						...policy,
+						...(dynamicTools.length > 0 ? { dynamicTools } : {}),
 					})
 				: await client.request("thread/start", {
 						cwd: startOptions.cwd,
 						...policy,
 						...(this.modelId ? { model: this.modelId } : {}),
+						...(dynamicTools.length > 0 ? { dynamicTools } : {}),
 					});
 			const thread = threadStartResponseSchema.parse(response);
 			this.threadId = thread.thread.id;
@@ -263,6 +328,7 @@ export class CodexAdapter implements HarnessAdapter {
 
 			this.emitSession({
 				status: "idle",
+				harnessSessionId: this.threadId,
 				modeId: this.modeId,
 				availableModes: [...CODEX_MODES],
 				...(this.modelId ? { modelId: this.modelId } : {}),
@@ -294,13 +360,7 @@ export class CodexAdapter implements HarnessAdapter {
 			if (parsed.success && parsed.data.turn) this.emitTurn(parsed.data.turn);
 		} catch (error) {
 			this.emitNotice("error", (error as Error).message);
-			this.emitTurnState({
-				id: this.mintId(),
-				status: "failed",
-				error: { message: (error as Error).message },
-				startedAtMs: this.now(),
-				completedAtMs: this.now(),
-			});
+			this.emitSession({ status: "dead" });
 		}
 	}
 
@@ -335,6 +395,7 @@ export class CodexAdapter implements HarnessAdapter {
 			const lifecycle = turnLifecycleSchema.parse(params);
 			if (method === "turn/completed") {
 				this.settleInFlight(lifecycle.turn);
+				this.staleDynamicApprovals(lifecycle.turn.id);
 			}
 			this.emitTurn(lifecycle.turn);
 			return;
@@ -400,6 +461,7 @@ export class CodexAdapter implements HarnessAdapter {
 		if (method === "serverRequest/resolved") {
 			const resolved = serverRequestResolvedSchema.parse(params);
 			this.staleApprovalForRequest(resolved.requestId);
+			this.staleDynamicApprovalForRequest(resolved.requestId);
 			return;
 		}
 		const noticeKind = NOTICE_METHODS[method];
@@ -443,9 +505,77 @@ export class CodexAdapter implements HarnessAdapter {
 		if (item) this.emitItem(item, lifecycle.turnId);
 	}
 
-	private handleServerRequest(request: CodexServerRequest): void {
+	private async handleServerRequest(
+		request: CodexServerRequest,
+	): Promise<void> {
 		const client = this.client;
 		if (!client) return;
+		if (request.method === "item/tool/call") {
+			const call = dynamicToolCallParamsSchema.parse(request.params);
+			if (call.threadId !== this.threadId) {
+				client.respondWithError(
+					request.id,
+					"dynamic tool request belongs to another thread",
+				);
+				return;
+			}
+			const definition = this.startOptions?.tools?.find(
+				(candidate) => candidate.name === call.tool,
+			);
+			if (!definition) {
+				client.respondWithError(
+					request.id,
+					`unsupported dynamic tool: ${call.tool}`,
+				);
+				return;
+			}
+			try {
+				const rawInput =
+					typeof call.arguments === "string"
+						? JSON.parse(call.arguments)
+						: call.arguments;
+				const input = definition.inputSchema.parse(rawInput);
+				if (definition.requiresApproval !== false) {
+					const allowed = await this.requestDynamicApproval(
+						request.id,
+						call,
+						input,
+					);
+					if (
+						!allowed ||
+						this.disposed ||
+						this.threadId !== call.threadId ||
+						this.currentTurn?.id !== call.turnId ||
+						this.currentTurn.status !== "running"
+					) {
+						throw new Error("Automation tool request is no longer active.");
+					}
+				}
+				const result = await definition.handler(input, {
+					callId: call.callId,
+					providerSessionId: call.threadId,
+					providerTurnId: call.turnId,
+				});
+				client.respond(request.id, {
+					contentItems: [
+						{ type: "inputText", text: this.toolResultText(result) },
+					],
+					success: true,
+				});
+			} catch (error) {
+				client.respond(request.id, {
+					contentItems: [
+						{
+							type: "inputText",
+							text: error instanceof Error ? error.message : String(error),
+						},
+					],
+					success: false,
+				});
+			}
+			return;
+		}
+
 		if (!APPROVAL_METHODS.has(request.method)) {
 			client.respondWithError(
 				request.id,
@@ -558,6 +688,30 @@ export class CodexAdapter implements HarnessAdapter {
 		this.stalePendingApprovals();
 	}
 
+	private staleDynamicApprovals(turnId?: string): void {
+		for (const [approvalId, pending] of [...this.pendingDynamicApprovals]) {
+			if (turnId && pending.turnId !== turnId) continue;
+			this.pendingDynamicApprovals.delete(approvalId);
+			this.emitItem(
+				{ ...pending.item, status: "stale", completedAtMs: this.now() },
+				pending.turnId,
+			);
+			pending.resolve(false);
+		}
+	}
+
+	private staleDynamicApprovalForRequest(requestId: CodexRequestId): void {
+		for (const [approvalId, pending] of [...this.pendingDynamicApprovals]) {
+			if (pending.requestId !== requestId) continue;
+			this.pendingDynamicApprovals.delete(approvalId);
+			this.emitItem(
+				{ ...pending.item, status: "stale", completedAtMs: this.now() },
+				pending.turnId,
+			);
+			pending.resolve(false);
+		}
+	}
+
 	private withAccumulatedText(
 		codexItem: CodexThreadItem,
 		accumulated: string | undefined,
@@ -596,6 +750,7 @@ export class CodexAdapter implements HarnessAdapter {
 	private handleExit(code: number | null): void {
 		if (this.disposed) return;
 		this.stalePendingApprovals();
+		this.staleDynamicApprovals();
 		this.emitNotice(
 			"error",
 			`codex app-server exited (code ${code ?? "null"})`,
@@ -698,12 +853,69 @@ export class CodexAdapter implements HarnessAdapter {
 		);
 	}
 
+	private requestDynamicApproval(
+		requestId: CodexRequestId,
+		call: { callId: string; tool: string; turnId: string },
+		input: Record<string, unknown>,
+	): Promise<boolean> {
+		const approvalId = `approval:dynamic:${call.callId}`;
+		let optionId = "confirm";
+		let label = "Confirm once";
+		if (call.tool === "automations_create") {
+			optionId = input.runImmediately === true ? "confirm_run" : "save_paused";
+			label =
+				input.runImmediately === true ? "Create and run once" : "Save paused";
+		} else if (call.tool === "automations_set_schedule_state") {
+			optionId = input.state === "enabled" ? "enable" : "pause";
+			label =
+				input.state === "enabled"
+					? "Enable this schedule"
+					: "Pause this schedule";
+		}
+		const item: ApprovalRequest = {
+			id: approvalId,
+			kind: "approval_request",
+			targetItemId: call.callId,
+			title: `Allow Automation tool ${call.tool} for this request?`,
+			status: "pending",
+			startedAtMs: this.now(),
+			options: [
+				{ optionId, label },
+				{ optionId: "deny", label: "Deny" },
+			],
+		};
+		return new Promise<boolean>((resolve) => {
+			this.pendingDynamicApprovals.set(approvalId, {
+				turnId: call.turnId,
+				requestId,
+				item,
+				resolve,
+			});
+			this.emitItem(item, call.turnId);
+			this.emitSession({ status: "awaiting_input" });
+		});
+	}
+
 	private emitSession(session: Partial<SessionState>): void {
 		this.emit({ kind: "session", session });
 	}
 
 	private emit(event: AdapterEvent): void {
 		this.queue.push(event);
+	}
+
+	private jsonSchemaFor(
+		schema: HarnessToolDefinition["inputSchema"],
+	): Record<string, unknown> {
+		const json = z.toJSONSchema(schema);
+		if (typeof json !== "object" || json === null || Array.isArray(json)) {
+			throw new Error("dynamic tool schema must be a JSON object");
+		}
+		return json;
+	}
+
+	private toolResultText(value: unknown): string {
+		return typeof value === "string" ? value : JSON.stringify(value);
 	}
 
 	private now(): number {

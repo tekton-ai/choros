@@ -57,6 +57,37 @@ describe("chat commands", () => {
 		await runtime.dispose();
 	});
 
+	test("interactive prompt and mode changes cannot enter a managed background session", async () => {
+		const { runtime } = newRuntime();
+		const operationId = randomUUID();
+		const started = runtime.operations.start({
+			operationId,
+			parameterIdentity: { executionId: randomUUID() },
+			scopeId: "workspace-1",
+			harness: FAKE_HARNESS,
+			cwd: "/tmp/workspace",
+			tools: [],
+			prompt: [{ type: "text", text: "managed work" }],
+		});
+
+		expect(() =>
+			runtime.commands.prompt({
+				commandId: randomUUID(),
+				sessionId: started.sessionId,
+				clientId: "interactive-client",
+				content: [{ type: "text", text: "bypass" }],
+			}),
+		).toThrow("is owned by managed operation");
+		expect(() =>
+			runtime.commands.setMode({
+				commandId: randomUUID(),
+				sessionId: started.sessionId,
+				modeId: "full-access",
+			}),
+		).toThrow("is owned by managed operation");
+		await runtime.dispose();
+	});
+
 	test("a duplicate commandId replays the result instead of acting twice", async () => {
 		const { runtime, adapterCount } = newRuntime();
 		const commandId = randomUUID();
