@@ -289,3 +289,12 @@ M1接口稳定后，M4的纯时间计算与M5的页面/CLI展示可以并行开�
 调试期间发现Bun的嵌套asymmetric matcher会把被匹配事件的id替换为matcher对象，导致测试用错误approvalId等待。最终移除该无必要ID matcher，保留实际允许/拒绝行为断言与完整await清理；没有用超时race伪装通过。
 
 完整记录为 `local://automation-implementation-evidence.json`，截图保留在隔离验证目录。真实Claude/Codex模型调用仍单独标记未验证，不阻塞本轮代码实现，但不宣称已经完成生产模型联调、打包发布或全部#36/#37验收。
+
+## 十、本地编译试用交付（2026-09-29）
+
+- 实现代码提交 `94595bb8d`；试用中发现有限轮次预览未限制条数，已以回归先复现，再修复为当前剩余轮次上限，提交 `bbeb83a9c`。Host相关60项回归通过、0失败，Host类型检查通过。原有尚余轮次为0时预览为空，不承诺不存在的未来执行。
+- `bun run compile:app` 已成功生成main/preload/renderer、匹配的独立CLI二进制和PTY daemon bundle；这次验证使用编译产物与静态renderer服务，不是仅靠源码开发服务器展示。
+- 实现提交后重新执行完整 `packages/i18n` 的 `bun run check`，包含最终catalog clean-diff门槛，退出0；17种发布语言无缺译。
+- 试用启动器位于 `/Users/xiaochunzhao/.choros-automation-trial/Start Automation Trial.command`。独立HOME、Host数据、Electron userData和Agent配置均在同一trial目录，不覆盖安装版或复用日常窗口锁；入口标记为开发试用，不是签名安装包或正式release。使用现有development认证绕过，不声称验证登录。
+- 实际UI新建 `Automation Sandbox` 项目和一个“试用示例（未启用）”：每小时、最多3轮、保存暂停。重新构建后确认预览恰为3个时间；手动触发的受控precheck退出7，显示 `skipped/precheck_false`、原始输出和无provider会话／结果。匹配的编译CLI读取同一Host，确认state=paused、usedRounds=0及相同Skipped历史。
+- 界面留在Automation列表供用户试用；受监督进程名 `automation-trial`。截图 `~/.choros-automation-trial/trial-overview.png`、`trial-run.png` 与 `build-info.json` 保留版本/隔离信息。该示例没有启用定时派发，也没有调用真实模型；真实provider联调仍是单独未验证项。
